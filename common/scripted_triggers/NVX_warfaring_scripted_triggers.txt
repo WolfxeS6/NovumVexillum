@@ -1,0 +1,170 @@
+# Written by E. Wolfe; heavily inspired by Millennium Chaos by Mechano
+
+NVX_warfaring_abstention = {
+	NOT = { has_global_flag = pts_intensify_warfaring }
+	OR = {
+		AND = {
+			original_tag = SWI
+			NVX_has_government_system_democratic = yes
+		}
+		AND = {
+			original_tag = JAP
+			OR = {
+				has_idea = japanese_article_9
+				has_idea = japanese_article_9_adapted
+			}
+		}
+		AND = {
+			original_tag = KOR
+			NVX_has_government_system_democratic = yes
+		}
+		AND = {
+			original_tag = ISR
+			NVX_has_government_system_democratic = yes
+		}
+	}
+}
+
+NVX_warfaring_target_abstention = {
+	OR = {
+		AND = {
+			PREV = { original_tag = KOR }
+			original_tag = PRK
+			is_guaranteed_by = PRC
+		}
+		AND = {
+			PREV = { original_tag = PRK }
+			original_tag = KOR
+			is_guaranteed_by = USA
+		}
+		AND = {
+			is_guaranteed_by = USA
+			PREV = { num_divisions < 50 }
+		}
+		AND = {
+			is_guaranteed_by = FRA
+			PREV = { num_divisions < 50 }
+		}
+		AND = {
+			is_guaranteed_by = ENG
+			PREV = { num_divisions < 50 }
+		}
+		AND = {
+			is_guaranteed_by = SOV
+			PREV = { num_divisions < 50 }
+		}
+		AND = {
+			is_guaranteed_by = PRC
+			PREV = { num_divisions < 50 }
+		}
+		AND = {
+			is_guaranteed_by = RAJ
+			PREV = { num_divisions < 40 }
+		}
+		AND = {
+			is_in_faction = yes
+			PREV = { num_divisions < 40 }
+		}
+		AND = {
+			has_government = communist
+			PREV = { has_government = communist }
+		}
+		AND = {
+			has_country_flag = shia_islam
+			PREV = { has_country_flag = shia_islam }
+		}
+		AND = {
+			has_country_flag = sunni_islam
+			PREV = { has_country_flag = sunni_islam }
+		}
+	}
+}
+
+NVX_warfaring_target_abstention_flip = {
+	NVX_has_government_system_democratic = yes
+	PREV = { NVX_has_government_system_democratic = yes }
+	OR = {
+		AND = {
+			has_government = reactionary
+			PREV = { has_government = reactionary }
+		}
+		AND = {
+			has_government = conservative
+			PREV = { has_government = conservative }
+		}
+		AND = {
+			has_government = market_liberal
+			PREV = { has_government = market_liberal }
+		}
+		AND = {
+			has_government = social_liberal
+			PREV = { has_government = social_liberal }
+		}
+		AND = {
+			has_government = social_democrat
+			PREV = { has_government = social_democrat }
+		}
+		AND = {
+			has_government = progressive
+			PREV = { has_government = progressive }
+		}
+		AND = {
+			has_government = democratic_socialist
+			PREV = { has_government = democratic_socialist }
+		}
+	}
+}
+
+NVX_warfaring_target_abstention_civilized = {
+	NVX_has_government_system_democratic = yes
+	has_idea = national_development_developed
+	PREV = {
+		NVX_has_government_system_democratic = yes
+		has_idea = national_development_developed
+	}
+}
+
+NVX_warfaring_attacker_trigger = {
+	NVX_warfaring_abstention = no
+	is_ai = yes
+	has_capitulated = no
+	OR = {
+		OR = {
+			is_in_faction = no
+			AND = {
+				is_in_faction = yes
+				is_faction_leader = yes
+			}
+		}
+		threat > 0.8
+		AND = {
+			has_global_flag = pts_intensify_warfaring
+			threat > 0.2
+		}
+	}
+}
+
+NVX_warfaring_target_trigger = {
+	OR = {
+		NVX_warfaring_target_abstention = no
+		has_global_flag = pts_intensify_warfaring
+	}
+	OR = {
+		has_defensive_war = no
+		has_global_flag = pts_intensify_warfaring
+	}
+	OR = {
+		NOT = {
+			is_major = yes
+			PREV = { is_major = yes }
+		}
+		has_global_flag = pts_intensify_warfaring
+	}
+	OR = {
+		NVX_warfaring_target_abstention_civilized = no
+		has_global_flag = pts_intensify_warfaring
+	}
+	NOT = { is_in_faction_with = PREV }
+	strength_ratio = { tag = PREV ratio < 1.3 }
+	PREV = { has_opinion = { target = ROOT value < 30 } }
+}

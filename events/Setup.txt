@@ -1,0 +1,90 @@
+﻿#UNUSED FILE#
+
+add_namespace = setup_event
+
+news_event = {	#2000 Setup
+	id = setup_event.1
+	hidden = yes
+	fire_only_once = yes
+	
+	trigger = {
+		NOT = { has_global_flag = setup_flag }
+		date < 2001.1.1
+	}
+	
+	immediate = {
+		set_global_flag = setup_flag
+	}
+	
+	option = {
+		#Civil War in Afghanistan
+		#AFG = { country_event = afghanistan.1 }
+		#Civil War in the Congo
+		#Civil War in Nepal
+	}
+}
+
+news_event = {	#2016 Setup
+	id = setup_event.2
+	hidden = yes
+	fire_only_once = yes
+	
+	trigger = {
+		NOT = { has_global_flag = setup_flag }
+		date > 2016.1.1
+	}
+	
+	immediate = {
+		set_global_flag = setup_flag
+	}
+	
+	option = {
+		#Civil War in Libya
+		#Civil War in Nepal
+	}
+}
+
+news_event = {	#2000 News Event
+	id = setup_event.3
+	title = setup_event.3.t
+	desc = setup_event.3.d
+	picture = GFX_news_event_millennium_dawn
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = setup_event.3.o1
+	}
+}
+
+news_event = {	#2016 News Event
+	id = setup_event.4
+	title = setup_event.4.t
+	desc = setup_event.4.d
+	picture = GFX_news_event_millennium_dawn
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = setup_event.4.o1
+	}
+}
+
+country_event = { #Crazy Event
+	id = setup_event.5
+	title = setup_event.5.t
+	desc = setup_event.5.d
+	picture = GFX_report_event_united_nations_crazy
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = setup_event.5.o1
+		set_global_flag = crazy_mode_enabled
+	}
+	
+	option = {
+		name = setup_event.5.o2
+		set_global_flag = crazy_mode_disabled
+	}
+}

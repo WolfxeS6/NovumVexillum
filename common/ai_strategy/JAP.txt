@@ -1,0 +1,418 @@
+seek_japanese_alliance = {
+
+	enable = {
+		has_country_flag = seeks_japanese_alliance
+	}
+	
+	abort = {
+		NOT = { has_country_flag = seeks_japanese_alliance }
+	}
+	
+	ai_strategy = {
+		type = befriend
+		id = "JAP"
+		value = 200
+	}
+	ai_strategy = {
+		type = alliance
+		id = "JAP"
+		value = 200
+	}
+}
+
+## NIPPON DAISUKI
+
+nippon_daisuki_ai = {
+	enable = {
+		NOT = { tag = JAP }
+		has_country_flag = alliance_nippon_daisuki
+	}
+	
+	abort = {
+		NOT = { has_country_flag = alliance_nippon_daisuki }
+	}
+	
+	ai_strategy = {
+		type = befriend
+		id = "JAP"
+		value = 200
+	}
+	ai_strategy = {
+		type = alliance
+		id = "JAP"
+		value = 200
+	}
+}
+
+## Hate Nations
+
+japanese_hate_prc = {
+
+	enable = {
+		tag = JAP
+		OR = {
+		has_completed_focus = JAP_kakumei_no_hi
+		has_completed_focus = JAP_kami_no_kuni
+		}
+		country_exists = PRC
+	}
+	
+	abort = {
+	NOT = { country_exists = PRC }
+	}
+	
+	ai_strategy = {
+		type = antagonize
+		id = "PRC"			
+		value = 200
+	}
+	
+	ai_strategy = {
+	  type = conquer
+		id = "PRC"
+		value = 200
+	}
+}
+
+japanese_hate_usa = {
+
+	enable = {
+		tag = JAP
+		OR = {
+		has_completed_focus = JAP_kakumei_no_hi
+		has_completed_focus = JAP_kami_no_kuni
+		has_completed_focus = JAP_peoples_revolution
+		}
+		country_exists = USA
+	}
+	
+	abort = {
+	NOT = { country_exists = USA }
+	}
+	
+	ai_strategy = {
+		type = antagonize
+		id = "USA"			
+		value = 200
+	}
+	
+	ai_strategy = {
+	  type = conquer
+		id = "USA"
+		value = 200
+	}
+}
+
+japanese_hate_russia = {
+
+	enable = {
+		tag = JAP
+		has_completed_focus = JAP_red_russia
+		country_exists = SOV
+	}
+	
+	abort = {
+	NOT = { country_exists = SOV }
+	}
+	
+	ai_strategy = {
+		type = antagonize
+		id = "SOV"			
+		value = 200
+	}
+	
+	ai_strategy = {
+	  type = conquer
+		id = "SOV"
+		value = 200
+	}
+}
+
+japanese_hate_korean = {
+
+	enable = {
+		tag = JAP
+		OR = {
+		has_completed_focus = JAP_kakumei_no_hi
+		has_completed_focus = JAP_kami_no_kuni
+		has_completed_focus = JAP_peoples_revolution
+		}
+		OR = {
+		country_exists = KOR
+		country_exists = PRK
+		}
+	}
+	
+	abort = {
+	NOT = { country_exists = KOR }
+	NOT = { country_exists = PRK }
+	}
+	
+	ai_strategy = {
+		type = antagonize
+		id = "KOR"			
+		value = 125
+	}
+	
+	ai_strategy = {
+		type = antagonize
+		id = "PRK"			
+		value = 125
+	}
+	
+	ai_strategy = {
+	  type = conquer
+		id = "KOR"
+		value = 25
+	}
+	
+	ai_strategy = {
+	  type = conquer
+		id = "PRK"
+		value = 25
+	}
+}
+
+japanese_imperialism_ai = {
+
+	enable = {
+		original_tag = JAP
+		OR = {
+		has_completed_focus = JAP_world_revolution
+		has_completed_focus = JAP_rising_sun
+		}
+	}
+	
+	abort = {
+	}
+	
+	#Japanese Invasion of Southeast Asia
+	#first-priority invasion
+	ai_strategy = {
+		type = antagonize
+		id = VIN #Vietnam
+		value = 125
+	}
+	
+	ai_strategy = {
+		type = conquer
+		id = VIN #Vietnam
+		value = 75
+	}
+	
+	ai_strategy = {
+		type = antagonize
+		id = CAM #Cambodia
+		value = 125
+	}
+	
+	ai_strategy = {
+		type = conquer
+		id = CAM #Cambodia
+		value = 75
+	}
+	
+	ai_strategy = {
+		type = antagonize
+		id = LAO #Laos
+		value = 125
+	}
+	
+	ai_strategy = {
+		type = conquer
+		id = LAO #Laos
+		value = 75
+	}
+	
+	#second-priority invasion
+	ai_strategy = {
+		type = antagonize
+		id = MAL #Malaysia
+		value = 100
+	}
+	
+	ai_strategy = {
+		type = conquer
+		id = MAL #Malaysia
+		value = 50
+	}
+	
+	ai_strategy = {
+		type = antagonize
+		id = SIG #Singapore
+		value = 100
+	}
+	
+	ai_strategy = {
+		type = conquer
+		id = SIG #Singapore
+		value = 50
+	}
+	
+	ai_strategy = {
+		type = antagonize
+		id = PHI #Philippines
+		value = 100
+	}
+	
+	ai_strategy = {
+		type = conquer
+		id = PHI #Philippines
+		value = 50
+	}
+	
+	#third-priority invasion
+	ai_strategy = {
+		type = antagonize
+		id = INS #Indonesia
+		value = 100
+	}
+	
+	ai_strategy = {
+		type = conquer
+		id = INS #Indonesia
+		value = 25
+	}
+}
+
+JAP_modern_template_design = {
+	enable = {
+		original_tag = JAP	
+	}
+	
+	ai_strategy = {
+		type = template_prio
+		id = infantry
+		value = -10
+	}
+
+	ai_strategy = {
+		type = template_prio
+		id = motorized
+		value = 10
+	}
+
+	ai_strategy = {
+		type = template_prio
+		id = cavalry
+		value = -100
+	}
+	
+	ai_strategy = {
+		type = template_prio
+		id = light_armor
+		value = 10
+	}
+
+	ai_strategy = {
+		type = template_prio
+		id = medium_armor
+		value = 10
+	}
+	
+	ai_strategy = {
+		type = template_prio
+		id = modern_armor
+		value = 50
+	}
+
+	ai_strategy = {
+		type = template_prio
+		id = heavy_armor
+		value = -10
+	}
+
+	ai_strategy = {
+		type = template_prio
+		id = paratroopers
+		value = -10
+	}
+	
+	ai_strategy = {
+		type = template_prio
+		id = mechanized
+		value = 50
+	}
+}
+
+JAP_role_ratios = {
+	enable = {
+		has_dlc = "Man the Guns"
+		tag = JAP
+		OR = {
+		has_completed_focus = JAP_kakumei_no_hi
+		has_completed_focus = JAP_kami_no_kuni
+		has_completed_focus = JAP_peoples_revolution
+		}
+	}
+
+	ai_strategy = {
+		type = role_ratio
+		id = naval_capital_bb
+		value = 20
+	}
+
+	ai_strategy = {
+		type = role_ratio
+		id = naval_carrier
+		value = 30
+	}
+
+	ai_strategy = {
+		type = role_ratio
+		id = naval_submarine
+		value = 65
+	}
+
+	ai_strategy = {
+		type = role_ratio
+		id = naval_screen
+		value = 60
+	}
+
+	ai_strategy = {
+		type = role_ratio
+		id = naval_escort
+		value = 35
+	}
+
+	ai_strategy = {
+		type = role_ratio
+		id = naval_cruiser_light
+		value = 40
+	}
+
+	ai_strategy = {
+		type = role_ratio
+		id = naval_cruiser_heavy
+		value = 50
+	}
+
+	ai_strategy = {
+		type = role_ratio
+		id = naval_mine_sweeper
+		value = 15
+	}
+
+	ai_strategy = {
+		type = role_ratio
+		id = naval_mine_layer
+		value = 20
+	}
+	
+	ai_strategy = {
+		type = unit_ratio
+		id = capital_ship
+		value = 4
+	}
+	ai_strategy = {
+		type = unit_ratio
+		id = screen_ship
+		value = 65
+	}
+	ai_strategy = {
+		type = unit_ratio
+		id = carrier
+		value = 30
+	}
+}

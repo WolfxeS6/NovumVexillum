@@ -1,0 +1,1343 @@
+# Written by E. Wolfe #			islamist fascist nationalist monarchist reactionary conservative market_liberal social_liberal social_democrat progressive democratic_socialist communist
+
+## ELECTIONS ##
+NVX_election_system_from_auth = {
+	if = {
+		limit = { NVX_has_government_ideology_authoritarian = yes }
+		country_event = {
+			id = NVX_COUP.50
+			hours = 3
+		}
+	}
+}
+
+NVX_election_system_from_demo = {
+	if = {
+		limit = { NVX_has_government_ideology_democratic = yes }
+		country_event = {
+			id = NVX_COUP.50
+			hours = 3
+		}
+	}
+}
+
+NVX_election_system_to_monarchy = {
+	set_country_flag = NVX_COUP_has_living_monarchy
+	if = {
+		limit = {
+			NOT = { has_idea = government_system_constitutional_monarchy }
+			NOT = { has_idea = government_system_absolute_monarchy }
+		}
+		country_event = {
+			id = NVX_COUP.50
+			hours = 3
+		}
+	}
+}
+
+## USSR ##
+NVX_USSR_set_state_flags = {
+	every_state = {
+		limit = {
+			OR = {
+				is_owned_by = EST
+				is_owned_by = LAT
+				is_owned_by = LIT
+				is_owned_by = BLR
+				is_owned_by = UKR
+				is_owned_by = MOL
+				is_owned_by = TRA
+				is_owned_by = ABK
+				is_owned_by = GEO
+				is_owned_by = SOS
+				is_owned_by = KAZ
+				is_owned_by = UZB
+				is_owned_by = TMS
+				is_owned_by = KYR
+				is_owned_by = TAJ
+			}
+		}
+		set_state_flag = NVX_former_ussr
+	}
+}
+
+NVX_USSR_add_cores = {
+	every_state = {
+		limit = { has_state_flag = NVX_former_ussr }
+		add_core_of = SOV
+	}
+}
+
+## OTHER ##
+
+NVX_nuke_threat_ai_calc = {
+	if = {
+		limit = { check_variable = { NVX_nuke_threat_ai_var < 3 } }
+		add_to_variable = { NVX_nuke_threat_ai_var = 1 }
+		add_named_threat = {
+			threat = 2
+			name = threat_used_nuke
+		}
+	}
+}
+
+NVX_national_preferences_set = {
+	if = {
+		limit = { NVX_has_government_ideology_democratic = yes }
+		set_country_flag = NVX_pref_start_demo
+	}
+	if = {
+		limit = { NVX_has_government_ideology_authoritarian = yes }
+		set_country_flag = NVX_pref_start_auth
+	}
+	# public safety #
+	if = {
+		limit = {
+			has_idea = public_safety_local_law_enforcement
+			NVX_has_government_ideology_democratic = yes
+		}
+		set_country_flag = NVX_pref_demo_safety_local_law_enforcement
+	}
+	if = {
+		limit = {
+			has_idea = public_safety_local_law_enforcement
+			NVX_has_government_ideology_authoritarian = yes
+		}
+		set_country_flag = NVX_pref_auth_safety_local_law_enforcement
+	}
+	if = {
+		limit = {
+			has_idea = public_safety_subsidized_agencies
+			NVX_has_government_ideology_democratic = yes
+		}
+		set_country_flag = NVX_pref_demo_safety_subsidized_agencies
+	}
+	if = {
+		limit = {
+			has_idea = public_safety_subsidized_agencies
+			NVX_has_government_ideology_authoritarian = yes
+		}
+		set_country_flag = NVX_pref_auth_safety_subsidized_agencies
+	}
+	if = {
+		limit = {
+			has_idea = public_safety_central_law_office
+			NVX_has_government_ideology_democratic = yes
+		}
+		set_country_flag = NVX_pref_demo_safety_central_law_office
+	}
+	if = {
+		limit = {
+			has_idea = public_safety_central_law_office
+			NVX_has_government_ideology_authoritarian = yes
+		}
+		set_country_flag = NVX_pref_auth_safety_central_law_office
+	}
+	if = {
+		limit = {
+			has_idea = public_safety_secret_police
+			NVX_has_government_ideology_democratic = yes
+		}
+		set_country_flag = NVX_pref_demo_safety_secret_police
+	}
+	if = {
+		limit = {
+			has_idea = public_safety_secret_police
+			NVX_has_government_ideology_authoritarian = yes
+		}
+		set_country_flag = NVX_pref_auth_safety_secret_police
+	}
+	# civil liberties #
+	if = {
+		limit = {
+			has_idea = civil_liberties_free
+			NVX_has_government_ideology_democratic = yes
+		}
+		set_country_flag = NVX_pref_demo_civil_liberties_free
+	}
+	if = {
+		limit = {
+			has_idea = civil_liberties_free
+			NVX_has_government_ideology_authoritarian = yes
+		}
+		set_country_flag = NVX_pref_auth_civil_liberties_free
+	}
+	if = {
+		limit = {
+			has_idea = civil_liberties_limited
+			NVX_has_government_ideology_democratic = yes
+		}
+		set_country_flag = NVX_pref_demo_civil_liberties_limited
+	}
+	if = {
+		limit = {
+			has_idea = civil_liberties_limited
+			NVX_has_government_ideology_authoritarian = yes
+		}
+		set_country_flag = NVX_pref_auth_civil_liberties_limited
+	}
+	if = {
+		limit = {
+			has_idea = civil_liberties_restricted
+			NVX_has_government_ideology_democratic = yes
+		}
+		set_country_flag = NVX_pref_demo_civil_liberties_restricted
+	}
+	if = {
+		limit = {
+			has_idea = civil_liberties_restricted
+			NVX_has_government_ideology_authoritarian = yes
+		}
+		set_country_flag = NVX_pref_auth_civil_liberties_restricted
+	}
+	if = {
+		limit = {
+			has_idea = civil_liberties_totalitarian
+			NVX_has_government_ideology_democratic = yes
+		}
+		set_country_flag = NVX_pref_demo_civil_liberties_totalitarian
+	}
+	if = {
+		limit = {
+			has_idea = civil_liberties_totalitarian
+			NVX_has_government_ideology_authoritarian = yes
+		}
+		set_country_flag = NVX_pref_auth_civil_liberties_totalitarian
+	}
+}
+
+NVX_secret_idea_effect_julian_assange_rescue_option = {
+	if = {
+		limit = {
+			is_ai = no
+			NOT = { original_tag = USA }
+			NOT = { original_tag = SOV }
+			NOT = { original_tag = PRC }
+			NOT = { original_tag = ENG }
+			NOT = { original_tag = SWE }
+			NVX_has_government_ideology_democratic = yes
+			check_variable = { NVX_history_wars_declared_immoral < 11 }
+			NOT = { has_global_flag = NVX_flag_secret_ideas_advisor_julian_assange_opstart }
+		}
+		set_global_flag = NVX_flag_secret_ideas_advisor_julian_assange_opstart
+		hidden_effect = {
+			country_event = {
+				id = nvx_secret_ideas_events.701
+				days = 7
+			}
+		}
+	}
+}
+
+NVX_secret_idea_effect_julian_assange_rescue_operation = {
+	if = {
+		limit = {
+			has_intelligence_agency = yes
+			has_stability > 0.39
+			has_tech = advanced_computing_machine
+		}
+		country_event = {
+			id = nvx_secret_ideas_events.702
+			days = 30
+		}
+		else = {
+			random_list = {
+				50 = {
+					country_event = {
+						id = nvx_secret_ideas_events.702
+						days = 30
+					}
+				}
+				50 = {
+					country_event = {
+						id = nvx_secret_ideas_events.703
+						days = 30
+					}
+				}
+			}
+		}
+	}
+}
+
+### DYNAMIC CIVIL WARS ###
+NVX_DCW_clear_flags = {
+	set_variable = { NVX_VAR_DCW_war_desire = 0 }
+	clr_country_flag = NVX_DCW_had_public_safety_secret_police
+	clr_country_flag = NVX_DCW_had_civil_liberties_totalitarian
+	clr_country_flag = NVX_DCW_had_civil_liberties_restricted
+	clr_country_flag = NVX_DCW_had_welfare_none
+}
+
+NVX_DCW_start_civil_war_demo = {
+	if = {
+		limit = {
+			NOT = { has_government = fascist }
+			fascist > 0.3
+		}
+		
+		else_if = {
+			limit = {
+				NOT = { has_government = fascist }
+				fascist > 0.3
+			}
+			
+		}
+		else_if = {
+			limit = {
+				NOT = { has_government = fascist }
+				fascist > 0.3
+			}
+			
+		}
+	}
+}
+
+NVX_DCW_start_civil_war_dict = {
+	if = {
+		limit = {
+			
+		}
+	}
+}
+
+### TABULA RASA EFFECTS ###
+NVX_TABRAS_factories_0 = {
+	every_state = {
+		set_building_level = {
+			type = industrial_complex
+			level = 0
+			instant_build = yes
+		}
+		set_building_level = {
+			type = industrial_complex
+			level = 0
+			instant_build = yes
+		}
+		set_building_level = {
+			type = arms_factory
+			level = 0
+			instant_build = yes
+		}
+		set_building_level = {
+			type = arms_factory
+			level = 0
+			instant_build = yes
+		}
+		set_building_level = {
+			type = dockyard
+			level = 0
+			instant_build = yes
+		}
+		set_building_level = {
+			type = dockyard
+			level = 0
+			instant_build = yes
+		}
+		set_building_level = {
+			type = synthetic_refinery
+			level = 0
+			instant_build = yes
+		}
+		set_building_level = {
+			type = synthetic_refinery
+			level = 0
+			instant_build = yes
+		}
+	}
+}
+
+NVX_TABRAS_industrial_complex_fiftypercent = {
+	if = {
+		limit = {
+			free_building_slots = {
+				building = industrial_complex
+				size > 0
+				include_locked = no
+			}
+		}
+		set_temp_variable = { NVX_VAR_TABRAS_industrial_complex_fiftypercent = random }
+		if = {
+			limit = { check_variable = { NVX_VAR_TABRAS_industrial_complex_fiftypercent > 0.5 } }
+			NVX_TABRAS_industrial_complex_1 = yes
+		}
+	}
+}
+
+NVX_TABRAS_industrial_complex_1 = {
+	if = {
+		limit = {
+			free_building_slots = {
+				building = industrial_complex
+				size > 0
+				include_locked = no
+			}
+		}
+		set_building_level = {
+			type = industrial_complex
+			level = 1
+			instant_build = yes
+		}
+		set_building_level = {
+			type = industrial_complex
+			level = 1
+			instant_build = yes
+		}
+	}
+}
+
+NVX_TABRAS_industrial_complex_2 = {
+	if = {
+		limit = {
+			free_building_slots = {
+				building = industrial_complex
+				size > 1
+				include_locked = no
+			}
+		}
+		set_building_level = {
+			type = industrial_complex
+			level = 2
+			instant_build = yes
+		}
+		set_building_level = {
+			type = industrial_complex
+			level = 2
+			instant_build = yes
+		}
+		else = {
+			NVX_TABRAS_industrial_complex_1 = yes
+		}
+	}
+}
+
+NVX_TABRAS_industrial_complex_3 = {
+	if = {
+		limit = {
+			free_building_slots = {
+				building = industrial_complex
+				size > 2
+				include_locked = no
+			}
+		}
+		set_building_level = {
+			type = industrial_complex
+			level = 3
+			instant_build = yes
+		}
+		set_building_level = {
+			type = industrial_complex
+			level = 3
+			instant_build = yes
+		}
+		else = {
+			NVX_TABRAS_industrial_complex_2 = yes
+		}
+	}
+}
+
+NVX_TABRAS_industrial_complex_4 = {
+	if = {
+		limit = {
+			free_building_slots = {
+				building = industrial_complex
+				size > 3
+				include_locked = no
+			}
+		}
+		set_building_level = {
+			type = industrial_complex
+			level = 4
+			instant_build = yes
+		}
+		set_building_level = {
+			type = industrial_complex
+			level = 4
+			instant_build = yes
+		}
+		else = {
+			NVX_TABRAS_industrial_complex_3 = yes
+		}
+	}
+}
+
+NVX_TABRAS_industrial_complex_5 = {
+	if = {
+		limit = {
+			free_building_slots = {
+				building = industrial_complex
+				size > 4
+				include_locked = no
+			}
+		}
+		set_building_level = {
+			type = industrial_complex
+			level = 5
+			instant_build = yes
+		}
+		set_building_level = {
+			type = industrial_complex
+			level = 5
+			instant_build = yes
+		}
+		else = {
+			NVX_TABRAS_industrial_complex_4 = yes
+		}
+	}
+}
+
+NVX_TABRAS_industrial_complex_6 = {
+	if = {
+		limit = {
+			free_building_slots = {
+				building = industrial_complex
+				size > 5
+				include_locked = no
+			}
+		}
+		set_building_level = {
+			type = industrial_complex
+			level = 6
+			instant_build = yes
+		}
+		set_building_level = {
+			type = industrial_complex
+			level = 6
+			instant_build = yes
+		}
+		else = {
+			NVX_TABRAS_industrial_complex_5 = yes
+		}
+	}
+}
+
+NVX_TABRAS_industrial_complex_7 = {
+	if = {
+		limit = {
+			free_building_slots = {
+				building = industrial_complex
+				size > 6
+				include_locked = no
+			}
+		}
+		set_building_level = {
+			type = industrial_complex
+			level = 7
+			instant_build = yes
+		}
+		set_building_level = {
+			type = industrial_complex
+			level = 7
+			instant_build = yes
+		}
+		else = {
+			NVX_TABRAS_industrial_complex_6 = yes
+		}
+	}
+}
+
+NVX_TABRAS_industrial_complex_8 = {
+	if = {
+		limit = {
+			free_building_slots = {
+				building = industrial_complex
+				size > 7
+				include_locked = no
+			}
+		}
+		set_building_level = {
+			type = industrial_complex
+			level = 8
+			instant_build = yes
+		}
+		set_building_level = {
+			type = industrial_complex
+			level = 8
+			instant_build = yes
+		}
+		else = {
+			NVX_TABRAS_industrial_complex_7 = yes
+		}
+	}
+}
+
+NVX_TABRAS_industrial_complex_9 = {
+	if = {
+		limit = {
+			free_building_slots = {
+				building = industrial_complex
+				size > 8
+				include_locked = no
+			}
+		}
+		set_building_level = {
+			type = industrial_complex
+			level = 9
+			instant_build = yes
+		}
+		set_building_level = {
+			type = industrial_complex
+			level = 9
+			instant_build = yes
+		}
+		else = {
+			NVX_TABRAS_industrial_complex_8 = yes
+		}
+	}
+}
+
+NVX_TABRAS_industrial_complex_10 = {
+	if = {
+		limit = {
+			free_building_slots = {
+				building = industrial_complex
+				size > 9
+				include_locked = no
+			}
+		}
+		set_building_level = {
+			type = industrial_complex
+			level = 10
+			instant_build = yes
+		}
+		set_building_level = {
+			type = industrial_complex
+			level = 10
+			instant_build = yes
+		}
+		else = {
+			NVX_TABRAS_industrial_complex_9 = yes
+		}
+	}
+}
+
+NVX_TABRAS_arms_factory_fiftypercent = {
+	if = {
+		limit = {
+			free_building_slots = {
+				building = arms_factory
+				size > 0
+				include_locked = no
+			}
+		}
+		set_temp_variable = { NVX_VAR_TABRAS_arms_factory_fiftypercent = random }
+		if = {
+			limit = { check_variable = { NVX_VAR_TABRAS_arms_factory_fiftypercent > 0.5 } }
+			NVX_TABRAS_arms_factory_1 = yes
+		}
+	}
+}
+
+NVX_TABRAS_arms_factory_1 = {
+	if = {
+		limit = {
+			free_building_slots = {
+				building = arms_factory
+				size > 0
+				include_locked = no
+			}
+		}
+		set_building_level = {
+			type = arms_factory
+			level = 1
+			instant_build = yes
+		}
+		set_building_level = {
+			type = arms_factory
+			level = 1
+			instant_build = yes
+		}
+	}
+}
+
+NVX_TABRAS_arms_factory_2 = {
+	if = {
+		limit = {
+			free_building_slots = {
+				building = arms_factory
+				size > 1
+				include_locked = no
+			}
+		}
+		set_building_level = {
+			type = arms_factory
+			level = 2
+			instant_build = yes
+		}
+		set_building_level = {
+			type = arms_factory
+			level = 2
+			instant_build = yes
+		}
+		else = {
+			NVX_TABRAS_arms_factory_1 = yes
+		}
+	}
+}
+
+NVX_TABRAS_arms_factory_3 = {
+	if = {
+		limit = {
+			free_building_slots = {
+				building = arms_factory
+				size > 2
+				include_locked = no
+			}
+		}
+		set_building_level = {
+			type = arms_factory
+			level = 3
+			instant_build = yes
+		}
+		set_building_level = {
+			type = arms_factory
+			level = 3
+			instant_build = yes
+		}
+		else = {
+			NVX_TABRAS_arms_factory_2 = yes
+		}
+	}
+}
+
+NVX_TABRAS_arms_factory_4 = {
+	if = {
+		limit = {
+			free_building_slots = {
+				building = arms_factory
+				size > 3
+				include_locked = no
+			}
+		}
+		set_building_level = {
+			type = arms_factory
+			level = 4
+			instant_build = yes
+		}
+		set_building_level = {
+			type = arms_factory
+			level = 4
+			instant_build = yes
+		}
+		else = {
+			NVX_TABRAS_arms_factory_3 = yes
+		}
+	}
+}
+
+NVX_TABRAS_arms_factory_5 = {
+	if = {
+		limit = {
+			free_building_slots = {
+				building = arms_factory
+				size > 4
+				include_locked = no
+			}
+		}
+		set_building_level = {
+			type = arms_factory
+			level = 5
+			instant_build = yes
+		}
+		set_building_level = {
+			type = arms_factory
+			level = 5
+			instant_build = yes
+		}
+		else = {
+			NVX_TABRAS_arms_factory_4 = yes
+		}
+	}
+}
+
+NVX_TABRAS_arms_factory_6 = {
+	if = {
+		limit = {
+			free_building_slots = {
+				building = arms_factory
+				size > 5
+				include_locked = no
+			}
+		}
+		set_building_level = {
+			type = arms_factory
+			level = 6
+			instant_build = yes
+		}
+		set_building_level = {
+			type = arms_factory
+			level = 6
+			instant_build = yes
+		}
+		else = {
+			NVX_TABRAS_arms_factory_5 = yes
+		}
+	}
+}
+
+NVX_TABRAS_arms_factory_7 = {
+	if = {
+		limit = {
+			free_building_slots = {
+				building = arms_factory
+				size > 6
+				include_locked = no
+			}
+		}
+		set_building_level = {
+			type = arms_factory
+			level = 7
+			instant_build = yes
+		}
+		set_building_level = {
+			type = arms_factory
+			level = 7
+			instant_build = yes
+		}
+		else = {
+			NVX_TABRAS_arms_factory_6 = yes
+		}
+	}
+}
+
+NVX_TABRAS_arms_factory_8 = {
+	if = {
+		limit = {
+			free_building_slots = {
+				building = arms_factory
+				size > 7
+				include_locked = no
+			}
+		}
+		set_building_level = {
+			type = arms_factory
+			level = 8
+			instant_build = yes
+		}
+		set_building_level = {
+			type = arms_factory
+			level = 8
+			instant_build = yes
+		}
+		else = {
+			NVX_TABRAS_arms_factory_7 = yes
+		}
+	}
+}
+
+NVX_TABRAS_arms_factory_9 = {
+	if = {
+		limit = {
+			free_building_slots = {
+				building = arms_factory
+				size > 8
+				include_locked = no
+			}
+		}
+		set_building_level = {
+			type = arms_factory
+			level = 9
+			instant_build = yes
+		}
+		set_building_level = {
+			type = arms_factory
+			level = 9
+			instant_build = yes
+		}
+		else = {
+			NVX_TABRAS_arms_factory_8 = yes
+		}
+	}
+}
+
+NVX_TABRAS_arms_factory_10 = {
+	if = {
+		limit = {
+			free_building_slots = {
+				building = arms_factory
+				size > 9
+				include_locked = no
+			}
+		}
+		set_building_level = {
+			type = arms_factory
+			level = 10
+			instant_build = yes
+		}
+		set_building_level = {
+			type = arms_factory
+			level = 10
+			instant_build = yes
+		}
+		else = {
+			NVX_TABRAS_arms_factory_9 = yes
+		}
+	}
+}
+
+NVX_TABRAS_dockyard_fiftypercent = {
+	if = {
+		limit = {
+			free_building_slots = {
+				building = dockyard
+				size > 0
+				include_locked = no
+			}
+		}
+		set_temp_variable = { NVX_VAR_TABRAS_dockyard_fiftypercent = random }
+		if = {
+			limit = { check_variable = { NVX_VAR_TABRAS_dockyard_fiftypercent > 0.5 } }
+			NVX_TABRAS_dockyard_1 = yes
+		}
+	}
+}
+
+NVX_TABRAS_dockyard_1 = {
+	if = {
+		limit = {
+			free_building_slots = {
+				building = dockyard
+				size > 0
+				include_locked = no
+			}
+		}
+		set_building_level = {
+			type = dockyard
+			level = 1
+			instant_build = yes
+		}
+		set_building_level = {
+			type = dockyard
+			level = 1
+			instant_build = yes
+		}
+	}
+}
+
+NVX_TABRAS_dockyard_2 = {
+	if = {
+		limit = {
+			free_building_slots = {
+				building = dockyard
+				size > 1
+				include_locked = no
+			}
+		}
+		set_building_level = {
+			type = dockyard
+			level = 2
+			instant_build = yes
+		}
+		set_building_level = {
+			type = dockyard
+			level = 2
+			instant_build = yes
+		}
+		else = {
+			NVX_TABRAS_dockyard_1 = yes
+		}
+	}
+}
+
+NVX_TABRAS_dockyard_3 = {
+	if = {
+		limit = {
+			free_building_slots = {
+				building = dockyard
+				size > 2
+				include_locked = no
+			}
+		}
+		set_building_level = {
+			type = dockyard
+			level = 3
+			instant_build = yes
+		}
+		set_building_level = {
+			type = dockyard
+			level = 3
+			instant_build = yes
+		}
+		else = {
+			NVX_TABRAS_dockyard_2 = yes
+		}
+	}
+}
+
+NVX_TABRAS_dockyard_4 = {
+	if = {
+		limit = {
+			free_building_slots = {
+				building = dockyard
+				size > 3
+				include_locked = no
+			}
+		}
+		set_building_level = {
+			type = dockyard
+			level = 4
+			instant_build = yes
+		}
+		set_building_level = {
+			type = dockyard
+			level = 4
+			instant_build = yes
+		}
+		else = {
+			NVX_TABRAS_dockyard_3 = yes
+		}
+	}
+}
+
+NVX_TABRAS_dockyard_5 = {
+	if = {
+		limit = {
+			free_building_slots = {
+				building = dockyard
+				size > 4
+				include_locked = no
+			}
+		}
+		set_building_level = {
+			type = dockyard
+			level = 5
+			instant_build = yes
+		}
+		set_building_level = {
+			type = dockyard
+			level = 5
+			instant_build = yes
+		}
+		else = {
+			NVX_TABRAS_dockyard_4 = yes
+		}
+	}
+}
+
+NVX_TABRAS_dockyard_6 = {
+	if = {
+		limit = {
+			free_building_slots = {
+				building = dockyard
+				size > 5
+				include_locked = no
+			}
+		}
+		set_building_level = {
+			type = dockyard
+			level = 6
+			instant_build = yes
+		}
+		set_building_level = {
+			type = dockyard
+			level = 6
+			instant_build = yes
+		}
+		else = {
+			NVX_TABRAS_dockyard_5 = yes
+		}
+	}
+}
+
+NVX_TABRAS_dockyard_7 = {
+	if = {
+		limit = {
+			free_building_slots = {
+				building = dockyard
+				size > 6
+				include_locked = no
+			}
+		}
+		set_building_level = {
+			type = dockyard
+			level = 7
+			instant_build = yes
+		}
+		set_building_level = {
+			type = dockyard
+			level = 7
+			instant_build = yes
+		}
+		else = {
+			NVX_TABRAS_dockyard_6 = yes
+		}
+	}
+}
+
+NVX_TABRAS_dockyard_8 = {
+	if = {
+		limit = {
+			free_building_slots = {
+				building = dockyard
+				size > 7
+				include_locked = no
+			}
+		}
+		set_building_level = {
+			type = dockyard
+			level = 8
+			instant_build = yes
+		}
+		set_building_level = {
+			type = dockyard
+			level = 8
+			instant_build = yes
+		}
+		else = {
+			NVX_TABRAS_dockyard_7 = yes
+		}
+	}
+}
+
+NVX_TABRAS_dockyard_9 = {
+	if = {
+		limit = {
+			free_building_slots = {
+				building = dockyard
+				size > 8
+				include_locked = no
+			}
+		}
+		set_building_level = {
+			type = dockyard
+			level = 9
+			instant_build = yes
+		}
+		set_building_level = {
+			type = dockyard
+			level = 9
+			instant_build = yes
+		}
+		else = {
+			NVX_TABRAS_dockyard_8 = yes
+		}
+	}
+}
+
+NVX_TABRAS_dockyard_10 = {
+	if = {
+		limit = {
+			free_building_slots = {
+				building = dockyard
+				size > 9
+				include_locked = no
+			}
+		}
+		set_building_level = {
+			type = dockyard
+			level = 10
+			instant_build = yes
+		}
+		set_building_level = {
+			type = dockyard
+			level = 10
+			instant_build = yes
+		}
+		else = {
+			NVX_TABRAS_dockyard_9 = yes
+		}
+	}
+}
+
+NVX_TABRAS_industrial_complex_flat_1 = {
+	every_country = {
+		random_owned_state = {
+			limit = {
+				free_building_slots = {
+					building = industrial_complex
+					size > 0
+					include_locked = no
+				}
+			}
+			add_building_construction = {
+				type = industrial_complex
+				level = 1
+				instant_build = yes
+			}
+		}
+	}
+}
+
+NVX_TABRAS_arms_factory_flat_1 = {
+	every_country = {
+		random_owned_state = {
+			limit = {
+				free_building_slots = {
+					building = arms_factory
+					size > 0
+					include_locked = no
+				}
+			}
+			add_building_construction = {
+				type = arms_factory
+				level = 1
+				instant_build = yes
+			}
+		}
+	}
+}
+
+NVX_TABRAS_dockyard_flat_1 = {
+	every_country = {
+		random_owned_state = {
+			limit = {
+				free_building_slots = {
+					building = dockyard
+					size > 0
+					include_locked = no
+				}
+			}
+			add_building_construction = {
+				type = dockyard
+				level = 1
+				instant_build = yes
+			}
+		}
+	}
+}
+
+## STATE CORING ##
+NVX_core_state_expense_calc = {
+	if = {
+		limit = {
+			OR = {
+				has_state_category = state_level_0
+				has_state_category = enclave
+				has_state_category = tiny_island
+				has_state_category = wasteland
+			}
+		}
+		set_variable = { NVX_VAR_core_state_expense = 1 }
+	}
+	if = {
+		limit = {
+			OR = {
+				has_state_category = state_level_1
+				has_state_category = pastoral
+				has_state_category = small_island
+			}
+		}
+		set_variable = { NVX_VAR_core_state_expense = 1 }
+	}
+	if = {
+		limit = {
+			OR = {
+				has_state_category = state_level_2
+				has_state_category = rural
+			}
+		}
+		set_variable = { NVX_VAR_core_state_expense = 2 }
+	}
+	if = {
+		limit = { has_state_category = state_level_3 }
+		set_variable = { NVX_VAR_core_state_expense = 3 }
+	}
+	if = {
+		limit = {
+			OR = {
+				has_state_category = state_level_4
+				has_state_category = town
+			}
+		}
+		set_variable = { NVX_VAR_core_state_expense = 4 }
+	}
+	if = {
+		limit = {
+			OR = {
+				has_state_category = state_level_5
+				has_state_category = large_town
+			}
+		}
+		set_variable = { NVX_VAR_core_state_expense = 5 }
+	}
+	if = {
+		limit = {
+			OR = {
+				has_state_category = state_level_6
+				has_state_category = city
+			}
+		}
+		set_variable = { NVX_VAR_core_state_expense = 6 }
+	}
+	if = {
+		limit = { has_state_category = state_level_7 }
+		set_variable = { NVX_VAR_core_state_expense = 7 }
+	}
+	if = {
+		limit = {
+			OR = {
+				has_state_category = state_level_8
+				has_state_category = large_city
+			}
+		}
+		set_variable = { NVX_VAR_core_state_expense = 8 }
+	}
+	if = {
+		limit = { has_state_category = state_level_9 }
+		set_variable = { NVX_VAR_core_state_expense = 9 }
+	}
+	if = {
+		limit = {
+			OR = {
+				has_state_category = state_level_10
+				has_state_category = metropolis
+			}
+		}
+		set_variable = { NVX_VAR_core_state_expense = 10 }
+	}
+	if = {
+		limit = { has_state_category = state_level_11 }
+		set_variable = { NVX_VAR_core_state_expense = 11 }
+	}
+	if = {
+		limit = {
+			OR = {
+				has_state_category = state_level_12
+				has_state_category = megalopolis
+			}
+		}
+		set_variable = { NVX_VAR_core_state_expense = 12 }
+	}
+	if = {
+		limit = { has_state_category = state_level_13 }
+		set_variable = { NVX_VAR_core_state_expense = 13 }
+	}
+	if = {
+		limit = { has_state_category = state_level_14 }
+		set_variable = { NVX_VAR_core_state_expense = 14 }
+	}
+	if = {
+		limit = { has_state_category = state_level_15 }
+		set_variable = { NVX_VAR_core_state_expense = 15 }
+	}
+	if = {
+		limit = { has_state_category = state_level_16 }
+		set_variable = { NVX_VAR_core_state_expense = 16 }
+	}
+	if = {
+		limit = { has_state_category = state_level_17 }
+		set_variable = { NVX_VAR_core_state_expense = 17 }
+	}
+	if = {
+		limit = { has_state_category = state_level_18 }
+		set_variable = { NVX_VAR_core_state_expense = 18 }
+	}
+	if = {
+		limit = { has_state_category = state_level_19 }
+		set_variable = { NVX_VAR_core_state_expense = 19 }
+	}
+	if = {
+		limit = { has_state_category = state_level_20 }
+		set_variable = { NVX_VAR_core_state_expense = 20 }
+	}
+	if = {
+		limit = { has_state_category = state_level_21 }
+		set_variable = { NVX_VAR_core_state_expense = 21 }
+	}
+	set_variable = { NVX_ECO_pax_state_value = NVX_VAR_core_state_expense }
+	multiply_variable = { NVX_VAR_core_state_expense = 3 }
+	multiply_variable = { NVX_ECO_pax_state_value = 3 }
+	if = {
+		limit = { is_island_state = yes }
+		add_to_variable = { NVX_ECO_pax_state_value = 15 }
+	}
+}

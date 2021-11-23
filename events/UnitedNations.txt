@@ -1,0 +1,643 @@
+﻿add_namespace = united_nations
+add_namespace = united_nations_vote
+
+#Permanent Security Member Vote
+country_event = {
+	id = united_nations_vote.1
+	title = united_nations_vote.1.t
+	desc = united_nations_vote.1.d
+	picture = GFX_report_event_united_nations
+	
+	is_triggered_only = yes
+	
+	#We approve!
+	option = {
+		name = united_nations_vote.o.approve
+		united_nations_effect_of_yes_vote = yes
+		
+		ai_chance = {
+			base = 10
+			modifier = {
+				has_global_flag = united_nations_AR_un_resolution_1368
+				add = 100
+			}
+		}
+	}
+	
+	#Abstain
+	option = {
+		name = united_nations_vote.o.abstain
+		united_nations_vote_abstain = yes
+		united_nations_effect_of_abstain_vote = yes
+		
+		ai_chance = {
+			base = 5
+			modifier = {
+				has_global_flag = united_nations_AR_un_resolution_1368
+				add = -5
+			}
+		}
+	}
+	
+	#Veto!
+	option = {
+		name = united_nations_vote.o.veto
+		united_nations_vote_no = yes
+		united_nations_effect_of_no_vote = yes
+		
+		ai_chance = {
+			base = 0
+		}
+	}
+}
+
+#Non-Permanent Security Member Vote
+country_event = {
+	id = united_nations_vote.2
+	title = united_nations_vote.2.t
+	desc = united_nations_vote.2.d
+	picture = GFX_report_event_united_nations
+	
+	is_triggered_only = yes
+	
+	#We approve!
+	option = {
+		name = united_nations_vote.o.approve
+		united_nations_vote_yes = yes
+		united_nations_effect_of_yes_vote = yes
+		
+		ai_chance = {
+			base = 10
+			modifier = {
+				has_global_flag = united_nations_AR_un_resolution_1368
+				add = 100
+			}
+		}
+	}
+	
+	#Abstain
+	option = {
+		name = united_nations_vote.o.abstain
+		united_nations_vote_abstain = yes
+		united_nations_effect_of_abstain_vote = yes
+		
+		ai_chance = {
+			base = 5
+			modifier = {
+				has_global_flag = united_nations_AR_un_resolution_1368
+				add = -5
+			}
+		}
+	}
+	
+	#Refuse!
+	option = {
+		name = united_nations_vote.o.refuse
+		united_nations_vote_no = yes
+		united_nations_effect_of_no_vote = yes
+		
+		ai_chance = {
+			base = 5
+		}
+	}
+}
+
+#UN Intervention Event
+country_event = {
+	id = united_nations.0
+	title = united_nations.0.t
+	desc = united_nations.0.d
+	picture = GFX_report_event_united_nations
+	
+	is_triggered_only = yes
+	
+	#We need to stop these bastards!
+	option = {
+		name = united_nations.0.o1
+	}
+	
+	#Veto these actions.
+	option = {
+		name = united_nations.0.o2
+	}
+}
+
+#1999/2000 Council Members
+country_event = {
+	id = united_nations.1
+	title = "2000 UNSC"
+	hidden = yes
+	fire_only_once = yes
+	
+	trigger = {
+		date < 2001.1.1
+	}
+	
+	option = {
+		#Africa Seats
+		MLI = { news_event = news.51 }
+		TUN = { news_event = news.51 }
+		NMB = { news_event = news.52 }
+		#Asia-Pacific Seats
+		BAN = { news_event = news.51 }
+		MAL = { news_event = news.52 }
+		#Latin America Seats
+		JAM = { news_event = news.51 }
+		ARG = { news_event = news.52 }
+		#Western Europe Seats
+		CAN = { news_event = news.52 }
+		HOL = { news_event = news.52 }
+		#Eastern Europe Seats
+		UKR = { news_event = news.51 }
+		
+		news_event = news.53
+	}
+}
+
+#2001
+country_event = {
+	id = united_nations.2
+	title = "2001 UNSC"
+	hidden = yes
+	fire_only_once = yes
+	
+	trigger = {
+		date > 2000.12.31
+		date < 2002.1.1
+	}
+	
+	option = {
+		#Africa Seats
+		MAU = { news_event = news.51 }
+		#Asia-Pacific Seats
+		SIG = { news_event = news.51 }
+		#Latin America Seats
+		COL = { news_event = news.51 }
+		#Western Europe Seats
+		IRE = { news_event = news.51 }
+		NOR = { news_event = news.51 }
+		#Eastern Europe Seats
+	}
+}
+
+#2002
+country_event = {
+	id = united_nations.3
+	title = "2002 UNSC"
+	hidden = yes
+	fire_only_once = yes
+	
+	trigger = {
+		date > 2001.12.31
+		date < 2003.1.1
+	}
+	
+	option = {
+		#Africa Seats
+		CMR = { news_event = news.51 }
+	#	GUI = { news_event = news.51 }		#doesn't work (why?)
+		#Asia-Pacific Seats
+		SYR = { news_event = news.51 }
+		#Latin America Seats
+		MEX = { news_event = news.51 }
+		#Western Europe Seats
+		#Eastern Europe Seats
+		BUL = { news_event = news.51 }
+	}
+}
+
+#2003
+country_event = {
+	id = united_nations.4
+	title = "2003 UNSC"
+	hidden = yes
+	fire_only_once = yes
+	
+	trigger = {
+		date > 2002.12.31
+		date < 2004.1.1
+	}
+	
+	option = {
+		#Africa Seats
+		ANG = { news_event = news.51 }
+		#Asia-Pacific Seats
+		PAK = { news_event = news.51 }
+		#Latin America Seats
+		CHL = { news_event = news.51 }
+		#Western Europe Seats
+		GER = { news_event = news.51 }
+		SPR = { news_event = news.51 }
+		#Eastern Europe Seats
+	}
+}
+
+#2004
+country_event = {
+	id = united_nations.5
+	title = "2004 UNSC"
+	hidden = yes
+	fire_only_once = yes
+	
+	trigger = {
+		date > 2003.12.31
+		date < 2005.1.1
+	}
+	
+	option = {
+		#Africa Seats
+		ALG = { news_event = news.51 }
+		DAH = { news_event = news.51 }
+		#Asia-Pacific Seats
+		"PHI" = { news_event = news.51 }
+		#Latin America Seats
+		BRA = { news_event = news.51 }
+		#Western Europe Seats
+		#Eastern Europe Seats
+		ROM = { news_event = news.51 }
+	}
+}
+
+#2005
+country_event = {
+	id = united_nations.6
+	title = "2005 UNSC"
+	hidden = yes
+	fire_only_once = yes
+	
+	trigger = {
+		date > 2004.12.31
+		date < 2006.1.1
+	}
+	
+	option = {
+		#Africa Seats
+		TZN = { news_event = news.51 }
+		#Asia-Pacific Seats
+		JAP = { news_event = news.51 }
+		#Latin America Seats
+		ARG = { news_event = news.51 }
+		#Western Europe Seats
+		DEN = { news_event = news.51 }
+		GRE = { news_event = news.51 }
+		#Eastern Europe Seats
+	}
+}
+
+#2006
+country_event = {
+	id = united_nations.7
+	title = "2006 UNSC"
+	hidden = yes
+	fire_only_once = yes
+	
+	trigger = {
+		date > 2005.12.31
+		date < 2007.1.1
+	}
+	
+	option = {
+		#Africa Seats
+		GHA = { news_event = news.51 }
+		RCG = { news_event = news.51 }
+		#Asia-Pacific Seats
+		QAT = { news_event = news.51 }
+		#Latin America Seats
+		PRU = { news_event = news.51 }
+		#Western Europe Seats
+		#Eastern Europe Seats
+		SLO = { news_event = news.51 }
+	}
+}
+
+#2007
+country_event = {
+	id = united_nations.8
+	title = "2007 UNSC"
+	hidden = yes
+	fire_only_once = yes
+	
+	trigger = {
+		date > 2006.12.31
+		date < 2008.1.1
+	}
+	
+	option = {
+		#Africa Seats
+		SAF = { news_event = news.51 }
+		#Asia-Pacific Seats
+		INS = { news_event = news.51 }
+		#Latin America Seats
+	#	PAN = { news_event = news.51 }		#doesn't work (why?)
+		#Western Europe Seats
+		BEL = { news_event = news.51 }
+		ITA = { news_event = news.51 }
+		#Eastern Europe Seats
+	}
+}
+
+#2008
+country_event = {
+	id = united_nations.9
+	title = "2008 UNSC"
+	hidden = yes
+	fire_only_once = yes
+	
+	trigger = {
+		date > 2007.12.31
+		date < 2009.1.1
+	}
+	
+	option = {
+		#Africa Seats
+		VOL = { news_event = news.51 }
+		LBA = { news_event = news.51 }
+		#Asia-Pacific Seats
+		VIN = { news_event = news.51 }
+		#Latin America Seats
+		COS = { news_event = news.51 }
+		#Western Europe Seats
+		#Eastern Europe Seats
+		CRO = { news_event = news.51 }
+	}
+}
+
+#2009
+country_event = {
+	id = united_nations.10
+	title = "2009 UNSC"
+	hidden = yes
+	fire_only_once = yes
+	
+	trigger = {
+		date > 2008.12.31
+		date < 2010.1.1
+	}
+	
+	option = {
+		#Africa Seats
+		UGA = { news_event = news.51 }
+		#Asia-Pacific Seats
+		JAP = { news_event = news.51 }
+		#Latin America Seats
+		MEX = { news_event = news.51 }
+		#Western Europe Seats
+		AUS = { news_event = news.51 }
+		TUR = { news_event = news.51 }
+		#Eastern Europe Seats
+	}
+}
+
+#2010
+country_event = {
+	id = united_nations.11
+	title = "2010 UNSC"
+	hidden = yes
+	fire_only_once = yes
+	
+	trigger = {
+		date > 2009.12.31
+		date < 2011.1.1
+	}
+	
+	option = {
+		#Africa Seats
+		GAB = { news_event = news.51 }
+		NGA = { news_event = news.51 }
+		#Asia-Pacific Seats
+		LEB = { news_event = news.51 }
+		#Latin America Seats
+		BRA = { news_event = news.51 }
+		#Western Europe Seats
+		#Eastern Europe Seats
+		BOS = { news_event = news.51 }
+	}
+}
+
+#2011
+country_event = {
+	id = united_nations.12
+	title = "2011 UNSC"
+	hidden = yes
+	fire_only_once = yes
+	
+	trigger = {
+		date > 2010.12.31
+		date < 2012.1.1
+	}
+	
+	option = {
+		#Africa Seats
+		SAF = { news_event = news.51 }
+		#Asia-Pacific Seats
+		RAJ = { news_event = news.51 }
+		#Latin America Seats
+		COL = { news_event = news.51 }
+		#Western Europe Seats
+		GER = { news_event = news.51 }
+		POR = { news_event = news.51 }
+		#Eastern Europe Seats
+	}
+}
+
+#2012
+country_event = {
+	id = united_nations.13
+	title = "2012 UNSC"
+	hidden = yes
+	fire_only_once = yes
+	
+	trigger = {
+		date > 2011.12.31
+		date < 2013.1.1
+	}
+	
+	option = {
+		#Africa Seats
+		MOR = { news_event = news.51 }
+		TOG = { news_event = news.51 }
+		#Asia-Pacific Seats
+		PAK = { news_event = news.51 }
+		#Latin America Seats
+		GUA = { news_event = news.51 }
+		#Western Europe Seats
+		#Eastern Europe Seats
+		AZR = { news_event = news.51 }
+	}
+}
+
+#2013
+country_event = {
+	id = united_nations.14
+	title = "2013 UNSC"
+	hidden = yes
+	fire_only_once = yes
+	
+	trigger = {
+		date > 2012.12.31
+		date < 2014.1.1
+	}
+	
+	option = {
+		#Africa Seats
+		RWA = { news_event = news.51 }
+		#Asia-Pacific Seats
+		KOR = { news_event = news.51 }
+		#Latin America Seats
+		ARG = { news_event = news.51 }
+		#Western Europe Seats
+		AST = { news_event = news.51 }
+		LUX = { news_event = news.51 }
+		#Eastern Europe Seats
+	}
+}
+
+#2014
+country_event = {
+	id = united_nations.15
+	title = "2014 UNSC"
+	hidden = yes
+	fire_only_once = yes
+	
+	trigger = {
+		date > 2013.12.31
+		date < 2015.1.1
+	}
+	
+	option = {
+		#Africa Seats
+		CHA = { news_event = news.51 }
+		NGA = { news_event = news.51 }
+		#Asia-Pacific Seats
+		JOR = { news_event = news.51 }
+		#Latin America Seats
+		CHL = { news_event = news.51 }
+		#Western Europe Seats
+		#Eastern Europe Seats
+		LIT = { news_event = news.51 }
+	}
+}
+
+#2015
+country_event = {
+	id = united_nations.16
+	title = "2015 UNSC"
+	hidden = yes
+	fire_only_once = yes
+	
+	trigger = {
+		date > 2014.12.31
+		date < 2016.1.1
+	}
+	
+	option = {
+		#Africa Seats
+		ANG = { news_event = news.51 }
+		#Asia-Pacific Seats
+		MAL = { news_event = news.51 }
+		#Latin America Seats
+		VEN = { news_event = news.51 }
+		#Western Europe Seats
+		NZL = { news_event = news.51 }
+		SPR = { news_event = news.51 }
+		#Eastern Europe Seats
+	}
+}
+
+#2016
+country_event = {
+	id = united_nations.17
+	title = "2016 UNSC"
+	hidden = yes
+	fire_only_once = yes
+	
+	trigger = {
+		date > 2015.12.31
+		date < 2016.5.1
+	}
+	
+	option = {
+		#Africa Seats
+		EGY = { news_event = news.51 }
+		SEN = { news_event = news.51 }
+		#Asia-Pacific Seats
+		JAP = { news_event = news.51 }
+		#Latin America Seats
+		URG = { news_event = news.51 }
+		#Western Europe Seats
+		#Eastern Europe Seats
+		UKR = { news_event = news.51 }
+	}
+}
+
+#TBA: 2016 setup
+
+#2017
+country_event = {
+	id = united_nations.18
+	title = "2017 UNSC"
+	hidden = yes
+	fire_only_once = yes
+	
+	trigger = {
+		date > 2015.12.31
+		date < 2017.1.1
+	}
+	
+	option = {
+		#Africa Seats
+		ETH = { news_event = news.51 }
+		#Asia-Pacific Seats
+		KAZ = { news_event = news.51 }
+		#Latin America Seats
+		BOL = { news_event = news.51 }
+		#Western Europe Seats
+		ITA = { news_event = news.51 }
+		SWE = { news_event = news.51 }
+		#Eastern Europe Seats
+	}
+}
+
+#United States Focus Tree:
+#UN Resolution 1368
+#use flag: united_nations_AR_un_resolution_1368
+country_event = {
+	id = united_nations.19
+	title = united_nations.19.t
+	desc = united_nations.19.d
+	picture = GFX_report_event_united_nations
+	is_triggered_only = yes
+	hidden = yes
+	
+	immediate = {
+		united_nations_resolution_preparation = yes
+		set_global_flag = united_nations_AR_un_resolution_1368
+	}
+	
+	option = {
+		name = option
+		every_country = {
+			limit = { is_UNSC_member = yes }
+			country_event = united_nations.20
+		}
+	}
+}
+country_event = {
+	id = united_nations.20
+	title = united_nations.20.t
+	desc = united_nations.20.d
+	picture = GFX_report_event_united_nations
+	is_triggered_only = yes
+	
+	option = {
+		name = united_nations_vote.o.ready
+		if = {
+			limit = { has_idea = idea_united_nations_security_council_member }
+			country_event = united_nations_vote.1
+		}
+		if = {
+			limit = { has_idea = idea_united_nations_NP_security_council_member }
+			country_event = united_nations_vote.2
+		}
+	}
+}

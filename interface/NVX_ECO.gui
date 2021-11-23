@@ -1,0 +1,587 @@
+# Written by E. Wolfe #
+guiTypes = {
+	
+	containerWindowType = {
+		name = "NVX_ECOLITE_fisc_container"
+		position = { x = 1099 y = 5 }
+		
+		iconType ={
+			name ="NVX_ECOLITE_fisc"
+			spriteType = "GFX_generic_box_103"
+			position = { x=0 y=0 }
+			#shortcut = ""
+			
+			pdx_tooltip = "TT_NVX_ECOLITE_treasury_stats"
+		}
+		
+		iconType = {
+			name ="NVX_ECOLITE_fisc_icon"
+			spriteType = "GFX_political_econ_scarab"
+			position = { x = 7 y = 6 }
+			
+			pdx_tooltip = "TT_NVX_ECOLITE_treasury_stats"
+		}
+		
+		instantTextBoxType = {
+			name ="NVX_ECOLITE_fisc_text"
+			position = { x = 26 y = 4 }
+			font = "hoi_18mbs"
+			text = "[?NVX_ECO_health|§0]"
+			format = left
+			maxWidth = 67
+			maxHeight = 24
+			fixedsize = yes
+			
+			pdx_tooltip = "TT_NVX_ECOLITE_treasury_stats"
+		}
+		
+		instantTextBoxType = {
+			name ="NVX_ECOLITE_fisc_text2"
+			position = { x = 28 y = 4 }
+			font = "hoi_18mbs"
+			text = "[?NVX_ECO_growth|§=2]"
+			format = right
+			maxWidth = 67
+			maxHeight = 24
+			fixedsize = yes
+			
+			pdx_tooltip = "TT_NVX_ECOLITE_treasury_stats"
+		}
+	}
+	
+	containerWindowType = {
+		name = "NVX_ECOLITE_fisc2_container"
+		position = { x = 3 y = 80 }
+		
+		iconType ={
+			name ="NVX_ECOLITE_fisc2"
+			spriteType = "GFX_generic_box_103"
+			position = { x=0 y=0 }
+			#shortcut = ""
+			
+			pdx_tooltip = "TT_NVX_ECOLITE_treasury_stats"
+		}
+		
+		iconType = {
+			name ="NVX_ECOLITE_fisc2_icon"
+			spriteType = "GFX_political_econ_scarab"
+			position = { x = 7 y = 6 }
+			
+			pdx_tooltip = "TT_NVX_ECOLITE_treasury_stats"
+		}
+		
+		instantTextBoxType = {
+			name ="NVX_ECOLITE_fisc2_text"
+			position = { x = 26 y = 4 }
+			font = "hoi_18mbs"
+			text = "[?NVX_ECO_health|§0]"
+			format = left
+			maxWidth = 67
+			maxHeight = 24
+			fixedsize = yes
+			
+			pdx_tooltip = "TT_NVX_ECOLITE_treasury_stats"
+		}
+		
+		instantTextBoxType = {
+			name ="NVX_ECOLITE_fisc2_text2"
+			position = { x = 28 y = 4 }
+			font = "hoi_18mbs"
+			text = "[?NVX_ECO_growth|§=2]"
+			format = right
+			maxWidth = 67
+			maxHeight = 24
+			fixedsize = yes
+			
+			pdx_tooltip = "TT_NVX_ECOLITE_treasury_stats"
+		}
+	}
+	
+	# Diplomacy income stat #
+	containerWindowType = {
+		name = "income_diplo_container"
+		position = { x = 485 y = 144 }
+		
+		buttonType = {
+			name ="money_bg"
+			spriteType = "GFX_NVX_diplo_unity_bg"
+			position = { x= -1 y = -23 }
+			shortcut = "shift+e"
+			
+			pdx_tooltip = "TT_NVX_treasury_stats_diplo"
+		}	
+		
+		iconType = {
+			name ="money_icon"
+			spriteType = "GFX_scarab_diplo_icon"
+			position = { x= 10 y = -17 }
+			alwaystransparent = yes
+			
+			pdx_tooltip = "TT_NVX_treasury_stats_diplo"
+		}
+		
+		instantTextBoxType = {
+			name ="income_diplo_text"
+			position = { x= 0 y = 0 }
+			font = "hoi_16mbs"
+			text = "[?NVX_ECO_health|§0]"
+			format = center
+			maxWidth = 40
+			maxHeight = 24
+			fixedsize = yes
+			alwaystransparent = yes
+			
+			pdx_tooltip = "TT_NVX_treasury_stats_diplo"
+		}
+	}
+	
+	# Expanded info window #
+	containerWindowType = {
+		name = "expanded_info_container"
+		position = { x = 0 y = 352 }
+		size = { width = 550 height = 550 }
+		
+		fade_time = 300
+		fade_type = linear
+		
+		background = {
+			name = "Background"
+			quadTextureSprite ="GFX_tiled_window_1b_border"
+		}
+		
+		iconType = {
+			name = "expanded_info_header0"
+			position = { x = 12 y = 39 }
+			spriteType = "GFX_category_header"
+		}
+		
+		buttonType = {
+			name = "close_expanded_info_container"
+			position = { x = 485 y = 45 }
+			quadTextureSprite = "GFX_closebutton"
+			clicksound = menu_close_window
+		}
+		
+		iconType = {
+			name = "expanded_info_header1"
+			position = { x = 12 y = 145 }
+			spriteType = "GFX_category_header"
+		}
+		
+		iconType ={
+			name ="expanded_info_category_icon0"
+			spriteType = "GFX_idea_categories"
+			frame = 3
+			position = { x=21 y=45 }
+			Orientation = "UPPER_LEFT"
+		}
+		
+		iconType ={
+			name ="expanded_info_category_icon1"
+			spriteType = "GFX_idea_categories"
+			frame = 2
+			position = { x=21 y=151 }
+			Orientation = "UPPER_LEFT"
+		}
+		
+		instantTextboxType = {
+			name = "name0"
+			position = { x = 87 y = 51 }
+			font = "hoi_20b"
+			text = "Government & Economy"
+			maxWidth = 300
+			maxHeight = 20
+		}
+		
+		instantTextboxType = {
+			name = "name1"
+			position = { x = 87 y = 157 }
+			font = "hoi_20b"
+			text = "Legislation"
+			maxWidth = 300
+			maxHeight = 20
+		}
+		
+		iconType = {
+			name = "expanded_info_centralization"
+			position = { x = 28 y = 83 }
+			spriteType = "GFX_idea_centralization_unitary"
+			pdx_tooltip = "TT_NVX_EI_centralization"
+		}
+		
+		iconType = {
+			name = "expanded_info_government_system"
+			position = { x = 108 y = 83 }
+			spriteType = "GFX_idea_government_system_presidential_republic"
+			pdx_tooltip = "TT_NVX_EI_government_system"
+		}
+		
+		iconType = {
+			name = "expanded_info_national_development"
+			position = { x = 188 y = 83 }
+			spriteType = "GFX_idea_national_development_developing"
+			pdx_tooltip = "TT_NVX_EI_national_development"
+		}
+		
+		iconType = {
+			name = "expanded_info_economy"
+			position = { x = 268 y = 83 }
+			spriteType = "GFX_idea_economy_stagnation"
+			pdx_tooltip = "TT_NVX_EI_economy"
+		}
+		
+		iconType = {
+			name = "expanded_info_economy_tax_rate"
+			position = { x = 348 y = 83 }
+			spriteType = "GFX_idea_economy_tax_moderate"
+			pdx_tooltip = "TT_NVX_EI_economy_tax_rate"
+		}
+		
+		iconType = {
+			name = "expanded_info_trade_laws"
+			position = { x = 428 y = 83 }
+			spriteType = "GFX_idea_export_focus"
+			pdx_tooltip = "TT_NVX_EI_trade_laws"
+		}
+		
+		iconType = {
+			name = "expanded_info_mobilization_laws"
+			position = { x = 28 y = 189 }
+			spriteType = "GFX_idea_volunteer_only"
+			pdx_tooltip = "TT_NVX_EI_mobilization_laws"
+		}
+		
+		iconType = {
+			name = "expanded_info_mobilization_service_time"
+			position = { x = 108 y = 189 }
+			spriteType = "GFX_idea_mobilization_service_time_levy"
+			pdx_tooltip = "TT_NVX_EI_mobilization_service_time"
+		}
+		
+		iconType = {
+			name = "expanded_info_public_safety"
+			position = { x = 188 y = 189 }
+			spriteType = "GFX_idea_public_safety_local_law_enforcement"
+			pdx_tooltip = "TT_NVX_EI_public_safety"
+		}
+		
+		iconType = {
+			name = "expanded_info_immigration_policy"
+			position = { x = 268 y = 189 }
+			spriteType = "GFX_idea_immigration_policy_strict_regulations"
+			pdx_tooltip = "TT_NVX_EI_immigration_policy"
+		}
+		
+		iconType = {
+			name = "expanded_info_civil_liberties"
+			position = { x = 348 y = 189 }
+			spriteType = "GFX_idea_civil_liberties_limited"
+			pdx_tooltip = "TT_NVX_EI_civil_liberties"
+		}
+		
+		iconType = {
+			name = "expanded_info_welfare"
+			position = { x = 428 y = 189 }
+			spriteType = "GFX_idea_welfare_basic_subsidies"
+			pdx_tooltip = "TT_NVX_EI_welfare"
+		}
+	}
+	
+	# Natural estate changes #
+	containerWindowType = {
+		name = "NVX_estates_natural_change_container"
+		position = { x = 443 y = 11 }
+		
+		iconType = {
+			name = "display_estates_button"
+			position = { x = 1 y = 1 }
+			quadTextureSprite = "GFX_generic_grey_box_small"
+		}
+	}
+	
+	containerWindowType = {
+		name = "NVX_estates_natural_change_hide_container"
+		position = { x = 446 y = 12 }
+		
+		buttonType = {
+			name = "display_estates_button"
+			position = { x = 1 y = 1 }
+			quadTextureSprite = "GFX_estates_natural_change_shown"
+			clicksound = decisions_ui_button
+			pdx_tooltip = "TT_NVX_estates_natural_changes_show"
+		}
+	}
+	
+	containerWindowType = {
+		name = "NVX_estates_natural_change_show_container"
+		position = { x = 446 y = 12 }
+		
+		buttonType = {
+			name = "display_estates_button"
+			position = { x = 1 y = 1 }
+			quadTextureSprite = "GFX_estates_natural_change_hidden"
+			clicksound = decisions_ui_button
+			pdx_tooltip = "TT_NVX_estates_natural_changes_hide"
+		}
+	}
+	
+	# Oracle AI Display #
+	containerWindowType = {
+		name = "NVX_oracle_ai_display_container"
+		position = { x = 391 y = 11 }
+		
+		iconType = {
+			name = "display_oracle_ai_button"
+			position = { x = 1 y = 1 }
+			quadTextureSprite = "GFX_generic_grey_box_small"
+		}
+	}
+	
+	containerWindowType = {
+		name = "NVX_oracle_ai_display_hide_container"
+		position = { x = 394 y = 12 }
+		
+		buttonType = {
+			name = "display_oracle_ai_button"
+			position = { x = 1 y = 1 }
+			quadTextureSprite = "GFX_oracle_ai_display_shown"
+			clicksound = decisions_ui_button
+			pdx_tooltip = "TT_NVX_oracle_ai_display_show"
+		}
+	}
+	
+	containerWindowType = {
+		name = "NVX_oracle_ai_display_show_container"
+		position = { x = 394 y = 12 }
+		
+		buttonType = {
+			name = "display_oracle_ai_button"
+			position = { x = 1 y = 1 }
+			quadTextureSprite = "GFX_oracle_ai_display_hidden"
+			clicksound = decisions_ui_button
+			pdx_tooltip = "TT_NVX_oracle_ai_display_hide"
+		}
+	}
+	
+	################
+	# STATE CORING #
+	################
+	
+	containerWindowType = {
+		name = "NVX_core_state_interface_show_container"
+		position = { x = 393 y = 443 }
+		
+		buttonType = {
+			name = "NVX_core_state"
+			position = { x = 1 y = 1 }
+			spriteType = "GFX_nvx_core_state_icon"
+			clicksound = click_default
+			pdx_tooltip = "TT_NVX_CORE_STATE"
+			#shortcut = "s"
+		}
+	}
+	
+	### STATE SLOT EXPANSION ###
+	containerWindowType = {
+		name = "NVX_expand_state_container"
+		position = { x = 92 y = 264 }
+		
+		buttonType = {
+			name = "NVX_expand_state"
+			position = { x = 1 y = 1 }
+			spriteType = "GFX_nvx_scarab_button"
+			clicksound = click_default
+			pdx_tooltip = "TT_NVX_EXPAND_STATE"
+		}
+	}
+	
+	### PUPPET FUNDIT ###
+	containerWindowType = {
+		name = "puppet_funding_container"
+		position = { x = 485 y = 930 }
+		
+		buttonType = {
+			name ="puppet_funding_button"
+			spriteType = "GFX_nvx_scarab_button"
+			position = { x= -1 y = -23 }
+			
+			pdx_tooltip = "TT_NVX_LPA_benevolent_dominion_donate"
+		}
+	}
+	
+	### PAX ###
+	containerWindowType = {
+		name = "NVX_ECO_pax_container"
+		position = { x = 1222 y = 5 }
+		
+		iconType ={
+			name ="NVX_ECO_pax"
+			spriteType = "GFX_generic_box_82"
+			position = { x=0 y=0 }
+			#shortcut = ""
+			
+			pdx_tooltip = "TT_NVX_ECO_pax"
+		}
+		
+		iconType = {
+			name ="NVX_ECO_pax_icon"
+			spriteType = "GFX_NVX_dove_texticon"
+			position = { x = 7 y = 6 }
+			
+			pdx_tooltip = "TT_NVX_ECO_pax"
+		}
+		
+		instantTextBoxType = {
+			name ="NVX_ECO_pax_text"
+			position = { x = 26 y = 4 }
+			font = "hoi_18mbs"
+			text = "[?NVX_ECO_pax|§0]"
+			format = left
+			maxWidth = 67
+			maxHeight = 24
+			fixedsize = yes
+			
+			pdx_tooltip = "TT_NVX_ECO_pax"
+		}
+		
+		instantTextBoxType = {
+			name ="NVX_ECO_pax_text2"
+			position = { x = 7 y = 4 }
+			font = "hoi_18mbs"
+			text = "[?NVX_ECO_pax_gains|§=0]"
+			format = right
+			maxWidth = 67
+			maxHeight = 24
+			fixedsize = yes
+			
+			pdx_tooltip = "TT_NVX_ECO_pax"
+		}
+	}
+	
+	containerWindowType = {
+		name = "NVX_ECO_pax2_container"
+		position = { x = 100 y = 80 }
+		
+		iconType ={
+			name ="NVX_ECO_pax2"
+			spriteType = "GFX_generic_box_82"
+			position = { x=0 y=0 }
+			#shortcut = ""
+			
+			pdx_tooltip = "TT_NVX_ECO_pax"
+		}
+		
+		iconType = {
+			name ="NVX_ECO_pax2_icon"
+			spriteType = "GFX_NVX_dove_texticon"
+			position = { x = 7 y = 6 }
+			
+			pdx_tooltip = "TT_NVX_ECO_pax"
+		}
+		
+		instantTextBoxType = {
+			name ="NVX_ECO_pax2_text"
+			position = { x = 26 y = 4 }
+			font = "hoi_18mbs"
+			text = "[?NVX_ECO_pax|§0]"
+			format = left
+			maxWidth = 67
+			maxHeight = 24
+			fixedsize = yes
+			
+			pdx_tooltip = "TT_NVX_ECO_pax"
+		}
+		
+		instantTextBoxType = {
+			name ="NVX_ECO_pax2_text2"
+			position = { x = 7 y = 4 }
+			font = "hoi_18mbs"
+			text = "[?NVX_ECO_pax_gains|§=0]"
+			format = right
+			maxWidth = 67
+			maxHeight = 24
+			fixedsize = yes
+			
+			pdx_tooltip = "TT_NVX_ECO_pax"
+		}
+	}
+	
+	## PAX REQ STATE ##
+	containerWindowType = {
+		name = "NVX_ECO_pax_req_state_container"
+		position = { x = 39 y = 264 }
+		
+		buttonType = {
+			name = "NVX_ECO_pax_req_state"
+			position = { x = 1 y = 1 }
+			spriteType = "GFX_nvx_pax_button"
+			clicksound = click_default
+			pdx_tooltip = "TT_NVX_ECO_pax_req_state"
+		}
+	}
+	
+	## PAX REQ PUPPET ##
+	containerWindowType = {
+		name = "NVX_ECO_pax_req_puppet_container"
+		position = { x = 485 y = 930 }
+		
+		buttonType = {
+			name ="NVX_ECO_pax_req_puppet"
+			spriteType = "GFX_nvx_pax_button"
+			position = { x= -1 y = -23 }
+			
+			pdx_tooltip = "TT_NVX_ECO_pax_req_puppet"
+		}
+	}
+	
+	## PAX FORCE PEACE ##
+	containerWindowType = {
+		name = "NVX_ECO_pax_force_peace_container"
+		position = { x = 485 y = 930 }
+		
+		buttonType = {
+			name ="NVX_ECO_pax_force_peace"
+			spriteType = "GFX_nvx_pax_button"
+			position = { x= -1 y = -23 }
+			
+			pdx_tooltip = "TT_NVX_ECO_pax_force_peace"
+		}
+	}
+	
+	### COUPS ###
+	
+	containerWindowType = {
+		name = "NVX_COUP_opposition_container"
+		position = { x = 527 y = 80 }
+		
+		iconType ={
+			name ="NVX_COUP_opposition"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x=0 y=0 }
+			
+			pdx_tooltip = "TT_NVX_COUP_opposition_display"
+		}
+		
+		iconType = {
+			name ="NVX_COUP_opposition_icon"
+			spriteType = "GFX_NVX_coup_opposition_texticon"
+			position = { x = 7 y = 3 }
+			
+			pdx_tooltip = "TT_NVX_COUP_opposition_display"
+		}
+		
+		instantTextBoxType = {
+			name ="NVX_COUP_opposition_text"
+			position = { x = 30 y = 4 }
+			font = "hoi_18mbs"
+			text = "[?NVX_COUP_opposition|§0%]"
+			format = left
+			maxWidth = 67
+			maxHeight = 24
+			fixedsize = yes
+			
+			pdx_tooltip = "TT_NVX_COUP_opposition_display"
+		}
+	}
+}
+# Written by E. Wolfe #

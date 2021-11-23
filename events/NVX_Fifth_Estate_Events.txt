@@ -1,0 +1,2112 @@
+﻿# Written by E. Wolfe #
+add_namespace = nvx_fifth_estates
+
+## NATURAL ##
+country_event = { #Fifth estate natural increase islamist
+	id = nvx_fifth_estates.1
+	hidden = yes
+	
+	trigger = {
+		NOT = { has_global_flag = sandbox_disable_natural_estate_drift }
+		has_islamist_fourth_estate = no
+		OR = {
+			AND = {
+				islamist > 0.049
+				has_islamist_fifth_estate = no
+			}
+			AND = {
+				islamist > 0.099
+				NOT = {
+					OR = {
+						has_idea = fifth_estate_islamist2
+						has_idea = fifth_estate_islamist3
+						has_idea = fifth_estate_islamist4
+						has_idea = fifth_estate_islamist5
+					}
+				}
+			}
+			AND = {
+				islamist > 0.149
+				NOT = {
+					OR = {
+						has_idea = fifth_estate_islamist3
+						has_idea = fifth_estate_islamist4
+						has_idea = fifth_estate_islamist5
+					}
+				}
+			}
+			AND = {
+				islamist > 0.199
+				NOT = {
+					OR = {
+						has_idea = fifth_estate_islamist4
+						has_idea = fifth_estate_islamist5
+					}
+				}
+			}
+			AND = {
+				islamist > 0.249
+				NOT = {
+					has_idea = fifth_estate_islamist5
+				}
+			}
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 250
+		modifier = { factor = 0.5 has_stability < 0.2 }
+		modifier = { factor = 0.5 has_stability < 0.4 }
+		modifier = { factor = 1.5 has_stability > 0.74 }
+		modifier = { factor = 0.65 has_idea = national_development_developed }
+		modifier = { factor = 1.35 has_idea = national_development_undeveloped }
+		modifier = { factor = 1.35 has_idea = civil_liberties_totalitarian OR = { has_idea = public_safety_central_law_office has_idea = public_safety_secret_police } }
+		modifier = { factor = 1.3 has_idea = civil_liberties_totalitarian has_idea = public_safety_subsidized_agencies }
+		modifier = { factor = 1.25 has_idea = civil_liberties_restricted OR = { has_idea = public_safety_central_law_office has_idea = public_safety_secret_police } }
+		modifier = { factor = 1.2 has_idea = civil_liberties_restricted has_idea = public_safety_subsidized_agencies }
+		modifier = { factor = 1.15 has_idea = civil_liberties_limited OR = { has_idea = public_safety_central_law_office has_idea = public_safety_secret_police } }
+		modifier = { factor = 1.1 has_idea = civil_liberties_limited has_idea = public_safety_subsidized_agencies }
+		modifier = { factor = 0.3 has_idea = fifth_estate_islamist1 islamist > 0.149 }
+		modifier = { factor = 0.3 has_idea = fifth_estate_islamist2 islamist > 0.199 }
+		modifier = { factor = 0.3 has_idea = fifth_estate_islamist3 islamist > 0.249 }
+		modifier = { factor = 0.3 has_idea = fifth_estate_islamist4 islamist > 0.299 }
+	}
+	
+	immediate = {
+		set_country_flag = NVX_flag_fifth_estate_islamist
+		if = {
+			limit = { NOT = { has_country_flag = NVX_estate_natural_changes_hide } }
+			country_event = { id = nvx_fifth_estates.25 }
+		}
+		if = {
+			limit = { has_country_flag = NVX_estate_natural_changes_hide }
+			fifth_estate_targeted_total_increase = yes
+		}
+	}
+}
+
+country_event = { #Fifth estate natural decrease islamist
+	id = nvx_fifth_estates.2
+	hidden = yes
+	
+	trigger = {
+		NOT = { has_global_flag = sandbox_disable_natural_estate_drift }
+		OR = {
+			AND = {
+				islamist < 0.05
+				has_islamist_fifth_estate = yes
+			}
+			AND = {
+				islamist < 0.10
+				OR = {
+					has_idea = fifth_estate_islamist2
+					has_idea = fifth_estate_islamist3
+					has_idea = fifth_estate_islamist4
+					has_idea = fifth_estate_islamist5
+				}
+			}
+			AND = {
+				islamist < 0.15
+				OR = {
+					has_idea = fifth_estate_islamist3
+					has_idea = fifth_estate_islamist4
+					has_idea = fifth_estate_islamist5
+				}
+			}
+			AND = {
+				islamist < 0.20
+				OR = {
+					has_idea = fifth_estate_islamist4
+					has_idea = fifth_estate_islamist5
+				}
+			}
+			AND = {
+				islamist < 0.25
+				has_idea = fifth_estate_islamist5
+			}
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 250
+		modifier = { factor = 0.65 has_idea = civil_liberties_totalitarian OR = { has_idea = public_safety_central_law_office has_idea = public_safety_secret_police } }
+		modifier = { factor = 0.7 has_idea = civil_liberties_totalitarian has_idea = public_safety_subsidized_agencies }
+		modifier = { factor = 0.75 has_idea = civil_liberties_restricted OR = { has_idea = public_safety_central_law_office has_idea = public_safety_secret_police } }
+		modifier = { factor = 0.8 has_idea = civil_liberties_restricted has_idea = public_safety_subsidized_agencies }
+		modifier = { factor = 0.85 has_idea = civil_liberties_limited OR = { has_idea = public_safety_central_law_office has_idea = public_safety_secret_police } }
+		modifier = { factor = 0.9 has_idea = civil_liberties_limited has_idea = public_safety_subsidized_agencies }
+		modifier = { factor = 0.3 has_idea = fifth_estate_islamist2 islamist < 0.05 }
+		modifier = { factor = 0.3 has_idea = fifth_estate_islamist3 islamist < 0.10 }
+		modifier = { factor = 0.3 has_idea = fifth_estate_islamist4 islamist < 0.15 }
+		modifier = { factor = 0.3 has_idea = fifth_estate_islamist5 islamist < 0.20 }
+	}
+	
+	immediate = {
+		set_country_flag = NVX_flag_fifth_estate_islamist
+		fifth_estate_targeted_total_decrease = yes
+	}
+}
+
+country_event = { #Fifth estate natural increase fascist
+	id = nvx_fifth_estates.3
+	hidden = yes
+	
+	trigger = {
+		NOT = { has_global_flag = sandbox_disable_natural_estate_drift }
+		has_fascist_fourth_estate = no
+		OR = {
+			AND = {
+				fascist > 0.049
+				has_fascist_fifth_estate = no
+			}
+			AND = {
+				fascist > 0.099
+				NOT = {
+					OR = {
+						has_idea = fifth_estate_fascist2
+						has_idea = fifth_estate_fascist3
+						has_idea = fifth_estate_fascist4
+						has_idea = fifth_estate_fascist5
+					}
+				}
+			}
+			AND = {
+				fascist > 0.149
+				NOT = {
+					OR = {
+						has_idea = fifth_estate_fascist3
+						has_idea = fifth_estate_fascist4
+						has_idea = fifth_estate_fascist5
+					}
+				}
+			}
+			AND = {
+				fascist > 0.199
+				NOT = {
+					OR = {
+						has_idea = fifth_estate_fascist4
+						has_idea = fifth_estate_fascist5
+					}
+				}
+			}
+			AND = {
+				fascist > 0.249
+				NOT = {
+					has_idea = fifth_estate_fascist5
+				}
+			}
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 250
+		modifier = { factor = 0.5 has_stability < 0.2 }
+		modifier = { factor = 0.5 has_stability < 0.4 }
+		modifier = { factor = 1.5 has_stability > 0.74 }
+		modifier = { factor = 0.65 has_idea = national_development_developed }
+		modifier = { factor = 1.35 has_idea = national_development_undeveloped }
+		modifier = { factor = 1.35 has_idea = civil_liberties_totalitarian OR = { has_idea = public_safety_central_law_office has_idea = public_safety_secret_police } }
+		modifier = { factor = 1.3 has_idea = civil_liberties_totalitarian has_idea = public_safety_subsidized_agencies }
+		modifier = { factor = 1.25 has_idea = civil_liberties_restricted OR = { has_idea = public_safety_central_law_office has_idea = public_safety_secret_police } }
+		modifier = { factor = 1.2 has_idea = civil_liberties_restricted has_idea = public_safety_subsidized_agencies }
+		modifier = { factor = 1.15 has_idea = civil_liberties_limited OR = { has_idea = public_safety_central_law_office has_idea = public_safety_secret_police } }
+		modifier = { factor = 1.1 has_idea = civil_liberties_limited has_idea = public_safety_subsidized_agencies }
+		modifier = { factor = 0.3 has_idea = fifth_estate_fascist1 fascist > 0.149 }
+		modifier = { factor = 0.3 has_idea = fifth_estate_fascist2 fascist > 0.199 }
+		modifier = { factor = 0.3 has_idea = fifth_estate_fascist3 fascist > 0.249 }
+		modifier = { factor = 0.3 has_idea = fifth_estate_fascist4 fascist > 0.299 }
+	}
+	
+	immediate = {
+		set_country_flag = NVX_flag_fifth_estate_fascist
+		if = {
+			limit = { NOT = { has_country_flag = NVX_estate_natural_changes_hide } }
+			country_event = { id = nvx_fifth_estates.25 }
+		}
+		if = {
+			limit = { has_country_flag = NVX_estate_natural_changes_hide }
+			fifth_estate_targeted_total_increase = yes
+		}
+	}
+}
+
+country_event = { #Fifth estate natural decrease fascist
+	id = nvx_fifth_estates.4
+	hidden = yes
+	
+	trigger = {
+		NOT = { has_global_flag = sandbox_disable_natural_estate_drift }
+		OR = {
+			AND = {
+				fascist < 0.05
+				has_fascist_fifth_estate = yes
+			}
+			AND = {
+				fascist < 0.10
+				OR = {
+					has_idea = fifth_estate_fascist2
+					has_idea = fifth_estate_fascist3
+					has_idea = fifth_estate_fascist4
+					has_idea = fifth_estate_fascist5
+				}
+			}
+			AND = {
+				fascist < 0.15
+				OR = {
+					has_idea = fifth_estate_fascist3
+					has_idea = fifth_estate_fascist4
+					has_idea = fifth_estate_fascist5
+				}
+			}
+			AND = {
+				fascist < 0.20
+				OR = {
+					has_idea = fifth_estate_fascist4
+					has_idea = fifth_estate_fascist5
+				}
+			}
+			AND = {
+				fascist < 0.25
+				has_idea = fifth_estate_fascist5
+			}
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 250
+		modifier = { factor = 0.65 has_idea = civil_liberties_totalitarian OR = { has_idea = public_safety_central_law_office has_idea = public_safety_secret_police } }
+		modifier = { factor = 0.7 has_idea = civil_liberties_totalitarian has_idea = public_safety_subsidized_agencies }
+		modifier = { factor = 0.75 has_idea = civil_liberties_restricted OR = { has_idea = public_safety_central_law_office has_idea = public_safety_secret_police } }
+		modifier = { factor = 0.8 has_idea = civil_liberties_restricted has_idea = public_safety_subsidized_agencies }
+		modifier = { factor = 0.85 has_idea = civil_liberties_limited OR = { has_idea = public_safety_central_law_office has_idea = public_safety_secret_police } }
+		modifier = { factor = 0.9 has_idea = civil_liberties_limited has_idea = public_safety_subsidized_agencies }
+		modifier = { factor = 0.3 has_idea = fifth_estate_fascist2 fascist < 0.05 }
+		modifier = { factor = 0.3 has_idea = fifth_estate_fascist3 fascist < 0.10 }
+		modifier = { factor = 0.3 has_idea = fifth_estate_fascist4 fascist < 0.15 }
+		modifier = { factor = 0.3 has_idea = fifth_estate_fascist5 fascist < 0.20 }
+	}
+	
+	immediate = {
+		set_country_flag = NVX_flag_fifth_estate_fascist
+		fifth_estate_targeted_total_decrease = yes
+	}
+}
+
+country_event = { #Fifth estate natural increase nationalist
+	id = nvx_fifth_estates.5
+	hidden = yes
+	
+	trigger = {
+		NOT = { has_global_flag = sandbox_disable_natural_estate_drift }
+		has_nationalist_fourth_estate = no
+		OR = {
+			AND = {
+				nationalist > 0.049
+				has_nationalist_fifth_estate = no
+			}
+			AND = {
+				nationalist > 0.099
+				NOT = {
+					OR = {
+						has_idea = fifth_estate_nationalist2
+						has_idea = fifth_estate_nationalist3
+						has_idea = fifth_estate_nationalist4
+						has_idea = fifth_estate_nationalist5
+					}
+				}
+			}
+			AND = {
+				nationalist > 0.149
+				NOT = {
+					OR = {
+						has_idea = fifth_estate_nationalist3
+						has_idea = fifth_estate_nationalist4
+						has_idea = fifth_estate_nationalist5
+					}
+				}
+			}
+			AND = {
+				nationalist > 0.199
+				NOT = {
+					OR = {
+						has_idea = fifth_estate_nationalist4
+						has_idea = fifth_estate_nationalist5
+					}
+				}
+			}
+			AND = {
+				nationalist > 0.249
+				NOT = {
+					has_idea = fifth_estate_nationalist5
+				}
+			}
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 250
+		modifier = { factor = 0.5 has_stability < 0.2 }
+		modifier = { factor = 0.5 has_stability < 0.4 }
+		modifier = { factor = 1.5 has_stability > 0.74 }
+		modifier = { factor = 0.65 has_idea = national_development_developed }
+		modifier = { factor = 1.35 has_idea = national_development_undeveloped }
+		modifier = { factor = 1.35 has_idea = civil_liberties_totalitarian OR = { has_idea = public_safety_central_law_office has_idea = public_safety_secret_police } }
+		modifier = { factor = 1.3 has_idea = civil_liberties_totalitarian has_idea = public_safety_subsidized_agencies }
+		modifier = { factor = 1.25 has_idea = civil_liberties_restricted OR = { has_idea = public_safety_central_law_office has_idea = public_safety_secret_police } }
+		modifier = { factor = 1.2 has_idea = civil_liberties_restricted has_idea = public_safety_subsidized_agencies }
+		modifier = { factor = 1.15 has_idea = civil_liberties_limited OR = { has_idea = public_safety_central_law_office has_idea = public_safety_secret_police } }
+		modifier = { factor = 1.1 has_idea = civil_liberties_limited has_idea = public_safety_subsidized_agencies }
+		modifier = { factor = 0.3 has_idea = fifth_estate_nationalist1 nationalist > 0.149 }
+		modifier = { factor = 0.3 has_idea = fifth_estate_nationalist2 nationalist > 0.199 }
+		modifier = { factor = 0.3 has_idea = fifth_estate_nationalist3 nationalist > 0.249 }
+		modifier = { factor = 0.3 has_idea = fifth_estate_nationalist4 nationalist > 0.299 }
+	}
+	
+	immediate = {
+		set_country_flag = NVX_flag_fifth_estate_nationalist
+		if = {
+			limit = { NOT = { has_country_flag = NVX_estate_natural_changes_hide } }
+			country_event = { id = nvx_fifth_estates.25 }
+		}
+		if = {
+			limit = { has_country_flag = NVX_estate_natural_changes_hide }
+			fifth_estate_targeted_total_increase = yes
+		}
+	}
+}
+
+country_event = { #Fifth estate natural decrease nationalist
+	id = nvx_fifth_estates.6
+	hidden = yes
+	
+	trigger = {
+		NOT = { has_global_flag = sandbox_disable_natural_estate_drift }
+		OR = {
+			AND = {
+				nationalist < 0.05
+				has_nationalist_fifth_estate = yes
+			}
+			AND = {
+				nationalist < 0.10
+				OR = {
+					has_idea = fifth_estate_nationalist2
+					has_idea = fifth_estate_nationalist3
+					has_idea = fifth_estate_nationalist4
+					has_idea = fifth_estate_nationalist5
+				}
+			}
+			AND = {
+				nationalist < 0.15
+				OR = {
+					has_idea = fifth_estate_nationalist3
+					has_idea = fifth_estate_nationalist4
+					has_idea = fifth_estate_nationalist5
+				}
+			}
+			AND = {
+				nationalist < 0.20
+				OR = {
+					has_idea = fifth_estate_nationalist4
+					has_idea = fifth_estate_nationalist5
+				}
+			}
+			AND = {
+				nationalist < 0.25
+				has_idea = fifth_estate_nationalist5
+			}
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 250
+		modifier = { factor = 0.65 has_idea = civil_liberties_totalitarian OR = { has_idea = public_safety_central_law_office has_idea = public_safety_secret_police } }
+		modifier = { factor = 0.7 has_idea = civil_liberties_totalitarian has_idea = public_safety_subsidized_agencies }
+		modifier = { factor = 0.75 has_idea = civil_liberties_restricted OR = { has_idea = public_safety_central_law_office has_idea = public_safety_secret_police } }
+		modifier = { factor = 0.8 has_idea = civil_liberties_restricted has_idea = public_safety_subsidized_agencies }
+		modifier = { factor = 0.85 has_idea = civil_liberties_limited OR = { has_idea = public_safety_central_law_office has_idea = public_safety_secret_police } }
+		modifier = { factor = 0.9 has_idea = civil_liberties_limited has_idea = public_safety_subsidized_agencies }
+		modifier = { factor = 0.3 has_idea = fifth_estate_nationalist2 nationalist < 0.05 }
+		modifier = { factor = 0.3 has_idea = fifth_estate_nationalist3 nationalist < 0.10 }
+		modifier = { factor = 0.3 has_idea = fifth_estate_nationalist4 nationalist < 0.15 }
+		modifier = { factor = 0.3 has_idea = fifth_estate_nationalist5 nationalist < 0.20 }
+	}
+	
+	immediate = {
+		set_country_flag = NVX_flag_fifth_estate_nationalist
+		fifth_estate_targeted_total_decrease = yes
+	}
+}
+
+country_event = { #Fifth estate natural increase monarchist
+	id = nvx_fifth_estates.7
+	hidden = yes
+	
+	trigger = {
+		NOT = { has_global_flag = sandbox_disable_natural_estate_drift }
+		has_monarchist_fourth_estate = no
+		OR = {
+			AND = {
+				monarchist > 0.049
+				has_monarchist_fifth_estate = no
+			}
+			AND = {
+				monarchist > 0.099
+				NOT = {
+					OR = {
+						has_idea = fifth_estate_monarchist2
+						has_idea = fifth_estate_monarchist3
+						has_idea = fifth_estate_monarchist4
+						has_idea = fifth_estate_monarchist5
+					}
+				}
+			}
+			AND = {
+				monarchist > 0.149
+				NOT = {
+					OR = {
+						has_idea = fifth_estate_monarchist3
+						has_idea = fifth_estate_monarchist4
+						has_idea = fifth_estate_monarchist5
+					}
+				}
+			}
+			AND = {
+				monarchist > 0.199
+				NOT = {
+					OR = {
+						has_idea = fifth_estate_monarchist4
+						has_idea = fifth_estate_monarchist5
+					}
+				}
+			}
+			AND = {
+				monarchist > 0.249
+				NOT = {
+					has_idea = fifth_estate_monarchist5
+				}
+			}
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 250
+		modifier = { factor = 0.5 has_stability < 0.2 }
+		modifier = { factor = 0.5 has_stability < 0.4 }
+		modifier = { factor = 1.5 has_stability > 0.74 }
+		modifier = { factor = 0.65 has_idea = national_development_developed }
+		modifier = { factor = 1.35 has_idea = national_development_undeveloped }
+		modifier = { factor = 1.35 has_idea = civil_liberties_totalitarian OR = { has_idea = public_safety_central_law_office has_idea = public_safety_secret_police } }
+		modifier = { factor = 1.3 has_idea = civil_liberties_totalitarian has_idea = public_safety_subsidized_agencies }
+		modifier = { factor = 1.25 has_idea = civil_liberties_restricted OR = { has_idea = public_safety_central_law_office has_idea = public_safety_secret_police } }
+		modifier = { factor = 1.2 has_idea = civil_liberties_restricted has_idea = public_safety_subsidized_agencies }
+		modifier = { factor = 1.15 has_idea = civil_liberties_limited OR = { has_idea = public_safety_central_law_office has_idea = public_safety_secret_police } }
+		modifier = { factor = 1.1 has_idea = civil_liberties_limited has_idea = public_safety_subsidized_agencies }
+		modifier = { factor = 0.3 has_idea = fifth_estate_monarchist1 monarchist > 0.149 }
+		modifier = { factor = 0.3 has_idea = fifth_estate_monarchist2 monarchist > 0.199 }
+		modifier = { factor = 0.3 has_idea = fifth_estate_monarchist3 monarchist > 0.249 }
+		modifier = { factor = 0.3 has_idea = fifth_estate_monarchist4 monarchist > 0.299 }
+	}
+	
+	immediate = {
+		set_country_flag = NVX_flag_fifth_estate_monarchist
+		if = {
+			limit = { NOT = { has_country_flag = NVX_estate_natural_changes_hide } }
+			country_event = { id = nvx_fifth_estates.25 }
+		}
+		if = {
+			limit = { has_country_flag = NVX_estate_natural_changes_hide }
+			fifth_estate_targeted_total_increase = yes
+		}
+	}
+}
+
+country_event = { #Fifth estate natural decrease monarchist
+	id = nvx_fifth_estates.8
+	hidden = yes
+	
+	trigger = {
+		NOT = { has_global_flag = sandbox_disable_natural_estate_drift }
+		OR = {
+			AND = {
+				monarchist < 0.05
+				has_monarchist_fifth_estate = yes
+			}
+			AND = {
+				monarchist < 0.10
+				OR = {
+					has_idea = fifth_estate_monarchist2
+					has_idea = fifth_estate_monarchist3
+					has_idea = fifth_estate_monarchist4
+					has_idea = fifth_estate_monarchist5
+				}
+			}
+			AND = {
+				monarchist < 0.15
+				OR = {
+					has_idea = fifth_estate_monarchist3
+					has_idea = fifth_estate_monarchist4
+					has_idea = fifth_estate_monarchist5
+				}
+			}
+			AND = {
+				monarchist < 0.20
+				OR = {
+					has_idea = fifth_estate_monarchist4
+					has_idea = fifth_estate_monarchist5
+				}
+			}
+			AND = {
+				monarchist < 0.25
+				has_idea = fifth_estate_monarchist5
+			}
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 250
+		modifier = { factor = 0.65 has_idea = civil_liberties_totalitarian OR = { has_idea = public_safety_central_law_office has_idea = public_safety_secret_police } }
+		modifier = { factor = 0.7 has_idea = civil_liberties_totalitarian has_idea = public_safety_subsidized_agencies }
+		modifier = { factor = 0.75 has_idea = civil_liberties_restricted OR = { has_idea = public_safety_central_law_office has_idea = public_safety_secret_police } }
+		modifier = { factor = 0.8 has_idea = civil_liberties_restricted has_idea = public_safety_subsidized_agencies }
+		modifier = { factor = 0.85 has_idea = civil_liberties_limited OR = { has_idea = public_safety_central_law_office has_idea = public_safety_secret_police } }
+		modifier = { factor = 0.9 has_idea = civil_liberties_limited has_idea = public_safety_subsidized_agencies }
+		modifier = { factor = 0.3 has_idea = fifth_estate_monarchist2 monarchist < 0.05 }
+		modifier = { factor = 0.3 has_idea = fifth_estate_monarchist3 monarchist < 0.10 }
+		modifier = { factor = 0.3 has_idea = fifth_estate_monarchist4 monarchist < 0.15 }
+		modifier = { factor = 0.3 has_idea = fifth_estate_monarchist5 monarchist < 0.20 }
+	}
+	
+	immediate = {
+		set_country_flag = NVX_flag_fifth_estate_monarchist
+		fifth_estate_targeted_total_decrease = yes
+	}
+}
+
+country_event = { #Fifth estate natural increase reactionary
+	id = nvx_fifth_estates.9
+	hidden = yes
+	
+	trigger = {
+		NOT = { has_global_flag = sandbox_disable_natural_estate_drift }
+		has_reactionary_fourth_estate = no
+		OR = {
+			AND = {
+				reactionary > 0.049
+				has_reactionary_fifth_estate = no
+			}
+			AND = {
+				reactionary > 0.099
+				NOT = {
+					OR = {
+						has_idea = fifth_estate_reactionary2
+						has_idea = fifth_estate_reactionary3
+						has_idea = fifth_estate_reactionary4
+						has_idea = fifth_estate_reactionary5
+					}
+				}
+			}
+			AND = {
+				reactionary > 0.149
+				NOT = {
+					OR = {
+						has_idea = fifth_estate_reactionary3
+						has_idea = fifth_estate_reactionary4
+						has_idea = fifth_estate_reactionary5
+					}
+				}
+			}
+			AND = {
+				reactionary > 0.199
+				NOT = {
+					OR = {
+						has_idea = fifth_estate_reactionary4
+						has_idea = fifth_estate_reactionary5
+					}
+				}
+			}
+			AND = {
+				reactionary > 0.249
+				NOT = {
+					has_idea = fifth_estate_reactionary5
+				}
+			}
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 250
+		modifier = { factor = 0.5 has_stability < 0.2 }
+		modifier = { factor = 0.5 has_stability < 0.4 }
+		modifier = { factor = 1.5 has_stability > 0.74 }
+		modifier = { factor = 0.65 has_idea = national_development_developed }
+		modifier = { factor = 1.35 has_idea = national_development_undeveloped }
+		modifier = { factor = 1.35 has_idea = civil_liberties_totalitarian OR = { has_idea = public_safety_central_law_office has_idea = public_safety_secret_police } }
+		modifier = { factor = 1.3 has_idea = civil_liberties_totalitarian has_idea = public_safety_subsidized_agencies }
+		modifier = { factor = 1.25 has_idea = civil_liberties_restricted OR = { has_idea = public_safety_central_law_office has_idea = public_safety_secret_police } }
+		modifier = { factor = 1.2 has_idea = civil_liberties_restricted has_idea = public_safety_subsidized_agencies }
+		modifier = { factor = 1.15 has_idea = civil_liberties_limited OR = { has_idea = public_safety_central_law_office has_idea = public_safety_secret_police } }
+		modifier = { factor = 1.1 has_idea = civil_liberties_limited has_idea = public_safety_subsidized_agencies }
+		modifier = { factor = 0.3 has_idea = fifth_estate_reactionary1 reactionary > 0.149 }
+		modifier = { factor = 0.3 has_idea = fifth_estate_reactionary2 reactionary > 0.199 }
+		modifier = { factor = 0.3 has_idea = fifth_estate_reactionary3 reactionary > 0.249 }
+		modifier = { factor = 0.3 has_idea = fifth_estate_reactionary4 reactionary > 0.299 }
+	}
+	
+	immediate = {
+		set_country_flag = NVX_flag_fifth_estate_reactionary
+		if = {
+			limit = { NOT = { has_country_flag = NVX_estate_natural_changes_hide } }
+			country_event = { id = nvx_fifth_estates.25 }
+		}
+		if = {
+			limit = { has_country_flag = NVX_estate_natural_changes_hide }
+			fifth_estate_targeted_total_increase = yes
+		}
+	}
+}
+
+country_event = { #Fifth estate natural decrease reactionary
+	id = nvx_fifth_estates.10
+	hidden = yes
+	
+	trigger = {
+		NOT = { has_global_flag = sandbox_disable_natural_estate_drift }
+		OR = {
+			AND = {
+				reactionary < 0.05
+				has_reactionary_fifth_estate = yes
+			}
+			AND = {
+				reactionary < 0.10
+				OR = {
+					has_idea = fifth_estate_reactionary2
+					has_idea = fifth_estate_reactionary3
+					has_idea = fifth_estate_reactionary4
+					has_idea = fifth_estate_reactionary5
+				}
+			}
+			AND = {
+				reactionary < 0.15
+				OR = {
+					has_idea = fifth_estate_reactionary3
+					has_idea = fifth_estate_reactionary4
+					has_idea = fifth_estate_reactionary5
+				}
+			}
+			AND = {
+				reactionary < 0.20
+				OR = {
+					has_idea = fifth_estate_reactionary4
+					has_idea = fifth_estate_reactionary5
+				}
+			}
+			AND = {
+				reactionary < 0.25
+				has_idea = fifth_estate_reactionary5
+			}
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 250
+		modifier = { factor = 0.65 has_idea = civil_liberties_totalitarian OR = { has_idea = public_safety_central_law_office has_idea = public_safety_secret_police } }
+		modifier = { factor = 0.7 has_idea = civil_liberties_totalitarian has_idea = public_safety_subsidized_agencies }
+		modifier = { factor = 0.75 has_idea = civil_liberties_restricted OR = { has_idea = public_safety_central_law_office has_idea = public_safety_secret_police } }
+		modifier = { factor = 0.8 has_idea = civil_liberties_restricted has_idea = public_safety_subsidized_agencies }
+		modifier = { factor = 0.85 has_idea = civil_liberties_limited OR = { has_idea = public_safety_central_law_office has_idea = public_safety_secret_police } }
+		modifier = { factor = 0.9 has_idea = civil_liberties_limited has_idea = public_safety_subsidized_agencies }
+		modifier = { factor = 0.3 has_idea = fifth_estate_reactionary2 reactionary < 0.05 }
+		modifier = { factor = 0.3 has_idea = fifth_estate_reactionary3 reactionary < 0.10 }
+		modifier = { factor = 0.3 has_idea = fifth_estate_reactionary4 reactionary < 0.15 }
+		modifier = { factor = 0.3 has_idea = fifth_estate_reactionary5 reactionary < 0.20 }
+	}
+	
+	immediate = {
+		set_country_flag = NVX_flag_fifth_estate_reactionary
+		fifth_estate_targeted_total_decrease = yes
+	}
+}
+
+country_event = { #Fifth estate natural increase conservative
+	id = nvx_fifth_estates.11
+	hidden = yes
+	
+	trigger = {
+		NOT = { has_global_flag = sandbox_disable_natural_estate_drift }
+		has_conservative_fourth_estate = no
+		OR = {
+			AND = {
+				conservative > 0.049
+				has_conservative_fifth_estate = no
+			}
+			AND = {
+				conservative > 0.099
+				NOT = {
+					OR = {
+						has_idea = fifth_estate_conservative2
+						has_idea = fifth_estate_conservative3
+						has_idea = fifth_estate_conservative4
+						has_idea = fifth_estate_conservative5
+					}
+				}
+			}
+			AND = {
+				conservative > 0.149
+				NOT = {
+					OR = {
+						has_idea = fifth_estate_conservative3
+						has_idea = fifth_estate_conservative4
+						has_idea = fifth_estate_conservative5
+					}
+				}
+			}
+			AND = {
+				conservative > 0.199
+				NOT = {
+					OR = {
+						has_idea = fifth_estate_conservative4
+						has_idea = fifth_estate_conservative5
+					}
+				}
+			}
+			AND = {
+				conservative > 0.249
+				NOT = {
+					has_idea = fifth_estate_conservative5
+				}
+			}
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 250
+		modifier = { factor = 0.5 has_stability < 0.2 }
+		modifier = { factor = 0.5 has_stability < 0.4 }
+		modifier = { factor = 1.5 has_stability > 0.74 }
+		modifier = { factor = 0.65 has_idea = national_development_developed }
+		modifier = { factor = 1.35 has_idea = national_development_undeveloped }
+		modifier = { factor = 1.35 has_idea = civil_liberties_totalitarian OR = { has_idea = public_safety_central_law_office has_idea = public_safety_secret_police } }
+		modifier = { factor = 1.3 has_idea = civil_liberties_totalitarian has_idea = public_safety_subsidized_agencies }
+		modifier = { factor = 1.25 has_idea = civil_liberties_restricted OR = { has_idea = public_safety_central_law_office has_idea = public_safety_secret_police } }
+		modifier = { factor = 1.2 has_idea = civil_liberties_restricted has_idea = public_safety_subsidized_agencies }
+		modifier = { factor = 1.15 has_idea = civil_liberties_limited OR = { has_idea = public_safety_central_law_office has_idea = public_safety_secret_police } }
+		modifier = { factor = 1.1 has_idea = civil_liberties_limited has_idea = public_safety_subsidized_agencies }
+		modifier = { factor = 0.3 has_idea = fifth_estate_conservative1 conservative > 0.149 }
+		modifier = { factor = 0.3 has_idea = fifth_estate_conservative2 conservative > 0.199 }
+		modifier = { factor = 0.3 has_idea = fifth_estate_conservative3 conservative > 0.249 }
+		modifier = { factor = 0.3 has_idea = fifth_estate_conservative4 conservative > 0.299 }
+	}
+	
+	immediate = {
+		set_country_flag = NVX_flag_fifth_estate_conservative
+		if = {
+			limit = { NOT = { has_country_flag = NVX_estate_natural_changes_hide } }
+			country_event = { id = nvx_fifth_estates.25 }
+		}
+		if = {
+			limit = { has_country_flag = NVX_estate_natural_changes_hide }
+			fifth_estate_targeted_total_increase = yes
+		}
+	}
+}
+
+country_event = { #Fifth estate natural decrease conservative
+	id = nvx_fifth_estates.12
+	hidden = yes
+	
+	trigger = {
+		NOT = { has_global_flag = sandbox_disable_natural_estate_drift }
+		OR = {
+			AND = {
+				conservative < 0.05
+				has_conservative_fifth_estate = yes
+			}
+			AND = {
+				conservative < 0.10
+				OR = {
+					has_idea = fifth_estate_conservative2
+					has_idea = fifth_estate_conservative3
+					has_idea = fifth_estate_conservative4
+					has_idea = fifth_estate_conservative5
+				}
+			}
+			AND = {
+				conservative < 0.15
+				OR = {
+					has_idea = fifth_estate_conservative3
+					has_idea = fifth_estate_conservative4
+					has_idea = fifth_estate_conservative5
+				}
+			}
+			AND = {
+				conservative < 0.20
+				OR = {
+					has_idea = fifth_estate_conservative4
+					has_idea = fifth_estate_conservative5
+				}
+			}
+			AND = {
+				conservative < 0.25
+				has_idea = fifth_estate_conservative5
+			}
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 250
+		modifier = { factor = 0.65 has_idea = civil_liberties_totalitarian OR = { has_idea = public_safety_central_law_office has_idea = public_safety_secret_police } }
+		modifier = { factor = 0.7 has_idea = civil_liberties_totalitarian has_idea = public_safety_subsidized_agencies }
+		modifier = { factor = 0.75 has_idea = civil_liberties_restricted OR = { has_idea = public_safety_central_law_office has_idea = public_safety_secret_police } }
+		modifier = { factor = 0.8 has_idea = civil_liberties_restricted has_idea = public_safety_subsidized_agencies }
+		modifier = { factor = 0.85 has_idea = civil_liberties_limited OR = { has_idea = public_safety_central_law_office has_idea = public_safety_secret_police } }
+		modifier = { factor = 0.9 has_idea = civil_liberties_limited has_idea = public_safety_subsidized_agencies }
+		modifier = { factor = 0.3 has_idea = fifth_estate_conservative2 conservative < 0.05 }
+		modifier = { factor = 0.3 has_idea = fifth_estate_conservative3 conservative < 0.10 }
+		modifier = { factor = 0.3 has_idea = fifth_estate_conservative4 conservative < 0.15 }
+		modifier = { factor = 0.3 has_idea = fifth_estate_conservative5 conservative < 0.20 }
+	}
+	
+	immediate = {
+		set_country_flag = NVX_flag_fifth_estate_conservative
+		fifth_estate_targeted_total_decrease = yes
+	}
+}
+
+country_event = { #Fifth estate natural increase market_liberal
+	id = nvx_fifth_estates.13
+	hidden = yes
+	
+	trigger = {
+		NOT = { has_global_flag = sandbox_disable_natural_estate_drift }
+		has_market_liberal_fourth_estate = no
+		OR = {
+			AND = {
+				market_liberal > 0.049
+				has_market_liberal_fifth_estate = no
+			}
+			AND = {
+				market_liberal > 0.099
+				NOT = {
+					OR = {
+						has_idea = fifth_estate_market_liberal2
+						has_idea = fifth_estate_market_liberal3
+						has_idea = fifth_estate_market_liberal4
+						has_idea = fifth_estate_market_liberal5
+					}
+				}
+			}
+			AND = {
+				market_liberal > 0.149
+				NOT = {
+					OR = {
+						has_idea = fifth_estate_market_liberal3
+						has_idea = fifth_estate_market_liberal4
+						has_idea = fifth_estate_market_liberal5
+					}
+				}
+			}
+			AND = {
+				market_liberal > 0.199
+				NOT = {
+					OR = {
+						has_idea = fifth_estate_market_liberal4
+						has_idea = fifth_estate_market_liberal5
+					}
+				}
+			}
+			AND = {
+				market_liberal > 0.249
+				NOT = {
+					has_idea = fifth_estate_market_liberal5
+				}
+			}
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 250
+		modifier = { factor = 0.5 has_stability < 0.2 }
+		modifier = { factor = 0.5 has_stability < 0.4 }
+		modifier = { factor = 1.5 has_stability > 0.74 }
+		modifier = { factor = 0.65 has_idea = national_development_developed }
+		modifier = { factor = 1.35 has_idea = national_development_undeveloped }
+		modifier = { factor = 1.35 has_idea = civil_liberties_totalitarian OR = { has_idea = public_safety_central_law_office has_idea = public_safety_secret_police } }
+		modifier = { factor = 1.3 has_idea = civil_liberties_totalitarian has_idea = public_safety_subsidized_agencies }
+		modifier = { factor = 1.25 has_idea = civil_liberties_restricted OR = { has_idea = public_safety_central_law_office has_idea = public_safety_secret_police } }
+		modifier = { factor = 1.2 has_idea = civil_liberties_restricted has_idea = public_safety_subsidized_agencies }
+		modifier = { factor = 1.15 has_idea = civil_liberties_limited OR = { has_idea = public_safety_central_law_office has_idea = public_safety_secret_police } }
+		modifier = { factor = 1.1 has_idea = civil_liberties_limited has_idea = public_safety_subsidized_agencies }
+		modifier = { factor = 0.3 has_idea = fifth_estate_market_liberal1 market_liberal > 0.149 }
+		modifier = { factor = 0.3 has_idea = fifth_estate_market_liberal2 market_liberal > 0.199 }
+		modifier = { factor = 0.3 has_idea = fifth_estate_market_liberal3 market_liberal > 0.249 }
+		modifier = { factor = 0.3 has_idea = fifth_estate_market_liberal4 market_liberal > 0.299 }
+	}
+	
+	immediate = {
+		set_country_flag = NVX_flag_fifth_estate_market_liberal
+		if = {
+			limit = { NOT = { has_country_flag = NVX_estate_natural_changes_hide } }
+			country_event = { id = nvx_fifth_estates.25 }
+		}
+		if = {
+			limit = { has_country_flag = NVX_estate_natural_changes_hide }
+			fifth_estate_targeted_total_increase = yes
+		}
+	}
+}
+
+country_event = { #Fifth estate natural decrease market_liberal
+	id = nvx_fifth_estates.14
+	hidden = yes
+	
+	trigger = {
+		NOT = { has_global_flag = sandbox_disable_natural_estate_drift }
+		OR = {
+			AND = {
+				market_liberal < 0.05
+				has_market_liberal_fifth_estate = yes
+			}
+			AND = {
+				market_liberal < 0.10
+				OR = {
+					has_idea = fifth_estate_market_liberal2
+					has_idea = fifth_estate_market_liberal3
+					has_idea = fifth_estate_market_liberal4
+					has_idea = fifth_estate_market_liberal5
+				}
+			}
+			AND = {
+				market_liberal < 0.15
+				OR = {
+					has_idea = fifth_estate_market_liberal3
+					has_idea = fifth_estate_market_liberal4
+					has_idea = fifth_estate_market_liberal5
+				}
+			}
+			AND = {
+				market_liberal < 0.20
+				OR = {
+					has_idea = fifth_estate_market_liberal4
+					has_idea = fifth_estate_market_liberal5
+				}
+			}
+			AND = {
+				market_liberal < 0.25
+				has_idea = fifth_estate_market_liberal5
+			}
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 250
+		modifier = { factor = 0.65 has_idea = civil_liberties_totalitarian OR = { has_idea = public_safety_central_law_office has_idea = public_safety_secret_police } }
+		modifier = { factor = 0.7 has_idea = civil_liberties_totalitarian has_idea = public_safety_subsidized_agencies }
+		modifier = { factor = 0.75 has_idea = civil_liberties_restricted OR = { has_idea = public_safety_central_law_office has_idea = public_safety_secret_police } }
+		modifier = { factor = 0.8 has_idea = civil_liberties_restricted has_idea = public_safety_subsidized_agencies }
+		modifier = { factor = 0.85 has_idea = civil_liberties_limited OR = { has_idea = public_safety_central_law_office has_idea = public_safety_secret_police } }
+		modifier = { factor = 0.9 has_idea = civil_liberties_limited has_idea = public_safety_subsidized_agencies }
+		modifier = { factor = 0.3 has_idea = fifth_estate_market_liberal2 market_liberal < 0.05 }
+		modifier = { factor = 0.3 has_idea = fifth_estate_market_liberal3 market_liberal < 0.10 }
+		modifier = { factor = 0.3 has_idea = fifth_estate_market_liberal4 market_liberal < 0.15 }
+		modifier = { factor = 0.3 has_idea = fifth_estate_market_liberal5 market_liberal < 0.20 }
+	}
+	
+	immediate = {
+		set_country_flag = NVX_flag_fifth_estate_market_liberal
+		fifth_estate_targeted_total_decrease = yes
+	}
+}
+
+country_event = { #Fifth estate natural increase social_liberal
+	id = nvx_fifth_estates.15
+	hidden = yes
+	
+	trigger = {
+		NOT = { has_global_flag = sandbox_disable_natural_estate_drift }
+		has_social_liberal_fourth_estate = no
+		OR = {
+			AND = {
+				social_liberal > 0.049
+				has_social_liberal_fifth_estate = no
+			}
+			AND = {
+				social_liberal > 0.099
+				NOT = {
+					OR = {
+						has_idea = fifth_estate_social_liberal2
+						has_idea = fifth_estate_social_liberal3
+						has_idea = fifth_estate_social_liberal4
+						has_idea = fifth_estate_social_liberal5
+					}
+				}
+			}
+			AND = {
+				social_liberal > 0.149
+				NOT = {
+					OR = {
+						has_idea = fifth_estate_social_liberal3
+						has_idea = fifth_estate_social_liberal4
+						has_idea = fifth_estate_social_liberal5
+					}
+				}
+			}
+			AND = {
+				social_liberal > 0.199
+				NOT = {
+					OR = {
+						has_idea = fifth_estate_social_liberal4
+						has_idea = fifth_estate_social_liberal5
+					}
+				}
+			}
+			AND = {
+				social_liberal > 0.249
+				NOT = {
+					has_idea = fifth_estate_social_liberal5
+				}
+			}
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 250
+		modifier = { factor = 0.5 has_stability < 0.2 }
+		modifier = { factor = 0.5 has_stability < 0.4 }
+		modifier = { factor = 1.5 has_stability > 0.74 }
+		modifier = { factor = 0.65 has_idea = national_development_developed }
+		modifier = { factor = 1.35 has_idea = national_development_undeveloped }
+		modifier = { factor = 1.35 has_idea = civil_liberties_totalitarian OR = { has_idea = public_safety_central_law_office has_idea = public_safety_secret_police } }
+		modifier = { factor = 1.3 has_idea = civil_liberties_totalitarian has_idea = public_safety_subsidized_agencies }
+		modifier = { factor = 1.25 has_idea = civil_liberties_restricted OR = { has_idea = public_safety_central_law_office has_idea = public_safety_secret_police } }
+		modifier = { factor = 1.2 has_idea = civil_liberties_restricted has_idea = public_safety_subsidized_agencies }
+		modifier = { factor = 1.15 has_idea = civil_liberties_limited OR = { has_idea = public_safety_central_law_office has_idea = public_safety_secret_police } }
+		modifier = { factor = 1.1 has_idea = civil_liberties_limited has_idea = public_safety_subsidized_agencies }
+		modifier = { factor = 0.3 has_idea = fifth_estate_social_liberal1 social_liberal > 0.149 }
+		modifier = { factor = 0.3 has_idea = fifth_estate_social_liberal2 social_liberal > 0.199 }
+		modifier = { factor = 0.3 has_idea = fifth_estate_social_liberal3 social_liberal > 0.249 }
+		modifier = { factor = 0.3 has_idea = fifth_estate_social_liberal4 social_liberal > 0.299 }
+	}
+	
+	immediate = {
+		set_country_flag = NVX_flag_fifth_estate_social_liberal
+		if = {
+			limit = { NOT = { has_country_flag = NVX_estate_natural_changes_hide } }
+			country_event = { id = nvx_fifth_estates.25 }
+		}
+		if = {
+			limit = { has_country_flag = NVX_estate_natural_changes_hide }
+			fifth_estate_targeted_total_increase = yes
+		}
+	}
+}
+
+country_event = { #Fifth estate natural decrease social_liberal
+	id = nvx_fifth_estates.16
+	hidden = yes
+	
+	trigger = {
+		NOT = { has_global_flag = sandbox_disable_natural_estate_drift }
+		OR = {
+			AND = {
+				social_liberal < 0.05
+				has_social_liberal_fifth_estate = yes
+			}
+			AND = {
+				social_liberal < 0.10
+				OR = {
+					has_idea = fifth_estate_social_liberal2
+					has_idea = fifth_estate_social_liberal3
+					has_idea = fifth_estate_social_liberal4
+					has_idea = fifth_estate_social_liberal5
+				}
+			}
+			AND = {
+				social_liberal < 0.15
+				OR = {
+					has_idea = fifth_estate_social_liberal3
+					has_idea = fifth_estate_social_liberal4
+					has_idea = fifth_estate_social_liberal5
+				}
+			}
+			AND = {
+				social_liberal < 0.20
+				OR = {
+					has_idea = fifth_estate_social_liberal4
+					has_idea = fifth_estate_social_liberal5
+				}
+			}
+			AND = {
+				social_liberal < 0.25
+				has_idea = fifth_estate_social_liberal5
+			}
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 250
+		modifier = { factor = 0.65 has_idea = civil_liberties_totalitarian OR = { has_idea = public_safety_central_law_office has_idea = public_safety_secret_police } }
+		modifier = { factor = 0.7 has_idea = civil_liberties_totalitarian has_idea = public_safety_subsidized_agencies }
+		modifier = { factor = 0.75 has_idea = civil_liberties_restricted OR = { has_idea = public_safety_central_law_office has_idea = public_safety_secret_police } }
+		modifier = { factor = 0.8 has_idea = civil_liberties_restricted has_idea = public_safety_subsidized_agencies }
+		modifier = { factor = 0.85 has_idea = civil_liberties_limited OR = { has_idea = public_safety_central_law_office has_idea = public_safety_secret_police } }
+		modifier = { factor = 0.9 has_idea = civil_liberties_limited has_idea = public_safety_subsidized_agencies }
+		modifier = { factor = 0.3 has_idea = fifth_estate_social_liberal2 social_liberal < 0.05 }
+		modifier = { factor = 0.3 has_idea = fifth_estate_social_liberal3 social_liberal < 0.10 }
+		modifier = { factor = 0.3 has_idea = fifth_estate_social_liberal4 social_liberal < 0.15 }
+		modifier = { factor = 0.3 has_idea = fifth_estate_social_liberal5 social_liberal < 0.20 }
+	}
+	
+	immediate = {
+		set_country_flag = NVX_flag_fifth_estate_social_liberal
+		fifth_estate_targeted_total_decrease = yes
+	}
+}
+
+country_event = { #Fifth estate natural increase social_democrat
+	id = nvx_fifth_estates.17
+	hidden = yes
+	
+	trigger = {
+		NOT = { has_global_flag = sandbox_disable_natural_estate_drift }
+		has_social_democrat_fourth_estate = no
+		OR = {
+			AND = {
+				social_democrat > 0.049
+				has_social_democrat_fifth_estate = no
+			}
+			AND = {
+				social_democrat > 0.099
+				NOT = {
+					OR = {
+						has_idea = fifth_estate_social_democrat2
+						has_idea = fifth_estate_social_democrat3
+						has_idea = fifth_estate_social_democrat4
+						has_idea = fifth_estate_social_democrat5
+					}
+				}
+			}
+			AND = {
+				social_democrat > 0.149
+				NOT = {
+					OR = {
+						has_idea = fifth_estate_social_democrat3
+						has_idea = fifth_estate_social_democrat4
+						has_idea = fifth_estate_social_democrat5
+					}
+				}
+			}
+			AND = {
+				social_democrat > 0.199
+				NOT = {
+					OR = {
+						has_idea = fifth_estate_social_democrat4
+						has_idea = fifth_estate_social_democrat5
+					}
+				}
+			}
+			AND = {
+				social_democrat > 0.249
+				NOT = {
+					has_idea = fifth_estate_social_democrat5
+				}
+			}
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 250
+		modifier = { factor = 0.5 has_stability < 0.2 }
+		modifier = { factor = 0.5 has_stability < 0.4 }
+		modifier = { factor = 1.5 has_stability > 0.74 }
+		modifier = { factor = 0.65 has_idea = national_development_developed }
+		modifier = { factor = 1.35 has_idea = national_development_undeveloped }
+		modifier = { factor = 1.35 has_idea = civil_liberties_totalitarian OR = { has_idea = public_safety_central_law_office has_idea = public_safety_secret_police } }
+		modifier = { factor = 1.3 has_idea = civil_liberties_totalitarian has_idea = public_safety_subsidized_agencies }
+		modifier = { factor = 1.25 has_idea = civil_liberties_restricted OR = { has_idea = public_safety_central_law_office has_idea = public_safety_secret_police } }
+		modifier = { factor = 1.2 has_idea = civil_liberties_restricted has_idea = public_safety_subsidized_agencies }
+		modifier = { factor = 1.15 has_idea = civil_liberties_limited OR = { has_idea = public_safety_central_law_office has_idea = public_safety_secret_police } }
+		modifier = { factor = 1.1 has_idea = civil_liberties_limited has_idea = public_safety_subsidized_agencies }
+		modifier = { factor = 0.3 has_idea = fifth_estate_social_democrat1 social_democrat > 0.149 }
+		modifier = { factor = 0.3 has_idea = fifth_estate_social_democrat2 social_democrat > 0.199 }
+		modifier = { factor = 0.3 has_idea = fifth_estate_social_democrat3 social_democrat > 0.249 }
+		modifier = { factor = 0.3 has_idea = fifth_estate_social_democrat4 social_democrat > 0.299 }
+	}
+	
+	immediate = {
+		set_country_flag = NVX_flag_fifth_estate_social_democrat
+		if = {
+			limit = { NOT = { has_country_flag = NVX_estate_natural_changes_hide } }
+			country_event = { id = nvx_fifth_estates.25 }
+		}
+		if = {
+			limit = { has_country_flag = NVX_estate_natural_changes_hide }
+			fifth_estate_targeted_total_increase = yes
+		}
+	}
+}
+
+country_event = { #Fifth estate natural decrease social_democrat
+	id = nvx_fifth_estates.18
+	hidden = yes
+	
+	trigger = {
+		NOT = { has_global_flag = sandbox_disable_natural_estate_drift }
+		OR = {
+			AND = {
+				social_democrat < 0.05
+				has_social_democrat_fifth_estate = yes
+			}
+			AND = {
+				social_democrat < 0.10
+				OR = {
+					has_idea = fifth_estate_social_democrat2
+					has_idea = fifth_estate_social_democrat3
+					has_idea = fifth_estate_social_democrat4
+					has_idea = fifth_estate_social_democrat5
+				}
+			}
+			AND = {
+				social_democrat < 0.15
+				OR = {
+					has_idea = fifth_estate_social_democrat3
+					has_idea = fifth_estate_social_democrat4
+					has_idea = fifth_estate_social_democrat5
+				}
+			}
+			AND = {
+				social_democrat < 0.20
+				OR = {
+					has_idea = fifth_estate_social_democrat4
+					has_idea = fifth_estate_social_democrat5
+				}
+			}
+			AND = {
+				social_democrat < 0.25
+				has_idea = fifth_estate_social_democrat5
+			}
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 250
+		modifier = { factor = 0.65 has_idea = civil_liberties_totalitarian OR = { has_idea = public_safety_central_law_office has_idea = public_safety_secret_police } }
+		modifier = { factor = 0.7 has_idea = civil_liberties_totalitarian has_idea = public_safety_subsidized_agencies }
+		modifier = { factor = 0.75 has_idea = civil_liberties_restricted OR = { has_idea = public_safety_central_law_office has_idea = public_safety_secret_police } }
+		modifier = { factor = 0.8 has_idea = civil_liberties_restricted has_idea = public_safety_subsidized_agencies }
+		modifier = { factor = 0.85 has_idea = civil_liberties_limited OR = { has_idea = public_safety_central_law_office has_idea = public_safety_secret_police } }
+		modifier = { factor = 0.9 has_idea = civil_liberties_limited has_idea = public_safety_subsidized_agencies }
+		modifier = { factor = 0.3 has_idea = fifth_estate_social_democrat2 social_democrat < 0.05 }
+		modifier = { factor = 0.3 has_idea = fifth_estate_social_democrat3 social_democrat < 0.10 }
+		modifier = { factor = 0.3 has_idea = fifth_estate_social_democrat4 social_democrat < 0.15 }
+		modifier = { factor = 0.3 has_idea = fifth_estate_social_democrat5 social_democrat < 0.20 }
+	}
+	
+	immediate = {
+		set_country_flag = NVX_flag_fifth_estate_social_democrat
+		fifth_estate_targeted_total_decrease = yes
+	}
+}
+
+country_event = { #Fifth estate natural increase progressive
+	id = nvx_fifth_estates.19
+	hidden = yes
+	
+	trigger = {
+		NOT = { has_global_flag = sandbox_disable_natural_estate_drift }
+		has_progressive_fourth_estate = no
+		OR = {
+			AND = {
+				progressive > 0.049
+				has_progressive_fifth_estate = no
+			}
+			AND = {
+				progressive > 0.099
+				NOT = {
+					OR = {
+						has_idea = fifth_estate_progressive2
+						has_idea = fifth_estate_progressive3
+						has_idea = fifth_estate_progressive4
+						has_idea = fifth_estate_progressive5
+					}
+				}
+			}
+			AND = {
+				progressive > 0.149
+				NOT = {
+					OR = {
+						has_idea = fifth_estate_progressive3
+						has_idea = fifth_estate_progressive4
+						has_idea = fifth_estate_progressive5
+					}
+				}
+			}
+			AND = {
+				progressive > 0.199
+				NOT = {
+					OR = {
+						has_idea = fifth_estate_progressive4
+						has_idea = fifth_estate_progressive5
+					}
+				}
+			}
+			AND = {
+				progressive > 0.249
+				NOT = {
+					has_idea = fifth_estate_progressive5
+				}
+			}
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 250
+		modifier = { factor = 0.5 has_stability < 0.2 }
+		modifier = { factor = 0.5 has_stability < 0.4 }
+		modifier = { factor = 1.5 has_stability > 0.74 }
+		modifier = { factor = 0.65 has_idea = national_development_developed }
+		modifier = { factor = 1.35 has_idea = national_development_undeveloped }
+		modifier = { factor = 1.35 has_idea = civil_liberties_totalitarian OR = { has_idea = public_safety_central_law_office has_idea = public_safety_secret_police } }
+		modifier = { factor = 1.3 has_idea = civil_liberties_totalitarian has_idea = public_safety_subsidized_agencies }
+		modifier = { factor = 1.25 has_idea = civil_liberties_restricted OR = { has_idea = public_safety_central_law_office has_idea = public_safety_secret_police } }
+		modifier = { factor = 1.2 has_idea = civil_liberties_restricted has_idea = public_safety_subsidized_agencies }
+		modifier = { factor = 1.15 has_idea = civil_liberties_limited OR = { has_idea = public_safety_central_law_office has_idea = public_safety_secret_police } }
+		modifier = { factor = 1.1 has_idea = civil_liberties_limited has_idea = public_safety_subsidized_agencies }
+		modifier = { factor = 0.3 has_idea = fifth_estate_progressive1 progressive > 0.149 }
+		modifier = { factor = 0.3 has_idea = fifth_estate_progressive2 progressive > 0.199 }
+		modifier = { factor = 0.3 has_idea = fifth_estate_progressive3 progressive > 0.249 }
+		modifier = { factor = 0.3 has_idea = fifth_estate_progressive4 progressive > 0.299 }
+	}
+	
+	immediate = {
+		set_country_flag = NVX_flag_fifth_estate_progressive
+		if = {
+			limit = { NOT = { has_country_flag = NVX_estate_natural_changes_hide } }
+			country_event = { id = nvx_fifth_estates.25 }
+		}
+		if = {
+			limit = { has_country_flag = NVX_estate_natural_changes_hide }
+			fifth_estate_targeted_total_increase = yes
+		}
+	}
+}
+
+country_event = { #Fifth estate natural decrease progressive
+	id = nvx_fifth_estates.20
+	hidden = yes
+	
+	trigger = {
+		NOT = { has_global_flag = sandbox_disable_natural_estate_drift }
+		OR = {
+			AND = {
+				progressive < 0.05
+				has_progressive_fifth_estate = yes
+			}
+			AND = {
+				progressive < 0.10
+				OR = {
+					has_idea = fifth_estate_progressive2
+					has_idea = fifth_estate_progressive3
+					has_idea = fifth_estate_progressive4
+					has_idea = fifth_estate_progressive5
+				}
+			}
+			AND = {
+				progressive < 0.15
+				OR = {
+					has_idea = fifth_estate_progressive3
+					has_idea = fifth_estate_progressive4
+					has_idea = fifth_estate_progressive5
+				}
+			}
+			AND = {
+				progressive < 0.20
+				OR = {
+					has_idea = fifth_estate_progressive4
+					has_idea = fifth_estate_progressive5
+				}
+			}
+			AND = {
+				progressive < 0.25
+				has_idea = fifth_estate_progressive5
+			}
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 250
+		modifier = { factor = 0.65 has_idea = civil_liberties_totalitarian OR = { has_idea = public_safety_central_law_office has_idea = public_safety_secret_police } }
+		modifier = { factor = 0.7 has_idea = civil_liberties_totalitarian has_idea = public_safety_subsidized_agencies }
+		modifier = { factor = 0.75 has_idea = civil_liberties_restricted OR = { has_idea = public_safety_central_law_office has_idea = public_safety_secret_police } }
+		modifier = { factor = 0.8 has_idea = civil_liberties_restricted has_idea = public_safety_subsidized_agencies }
+		modifier = { factor = 0.85 has_idea = civil_liberties_limited OR = { has_idea = public_safety_central_law_office has_idea = public_safety_secret_police } }
+		modifier = { factor = 0.9 has_idea = civil_liberties_limited has_idea = public_safety_subsidized_agencies }
+		modifier = { factor = 0.3 has_idea = fifth_estate_progressive2 progressive < 0.05 }
+		modifier = { factor = 0.3 has_idea = fifth_estate_progressive3 progressive < 0.10 }
+		modifier = { factor = 0.3 has_idea = fifth_estate_progressive4 progressive < 0.15 }
+		modifier = { factor = 0.3 has_idea = fifth_estate_progressive5 progressive < 0.20 }
+	}
+	
+	immediate = {
+		set_country_flag = NVX_flag_fifth_estate_progressive
+		fifth_estate_targeted_total_decrease = yes
+	}
+}
+
+country_event = { #Fifth estate natural increase democratic_socialist
+	id = nvx_fifth_estates.21
+	hidden = yes
+	
+	trigger = {
+		NOT = { has_global_flag = sandbox_disable_natural_estate_drift }
+		has_democratic_socialist_fourth_estate = no
+		OR = {
+			AND = {
+				democratic_socialist > 0.049
+				has_democratic_socialist_fifth_estate = no
+			}
+			AND = {
+				democratic_socialist > 0.099
+				NOT = {
+					OR = {
+						has_idea = fifth_estate_democratic_socialist2
+						has_idea = fifth_estate_democratic_socialist3
+						has_idea = fifth_estate_democratic_socialist4
+						has_idea = fifth_estate_democratic_socialist5
+					}
+				}
+			}
+			AND = {
+				democratic_socialist > 0.149
+				NOT = {
+					OR = {
+						has_idea = fifth_estate_democratic_socialist3
+						has_idea = fifth_estate_democratic_socialist4
+						has_idea = fifth_estate_democratic_socialist5
+					}
+				}
+			}
+			AND = {
+				democratic_socialist > 0.199
+				NOT = {
+					OR = {
+						has_idea = fifth_estate_democratic_socialist4
+						has_idea = fifth_estate_democratic_socialist5
+					}
+				}
+			}
+			AND = {
+				democratic_socialist > 0.249
+				NOT = {
+					has_idea = fifth_estate_democratic_socialist5
+				}
+			}
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 250
+		modifier = { factor = 0.5 has_stability < 0.2 }
+		modifier = { factor = 0.5 has_stability < 0.4 }
+		modifier = { factor = 1.5 has_stability > 0.74 }
+		modifier = { factor = 0.65 has_idea = national_development_developed }
+		modifier = { factor = 1.35 has_idea = national_development_undeveloped }
+		modifier = { factor = 1.35 has_idea = civil_liberties_totalitarian OR = { has_idea = public_safety_central_law_office has_idea = public_safety_secret_police } }
+		modifier = { factor = 1.3 has_idea = civil_liberties_totalitarian has_idea = public_safety_subsidized_agencies }
+		modifier = { factor = 1.25 has_idea = civil_liberties_restricted OR = { has_idea = public_safety_central_law_office has_idea = public_safety_secret_police } }
+		modifier = { factor = 1.2 has_idea = civil_liberties_restricted has_idea = public_safety_subsidized_agencies }
+		modifier = { factor = 1.15 has_idea = civil_liberties_limited OR = { has_idea = public_safety_central_law_office has_idea = public_safety_secret_police } }
+		modifier = { factor = 1.1 has_idea = civil_liberties_limited has_idea = public_safety_subsidized_agencies }
+		modifier = { factor = 0.3 has_idea = fifth_estate_democratic_socialist1 democratic_socialist > 0.149 }
+		modifier = { factor = 0.3 has_idea = fifth_estate_democratic_socialist2 democratic_socialist > 0.199 }
+		modifier = { factor = 0.3 has_idea = fifth_estate_democratic_socialist3 democratic_socialist > 0.249 }
+		modifier = { factor = 0.3 has_idea = fifth_estate_democratic_socialist4 democratic_socialist > 0.299 }
+	}
+	
+	immediate = {
+		set_country_flag = NVX_flag_fifth_estate_democratic_socialist
+		if = {
+			limit = { NOT = { has_country_flag = NVX_estate_natural_changes_hide } }
+			country_event = { id = nvx_fifth_estates.25 }
+		}
+		if = {
+			limit = { has_country_flag = NVX_estate_natural_changes_hide }
+			fifth_estate_targeted_total_increase = yes
+		}
+	}
+}
+
+country_event = { #Fifth estate natural decrease democratic_socialist
+	id = nvx_fifth_estates.22
+	hidden = yes
+	
+	trigger = {
+		NOT = { has_global_flag = sandbox_disable_natural_estate_drift }
+		OR = {
+			AND = {
+				democratic_socialist < 0.05
+				has_democratic_socialist_fifth_estate = yes
+			}
+			AND = {
+				democratic_socialist < 0.10
+				OR = {
+					has_idea = fifth_estate_democratic_socialist2
+					has_idea = fifth_estate_democratic_socialist3
+					has_idea = fifth_estate_democratic_socialist4
+					has_idea = fifth_estate_democratic_socialist5
+				}
+			}
+			AND = {
+				democratic_socialist < 0.15
+				OR = {
+					has_idea = fifth_estate_democratic_socialist3
+					has_idea = fifth_estate_democratic_socialist4
+					has_idea = fifth_estate_democratic_socialist5
+				}
+			}
+			AND = {
+				democratic_socialist < 0.20
+				OR = {
+					has_idea = fifth_estate_democratic_socialist4
+					has_idea = fifth_estate_democratic_socialist5
+				}
+			}
+			AND = {
+				democratic_socialist < 0.25
+				has_idea = fifth_estate_democratic_socialist5
+			}
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 250
+		modifier = { factor = 0.65 has_idea = civil_liberties_totalitarian OR = { has_idea = public_safety_central_law_office has_idea = public_safety_secret_police } }
+		modifier = { factor = 0.7 has_idea = civil_liberties_totalitarian has_idea = public_safety_subsidized_agencies }
+		modifier = { factor = 0.75 has_idea = civil_liberties_restricted OR = { has_idea = public_safety_central_law_office has_idea = public_safety_secret_police } }
+		modifier = { factor = 0.8 has_idea = civil_liberties_restricted has_idea = public_safety_subsidized_agencies }
+		modifier = { factor = 0.85 has_idea = civil_liberties_limited OR = { has_idea = public_safety_central_law_office has_idea = public_safety_secret_police } }
+		modifier = { factor = 0.9 has_idea = civil_liberties_limited has_idea = public_safety_subsidized_agencies }
+		modifier = { factor = 0.3 has_idea = fifth_estate_democratic_socialist2 democratic_socialist < 0.05 }
+		modifier = { factor = 0.3 has_idea = fifth_estate_democratic_socialist3 democratic_socialist < 0.10 }
+		modifier = { factor = 0.3 has_idea = fifth_estate_democratic_socialist4 democratic_socialist < 0.15 }
+		modifier = { factor = 0.3 has_idea = fifth_estate_democratic_socialist5 democratic_socialist < 0.20 }
+	}
+	
+	immediate = {
+		set_country_flag = NVX_flag_fifth_estate_democratic_socialist
+		fifth_estate_targeted_total_decrease = yes
+	}
+}
+
+country_event = { #Fifth estate natural increase communist
+	id = nvx_fifth_estates.23
+	hidden = yes
+	
+	trigger = {
+		NOT = { has_global_flag = sandbox_disable_natural_estate_drift }
+		has_communist_fourth_estate = no
+		OR = {
+			AND = {
+				communist > 0.049
+				has_communist_fifth_estate = no
+			}
+			AND = {
+				communist > 0.099
+				NOT = {
+					OR = {
+						has_idea = fifth_estate_communist2
+						has_idea = fifth_estate_communist3
+						has_idea = fifth_estate_communist4
+						has_idea = fifth_estate_communist5
+					}
+				}
+			}
+			AND = {
+				communist > 0.149
+				NOT = {
+					OR = {
+						has_idea = fifth_estate_communist3
+						has_idea = fifth_estate_communist4
+						has_idea = fifth_estate_communist5
+					}
+				}
+			}
+			AND = {
+				communist > 0.199
+				NOT = {
+					OR = {
+						has_idea = fifth_estate_communist4
+						has_idea = fifth_estate_communist5
+					}
+				}
+			}
+			AND = {
+				communist > 0.249
+				NOT = {
+					has_idea = fifth_estate_communist5
+				}
+			}
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 250
+		modifier = { factor = 0.5 has_stability < 0.2 }
+		modifier = { factor = 0.5 has_stability < 0.4 }
+		modifier = { factor = 1.5 has_stability > 0.74 }
+		modifier = { factor = 0.65 has_idea = national_development_developed }
+		modifier = { factor = 1.35 has_idea = national_development_undeveloped }
+		modifier = { factor = 1.35 has_idea = civil_liberties_totalitarian OR = { has_idea = public_safety_central_law_office has_idea = public_safety_secret_police } }
+		modifier = { factor = 1.3 has_idea = civil_liberties_totalitarian has_idea = public_safety_subsidized_agencies }
+		modifier = { factor = 1.25 has_idea = civil_liberties_restricted OR = { has_idea = public_safety_central_law_office has_idea = public_safety_secret_police } }
+		modifier = { factor = 1.2 has_idea = civil_liberties_restricted has_idea = public_safety_subsidized_agencies }
+		modifier = { factor = 1.15 has_idea = civil_liberties_limited OR = { has_idea = public_safety_central_law_office has_idea = public_safety_secret_police } }
+		modifier = { factor = 1.1 has_idea = civil_liberties_limited has_idea = public_safety_subsidized_agencies }
+		modifier = { factor = 0.3 has_idea = fifth_estate_communist1 communist > 0.149 }
+		modifier = { factor = 0.3 has_idea = fifth_estate_communist2 communist > 0.199 }
+		modifier = { factor = 0.3 has_idea = fifth_estate_communist3 communist > 0.249 }
+		modifier = { factor = 0.3 has_idea = fifth_estate_communist4 communist > 0.299 }
+	}
+	
+	immediate = {
+		set_country_flag = NVX_flag_fifth_estate_communist
+		if = {
+			limit = { NOT = { has_country_flag = NVX_estate_natural_changes_hide } }
+			country_event = { id = nvx_fifth_estates.25 }
+		}
+		if = {
+			limit = { has_country_flag = NVX_estate_natural_changes_hide }
+			fifth_estate_targeted_total_increase = yes
+		}
+	}
+}
+
+country_event = { #Fifth estate natural decrease communist
+	id = nvx_fifth_estates.24
+	hidden = yes
+	
+	trigger = {
+		NOT = { has_global_flag = sandbox_disable_natural_estate_drift }
+		OR = {
+			AND = {
+				communist < 0.05
+				has_communist_fifth_estate = yes
+			}
+			AND = {
+				communist < 0.10
+				OR = {
+					has_idea = fifth_estate_communist2
+					has_idea = fifth_estate_communist3
+					has_idea = fifth_estate_communist4
+					has_idea = fifth_estate_communist5
+				}
+			}
+			AND = {
+				communist < 0.15
+				OR = {
+					has_idea = fifth_estate_communist3
+					has_idea = fifth_estate_communist4
+					has_idea = fifth_estate_communist5
+				}
+			}
+			AND = {
+				communist < 0.20
+				OR = {
+					has_idea = fifth_estate_communist4
+					has_idea = fifth_estate_communist5
+				}
+			}
+			AND = {
+				communist < 0.25
+				has_idea = fifth_estate_communist5
+			}
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 250
+		modifier = { factor = 0.65 has_idea = civil_liberties_totalitarian OR = { has_idea = public_safety_central_law_office has_idea = public_safety_secret_police } }
+		modifier = { factor = 0.7 has_idea = civil_liberties_totalitarian has_idea = public_safety_subsidized_agencies }
+		modifier = { factor = 0.75 has_idea = civil_liberties_restricted OR = { has_idea = public_safety_central_law_office has_idea = public_safety_secret_police } }
+		modifier = { factor = 0.8 has_idea = civil_liberties_restricted has_idea = public_safety_subsidized_agencies }
+		modifier = { factor = 0.85 has_idea = civil_liberties_limited OR = { has_idea = public_safety_central_law_office has_idea = public_safety_secret_police } }
+		modifier = { factor = 0.9 has_idea = civil_liberties_limited has_idea = public_safety_subsidized_agencies }
+		modifier = { factor = 0.3 has_idea = fifth_estate_communist2 communist < 0.05 }
+		modifier = { factor = 0.3 has_idea = fifth_estate_communist3 communist < 0.10 }
+		modifier = { factor = 0.3 has_idea = fifth_estate_communist4 communist < 0.15 }
+		modifier = { factor = 0.3 has_idea = fifth_estate_communist5 communist < 0.20 }
+	}
+	
+	immediate = {
+		set_country_flag = NVX_flag_fifth_estate_communist
+		fifth_estate_targeted_total_decrease = yes
+	}
+}
+
+country_event = { #Fifth estate increase
+	id = nvx_fifth_estates.25
+	title = nvx_fifth_estates.25.t
+	desc = nvx_fifth_estates.25.d
+	picture = GFX_report_event_fifth_estate_increase
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = nvx_estates.o.carryon
+		fifth_estate_targeted_total_increase = yes
+		
+		ai_chance = {
+			factor = 10
+			
+			modifier = {
+				factor = 0.8
+				has_idea = civil_liberties_limited
+				OR = {
+					AND = {
+						NVX_has_government_system_democratic = yes
+						OR = { #this needs to be money and income
+							has_political_power > 50
+							political_power_daily > 0.39
+						}
+					}
+					AND = {
+						NVX_has_government_system_authoritarian = yes
+						OR = {
+							has_political_power > 50
+							political_power_daily > 0.39
+						}
+					}
+				}
+			}
+			modifier = {
+				factor = 0.5
+				has_idea = civil_liberties_restricted
+				OR = {
+					AND = {
+						NVX_has_government_system_democratic = yes
+						OR = { #this needs to be money and income
+							has_political_power > 50
+							political_power_daily > 0.39
+						}
+					}
+					AND = {
+						NVX_has_government_system_authoritarian = yes
+						OR = {
+							has_political_power > 50
+							political_power_daily > 0.39
+						}
+					}
+				}
+			}
+			modifier = {
+				factor = 0
+				has_idea = civil_liberties_totalitarian
+				OR = {
+					AND = {
+						NVX_has_government_system_democratic = yes
+						OR = { #this needs to be money and income
+							has_political_power > 50
+							political_power_daily > 0.39
+						}
+					}
+					AND = {
+						NVX_has_government_system_authoritarian = yes
+						OR = {
+							has_political_power > 50
+							political_power_daily > 0.39
+						}
+					}
+				}
+			}
+		}
+	}
+	
+	option = {
+		name = nvx_estates.o.silence
+		fifth_estate_targeted_silence_activist = yes
+		if = {
+			limit = { NVX_has_government_system_democratic = yes }
+			add_political_power = -100 #this needs to be money
+		}
+		if = {
+			limit = { NVX_has_government_system_authoritarian = yes }
+			add_political_power = -100
+		}
+		
+		trigger = {
+			fifth_estate_has_targeted_flag = yes
+			has_political_power > -80
+			OR = {
+				has_idea = civil_liberties_limited
+				has_idea = civil_liberties_restricted
+				has_idea = civil_liberties_totalitarian
+			}
+		}
+		
+		ai_chance = {
+			factor = 2
+			
+			modifier = {
+				factor = 4
+				has_idea = civil_liberties_limited
+				OR = {
+					AND = {
+						NVX_has_government_system_democratic = yes
+						OR = { #this needs to be money and income
+							has_political_power > 50
+							political_power_daily > 0.39
+						}
+					}
+					AND = {
+						NVX_has_government_system_authoritarian = yes
+						OR = {
+							has_political_power > 50
+							political_power_daily > 0.39
+						}
+					}
+				}
+			}
+			modifier = {
+				factor = 6
+				has_idea = civil_liberties_restricted
+				OR = {
+					AND = {
+						NVX_has_government_system_democratic = yes
+						OR = { #this needs to be money and income
+							has_political_power > 50
+							political_power_daily > 0.39
+						}
+					}
+					AND = {
+						NVX_has_government_system_authoritarian = yes
+						OR = {
+							has_political_power > 50
+							political_power_daily > 0.39
+						}
+					}
+				}
+			}
+			modifier = {
+				factor = 8
+				has_idea = civil_liberties_totalitarian
+				OR = {
+					AND = {
+						NVX_has_government_system_democratic = yes
+						OR = { #this needs to be money and income
+							has_political_power > 50
+							political_power_daily > 0.39
+						}
+					}
+					AND = {
+						NVX_has_government_system_authoritarian = yes
+						OR = {
+							has_political_power > 50
+							political_power_daily > 0.39
+						}
+					}
+				}
+			}
+		}
+	}
+	
+	option = {
+		name = nvx_estates.o.execute
+		fifth_estate_targeted_execute_activist = yes
+		if = {
+			limit = { NVX_has_government_system_democratic = yes }
+			add_political_power = -150 #this needs to be money
+		}
+		if = {
+			limit = { NVX_has_government_system_authoritarian = yes }
+			add_political_power = -150
+		}
+		
+		trigger = {
+			has_idea = public_safety_secret_police
+			fifth_estate_has_targeted_flag = yes
+			has_political_power > -80
+			is_puppet = no
+			is_subject = no
+		}
+		
+		
+		ai_chance = {
+			factor = 2
+			
+			modifier = {
+				factor = 8
+				has_idea = civil_liberties_restricted
+				OR = {
+					AND = {
+						NVX_has_government_system_democratic = yes
+						OR = { #this needs to be money and income
+							has_political_power > 50
+							political_power_daily > 0.39
+						}
+					}
+					AND = {
+						NVX_has_government_system_authoritarian = yes
+						OR = {
+							has_political_power > 50
+							political_power_daily > 0.39
+						}
+					}
+				}
+			}
+			modifier = {
+				factor = 10
+				has_idea = civil_liberties_totalitarian
+				OR = {
+					AND = {
+						NVX_has_government_system_democratic = yes
+						OR = { #this needs to be money and income
+							has_political_power > 50
+							political_power_daily > 0.39
+						}
+					}
+					AND = {
+						NVX_has_government_system_authoritarian = yes
+						OR = {
+							has_political_power > 50
+							political_power_daily > 0.39
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+country_event = { #Fifth estate silence success
+	id = nvx_fifth_estates.26
+	title = nvx_fifth_estates.26.t
+	desc = nvx_fifth_estates.26.d
+	picture = GFX_report_event_fifth_estate_silence_success
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = nvx_estates.o.good
+		fifth_estate_targeted_total_remove_flag = yes
+		
+		ai_chance = {
+			factor = 10
+		}
+	}
+}
+
+country_event = { #Fifth estate silence failure
+	id = nvx_fifth_estates.27
+	title = nvx_fifth_estates.27.t
+	desc = nvx_fifth_estates.27.d
+	picture = GFX_report_event_fifth_estate_increase
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = nvx_estates.o.failed
+		fifth_estate_targeted_total_increase = yes
+		add_stability = -0.05
+		
+		ai_chance = {
+			factor = 10
+		}
+	}
+}
+
+country_event = { #Fifth estate execute success
+	id = nvx_fifth_estates.28
+	title = nvx_fifth_estates.28.t
+	desc = nvx_fifth_estates.28.d
+	picture = GFX_report_event_fifth_estate_assassination_success
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = nvx_estates.o.good
+		fifth_estate_targeted_total_remove_flag = yes
+		add_manpower = -1
+		
+		ai_chance = {
+			factor = 10
+		}
+	}
+}
+
+country_event = { #Fifth estate execute failure
+	id = nvx_fifth_estates.29
+	title = nvx_fifth_estates.29.t
+	desc = nvx_fifth_estates.29.d
+	picture = GFX_report_event_fifth_estate_increase
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = nvx_estates.o.failed
+		fifth_estate_targeted_total_increase = yes
+		add_stability = -0.10
+		
+		ai_chance = {
+			factor = 10
+		}
+	}
+}
+
+## ABERRANT SHIFTS ##
+country_event = { #Random increase
+	id = nvx_fifth_estates.30
+	hidden = yes
+	
+	trigger = {
+		NOT = { has_global_flag = sandbox_disable_aberrant_estate_drift }
+		social_media_blackout_trigger = no
+	}
+	
+	mean_time_to_happen = {
+		days = 1500
+		modifier = { factor = 1.5 has_ideologue_to_reduce_aberrant_shifts = yes }
+		modifier = { factor = 0.5 has_stability < 0.2 }
+		modifier = { factor = 0.5 has_stability < 0.4 }
+		modifier = { factor = 1.5 has_stability > 0.74 }
+		modifier = { factor = 0.75 has_idea = national_development_developed }
+		modifier = { factor = 1.25 has_idea = national_development_undeveloped }
+		modifier = { factor = 2 has_idea = civil_liberties_totalitarian OR = { has_idea = public_safety_central_law_office has_idea = public_safety_secret_police } }
+		modifier = { factor = 1.5 has_idea = civil_liberties_totalitarian has_idea = public_safety_subsidized_agencies }
+		modifier = { factor = 1.5 has_idea = civil_liberties_restricted OR = { has_idea = public_safety_central_law_office has_idea = public_safety_secret_police } }
+		modifier = { factor = 1.3 has_idea = civil_liberties_restricted has_idea = public_safety_subsidized_agencies }
+		modifier = { factor = 1.15 has_idea = civil_liberties_limited OR = { has_idea = public_safety_central_law_office has_idea = public_safety_secret_police } }
+		modifier = { factor = 1.1 has_idea = civil_liberties_limited has_idea = public_safety_subsidized_agencies }
+	}
+	
+	option = {
+		fifth_estate_aberrant_increase_effect = yes
+	}
+}
+
+country_event = { #Random decrease
+	id = nvx_fifth_estates.31
+	hidden = yes
+	
+	trigger = {
+		NOT = { has_global_flag = sandbox_disable_aberrant_estate_drift }
+	}
+	
+	mean_time_to_happen = {
+		days = 1500
+		modifier = { factor = 1.5 has_ideologue_to_reduce_aberrant_shifts = yes }
+		modifier = { factor = 1.5 has_stability < 0.2 }
+		modifier = { factor = 1.5 has_stability < 0.4 }
+		modifier = { factor = 0.75 has_stability > 0.74 }
+		modifier = { factor = 0.8 has_idea = civil_liberties_totalitarian OR = { has_idea = public_safety_central_law_office has_idea = public_safety_secret_police } }
+		modifier = { factor = 0.9 has_idea = civil_liberties_totalitarian has_idea = public_safety_subsidized_agencies }
+		modifier = { factor = 0.8 has_idea = civil_liberties_restricted OR = { has_idea = public_safety_central_law_office has_idea = public_safety_secret_police } }
+		modifier = { factor = 0.9 has_idea = civil_liberties_restricted has_idea = public_safety_subsidized_agencies }
+		modifier = { factor = 0.8 has_idea = civil_liberties_limited OR = { has_idea = public_safety_central_law_office has_idea = public_safety_secret_police } }
+		modifier = { factor = 0.9 has_idea = civil_liberties_limited has_idea = public_safety_subsidized_agencies }
+	}
+	
+	option = {
+		fifth_estate_aberrant_decrease_effect = yes
+	}
+}
+
+# Written by E. Wolfe #

@@ -1,0 +1,55 @@
+decisions_USA = {
+	
+	dodd_frank_plan = {
+		available = {
+			
+		}
+		visible = {
+			NOT = { has_completed_focus = USA_deregulation }
+			has_completed_focus = USA_dodd_frank_plan
+		}
+		complete_effect = {
+			add_stability = 0.03
+			add_war_support = -0.02
+			add_popularity = {
+				ideology = social_liberal
+				popularity = 0.03
+			}
+		}
+		
+		icon = democracy
+		
+		fire_only_once = yes
+		cost = 30
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	
+	select_the_king_of_america = {
+		visible = {
+			is_subject = no
+			monarchist > 0.02
+			NOT = { has_country_flag = the_king_of_america }
+			is_ai = no
+		}
+		available = {
+			has_government = monarchist
+		}
+		complete_effect = {
+			set_country_flag = the_king_of_america
+			country_event = usa_decision.1
+		}
+		
+		icon = monarchy
+		
+		fire_only_once = yes
+		cost = 60
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+
+}

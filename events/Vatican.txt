@@ -1,0 +1,43 @@
+﻿add_namespace = vatican
+
+#Lateran Treaties
+country_event = {
+	id = vatican.1
+	title = vatican.1.t
+	desc = vatican.1.d
+	picture = GFX_report_event_political_deal2
+	
+	is_triggered_only = yes
+		
+	immediate = {
+	    ITA = {
+		    set_country_flag = HLS_lateran_treaties
+		}
+	}
+	
+	option = { #Vatican accepts
+	    name = vatican.1.o1
+	    add_opinion_modifier = {
+			target = ITA
+			modifier = lateran_treaties_accepted
+		}
+		ITA = { country_event = italy.1 }
+		
+		ai_chance = { 
+		    factor = 95
+		}
+	}
+	
+	option = { #Vatican refuses
+	    name = vatican.1.o2
+	    add_opinion_modifier = {
+			target = ITA
+			modifier = lateran_treaties_refused
+		}
+		ITA = { country_event = italy.2 }
+		
+		ai_chance = { 
+		    factor = 5
+		}
+	}
+}

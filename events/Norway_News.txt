@@ -1,0 +1,30 @@
+﻿add_namespace = norway_news
+
+#Royal Wedding between [Root] and Norway
+news_event = {
+	id = norway_news.1
+	title = norway_news.1.t
+	desc = norway_news.1.d
+	picture = GFX_news_event_royal_wedding
+	
+	is_triggered_only = yes
+	major = yes
+	
+	option = {
+		name = norway_news.1.o1
+		trigger = {
+			NOT = { tag = ROOT }
+			NOT = { tag = NOR }
+		}
+	}
+	
+	option = {
+		name = norway_news.1.o2
+		trigger = {
+			OR = {
+				tag = ROOT
+				tag = NOR
+			}
+		}
+	}
+}

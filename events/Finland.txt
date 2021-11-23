@@ -1,0 +1,376 @@
+﻿add_namespace = finland
+
+#Conscription Reform
+country_event = {
+	id = finland.1
+	title = finland.1.t
+	desc = finland.1.d
+	picture = GFX_report_event_finnish_flag
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = finland.1.o1
+		add_stability = -0.01
+		
+		ai_chance = {
+			factor = 30
+		}
+	}
+	
+	option = {
+		name = finland.1.o2
+		add_political_power = 200
+		add_stability = 0.05
+		add_ideas = volunteer_only
+		
+		ai_chance = {
+			factor = 10
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+	}
+	
+	option = {
+		name = finland.1.o3
+		add_political_power = -200
+		add_stability = -0.05
+		add_ideas = extensive_conscription
+		
+		ai_chance = {
+			factor = 10
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+	}
+}
+
+#Timber Export Policy
+country_event = {
+	id = finland.2
+	title = finland.2.t
+	desc = finland.2.d
+	picture = GFX_report_event_finnish_flag
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = finland.2.o1
+		add_political_power = 150
+		add_stability = 0.02
+		ai_chance = {
+			factor = 10
+		}
+	}
+	
+	option = {
+		name = finland.2.o2
+		add_stability = 0.03
+		ai_chance = {
+			factor = 0
+		}
+	}
+}
+
+#Expansion of the Financial Ministry
+country_event = {
+	id = finland.3
+	title = finland.3.t
+	desc = finland.3.d
+	picture = GFX_report_event_finnish_flag
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = finland.3.o1
+		add_political_power = -100
+		add_stability = 0.02
+		if = {
+			limit = { has_full_control_of_state = 111 }
+			111 = {	#Uusimaa
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		ai_chance = {
+			factor = 10
+		}
+	}
+	
+	option = {
+		name = finland.3.o2
+		add_political_power = 100
+		add_popularity = { ideology = market_liberal popularity = 0.03 }
+		ai_chance = {
+			factor = 0
+		}
+	}
+}
+
+#Adopt an Economic Doctrine
+country_event = {
+	id = finland.4
+	title = finland.4.t
+	desc = finland.4.d
+	picture = GFX_report_event_finnish_flag
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = finland.4.o1
+		add_political_power = -50
+		if = {
+			limit = { has_full_control_of_state = 111 }
+			111 = {	#Uusimaa
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		ai_chance = {
+			factor = 0
+		}
+	}
+	
+	option = {
+		name = finland.4.o2
+		add_stability = 0.02
+		if = {
+			limit = { is_EU_member = yes }
+			every_country = {
+				limit = { is_EU_member = yes NOT = { original_tag = FIN } }
+				increase_trade_influence_by_1 = yes
+			}
+		}
+		ai_chance = {
+			factor = 10
+		}
+	}
+}
+
+#Adopt a Foreign Policy Doctrine
+country_event = {
+	id = finland.5
+	title = finland.5.t
+	desc = finland.5.d
+	picture = GFX_report_event_finnish_flag
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = finland.5.o1
+		add_stability = 0.03
+		ai_chance = {
+			factor = 0
+		}
+	}
+	
+	option = {
+		name = finland.5.o2
+		add_political_power = -50
+		swap_ideas = {
+			remove_idea = government_expansion3
+			add_idea = government_expansion5
+		}
+		ai_chance = {
+			factor = 10
+		}
+	}
+}
+
+#Focus of the Ministry of Defense
+country_event = {
+	id = finland.6
+	title = finland.6.t
+	desc = finland.6.d
+	picture = GFX_report_event_finnish_flag
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = finland.6.o1
+		army_experience = 20
+		add_stability = 0.01
+		ai_chance = {
+			factor = 10
+		}
+	}
+	
+	option = {
+		name = finland.6.o2
+		navy_experience = 15
+		air_experience = 15
+		ai_chance = {
+			factor = 0
+		}
+	}
+}
+
+#Future of the Finnish Monarchy
+country_event = {
+	id = finland.7
+	title = finland.7.t
+	desc = finland.7.d
+	picture = GFX_report_event_finnish_flag
+	
+	is_triggered_only = yes
+	
+	#Empower the monarchy
+	option = {
+		name = finland.7.o1
+		create_country_leader = {
+			name = "Donatus von Hessen"
+			ideology = absolute_monarchist
+			picture = "Donatus_von_Hessen.dds"
+		}
+		set_party_name = {
+			ideology = monarchist
+			name = "Hesse-Finland"
+			long_name = "House of Hesse-Finland"
+		}
+		add_stability = -0.10
+		add_popularity = {
+			ideology = monarchist
+			popularity = 0.15
+		}
+		set_politics = {
+			ruling_party = monarchist
+			elections_allowed = yes
+		}
+		add_stability = -0.1
+		GER = {
+			add_opinion_modifier = {
+				target = FIN
+				modifier = friendly_monarchy
+			}
+		}
+		add_ai_strategy = {
+			type = befriend
+			id = GER
+			value = 25
+		}
+		ai_chance = {
+			factor = 0
+		}
+	}
+	
+	#Maintain democracy
+	option = {
+		name = finland.7.o2
+		add_ideas = FIN_king_donatus
+		GER = {
+			add_opinion_modifier = {
+				target = FIN
+				modifier = friendly_monarchy
+			}
+		}
+		hidden_effect = {
+			create_country_leader = {
+				name = "Donatus von Hessen"
+				ideology = absolute_monarchist
+				picture = "Donatus_von_Hessen.dds"
+			}
+			set_party_name = {
+				ideology = monarchist
+				name = "House of Hesse-Finland"
+			}
+		}
+		ai_chance = {
+			factor = 10
+		}
+	}
+}
+
+#Finland offers CSTO membership... at a price
+country_event = {
+	id = finland.8
+	title = finland.8.t
+	desc = finland.8.d
+	picture = GFX_report_event_finnish_flag
+	
+	is_triggered_only = yes
+	
+	#We accept.
+	option = {
+		name = finland.8.o1
+		add_to_faction = FIN
+		FIN = { set_country_flag = seeks_russian_alliance }
+		FIN = { 
+			country_event = diplomatic_response.1
+		}
+		FIN = {
+			set_state_owner = 722
+			set_state_owner = 147
+			set_state_owner = 146
+		}
+		remove_state_core = 722
+		remove_state_core = 147
+		remove_state_core = 146
+		ai_chance = {
+			factor = 0
+		}
+	}
+	
+	#What? Are you crazy?!
+	option = {
+		name = finland.8.o2
+		FIN = {
+			add_opinion_modifier = {
+				target = SOV
+				modifier = resisted_territorial_ambition
+			}
+			country_event = diplomatic_response.2
+		}
+		ai_chance = {
+			factor = 10
+		}
+	}
+}
+
+#Mutual Defensive Agreement between Sweden and Finland
+country_event = {
+	id = finland.9
+	title = finland.9.t
+	desc = finland.9.d
+	picture = GFX_report_event_finnish_flag
+	
+	is_triggered_only = yes
+	
+	option = {
+		add_political_power = 20
+		FIN = { 
+			country_event = diplomatic_response.1
+		}
+		give_guarantee = FIN
+		ai_chance = {
+			factor = 10
+		}
+	}
+	
+	option = {
+		FIN = { 
+			country_event = diplomatic_response.2
+		}
+		FIN = {
+			diplomatic_relation = {
+				country = SWE
+				relation = guarantee
+				active = no
+			}
+		}
+		ai_chance = {
+			factor = 0
+		}
+	}
+}

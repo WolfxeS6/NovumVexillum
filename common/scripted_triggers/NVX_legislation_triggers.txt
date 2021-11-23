@@ -1,0 +1,133 @@
+# no pref #
+NVX_nat_pref_demo_nopref = {
+	NVX_has_government_ideology_democratic = yes
+	has_country_flag = NVX_pref_start_auth
+}
+
+NVX_nat_pref_auth_nopref = {
+	NVX_has_government_ideology_authoritarian = yes
+	has_country_flag = NVX_pref_start_demo
+}
+
+# public safety #
+NVX_pref_public_safety_local_law_enforcement = {
+	NVX_has_government_ideology_democratic = yes
+	num_of_civilian_factories < 21
+	is_major = no
+}
+
+NVX_pref_public_safety_subsidized_agencies = {
+	NVX_has_government_ideology_democratic = yes
+	num_of_civilian_factories > 20
+	is_major = no
+}
+
+NVX_pref_public_safety_central_law_office = {
+	OR = {
+		AND = {
+			NVX_has_government_ideology_democratic = yes
+			has_country_flag = NVX_pref_demo_safety_central_law_office
+		}
+		AND = {
+			NVX_has_government_ideology_authoritarian = yes
+			has_country_flag = NVX_pref_auth_safety_central_law_office
+		}
+		AND = {
+			has_elections = no
+			has_government = monarchist
+			NOT = { has_country_flag = NVX_pref_auth_safety_secret_police }
+		}
+		AND = {
+			NVX_has_government_ideology_authoritarian = yes
+			NOT = { has_government = monarchist }
+			is_major = no
+		}
+		is_major = yes
+	}
+}
+
+NVX_pref_public_safety_secret_police = {
+	OR = {
+		AND = {
+			NVX_has_government_ideology_democratic = yes
+			has_country_flag = NVX_pref_demo_safety_secret_police
+		}
+		AND = {
+			NVX_has_government_ideology_authoritarian = yes
+			has_country_flag = NVX_pref_auth_safety_secret_police
+		}
+		AND = {
+			NVX_has_government_ideology_authoritarian = yes
+			NOT = { has_government = monarchist }
+			is_major = yes
+		}
+	}
+}
+
+# civil liberties #
+
+NVX_pref_civil_liberties_free = {
+	OR = {
+		AND = {
+			NVX_has_government_ideology_democratic = yes
+			has_country_flag = NVX_pref_demo_civil_liberties_free
+		}
+		AND = {
+			NVX_has_government_ideology_authoritarian = yes
+			has_country_flag = NVX_pref_demo_civil_liberties_free
+		}
+	}
+}
+
+NVX_pref_civil_liberties_limited = {
+	OR = {
+		AND = {
+			NVX_has_government_ideology_democratic = yes
+			has_country_flag = NVX_pref_demo_civil_liberties_limited
+		}
+		AND = {
+			NVX_has_government_ideology_authoritarian = yes
+			has_country_flag = NVX_pref_auth_civil_liberties_limited
+		}
+		AND = {
+			NVX_has_government_ideology_democratic = yes
+			has_country_flag = NVX_pref_start_auth
+		}
+	}
+}
+
+NVX_pref_civil_liberties_restricted = {
+	OR = {
+		AND = {
+			NVX_has_government_ideology_democratic = yes
+			has_country_flag = NVX_pref_demo_civil_liberties_restricted
+		}
+		AND = {
+			NVX_has_government_ideology_authoritarian = yes
+			has_country_flag = NVX_pref_auth_civil_liberties_restricted
+		}
+		AND = {
+			has_elections = no
+			has_government = monarchist
+			has_country_flag = NVX_pref_start_demo
+		}
+	}
+}
+
+NVX_pref_civil_liberties_totalitarian = {
+	OR = {
+		AND = {
+			NVX_has_government_ideology_democratic = yes
+			has_country_flag = NVX_pref_demo_civil_liberties_totalitarian
+		}
+		AND = {
+			NVX_has_government_ideology_authoritarian = yes
+			has_country_flag = NVX_pref_auth_civil_liberties_totalitarian
+		}
+		AND = {
+			NVX_has_government_ideology_authoritarian = yes
+			NOT = { has_government = monarchist }
+			has_country_flag = NVX_pref_start_demo
+		}
+	}
+}

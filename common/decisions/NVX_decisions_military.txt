@@ -1,0 +1,553 @@
+army_decisions = {
+	MCX_MDS_hold_national_parade = {
+		icon = generic_army_support
+
+		available = {
+			has_war = no
+		}
+
+		visible = {
+			is_ai = no
+			has_war = no
+			NOT = {
+				has_idea = disarmed_nation
+			}
+		}
+		
+		fire_only_once = no
+
+		remove_trigger = {
+			has_war = yes
+        }
+
+		modifier = {
+			experience_gain_army = 0.3
+			war_support_weekly = 0.003
+			stability_weekly = 0.003
+			consumer_goods_factor = 0.05
+		}
+		
+		remove_effect = {
+			if = {
+				limit = { has_government = islamist }
+				add_popularity = { ideology = islamist popularity = 0.03 }
+			}
+			if = {
+				limit = { has_government = fascist }
+				add_popularity = { ideology = fascist popularity = 0.03 }
+			}
+			if = {
+				limit = { has_government = nationalist }
+				add_popularity = { ideology = nationalist popularity = 0.03 }
+			}
+			if = {
+				limit = { has_government = monarchist }
+				add_popularity = { ideology = monarchist popularity = 0.03 }
+			}
+			if = {
+				limit = { has_government = reactionary }
+				add_popularity = { ideology = reactionary popularity = 0.03 }
+			}
+			if = {
+				limit = { has_government = conservative }
+				add_popularity = { ideology = conservative popularity = 0.03 }
+			}
+			if = {
+				limit = { has_government = market_liberal }
+				add_popularity = { ideology = market_liberal popularity = 0.03 }
+			}
+			if = {
+				limit = { has_government = social_liberal }
+				add_popularity = { ideology = social_liberal popularity = 0.03 }
+			}
+			if = {
+				limit = { has_government = social_democrat }
+				add_popularity = { ideology = social_democrat popularity = 0.03 }
+			}
+			if = {
+				limit = { has_government = progressive }
+				add_popularity = { ideology = progressive popularity = 0.03 }
+			}
+			if = {
+				limit = { has_government = democratic_socialist }
+				add_popularity = { ideology = democratic_socialist popularity = 0.03 }
+			}
+			if = {
+				limit = { has_government = communist }
+				add_popularity = { ideology = communist popularity = 0.03 }
+			}
+		}
+
+		days_remove = 50
+		days_re_enable = 1825
+		cost = 120
+
+		ai_will_do = {
+			base = 1
+		}
+	}
+
+	MCX_MDS_army_engineering = {
+		icon = generic_army_support
+
+		available = {
+			has_war = no
+			has_army_manpower = { size > 9999 }
+		}
+
+		visible = {
+			is_ai = no
+			has_war = no
+			NOT = {
+				has_idea = disarmed_nation
+			}
+		}
+
+		remove_trigger = {
+			has_war = yes
+        }
+		
+		fire_only_once = no
+
+		modifier = {
+			production_speed_infrastructure_factor = 0.15
+			max_planning = -0.75
+			planning_speed = -0.75
+			war_support_factor = -0.15
+		}
+
+		days_remove = 180
+		days_re_enable = 365
+		cost = 20
+
+		ai_will_do = {
+			base = 1
+		}
+	}
+
+	MCX_MDS_commission_military_academy = {
+		icon = generic_construction
+
+		visible = {
+			is_ai = no
+			NOT = {
+				has_idea = disarmed_nation
+			}
+		}
+	
+		modifier = {
+			army_leader_start_level = 1
+			experience_loss_factor = -0.1
+			max_command_power = 10
+			command_power_gain_mult = 0.05
+			special_forces_cap = 0.05
+			special_forces_min = 12
+		}
+
+		days_remove = -1
+		cost = 250
+	
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	MCX_MDS_speak_to_the_troops = {
+		icon = generic_army_support
+
+		available = {
+			has_war = yes
+		}
+
+		visible = {
+			has_war = yes
+		}
+
+		remove_trigger = {
+        }
+		
+		fire_only_once = no
+
+		modifier = {
+			war_support_weekly = 0.002
+			army_morale_factor = 0.05
+			army_defence_factor = 0.05
+			army_org_factor = 0.05
+		}
+
+		days_remove = 50
+		days_re_enable = 365
+
+		cost = 75
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 1
+				has_stability < 0.4
+				has_war_support < 0.4
+			}
+		}
+	}
+	
+	MCX_MDS_hold_speech = {
+		icon = generic_political_discourse
+
+		available = {
+			has_war = yes
+		}
+
+		visible = {
+			is_ai = no
+			has_war = yes
+			has_stability < 0.5
+			has_war_support < 0.5
+		}
+
+		remove_trigger = {
+        }
+		
+		fire_only_once = no
+
+		remove_effect = {
+			add_stability = 0.05
+			add_war_support = 0.05
+		}
+
+		days_remove = 10
+		days_re_enable = 730
+
+		cost = 120
+
+		ai_will_do = {
+			base = 0
+		}
+	}
+
+	MCX_MDS_deploy_penal_units = {
+
+		icon = generic_prepare_civil_war
+
+		available = {
+			
+		}
+
+		cost = 50
+		days_remove = 60
+		days_re_enable = 2555
+
+		fire_only_once = no
+
+		ai_will_do = {
+			factor = 0
+		}
+
+		visible = {
+			is_ai = no
+			has_army_manpower = { size > 29999 }
+			OR = {
+				has_government = fascist
+				has_government = communist
+			}
+		}
+
+		modifier = {
+			stability_weekly = -0.004
+			command_power_gain = -0.05
+		}
+
+		complete_effect = {
+			add_manpower = 12000
+		}
+	}
+	
+	MCX_MDS_food_rationing = {
+		icon = oppression
+
+		available = {
+			
+		}
+
+		visible = {
+			is_ai = no
+			has_war = yes
+		}
+
+		remove_trigger = {
+            has_war = no
+        }
+		
+		fire_only_once = no
+
+		modifier = {
+			consumer_goods_factor = -0.1
+			war_support_weekly = -0.004
+			stability_weekly = -0.004
+		}
+
+
+		days_remove = 90
+		days_re_enable = 90
+
+		cost = 50
+
+		ai_will_do = {
+			base = 0
+		}
+	}
+
+	MCX_MDS_peasant_draft = {
+		icon = generic_prepare_civil_war
+
+		available = {
+			
+		}
+
+		visible = {
+			is_ai = no
+			has_war = yes
+			has_army_manpower = { size > 19999 }
+		}
+		
+		fire_only_once = no
+
+		modifier = {
+			consumer_goods_factor = 0.2
+		}
+		
+		remove_effect = {
+			add_manpower = 10000
+		}
+
+		days_remove = 60
+		days_re_enable = 1825
+
+		cost = 100
+
+		ai_will_do = {
+			base = 0
+		}
+	}
+
+	MCX_MDS_hire_mercenaries = {
+		icon = generic_prepare_civil_war
+
+		available = {
+			
+		}
+
+		visible = {
+			is_ai = no
+			check_variable = { max_manpower_k < 5000 }
+			NOT = { has_idea = disarmed_nation }
+		}
+		
+		fire_only_once = yes
+
+		complete_effect = {
+			hidden_effect = { Load_oob = SOF_merc_band }
+			add_manpower = 12400
+			add_equipment_to_stockpile = {
+				type = infantry_equipment_1
+				amount = 1080
+			}
+			add_equipment_to_stockpile = {
+				type = motorized_equipment_1
+				amount = 240
+			}
+			add_equipment_to_stockpile = {
+				type = light_mechanized_equipment_1
+				amount = 300
+			}
+			add_equipment_to_stockpile = {
+				type = support_equipment
+				amount = 20
+			}
+		}
+
+		cost = 150
+
+		ai_will_do = {
+			base = 0
+		}
+	}
+	
+	MCX_MDS_seize_civilian_trucks = {
+		icon = generic_civil_support
+
+		available = {
+		}
+
+		visible = {
+			is_ai = no
+			has_war = yes
+		}
+		
+		fire_only_once = no
+
+		modifier = {
+			war_support_weekly = -0.005
+		}
+		
+		remove_effect = {
+			add_stability = -0.01
+			add_equipment_to_stockpile = {
+				type = motorized_equipment_1
+				amount = 150
+			}
+		}
+
+		days_remove = 50
+		days_re_enable = 365
+
+		cost = 75
+
+		ai_will_do = {
+			base = 0
+		}
+	}
+
+	MCX_MDS_convert_tractor_vehicles = {
+		icon = generic_tank
+
+		available = {
+		}
+
+		visible = {
+			is_ai = no
+			has_war = yes
+		}
+		
+		fire_only_once = no
+
+		modifier = {
+			industrial_capacity_factory = -0.005
+		}
+		
+		remove_effect = {
+			add_equipment_to_stockpile = {
+				type = modern_tank_equipment_1
+				amount = 50
+			}
+		}
+
+		days_remove = 50
+		days_re_enable = 365
+
+		cost = 75
+
+		ai_will_do = {
+			base = 0
+		}
+	}
+}
+
+navy_decisions = {
+	MCX_MDS_seize_civilian_vessels = {
+		icon = generic_naval
+
+		available = {
+		}
+
+		visible = {
+			is_ai = no
+			has_war = yes
+			any_state = {
+				is_controlled_by = ROOT
+				is_coastal = yes
+			}
+		}
+		
+		fire_only_once = no
+
+		modifier = {
+			war_support_weekly = -0.005
+		}
+		
+		remove_effect = {
+			add_stability = -0.02
+			add_equipment_to_stockpile = {
+				type = convoy
+				amount = 25
+			}
+		}
+
+		days_remove = 50
+		days_re_enable = 365
+
+		cost = 75
+
+		ai_will_do = {
+			base = 0
+		}
+	}
+}
+
+air_force_decisions = {
+	MCX_MDS_host_air_show = {
+		icon = generic_air
+
+		available = {
+			
+		}
+
+		visible = {
+			is_ai = no
+			has_war = no
+			OR = {
+				has_equipment = {
+					fighter_equipment_1 > 9
+				}
+				has_equipment = {
+					fighter_equipment_2 > 9
+				}
+				has_equipment = {
+					fighter_equipment_3 > 9
+				}
+				has_equipment = {
+					fighter_equipment_4 > 9
+				}
+				has_equipment = {
+					fighter_equipment_5 > 9
+				}
+				has_equipment = {
+					fighter_equipment_6 > 9
+				}
+				has_equipment = {
+					fighter_equipment_7 > 9
+				}
+				has_equipment = {
+					fighter_equipment_8 > 9
+				}
+				has_equipment = {
+					CAS_equipment_1 > 9
+				}
+				has_equipment = {
+					CAS_equipment_2 > 9
+				}
+				has_equipment = {
+					CAS_equipment_3 > 9
+				}
+			}
+		}
+
+		remove_trigger = {
+			has_war = yes
+        }
+
+		modifier = {
+			experience_gain_air = 1
+			war_support_weekly = 0.004
+			stability_weekly = 0.002
+			consumer_goods_factor = 0.05
+		}
+
+		days_remove = 50
+		days_re_enable = 365
+		cost = 120
+
+		ai_will_do = {
+			base = 1
+		}
+	}
+}

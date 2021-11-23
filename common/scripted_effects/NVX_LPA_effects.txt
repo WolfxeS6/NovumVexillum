@@ -1,0 +1,342 @@
+### LAWS POLICIES ACTS ###
+NVX_LPA_calc_slots = {
+	set_variable = { NVX_LPA_policies_max_slots = 1 }
+	if = {
+		limit = {
+			OR = {
+				has_idea = centralization_federal
+				has_idea = centralization_confederate
+			}
+		}
+		add_to_variable = { NVX_LPA_policies_max_slots = 1 }
+	}
+	if = {
+		limit = { has_idea = centralization_anarchy }
+		add_to_variable = { NVX_LPA_policies_max_slots = 2 }
+	}
+	if = {
+		limit = { has_idea = national_development_advanced }
+		add_to_variable = { NVX_LPA_policies_max_slots = 3 }
+	}
+	if = {
+		limit = { has_idea = national_development_developed }
+		add_to_variable = { NVX_LPA_policies_max_slots = 2 }
+	}
+	if = {
+		limit = { has_idea = national_development_developing }
+		add_to_variable = { NVX_LPA_policies_max_slots = 1 }
+	}
+	if = {
+		limit = { has_idea = public_safety_central_law_office }
+		add_to_variable = { NVX_LPA_policies_max_slots = 1 }
+	}
+	if = {
+		limit = { has_idea = public_safety_secret_police }
+		add_to_variable = { NVX_LPA_policies_max_slots = 1 }
+	}
+	# POLICIES #
+#	set_variable = { NVX_LPA_policies_active_slots = 0 }
+#	if = {
+#		limit = { has_decision = NVX_policies_E_free_market }
+#		add_to_variable = { NVX_LPA_policies_active_slots = 1 }
+#	}
+	# LAST #
+	set_variable = { NVX_LPA_policies_available_slots = NVX_LPA_policies_max_slots }
+	subtract_from_variable = { NVX_LPA_policies_available_slots = NVX_LPA_policies_active_slots }
+}
+
+NVX_LPA_policies_add_1 = {
+	add_to_variable = { NVX_LPA_policies_active_slots = 1 }
+	set_variable = { NVX_LPA_policies_available_slots = NVX_LPA_policies_max_slots }
+	subtract_from_variable = { NVX_LPA_policies_available_slots = NVX_LPA_policies_active_slots }
+}
+
+NVX_LPA_policies_subtract_1 = {
+	subtract_from_variable = { NVX_LPA_policies_active_slots = 1 }
+	set_variable = { NVX_LPA_policies_available_slots = NVX_LPA_policies_max_slots }
+	subtract_from_variable = { NVX_LPA_policies_available_slots = NVX_LPA_policies_active_slots }
+}
+
+### ECONOMY ###
+NVX_ECO_start = {
+	# BALANCING #
+	set_variable = { NVX_ECO_tax_extreme = -1 }
+	set_variable = { NVX_ECO_tax_high = -0.5 }
+	set_variable = { NVX_ECO_tax_moderate = 0 }
+	set_variable = { NVX_ECO_tax_moderate_decay = 0.25 }
+	set_variable = { NVX_ECO_tax_low = 0.5 }
+	set_variable = { NVX_ECO_tax_meager = 1 }
+	# INIT #
+	if = {
+		limit = { has_idea = economy_tax_extreme }
+		set_country_flag = NVX_desires_economy_tax_extreme
+	}
+	if = {
+		limit = { has_idea = economy_tax_high }
+		set_country_flag = NVX_desires_economy_tax_high
+	}
+	if = {
+		limit = { has_idea = economy_tax_moderate }
+		set_country_flag = NVX_desires_economy_tax_moderate
+	}
+	if = {
+		limit = { has_idea = economy_tax_low }
+		set_country_flag = NVX_desires_economy_tax_low
+	}
+	if = {
+		limit = { has_idea = economy_tax_meager }
+		set_country_flag = NVX_desires_economy_tax_meager
+	}
+	if = {
+		limit = { has_idea = economy_tax_robotic }
+		set_country_flag = NVX_desires_economy_tax_robotic
+	}
+	if = {
+		limit = { has_idea = economy_boom }
+		set_variable = { NVX_ECO_health = 95 }
+	}
+	if = {
+		limit = { has_idea = economy_growth }
+		set_variable = { NVX_ECO_health = 45 }
+	}
+	if = {
+		limit = { has_idea = economy_recession }
+		set_variable = { NVX_ECO_health = -45 }
+	}
+	if = {
+		limit = { has_idea = economy_depression }
+		set_variable = { NVX_ECO_health = -95 }
+	}
+	NVX_ECO_calc = yes
+}
+
+NVX_ECO_monthly = {
+	if = {
+		limit = { check_variable = { NVX_ECO_tax_extreme = 0 } }
+		NVX_LPA_calc_slots = yes
+		NVX_ECO_start = yes
+		NVX_national_preferences_set = yes
+		NVX_COUP_data_set = yes
+	}
+	NVX_ECO_calc = yes
+	add_to_variable = { NVX_ECO_health = NVX_ECO_growth }
+	clamp_variable = {
+		var = NVX_ECO_health
+		min = -100
+		max = 100
+	}
+	# GROWTH #
+	if = {
+		limit = {
+			check_variable = { NVX_ECO_health > 89.999 }
+			NOT = { has_idea = economy_boom }
+		}
+		add_ideas = economy_boom
+		country_event = { id = NVX_ECO.1 }
+	}
+	if = {
+		limit = {
+			check_variable = { NVX_ECO_health > 29.999 }
+			check_variable = { NVX_ECO_health < 90 }
+			NOT = { has_idea = economy_growth }
+		}
+		add_ideas = economy_growth
+		country_event = { id = NVX_ECO.1 }
+	}
+	if = {
+		limit = {
+			check_variable = { NVX_ECO_health > -30 }
+			check_variable = { NVX_ECO_health < 30 }
+			NOT = { has_idea = economy_stagnation }
+		}
+		add_ideas = economy_stagnation
+		country_event = { id = NVX_ECO.1 }
+	}
+	if = {
+		limit = {
+			check_variable = { NVX_ECO_health > -90 }
+			check_variable = { NVX_ECO_health < -29.999 }
+			NOT = { has_idea = economy_recession }
+		}
+		add_ideas = economy_recession
+		country_event = { id = NVX_ECO.1 }
+	}
+	if = {
+		limit = {
+			check_variable = { NVX_ECO_health < -89.999 }
+			NOT = { has_idea = economy_depression }
+		}
+		add_ideas = economy_depression
+		country_event = { id = NVX_ECO.1 }
+	}
+}
+
+NVX_LPA_ECOLITE_s0125 = {
+	custom_effect_tooltip = TT_NVX_ECOLITE_s0125
+	subtract_from_variable = { NVX_ECO_health = 0.125 }
+}
+
+NVX_LPA_ECOLITE_s025 = {
+	custom_effect_tooltip = TT_NVX_ECOLITE_s025
+	subtract_from_variable = { NVX_ECO_health = 0.25 }
+}
+
+NVX_LPA_ECOLITE_s1 = {
+	custom_effect_tooltip = TT_NVX_ECOLITE_s1
+	subtract_from_variable = { NVX_ECO_health = 1 }
+}
+
+NVX_LPA_ECOLITE_s2 = {
+	custom_effect_tooltip = TT_NVX_ECOLITE_s2
+	subtract_from_variable = { NVX_ECO_health = 2 }
+}
+
+NVX_LPA_ECOLITE_s3 = {
+	custom_effect_tooltip = TT_NVX_ECOLITE_s3
+	subtract_from_variable = { NVX_ECO_health = 3 }
+}
+
+NVX_LPA_ECOLITE_s4 = {
+	custom_effect_tooltip = TT_NVX_ECOLITE_s4
+	subtract_from_variable = { NVX_ECO_health = 4 }
+}
+
+NVX_LPA_ECOLITE_s5 = {
+	custom_effect_tooltip = TT_NVX_ECOLITE_s5
+	subtract_from_variable = { NVX_ECO_health = 5 }
+}
+
+NVX_LPA_ECOLITE_s10 = {
+	custom_effect_tooltip = TT_NVX_ECOLITE_s10
+	subtract_from_variable = { NVX_ECO_health = 10 }
+}
+
+NVX_LPA_ECOLITE_g1 = {
+	custom_effect_tooltip = TT_NVX_ECOLITE_g1
+	add_to_variable = { NVX_ECO_health = 1 }
+}
+
+NVX_LPA_ECOLITE_g2 = {
+	custom_effect_tooltip = TT_NVX_ECOLITE_g2
+	add_to_variable = { NVX_ECO_health = 2 }
+}
+
+NVX_LPA_ECOLITE_g3 = {
+	custom_effect_tooltip = TT_NVX_ECOLITE_g3
+	add_to_variable = { NVX_ECO_health = 3 }
+}
+
+NVX_LPA_ECOLITE_g4 = {
+	custom_effect_tooltip = TT_NVX_ECOLITE_g4
+	add_to_variable = { NVX_ECO_health = 4 }
+}
+
+NVX_LPA_ECOLITE_g5 = {
+	custom_effect_tooltip = TT_NVX_ECOLITE_g5
+	add_to_variable = { NVX_ECO_health = 5 }
+}
+
+NVX_LPA_PAX_g10 = {
+	custom_effect_tooltip = TT_NVX_LPA_PAX_g10
+	add_to_variable = { NVX_ECO_pax = 10 }
+}
+
+NVX_ECO_pax_monthly = {
+	if = {
+		limit = { has_decision = NVX_policies_P_diplomatic_harmony }
+		if = {
+			limit = { has_war = no }
+			add_to_variable = { NVX_ECO_pax_months = 1 }
+		}
+		if = {
+			limit = { check_variable = { NVX_ECO_pax_months > 240 } }
+			set_variable = { NVX_ECO_pax_gains = 4 }
+			else_if = {
+				limit = { check_variable = { NVX_ECO_pax_months > 120 } }
+				set_variable = { NVX_ECO_pax_gains = 3 }
+				else_if = {
+					limit = { check_variable = { NVX_ECO_pax_months > 60 } }
+					set_variable = { NVX_ECO_pax_gains = 2 }
+					else_if = {
+						limit = { check_variable = { NVX_ECO_pax_months > 12 } }
+						set_variable = { NVX_ECO_pax_gains = 1 }
+					}
+				}
+			}
+		}
+		add_to_variable = { NVX_ECO_pax = NVX_ECO_pax_gains }
+		clamp_variable = {
+			var = NVX_ECO_pax
+			min = 0
+			max = 100
+		}
+	}
+}
+
+NVX_ECO_pax_state_payment = {
+	custom_effect_tooltip = TT_NVX_ECO_pax_state_payment
+	add_to_variable = { NVX_ECO_health = FROM.NVX_ECO_pax_state_payment }
+}
+
+NVX_ECO_pax_puppet_cost_calc = {
+	set_variable = { ROOT.NVX_ECO_pax_puppet_cost = 0 }
+	every_owned_state = {
+		add_to_variable = { ROOT.NVX_ECO_pax_puppet_cost = NVX_ECO_pax_state_value }
+	}
+	divide_variable = { ROOT.NVX_ECO_pax_puppet_cost = 2 }
+	if = {
+		limit = { has_idea = national_development_developed }
+		add_to_variable = { ROOT.NVX_ECO_pax_puppet_cost = 10 }
+	}
+	round_variable = ROOT.NVX_ECO_pax_puppet_cost
+	clamp_variable = {
+		var = ROOT.NVX_ECO_pax_puppet_cost
+		min = 15
+		max = 100
+	}
+}
+
+NVX_LPA_focus_future_monthly = {
+	if = {
+		limit = {
+			check_variable = { NVX_LPA_policies_focus_future_months < 35 }
+			has_decision = NVX_policies_S_focus_future
+		}
+		add_to_variable = { NVX_LPA_policies_focus_future_months = 1 }
+	}
+	if = {
+		limit = {
+			check_variable = { NVX_LPA_policies_focus_future_months < 35 }
+			has_decision = NVX_policies_S_focus_future
+			has_decision = NVX_policies_P_diplomatic_harmony
+			has_war = no
+		}
+		add_to_variable = { NVX_LPA_policies_focus_future_months = 0.5 }
+	}
+	if = {
+		limit = {
+			check_variable = { NVX_LPA_policies_focus_future_months > 34 }
+			has_decision = NVX_policies_S_focus_future
+		}
+		set_variable = { NVX_LPA_policies_focus_future_months = 0 }
+		country_event = { id = NVX_ECO.7 }
+	}
+}
+
+NVX_LPA_raiding_set_value = {
+	set_variable = { NVX_LPA_raiding_value = 0 }
+	add_to_variable = { NVX_LPA_raiding_value = num_of_factories }
+	divide_variable = { NVX_LPA_raiding_value = 5 }
+	round_variable = NVX_LPA_raiding_value
+	if = {
+		limit = { check_variable = { NVX_ECO_health > 2.999 } }
+		set_variable = { NVX_LPA_raiding_value2 = NVX_ECO_health }
+		divide_variable = { NVX_LPA_raiding_value2 = 3 }
+		round_variable = NVX_LPA_raiding_value2
+		add_to_variable = { NVX_LPA_raiding_value = NVX_LPA_raiding_value2 }
+	}
+}
+
+NVX_LPA_raiding_take_value = {
+	add_to_variable = { NVX_ECO_health = ROOT.NVX_LPA_raiding_value }
+}

@@ -1,0 +1,202 @@
+
+###################################
+### SUBVERSIVE INDUSTRY EFFECTS ###
+###################################
+
+SUBVERSIVE_actions_set_variables = {
+	### VEHICLE CONFISCATION ###
+	set_variable = { SUBVERSIVE_civilian_vehicle_confiscation_fac = num_of_factories }
+	divide_variable = { SUBVERSIVE_civilian_vehicle_confiscation_fac = 15 }
+	clamp_variable = {
+		var = SUBVERSIVE_civilian_vehicle_confiscation_fac
+		min = 1
+		max = 20
+	}
+	set_variable = { SUBVERSIVE_civilian_vehicle_confiscation_var = num_battalions_with_type@motorized }
+	add_to_variable = { SUBVERSIVE_civilian_vehicle_confiscation_var = num_battalions_with_type@mot_anti_air_brigade }
+	add_to_variable = { SUBVERSIVE_civilian_vehicle_confiscation_var = num_battalions_with_type@mot_artillery_brigade }
+	add_to_variable = { SUBVERSIVE_civilian_vehicle_confiscation_var = num_battalions_with_type@mot_rocket_artillery_brigade }
+	add_to_variable = { SUBVERSIVE_civilian_vehicle_confiscation_var = num_battalions_with_type@mot_anti_tank_brigade }
+	multiply_variable = { SUBVERSIVE_civilian_vehicle_confiscation_var = 20 }
+	set_variable = { SUBVERSIVE_civilian_vehicle_confiscation_var2 = num_battalions_with_type@field_hospital }
+	add_to_variable = { SUBVERSIVE_civilian_vehicle_confiscation_var2 = num_battalions_with_type@field_hospital }
+	add_to_variable = { SUBVERSIVE_civilian_vehicle_confiscation_var2 = num_battalions_with_type@logistics_company }
+	add_to_variable = { SUBVERSIVE_civilian_vehicle_confiscation_var2 = num_battalions_with_type@signal_company }
+	multiply_variable = { SUBVERSIVE_civilian_vehicle_confiscation_var2 = 5 }
+	add_to_variable = { SUBVERSIVE_civilian_vehicle_confiscation_var = SUBVERSIVE_civilian_vehicle_confiscation_var2 }
+	set_variable = { SUBVERSIVE_civilian_vehicle_confiscation_var3 = num_owned_states }
+	multiply_variable = { SUBVERSIVE_civilian_vehicle_confiscation_var3 = 15 }
+	add_to_variable = { SUBVERSIVE_civilian_vehicle_confiscation_var = SUBVERSIVE_civilian_vehicle_confiscation_var3 }
+	divide_variable = { SUBVERSIVE_civilian_vehicle_confiscation_var = SUBVERSIVE_civilian_vehicle_confiscation_fac }
+	set_variable = { SUBVERSIVE_civilian_vehicle_confiscation_scrap = SUBVERSIVE_civilian_vehicle_confiscation_var }
+	multiply_variable = { SUBVERSIVE_civilian_vehicle_confiscation_scrap = 0.004 }
+	
+	### SUPPORT SCROUNGING ###
+	set_variable = { SUBVERSIVE_support_scrounging_fac = num_of_factories }
+	divide_variable = { SUBVERSIVE_support_scrounging_fac = 10 }
+	clamp_variable = {
+		var = SUBVERSIVE_support_scrounging_fac
+		min = 1
+		max = 20
+	}
+	set_variable = { SUBVERSIVE_support_scrounging_var = num_battalions_with_type@engineer } #30
+	multiply_variable = { SUBVERSIVE_support_scrounging_var = 15 }
+	set_variable = { SUBVERSIVE_support_scrounging_var2 = num_battalions_with_type@recon } #10
+	multiply_variable = { SUBVERSIVE_support_scrounging_var2 = 5 }
+	add_to_variable = { SUBVERSIVE_support_scrounging_var = SUBVERSIVE_support_scrounging_var2 }
+	set_variable = { SUBVERSIVE_support_scrounging_var3 = num_battalions_with_type@field_hospital } #30
+	multiply_variable = { SUBVERSIVE_support_scrounging_var3 = 15 }
+	add_to_variable = { SUBVERSIVE_support_scrounging_var = SUBVERSIVE_support_scrounging_var3 }
+	set_variable = { SUBVERSIVE_support_scrounging_var4 = num_battalions_with_type@logistics_company } #20
+	multiply_variable = { SUBVERSIVE_support_scrounging_var4 = 10 }
+	add_to_variable = { SUBVERSIVE_support_scrounging_var = SUBVERSIVE_support_scrounging_var4 }
+	set_variable = { SUBVERSIVE_support_scrounging_var5 = num_battalions_with_type@military_police } #10
+	multiply_variable = { SUBVERSIVE_support_scrounging_var5 = 5 }
+	add_to_variable = { SUBVERSIVE_support_scrounging_var = SUBVERSIVE_support_scrounging_var5 }
+	set_variable = { SUBVERSIVE_support_scrounging_var6 = num_battalions_with_type@signal_company } #20
+	multiply_variable = { SUBVERSIVE_support_scrounging_var6 = 20 }
+	add_to_variable = { SUBVERSIVE_support_scrounging_var = SUBVERSIVE_support_scrounging_var7 }
+	set_variable = { SUBVERSIVE_support_scrounging_var7 = num_battalions_with_type@maintenance_company } #25
+	multiply_variable = { SUBVERSIVE_support_scrounging_var7 = 13 }
+	add_to_variable = { SUBVERSIVE_support_scrounging_var = SUBVERSIVE_support_scrounging_var7 }
+	set_variable = { SUBVERSIVE_support_scrounging_var8 = num_owned_states }
+	multiply_variable = { SUBVERSIVE_support_scrounging_var8 = 10 }
+	add_to_variable = { SUBVERSIVE_support_scrounging_var = SUBVERSIVE_support_scrounging_var8 }
+	divide_variable = { SUBVERSIVE_support_scrounging_var = SUBVERSIVE_support_scrounging_fac }
+	set_variable = { SUBVERSIVE_support_scrounging_scrap = SUBVERSIVE_support_scrounging_var }
+	multiply_variable = { SUBVERSIVE_support_scrounging_scrap = 0.002 }
+	
+	### VEHICLE THEFT ###
+	set_variable = { SUBVERSIVE_vehicle_theft_fac = num_of_factories }
+	divide_variable = { SUBVERSIVE_vehicle_theft_fac = 20 }
+	clamp_variable = {
+		var = SUBVERSIVE_vehicle_theft_fac
+		min = 1
+		max = 20
+	}
+	set_variable = { SUBVERSIVE_vehicle_theft_tank_var = num_battalions_with_type@modern_armor } #50
+	multiply_variable = { SUBVERSIVE_vehicle_theft_tank_var = 10 }
+	divide_variable = { SUBVERSIVE_vehicle_theft_tank_var = SUBVERSIVE_vehicle_theft_fac }
+	set_variable = { SUBVERSIVE_vehicle_theft_fighter_var = num_battalions_with_type@anti_air }
+	multiply_variable = { SUBVERSIVE_vehicle_theft_fighter_var = 3 }
+	set_variable = { SUBVERSIVE_vehicle_theft_fighter_var2 = num_owned_states }
+	multiply_variable = { SUBVERSIVE_vehicle_theft_fighter_var2 = 10 }
+	add_to_variable = { SUBVERSIVE_vehicle_theft_fighter_var = SUBVERSIVE_vehicle_theft_fighter_var2 }
+	divide_variable = { SUBVERSIVE_vehicle_theft_fighter_var = SUBVERSIVE_vehicle_theft_fac }
+}
+
+SUBVERSIVE_civilian_vehicle_confiscation = {
+	add_equipment_to_stockpile = {
+		type = motorized_equipment_1
+		amount = SUBVERSIVE_civilian_vehicle_confiscation_var
+	}
+}
+
+SUBVERSIVE_civilian_support_scrounging = {
+	add_equipment_to_stockpile = {
+		type = support_equipment_1
+		amount = SUBVERSIVE_support_scrounging_var
+	}
+}
+
+SUBVERSIVE_vehicle_theft_tanks = {
+	if = {
+		limit = { has_tech = main_battle_tank8 }
+		add_equipment_to_stockpile = {
+			type = modern_tank_equipment_7
+			amount = SUBVERSIVE_vehicle_theft_tank_var
+		}
+		else_if = {
+			limit = { has_tech = main_battle_tank7 }
+			add_equipment_to_stockpile = {
+				type = modern_tank_equipment_6
+				amount = SUBVERSIVE_vehicle_theft_tank_var
+			}
+			else_if = {
+				limit = { has_tech = main_battle_tank6 }
+				add_equipment_to_stockpile = {
+					type = modern_tank_equipment_5
+					amount = SUBVERSIVE_vehicle_theft_tank_var
+				}
+				else_if = {
+					limit = { has_tech = main_battle_tank5 }
+					add_equipment_to_stockpile = {
+						type = modern_tank_equipment_4
+						amount = SUBVERSIVE_vehicle_theft_tank_var
+					}
+					else_if = {
+						limit = { has_tech = main_battle_tank4 }
+						add_equipment_to_stockpile = {
+							type = modern_tank_equipment_3
+							amount = SUBVERSIVE_vehicle_theft_tank_var
+						}
+						else_if = {
+							limit = { has_tech = main_battle_tank3 }
+							add_equipment_to_stockpile = {
+								type = modern_tank_equipment_2
+								amount = SUBVERSIVE_vehicle_theft_tank_var
+							}
+							else = {
+								add_equipment_to_stockpile = {
+									type = modern_tank_equipment_1
+									amount = SUBVERSIVE_vehicle_theft_tank_var
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+SUBVERSIVE_vehicle_theft_fighters = {
+	if = {
+		limit = { has_tech = fighter8 }
+		add_equipment_to_stockpile = {
+			type = fighter_equipment_7
+			amount = SUBVERSIVE_vehicle_theft_fighter_var
+		}
+		else_if = {
+			limit = { has_tech = fighter7 }
+			add_equipment_to_stockpile = {
+				type = fighter_equipment_6
+				amount = SUBVERSIVE_vehicle_theft_fighter_var
+			}
+			else_if = {
+				limit = { has_tech = fighter6 }
+				add_equipment_to_stockpile = {
+					type = fighter_equipment_5
+					amount = SUBVERSIVE_vehicle_theft_fighter_var
+				}
+				else_if = {
+					limit = { has_tech = fighter5 }
+					add_equipment_to_stockpile = {
+						type = fighter_equipment_4
+						amount = SUBVERSIVE_vehicle_theft_fighter_var
+					}
+					else_if = {
+						limit = { has_tech = fighter4 }
+						add_equipment_to_stockpile = {
+							type = fighter_equipment_3
+							amount = SUBVERSIVE_vehicle_theft_fighter_var
+						}
+						else_if = {
+							limit = { has_tech = fighter3 }
+							add_equipment_to_stockpile = {
+								type = fighter_equipment_2
+								amount = SUBVERSIVE_vehicle_theft_fighter_var
+							}
+							else = {
+								add_equipment_to_stockpile = {
+									type = fighter_equipment_1
+									amount = SUBVERSIVE_vehicle_theft_fighter_var
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

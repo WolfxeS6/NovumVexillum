@@ -1,0 +1,31 @@
+﻿add_namespace = ivory_coast
+
+#Choose our name
+country_event = {
+	id = ivory_coast.1
+	title = ivory_coast.1.t
+	desc = ivory_coast.1.d
+	picture = GFX_report_event_ivory_coast
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = IVO
+		NOT = { has_country_flag = ivory_coast_chose_its_name }
+	}
+	
+	immediate = {
+		set_country_flag = ivory_coast_chose_its_name
+	}
+	
+	option = {	#We wish to be referred to in French!
+		name = ivory_coast.1.o1
+		set_cosmetic_tag = cote_dIvoire
+		ai_chance = { factor = 100 }
+	}
+	
+	option = {	#We don't care.
+		name = ivory_coast.1.o2
+		ai_chance = { factor = 0 }
+	}
+}

@@ -1,0 +1,412 @@
+﻿# CHI is Taiwan. For the People's Republic, refer to PRC. #
+
+capital = 524
+
+oob = "CHI_2000"
+if = {
+	limit = { has_dlc = "Man the Guns" }
+		set_naval_oob = "CHI_2000_naval_mtg"
+	else = {
+		set_naval_oob = "CHI_2000_naval_legacy"
+	}
+}
+
+set_research_slots = 5
+set_convoys = 700
+set_stability = 0.8
+
+set_country_flag = country_language_chinese
+
+set_technology = {
+	## Infantry ##
+	infantry_weapons1 = 1
+	infantry_weapons2 = 1
+	motorised_infantry = 1
+	infantry_rifle_upgrade = 1
+	support_weapons = 1
+	support_weapons2 = 1
+	night_vision = 1
+	body_armor = 1
+	camouflage = 1
+	marines = 1
+	
+	## Support Companies ##
+	tech_support = 1
+	tech_engineers = 1
+	tech_recon = 1
+	tech_military_police = 1
+	tech_maintenance_company = 1
+	tech_field_hospital = 1
+	tech_logistics_company = 1
+	tech_signal_company = 1
+	
+	## Armor ##
+	main_battle_tank1 = 1
+	main_battle_tank2 = 1
+	main_battle_tank3 = 1
+	light_tank1 = 1
+	mechanised_infantry1 = 1
+	mechanised_infantry2 = 1
+	light_mechanized_infantry1 = 1
+	
+	## Artillery ##
+	gw_artillery = 1
+	interwar_antitank = 1
+	interwar_antiair = 1
+	
+	## Air ##
+	CAS1 = 1
+	CAS2 = 1
+	fighter1 = 1
+	fighter2 = 1
+	fighter3 = 1
+	naval_bomber1 = 1
+	naval_bomber2 = 1
+	strategic_bomber1 = 1
+	tactical_bomber1 = 1
+	
+	## Engineering ##
+	electronic_mechanical_engineering = 1
+	radio = 1
+	
+	## Industry ##
+	basic_machine_tools = 1
+	fuel_silos = 1
+	fuel_refining = 1
+	
+	## Doctrines ##
+	mobile_warfare = 1
+	fleet_in_being = 1
+	force_rotation = 1
+}
+
+if = {
+	limit = { not = { has_dlc = "Man the Guns" } }
+	set_technology = {
+		early_destroyer = 1
+		early_light_cruiser = 1
+		basic_light_cruiser = 1
+		early_heavy_cruiser = 1
+		basic_heavy_cruiser = 1
+		early_submarine = 1
+		basic_submarine = 1
+		transport = 1
+	}
+}
+if = {
+	limit = { has_dlc = "Man the Guns" }
+	set_technology = {
+		early_ship_hull_light = 1
+		early_ship_hull_cruiser = 1
+		basic_ship_hull_cruiser = 1
+		early_ship_hull_submarine = 1
+		basic_ship_hull_submarine = 1
+		smoke_generator = 1
+		sonar = 1
+		basic_depth_charges = 1
+		improved_airplane_launcher = 1
+		basic_cruiser_armor_scheme = 1
+		basic_torpedo = 1
+		basic_battery = 1
+		basic_light_battery = 1
+		basic_medium_battery = 1
+		basic_secondary_battery = 1
+		mtg_transport = 1
+		basic_naval_mines = 1
+		submarine_mine_laying = 1
+	}
+}
+
+add_opinion_modifier = {
+	target = JAP
+	modifier = past_japanese_war_crimes
+}
+
+set_politics = {
+ruling_party = conservative
+last_election = "1998.3.18"
+election_frequency = 48
+elections_allowed = yes
+}
+
+set_popularities = {
+    nationalist = 2
+    conservative = 45
+    market_liberal = 10
+    social_liberal = 30
+    social_democrat = 5
+    progressive = 5
+    democratic_socialist = 3
+}
+
+add_ideas = {
+	national_development_developed
+	civil_liberties_free
+	economy_growth
+	population_growth_stagnation
+	partially_recognized_state
+	limited_conscription
+}
+
+create_country_leader = {
+	name = "Kung Te-cheng"
+	picture = "Kung_Te-cheng.dds"
+	ideology = absolute_monarchist
+}
+
+create_country_leader = {
+	name = "Lee Teng-hui"
+	picture = "Lee_Teng_Hui.dds"
+	ideology = constitutionalist
+}
+
+create_country_leader = {
+	name = "Chen Shui-bian"
+	picture = "Chen_Shui_Bian.dds"
+	ideology = liberalist
+}
+
+create_country_leader = {
+	name = "Hsu Hsin-ying"
+	picture = "Hsu_Hsin_Ying.dds"
+	ideology = counter_progressive_democrat
+}
+
+create_country_leader = {
+	name = "Huang Kun-huei"
+	picture = "Huang_Kun_Huei.dds"
+	ideology = libertarian
+}
+
+create_country_leader = {
+	name = "Fan Yun"
+	picture = "Fan_Yun.dds"
+	ideology = social_democrat_ideology
+}
+
+create_country_leader = {
+	name = "Huang Kuo-chang"
+	picture = "Huang_Kuo_Chang.dds"
+	ideology = progressive_ideology
+}
+
+create_country_leader = {
+	name = "Wu Rongyuan"
+	picture = "Wu_Rongyuan.dds"
+	ideology = democratic_socialist_ideology
+}
+
+create_country_leader = {
+	name = "Wang Lao-yang"
+	picture = "Wang_Lao_Yang.dds"
+	ideology = maoist
+}
+
+# Edited By - Ran Mitake
+create_field_marshal = {
+	name = "Chiu Kuo-cheng"
+	picture = "generals/Chiu_Kuo_Cheng.dds"
+	traits = { defensive_doctrine urban_assault_specialist }
+	skill = 2
+	attack_skill = 2
+	defense_skill = 2
+	planning_skill = 1
+	logistics_skill = 2
+}
+
+create_corps_commander = {
+	name = "Yen Teh-fa"
+	picture = "generals/Yen_Teh_Fa.dds"
+	traits = { media_personality }
+	skill = 2
+	attack_skill = 2
+	defense_skill = 2
+	planning_skill = 2
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Chen Chuan-kuan"
+	picture = "generals/Chen_Chuan_Kuan.dds"
+	traits = {  }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Lee Shying-jow"
+	picture = "generals/Lee_Shying_Jow.dds"
+	traits = {  }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Chai Hui-chen"
+	picture = "generals/Chai_Hui_Chen.dds"
+	female = yes #She is Female General - Ran Mitake
+	traits = { career_officer trait_engineer } #https://zh.wikipedia.org/wiki/%E6%9F%B4%E6%83%A0%E7%8F%8D
+	skill = 3
+	attack_skill = 3
+	defense_skill = 3
+	planning_skill = 3
+	logistics_skill = 2
+}
+
+create_navy_leader = {
+	name = "Kao Kuang-chi"
+	picture = "admirals/Kao_Kuang_Chi.dds"
+	traits = {  }
+	skill = 2
+	attack_skill = 2
+	defense_skill = 1
+	maneuvering_skill = 2
+	coordination_skill = 2
+}
+
+create_navy_leader = {
+	name = "Lee Hsi-min"
+	picture = "admirals/Lee_Hsi_Min.dds"
+	traits = {  }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	maneuvering_skill = 1
+	coordination_skill = 1
+}
+
+create_navy_leader = {
+	name = "Lin Chen-yi"
+	picture = "admirals/Lin_Chen_Yi.dds"
+	traits = {  }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	maneuvering_skill = 1
+	coordination_skill = 1
+}
+
+
+2016.1.16 = {
+	set_politics = {
+		ruling_party = social_liberal
+		last_election = "2016.1.16"
+		election_frequency = 48
+		elections_allowed = yes
+	}
+	set_popularities = {
+		reactionary = 2
+		conservative = 40
+		market_liberal = 5
+		social_liberal = 45
+		social_democrat = 2
+		progressive = 6
+	}
+	create_country_leader = {
+		name = "Ma Ying-jeou"
+		picture = "Ma_Ying_Jeou.dds"
+		ideology = constitutionalist
+	}
+	create_country_leader = {
+		name = "Tsai Ing-wen"
+		picture = "Tsai_Ing_Wen.dds"
+		ideology = liberalist
+	}
+}
+
+### VARIANTS ###
+# 2000 Start #
+if = {
+	limit = { not = { has_dlc = "Man the Guns" } }
+	
+}
+if = {
+	limit = { has_dlc = "Man the Guns" }
+	## Frigates ##
+	create_equipment_variant = { #Frigate 1
+		name = "Knox class"
+		type = ship_hull_cruiser_1
+		parent_version = 0
+		modules = {
+			fixed_ship_battery_slot = ship_light_medium_battery_1
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = cruiser_ship_engine_1
+			fixed_ship_armor_slot = ship_armor_cruiser_1
+			fixed_ship_secondaries_slot = ship_secondaries_1
+			mid_1_custom_slot = ship_airplane_launcher_1
+			mid_2_custom_slot = ship_anti_air_1
+			rear_1_custom_slot = ship_light_medium_battery_1
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = { #Frigate 2
+		name = "Kang Ding class"
+		type = ship_hull_cruiser_2
+		parent_version = 0
+		modules = {
+			fixed_ship_battery_slot = ship_light_medium_battery_2
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = cruiser_ship_engine_2
+			fixed_ship_armor_slot = ship_armor_cruiser_2
+			fixed_ship_secondaries_slot = ship_secondaries_1
+			front_1_custom_slot = ship_light_medium_battery_2
+			mid_1_custom_slot = ship_airplane_launcher_1
+			mid_2_custom_slot = ship_anti_air_1
+			rear_1_custom_slot = ship_light_medium_battery_1
+		}
+		obsolete = no
+	}
+	## Destroyers ##
+	create_equipment_variant = { #Destroyer 1
+		name = "Gearing class"
+		type = ship_hull_cruiser_1
+		parent_version = 0
+		modules = {
+			fixed_ship_battery_slot = ship_medium_battery_1
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_radar_slot = ship_radar_1
+			fixed_ship_engine_slot = cruiser_ship_engine_1
+			fixed_ship_armor_slot = ship_armor_cruiser_1
+			mid_1_custom_slot = ship_airplane_launcher_1
+			mid_2_custom_slot = ship_anti_air_1
+			rear_1_custom_slot = ship_medium_battery_1
+		}
+		obsolete = no
+	}
+	## Submarines ##
+	create_equipment_variant = { #Diesel Sub 1A
+		name = "Tench class"
+		type = ship_hull_submarine_1
+		parent_version = 0
+		modules = {
+			fixed_ship_radar_slot = ship_radar_1
+			fixed_ship_torpedo_slot = ship_torpedo_sub_1
+			fixed_ship_engine_slot = sub_ship_engine_1
+			rear_1_custom_slot = empty
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = { #Nuclear Sub 2A
+		name = "Chien Lung class"
+		type = ship_hull_submarine_2
+		parent_version = 0
+		modules = {
+			fixed_ship_radar_slot = ship_radar_1
+			fixed_ship_torpedo_slot = ship_torpedo_sub_2
+			fixed_ship_engine_slot = sub_ship_engine_n1
+			rear_1_custom_slot = ship_torpedo_sub_2
+		}
+		obsolete = no
+	}
+}

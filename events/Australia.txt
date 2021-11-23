@@ -1,0 +1,1545 @@
+﻿add_namespace = australia
+
+#2001 Labor Leadership Spill - Crean takes charge
+country_event = {
+	id = australia.1
+	title = australia.1.t
+	desc = australia.1.d
+	picture = GFX_report_event_simon_crean
+	
+	fire_only_once = yes
+	
+	trigger = {
+		original_tag = AST
+		NOT = {
+		    has_government = social_democrat
+		}
+		date > 2001.11.1
+		date < 2001.11.30
+	}
+	
+	option = { 
+		name = australia.1.o1
+	    ai_chance = {
+			factor = 100
+		}
+		add_political_power = 10
+		create_country_leader = {
+	        name = "Simon Crean"
+	        picture = "Simon_Crean.dds"
+	        ideology = social_democrat_ideology
+	    }
+		add_popularity = {
+			ideology = social_democrat
+			popularity = -0.01
+		}
+	}
+}
+
+#2003 June Labor Leadership Spill - Crean vs Beazley
+country_event = {
+	id = australia.2
+	title = australia.2.t
+	desc = australia.2.d
+	picture = GFX_report_event_creane_vs_beazley
+	
+	fire_only_once = yes
+	
+	trigger = {
+		original_tag = AST
+		date > 2003.6.1
+		date < 2003.6.30
+	}
+	
+	option = { #Crean
+		name = australia.2.o1
+	    ai_chance = {
+			factor = 70
+		}
+		add_popularity = {
+			ideology = social_democrat
+			popularity = -0.01
+		}
+		create_country_leader = {
+	        name = "Simon Crean"
+            desc = "POLITICIAN_AST_SIMON_CREAN_DESC"
+	        picture = "Simon_Crean.dds"
+	        expire = "2050.1.1"
+	        ideology = social_democrat_ideology
+		
+	        traits = {
+		
+		    }
+	    }
+	}
+	
+	option = { #Beazley
+		name = australia.2.o2
+	    ai_chance = {
+			factor = 30
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+		create_country_leader = {
+	        name = "Kim Beazley"
+            desc = "POLITICIAN_AST_KIM_BEAZLEY_DESC"
+	        picture = "Kim_Beazley.dds"
+	        expire = "2050.1.1"
+	        ideology = social_democrat_ideology
+		
+	        traits = {
+		
+		    }
+	    }
+		add_popularity = {
+			ideology = social_democrat
+			popularity = -0.01
+		}
+	}
+}
+
+#2003 December Labor Leadership Spill - Latham vs Beazley
+country_event = {
+	id = australia.3
+	title = australia.3.t
+	desc = australia.3.d
+	picture = GFX_report_event_mark_latham
+	
+	fire_only_once = yes
+	
+	trigger = {
+		original_tag = AST
+		date > 2003.12.1
+		date < 2003.12.30
+	}
+	
+	option = { #Latham
+		name = australia.3.o1
+	    ai_chance = {
+			factor = 50
+		}
+		create_country_leader = {
+	        name = "Mark Latham"
+            desc = "POLITICIAN_AST_MARK_LATHAM_DESC"
+	        picture = "Mark_Latham.dds"
+	        expire = "2050.1.1"
+	        ideology = social_democrat_ideology
+		
+	        traits = {
+		
+		    }
+	    }
+		add_popularity = {
+			ideology = social_democrat
+			popularity = -0.01
+		}
+		set_country_flag = latham_2003_spill
+	}
+	
+	option = { #Beazley
+		name = australia.3.o2
+	    ai_chance = {
+			factor = 50
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+		create_country_leader = {
+	        name = "Kim Beazley"
+            desc = "POLITICIAN_AST_KIM_BEAZLEY_DESC"
+	        picture = "Kim_Beazley.dds"
+	        expire = "2050.1.1"
+	        ideology = social_democrat_ideology
+		
+	        traits = {
+		
+		    }
+	    }
+		add_popularity = {
+			ideology = social_democrat
+			popularity = -0.01
+		}
+		set_country_flag = beazley_2003_spill
+	}
+}
+
+#2005 Labor Leadership Spill - Beazley takes over
+country_event = {
+	id = australia.4
+	title = australia.4.t
+	desc = australia.4.d
+	picture = GFX_report_event_kim_beazley
+	
+	fire_only_once = yes
+	
+	trigger = {
+		original_tag = AST
+		date > 2005.1.1
+		date < 2005.1.30
+		NOT = {
+		    has_government = social_democrat
+		}
+		NOT = {
+		    has_country_flag = beazley_2003_spill
+		}
+	}
+	
+	option = { 
+		name = australia.4.o1
+	    ai_chance = {
+			factor = 100
+		}
+		create_country_leader = {
+	        name = "Kim Beazley"
+            desc = "POLITICIAN_AST_KIM_BEAZLEY_DESC"
+	        picture = "Kim_Beazley.dds"
+	        expire = "2050.1.1"
+	        ideology = social_democrat_ideology
+		
+	        traits = {
+		
+		    }
+	    }
+		add_popularity = {
+			ideology = social_democrat
+			popularity = -0.01
+		}
+	}
+}
+
+#2005 Labor Leadership Spill - Latham takes over
+country_event = {
+	id = australia.5
+	title = australia.5.t
+	desc = australia.5.d
+	picture = GFX_report_event_mark_latham
+	
+	fire_only_once = yes
+	
+	trigger = {
+		original_tag = AST
+		date > 2005.1.1
+		date < 2005.1.30
+		NOT = {
+		    has_government = social_democrat
+		}
+		NOT = {
+		    has_country_flag = latham_2003_spill
+		}
+	}
+	
+	option = { 
+		name = australia.5.o1
+	    ai_chance = {
+			factor = 100
+		}
+		create_country_leader = {
+	        name = "Mark Latham"
+            desc = "POLITICIAN_AST_MARK_LATHAM_DESC"
+	        picture = "Mark_Latham.dds"
+	        expire = "2050.1.1"
+	        ideology = social_democrat_ideology
+		
+	        traits = {
+		
+		    }
+	    }
+		add_popularity = {
+			ideology = social_democrat
+			popularity = -0.01
+		}
+	}
+}
+
+#2006 Labor Leadership Spill - Rudd vs Beazley
+country_event = {
+	id = australia.6
+	title = australia.6.t
+	desc = australia.6.d
+	picture = GFX_report_event_rudd_vs_beazley
+	
+	fire_only_once = yes
+	
+	trigger = {
+		original_tag = AST
+		date > 2006.12.1
+		date < 2006.12.30
+	}
+	
+	option = { #Rudd
+		name = australia.6.o1
+	    ai_chance = {
+			factor = 70
+		}
+		create_country_leader = {
+	        name = "Kevin Rudd"
+            desc = "POLITICIAN_AST_KEVIN_RUDD_DESC"
+	        picture = "Kevin_Rudd.dds"
+	        expire = "2050.1.1"
+	        ideology = social_democrat_ideology
+		
+	        traits = {
+		
+		    }
+	    }
+		add_popularity = {
+			ideology = social_democrat
+			popularity = -0.01
+		}
+	}
+	
+	option = { #Beazley
+		name = australia.6.o2
+	    ai_chance = {
+			factor = 30
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+		create_country_leader = {
+	        name = "Kim Beazley"
+            desc = "POLITICIAN_AST_KIM_BEAZLEY_DESC"
+	        picture = "Kim_Beazley.dds"
+	        expire = "2050.1.1"
+	        ideology = social_democrat_ideology
+		
+	        traits = {
+		
+		    }
+	    }
+		add_popularity = {
+			ideology = social_democrat
+			popularity = -0.01
+		}
+	}
+}
+
+#2010 Labor Leadership Spill - Gillard vs Rudd
+country_event = {
+	id = australia.7
+	title = australia.7.t
+	desc = australia.7.d
+	picture = GFX_report_event_gillard_vs_rudd
+	
+	fire_only_once = yes
+	
+	trigger = {
+		original_tag = AST
+		date > 2010.6.1
+		date < 2010.6.30
+	}
+	
+	option = { #Rudd
+		name = australia.7.o1
+	    ai_chance = {
+			factor = 20
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+		create_country_leader = {
+	        name = "Kevin Rudd"
+            desc = "POLITICIAN_AST_KEVIN_RUDD_DESC"
+	        picture = "Kevin_Rudd.dds"
+	        expire = "2050.1.1"
+	        ideology = social_democrat_ideology
+		
+	        traits = {
+		
+		    }
+	    }
+		add_popularity = {
+			ideology = social_democrat
+			popularity = -0.01
+		}
+		set_country_flag = rudd_2010_spill
+	}
+	
+	option = { #Gillard
+		name = australia.7.o2
+	    ai_chance = {
+			factor = 80
+		}
+		create_country_leader = {
+	        name = "Julia Gillard"
+            desc = "POLITICIAN_AST_JULIA_GILLARD_DESC"
+	        picture = "Julia_Gillard.dds"
+	        expire = "2050.1.1"
+	        ideology = social_democrat_ideology
+		
+	        traits = {
+		
+		    }
+	    }
+		add_popularity = {
+			ideology = social_democrat
+			popularity = -0.01
+		}
+		set_country_flag = gillard_2010_spill
+	}
+}
+
+#2012 Labor Leadership Spill - Rudd vs Gillard
+country_event = {
+	id = australia.8
+	title = australia.8.t
+	desc = australia.8.d
+	picture = GFX_report_event_gillard_vs_rudd
+	
+	fire_only_once = yes
+	
+	trigger = {
+		original_tag = AST
+		date > 2012.2.1
+		date < 2012.2.30
+		has_country_flag = gillard_2010_spill
+	}
+	
+	option = { #Rudd
+		name = australia.8.o1
+	    ai_chance = {
+			factor = 10
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+		create_country_leader = {
+	        name = "Kevin Rudd"
+            desc = "POLITICIAN_AST_KEVIN_RUDD_DESC"
+	        picture = "Kevin_Rudd.dds"
+	        expire = "2050.1.1"
+	        ideology = social_democrat_ideology
+		
+	        traits = {
+		
+		    }
+	    }
+		add_popularity = {
+			ideology = social_democrat
+			popularity = -0.01
+		}
+	}
+	
+	option = { #Gillard
+		name = australia.8.o2
+	    ai_chance = {
+			factor = 90
+		}
+		add_popularity = {
+			ideology = social_democrat
+			popularity = -0.01
+		}
+		set_country_flag = gillard_2012_spill
+	}
+}
+
+#2012 Labor Leadership Spill - Shorten vs Rudd
+country_event = {
+	id = australia.9
+	title = australia.9.t
+	desc = australia.9.d
+	picture = GFX_report_event_rudd_vs_shorten
+	
+	fire_only_once = yes
+	
+	trigger = {
+		original_tag = AST
+		date > 2012.2.1
+		date < 2012.2.30
+		has_country_flag = rudd_2010_spill
+	}
+	
+	option = { #Shorten
+		name = australia.9.o1
+	    ai_chance = {
+			factor = 40
+		}
+		create_country_leader = {
+	        name = "Bill Shorten"
+            desc = "POLITICIAN_AST_BILL_SHORTEN_DESC"
+	        picture = "Bill_Shorten.dds"
+	        expire = "2050.1.1"
+	        ideology = social_democrat_ideology
+		
+	        traits = {
+		
+		    }
+	    }
+		add_popularity = {
+			ideology = social_democrat
+			popularity = -0.01
+		}
+	}
+	
+	option = { #Rudd
+		name = australia.9.o2
+	    ai_chance = {
+			factor = 60
+		}
+		add_popularity = {
+			ideology = social_democrat
+			popularity = -0.01
+		}
+	}
+}
+
+#2013 March Labor Leadership Spill - Crean vs Gillard
+country_event = {
+	id = australia.10
+	title = australia.10.t
+	desc = australia.10.d
+	picture = GFX_report_event_crean_vs_gillard
+	
+	fire_only_once = yes
+	
+	trigger = {
+		original_tag = AST
+		date > 2013.3.1
+		date < 2013.3.30
+		has_country_flag = gillard_2012_spill
+	}
+	
+	option = { #Crean
+		name = australia.10.o1
+	    ai_chance = {
+			factor = 5
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+		create_country_leader = {
+	        name = "Simon Crean"
+            desc = "POLITICIAN_AST_SIMON_CREAN_DESC"
+	        picture = "Simon_Crean.dds"
+	        expire = "2050.1.1"
+	        ideology = social_democrat_ideology
+		
+	        traits = {
+		
+		    }
+	    }
+		add_popularity = {
+			ideology = social_democrat
+			popularity = -0.01
+		}
+	}
+	
+	option = { #Gillard
+		name = australia.10.o2
+	    ai_chance = {
+			factor = 95
+		}
+		set_country_flag = gillard_march_2013_spill
+		add_popularity = {
+			ideology = social_democrat
+			popularity = -0.01
+		}
+	}
+}
+
+#2013 June Labor Leadership Spill - Rudd vs Gillard
+country_event = {
+	id = australia.11
+	title = australia.11.t
+	desc = australia.11.d
+	picture = GFX_report_event_gillard_vs_rudd
+	
+	fire_only_once = yes
+	
+	trigger = {
+		original_tag = AST
+		date > 2013.6.1
+		date < 2013.6.30
+		has_country_flag = gillard_march_2013_spill
+	}
+	
+	option = { #Rudd
+		name = australia.11.o1
+	    ai_chance = {
+			factor = 80
+		}
+		create_country_leader = {
+	        name = "Kevin Rudd"
+            desc = "POLITICIAN_AST_KEVIN_RUDD_DESC"
+	        picture = "Kevin_Rudd.dds"
+	        expire = "2050.1.1"
+	        ideology = social_democrat_ideology
+		
+	        traits = {
+		
+		    }
+	    }
+		add_popularity = {
+			ideology = social_democrat
+			popularity = -0.01
+		}
+	}
+	
+	option = { #Gillard
+		name = australia.11.o2
+	    ai_chance = {
+			factor = 20
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+		add_popularity = {
+			ideology = social_democrat
+			popularity = -0.01
+		}
+	}
+}
+
+#2013 October Labor Leadership Spill - Shorten vs Albanese
+country_event = {
+	id = australia.12
+	title = australia.12.t
+	desc = australia.12.d
+	picture = GFX_report_event_shorten_vs_albanese
+	
+	fire_only_once = yes
+	
+	trigger = {
+		original_tag = AST
+		date > 2013.10.20
+		date < 2013.11.10
+		NOT = {
+		    has_government = social_democrat
+		}
+	}
+	
+	option = { #Shorten
+		name = australia.12.o1
+	    ai_chance = {
+			factor = 50
+		}
+		create_country_leader = {
+	        name = "Bill Shorten"
+            desc = "POLITICIAN_AST_BILL_SHORTEN_DESC"
+	        picture = "Bill_Shorten.dds"
+	        expire = "2050.1.1"
+	        ideology = social_democrat_ideology
+		
+	        traits = {
+		
+		    }
+	    }
+		add_popularity = {
+			ideology = social_democrat
+			popularity = -0.01
+		}
+	}
+	
+	option = { #Albanese
+		name = australia.12.o2
+	    ai_chance = {
+			factor = 50
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+		create_country_leader = {
+	        name = "Anthony Albanese"
+            desc = ""
+	        picture = "Anthony_Albanese.dds"
+	        expire = "2050.1.1"
+	        ideology = social_democrat_ideology
+		
+	        traits = {
+		
+		    }
+	    }
+		add_popularity = {
+			ideology = social_democrat
+			popularity = -0.01
+		}
+	}
+}
+
+#2016 Labor Leadership Spill - Shorten vs Albanese vs Plibersek
+country_event = {
+	id = australia.13
+	title = australia.13.t
+	desc = australia.13.d
+	picture = GFX_report_event_shorten_albanese_plibersek
+	
+	fire_only_once = yes
+	
+	trigger = {
+		original_tag = AST
+		date > 2016.10.20
+		date < 2016.11.10
+		NOT = {
+		    has_government = social_democrat
+		}
+	}
+	
+	option = { #Shorten
+		name = australia.13.o1
+	    ai_chance = {
+			factor = 70
+		}
+		create_country_leader = {
+	        name = "Bill Shorten"
+            desc = "POLITICIAN_AST_BILL_SHORTEN_DESC"
+	        picture = "Bill_Shorten.dds"
+	        expire = "2050.1.1"
+	        ideology = social_democrat_ideology
+		
+	        traits = {
+		
+		    }
+	    }
+		add_popularity = {
+			ideology = social_democrat
+			popularity = -0.01
+		}
+	}
+	
+	option = { #Albanese
+		name = australia.13.o2
+	    ai_chance = {
+			factor = 15
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+		create_country_leader = {
+	        name = "Anthony Albanese"
+            desc = ""
+	        picture = "Anthony_Albanese.dds"
+	        expire = "2050.1.1"
+	        ideology = social_democrat_ideology
+		
+	        traits = {
+		
+		    }
+	    }
+		add_popularity = {
+			ideology = social_democrat
+			popularity = -0.01
+		}
+	}
+	
+	option = { #Plibersek
+		name = australia.13.o3
+	    ai_chance = {
+			factor = 15
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+		create_country_leader = {
+	        name = "Tanya Plibersek"
+            desc = ""
+	        picture = "Tanya_Plibersek.dds"
+	        expire = "2050.1.1"
+	        ideology = social_democrat_ideology
+		
+	        traits = {
+		
+		    }
+	    }
+		add_popularity = {
+			ideology = social_democrat
+			popularity = -0.01
+		}
+	}
+}
+
+#2002 Liberal Leadership Spill - Costello vs Hill
+country_event = {
+	id = australia.14
+	title = australia.14.t
+	desc = australia.14.d
+	picture = GFX_report_event_costello_vs_hill
+	
+	fire_only_once = yes
+	
+	trigger = {
+		original_tag = AST
+		date > 2002.4.1
+		date < 2002.4.20
+		NOT = {
+		    has_government = market_liberal
+		}
+	}
+	
+	option = { #Costello
+		name = australia.14.o1
+	    ai_chance = {
+			factor = 60
+		}
+		create_country_leader = {
+	        name = "Peter Costello"
+            desc = ""
+	        picture = "Peter_Costello.dds"
+	        expire = "2050.1.1"
+	        ideology = libertarian
+		
+	        traits = {
+		
+		    }
+	    }
+		add_popularity = {
+			ideology = market_liberal
+			popularity = -0.01
+		}
+	}
+	
+	option = { #Hill
+		name = australia.14.o2
+	    ai_chance = {
+			factor = 40
+		}
+		create_country_leader = {
+	        name = "Robert Hill"
+            desc = ""
+	        picture = "Robert_Hill.dds"
+	        expire = "2050.1.1"
+	        ideology = libertarian
+		
+	        traits = {
+		
+		    }
+	    }
+		add_popularity = {
+			ideology = market_liberal
+			popularity = -0.01
+		}
+	}
+}
+
+#2004 Liberal Leadership Spill - Julie Bishop takes charge
+country_event = {
+	id = australia.15
+	title = australia.15.t
+	desc = australia.15.d
+	picture = GFX_report_event_julie_bishop
+	
+	fire_only_once = yes
+	
+	trigger = {
+		original_tag = AST
+		date > 2004.11.1
+		date < 2004.11.30
+		NOT = {
+		    has_government = market_liberal
+		}
+	}
+	
+	option = { 
+		name = australia.15.o1
+	    ai_chance = {
+			factor = 100
+		}
+		create_country_leader = {
+	        name = "Julie Bishop"
+            desc = ""
+	        picture = "Julie_Bishop.dds"
+	        expire = "2050.1.1"
+	        ideology = libertarian
+		
+	        traits = {
+		
+		    }
+	    }
+		add_popularity = {
+			ideology = market_liberal
+			popularity = -0.01
+		}
+	}
+}
+
+#2007 Liberal Leadership Spill - Nelson vs Turnbull
+country_event = {
+	id = australia.16
+	title = australia.16.t
+	desc = australia.16.d
+	picture = GFX_report_event_turnbull_vs_nelson
+	
+	fire_only_once = yes
+	
+	trigger = {
+		original_tag = AST
+		date > 2007.11.1
+		date < 2007.11.30
+		NOT = {
+		    has_government = market_liberal
+		}
+	}
+	
+	option = { #Nelson
+		name = australia.16.o1
+	    ai_chance = {
+			factor = 50
+		}
+		create_country_leader = {
+	        name = "Brendan Nelson"
+            desc = "POLITICIAN_AST_BRENDON_NELSON_DESC"
+	        picture = "Brendan_Nelson.dds"
+	        expire = "2050.1.1"
+	        ideology = libertarian
+		
+	        traits = {
+		
+		    }
+	    }
+		add_popularity = {
+			ideology = market_liberal
+			popularity = -0.01
+		}
+	}
+	
+	option = { #Turnbull
+		name = australia.16.o2
+	    ai_chance = {
+			factor = 50
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+		create_country_leader = {
+	        name = "Malcom Turnbull"
+            desc = "POLITICIAN_AST_MALCOM_TURNBULL_DESC"
+	        picture = "Malcom_Turnbull.dds"
+	        expire = "2050.1.1"
+	        ideology = libertarian
+		
+	        traits = {
+		
+		    }
+	    }
+		add_popularity = {
+			ideology = market_liberal
+			popularity = -0.01
+		}
+	}
+}
+
+#2008 Liberal Leadership Spill - Nelson vs Turnbull vs Bishop
+country_event = {
+	id = australia.17
+	title = australia.17.t
+	desc = australia.17.d
+	picture = GFX_report_event_turnbull_nelson_bishop
+	
+	fire_only_once = yes
+	
+	trigger = {
+		original_tag = AST
+		date > 2008.9.1
+		date < 2008.9.30
+	}
+	
+	option = { #Nelson
+		name = australia.17.o1
+	    ai_chance = {
+			factor = 45
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+		create_country_leader = {
+	        name = "Brendan Nelson"
+            desc = "POLITICIAN_AST_BRENDON_NELSON_DESC"
+	        picture = "Brendan_Nelson.dds"
+	        expire = "2050.1.1"
+	        ideology = libertarian
+		
+	        traits = {
+		
+		    }
+	    }
+		add_popularity = {
+			ideology = market_liberal
+			popularity = -0.01
+		}
+	}
+	
+	option = { #Turnbull
+		name = australia.17.o2
+	    ai_chance = {
+			factor = 45
+		}
+		create_country_leader = {
+	        name = "Malcom Turnbull"
+            desc = "POLITICIAN_AST_MALCOM_TURNBULL_DESC"
+	        picture = "Malcom_Turnbull.dds"
+	        expire = "2050.1.1"
+	        ideology = libertarian
+		
+	        traits = {
+		
+		    }
+	    }
+		add_popularity = {
+			ideology = market_liberal
+			popularity = -0.01
+		}
+	}
+	
+	option = { #Bishop
+		name = australia.17.o3
+	    ai_chance = {
+			factor = 10
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+		create_country_leader = {
+	        name = "Julie Bishop"
+            desc = ""
+	        picture = "Julie_Bishop.dds"
+	        expire = "2050.1.1"
+	        ideology = libertarian
+		
+	        traits = {
+		
+		    }
+	    }
+		add_popularity = {
+			ideology = market_liberal
+			popularity = -0.01
+		}
+	}
+}
+
+#2009 Liberal Leadership Spill - Abbott vs Turnbull vs Hockey
+country_event = {
+	id = australia.18
+	title = australia.18.t
+	desc = australia.18.d
+	picture = GFX_report_event_abbott_turnbull_hockey
+	
+	fire_only_once = yes
+	
+	trigger = {
+		original_tag = AST
+		date > 2009.12.1
+		date < 2009.12.30
+	}
+	
+	option = { #Abbott
+		name = australia.18.o1
+	    ai_chance = {
+			factor = 40
+		}
+		create_country_leader = {
+	        name = "Tony Abbott"
+            desc = "POLITICIAN_AST_TONY_ABBOTT_DESC"
+	        picture = "Tony_Abbott.dds"
+	        expire = "2050.1.1"
+	        ideology = libertarian
+		
+	        traits = {
+		
+		    }
+	    }
+		add_popularity = {
+			ideology = market_liberal
+			popularity = -0.01
+		}
+	}
+	
+	option = { #Turnbull
+		name = australia.18.o2
+	    ai_chance = {
+			factor = 30
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+		create_country_leader = {
+	        name = "Malcom Turnbull"
+            desc = "POLITICIAN_AST_MALCOM_TURNBULL_DESC"
+	        picture = "Malcom_Turnbull.dds"
+	        expire = "2050.1.1"
+	        ideology = libertarian
+		
+	        traits = {
+		
+		    }
+	    }
+		add_popularity = {
+			ideology = market_liberal
+			popularity = -0.01
+		}
+	}
+	
+	option = {  #Hockey
+		name = australia.18.o3
+	    ai_chance = {
+			factor = 30
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+		create_country_leader = {
+	        name = "Joe Hockey"
+            desc = ""
+	        picture = "Joe_Hockey.dds"
+	        expire = "2050.1.1"
+	        ideology = libertarian
+		
+	        traits = {
+		
+		    }
+	    }
+		add_popularity = {
+			ideology = market_liberal
+			popularity = -0.01
+		}
+	}
+}
+
+#2015 Liberal Leadership Spill - Abbott vs Turnbull
+country_event = {
+	id = australia.19
+	title = australia.19.t
+	desc = australia.19.d
+	picture = GFX_report_event_abbott_vs_turnbull
+	
+	fire_only_once = yes
+	
+	trigger = {
+		original_tag = AST
+		date > 2015.9.1
+		date < 2015.9.30
+	}
+	
+	option = { #Abbott
+		name = australia.19.o1
+	    ai_chance = {
+			factor = 30
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+		create_country_leader = {
+	        name = "Tony Abbott"
+            desc = "POLITICIAN_AST_TONY_ABBOTT_DESC"
+	        picture = "Tony_Abbott.dds"
+	        expire = "2050.1.1"
+	        ideology = libertarian
+		
+	        traits = {
+		
+		    }
+	    }
+		add_popularity = {
+			ideology = market_liberal
+			popularity = -0.01
+		}
+		set_country_flag = abbott_2015_spill
+	}
+	
+	option = { #Turnbull
+		name = australia.19.o2
+	    ai_chance = {
+			factor = 70
+		}
+		create_country_leader = {
+	        name = "Malcom Turnbull"
+            desc = "POLITICIAN_AST_MALCOM_TURNBULL_DESC"
+	        picture = "Malcom_Turnbull.dds"
+	        expire = "2050.1.1"
+	        ideology = libertarian
+		
+	        traits = {
+		
+		    }
+	    }
+		add_popularity = {
+			ideology = market_liberal
+			popularity = -0.01
+		}
+	}
+}
+
+#2016 January Liberal Leadership Spill - Turnbull takes charge
+country_event = {
+	id = australia.21
+	title = australia.21.t
+	desc = australia.21.d
+	picture = GFX_report_event_abbott_vs_turnbull
+	
+	fire_only_once = yes
+	
+	trigger = {
+		original_tag = AST
+		date > 2016.1.1
+		date < 2016.1.30
+		has_country_flag = abbott_2015_spill
+	}
+	
+	option = { #Turnbull
+		name = australia.21.o1
+	    ai_chance = {
+			factor = 100
+		}
+		create_country_leader = {
+	        name = "Malcom Turnbull"
+            desc = "POLITICIAN_AST_MALCOM_TURNBULL_DESC"
+	        picture = "Malcom_Turnbull.dds"
+	        expire = "2050.1.1"
+	        ideology = libertarian
+		
+	        traits = {
+		
+		    }
+	    }
+		add_popularity = {
+			ideology = market_liberal
+			popularity = -0.02
+		}
+	}
+}
+
+
+
+#2016 Liberal Leadership Spill - Abbott vs Turnbull vs Bishop
+country_event = {
+	id = australia.20
+	title = australia.20.t
+	desc = australia.20.d
+	picture = GFX_report_event_turnbull_abbott_bishop
+	
+	fire_only_once = yes
+	
+	trigger = {
+		original_tag = AST
+		date > 2016.11.1
+		date < 2016.11.30
+		NOT = {
+		    has_government = market_liberal
+		}
+	}
+	
+	option = { #Abbott
+		name = australia.20.o1
+	    ai_chance = {
+			factor = 20
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+		create_country_leader = {
+	        name = "Tony Abbott"
+            desc = "POLITICIAN_AST_TONY_ABBOTT_DESC"
+	        picture = "Tony_Abbott.dds"
+	        expire = "2050.1.1"
+	        ideology = libertarian
+		
+	        traits = {
+		
+		    }
+	    }
+		add_popularity = {
+			ideology = market_liberal
+			popularity = -0.03
+		}
+	}
+	
+	option = { #Turnbull
+		name = australia.20.o2
+	    ai_chance = {
+			factor = 30
+		}
+		create_country_leader = {
+	        name = "Malcom Turnbull"
+            desc = "POLITICIAN_AST_MALCOM_TURNBULL_DESC"
+	        picture = "Malcom_Turnbull.dds"
+	        expire = "2050.1.1"
+	        ideology = libertarian
+		
+	        traits = {
+		
+		    }
+	    }
+		add_popularity = {
+			ideology = market_liberal
+			popularity = -0.01
+		}
+	}
+	
+	option = {  #Bishop
+		name = australia.20.o3
+	    ai_chance = {
+			factor = 50
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+		create_country_leader = {
+	        name = "Julie Bishop"
+            desc = ""
+	        picture = "Julie_Bishop.dds"
+	        expire = "2050.1.1"
+	        ideology = libertarian
+		
+	        traits = {
+		
+		    }
+	    }
+		add_popularity = {
+			ideology = market_liberal
+			popularity = -0.01
+		}
+	}
+}
+
+#2012 Greens Leadership Election - Bob Brown Resigns
+country_event = {
+	id = australia.22
+	title = australia.22.t
+	desc = australia.22.d
+	picture = GFX_report_event_bob_brown_resigns
+	
+	fire_only_once = yes
+	
+	trigger = {
+		original_tag = AST
+		date > 2012.4.1
+		date < 2012.4.30
+	}
+	
+	option = { #Milne
+		name = australia.22.o1
+	    ai_chance = {
+			factor = 60
+		}
+		create_country_leader = {
+	        name = "Christine Milne"
+            desc = "POLITICIAN_AST_CHRISTINE_MILNE_DESC"
+	        picture = "Christine_Milne.dds"
+	        expire = "2050.1.1"
+	        ideology = green
+		
+	        traits = {
+		
+		    }
+	    }
+		set_country_flag = milne_2012_election
+	}
+	
+	option = { #Bandt
+		name = australia.22.o2
+	    ai_chance = {
+			factor = 40
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+		create_country_leader = {
+	        name = "Adam Bandt"
+            desc = ""
+	        picture = "Adam_Bandt.dds"
+	        expire = "2050.1.1"
+	        ideology = green
+		
+	        traits = {
+		
+		    }
+	    }
+		set_country_flag = bandt_2012_election
+	}
+}
+
+#2015 Greens Leadership Election - Milne Resigns
+country_event = {
+	id = australia.23
+	title = australia.23.t
+	desc = australia.23.d
+	picture = GFX_report_event_milne_resigns
+	
+	fire_only_once = yes
+	
+	trigger = {
+		original_tag = AST
+		date > 2015.5.1
+		date < 2015.5.30
+		has_country_flag = milne_2012_election
+	}
+	
+	option = { #Di Natale
+		name = australia.23.o1
+	    ai_chance = {
+			factor = 50
+		}
+		create_country_leader = {
+	        name = "Richard Di Natale"
+            desc = "POLITICIAN_AST_RICHARD_DI_NATALE_DESC"
+	        picture = "Richard_Di_Natale.dds"
+	        expire = "2050.1.1"
+	        ideology = green
+		
+	        traits = {
+		
+		    }
+	    }
+	}
+	
+	option = { #Waters
+		name = australia.23.o2
+	    ai_chance = {
+			factor = 25
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+		create_country_leader = {
+	        name = "Larissa Waters"
+            desc = ""
+	        picture = "Larissa_Waters.dds"
+	        expire = "2050.1.1"
+	        ideology = green
+		
+	        traits = {
+		
+		    }
+	    }
+	}
+	
+	option = { #Ludlam
+		name = australia.23.o3
+	    ai_chance = {
+			factor = 20
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+		create_country_leader = {
+	        name = "Scott Ludlam"
+            desc = ""
+	        picture = "Scott_Ludlam.dds"
+	        expire = "2050.1.1"
+	        ideology = green
+		
+	        traits = {
+		
+		    }
+	    }
+	}
+	
+	option = { #Bandt
+		name = australia.23.o4
+	    ai_chance = {
+			factor = 5
+			modifier = {
+				is_historical_focus_on = yes
+				factor = 0
+			}
+		}
+		create_country_leader = {
+	        name = "Adam Bandt"
+            desc = ""
+	        picture = "Adam_Bandt.dds"
+	        expire = "2050.1.1"
+	        ideology = green
+		
+	        traits = {
+		
+		    }
+	    }
+	}
+}
+
+#2015 Greens Leadership Election - Bandt Resigns
+country_event = {
+	id = australia.24
+	title = australia.24.t
+	desc = australia.24.d
+	picture = GFX_report_event_adam_bandt_resigns
+	
+	fire_only_once = yes
+	
+	trigger = {
+		original_tag = AST
+		date > 2015.5.1
+		date < 2015.5.30
+		has_country_flag = bandt_2012_election
+	}
+	
+	option = { #Di Natale
+		name = australia.24.o1
+	    ai_chance = {
+			factor = 50
+		}
+		create_country_leader = {
+	        name = "Richard Di Natale"
+            desc = "POLITICIAN_AST_RICHARD_DI_NATALE_DESC"
+	        picture = "Richard_Di_Natale.dds"
+	        expire = "2050.1.1"
+	        ideology = green
+		
+	        traits = {
+		
+		    }
+	    }
+	}
+	
+	option = { #Waters
+		name = australia.24.o2
+	    ai_chance = {
+			factor = 25
+		}
+		create_country_leader = {
+	        name = "Larissa Waters"
+            desc = ""
+	        picture = "Larissa_Waters.dds"
+	        expire = "2050.1.1"
+	        ideology = green
+		
+	        traits = {
+		
+		    }
+	    }
+	}
+	
+	option = { #Ludlam
+		name = australia.24.o3
+	    ai_chance = {
+			factor = 20
+		}
+		create_country_leader = {
+	        name = "Scott Ludlam"
+	        picture = "Scott_Ludlam.dds"
+	        ideology = green
+	    }
+	}
+	
+	option = { #Milne
+		name = australia.24.o4
+	    ai_chance = {
+			factor = 5
+		}
+		create_country_leader = {
+	        name = "Christine Milne"
+	        picture = "Christine_Milne.dds"
+	        ideology = green
+	    }
+	}
+}

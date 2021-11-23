@@ -1,0 +1,249 @@
+﻿add_namespace = taiwan
+
+country_event = {	#Remove the Chinese cores upon union
+	id = taiwan.1
+	hidden = yes
+	is_triggered_only = yes
+	
+	option = {
+		every_state = {
+			limit = {
+				is_core_of = PRC
+				is_owned_by = CHI
+			}
+			remove_core_of = PRC
+		}
+	}
+}
+
+#Reunification of China
+country_event = {
+	id = taiwan.2
+	title = taiwan.2.t
+	desc = taiwan.2.d
+	picture = GFX_report_event_china_and_taiwan
+	
+	trigger = {
+		#Can either happen to China and Taiwan.
+		NOT = { has_country_flag = PRC_CHI_reunification_of_china_event }
+		OR = {
+			original_tag = PRC
+			AND = {
+				original_tag = CHI
+				is_ai = no
+			}
+		}
+		#Both countries need to exist.
+		AND = {
+			country_exists = PRC
+			country_exists = CHI
+		}
+		#The other country may not be a human player.
+		OR = {
+			AND = {
+				original_tag = PRC
+				CHI = { is_ai = yes }
+			}
+			AND = {
+				original_tag = CHI
+				PRC = { is_ai = yes }
+			}
+		}
+		#The two countries need to have the same form of government
+		OR = {
+			AND = {
+				original_tag = PRC
+				CHI = { has_similar_form_of_government = yes }
+			}
+			AND = {
+				original_tag = CHI
+				PRC = { has_similar_form_of_government = yes }
+			}
+		}
+		#Either both countries need to not be puppets or puppets of one another
+		OR = {
+			AND = {
+				PRC = { is_puppet = no }
+				CHI = { is_puppet = no }
+			}
+			PRC = { is_puppet_of = CHI }
+			CHI = { is_puppet_of = PRC }
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 10
+	}
+	
+	immediate = {
+		set_country_flag = PRC_CHI_reunification_of_china_event
+	}
+	
+	option = {
+		name = taiwan.2.o1
+		if = {
+			limit = { original_tag = PRC }
+			
+			if = {
+				limit = {
+					MCU = { is_puppet_of = PRC }
+				}
+				annex_country = {
+					target = MCU
+					transfer_troops = yes
+				}
+			}
+			if = {
+				limit = {
+					HKN = { is_puppet_of = PRC }
+				}
+				annex_country = {
+					target = HKN
+					transfer_troops = yes
+				}
+			}
+			
+			annex_country = {
+				target = CHI
+				transfer_troops = yes
+			}
+			if = {
+				limit = { date < 2016.1.2 }
+				create_country_leader = {
+					name = "Lee Teng-hui"
+					picture = "gfx/leaders/CHI/Lee_Teng_Hui.dds"
+					ideology = constitutionalist
+				}
+				
+				create_country_leader = {
+					name = "Hsu Hsin-ying"
+					picture = "gfx/leaders/CHI/Hsu_Hsin_Ying.dds"
+					ideology = counter_progressive_democrat
+				}
+			}
+			if = {
+				limit = { date > 2016.1.1 }
+				create_country_leader = {
+					name = "Ma Ying-jeou"
+					picture = "gfx/leaders/CHI/Ma_Ying_Jeou.dds"
+					ideology = constitutionalist
+				}
+				create_country_leader = {
+					name = "Tsai Ing-wen"
+					picture = "gfx/leaders/CHI/Tsai_Ing_Wen.dds"
+					ideology = liberalist
+				}
+			}
+		}
+		if = {
+			limit = { original_tag = CHI }
+			
+			if = {
+				limit = { has_idea = partially_recognized_state }
+				remove_ideas = partially_recognized_state
+			}
+			
+			if = {
+				limit = { PRC = { has_idea = idea_united_nations_security_council_member } }
+				add_ideas = idea_united_nations_security_council_member
+			}
+			
+			if = {
+				limit = {
+					MCU = { is_puppet_of = PRC }
+				}
+				annex_country = {
+					target = MCU
+					transfer_troops = yes
+				}
+			}
+			if = {
+				limit = {
+					HKN = { is_puppet_of = PRC }
+				}
+				annex_country = {
+					target = HKN
+					transfer_troops = yes
+				}
+			}
+			
+			annex_country = {
+				target = PRC
+				transfer_troops = yes
+			}
+		}
+		
+		hidden_effect = {
+			news_event = {
+				id = china_news.26
+				days = 2
+			}
+		}
+		
+		ai_chance = {
+			factor = 10
+		}
+	}
+	
+	option = {
+		name = taiwan.2.o2
+		add_political_power = -100
+		add_stability = -0.2
+		
+		ai_chance = {
+			factor = 1
+		}
+	}
+}
+
+#Move the capital?
+
+country_event = {
+	id = taiwan.3
+	title = taiwan.3.t
+	desc = taiwan.3.d
+	picture = GFX_report_event_beijing
+	
+	fire_only_once = yes
+	
+	trigger = {
+		original_tag = CHI
+		has_war = no
+		OR = {
+			has_full_control_of_state = 608
+			has_full_control_of_state = 606
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 20
+	}
+	
+	#Taiwan
+	option = {
+		name = taiwan.3.o1
+		trigger = {
+			has_full_control_of_state = 524
+		}
+		set_capital = 524
+	}
+	
+	#Beijing
+	option = {
+		name = taiwan.3.o2
+		trigger = {
+			has_full_control_of_state = 608
+		}
+		set_capital = 608
+		add_stability = 0.05
+	}
+	
+	#Nanjing
+	option = {
+		name = taiwan.3.o3
+		trigger = {
+			has_full_control_of_state = 606
+		}
+		set_capital = 606
+	}
+}

@@ -1,0 +1,135 @@
+﻿add_namespace = norway
+
+#Asta Train Collision
+country_event = {
+	id = norway.1
+	title = norway.1.t
+	desc = norway.1.d
+	picture = GFX_report_event_train_collision
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = norway.1.o1
+		add_political_power = -30
+	}
+	
+	option = {
+		name = norway.1.o2
+		add_stability = -0.03
+	}
+}
+
+#Bondevik loses Motion of Confidence
+country_event = {
+	id = norway.2
+	title = norway.2.t
+	desc = norway.2.d
+	picture = GFX_report_event_bondevik_stoltenberg
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = norway.2.o1
+		create_country_leader = {
+			name = "Jens Stoltenberg"
+			picture = "Jens_Stoltenberg.dds"
+			ideology = social_democrat_ideology 
+		}
+		add_popularity = {
+			ideology = social_democrat
+			popularity = 0.1
+		}
+		set_politics = {
+			elections_allowed = yes
+			ruling_party = social_democrat
+		}
+	}
+}
+
+#Joint Oil Drills
+country_event = {
+	id = norway.3
+	title = norway.3.t
+	desc = norway.3.d
+	picture = GFX_report_event_norwegian_flag
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = norway.3.o1
+		if = {
+			limit = { original_tag = NOR }
+			142 = {
+				add_resource = {
+					type = oil
+					amount = 75
+				}
+			}
+		}
+		if = {
+			limit = { original_tag = ENG }
+			120 = {
+				add_resource = {
+					type = oil
+					amount = 40
+				}
+			}
+			142 = {
+				add_resource = {
+					type = oil
+					amount = 30
+				}
+			}
+			132 = {
+				add_resource = {
+					type = oil
+					amount = 25
+				}
+			}
+		}
+	}
+}
+
+#Haakon's Marriage announced
+#December 1st, 2000
+country_event = {
+	id = norway.4
+	title = norway.4.t
+	desc = norway.4.d
+	picture = GFX_report_event_norwegian_flag
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = norway.4.o1
+		set_country_flag = haakons_marriage_announced
+		hidden_effect = {
+			country_event = { id = norway.5 days = 267 }
+		}
+	}
+}
+
+#Haakon's Marriage
+#August 25th, 2001
+country_event = {
+	id = norway.5
+	title = norway.5.t
+	desc = norway.5.d
+	picture = GFX_report_event_norwegian_flag
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		NOT = { has_completed_focus = NOR_oppose_haakons_marriage }
+	}
+	
+	option = {
+		name = norway.5.o1
+		set_country_flag = haakon_married
+		if = {
+			limit = { NOT = { has_completed_focus = NOR_oppose_haakons_marriage } }
+			complete_national_focus = NOR_support_haakons_marriage
+		}
+	}
+}

@@ -1,0 +1,293 @@
+﻿add_namespace = egypt
+
+#Egypt: The Issue of Halaib
+country_event = {
+	id = egypt.1
+	title = egypt.1.t
+	desc = egypt.1.d
+	picture = GFX_report_event_halaib
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = EGY
+		date > 2000.1.10
+		date < 2002.1.1
+		798 = {
+			is_controlled_by = SUD
+		}
+		NOT = { has_country_flag = egy_issue_of_halab }
+	}
+	
+	immediate = {
+		set_country_flag = egy_issue_of_halab
+	}
+	
+	option = { #Press the Issue
+		name = egypt.1.o1
+		SUD = {
+			country_event = {
+				id = egypt.2
+			}
+			add_opinion_modifier = {
+				target = EGY
+				modifier = recent_actions_negative
+			}
+		}
+		ai_chance = {
+			factor = 90
+		}	
+	}
+	
+	option = { #Back down
+		name = egypt.1.o2
+		798 = {
+			remove_core_of = EGY
+		}
+		SUD = {
+			add_opinion_modifier = {
+				target = EGY
+				modifier = recent_actions_very_positive
+			}
+		}
+		add_political_power = -100
+		add_stability = -0.15
+		set_country_flag = egy_backed_down_from_halaib
+		ai_chance = {
+			factor = 10
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
+		}
+		hidden_effect = {
+			news_event = {
+				id = news.44
+				hours = 6
+			}
+		}
+	}
+}
+
+#Sudan: The Future of Halaib
+country_event = {
+	id = egypt.2
+	title = egypt.2.t
+	desc = egypt.2.d
+	picture = GFX_report_event_halaib
+	
+	is_triggered_only = yes
+	
+	option = { #Retreat from the Area
+		name = egypt.2.o1
+		EGY = {
+			transfer_state = 798
+		}
+		set_country_flag = sud_halaib_temporary_concession
+		EGY = { set_country_flag = egy_diplomatic_victory_in_halaib }
+		
+		EGY = {
+			country_event = {
+				id = egypt.3
+				hours = 6
+			}
+		}
+		
+		ai_chance = {
+			factor = 75
+		}
+	}
+	
+	option = { #Concede Halaib forever
+		name = egypt.2.o2
+		EGY = {
+			transfer_state = 798
+		}
+		EGY = {
+			add_opinion_modifier = {
+				target = SUD
+				modifier = recent_actions_very_positive
+			}
+		}
+		798 = {
+			remove_core_of = SUD
+		}
+		set_country_flag = sud_halaib_permanent_transfer
+		
+		EGY = {
+			country_event = {
+				id = egypt.3
+				hours = 6
+			}
+		}
+		
+		ai_chance = {
+			factor = 10
+			
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
+		}
+	}
+	
+	option = { #Never back down!
+		name = egypt.2.o3
+		set_country_flag = sud_halaib_did_not_back_down
+		
+		custom_effect_tooltip = tooltip_event_egypt.2.o3
+		
+		hidden_effect = {
+			EGY = {
+				country_event = {
+					id = egypt.3
+					hours = 6
+				}
+			}
+		}
+			
+		ai_chance = {
+			factor = 15
+			
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
+		}
+	}
+}
+
+#Reaction to Sudanese Action
+country_event = {
+	id = egypt.3
+	title = {
+		text = egypt.3.t1
+		trigger = {
+			SUD = { has_country_flag = sud_halaib_temporary_concession }
+		}
+	}
+	title = {
+		text = egypt.3.t2
+		trigger = {
+			SUD = { has_country_flag = sud_halaib_permanent_transfer }
+		}
+	}
+	title = {
+		text = egypt.3.t3
+		trigger = {
+			SUD = { has_country_flag = sud_halaib_did_not_back_down }
+		}
+	}
+	desc = {
+		text = egypt.3.d1
+		trigger = {
+			SUD = { has_country_flag = sud_halaib_temporary_concession }
+		}
+	}
+	desc = {
+		text = egypt.3.d2
+		trigger = {
+			SUD = { has_country_flag = sud_halaib_permanent_transfer }
+		}
+	}
+	desc = {
+		text = egypt.3.d3
+		trigger = {
+			SUD = { has_country_flag = sud_halaib_did_not_back_down }
+		}
+	}
+	
+	picture = GFX_report_event_halaib
+	
+	is_triggered_only = yes
+	
+	#As expected!
+	option = {
+		name = egypt.3.o1
+		trigger = {
+			OR = {
+				SUD = { has_country_flag = sud_halaib_permanent_transfer }
+				SUD = { has_country_flag = sud_halaib_temporary_concession }
+			}
+		}
+		hidden_effect = {
+			news_event = {
+				id = news.44
+				hours = 6
+			}
+		}
+		ai_chance = { factor = 100 }
+		set_country_flag = egy_diplomatic_victory_in_halaib
+	}
+	
+	#War it is then!
+	option = {
+		name = egypt.3.o2
+		trigger = {
+			SUD = { has_country_flag = sud_halaib_did_not_back_down }
+		}
+		declare_war_on = {
+			target = SUD
+			type = take_state_focus
+			generator = { 798 } 
+		}
+		hidden_effect = {
+			news_event = {
+				id = news.44
+				hours = 6
+			}
+		}
+		ai_chance = { factor = 95 }
+		set_country_flag = egy_went_to_war_over_halaib
+	}
+	
+	#Our gamble has failed
+	option = {
+		name = egypt.3.o3
+		trigger = {
+			SUD = { has_country_flag = sud_halaib_did_not_back_down }
+		}
+		798 = {
+			remove_core_of = EGY
+		}
+		hidden_effect = {
+			news_event = {
+				id = news.44
+				hours = 6
+			}
+		}
+		ai_chance = { factor = 5 }
+		set_country_flag = egy_dodged_war_over_halaib
+	}
+}
+
+#el-Kosheh Massacre
+country_event = {
+	id = egypt.4
+	title = egypt.4.t
+	desc = egypt.4.d
+	picture = GFX_report_event_egyptian_christian_massacre
+	
+	is_triggered_only = yes
+	
+	#We will fight them!
+	option = {
+		name = egypt.4.o1
+		add_political_power = 25
+		add_stability = -0.02
+		
+		ai_chance = { factor = 95 }
+	}
+	
+	#They deserved it.
+	option = {
+		name = egypt.4.o2
+		add_stability = -0.08
+		add_popularity = {
+			ideology = islamist
+			popularity = 0.05
+		}
+		
+		ai_chance = { factor = 5 }
+	}
+}

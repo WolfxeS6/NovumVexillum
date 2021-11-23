@@ -1,0 +1,59 @@
+﻿add_namespace = syria
+
+#Syrian Civil War
+country_event = {
+	id = syria.1
+	title = syria.1.t
+	desc = syria.1.d
+	picture = GFX_report_event_syrian_civil_war
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = syria.1.o1
+		start_civil_war = {
+			ruling_party = nationalist
+			ideology = conservative
+			size = 0
+			states = { 677 }
+			capital = 677
+		}
+		hidden_effect = {
+			random_country = {
+				limit = {
+					original_tag = SYR
+					has_government = conservative
+				}
+				load_oob = "syrian_civil_war_rebels.txt"
+			}
+		}
+	}
+}
+
+#Death of Hafez al Assad
+country_event = {
+	id = syria.2
+	title = syria.2.t
+	desc = syria.2.d
+	picture = GFX_report_event_political_deal
+	
+	fire_only_once = yes
+	
+	trigger = {
+		original_tag = SYR
+		has_government = nationalist
+		date > 2000.6.1
+		date < 2000.6.20
+	}
+	
+	option = {
+		name = syria.2.o1
+		add_stability = -0.03
+		add_political_power = -25
+		create_country_leader = {
+	        name = "Bashar al-Assad"
+	        ideology = autocrat
+	        picture = "Bashar_Al_Assad.dds"
+        }
+	}
+}

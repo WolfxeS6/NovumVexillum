@@ -1,0 +1,72 @@
+seek_NATO_membership = {
+	
+	enable = {
+	
+		NOT = { tag = USA }
+		USA = { is_in_faction = yes }
+		
+		OR = {		#These countries should always desire membership
+			tag = BEL
+			tag = CAN
+			tag = DEN
+			tag = FRA
+			tag = ICE
+			tag = ITA
+			tag = LUX
+			tag = HOL
+			tag = NOR
+			tag = POR
+			tag = ENG
+			tag = GRE
+			tag = TUR
+			tag = GER
+			tag = SPR
+			tag = CZE
+			tag = HUN
+			tag = POL
+			tag = BUL
+			tag = EST
+			tag = LAT
+			tag = LIT
+			tag = ROM
+			tag = SLO
+			tag = SLV
+			tag = CRO
+			tag = ALB
+			
+			has_country_flag = has_joined_NATO_by_event
+		}
+		
+		NOT = { has_country_flag = left_NATO }
+		
+		#Also consider: Kosovo and Georgia
+		
+		has_democratic_form_of_government = yes
+		USA = { has_democratic_form_of_government = yes }
+		
+	}
+	
+	abort = {
+		OR = {
+			has_war_with = USA
+			USA = { is_in_faction = no }
+			has_country_flag = left_NATO
+			has_democratic_form_of_government = no
+			USA = { has_democratic_form_of_government = no }
+			USA = { exists = no }
+			USA = { has_completed_focus = USA_new_alliances }
+			USA = { has_completed_focus = USA_the_monroe_alliance }
+		}
+	}
+	
+	ai_strategy = {
+		type = befriend
+		id = "USA"
+		value = 50
+	}
+	ai_strategy = {
+		type = alliance
+		id = "USA"
+		value = 125
+	}
+}

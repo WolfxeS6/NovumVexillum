@@ -1,0 +1,1851 @@
+﻿# Written by E. Wolfe #
+
+add_namespace = NVX_COUP
+
+# islamist coup #
+country_event = {
+	id = NVX_COUP.1
+	title = NVX_COUP.1.t
+	desc = NVX_COUP.1.d
+	picture = GFX_report_event_coup_start
+	
+	trigger = {
+		NVX_COUP_initial_trigger_universal = yes
+		islamist > 0.45
+		NOT = { has_government = islamist }
+		NOT = { has_country_flag = NVX_COUP_wait_election }
+	}
+	
+	mean_time_to_happen = {
+		days = 100
+		modifier = { factor = 0.5 islamist > 0.5 }
+		modifier = { factor = 0.5 has_stability < 0.2 }
+		modifier = { factor = 1.3 has_stability > 0.6 }
+		modifier = { factor = 1.3 has_stability > 0.7 }
+		modifier = { factor = 1.3 has_stability > 0.8 }
+		modifier = { factor = 1.3 has_stability > 0.9 }
+	}
+	
+	immediate = {
+		NVX_COUP_prev_record = yes
+	}
+	
+	option = {
+		name = NVX_COUP.1.o1
+		set_politics = {
+			ruling_party = islamist
+			elections_allowed = no
+		}
+		NVX_COUP_remove_unique_ideas = yes
+		add_ideas = government_system_provisional
+		NVX_COUP_estates_event_10 = yes
+		
+		ai_chance = {
+			factor = 5
+			modifier = {
+				factor = 0.2
+				NVX_has_government_ideology_democratic = yes
+			}
+		}
+	}
+	
+	option = {
+		name = NVX_COUP.o.demo_coup
+		trigger = { NVX_has_government_ideology_authoritarian = yes }
+		set_politics = {
+			ruling_party = islamist
+			elections_allowed = yes
+		}
+		NVX_COUP_remove_unique_ideas = yes
+		add_ideas = government_system_provisional
+		NVX_COUP_estates_event_10 = yes
+		
+		ai_chance = {
+			factor = 5
+		}
+	}
+	
+	option = {
+		name = NVX_COUP.o.wait_election
+		trigger = { NVX_has_government_ideology_democratic = yes }
+		set_country_flag = {
+			flag = NVX_COUP_wait_election
+			days = 2190
+			value = 1
+		}
+		NVX_COUP_end = yes
+		
+		ai_chance = {
+			factor = 5
+			modifier = {
+				factor = 0.2
+				NVX_has_government_ideology_authoritarian = yes
+			}
+		}
+	}
+}
+
+# fascist coup #
+country_event = {
+	id = NVX_COUP.2
+	title = NVX_COUP.2.t
+	desc = NVX_COUP.2.d
+	picture = GFX_report_event_coup_start
+	
+	trigger = {
+		NVX_COUP_initial_trigger_universal = yes
+		fascist > 0.45
+		NOT = { has_government = fascist }
+	}
+	
+	mean_time_to_happen = {
+		days = 100
+		modifier = { factor = 0.5 fascist > 0.5 }
+		modifier = { factor = 0.5 has_stability < 0.2 }
+		modifier = { factor = 1.3 has_stability > 0.6 }
+		modifier = { factor = 1.3 has_stability > 0.7 }
+		modifier = { factor = 1.3 has_stability > 0.8 }
+		modifier = { factor = 1.3 has_stability > 0.9 }
+	}
+	
+	immediate = {
+		NVX_COUP_prev_record = yes
+	}
+	
+	option = {
+		name = NVX_COUP.2.o1
+		set_politics = {
+			ruling_party = fascist
+			elections_allowed = no
+		}
+		NVX_COUP_remove_unique_ideas = yes
+		add_ideas = government_system_provisional
+		NVX_COUP_estates_event_10 = yes
+		
+		ai_chance = {
+			factor = 1
+		}
+	}
+}
+
+# nationalist coup #
+country_event = {
+	id = NVX_COUP.3
+	title = NVX_COUP.3.t
+	desc = NVX_COUP.3.d
+	picture = GFX_report_event_coup_start
+	
+	trigger = {
+		NVX_COUP_initial_trigger_universal = yes
+		nationalist > 0.45
+		NOT = { has_government = nationalist }
+		NOT = { has_country_flag = NVX_COUP_wait_election }
+	}
+	
+	mean_time_to_happen = {
+		days = 100
+		modifier = { factor = 0.5 nationalist > 0.5 }
+		modifier = { factor = 0.5 has_stability < 0.2 }
+		modifier = { factor = 1.3 has_stability > 0.6 }
+		modifier = { factor = 1.3 has_stability > 0.7 }
+		modifier = { factor = 1.3 has_stability > 0.8 }
+		modifier = { factor = 1.3 has_stability > 0.9 }
+	}
+	
+	immediate = {
+		NVX_COUP_prev_record = yes
+	}
+	
+	option = {
+		name = NVX_COUP.3.o1
+		set_politics = {
+			ruling_party = nationalist
+			elections_allowed = no
+		}
+		NVX_COUP_remove_unique_ideas = yes
+		add_ideas = government_system_provisional
+		NVX_COUP_estates_event_10 = yes
+		
+		ai_chance = {
+			factor = 5
+			modifier = {
+				factor = 0.2
+				NVX_has_government_ideology_democratic = yes
+			}
+		}
+	}
+	
+	option = {
+		name = NVX_COUP.o.demo_coup
+		trigger = { NVX_has_government_ideology_authoritarian = yes }
+		set_politics = {
+			ruling_party = nationalist
+			elections_allowed = yes
+		}
+		NVX_COUP_remove_unique_ideas = yes
+		add_ideas = government_system_provisional
+		NVX_COUP_estates_event_10 = yes
+		
+		ai_chance = {
+			factor = 5
+		}
+	}
+	
+	option = {
+		name = NVX_COUP.o.wait_election
+		trigger = { NVX_has_government_ideology_democratic = yes }
+		set_country_flag = {
+			flag = NVX_COUP_wait_election
+			days = 2190
+			value = 1
+		}
+		NVX_COUP_end = yes
+		
+		ai_chance = {
+			factor = 5
+			modifier = {
+				factor = 0.2
+				NVX_has_government_ideology_authoritarian = yes
+			}
+		}
+	}
+}
+
+# monarchist coup #
+country_event = {
+	id = NVX_COUP.4
+	title = NVX_COUP.4.t
+	desc = NVX_COUP.4.d
+	picture = GFX_report_event_coup_start
+	
+	trigger = {
+		NVX_COUP_initial_trigger_universal = yes
+		monarchist > 0.45
+		NOT = { has_government = monarchist }
+	}
+	
+	mean_time_to_happen = {
+		days = 100
+		modifier = { factor = 0.5 monarchist > 0.5 }
+		modifier = { factor = 0.5 has_stability < 0.2 }
+		modifier = { factor = 1.3 has_stability > 0.6 }
+		modifier = { factor = 1.3 has_stability > 0.7 }
+		modifier = { factor = 1.3 has_stability > 0.8 }
+		modifier = { factor = 1.3 has_stability > 0.9 }
+	}
+	
+	immediate = {
+		NVX_COUP_prev_record = yes
+	}
+	
+	option = {
+		name = NVX_COUP.4.o1
+		set_politics = {
+			ruling_party = monarchist
+			elections_allowed = no
+		}
+		NVX_COUP_remove_unique_ideas = yes
+		add_ideas = government_system_provisional
+		NVX_COUP_estates_event_10 = yes
+		set_country_flag = NVX_COUP_has_living_monarchy
+		
+		ai_chance = {
+			factor = 1
+		}
+	}
+}
+
+# reactionary coup #
+country_event = {
+	id = NVX_COUP.5
+	title = NVX_COUP.5.t
+	desc = NVX_COUP.5.d
+	picture = GFX_report_event_coup_start
+	
+	trigger = {
+		NVX_COUP_initial_trigger_universal = yes
+		reactionary > 0.45
+		NOT = { has_government = reactionary }
+		NVX_has_government_ideology_authoritarian = yes
+	}
+	
+	mean_time_to_happen = {
+		days = 100
+		modifier = { factor = 0.5 reactionary > 0.5 }
+		modifier = { factor = 0.5 has_stability < 0.2 }
+		modifier = { factor = 1.3 has_stability > 0.6 }
+		modifier = { factor = 1.3 has_stability > 0.7 }
+		modifier = { factor = 1.3 has_stability > 0.8 }
+		modifier = { factor = 1.3 has_stability > 0.9 }
+	}
+	
+	immediate = {
+		NVX_COUP_prev_record = yes
+	}
+	
+	option = {
+		name = NVX_COUP.5.o1
+		set_politics = {
+			ruling_party = reactionary
+			elections_allowed = yes
+		}
+		NVX_COUP_remove_unique_ideas = yes
+		add_ideas = government_system_provisional
+		NVX_COUP_estates_event_10 = yes
+		
+		ai_chance = {
+			factor = 1
+		}
+	}
+}
+
+# conservative coup #
+country_event = {
+	id = NVX_COUP.6
+	title = NVX_COUP.6.t
+	desc = NVX_COUP.6.d
+	picture = GFX_report_event_coup_start
+	
+	trigger = {
+		NVX_COUP_initial_trigger_universal = yes
+		conservative > 0.45
+		NOT = { has_government = conservative }
+		NVX_has_government_ideology_authoritarian = yes
+	}
+	
+	mean_time_to_happen = {
+		days = 100
+		modifier = { factor = 0.5 conservative > 0.5 }
+		modifier = { factor = 0.5 has_stability < 0.2 }
+		modifier = { factor = 1.3 has_stability > 0.6 }
+		modifier = { factor = 1.3 has_stability > 0.7 }
+		modifier = { factor = 1.3 has_stability > 0.8 }
+		modifier = { factor = 1.3 has_stability > 0.9 }
+	}
+	
+	immediate = {
+		NVX_COUP_prev_record = yes
+	}
+	
+	option = {
+		name = NVX_COUP.6.o1
+		set_politics = {
+			ruling_party = conservative
+			elections_allowed = yes
+		}
+		NVX_COUP_remove_unique_ideas = yes
+		add_ideas = government_system_provisional
+		NVX_COUP_estates_event_10 = yes
+		
+		ai_chance = {
+			factor = 1
+		}
+	}
+}
+
+# market_liberal coup #
+country_event = {
+	id = NVX_COUP.7
+	title = NVX_COUP.7.t
+	desc = NVX_COUP.7.d
+	picture = GFX_report_event_coup_start
+	
+	trigger = {
+		NVX_COUP_initial_trigger_universal = yes
+		market_liberal > 0.45
+		NOT = { has_government = market_liberal }
+		NVX_has_government_ideology_authoritarian = yes
+	}
+	
+	mean_time_to_happen = {
+		days = 100
+		modifier = { factor = 0.5 market_liberal > 0.5 }
+		modifier = { factor = 0.5 has_stability < 0.2 }
+		modifier = { factor = 1.3 has_stability > 0.6 }
+		modifier = { factor = 1.3 has_stability > 0.7 }
+		modifier = { factor = 1.3 has_stability > 0.8 }
+		modifier = { factor = 1.3 has_stability > 0.9 }
+	}
+	
+	immediate = {
+		NVX_COUP_prev_record = yes
+	}
+	
+	option = {
+		name = NVX_COUP.7.o1
+		set_politics = {
+			ruling_party = market_liberal
+			elections_allowed = yes
+		}
+		NVX_COUP_remove_unique_ideas = yes
+		add_ideas = government_system_provisional
+		NVX_COUP_estates_event_10 = yes
+		
+		ai_chance = {
+			factor = 1
+		}
+	}
+}
+
+# social_liberal coup #
+country_event = {
+	id = NVX_COUP.8
+	title = NVX_COUP.8.t
+	desc = NVX_COUP.8.d
+	picture = GFX_report_event_coup_start
+	
+	trigger = {
+		NVX_COUP_initial_trigger_universal = yes
+		social_liberal > 0.45
+		NOT = { has_government = social_liberal }
+		NVX_has_government_ideology_authoritarian = yes
+	}
+	
+	mean_time_to_happen = {
+		days = 100
+		modifier = { factor = 0.5 social_liberal > 0.5 }
+		modifier = { factor = 0.5 has_stability < 0.2 }
+		modifier = { factor = 1.3 has_stability > 0.6 }
+		modifier = { factor = 1.3 has_stability > 0.7 }
+		modifier = { factor = 1.3 has_stability > 0.8 }
+		modifier = { factor = 1.3 has_stability > 0.9 }
+	}
+	
+	immediate = {
+		NVX_COUP_prev_record = yes
+	}
+	
+	option = {
+		name = NVX_COUP.8.o1
+		set_politics = {
+			ruling_party = social_liberal
+			elections_allowed = yes
+		}
+		NVX_COUP_remove_unique_ideas = yes
+		add_ideas = government_system_provisional
+		NVX_COUP_estates_event_10 = yes
+		
+		ai_chance = {
+			factor = 1
+		}
+	}
+}
+
+# social_democrat coup #
+country_event = {
+	id = NVX_COUP.9
+	title = NVX_COUP.9.t
+	desc = NVX_COUP.9.d
+	picture = GFX_report_event_coup_start
+	
+	trigger = {
+		NVX_COUP_initial_trigger_universal = yes
+		social_democrat > 0.45
+		NOT = { has_government = social_democrat }
+		NVX_has_government_ideology_authoritarian = yes
+	}
+	
+	mean_time_to_happen = {
+		days = 100
+		modifier = { factor = 0.5 social_democrat > 0.5 }
+		modifier = { factor = 0.5 has_stability < 0.2 }
+		modifier = { factor = 1.3 has_stability > 0.6 }
+		modifier = { factor = 1.3 has_stability > 0.7 }
+		modifier = { factor = 1.3 has_stability > 0.8 }
+		modifier = { factor = 1.3 has_stability > 0.9 }
+	}
+	
+	immediate = {
+		NVX_COUP_prev_record = yes
+	}
+	
+	option = {
+		name = NVX_COUP.9.o1
+		set_politics = {
+			ruling_party = social_democrat
+			elections_allowed = yes
+		}
+		NVX_COUP_remove_unique_ideas = yes
+		add_ideas = government_system_provisional
+		NVX_COUP_estates_event_10 = yes
+		
+		ai_chance = {
+			factor = 1
+		}
+	}
+}
+
+# progressive coup #
+country_event = {
+	id = NVX_COUP.10
+	title = NVX_COUP.10.t
+	desc = NVX_COUP.10.d
+	picture = GFX_report_event_coup_start
+	
+	trigger = {
+		NVX_COUP_initial_trigger_universal = yes
+		progressive > 0.45
+		NOT = { has_government = progressive }
+		NVX_has_government_ideology_authoritarian = yes
+	}
+	
+	mean_time_to_happen = {
+		days = 100
+		modifier = { factor = 0.5 progressive > 0.5 }
+		modifier = { factor = 0.5 has_stability < 0.2 }
+		modifier = { factor = 1.3 has_stability > 0.6 }
+		modifier = { factor = 1.3 has_stability > 0.7 }
+		modifier = { factor = 1.3 has_stability > 0.8 }
+		modifier = { factor = 1.3 has_stability > 0.9 }
+	}
+	
+	immediate = {
+		NVX_COUP_prev_record = yes
+	}
+	
+	option = {
+		name = NVX_COUP.10.o1
+		set_politics = {
+			ruling_party = progressive
+			elections_allowed = yes
+		}
+		NVX_COUP_remove_unique_ideas = yes
+		add_ideas = government_system_provisional
+		NVX_COUP_estates_event_10 = yes
+		
+		ai_chance = {
+			factor = 1
+		}
+	}
+}
+
+# democratic_socialist coup #
+country_event = {
+	id = NVX_COUP.11
+	title = NVX_COUP.11.t
+	desc = NVX_COUP.11.d
+	picture = GFX_report_event_coup_start
+	
+	trigger = {
+		NVX_COUP_initial_trigger_universal = yes
+		democratic_socialist > 0.45
+		NOT = { has_government = democratic_socialist }
+		NVX_has_government_ideology_authoritarian = yes
+	}
+	
+	mean_time_to_happen = {
+		days = 100
+		modifier = { factor = 0.5 democratic_socialist > 0.5 }
+		modifier = { factor = 0.5 has_stability < 0.2 }
+		modifier = { factor = 1.3 has_stability > 0.6 }
+		modifier = { factor = 1.3 has_stability > 0.7 }
+		modifier = { factor = 1.3 has_stability > 0.8 }
+		modifier = { factor = 1.3 has_stability > 0.9 }
+	}
+	
+	immediate = {
+		NVX_COUP_prev_record = yes
+	}
+	
+	option = {
+		name = NVX_COUP.11.o1
+		set_politics = {
+			ruling_party = democratic_socialist
+			elections_allowed = yes
+		}
+		NVX_COUP_remove_unique_ideas = yes
+		add_ideas = government_system_provisional
+		NVX_COUP_estates_event_10 = yes
+		
+		ai_chance = {
+			factor = 1
+		}
+	}
+}
+
+# communist coup #
+country_event = {
+	id = NVX_COUP.12
+	title = NVX_COUP.12.t
+	desc = NVX_COUP.12.d
+	picture = GFX_report_event_coup_start
+	
+	trigger = {
+		NVX_COUP_initial_trigger_universal = yes
+		communist > 0.45
+		NOT = { has_government = communist }
+	}
+	
+	mean_time_to_happen = {
+		days = 100
+		modifier = { factor = 0.5 communist > 0.5 }
+		modifier = { factor = 0.5 has_stability < 0.2 }
+		modifier = { factor = 1.3 has_stability > 0.6 }
+		modifier = { factor = 1.3 has_stability > 0.7 }
+		modifier = { factor = 1.3 has_stability > 0.8 }
+		modifier = { factor = 1.3 has_stability > 0.9 }
+	}
+	
+	immediate = {
+		NVX_COUP_prev_record = yes
+	}
+	
+	option = {
+		name = NVX_COUP.12.o1
+		set_politics = {
+			ruling_party = communist
+			elections_allowed = no
+		}
+		NVX_COUP_remove_unique_ideas = yes
+		add_ideas = government_system_provisional
+		NVX_COUP_estates_event_10 = yes
+		
+		ai_chance = {
+			factor = 1
+		}
+	}
+}
+
+## ESTATE OPTIONS ##
+
+country_event = {
+	id = NVX_COUP.30
+	title = NVX_COUP.30.t
+	desc = NVX_COUP.30.d
+	picture = GFX_report_event_coup_estates
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		hidden_effect = { NVX_COUP_estates_event_30 = yes }
+	}
+	
+	option = {
+		name = NVX_COUP.30.o1
+		NVX_LPA_ECOLITE_s3 = yes
+		NVX_ESTATE_fourth_estate_self_increase = yes
+		
+		ai_chance = {
+			factor = 5
+			modifier = {
+				factor = 0.2
+				NVX_has_government_ideology_authoritarian = yes
+			}
+		}
+	}
+	
+	option = {
+		name = NVX_COUP.30.o2
+		add_political_power = 100
+		NVX_COUP_opposition_neg05 = yes
+		NVX_ESTATE_fourth_estate_friendly_increase = yes
+		
+		ai_chance = {
+			factor = 5
+			modifier = {
+				factor = 2
+				has_political_power < 50
+			}
+		}
+	}
+	
+	option = {
+		name = NVX_COUP.30.o3
+		trigger = {
+			OR = {
+				NVX_has_ideology_far_right = yes
+				NVX_has_ideology_right = yes
+			}
+		}
+		NVX_COUP_estates_arraign_effect = yes
+		fourth_estate_progressive_decrease = yes
+		fourth_estate_democratic_socialist_decrease = yes
+		fourth_estate_communist_decrease = yes
+		
+		ai_chance = {
+			factor = 3
+			modifier = {
+				factor = 5
+				NVX_has_government_ideology_authoritarian = yes
+				has_political_power > 50
+			}
+		}
+	}
+	
+	option = {
+		name = NVX_COUP.30.o4
+		trigger = {
+			OR = {
+				NVX_has_ideology_far_right = yes
+				NVX_has_ideology_right = yes
+			}
+		}
+		NVX_COUP_estates_arraign_effect = yes
+		fourth_estate_market_liberal_decrease = yes
+		fourth_estate_social_liberal_decrease = yes
+		fourth_estate_social_democrat_decrease = yes
+		
+		ai_chance = {
+			factor = 3
+			modifier = {
+				factor = 5
+				NVX_has_government_ideology_authoritarian = yes
+				has_political_power > 50
+			}
+		}
+	}
+	
+	option = {
+		name = NVX_COUP.30.o5
+		trigger = {
+			OR = {
+				NVX_has_ideology_far_left = yes
+				NVX_has_ideology_left = yes
+			}
+		}
+		NVX_COUP_estates_arraign_effect = yes
+		fourth_estate_monarchist_decrease = yes
+		fourth_estate_reactionary_decrease = yes
+		fourth_estate_conservative_decrease = yes
+		
+		ai_chance = {
+			factor = 3
+			modifier = {
+				factor = 5
+				NVX_has_government_ideology_authoritarian = yes
+				has_political_power > 50
+			}
+		}
+	}
+	
+	option = {
+		name = NVX_COUP.30.o6
+		trigger = {
+			OR = {
+				NVX_has_ideology_far_left = yes
+				NVX_has_ideology_left = yes
+			}
+		}
+		NVX_COUP_estates_arraign_effect = yes
+		fourth_estate_islamist_decrease = yes
+		fourth_estate_fascist_decrease = yes
+		fourth_estate_nationalist_decrease = yes
+		
+		ai_chance = {
+			factor = 3
+			modifier = {
+				factor = 5
+				NVX_has_government_ideology_authoritarian = yes
+				has_political_power > 50
+			}
+		}
+	}
+}
+
+country_event = { # states secede
+	id = NVX_COUP.31
+	title = NVX_COUP.31.t
+	desc = NVX_COUP.31.d
+	picture = GFX_report_event_coup_secession
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = NVX_COUP.31.o1
+		NVX_COUP_state_secedes = yes
+		if = {
+			limit = { is_ai = yes }
+			country_event = {
+				id = NVX_COUP.34 # recore
+				days = 800
+			}
+		}
+		
+		ai_chance = {
+			factor = 1
+		}
+	}
+}
+
+country_event = { # states secede looped
+	id = NVX_COUP.32
+	title = NVX_COUP.31.t
+	desc = NVX_COUP.31.d
+	picture = GFX_report_event_coup_secession
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = NVX_COUP.31.o1
+		NVX_COUP_state_secedes = yes
+		NVX_COUP_state_secedes_loop = yes
+		if = {
+			limit = { is_ai = yes }
+			country_event = {
+				id = NVX_COUP.34 # recore for ai
+				days = 800
+			}
+		}
+		
+		ai_chance = {
+			factor = 1
+		}
+	}
+}
+
+country_event = { # prisoners
+	id = NVX_COUP.33
+	title = NVX_COUP.33.t
+	desc = NVX_COUP.33.d
+	picture = GFX_report_event_coup_prisoners
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = NVX_COUP.33.o1
+		add_political_power = -150
+		NVX_COUP_opposition_neg1 = yes
+		
+		ai_chance = {
+			factor = 2
+		}
+	}
+	
+	option = {
+		name = NVX_COUP.33.o2
+		
+		ai_chance = {
+			factor = 5
+		}
+	}
+	
+	option = {
+		name = NVX_COUP.33.o3
+		add_political_power = 100
+		NVX_COUP_opposition_pos1 = yes
+		
+		ai_chance = {
+			factor = 2
+			modifier = {
+				factor = 5
+				NVX_has_government_ideology_authoritarian = yes
+			}
+			modifier = {
+				factor = 0
+				NVX_has_government_ideology_democratic = yes
+			}
+		}
+	}
+}
+
+country_event = { # recore for ai
+	id = NVX_COUP.34
+	hidden = yes
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		random_owned_state = {
+			limit = { is_core_of = ZZZ }
+			add_core_of = ROOT
+			remove_core_of = ZZZ
+		}
+		add_political_power = -10
+	}
+	
+	option = {
+		name = NVX_COUP.34.o1
+		
+		ai_chance = {
+			factor = 1
+		}
+	}
+}
+
+## PROMISES ##
+
+country_event = {
+	id = NVX_COUP.40
+	title = NVX_COUP.40.t
+	desc = NVX_COUP.40.d
+	picture = GFX_report_event_coup_promises
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		hidden_effect = {
+			NVX_COUP_estates_event_40 = yes
+			NVX_COUP_promises_variables = yes
+		}
+	}
+	
+	option = { # stability
+		name = NVX_COUP.40.o1
+		custom_effect_tooltip = TT_NVX_COUP_promise_stability
+		hidden_effect = {
+			country_event = {
+				id = NVX_COUP.41
+				days = 730
+			}
+		}
+		
+		ai_chance = {
+			factor = 0
+		}
+	}
+	
+	option = { # economy
+		name = NVX_COUP.40.o2
+		trigger = {
+			check_variable = { NVX_ECO_health < 19 }
+		}
+		custom_effect_tooltip = TT_NVX_COUP_promise_economy
+		hidden_effect = {
+			country_event = {
+				id = NVX_COUP.42
+				days = 730
+			}
+		}
+		
+		ai_chance = {
+			factor = 0
+		}
+	}
+	
+	option = { # peace
+		name = NVX_COUP.40.o3
+		trigger = {
+			has_war = yes
+			surrender_progress > 0
+		}
+		custom_effect_tooltip = TT_NVX_COUP_promise_peace
+		hidden_effect = {
+			country_event = {
+				id = NVX_COUP.43
+				days = 730
+			}
+		}
+		
+		ai_chance = {
+			factor = 0
+		}
+	}
+	
+	option = { # expansion
+		name = NVX_COUP.40.o4
+		trigger = {
+			OR = {
+				has_government = islamist
+				has_government = fascist
+				has_government = nationalist
+				has_government = monarchist
+			}
+		}
+		custom_effect_tooltip = TT_NVX_COUP_promise_expansion
+		hidden_effect = {
+			country_event = {
+				id = NVX_COUP.44
+				days = 730
+			}
+		}
+		
+		ai_chance = {
+			factor = 0
+		}
+	}
+	
+	option = { # puppets
+		name = NVX_COUP.40.o5
+		trigger = {
+			OR = {
+				has_government = islamist
+				has_government = monarchist
+				has_government = communist
+				has_decision = NVX_policies_P_diplomatic_harmony
+			}
+		}
+		custom_effect_tooltip = TT_NVX_COUP_promise_puppets
+		hidden_effect = {
+			country_event = {
+				id = NVX_COUP.45
+				days = 730
+			}
+		}
+		
+		ai_chance = {
+			factor = 0
+		}
+	}
+	
+	option = { # market
+		name = NVX_COUP.40.o6
+		trigger = {
+			has_government = market_liberal
+			NOT = { has_idea = free_trade }
+		}
+		custom_effect_tooltip = TT_NVX_COUP_promise_market
+		hidden_effect = {
+			country_event = {
+				id = NVX_COUP.46
+				days = 730
+			}
+		}
+		
+		ai_chance = {
+			factor = 0
+		}
+	}
+	
+	option = { # the ai is too stupid to handle this, so they cheat
+		name = NVX_COUP.40.o9
+		trigger = {
+			is_ai = yes
+		}
+		hidden_effect = {
+			country_event = {
+				id = NVX_COUP.48
+				days = 730
+			}
+		}
+		
+		ai_chance = {
+			factor = 5
+		}
+	}
+}
+
+country_event = { # stability
+	id = NVX_COUP.41
+	title = NVX_COUP.41.t
+	desc = NVX_COUP.41.d
+	picture = GFX_report_event_coup_promises
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = NVX_COUP.41.o1
+		trigger = {
+			NVX_COUP_promises_stability_trigger = yes
+			check_variable = { NVX_COUP_opposition > 0 }
+		}
+		NVX_COUP_end = yes
+		
+		ai_chance = {
+			factor = 1
+		}
+	}
+	
+	option = {
+		name = NVX_COUP.41.o2
+		trigger = {
+			NVX_COUP_promises_stability_trigger = no
+			check_variable = { NVX_COUP_opposition > 0 }
+		}
+		NVX_COUP_civil_war = yes
+		
+		ai_chance = {
+			factor = 1
+		}
+	}
+	
+	option = {
+		name = NVX_COUP.41.o3
+		trigger = { check_variable = { NVX_COUP_opposition = 0 } }
+		NVX_COUP_end = yes
+		
+		ai_chance = {
+			factor = 1
+		}
+	}
+}
+
+country_event = { # economy
+	id = NVX_COUP.42
+	title = NVX_COUP.41.t
+	desc = NVX_COUP.41.d
+	picture = GFX_report_event_coup_promises
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = NVX_COUP.41.o1
+		trigger = {
+			NVX_COUP_promises_economy_trigger = yes
+			check_variable = { NVX_COUP_opposition > 0 }
+		}
+		NVX_COUP_end = yes
+		
+		ai_chance = {
+			factor = 1
+		}
+	}
+	
+	option = {
+		name = NVX_COUP.41.o2
+		trigger = {
+			NVX_COUP_promises_economy_trigger = no
+			check_variable = { NVX_COUP_opposition > 0 }
+		}
+		NVX_COUP_civil_war = yes
+		
+		ai_chance = {
+			factor = 1
+		}
+	}
+	
+	option = {
+		name = NVX_COUP.41.o3
+		trigger = { check_variable = { NVX_COUP_opposition = 0 } }
+		NVX_COUP_end = yes
+		
+		ai_chance = {
+			factor = 1
+		}
+	}
+}
+
+country_event = { # peace
+	id = NVX_COUP.43
+	title = NVX_COUP.41.t
+	desc = NVX_COUP.41.d
+	picture = GFX_report_event_coup_promises
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = NVX_COUP.41.o1
+		trigger = {
+			NVX_COUP_promises_peace_trigger = yes
+			check_variable = { NVX_COUP_opposition > 0 }
+		}
+		NVX_COUP_end = yes
+		
+		ai_chance = {
+			factor = 1
+		}
+	}
+	
+	option = {
+		name = NVX_COUP.41.o2
+		trigger = {
+			NVX_COUP_promises_peace_trigger = no
+			check_variable = { NVX_COUP_opposition > 0 }
+		}
+		NVX_COUP_civil_war = yes
+		
+		ai_chance = {
+			factor = 1
+		}
+	}
+	
+	option = {
+		name = NVX_COUP.41.o3
+		trigger = { check_variable = { NVX_COUP_opposition = 0 } }
+		NVX_COUP_end = yes
+		
+		ai_chance = {
+			factor = 1
+		}
+	}
+}
+
+country_event = { # expansion
+	id = NVX_COUP.44
+	title = NVX_COUP.41.t
+	desc = NVX_COUP.41.d
+	picture = GFX_report_event_coup_promises
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = NVX_COUP.41.o1
+		trigger = {
+			NVX_COUP_promises_expansion_trigger = yes
+			check_variable = { NVX_COUP_opposition > 0 }
+		}
+		NVX_COUP_end = yes
+		
+		ai_chance = {
+			factor = 1
+		}
+	}
+	
+	option = {
+		name = NVX_COUP.41.o2
+		trigger = {
+			NVX_COUP_promises_expansion_trigger = no
+			check_variable = { NVX_COUP_opposition > 0 }
+		}
+		NVX_COUP_civil_war = yes
+		
+		ai_chance = {
+			factor = 1
+		}
+	}
+	
+	option = {
+		name = NVX_COUP.41.o3
+		trigger = { check_variable = { NVX_COUP_opposition = 0 } }
+		NVX_COUP_end = yes
+		
+		ai_chance = {
+			factor = 1
+		}
+	}
+}
+
+country_event = { # subjects
+	id = NVX_COUP.45
+	title = NVX_COUP.41.t
+	desc = NVX_COUP.41.d
+	picture = GFX_report_event_coup_promises
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		hidden_effect = { NVX_COUP_promises_puppet_final = yes }
+	}
+	
+	option = {
+		name = NVX_COUP.41.o1
+		trigger = {
+			NVX_COUP_promises_puppets_trigger = yes
+			check_variable = { NVX_COUP_opposition > 0 }
+		}
+		NVX_COUP_end = yes
+		
+		ai_chance = {
+			factor = 1
+		}
+	}
+	
+	option = {
+		name = NVX_COUP.41.o2
+		trigger = {
+			NVX_COUP_promises_puppets_trigger = no
+			check_variable = { NVX_COUP_opposition > 0 }
+		}
+		NVX_COUP_civil_war = yes
+		
+		ai_chance = {
+			factor = 1
+		}
+	}
+	
+	option = {
+		name = NVX_COUP.41.o3
+		trigger = { check_variable = { NVX_COUP_opposition = 0 } }
+		NVX_COUP_end = yes
+		
+		ai_chance = {
+			factor = 1
+		}
+	}
+}
+
+country_event = { # market
+	id = NVX_COUP.46
+	title = NVX_COUP.41.t
+	desc = NVX_COUP.41.d
+	picture = GFX_report_event_coup_promises
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = NVX_COUP.41.o1
+		trigger = {
+			NVX_COUP_promises_market_trigger = yes
+			check_variable = { NVX_COUP_opposition > 0 }
+		}
+		NVX_COUP_end = yes
+		
+		ai_chance = {
+			factor = 1
+		}
+	}
+	
+	option = {
+		name = NVX_COUP.41.o2
+		trigger = {
+			NVX_COUP_promises_market_trigger = no
+			check_variable = { NVX_COUP_opposition > 0 }
+		}
+		NVX_COUP_civil_war = yes
+		
+		ai_chance = {
+			factor = 1
+		}
+	}
+	
+	option = {
+		name = NVX_COUP.41.o3
+		trigger = { check_variable = { NVX_COUP_opposition = 0 } }
+		NVX_COUP_end = yes
+		
+		ai_chance = {
+			factor = 1
+		}
+	}
+}
+
+country_event = { # AI
+	id = NVX_COUP.48
+	title = NVX_COUP.48.t
+	desc = NVX_COUP.48.d
+	picture = GFX_report_event_coup_promises
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = NVX_COUP.48.o1
+		NVX_COUP_end = yes
+		
+		ai_chance = {
+			factor = 10
+			modifier = {
+				factor = 2
+				check_variable = { NVX_COUP_opposition > 0.5 }
+			}
+		}
+	}
+	
+	option = {
+		name = NVX_COUP.48.o2
+		NVX_COUP_civil_war = yes
+		
+		ai_chance = {
+			factor = 1
+			modifier = {
+				factor = 2
+				NVX_has_government_ideology_authoritarian = yes
+			}
+		}
+	}
+}
+
+country_event = { # restore elections
+	id = NVX_COUP.49
+	hidden = yes
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		set_politics = {
+			ruling_party = ROOT
+			elections_allowed = yes
+		}
+	}
+	
+	option = {
+		name = NVX_COUP.49.o1
+		
+		ai_chance = {
+			factor = 1
+		}
+	}
+}
+
+## SYSTEM OF GOVERNANCE ##
+
+country_event = {
+	id = NVX_COUP.50
+	title = NVX_COUP.50.t
+	desc = NVX_COUP.50.d
+	picture = GFX_report_event_coup_provo
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		hidden_effect = {
+			NVX_COUP_estates_event_50 = yes
+			clr_country_flag = NVX_COUP_provo_conquered
+		}
+	}
+	
+	option = {
+		name = NVX_COUP.50.o1
+		trigger = {
+			NVX_has_government_ideology_democratic = yes
+		}
+		add_ideas = government_system_presidential_republic
+		
+		ai_chance = {
+			factor = 5
+			modifier = {
+				factor = 0
+				OR = {
+					NVX_COUP_wants_parliamentary_republic = yes
+					NVX_COUP_wants_constitutional_monarchy = yes
+				}
+			}
+		}
+	}
+	
+	option = {
+		name = NVX_COUP.50.o2
+		trigger = {
+			NVX_has_government_ideology_democratic = yes
+		}
+		add_ideas = government_system_parliamentary_republic
+		
+		ai_chance = {
+			factor = 5
+			modifier = {
+				factor = 0
+				OR = {
+					NVX_COUP_wants_presidential_republic = yes
+					NVX_COUP_wants_constitutional_monarchy = yes
+				}
+			}
+		}
+	}
+	
+	option = {
+		name = NVX_COUP.50.o3
+		trigger = {
+			OR = {
+				AND = {
+					NVX_has_government_ideology_democratic = yes
+					has_country_flag = NVX_COUP_has_living_monarchy
+				}
+				has_government = monarchist
+			}
+		}
+		add_ideas = government_system_constitutional_monarchy
+		
+		ai_chance = {
+			factor = 25
+			modifier = {
+				factor = 0
+				OR = {
+					NVX_COUP_wants_presidential_republic = yes
+					NVX_COUP_wants_parliamentary_republic = yes
+					NVX_COUP_wants_absolute_monarchy = yes
+				}
+			}
+		}
+	}
+	
+	option = {
+		name = NVX_COUP.50.o4
+		trigger = {
+			has_government = monarchist
+		}
+		add_ideas = government_system_absolute_monarchy
+		
+		ai_chance = {
+			factor = 200
+			modifier = {
+				factor = 0
+				NVX_COUP_wants_constitutional_monarchy = yes
+			}
+		}
+	}
+	
+	option = {
+		name = NVX_COUP.50.o5
+		trigger = {
+			NVX_has_government_ideology_authoritarian = yes
+			NOT = { has_government = monarchist }
+		}
+		add_ideas = government_system_one_party
+		
+		ai_chance = {
+			factor = 5
+			modifier = {
+				factor = 0
+				NVX_COUP_wants_autocracy = yes
+			}
+			modifier = {
+				factor = 40
+				has_government = communist
+			}
+		}
+	}
+	
+	option = {
+		name = NVX_COUP.50.o6
+		trigger = {
+			NVX_has_government_ideology_authoritarian = yes
+			NOT = { has_government = monarchist }
+		}
+		add_ideas = government_system_autocracy
+		
+		ai_chance = {
+			factor = 5
+			modifier = {
+				factor = 0
+				NVX_COUP_wants_one_party = yes
+			}
+			modifier = {
+				factor = 3
+				OR = {
+					has_government = islamist
+					has_government = nationalist
+				}
+			}
+			modifier = {
+				factor = 40
+				has_government = fascist
+			}
+		}
+	}
+}
+
+country_event = { # provo surrendered and is free again
+	id = NVX_COUP.51
+	hidden = yes
+	
+	trigger = {
+		has_idea = government_system_provisional
+		has_country_flag = NVX_COUP_provo_conquered
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	immediate = {
+		country_event = {
+			id = NVX_COUP.50
+			days = 1
+		}
+		NVX_COUP_end = yes
+	}
+	
+	option = {
+		name = NVX_COUP.51.o1
+		
+		ai_chance = {
+			factor = 1
+		}
+	}
+}
+
+## RANDOM EVENTS ##
+
+country_event = { # anthem
+	id = NVX_COUP.60
+	title = NVX_COUP.60.t
+	desc = NVX_COUP.60.d
+	picture = GFX_report_event_coup_anthem
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = NVX_COUP.60.o1
+		trigger = { NVX_has_government_ideology_democratic = yes }
+		add_stability = 0.05
+		
+		ai_chance = {
+			factor = 5
+		}
+	}
+	
+	option = {
+		name = NVX_COUP.60.o2
+		trigger = { NVX_has_government_ideology_authoritarian = yes }
+		add_war_support = 0.05
+		
+		ai_chance = {
+			factor = 5
+		}
+	}
+	
+	option = {
+		name = NVX_COUP.60.o3
+		NVX_COUP_opposition_neg1 = yes
+		
+		ai_chance = {
+			factor = 5
+		}
+	}
+	
+	option = {
+		name = NVX_COUP.60.o4
+		NVX_LPA_ECOLITE_g5 = yes
+		
+		ai_chance = {
+			factor = 5
+		}
+	}
+	
+	option = {
+		name = NVX_COUP.60.o5
+		add_political_power = 75
+		if = {
+			limit = { has_decision = NVX_policies_P_diplomatic_harmony }
+			NVX_LPA_PAX_g10 = yes
+		}
+		
+		ai_chance = {
+			factor = 5
+		}
+	}
+}
+
+country_event = { # military rebels
+	id = NVX_COUP.61
+	title = NVX_COUP.61.t
+	desc = NVX_COUP.61.d
+	picture = GFX_report_event_coup_military_rebels
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = NVX_COUP.61.o1
+		trigger = { check_variable = { NVX_ECO_health > -89.999 } }
+		NVX_LPA_ECOLITE_s10 = yes
+		
+		ai_chance = {
+			factor = 5
+			modifier = {
+				factor = 3
+				NVX_has_government_ideology_democratic = yes
+				check_variable = { NVX_ECO_health > -14.999 }
+			}
+			modifier = {
+				factor = 5
+				check_variable = { NVX_ECO_health > 30 }
+			}
+		}
+	}
+	
+	option = {
+		name = NVX_COUP.61.o2
+		NVX_COUP_opposition_pos15 = yes
+		
+		ai_chance = {
+			factor = 5
+			modifier = {
+				factor = 3
+				NVX_has_government_ideology_authoritarian = yes
+			}
+		}
+	}
+}
+
+country_event = { # military stays
+	id = NVX_COUP.62
+	title = NVX_COUP.62.t
+	desc = NVX_COUP.62.d
+	picture = GFX_report_event_coup_military_stays
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = NVX_COUP.62.o1
+		add_political_power = 25
+		add_stability = 0.02
+		
+		ai_chance = {
+			factor = 5
+		}
+	}
+}
+
+country_event = { # corpos flee
+	id = NVX_COUP.63
+	title = NVX_COUP.63.t
+	desc = NVX_COUP.63.d
+	picture = GFX_report_event_coup_corpos_leave
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		set_variable = { NVX_COUP_corpos_take = NVX_ECO_health }
+		divide_variable = { NVX_COUP_corpos_take = 3 }
+		add_to_variable = { NVX_COUP_corpos_take = 5 }
+		set_variable = { NVX_COUP_corpos_take_cut = NVX_COUP_corpos_take }
+		divide_variable = { NVX_COUP_corpos_take_cut = 2 }
+	}
+	
+	option = {
+		name = NVX_COUP.63.o1
+		NVX_COUP_corpos_flee_s = yes
+		
+		ai_chance = {
+			factor = 5
+		}
+	}
+	
+	option = {
+		name = NVX_COUP.63.o2
+		trigger = { NVX_has_government_ideology_authoritarian = yes }
+		NVX_COUP_corpos_flee_cut_s = yes
+		add_stability = -0.05
+		
+		ai_chance = {
+			factor = 15
+		}
+	}
+}
+
+country_event = { # subject gains autonomy
+	id = NVX_COUP.64
+	title = NVX_COUP.64.t
+	desc = NVX_COUP.64.d
+	picture = GFX_report_event_coup_independence_movement
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		hidden_effect = {
+			random_country = {
+				limit = {
+					OR = {
+						is_puppet_of = ROOT
+						is_subject_of = ROOT
+					}
+				}
+				save_event_target_as = NVX_COUP_subject_ind
+				set_country_flag = {
+					flag = NVX_COUP_subject_ind
+					days = 2
+					value = 1
+				}
+			}
+		}
+	}
+	
+	option = {
+		name = NVX_COUP.64.o1
+		random_country = {
+			limit = {
+				has_country_flag = NVX_COUP_subject_ind
+				OR = {
+					is_puppet_of = ROOT
+					is_subject_of = ROOT
+				}
+			}
+			add_autonomy_score = {
+				value = 1250
+				localization = TT_NVX_COUP_subject_gains_autonomy
+			}
+		}
+		
+		ai_chance = {
+			factor = 5
+		}
+	}
+	
+	option = {
+		name = NVX_COUP.64.o2
+		trigger = { has_political_power > 200 }
+		add_political_power = -300
+		
+		ai_chance = {
+			factor = 5
+		}
+	}
+}
+
+country_event = { # old guard complains
+	id = NVX_COUP.65
+	title = NVX_COUP.65.t
+	desc = NVX_COUP.65.d
+	picture = GFX_report_event_coup_independence_movement
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = NVX_COUP.65.o1
+		NVX_COUP_opposition_pos05 = yes
+		
+		ai_chance = {
+			factor = 5
+		}
+	}
+	
+	option = {
+		name = NVX_COUP.65.o2
+		add_war_support = -0.05
+		add_political_power = -50
+		
+		ai_chance = {
+			factor = 15
+		}
+	}
+}
+
+country_event = { # social media resistance
+	id = NVX_COUP.66
+	title = NVX_COUP.66.t
+	desc = NVX_COUP.66.d
+	picture = GFX_report_event_coup_social_media
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = NVX_COUP.66.o1
+		add_political_power = -15
+		if = {
+			limit = {
+				OR = {
+					has_idea = public_safety_local_law_enforcement
+					has_idea = public_safety_subsidized_agencies
+				}
+			}
+			NVX_COUP_opposition_pos05 = yes
+		}
+		
+		ai_chance = {
+			factor = 15
+		}
+	}
+	
+	option = {
+		name = NVX_COUP.66.o2
+		NVX_COUP_opposition_neg05 = yes
+		if = {
+			limit = {
+				OR = {
+					has_idea = public_safety_local_law_enforcement
+					has_idea = public_safety_subsidized_agencies
+				}
+			}
+			NVX_LPA_ECOLITE_s2 = yes
+		}
+		
+		ai_chance = {
+			factor = 5
+			modifier = {
+				factor = 10
+				NVX_has_government_ideology_authoritarian = yes
+			}
+		}
+	}
+}
+
+country_event = { # auth purge
+	id = NVX_COUP.67
+	title = NVX_COUP.67.t
+	desc = NVX_COUP.67.d
+	picture = GFX_report_event_coup_auth_purge
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = NVX_COUP.67.o1
+		add_political_power = -60
+		
+		ai_chance = {
+			factor = 5
+		}
+	}
+	
+	option = {
+		name = NVX_COUP.67.o2
+		NVX_COUP_opposition_neg1 = yes
+		
+		ai_chance = {
+			factor = 15
+			modifier = {
+				factor = 0
+				check_variable = { NVX_COUP_opposition < 0.25 }
+			}
+		}
+	}
+}
+
+# Written by E. Wolfe #

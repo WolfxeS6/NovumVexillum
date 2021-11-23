@@ -1,0 +1,445 @@
+﻿add_namespace = nationalnamechange
+
+# Swaziland #
+country_event = {
+	id = nationalnamechange.1
+	title = nationalnamechange.1.t
+	desc = nationalnamechange.1.d
+	picture = GFX_news_event_political_assembly
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		has_government = monarchist
+		has_full_control_of_state = 819 #Swaziland
+	}
+	
+	option = {
+		name = nationalnamechange.1.a
+		if = {
+			limit = { NOT = { has_cosmetic_tag = simple_SWZ } }
+			set_cosmetic_tag = SWZ_Eswatini
+		}
+		if = {
+			limit = { has_cosmetic_tag = simple_SWZ }
+			set_cosmetic_tag = simple_SWZ_eswatini
+		}
+		
+		ai_chance = {
+			factor = 10
+		}
+	}
+	
+	option = {
+		name = nationalnamechange.1.b
+		
+		ai_chance = {
+			factor = 0
+		}
+	}
+}
+
+# Macedonia #
+country_event = { #Open dialogue
+	id = nationalnamechange.2
+	title = nationalnamechange.2.t
+	desc = nationalnamechange.2.d
+	picture = GFX_news_event_political_assembly
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		has_full_control_of_state = 106 #Macedonia
+	}
+	
+	option = { # Begin
+		name = nationalnamechange.2.a
+		trigger = {
+			NOT = { has_cosmetic_tag = simple_MAC }
+			country_exists = GRE
+			GRE = {
+				is_subject = no
+				is_puppet = no
+			}
+		}
+		hidden_effect = {
+			GRE = {
+				country_event = {
+					id = nationalnamechange.3
+					days = 13
+				}
+			}
+		}
+		
+		ai_chance = {
+			factor = 10
+			
+			modifier = {
+				factor = 0
+				OR = {
+					has_government = fascist
+					has_government = nationalist
+					has_government = monarchist
+					has_government = conservative
+					has_government = communist
+				}
+			}
+		}
+	}
+	
+	option = { #Ignore Greece; they must be a puppet or non-existent
+		name = nationalnamechange.2.b
+		trigger = {
+			NOT = { has_cosmetic_tag = simple_MAC }
+			OR = {
+				NOT = { country_exists = GRE }
+				GRE = { is_subject = yes }
+				GRE = { is_puppet = yes }
+			}
+		}
+		set_cosmetic_tag = MAC_republic_of_macedonia
+		
+		ai_chance = {
+			factor = 10
+			
+			modifier = {
+				factor = 0
+				OR = {
+					has_government = fascist
+					has_government = nationalist
+					has_government = monarchist
+					has_government = conservative
+					has_government = communist
+				}
+			}
+		}
+	}
+	
+	option = { #Forget it
+		name = nationalnamechange.2.c
+		ai_chance = {
+			factor = 0
+			
+			modifier = {
+				add = 10
+				OR = {
+					has_cosmetic_tag = simple_MAC
+					has_government = fascist
+					has_government = nationalist
+					has_government = monarchist
+					has_government = conservative
+					has_government = communist
+				}
+			}
+			
+		}
+	}
+}
+
+country_event = { #Greece decides
+	id = nationalnamechange.3
+	title = nationalnamechange.3.t
+	desc = nationalnamechange.3.d
+	picture = GFX_news_event_political_assembly
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		
+	}
+	
+	option = { #Accept the treaty
+		name = nationalnamechange.3.a
+		ai_chance = {
+			factor = 10
+			modifier = {
+				factor = 0
+				OR = {
+					has_government = fascist
+					has_government = nationalist
+					has_government = monarchist
+					has_government = communist
+				}
+			}
+		}
+		hidden_effect = {
+			MAC = {
+				country_event = {
+					id = nationalnamechange.4
+					days = 227
+				}
+			}
+		}
+	}
+	
+	option = { #Ignore Macedonia
+		name = nationalnamechange.3.b
+		ai_chance = {
+			factor = 10
+			modifier = {
+				factor = 0
+				NOT = {
+					OR = {
+						has_government = fascist
+						has_government = nationalist
+						has_government = monarchist
+						has_government = communist
+					}
+				}
+			}
+		}
+		hidden_effect = {
+			MAC = {
+				country_event = {
+					id = nationalnamechange.5
+					days = 5
+				}
+			}
+		}
+		MAC = {
+			add_opinion_modifier = {
+				target = GRE
+				modifier = declaration_of_hostility
+			}
+		}
+	}
+}
+
+country_event = { #Accepted
+	id = nationalnamechange.4
+	title = nationalnamechange.4.t
+	desc = nationalnamechange.4.d
+	picture = GFX_news_event_political_assembly
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		has_full_control_of_state = 106 #Macedonia
+	}
+	
+	option = { #Finalize
+		name = nationalnamechange.4.a
+		ai_chance = {
+			factor = 10
+		}
+		set_cosmetic_tag = MAC_republic_of_north_macedonia
+	}
+}
+
+country_event = { #Denied
+	id = nationalnamechange.5
+	title = nationalnamechange.5.t
+	desc = nationalnamechange.5.d
+	picture = GFX_news_event_political_assembly
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		has_full_control_of_state = 106 #Macedonia
+	}
+	
+	option = { #Finalize
+		name = nationalnamechange.5.a
+		ai_chance = {
+			factor = 10
+		}
+		
+	}
+}
+
+# Czechia #
+country_event = {
+	id = nationalnamechange.6
+	title = nationalnamechange.6.t
+	desc = nationalnamechange.6.d
+	picture = GFX_news_event_political_assembly
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		
+	}
+	
+	option = { #Yes
+		name = nationalnamechange.6.a
+		trigger = {
+			NOT = { has_cosmetic_tag = simple_CZE }
+			CZE = {
+				is_subject = no
+				is_puppet = no
+			}
+		}
+		set_cosmetic_tag = CZE_czechia
+		ai_chance = {
+			factor = 10
+		}
+	}
+	
+	option = { #No
+		name = nationalnamechange.6.b
+		ai_chance = {
+			factor = 0
+			
+			modifier = {
+				add = 10
+				OR = {
+					CZE = { is_subject = yes }
+					CZE = { is_puppet = yes }
+				}
+			}
+		}
+	}
+}
+
+# United Kingdom - Ireland Related #
+country_event = {
+	id = nationalnamechange.7
+	hidden = yes
+	#fire_only_once = yes
+	
+	trigger = {
+		original_tag = ENG
+		NOT = { has_global_flag = DPTS_use_simple_country_names }
+		NOT = { has_cosmetic_tag = ENG_united }
+		NOT = { has_completed_focus = ENG_call_the_union }
+		OR = {
+			has_government = reactionary
+			has_government = conservative
+			has_government = market_liberal
+			has_government = social_liberal
+			has_government = social_democrat
+			has_government = progressive
+			has_government = democratic_socialist
+		}
+		owns_state = 120
+		owns_state = 136
+		owns_state = 133
+		owns_state = 121
+		owns_state = 131
+		owns_state = 132
+		owns_state = 130
+		owns_state = 122
+		owns_state = 128
+		owns_state = 129
+		owns_state = 123
+		owns_state = 338
+		owns_state = 126
+		owns_state = 125
+		owns_state = 127
+		owns_state = 119
+		owns_state = 113
+		owns_state = 134
+		owns_state = 135
+	}
+	
+	mean_time_to_happen = {
+		days = 15
+	}
+	
+	option = {
+		drop_cosmetic_tag = yes
+		set_cosmetic_tag = ENG_united
+	}
+}
+
+country_event = {
+	id = nationalnamechange.8
+	hidden = yes
+	#fire_only_once = yes
+	
+	trigger = {
+		original_tag = ENG
+		NOT = { has_global_flag = DPTS_use_simple_country_names }
+		NOT = { has_cosmetic_tag = ENG_britain_only }
+		NOT = { has_completed_focus = ENG_call_the_union }
+		OR = {
+			has_government = reactionary
+			has_government = conservative
+			has_government = market_liberal
+			has_government = social_liberal
+			has_government = social_democrat
+			has_government = progressive
+			has_government = democratic_socialist
+		}
+		owns_state = 120
+		owns_state = 136
+		owns_state = 133
+		owns_state = 121
+		owns_state = 131
+		owns_state = 132
+		owns_state = 130
+		owns_state = 122
+		owns_state = 128
+		owns_state = 129
+		owns_state = 123
+		owns_state = 338
+		owns_state = 126
+		owns_state = 125
+		owns_state = 127
+		NOT = { owns_state = 119 }
+		NOT = { owns_state = 113 }
+		NOT = { owns_state = 134 }
+		NOT = { owns_state = 135 }
+	}
+	
+	mean_time_to_happen = {
+		days = 15
+	}
+	
+	option = {
+		drop_cosmetic_tag = yes
+		set_cosmetic_tag = ENG_britain_only
+	}
+}
+
+country_event = {
+	id = nationalnamechange.9
+	hidden = yes
+	#fire_only_once = yes
+	
+	trigger = {
+		original_tag = ENG
+		NOT = { has_global_flag = DPTS_use_simple_country_names }
+		NOT = { has_completed_focus = ENG_call_the_union }
+		OR = {
+			has_cosmetic_tag = ENG_united
+			has_cosmetic_tag = ENG_britain_only
+		}
+		OR = {
+			has_government = reactionary
+			has_government = conservative
+			has_government = market_liberal
+			has_government = social_liberal
+			has_government = social_democrat
+			has_government = progressive
+			has_government = democratic_socialist
+		}
+		owns_state = 120
+		owns_state = 136
+		owns_state = 133
+		owns_state = 121
+		owns_state = 131
+		owns_state = 132
+		owns_state = 130
+		owns_state = 122
+		owns_state = 128
+		owns_state = 129
+		owns_state = 123
+		owns_state = 338
+		owns_state = 126
+		owns_state = 125
+		owns_state = 127
+		owns_state = 119
+		NOT = { owns_state = 113 }
+		NOT = { owns_state = 134 }
+		NOT = { owns_state = 135 }
+	}
+	
+	mean_time_to_happen = {
+		days = 15
+	}
+	
+	option = {
+		drop_cosmetic_tag = yes
+	}
+}

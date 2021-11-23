@@ -1,0 +1,5869 @@
+# Written by E. Wolfe #
+remove_all_estates = {
+	remove_ideas = fourth_estate_islamist1
+	remove_ideas = fourth_estate_islamist2
+	remove_ideas = fourth_estate_islamist3
+	remove_ideas = fourth_estate_islamist4
+	remove_ideas = fourth_estate_islamist5
+	remove_ideas = fourth_estate_fascist1
+	remove_ideas = fourth_estate_fascist2
+	remove_ideas = fourth_estate_fascist3
+	remove_ideas = fourth_estate_fascist4
+	remove_ideas = fourth_estate_fascist5
+	remove_ideas = fourth_estate_nationalist1
+	remove_ideas = fourth_estate_nationalist2
+	remove_ideas = fourth_estate_nationalist3
+	remove_ideas = fourth_estate_nationalist4
+	remove_ideas = fourth_estate_nationalist5
+	remove_ideas = fourth_estate_monarchist1
+	remove_ideas = fourth_estate_monarchist2
+	remove_ideas = fourth_estate_monarchist3
+	remove_ideas = fourth_estate_monarchist4
+	remove_ideas = fourth_estate_monarchist5
+	remove_ideas = fourth_estate_reactionary1
+	remove_ideas = fourth_estate_reactionary2
+	remove_ideas = fourth_estate_reactionary3
+	remove_ideas = fourth_estate_reactionary4
+	remove_ideas = fourth_estate_reactionary5
+	remove_ideas = fourth_estate_conservative1
+	remove_ideas = fourth_estate_conservative2
+	remove_ideas = fourth_estate_conservative3
+	remove_ideas = fourth_estate_conservative4
+	remove_ideas = fourth_estate_conservative5
+	remove_ideas = fourth_estate_market_liberal1
+	remove_ideas = fourth_estate_market_liberal2
+	remove_ideas = fourth_estate_market_liberal3
+	remove_ideas = fourth_estate_market_liberal4
+	remove_ideas = fourth_estate_market_liberal5
+	remove_ideas = fourth_estate_social_liberal1
+	remove_ideas = fourth_estate_social_liberal2
+	remove_ideas = fourth_estate_social_liberal3
+	remove_ideas = fourth_estate_social_liberal4
+	remove_ideas = fourth_estate_social_liberal5
+	remove_ideas = fourth_estate_social_democrat1
+	remove_ideas = fourth_estate_social_democrat2
+	remove_ideas = fourth_estate_social_democrat3
+	remove_ideas = fourth_estate_social_democrat4
+	remove_ideas = fourth_estate_social_democrat5
+	remove_ideas = fourth_estate_progressive1
+	remove_ideas = fourth_estate_progressive2
+	remove_ideas = fourth_estate_progressive3
+	remove_ideas = fourth_estate_progressive4
+	remove_ideas = fourth_estate_progressive5
+	remove_ideas = fourth_estate_democratic_socialist1
+	remove_ideas = fourth_estate_democratic_socialist2
+	remove_ideas = fourth_estate_democratic_socialist3
+	remove_ideas = fourth_estate_democratic_socialist4
+	remove_ideas = fourth_estate_democratic_socialist5
+	remove_ideas = fourth_estate_communist1
+	remove_ideas = fourth_estate_communist2
+	remove_ideas = fourth_estate_communist3
+	remove_ideas = fourth_estate_communist4
+	remove_ideas = fourth_estate_communist5
+	remove_ideas = fifth_estate_islamist1
+	remove_ideas = fifth_estate_islamist2
+	remove_ideas = fifth_estate_islamist3
+	remove_ideas = fifth_estate_islamist4
+	remove_ideas = fifth_estate_fascist1
+	remove_ideas = fifth_estate_fascist2
+	remove_ideas = fifth_estate_fascist3
+	remove_ideas = fifth_estate_fascist4
+	remove_ideas = fifth_estate_nationalist1
+	remove_ideas = fifth_estate_nationalist2
+	remove_ideas = fifth_estate_nationalist3
+	remove_ideas = fifth_estate_nationalist4
+	remove_ideas = fifth_estate_monarchist1
+	remove_ideas = fifth_estate_monarchist2
+	remove_ideas = fifth_estate_monarchist3
+	remove_ideas = fifth_estate_monarchist4
+	remove_ideas = fifth_estate_reactionary1
+	remove_ideas = fifth_estate_reactionary2
+	remove_ideas = fifth_estate_reactionary3
+	remove_ideas = fifth_estate_reactionary4
+	remove_ideas = fifth_estate_conservative1
+	remove_ideas = fifth_estate_conservative2
+	remove_ideas = fifth_estate_conservative3
+	remove_ideas = fifth_estate_conservative4
+	remove_ideas = fifth_estate_market_liberal1
+	remove_ideas = fifth_estate_market_liberal2
+	remove_ideas = fifth_estate_market_liberal3
+	remove_ideas = fifth_estate_market_liberal4
+	remove_ideas = fifth_estate_social_liberal1
+	remove_ideas = fifth_estate_social_liberal2
+	remove_ideas = fifth_estate_social_liberal3
+	remove_ideas = fifth_estate_social_liberal4
+	remove_ideas = fifth_estate_social_democrat1
+	remove_ideas = fifth_estate_social_democrat2
+	remove_ideas = fifth_estate_social_democrat3
+	remove_ideas = fifth_estate_social_democrat4
+	remove_ideas = fifth_estate_progressive1
+	remove_ideas = fifth_estate_progressive2
+	remove_ideas = fifth_estate_progressive3
+	remove_ideas = fifth_estate_progressive4
+	remove_ideas = fifth_estate_democratic_socialist1
+	remove_ideas = fifth_estate_democratic_socialist2
+	remove_ideas = fifth_estate_democratic_socialist3
+	remove_ideas = fifth_estate_democratic_socialist4
+	remove_ideas = fifth_estate_communist1
+	remove_ideas = fifth_estate_communist2
+	remove_ideas = fifth_estate_communist3
+	remove_ideas = fifth_estate_communist4
+}
+
+### FOURTH ESTATE CHANGES ###
+## INCREASE ##
+fourth_estate_islamist_increase = {
+	custom_effect_tooltip = TT_fourth_estate_islamist_increase
+	hidden_effect = {
+		if = {
+			limit = { has_idea = fourth_estate_islamist5 }
+			add_popularity = {
+				ideology = islamist
+				popularity = 0.05
+			}
+		}
+		if = {
+			limit = { has_idea = fourth_estate_islamist4 }
+			swap_ideas = {
+				remove_idea = fourth_estate_islamist4
+				add_idea = fourth_estate_islamist5
+			}
+		}
+		if = {
+			limit = { has_idea = fourth_estate_islamist3 }
+			swap_ideas = {
+				remove_idea = fourth_estate_islamist3
+				add_idea = fourth_estate_islamist4
+			}
+		}
+		if = {
+			limit = { has_idea = fourth_estate_islamist2 }
+			swap_ideas = {
+				remove_idea = fourth_estate_islamist2
+				add_idea = fourth_estate_islamist3
+			}
+		}
+		if = {
+			limit = { has_idea = fourth_estate_islamist1 }
+			swap_ideas = {
+				remove_idea = fourth_estate_islamist1
+				add_idea = fourth_estate_islamist2
+			}
+		}
+		if = {
+			limit = {
+				has_islamist_fourth_estate = no
+				OR = {
+					has_idea = fifth_estate_islamist4
+					has_idea = fifth_estate_islamist5
+				}
+			}
+			add_ideas = fourth_estate_islamist2
+			remove_ideas = fifth_estate_islamist4
+			remove_ideas = fifth_estate_islamist5
+		}
+		if = {
+			limit = {
+				has_islamist_fourth_estate = no
+				OR = {
+					has_idea = fifth_estate_islamist1
+					has_idea = fifth_estate_islamist2
+					has_idea = fifth_estate_islamist3
+				}
+			}
+			add_ideas = fourth_estate_islamist1
+			add_popularity = {
+				ideology = islamist
+				popularity = 0.02
+			}
+			remove_ideas = fifth_estate_islamist1
+			remove_ideas = fifth_estate_islamist2
+			remove_ideas = fifth_estate_islamist3
+		}
+		if = {
+			limit = { has_islamist_fourth_estate = no }
+			add_ideas = fourth_estate_islamist1
+		}
+	}
+}
+
+fourth_estate_fascist_increase = {
+	custom_effect_tooltip = TT_fourth_estate_fascist_increase
+	hidden_effect = {
+		if = {
+			limit = { has_idea = fourth_estate_fascist5 }
+			add_popularity = {
+				ideology = fascist
+				popularity = 0.05
+			}
+		}
+		if = {
+			limit = { has_idea = fourth_estate_fascist4 }
+			swap_ideas = {
+				remove_idea = fourth_estate_fascist4
+				add_idea = fourth_estate_fascist5
+			}
+		}
+		if = {
+			limit = { has_idea = fourth_estate_fascist3 }
+			swap_ideas = {
+				remove_idea = fourth_estate_fascist3
+				add_idea = fourth_estate_fascist4
+			}
+		}
+		if = {
+			limit = { has_idea = fourth_estate_fascist2 }
+			swap_ideas = {
+				remove_idea = fourth_estate_fascist2
+				add_idea = fourth_estate_fascist3
+			}
+		}
+		if = {
+			limit = { has_idea = fourth_estate_fascist1 }
+			swap_ideas = {
+				remove_idea = fourth_estate_fascist1
+				add_idea = fourth_estate_fascist2
+			}
+		}
+		if = {
+			limit = {
+				has_fascist_fourth_estate = no
+				OR = {
+					has_idea = fifth_estate_fascist4
+					has_idea = fifth_estate_fascist5
+				}
+			}
+			add_ideas = fourth_estate_fascist2
+			remove_ideas = fifth_estate_fascist4
+			remove_ideas = fifth_estate_fascist5
+		}
+		if = {
+			limit = {
+				has_fascist_fourth_estate = no
+				OR = {
+					has_idea = fifth_estate_fascist1
+					has_idea = fifth_estate_fascist2
+					has_idea = fifth_estate_fascist3
+				}
+			}
+			add_ideas = fourth_estate_fascist1
+			add_popularity = {
+				ideology = fascist
+				popularity = 0.02
+			}
+			remove_ideas = fifth_estate_fascist1
+			remove_ideas = fifth_estate_fascist2
+			remove_ideas = fifth_estate_fascist3
+		}
+		if = {
+			limit = { has_fascist_fourth_estate = no }
+			add_ideas = fourth_estate_fascist1
+		}
+	}
+}
+
+fourth_estate_nationalist_increase = {
+	custom_effect_tooltip = TT_fourth_estate_nationalist_increase
+	hidden_effect = {
+		if = {
+			limit = { has_idea = fourth_estate_nationalist5 }
+			add_popularity = {
+				ideology = nationalist
+				popularity = 0.05
+			}
+		}
+		if = {
+			limit = { has_idea = fourth_estate_nationalist4 }
+			swap_ideas = {
+				remove_idea = fourth_estate_nationalist4
+				add_idea = fourth_estate_nationalist5
+			}
+		}
+		if = {
+			limit = { has_idea = fourth_estate_nationalist3 }
+			swap_ideas = {
+				remove_idea = fourth_estate_nationalist3
+				add_idea = fourth_estate_nationalist4
+			}
+		}
+		if = {
+			limit = { has_idea = fourth_estate_nationalist2 }
+			swap_ideas = {
+				remove_idea = fourth_estate_nationalist2
+				add_idea = fourth_estate_nationalist3
+			}
+		}
+		if = {
+			limit = { has_idea = fourth_estate_nationalist1 }
+			swap_ideas = {
+				remove_idea = fourth_estate_nationalist1
+				add_idea = fourth_estate_nationalist2
+			}
+		}
+		if = {
+			limit = {
+				has_nationalist_fourth_estate = no
+				OR = {
+					has_idea = fifth_estate_nationalist4
+					has_idea = fifth_estate_nationalist5
+				}
+			}
+			add_ideas = fourth_estate_nationalist2
+			remove_ideas = fifth_estate_nationalist4
+			remove_ideas = fifth_estate_nationalist5
+		}
+		if = {
+			limit = {
+				has_nationalist_fourth_estate = no
+				OR = {
+					has_idea = fifth_estate_nationalist1
+					has_idea = fifth_estate_nationalist2
+					has_idea = fifth_estate_nationalist3
+				}
+			}
+			add_ideas = fourth_estate_nationalist1
+			add_popularity = {
+				ideology = nationalist
+				popularity = 0.02
+			}
+			remove_ideas = fifth_estate_nationalist1
+			remove_ideas = fifth_estate_nationalist2
+			remove_ideas = fifth_estate_nationalist3
+		}
+		if = {
+			limit = { has_nationalist_fourth_estate = no }
+			add_ideas = fourth_estate_nationalist1
+		}
+	}
+}
+
+fourth_estate_monarchist_increase = {
+	custom_effect_tooltip = TT_fourth_estate_monarchist_increase
+	hidden_effect = {
+		if = {
+			limit = { has_idea = fourth_estate_monarchist5 }
+			add_popularity = {
+				ideology = monarchist
+				popularity = 0.05
+			}
+		}
+		if = {
+			limit = { has_idea = fourth_estate_monarchist4 }
+			swap_ideas = {
+				remove_idea = fourth_estate_monarchist4
+				add_idea = fourth_estate_monarchist5
+			}
+		}
+		if = {
+			limit = { has_idea = fourth_estate_monarchist3 }
+			swap_ideas = {
+				remove_idea = fourth_estate_monarchist3
+				add_idea = fourth_estate_monarchist4
+			}
+		}
+		if = {
+			limit = { has_idea = fourth_estate_monarchist2 }
+			swap_ideas = {
+				remove_idea = fourth_estate_monarchist2
+				add_idea = fourth_estate_monarchist3
+			}
+		}
+		if = {
+			limit = { has_idea = fourth_estate_monarchist1 }
+			swap_ideas = {
+				remove_idea = fourth_estate_monarchist1
+				add_idea = fourth_estate_monarchist2
+			}
+		}
+		if = {
+			limit = {
+				has_monarchist_fourth_estate = no
+				OR = {
+					has_idea = fifth_estate_monarchist4
+					has_idea = fifth_estate_monarchist5
+				}
+			}
+			add_ideas = fourth_estate_monarchist2
+			remove_ideas = fifth_estate_monarchist4
+			remove_ideas = fifth_estate_monarchist5
+		}
+		if = {
+			limit = {
+				has_monarchist_fourth_estate = no
+				OR = {
+					has_idea = fifth_estate_monarchist1
+					has_idea = fifth_estate_monarchist2
+					has_idea = fifth_estate_monarchist3
+				}
+			}
+			add_ideas = fourth_estate_monarchist1
+			add_popularity = {
+				ideology = monarchist
+				popularity = 0.02
+			}
+			remove_ideas = fifth_estate_monarchist1
+			remove_ideas = fifth_estate_monarchist2
+			remove_ideas = fifth_estate_monarchist3
+		}
+		if = {
+			limit = { has_monarchist_fourth_estate = no }
+			add_ideas = fourth_estate_monarchist1
+		}
+	}
+}
+
+fourth_estate_reactionary_increase = {
+	custom_effect_tooltip = TT_fourth_estate_reactionary_increase
+	hidden_effect = {
+		if = {
+			limit = { has_idea = fourth_estate_reactionary5 }
+			add_popularity = {
+				ideology = reactionary
+				popularity = 0.05
+			}
+		}
+		if = {
+			limit = { has_idea = fourth_estate_reactionary4 }
+			swap_ideas = {
+				remove_idea = fourth_estate_reactionary4
+				add_idea = fourth_estate_reactionary5
+			}
+		}
+		if = {
+			limit = { has_idea = fourth_estate_reactionary3 }
+			swap_ideas = {
+				remove_idea = fourth_estate_reactionary3
+				add_idea = fourth_estate_reactionary4
+			}
+		}
+		if = {
+			limit = { has_idea = fourth_estate_reactionary2 }
+			swap_ideas = {
+				remove_idea = fourth_estate_reactionary2
+				add_idea = fourth_estate_reactionary3
+			}
+		}
+		if = {
+			limit = { has_idea = fourth_estate_reactionary1 }
+			swap_ideas = {
+				remove_idea = fourth_estate_reactionary1
+				add_idea = fourth_estate_reactionary2
+			}
+		}
+		if = {
+			limit = {
+				has_reactionary_fourth_estate = no
+				OR = {
+					has_idea = fifth_estate_reactionary4
+					has_idea = fifth_estate_reactionary5
+				}
+			}
+			add_ideas = fourth_estate_reactionary2
+			remove_ideas = fifth_estate_reactionary4
+			remove_ideas = fifth_estate_reactionary5
+		}
+		if = {
+			limit = {
+				has_reactionary_fourth_estate = no
+				OR = {
+					has_idea = fifth_estate_reactionary1
+					has_idea = fifth_estate_reactionary2
+					has_idea = fifth_estate_reactionary3
+				}
+			}
+			add_ideas = fourth_estate_reactionary1
+			add_popularity = {
+				ideology = reactionary
+				popularity = 0.02
+			}
+			remove_ideas = fifth_estate_reactionary1
+			remove_ideas = fifth_estate_reactionary2
+			remove_ideas = fifth_estate_reactionary3
+		}
+		if = {
+			limit = { has_reactionary_fourth_estate = no }
+			add_ideas = fourth_estate_reactionary1
+		}
+	}
+}
+
+fourth_estate_conservative_increase = {
+	custom_effect_tooltip = TT_fourth_estate_conservative_increase
+	hidden_effect = {
+		if = {
+			limit = { has_idea = fourth_estate_conservative5 }
+			add_popularity = {
+				ideology = conservative
+				popularity = 0.05
+			}
+		}
+		if = {
+			limit = { has_idea = fourth_estate_conservative4 }
+			swap_ideas = {
+				remove_idea = fourth_estate_conservative4
+				add_idea = fourth_estate_conservative5
+			}
+		}
+		if = {
+			limit = { has_idea = fourth_estate_conservative3 }
+			swap_ideas = {
+				remove_idea = fourth_estate_conservative3
+				add_idea = fourth_estate_conservative4
+			}
+		}
+		if = {
+			limit = { has_idea = fourth_estate_conservative2 }
+			swap_ideas = {
+				remove_idea = fourth_estate_conservative2
+				add_idea = fourth_estate_conservative3
+			}
+		}
+		if = {
+			limit = { has_idea = fourth_estate_conservative1 }
+			swap_ideas = {
+				remove_idea = fourth_estate_conservative1
+				add_idea = fourth_estate_conservative2
+			}
+		}
+		if = {
+			limit = {
+				has_conservative_fourth_estate = no
+				OR = {
+					has_idea = fifth_estate_conservative4
+					has_idea = fifth_estate_conservative5
+				}
+			}
+			add_ideas = fourth_estate_conservative2
+			remove_ideas = fifth_estate_conservative4
+			remove_ideas = fifth_estate_conservative5
+		}
+		if = {
+			limit = {
+				has_conservative_fourth_estate = no
+				OR = {
+					has_idea = fifth_estate_conservative1
+					has_idea = fifth_estate_conservative2
+					has_idea = fifth_estate_conservative3
+				}
+			}
+			add_ideas = fourth_estate_conservative1
+			add_popularity = {
+				ideology = conservative
+				popularity = 0.02
+			}
+			remove_ideas = fifth_estate_conservative1
+			remove_ideas = fifth_estate_conservative2
+			remove_ideas = fifth_estate_conservative3
+		}
+		if = {
+			limit = { has_conservative_fourth_estate = no }
+			add_ideas = fourth_estate_conservative1
+		}
+	}
+}
+
+fourth_estate_market_liberal_increase = {
+	custom_effect_tooltip = TT_fourth_estate_market_liberal_increase
+	hidden_effect = {
+		if = {
+			limit = { has_idea = fourth_estate_market_liberal5 }
+			add_popularity = {
+				ideology = market_liberal
+				popularity = 0.05
+			}
+		}
+		if = {
+			limit = { has_idea = fourth_estate_market_liberal4 }
+			swap_ideas = {
+				remove_idea = fourth_estate_market_liberal4
+				add_idea = fourth_estate_market_liberal5
+			}
+		}
+		if = {
+			limit = { has_idea = fourth_estate_market_liberal3 }
+			swap_ideas = {
+				remove_idea = fourth_estate_market_liberal3
+				add_idea = fourth_estate_market_liberal4
+			}
+		}
+		if = {
+			limit = { has_idea = fourth_estate_market_liberal2 }
+			swap_ideas = {
+				remove_idea = fourth_estate_market_liberal2
+				add_idea = fourth_estate_market_liberal3
+			}
+		}
+		if = {
+			limit = { has_idea = fourth_estate_market_liberal1 }
+			swap_ideas = {
+				remove_idea = fourth_estate_market_liberal1
+				add_idea = fourth_estate_market_liberal2
+			}
+		}
+		if = {
+			limit = {
+				has_market_liberal_fourth_estate = no
+				OR = {
+					has_idea = fifth_estate_market_liberal4
+					has_idea = fifth_estate_market_liberal5
+				}
+			}
+			add_ideas = fourth_estate_market_liberal2
+			remove_ideas = fifth_estate_market_liberal4
+			remove_ideas = fifth_estate_market_liberal5
+		}
+		if = {
+			limit = {
+				has_market_liberal_fourth_estate = no
+				OR = {
+					has_idea = fifth_estate_market_liberal1
+					has_idea = fifth_estate_market_liberal2
+					has_idea = fifth_estate_market_liberal3
+				}
+			}
+			add_ideas = fourth_estate_market_liberal1
+			add_popularity = {
+				ideology = market_liberal
+				popularity = 0.02
+			}
+			remove_ideas = fifth_estate_market_liberal1
+			remove_ideas = fifth_estate_market_liberal2
+			remove_ideas = fifth_estate_market_liberal3
+		}
+		if = {
+			limit = { has_market_liberal_fourth_estate = no }
+			add_ideas = fourth_estate_market_liberal1
+		}
+	}
+}
+
+fourth_estate_social_liberal_increase = {
+	custom_effect_tooltip = TT_fourth_estate_social_liberal_increase
+	hidden_effect = {
+		if = {
+			limit = { has_idea = fourth_estate_social_liberal5 }
+			add_popularity = {
+				ideology = social_liberal
+				popularity = 0.05
+			}
+		}
+		if = {
+			limit = { has_idea = fourth_estate_social_liberal4 }
+			swap_ideas = {
+				remove_idea = fourth_estate_social_liberal4
+				add_idea = fourth_estate_social_liberal5
+			}
+		}
+		if = {
+			limit = { has_idea = fourth_estate_social_liberal3 }
+			swap_ideas = {
+				remove_idea = fourth_estate_social_liberal3
+				add_idea = fourth_estate_social_liberal4
+			}
+		}
+		if = {
+			limit = { has_idea = fourth_estate_social_liberal2 }
+			swap_ideas = {
+				remove_idea = fourth_estate_social_liberal2
+				add_idea = fourth_estate_social_liberal3
+			}
+		}
+		if = {
+			limit = { has_idea = fourth_estate_social_liberal1 }
+			swap_ideas = {
+				remove_idea = fourth_estate_social_liberal1
+				add_idea = fourth_estate_social_liberal2
+			}
+		}
+		if = {
+			limit = {
+				has_social_liberal_fourth_estate = no
+				OR = {
+					has_idea = fifth_estate_social_liberal4
+					has_idea = fifth_estate_social_liberal5
+				}
+			}
+			add_ideas = fourth_estate_social_liberal2
+			remove_ideas = fifth_estate_social_liberal4
+			remove_ideas = fifth_estate_social_liberal5
+		}
+		if = {
+			limit = {
+				has_social_liberal_fourth_estate = no
+				OR = {
+					has_idea = fifth_estate_social_liberal1
+					has_idea = fifth_estate_social_liberal2
+					has_idea = fifth_estate_social_liberal3
+				}
+			}
+			add_ideas = fourth_estate_social_liberal1
+			add_popularity = {
+				ideology = social_liberal
+				popularity = 0.02
+			}
+			remove_ideas = fifth_estate_social_liberal1
+			remove_ideas = fifth_estate_social_liberal2
+			remove_ideas = fifth_estate_social_liberal3
+		}
+		if = {
+			limit = { has_social_liberal_fourth_estate = no }
+			add_ideas = fourth_estate_social_liberal1
+		}
+	}
+}
+
+fourth_estate_social_democrat_increase = {
+	custom_effect_tooltip = TT_fourth_estate_social_democrat_increase
+	hidden_effect = {
+		if = {
+			limit = { has_idea = fourth_estate_social_democrat5 }
+			add_popularity = {
+				ideology = social_democrat
+				popularity = 0.05
+			}
+		}
+		if = {
+			limit = { has_idea = fourth_estate_social_democrat4 }
+			swap_ideas = {
+				remove_idea = fourth_estate_social_democrat4
+				add_idea = fourth_estate_social_democrat5
+			}
+		}
+		if = {
+			limit = { has_idea = fourth_estate_social_democrat3 }
+			swap_ideas = {
+				remove_idea = fourth_estate_social_democrat3
+				add_idea = fourth_estate_social_democrat4
+			}
+		}
+		if = {
+			limit = { has_idea = fourth_estate_social_democrat2 }
+			swap_ideas = {
+				remove_idea = fourth_estate_social_democrat2
+				add_idea = fourth_estate_social_democrat3
+			}
+		}
+		if = {
+			limit = { has_idea = fourth_estate_social_democrat1 }
+			swap_ideas = {
+				remove_idea = fourth_estate_social_democrat1
+				add_idea = fourth_estate_social_democrat2
+			}
+		}
+		if = {
+			limit = {
+				has_social_democrat_fourth_estate = no
+				OR = {
+					has_idea = fifth_estate_social_democrat4
+					has_idea = fifth_estate_social_democrat5
+				}
+			}
+			add_ideas = fourth_estate_social_democrat2
+			remove_ideas = fifth_estate_social_democrat4
+			remove_ideas = fifth_estate_social_democrat5
+		}
+		if = {
+			limit = {
+				has_social_democrat_fourth_estate = no
+				OR = {
+					has_idea = fifth_estate_social_democrat1
+					has_idea = fifth_estate_social_democrat2
+					has_idea = fifth_estate_social_democrat3
+				}
+			}
+			add_ideas = fourth_estate_social_democrat1
+			add_popularity = {
+				ideology = social_democrat
+				popularity = 0.02
+			}
+			remove_ideas = fifth_estate_social_democrat1
+			remove_ideas = fifth_estate_social_democrat2
+			remove_ideas = fifth_estate_social_democrat3
+		}
+		if = {
+			limit = { has_social_democrat_fourth_estate = no }
+			add_ideas = fourth_estate_social_democrat1
+		}
+	}
+}
+
+fourth_estate_progressive_increase = {
+	custom_effect_tooltip = TT_fourth_estate_progressive_increase
+	hidden_effect = {
+		if = {
+			limit = { has_idea = fourth_estate_progressive5 }
+			add_popularity = {
+				ideology = progressive
+				popularity = 0.05
+			}
+		}
+		if = {
+			limit = { has_idea = fourth_estate_progressive4 }
+			swap_ideas = {
+				remove_idea = fourth_estate_progressive4
+				add_idea = fourth_estate_progressive5
+			}
+		}
+		if = {
+			limit = { has_idea = fourth_estate_progressive3 }
+			swap_ideas = {
+				remove_idea = fourth_estate_progressive3
+				add_idea = fourth_estate_progressive4
+			}
+		}
+		if = {
+			limit = { has_idea = fourth_estate_progressive2 }
+			swap_ideas = {
+				remove_idea = fourth_estate_progressive2
+				add_idea = fourth_estate_progressive3
+			}
+		}
+		if = {
+			limit = { has_idea = fourth_estate_progressive1 }
+			swap_ideas = {
+				remove_idea = fourth_estate_progressive1
+				add_idea = fourth_estate_progressive2
+			}
+		}
+		if = {
+			limit = {
+				has_progressive_fourth_estate = no
+				OR = {
+					has_idea = fifth_estate_progressive4
+					has_idea = fifth_estate_progressive5
+				}
+			}
+			add_ideas = fourth_estate_progressive2
+			remove_ideas = fifth_estate_progressive4
+			remove_ideas = fifth_estate_progressive5
+		}
+		if = {
+			limit = {
+				has_progressive_fourth_estate = no
+				OR = {
+					has_idea = fifth_estate_progressive1
+					has_idea = fifth_estate_progressive2
+					has_idea = fifth_estate_progressive3
+				}
+			}
+			add_ideas = fourth_estate_progressive1
+			add_popularity = {
+				ideology = progressive
+				popularity = 0.02
+			}
+			remove_ideas = fifth_estate_progressive1
+			remove_ideas = fifth_estate_progressive2
+			remove_ideas = fifth_estate_progressive3
+		}
+		if = {
+			limit = { has_progressive_fourth_estate = no }
+			add_ideas = fourth_estate_progressive1
+		}
+	}
+}
+
+fourth_estate_democratic_socialist_increase = {
+	custom_effect_tooltip = TT_fourth_estate_democratic_socialist_increase
+	hidden_effect = {
+		if = {
+			limit = { has_idea = fourth_estate_democratic_socialist5 }
+			add_popularity = {
+				ideology = democratic_socialist
+				popularity = 0.05
+			}
+		}
+		if = {
+			limit = { has_idea = fourth_estate_democratic_socialist4 }
+			swap_ideas = {
+				remove_idea = fourth_estate_democratic_socialist4
+				add_idea = fourth_estate_democratic_socialist5
+			}
+		}
+		if = {
+			limit = { has_idea = fourth_estate_democratic_socialist3 }
+			swap_ideas = {
+				remove_idea = fourth_estate_democratic_socialist3
+				add_idea = fourth_estate_democratic_socialist4
+			}
+		}
+		if = {
+			limit = { has_idea = fourth_estate_democratic_socialist2 }
+			swap_ideas = {
+				remove_idea = fourth_estate_democratic_socialist2
+				add_idea = fourth_estate_democratic_socialist3
+			}
+		}
+		if = {
+			limit = { has_idea = fourth_estate_democratic_socialist1 }
+			swap_ideas = {
+				remove_idea = fourth_estate_democratic_socialist1
+				add_idea = fourth_estate_democratic_socialist2
+			}
+		}
+		if = {
+			limit = {
+				has_democratic_socialist_fourth_estate = no
+				OR = {
+					has_idea = fifth_estate_democratic_socialist4
+					has_idea = fifth_estate_democratic_socialist5
+				}
+			}
+			add_ideas = fourth_estate_democratic_socialist2
+			remove_ideas = fifth_estate_democratic_socialist4
+			remove_ideas = fifth_estate_democratic_socialist5
+		}
+		if = {
+			limit = {
+				has_democratic_socialist_fourth_estate = no
+				OR = {
+					has_idea = fifth_estate_democratic_socialist1
+					has_idea = fifth_estate_democratic_socialist2
+					has_idea = fifth_estate_democratic_socialist3
+				}
+			}
+			add_ideas = fourth_estate_democratic_socialist1
+			add_popularity = {
+				ideology = democratic_socialist
+				popularity = 0.02
+			}
+			remove_ideas = fifth_estate_democratic_socialist1
+			remove_ideas = fifth_estate_democratic_socialist2
+			remove_ideas = fifth_estate_democratic_socialist3
+		}
+		if = {
+			limit = { has_democratic_socialist_fourth_estate = no }
+			add_ideas = fourth_estate_democratic_socialist1
+		}
+	}
+}
+
+fourth_estate_communist_increase = {
+	custom_effect_tooltip = TT_fourth_estate_communist_increase
+	hidden_effect = {
+		if = {
+			limit = { has_idea = fourth_estate_communist5 }
+			add_popularity = {
+				ideology = communist
+				popularity = 0.05
+			}
+		}
+		if = {
+			limit = { has_idea = fourth_estate_communist4 }
+			swap_ideas = {
+				remove_idea = fourth_estate_communist4
+				add_idea = fourth_estate_communist5
+			}
+		}
+		if = {
+			limit = { has_idea = fourth_estate_communist3 }
+			swap_ideas = {
+				remove_idea = fourth_estate_communist3
+				add_idea = fourth_estate_communist4
+			}
+		}
+		if = {
+			limit = { has_idea = fourth_estate_communist2 }
+			swap_ideas = {
+				remove_idea = fourth_estate_communist2
+				add_idea = fourth_estate_communist3
+			}
+		}
+		if = {
+			limit = { has_idea = fourth_estate_communist1 }
+			swap_ideas = {
+				remove_idea = fourth_estate_communist1
+				add_idea = fourth_estate_communist2
+			}
+		}
+		if = {
+			limit = {
+				has_communist_fourth_estate = no
+				OR = {
+					has_idea = fifth_estate_communist4
+					has_idea = fifth_estate_communist5
+				}
+			}
+			add_ideas = fourth_estate_communist2
+			remove_ideas = fifth_estate_communist4
+			remove_ideas = fifth_estate_communist5
+		}
+		if = {
+			limit = {
+				has_communist_fourth_estate = no
+				OR = {
+					has_idea = fifth_estate_communist1
+					has_idea = fifth_estate_communist2
+					has_idea = fifth_estate_communist3
+				}
+			}
+			add_ideas = fourth_estate_communist1
+			add_popularity = {
+				ideology = communist
+				popularity = 0.02
+			}
+			remove_ideas = fifth_estate_communist1
+			remove_ideas = fifth_estate_communist2
+			remove_ideas = fifth_estate_communist3
+		}
+		if = {
+			limit = { has_communist_fourth_estate = no }
+			add_ideas = fourth_estate_communist1
+		}
+	}
+}
+
+## DECREASE ##
+fourth_estate_islamist_decrease = {
+	custom_effect_tooltip = TT_fourth_estate_islamist_decrease
+	hidden_effect = {
+		if = {
+			limit = { has_islamist_fourth_estate = no }
+			add_popularity = {
+				ideology = islamist
+				popularity = -0.05
+			}
+		}
+		if = {
+			limit = { has_idea = fourth_estate_islamist1 }
+			remove_ideas = fourth_estate_islamist1
+		}
+		if = {
+			limit = { has_idea = fourth_estate_islamist2 }
+			swap_ideas = {
+				remove_idea = fourth_estate_islamist2
+				add_idea = fourth_estate_islamist1
+			}
+		}
+		if = {
+			limit = { has_idea = fourth_estate_islamist3 }
+			swap_ideas = {
+				remove_idea = fourth_estate_islamist3
+				add_idea = fourth_estate_islamist2
+			}
+		}
+		if = {
+			limit = { has_idea = fourth_estate_islamist4 }
+			swap_ideas = {
+				remove_idea = fourth_estate_islamist4
+				add_idea = fourth_estate_islamist3
+			}
+		}
+		if = {
+			limit = { has_idea = fourth_estate_islamist5 }
+			swap_ideas = {
+				remove_idea = fourth_estate_islamist5
+				add_idea = fourth_estate_islamist4
+			}
+		}
+	}
+}
+
+fourth_estate_fascist_decrease = {
+	custom_effect_tooltip = TT_fourth_estate_fascist_decrease
+	hidden_effect = {
+		if = {
+			limit = { has_fascist_fourth_estate = no }
+			add_popularity = {
+				ideology = fascist
+				popularity = -0.05
+			}
+		}
+		if = {
+			limit = { has_idea = fourth_estate_fascist1 }
+			remove_ideas = fourth_estate_fascist1
+		}
+		if = {
+			limit = { has_idea = fourth_estate_fascist2 }
+			swap_ideas = {
+				remove_idea = fourth_estate_fascist2
+				add_idea = fourth_estate_fascist1
+			}
+		}
+		if = {
+			limit = { has_idea = fourth_estate_fascist3 }
+			swap_ideas = {
+				remove_idea = fourth_estate_fascist3
+				add_idea = fourth_estate_fascist2
+			}
+		}
+		if = {
+			limit = { has_idea = fourth_estate_fascist4 }
+			swap_ideas = {
+				remove_idea = fourth_estate_fascist4
+				add_idea = fourth_estate_fascist3
+			}
+		}
+		if = {
+			limit = { has_idea = fourth_estate_fascist5 }
+			swap_ideas = {
+				remove_idea = fourth_estate_fascist5
+				add_idea = fourth_estate_fascist4
+			}
+		}
+	}
+}
+
+fourth_estate_nationalist_decrease = {
+	custom_effect_tooltip = TT_fourth_estate_nationalist_decrease
+	hidden_effect = {
+		if = {
+			limit = { has_nationalist_fourth_estate = no }
+			add_popularity = {
+				ideology = nationalist
+				popularity = -0.05
+			}
+		}
+		if = {
+			limit = { has_idea = fourth_estate_nationalist1 }
+			remove_ideas = fourth_estate_nationalist1
+		}
+		if = {
+			limit = { has_idea = fourth_estate_nationalist2 }
+			swap_ideas = {
+				remove_idea = fourth_estate_nationalist2
+				add_idea = fourth_estate_nationalist1
+			}
+		}
+		if = {
+			limit = { has_idea = fourth_estate_nationalist3 }
+			swap_ideas = {
+				remove_idea = fourth_estate_nationalist3
+				add_idea = fourth_estate_nationalist2
+			}
+		}
+		if = {
+			limit = { has_idea = fourth_estate_nationalist4 }
+			swap_ideas = {
+				remove_idea = fourth_estate_nationalist4
+				add_idea = fourth_estate_nationalist3
+			}
+		}
+		if = {
+			limit = { has_idea = fourth_estate_nationalist5 }
+			swap_ideas = {
+				remove_idea = fourth_estate_nationalist5
+				add_idea = fourth_estate_nationalist4
+			}
+		}
+	}
+}
+
+fourth_estate_monarchist_decrease = {
+	custom_effect_tooltip = TT_fourth_estate_monarchist_decrease
+	hidden_effect = {
+		if = {
+			limit = { has_monarchist_fourth_estate = no }
+			add_popularity = {
+				ideology = monarchist
+				popularity = -0.05
+			}
+		}
+		if = {
+			limit = { has_idea = fourth_estate_monarchist1 }
+			remove_ideas = fourth_estate_monarchist1
+		}
+		if = {
+			limit = { has_idea = fourth_estate_monarchist2 }
+			swap_ideas = {
+				remove_idea = fourth_estate_monarchist2
+				add_idea = fourth_estate_monarchist1
+			}
+		}
+		if = {
+			limit = { has_idea = fourth_estate_monarchist3 }
+			swap_ideas = {
+				remove_idea = fourth_estate_monarchist3
+				add_idea = fourth_estate_monarchist2
+			}
+		}
+		if = {
+			limit = { has_idea = fourth_estate_monarchist4 }
+			swap_ideas = {
+				remove_idea = fourth_estate_monarchist4
+				add_idea = fourth_estate_monarchist3
+			}
+		}
+		if = {
+			limit = { has_idea = fourth_estate_monarchist5 }
+			swap_ideas = {
+				remove_idea = fourth_estate_monarchist5
+				add_idea = fourth_estate_monarchist4
+			}
+		}
+	}
+}
+
+fourth_estate_reactionary_decrease = {
+	custom_effect_tooltip = TT_fourth_estate_reactionary_decrease
+	hidden_effect = {
+		if = {
+			limit = { has_reactionary_fourth_estate = no }
+			add_popularity = {
+				ideology = reactionary
+				popularity = -0.05
+			}
+		}
+		if = {
+			limit = { has_idea = fourth_estate_reactionary1 }
+			remove_ideas = fourth_estate_reactionary1
+		}
+		if = {
+			limit = { has_idea = fourth_estate_reactionary2 }
+			swap_ideas = {
+				remove_idea = fourth_estate_reactionary2
+				add_idea = fourth_estate_reactionary1
+			}
+		}
+		if = {
+			limit = { has_idea = fourth_estate_reactionary3 }
+			swap_ideas = {
+				remove_idea = fourth_estate_reactionary3
+				add_idea = fourth_estate_reactionary2
+			}
+		}
+		if = {
+			limit = { has_idea = fourth_estate_reactionary4 }
+			swap_ideas = {
+				remove_idea = fourth_estate_reactionary4
+				add_idea = fourth_estate_reactionary3
+			}
+		}
+		if = {
+			limit = { has_idea = fourth_estate_reactionary5 }
+			swap_ideas = {
+				remove_idea = fourth_estate_reactionary5
+				add_idea = fourth_estate_reactionary4
+			}
+		}
+	}
+}
+
+fourth_estate_conservative_decrease = {
+	custom_effect_tooltip = TT_fourth_estate_conservative_decrease
+	hidden_effect = {
+		if = {
+			limit = { has_conservative_fourth_estate = no }
+			add_popularity = {
+				ideology = conservative
+				popularity = -0.05
+			}
+		}
+		if = {
+			limit = { has_idea = fourth_estate_conservative1 }
+			remove_ideas = fourth_estate_conservative1
+		}
+		if = {
+			limit = { has_idea = fourth_estate_conservative2 }
+			swap_ideas = {
+				remove_idea = fourth_estate_conservative2
+				add_idea = fourth_estate_conservative1
+			}
+		}
+		if = {
+			limit = { has_idea = fourth_estate_conservative3 }
+			swap_ideas = {
+				remove_idea = fourth_estate_conservative3
+				add_idea = fourth_estate_conservative2
+			}
+		}
+		if = {
+			limit = { has_idea = fourth_estate_conservative4 }
+			swap_ideas = {
+				remove_idea = fourth_estate_conservative4
+				add_idea = fourth_estate_conservative3
+			}
+		}
+		if = {
+			limit = { has_idea = fourth_estate_conservative5 }
+			swap_ideas = {
+				remove_idea = fourth_estate_conservative5
+				add_idea = fourth_estate_conservative4
+			}
+		}
+	}
+}
+
+fourth_estate_market_liberal_decrease = {
+	custom_effect_tooltip = TT_fourth_estate_market_liberal_decrease
+	hidden_effect = {
+		if = {
+			limit = { has_market_liberal_fourth_estate = no }
+			add_popularity = {
+				ideology = market_liberal
+				popularity = -0.05
+			}
+		}
+		if = {
+			limit = { has_idea = fourth_estate_market_liberal1 }
+			remove_ideas = fourth_estate_market_liberal1
+		}
+		if = {
+			limit = { has_idea = fourth_estate_market_liberal2 }
+			swap_ideas = {
+				remove_idea = fourth_estate_market_liberal2
+				add_idea = fourth_estate_market_liberal1
+			}
+		}
+		if = {
+			limit = { has_idea = fourth_estate_market_liberal3 }
+			swap_ideas = {
+				remove_idea = fourth_estate_market_liberal3
+				add_idea = fourth_estate_market_liberal2
+			}
+		}
+		if = {
+			limit = { has_idea = fourth_estate_market_liberal4 }
+			swap_ideas = {
+				remove_idea = fourth_estate_market_liberal4
+				add_idea = fourth_estate_market_liberal3
+			}
+		}
+		if = {
+			limit = { has_idea = fourth_estate_market_liberal5 }
+			swap_ideas = {
+				remove_idea = fourth_estate_market_liberal5
+				add_idea = fourth_estate_market_liberal4
+			}
+		}
+	}
+}
+
+fourth_estate_social_liberal_decrease = {
+	custom_effect_tooltip = TT_fourth_estate_social_liberal_decrease
+	hidden_effect = {
+		if = {
+			limit = { has_social_liberal_fourth_estate = no }
+			add_popularity = {
+				ideology = social_liberal
+				popularity = -0.05
+			}
+		}
+		if = {
+			limit = { has_idea = fourth_estate_social_liberal1 }
+			remove_ideas = fourth_estate_social_liberal1
+		}
+		if = {
+			limit = { has_idea = fourth_estate_social_liberal2 }
+			swap_ideas = {
+				remove_idea = fourth_estate_social_liberal2
+				add_idea = fourth_estate_social_liberal1
+			}
+		}
+		if = {
+			limit = { has_idea = fourth_estate_social_liberal3 }
+			swap_ideas = {
+				remove_idea = fourth_estate_social_liberal3
+				add_idea = fourth_estate_social_liberal2
+			}
+		}
+		if = {
+			limit = { has_idea = fourth_estate_social_liberal4 }
+			swap_ideas = {
+				remove_idea = fourth_estate_social_liberal4
+				add_idea = fourth_estate_social_liberal3
+			}
+		}
+		if = {
+			limit = { has_idea = fourth_estate_social_liberal5 }
+			swap_ideas = {
+				remove_idea = fourth_estate_social_liberal5
+				add_idea = fourth_estate_social_liberal4
+			}
+		}
+	}
+}
+
+fourth_estate_social_democrat_decrease = {
+	custom_effect_tooltip = TT_fourth_estate_social_democrat_decrease
+	hidden_effect = {
+		if = {
+			limit = { has_social_democrat_fourth_estate = no }
+			add_popularity = {
+				ideology = social_democrat
+				popularity = -0.05
+			}
+		}
+		if = {
+			limit = { has_idea = fourth_estate_social_democrat1 }
+			remove_ideas = fourth_estate_social_democrat1
+		}
+		if = {
+			limit = { has_idea = fourth_estate_social_democrat2 }
+			swap_ideas = {
+				remove_idea = fourth_estate_social_democrat2
+				add_idea = fourth_estate_social_democrat1
+			}
+		}
+		if = {
+			limit = { has_idea = fourth_estate_social_democrat3 }
+			swap_ideas = {
+				remove_idea = fourth_estate_social_democrat3
+				add_idea = fourth_estate_social_democrat2
+			}
+		}
+		if = {
+			limit = { has_idea = fourth_estate_social_democrat4 }
+			swap_ideas = {
+				remove_idea = fourth_estate_social_democrat4
+				add_idea = fourth_estate_social_democrat3
+			}
+		}
+		if = {
+			limit = { has_idea = fourth_estate_social_democrat5 }
+			swap_ideas = {
+				remove_idea = fourth_estate_social_democrat5
+				add_idea = fourth_estate_social_democrat4
+			}
+		}
+	}
+}
+
+fourth_estate_progressive_decrease = {
+	custom_effect_tooltip = TT_fourth_estate_progressive_decrease
+	hidden_effect = {
+		if = {
+			limit = { has_progressive_fourth_estate = no }
+			add_popularity = {
+				ideology = progressive
+				popularity = -0.05
+			}
+		}
+		if = {
+			limit = { has_idea = fourth_estate_progressive1 }
+			remove_ideas = fourth_estate_progressive1
+		}
+		if = {
+			limit = { has_idea = fourth_estate_progressive2 }
+			swap_ideas = {
+				remove_idea = fourth_estate_progressive2
+				add_idea = fourth_estate_progressive1
+			}
+		}
+		if = {
+			limit = { has_idea = fourth_estate_progressive3 }
+			swap_ideas = {
+				remove_idea = fourth_estate_progressive3
+				add_idea = fourth_estate_progressive2
+			}
+		}
+		if = {
+			limit = { has_idea = fourth_estate_progressive4 }
+			swap_ideas = {
+				remove_idea = fourth_estate_progressive4
+				add_idea = fourth_estate_progressive3
+			}
+		}
+		if = {
+			limit = { has_idea = fourth_estate_progressive5 }
+			swap_ideas = {
+				remove_idea = fourth_estate_progressive5
+				add_idea = fourth_estate_progressive4
+			}
+		}
+	}
+}
+
+fourth_estate_democratic_socialist_decrease = {
+	custom_effect_tooltip = TT_fourth_estate_democratic_socialist_decrease
+	hidden_effect = {
+		if = {
+			limit = { has_democratic_socialist_fourth_estate = no }
+			add_popularity = {
+				ideology = democratic_socialist
+				popularity = -0.05
+			}
+		}
+		if = {
+			limit = { has_idea = fourth_estate_democratic_socialist1 }
+			remove_ideas = fourth_estate_democratic_socialist1
+		}
+		if = {
+			limit = { has_idea = fourth_estate_democratic_socialist2 }
+			swap_ideas = {
+				remove_idea = fourth_estate_democratic_socialist2
+				add_idea = fourth_estate_democratic_socialist1
+			}
+		}
+		if = {
+			limit = { has_idea = fourth_estate_democratic_socialist3 }
+			swap_ideas = {
+				remove_idea = fourth_estate_democratic_socialist3
+				add_idea = fourth_estate_democratic_socialist2
+			}
+		}
+		if = {
+			limit = { has_idea = fourth_estate_democratic_socialist4 }
+			swap_ideas = {
+				remove_idea = fourth_estate_democratic_socialist4
+				add_idea = fourth_estate_democratic_socialist3
+			}
+		}
+		if = {
+			limit = { has_idea = fourth_estate_democratic_socialist5 }
+			swap_ideas = {
+				remove_idea = fourth_estate_democratic_socialist5
+				add_idea = fourth_estate_democratic_socialist4
+			}
+		}
+	}
+}
+
+fourth_estate_communist_decrease = {
+	custom_effect_tooltip = TT_fourth_estate_communist_decrease
+	hidden_effect = {
+		if = {
+			limit = { has_communist_fourth_estate = no }
+			add_popularity = {
+				ideology = communist
+				popularity = -0.05
+			}
+		}
+		if = {
+			limit = { has_idea = fourth_estate_communist1 }
+			remove_ideas = fourth_estate_communist1
+		}
+		if = {
+			limit = { has_idea = fourth_estate_communist2 }
+			swap_ideas = {
+				remove_idea = fourth_estate_communist2
+				add_idea = fourth_estate_communist1
+			}
+		}
+		if = {
+			limit = { has_idea = fourth_estate_communist3 }
+			swap_ideas = {
+				remove_idea = fourth_estate_communist3
+				add_idea = fourth_estate_communist2
+			}
+		}
+		if = {
+			limit = { has_idea = fourth_estate_communist4 }
+			swap_ideas = {
+				remove_idea = fourth_estate_communist4
+				add_idea = fourth_estate_communist3
+			}
+		}
+		if = {
+			limit = { has_idea = fourth_estate_communist5 }
+			swap_ideas = {
+				remove_idea = fourth_estate_communist5
+				add_idea = fourth_estate_communist4
+			}
+		}
+	}
+}
+
+### FIFTH ESTATE CHANGES ###
+## INCREASE ##
+fifth_estate_islamist_increase = {
+	custom_effect_tooltip = TT_fifth_estate_islamist_increase
+	hidden_effect = {
+		if = {
+			limit = { has_idea = fifth_estate_islamist5 }
+			add_popularity = {
+				ideology = islamist
+				popularity = 0.05
+			}
+		}
+		if = {
+			limit = { has_idea = fifth_estate_islamist4 }
+			swap_ideas = {
+				remove_idea = fifth_estate_islamist4
+				add_idea = fifth_estate_islamist5
+			}
+		}
+		if = {
+			limit = { has_idea = fifth_estate_islamist3 }
+			swap_ideas = {
+				remove_idea = fifth_estate_islamist3
+				add_idea = fifth_estate_islamist4
+			}
+		}
+		if = {
+			limit = { has_idea = fifth_estate_islamist2 }
+			swap_ideas = {
+				remove_idea = fifth_estate_islamist2
+				add_idea = fifth_estate_islamist3
+			}
+		}
+		if = {
+			limit = { has_idea = fifth_estate_islamist1 }
+			swap_ideas = {
+				remove_idea = fifth_estate_islamist1
+				add_idea = fifth_estate_islamist2
+			}
+		}
+		if = {
+			limit = { has_islamist_fifth_estate = no }
+			add_ideas = fifth_estate_islamist1
+		}
+	}
+}
+
+fifth_estate_fascist_increase = {
+	custom_effect_tooltip = TT_fifth_estate_fascist_increase
+	hidden_effect = {
+		if = {
+			limit = { has_idea = fifth_estate_fascist5 }
+			add_popularity = {
+				ideology = fascist
+				popularity = 0.05
+			}
+		}
+		if = {
+			limit = { has_idea = fifth_estate_fascist4 }
+			swap_ideas = {
+				remove_idea = fifth_estate_fascist4
+				add_idea = fifth_estate_fascist5
+			}
+		}
+		if = {
+			limit = { has_idea = fifth_estate_fascist3 }
+			swap_ideas = {
+				remove_idea = fifth_estate_fascist3
+				add_idea = fifth_estate_fascist4
+			}
+		}
+		if = {
+			limit = { has_idea = fifth_estate_fascist2 }
+			swap_ideas = {
+				remove_idea = fifth_estate_fascist2
+				add_idea = fifth_estate_fascist3
+			}
+		}
+		if = {
+			limit = { has_idea = fifth_estate_fascist1 }
+			swap_ideas = {
+				remove_idea = fifth_estate_fascist1
+				add_idea = fifth_estate_fascist2
+			}
+		}
+		if = {
+			limit = { has_fascist_fifth_estate = no }
+			add_ideas = fifth_estate_fascist1
+		}
+	}
+}
+
+fifth_estate_nationalist_increase = {
+	custom_effect_tooltip = TT_fifth_estate_nationalist_increase
+	hidden_effect = {
+		if = {
+			limit = { has_idea = fifth_estate_nationalist5 }
+			add_popularity = {
+				ideology = nationalist
+				popularity = 0.05
+			}
+		}
+		if = {
+			limit = { has_idea = fifth_estate_nationalist4 }
+			swap_ideas = {
+				remove_idea = fifth_estate_nationalist4
+				add_idea = fifth_estate_nationalist5
+			}
+		}
+		if = {
+			limit = { has_idea = fifth_estate_nationalist3 }
+			swap_ideas = {
+				remove_idea = fifth_estate_nationalist3
+				add_idea = fifth_estate_nationalist4
+			}
+		}
+		if = {
+			limit = { has_idea = fifth_estate_nationalist2 }
+			swap_ideas = {
+				remove_idea = fifth_estate_nationalist2
+				add_idea = fifth_estate_nationalist3
+			}
+		}
+		if = {
+			limit = { has_idea = fifth_estate_nationalist1 }
+			swap_ideas = {
+				remove_idea = fifth_estate_nationalist1
+				add_idea = fifth_estate_nationalist2
+			}
+		}
+		if = {
+			limit = { has_nationalist_fifth_estate = no }
+			add_ideas = fifth_estate_nationalist1
+		}
+	}
+}
+
+fifth_estate_monarchist_increase = {
+	custom_effect_tooltip = TT_fifth_estate_monarchist_increase
+	hidden_effect = {
+		if = {
+			limit = { has_idea = fifth_estate_monarchist5 }
+			add_popularity = {
+				ideology = monarchist
+				popularity = 0.05
+			}
+		}
+		if = {
+			limit = { has_idea = fifth_estate_monarchist4 }
+			swap_ideas = {
+				remove_idea = fifth_estate_monarchist4
+				add_idea = fifth_estate_monarchist5
+			}
+		}
+		if = {
+			limit = { has_idea = fifth_estate_monarchist3 }
+			swap_ideas = {
+				remove_idea = fifth_estate_monarchist3
+				add_idea = fifth_estate_monarchist4
+			}
+		}
+		if = {
+			limit = { has_idea = fifth_estate_monarchist2 }
+			swap_ideas = {
+				remove_idea = fifth_estate_monarchist2
+				add_idea = fifth_estate_monarchist3
+			}
+		}
+		if = {
+			limit = { has_idea = fifth_estate_monarchist1 }
+			swap_ideas = {
+				remove_idea = fifth_estate_monarchist1
+				add_idea = fifth_estate_monarchist2
+			}
+		}
+		if = {
+			limit = { has_monarchist_fifth_estate = no }
+			add_ideas = fifth_estate_monarchist1
+		}
+	}
+}
+
+fifth_estate_reactionary_increase = {
+	custom_effect_tooltip = TT_fifth_estate_reactionary_increase
+	hidden_effect = {
+		if = {
+			limit = { has_idea = fifth_estate_reactionary5 }
+			add_popularity = {
+				ideology = reactionary
+				popularity = 0.05
+			}
+		}
+		if = {
+			limit = { has_idea = fifth_estate_reactionary4 }
+			swap_ideas = {
+				remove_idea = fifth_estate_reactionary4
+				add_idea = fifth_estate_reactionary5
+			}
+		}
+		if = {
+			limit = { has_idea = fifth_estate_reactionary3 }
+			swap_ideas = {
+				remove_idea = fifth_estate_reactionary3
+				add_idea = fifth_estate_reactionary4
+			}
+		}
+		if = {
+			limit = { has_idea = fifth_estate_reactionary2 }
+			swap_ideas = {
+				remove_idea = fifth_estate_reactionary2
+				add_idea = fifth_estate_reactionary3
+			}
+		}
+		if = {
+			limit = { has_idea = fifth_estate_reactionary1 }
+			swap_ideas = {
+				remove_idea = fifth_estate_reactionary1
+				add_idea = fifth_estate_reactionary2
+			}
+		}
+		if = {
+			limit = { has_reactionary_fifth_estate = no }
+			add_ideas = fifth_estate_reactionary1
+		}
+	}
+}
+
+fifth_estate_conservative_increase = {
+	custom_effect_tooltip = TT_fifth_estate_conservative_increase
+	hidden_effect = {
+		if = {
+			limit = { has_idea = fifth_estate_conservative5 }
+			add_popularity = {
+				ideology = conservative
+				popularity = 0.05
+			}
+		}
+		if = {
+			limit = { has_idea = fifth_estate_conservative4 }
+			swap_ideas = {
+				remove_idea = fifth_estate_conservative4
+				add_idea = fifth_estate_conservative5
+			}
+		}
+		if = {
+			limit = { has_idea = fifth_estate_conservative3 }
+			swap_ideas = {
+				remove_idea = fifth_estate_conservative3
+				add_idea = fifth_estate_conservative4
+			}
+		}
+		if = {
+			limit = { has_idea = fifth_estate_conservative2 }
+			swap_ideas = {
+				remove_idea = fifth_estate_conservative2
+				add_idea = fifth_estate_conservative3
+			}
+		}
+		if = {
+			limit = { has_idea = fifth_estate_conservative1 }
+			swap_ideas = {
+				remove_idea = fifth_estate_conservative1
+				add_idea = fifth_estate_conservative2
+			}
+		}
+		if = {
+			limit = { has_conservative_fifth_estate = no }
+			add_ideas = fifth_estate_conservative1
+		}
+	}
+}
+
+fifth_estate_market_liberal_increase = {
+	custom_effect_tooltip = TT_fifth_estate_market_liberal_increase
+	hidden_effect = {
+		if = {
+			limit = { has_idea = fifth_estate_market_liberal5 }
+			add_popularity = {
+				ideology = market_liberal
+				popularity = 0.05
+			}
+		}
+		if = {
+			limit = { has_idea = fifth_estate_market_liberal4 }
+			swap_ideas = {
+				remove_idea = fifth_estate_market_liberal4
+				add_idea = fifth_estate_market_liberal5
+			}
+		}
+		if = {
+			limit = { has_idea = fifth_estate_market_liberal3 }
+			swap_ideas = {
+				remove_idea = fifth_estate_market_liberal3
+				add_idea = fifth_estate_market_liberal4
+			}
+		}
+		if = {
+			limit = { has_idea = fifth_estate_market_liberal2 }
+			swap_ideas = {
+				remove_idea = fifth_estate_market_liberal2
+				add_idea = fifth_estate_market_liberal3
+			}
+		}
+		if = {
+			limit = { has_idea = fifth_estate_market_liberal1 }
+			swap_ideas = {
+				remove_idea = fifth_estate_market_liberal1
+				add_idea = fifth_estate_market_liberal2
+			}
+		}
+		if = {
+			limit = { has_market_liberal_fifth_estate = no }
+			add_ideas = fifth_estate_market_liberal1
+		}
+	}
+}
+
+fifth_estate_social_liberal_increase = {
+	custom_effect_tooltip = TT_fifth_estate_social_liberal_increase
+	hidden_effect = {
+		if = {
+			limit = { has_idea = fifth_estate_social_liberal5 }
+			add_popularity = {
+				ideology = social_liberal
+				popularity = 0.05
+			}
+		}
+		if = {
+			limit = { has_idea = fifth_estate_social_liberal4 }
+			swap_ideas = {
+				remove_idea = fifth_estate_social_liberal4
+				add_idea = fifth_estate_social_liberal5
+			}
+		}
+		if = {
+			limit = { has_idea = fifth_estate_social_liberal3 }
+			swap_ideas = {
+				remove_idea = fifth_estate_social_liberal3
+				add_idea = fifth_estate_social_liberal4
+			}
+		}
+		if = {
+			limit = { has_idea = fifth_estate_social_liberal2 }
+			swap_ideas = {
+				remove_idea = fifth_estate_social_liberal2
+				add_idea = fifth_estate_social_liberal3
+			}
+		}
+		if = {
+			limit = { has_idea = fifth_estate_social_liberal1 }
+			swap_ideas = {
+				remove_idea = fifth_estate_social_liberal1
+				add_idea = fifth_estate_social_liberal2
+			}
+		}
+		if = {
+			limit = { has_social_liberal_fifth_estate = no }
+			add_ideas = fifth_estate_social_liberal1
+		}
+	}
+}
+
+fifth_estate_social_democrat_increase = {
+	custom_effect_tooltip = TT_fifth_estate_social_democrat_increase
+	hidden_effect = {
+		if = {
+			limit = { has_idea = fifth_estate_social_democrat5 }
+			add_popularity = {
+				ideology = social_democrat
+				popularity = 0.05
+			}
+		}
+		if = {
+			limit = { has_idea = fifth_estate_social_democrat4 }
+			swap_ideas = {
+				remove_idea = fifth_estate_social_democrat4
+				add_idea = fifth_estate_social_democrat5
+			}
+		}
+		if = {
+			limit = { has_idea = fifth_estate_social_democrat3 }
+			swap_ideas = {
+				remove_idea = fifth_estate_social_democrat3
+				add_idea = fifth_estate_social_democrat4
+			}
+		}
+		if = {
+			limit = { has_idea = fifth_estate_social_democrat2 }
+			swap_ideas = {
+				remove_idea = fifth_estate_social_democrat2
+				add_idea = fifth_estate_social_democrat3
+			}
+		}
+		if = {
+			limit = { has_idea = fifth_estate_social_democrat1 }
+			swap_ideas = {
+				remove_idea = fifth_estate_social_democrat1
+				add_idea = fifth_estate_social_democrat2
+			}
+		}
+		if = {
+			limit = { has_social_democrat_fifth_estate = no }
+			add_ideas = fifth_estate_social_democrat1
+		}
+	}
+}
+
+fifth_estate_progressive_increase = {
+	custom_effect_tooltip = TT_fifth_estate_progressive_increase
+	hidden_effect = {
+		if = {
+			limit = { has_idea = fifth_estate_progressive5 }
+			add_popularity = {
+				ideology = progressive
+				popularity = 0.05
+			}
+		}
+		if = {
+			limit = { has_idea = fifth_estate_progressive4 }
+			swap_ideas = {
+				remove_idea = fifth_estate_progressive4
+				add_idea = fifth_estate_progressive5
+			}
+		}
+		if = {
+			limit = { has_idea = fifth_estate_progressive3 }
+			swap_ideas = {
+				remove_idea = fifth_estate_progressive3
+				add_idea = fifth_estate_progressive4
+			}
+		}
+		if = {
+			limit = { has_idea = fifth_estate_progressive2 }
+			swap_ideas = {
+				remove_idea = fifth_estate_progressive2
+				add_idea = fifth_estate_progressive3
+			}
+		}
+		if = {
+			limit = { has_idea = fifth_estate_progressive1 }
+			swap_ideas = {
+				remove_idea = fifth_estate_progressive1
+				add_idea = fifth_estate_progressive2
+			}
+		}
+		if = {
+			limit = { has_progressive_fifth_estate = no }
+			add_ideas = fifth_estate_progressive1
+		}
+	}
+}
+
+fifth_estate_democratic_socialist_increase = {
+	custom_effect_tooltip = TT_fifth_estate_democratic_socialist_increase
+	hidden_effect = {
+		if = {
+			limit = { has_idea = fifth_estate_democratic_socialist5 }
+			add_popularity = {
+				ideology = democratic_socialist
+				popularity = 0.05
+			}
+		}
+		if = {
+			limit = { has_idea = fifth_estate_democratic_socialist4 }
+			swap_ideas = {
+				remove_idea = fifth_estate_democratic_socialist4
+				add_idea = fifth_estate_democratic_socialist5
+			}
+		}
+		if = {
+			limit = { has_idea = fifth_estate_democratic_socialist3 }
+			swap_ideas = {
+				remove_idea = fifth_estate_democratic_socialist3
+				add_idea = fifth_estate_democratic_socialist4
+			}
+		}
+		if = {
+			limit = { has_idea = fifth_estate_democratic_socialist2 }
+			swap_ideas = {
+				remove_idea = fifth_estate_democratic_socialist2
+				add_idea = fifth_estate_democratic_socialist3
+			}
+		}
+		if = {
+			limit = { has_idea = fifth_estate_democratic_socialist1 }
+			swap_ideas = {
+				remove_idea = fifth_estate_democratic_socialist1
+				add_idea = fifth_estate_democratic_socialist2
+			}
+		}
+		if = {
+			limit = { has_democratic_socialist_fifth_estate = no }
+			add_ideas = fifth_estate_democratic_socialist1
+		}
+	}
+}
+
+fifth_estate_communist_increase = {
+	custom_effect_tooltip = TT_fifth_estate_communist_increase
+	hidden_effect = {
+		if = {
+			limit = { has_idea = fifth_estate_communist5 }
+			add_popularity = {
+				ideology = communist
+				popularity = 0.05
+			}
+		}
+		if = {
+			limit = { has_idea = fifth_estate_communist4 }
+			swap_ideas = {
+				remove_idea = fifth_estate_communist4
+				add_idea = fifth_estate_communist5
+			}
+		}
+		if = {
+			limit = { has_idea = fifth_estate_communist3 }
+			swap_ideas = {
+				remove_idea = fifth_estate_communist3
+				add_idea = fifth_estate_communist4
+			}
+		}
+		if = {
+			limit = { has_idea = fifth_estate_communist2 }
+			swap_ideas = {
+				remove_idea = fifth_estate_communist2
+				add_idea = fifth_estate_communist3
+			}
+		}
+		if = {
+			limit = { has_idea = fifth_estate_communist1 }
+			swap_ideas = {
+				remove_idea = fifth_estate_communist1
+				add_idea = fifth_estate_communist2
+			}
+		}
+		if = {
+			limit = { has_communist_fifth_estate = no }
+			add_ideas = fifth_estate_communist1
+		}
+	}
+}
+
+## DECREASE ##
+fifth_estate_islamist_decrease = {
+	custom_effect_tooltip = TT_fifth_estate_islamist_decrease
+	hidden_effect = {
+		if = {
+			limit = { has_islamist_fifth_estate = no }
+			add_popularity = {
+				ideology = islamist
+				popularity = -0.02
+			}
+		}
+		if = {
+			limit = { has_idea = fifth_estate_islamist1 }
+			remove_ideas = fifth_estate_islamist1
+		}
+		if = {
+			limit = { has_idea = fifth_estate_islamist2 }
+			swap_ideas = {
+				remove_idea = fifth_estate_islamist2
+				add_idea = fifth_estate_islamist1
+			}
+		}
+		if = {
+			limit = { has_idea = fifth_estate_islamist3 }
+			swap_ideas = {
+				remove_idea = fifth_estate_islamist3
+				add_idea = fifth_estate_islamist2
+			}
+		}
+		if = {
+			limit = { has_idea = fifth_estate_islamist4 }
+			swap_ideas = {
+				remove_idea = fifth_estate_islamist4
+				add_idea = fifth_estate_islamist3
+			}
+		}
+		if = {
+			limit = { has_idea = fifth_estate_islamist5 }
+			swap_ideas = {
+				remove_idea = fifth_estate_islamist5
+				add_idea = fifth_estate_islamist4
+			}
+		}
+	}
+}
+
+fifth_estate_fascist_decrease = {
+	custom_effect_tooltip = TT_fifth_estate_fascist_decrease
+	hidden_effect = {
+		if = {
+			limit = { has_fascist_fifth_estate = no }
+			add_popularity = {
+				ideology = fascist
+				popularity = -0.02
+			}
+		}
+		if = {
+			limit = { has_idea = fifth_estate_fascist1 }
+			remove_ideas = fifth_estate_fascist1
+		}
+		if = {
+			limit = { has_idea = fifth_estate_fascist2 }
+			swap_ideas = {
+				remove_idea = fifth_estate_fascist2
+				add_idea = fifth_estate_fascist1
+			}
+		}
+		if = {
+			limit = { has_idea = fifth_estate_fascist3 }
+			swap_ideas = {
+				remove_idea = fifth_estate_fascist3
+				add_idea = fifth_estate_fascist2
+			}
+		}
+		if = {
+			limit = { has_idea = fifth_estate_fascist4 }
+			swap_ideas = {
+				remove_idea = fifth_estate_fascist4
+				add_idea = fifth_estate_fascist3
+			}
+		}
+		if = {
+			limit = { has_idea = fifth_estate_fascist5 }
+			swap_ideas = {
+				remove_idea = fifth_estate_fascist5
+				add_idea = fifth_estate_fascist4
+			}
+		}
+	}
+}
+
+fifth_estate_nationalist_decrease = {
+	custom_effect_tooltip = TT_fifth_estate_nationalist_decrease
+	hidden_effect = {
+		if = {
+			limit = { has_nationalist_fifth_estate = no }
+			add_popularity = {
+				ideology = nationalist
+				popularity = -0.02
+			}
+		}
+		if = {
+			limit = { has_idea = fifth_estate_nationalist1 }
+			remove_ideas = fifth_estate_nationalist1
+		}
+		if = {
+			limit = { has_idea = fifth_estate_nationalist2 }
+			swap_ideas = {
+				remove_idea = fifth_estate_nationalist2
+				add_idea = fifth_estate_nationalist1
+			}
+		}
+		if = {
+			limit = { has_idea = fifth_estate_nationalist3 }
+			swap_ideas = {
+				remove_idea = fifth_estate_nationalist3
+				add_idea = fifth_estate_nationalist2
+			}
+		}
+		if = {
+			limit = { has_idea = fifth_estate_nationalist4 }
+			swap_ideas = {
+				remove_idea = fifth_estate_nationalist4
+				add_idea = fifth_estate_nationalist3
+			}
+		}
+		if = {
+			limit = { has_idea = fifth_estate_nationalist5 }
+			swap_ideas = {
+				remove_idea = fifth_estate_nationalist5
+				add_idea = fifth_estate_nationalist4
+			}
+		}
+	}
+}
+
+fifth_estate_monarchist_decrease = {
+	custom_effect_tooltip = TT_fifth_estate_monarchist_decrease
+	hidden_effect = {
+		if = {
+			limit = { has_monarchist_fifth_estate = no }
+			add_popularity = {
+				ideology = monarchist
+				popularity = -0.02
+			}
+		}
+		if = {
+			limit = { has_idea = fifth_estate_monarchist1 }
+			remove_ideas = fifth_estate_monarchist1
+		}
+		if = {
+			limit = { has_idea = fifth_estate_monarchist2 }
+			swap_ideas = {
+				remove_idea = fifth_estate_monarchist2
+				add_idea = fifth_estate_monarchist1
+			}
+		}
+		if = {
+			limit = { has_idea = fifth_estate_monarchist3 }
+			swap_ideas = {
+				remove_idea = fifth_estate_monarchist3
+				add_idea = fifth_estate_monarchist2
+			}
+		}
+		if = {
+			limit = { has_idea = fifth_estate_monarchist4 }
+			swap_ideas = {
+				remove_idea = fifth_estate_monarchist4
+				add_idea = fifth_estate_monarchist3
+			}
+		}
+		if = {
+			limit = { has_idea = fifth_estate_monarchist5 }
+			swap_ideas = {
+				remove_idea = fifth_estate_monarchist5
+				add_idea = fifth_estate_monarchist4
+			}
+		}
+	}
+}
+
+fifth_estate_reactionary_decrease = {
+	custom_effect_tooltip = TT_fifth_estate_reactionary_decrease
+	hidden_effect = {
+		if = {
+			limit = { has_reactionary_fifth_estate = no }
+			add_popularity = {
+				ideology = reactionary
+				popularity = -0.02
+			}
+		}
+		if = {
+			limit = { has_idea = fifth_estate_reactionary1 }
+			remove_ideas = fifth_estate_reactionary1
+		}
+		if = {
+			limit = { has_idea = fifth_estate_reactionary2 }
+			swap_ideas = {
+				remove_idea = fifth_estate_reactionary2
+				add_idea = fifth_estate_reactionary1
+			}
+		}
+		if = {
+			limit = { has_idea = fifth_estate_reactionary3 }
+			swap_ideas = {
+				remove_idea = fifth_estate_reactionary3
+				add_idea = fifth_estate_reactionary2
+			}
+		}
+		if = {
+			limit = { has_idea = fifth_estate_reactionary4 }
+			swap_ideas = {
+				remove_idea = fifth_estate_reactionary4
+				add_idea = fifth_estate_reactionary3
+			}
+		}
+		if = {
+			limit = { has_idea = fifth_estate_reactionary5 }
+			swap_ideas = {
+				remove_idea = fifth_estate_reactionary5
+				add_idea = fifth_estate_reactionary4
+			}
+		}
+	}
+}
+
+fifth_estate_conservative_decrease = {
+	custom_effect_tooltip = TT_fifth_estate_conservative_decrease
+	hidden_effect = {
+		if = {
+			limit = { has_conservative_fifth_estate = no }
+			add_popularity = {
+				ideology = conservative
+				popularity = -0.02
+			}
+		}
+		if = {
+			limit = { has_idea = fifth_estate_conservative1 }
+			remove_ideas = fifth_estate_conservative1
+		}
+		if = {
+			limit = { has_idea = fifth_estate_conservative2 }
+			swap_ideas = {
+				remove_idea = fifth_estate_conservative2
+				add_idea = fifth_estate_conservative1
+			}
+		}
+		if = {
+			limit = { has_idea = fifth_estate_conservative3 }
+			swap_ideas = {
+				remove_idea = fifth_estate_conservative3
+				add_idea = fifth_estate_conservative2
+			}
+		}
+		if = {
+			limit = { has_idea = fifth_estate_conservative4 }
+			swap_ideas = {
+				remove_idea = fifth_estate_conservative4
+				add_idea = fifth_estate_conservative3
+			}
+		}
+		if = {
+			limit = { has_idea = fifth_estate_conservative5 }
+			swap_ideas = {
+				remove_idea = fifth_estate_conservative5
+				add_idea = fifth_estate_conservative4
+			}
+		}
+	}
+}
+
+fifth_estate_market_liberal_decrease = {
+	custom_effect_tooltip = TT_fifth_estate_market_liberal_decrease
+	hidden_effect = {
+		if = {
+			limit = { has_market_liberal_fifth_estate = no }
+			add_popularity = {
+				ideology = market_liberal
+				popularity = -0.02
+			}
+		}
+		if = {
+			limit = { has_idea = fifth_estate_market_liberal1 }
+			remove_ideas = fifth_estate_market_liberal1
+		}
+		if = {
+			limit = { has_idea = fifth_estate_market_liberal2 }
+			swap_ideas = {
+				remove_idea = fifth_estate_market_liberal2
+				add_idea = fifth_estate_market_liberal1
+			}
+		}
+		if = {
+			limit = { has_idea = fifth_estate_market_liberal3 }
+			swap_ideas = {
+				remove_idea = fifth_estate_market_liberal3
+				add_idea = fifth_estate_market_liberal2
+			}
+		}
+		if = {
+			limit = { has_idea = fifth_estate_market_liberal4 }
+			swap_ideas = {
+				remove_idea = fifth_estate_market_liberal4
+				add_idea = fifth_estate_market_liberal3
+			}
+		}
+		if = {
+			limit = { has_idea = fifth_estate_market_liberal5 }
+			swap_ideas = {
+				remove_idea = fifth_estate_market_liberal5
+				add_idea = fifth_estate_market_liberal4
+			}
+		}
+	}
+}
+
+fifth_estate_social_liberal_decrease = {
+	custom_effect_tooltip = TT_fifth_estate_social_liberal_decrease
+	hidden_effect = {
+		if = {
+			limit = { has_social_liberal_fifth_estate = no }
+			add_popularity = {
+				ideology = social_liberal
+				popularity = -0.02
+			}
+		}
+		if = {
+			limit = { has_idea = fifth_estate_social_liberal1 }
+			remove_ideas = fifth_estate_social_liberal1
+		}
+		if = {
+			limit = { has_idea = fifth_estate_social_liberal2 }
+			swap_ideas = {
+				remove_idea = fifth_estate_social_liberal2
+				add_idea = fifth_estate_social_liberal1
+			}
+		}
+		if = {
+			limit = { has_idea = fifth_estate_social_liberal3 }
+			swap_ideas = {
+				remove_idea = fifth_estate_social_liberal3
+				add_idea = fifth_estate_social_liberal2
+			}
+		}
+		if = {
+			limit = { has_idea = fifth_estate_social_liberal4 }
+			swap_ideas = {
+				remove_idea = fifth_estate_social_liberal4
+				add_idea = fifth_estate_social_liberal3
+			}
+		}
+		if = {
+			limit = { has_idea = fifth_estate_social_liberal5 }
+			swap_ideas = {
+				remove_idea = fifth_estate_social_liberal5
+				add_idea = fifth_estate_social_liberal4
+			}
+		}
+	}
+}
+
+fifth_estate_social_democrat_decrease = {
+	custom_effect_tooltip = TT_fifth_estate_social_democrat_decrease
+	hidden_effect = {
+		if = {
+			limit = { has_social_democrat_fifth_estate = no }
+			add_popularity = {
+				ideology = social_democrat
+				popularity = -0.02
+			}
+		}
+		if = {
+			limit = { has_idea = fifth_estate_social_democrat1 }
+			remove_ideas = fifth_estate_social_democrat1
+		}
+		if = {
+			limit = { has_idea = fifth_estate_social_democrat2 }
+			swap_ideas = {
+				remove_idea = fifth_estate_social_democrat2
+				add_idea = fifth_estate_social_democrat1
+			}
+		}
+		if = {
+			limit = { has_idea = fifth_estate_social_democrat3 }
+			swap_ideas = {
+				remove_idea = fifth_estate_social_democrat3
+				add_idea = fifth_estate_social_democrat2
+			}
+		}
+		if = {
+			limit = { has_idea = fifth_estate_social_democrat4 }
+			swap_ideas = {
+				remove_idea = fifth_estate_social_democrat4
+				add_idea = fifth_estate_social_democrat3
+			}
+		}
+		if = {
+			limit = { has_idea = fifth_estate_social_democrat5 }
+			swap_ideas = {
+				remove_idea = fifth_estate_social_democrat5
+				add_idea = fifth_estate_social_democrat4
+			}
+		}
+	}
+}
+
+fifth_estate_progressive_decrease = {
+	custom_effect_tooltip = TT_fifth_estate_progressive_decrease
+	hidden_effect = {
+		if = {
+			limit = { has_progressive_fifth_estate = no }
+			add_popularity = {
+				ideology = progressive
+				popularity = -0.02
+			}
+		}
+		if = {
+			limit = { has_idea = fifth_estate_progressive1 }
+			remove_ideas = fifth_estate_progressive1
+		}
+		if = {
+			limit = { has_idea = fifth_estate_progressive2 }
+			swap_ideas = {
+				remove_idea = fifth_estate_progressive2
+				add_idea = fifth_estate_progressive1
+			}
+		}
+		if = {
+			limit = { has_idea = fifth_estate_progressive3 }
+			swap_ideas = {
+				remove_idea = fifth_estate_progressive3
+				add_idea = fifth_estate_progressive2
+			}
+		}
+		if = {
+			limit = { has_idea = fifth_estate_progressive4 }
+			swap_ideas = {
+				remove_idea = fifth_estate_progressive4
+				add_idea = fifth_estate_progressive3
+			}
+		}
+		if = {
+			limit = { has_idea = fifth_estate_progressive5 }
+			swap_ideas = {
+				remove_idea = fifth_estate_progressive5
+				add_idea = fifth_estate_progressive4
+			}
+		}
+	}
+}
+
+fifth_estate_democratic_socialist_decrease = {
+	custom_effect_tooltip = TT_fifth_estate_democratic_socialist_decrease
+	hidden_effect = {
+		if = {
+			limit = { has_democratic_socialist_fifth_estate = no }
+			add_popularity = {
+				ideology = democratic_socialist
+				popularity = -0.02
+			}
+		}
+		if = {
+			limit = { has_idea = fifth_estate_democratic_socialist1 }
+			remove_ideas = fifth_estate_democratic_socialist1
+		}
+		if = {
+			limit = { has_idea = fifth_estate_democratic_socialist2 }
+			swap_ideas = {
+				remove_idea = fifth_estate_democratic_socialist2
+				add_idea = fifth_estate_democratic_socialist1
+			}
+		}
+		if = {
+			limit = { has_idea = fifth_estate_democratic_socialist3 }
+			swap_ideas = {
+				remove_idea = fifth_estate_democratic_socialist3
+				add_idea = fifth_estate_democratic_socialist2
+			}
+		}
+		if = {
+			limit = { has_idea = fifth_estate_democratic_socialist4 }
+			swap_ideas = {
+				remove_idea = fifth_estate_democratic_socialist4
+				add_idea = fifth_estate_democratic_socialist3
+			}
+		}
+		if = {
+			limit = { has_idea = fifth_estate_democratic_socialist5 }
+			swap_ideas = {
+				remove_idea = fifth_estate_democratic_socialist5
+				add_idea = fifth_estate_democratic_socialist4
+			}
+		}
+	}
+}
+
+fifth_estate_communist_decrease = {
+	custom_effect_tooltip = TT_fifth_estate_communist_decrease
+	hidden_effect = {
+		if = {
+			limit = { has_communist_fifth_estate = no }
+			add_popularity = {
+				ideology = communist
+				popularity = -0.02
+			}
+		}
+		if = {
+			limit = { has_idea = fifth_estate_communist1 }
+			remove_ideas = fifth_estate_communist1
+		}
+		if = {
+			limit = { has_idea = fifth_estate_communist2 }
+			swap_ideas = {
+				remove_idea = fifth_estate_communist2
+				add_idea = fifth_estate_communist1
+			}
+		}
+		if = {
+			limit = { has_idea = fifth_estate_communist3 }
+			swap_ideas = {
+				remove_idea = fifth_estate_communist3
+				add_idea = fifth_estate_communist2
+			}
+		}
+		if = {
+			limit = { has_idea = fifth_estate_communist4 }
+			swap_ideas = {
+				remove_idea = fifth_estate_communist4
+				add_idea = fifth_estate_communist3
+			}
+		}
+		if = {
+			limit = { has_idea = fifth_estate_communist5 }
+			swap_ideas = {
+				remove_idea = fifth_estate_communist5
+				add_idea = fifth_estate_communist4
+			}
+		}
+	}
+}
+
+### FOURTH ESTATE EVENT EFFECTS ###
+fourth_estate_targeted_total_increase = {
+	if = {
+		limit = { has_country_flag = NVX_flag_fourth_estate_islamist }
+		fourth_estate_islamist_increase = yes
+		clr_country_flag = NVX_flag_fourth_estate_islamist
+	}
+	if = {
+		limit = { has_country_flag = NVX_flag_fourth_estate_fascist }
+		fourth_estate_fascist_increase = yes
+		clr_country_flag = NVX_flag_fourth_estate_fascist
+	}
+	if = {
+		limit = { has_country_flag = NVX_flag_fourth_estate_nationalist }
+		fourth_estate_nationalist_increase = yes
+		clr_country_flag = NVX_flag_fourth_estate_nationalist
+	}
+	if = {
+		limit = { has_country_flag = NVX_flag_fourth_estate_monarchist }
+		fourth_estate_monarchist_increase = yes
+		clr_country_flag = NVX_flag_fourth_estate_monarchist
+	}
+	if = {
+		limit = { has_country_flag = NVX_flag_fourth_estate_reactionary }
+		fourth_estate_reactionary_increase = yes
+		clr_country_flag = NVX_flag_fourth_estate_reactionary
+	}
+	if = {
+		limit = { has_country_flag = NVX_flag_fourth_estate_conservative }
+		fourth_estate_conservative_increase = yes
+		clr_country_flag = NVX_flag_fourth_estate_conservative
+	}
+	if = {
+		limit = { has_country_flag = NVX_flag_fourth_estate_market_liberal }
+		fourth_estate_market_liberal_increase = yes
+		clr_country_flag = NVX_flag_fourth_estate_market_liberal
+	}
+	if = {
+		limit = { has_country_flag = NVX_flag_fourth_estate_social_liberal }
+		fourth_estate_social_liberal_increase = yes
+		clr_country_flag = NVX_flag_fourth_estate_social_liberal
+	}
+	if = {
+		limit = { has_country_flag = NVX_flag_fourth_estate_social_democrat }
+		fourth_estate_social_democrat_increase = yes
+		clr_country_flag = NVX_flag_fourth_estate_social_democrat
+	}
+	if = {
+		limit = { has_country_flag = NVX_flag_fourth_estate_progressive }
+		fourth_estate_progressive_increase = yes
+		clr_country_flag = NVX_flag_fourth_estate_progressive
+	}
+	if = {
+		limit = { has_country_flag = NVX_flag_fourth_estate_democratic_socialist }
+		fourth_estate_democratic_socialist_increase = yes
+		clr_country_flag = NVX_flag_fourth_estate_democratic_socialist
+	}
+	if = {
+		limit = { has_country_flag = NVX_flag_fourth_estate_communist }
+		fourth_estate_communist_increase = yes
+		clr_country_flag = NVX_flag_fourth_estate_communist
+	}
+}
+
+fourth_estate_targeted_total_decrease = {
+	if = {
+		limit = { has_country_flag = NVX_flag_fourth_estate_islamist }
+		fourth_estate_islamist_decrease = yes
+		clr_country_flag = NVX_flag_fourth_estate_islamist
+	}
+	if = {
+		limit = { has_country_flag = NVX_flag_fourth_estate_fascist }
+		fourth_estate_fascist_decrease = yes
+		clr_country_flag = NVX_flag_fourth_estate_fascist
+	}
+	if = {
+		limit = { has_country_flag = NVX_flag_fourth_estate_nationalist }
+		fourth_estate_nationalist_decrease = yes
+		clr_country_flag = NVX_flag_fourth_estate_nationalist
+	}
+	if = {
+		limit = { has_country_flag = NVX_flag_fourth_estate_monarchist }
+		fourth_estate_monarchist_decrease = yes
+		clr_country_flag = NVX_flag_fourth_estate_monarchist
+	}
+	if = {
+		limit = { has_country_flag = NVX_flag_fourth_estate_reactionary }
+		fourth_estate_reactionary_decrease = yes
+		clr_country_flag = NVX_flag_fourth_estate_reactionary
+	}
+	if = {
+		limit = { has_country_flag = NVX_flag_fourth_estate_conservative }
+		fourth_estate_conservative_decrease = yes
+		clr_country_flag = NVX_flag_fourth_estate_conservative
+	}
+	if = {
+		limit = { has_country_flag = NVX_flag_fourth_estate_market_liberal }
+		fourth_estate_market_liberal_decrease = yes
+		clr_country_flag = NVX_flag_fourth_estate_market_liberal
+	}
+	if = {
+		limit = { has_country_flag = NVX_flag_fourth_estate_social_liberal }
+		fourth_estate_social_liberal_decrease = yes
+		clr_country_flag = NVX_flag_fourth_estate_social_liberal
+	}
+	if = {
+		limit = { has_country_flag = NVX_flag_fourth_estate_social_democrat }
+		fourth_estate_social_democrat_decrease = yes
+		clr_country_flag = NVX_flag_fourth_estate_social_democrat
+	}
+	if = {
+		limit = { has_country_flag = NVX_flag_fourth_estate_progressive }
+		fourth_estate_progressive_decrease = yes
+		clr_country_flag = NVX_flag_fourth_estate_progressive
+	}
+	if = {
+		limit = { has_country_flag = NVX_flag_fourth_estate_democratic_socialist }
+		fourth_estate_democratic_socialist_decrease = yes
+		clr_country_flag = NVX_flag_fourth_estate_democratic_socialist
+	}
+	if = {
+		limit = { has_country_flag = NVX_flag_fourth_estate_communist }
+		fourth_estate_communist_decrease = yes
+		clr_country_flag = NVX_flag_fourth_estate_communist
+	}
+}
+
+### FIFTH ESTATE EVENT EFFECTS ###
+fifth_estate_targeted_total_increase = {
+	if = {
+		limit = { has_country_flag = NVX_flag_fifth_estate_islamist }
+		fifth_estate_islamist_increase = yes
+		clr_country_flag = NVX_flag_fifth_estate_islamist
+	}
+	if = {
+		limit = { has_country_flag = NVX_flag_fifth_estate_fascist }
+		fifth_estate_fascist_increase = yes
+		clr_country_flag = NVX_flag_fifth_estate_fascist
+	}
+	if = {
+		limit = { has_country_flag = NVX_flag_fifth_estate_nationalist }
+		fifth_estate_nationalist_increase = yes
+		clr_country_flag = NVX_flag_fifth_estate_nationalist
+	}
+	if = {
+		limit = { has_country_flag = NVX_flag_fifth_estate_monarchist }
+		fifth_estate_monarchist_increase = yes
+		clr_country_flag = NVX_flag_fifth_estate_monarchist
+	}
+	if = {
+		limit = { has_country_flag = NVX_flag_fifth_estate_reactionary }
+		fifth_estate_reactionary_increase = yes
+		clr_country_flag = NVX_flag_fifth_estate_reactionary
+	}
+	if = {
+		limit = { has_country_flag = NVX_flag_fifth_estate_conservative }
+		fifth_estate_conservative_increase = yes
+		clr_country_flag = NVX_flag_fifth_estate_conservative
+	}
+	if = {
+		limit = { has_country_flag = NVX_flag_fifth_estate_market_liberal }
+		fifth_estate_market_liberal_increase = yes
+		clr_country_flag = NVX_flag_fifth_estate_market_liberal
+	}
+	if = {
+		limit = { has_country_flag = NVX_flag_fifth_estate_social_liberal }
+		fifth_estate_social_liberal_increase = yes
+		clr_country_flag = NVX_flag_fifth_estate_social_liberal
+	}
+	if = {
+		limit = { has_country_flag = NVX_flag_fifth_estate_social_democrat }
+		fifth_estate_social_democrat_increase = yes
+		clr_country_flag = NVX_flag_fifth_estate_social_democrat
+	}
+	if = {
+		limit = { has_country_flag = NVX_flag_fifth_estate_progressive }
+		fifth_estate_progressive_increase = yes
+		clr_country_flag = NVX_flag_fifth_estate_progressive
+	}
+	if = {
+		limit = { has_country_flag = NVX_flag_fifth_estate_democratic_socialist }
+		fifth_estate_democratic_socialist_increase = yes
+		clr_country_flag = NVX_flag_fifth_estate_democratic_socialist
+	}
+	if = {
+		limit = { has_country_flag = NVX_flag_fifth_estate_communist }
+		fifth_estate_communist_increase = yes
+		clr_country_flag = NVX_flag_fifth_estate_communist
+	}
+}
+
+fifth_estate_targeted_total_decrease = {
+	if = {
+		limit = { has_country_flag = NVX_flag_fifth_estate_islamist }
+		fifth_estate_islamist_decrease = yes
+		clr_country_flag = NVX_flag_fifth_estate_islamist
+	}
+	if = {
+		limit = { has_country_flag = NVX_flag_fifth_estate_fascist }
+		fifth_estate_fascist_decrease = yes
+		clr_country_flag = NVX_flag_fifth_estate_fascist
+	}
+	if = {
+		limit = { has_country_flag = NVX_flag_fifth_estate_nationalist }
+		fifth_estate_nationalist_decrease = yes
+		clr_country_flag = NVX_flag_fifth_estate_nationalist
+	}
+	if = {
+		limit = { has_country_flag = NVX_flag_fifth_estate_monarchist }
+		fifth_estate_monarchist_decrease = yes
+		clr_country_flag = NVX_flag_fifth_estate_monarchist
+	}
+	if = {
+		limit = { has_country_flag = NVX_flag_fifth_estate_reactionary }
+		fifth_estate_reactionary_decrease = yes
+		clr_country_flag = NVX_flag_fifth_estate_reactionary
+	}
+	if = {
+		limit = { has_country_flag = NVX_flag_fifth_estate_conservative }
+		fifth_estate_conservative_decrease = yes
+		clr_country_flag = NVX_flag_fifth_estate_conservative
+	}
+	if = {
+		limit = { has_country_flag = NVX_flag_fifth_estate_market_liberal }
+		fifth_estate_market_liberal_decrease = yes
+		clr_country_flag = NVX_flag_fifth_estate_market_liberal
+	}
+	if = {
+		limit = { has_country_flag = NVX_flag_fifth_estate_social_liberal }
+		fifth_estate_social_liberal_decrease = yes
+		clr_country_flag = NVX_flag_fifth_estate_social_liberal
+	}
+	if = {
+		limit = { has_country_flag = NVX_flag_fifth_estate_social_democrat }
+		fifth_estate_social_democrat_decrease = yes
+		clr_country_flag = NVX_flag_fifth_estate_social_democrat
+	}
+	if = {
+		limit = { has_country_flag = NVX_flag_fifth_estate_progressive }
+		fifth_estate_progressive_decrease = yes
+		clr_country_flag = NVX_flag_fifth_estate_progressive
+	}
+	if = {
+		limit = { has_country_flag = NVX_flag_fifth_estate_democratic_socialist }
+		fifth_estate_democratic_socialist_decrease = yes
+		clr_country_flag = NVX_flag_fifth_estate_democratic_socialist
+	}
+	if = {
+		limit = { has_country_flag = NVX_flag_fifth_estate_communist }
+		fifth_estate_communist_decrease = yes
+		clr_country_flag = NVX_flag_fifth_estate_communist
+	}
+}
+
+fourth_estate_targeted_total_remove_flag = {
+	clr_country_flag = NVX_flag_fourth_estate_islamist
+	clr_country_flag = NVX_flag_fourth_estate_fascist
+	clr_country_flag = NVX_flag_fourth_estate_nationalist
+	clr_country_flag = NVX_flag_fourth_estate_monarchist
+	clr_country_flag = NVX_flag_fourth_estate_reactionary
+	clr_country_flag = NVX_flag_fourth_estate_conservative
+	clr_country_flag = NVX_flag_fourth_estate_market_liberal
+	clr_country_flag = NVX_flag_fourth_estate_social_liberal
+	clr_country_flag = NVX_flag_fourth_estate_social_democrat
+	clr_country_flag = NVX_flag_fourth_estate_progressive
+	clr_country_flag = NVX_flag_fourth_estate_democratic_socialist
+	clr_country_flag = NVX_flag_fourth_estate_communist
+}
+
+fifth_estate_targeted_total_remove_flag = {
+	clr_country_flag = NVX_flag_fifth_estate_islamist
+	clr_country_flag = NVX_flag_fifth_estate_fascist
+	clr_country_flag = NVX_flag_fifth_estate_nationalist
+	clr_country_flag = NVX_flag_fifth_estate_monarchist
+	clr_country_flag = NVX_flag_fifth_estate_reactionary
+	clr_country_flag = NVX_flag_fifth_estate_conservative
+	clr_country_flag = NVX_flag_fifth_estate_market_liberal
+	clr_country_flag = NVX_flag_fifth_estate_social_liberal
+	clr_country_flag = NVX_flag_fifth_estate_social_democrat
+	clr_country_flag = NVX_flag_fifth_estate_progressive
+	clr_country_flag = NVX_flag_fifth_estate_democratic_socialist
+	clr_country_flag = NVX_flag_fifth_estate_communist
+}
+
+fourth_estate_targeted_total_interview = {
+	add_political_power = 40
+	if = {
+		limit = { has_country_flag = NVX_flag_fourth_estate_islamist }
+		add_popularity  = {
+			ideology = islamist
+			popularity = 0.02
+		}
+	}
+	if = {
+		limit = { has_country_flag = NVX_flag_fourth_estate_fascist }
+		add_popularity  = {
+			ideology = fascist
+			popularity = 0.02
+		}
+	}
+	if = {
+		limit = { has_country_flag = NVX_flag_fourth_estate_nationalist }
+		add_popularity  = {
+			ideology = nationalist
+			popularity = 0.02
+		}
+	}
+	if = {
+		limit = { has_country_flag = NVX_flag_fourth_estate_monarchist }
+		add_popularity  = {
+			ideology = monarchist
+			popularity = 0.02
+		}
+	}
+	if = {
+		limit = { has_country_flag = NVX_flag_fourth_estate_reactionary }
+		add_popularity  = {
+			ideology = reactionary
+			popularity = 0.02
+		}
+	}
+	if = {
+		limit = { has_country_flag = NVX_flag_fourth_estate_conservative }
+		add_popularity  = {
+			ideology = conservative
+			popularity = 0.02
+		}
+	}
+	if = {
+		limit = { has_country_flag = NVX_flag_fourth_estate_market_liberal }
+		add_popularity  = {
+			ideology = market_liberal
+			popularity = 0.02
+		}
+	}
+	if = {
+		limit = { has_country_flag = NVX_flag_fourth_estate_social_liberal }
+		add_popularity  = {
+			ideology = social_liberal
+			popularity = 0.02
+		}
+	}
+	if = {
+		limit = { has_country_flag = NVX_flag_fourth_estate_social_democrat }
+		add_popularity  = {
+			ideology = social_democrat
+			popularity = 0.02
+		}
+	}
+	if = {
+		limit = { has_country_flag = NVX_flag_fourth_estate_progressive }
+		add_popularity  = {
+			ideology = progressive
+			popularity = 0.02
+		}
+	}
+	if = {
+		limit = { has_country_flag = NVX_flag_fourth_estate_democratic_socialist }
+		add_popularity  = {
+			ideology = democratic_socialist
+			popularity = 0.02
+		}
+	}
+	if = {
+		limit = { has_country_flag = NVX_flag_fourth_estate_communist }
+		add_popularity  = {
+			ideology = communist
+			popularity = 0.02
+		}
+	}
+}
+
+fifth_estate_targeted_silence_activist = {
+	custom_effect_tooltip = TT_NVX_silence_activist
+	hidden_effect = {
+		set_temp_variable = { rng_variable = random }
+		if = {
+			limit = { has_idea = civil_liberties_restricted }
+			add_to_temp_variable = { rng_variable = 0.1 }
+		}
+		if = {
+			limit = { has_idea = civil_liberties_totalitarian }
+			add_to_temp_variable = { rng_variable = 0.2 }
+		}
+		if = {
+			limit = { has_idea = public_safety_central_law_office }
+			add_to_temp_variable = { rng_variable = 0.1 }
+		}
+		if = {
+			limit = { has_idea = public_safety_secret_police }
+			add_to_temp_variable = { rng_variable = 0.2 }
+		}
+		if = {
+			limit = { check_variable = { rng_variable > 0.60 } }
+			country_event = { id = nvx_fifth_estates.26 }
+			else = {
+				country_event = { id = nvx_fifth_estates.27 }
+			}
+		}
+	}
+}
+
+fifth_estate_targeted_execute_activist = {
+	custom_effect_tooltip = TT_NVX_execute_activist
+	hidden_effect = {
+		set_temp_variable = { rng_variable = random }
+		if = {
+			limit = { has_idea = civil_liberties_restricted }
+			add_to_temp_variable = { rng_variable = 0.1 }
+		}
+		if = {
+			limit = { has_idea = civil_liberties_totalitarian }
+			add_to_temp_variable = { rng_variable = 0.2 }
+		}
+		if = {
+			limit = { check_variable = { rng_variable > 0.25 } }
+			country_event = { id = nvx_fifth_estates.28 }
+			else = {
+				country_event = { id = nvx_fifth_estates.29 }
+			}
+		}
+	}
+}
+
+### PROPAGANDA AND ATTACK DECISIONS ###
+## PROPAGANDA ##
+fourth_estate_propaganda_islamist = {
+	if = {
+		limit = { has_idea = fourth_estate_islamist4 }
+		swap_ideas = {
+			remove_idea = fourth_estate_islamist4
+			add_idea = fourth_estate_islamist5
+		}
+		add_political_power = -150
+	}
+	if = {
+		limit = { has_idea = fourth_estate_islamist3 }
+		swap_ideas = {
+			remove_idea = fourth_estate_islamist3
+			add_idea = fourth_estate_islamist4
+		}
+		add_political_power = -125
+	}
+	if = {
+		limit = { has_idea = fourth_estate_islamist2 }
+		swap_ideas = {
+			remove_idea = fourth_estate_islamist2
+			add_idea = fourth_estate_islamist3
+		}
+		add_political_power = -100
+	}
+	if = {
+		limit = { has_idea = fourth_estate_islamist1 }
+		swap_ideas = {
+			remove_idea = fourth_estate_islamist1
+			add_idea = fourth_estate_islamist2
+		}
+		add_political_power = -75
+	}
+	if = {
+		limit = {
+			has_islamist_fourth_estate = no
+			OR = {
+				has_idea = fifth_estate_islamist4
+				has_idea = fifth_estate_islamist5
+			}
+		}
+		add_ideas = fourth_estate_islamist2
+		remove_ideas = fifth_estate_islamist4
+		remove_ideas = fifth_estate_islamist5
+		add_political_power = -50
+	}
+	if = {
+		limit = {
+			has_islamist_fourth_estate = no
+			OR = {
+				has_idea = fifth_estate_islamist1
+				has_idea = fifth_estate_islamist2
+				has_idea = fifth_estate_islamist3
+			}
+		}
+		add_ideas = fourth_estate_islamist1
+		add_popularity = {
+			ideology = islamist
+			popularity = 0.02
+		}
+		remove_ideas = fifth_estate_islamist1
+		remove_ideas = fifth_estate_islamist2
+		remove_ideas = fifth_estate_islamist3
+		add_political_power = -50
+	}
+	if = {
+		limit = { has_islamist_fourth_estate = no }
+		add_ideas = fourth_estate_islamist1
+		add_political_power = -50
+	}
+}
+
+fourth_estate_propaganda_fascist = {
+	if = {
+		limit = { has_idea = fourth_estate_fascist4 }
+		swap_ideas = {
+			remove_idea = fourth_estate_fascist4
+			add_idea = fourth_estate_fascist5
+		}
+		add_political_power = -150
+	}
+	if = {
+		limit = { has_idea = fourth_estate_fascist3 }
+		swap_ideas = {
+			remove_idea = fourth_estate_fascist3
+			add_idea = fourth_estate_fascist4
+		}
+		add_political_power = -125
+	}
+	if = {
+		limit = { has_idea = fourth_estate_fascist2 }
+		swap_ideas = {
+			remove_idea = fourth_estate_fascist2
+			add_idea = fourth_estate_fascist3
+		}
+		add_political_power = -100
+	}
+	if = {
+		limit = { has_idea = fourth_estate_fascist1 }
+		swap_ideas = {
+			remove_idea = fourth_estate_fascist1
+			add_idea = fourth_estate_fascist2
+		}
+		add_political_power = -75
+	}
+	if = {
+		limit = {
+			has_fascist_fourth_estate = no
+			OR = {
+				has_idea = fifth_estate_fascist4
+				has_idea = fifth_estate_fascist5
+			}
+		}
+		add_ideas = fourth_estate_fascist2
+		remove_ideas = fifth_estate_fascist4
+		remove_ideas = fifth_estate_fascist5
+		add_political_power = -50
+	}
+	if = {
+		limit = {
+			has_fascist_fourth_estate = no
+			OR = {
+				has_idea = fifth_estate_fascist1
+				has_idea = fifth_estate_fascist2
+				has_idea = fifth_estate_fascist3
+			}
+		}
+		add_ideas = fourth_estate_fascist1
+		add_popularity = {
+			ideology = fascist
+			popularity = 0.02
+		}
+		remove_ideas = fifth_estate_fascist1
+		remove_ideas = fifth_estate_fascist2
+		remove_ideas = fifth_estate_fascist3
+		add_political_power = -50
+	}
+	if = {
+		limit = { has_fascist_fourth_estate = no }
+		add_ideas = fourth_estate_fascist1
+		add_political_power = -50
+	}
+}
+
+fourth_estate_propaganda_nationalist = {
+	if = {
+		limit = { has_idea = fourth_estate_nationalist4 }
+		swap_ideas = {
+			remove_idea = fourth_estate_nationalist4
+			add_idea = fourth_estate_nationalist5
+		}
+		add_political_power = -150
+	}
+	if = {
+		limit = { has_idea = fourth_estate_nationalist3 }
+		swap_ideas = {
+			remove_idea = fourth_estate_nationalist3
+			add_idea = fourth_estate_nationalist4
+		}
+		add_political_power = -125
+	}
+	if = {
+		limit = { has_idea = fourth_estate_nationalist2 }
+		swap_ideas = {
+			remove_idea = fourth_estate_nationalist2
+			add_idea = fourth_estate_nationalist3
+		}
+		add_political_power = -100
+	}
+	if = {
+		limit = { has_idea = fourth_estate_nationalist1 }
+		swap_ideas = {
+			remove_idea = fourth_estate_nationalist1
+			add_idea = fourth_estate_nationalist2
+		}
+		add_political_power = -75
+	}
+	if = {
+		limit = {
+			has_nationalist_fourth_estate = no
+			OR = {
+				has_idea = fifth_estate_nationalist4
+				has_idea = fifth_estate_nationalist5
+			}
+		}
+		add_ideas = fourth_estate_nationalist2
+		remove_ideas = fifth_estate_nationalist4
+		remove_ideas = fifth_estate_nationalist5
+		add_political_power = -50
+	}
+	if = {
+		limit = {
+			has_nationalist_fourth_estate = no
+			OR = {
+				has_idea = fifth_estate_nationalist1
+				has_idea = fifth_estate_nationalist2
+				has_idea = fifth_estate_nationalist3
+			}
+		}
+		add_ideas = fourth_estate_nationalist1
+		add_popularity = {
+			ideology = nationalist
+			popularity = 0.02
+		}
+		remove_ideas = fifth_estate_nationalist1
+		remove_ideas = fifth_estate_nationalist2
+		remove_ideas = fifth_estate_nationalist3
+		add_political_power = -50
+	}
+	if = {
+		limit = { has_nationalist_fourth_estate = no }
+		add_ideas = fourth_estate_nationalist1
+		add_political_power = -50
+	}
+}
+
+fourth_estate_propaganda_monarchist = {
+	if = {
+		limit = { has_idea = fourth_estate_monarchist4 }
+		swap_ideas = {
+			remove_idea = fourth_estate_monarchist4
+			add_idea = fourth_estate_monarchist5
+		}
+		add_political_power = -150
+	}
+	if = {
+		limit = { has_idea = fourth_estate_monarchist3 }
+		swap_ideas = {
+			remove_idea = fourth_estate_monarchist3
+			add_idea = fourth_estate_monarchist4
+		}
+		add_political_power = -125
+	}
+	if = {
+		limit = { has_idea = fourth_estate_monarchist2 }
+		swap_ideas = {
+			remove_idea = fourth_estate_monarchist2
+			add_idea = fourth_estate_monarchist3
+		}
+		add_political_power = -100
+	}
+	if = {
+		limit = { has_idea = fourth_estate_monarchist1 }
+		swap_ideas = {
+			remove_idea = fourth_estate_monarchist1
+			add_idea = fourth_estate_monarchist2
+		}
+		add_political_power = -75
+	}
+	if = {
+		limit = {
+			has_monarchist_fourth_estate = no
+			OR = {
+				has_idea = fifth_estate_monarchist4
+				has_idea = fifth_estate_monarchist5
+			}
+		}
+		add_ideas = fourth_estate_monarchist2
+		remove_ideas = fifth_estate_monarchist4
+		remove_ideas = fifth_estate_monarchist5
+		add_political_power = -50
+	}
+	if = {
+		limit = {
+			has_monarchist_fourth_estate = no
+			OR = {
+				has_idea = fifth_estate_monarchist1
+				has_idea = fifth_estate_monarchist2
+				has_idea = fifth_estate_monarchist3
+			}
+		}
+		add_ideas = fourth_estate_monarchist1
+		add_popularity = {
+			ideology = monarchist
+			popularity = 0.02
+		}
+		remove_ideas = fifth_estate_monarchist1
+		remove_ideas = fifth_estate_monarchist2
+		remove_ideas = fifth_estate_monarchist3
+		add_political_power = -50
+	}
+	if = {
+		limit = { has_monarchist_fourth_estate = no }
+		add_ideas = fourth_estate_monarchist1
+		add_political_power = -50
+	}
+}
+
+fourth_estate_propaganda_reactionary = {
+	if = {
+		limit = { has_idea = fourth_estate_reactionary4 }
+		swap_ideas = {
+			remove_idea = fourth_estate_reactionary4
+			add_idea = fourth_estate_reactionary5
+		}
+		add_political_power = -150
+	}
+	if = {
+		limit = { has_idea = fourth_estate_reactionary3 }
+		swap_ideas = {
+			remove_idea = fourth_estate_reactionary3
+			add_idea = fourth_estate_reactionary4
+		}
+		add_political_power = -125
+	}
+	if = {
+		limit = { has_idea = fourth_estate_reactionary2 }
+		swap_ideas = {
+			remove_idea = fourth_estate_reactionary2
+			add_idea = fourth_estate_reactionary3
+		}
+		add_political_power = -100
+	}
+	if = {
+		limit = { has_idea = fourth_estate_reactionary1 }
+		swap_ideas = {
+			remove_idea = fourth_estate_reactionary1
+			add_idea = fourth_estate_reactionary2
+		}
+		add_political_power = -75
+	}
+	if = {
+		limit = {
+			has_reactionary_fourth_estate = no
+			OR = {
+				has_idea = fifth_estate_reactionary4
+				has_idea = fifth_estate_reactionary5
+			}
+		}
+		add_ideas = fourth_estate_reactionary2
+		remove_ideas = fifth_estate_reactionary4
+		remove_ideas = fifth_estate_reactionary5
+		add_political_power = -50
+	}
+	if = {
+		limit = {
+			has_reactionary_fourth_estate = no
+			OR = {
+				has_idea = fifth_estate_reactionary1
+				has_idea = fifth_estate_reactionary2
+				has_idea = fifth_estate_reactionary3
+			}
+		}
+		add_ideas = fourth_estate_reactionary1
+		add_popularity = {
+			ideology = reactionary
+			popularity = 0.02
+		}
+		remove_ideas = fifth_estate_reactionary1
+		remove_ideas = fifth_estate_reactionary2
+		remove_ideas = fifth_estate_reactionary3
+		add_political_power = -50
+	}
+	if = {
+		limit = { has_reactionary_fourth_estate = no }
+		add_ideas = fourth_estate_reactionary1
+		add_political_power = -50
+	}
+}
+
+fourth_estate_propaganda_conservative = {
+	if = {
+		limit = { has_idea = fourth_estate_conservative4 }
+		swap_ideas = {
+			remove_idea = fourth_estate_conservative4
+			add_idea = fourth_estate_conservative5
+		}
+		add_political_power = -150
+	}
+	if = {
+		limit = { has_idea = fourth_estate_conservative3 }
+		swap_ideas = {
+			remove_idea = fourth_estate_conservative3
+			add_idea = fourth_estate_conservative4
+		}
+		add_political_power = -125
+	}
+	if = {
+		limit = { has_idea = fourth_estate_conservative2 }
+		swap_ideas = {
+			remove_idea = fourth_estate_conservative2
+			add_idea = fourth_estate_conservative3
+		}
+		add_political_power = -100
+	}
+	if = {
+		limit = { has_idea = fourth_estate_conservative1 }
+		swap_ideas = {
+			remove_idea = fourth_estate_conservative1
+			add_idea = fourth_estate_conservative2
+		}
+		add_political_power = -75
+	}
+	if = {
+		limit = {
+			has_conservative_fourth_estate = no
+			OR = {
+				has_idea = fifth_estate_conservative4
+				has_idea = fifth_estate_conservative5
+			}
+		}
+		add_ideas = fourth_estate_conservative2
+		remove_ideas = fifth_estate_conservative4
+		remove_ideas = fifth_estate_conservative5
+		add_political_power = -50
+	}
+	if = {
+		limit = {
+			has_conservative_fourth_estate = no
+			OR = {
+				has_idea = fifth_estate_conservative1
+				has_idea = fifth_estate_conservative2
+				has_idea = fifth_estate_conservative3
+			}
+		}
+		add_ideas = fourth_estate_conservative1
+		add_popularity = {
+			ideology = conservative
+			popularity = 0.02
+		}
+		remove_ideas = fifth_estate_conservative1
+		remove_ideas = fifth_estate_conservative2
+		remove_ideas = fifth_estate_conservative3
+		add_political_power = -50
+	}
+	if = {
+		limit = { has_conservative_fourth_estate = no }
+		add_ideas = fourth_estate_conservative1
+		add_political_power = -50
+	}
+}
+
+fourth_estate_propaganda_market_liberal = {
+	if = {
+		limit = { has_idea = fourth_estate_market_liberal4 }
+		swap_ideas = {
+			remove_idea = fourth_estate_market_liberal4
+			add_idea = fourth_estate_market_liberal5
+		}
+		add_political_power = -150
+	}
+	if = {
+		limit = { has_idea = fourth_estate_market_liberal3 }
+		swap_ideas = {
+			remove_idea = fourth_estate_market_liberal3
+			add_idea = fourth_estate_market_liberal4
+		}
+		add_political_power = -125
+	}
+	if = {
+		limit = { has_idea = fourth_estate_market_liberal2 }
+		swap_ideas = {
+			remove_idea = fourth_estate_market_liberal2
+			add_idea = fourth_estate_market_liberal3
+		}
+		add_political_power = -100
+	}
+	if = {
+		limit = { has_idea = fourth_estate_market_liberal1 }
+		swap_ideas = {
+			remove_idea = fourth_estate_market_liberal1
+			add_idea = fourth_estate_market_liberal2
+		}
+		add_political_power = -75
+	}
+	if = {
+		limit = {
+			has_market_liberal_fourth_estate = no
+			OR = {
+				has_idea = fifth_estate_market_liberal4
+				has_idea = fifth_estate_market_liberal5
+			}
+		}
+		add_ideas = fourth_estate_market_liberal2
+		remove_ideas = fifth_estate_market_liberal4
+		remove_ideas = fifth_estate_market_liberal5
+		add_political_power = -50
+	}
+	if = {
+		limit = {
+			has_market_liberal_fourth_estate = no
+			OR = {
+				has_idea = fifth_estate_market_liberal1
+				has_idea = fifth_estate_market_liberal2
+				has_idea = fifth_estate_market_liberal3
+			}
+		}
+		add_ideas = fourth_estate_market_liberal1
+		add_popularity = {
+			ideology = market_liberal
+			popularity = 0.02
+		}
+		remove_ideas = fifth_estate_market_liberal1
+		remove_ideas = fifth_estate_market_liberal2
+		remove_ideas = fifth_estate_market_liberal3
+		add_political_power = -50
+	}
+	if = {
+		limit = { has_market_liberal_fourth_estate = no }
+		add_ideas = fourth_estate_market_liberal1
+		add_political_power = -50
+	}
+}
+
+fourth_estate_propaganda_social_liberal = {
+	if = {
+		limit = { has_idea = fourth_estate_social_liberal4 }
+		swap_ideas = {
+			remove_idea = fourth_estate_social_liberal4
+			add_idea = fourth_estate_social_liberal5
+		}
+		add_political_power = -150
+	}
+	if = {
+		limit = { has_idea = fourth_estate_social_liberal3 }
+		swap_ideas = {
+			remove_idea = fourth_estate_social_liberal3
+			add_idea = fourth_estate_social_liberal4
+		}
+		add_political_power = -125
+	}
+	if = {
+		limit = { has_idea = fourth_estate_social_liberal2 }
+		swap_ideas = {
+			remove_idea = fourth_estate_social_liberal2
+			add_idea = fourth_estate_social_liberal3
+		}
+		add_political_power = -100
+	}
+	if = {
+		limit = { has_idea = fourth_estate_social_liberal1 }
+		swap_ideas = {
+			remove_idea = fourth_estate_social_liberal1
+			add_idea = fourth_estate_social_liberal2
+		}
+		add_political_power = -75
+	}
+	if = {
+		limit = {
+			has_social_liberal_fourth_estate = no
+			OR = {
+				has_idea = fifth_estate_social_liberal4
+				has_idea = fifth_estate_social_liberal5
+			}
+		}
+		add_ideas = fourth_estate_social_liberal2
+		remove_ideas = fifth_estate_social_liberal4
+		remove_ideas = fifth_estate_social_liberal5
+		add_political_power = -50
+	}
+	if = {
+		limit = {
+			has_social_liberal_fourth_estate = no
+			OR = {
+				has_idea = fifth_estate_social_liberal1
+				has_idea = fifth_estate_social_liberal2
+				has_idea = fifth_estate_social_liberal3
+			}
+		}
+		add_ideas = fourth_estate_social_liberal1
+		add_popularity = {
+			ideology = social_liberal
+			popularity = 0.02
+		}
+		remove_ideas = fifth_estate_social_liberal1
+		remove_ideas = fifth_estate_social_liberal2
+		remove_ideas = fifth_estate_social_liberal3
+		add_political_power = -50
+	}
+	if = {
+		limit = { has_social_liberal_fourth_estate = no }
+		add_ideas = fourth_estate_social_liberal1
+		add_political_power = -50
+	}
+}
+
+fourth_estate_propaganda_social_democrat = {
+	if = {
+		limit = { has_idea = fourth_estate_social_democrat4 }
+		swap_ideas = {
+			remove_idea = fourth_estate_social_democrat4
+			add_idea = fourth_estate_social_democrat5
+		}
+		add_political_power = -150
+	}
+	if = {
+		limit = { has_idea = fourth_estate_social_democrat3 }
+		swap_ideas = {
+			remove_idea = fourth_estate_social_democrat3
+			add_idea = fourth_estate_social_democrat4
+		}
+		add_political_power = -125
+	}
+	if = {
+		limit = { has_idea = fourth_estate_social_democrat2 }
+		swap_ideas = {
+			remove_idea = fourth_estate_social_democrat2
+			add_idea = fourth_estate_social_democrat3
+		}
+		add_political_power = -100
+	}
+	if = {
+		limit = { has_idea = fourth_estate_social_democrat1 }
+		swap_ideas = {
+			remove_idea = fourth_estate_social_democrat1
+			add_idea = fourth_estate_social_democrat2
+		}
+		add_political_power = -75
+	}
+	if = {
+		limit = {
+			has_social_democrat_fourth_estate = no
+			OR = {
+				has_idea = fifth_estate_social_democrat4
+				has_idea = fifth_estate_social_democrat5
+			}
+		}
+		add_ideas = fourth_estate_social_democrat2
+		remove_ideas = fifth_estate_social_democrat4
+		remove_ideas = fifth_estate_social_democrat5
+		add_political_power = -50
+	}
+	if = {
+		limit = {
+			has_social_democrat_fourth_estate = no
+			OR = {
+				has_idea = fifth_estate_social_democrat1
+				has_idea = fifth_estate_social_democrat2
+				has_idea = fifth_estate_social_democrat3
+			}
+		}
+		add_ideas = fourth_estate_social_democrat1
+		add_popularity = {
+			ideology = social_democrat
+			popularity = 0.02
+		}
+		remove_ideas = fifth_estate_social_democrat1
+		remove_ideas = fifth_estate_social_democrat2
+		remove_ideas = fifth_estate_social_democrat3
+		add_political_power = -50
+	}
+	if = {
+		limit = { has_social_democrat_fourth_estate = no }
+		add_ideas = fourth_estate_social_democrat1
+		add_political_power = -50
+	}
+}
+
+fourth_estate_propaganda_progressive = {
+	if = {
+		limit = { has_idea = fourth_estate_progressive4 }
+		swap_ideas = {
+			remove_idea = fourth_estate_progressive4
+			add_idea = fourth_estate_progressive5
+		}
+		add_political_power = -150
+	}
+	if = {
+		limit = { has_idea = fourth_estate_progressive3 }
+		swap_ideas = {
+			remove_idea = fourth_estate_progressive3
+			add_idea = fourth_estate_progressive4
+		}
+		add_political_power = -125
+	}
+	if = {
+		limit = { has_idea = fourth_estate_progressive2 }
+		swap_ideas = {
+			remove_idea = fourth_estate_progressive2
+			add_idea = fourth_estate_progressive3
+		}
+		add_political_power = -100
+	}
+	if = {
+		limit = { has_idea = fourth_estate_progressive1 }
+		swap_ideas = {
+			remove_idea = fourth_estate_progressive1
+			add_idea = fourth_estate_progressive2
+		}
+		add_political_power = -75
+	}
+	if = {
+		limit = {
+			has_progressive_fourth_estate = no
+			OR = {
+				has_idea = fifth_estate_progressive4
+				has_idea = fifth_estate_progressive5
+			}
+		}
+		add_ideas = fourth_estate_progressive2
+		remove_ideas = fifth_estate_progressive4
+		remove_ideas = fifth_estate_progressive5
+		add_political_power = -50
+	}
+	if = {
+		limit = {
+			has_progressive_fourth_estate = no
+			OR = {
+				has_idea = fifth_estate_progressive1
+				has_idea = fifth_estate_progressive2
+				has_idea = fifth_estate_progressive3
+			}
+		}
+		add_ideas = fourth_estate_progressive1
+		add_popularity = {
+			ideology = progressive
+			popularity = 0.02
+		}
+		remove_ideas = fifth_estate_progressive1
+		remove_ideas = fifth_estate_progressive2
+		remove_ideas = fifth_estate_progressive3
+		add_political_power = -50
+	}
+	if = {
+		limit = { has_progressive_fourth_estate = no }
+		add_ideas = fourth_estate_progressive1
+		add_political_power = -50
+	}
+}
+
+fourth_estate_propaganda_democratic_socialist = {
+	if = {
+		limit = { has_idea = fourth_estate_democratic_socialist4 }
+		swap_ideas = {
+			remove_idea = fourth_estate_democratic_socialist4
+			add_idea = fourth_estate_democratic_socialist5
+		}
+		add_political_power = -150
+	}
+	if = {
+		limit = { has_idea = fourth_estate_democratic_socialist3 }
+		swap_ideas = {
+			remove_idea = fourth_estate_democratic_socialist3
+			add_idea = fourth_estate_democratic_socialist4
+		}
+		add_political_power = -125
+	}
+	if = {
+		limit = { has_idea = fourth_estate_democratic_socialist2 }
+		swap_ideas = {
+			remove_idea = fourth_estate_democratic_socialist2
+			add_idea = fourth_estate_democratic_socialist3
+		}
+		add_political_power = -100
+	}
+	if = {
+		limit = { has_idea = fourth_estate_democratic_socialist1 }
+		swap_ideas = {
+			remove_idea = fourth_estate_democratic_socialist1
+			add_idea = fourth_estate_democratic_socialist2
+		}
+		add_political_power = -75
+	}
+	if = {
+		limit = {
+			has_democratic_socialist_fourth_estate = no
+			OR = {
+				has_idea = fifth_estate_democratic_socialist4
+				has_idea = fifth_estate_democratic_socialist5
+			}
+		}
+		add_ideas = fourth_estate_democratic_socialist2
+		remove_ideas = fifth_estate_democratic_socialist4
+		remove_ideas = fifth_estate_democratic_socialist5
+		add_political_power = -50
+	}
+	if = {
+		limit = {
+			has_democratic_socialist_fourth_estate = no
+			OR = {
+				has_idea = fifth_estate_democratic_socialist1
+				has_idea = fifth_estate_democratic_socialist2
+				has_idea = fifth_estate_democratic_socialist3
+			}
+		}
+		add_ideas = fourth_estate_democratic_socialist1
+		add_popularity = {
+			ideology = democratic_socialist
+			popularity = 0.02
+		}
+		remove_ideas = fifth_estate_democratic_socialist1
+		remove_ideas = fifth_estate_democratic_socialist2
+		remove_ideas = fifth_estate_democratic_socialist3
+		add_political_power = -50
+	}
+	if = {
+		limit = { has_democratic_socialist_fourth_estate = no }
+		add_ideas = fourth_estate_democratic_socialist1
+		add_political_power = -50
+	}
+}
+
+fourth_estate_propaganda_communist = {
+	if = {
+		limit = { has_idea = fourth_estate_communist4 }
+		swap_ideas = {
+			remove_idea = fourth_estate_communist4
+			add_idea = fourth_estate_communist5
+		}
+		add_political_power = -150
+	}
+	if = {
+		limit = { has_idea = fourth_estate_communist3 }
+		swap_ideas = {
+			remove_idea = fourth_estate_communist3
+			add_idea = fourth_estate_communist4
+		}
+		add_political_power = -125
+	}
+	if = {
+		limit = { has_idea = fourth_estate_communist2 }
+		swap_ideas = {
+			remove_idea = fourth_estate_communist2
+			add_idea = fourth_estate_communist3
+		}
+		add_political_power = -100
+	}
+	if = {
+		limit = { has_idea = fourth_estate_communist1 }
+		swap_ideas = {
+			remove_idea = fourth_estate_communist1
+			add_idea = fourth_estate_communist2
+		}
+		add_political_power = -75
+	}
+	if = {
+		limit = {
+			has_communist_fourth_estate = no
+			OR = {
+				has_idea = fifth_estate_communist4
+				has_idea = fifth_estate_communist5
+			}
+		}
+		add_ideas = fourth_estate_communist2
+		remove_ideas = fifth_estate_communist4
+		remove_ideas = fifth_estate_communist5
+		add_political_power = -50
+	}
+	if = {
+		limit = {
+			has_communist_fourth_estate = no
+			OR = {
+				has_idea = fifth_estate_communist1
+				has_idea = fifth_estate_communist2
+				has_idea = fifth_estate_communist3
+			}
+		}
+		add_ideas = fourth_estate_communist1
+		add_popularity = {
+			ideology = communist
+			popularity = 0.02
+		}
+		remove_ideas = fifth_estate_communist1
+		remove_ideas = fifth_estate_communist2
+		remove_ideas = fifth_estate_communist3
+		add_political_power = -50
+	}
+	if = {
+		limit = { has_communist_fourth_estate = no }
+		add_ideas = fourth_estate_communist1
+		add_political_power = -50
+	}
+}
+
+## ATTACKS ##
+fourth_estate_attack_islamist = {
+	if = {
+		limit = { has_idea = fourth_estate_islamist1 }
+		remove_ideas = fourth_estate_islamist1
+		add_political_power = -50
+		hidden_effect = {
+			set_temp_variable = { rng_variable = random }
+			if = {
+				limit = { check_variable = { rng_variable > 0.65 } }
+				add_ideas = fifth_estate_islamist2
+				else = {
+					add_ideas = fifth_estate_islamist1
+				}
+			}
+		}
+	}
+	if = {
+		limit = { has_idea = fourth_estate_islamist2 }
+		swap_ideas = {
+			remove_idea = fourth_estate_islamist2
+			add_idea = fourth_estate_islamist1
+		}
+		add_political_power = -75
+	}
+	if = {
+		limit = { has_idea = fourth_estate_islamist3 }
+		swap_ideas = {
+			remove_idea = fourth_estate_islamist3
+			add_idea = fourth_estate_islamist2
+		}
+		add_political_power = -100
+	}
+	if = {
+		limit = { has_idea = fourth_estate_islamist4 }
+		swap_ideas = {
+			remove_idea = fourth_estate_islamist4
+			add_idea = fourth_estate_islamist3
+		}
+		add_political_power = -125
+	}
+	if = {
+		limit = { has_idea = fourth_estate_islamist5 }
+		swap_ideas = {
+			remove_idea = fourth_estate_islamist5
+			add_idea = fourth_estate_islamist4
+		}
+		add_political_power = -150
+	}
+}
+
+fourth_estate_attack_fascist = {
+	if = {
+		limit = { has_idea = fourth_estate_fascist1 }
+		remove_ideas = fourth_estate_fascist1
+		add_political_power = -50
+		hidden_effect = {
+			set_temp_variable = { rng_variable = random }
+			if = {
+				limit = { check_variable = { rng_variable > 0.65 } }
+				add_ideas = fifth_estate_fascist2
+				else = {
+					add_ideas = fifth_estate_fascist1
+				}
+			}
+		}
+	}
+	if = {
+		limit = { has_idea = fourth_estate_fascist2 }
+		swap_ideas = {
+			remove_idea = fourth_estate_fascist2
+			add_idea = fourth_estate_fascist1
+		}
+		add_political_power = -75
+	}
+	if = {
+		limit = { has_idea = fourth_estate_fascist3 }
+		swap_ideas = {
+			remove_idea = fourth_estate_fascist3
+			add_idea = fourth_estate_fascist2
+		}
+		add_political_power = -100
+	}
+	if = {
+		limit = { has_idea = fourth_estate_fascist4 }
+		swap_ideas = {
+			remove_idea = fourth_estate_fascist4
+			add_idea = fourth_estate_fascist3
+		}
+		add_political_power = -125
+	}
+	if = {
+		limit = { has_idea = fourth_estate_fascist5 }
+		swap_ideas = {
+			remove_idea = fourth_estate_fascist5
+			add_idea = fourth_estate_fascist4
+		}
+		add_political_power = -150
+	}
+}
+
+fourth_estate_attack_nationalist = {
+	if = {
+		limit = { has_idea = fourth_estate_nationalist1 }
+		remove_ideas = fourth_estate_nationalist1
+		add_political_power = -50
+		hidden_effect = {
+			set_temp_variable = { rng_variable = random }
+			if = {
+				limit = { check_variable = { rng_variable > 0.65 } }
+				add_ideas = fifth_estate_nationalist2
+				else = {
+					add_ideas = fifth_estate_nationalist1
+				}
+			}
+		}
+	}
+	if = {
+		limit = { has_idea = fourth_estate_nationalist2 }
+		swap_ideas = {
+			remove_idea = fourth_estate_nationalist2
+			add_idea = fourth_estate_nationalist1
+		}
+		add_political_power = -75
+	}
+	if = {
+		limit = { has_idea = fourth_estate_nationalist3 }
+		swap_ideas = {
+			remove_idea = fourth_estate_nationalist3
+			add_idea = fourth_estate_nationalist2
+		}
+		add_political_power = -100
+	}
+	if = {
+		limit = { has_idea = fourth_estate_nationalist4 }
+		swap_ideas = {
+			remove_idea = fourth_estate_nationalist4
+			add_idea = fourth_estate_nationalist3
+		}
+		add_political_power = -125
+	}
+	if = {
+		limit = { has_idea = fourth_estate_nationalist5 }
+		swap_ideas = {
+			remove_idea = fourth_estate_nationalist5
+			add_idea = fourth_estate_nationalist4
+		}
+		add_political_power = -150
+	}
+}
+
+fourth_estate_attack_monarchist = {
+	if = {
+		limit = { has_idea = fourth_estate_monarchist1 }
+		remove_ideas = fourth_estate_monarchist1
+		add_political_power = -50
+		hidden_effect = {
+			set_temp_variable = { rng_variable = random }
+			if = {
+				limit = { check_variable = { rng_variable > 0.65 } }
+				add_ideas = fifth_estate_monarchist2
+				else = {
+					add_ideas = fifth_estate_monarchist1
+				}
+			}
+		}
+	}
+	if = {
+		limit = { has_idea = fourth_estate_monarchist2 }
+		swap_ideas = {
+			remove_idea = fourth_estate_monarchist2
+			add_idea = fourth_estate_monarchist1
+		}
+		add_political_power = -75
+	}
+	if = {
+		limit = { has_idea = fourth_estate_monarchist3 }
+		swap_ideas = {
+			remove_idea = fourth_estate_monarchist3
+			add_idea = fourth_estate_monarchist2
+		}
+		add_political_power = -100
+	}
+	if = {
+		limit = { has_idea = fourth_estate_monarchist4 }
+		swap_ideas = {
+			remove_idea = fourth_estate_monarchist4
+			add_idea = fourth_estate_monarchist3
+		}
+		add_political_power = -125
+	}
+	if = {
+		limit = { has_idea = fourth_estate_monarchist5 }
+		swap_ideas = {
+			remove_idea = fourth_estate_monarchist5
+			add_idea = fourth_estate_monarchist4
+		}
+		add_political_power = -150
+	}
+}
+
+fourth_estate_attack_reactionary = {
+	if = {
+		limit = { has_idea = fourth_estate_reactionary1 }
+		remove_ideas = fourth_estate_reactionary1
+		add_political_power = -50
+		hidden_effect = {
+			set_temp_variable = { rng_variable = random }
+			if = {
+				limit = { check_variable = { rng_variable > 0.65 } }
+				add_ideas = fifth_estate_reactionary2
+				else = {
+					add_ideas = fifth_estate_reactionary1
+				}
+			}
+		}
+	}
+	if = {
+		limit = { has_idea = fourth_estate_reactionary2 }
+		swap_ideas = {
+			remove_idea = fourth_estate_reactionary2
+			add_idea = fourth_estate_reactionary1
+		}
+		add_political_power = -75
+	}
+	if = {
+		limit = { has_idea = fourth_estate_reactionary3 }
+		swap_ideas = {
+			remove_idea = fourth_estate_reactionary3
+			add_idea = fourth_estate_reactionary2
+		}
+		add_political_power = -100
+	}
+	if = {
+		limit = { has_idea = fourth_estate_reactionary4 }
+		swap_ideas = {
+			remove_idea = fourth_estate_reactionary4
+			add_idea = fourth_estate_reactionary3
+		}
+		add_political_power = -125
+	}
+	if = {
+		limit = { has_idea = fourth_estate_reactionary5 }
+		swap_ideas = {
+			remove_idea = fourth_estate_reactionary5
+			add_idea = fourth_estate_reactionary4
+		}
+		add_political_power = -150
+	}
+}
+
+fourth_estate_attack_conservative = {
+	if = {
+		limit = { has_idea = fourth_estate_conservative1 }
+		remove_ideas = fourth_estate_conservative1
+		add_political_power = -50
+		hidden_effect = {
+			set_temp_variable = { rng_variable = random }
+			if = {
+				limit = { check_variable = { rng_variable > 0.65 } }
+				add_ideas = fifth_estate_conservative2
+				else = {
+					add_ideas = fifth_estate_conservative1
+				}
+			}
+		}
+	}
+	if = {
+		limit = { has_idea = fourth_estate_conservative2 }
+		swap_ideas = {
+			remove_idea = fourth_estate_conservative2
+			add_idea = fourth_estate_conservative1
+		}
+		add_political_power = -75
+	}
+	if = {
+		limit = { has_idea = fourth_estate_conservative3 }
+		swap_ideas = {
+			remove_idea = fourth_estate_conservative3
+			add_idea = fourth_estate_conservative2
+		}
+		add_political_power = -100
+	}
+	if = {
+		limit = { has_idea = fourth_estate_conservative4 }
+		swap_ideas = {
+			remove_idea = fourth_estate_conservative4
+			add_idea = fourth_estate_conservative3
+		}
+		add_political_power = -125
+	}
+	if = {
+		limit = { has_idea = fourth_estate_conservative5 }
+		swap_ideas = {
+			remove_idea = fourth_estate_conservative5
+			add_idea = fourth_estate_conservative4
+		}
+		add_political_power = -150
+	}
+}
+
+fourth_estate_attack_market_liberal = {
+	if = {
+		limit = { has_idea = fourth_estate_market_liberal1 }
+		remove_ideas = fourth_estate_market_liberal1
+		add_political_power = -50
+		hidden_effect = {
+			set_temp_variable = { rng_variable = random }
+			if = {
+				limit = { check_variable = { rng_variable > 0.65 } }
+				add_ideas = fifth_estate_market_liberal2
+				else = {
+					add_ideas = fifth_estate_market_liberal1
+				}
+			}
+		}
+	}
+	if = {
+		limit = { has_idea = fourth_estate_market_liberal2 }
+		swap_ideas = {
+			remove_idea = fourth_estate_market_liberal2
+			add_idea = fourth_estate_market_liberal1
+		}
+		add_political_power = -75
+	}
+	if = {
+		limit = { has_idea = fourth_estate_market_liberal3 }
+		swap_ideas = {
+			remove_idea = fourth_estate_market_liberal3
+			add_idea = fourth_estate_market_liberal2
+		}
+		add_political_power = -100
+	}
+	if = {
+		limit = { has_idea = fourth_estate_market_liberal4 }
+		swap_ideas = {
+			remove_idea = fourth_estate_market_liberal4
+			add_idea = fourth_estate_market_liberal3
+		}
+		add_political_power = -125
+	}
+	if = {
+		limit = { has_idea = fourth_estate_market_liberal5 }
+		swap_ideas = {
+			remove_idea = fourth_estate_market_liberal5
+			add_idea = fourth_estate_market_liberal4
+		}
+		add_political_power = -150
+	}
+}
+
+fourth_estate_attack_social_liberal = {
+	if = {
+		limit = { has_idea = fourth_estate_social_liberal1 }
+		remove_ideas = fourth_estate_social_liberal1
+		add_political_power = -50
+		hidden_effect = {
+			set_temp_variable = { rng_variable = random }
+			if = {
+				limit = { check_variable = { rng_variable > 0.65 } }
+				add_ideas = fifth_estate_social_liberal2
+				else = {
+					add_ideas = fifth_estate_social_liberal1
+				}
+			}
+		}
+	}
+	if = {
+		limit = { has_idea = fourth_estate_social_liberal2 }
+		swap_ideas = {
+			remove_idea = fourth_estate_social_liberal2
+			add_idea = fourth_estate_social_liberal1
+		}
+		add_political_power = -75
+	}
+	if = {
+		limit = { has_idea = fourth_estate_social_liberal3 }
+		swap_ideas = {
+			remove_idea = fourth_estate_social_liberal3
+			add_idea = fourth_estate_social_liberal2
+		}
+		add_political_power = -100
+	}
+	if = {
+		limit = { has_idea = fourth_estate_social_liberal4 }
+		swap_ideas = {
+			remove_idea = fourth_estate_social_liberal4
+			add_idea = fourth_estate_social_liberal3
+		}
+		add_political_power = -125
+	}
+	if = {
+		limit = { has_idea = fourth_estate_social_liberal5 }
+		swap_ideas = {
+			remove_idea = fourth_estate_social_liberal5
+			add_idea = fourth_estate_social_liberal4
+		}
+		add_political_power = -150
+	}
+}
+
+fourth_estate_attack_social_democrat = {
+	if = {
+		limit = { has_idea = fourth_estate_social_democrat1 }
+		remove_ideas = fourth_estate_social_democrat1
+		add_political_power = -50
+		hidden_effect = {
+			set_temp_variable = { rng_variable = random }
+			if = {
+				limit = { check_variable = { rng_variable > 0.65 } }
+				add_ideas = fifth_estate_social_democrat2
+				else = {
+					add_ideas = fifth_estate_social_democrat1
+				}
+			}
+		}
+	}
+	if = {
+		limit = { has_idea = fourth_estate_social_democrat2 }
+		swap_ideas = {
+			remove_idea = fourth_estate_social_democrat2
+			add_idea = fourth_estate_social_democrat1
+		}
+		add_political_power = -75
+	}
+	if = {
+		limit = { has_idea = fourth_estate_social_democrat3 }
+		swap_ideas = {
+			remove_idea = fourth_estate_social_democrat3
+			add_idea = fourth_estate_social_democrat2
+		}
+		add_political_power = -100
+	}
+	if = {
+		limit = { has_idea = fourth_estate_social_democrat4 }
+		swap_ideas = {
+			remove_idea = fourth_estate_social_democrat4
+			add_idea = fourth_estate_social_democrat3
+		}
+		add_political_power = -125
+	}
+	if = {
+		limit = { has_idea = fourth_estate_social_democrat5 }
+		swap_ideas = {
+			remove_idea = fourth_estate_social_democrat5
+			add_idea = fourth_estate_social_democrat4
+		}
+		add_political_power = -150
+	}
+}
+
+fourth_estate_attack_progressive = {
+	if = {
+		limit = { has_idea = fourth_estate_progressive1 }
+		remove_ideas = fourth_estate_progressive1
+		add_political_power = -50
+		hidden_effect = {
+			set_temp_variable = { rng_variable = random }
+			if = {
+				limit = { check_variable = { rng_variable > 0.65 } }
+				add_ideas = fifth_estate_progressive2
+				else = {
+					add_ideas = fifth_estate_progressive1
+				}
+			}
+		}
+	}
+	if = {
+		limit = { has_idea = fourth_estate_progressive2 }
+		swap_ideas = {
+			remove_idea = fourth_estate_progressive2
+			add_idea = fourth_estate_progressive1
+		}
+		add_political_power = -75
+	}
+	if = {
+		limit = { has_idea = fourth_estate_progressive3 }
+		swap_ideas = {
+			remove_idea = fourth_estate_progressive3
+			add_idea = fourth_estate_progressive2
+		}
+		add_political_power = -100
+	}
+	if = {
+		limit = { has_idea = fourth_estate_progressive4 }
+		swap_ideas = {
+			remove_idea = fourth_estate_progressive4
+			add_idea = fourth_estate_progressive3
+		}
+		add_political_power = -125
+	}
+	if = {
+		limit = { has_idea = fourth_estate_progressive5 }
+		swap_ideas = {
+			remove_idea = fourth_estate_progressive5
+			add_idea = fourth_estate_progressive4
+		}
+		add_political_power = -150
+	}
+}
+
+fourth_estate_attack_democratic_socialist = {
+	if = {
+		limit = { has_idea = fourth_estate_democratic_socialist1 }
+		remove_ideas = fourth_estate_democratic_socialist1
+		add_political_power = -50
+		hidden_effect = {
+			set_temp_variable = { rng_variable = random }
+			if = {
+				limit = { check_variable = { rng_variable > 0.65 } }
+				add_ideas = fifth_estate_democratic_socialist2
+				else = {
+					add_ideas = fifth_estate_democratic_socialist1
+				}
+			}
+		}
+	}
+	if = {
+		limit = { has_idea = fourth_estate_democratic_socialist2 }
+		swap_ideas = {
+			remove_idea = fourth_estate_democratic_socialist2
+			add_idea = fourth_estate_democratic_socialist1
+		}
+		add_political_power = -75
+	}
+	if = {
+		limit = { has_idea = fourth_estate_democratic_socialist3 }
+		swap_ideas = {
+			remove_idea = fourth_estate_democratic_socialist3
+			add_idea = fourth_estate_democratic_socialist2
+		}
+		add_political_power = -100
+	}
+	if = {
+		limit = { has_idea = fourth_estate_democratic_socialist4 }
+		swap_ideas = {
+			remove_idea = fourth_estate_democratic_socialist4
+			add_idea = fourth_estate_democratic_socialist3
+		}
+		add_political_power = -125
+	}
+	if = {
+		limit = { has_idea = fourth_estate_democratic_socialist5 }
+		swap_ideas = {
+			remove_idea = fourth_estate_democratic_socialist5
+			add_idea = fourth_estate_democratic_socialist4
+		}
+		add_political_power = -150
+	}
+}
+
+fourth_estate_attack_communist = {
+	if = {
+		limit = { has_idea = fourth_estate_communist1 }
+		remove_ideas = fourth_estate_communist1
+		add_political_power = -50
+		hidden_effect = {
+			set_temp_variable = { rng_variable = random }
+			if = {
+				limit = { check_variable = { rng_variable > 0.65 } }
+				add_ideas = fifth_estate_communist2
+				else = {
+					add_ideas = fifth_estate_communist1
+				}
+			}
+		}
+	}
+	if = {
+		limit = { has_idea = fourth_estate_communist2 }
+		swap_ideas = {
+			remove_idea = fourth_estate_communist2
+			add_idea = fourth_estate_communist1
+		}
+		add_political_power = -75
+	}
+	if = {
+		limit = { has_idea = fourth_estate_communist3 }
+		swap_ideas = {
+			remove_idea = fourth_estate_communist3
+			add_idea = fourth_estate_communist2
+		}
+		add_political_power = -100
+	}
+	if = {
+		limit = { has_idea = fourth_estate_communist4 }
+		swap_ideas = {
+			remove_idea = fourth_estate_communist4
+			add_idea = fourth_estate_communist3
+		}
+		add_political_power = -125
+	}
+	if = {
+		limit = { has_idea = fourth_estate_communist5 }
+		swap_ideas = {
+			remove_idea = fourth_estate_communist5
+			add_idea = fourth_estate_communist4
+		}
+		add_political_power = -150
+	}
+}
+
+## FIFTH ESTATE ABERRANT SHIFTS ##
+fifth_estate_aberrant_increase_effect = {
+	if = {
+		limit = {
+			OR = {
+				has_government = islamist
+				has_government = fascist
+				has_government = nationalist
+				has_government = monarchist
+			}
+		}
+		fifth_estate_aberrant_shift_oppose_right_radicals = yes
+	}
+	if = {
+		limit = {
+			OR = {
+				has_government = reactionary
+				has_government = conservative
+				has_government = market_liberal
+			}
+		}
+		fifth_estate_aberrant_shift_oppose_right = yes
+	}
+	if = {
+		limit = {
+			OR = {
+				has_government = social_liberal
+				has_government = social_democrat
+				has_government = progressive
+			}
+		}
+		fifth_estate_aberrant_shift_oppose_left = yes
+	}
+	if = {
+		limit = {
+			OR = {
+				has_government = democratic_socialist
+				has_government = communist
+			}
+		}
+		fifth_estate_aberrant_shift_oppose_left_radicals = yes
+	}
+}
+
+fifth_estate_aberrant_shift_oppose_left_radicals = {
+	hidden_effect = {
+		set_temp_variable = { opleftrad_rng_variable = random }
+		set_country_flag = fifth_estate_aberrant_shift_oppose_left_radicals_flag
+		if = {
+			limit = { check_variable = { opleftrad_rng_variable < 0.40 } }
+			if = {
+				limit = {
+					has_country_flag = fifth_estate_aberrant_shift_oppose_left_radicals_flag
+					has_market_liberal_fourth_estate = no
+					NOT = { has_idea = fifth_estate_market_liberal3 }
+					NOT = { has_idea = fifth_estate_market_liberal4 }
+					NOT = { has_idea = fifth_estate_market_liberal5 }
+				}
+				set_country_flag = NVX_flag_fifth_estate_market_liberal
+				country_event = { id = nvx_fifth_estates.25 }
+				clr_country_flag = fifth_estate_aberrant_shift_oppose_left_radicals_flag
+			}
+			if = {
+				limit = {
+					has_country_flag = fifth_estate_aberrant_shift_oppose_left_radicals_flag
+					has_conservative_fourth_estate = no
+					NOT = { has_idea = fifth_estate_conservative3 }
+					NOT = { has_idea = fifth_estate_conservative4 }
+					NOT = { has_idea = fifth_estate_conservative5 }
+				}
+				set_country_flag = NVX_flag_fifth_estate_conservative
+				country_event = { id = nvx_fifth_estates.25 }
+				clr_country_flag = fifth_estate_aberrant_shift_oppose_left_radicals_flag
+			}
+			if = {
+				limit = {
+					has_country_flag = fifth_estate_aberrant_shift_oppose_left_radicals_flag
+					has_reactionary_fourth_estate = no
+					NOT = { has_idea = fifth_estate_reactionary3 }
+					NOT = { has_idea = fifth_estate_reactionary4 }
+					NOT = { has_idea = fifth_estate_reactionary5 }
+				}
+				set_country_flag = NVX_flag_fifth_estate_reactionary
+				country_event = { id = nvx_fifth_estates.25 }
+				clr_country_flag = fifth_estate_aberrant_shift_oppose_left_radicals_flag
+			}
+		}
+		if = {
+			limit = { AND = { check_variable = { opleftrad_rng_variable > 0.399 } check_variable = { opleftrad_rng_variable < 0.80 } } }
+			if = {
+				limit = {
+					has_country_flag = fifth_estate_aberrant_shift_oppose_left_radicals_flag
+					has_conservative_fourth_estate = no
+					NOT = { has_idea = fifth_estate_conservative3 }
+					NOT = { has_idea = fifth_estate_conservative4 }
+					NOT = { has_idea = fifth_estate_conservative5 }
+				}
+				set_country_flag = NVX_flag_fifth_estate_conservative
+				country_event = { id = nvx_fifth_estates.25 }
+				clr_country_flag = fifth_estate_aberrant_shift_oppose_left_radicals_flag
+			}
+			if = {
+				limit = {
+					has_country_flag = fifth_estate_aberrant_shift_oppose_left_radicals_flag
+					has_reactionary_fourth_estate = no
+					NOT = { has_idea = fifth_estate_reactionary3 }
+					NOT = { has_idea = fifth_estate_reactionary4 }
+					NOT = { has_idea = fifth_estate_reactionary5 }
+				}
+				set_country_flag = NVX_flag_fifth_estate_reactionary
+				country_event = { id = nvx_fifth_estates.25 }
+				clr_country_flag = fifth_estate_aberrant_shift_oppose_left_radicals_flag
+			}
+			if = {
+				limit = {
+					has_country_flag = fifth_estate_aberrant_shift_oppose_left_radicals_flag
+					has_market_liberal_fourth_estate = no
+					NOT = { has_idea = fifth_estate_market_liberal3 }
+					NOT = { has_idea = fifth_estate_market_liberal4 }
+					NOT = { has_idea = fifth_estate_market_liberal5 }
+				}
+				set_country_flag = NVX_flag_fifth_estate_market_liberal
+				country_event = { id = nvx_fifth_estates.25 }
+				clr_country_flag = fifth_estate_aberrant_shift_oppose_left_radicals_flag
+			}
+		}
+		if = {
+			limit = { check_variable = { opleftrad_rng_variable > 0.799 } }
+			if = {
+				limit = {
+					has_country_flag = fifth_estate_aberrant_shift_oppose_left_radicals_flag
+					has_reactionary_fourth_estate = no
+					NOT = { has_idea = fifth_estate_reactionary3 }
+					NOT = { has_idea = fifth_estate_reactionary4 }
+					NOT = { has_idea = fifth_estate_reactionary5 }
+				}
+				set_country_flag = NVX_flag_fifth_estate_reactionary
+				country_event = { id = nvx_fifth_estates.25 }
+				clr_country_flag = fifth_estate_aberrant_shift_oppose_left_radicals_flag
+			}
+			if = {
+				limit = {
+					has_country_flag = fifth_estate_aberrant_shift_oppose_left_radicals_flag
+					has_market_liberal_fourth_estate = no
+					NOT = { has_idea = fifth_estate_market_liberal3 }
+					NOT = { has_idea = fifth_estate_market_liberal4 }
+					NOT = { has_idea = fifth_estate_market_liberal5 }
+				}
+				set_country_flag = NVX_flag_fifth_estate_market_liberal
+				country_event = { id = nvx_fifth_estates.25 }
+				clr_country_flag = fifth_estate_aberrant_shift_oppose_left_radicals_flag
+			}
+			if = {
+				limit = {
+					has_country_flag = fifth_estate_aberrant_shift_oppose_left_radicals_flag
+					has_conservative_fourth_estate = no
+					NOT = { has_idea = fifth_estate_conservative3 }
+					NOT = { has_idea = fifth_estate_conservative4 }
+					NOT = { has_idea = fifth_estate_conservative5 }
+				}
+				set_country_flag = NVX_flag_fifth_estate_conservative
+				country_event = { id = nvx_fifth_estates.25 }
+				clr_country_flag = fifth_estate_aberrant_shift_oppose_left_radicals_flag
+			}
+		}
+	}
+}
+
+fifth_estate_aberrant_shift_oppose_right_radicals = {
+	hidden_effect = {
+		set_temp_variable = { oprightrad_rng_variable = random }
+		set_country_flag = fifth_estate_aberrant_shift_oppose_right_radicals_flag
+		if = {
+			limit = { check_variable = { oprightrad_rng_variable < 0.40 } }
+			if = {
+				limit = {
+					has_country_flag = fifth_estate_aberrant_shift_oppose_right_radicals_flag
+					has_social_liberal_fourth_estate = no
+					NOT = { has_idea = fifth_estate_social_liberal3 }
+					NOT = { has_idea = fifth_estate_social_liberal4 }
+					NOT = { has_idea = fifth_estate_social_liberal5 }
+				}
+				set_country_flag = NVX_flag_fifth_estate_social_liberal
+				country_event = { id = nvx_fifth_estates.25 }
+				clr_country_flag = fifth_estate_aberrant_shift_oppose_right_radicals_flag
+			}
+			if = {
+				limit = {
+					has_country_flag = fifth_estate_aberrant_shift_oppose_right_radicals_flag
+					has_social_democrat_fourth_estate = no
+					NOT = { has_idea = fifth_estate_social_democrat3 }
+					NOT = { has_idea = fifth_estate_social_democrat4 }
+					NOT = { has_idea = fifth_estate_social_democrat5 }
+				}
+				set_country_flag = NVX_flag_fifth_estate_social_democrat
+				country_event = { id = nvx_fifth_estates.25 }
+				clr_country_flag = fifth_estate_aberrant_shift_oppose_right_radicals_flag
+			}
+			if = {
+				limit = {
+					has_country_flag = fifth_estate_aberrant_shift_oppose_right_radicals_flag
+					has_progressive_fourth_estate = no
+					NOT = { has_idea = fifth_estate_progressive3 }
+					NOT = { has_idea = fifth_estate_progressive4 }
+					NOT = { has_idea = fifth_estate_progressive5 }
+				}
+				set_country_flag = NVX_flag_fifth_estate_progressive
+				country_event = { id = nvx_fifth_estates.25 }
+				clr_country_flag = fifth_estate_aberrant_shift_oppose_right_radicals_flag
+			}
+		}
+		if = {
+			limit = { AND = { check_variable = { oprightrad_rng_variable > 0.399 } check_variable = { oprightrad_rng_variable < 0.80 } } }
+			if = {
+				limit = {
+					has_country_flag = fifth_estate_aberrant_shift_oppose_right_radicals_flag
+					has_social_democrat_fourth_estate = no
+					NOT = { has_idea = fifth_estate_social_democrat3 }
+					NOT = { has_idea = fifth_estate_social_democrat4 }
+					NOT = { has_idea = fifth_estate_social_democrat5 }
+				}
+				set_country_flag = NVX_flag_fifth_estate_social_democrat
+				country_event = { id = nvx_fifth_estates.25 }
+				clr_country_flag = fifth_estate_aberrant_shift_oppose_right_radicals_flag
+			}
+			if = {
+				limit = {
+					has_country_flag = fifth_estate_aberrant_shift_oppose_right_radicals_flag
+					has_progressive_fourth_estate = no
+					NOT = { has_idea = fifth_estate_progressive3 }
+					NOT = { has_idea = fifth_estate_progressive4 }
+					NOT = { has_idea = fifth_estate_progressive5 }
+				}
+				set_country_flag = NVX_flag_fifth_estate_progressive
+				country_event = { id = nvx_fifth_estates.25 }
+				clr_country_flag = fifth_estate_aberrant_shift_oppose_right_radicals_flag
+			}
+			if = {
+				limit = {
+					has_country_flag = fifth_estate_aberrant_shift_oppose_right_radicals_flag
+					has_social_liberal_fourth_estate = no
+					NOT = { has_idea = fifth_estate_social_liberal3 }
+					NOT = { has_idea = fifth_estate_social_liberal4 }
+					NOT = { has_idea = fifth_estate_social_liberal5 }
+				}
+				set_country_flag = NVX_flag_fifth_estate_social_liberal
+				country_event = { id = nvx_fifth_estates.25 }
+				clr_country_flag = fifth_estate_aberrant_shift_oppose_right_radicals_flag
+			}
+		}
+		if = {
+			limit = { check_variable = { oprightrad_rng_variable > 0.799 } }
+			if = {
+				limit = {
+					has_country_flag = fifth_estate_aberrant_shift_oppose_right_radicals_flag
+					has_progressive_fourth_estate = no
+					NOT = { has_idea = fifth_estate_progressive3 }
+					NOT = { has_idea = fifth_estate_progressive4 }
+					NOT = { has_idea = fifth_estate_progressive5 }
+				}
+				set_country_flag = NVX_flag_fifth_estate_progressive
+				country_event = { id = nvx_fifth_estates.25 }
+				clr_country_flag = fifth_estate_aberrant_shift_oppose_right_radicals_flag
+			}
+			if = {
+				limit = {
+					has_country_flag = fifth_estate_aberrant_shift_oppose_right_radicals_flag
+					has_social_liberal_fourth_estate = no
+					NOT = { has_idea = fifth_estate_social_liberal3 }
+					NOT = { has_idea = fifth_estate_social_liberal4 }
+					NOT = { has_idea = fifth_estate_social_liberal5 }
+				}
+				set_country_flag = NVX_flag_fifth_estate_social_liberal
+				country_event = { id = nvx_fifth_estates.25 }
+				clr_country_flag = fifth_estate_aberrant_shift_oppose_right_radicals_flag
+			}
+			if = {
+				limit = {
+					has_country_flag = fifth_estate_aberrant_shift_oppose_right_radicals_flag
+					has_social_democrat_fourth_estate = no
+					NOT = { has_idea = fifth_estate_social_democrat3 }
+					NOT = { has_idea = fifth_estate_social_democrat4 }
+					NOT = { has_idea = fifth_estate_social_democrat5 }
+				}
+				set_country_flag = NVX_flag_fifth_estate_social_democrat
+				country_event = { id = nvx_fifth_estates.25 }
+				clr_country_flag = fifth_estate_aberrant_shift_oppose_right_radicals_flag
+			}
+		}
+	}
+}
+
+fifth_estate_aberrant_shift_oppose_left = {
+	hidden_effect = {
+		set_temp_variable = { opleft_rng_variable = random }
+		set_country_flag = fifth_estate_aberrant_shift_oppose_left_flag
+		if = {
+			limit = { check_variable = { opleft_rng_variable < 0.30 } }
+			if = {
+				limit = {
+					has_country_flag = fifth_estate_aberrant_shift_oppose_left_flag
+					has_market_liberal_fourth_estate = no
+					NOT = { has_idea = fifth_estate_market_liberal3 }
+					NOT = { has_idea = fifth_estate_market_liberal4 }
+					NOT = { has_idea = fifth_estate_market_liberal5 }
+				}
+				set_country_flag = NVX_flag_fifth_estate_market_liberal
+				country_event = { id = nvx_fifth_estates.25 }
+				clr_country_flag = fifth_estate_aberrant_shift_oppose_left_flag
+			}
+			if = {
+				limit = {
+					has_country_flag = fifth_estate_aberrant_shift_oppose_left_flag
+					has_conservative_fourth_estate = no
+					NOT = { has_idea = fifth_estate_conservative3 }
+					NOT = { has_idea = fifth_estate_conservative4 }
+					NOT = { has_idea = fifth_estate_conservative5 }
+				}
+				set_country_flag = NVX_flag_fifth_estate_conservative
+				country_event = { id = nvx_fifth_estates.25 }
+				clr_country_flag = fifth_estate_aberrant_shift_oppose_left_flag
+			}
+			if = {
+				limit = {
+					has_country_flag = fifth_estate_aberrant_shift_oppose_left_flag
+					has_reactionary_fourth_estate = no
+					NOT = { has_idea = fifth_estate_reactionary3 }
+					NOT = { has_idea = fifth_estate_reactionary4 }
+					NOT = { has_idea = fifth_estate_reactionary5 }
+				}
+				set_country_flag = NVX_flag_fifth_estate_reactionary
+				country_event = { id = nvx_fifth_estates.25 }
+				clr_country_flag = fifth_estate_aberrant_shift_oppose_left_flag
+			}
+		}
+		if = {
+			limit = { AND = { check_variable = { opleft_rng_variable > 0.299 } check_variable = { opleft_rng_variable < 0.60 } } }
+			if = {
+				limit = {
+					has_country_flag = fifth_estate_aberrant_shift_oppose_left_flag
+					has_conservative_fourth_estate = no
+					NOT = { has_idea = fifth_estate_conservative3 }
+					NOT = { has_idea = fifth_estate_conservative4 }
+					NOT = { has_idea = fifth_estate_conservative5 }
+				}
+				set_country_flag = NVX_flag_fifth_estate_conservative
+				country_event = { id = nvx_fifth_estates.25 }
+				clr_country_flag = fifth_estate_aberrant_shift_oppose_left_flag
+			}
+			if = {
+				limit = {
+					has_country_flag = fifth_estate_aberrant_shift_oppose_left_flag
+					has_reactionary_fourth_estate = no
+					NOT = { has_idea = fifth_estate_reactionary3 }
+					NOT = { has_idea = fifth_estate_reactionary4 }
+					NOT = { has_idea = fifth_estate_reactionary5 }
+				}
+				set_country_flag = NVX_flag_fifth_estate_reactionary
+				country_event = { id = nvx_fifth_estates.25 }
+				clr_country_flag = fifth_estate_aberrant_shift_oppose_left_flag
+			}
+			if = {
+				limit = {
+					has_country_flag = fifth_estate_aberrant_shift_oppose_left_flag
+					has_market_liberal_fourth_estate = no
+					NOT = { has_idea = fifth_estate_market_liberal3 }
+					NOT = { has_idea = fifth_estate_market_liberal4 }
+					NOT = { has_idea = fifth_estate_market_liberal5 }
+				}
+				set_country_flag = NVX_flag_fifth_estate_market_liberal
+				country_event = { id = nvx_fifth_estates.25 }
+				clr_country_flag = fifth_estate_aberrant_shift_oppose_left_flag
+			}
+		}
+		if = {
+			limit = { AND = { check_variable = { opleft_rng_variable > 0.599 } check_variable = { opleft_rng_variable < 0.90 } } }
+			if = {
+				limit = {
+					has_country_flag = fifth_estate_aberrant_shift_oppose_left_flag
+					has_reactionary_fourth_estate = no
+					NOT = { has_idea = fifth_estate_reactionary3 }
+					NOT = { has_idea = fifth_estate_reactionary4 }
+					NOT = { has_idea = fifth_estate_reactionary5 }
+				}
+				set_country_flag = NVX_flag_fifth_estate_reactionary
+				country_event = { id = nvx_fifth_estates.25 }
+				clr_country_flag = fifth_estate_aberrant_shift_oppose_left_flag
+			}
+			if = {
+				limit = {
+					has_country_flag = fifth_estate_aberrant_shift_oppose_left_flag
+					has_market_liberal_fourth_estate = no
+					NOT = { has_idea = fifth_estate_market_liberal3 }
+					NOT = { has_idea = fifth_estate_market_liberal4 }
+					NOT = { has_idea = fifth_estate_market_liberal5 }
+				}
+				set_country_flag = NVX_flag_fifth_estate_market_liberal
+				country_event = { id = nvx_fifth_estates.25 }
+				clr_country_flag = fifth_estate_aberrant_shift_oppose_left_flag
+			}
+			if = {
+				limit = {
+					has_country_flag = fifth_estate_aberrant_shift_oppose_left_flag
+					has_conservative_fourth_estate = no
+					NOT = { has_idea = fifth_estate_conservative3 }
+					NOT = { has_idea = fifth_estate_conservative4 }
+					NOT = { has_idea = fifth_estate_conservative5 }
+				}
+				set_country_flag = NVX_flag_fifth_estate_conservative
+				country_event = { id = nvx_fifth_estates.25 }
+				clr_country_flag = fifth_estate_aberrant_shift_oppose_left_flag
+			}
+		}
+		if = {
+			limit = { AND = { check_variable = { opleft_rng_variable > 0.899 } check_variable = { opleft_rng_variable < 0.95 } } }
+			if = {
+				limit = {
+					has_country_flag = fifth_estate_aberrant_shift_oppose_left_flag
+					has_nationalist_fourth_estate = no
+					NOT = { has_idea = fifth_estate_nationalist3 }
+					NOT = { has_idea = fifth_estate_nationalist4 }
+					NOT = { has_idea = fifth_estate_nationalist5 }
+				}
+				set_country_flag = NVX_flag_fifth_estate_nationalist
+				country_event = { id = nvx_fifth_estates.25 }
+				clr_country_flag = fifth_estate_aberrant_shift_oppose_left_flag
+			}
+			if = {
+				limit = {
+					has_country_flag = fifth_estate_aberrant_shift_oppose_left_flag
+					has_fascist_fourth_estate = no
+					NOT = { has_idea = fifth_estate_fascist3 }
+					NOT = { has_idea = fifth_estate_fascist4 }
+					NOT = { has_idea = fifth_estate_fascist5 }
+				}
+				set_country_flag = NVX_flag_fifth_estate_fascist
+				country_event = { id = nvx_fifth_estates.25 }
+				clr_country_flag = fifth_estate_aberrant_shift_oppose_left_flag
+			}
+		}
+		if = {
+			limit = { check_variable = { opleft_rng_variable > 0.949 } }
+			if = {
+				limit = {
+					has_country_flag = fifth_estate_aberrant_shift_oppose_left_flag
+					has_fascist_fourth_estate = no
+					NOT = { has_idea = fifth_estate_fascist3 }
+					NOT = { has_idea = fifth_estate_fascist4 }
+					NOT = { has_idea = fifth_estate_fascist5 }
+				}
+				set_country_flag = NVX_flag_fifth_estate_fascist
+				country_event = { id = nvx_fifth_estates.25 }
+				clr_country_flag = fifth_estate_aberrant_shift_oppose_left_flag
+			}
+			if = {
+				limit = {
+					has_country_flag = fifth_estate_aberrant_shift_oppose_left_flag
+					has_nationalist_fourth_estate = no
+					NOT = { has_idea = fifth_estate_nationalist3 }
+					NOT = { has_idea = fifth_estate_nationalist4 }
+					NOT = { has_idea = fifth_estate_nationalist5 }
+				}
+				set_country_flag = NVX_flag_fifth_estate_nationalist
+				country_event = { id = nvx_fifth_estates.25 }
+				clr_country_flag = fifth_estate_aberrant_shift_oppose_left_flag
+			}
+		}
+	}
+}
+
+fifth_estate_aberrant_shift_oppose_right = {
+	hidden_effect = {
+		set_temp_variable = { opright_rng_variable = random }
+		set_country_flag = fifth_estate_aberrant_shift_oppose_right_flag
+		if = {
+			limit = { check_variable = { opright_rng_variable < 0.30 } }
+			if = {
+				limit = {
+					has_country_flag = fifth_estate_aberrant_shift_oppose_right_flag
+					has_social_liberal_fourth_estate = no
+					NOT = { has_idea = fifth_estate_social_liberal3 }
+					NOT = { has_idea = fifth_estate_social_liberal4 }
+					NOT = { has_idea = fifth_estate_social_liberal5 }
+				}
+				set_country_flag = NVX_flag_fifth_estate_social_liberal
+				country_event = { id = nvx_fifth_estates.25 }
+				clr_country_flag = fifth_estate_aberrant_shift_oppose_right_flag
+			}
+			if = {
+				limit = {
+					has_country_flag = fifth_estate_aberrant_shift_oppose_right_flag
+					has_social_democrat_fourth_estate = no
+					NOT = { has_idea = fifth_estate_social_democrat3 }
+					NOT = { has_idea = fifth_estate_social_democrat4 }
+					NOT = { has_idea = fifth_estate_social_democrat5 }
+				}
+				set_country_flag = NVX_flag_fifth_estate_social_democrat
+				country_event = { id = nvx_fifth_estates.25 }
+				clr_country_flag = fifth_estate_aberrant_shift_oppose_right_flag
+			}
+			if = {
+				limit = {
+					has_country_flag = fifth_estate_aberrant_shift_oppose_right_flag
+					has_progressive_fourth_estate = no
+					NOT = { has_idea = fifth_estate_progressive3 }
+					NOT = { has_idea = fifth_estate_progressive4 }
+					NOT = { has_idea = fifth_estate_progressive5 }
+				}
+				set_country_flag = NVX_flag_fifth_estate_progressive
+				country_event = { id = nvx_fifth_estates.25 }
+				clr_country_flag = fifth_estate_aberrant_shift_oppose_right_flag
+			}
+		}
+		if = {
+			limit = { AND = { check_variable = { opright_rng_variable > 0.299 } check_variable = { opright_rng_variable < 0.60 } } }
+			if = {
+				limit = {
+					has_country_flag = fifth_estate_aberrant_shift_oppose_right_flag
+					has_social_democrat_fourth_estate = no
+					NOT = { has_idea = fifth_estate_social_democrat3 }
+					NOT = { has_idea = fifth_estate_social_democrat4 }
+					NOT = { has_idea = fifth_estate_social_democrat5 }
+				}
+				set_country_flag = NVX_flag_fifth_estate_social_democrat
+				country_event = { id = nvx_fifth_estates.25 }
+				clr_country_flag = fifth_estate_aberrant_shift_oppose_right_flag
+			}
+			if = {
+				limit = {
+					has_country_flag = fifth_estate_aberrant_shift_oppose_right_flag
+					has_progressive_fourth_estate = no
+					NOT = { has_idea = fifth_estate_progressive3 }
+					NOT = { has_idea = fifth_estate_progressive4 }
+					NOT = { has_idea = fifth_estate_progressive5 }
+				}
+				set_country_flag = NVX_flag_fifth_estate_progressive
+				country_event = { id = nvx_fifth_estates.25 }
+				clr_country_flag = fifth_estate_aberrant_shift_oppose_right_flag
+			}
+			if = {
+				limit = {
+					has_country_flag = fifth_estate_aberrant_shift_oppose_right_flag
+					has_social_liberal_fourth_estate = no
+					NOT = { has_idea = fifth_estate_social_liberal3 }
+					NOT = { has_idea = fifth_estate_social_liberal4 }
+					NOT = { has_idea = fifth_estate_social_liberal5 }
+				}
+				set_country_flag = NVX_flag_fifth_estate_social_liberal
+				country_event = { id = nvx_fifth_estates.25 }
+				clr_country_flag = fifth_estate_aberrant_shift_oppose_right_flag
+			}
+		}
+		if = {
+			limit = { AND = { check_variable = { opright_rng_variable > 0.599 } check_variable = { opright_rng_variable < 0.90 } } }
+			if = {
+				limit = {
+					has_country_flag = fifth_estate_aberrant_shift_oppose_right_flag
+					has_progressive_fourth_estate = no
+					NOT = { has_idea = fifth_estate_progressive3 }
+					NOT = { has_idea = fifth_estate_progressive4 }
+					NOT = { has_idea = fifth_estate_progressive5 }
+				}
+				set_country_flag = NVX_flag_fifth_estate_progressive
+				country_event = { id = nvx_fifth_estates.25 }
+				clr_country_flag = fifth_estate_aberrant_shift_oppose_right_flag
+			}
+			if = {
+				limit = {
+					has_country_flag = fifth_estate_aberrant_shift_oppose_right_flag
+					has_social_liberal_fourth_estate = no
+					NOT = { has_idea = fifth_estate_social_liberal3 }
+					NOT = { has_idea = fifth_estate_social_liberal4 }
+					NOT = { has_idea = fifth_estate_social_liberal5 }
+				}
+				set_country_flag = NVX_flag_fifth_estate_social_liberal
+				country_event = { id = nvx_fifth_estates.25 }
+				clr_country_flag = fifth_estate_aberrant_shift_oppose_right_flag
+			}
+			if = {
+				limit = {
+					has_country_flag = fifth_estate_aberrant_shift_oppose_right_flag
+					has_social_democrat_fourth_estate = no
+					NOT = { has_idea = fifth_estate_social_democrat3 }
+					NOT = { has_idea = fifth_estate_social_democrat4 }
+					NOT = { has_idea = fifth_estate_social_democrat5 }
+				}
+				set_country_flag = NVX_flag_fifth_estate_social_democrat
+				country_event = { id = nvx_fifth_estates.25 }
+				clr_country_flag = fifth_estate_aberrant_shift_oppose_right_flag
+			}
+		}
+		if = {
+			limit = { AND = { check_variable = { opright_rng_variable > 0.899 } check_variable = { opright_rng_variable < 0.95 } } }
+			if = {
+				limit = {
+					has_country_flag = fifth_estate_aberrant_shift_oppose_right_flag
+					has_democratic_socialist_fourth_estate = no
+					NOT = { has_idea = fifth_estate_democratic_socialist3 }
+					NOT = { has_idea = fifth_estate_democratic_socialist4 }
+					NOT = { has_idea = fifth_estate_democratic_socialist5 }
+				}
+				set_country_flag = NVX_flag_fifth_estate_democratic_socialist
+				country_event = { id = nvx_fifth_estates.25 }
+				clr_country_flag = fifth_estate_aberrant_shift_oppose_right_flag
+			}
+			if = {
+				limit = {
+					has_country_flag = fifth_estate_aberrant_shift_oppose_right_flag
+					has_fascist_fourth_estate = no
+					NOT = { has_idea = fifth_estate_fascist3 }
+					NOT = { has_idea = fifth_estate_fascist4 }
+					NOT = { has_idea = fifth_estate_fascist5 }
+				}
+				set_country_flag = NVX_flag_fifth_estate_fascist
+				country_event = { id = nvx_fifth_estates.25 }
+				clr_country_flag = fifth_estate_aberrant_shift_oppose_right_flag
+			}
+		}
+		if = {
+			limit = { check_variable = { opright_rng_variable > 0.949 } }
+			if = {
+				limit = {
+					has_country_flag = fifth_estate_aberrant_shift_oppose_right_flag
+					has_fascist_fourth_estate = no
+					NOT = { has_idea = fifth_estate_fascist3 }
+					NOT = { has_idea = fifth_estate_fascist4 }
+					NOT = { has_idea = fifth_estate_fascist5 }
+				}
+				set_country_flag = NVX_flag_fifth_estate_fascist
+				country_event = { id = nvx_fifth_estates.25 }
+				clr_country_flag = fifth_estate_aberrant_shift_oppose_right_flag
+			}
+			if = {
+				limit = {
+					has_country_flag = fifth_estate_aberrant_shift_oppose_right_flag
+					has_democratic_socialist_fourth_estate = no
+					NOT = { has_idea = fifth_estate_democratic_socialist3 }
+					NOT = { has_idea = fifth_estate_democratic_socialist4 }
+					NOT = { has_idea = fifth_estate_democratic_socialist5 }
+				}
+				set_country_flag = NVX_flag_fifth_estate_democratic_socialist
+				country_event = { id = nvx_fifth_estates.25 }
+				clr_country_flag = fifth_estate_aberrant_shift_oppose_right_flag
+			}
+		}
+	}
+}
+
+fifth_estate_aberrant_decrease_effect = {
+	if = {
+		limit = {
+			OR = {
+				has_government = islamist
+				has_government = fascist
+				has_government = nationalist
+				has_government = monarchist
+			}
+		}
+		fifth_estate_aberrant_shift_trim_right_radicals = yes
+	}
+	if = {
+		limit = {
+			OR = {
+				has_government = reactionary
+				has_government = conservative
+				has_government = market_liberal
+			}
+		}
+		fifth_estate_aberrant_shift_trim_right = yes
+	}
+	if = {
+		limit = {
+			OR = {
+				has_government = social_liberal
+				has_government = social_democrat
+				has_government = progressive
+			}
+		}
+		fifth_estate_aberrant_shift_trim_left = yes
+	}
+	if = {
+		limit = {
+			OR = {
+				has_government = democratic_socialist
+				has_government = communist
+			}
+		}
+		fifth_estate_aberrant_shift_trim_left_radicals = yes
+	}
+}
+
+fifth_estate_aberrant_shift_trim_left_radicals = {
+	hidden_effect = {
+		set_temp_variable = { trimleftrad_rng_variable = random }
+		set_country_flag = fifth_estate_aberrant_shift_trim_left_radicals_flag
+		if = {
+			limit = { check_variable = { trimleftrad_rng_variable < 0.50 } }
+			if = {
+				limit = {
+					has_country_flag = fifth_estate_aberrant_shift_trim_left_radicals_flag
+					has_communist_fifth_estate = yes
+					NOT = { has_government = communist }
+				}
+				set_country_flag = NVX_flag_fifth_estate_communist
+				fifth_estate_targeted_total_decrease = yes
+				clr_country_flag = fifth_estate_aberrant_shift_trim_left_radicals_flag
+			}
+			if = {
+				limit = {
+					has_country_flag = fifth_estate_aberrant_shift_trim_left_radicals_flag
+					has_democratic_socialist_fifth_estate = yes
+					NOT = { has_government = democratic_socialist }
+				}
+				set_country_flag = NVX_flag_fifth_estate_democratic_socialist
+				fifth_estate_targeted_total_decrease = yes
+				clr_country_flag = fifth_estate_aberrant_shift_trim_left_radicals_flag
+			}
+		}
+		if = {
+			limit = { check_variable = { trimleftrad_rng_variable > 0.499 } }
+			if = {
+				limit = {
+					has_country_flag = fifth_estate_aberrant_shift_trim_left_radicals_flag
+					has_democratic_socialist_fifth_estate = yes
+					NOT = { has_government = democratic_socialist }
+				}
+				set_country_flag = NVX_flag_fifth_estate_democratic_socialist
+				fifth_estate_targeted_total_decrease = yes
+				clr_country_flag = fifth_estate_aberrant_shift_trim_left_radicals_flag
+			}
+			if = {
+				limit = {
+					has_country_flag = fifth_estate_aberrant_shift_trim_left_radicals_flag
+					has_communist_fifth_estate = yes
+					NOT = { has_government = communist }
+				}
+				set_country_flag = NVX_flag_fifth_estate_communist
+				fifth_estate_targeted_total_decrease = yes
+				clr_country_flag = fifth_estate_aberrant_shift_trim_left_radicals_flag
+			}
+		}
+	}
+}
+
+fifth_estate_aberrant_shift_trim_right_radicals = {
+	hidden_effect = {
+		set_temp_variable = { trimrightrad_rng_variable = random }
+		set_country_flag = fifth_estate_aberrant_shift_trim_right_radicals_flag
+		if = {
+			limit = { check_variable = { trimrightrad_rng_variable < 0.25 } }
+			if = {
+				limit = {
+					has_country_flag = fifth_estate_aberrant_shift_trim_right_radicals_flag
+					has_islamist_fifth_estate = yes
+					NOT = { has_government = islamist }
+				}
+				set_country_flag = NVX_flag_fifth_estate_islamist
+				fifth_estate_targeted_total_decrease = yes
+				clr_country_flag = fifth_estate_aberrant_shift_trim_right_radicals_flag
+			}
+			if = {
+				limit = {
+					has_country_flag = fifth_estate_aberrant_shift_trim_right_radicals_flag
+					has_fascist_fifth_estate = yes
+					NOT = { has_government = fascist }
+				}
+				set_country_flag = NVX_flag_fifth_estate_fascist
+				fifth_estate_targeted_total_decrease = yes
+				clr_country_flag = fifth_estate_aberrant_shift_trim_right_radicals_flag
+			}
+			if = {
+				limit = {
+					has_country_flag = fifth_estate_aberrant_shift_trim_right_radicals_flag
+					has_nationalist_fifth_estate = yes
+					NOT = { has_government = nationalist }
+				}
+				set_country_flag = NVX_flag_fifth_estate_nationalist
+				fifth_estate_targeted_total_decrease = yes
+				clr_country_flag = fifth_estate_aberrant_shift_trim_right_radicals_flag
+			}
+			if = {
+				limit = {
+					has_country_flag = fifth_estate_aberrant_shift_trim_right_radicals_flag
+					has_monarchist_fifth_estate = yes
+					NOT = { has_government = monarchist }
+				}
+				set_country_flag = NVX_flag_fifth_estate_monarchist
+				fifth_estate_targeted_total_decrease = yes
+				clr_country_flag = fifth_estate_aberrant_shift_trim_right_radicals_flag
+			}
+		}
+		if = {
+			limit = { AND = { check_variable = { trimrightrad_rng_variable > 0.249 } check_variable = { trimrightrad_rng_variable < 0.50 } } }
+			if = {
+				limit = {
+					has_country_flag = fifth_estate_aberrant_shift_trim_right_radicals_flag
+					has_fascist_fifth_estate = yes
+					NOT = { has_government = fascist }
+				}
+				set_country_flag = NVX_flag_fifth_estate_fascist
+				fifth_estate_targeted_total_decrease = yes
+				clr_country_flag = fifth_estate_aberrant_shift_trim_right_radicals_flag
+			}
+			if = {
+				limit = {
+					has_country_flag = fifth_estate_aberrant_shift_trim_right_radicals_flag
+					has_nationalist_fifth_estate = yes
+					NOT = { has_government = nationalist }
+				}
+				set_country_flag = NVX_flag_fifth_estate_nationalist
+				fifth_estate_targeted_total_decrease = yes
+				clr_country_flag = fifth_estate_aberrant_shift_trim_right_radicals_flag
+			}
+			if = {
+				limit = {
+					has_country_flag = fifth_estate_aberrant_shift_trim_right_radicals_flag
+					has_monarchist_fifth_estate = yes
+					NOT = { has_government = monarchist }
+				}
+				set_country_flag = NVX_flag_fifth_estate_monarchist
+				fifth_estate_targeted_total_decrease = yes
+				clr_country_flag = fifth_estate_aberrant_shift_trim_right_radicals_flag
+			}
+			if = {
+				limit = {
+					has_country_flag = fifth_estate_aberrant_shift_trim_right_radicals_flag
+					has_islamist_fifth_estate = yes
+					NOT = { has_government = islamist }
+				}
+				set_country_flag = NVX_flag_fifth_estate_islamist
+				fifth_estate_targeted_total_decrease = yes
+				clr_country_flag = fifth_estate_aberrant_shift_trim_right_radicals_flag
+			}
+		}
+		if = {
+			limit = { AND = { check_variable = { trimrightrad_rng_variable > 0.499 } check_variable = { trimrightrad_rng_variable < 0.75 } } }
+			if = {
+				limit = {
+					has_country_flag = fifth_estate_aberrant_shift_trim_right_radicals_flag
+					has_nationalist_fifth_estate = yes
+					NOT = { has_government = nationalist }
+				}
+				set_country_flag = NVX_flag_fifth_estate_nationalist
+				fifth_estate_targeted_total_decrease = yes
+				clr_country_flag = fifth_estate_aberrant_shift_trim_right_radicals_flag
+			}
+			if = {
+				limit = {
+					has_country_flag = fifth_estate_aberrant_shift_trim_right_radicals_flag
+					has_monarchist_fifth_estate = yes
+					NOT = { has_government = monarchist }
+				}
+				set_country_flag = NVX_flag_fifth_estate_monarchist
+				fifth_estate_targeted_total_decrease = yes
+				clr_country_flag = fifth_estate_aberrant_shift_trim_right_radicals_flag
+			}
+			if = {
+				limit = {
+					has_country_flag = fifth_estate_aberrant_shift_trim_right_radicals_flag
+					has_islamist_fifth_estate = yes
+					NOT = { has_government = islamist }
+				}
+				set_country_flag = NVX_flag_fifth_estate_islamist
+				fifth_estate_targeted_total_decrease = yes
+				clr_country_flag = fifth_estate_aberrant_shift_trim_right_radicals_flag
+			}
+			if = {
+				limit = {
+					has_country_flag = fifth_estate_aberrant_shift_trim_right_radicals_flag
+					has_fascist_fifth_estate = yes
+					NOT = { has_government = fascist }
+				}
+				set_country_flag = NVX_flag_fifth_estate_fascist
+				fifth_estate_targeted_total_decrease = yes
+				clr_country_flag = fifth_estate_aberrant_shift_trim_right_radicals_flag
+			}
+		}
+		if = {
+			limit = { check_variable = { trimrightrad_rng_variable > 0.749 } }
+			if = {
+				limit = {
+					has_country_flag = fifth_estate_aberrant_shift_trim_right_radicals_flag
+					has_monarchist_fifth_estate = yes
+					NOT = { has_government = monarchist }
+				}
+				set_country_flag = NVX_flag_fifth_estate_monarchist
+				fifth_estate_targeted_total_decrease = yes
+				clr_country_flag = fifth_estate_aberrant_shift_trim_right_radicals_flag
+			}
+			if = {
+				limit = {
+					has_country_flag = fifth_estate_aberrant_shift_trim_right_radicals_flag
+					has_islamist_fifth_estate = yes
+					NOT = { has_government = islamist }
+				}
+				set_country_flag = NVX_flag_fifth_estate_islamist
+				fifth_estate_targeted_total_decrease = yes
+				clr_country_flag = fifth_estate_aberrant_shift_trim_right_radicals_flag
+			}
+			if = {
+				limit = {
+					has_country_flag = fifth_estate_aberrant_shift_trim_right_radicals_flag
+					has_fascist_fifth_estate = yes
+					NOT = { has_government = fascist }
+				}
+				set_country_flag = NVX_flag_fifth_estate_fascist
+				fifth_estate_targeted_total_decrease = yes
+				clr_country_flag = fifth_estate_aberrant_shift_trim_right_radicals_flag
+			}
+			if = {
+				limit = {
+					has_country_flag = fifth_estate_aberrant_shift_trim_right_radicals_flag
+					has_nationalist_fifth_estate = yes
+					NOT = { has_government = nationalist }
+				}
+				set_country_flag = NVX_flag_fifth_estate_nationalist
+				fifth_estate_targeted_total_decrease = yes
+				clr_country_flag = fifth_estate_aberrant_shift_trim_right_radicals_flag
+			}
+		}
+	}
+}
+
+fifth_estate_aberrant_shift_trim_left = {
+	hidden_effect = {
+		set_temp_variable = { trimleft_rng_variable = random }
+		set_country_flag = fifth_estate_aberrant_shift_trim_left_flag
+		if = {
+			limit = { check_variable = { trimleft_rng_variable < 0.33 } }
+			if = {
+				limit = {
+					has_country_flag = fifth_estate_aberrant_shift_trim_left_flag
+					has_progressive_fifth_estate = yes
+					NOT = { has_government = progressive }
+				}
+				set_country_flag = NVX_flag_fifth_estate_progressive
+				fifth_estate_targeted_total_decrease = yes
+				clr_country_flag = fifth_estate_aberrant_shift_trim_left_flag
+			}
+			if = {
+				limit = {
+					has_country_flag = fifth_estate_aberrant_shift_trim_left_flag
+					has_social_democrat_fifth_estate = yes
+					NOT = { has_government = social_democrat }
+				}
+				set_country_flag = NVX_flag_fifth_estate_social_democrat
+				fifth_estate_targeted_total_decrease = yes
+				clr_country_flag = fifth_estate_aberrant_shift_trim_left_flag
+			}
+			if = {
+				limit = {
+					has_country_flag = fifth_estate_aberrant_shift_trim_left_flag
+					has_social_liberal_fifth_estate = yes
+					NOT = { has_government = social_liberal }
+				}
+				set_country_flag = NVX_flag_fifth_estate_social_liberal
+				fifth_estate_targeted_total_decrease = yes
+				clr_country_flag = fifth_estate_aberrant_shift_trim_left_flag
+			}
+		}
+		if = {
+			limit = { AND = { check_variable = { trimleft_rng_variable > 0.329 } check_variable = { trimleft_rng_variable < 0.66 } } }
+			if = {
+				limit = {
+					has_country_flag = fifth_estate_aberrant_shift_trim_left_flag
+					has_social_democrat_fifth_estate = yes
+					NOT = { has_government = social_democrat }
+				}
+				set_country_flag = NVX_flag_fifth_estate_social_democrat
+				fifth_estate_targeted_total_decrease = yes
+				clr_country_flag = fifth_estate_aberrant_shift_trim_left_flag
+			}
+			if = {
+				limit = {
+					has_country_flag = fifth_estate_aberrant_shift_trim_left_flag
+					has_social_liberal_fifth_estate = yes
+					NOT = { has_government = social_liberal }
+				}
+				set_country_flag = NVX_flag_fifth_estate_social_liberal
+				fifth_estate_targeted_total_decrease = yes
+				clr_country_flag = fifth_estate_aberrant_shift_trim_left_flag
+			}
+			if = {
+				limit = {
+					has_country_flag = fifth_estate_aberrant_shift_trim_left_flag
+					has_progressive_fifth_estate = yes
+					NOT = { has_government = progressive }
+				}
+				set_country_flag = NVX_flag_fifth_estate_progressive
+				fifth_estate_targeted_total_decrease = yes
+				clr_country_flag = fifth_estate_aberrant_shift_trim_left_flag
+			}
+		}
+		if = {
+			limit = { check_variable = { trimleft_rng_variable > 0.659 } }
+			if = {
+				limit = {
+					has_country_flag = fifth_estate_aberrant_shift_trim_left_flag
+					has_social_liberal_fifth_estate = yes
+					NOT = { has_government = social_liberal }
+				}
+				set_country_flag = NVX_flag_fifth_estate_social_liberal
+				fifth_estate_targeted_total_decrease = yes
+				clr_country_flag = fifth_estate_aberrant_shift_trim_left_flag
+			}
+			if = {
+				limit = {
+					has_country_flag = fifth_estate_aberrant_shift_trim_left_flag
+					has_progressive_fifth_estate = yes
+					NOT = { has_government = progressive }
+				}
+				set_country_flag = NVX_flag_fifth_estate_progressive
+				fifth_estate_targeted_total_decrease = yes
+				clr_country_flag = fifth_estate_aberrant_shift_trim_left_flag
+			}
+			if = {
+				limit = {
+					has_country_flag = fifth_estate_aberrant_shift_trim_left_flag
+					has_social_democrat_fifth_estate = yes
+					NOT = { has_government = social_democrat }
+				}
+				set_country_flag = NVX_flag_fifth_estate_social_democrat
+				fifth_estate_targeted_total_decrease = yes
+				clr_country_flag = fifth_estate_aberrant_shift_trim_left_flag
+			}
+		}
+	}
+}
+
+fifth_estate_aberrant_shift_trim_right = {
+	hidden_effect = {
+		set_temp_variable = { trimright_rng_variable = random }
+		set_country_flag = fifth_estate_aberrant_shift_trim_right_flag
+		if = {
+			limit = { check_variable = { trimright_rng_variable < 0.33 } }
+			if = {
+				limit = {
+					has_country_flag = fifth_estate_aberrant_shift_trim_right_flag
+					has_reactionary_fifth_estate = yes
+					NOT = { has_government = reactionary }
+				}
+				set_country_flag = NVX_flag_fifth_estate_reactionary
+				fifth_estate_targeted_total_decrease = yes
+				clr_country_flag = fifth_estate_aberrant_shift_trim_right_flag
+			}
+			if = {
+				limit = {
+					has_country_flag = fifth_estate_aberrant_shift_trim_right_flag
+					has_conservative_fifth_estate = yes
+					NOT = { has_government = conservative }
+				}
+				set_country_flag = NVX_flag_fifth_estate_conservative
+				fifth_estate_targeted_total_decrease = yes
+				clr_country_flag = fifth_estate_aberrant_shift_trim_right_flag
+			}
+			if = {
+				limit = {
+					has_country_flag = fifth_estate_aberrant_shift_trim_right_flag
+					has_market_liberal_fifth_estate = yes
+					NOT = { has_government = market_liberal }
+				}
+				set_country_flag = NVX_flag_fifth_estate_market_liberal
+				fifth_estate_targeted_total_decrease = yes
+				clr_country_flag = fifth_estate_aberrant_shift_trim_right_flag
+			}
+		}
+		if = {
+			limit = { AND = { check_variable = { trimright_rng_variable > 0.329 } check_variable = { trimright_rng_variable < 0.66 } } }
+			if = {
+				limit = {
+					has_country_flag = fifth_estate_aberrant_shift_trim_right_flag
+					has_conservative_fifth_estate = yes
+					NOT = { has_government = conservative }
+				}
+				set_country_flag = NVX_flag_fifth_estate_conservative
+				fifth_estate_targeted_total_decrease = yes
+				clr_country_flag = fifth_estate_aberrant_shift_trim_right_flag
+			}
+			if = {
+				limit = {
+					has_country_flag = fifth_estate_aberrant_shift_trim_right_flag
+					has_market_liberal_fifth_estate = yes
+					NOT = { has_government = market_liberal }
+				}
+				set_country_flag = NVX_flag_fifth_estate_market_liberal
+				fifth_estate_targeted_total_decrease = yes
+				clr_country_flag = fifth_estate_aberrant_shift_trim_right_flag
+			}
+			if = {
+				limit = {
+					has_country_flag = fifth_estate_aberrant_shift_trim_right_flag
+					has_reactionary_fifth_estate = yes
+					NOT = { has_government = reactionary }
+				}
+				set_country_flag = NVX_flag_fifth_estate_reactionary
+				fifth_estate_targeted_total_decrease = yes
+				clr_country_flag = fifth_estate_aberrant_shift_trim_right_flag
+			}
+		}
+		if = {
+			limit = { check_variable = { trimright_rng_variable > 0.659 } }
+			if = {
+				limit = {
+					has_country_flag = fifth_estate_aberrant_shift_trim_right_flag
+					has_market_liberal_fifth_estate = yes
+					NOT = { has_government = market_liberal }
+				}
+				set_country_flag = NVX_flag_fifth_estate_market_liberal
+				fifth_estate_targeted_total_decrease = yes
+				clr_country_flag = fifth_estate_aberrant_shift_trim_right_flag
+			}
+			if = {
+				limit = {
+					has_country_flag = fifth_estate_aberrant_shift_trim_right_flag
+					has_reactionary_fifth_estate = yes
+					NOT = { has_government = reactionary }
+				}
+				set_country_flag = NVX_flag_fifth_estate_reactionary
+				fifth_estate_targeted_total_decrease = yes
+				clr_country_flag = fifth_estate_aberrant_shift_trim_right_flag
+			}
+			if = {
+				limit = {
+					has_country_flag = fifth_estate_aberrant_shift_trim_right_flag
+					has_conservative_fifth_estate = yes
+					NOT = { has_government = conservative }
+				}
+				set_country_flag = NVX_flag_fifth_estate_conservative
+				fifth_estate_targeted_total_decrease = yes
+				clr_country_flag = fifth_estate_aberrant_shift_trim_right_flag
+			}
+		}
+	}
+}
+
+# used in coups #
+NVX_ESTATE_fourth_estate_self_increase = {
+	if = {
+		limit = { has_government = islamist }
+		fourth_estate_islamist_increase = yes
+	}
+	if = {
+		limit = { has_government = fascist }
+		fourth_estate_fascist_increase = yes
+	}
+	if = {
+		limit = { has_government = nationalist }
+		fourth_estate_nationalist_increase = yes
+	}
+	if = {
+		limit = { has_government = monarchist }
+		fourth_estate_monarchist_increase = yes
+	}
+	if = {
+		limit = { has_government = reactionary }
+		fourth_estate_reactionary_increase = yes
+	}
+	if = {
+		limit = { has_government = conservative }
+		fourth_estate_conservative_increase = yes
+	}
+	if = {
+		limit = { has_government = market_liberal }
+		fourth_estate_market_liberal_increase = yes
+	}
+	if = {
+		limit = { has_government = social_liberal }
+		fourth_estate_social_liberal_increase = yes
+	}
+	if = {
+		limit = { has_government = social_democrat }
+		fourth_estate_social_democrat_increase = yes
+	}
+	if = {
+		limit = { has_government = progressive }
+		fourth_estate_progressive_increase = yes
+	}
+	if = {
+		limit = { has_government = democratic_socialist }
+		fourth_estate_democratic_socialist_increase = yes
+	}
+	if = {
+		limit = { has_government = communist }
+		fourth_estate_communist_increase = yes
+	}
+}
+
+NVX_ESTATE_fourth_estate_friendly_increase = {
+	if = {
+		limit = { has_government = islamist }
+		fourth_estate_reactionary_increase = yes
+	}
+	if = {
+		limit = { has_government = fascist }
+		fourth_estate_nationalist_increase = yes
+	}
+	if = {
+		limit = { has_government = nationalist }
+		fourth_estate_reactionary_increase = yes
+	}
+	if = {
+		limit = { has_government = monarchist }
+		fourth_estate_reactionary_increase = yes
+	}
+	if = {
+		limit = { has_government = reactionary }
+		fourth_estate_conservative_increase = yes
+	}
+	if = {
+		limit = { has_government = conservative }
+		fourth_estate_market_liberal_increase = yes
+	}
+	if = {
+		limit = { has_government = market_liberal }
+		fourth_estate_conservative_increase = yes
+	}
+	if = {
+		limit = { has_government = social_liberal }
+		fourth_estate_social_democrat_increase = yes
+	}
+	if = {
+		limit = { has_government = social_democrat }
+		fourth_estate_social_liberal_increase = yes
+	}
+	if = {
+		limit = { has_government = progressive }
+		fourth_estate_democratic_socialist_increase = yes
+	}
+	if = {
+		limit = { has_government = democratic_socialist }
+		fourth_estate_communist_increase = yes
+	}
+	if = {
+		limit = { has_government = communist }
+		fourth_estate_democratic_socialist_increase = yes
+	}
+}
+
+## EVENT OPTION EFFECTS ##
+
+NVX_estates_injunction_effect = {
+	if = {
+		limit = { NVX_estates_has_government_system_pol = yes }
+		add_political_power = -50
+	}
+	if = {
+		limit = { NVX_estates_has_government_system_fisc = yes }
+		NVX_LPA_ECOLITE_s025 = yes
+	}
+}
+
+NVX_estates_shutdown_effect = {
+	add_political_power = -30
+	if = {
+		limit = { has_country_flag = NVX_flag_fourth_estate_islamist }
+		add_popularity = {
+			ideology = islamist
+			popularity = -0.02
+		}
+	}
+	if = {
+		limit = { has_country_flag = NVX_flag_fourth_estate_fascist }
+		add_popularity = {
+			ideology = fascist
+			popularity = -0.02
+		}
+	}
+	if = {
+		limit = { has_country_flag = NVX_flag_fourth_estate_nationalist }
+		add_popularity = {
+			ideology = nationalist
+			popularity = -0.02
+		}
+	}
+	if = {
+		limit = { has_country_flag = NVX_flag_fourth_estate_monarchist }
+		add_popularity = {
+			ideology = monarchist
+			popularity = -0.02
+		}
+	}
+	if = {
+		limit = { has_country_flag = NVX_flag_fourth_estate_reactionary }
+		add_popularity = {
+			ideology = reactionary
+			popularity = -0.02
+		}
+	}
+	if = {
+		limit = { has_country_flag = NVX_flag_fourth_estate_conservative }
+		add_popularity = {
+			ideology = conservative
+			popularity = -0.02
+		}
+	}
+	if = {
+		limit = { has_country_flag = NVX_flag_fourth_estate_market_liberal }
+		add_popularity = {
+			ideology = market_liberal
+			popularity = -0.02
+		}
+	}
+	if = {
+		limit = { has_country_flag = NVX_flag_fourth_estate_social_liberal }
+		add_popularity = {
+			ideology = social_liberal
+			popularity = -0.02
+		}
+	}
+	if = {
+		limit = { has_country_flag = NVX_flag_fourth_estate_social_democrat }
+		add_popularity = {
+			ideology = social_democrat
+			popularity = -0.02
+		}
+	}
+	if = {
+		limit = { has_country_flag = NVX_flag_fourth_estate_progressive }
+		add_popularity = {
+			ideology = progressive
+			popularity = -0.02
+		}
+	}
+	if = {
+		limit = { has_country_flag = NVX_flag_fourth_estate_democratic_socialist }
+		add_popularity = {
+			ideology = democratic_socialist
+			popularity = -0.02
+		}
+	}
+	if = {
+		limit = { has_country_flag = NVX_flag_fourth_estate_communist }
+		add_popularity = {
+			ideology = communist
+			popularity = -0.02
+		}
+	}
+}
+
+# Written by E. Wolfe #

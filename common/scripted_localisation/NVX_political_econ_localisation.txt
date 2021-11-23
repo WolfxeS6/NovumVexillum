@@ -1,0 +1,981 @@
+# Written by E. Wolfe #
+
+defined_text = {
+	name = GetExpansionOrFounding
+	
+	text = {
+		trigger = {
+			fourth_estate_expand_or_found = yes
+		}
+		localization_key = NVX_POLECON_EXPAND
+	}
+	text = {
+		trigger = {
+			fourth_estate_expand_or_found = no
+		}
+		localization_key = NVX_POLECON_FOUND
+	}
+}
+
+defined_text = {
+	name = GetExpansionOrFoundingIdeology
+	
+	text = {
+		trigger = {
+			OR = {
+				has_country_flag = NVX_flag_fourth_estate_islamist
+				has_country_flag = NVX_flag_fifth_estate_islamist
+			}
+		}
+		localization_key = NVX_POLECON_IDEO_ISLAMIST
+	}
+	text = {
+		trigger = {
+			OR = {
+				has_country_flag = NVX_flag_fourth_estate_fascist
+				has_country_flag = NVX_flag_fifth_estate_fascist
+			}
+		}
+		localization_key = NVX_POLECON_IDEO_FASCIST
+	}
+	text = {
+		trigger = {
+			OR = {
+				has_country_flag = NVX_flag_fourth_estate_nationalist
+				has_country_flag = NVX_flag_fifth_estate_nationalist
+			}
+		}
+		localization_key = NVX_POLECON_IDEO_NATIONALIST
+	}
+	text = {
+		trigger = {
+			OR = {
+				has_country_flag = NVX_flag_fourth_estate_monarchist
+				has_country_flag = NVX_flag_fifth_estate_monarchist
+			}
+		}
+		localization_key = NVX_POLECON_IDEO_MONARCHIST
+	}
+	text = {
+		trigger = {
+			OR = {
+				has_country_flag = NVX_flag_fourth_estate_reactionary
+				has_country_flag = NVX_flag_fifth_estate_reactionary
+			}
+		}
+		localization_key = NVX_POLECON_IDEO_REACTIONARY
+	}
+	text = {
+		trigger = {
+			OR = {
+				has_country_flag = NVX_flag_fourth_estate_conservative
+				has_country_flag = NVX_flag_fifth_estate_conservative
+			}
+		}
+		localization_key = NVX_POLECON_IDEO_CONSERVATIVE
+	}
+	text = {
+		trigger = {
+			OR = {
+				has_country_flag = NVX_flag_fourth_estate_market_liberal
+				has_country_flag = NVX_flag_fifth_estate_market_liberal
+			}
+		}
+		localization_key = NVX_POLECON_IDEO_MARKET_LIBERAL
+	}
+	text = {
+		trigger = {
+			OR = {
+				has_country_flag = NVX_flag_fourth_estate_social_liberal
+				has_country_flag = NVX_flag_fifth_estate_social_liberal
+			}
+		}
+		localization_key = NVX_POLECON_IDEO_SOCIAL_LIBERAL
+	}
+	text = {
+		trigger = {
+			OR = {
+				has_country_flag = NVX_flag_fourth_estate_social_democrat
+				has_country_flag = NVX_flag_fifth_estate_social_democrat
+			}
+		}
+		localization_key = NVX_POLECON_IDEO_SOCIAL_DEMOCRAT
+	}
+	text = {
+		trigger = {
+			OR = {
+				has_country_flag = NVX_flag_fourth_estate_progressive
+				has_country_flag = NVX_flag_fifth_estate_progressive
+			}
+		}
+		localization_key = NVX_POLECON_IDEO_PROGRESSIVE
+	}
+	text = {
+		trigger = {
+			OR = {
+				has_country_flag = NVX_flag_fourth_estate_democratic_socialist
+				has_country_flag = NVX_flag_fifth_estate_democratic_socialist
+			}
+		}
+		localization_key = NVX_POLECON_IDEO_DEMOCRATIC_SOCIALIST
+	}
+	text = {
+		trigger = {
+			OR = {
+				has_country_flag = NVX_flag_fourth_estate_communist
+				has_country_flag = NVX_flag_fifth_estate_communist
+			}
+		}
+		localization_key = NVX_POLECON_IDEO_COMMUNIST
+	}
+}
+
+defined_text = {
+	name = GetDownscaleOrForeclose
+	
+	text = {
+		trigger = {
+			fourth_estate_downscale_or_foreclose = no
+		}
+		localization_key = NVX_POLECON_DOWNSCALE
+	}
+	text = {
+		trigger = {
+			fourth_estate_downscale_or_foreclose = yes
+		}
+		localization_key = NVX_POLECON_FORECLOSE
+	}
+}
+
+#####################
+### EXPANDED INFO ###
+#####################
+defined_text = {
+	name = GetCentralizationStatus
+	
+	text = {
+		trigger = {
+			has_idea = centralization_unitary
+		}
+		localization_key = "GFX_idea_centralization_unitary"
+	}
+	text = {
+		trigger = {
+			has_idea = centralization_federal
+		}
+		localization_key = "GFX_idea_centralization_federal"
+	}
+	text = {
+		trigger = {
+			has_idea = centralization_confederate
+		}
+		localization_key = "GFX_idea_centralization_confederate"
+	}
+	text = {
+		trigger = {
+			has_idea = centralization_anarchy
+		}
+		localization_key = "GFX_idea_centralization_anarchy"
+	}
+}
+
+defined_text = {
+	name = GetCentralizationTextStatus
+	
+	text = {
+		trigger = {
+			has_idea = centralization_unitary
+		}
+		localization_key = "centralization_unitary"
+	}
+	text = {
+		trigger = {
+			has_idea = centralization_federal
+		}
+		localization_key = "centralization_federal"
+	}
+	text = {
+		trigger = {
+			has_idea = centralization_confederate
+		}
+		localization_key = "centralization_confederate"
+	}
+	text = {
+		trigger = {
+			has_idea = centralization_anarchy
+		}
+		localization_key = "centralization_anarchy"
+	}
+}
+
+defined_text = {
+	name = GetGovernmentSystemStatus
+	
+	text = {
+		trigger = {
+			has_idea = government_system_presidential_republic
+		}
+		localization_key = "GFX_idea_government_system_presidential_republic"
+	}
+	text = {
+		trigger = {
+			has_idea = government_system_parliamentary_republic
+		}
+		localization_key = "GFX_idea_government_system_parliamentary_republic"
+	}
+	text = {
+		trigger = {
+			has_idea = government_system_constitutional_monarchy
+		}
+		localization_key = "GFX_idea_government_system_constitutional_monarchy"
+	}
+	text = {
+		trigger = {
+			has_idea = government_system_absolute_monarchy
+		}
+		localization_key = "GFX_idea_government_system_absolute_monarchy"
+	}
+	text = {
+		trigger = {
+			has_idea = government_system_one_party
+		}
+		localization_key = "GFX_idea_government_system_one_party"
+	}
+	text = {
+		trigger = {
+			has_idea = government_system_autocracy
+		}
+		localization_key = "GFX_idea_government_system_autocracy"
+	}
+	text = {
+		trigger = {
+			has_idea = government_system_provisional
+		}
+		localization_key = "GFX_idea_government_system_provisional"
+	}
+	text = {
+		trigger = {
+			has_idea = government_system_imperial
+		}
+		localization_key = "GFX_idea_government_system_imperial"
+	}
+}
+
+defined_text = {
+	name = GetGovernmentSystemTextStatus
+	
+	text = {
+		trigger = {
+			has_idea = government_system_presidential_republic
+		}
+		localization_key = "government_system_presidential_republic"
+	}
+	text = {
+		trigger = {
+			has_idea = government_system_parliamentary_republic
+		}
+		localization_key = "government_system_parliamentary_republic"
+	}
+	text = {
+		trigger = {
+			has_idea = government_system_constitutional_monarchy
+		}
+		localization_key = "government_system_constitutional_monarchy"
+	}
+	text = {
+		trigger = {
+			has_idea = government_system_absolute_monarchy
+		}
+		localization_key = "government_system_absolute_monarchy"
+	}
+	text = {
+		trigger = {
+			has_idea = government_system_one_party
+		}
+		localization_key = "government_system_one_party"
+	}
+	text = {
+		trigger = {
+			has_idea = government_system_autocracy
+		}
+		localization_key = "government_system_autocracy"
+	}
+	text = {
+		trigger = {
+			has_idea = government_system_provisional
+		}
+		localization_key = "government_system_provisional"
+	}
+	text = {
+		trigger = {
+			has_idea = government_system_imperial
+		}
+		localization_key = "government_system_imperial"
+	}
+}
+
+defined_text = {
+	name = GetNationalDevelopmentStatus
+	
+	text = {
+		trigger = {
+			has_idea = national_development_advanced
+		}
+		localization_key = "GFX_idea_national_development_advanced"
+	}
+	text = {
+		trigger = {
+			has_idea = national_development_developed
+		}
+		localization_key = "GFX_idea_national_development_developed"
+	}
+	text = {
+		trigger = {
+			has_idea = national_development_developing
+		}
+		localization_key = "GFX_idea_national_development_developing"
+	}
+	text = {
+		trigger = {
+			has_idea = national_development_undeveloped
+		}
+		localization_key = "GFX_idea_national_development_undeveloped"
+	}
+}
+
+defined_text = {
+	name = GetNationalDevelopmentTextStatus
+	
+	text = {
+		trigger = {
+			has_idea = national_development_advanced
+		}
+		localization_key = "national_development_advanced"
+	}
+	text = {
+		trigger = {
+			has_idea = national_development_developed
+		}
+		localization_key = "national_development_developed"
+	}
+	text = {
+		trigger = {
+			has_idea = national_development_developing
+		}
+		localization_key = "national_development_developing"
+	}
+	text = {
+		trigger = {
+			has_idea = national_development_undeveloped
+		}
+		localization_key = "national_development_undeveloped"
+	}
+}
+
+defined_text = {
+	name = GetEconomyStatus
+	
+	text = {
+		trigger = {
+			has_idea = economy_boom
+		}
+		localization_key = "GFX_idea_economy_boom"
+	}
+	text = {
+		trigger = {
+			has_idea = economy_growth
+		}
+		localization_key = "GFX_idea_economy_growth"
+	}
+	text = {
+		trigger = {
+			has_idea = economy_stagnation
+		}
+		localization_key = "GFX_idea_economy_stagnation"
+	}
+	text = {
+		trigger = {
+			has_idea = economy_recession
+		}
+		localization_key = "GFX_idea_economy_recession"
+	}
+	text = {
+		trigger = {
+			has_idea = economy_depression
+		}
+		localization_key = "GFX_idea_economy_depression"
+	}
+}
+
+defined_text = {
+	name = GetEconomyTextStatus
+	
+	text = {
+		trigger = {
+			has_idea = economy_boom
+		}
+		localization_key = "economy_boom"
+	}
+	text = {
+		trigger = {
+			has_idea = economy_growth
+		}
+		localization_key = "economy_growth"
+	}
+	text = {
+		trigger = {
+			has_idea = economy_stagnation
+		}
+		localization_key = "economy_stagnation"
+	}
+	text = {
+		trigger = {
+			has_idea = economy_recession
+		}
+		localization_key = "economy_recession"
+	}
+	text = {
+		trigger = {
+			has_idea = economy_depression
+		}
+		localization_key = "economy_depression"
+	}
+}
+
+defined_text = {
+	name = GetEconomyTaxRateStatus
+	
+	text = {
+		trigger = {
+			has_idea = economy_tax_extreme
+		}
+		localization_key = "GFX_idea_economy_tax_extreme"
+	}
+	text = {
+		trigger = {
+			has_idea = economy_tax_high
+		}
+		localization_key = "GFX_idea_economy_tax_high"
+	}
+	text = {
+		trigger = {
+			has_idea = economy_tax_moderate
+		}
+		localization_key = "GFX_idea_economy_tax_moderate"
+	}
+	text = {
+		trigger = {
+			has_idea = economy_tax_low
+		}
+		localization_key = "GFX_idea_economy_tax_low"
+	}
+	text = {
+		trigger = {
+			has_idea = economy_tax_meager
+		}
+		localization_key = "GFX_idea_economy_tax_meager"
+	}
+	text = {
+		trigger = {
+			has_idea = economy_tax_robotic
+		}
+		localization_key = "GFX_idea_economy_tax_robotic"
+	}
+}
+
+defined_text = {
+	name = GetEconomyTaxRateTextStatus
+	
+	text = {
+		trigger = {
+			has_idea = economy_tax_extreme
+		}
+		localization_key = "economy_tax_extreme"
+	}
+	text = {
+		trigger = {
+			has_idea = economy_tax_high
+		}
+		localization_key = "economy_tax_high"
+	}
+	text = {
+		trigger = {
+			has_idea = economy_tax_moderate
+		}
+		localization_key = "economy_tax_moderate"
+	}
+	text = {
+		trigger = {
+			has_idea = economy_tax_low
+		}
+		localization_key = "economy_tax_low"
+	}
+	text = {
+		trigger = {
+			has_idea = economy_tax_meager
+		}
+		localization_key = "economy_tax_meager"
+	}
+	text = {
+		trigger = {
+			has_idea = economy_tax_robotic
+		}
+		localization_key = "economy_tax_robotic"
+	}
+}
+
+defined_text = {
+	name = GetTradeLawsStatus
+	
+	text = {
+		trigger = {
+			has_idea = free_trade
+		}
+		localization_key = "GFX_idea_free_trade"
+	}
+	text = {
+		trigger = {
+			has_idea = export_focus
+		}
+		localization_key = "GFX_idea_export_focus"
+	}
+	text = {
+		trigger = {
+			has_idea = limited_exports
+		}
+		localization_key = "GFX_idea_limited_exports"
+	}
+	text = {
+		trigger = {
+			has_idea = closed_economy
+		}
+		localization_key = "GFX_idea_closed_economy"
+	}
+}
+
+defined_text = {
+	name = GetTradeLawsTextStatus
+	
+	text = {
+		trigger = {
+			has_idea = free_trade
+		}
+		localization_key = "free_trade"
+	}
+	text = {
+		trigger = {
+			has_idea = export_focus
+		}
+		localization_key = "export_focus"
+	}
+	text = {
+		trigger = {
+			has_idea = limited_exports
+		}
+		localization_key = "limited_exports"
+	}
+	text = {
+		trigger = {
+			has_idea = closed_economy
+		}
+		localization_key = "closed_economy"
+	}
+}
+
+defined_text = {
+	name = GetMobilizationLawsStatus
+	
+	text = {
+		trigger = {
+			has_idea = disarmed_nation
+		}
+		localization_key = "GFX_idea_disarmed_nation"
+	}
+	text = {
+		trigger = {
+			has_idea = volunteer_only
+		}
+		localization_key = "GFX_idea_volunteer_only"
+	}
+	text = {
+		trigger = {
+			has_idea = limited_conscription
+		}
+		localization_key = "GFX_idea_limited_conscription"
+	}
+	text = {
+		trigger = {
+			has_idea = extensive_conscription
+		}
+		localization_key = "GFX_idea_extensive_conscription"
+	}
+	text = {
+		trigger = {
+			has_idea = service_by_requirement
+		}
+		localization_key = "GFX_idea_service_by_requirement"
+	}
+	text = {
+		trigger = {
+			has_idea = all_adults_serve
+		}
+		localization_key = "GFX_idea_all_adults_serve"
+	}
+	text = {
+		trigger = {
+			has_idea = scraping_the_barrel
+		}
+		localization_key = "GFX_idea_scraping_the_barrel"
+	}
+}
+
+defined_text = {
+	name = GetMobilizationLawsTextStatus
+	
+	text = {
+		trigger = {
+			has_idea = disarmed_nation
+		}
+		localization_key = "disarmed_nation"
+	}
+	text = {
+		trigger = {
+			has_idea = volunteer_only
+		}
+		localization_key = "volunteer_only"
+	}
+	text = {
+		trigger = {
+			has_idea = limited_conscription
+		}
+		localization_key = "limited_conscription"
+	}
+	text = {
+		trigger = {
+			has_idea = extensive_conscription
+		}
+		localization_key = "extensive_conscription"
+	}
+	text = {
+		trigger = {
+			has_idea = service_by_requirement
+		}
+		localization_key = "service_by_requirement"
+	}
+	text = {
+		trigger = {
+			has_idea = all_adults_serve
+		}
+		localization_key = "all_adults_serve"
+	}
+	text = {
+		trigger = {
+			has_idea = scraping_the_barrel
+		}
+		localization_key = "scraping_the_barrel"
+	}
+}
+
+defined_text = {
+	name = GetMobilizationServiceTimeStatus
+	
+	text = {
+		trigger = {
+			has_idea = mobilization_service_time_levy
+		}
+		localization_key = "GFX_idea_mobilization_service_time_levy"
+	}
+	text = {
+		trigger = {
+			has_idea = mobilization_service_time_duty
+		}
+		localization_key = "GFX_idea_mobilization_service_time_duty"
+	}
+	text = {
+		trigger = {
+			has_idea = mobilization_service_time_career
+		}
+		localization_key = "GFX_idea_mobilization_service_time_career"
+	}
+}
+
+defined_text = {
+	name = GetMobilizationServiceTimeTextStatus
+	
+	text = {
+		trigger = {
+			has_idea = mobilization_service_time_levy
+		}
+		localization_key = "mobilization_service_time_levy"
+	}
+	text = {
+		trigger = {
+			has_idea = mobilization_service_time_duty
+		}
+		localization_key = "mobilization_service_time_duty"
+	}
+	text = {
+		trigger = {
+			has_idea = mobilization_service_time_career
+		}
+		localization_key = "mobilization_service_time_career"
+	}
+}
+
+defined_text = {
+	name = GetPublicSafetyStatus
+	
+	text = {
+		trigger = {
+			has_idea = public_safety_local_law_enforcement
+		}
+		localization_key = "GFX_idea_public_safety_local_law_enforcement"
+	}
+	text = {
+		trigger = {
+			has_idea = public_safety_subsidized_agencies
+		}
+		localization_key = "GFX_idea_public_safety_subsidized_agencies"
+	}
+	text = {
+		trigger = {
+			has_idea = public_safety_central_law_office
+		}
+		localization_key = "GFX_idea_public_safety_central_law_office"
+	}
+	text = {
+		trigger = {
+			has_idea = public_safety_secret_police
+		}
+		localization_key = "GFX_idea_public_safety_secret_police"
+	}
+}
+
+defined_text = {
+	name = GetPublicSafetyTextStatus
+	
+	text = {
+		trigger = {
+			has_idea = public_safety_local_law_enforcement
+		}
+		localization_key = "public_safety_local_law_enforcement"
+	}
+	text = {
+		trigger = {
+			has_idea = public_safety_subsidized_agencies
+		}
+		localization_key = "public_safety_subsidized_agencies"
+	}
+	text = {
+		trigger = {
+			has_idea = public_safety_central_law_office
+		}
+		localization_key = "public_safety_central_law_office"
+	}
+	text = {
+		trigger = {
+			has_idea = public_safety_secret_police
+		}
+		localization_key = "public_safety_secret_police"
+	}
+}
+
+defined_text = {
+	name = GetImmigrationPolicyStatus
+	
+	text = {
+		trigger = {
+			has_idea = immigration_policy_open_borders
+		}
+		localization_key = "GFX_idea_immigration_policy_open_borders"
+	}
+	text = {
+		trigger = {
+			has_idea = immigration_policy_loose_regulations
+		}
+		localization_key = "GFX_idea_immigration_policy_loose_regulations"
+	}
+	text = {
+		trigger = {
+			has_idea = immigration_policy_service_guarantees_citizenship
+		}
+		localization_key = "GFX_idea_immigration_policy_service_guarantees_citizenship"
+	}
+	text = {
+		trigger = {
+			has_idea = immigration_policy_strict_regulations
+		}
+		localization_key = "GFX_idea_immigration_policy_strict_regulations"
+	}
+	text = {
+		trigger = {
+			has_idea = immigration_policy_closed_country
+		}
+		localization_key = "GFX_idea_immigration_policy_closed_country"
+	}
+}
+
+defined_text = {
+	name = GetImmigrationPolicyTextStatus
+	
+	text = {
+		trigger = {
+			has_idea = immigration_policy_open_borders
+		}
+		localization_key = "immigration_policy_open_borders"
+	}
+	text = {
+		trigger = {
+			has_idea = immigration_policy_loose_regulations
+		}
+		localization_key = "immigration_policy_loose_regulations"
+	}
+	text = {
+		trigger = {
+			has_idea = immigration_policy_service_guarantees_citizenship
+		}
+		localization_key = "immigration_policy_service_guarantees_citizenship"
+	}
+	text = {
+		trigger = {
+			has_idea = immigration_policy_strict_regulations
+		}
+		localization_key = "immigration_policy_strict_regulations"
+	}
+	text = {
+		trigger = {
+			has_idea = immigration_policy_closed_country
+		}
+		localization_key = "immigration_policy_closed_country"
+	}
+}
+
+defined_text = {
+	name = GetCivilLibertiesStatus
+	
+	text = {
+		trigger = {
+			has_idea = civil_liberties_free
+		}
+		localization_key = "GFX_idea_civil_liberties_free"
+	}
+	text = {
+		trigger = {
+			has_idea = civil_liberties_limited
+		}
+		localization_key = "GFX_idea_civil_liberties_limited"
+	}
+	text = {
+		trigger = {
+			has_idea = civil_liberties_restricted
+		}
+		localization_key = "GFX_idea_civil_liberties_restricted"
+	}
+	text = {
+		trigger = {
+			has_idea = civil_liberties_totalitarian
+		}
+		localization_key = "GFX_idea_civil_liberties_totalitarian"
+	}
+}
+
+defined_text = {
+	name = GetCivilLibertiesTextStatus
+	
+	text = {
+		trigger = {
+			has_idea = civil_liberties_free
+		}
+		localization_key = "civil_liberties_free"
+	}
+	text = {
+		trigger = {
+			has_idea = civil_liberties_limited
+		}
+		localization_key = "civil_liberties_limited"
+	}
+	text = {
+		trigger = {
+			has_idea = civil_liberties_restricted
+		}
+		localization_key = "civil_liberties_restricted"
+	}
+	text = {
+		trigger = {
+			has_idea = civil_liberties_totalitarian
+		}
+		localization_key = "civil_liberties_totalitarian"
+	}
+}
+
+defined_text = {
+	name = GetWelfareStatus
+	
+	text = {
+		trigger = {
+			has_idea = welfare_none
+		}
+		localization_key = "GFX_idea_welfare_none"
+	}
+	text = {
+		trigger = {
+			has_idea = welfare_basic_subsidies
+		}
+		localization_key = "GFX_idea_welfare_basic_subsidies"
+	}
+	text = {
+		trigger = {
+			has_idea = welfare_modest_assistance
+		}
+		localization_key = "GFX_idea_welfare_modest_assistance"
+	}
+	text = {
+		trigger = {
+			has_idea = welfare_considerable_assistance
+		}
+		localization_key = "GFX_idea_welfare_considerable_assistance"
+	}
+	text = {
+		trigger = {
+			has_idea = welfare_universal_basic_income
+		}
+		localization_key = "GFX_idea_welfare_universal_basic_income"
+	}
+}
+
+defined_text = {
+	name = GetWelfareTextStatus
+	
+	text = {
+		trigger = {
+			has_idea = welfare_none
+		}
+		localization_key = "welfare_none"
+	}
+	text = {
+		trigger = {
+			has_idea = welfare_basic_subsidies
+		}
+		localization_key = "welfare_basic_subsidies"
+	}
+	text = {
+		trigger = {
+			has_idea = welfare_modest_assistance
+		}
+		localization_key = "welfare_modest_assistance"
+	}
+	text = {
+		trigger = {
+			has_idea = welfare_considerable_assistance
+		}
+		localization_key = "welfare_considerable_assistance"
+	}
+	text = {
+		trigger = {
+			has_idea = welfare_universal_basic_income
+		}
+		localization_key = "welfare_universal_basic_income"
+	}
+}
+
+# Written by E. Wolfe #

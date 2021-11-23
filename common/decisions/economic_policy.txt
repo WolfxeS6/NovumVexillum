@@ -1,0 +1,84 @@
+economic_policy = {
+	
+	seize_the_means_of_production = {
+		visible = {
+			NOT = { has_government = communist }
+			communist > 0.05
+		}
+		available = {
+			NOT = { has_government = fascist }
+			NOT = { has_government = monarchist }
+			NOT = { has_government = market_liberal }
+			OR = {
+				social_democrat > 0.15
+				democratic_socialist > 0.15
+				communist > 0.15
+			}
+		}
+		modifier = {
+		}
+		complete_effect = {
+			add_stability = -0.02
+			add_war_support = -0.02
+			fourth_estate_communist_increase = yes
+			add_popularity = {
+				ideology = communist
+				popularity = 0.03
+			}
+			create_random_factory_CIV_1 = yes
+		}
+		
+		icon = communism
+		
+		cost = 150
+		days_re_enable = 1825
+		
+		ai_will_do = {
+			base = 0
+			modifier = { has_government = communist add = 8 }
+			modifier = { has_government = democratic_socialist add = 2 }
+		}
+	}
+	
+	state_corporatist_reforms = {
+		visible = {
+			NOT = { has_government = fascist }
+			fascist > 0.05
+		}
+		available = {
+			NOT = { has_government = progressive }
+			NOT = { has_government = social_democrat }
+			NOT = { has_government = social_liberal }
+			NOT = { has_government = democratic_socialist }
+			NOT = { has_government = market_liberal }
+			OR = {
+				fascist > 0.15
+				nationalist > 0.15
+			}
+		}
+		modifier = {
+		}
+		complete_effect = {
+			add_stability = -0.02
+			add_war_support = -0.02
+			fourth_estate_fascist_increase = yes
+			add_popularity = {
+				ideology = fascist
+				popularity = 0.03
+			}
+			create_random_factory_MIL_1 = yes
+		}
+		
+		icon = fascism
+		
+		cost = 150
+		days_re_enable = 1825
+		
+		ai_will_do = {
+			base = 0
+			modifier = { has_government = fascist add = 8 }
+			modifier = { has_government = nationalist add = 2 }
+		}
+	}
+	
+}

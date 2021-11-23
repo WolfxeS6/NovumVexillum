@@ -1,0 +1,1543 @@
+# islamist fascist nationalist monarchist reactionary conservative market_liberal social_liberal social_democrat progressive democratic_socialist communist
+
+NVX_policies_cat = {
+	#################
+	### POLITICAL ###
+	#################
+	NVX_policies_P_factionalism = {
+		icon = NVX_policies_political
+		
+		available = {
+			hidden_trigger = { NVX_LPA_policies_available_1 = yes }
+		}
+		
+		visible = {
+			
+		}
+		
+		fire_only_once = no
+		
+		days_remove = -1
+		remove_trigger = {
+			hidden_trigger = { NOT = { has_country_flag = NVX_policies_P_factionalism } }
+		}
+		
+		cost = 50
+		
+		modifier = {
+			political_power_gain = 0.1
+			join_faction_tension = -0.4
+			custom_modifier_tooltip = TT_NVX_ECOLITE_factionalism
+		}
+		
+		complete_effect = {
+			set_country_flag = NVX_policies_P_factionalism
+			NVX_LPA_calc_slots = yes
+			NVX_LPA_policies_add_1 = yes
+		}
+		
+		remove_effect = {
+			
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	NVX_policies_P_factionalism_r = {
+		icon = NVX_policies_political
+		
+		available = {
+			
+		}
+		
+		visible = {
+			has_country_flag = NVX_policies_P_factionalism
+		}
+		
+		fire_only_once = no
+		
+		cost = 15
+		
+		complete_effect = {
+			clr_country_flag = NVX_policies_P_factionalism
+			NVX_LPA_policies_subtract_1 = yes
+			NVX_LPA_calc_slots = yes
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	NVX_policies_P_benevolent_dominion = {
+		icon = NVX_policies_political
+		
+		available = {
+			hidden_trigger = { NVX_LPA_policies_available_1 = yes }
+		}
+		
+		visible = {
+			
+		}
+		
+		fire_only_once = no
+		
+		days_remove = -1
+		remove_trigger = {
+			hidden_trigger = { NOT = { has_country_flag = NVX_policies_P_benevolent_dominion } }
+		}
+		
+		cost = 50
+		
+		modifier = {
+			political_power_gain = 0.1
+			custom_modifier_tooltip = TT_NVX_LPA_benevolent_dominion
+		}
+		
+		complete_effect = {
+			set_country_flag = NVX_policies_P_benevolent_dominion
+			NVX_LPA_calc_slots = yes
+			NVX_LPA_policies_add_1 = yes
+			hidden_effect = { add_ideas = NVX_idea_LPA_benevolent_dominion }
+		}
+		
+		remove_effect = {
+			
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	NVX_policies_P_benevolent_dominion_r = {
+		icon = NVX_policies_political
+		
+		available = {
+			
+		}
+		
+		visible = {
+			has_country_flag = NVX_policies_P_benevolent_dominion
+		}
+		
+		fire_only_once = no
+		
+		cost = 15
+		
+		complete_effect = {
+			clr_country_flag = NVX_policies_P_benevolent_dominion
+			NVX_LPA_policies_subtract_1 = yes
+			NVX_LPA_calc_slots = yes
+			hidden_effect = { remove_ideas = NVX_idea_LPA_benevolent_dominion }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	NVX_policies_P_diplomatic_harmony = {
+		icon = NVX_policies_political
+		
+		available = {
+			hidden_trigger = { NVX_LPA_policies_available_1 = yes }
+		}
+		
+		visible = {
+			OR = {
+				NVX_has_government_ideology_democratic = yes
+				has_government = monarchist
+			}
+		}
+		
+		fire_only_once = no
+		
+		days_remove = -1
+		remove_trigger = {
+			hidden_trigger = { NOT = { has_country_flag = NVX_policies_P_diplomatic_harmony } }
+		}
+		
+		cost = 50
+		
+		modifier = {
+			custom_modifier_tooltip = TT_NVX_LPA_diplomatic_harmony
+		}
+		
+		complete_effect = {
+			set_country_flag = NVX_policies_P_diplomatic_harmony
+			NVX_LPA_calc_slots = yes
+			NVX_LPA_policies_add_1 = yes
+		}
+		
+		remove_effect = {
+			
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	NVX_policies_P_diplomatic_harmony_r = {
+		icon = NVX_policies_political
+		
+		available = {
+			
+		}
+		
+		visible = {
+			has_country_flag = NVX_policies_P_diplomatic_harmony
+		}
+		
+		fire_only_once = no
+		
+		cost = 15
+		
+		complete_effect = {
+			clr_country_flag = NVX_policies_P_diplomatic_harmony
+			NVX_LPA_policies_subtract_1 = yes
+			NVX_LPA_calc_slots = yes
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	NVX_policies_P_operatives = {
+		icon = NVX_policies_political
+		
+		available = {
+			hidden_trigger = { NVX_LPA_policies_available_1 = yes }
+		}
+		
+		visible = {
+			
+		}
+		
+		fire_only_once = no
+		
+		days_remove = -1
+		remove_trigger = {
+			hidden_trigger = { NOT = { has_country_flag = NVX_policies_P_operatives } }
+		}
+		
+		cost = 50
+		
+		modifier = {
+			operative_slot = 2
+			civilian_factory_use = 5
+		}
+		
+		complete_effect = {
+			set_country_flag = NVX_policies_P_operatives
+			NVX_LPA_calc_slots = yes
+			NVX_LPA_policies_add_1 = yes
+		}
+		
+		remove_effect = {
+			
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	NVX_policies_P_operatives_r = {
+		icon = NVX_policies_political
+		
+		available = {
+			
+		}
+		
+		visible = {
+			has_country_flag = NVX_policies_P_operatives
+		}
+		
+		fire_only_once = no
+		
+		cost = 15
+		
+		complete_effect = {
+			clr_country_flag = NVX_policies_P_operatives
+			NVX_LPA_policies_subtract_1 = yes
+			NVX_LPA_calc_slots = yes
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	###############
+	### ECONOMY ###
+	###############
+	NVX_policies_E_free_market = {
+		icon = NVX_policies_economy
+		
+		available = {
+			hidden_trigger = { NVX_LPA_policies_available_1 = yes }
+		}
+		
+		visible = {
+			NVX_has_government_ideology_democratic = yes
+			OR = {
+				has_government = reactionary
+				reactionary > 0.25
+				has_government = conservative
+				conservative > 0.25
+				has_government = market_liberal
+				market_liberal > 0.25
+			}
+		}
+		
+		fire_only_once = no
+		
+		days_remove = -1
+		remove_trigger = {
+			hidden_trigger = { NOT = { has_country_flag = NVX_policies_E_free_market } }
+		}
+		
+		cost = 50
+		
+		modifier = {
+			custom_modifier_tooltip = TT_NVX_ECOLITE_growth_pos025
+			consumer_goods_factor = 0.05
+		}
+		
+		complete_effect = {
+			set_country_flag = NVX_policies_E_free_market
+			NVX_LPA_calc_slots = yes
+			NVX_LPA_policies_add_1 = yes
+		}
+		
+		remove_effect = {
+			
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	NVX_policies_E_free_market_r = {
+		icon = NVX_policies_economy
+		
+		available = {
+			
+		}
+		
+		visible = {
+			has_country_flag = NVX_policies_E_free_market
+		}
+		
+		fire_only_once = no
+		
+		cost = 15
+		
+		complete_effect = {
+			clr_country_flag = NVX_policies_E_free_market
+			NVX_LPA_policies_subtract_1 = yes
+			NVX_LPA_calc_slots = yes
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	NVX_policies_E_reduced_work = {
+		icon = NVX_policies_economy
+		
+		available = {
+			hidden_trigger = { NVX_LPA_policies_available_1 = yes }
+		}
+		
+		visible = {
+			NVX_has_government_ideology_democratic = yes
+			OR = {
+				social_liberal > 0.25
+				social_democrat > 0.25
+				progressive > 0.25
+				democratic_socialist > 0.25
+			}
+		}
+		
+		fire_only_once = no
+		
+		days_remove = -1
+		remove_trigger = {
+			hidden_trigger = { NOT = { has_country_flag = NVX_policies_reduced_work } }
+		}
+		
+		cost = 50
+		
+		modifier = {
+			industrial_capacity_factory = -0.1
+			production_speed_buildings_factor = -0.1
+			stability_factor = 0.05
+			political_power_gain = 0.25
+		}
+		
+		complete_effect = {
+			set_country_flag = NVX_policies_reduced_work
+			NVX_LPA_calc_slots = yes
+			NVX_LPA_policies_add_1 = yes
+		}
+		
+		remove_effect = {
+			
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	NVX_policies_E_reduced_work_r = {
+		icon = NVX_policies_economy
+		
+		available = {
+			
+		}
+		
+		visible = {
+			has_country_flag = NVX_policies_reduced_work
+		}
+		
+		fire_only_once = no
+		
+		cost = 15
+		
+		complete_effect = {
+			clr_country_flag = NVX_policies_reduced_work
+			NVX_LPA_policies_subtract_1 = yes
+			NVX_LPA_calc_slots = yes
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	NVX_policies_E_infrastructure_overhaul = {
+		icon = NVX_policies_economy
+		
+		available = {
+			hidden_trigger = { NVX_LPA_policies_available_1 = yes }
+		}
+		
+		visible = {
+			has_war = no
+		}
+		
+		fire_only_once = no
+		
+		days_remove = -1
+		remove_trigger = {
+			hidden_trigger = { NOT = { has_country_flag = NVX_policies_infrastructure_overhaul } }
+		}
+		
+		cost = 50
+		
+		modifier = {
+			production_speed_infrastructure_factor = 0.3
+			custom_modifier_tooltip = TT_NVX_ECOLITE_growth_neg025
+		}
+		
+		complete_effect = {
+			set_country_flag = NVX_policies_infrastructure_overhaul
+			NVX_LPA_calc_slots = yes
+			NVX_LPA_policies_add_1 = yes
+		}
+		
+		remove_effect = {
+			
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	NVX_policies_E_infrastructure_overhaul_r = {
+		icon = NVX_policies_economy
+		
+		available = {
+			
+		}
+		
+		visible = {
+			has_country_flag = NVX_policies_infrastructure_overhaul
+		}
+		
+		fire_only_once = no
+		
+		cost = 15
+		
+		complete_effect = {
+			clr_country_flag = NVX_policies_infrastructure_overhaul
+			NVX_LPA_policies_subtract_1 = yes
+			NVX_LPA_calc_slots = yes
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	NVX_policies_E_fund_production = {
+		icon = NVX_policies_economy
+		
+		available = {
+			hidden_trigger = { NVX_LPA_policies_available_1 = yes }
+		}
+		
+		visible = {
+			OR = {
+				NVX_has_government_ideology_authoritarian = yes
+				has_war = yes
+			}
+		}
+		
+		fire_only_once = no
+		
+		days_remove = -1
+		remove_trigger = {
+			hidden_trigger = { NOT = { has_country_flag = NVX_policies_fund_production } }
+		}
+		
+		cost = 50
+		
+		modifier = {
+			industrial_capacity_factory = 0.15
+			industrial_capacity_dockyard = 0.15
+			custom_modifier_tooltip = TT_NVX_ECOLITE_growth_neg025
+		}
+		
+		complete_effect = {
+			set_country_flag = NVX_policies_fund_production
+			NVX_LPA_calc_slots = yes
+			NVX_LPA_policies_add_1 = yes
+		}
+		
+		remove_effect = {
+			
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	NVX_policies_E_fund_production_r = {
+		icon = NVX_policies_economy
+		
+		available = {
+			
+		}
+		
+		visible = {
+			has_country_flag = NVX_policies_fund_production
+		}
+		
+		fire_only_once = no
+		
+		cost = 15
+		
+		complete_effect = {
+			clr_country_flag = NVX_policies_fund_production
+			NVX_LPA_policies_subtract_1 = yes
+			NVX_LPA_calc_slots = yes
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	NVX_policies_E_minerals_to_market = {
+		icon = NVX_policies_economy
+		
+		available = {
+			hidden_trigger = { NVX_LPA_policies_available_1 = yes }
+		}
+		
+		visible = {
+			NVX_has_government_ideology_democratic = yes
+			OR = {
+				conservative > 0.25
+				market_liberal > 0.25
+				social_liberal > 0.25
+			}
+			OR = {
+				has_idea = free_trade
+				has_idea = export_focus
+			}
+			OR = {
+				check_variable = { resource_produced@oil > 40 }
+				check_variable = { resource_produced@aluminium > 40 }
+				check_variable = { resource_produced@rubber > 40 }
+				check_variable = { resource_produced@tungsten > 40 }
+				check_variable = { resource_produced@steel > 40 }
+				check_variable = { resource_produced@chromium > 40 }
+			}
+		}
+		
+		fire_only_once = no
+		
+		days_remove = -1
+		remove_trigger = {
+			hidden_trigger = { NOT = { has_country_flag = NVX_policies_minerals_to_market } }
+		}
+		
+		cost = 50
+		
+		modifier = {
+			min_export = 0.1
+			custom_modifier_tooltip = TT_NVX_ECOLITE_growth_pos0125
+		}
+		
+		complete_effect = {
+			set_country_flag = NVX_policies_minerals_to_market
+			NVX_LPA_calc_slots = yes
+			NVX_LPA_policies_add_1 = yes
+		}
+		
+		remove_effect = {
+			
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	NVX_policies_E_minerals_to_market_r = {
+		icon = NVX_policies_economy
+		
+		available = {
+			
+		}
+		
+		visible = {
+			has_country_flag = NVX_policies_minerals_to_market
+		}
+		
+		fire_only_once = no
+		
+		cost = 15
+		
+		complete_effect = {
+			clr_country_flag = NVX_policies_minerals_to_market
+			NVX_LPA_policies_subtract_1 = yes
+			NVX_LPA_calc_slots = yes
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	NVX_policies_E_tax_the_rich = {
+		icon = NVX_policies_economy
+		
+		available = {
+			hidden_trigger = { NVX_LPA_policies_available_1 = yes }
+		}
+		
+		visible = {
+			NVX_has_government_ideology_democratic = yes
+			OR = {
+				social_democrat > 0.25
+				progressive > 0.25
+				democratic_socialist > 0.25
+			}
+		}
+		
+		fire_only_once = no
+		
+		days_remove = -1
+		remove_trigger = {
+			hidden_trigger = { NOT = { has_country_flag = NVX_policies_E_tax_the_rich } }
+		}
+		
+		cost = 50
+		
+		modifier = {
+			stability_factor = -0.2
+			production_speed_buildings_factor = -0.05
+			custom_modifier_tooltip = TT_NVX_ECOLITE_growth_pos025
+		}
+		
+		complete_effect = {
+			set_country_flag = NVX_policies_E_tax_the_rich
+			NVX_LPA_calc_slots = yes
+			NVX_LPA_policies_add_1 = yes
+		}
+		
+		remove_effect = {
+			
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	NVX_policies_E_tax_the_rich_r = {
+		icon = NVX_policies_economy
+		
+		available = {
+			
+		}
+		
+		visible = {
+			has_country_flag = NVX_policies_E_tax_the_rich
+		}
+		
+		fire_only_once = no
+		
+		cost = 15
+		
+		complete_effect = {
+			clr_country_flag = NVX_policies_E_tax_the_rich
+			NVX_LPA_policies_subtract_1 = yes
+			NVX_LPA_calc_slots = yes
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	NVX_policies_E_seize_the_means = {
+		icon = NVX_policies_economy
+		
+		available = {
+			hidden_trigger = { NVX_LPA_policies_available_1 = yes }
+			OR = {
+				has_idea = public_safety_secret_police
+				has_idea = civil_liberties_totalitarian
+			}
+		}
+		
+		visible = {
+			OR = {
+				has_government = fascist
+				has_government = communist
+			}
+		}
+		
+		fire_only_once = no
+		
+		days_remove = -1
+		remove_trigger = {
+			hidden_trigger = { NOT = { has_country_flag = NVX_policies_E_seize_the_means } }
+		}
+		
+		cost = 50
+		
+		modifier = {
+			consumer_goods_factor = -0.1
+			political_power_gain = 0.1
+		}
+		
+		complete_effect = {
+			set_country_flag = NVX_policies_E_seize_the_means
+			NVX_LPA_calc_slots = yes
+			NVX_LPA_policies_add_1 = yes
+		}
+		
+		remove_effect = {
+			
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	NVX_policies_E_seize_the_means_r = {
+		icon = NVX_policies_economy
+		
+		available = {
+			
+		}
+		
+		visible = {
+			has_country_flag = NVX_policies_E_seize_the_means
+		}
+		
+		fire_only_once = no
+		
+		cost = 15
+		
+		complete_effect = {
+			clr_country_flag = NVX_policies_E_seize_the_means
+			NVX_LPA_policies_subtract_1 = yes
+			NVX_LPA_calc_slots = yes
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	NVX_policies_S_education_funding = {
+		icon = NVX_policies_science
+		
+		available = {
+			hidden_trigger = { NVX_LPA_policies_available_1 = yes }
+		}
+		
+		visible = {
+			NOT = { has_government = market_liberal }
+		}
+		
+		fire_only_once = no
+		
+		days_remove = -1
+		remove_trigger = {
+			hidden_trigger = { NOT = { has_country_flag = NVX_policies_S_education_funding } }
+		}
+		
+		cost = 50
+		
+		modifier = {
+			research_speed_factor = 0.05
+			custom_modifier_tooltip = TT_NVX_ECOLITE_growth_neg025
+		}
+		
+		complete_effect = {
+			set_country_flag = NVX_policies_S_education_funding
+			NVX_LPA_calc_slots = yes
+			NVX_LPA_policies_add_1 = yes
+		}
+		
+		remove_effect = {
+			
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	NVX_policies_S_education_funding_r = {
+		icon = NVX_policies_science
+		
+		available = {
+			
+		}
+		
+		visible = {
+			has_country_flag = NVX_policies_S_education_funding
+		}
+		
+		fire_only_once = no
+		
+		cost = 15
+		
+		complete_effect = {
+			clr_country_flag = NVX_policies_S_education_funding
+			NVX_LPA_policies_subtract_1 = yes
+			NVX_LPA_calc_slots = yes
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	NVX_policies_S_cut_science_funding = {
+		icon = NVX_policies_science
+		
+		available = {
+			hidden_trigger = { NVX_LPA_policies_available_1 = yes }
+		}
+		
+		visible = {
+			NOT = {
+				OR = {
+					has_government = social_liberal
+					has_government = social_democrat
+					has_government = progressive
+				}
+			}
+		}
+		
+		fire_only_once = no
+		
+		days_remove = -1
+		remove_trigger = {
+			hidden_trigger = { NOT = { has_country_flag = NVX_policies_S_cut_science_funding } }
+		}
+		
+		cost = 50
+		
+		modifier = {
+			research_speed_factor = -0.05
+			custom_modifier_tooltip = TT_NVX_ECOLITE_growth_pos0125
+		}
+		
+		complete_effect = {
+			set_country_flag = NVX_policies_S_cut_science_funding
+			NVX_LPA_calc_slots = yes
+			NVX_LPA_policies_add_1 = yes
+		}
+		
+		remove_effect = {
+			
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	NVX_policies_S_cut_science_funding_r = {
+		icon = NVX_policies_science
+		
+		available = {
+			
+		}
+		
+		visible = {
+			has_country_flag = NVX_policies_S_cut_science_funding
+		}
+		
+		fire_only_once = no
+		
+		cost = 15
+		
+		complete_effect = {
+			clr_country_flag = NVX_policies_S_cut_science_funding
+			NVX_LPA_policies_subtract_1 = yes
+			NVX_LPA_calc_slots = yes
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	NVX_policies_S_focus_future = {
+		icon = NVX_policies_science
+		
+		available = {
+			hidden_trigger = { NVX_LPA_policies_available_1 = yes }
+		}
+		
+		visible = {
+			
+		}
+		
+		fire_only_once = no
+		
+		days_remove = -1
+		remove_trigger = {
+			hidden_trigger = { NOT = { has_country_flag = NVX_policies_S_focus_future } }
+		}
+		
+		cost = 50
+		
+		modifier = {
+			custom_modifier_tooltip = TT_NVX_LPA_focus_future
+			consumer_goods_factor = 0.05
+		}
+		
+		complete_effect = {
+			set_country_flag = NVX_policies_S_focus_future
+			NVX_LPA_calc_slots = yes
+			NVX_LPA_policies_add_1 = yes
+		}
+		
+		remove_effect = {
+			
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	NVX_policies_S_focus_future_r = {
+		icon = NVX_policies_science
+		
+		available = {
+			
+		}
+		
+		visible = {
+			has_country_flag = NVX_policies_S_focus_future
+		}
+		
+		fire_only_once = no
+		
+		cost = 15
+		
+		complete_effect = {
+			clr_country_flag = NVX_policies_S_focus_future
+			NVX_LPA_policies_subtract_1 = yes
+			NVX_LPA_calc_slots = yes
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	NVX_policies_M_raiding = {
+		icon = NVX_policies_military
+		
+		available = {
+			hidden_trigger = { NVX_LPA_policies_available_1 = yes }
+		}
+		
+		visible = {
+			OR = {
+				NVX_has_government_ideology_authoritarian = yes
+				has_government = nationalist
+				nationalist > 0.4
+			}
+		}
+		
+		fire_only_once = no
+		
+		days_remove = -1
+		remove_trigger = {
+			hidden_trigger = { NOT = { has_country_flag = NVX_policies_M_raiding } }
+		}
+		
+		cost = 50
+		
+		modifier = {
+			custom_modifier_tooltip = TT_NVX_LPA_raiding
+		}
+		
+		complete_effect = {
+			set_country_flag = NVX_policies_M_raiding
+			NVX_LPA_calc_slots = yes
+			NVX_LPA_policies_add_1 = yes
+		}
+		
+		remove_effect = {
+			
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	NVX_policies_M_raiding_r = {
+		icon = NVX_policies_military
+		
+		available = {
+			
+		}
+		
+		visible = {
+			has_country_flag = NVX_policies_M_raiding
+		}
+		
+		fire_only_once = no
+		
+		cost = 15
+		
+		complete_effect = {
+			clr_country_flag = NVX_policies_M_raiding
+			NVX_LPA_policies_subtract_1 = yes
+			NVX_LPA_calc_slots = yes
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	NVX_policies_M_war_cry = {
+		icon = NVX_policies_military
+		
+		available = {
+			hidden_trigger = { NVX_LPA_policies_available_1 = yes }
+		}
+		
+		visible = {
+			OR = {
+				NVX_has_government_ideology_authoritarian = yes
+				has_government = nationalist
+				nationalist > 0.4
+				has_government = reactionary
+				reactionary > 0.4
+			}
+		}
+		
+		fire_only_once = no
+		
+		days_remove = -1
+		remove_trigger = {
+			hidden_trigger = { NOT = { has_country_flag = NVX_policies_M_war_cry } }
+		}
+		
+		cost = 50
+		
+		modifier = {
+			offensive_war_stability_factor = 0.2
+			custom_modifier_tooltip = TT_NVX_LPA_war_cry
+		}
+		
+		complete_effect = {
+			set_country_flag = NVX_policies_M_war_cry
+			NVX_LPA_calc_slots = yes
+			NVX_LPA_policies_add_1 = yes
+		}
+		
+		remove_effect = {
+			
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	NVX_policies_M_war_cry_r = {
+		icon = NVX_policies_military
+		
+		available = {
+			
+		}
+		
+		visible = {
+			has_country_flag = NVX_policies_M_war_cry
+		}
+		
+		fire_only_once = no
+		
+		cost = 15
+		
+		complete_effect = {
+			clr_country_flag = NVX_policies_M_war_cry
+			NVX_LPA_policies_subtract_1 = yes
+			NVX_LPA_calc_slots = yes
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	NVX_policies_M_elite_forces = {
+		icon = NVX_policies_military
+		
+		available = {
+			hidden_trigger = { NVX_LPA_policies_available_1 = yes }
+		}
+		
+		visible = {
+			NOT = {
+				AND = {
+					has_government = market_liberal
+					has_war_support < 0.75
+				}
+			}
+		}
+		
+		fire_only_once = no
+		
+		days_remove = -1
+		remove_trigger = {
+			hidden_trigger = { NOT = { has_country_flag = NVX_policies_M_elite_forces } }
+		}
+		
+		cost = 50
+		
+		modifier = {
+			special_forces_cap = 0.05
+			special_forces_min = 48
+			special_forces_no_supply_grace = 24
+			special_forces_training_time_factor = -0.1
+			consumer_goods_factor = 0.03
+		}
+		
+		complete_effect = {
+			set_country_flag = NVX_policies_M_elite_forces
+			NVX_LPA_calc_slots = yes
+			NVX_LPA_policies_add_1 = yes
+		}
+		
+		remove_effect = {
+			
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	NVX_policies_M_elite_forces_r = {
+		icon = NVX_policies_military
+		
+		available = {
+			
+		}
+		
+		visible = {
+			has_country_flag = NVX_policies_M_elite_forces
+		}
+		
+		fire_only_once = no
+		
+		cost = 15
+		
+		complete_effect = {
+			clr_country_flag = NVX_policies_M_elite_forces
+			NVX_LPA_policies_subtract_1 = yes
+			NVX_LPA_calc_slots = yes
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	NVX_policies_M_fervor = {
+		icon = NVX_policies_military
+		
+		available = {
+			hidden_trigger = { NVX_LPA_policies_available_1 = yes }
+		}
+		
+		visible = {
+			
+		}
+		
+		fire_only_once = no
+		
+		days_remove = -1
+		remove_trigger = {
+			hidden_trigger = { NOT = { has_country_flag = NVX_policies_M_fervor } }
+		}
+		
+		cost = 50
+		
+		modifier = {
+			weekly_manpower = 100
+			land_reinforce_rate = 0.01
+			experience_loss_factor = -0.1
+			navy_refit_speed = 0.15
+			air_equipment_upgrade_xp_cost = -0.1
+			consumer_goods_factor = 0.02
+		}
+		
+		complete_effect = {
+			set_country_flag = NVX_policies_M_fervor
+			NVX_LPA_calc_slots = yes
+			NVX_LPA_policies_add_1 = yes
+		}
+		
+		remove_effect = {
+			
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	NVX_policies_M_fervor_r = {
+		icon = NVX_policies_military
+		
+		available = {
+			
+		}
+		
+		visible = {
+			has_country_flag = NVX_policies_M_fervor
+		}
+		
+		fire_only_once = no
+		
+		cost = 15
+		
+		complete_effect = {
+			clr_country_flag = NVX_policies_M_fervor
+			NVX_LPA_policies_subtract_1 = yes
+			NVX_LPA_calc_slots = yes
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	NVX_policies_M_warmongering = {
+		icon = NVX_policies_military
+		
+		available = {
+			hidden_trigger = { NVX_LPA_policies_available_1 = yes }
+		}
+		
+		visible = {
+			
+		}
+		
+		fire_only_once = no
+		
+		days_remove = -1
+		remove_trigger = {
+			hidden_trigger = { NOT = { has_country_flag = NVX_policies_M_warmongering } }
+		}
+		
+		cost = 50
+		
+		modifier = {
+			send_volunteers_tension = -0.4
+			political_power_cost = 0.2
+			consumer_goods_factor = 0.02
+			custom_modifier_tooltip = TT_NVX_LPA_warmongering
+		}
+		
+		complete_effect = {
+			set_country_flag = NVX_policies_M_warmongering
+			NVX_LPA_calc_slots = yes
+			NVX_LPA_policies_add_1 = yes
+			hidden_effect = { add_ideas = NVX_idea_warmongering }
+		}
+		
+		remove_effect = {
+			
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	NVX_policies_M_warmongering_r = {
+		icon = NVX_policies_military
+		
+		available = {
+			
+		}
+		
+		visible = {
+			has_country_flag = NVX_policies_M_warmongering
+		}
+		
+		fire_only_once = no
+		
+		cost = 15
+		
+		complete_effect = {
+			clr_country_flag = NVX_policies_M_warmongering
+			NVX_LPA_policies_subtract_1 = yes
+			NVX_LPA_calc_slots = yes
+			hidden_effect = { remove_ideas = NVX_idea_warmongering }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	## BLANK ##
+	NVX_policies_ = {
+		#icon = NVX_policies_political
+		#icon = NVX_policies_economy
+		#icon = NVX_policies_science
+		#icon = NVX_policies_military
+		
+		available = {
+			hidden_trigger = { NVX_LPA_policies_available_1 = yes }
+		}
+		
+		visible = {
+			is_debug = yes
+			always = no
+		}
+		
+		fire_only_once = no
+		
+		days_remove = -1
+		remove_trigger = {
+			hidden_trigger = { NOT = { has_country_flag = NVX_policies_ } }
+		}
+		
+		cost = 50
+		
+		modifier = {
+			
+		}
+		
+		complete_effect = {
+			set_country_flag = NVX_policies_
+			NVX_LPA_calc_slots = yes
+			NVX_LPA_policies_add_1 = yes
+		}
+		
+		remove_effect = {
+			
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	NVX_policies__r = {
+		icon = NVX_policies_political
+		
+		available = {
+			
+		}
+		
+		visible = {
+			is_debug = yes
+			has_country_flag = NVX_policies_
+		}
+		
+		fire_only_once = no
+		
+		cost = 15
+		
+		complete_effect = {
+			clr_country_flag = NVX_policies_
+			NVX_LPA_policies_subtract_1 = yes
+			NVX_LPA_calc_slots = yes
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+}
+
+NVX_acts_cat = {
+	
+	## BLANK ##
+	NVX_acts_ = {
+		#icon = NVX_policies_political
+		#icon = NVX_policies_economy
+		#icon = NVX_policies_science
+		#icon = NVX_policies_science_edu
+		#icon = NVX_policies_military
+		#icon = NVX_policies_military_army
+		#icon = NVX_policies_military_navy
+		#icon = NVX_policies_military_air
+		
+		available = {
+			
+		}
+		
+		visible = {
+			is_debug = yes
+		}
+		
+		fire_only_once = no
+		
+		days_remove = 365
+		days_re_enable = 365
+		
+		cost = 0
+		
+		modifier = {
+			
+		}
+		
+		complete_effect = {
+			
+		}
+		
+		remove_effect = {
+			
+		}
+		
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				
+			}
+		}
+	}
+}
+
+## UNUSED LAWS ##
+NVX_laws_cat = {
+	NVX_laws_ = {
+		icon = ger_mefo_bills
+		
+		available = {
+			
+		}
+		
+		visible = {
+			is_debug = yes
+		}
+		
+		fire_only_once = no
+		
+		days_remove = -1
+		remove_trigger = {
+			hidden_trigger = { NOT = { has_country_flag = NVX_laws_ } }
+		}
+		
+		cost = 0
+		
+		modifier = {
+			
+		}
+		
+		complete_effect = {
+			set_country_flag = NVX_laws_
+		}
+		
+		remove_effect = {
+			
+		}
+		
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				
+			}
+		}
+	}
+	
+	NVX_laws__r = {
+		icon = ger_mefo_bills
+		
+		available = {
+			
+		}
+		
+		visible = {
+			is_debug = yes
+			has_country_flag = NVX_laws_
+		}
+		
+		fire_only_once = no
+		
+		cost = 0
+		
+		complete_effect = {
+			clr_country_flag = NVX_laws_
+		}
+		
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				
+			}
+		}
+	}
+}

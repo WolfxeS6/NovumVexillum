@@ -1,0 +1,884 @@
+﻿add_namespace = china_news
+
+#Taiwan Puppet
+news_event = { 
+	id = china_news.1
+	title = china_news.1.t
+	desc = china_news.1.d
+	picture = GFX_news_event_taiwan_puppet
+	
+	major = yes
+	
+	is_triggered_only = yes
+	
+	option = { #Where does this end?
+		name = china_news.1.o1
+		trigger = { 
+			OR = {
+				original_tag = USA 
+				is_in_faction_with = USA 
+			}
+		}
+	}
+	
+	option = { #One China on the horizon!
+		name = china_news.1.o2
+		trigger = {
+			is_in_faction_with = PRC
+			original_tag = PRC 
+		}
+	}
+	
+	option = { #Incredible!
+		name = china_news.1.o3
+		trigger = {
+			NOT = { is_in_faction_with = USA }
+			NOT = { is_in_faction_with = PRC }
+		}
+	}
+	
+}
+
+#Taiwan Refused
+news_event = { 
+	id = china_news.2
+	title = china_news.2.t
+	desc = china_news.2.d
+	picture = GFX_news_event_taiwan
+	
+	major = yes
+	
+	is_triggered_only = yes
+	
+	option = { #Democracy Endures.
+		name = china_news.2.o1
+		trigger = { 
+			OR = {
+				original_tag = USA 
+				is_in_faction_with = USA 
+			}
+		}
+	}
+	
+	option = { #Treasonous Fools.
+		name = china_news.2.o2
+		trigger = {
+			is_in_faction_with = PRC
+			original_tag = PRC }
+		
+	}
+	
+	option = { #Interesting.
+		name = china_news.2.o3
+		trigger = {
+			NOT = { is_in_faction_with = USA }
+			NOT = { is_in_faction_with = PRC }
+		}
+	}
+	
+}
+
+#Dalai Lama Surrendered
+news_event = { 
+	id = china_news.3
+	title = china_news.3.t
+	desc = china_news.3.d
+	picture = GFX_news_event_dalai_lama
+	
+	major = yes
+	
+	is_triggered_only = yes
+	
+	option = { #Shameful
+		name = china_news.3.o1
+		trigger = { 
+			OR = {
+				original_tag = USA
+				is_in_faction_with = USA
+			}
+		}
+	}
+	
+	option = { #Another foreign puppet
+		name = china_news.3.o2
+		trigger = {
+			OR = {
+				is_in_faction_with = PRC
+				original_tag = PRC
+			}
+		}
+	}
+	
+	option = { #Poor old man
+		name = china_news.3.o3
+		trigger = {
+			NOT = { is_in_faction_with = USA }
+			NOT = { is_in_faction_with = PRC }
+		}
+	}
+}
+
+#India Refused
+news_event = { 
+	id = china_news.4
+	title = china_news.4.t
+	desc = china_news.4.d
+	picture = GFX_news_event_dalai_lama
+	
+	major = yes
+	
+	is_triggered_only = yes
+	
+	option = { #Honorable
+		name = china_news.4.o1
+		trigger = { 
+			OR = {
+				original_tag = USA
+				is_in_faction_with = USA
+			}
+		}
+	}
+	
+	option = { #We won't forget this
+		name = china_news.4.o2
+		trigger = {
+			OR = {
+				is_in_faction_with = PRC
+				original_tag = PRC
+			}
+		}
+		
+	}
+	
+	option = { #Good for them
+		name = china_news.4.o3
+		trigger = {
+			NOT = { is_in_faction_with = USA }
+			NOT = { is_in_faction_with = PRC }
+		}
+	}
+}
+
+#Senkakus Surrendered
+news_event = { 
+	id = china_news.5
+	title = china_news.5.t
+	desc = china_news.5.d
+	picture = GFX_news_event_senkakus
+	
+	major = yes
+	
+	is_triggered_only = yes
+	
+	option = { #More Chinese Agression
+		name = china_news.5.o1
+		trigger = { 
+			OR = {
+				original_tag = USA
+				is_in_faction_with = USA
+			}
+		}
+	}
+	
+	option = { #As it should be
+		name = china_news.5.o2
+		trigger = {
+			OR = {
+				is_in_faction_with = PRC
+				original_tag = PRC
+			}
+		}
+		
+	}
+	
+	option = { #War is averted
+		name = china_news.5.o3
+		trigger = {
+			NOT = { is_in_faction_with = USA }
+			NOT = { is_in_faction_with = PRC }
+		}
+	}
+}
+
+#Japan Refused
+news_event = { 
+	id = china_news.6
+	title = china_news.6.t
+	desc = china_news.6.d
+	picture = GFX_news_event_senkakus
+	
+	major = yes
+	
+	is_triggered_only = yes
+	
+	option = { #Rightfully so
+		name = china_news.6.o1
+		trigger = {
+			OR = {
+				is_in_faction_with = USA
+				original_tag = USA
+			}
+		}
+	}
+	
+	option = { #Outrageous
+		name = china_news.6.o2
+		trigger = {
+			OR = {
+				is_in_faction_with = PRC
+				original_tag = PRC
+			}
+		}
+		
+	}
+	
+	option = { #Let us hope for peace
+		name = china_news.6.o3
+		trigger = {
+			NOT = { is_in_faction_with = USA }
+			NOT = { is_in_faction_with = PRC }
+		}
+	}
+}
+
+#War over Senkakus
+news_event = { 
+	id = china_news.7
+	title = china_news.7.t
+	desc = china_news.7.d
+	picture = GFX_news_event_chinese_soldiers
+	
+	major = yes
+	
+	is_triggered_only = yes
+	
+	option = { #Prepare for the worst
+		name = china_news.7.o1
+		trigger = { 
+			OR = {
+				original_tag = JAP
+				original_tag = USA 
+				is_in_faction_with = USA 
+			}
+		}
+	}
+	
+	option = { #There is no other course
+		name = china_news.7.o2
+		trigger = {
+			OR ={
+				is_in_faction_with = PRC
+				original_tag = PRC 
+			}
+		}
+	}
+	
+	option = { #Millions will die for worthless rocks
+		name = china_news.7.o3
+		trigger = {
+			NOT = { is_in_faction_with = USA }
+			NOT = { is_in_faction_with = PRC }
+		}
+	}
+}
+
+#Paracels Ceded
+news_event = { 
+	id = china_news.8
+	title = china_news.8.t
+	desc = china_news.8.d
+	picture = GFX_news_event_chinese_soldiers
+	
+	major = yes
+	
+	is_triggered_only = yes
+	
+	option = { #More Chinese Agression
+		name = china_news.8.o1
+		trigger = { 
+			OR = {
+				original_tag = USA
+				is_in_faction_with = USA
+			}
+		}
+	}
+	
+	option = { #As it should be
+		name = china_news.8.o2
+		trigger = { 
+			OR = {
+				original_tag = PRC
+				is_in_faction_with = PRC
+			}
+		}
+		
+	}
+	
+	option = { #War is averted
+		name = china_news.8.o3
+		trigger = {
+			NOT = { is_in_faction_with = USA }
+			NOT = { is_in_faction_with = PRC }
+		}
+	}
+}
+
+#Vietnam Refused
+news_event = { 
+	id = china_news.9
+	title = china_news.9.t
+	desc = china_news.9.d
+	picture = GFX_news_event_chinese_soldiers
+	
+	major = yes
+	
+	is_triggered_only = yes
+	
+	option = { #Rightfully so
+		name = china_news.9.o1
+		trigger = { original_tag = USA 
+		is_in_faction_with = USA }
+	}
+	
+	option = { #Outrageous
+		name = china_news.9.o2
+		trigger = {
+			is_in_faction_with = PRC
+			original_tag = PRC }
+		
+	}
+	
+	option = { #Let us hope for peace
+		name = china_news.9.o3
+		trigger = {
+			NOT = { is_in_faction_with = USA }
+			NOT = { is_in_faction_with = PRC }
+		}
+	}
+}
+
+#Taiwan Annexed
+news_event = { 
+	id = china_news.10
+	title = china_news.10.t
+	desc = china_news.10.d
+	picture = GFX_news_event_taiwan_puppet
+	
+	major = yes
+	
+	is_triggered_only = yes
+	
+	option = { #Unfortunate
+		name = china_news.10.o1
+		trigger = { 
+			OR = {
+				original_tag = USA 
+				is_in_faction_with = USA 
+			}
+		}
+	}
+	
+	option = { #Finally
+		name = china_news.10.o2
+		trigger = {
+			is_in_faction_with = PRC
+			original_tag = PRC }
+		
+	}
+	
+	option = { #War is Averted
+		name = china_news.10.o3
+		trigger = {
+			NOT = { is_in_faction_with = USA }
+			NOT = { is_in_faction_with = PRC }
+		}
+	}
+}
+
+#Taiwan Resists
+news_event = { 
+	id = china_news.11
+	title = china_news.11.t
+	desc = china_news.11.d
+	picture = GFX_news_event_taiwan_resist
+	
+	major = yes
+	
+	is_triggered_only = yes
+	
+	option = { #Rightfully So
+		name = china_news.11.o1
+		trigger = { 
+			OR = {
+				original_tag = USA 
+				is_in_faction_with = USA 
+			}
+		}
+	}
+	
+	option = { #Outrageous
+		name = china_news.11.o2
+		trigger = {
+			OR = {
+				is_in_faction_with = PRC
+				original_tag = PRC 
+			}
+		}
+		
+	}
+	
+	option = { #Let us hope for the best
+		name = china_news.11.o3
+		trigger = {
+			NOT = { is_in_faction_with = USA }
+			NOT = { is_in_faction_with = PRC }
+		}
+	}
+}
+
+#Fourth Taiwan Strait Crisis
+news_event = { 
+	id = china_news.12
+	title = china_news.12.t
+	desc = china_news.12.d
+	picture = GFX_news_event_chinese_soldiers
+	
+	major = yes
+	
+	is_triggered_only = yes
+	
+	option = { #Dangerous Moves
+		name = china_news.12.o1
+		trigger = {
+			OR = {
+				is_in_faction_with = USA
+				original_tag = USA
+			}
+		}
+	}
+	
+	option = { #They'd better
+		name = china_news.12.o2
+		trigger = {
+			OR = {
+				is_in_faction_with = PRC
+				original_tag = PRC
+			}
+		}
+		
+	}
+	
+	option = { #Hope for Peace
+		name = china_news.12.o3
+		trigger = {
+			NOT = { is_in_faction_with = USA }
+			NOT = { is_in_faction_with = PRC }
+		}
+	}
+}
+
+#China Backs off Taiwan
+news_event = { 
+	id = china_news.13
+	title = china_news.13.t
+	desc = china_news.13.d
+	picture = GFX_news_event_united_states_navy
+	
+	major = yes
+	
+	is_triggered_only = yes
+	
+	option = { #Crisis Averted
+		name = china_news.13.o1
+		trigger = { 
+			OR = {
+				original_tag = USA 
+				is_in_faction_with = USA 
+			}
+		}
+	}
+	
+	option = { #We can afford patience
+		name = china_news.13.o2
+		trigger = {
+			OR = {
+				is_in_faction_with = PRC
+				original_tag = PRC
+			}
+		}
+		
+	}
+	
+	option = { #We're all lucky
+		name = china_news.13.o3
+		trigger = {
+			NOT = { is_in_faction_with = USA }
+			NOT = { is_in_faction_with = PRC }
+		}
+	}
+}
+
+#Invasion of Taiwan
+news_event = { 
+	id = china_news.14
+	title = china_news.14.t
+	desc = china_news.14.d
+	picture = GFX_news_event_war
+	
+	major = yes
+	
+	is_triggered_only = yes
+	
+	option = { #Prepare for the worst
+		name = china_news.14.o1
+		trigger = {
+			OR = {
+				is_in_faction_with = USA
+				original_tag = USA
+			}
+		}
+	}
+	
+	option = { #There is no other course
+		name = china_news.14.o2
+		trigger = {
+			OR = {
+				is_in_faction_with = PRC
+				original_tag = PRC
+			}
+		}
+		
+	}
+	
+	option = { #Prepare for the Worst
+		name = china_news.14.o3
+		trigger = {
+			NOT = { is_in_faction_with = USA }
+			NOT = { is_in_faction_with = PRC }
+		}
+	}
+}
+
+#US Backs Taiwan
+news_event = { 
+	id = china_news.15
+	title = china_news.15.t
+	desc = china_news.15.d
+	picture = GFX_news_event_united_states_navy
+	
+	major = yes
+	
+	is_triggered_only = yes
+	
+	option = { #We Stand by our Allies
+		name = china_news.15.o1
+		trigger = {
+			OR = {
+				is_in_faction_with = USA
+				original_tag = USA
+			}
+		}
+	}
+	
+	option = { #Filthy Imperialists
+		name = china_news.15.o2
+		trigger = {
+			OR = {
+				is_in_faction_with = PRC
+				original_tag = PRC
+			}
+		}
+		
+	}
+	
+	option = { #The Stage is Set
+		name = china_news.15.o3
+		trigger = {
+			NOT = { is_in_faction_with = USA }
+			NOT = { is_in_faction_with = PRC }
+		}
+	}
+}
+
+#US Abandons Taiwan
+news_event = { 
+	id = china_news.16
+	title = china_news.16.t
+	desc = china_news.16.d
+	picture = GFX_news_event_united_states_navy
+	
+	major = yes
+	
+	is_triggered_only = yes
+	
+	option = { #A necessary Sacrifice
+		name = china_news.16.o1
+		trigger = {
+			OR = {
+				is_in_faction_with = USA
+				original_tag = USA
+			}
+		}
+	}
+	
+	option = { #Perfect
+		name = china_news.16.o2
+		trigger = {
+			OR = {
+				is_in_faction_with = PRC
+				original_tag = PRC
+			}
+		}
+		
+	}
+	
+	option = { #The Stage is Set
+		name = china_news.16.o3
+		trigger = {
+			NOT = { is_in_faction_with = USA }
+			NOT = { is_in_faction_with = PRC }
+		}
+	}
+}
+
+#China Civil War
+news_event = { 
+	id = china_news.17
+	title = china_news.17.t
+	desc = china_news.17.d
+	picture = GFX_news_event_chinese_soldiers
+	
+	major = yes
+	
+	is_triggered_only = yes
+	
+	option = { #A battle of ideas
+		name = china_news.17.o1
+	}
+}
+
+#Move To Democracy
+news_event = { 
+	id = china_news.18
+	title = china_news.18.t
+	desc = china_news.18.d
+	picture = GFX_news_event_chinese_protestors
+	
+	major = yes
+	
+	is_triggered_only = yes
+	
+	option = { #Good luck!
+		name = china_news.18.o1
+		trigger = { 
+			has_democratic_form_of_government = yes
+		}
+	}
+	
+	option = { #Worrisome
+		name = china_news.18.o2
+		trigger = {
+			has_democratic_form_of_government = no
+		}
+	}
+}
+
+#Restored Republic
+news_event = { 
+	id = china_news.19
+	title = china_news.19.t
+	desc = china_news.19.d
+	picture = GFX_news_event_chinese_protestors
+	
+	major = yes
+	
+	is_triggered_only = yes
+	
+	option = { #Good luck!
+		name = china_news.19.o1
+		trigger = { 
+			has_democratic_form_of_government = yes
+		}
+	}
+	
+	option = { #Worrisome
+		name = china_news.19.o2
+		trigger = {
+			has_democratic_form_of_government = no
+		}
+	}
+	
+}
+
+#New Republic
+news_event = { 
+	id = china_news.20
+	title = china_news.20.t
+	desc = china_news.20.d
+	picture = GFX_news_event_chinese_protestors
+	
+	major = yes
+	
+	is_triggered_only = yes
+	
+	option = { #Good luck!
+		name = china_news.20.o1
+		trigger = { 
+			OR = {
+				has_government = conservative
+				has_government = market_liberal
+				has_government = social_liberal
+				has_government = social_democrat
+				has_government = progressive
+				has_government = democratic_socialist
+				has_government = reactionary
+			}
+		}
+	}
+	
+	option = { #Worrisome
+		name = china_news.20.o2
+		trigger = {
+			has_government = communist
+			has_government = nationalist
+			has_government = fascist
+			has_government = monarchist
+			has_government = islamist
+		}
+	}
+	
+}
+
+#Accept Chinese Protection
+news_event = { 
+	id = china_news.21
+	title = china_news.21.t
+	desc = china_news.21.d
+	picture = GFX_news_event_chinese_soldiers
+	
+	is_triggered_only = yes
+	
+	option = { #Worrisome
+		name = china_news.21.o1
+		trigger = {
+			OR = {
+				original_tag = USA
+				is_in_faction_with = USA
+			}
+		}
+	}
+	
+	option = { #Very Well
+		name = china_news.21.o2
+		trigger = {
+			OR = {
+				original_tag = USA
+				is_in_faction_with = USA
+			}
+		}
+		
+	}
+	
+	option = { #Interesting
+		name = china_news.21.o3
+		trigger = {
+			NOT = { is_in_faction_with = USA }
+			NOT = { is_in_faction_with = PRC }
+		}
+	}
+}
+
+#Refuse Chinese Protection
+news_event = { 
+	id = china_news.22
+	title = china_news.22.t
+	desc = china_news.22.d
+	picture = GFX_news_event_chinese_soldiers
+
+	
+	is_triggered_only = yes
+	
+	option = { #Good
+		name = china_news.22.o1
+		trigger = {
+			OR = {
+				original_tag = USA
+				is_in_faction_with = USA
+			}
+		}
+	}
+	
+	option = { #Ufortunate
+		name = china_news.22.o2
+		trigger = {
+			OR = {
+				original_tag = PRC
+				is_in_faction_with = PRC
+			}
+		}
+	}
+	
+	option = { #Interesting
+		name = china_news.22.o3
+		trigger = {
+			NOT = { is_in_faction_with = USA }
+			NOT = { is_in_faction_with = PRC }
+		}
+	}
+}
+
+#Vietnam gives up Paracels
+news_event = { 
+	id = china_news.23
+	title = china_news.23.t
+	desc = china_news.23.d
+	picture = GFX_news_event_taiwan_resist
+	
+	is_triggered_only = yes
+
+	option = { #Interesting
+		name = china_news.23.o1
+	}
+}
+
+#China gives up Paracels
+news_event = { 
+	id = china_news.24
+	title = china_news.24.t
+	desc = china_news.24.d
+	picture = GFX_news_event_taiwan_resist
+	
+	is_triggered_only = yes
+
+	option = { #Interesting
+		name = china_news.24.o1
+	}
+}
+
+#Paracel Negotiations Fail
+news_event = { 
+	id = china_news.25
+	title = china_news.25.t
+	desc = china_news.25.d
+	picture = GFX_news_event_chinese_soldiers
+	
+	is_triggered_only = yes
+
+	option = { #Interesting
+		name = china_news.25.o1
+	}
+}
+
+#The Reunification of China
+news_event = { 
+	id = china_news.26
+	title = china_news.26.t
+	desc = china_news.26.d
+	picture = GFX_news_event_china_and_taiwan
+	
+	is_triggered_only = yes
+
+	option = { #Interesting
+		name = china_news.26.o1
+	}
+}

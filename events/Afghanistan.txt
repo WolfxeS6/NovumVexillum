@@ -1,0 +1,235 @@
+﻿add_namespace = afghanistan
+
+#The Afghan Civil War
+country_event = {
+	id = afghanistan.1
+	title = afghanistan.1.t
+	desc = afghanistan.1.d
+	picture = GFX_report_event_afghani_civil_war
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		set_global_flag = the_afghan_civil_war
+	}
+	
+	option = {	#Side with the Taliban
+		name = afghanistan.1.o1
+		add_popularity = {
+			ideology = conservative
+			popularity = 0.4
+		}
+		start_civil_war = {
+			ideology = conservative
+			size = 0.6
+			states = { 837 824 }
+			capital = 837
+		}
+		
+		ai_chance = {
+			factor = 100
+		}
+	}
+	
+	option = {	#Side with the Northern Alliance
+		name = afghanistan.1.o2
+		set_politics = {
+			ruling_party = conservative
+			elections_allowed = yes
+		}
+		start_civil_war = {
+			ideology = islamist
+			size = 0.4
+			states = { 267 415 }
+			capital = 267
+		}
+		
+		ai_chance = {
+			factor = 0
+		}
+	}
+}
+
+#American Focus Tree: Support the Afghan Forces
+country_event = {
+	id = afghanistan.2
+	title = afghanistan.2.t
+	desc = afghanistan.2.d
+	picture = GFX_report_event_america_and_afghanistan
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = afghanistan.2.o1
+		army_experience = 15
+	}
+	
+	option = {
+		name = afghanistan.2.o2
+		air_experience = 15
+	}
+}
+
+#American Focus Tree: Support the Afghan Government
+country_event = {
+	id = afghanistan.3
+	title = afghanistan.3.t
+	desc = afghanistan.3.d
+	picture = GFX_report_event_america_and_afghanistan
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = afghanistan.3.o1
+		add_political_power = 100
+	}
+	
+	option = {
+		name = afghanistan.3.o2
+		add_stability = 0.1
+	}
+	
+	option = {
+		name = afghanistan.3.o3
+		add_stability = 0.05
+	}
+}
+
+#American Focus Tree: Afghan Army Reform
+country_event = {
+	id = afghanistan.4
+	title = afghanistan.4.t
+	desc = afghanistan.4.d
+	picture = GFX_report_event_america_and_afghanistan
+	
+	is_triggered_only = yes
+	
+	option = {	#The help is appreciated.
+		name = afghanistan.4.o1
+		army_experience = 15
+	}
+	
+	option = {	#We shall maximize our efforts.
+		name = afghanistan.4.o2
+		army_experience = 40
+		add_political_power = -30
+	}
+}
+
+#American Focus Tree: Afghan Executive Support
+country_event = {
+	id = afghanistan.5
+	title = afghanistan.5.t
+	desc = afghanistan.5.d
+	picture = GFX_report_event_america_and_afghanistan
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = afghanistan.5.o1
+		add_political_power = 80
+		add_stability = 0.02
+	}
+}
+
+#American Focus Tree: Afghan Air Force Reform
+country_event = {
+	id = afghanistan.6
+	title = afghanistan.6.t
+	desc = afghanistan.6.d
+	picture = GFX_report_event_america_and_afghanistan
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = afghanistan.6.o1
+		air_experience = 20
+	}
+}
+
+#American Focus Tree: Afghan Judiciary Reform
+country_event = {
+	id = afghanistan.7
+	title = afghanistan.7.t
+	desc = afghanistan.7.d
+	picture = GFX_report_event_america_and_afghanistan
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = afghanistan.7.o1
+		add_stability = 0.03
+	}
+}
+
+#American Focus Tree: Restoration of Sovereignity
+country_event = {
+	id = afghanistan.8
+	title = afghanistan.8.t
+	desc = afghanistan.8.d
+	picture = GFX_report_event_america_and_afghanistan
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = afghanistan.8.o1
+		effect_tooltip = {
+			USA = {
+				set_autonomy = { target = AFG autonomy_state = autonomy_free }
+			}
+		}
+	}
+}
+
+#American Focus Tree: Operation Freedom's Sentinel
+country_event = {
+	id = afghanistan.9
+	title = afghanistan.9.t
+	desc = afghanistan.9.d
+	picture = GFX_report_event_america_and_afghanistan
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = afghanistan.9.o1
+		add_political_power = 75
+		add_stability = 0.02
+	}
+}
+
+#The Karzai Administration
+country_event = {
+	id = afghanistan.10
+	title = afghanistan.10.t
+	desc = afghanistan.10.d
+	picture = GFX_report_event_hamid_karzai
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = afghanistan.10.o1
+		add_political_power = 100
+		add_stability = 0.05
+		add_popularity = {
+			ideology = conservative
+			popularity = 0.6
+		}
+		add_popularity = {
+			ideology = islamist
+			popularity = 0.26
+		}
+		add_popularity = {
+			ideology = social_liberal
+			popularity = 0.09
+		}
+		add_popularity = {
+			ideology = communist
+			popularity = 0.05
+		}
+		fourth_estate_conservative_increase = yes
+		fourth_estate_islamist_increase = yes
+		fourth_estate_social_liberal_increase = yes
+		fourth_estate_communist_increase = yes
+		remove_ideas = partially_recognized_state
+	}
+}

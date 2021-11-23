@@ -1,0 +1,91 @@
+﻿add_namespace = israel_news
+
+#Israel refuses Golan negotiations
+news_event = {
+	id = news.45
+	title = news.45.t
+	desc = news.45.d
+	picture = GFX_news_event_golan
+	
+	is_triggered_only = yes
+	major = yes
+	
+	option = {
+		name = option.OK
+	}
+}
+
+#Golan negotiations fail
+news_event = {
+	id = news.46
+	title = news.46.t
+	desc = news.46.d
+	picture = GFX_news_event_golan
+	
+	is_triggered_only = yes
+	major = yes
+	
+	option = {
+		name = option.OK
+	}
+}
+
+#Golan negotiations succeed
+news_event = {
+	id = news.47
+	title = news.47.t
+	desc = {
+		text = news.47.d1
+		trigger = { SYR = { has_country_flag = syr_faction_with_israel } }
+	}
+	desc = {
+		text = news.47.d2
+		trigger = { SYR = { has_country_flag = syr_military_cooperation_with_israel } }
+	}
+	picture = GFX_news_event_golan
+	
+	is_triggered_only = yes
+	major = yes
+	
+	option = {
+		name = option.OK
+	}
+}
+
+#Israeli retreat from Lebanon
+news_event = {
+	id = news.48
+	title = news.48.t
+	desc = news.48.d
+	picture = GFX_news_event_retreat_from_lebanon
+	
+	is_triggered_only = yes
+	major = yes
+	
+	option = {
+		name = news.48.o1
+		trigger = {
+			original_tag = ISR
+		}
+	}
+	
+	option = {
+		name = news.48.o2
+		trigger = {
+			OR = {
+				original_tag = LEB
+				original_tag = SYR
+			}
+		}
+	}
+	
+	option = {
+		name = option.interesting
+		trigger = {
+			NOT = { original_tag = ISR }
+			NOT = { original_tag = SYR }
+			NOT = { original_tag = LEB }
+		}
+	}
+}
+

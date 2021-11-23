@@ -1,0 +1,1492 @@
+﻿add_namespace = china
+
+###############
+#Contents:
+#National Focus Events
+#Historical Events
+#CCP Party Congress Events
+#News Events
+###############
+
+##National Focus Events
+#China Alliance Invitation
+country_event = {
+	id = china.1
+	title = china.1.t
+	desc = china.1.d
+	picture = GFX_report_event_chinese_soldiers
+	
+	is_triggered_only = yes
+	
+	option = {	#We accept!
+		name = china.1.o1
+
+		PRC = {
+			add_to_faction = FROM
+			
+			country_event = {
+				id = china.2
+			}
+		}
+		
+		ai_chance = {
+			factor = 50
+
+			modifier = {
+				factor = 25
+				AND = {
+					FROM = { NOT = { has_government = conservative } }
+				}
+			}
+
+			modifier = {
+				factor = 55
+				AND = {
+					FROM = { has_government = communist } 
+				}
+			}
+
+
+		}
+	}
+	
+	option = {	#We refuse
+		name = china.1.o2
+		add_political_power = 50
+		PRC = {
+			add_opinion_modifier = {
+				target = FROM
+				modifier = recent_actions_negative
+			}
+			
+			country_event = {
+				id = china.3
+			}
+		}
+	ai_chance = {
+			factor = 50
+
+			modifier = {
+				factor = 75
+				AND = {
+					FROM = { NOT = { has_government = conservative } }
+				}
+			}
+
+			modifier = {
+				factor = 45
+				AND = {
+					FROM = { has_government = communist } 
+				}
+			}
+
+		}
+	}
+}
+
+#China Alliance Accepted
+
+country_event = {	#They accept!
+	id = china.2
+	title = china.2.t
+	desc = china.2.d
+	picture = GFX_report_event_chinese_flag
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = china.2.o1
+		add_to_faction = FROM
+	}
+}
+
+#China Alliance Refused
+
+country_event = {	#They refuse!
+	id = china.3
+	title = china.3.t
+	desc = china.3.d
+	picture = GFX_report_event_chinese_soldiers
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = china.3.o1
+		
+		effect_tooltip = {
+			add_opinion_modifier = {
+				target = FROM
+				modifier = recent_actions_negative
+			}
+		}
+	}
+}
+
+#AEDU Created
+
+country_event = {	
+	id = china.4
+	title = china.4.t
+	desc = china.4.d
+	picture = GFX_report_event_chinese_soldiers
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = china.4.o1
+	}
+}
+
+#Taiwan - China demands ROC become puppet
+
+country_event = {	
+	id = china.5
+	title = china.5.t
+	desc = china.5.d
+	picture = GFX_report_event_china_diplomacy
+	
+	is_triggered_only = yes
+	
+	option = {	#accept
+		name = china.5.o1
+
+		ai_chance = {
+			factor = 30
+			
+			modifier = {
+				factor = 75
+				AND = {
+					CHI = { has_government = conservative }
+				}
+			}
+
+			modifier = {
+				factor = 5
+				AND = {
+					CHI = { has_government = social_liberal }
+				}
+			}
+		}
+
+		PRC = { puppet = CHI }
+
+		news_event = {
+			hours = 6
+			id = china_news.1
+		}
+
+	}
+
+	option = {	#never!
+		name = china.5.o2
+
+		ai_chance = {
+			factor = 70
+			
+			modifier = {
+				factor = 25
+				AND = {
+					CHI = { has_government = conservative }
+				}
+			}
+
+			modifier = {
+				factor = 95
+				AND = {
+					CHI = { has_government = social_liberal }
+				}
+			}
+		}
+
+		add_political_power = 100
+		add_stability = 0.10
+
+		CHI = { add_opinion_modifier = { target = PRC modifier = large_decrease }}
+		PRC = { add_opinion_modifier = { target = CHI modifier = large_decrease }}
+
+		news_event = {
+			hours = 6
+			id = china_news.2
+		}
+
+	}
+}
+
+#India - China demands Dalai Lama
+country_event = {
+	id = china.6
+	title = china.6.t
+	desc = china.6.d
+	picture = GFX_report_event_dalai_lama
+	
+	is_triggered_only = yes
+	
+	option = { #We must accede
+		name = china.6.o1
+
+		ai_chance = {
+			factor = 15
+
+			modifier = {
+				factor = 85
+				AND = {
+					is_in_faction_with = PRC
+				}
+			}
+		}
+
+		TIB = {remove_state_core = 322}
+
+		PRC = { add_opinion_modifier = { target = RAJ modifier = large_increase }}
+		USA = { add_opinion_modifier = { target = RAJ modifier = recent_actions_negative }}
+
+		news_event = {
+			hours = 6
+			id = china_news.3
+		}
+	}
+	
+	option = { #Outrageous!
+		name = china.6.o2
+
+		ai_chance = {
+			factor = 85
+
+			modifier = {
+				factor = 15
+				AND = {
+					is_in_faction_with = PRC
+				}
+			}
+		}
+
+	add_political_power = 75
+	add_stability = 0.05
+
+	USA = { add_opinion_modifier = { target = RAJ modifier = large_increase }}
+	PRC = { add_opinion_modifier = { target = RAJ modifier = large_decrease }}
+	NEP = { add_opinion_modifier = { target = RAJ modifier = recent_actions_positive }}
+	BHU = { add_opinion_modifier = { target = RAJ modifier = recent_actions_positive }}
+	BRM = { add_opinion_modifier = { target = RAJ modifier = recent_actions_positive }}
+
+	news_event = {
+			hours = 6
+			id = china_news.4
+		}
+	}
+}
+
+#India - China demands Southern Border 
+
+#Japan - China demands Senkakus
+
+country_event = {
+	id = china.8
+	title = china.8.t
+	desc = china.8.d
+	picture = GFX_report_event_senkakus
+	
+	is_triggered_only = yes
+	
+	option = { #We must accede
+		name = china.8.o1
+
+		ai_chance = {
+			factor = 15
+
+			modifier = {
+				factor = 85
+				AND = {
+					is_in_faction_with = PRC
+				}
+			}
+		}
+
+		JAP = {remove_state_core = 876}
+		PRC = {set_state_owner = 876}
+		PRC = { set_state_controller = 876 }
+
+		add_stability = -0.05
+
+		PRC = { add_opinion_modifier = { target = JAP modifier = recent_actions_positive }}
+		USA = { add_opinion_modifier = { target = PRC modifier = recent_actions_negative }}
+		KOR = { add_opinion_modifier = { target = PRC modifier = recent_actions_negative }}
+		#PHI = { add_opinion_modifier = { target = PRC modifier = recent_actions_negative }}
+		JAP = { add_opinion_modifier = { target = PRC modifier = large_decrease }}
+
+		news_event = {
+			hours = 6
+			id = china_news.5
+		}
+	}
+	
+	option = { #Outrageous!
+		name = china.8.o2
+
+		ai_chance = {
+			factor = 85
+
+			modifier = {
+				factor = 15
+				AND = {
+					is_in_faction_with = PRC
+				}
+			}
+		}
+
+	add_political_power = 50
+	add_stability = 0.05
+
+	USA = { add_opinion_modifier = { target = JAP modifier = recent_actions_positive }}
+	PRC = { add_opinion_modifier = { target = JAP modifier = large_decrease }}
+
+	PRC = { country_event = { id = china.9 }}
+	
+	news_event = {
+			hours = 6
+			id = china_news.6
+		}
+	}
+}
+
+#Japan - War after refusal?
+
+country_event = {
+	id = china.9
+	title = china.9.t
+	desc = china.9.d
+	picture = GFX_report_event_japanese_and_chinese_flags
+	
+	is_triggered_only = yes
+	
+	option = { #To War
+		name = china.9.o1
+
+		ai_chance = {
+			factor = 80
+
+			modifier = {
+				factor = 10
+				AND = {
+					is_in_faction_with = JAP
+				}
+			}
+		}
+
+		declare_war_on = { target = JAP type = take_state_focus generator = { 876 } }
+
+		news_event = {
+			hours = 6
+			id = china_news.7
+		}
+	}
+	
+	option = { #It's not worth our blood
+		name = china.9.o2
+
+		ai_chance = {
+			factor = 20
+
+			modifier = {
+				factor = 90
+				AND = {
+					is_in_faction_with = JAP
+				}
+			}
+		}
+
+		add_stability = -0.10
+		add_political_power = -75
+	}
+}
+
+#Vietnam - China demands Paracels/Drop Claims
+
+country_event = {
+	id = china.10
+	title = china.10.t
+	desc = china.10.d
+	picture = GFX_report_event_china_south_sea
+	
+	is_triggered_only = yes
+	
+	option = { #We must accede
+		name = china.10.o1
+
+		ai_chance = {
+			factor = 45
+
+			modifier = {
+				factor = 85
+				AND = {
+					is_in_faction_with = PRC
+				}
+			}
+		}
+
+		VIN = {remove_state_core = 879}
+		VIN = {remove_state_claim = 879}
+		PRC = {set_state_owner = 879}
+		PRC = { set_state_controller = 879 }
+
+		add_stability = -0.05
+
+		PRC = { add_opinion_modifier = { target = VIN modifier = recent_actions_positive }}
+		USA = { add_opinion_modifier = { target = PRC modifier = recent_actions_negative }}
+		JAP = { add_opinion_modifier = { target = PRC modifier = recent_actions_negative }}
+		KOR = { add_opinion_modifier = { target = PRC modifier = recent_actions_negative }}
+		#PHI = { add_opinion_modifier = { target = PRC modifier = recent_actions_negative }}
+		VIN = { add_opinion_modifier = { target = PRC modifier = large_decrease }}
+
+		news_event = {
+			hours = 6
+			id = china_news.8
+		}
+	}
+	
+	option = { #Outrageous!
+		name = china.10.o2
+
+		ai_chance = {
+			factor = 55
+
+			modifier = {
+				factor = 15
+				AND = {
+					is_in_faction_with = PRC
+				}
+			}
+		}
+
+	add_political_power = 50
+	add_stability = 0.05
+
+	USA = { add_opinion_modifier = { target = VIN modifier = recent_actions_positive }}
+	JAP = { add_opinion_modifier = { target = VIN modifier = recent_actions_positive }}
+	PRC = { add_opinion_modifier = { target = VIN modifier = large_decrease }}
+	
+
+	news_event = {
+			hours = 6
+			id = china_news.9
+		}
+	}
+}
+
+#Vietnam - China demands Spratlies/Drop Claims (DOES NOT EXIST)
+country_event = {
+	id = china.11
+	title = china.11.t
+	desc = china.11.d
+	picture = GFX_report_event_china_south_sea
+
+	is_triggered_only = yes
+	
+	option = {}
+}
+
+#Taiwan - China demands annexation
+country_event = {
+	id = china.12
+	title = china.12.t
+	desc = china.12.d
+	picture = GFX_report_event_chinese_soldiers
+
+	is_triggered_only = yes
+
+	option = { #comply
+		name = china.12.o1
+
+		PRC = { annex_country = { target = CHI }}
+
+		news_event = {
+			hours = 6
+			id = china_news.10
+		}
+
+		ai_chance = {
+			factor = 5
+
+			modifier = {
+				factor = 40
+				AND = {
+					has_government = conservative
+				}
+			}
+
+			modifier = {
+				factor = 60
+				AND = {
+					is_puppet_of = PRC
+				}
+			}
+		}
+	}
+
+	option = { #resist
+		name = china.12.o2
+
+		add_political_power = 100
+		add_stability = 0.15
+		
+		if = {
+			limit = {
+				CHI = { is_guaranteed_by = USA }
+			}
+			PRC = { country_event = china.13 }
+		}
+		
+		if = {
+			limit = {
+				 NOT = { CHI = { is_guaranteed_by = USA } }
+			}
+			PRC = { country_event = china.14 }
+		}
+
+		news_event = {
+			hours = 6
+			id = china_news.11
+		}
+
+		ai_chance = {
+			factor = 95
+
+			modifier = {
+				factor = 60
+				AND = {
+					has_government = conservative
+				}
+			}
+
+			modifier = {
+				factor = 40
+				AND = {
+					is_puppet_of = PRC
+				}
+			}
+		}
+	}
+}
+
+#Fourth Taiwan Strait Crisis
+
+country_event = {
+	id = china.13
+	title = china.13.t
+	desc = china.13.d
+	picture = GFX_report_event_taiwan_resist
+
+	is_triggered_only = yes
+
+	option = { #Pressure the US to back down
+		name = china.13.o1
+
+		USA = { add_opinion_modifier = { target = PRC modifier = large_decrease }}
+		USA = { add_opinion_modifier = { target = CHI modifier = large_increase }}
+		USA = {country_event { id = china.15 }}
+
+		ai_chance = {
+		factor = 90 }
+
+		news_event = {
+			hours = 6
+			id = china_news.12
+		}
+	}
+
+	option = { #Back off
+		name = china.13.o2
+
+		add_political_power = -150
+		add_stability = -0.20
+
+		ai_chance = {
+		factor = 10 }
+
+		news_event = {
+			hours = 6
+			id = china_news.13
+		}
+	}
+}
+
+#Taiwan Resist - No US Gaurantee
+
+country_event = {
+	id = china.14
+	title = china.14.t
+	desc = china.14.d
+	picture = GFX_report_event_taiwan_resist
+
+	is_triggered_only = yes
+
+	option = { #War
+		name = china.14.o1
+
+		declare_war_on = { target = CHI type = annex_everything }
+
+		ai_chance = {
+		factor = 95 }
+
+		news_event = {
+			hours = 6
+			id = china_news.14
+		}
+	}
+
+	option = { #Back off
+		name = china.14.o2
+
+		add_political_power = -150
+		add_stability = -0.20
+
+		ai_chance = {
+		factor = 5 }
+
+		news_event = {
+			hours = 6
+			id = china_news.13
+		}
+	}
+}
+
+#USA - Support Taiwan?
+
+country_event = {
+	id = china.15
+	title = china.15.t
+	desc = china.15.d
+	picture = GFX_report_event_taiwan_resist
+
+	is_triggered_only = yes
+
+	option = { #Support Taiwan
+		name = china.15.o1
+
+		add_political_power = 50
+
+		PRC = { add_opinion_modifier = { target = USA modifier = large_decrease }}
+		CHI = { add_opinion_modifier = { target = USA modifier = large_increase }}
+
+		PRC = {country_event { id = china.16 }}
+
+		ai_chance = {
+		factor = 85 }
+
+		news_event = {
+			hours = 6
+			id = china_news.15
+		}
+	}
+
+	option = { #Back off
+		name = china.15.o2
+
+		#end_guarantee = CHI
+		remove_from_faction = CHI
+
+		add_political_power = -100
+		add_stability = -0.10
+
+		PRC = { add_opinion_modifier = { target = USA modifier = recent_actions_positive }}
+		CHI = { add_opinion_modifier = { target = USA modifier = large_decrease }}
+		JAP = { add_opinion_modifier = { target = USA modifier = large_decrease }}
+
+		PRC = {country_event { id = china.14 }}
+
+		ai_chance = {
+		factor = 15 }
+
+		news_event = {
+			hours = 6
+			id = china_news.16
+		}
+	}
+}
+
+#Taiwan - US Backs Taiwan
+country_event = {
+	id = china.16
+	title = china.16.t
+	desc = china.16.d
+	picture = GFX_report_event_us_navy
+
+	is_triggered_only = yes
+
+	option = { #War
+		name = china.16.o1
+
+		declare_war_on = { target = CHI type = annex_everything }
+
+		ai_chance = {
+		factor = 70 }
+
+		news_event = {
+			hours = 6
+			id = china_news.14
+		}
+	}
+
+	option = { #Back Off
+		name = china.16.o1
+
+		add_political_power = -150
+		add_stability = -0.20
+
+		ai_chance = {
+		factor = 30 }
+
+		news_event = {
+			hours = 6
+			id = china_news.13
+		}
+	}
+}
+
+country_event = { #Civil War if Elections Hidden Trigger
+	id = china.17
+	hidden = yes
+	
+	fire_only_once = yes
+	
+	trigger = {
+		original_tag = PRC
+		has_country_flag = PRC_full_democracy
+	}
+	
+	mean_time_to_happen = {
+		days = 120
+	}
+	
+	immediate = {
+		random_list = {
+			40 = { country_event = china.18 }
+			60 = {}
+		}
+	}
+	
+	option = {
+		name = hidden_option
+	}
+}
+
+country_event = { #Civil War if Republic
+	id = china.18
+	title = china.18.t
+	desc = china.18.d
+	picture = GFX_report_event_chinese_soldiers
+
+	is_triggered_only = yes
+
+	option = { #War
+		name = china.18.o1
+
+		start_civil_war = { ideology = communist size = 0.5 }
+
+		news_event = {
+			hours = 6
+			id = china_news.17
+		}
+	}
+}
+
+country_event = { #Civil War if KMT Hidden Trigger
+	id = china.19
+	hidden = yes
+	
+	fire_only_once = yes
+	
+	trigger = {
+		original_tag = PRC
+		has_country_flag = PRC_moderate_democracy
+	}
+	
+	mean_time_to_happen = {
+		days = 120
+	}
+	
+	immediate = {
+		random_list = {
+			20 = { country_event = china.18 }
+			80 = {}
+		}
+	}
+	
+	option = {
+		name = hidden_option
+	}
+}
+
+country_event = { #Chinese Mining Interests
+	id = china.20
+	title = china.20.t
+	desc = china.20.d
+	picture = GFX_report_event_mining
+
+	is_triggered_only = yes
+
+	option = { #Welcome foreign investment
+	name = china.20.o1
+
+	add_stability = -0.10
+	add_political_power = -50
+
+	random_owned_state = {add_resource = { type = steel amount = 10 }}
+	random_owned_state = {add_resource = { type = chromium amount = 2 }}
+	random_owned_state = {add_resource = { type = tungsten amount = 2 }}
+
+	add_resource = { type = steel amount = 10 state = 613 }
+	add_resource = { type = chromium amount = 2 state = 613 }
+	add_resource = { type = tungsten amount = 2 state = 613 }
+
+	PRC = { add_opinion_modifier = { target = FROM modifier = recent_actions_positive }}
+	FROM = { add_opinion_modifier = { target = PRC modifier = recent_actions_positive }}
+
+		ai_chance = {
+		factor = 65
+		}
+	}
+
+	option = {#No more imperial exploitation
+	name = china.20.o2
+
+	add_stability = 0.05
+	add_political_power = 50
+
+	PRC = { add_opinion_modifier = { target = FROM modifier = large_decrease }}
+	FROM = { add_opinion_modifier = { target = PRC modifier = recent_actions_negative }}
+
+		ai_chance = {
+		factor = 35
+		}
+	}
+}
+
+country_event = { #Pax Asiatica
+	id = china.21
+	title = china.21.t
+	desc = china.21.d
+	picture = GFX_report_event_china_diplomacy
+
+	is_triggered_only = yes
+
+	option = { #accept Chinese protection
+		name = china.21.o1
+		
+		ai_chance = {
+			factor = 10
+			modifier = {
+				AND = {
+					has_government = communist
+					PRC = { has_government = communist }
+				}
+				factor = 100
+			}
+		}
+	}
+
+	option = { #refuse Chinese protection
+		name = china.21.o2
+		
+		add_political_power = 25
+		PRC = { add_opinion_modifier = { target = FROM modifier = recent_actions_negative } }
+		ai_chance = {
+			factor = 90
+		}
+	}
+}
+
+
+country_event = { #Paracel Negotiation - VIN
+	id = china.22
+	title = china.22.t
+	desc = china.22.d
+	picture = GFX_report_event_china_diplomacy
+
+	is_triggered_only = yes
+
+	option = { #Give up Paracels
+		name = china.22.o1
+
+		ai_chance = {
+			factor = 20
+
+			modifier = {
+				factor = 60
+				AND = {
+					is_in_faction_with = PRC
+				}
+			}
+		}
+
+		VIN = {remove_state_core = 879}
+		VIN = {remove_state_claim = 879}
+		PRC = {set_state_owner = 879}
+		PRC = { set_state_controller = 879 }
+
+		news_event = {
+			hours = 6
+			id =china_news.23
+		}
+	}
+
+	option = { #Refuse
+		name = china.22.o2
+
+		ai_chance = {
+			factor = 80
+
+			modifier = {
+				factor = 40
+				AND = {
+					is_in_faction_with = PRC
+				}
+			}
+		}
+
+		add_stability = 0.05
+
+		PRC = { country_event { id = china.23 }}
+
+	}
+}
+
+country_event = { #Paracel Negotiation - PRC
+	id = china.23
+	title = china.23.t
+	desc = china.23.d
+	picture = GFX_report_event_china_diplomacy
+
+	is_triggered_only = yes
+
+	option = { #Give up Paracels
+		name = china.24.o1
+
+		ai_chance = {
+			factor = 20
+		}
+
+		PRC = {remove_state_core = 879}
+		PRC = {remove_state_claim = 879}
+		VIN = {set_state_owner = 879}
+		VIN = { set_state_controller = 879 }
+		VIN = { add_state_core = 879 }
+
+		news_event = {
+			hours = 6
+			id = china_news.24
+		}
+	}
+
+	option = { #Refuse
+		name = china.23.o2
+
+		ai_chance = {
+			factor = 80
+		}
+
+		add_stability = 0.05
+
+		news_event = {
+			hours = 6
+			id = china_news.25
+		}
+	}
+}
+
+#####################################################################################################################
+
+country_event = { #2008 Melamine Scandal
+	id = china.24
+	title = china.24.t
+	desc = china.24.d
+	picture = GFX_report_event_melamine_scandal
+	
+	fire_only_once = yes
+
+	trigger = {
+		tag = PRC
+		has_government = communist
+		date > 2008.7.1
+		date < 2008.7.30
+		not = { has_country_flag = PRC_Melamine }
+	}
+	
+	immediate = {
+		set_country_flag = PRC_Melamine
+	}
+
+	option = {	
+		name = china.24.o1
+		ai_chance = {
+			factor = 100
+			}
+		
+		add_political_power = -10
+
+		add_stability = -0.10
+
+		hidden_effect = {
+
+		add_popularity = {
+			ideology = communist
+			popularity = -0.05
+		}
+		}
+	}
+}
+
+country_event = { #2011 Train Collision Scandal
+	id = china.25
+	title = china.25.t
+	desc = china.25.d
+	picture = GFX_report_event_train_collision
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = PRC
+		has_government = communist
+		date > 2011.7.1
+		date < 2011.7.30
+		not = { has_country_flag = PRC_Collision }
+	}
+	
+	immediate = {
+		set_country_flag = PRC_Collision
+	}
+
+	option = {	
+		name = china.25.o1
+
+		ai_chance = {
+			factor = 100
+			}
+
+		add_political_power = -10
+
+		add_stability = -0.10
+
+		hidden_effect = {
+
+		add_popularity = {
+			ideology = communist
+			popularity = -0.05
+		}
+		}
+	}
+}
+#########
+###########################################################################################################################################################
+
+#PRC Party Congress
+
+#PRC Party Congress 2002
+country_event = {
+	id = china.26
+	title = china.26.t
+	desc = china.26.d
+	picture = GFX_report_event_ccp_party_congress
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = PRC
+		has_government = communist
+		date > 2002.6.1
+		date < 2002.12.1
+		not = { has_country_flag = PRC_congress_2002 }
+	}
+	
+	immediate = {
+		set_country_flag = PRC_congress_2002
+	}
+	
+	option = {	#ShanghaiClique
+		name = china.26.o1
+		ai_chance = {
+			factor = 5
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
+		}
+
+		create_country_leader = {
+				name = "Wu Bangguo"
+				desc = "POLITICIAN_PRC_WU_BANGGUO_DESC"
+				picture = "Wu_Bangguo.dds"
+				expire = "2050.1.1"
+				ideology = maoist
+				
+				traits = {
+				
+				}
+			}
+		
+		613 = {
+		add_extra_state_shared_building_slots = 2 }	
+		613 = { 
+		add_building_construction = { type = industrial_complex instant_build = yes } }
+
+		593 = {
+		add_extra_state_shared_building_slots = 2 }	
+		593 = { 
+		add_building_construction = { type = industrial_complex instant_build = yes } }
+
+		add_tech_bonus = { bonus = 0.25 uses = 1 category = industry }
+
+		add_political_power = -25
+
+		SOV = { add_opinion_modifier = { target = PRC modifier = recent_actions_positive } }
+
+		USA = { add_opinion_modifier = { target = PRC modifier = recent_actions_positive } }
+
+		hidden_effect = {
+
+		add_popularity = {
+			ideology = market_liberal
+			popularity = 0.05
+		}
+
+		add_popularity = {
+			ideology = social_liberal
+			popularity = 0.03
+		}
+
+		}
+
+		set_country_flag = PRC_Shanghai_2002
+	}
+	
+	option = {	#TuanPai
+		name = china.26.o2
+		ai_chance = {
+			factor = 80	
+		}
+		
+		create_country_leader = {
+				name = "Hu Jintao"
+				desc = "POLITICIAN_PRC_HU_JINTAO_DESC"
+				picture = "Hu_Jintao.dds"
+				expire = "2050.1.1"
+				ideology = maoist
+				
+				traits = {
+				
+				}
+			}
+
+		add_stability = 0.10
+
+		add_political_power = 20
+
+		609 = {
+		add_extra_state_shared_building_slots = 2 }	
+		609 = { 
+		add_building_construction = { type = industrial_complex instant_build = yes } }
+
+		614 = {
+		add_extra_state_shared_building_slots = 2 }
+		614 = { 
+		add_building_construction = { type = industrial_complex instant_build = yes } }
+
+		add_tech_bonus = { bonus = 0.25 uses = 1 category = electronics }
+		add_tech_bonus = { bonus = 0.25 uses = 1 category = construction_tech }
+
+		USA = { add_opinion_modifier = { target = PRC modifier = recent_actions_positive } }
+
+		KOR = { add_opinion_modifier = { target = PRC modifier = recent_actions_positive } }
+		
+		hidden_effect = {
+			
+		add_popularity = {
+			ideology = social_liberal
+			popularity = 0.03
+		}
+		add_popularity = {
+			ideology = progressive
+			popularity = 0.03
+		}
+
+		set_country_flag = PRC_TuanPai_2002
+		}
+	}
+
+	option = {	#TaiZiDang
+		name = china.26.o3
+		ai_chance = {
+			factor = 15
+		modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
+		}
+
+		create_country_leader = {
+				name = "Xi Jinping"
+				desc = "POLITICIAN_PRC_XI_JINPING_DESC"
+				picture = "Xi_Jinping.dds"
+				expire = "2050.1.1"
+				ideology = maoist
+				
+				traits = { 
+				enemy_of_japan
+				}
+			}
+
+		add_stability = 0.05
+
+		add_political_power = 15
+
+		609 = {
+		add_extra_state_shared_building_slots = 2 }	
+		609 = { 
+		add_building_construction = { type = arms_factory instant_build = yes } }
+
+		614 = {
+		add_extra_state_shared_building_slots = 2 }
+		614 = { 
+		add_building_construction = { type = arms_factory instant_build = yes } }
+
+		army_experience = 20
+		navy_experience = 30
+		air_experience = 25
+
+		USA = { add_opinion_modifier = { target = PRC modifier = recent_actions_negative } }
+		CHI = { add_opinion_modifier = { target = PRC modifier = recent_actions_negative } }
+		JAP = { add_opinion_modifier = { target = PRC modifier = recent_actions_negative } }
+		KOR = { add_opinion_modifier = { target = PRC modifier = recent_actions_negative } }
+		VIN = { add_opinion_modifier = { target = PRC modifier = recent_actions_negative } }
+		#PHI = { add_opinion_modifier = { target = PRC modifier = recent_actions_negative } }
+
+		set_country_flag = PRC_TaiZiDang_2002
+	}
+}
+
+#################################################################################################################################################################
+
+##PRC Party Congress 2012
+country_event = {
+	id = china.27
+	title = china.27.t
+	desc = china.27.d
+	picture = GFX_report_event_ccp_party_congress
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = PRC
+		has_government = communist
+		date > 2012.6.1
+		date < 2012.12.1
+		not = { has_country_flag = PRC_congress_2012 }
+	}
+	
+	immediate = {
+		set_country_flag = PRC_congress_2012
+	}
+	
+	option = {	#ShanghaiClique
+		name = china.27.o1
+		ai_chance = {
+			factor = 5
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
+		}
+		
+		613 = {
+		add_extra_state_shared_building_slots = 2 }	
+		613 = { 
+		add_building_construction = { type = industrial_complex instant_build = yes } }
+
+		593 = {
+		add_extra_state_shared_building_slots = 2 }	
+		593 = { 
+		add_building_construction = { type = industrial_complex instant_build = yes } }
+
+		add_tech_bonus = { bonus = 0.25 uses = 1 category = industry }
+
+		add_political_power = 20
+
+		add_stability = 0.05
+
+		create_country_leader = {
+				name = "Wu Bangguo"
+				desc = "POLITICIAN_PRC_WU_BANGGUO_DESC"
+				picture = "Wu_Bangguo.dds"
+				expire = "2050.1.1"
+				ideology = maoist
+				
+				traits = {
+				
+				}
+			}
+
+		hidden_effect = {
+
+		add_popularity = {
+			ideology = market_liberal
+			popularity = 0.05
+		}
+
+		}
+
+		set_country_flag = PRC_Shanghai_2012
+	}
+	
+	option = {	#TuanPai
+		name = china.27.o2
+		ai_chance = {
+			factor = 35	
+		modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
+		}
+		
+		create_country_leader = {
+				name = "Li Keqiang"
+				desc = "POLITICIAN_PRC_LI_KEQIANG_DESC"
+				picture = "Li_Keqiang.dds"
+				expire = "2050.1.1"
+				ideology = maoist
+				
+				traits = {
+				
+				}
+			}
+
+		add_stability = 0.10
+
+		add_political_power = 25
+
+		609 = {
+		add_extra_state_shared_building_slots = 2 }	
+		609 = { 
+		add_building_construction = { type = industrial_complex instant_build = yes } }
+
+		614 = {
+		add_extra_state_shared_building_slots = 2 }
+		614 = { 
+		add_building_construction = { type = industrial_complex instant_build = yes } }
+
+		add_tech_bonus = { bonus = 0.25 uses = 1 category = electronics }
+		add_tech_bonus = { bonus = 0.25 uses = 1 category = construction_tech }
+
+		USA = { add_opinion_modifier = { target = PRC modifier = recent_actions_positive } }
+		KOR = { add_opinion_modifier = { target = PRC modifier = recent_actions_positive } }
+		
+		hidden_effect = {
+			
+		add_popularity = {
+			ideology = social_liberal
+			popularity = 0.05
+		}
+		add_popularity = {
+			ideology = progressive
+			popularity = 0.05
+		}
+		add_popularity = {
+			ideology = social_democrat
+			popularity = 0.03
+		}
+		add_popularity = {
+			ideology = democratic_socialist
+			popularity = 0.01
+		}
+		set_country_flag = PRC_TuanPai_2012
+		}
+	}
+
+	option = {	#TaiZiDang
+		name = china.27.o3
+		ai_chance = {
+			factor = 50
+		}
+
+		create_country_leader = {
+				name = "Xi Jinping"
+				desc = "POLITICIAN_PRC_XI_JINPING_DESC"
+				picture = "Xi_Jinping.dds"
+				expire = "2050.1.1"
+				ideology = maoist
+				
+				traits = {
+				
+				}
+			}
+
+		add_stability = 0.05
+
+		add_political_power = 15
+
+		609 = {
+		add_extra_state_shared_building_slots = 2 }	
+		609 = { 
+		add_building_construction = { type = arms_factory instant_build = yes } }
+
+		614 = {
+		add_extra_state_shared_building_slots = 2 }
+		614 = { 
+		add_building_construction = { type = arms_factory instant_build = yes } }
+
+		army_experience = 20
+		navy_experience = 30
+		air_experience = 25
+
+		USA = { add_opinion_modifier = { target = PRC modifier = recent_actions_negative } }
+		CHI = { add_opinion_modifier = { target = PRC modifier = recent_actions_negative } }
+		JAP = { add_opinion_modifier = { target = PRC modifier = recent_actions_negative } }
+		KOR = { add_opinion_modifier = { target = PRC modifier = recent_actions_negative } }
+		VIN = { add_opinion_modifier = { target = PRC modifier = recent_actions_negative } }
+		#PHI = { add_opinion_modifier = { target = PRC modifier = recent_actions_negative } }
+
+		set_country_flag = PRC_TaiZiDang_2012
+	}
+}
+
+country_event = {	#Remove the Taiwan cores upon union
+	id = china.28
+	hidden = yes
+	is_triggered_only = yes
+	
+	option = {
+		every_state = {
+			limit = {
+				is_core_of = CHI
+				is_owned_by = PRC
+			}
+			remove_core_of = CHI
+		}
+	}
+}
+
+country_event = {	#FROM requests Chinese Alliance membership.
+	id = china.29
+	title = china.29.t
+	desc = china.29.d
+	picture = GFX_report_event_chinese_flag
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = china.29.o1
+		add_to_faction = FROM
+	}
+	
+	option = {
+		name = china.29.o2
+		add_political_power = -20
+		FROM = {
+			add_opinion_modifier = {
+				target = ROOT
+				modifier = declined_faction_request
+			}
+		}
+	}
+}
+
+#########################################################################################################################################################################

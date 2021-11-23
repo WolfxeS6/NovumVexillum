@@ -1,0 +1,51 @@
+﻿add_namespace = islamic_state
+
+#Everybody hates ISIS and ISIS hates everybody
+country_event = {
+	id = islamic_state.1
+	hidden = yes
+	fire_only_once = yes
+	
+	trigger = {
+		country_exists = ISS
+	}
+	
+	option = {
+		every_country = {
+			limit = {
+				NOT = { tag = ISS }
+				OR = {
+					NOT = { has_government = islamist }
+					has_country_flag = shia_islam
+				}
+			}
+			add_opinion_modifier = {
+				target = ISS
+				modifier = terrorist_menace
+			}
+			add_opinion_modifier = {
+				target = ISS
+				modifier = terrorist_menace_trade
+			}
+			country_event = islamic_state.2
+		}
+	}
+}
+country_event = {
+	id = islamic_state.2
+	hidden = yes
+	is_triggered_only = yes
+	
+	option = {
+		ISS = {
+			add_opinion_modifier = {
+				target = ROOT
+				modifier = holy_war
+			}
+			add_opinion_modifier = {
+				target = ROOT
+				modifier = holy_war_trade
+			}
+		}
+	}
+}

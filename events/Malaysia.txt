@@ -1,0 +1,37 @@
+﻿add_namespace = malaysia
+add_namespace = news_MAY
+
+#Al-Qaeda Summit in Kuala Lumpur
+country_event = {
+	id = malaysia.1
+	title = malaysia.1.t
+	desc = malaysia.1.d
+	picture = GFX_report_event_al_qaeda
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = MAY
+		date > 2000.1.4
+		date < 2000.3.1
+		NOT = { has_country_flag = may_al_qaeda_summit }
+	}
+	
+	immediate = {
+		set_country_flag = may_al_qaeda_summit
+	}
+	
+	option = {
+		name = malaysia.1.o1
+		add_popularity = {
+			ideology = islamist
+			popularity = 0.02
+		}
+		news_event = {
+			id = news.49
+			hours = 6
+		}
+	}
+}
+
+############### NEWS ##################

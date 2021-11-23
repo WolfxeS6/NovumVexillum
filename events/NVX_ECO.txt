@@ -1,0 +1,301 @@
+﻿add_namespace = NVX_ECO
+
+country_event = { #economy growth idea changed
+	id = NVX_ECO.1
+	title = NVX_ECO.1.t
+	desc = {
+		text = NVX_ECO.1.d1
+		trigger = {
+			has_idea = economy_boom
+		}
+	}
+	desc = {
+		text = NVX_ECO.1.d2
+		trigger = {
+			has_idea = economy_growth
+		}
+	}
+	desc = {
+		text = NVX_ECO.1.d3
+		trigger = {
+			has_idea = economy_stagnation
+		}
+	}
+	desc = {
+		text = NVX_ECO.1.d4
+		trigger = {
+			has_idea = economy_recession
+		}
+	}
+	desc = {
+		text = NVX_ECO.1.d5
+		trigger = {
+			has_idea = economy_depression
+		}
+	}
+	picture = GFX_report_event_stock_market
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = NVX_ECO.1.o1
+	}
+}
+
+country_event = { #PAX requested state
+	id = NVX_ECO.2
+	title = NVX_ECO.2.t
+	desc = NVX_ECO.2.d
+	
+	picture = GFX_report_event_explain_state_assimilation
+	
+	is_triggered_only = yes
+	
+	option = { #accept
+		name = NVX_ECO.2.o1
+		NVX_ECO_pax_state_payment = yes
+		FROM = {
+			transfer_state = var:NVX_ECO_pax_state_id
+			#add_state_core = var:NVX_ECO_pax_state_id
+		}
+		set_country_flag = {
+			flag = NVX_ECO_pax_req_state_sold_cooldown
+			days = 180
+			value = 1
+		}
+		
+		ai_chance = {
+			factor = 10
+			
+			modifier = {
+				add = 5
+				is_in_faction_with = FROM
+			}
+			modifier = {
+				add = 5
+				has_government = FROM
+			}
+			modifier = {
+				add = 5
+				has_opinion = {
+					target = FROM
+					value > 90
+				}
+			}
+		}
+	}
+	
+	option = { #decline
+		name = NVX_ECO.2.o2
+		add_to_variable = { FROM.NVX_ECO_pax = FROM.NVX_ECO_pax_state_refund }
+		add_political_power = -200
+		FROM = { country_event = { id = NVX_ECO.3 days = 3 } }
+		
+		ai_chance = {
+			factor = 10
+		}
+	}
+}
+
+country_event = { #PAX request denied
+	id = NVX_ECO.3
+	title = NVX_ECO.3.t
+	desc = NVX_ECO.3.d
+	
+	picture = GFX_report_event_explain_state_assimilation
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = NVX_ECO.3.o1
+		ai_chance = {
+			factor = 1
+		}
+	}
+}
+
+country_event = { #PAX requested puppet
+	id = NVX_ECO.4
+	title = NVX_ECO.4.t
+	desc = NVX_ECO.4.d
+	
+	picture = GFX_report_event_explain_state_assimilation
+	
+	is_triggered_only = yes
+	
+	option = { #accept
+		name = NVX_ECO.4.o1
+		FROM = {
+			country_event = { id = NVX_ECO.5 days = 3 }
+			if = {
+				limit = {
+					has_dlc = "Together for Victory"
+				}
+				set_autonomy = {
+					target = PREV
+					autonomous_state = autonomy_dominion
+				}
+				else = {
+					puppet = PREV
+				}
+			}
+		}
+		
+		ai_chance = {
+			factor = 10
+			
+			modifier = {
+				add = 10
+				is_in_faction_with = FROM
+			}
+			modifier = {
+				add = 10
+				has_government = FROM
+			}
+			modifier = {
+				add = 10
+				has_opinion = {
+					target = FROM
+					value > 90
+				}
+			}
+			modifier = {
+				add = 10
+				check_variable = { num_owned_states < FROM.num_owned_states }
+				check_variable = { num_of_factories < FROM.num_of_factories }
+			}
+			modifier = {
+				add = 20
+				num_of_controlled_states < 3
+			}
+			modifier = {
+				add = 10
+				has_idea = national_development_undeveloped
+			}
+		}
+	}
+	
+	option = { #decline
+		name = NVX_ECO.4.o2
+		FROM = { country_event = { id = NVX_ECO.6 days = 3 } }
+		add_political_power = -200
+		add_to_variable = { FROM.NVX_ECO_pax = FROM.NVX_ECO_pax_puppet_refund }
+		
+		ai_chance = {
+			factor = 20
+			
+			modifier = {
+				add = 50
+				has_idea = national_development_developed
+			}
+			modifier = {
+				add = 5
+				num_of_controlled_states > 10
+			}
+			modifier = {
+				add = 5
+				num_of_controlled_states > 20
+			}
+		}
+	}
+}
+
+country_event = { #PAX puppet req accepted
+	id = NVX_ECO.5
+	title = NVX_ECO.5.t
+	desc = NVX_ECO.5.d
+	
+	picture = GFX_report_event_explain_state_assimilation
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = NVX_ECO.5.o1
+		ai_chance = {
+			factor = 1
+		}
+	}
+}
+
+country_event = { #PAX puppet req denied
+	id = NVX_ECO.6
+	title = NVX_ECO.6.t
+	desc = NVX_ECO.6.d
+	
+	picture = GFX_report_event_explain_state_assimilation
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = NVX_ECO.6.o1
+		ai_chance = {
+			factor = 1
+		}
+	}
+}
+
+country_event = { #Focus future tech reducer
+	id = NVX_ECO.7
+	title = NVX_ECO.7.t
+	desc = NVX_ECO.7.d
+	
+	picture = GFX_report_event_focus_future_event
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = NVX_ECO.7.o1
+		add_tech_bonus = {
+			ahead_reduction = 8
+			uses = 1
+			category = infantry_weapons
+			category = support_tech
+			category = armor
+			category = artillery
+		}
+		
+		ai_chance = {
+			factor = 1
+		}
+	}
+	
+	option = {
+		name = NVX_ECO.7.o2
+		add_tech_bonus = {
+			ahead_reduction = 8
+			uses = 1
+			category = naval_equipment
+		}
+		
+		ai_chance = {
+			factor = 1
+		}
+	}
+	
+	option = {
+		name = NVX_ECO.7.o3
+		add_tech_bonus = {
+			ahead_reduction = 8
+			uses = 1
+			category = air_equipment
+		}
+		
+		ai_chance = {
+			factor = 1
+		}
+	}
+	
+	option = {
+		name = NVX_ECO.7.o4
+		add_tech_bonus = {
+			ahead_reduction = 8
+			uses = 1
+			category = electronics
+			category = industry
+		}
+		
+		ai_chance = {
+			factor = 1
+		}
+	}
+}

@@ -1,0 +1,644 @@
+NVX_formable_cat = {
+	rename_kaliningrad_to_konigsberg = {
+		#icon = generic_industry
+		
+		available = {
+			
+		}
+		
+		visible = {
+			original_tag = GER
+			owns_state = 741
+		}
+		
+		fire_only_once = yes
+		
+		cost = 50
+		
+		complete_effect = {
+			set_province_name = { id = 6332 name = "Königsberg"}
+			GER = { add_state_core = 741 }
+			741 = { set_state_name = "Prussia" }
+		}
+		
+		ai_will_do = {
+			base = 10
+		}
+	}
+	
+	rename_istanbul_to_constantinople = {
+		#icon = generic_industry
+		
+		available = {
+			
+		}
+		
+		visible = {
+			original_tag = GRE
+			owns_state = 341
+		}
+		
+		fire_only_once = yes
+		
+		cost = 50
+		
+		complete_effect = {
+			set_province_name = { id = 9833 name = "Constantinople"}
+			GRE = { add_state_core = 341 }
+			341 = { set_state_name = "Constantinople" }
+		}
+		
+		ai_will_do = {
+			base = 10
+		}
+	}
+	
+	GER_form_annex_austria = {
+		#icon = generic_industry
+		
+		available = {
+			AUS = {
+				has_civil_war = no
+				OR = {
+					owns_state = 4
+					owns_state = 152
+					owns_state = 153
+				}
+			}
+		}
+		
+		visible = {
+			original_tag = GER
+			GER = { has_government = monarchist }
+			GER = {
+				is_subject = no
+				is_puppet = no
+			}
+			country_exists = AUS
+			AUS = {
+				is_ai = yes
+				OR = {
+					is_subject_of = GER
+					is_puppet_of = GER
+					is_in_faction_with = GER
+				}
+			}
+		}
+		
+		fire_only_once = yes
+		
+		cost = 200
+		
+		complete_effect = {
+			if = {
+				limit = { AUS = { owns_state = 4 } }
+				GER = {
+					add_state_core = 4
+					set_state_owner = 4
+				}
+			}
+			if = {
+				limit = { AUS = { owns_state = 152 } }
+				GER = {
+					add_state_core = 152
+					set_state_owner = 152
+				}
+			}
+			if = {
+				limit = { AUS = { owns_state = 153 } }
+				GER = {
+					add_state_core = 153
+					set_state_owner = 153
+				}
+			}
+			AUS = {
+				every_unit_leader = {
+					set_nationality = GER
+				}
+			}
+			annex_country = { target = AUS transfer_troops = yes }
+		}
+		
+		ai_will_do = {
+			base = 10
+		}
+	}
+	
+#	KOR_form_three_kingdoms = {
+#		#icon = generic_industry
+#		
+#		available = {
+#			owns_state = 525
+#			owns_state = 527
+#			owns_state = 869
+#			owns_state = 870
+#			owns_state = 871
+#			owns_state = 872
+#			owns_state = 873
+#			owns_state = 874
+#			owns_state = 875
+#		}
+#		
+#		visible = {
+#			OR = {
+#				original_tag = KOR
+#				original_tag = PRK
+#			}
+#			has_government = monarchist
+#			is_subject = no
+#			is_puppet = no
+#		}
+#		
+#		fire_only_once = yes
+#		
+#		cost = 0
+#		
+#		complete_effect = {
+#			set_cosmetic_tag = three_kingdoms_of_korea
+#		}
+#		
+#		ai_will_do = {
+#			base = 10
+#		}
+#	}
+	
+	ZIM_form_rhodesia = {
+		#icon = generic_industry
+		
+		available = {
+			
+		}
+		
+		visible = {
+			original_tag = ZIM
+			has_government = conservative
+		}
+		
+		fire_only_once = yes
+		
+		cost = 0
+		
+		complete_effect = {
+			if =  {
+				limit = { has_global_flag = DPTS_use_simple_country_names }
+				set_cosmetic_tag = simple_Rhodesia
+				else = { set_cosmetic_tag = Rhodesia }
+			}
+		}
+		
+		ai_will_do = {
+			base = 10
+		}
+	}
+	
+	YUG_form_yugoslavia = {
+		#icon = generic_industry
+		
+		available = {
+			owns_state = 107
+			count_triggers = {
+				amount = 12
+				owns_state = 900
+				owns_state = 102
+				owns_state = 736
+				owns_state = 163
+				owns_state = 103
+				owns_state = 109
+				owns_state = 104
+				owns_state = 848
+				owns_state = 851
+				owns_state = 850
+				owns_state = 849
+				owns_state = 45
+				owns_state = 105
+				owns_state = 108
+				owns_state = 785
+				owns_state = 106
+			}
+		}
+		
+		visible = {
+			NOT = { has_cosmetic_tag = YUG }
+			NOT = { has_cosmetic_tag = simple_YUG }
+			OR = {
+				original_tag = SER
+				original_tag = BOS
+				original_tag = CRO
+				original_tag = MAC
+				original_tag = SLV
+				original_tag = MNT
+				original_tag = KOS
+			}
+		}
+		
+		fire_only_once = yes
+		
+		cost = 100
+		
+		complete_effect = {
+			if =  {
+				limit = { has_global_flag = DPTS_use_simple_country_names }
+				set_cosmetic_tag = simple_YUG
+				else = { set_cosmetic_tag = YUG }
+			}
+			set_capital = 107
+			add_state_core = 107
+			add_state_core = 900
+			add_state_core = 102
+			add_state_core = 736
+			add_state_core = 163
+			add_state_core = 103
+			add_state_core = 109
+			add_state_core = 104
+			add_state_core = 848
+			add_state_core = 851
+			add_state_core = 850
+			add_state_core = 849
+			add_state_core = 45
+			add_state_core = 105
+			add_state_core = 108
+			add_state_core = 785
+			add_state_core = 106
+		}
+		
+		ai_will_do = {
+			base = 0
+			
+			modifier = {
+				add = 10
+				has_government = communist
+			}
+		}
+	}
+	
+	CSA_form_golden_circle = {
+		#icon = generic_industry
+		
+		available = {
+			owns_state = 315
+			count_triggers = {
+				amount = 30
+				owns_state = 484
+				owns_state = 483
+				owns_state = 482
+				owns_state = 480
+				owns_state = 479
+				owns_state = 481
+				owns_state = 478
+				owns_state = 277
+				owns_state = 477
+				owns_state = 485
+				owns_state = 476
+				owns_state = 475
+				owns_state = 474
+				owns_state = 313
+				owns_state = 311
+				owns_state = 314
+				owns_state = 312
+				owns_state = 317
+				owns_state = 316
+				owns_state = 889
+				owns_state = 685
+				owns_state = 314
+				owns_state = 690
+				owns_state = 689
+				owns_state = 693
+				owns_state = 318
+				owns_state = 319
+				owns_state = 686
+				owns_state = 694
+				owns_state = 833
+				owns_state = 308
+				owns_state = 831
+				owns_state = 830
+				owns_state = 692
+				owns_state = 829
+				owns_state = 691
+				owns_state = 489
+				owns_state = 493
+				owns_state = 910
+				owns_state = 695
+			}
+		}
+		
+		visible = {
+			original_tag = CSA
+			owns_state = 375
+			owns_state = 374
+			owns_state = 372
+			owns_state = 371
+			owns_state = 370
+			owns_state = 368
+			owns_state = 369
+			owns_state = 367
+			owns_state = 365
+			owns_state = 364
+			owns_state = 363
+			owns_state = 362
+			owns_state = 366
+		}
+		
+		fire_only_once = yes
+		
+		cost = 100
+		
+		complete_effect = {
+			set_cosmetic_tag = CSA_golden_circle
+			set_capital = 315
+		}
+		
+		ai_will_do = {
+			base = 10
+		}
+	}
+	
+	AUSHUN_form_austria_hungary = {
+		#icon = generic_industry
+		
+		available = {
+			owns_state = 153
+			owns_state = 152
+			owns_state = 4
+			owns_state = 155
+			owns_state = 43
+			owns_state = 154
+		}
+		
+		visible = {
+			OR = {
+				original_tag = AUS
+				original_tag = HUN
+			}
+		}
+		
+		fire_only_once = yes
+		
+		cost = 100
+		
+		complete_effect = {
+			if =  {
+				limit = { has_global_flag = DPTS_use_simple_country_names }
+				set_cosmetic_tag = simple_austria_hungary
+				else = { set_cosmetic_tag = austria_hungary }
+			}
+			add_state_core = 153
+			add_state_core = 152
+			add_state_core = 4
+			add_state_core = 155
+			add_state_core = 43
+			add_state_core = 39
+			add_state_core = 154
+			if = {
+				limit = { NVX_has_government_democratic = no }
+				add_state_core = 900
+				add_state_core = 102
+				add_state_core = 736
+				add_state_core = 103
+				add_state_core = 109
+				add_state_core = 104
+				add_state_core = 848
+				add_state_core = 850
+				add_state_core = 851
+				add_state_core = 849
+				add_state_core = 163
+				add_state_core = 45
+				add_state_claim = 69
+				add_state_claim = 9
+				add_state_claim = 74
+				add_state_claim = 75
+				add_state_claim = 72
+				add_state_claim = 70
+				add_state_claim = 71
+				add_state_claim = 664
+				add_state_claim = 88
+				add_state_claim = 73
+				add_state_claim = 89
+				add_state_claim = 76
+				add_state_claim = 82
+				add_state_claim = 83
+				add_state_claim = 84
+				add_state_claim = 91
+			}
+		}
+		
+		ai_will_do = {
+			base = 0
+			
+			modifier = {
+				add = 10
+				has_government = monarchist
+			}
+		}
+	}
+	
+	TUR_form_ottoman_empire = {
+		#icon = generic_industry
+		
+		available = {
+			count_triggers = {
+				amount = 16
+				owns_state = 677
+				owns_state = 554
+				owns_state = 680
+				owns_state = 814
+				owns_state = 553
+				owns_state = 815
+				owns_state = 676
+				owns_state = 291
+				owns_state = 455
+				owns_state = 881
+				owns_state = 454
+				owns_state = 914
+				owns_state = 810
+				owns_state = 812
+				owns_state = 915
+				owns_state = 811
+				owns_state = 656
+				owns_state = 894
+				owns_state = 679
+				owns_state = 895
+				owns_state = 293
+				owns_state = 183
+				owns_state = 886
+				owns_state = 164
+			}
+		}
+		
+		visible = {
+			original_tag = TUR
+			owns_state = 341
+			owns_state = 347
+			owns_state = 356
+			owns_state = 355
+			owns_state = 354
+			owns_state = 340
+			owns_state = 49
+			owns_state = 348
+			owns_state = 349
+			owns_state = 353
+			owns_state = 339
+			owns_state = 343
+			owns_state = 346
+			owns_state = 342
+			owns_state = 345
+			owns_state = 344
+			owns_state = 350
+			owns_state = 352
+			owns_state = 827
+		}
+		
+		fire_only_once = yes
+		
+		cost = 100
+		
+		complete_effect = {
+			if =  {
+				limit = { has_global_flag = DPTS_use_simple_country_names }
+				set_cosmetic_tag = simple_ottoman_empire
+				else = { set_cosmetic_tag = ottoman_empire }
+			}
+			add_state_core = 677
+			add_state_core = 554
+			add_state_core = 680
+			add_state_core = 814
+			add_state_core = 815
+			add_state_core = 676
+			add_state_core = 291
+			add_state_core = 553
+			add_state_core = 164
+			add_state_core = 183
+			add_state_claim = 455
+			add_state_claim = 894
+			add_state_claim = 679
+			add_state_claim = 895
+			add_state_claim = 293
+			add_state_claim = 656
+			add_state_claim = 886
+			add_state_claim = 881
+			add_state_claim = 454
+			add_state_claim = 914
+			add_state_claim = 810
+			add_state_claim = 812
+			add_state_claim = 915
+			add_state_claim = 811
+		}
+		
+		ai_will_do = {
+			base = 0
+			
+			modifier = {
+				add = 10
+				has_government = monarchist
+			}
+		}
+	}
+	
+	CZESLO_form_czechoslovakia = {
+		#icon = generic_industry
+		
+		available = {
+			owns_state = 69
+			owns_state = 9
+			owns_state = 74
+			owns_state = 72
+			owns_state = 75
+			owns_state = 70
+			owns_state = 71
+			owns_state = 664
+		}
+		
+		visible = {
+			OR = {
+				original_tag = CZE
+				original_tag = SLO
+			}
+		}
+		
+		fire_only_once = yes
+		
+		cost = 100
+		
+		complete_effect = {
+			if =  {
+				limit = { has_global_flag = DPTS_use_simple_country_names }
+				set_cosmetic_tag = simple_czechoslovakia
+				else = { set_cosmetic_tag = czechoslovakia }
+			}
+			set_capital = 9
+			add_state_core = 69
+			add_state_core = 9
+			add_state_core = 74
+			add_state_core = 72
+			add_state_core = 75
+			add_state_core = 70
+			add_state_core = 71
+			add_state_core = 664
+			if = {
+				limit = { NVX_has_government_democratic = no }
+				add_state_core = 73
+			}
+		}
+		
+		ai_will_do = {
+			base = 0
+			
+			modifier = {
+				add = 10
+				has_government = communist
+			}
+		}
+	}
+	
+	IRQJORPAL_form_arabfed = {
+		#icon = generic_industry
+		
+		available = {
+			owns_state = 815
+			owns_state = 676
+			owns_state = 675
+			owns_state = 291
+			owns_state = 455
+			owns_state = 915
+			OR = {
+				has_idea = centralization_federal
+				has_idea = centralization_confederate
+			}
+		}
+		
+		visible = {
+			OR = {
+				original_tag = IRQ
+				original_tag = JOR
+				original_tag = PAL
+			}
+		}
+		
+		fire_only_once = yes
+		
+		cost = 100
+		
+		complete_effect = {
+			if =  {
+				limit = { has_global_flag = DPTS_use_simple_country_names }
+				set_cosmetic_tag = simple_arabfed
+				else = { set_cosmetic_tag = arabfed }
+			}
+			set_capital = 291
+			add_state_core = 815
+			add_state_core = 676
+			add_state_core = 675
+			add_state_core = 291
+			add_state_core = 455
+			add_state_core = 915
+		}
+		
+		ai_will_do = {
+			base = 0
+			
+			modifier = {
+				add = 10
+				has_government = monarchist
+			}
+		}
+	}
+}

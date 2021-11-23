@@ -1,0 +1,1181 @@
+# Written by E. Wolfe #			islamist fascist nationalist monarchist reactionary conservative market_liberal social_liberal social_democrat progressive democratic_socialist communist
+
+NVX_COUP_data_set = {
+	# STATS #
+	if = {
+		limit = { NVX_has_government_ideology_democratic = yes }
+		set_country_flag = NVX_COUP_data_start_demo
+	}
+	if = {
+		limit = { NVX_has_government_ideology_authoritarian = yes }
+		set_country_flag = NVX_COUP_data_start_auth
+	}
+	# WANTS #
+	if = {
+		limit = { has_idea = government_system_presidential_republic }
+		if = {
+			limit = { NVX_has_government_ideology_democratic = yes }
+			set_country_flag = NVX_COUP_wants_presidential_republic_demo
+		}
+	}
+	if = {
+		limit = { has_idea = government_system_parliamentary_republic }
+		if = {
+			limit = { NVX_has_government_ideology_democratic = yes }
+			set_country_flag = NVX_COUP_wants_parliamentary_republic_demo
+		}
+	}
+	if = {
+		limit = { has_idea = government_system_constitutional_monarchy }
+		set_country_flag = NVX_COUP_has_living_monarchy
+		if = {
+			limit = { NVX_has_government_ideology_democratic = yes }
+			set_country_flag = NVX_COUP_wants_constitutional_monarchy_demo
+		}
+		if = {
+			limit = { has_government = monarchist }
+			set_country_flag = NVX_COUP_wants_constitutional_monarchy_monarchist
+		}
+	}
+	if = {
+		limit = { has_idea = government_system_absolute_monarchy }
+		set_country_flag = NVX_COUP_has_living_monarchy
+		if = {
+			limit = { has_government = monarchist }
+			set_country_flag = NVX_COUP_wants_absolute_monarchy_monarchist
+		}
+	}
+	if = {
+		limit = { has_idea = government_system_one_party }
+		if = {
+			limit = { has_government = islamist }
+			set_country_flag = NVX_COUP_wants_one_party_islamist
+		}
+		if = {
+			limit = { has_government = fascist }
+			set_country_flag = NVX_COUP_wants_one_party_fascist
+		}
+		if = {
+			limit = { has_government = communist }
+			set_country_flag = NVX_COUP_wants_one_party_communist
+		}
+		if = {
+			limit = { has_government = nationalist }
+			set_country_flag = NVX_COUP_wants_one_party_nationalist
+		}
+	}
+	if = {
+		limit = { has_idea = government_system_autocracy }
+		if = {
+			limit = { has_government = islamist }
+			set_country_flag = NVX_COUP_wants_autocracy_islamist
+		}
+		if = {
+			limit = { has_government = fascist }
+			set_country_flag = NVX_COUP_wants_autocracy_fascist
+		}
+		if = {
+			limit = { has_government = communist }
+			set_country_flag = NVX_COUP_wants_autocracy_communist
+		}
+		if = {
+			limit = { has_government = nationalist }
+			set_country_flag = NVX_COUP_wants_autocracy_nationalist
+		}
+	}
+}
+
+NVX_COUP_prev_record = {
+	if = {
+		limit = { has_elections = yes }
+		set_variable = { NVX_COUP_prev_elections = 1 }
+		else = { set_variable = { NVX_COUP_prev_elections = 0 } }
+	}
+	set_variable = { NVX_COUP_prev_ideology = current_party_ideology_group }
+	
+	# IDEAS #
+	NVX_COUP_civil_war_transfer_ideas_set = yes
+	
+	# HIGH STABILITY LOSS #
+	if = {
+		limit = { has_stability > 0.8 }
+		add_stability = -0.35
+	}
+	if = {
+		limit = { has_stability > 0.6 }
+		add_stability = -0.15
+	}
+	
+	# SECESSION #
+	set_variable = { NVX_COUP_uncore_states = num_of_controlled_states }
+	divide_variable = { NVX_COUP_uncore_states = 10 }
+	round_variable = NVX_COUP_uncore_states
+	if = {
+		limit = { check_variable = { num_of_controlled_states < 3 } }
+		set_variable = { NVX_COUP_uncore_states = 0 }
+	}
+	
+	# OPPOSITION #
+	set_variable = { NVX_COUP_prev_war_support = has_war_support }
+	set_variable = { NVX_COUP_opposition = 1 }
+	subtract_from_variable = { NVX_COUP_opposition = NVX_COUP_prev_war_support }
+	subtract_from_variable = { NVX_COUP_opposition = 0.1 }
+	clamp_variable = {
+		var = NVX_COUP_opposition
+		min = 0.3
+		max = 0.7
+	}
+}
+
+NVX_COUP_civil_war_transfer_ideas_set = {
+	# centralization #
+	if = {
+		limit = { has_idea = centralization_unitary }
+		set_country_flag = NVX_COUP_prev_centralization_unitary
+	}
+	if = {
+		limit = { has_idea = centralization_federal }
+		set_country_flag = NVX_COUP_prev_centralization_federal
+	}
+	if = {
+		limit = { has_idea = centralization_confederate }
+		set_country_flag = NVX_COUP_prev_centralization_confederate
+	}
+	if = {
+		limit = { has_idea = centralization_anarchy }
+		set_country_flag = NVX_COUP_prev_centralization_anarchy
+	}
+	# system #
+	if = {
+		limit = { has_idea = government_system_presidential_republic }
+		set_country_flag = NVX_COUP_prev_government_system_presidential_republic
+	}
+	if = {
+		limit = { has_idea = government_system_parliamentary_republic }
+		set_country_flag = NVX_COUP_prev_government_system_parliamentary_republic
+	}
+	if = {
+		limit = { has_idea = government_system_constitutional_monarchy }
+		set_country_flag = NVX_COUP_prev_government_system_constitutional_monarchy
+	}
+	if = {
+		limit = { has_idea = government_system_absolute_monarchy }
+		set_country_flag = NVX_COUP_prev_government_system_absolute_monarchy
+	}
+	if = {
+		limit = { has_idea = government_system_one_party }
+		set_country_flag = NVX_COUP_prev_government_system_one_party
+	}
+	if = {
+		limit = { has_idea = government_system_autocracy }
+		set_country_flag = NVX_COUP_prev_government_system_autocracy
+	}
+	if = {
+		limit = { has_idea = government_system_imperial }
+		set_country_flag = NVX_COUP_prev_government_system_imperial
+	}
+	# development #
+	if = {
+		limit = { has_idea = national_development_advanced }
+		set_country_flag = NVX_COUP_prev_national_development_advanced
+	}
+	if = {
+		limit = { has_idea = national_development_developed }
+		set_country_flag = NVX_COUP_prev_national_development_developed
+	}
+	if = {
+		limit = { has_idea = national_development_developing }
+		set_country_flag = NVX_COUP_prev_national_development_developing
+	}
+	if = {
+		limit = { has_idea = national_development_undeveloped }
+		set_country_flag = NVX_COUP_prev_national_development_undeveloped
+	}
+	# economy #
+	if = {
+		limit = { has_idea = economy_boom }
+		set_country_flag = NVX_COUP_prev_economy_boom
+	}
+	if = {
+		limit = { has_idea = economy_growth }
+		set_country_flag = NVX_COUP_prev_economy_growth
+	}
+	if = {
+		limit = { has_idea = economy_stagnation }
+		set_country_flag = NVX_COUP_prev_economy_stagnation
+	}
+	if = {
+		limit = { has_idea = economy_recession }
+		set_country_flag = NVX_COUP_prev_economy_recession
+	}
+	if = {
+		limit = { has_idea = economy_depression }
+		set_country_flag = NVX_COUP_prev_economy_depression
+	}
+	# tax rate #
+	if = {
+		limit = { has_idea = economy_tax_extreme }
+		set_country_flag = NVX_COUP_prev_economy_tax_extreme
+	}
+	if = {
+		limit = { has_idea = economy_tax_high }
+		set_country_flag = NVX_COUP_prev_economy_tax_high
+	}
+	if = {
+		limit = { has_idea = economy_tax_moderate }
+		set_country_flag = NVX_COUP_prev_economy_tax_moderate
+	}
+	if = {
+		limit = { has_idea = economy_tax_low }
+		set_country_flag = NVX_COUP_prev_economy_tax_low
+	}
+	if = {
+		limit = { has_idea = economy_tax_meager }
+		set_country_flag = NVX_COUP_prev_economy_tax_meager
+	}
+	if = {
+		limit = { has_idea = economy_tax_robotic }
+		set_country_flag = NVX_COUP_prev_economy_tax_robotic
+	}
+	# trade #
+	if = {
+		limit = { has_idea = free_trade }
+		set_country_flag = NVX_COUP_prev_free_trade
+	}
+	if = {
+		limit = { has_idea = export_focus }
+		set_country_flag = NVX_COUP_prev_export_focus
+	}
+	if = {
+		limit = { has_idea = limited_exports }
+		set_country_flag = NVX_COUP_prev_limited_exports
+	}
+	if = {
+		limit = { has_idea = closed_economy }
+		set_country_flag = NVX_COUP_prev_closed_economy
+	}
+	# mobilization #
+	if = {
+		limit = { has_idea = disarmed_nation }
+		set_country_flag = NVX_COUP_prev_disarmed_nation
+	}
+	if = {
+		limit = { has_idea = volunteer_only }
+		set_country_flag = NVX_COUP_prev_volunteer_only
+	}
+	if = {
+		limit = { has_idea = limited_conscription }
+		set_country_flag = NVX_COUP_prev_limited_conscription
+	}
+	if = {
+		limit = { has_idea = extensive_conscription }
+		set_country_flag = NVX_COUP_prev_extensive_conscription
+	}
+	if = {
+		limit = { has_idea = service_by_requirement }
+		set_country_flag = NVX_COUP_prev_service_by_requirement
+	}
+	if = {
+		limit = { has_idea = all_adults_serve }
+		set_country_flag = NVX_COUP_prev_all_adults_serve
+	}
+	if = {
+		limit = { has_idea = scraping_the_barrel }
+		set_country_flag = NVX_COUP_prev_scraping_the_barrel
+	}
+	# service time #
+	if = {
+		limit = { has_idea = mobilization_service_time_levy }
+		set_country_flag = NVX_COUP_prev_mobilization_service_time_levy
+	}
+	if = {
+		limit = { has_idea = mobilization_service_time_duty }
+		set_country_flag = NVX_COUP_prev_mobilization_service_time_duty
+	}
+	if = {
+		limit = { has_idea = mobilization_service_time_career }
+		set_country_flag = NVX_COUP_prev_mobilization_service_time_career
+	}
+	# public safety #
+	if = {
+		limit = { has_idea = public_safety_local_law_enforcement }
+		set_country_flag = NVX_COUP_prev_public_safety_local_law_enforcement
+	}
+	if = {
+		limit = { has_idea = public_safety_subsidized_agencies }
+		set_country_flag = NVX_COUP_prev_public_safety_subsidized_agencies
+	}
+	if = {
+		limit = { has_idea = public_safety_central_law_office }
+		set_country_flag = NVX_COUP_prev_public_safety_central_law_office
+	}
+	if = {
+		limit = { has_idea = public_safety_secret_police }
+		set_country_flag = NVX_COUP_prev_public_safety_secret_police
+	}
+	# immigration #
+	if = {
+		limit = { has_idea = immigration_policy_open_borders }
+		set_country_flag = NVX_COUP_prev_immigration_policy_open_borders
+	}
+	if = {
+		limit = { has_idea = immigration_policy_loose_regulations }
+		set_country_flag = NVX_COUP_prev_immigration_policy_loose_regulations
+	}
+	if = {
+		limit = { has_idea = immigration_policy_service_guarantees_citizenship }
+		set_country_flag = NVX_COUP_prev_immigration_policy_service_guarantees_citizenship
+	}
+	if = {
+		limit = { has_idea = immigration_policy_strict_regulations }
+		set_country_flag = NVX_COUP_prev_immigration_policy_strict_regulations
+	}
+	if = {
+		limit = { has_idea = immigration_policy_closed_country }
+		set_country_flag = NVX_COUP_prev_immigration_policy_closed_country
+	}
+	# civil liberties #
+	if = {
+		limit = { has_idea = civil_liberties_free }
+		set_country_flag = NVX_COUP_prev_civil_liberties_free
+	}
+	if = {
+		limit = { has_idea = civil_liberties_limited }
+		set_country_flag = NVX_COUP_prev_civil_liberties_limited
+	}
+	if = {
+		limit = { has_idea = civil_liberties_restricted }
+		set_country_flag = NVX_COUP_prev_civil_liberties_restricted
+	}
+	if = {
+		limit = { has_idea = civil_liberties_totalitarian }
+		set_country_flag = NVX_COUP_prev_civil_liberties_totalitarian
+	}
+	# welfare #
+	if = {
+		limit = { has_idea = welfare_none }
+		set_country_flag = NVX_COUP_prev_welfare_none
+	}
+	if = {
+		limit = { has_idea = welfare_basic_subsidies }
+		set_country_flag = NVX_COUP_prev_welfare_basic_subsidies
+	}
+	if = {
+		limit = { has_idea = welfare_modest_assistance }
+		set_country_flag = NVX_COUP_prev_welfare_modest_assistance
+	}
+	if = {
+		limit = { has_idea = welfare_considerable_assistance }
+		set_country_flag = NVX_COUP_prev_welfare_considerable_assistance
+	}
+	if = {
+		limit = { has_idea = welfare_universal_basic_income }
+		set_country_flag = NVX_COUP_prev_welfare_universal_basic_income
+	}
+}
+
+NVX_COUP_remove_unique_ideas = {
+	if = {
+		limit = {
+			has_idea = idea_USA_political_establishment
+		}
+		remove_ideas = idea_USA_political_establishment
+	}
+}
+
+## CIVIL WAR ##
+
+NVX_COUP_civil_war = {
+	hidden_effect = {
+		if = {
+			limit = { has_elections = yes }
+			set_country_flag = NVX_COUP_has_elections
+		}
+	}
+	start_civil_war = {
+		ideology = var:NVX_COUP_prev_ideology
+		ruling_party = ROOT
+		size = var:NVX_COUP_opposition
+		keep_unit_leaders_trigger = { always = yes }
+	}
+	hidden_effect = {
+		if = {
+			limit = { has_country_flag = NVX_COUP_has_elections }
+			set_politics = {
+				ruling_party = ROOT
+				elections_allowed = yes
+			}
+			clr_country_flag = NVX_COUP_has_elections
+		}
+		if = {
+			limit = {
+				any_country = { civilwar_target = PREV }
+				check_variable = { NVX_COUP_prev_elections = 1 }
+			}
+			random_country = {
+				limit = { civilwar_target = PREV }
+				set_politics = {
+					ruling_party = THIS
+					elections_allowed = yes
+				}
+			}
+		}
+		if = {
+			limit = { any_country = { civilwar_target = PREV } }
+			random_country = {
+				limit = { civilwar_target = PREV }
+				NVX_COUP_civil_war_transfer_ideas = yes
+			}
+		}
+		NVX_COUP_end = yes
+	}
+}
+
+NVX_COUP_civil_war_transfer_ideas = {
+	# centralization #
+	if = {
+		limit = { PREV = { has_country_flag = NVX_COUP_prev_centralization_unitary } }
+		add_ideas = centralization_unitary
+	}
+	if = {
+		limit = { PREV = { has_country_flag = NVX_COUP_prev_centralization_federal } }
+		add_ideas = centralization_federal
+	}
+	if = {
+		limit = { PREV = { has_country_flag = NVX_COUP_prev_centralization_confederate } }
+		add_ideas = centralization_confederate
+	}
+	if = {
+		limit = { PREV = { has_country_flag = NVX_COUP_prev_centralization_anarchy } }
+		add_ideas = centralization_anarchy
+	}
+	# system #
+	if = {
+		limit = { PREV = { has_country_flag = NVX_COUP_prev_government_system_presidential_republic } }
+		add_ideas = government_system_presidential_republic
+	}
+	if = {
+		limit = { PREV = { has_country_flag = NVX_COUP_prev_government_system_parliamentary_republic } }
+		add_ideas = government_system_parliamentary_republic
+	}
+	if = {
+		limit = { PREV = { has_country_flag = NVX_COUP_prev_government_system_constitutional_monarchy } }
+		add_ideas = government_system_constitutional_monarchy
+	}
+	if = {
+		limit = { PREV = { has_country_flag = NVX_COUP_prev_government_system_absolute_monarchy } }
+		add_ideas = government_system_absolute_monarchy
+	}
+	if = {
+		limit = { PREV = { has_country_flag = NVX_COUP_prev_government_system_one_party } }
+		add_ideas = government_system_one_party
+	}
+	if = {
+		limit = { PREV = { has_country_flag = NVX_COUP_prev_government_system_autocracy } }
+		add_ideas = government_system_autocracy
+	}
+	if = {
+		limit = { PREV = { has_country_flag = NVX_COUP_prev_government_system_imperial } }
+		add_ideas = government_system_imperial
+	}
+	# development #
+	if = {
+		limit = { PREV = { has_country_flag = NVX_COUP_prev_national_development_advanced } }
+		add_ideas = national_development_advanced
+	}
+	if = {
+		limit = { PREV = { has_country_flag = NVX_COUP_prev_national_development_developed } }
+		add_ideas = national_development_developed
+	}
+	if = {
+		limit = { PREV = { has_country_flag = NVX_COUP_prev_national_development_developing } }
+		add_ideas = national_development_developing
+	}
+	if = {
+		limit = { PREV = { has_country_flag = NVX_COUP_prev_national_development_undeveloped } }
+		add_ideas = national_development_undeveloped
+	}
+	# economy #
+	if = {
+		limit = { PREV = { has_country_flag = NVX_COUP_prev_economy_boom } }
+		add_ideas = economy_boom
+	}
+	if = {
+		limit = { PREV = { has_country_flag = NVX_COUP_prev_economy_growth } }
+		add_ideas = economy_growth
+	}
+	if = {
+		limit = { PREV = { has_country_flag = NVX_COUP_prev_economy_stagnation } }
+		add_ideas = economy_stagnation
+	}
+	if = {
+		limit = { PREV = { has_country_flag = NVX_COUP_prev_economy_recession } }
+		add_ideas = economy_recession
+	}
+	if = {
+		limit = { PREV = { has_country_flag = NVX_COUP_prev_economy_depression } }
+		add_ideas = economy_depression
+	}
+	# tax rate #
+	if = {
+		limit = { PREV = { has_country_flag = NVX_COUP_prev_economy_tax_extreme } }
+		add_ideas = economy_tax_extreme
+	}
+	if = {
+		limit = { PREV = { has_country_flag = NVX_COUP_prev_economy_tax_high } }
+		add_ideas = economy_tax_high
+	}
+	if = {
+		limit = { PREV = { has_country_flag = NVX_COUP_prev_economy_tax_moderate } }
+		add_ideas = economy_tax_moderate
+	}
+	if = {
+		limit = { PREV = { has_country_flag = NVX_COUP_prev_economy_tax_low } }
+		add_ideas = economy_tax_low
+	}
+	if = {
+		limit = { PREV = { has_country_flag = NVX_COUP_prev_economy_tax_meager } }
+		add_ideas = economy_tax_meager
+	}
+	if = {
+		limit = { PREV = { has_country_flag = NVX_COUP_prev_economy_tax_robotic } }
+		add_ideas = economy_tax_robotic
+	}
+	# trade #
+	if = {
+		limit = { PREV = { has_country_flag = NVX_COUP_prev_free_trade } }
+		add_ideas = free_trade
+	}
+	if = {
+		limit = { PREV = { has_country_flag = NVX_COUP_prev_export_focus } }
+		add_ideas = export_focus
+	}
+	if = {
+		limit = { PREV = { has_country_flag = NVX_COUP_prev_limited_exports } }
+		add_ideas = limited_exports
+	}
+	if = {
+		limit = { PREV = { has_country_flag = NVX_COUP_prev_closed_economy } }
+		add_ideas = closed_economy
+	}
+	# mobilization #
+	if = {
+		limit = { PREV = { has_country_flag = NVX_COUP_prev_disarmed_nation } }
+		add_ideas = disarmed_nation
+	}
+	if = {
+		limit = { PREV = { has_country_flag = NVX_COUP_prev_volunteer_only } }
+		add_ideas = volunteer_only
+	}
+	if = {
+		limit = { PREV = { has_country_flag = NVX_COUP_prev_limited_conscription } }
+		add_ideas = limited_conscription
+	}
+	if = {
+		limit = { PREV = { has_country_flag = NVX_COUP_prev_extensive_conscription } }
+		add_ideas = extensive_conscription
+	}
+	if = {
+		limit = { PREV = { has_country_flag = NVX_COUP_prev_service_by_requirement } }
+		add_ideas = service_by_requirement
+	}
+	if = {
+		limit = { PREV = { has_country_flag = NVX_COUP_prev_all_adults_serve } }
+		add_ideas = all_adults_serve
+	}
+	if = {
+		limit = { PREV = { has_country_flag = NVX_COUP_prev_scraping_the_barrel } }
+		add_ideas = scraping_the_barrel
+	}
+	# service time #
+	if = {
+		limit = { PREV = { has_country_flag = NVX_COUP_prev_mobilization_service_time_levy } }
+		add_ideas = mobilization_service_time_levy
+	}
+	if = {
+		limit = { PREV = { has_country_flag = NVX_COUP_prev_mobilization_service_time_duty } }
+		add_ideas = mobilization_service_time_duty
+	}
+	if = {
+		limit = { PREV = { has_country_flag = NVX_COUP_prev_mobilization_service_time_career } }
+		add_ideas = mobilization_service_time_career
+	}
+	# public safety #
+	if = {
+		limit = { PREV = { has_country_flag = NVX_COUP_prev_public_safety_local_law_enforcement } }
+		add_ideas = public_safety_local_law_enforcement
+	}
+	if = {
+		limit = { PREV = { has_country_flag = NVX_COUP_prev_public_safety_subsidized_agencies } }
+		add_ideas = public_safety_subsidized_agencies
+	}
+	if = {
+		limit = { PREV = { has_country_flag = NVX_COUP_prev_public_safety_central_law_office } }
+		add_ideas = public_safety_central_law_office
+	}
+	if = {
+		limit = { PREV = { has_country_flag = NVX_COUP_prev_public_safety_secret_police } }
+		add_ideas = public_safety_secret_police
+	}
+	# immigration #
+	if = {
+		limit = { PREV = { has_country_flag = NVX_COUP_prev_immigration_policy_open_borders } }
+		add_ideas = immigration_policy_open_borders
+	}
+	if = {
+		limit = { PREV = { has_country_flag = NVX_COUP_prev_immigration_policy_loose_regulations } }
+		add_ideas = immigration_policy_loose_regulations
+	}
+	if = {
+		limit = { PREV = { has_country_flag = NVX_COUP_prev_immigration_policy_service_guarantees_citizenship } }
+		add_ideas = immigration_policy_service_guarantees_citizenship
+	}
+	if = {
+		limit = { PREV = { has_country_flag = NVX_COUP_prev_immigration_policy_strict_regulations } }
+		add_ideas = immigration_policy_strict_regulations
+	}
+	if = {
+		limit = { PREV = { has_country_flag = NVX_COUP_prev_immigration_policy_closed_country } }
+		add_ideas = immigration_policy_closed_country
+	}
+	# civil liberties #
+	if = {
+		limit = { PREV = { has_country_flag = NVX_COUP_prev_civil_liberties_free } }
+		add_ideas = civil_liberties_free
+	}
+	if = {
+		limit = { PREV = { has_country_flag = NVX_COUP_prev_civil_liberties_limited } }
+		add_ideas = civil_liberties_limited
+	}
+	if = {
+		limit = { PREV = { has_country_flag = NVX_COUP_prev_civil_liberties_restricted } }
+		add_ideas = civil_liberties_restricted
+	}
+	if = {
+		limit = { PREV = { has_country_flag = NVX_COUP_prev_civil_liberties_totalitarian } }
+		add_ideas = civil_liberties_totalitarian
+	}
+	# welfare #
+	if = {
+		limit = { PREV = { has_country_flag = NVX_COUP_prev_welfare_none } }
+		add_ideas = welfare_none
+	}
+	if = {
+		limit = { PREV = { has_country_flag = NVX_COUP_prev_welfare_basic_subsidies } }
+		add_ideas = welfare_basic_subsidies
+	}
+	if = {
+		limit = { PREV = { has_country_flag = NVX_COUP_prev_welfare_modest_assistance } }
+		add_ideas = welfare_modest_assistance
+	}
+	if = {
+		limit = { PREV = { has_country_flag = NVX_COUP_prev_welfare_considerable_assistance } }
+		add_ideas = welfare_considerable_assistance
+	}
+	if = {
+		limit = { PREV = { has_country_flag = NVX_COUP_prev_welfare_universal_basic_income } }
+		add_ideas = welfare_universal_basic_income
+	}
+	PREV = { NVX_COUP_civil_war_transfer_ideas_clr = yes }
+}
+
+NVX_COUP_civil_war_transfer_ideas_clr = {
+	# centralization #
+	clr_country_flag = NVX_COUP_prev_centralization_unitary
+	clr_country_flag = NVX_COUP_prev_centralization_federal
+	clr_country_flag = NVX_COUP_prev_centralization_confederate
+	clr_country_flag = NVX_COUP_prev_centralization_anarchy
+	# system #
+	clr_country_flag = NVX_COUP_prev_government_system_presidential_republic
+	clr_country_flag = NVX_COUP_prev_government_system_parliamentary_republic
+	clr_country_flag = NVX_COUP_prev_government_system_constitutional_monarchy
+	clr_country_flag = NVX_COUP_prev_government_system_absolute_monarchy
+	clr_country_flag = NVX_COUP_prev_government_system_one_party
+	clr_country_flag = NVX_COUP_prev_government_system_autocracy
+	clr_country_flag = NVX_COUP_prev_government_system_imperial
+	# development #
+	clr_country_flag = NVX_COUP_prev_national_development_advanced
+	clr_country_flag = NVX_COUP_prev_national_development_developed
+	clr_country_flag = NVX_COUP_prev_national_development_developing
+	clr_country_flag = NVX_COUP_prev_national_development_undeveloped
+	# economy #
+	clr_country_flag = NVX_COUP_prev_economy_boom
+	clr_country_flag = NVX_COUP_prev_economy_growth
+	clr_country_flag = NVX_COUP_prev_economy_stagnation
+	clr_country_flag = NVX_COUP_prev_economy_recession
+	clr_country_flag = NVX_COUP_prev_economy_depression
+	# tax rate #
+	clr_country_flag = NVX_COUP_prev_economy_tax_extreme
+	clr_country_flag = NVX_COUP_prev_economy_tax_high
+	clr_country_flag = NVX_COUP_prev_economy_tax_moderate
+	clr_country_flag = NVX_COUP_prev_economy_tax_low
+	clr_country_flag = NVX_COUP_prev_economy_tax_meager
+	clr_country_flag = NVX_COUP_prev_economy_tax_robotic
+	# trade #
+	clr_country_flag = NVX_COUP_prev_free_trade
+	clr_country_flag = NVX_COUP_prev_export_focus
+	clr_country_flag = NVX_COUP_prev_limited_exports
+	clr_country_flag = NVX_COUP_prev_closed_economy
+	# mobilization #
+	clr_country_flag = NVX_COUP_prev_disarmed_nation
+	clr_country_flag = NVX_COUP_prev_volunteer_only
+	clr_country_flag = NVX_COUP_prev_limited_conscription
+	clr_country_flag = NVX_COUP_prev_extensive_conscription
+	clr_country_flag = NVX_COUP_prev_service_by_requirement
+	clr_country_flag = NVX_COUP_prev_all_adults_serve
+	clr_country_flag = NVX_COUP_prev_scraping_the_barrel
+	# service time #
+	clr_country_flag = NVX_COUP_prev_mobilization_service_time_levy
+	clr_country_flag = NVX_COUP_prev_mobilization_service_time_duty
+	clr_country_flag = NVX_COUP_prev_mobilization_service_time_career
+	# public safety #
+	clr_country_flag = NVX_COUP_prev_public_safety_local_law_enforcement
+	clr_country_flag = NVX_COUP_prev_public_safety_subsidized_agencies
+	clr_country_flag = NVX_COUP_prev_public_safety_central_law_office
+	clr_country_flag = NVX_COUP_prev_public_safety_secret_police
+	# immigration #
+	clr_country_flag = NVX_COUP_prev_immigration_policy_open_borders
+	clr_country_flag = NVX_COUP_prev_immigration_policy_loose_regulations
+	clr_country_flag = NVX_COUP_prev_immigration_policy_service_guarantees_citizenship
+	clr_country_flag = NVX_COUP_prev_immigration_policy_strict_regulations
+	clr_country_flag = NVX_COUP_prev_immigration_policy_closed_country
+	# civil liberties #
+	clr_country_flag = NVX_COUP_prev_civil_liberties_free
+	clr_country_flag = NVX_COUP_prev_civil_liberties_limited
+	clr_country_flag = NVX_COUP_prev_civil_liberties_restricted
+	clr_country_flag = NVX_COUP_prev_civil_liberties_totalitarian
+	# welfare #
+	clr_country_flag = NVX_COUP_prev_welfare_none
+	clr_country_flag = NVX_COUP_prev_welfare_basic_subsidies
+	clr_country_flag = NVX_COUP_prev_welfare_modest_assistance
+	clr_country_flag = NVX_COUP_prev_welfare_considerable_assistance
+	clr_country_flag = NVX_COUP_prev_welfare_universal_basic_income
+}
+
+# OPPOSITION CHANGES #
+NVX_COUP_opposition_pos15 = {
+	custom_effect_tooltip = TT_NVX_COUP_opposition_pos15
+	add_to_variable = { NVX_COUP_opposition = 0.15 }
+	clamp_variable = {
+		var = NVX_COUP_opposition
+		min = 0.05
+		max = 0.9
+	}
+}
+
+NVX_COUP_opposition_pos1 = {
+	custom_effect_tooltip = TT_NVX_COUP_opposition_pos1
+	add_to_variable = { NVX_COUP_opposition = 0.1 }
+	clamp_variable = {
+		var = NVX_COUP_opposition
+		min = 0.05
+		max = 0.9
+	}
+}
+
+NVX_COUP_opposition_pos05 = {
+	custom_effect_tooltip = TT_NVX_COUP_opposition_pos05
+	add_to_variable = { NVX_COUP_opposition = 0.05 }
+	clamp_variable = {
+		var = NVX_COUP_opposition
+		min = 0.05
+		max = 0.9
+	}
+}
+
+NVX_COUP_opposition_neg1 = {
+	custom_effect_tooltip = TT_NVX_COUP_opposition_neg1
+	subtract_from_variable = { NVX_COUP_opposition = 0.1 }
+	clamp_variable = {
+		var = NVX_COUP_opposition
+		min = 0.05
+		max = 0.9
+	}
+}
+
+NVX_COUP_opposition_neg05 = {
+	custom_effect_tooltip = TT_NVX_COUP_opposition_neg05
+	subtract_from_variable = { NVX_COUP_opposition = 0.05 }
+	clamp_variable = {
+		var = NVX_COUP_opposition
+		min = 0.05
+		max = 0.9
+	}
+}
+
+## EVENT ORDER ##
+
+NVX_COUP_estates_event_10 = {
+	hidden_effect = {
+		set_country_flag = {
+			flag = NVX_COUP_delay_timer
+			days = 365
+			value = 1
+		}
+		set_country_flag = {
+			flag = NVX_COUP_broken_timer
+			days = 830
+			value = 1
+		}
+		set_country_flag = {
+			flag = NVX_COUP_prevent_double_coup
+			days = 1825
+			value = 1
+		}
+		news_event = {
+			id = news.1
+			hours = 3
+		}
+		country_event = {
+			id = NVX_COUP.30 # estates
+			days = 7
+		}
+	}
+}
+
+NVX_COUP_estates_event_30 = {
+	NVX_COUP_state_secedes_loop = yes
+	country_event = {
+		id = NVX_COUP.33 # prisoners
+		days = 7
+		random_days = 3
+	}
+	country_event = {
+		id = NVX_COUP.40 # promises
+		days = 14
+	}
+}
+
+NVX_COUP_estates_event_40 = {
+	country_event = {
+		id = NVX_COUP.50 # system choice
+		days = 7
+	}
+}
+
+NVX_COUP_estates_event_50 = {
+	if = {
+		limit = {
+			OR = {
+				AND = {
+					has_country_flag = NVX_COUP_data_start_demo
+					NVX_has_government_ideology_authoritarian = yes
+				}
+				AND = {
+					has_country_flag = NVX_COUP_data_start_auth
+					NVX_has_government_ideology_democratic = yes
+				}
+			}
+		}
+		country_event = {
+			id = NVX_COUP.60 # anthem
+			days = 7
+			random_days = 7
+		}
+	}
+	if = {
+		limit = { has_war_support < 0.4 }
+		random_list = {
+			30 = {
+				country_event = {
+					id = NVX_COUP.61 # military rebels
+					days = 14
+					random_days = 7
+				}
+			}
+			70 = {
+				country_event = {
+					id = NVX_COUP.62 # military stays
+					days = 14
+					random_days = 7
+				}
+			}
+		}
+		else = {
+			random_list = {
+				10 = {
+					country_event = {
+						id = NVX_COUP.61 # military rebels
+						days = 14
+						random_days = 7
+					}
+				}
+				90 = {
+					country_event = {
+						id = NVX_COUP.62 # military stays
+						days = 14
+						random_days = 7
+					}
+				}
+			}
+		}
+	}
+	if = {
+		limit = {
+			NVX_has_government_ideology_democratic = yes
+			check_variable = { NVX_ECO_health > 18.999 }
+		}
+		random_list = {
+			40 = {
+				country_event = {
+					id = NVX_COUP.63 # corpos flee
+					days = 21
+					random_days = 7
+				}
+			}
+			60 = {}
+		}
+	}
+	if = {
+		limit = {
+			NVX_has_government_ideology_authoritarian = yes
+			check_variable = { NVX_ECO_health > 18.999 }
+		}
+		random_list = {
+			95 = {
+				country_event = {
+					id = NVX_COUP.63 # corpos flee
+					days = 21
+					random_days = 7
+				}
+			}
+			5 = {}
+		}
+	}
+	if = {
+		limit = {
+			any_country = {
+				OR = {
+					is_puppet_of = ROOT
+					is_subject_of = ROOT
+				}
+			}
+		}
+		random_list = {
+			80 = {
+				country_event = {
+					id = NVX_COUP.64 # subject gains autonomy
+					days = 28
+					random_days = 7
+				}
+			}
+			20 = {}
+		}
+	}
+	if = {
+		limit = { has_war_support > 0.5 }
+		random_list = {
+			85 = {
+				country_event = {
+					id = NVX_COUP.65 # old guard complains
+					days = 35
+					random_days = 7
+				}
+			}
+			15 = {}
+		}
+	}
+	if = {
+		limit = { date > 2008.1.1 }
+		random_list = {
+			90 = {
+				country_event = {
+					id = NVX_COUP.66 # social media resistance
+					days = 42
+					random_days = 7
+				}
+			}
+			10 = {}
+		}
+	}
+	if = {
+		limit = {
+			NVX_has_government_ideology_authoritarian = yes
+			has_war_support < 0.4
+		}
+		random_list = {
+			95 = {
+				country_event = {
+					id = NVX_COUP.67 # auth purge
+					days = 14
+					random_days = 7
+				}
+			}
+			5 = {}
+		}
+	}
+}
+
+## ESTATE OPTIONS ##
+
+NVX_COUP_estates_arraign_effect = {
+	add_political_power = -15
+	NVX_COUP_opposition_pos05 = yes
+	hidden_effect = {
+		if = {
+			limit = {
+				check_variable = { num_of_controlled_states > 6 }
+				OR = {
+					has_idea = centralization_federal
+					has_idea = centralization_confederate
+				}
+			}
+			random_list = {
+				50 = {
+					country_event = {
+						id = NVX_COUP.31
+						days = 14
+					}
+				}
+				50 = {}
+			}
+		}
+	}
+}
+
+## STATE SECESSION ##
+
+NVX_COUP_state_secedes_effect = {
+	add_core_of = ZZZ
+	remove_core_of = ROOT
+	start_resistance = yes
+	set_resistance = 40
+	set_compliance = 15
+}
+
+NVX_COUP_state_secedes_loop = {
+	if = {
+		limit = {
+			check_variable = { NVX_COUP_uncore_states > 0 }
+			OR = {
+				has_idea = centralization_federal
+				has_idea = centralization_confederate
+			}
+		}
+		subtract_from_variable = { NVX_COUP_uncore_states = 1 }
+		country_event = {
+			id = NVX_COUP.32
+			days = 7
+			random_days = 10
+		}
+	}
+}
+
+NVX_COUP_state_secedes = {
+	if = {
+		limit = { any_owned_state = { NVX_COUP_state_secedes_major_trigger = yes } }
+		random_owned_state = {
+			limit = { NVX_COUP_state_secedes_major_trigger = yes }
+			NVX_COUP_state_secedes_effect = yes
+		}
+		else_if = {
+			limit = { any_owned_state = { NVX_COUP_state_secedes_minor_trigger = yes } }
+			random_owned_state = {
+				limit = { NVX_COUP_state_secedes_minor_trigger = yes }
+				NVX_COUP_state_secedes_effect = yes
+			}
+			else = {
+				random_owned_state = {
+					limit = {
+						is_capital = no
+						is_core_of = ROOT
+					}
+					NVX_COUP_state_secedes_effect = yes
+				}
+			}
+		}
+	}
+}
+
+## PROMISES ##
+
+NVX_COUP_promises_variables = {
+	# STABILITY #
+	set_variable = { NVX_COUP_prev_stability = stability }
+	set_variable = { NVX_COUP_goal_stability = NVX_COUP_prev_stability }
+	add_to_variable = { NVX_COUP_goal_stability = 0.15 }
+	if = {
+		limit = { has_war = yes }
+		add_to_variable = { NVX_COUP_goal_stability = 0.2 }
+	}
+	clamp_variable = {
+		var = NVX_COUP_goal_stability
+		min = 0
+		max = 1
+	}
+	
+	# ECONOMY #
+	set_variable = { NVX_COUP_prev_scarabs = NVX_ECO_health }
+	set_variable = { NVX_COUP_goal_scarabs = NVX_ECO_health }
+	add_to_variable = { NVX_COUP_goal_scarabs = 12 }
+	clamp_variable = {
+		var = NVX_COUP_goal_scarabs
+		min = 0
+		max = 100
+	}
+	
+	# PEACE #
+	set_variable = { NVX_COUP_goal_peace = 1 }
+	
+	# NUM STATES #
+	set_variable = { NVX_COUP_prev_owned_states = num_of_controlled_states }
+	set_variable = { NVX_COUP_goal_owned_states = num_of_controlled_states }
+	divide_variable = { NVX_COUP_goal_owned_states = 7 }
+	round_variable = NVX_COUP_goal_owned_states
+	set_variable = { NVX_COUP_goal_new_states = NVX_COUP_goal_owned_states }
+	add_to_variable = { NVX_COUP_goal_owned_states = num_of_controlled_states }
+	
+	# NUM PUPPETS #
+	set_variable = { NVX_COUP_prev_owned_subjects = 0 }
+	every_country = {
+		limit = {
+			OR = {
+				is_puppet_of = ROOT
+				is_subject_of = ROOT
+			}
+		}
+		add_to_variable = { ROOT.NVX_COUP_prev_owned_subjects = 1 }
+	}
+	if = {
+		limit = { is_major = yes }
+		set_variable = { NVX_COUP_goal_new_subjects = 3 }
+		else = { set_variable = { NVX_COUP_goal_new_subjects = 1 } }
+	}
+}
+
+NVX_COUP_promises_puppet_final = {
+	# PUPPET TARGET #
+	set_variable = { NVX_COUP_goal_owned_subjects = NVX_COUP_prev_owned_subjects }
+	add_to_variable = { NVX_COUP_goal_owned_subjects = NVX_COUP_goal_new_subjects }
+	
+	# TOTAL PUPPETS #
+	set_variable = { NVX_COUP_final_owned_subjects = 0 }
+	every_country = {
+		limit = {
+			OR = {
+				is_puppet_of = ROOT
+				is_subject_of = ROOT
+			}
+		}
+		add_to_variable = { ROOT.NVX_COUP_final_owned_subjects = 1 }
+	}
+}
+
+## RANDOM EVENTS ##
+
+NVX_COUP_corpos_flee_s = {
+	custom_effect_tooltip = TT_NVX_COUP_corpos_flee_s
+	subtract_from_variable = { NVX_ECO_health = NVX_COUP_corpos_take }
+}
+
+NVX_COUP_corpos_flee_cut_s = {
+	custom_effect_tooltip = TT_NVX_COUP_corpos_flee_cut_s
+	subtract_from_variable = { NVX_ECO_health = NVX_COUP_corpos_take_cut }
+}
+
+## END OF COUP ##
+
+NVX_COUP_end = {
+	set_variable = { NVX_COUP_opposition = 0 }
+	NVX_COUP_civil_war_transfer_ideas_clr = yes
+}

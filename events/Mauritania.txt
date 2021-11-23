@@ -1,0 +1,259 @@
+﻿add_namespace = mauritania
+
+#National Inclusive Dialogue begins
+country_event = {
+	id = mauritania.1
+	title = mauritania.1.t
+	desc = mauritania.1.d
+	picture = GFX_report_event_national_inclusive_dialogue
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = MRT
+		date > 2016.9.1
+		date < 2016.9.30
+		has_government = reactionary
+	}
+	
+	option = {	
+		name = mauritania.1.o1
+		add_political_power = 5
+		add_popularity = {
+		    ideology = reactionary
+			popularity = 0.01
+		}
+		hidden_effect = {
+		    country_event = { days = 7 id = mauritania.2 } 
+		}
+		set_country_flag = mauritania_referendum_event_chain
+	}
+}
+
+#New flag proposal
+country_event = {
+	id = mauritania.2
+	title = mauritania.2.t
+	desc = mauritania.2.d
+	picture = GFX_report_event_new_flag_proposal
+	
+	is_triggered_only = yes
+	
+	option = {	
+		name = mauritania.2.o1
+		hidden_effect = {
+		    country_event = { days = 14 id = mauritania.3 } 
+		}
+	}
+}
+
+#DNI ends with call for referendum
+country_event = {
+	id = mauritania.3
+	title = mauritania.3.t
+	desc = mauritania.3.d
+	picture = GFX_report_event_dni_ends
+	
+	is_triggered_only = yes
+	
+	option = {	
+		name = mauritania.3.o1
+	}
+}
+
+#Opposition calls for referendum boycott
+country_event = {
+	id = mauritania.4
+	title = mauritania.4.t
+	desc = mauritania.4.d
+	picture = GFX_report_event_opposition_boycotts_referendum
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = MRT
+		date > 2016.11.1
+		date < 2016.11.30
+		has_country_flag = mauritania_referendum_event_chain
+	}
+	
+	option = {	
+		name = mauritania.4.o1
+		add_political_power = -10
+		add_popularity = {
+		    ideology = reactionary
+			popularity = -0.02
+		}
+		add_stability = -0.02
+	}
+}
+
+#Referendum cancelled, debate moved to assembly and senate
+country_event = {
+	id = mauritania.5
+	title = mauritania.5.t
+	desc = mauritania.5.d
+	picture = GFX_report_event_referendum_cancelled
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = MRT
+		date > 2016.12.1
+		date < 2016.12.30
+		has_country_flag = mauritania_referendum_event_chain
+	}
+	
+	option = {	
+		name = mauritania.5.o1
+		add_political_power = -15
+	}
+}
+
+#Debate begins in the national assembly
+country_event = {
+	id = mauritania.6
+	title = mauritania.6.t
+	desc = mauritania.6.d
+	picture = GFX_report_event_national_assembly_debate_begins
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = MRT
+		date > 2017.2.1
+		date < 2017.2.30
+		has_country_flag = mauritania_referendum_event_chain
+	}
+	
+	option = {	
+		name = mauritania.6.o1
+		hidden_effect = {
+		    country_event = { days = 9 id = mauritania.7 } 
+		}
+	}
+}
+
+#Proposed flag presented to national assembly
+country_event = {
+	id = mauritania.7
+	title = mauritania.7.t
+	desc = mauritania.7.d
+	picture = GFX_report_event_proposed_flag_presented
+	
+	is_triggered_only = yes
+	
+	option = {	
+		name = mauritania.7.o1
+		hidden_effect = {
+		    country_event = { days = 1 id = mauritania.8 } 
+		}
+	}
+}
+
+#National Assembly votes in support of changes
+country_event = {
+	id = mauritania.8
+	title = mauritania.8.t
+	desc = mauritania.8.d
+	picture = GFX_report_event_national_assembly_votes
+	
+	is_triggered_only = yes
+	
+	option = {	
+		name = mauritania.8.o1
+		hidden_effect = {
+		    country_event = { days = 8 id = mauritania.9 } 
+		}
+	}
+}
+
+#Senate rejects changes
+country_event = {
+	id = mauritania.9
+	title = mauritania.9.t
+	desc = mauritania.9.d
+	picture = GFX_report_event_senate_rejects_changes
+	
+	is_triggered_only = yes
+	
+	option = {	
+		name = mauritania.9.o1
+		add_political_power = -25
+		add_stability = -0.05
+		hidden_effect = {
+		    country_event = { days = 6 id = mauritania.10 } 
+		}
+		add_popularity = {
+		    ideology = reactionary
+			popularity = -0.035
+		}
+	}
+}
+
+#President vows referendum
+country_event = {
+	id = mauritania.10
+	title = mauritania.10.t
+	desc = mauritania.10.d
+	picture = GFX_report_event_president_vows_referendum
+	
+	is_triggered_only = yes
+	
+	option = {	
+		name = mauritania.10.o1
+	}
+}
+
+#Referendum campaign begins
+country_event = {
+	id = mauritania.11
+	title = mauritania.11.t
+	desc = mauritania.11.d
+	picture = GFX_report_event_referendum_campaign_begins
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = MRT
+		date > 2017.6.30
+		date < 2017.7.30
+		has_country_flag = mauritania_referendum_event_chain
+	}
+	
+	option = {	
+		name = mauritania.11.o1
+	}
+}
+
+#Referendum succeeds
+country_event = {
+	id = mauritania.12
+	title = mauritania.12.t
+	desc = mauritania.12.d
+	picture = GFX_report_event_referendum_succeeds
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = MRT
+		date > 2017.8.1
+		date < 2017.8.30
+		has_country_flag = mauritania_referendum_event_chain
+	}
+	
+	option = {	
+		name = mauritania.12.o1
+		add_political_power = 25
+		set_cosmetic_tag = MRT_Referendum
+		add_popularity = {
+		    ideology = reactionary
+			popularity = -0.01
+		}
+		add_stability = -0.02
+		add_war_support = -0.02
+		add_ideas = idea_mrt_referendum
+		
+	}
+}
+

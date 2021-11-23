@@ -1,0 +1,1510 @@
+﻿add_namespace = NVX_TABRAS
+
+country_event = { #battle royale
+	id = NVX_TABRAS.1
+	title = NVX_TABRAS.1.t
+	desc = NVX_TABRAS.1.d
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = NVX_TABRAS.1.o1
+		
+		hidden_effect = {
+			every_country = {
+				every_neighbor_country = {
+					limit = {
+						NOT = { is_in_faction_with = PREV }
+						NOT = { has_war_with = PREV }
+					}
+					declare_war_on = {
+						target = PREV
+						type = annex_everything
+					}
+				}
+			}
+		}
+	}
+	
+	option = {
+		name = NVX_TABRAS.1.o2
+		
+		hidden_effect = {
+			every_country = {
+				every_other_country = {
+					limit = {
+						NOT = { is_in_faction_with = PREV }
+						NOT = { has_war_with = PREV }
+					}
+					declare_war_on = {
+						target = PREV
+						type = annex_everything
+					}
+				}
+			}
+		}
+	}
+	
+	option = {
+		name = NVX_TABRAS.1.o3
+	}
+}
+
+country_event = { #tabula rasa - infrastructure
+	id = NVX_TABRAS.2
+	title = NVX_TABRAS.2.t
+	desc = NVX_TABRAS.2.d
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = NVX_TABRAS.zero
+		
+		hidden_effect = {
+			every_state = {
+				set_building_level = {
+					type = infrastructure
+					level = 0
+					instant_build = yes
+				}
+				set_building_level = {
+					type = infrastructure
+					level = 0
+					instant_build = yes
+				}
+			}
+			country_event = { id = NVX_TABRAS.3 }
+		}
+	}
+	
+	option = {
+		name = NVX_TABRAS.one
+		
+		hidden_effect = {
+			every_state = {
+				set_building_level = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				set_building_level = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			country_event = { id = NVX_TABRAS.3 }
+		}
+	}
+	
+	option = {
+		name = NVX_TABRAS.two
+		
+		hidden_effect = {
+			every_state = {
+				set_building_level = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+				set_building_level = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+			}
+			country_event = { id = NVX_TABRAS.3 }
+		}
+	}
+	
+	option = {
+		name = NVX_TABRAS.three
+		
+		hidden_effect = {
+			every_state = {
+				set_building_level = {
+					type = infrastructure
+					level = 3
+					instant_build = yes
+				}
+				set_building_level = {
+					type = infrastructure
+					level = 3
+					instant_build = yes
+				}
+			}
+			country_event = { id = NVX_TABRAS.3 }
+		}
+	}
+	
+	option = {
+		name = NVX_TABRAS.five
+		
+		hidden_effect = {
+			every_state = {
+				set_building_level = {
+					type = infrastructure
+					level = 5
+					instant_build = yes
+				}
+				set_building_level = {
+					type = infrastructure
+					level = 5
+					instant_build = yes
+				}
+			}
+			country_event = { id = NVX_TABRAS.3 }
+		}
+	}
+	
+	option = {
+		name = NVX_TABRAS.seven
+		
+		hidden_effect = {
+			every_state = {
+				set_building_level = {
+					type = infrastructure
+					level = 7
+					instant_build = yes
+				}
+				set_building_level = {
+					type = infrastructure
+					level = 7
+					instant_build = yes
+				}
+			}
+			country_event = { id = NVX_TABRAS.3 }
+		}
+	}
+	
+	option = {
+		name = NVX_TABRAS.ten
+		
+		hidden_effect = {
+			every_state = {
+				set_building_level = {
+					type = infrastructure
+					level = 10
+					instant_build = yes
+				}
+				set_building_level = {
+					type = infrastructure
+					level = 10
+					instant_build = yes
+				}
+			}
+			country_event = { id = NVX_TABRAS.3 }
+		}
+	}
+	
+	option = {
+		name = NVX_TABRAS.nochange
+	}
+}
+
+country_event = { #tabula rasa - air_base
+	id = NVX_TABRAS.3
+	title = NVX_TABRAS.3.t
+	desc = NVX_TABRAS.3.d
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = NVX_TABRAS.zero
+		
+		hidden_effect = {
+			every_state = {
+				set_building_level = {
+					type = air_base
+					level = 0
+					instant_build = yes
+				}
+				set_building_level = {
+					type = air_base
+					level = 0
+					instant_build = yes
+				}
+			}
+			country_event = { id = NVX_TABRAS.4 }
+		}
+	}
+	
+	option = {
+		name = NVX_TABRAS.one
+		
+		hidden_effect = {
+			every_state = {
+				set_building_level = {
+					type = air_base
+					level = 1
+					instant_build = yes
+				}
+				set_building_level = {
+					type = air_base
+					level = 1
+					instant_build = yes
+				}
+			}
+			country_event = { id = NVX_TABRAS.4 }
+		}
+	}
+	
+	option = {
+		name = NVX_TABRAS.two
+		
+		hidden_effect = {
+			every_state = {
+				set_building_level = {
+					type = air_base
+					level = 2
+					instant_build = yes
+				}
+				set_building_level = {
+					type = air_base
+					level = 2
+					instant_build = yes
+				}
+			}
+			country_event = { id = NVX_TABRAS.4 }
+		}
+	}
+	
+	option = {
+		name = NVX_TABRAS.three
+		
+		hidden_effect = {
+			every_state = {
+				set_building_level = {
+					type = air_base
+					level = 3
+					instant_build = yes
+				}
+				set_building_level = {
+					type = air_base
+					level = 3
+					instant_build = yes
+				}
+			}
+			country_event = { id = NVX_TABRAS.4 }
+		}
+	}
+	
+	option = {
+		name = NVX_TABRAS.five
+		
+		hidden_effect = {
+			every_state = {
+				set_building_level = {
+					type = air_base
+					level = 5
+					instant_build = yes
+				}
+				set_building_level = {
+					type = air_base
+					level = 5
+					instant_build = yes
+				}
+			}
+			country_event = { id = NVX_TABRAS.4 }
+		}
+	}
+	
+	option = {
+		name = NVX_TABRAS.seven
+		
+		hidden_effect = {
+			every_state = {
+				set_building_level = {
+					type = air_base
+					level = 7
+					instant_build = yes
+				}
+				set_building_level = {
+					type = air_base
+					level = 7
+					instant_build = yes
+				}
+			}
+			country_event = { id = NVX_TABRAS.4 }
+		}
+	}
+	
+	option = {
+		name = NVX_TABRAS.ten
+		
+		hidden_effect = {
+			every_state = {
+				set_building_level = {
+					type = air_base
+					level = 10
+					instant_build = yes
+				}
+				set_building_level = {
+					type = air_base
+					level = 10
+					instant_build = yes
+				}
+			}
+			country_event = { id = NVX_TABRAS.4 }
+		}
+	}
+	
+	option = {
+		name = NVX_TABRAS.nochange
+	}
+}
+
+country_event = { #tabula rasa - anti_air_building
+	id = NVX_TABRAS.4
+	title = NVX_TABRAS.4.t
+	desc = NVX_TABRAS.4.d
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = NVX_TABRAS.zero
+		
+		hidden_effect = {
+			every_state = {
+				set_building_level = {
+					type = anti_air_building
+					level = 0
+					instant_build = yes
+				}
+				set_building_level = {
+					type = anti_air_building
+					level = 0
+					instant_build = yes
+				}
+			}
+			country_event = { id = NVX_TABRAS.5 }
+		}
+	}
+	
+	option = {
+		name = NVX_TABRAS.one
+		
+		hidden_effect = {
+			every_state = {
+				set_building_level = {
+					type = anti_air_building
+					level = 1
+					instant_build = yes
+				}
+				set_building_level = {
+					type = anti_air_building
+					level = 1
+					instant_build = yes
+				}
+			}
+			country_event = { id = NVX_TABRAS.5 }
+		}
+	}
+	
+	option = {
+		name = NVX_TABRAS.two
+		
+		hidden_effect = {
+			every_state = {
+				set_building_level = {
+					type = anti_air_building
+					level = 2
+					instant_build = yes
+				}
+				set_building_level = {
+					type = anti_air_building
+					level = 2
+					instant_build = yes
+				}
+			}
+			country_event = { id = NVX_TABRAS.5 }
+		}
+	}
+	
+	option = {
+		name = NVX_TABRAS.three
+		
+		hidden_effect = {
+			every_state = {
+				set_building_level = {
+					type = anti_air_building
+					level = 3
+					instant_build = yes
+				}
+				set_building_level = {
+					type = anti_air_building
+					level = 3
+					instant_build = yes
+				}
+			}
+			country_event = { id = NVX_TABRAS.5 }
+		}
+	}
+	
+	option = {
+		name = NVX_TABRAS.five
+		
+		hidden_effect = {
+			every_state = {
+				set_building_level = {
+					type = anti_air_building
+					level = 5
+					instant_build = yes
+				}
+				set_building_level = {
+					type = anti_air_building
+					level = 5
+					instant_build = yes
+				}
+			}
+			country_event = { id = NVX_TABRAS.5 }
+		}
+	}
+	
+	option = {
+		name = NVX_TABRAS.seven
+		
+		hidden_effect = {
+			every_state = {
+				set_building_level = {
+					type = anti_air_building
+					level = 7
+					instant_build = yes
+				}
+				set_building_level = {
+					type = anti_air_building
+					level = 7
+					instant_build = yes
+				}
+			}
+			country_event = { id = NVX_TABRAS.5 }
+		}
+	}
+	
+	option = {
+		name = NVX_TABRAS.ten
+		
+		hidden_effect = {
+			every_state = {
+				set_building_level = {
+					type = anti_air_building
+					level = 10
+					instant_build = yes
+				}
+				set_building_level = {
+					type = anti_air_building
+					level = 10
+					instant_build = yes
+				}
+			}
+			country_event = { id = NVX_TABRAS.5 }
+		}
+	}
+	
+	option = {
+		name = NVX_TABRAS.nochange
+	}
+}
+
+country_event = { #tabula rasa - radar_station
+	id = NVX_TABRAS.5
+	title = NVX_TABRAS.5.t
+	desc = NVX_TABRAS.5.d
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = NVX_TABRAS.zero
+		
+		hidden_effect = {
+			every_state = {
+				set_building_level = {
+					type = radar_station
+					level = 0
+					instant_build = yes
+				}
+				set_building_level = {
+					type = radar_station
+					level = 0
+					instant_build = yes
+				}
+			}
+			country_event = { id = NVX_TABRAS.6 }
+		}
+	}
+	
+	option = {
+		name = NVX_TABRAS.one
+		
+		hidden_effect = {
+			every_state = {
+				set_building_level = {
+					type = radar_station
+					level = 1
+					instant_build = yes
+				}
+				set_building_level = {
+					type = radar_station
+					level = 1
+					instant_build = yes
+				}
+			}
+			country_event = { id = NVX_TABRAS.6 }
+		}
+	}
+	
+	option = {
+		name = NVX_TABRAS.two
+		
+		hidden_effect = {
+			every_state = {
+				set_building_level = {
+					type = radar_station
+					level = 2
+					instant_build = yes
+				}
+				set_building_level = {
+					type = radar_station
+					level = 2
+					instant_build = yes
+				}
+			}
+			country_event = { id = NVX_TABRAS.6 }
+		}
+	}
+	
+	option = {
+		name = NVX_TABRAS.three
+		
+		hidden_effect = {
+			every_state = {
+				set_building_level = {
+					type = radar_station
+					level = 3
+					instant_build = yes
+				}
+				set_building_level = {
+					type = radar_station
+					level = 3
+					instant_build = yes
+				}
+			}
+			country_event = { id = NVX_TABRAS.6 }
+		}
+	}
+	
+	option = {
+		name = NVX_TABRAS.four
+		
+		hidden_effect = {
+			every_state = {
+				set_building_level = {
+					type = radar_station
+					level = 4
+					instant_build = yes
+				}
+				set_building_level = {
+					type = radar_station
+					level = 4
+					instant_build = yes
+				}
+			}
+			country_event = { id = NVX_TABRAS.6 }
+		}
+	}
+	
+	option = {
+		name = NVX_TABRAS.five
+		
+		hidden_effect = {
+			every_state = {
+				set_building_level = {
+					type = radar_station
+					level = 5
+					instant_build = yes
+				}
+				set_building_level = {
+					type = radar_station
+					level = 5
+					instant_build = yes
+				}
+			}
+			country_event = { id = NVX_TABRAS.6 }
+		}
+	}
+	
+	option = {
+		name = NVX_TABRAS.six
+		
+		hidden_effect = {
+			every_state = {
+				set_building_level = {
+					type = radar_station
+					level = 6
+					instant_build = yes
+				}
+				set_building_level = {
+					type = radar_station
+					level = 6
+					instant_build = yes
+				}
+			}
+			country_event = { id = NVX_TABRAS.6 }
+		}
+	}
+	
+	option = {
+		name = NVX_TABRAS.nochange
+	}
+}
+
+country_event = { #choose factory distribution
+	id = NVX_TABRAS.6
+	title = NVX_TABRAS.6.t
+	desc = NVX_TABRAS.6.d
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		hidden_effect = { NVX_TABRAS_factories_0 = yes }
+	}
+	
+	option = {
+		name = NVX_TABRAS.6.o1
+		
+		hidden_effect = {
+			country_event = { id = NVX_TABRAS.7 }
+		}
+	}
+	
+	option = {
+		name = NVX_TABRAS.6.o2
+		
+		hidden_effect = {
+			country_event = { id = NVX_TABRAS.10 }
+		}
+	}
+	
+	option = {
+		name = NVX_TABRAS.6.o3
+	}
+}
+
+country_event = { #tabula rasa - industrial_complex per state
+	id = NVX_TABRAS.7
+	title = NVX_TABRAS.7.t
+	desc = NVX_TABRAS.7.d
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = NVX_TABRAS.fiftypercent
+		
+		hidden_effect = {
+			every_state = {
+				limit = {
+					NOT = { is_owned_by = SOV }
+					NOT = { is_owned_by = PRC }
+				}
+				state_event = { id = NVX_TABRAS.171 }
+			}
+			every_state = {
+				limit = { is_owned_by = SOV }
+				state_event = { id = NVX_TABRAS.172 }
+			}
+			every_state = {
+				limit = { is_owned_by = PRC }
+				state_event = { id = NVX_TABRAS.173 }
+			}
+			every_country = {
+				random_owned_state = {
+					NVX_TABRAS_industrial_complex_1 = yes
+				}
+			}
+			country_event = { id = NVX_TABRAS.8 }
+		}
+	}
+	
+	option = {
+		name = NVX_TABRAS.one
+		
+		hidden_effect = {
+			every_state = {
+				NVX_TABRAS_industrial_complex_1 = yes
+			}
+			country_event = { id = NVX_TABRAS.8 }
+		}
+	}
+	
+	option = {
+		name = NVX_TABRAS.two
+		
+		hidden_effect = {
+			every_state = {
+				NVX_TABRAS_industrial_complex_2 = yes
+			}
+			country_event = { id = NVX_TABRAS.8 }
+		}
+	}
+	
+	option = {
+		name = NVX_TABRAS.three
+		
+		hidden_effect = {
+			every_state = {
+				NVX_TABRAS_industrial_complex_3 = yes
+			}
+			country_event = { id = NVX_TABRAS.8 }
+		}
+	}
+	
+	option = {
+		name = NVX_TABRAS.five
+		
+		hidden_effect = {
+			every_state = {
+				NVX_TABRAS_industrial_complex_5 = yes
+			}
+			country_event = { id = NVX_TABRAS.8 }
+		}
+	}
+	
+	option = {
+		name = NVX_TABRAS.seven
+		
+		hidden_effect = {
+			every_state = {
+				NVX_TABRAS_industrial_complex_7 = yes
+			}
+			country_event = { id = NVX_TABRAS.8 }
+		}
+	}
+	
+	option = {
+		name = NVX_TABRAS.ten
+		
+		hidden_effect = {
+			every_state = {
+				NVX_TABRAS_industrial_complex_10 = yes
+			}
+			country_event = { id = NVX_TABRAS.8 }
+		}
+	}
+}
+
+country_event = { #tabula rasa - industrial_complex fifty percent
+	id = NVX_TABRAS.171
+	hidden = yes
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		
+	}
+	
+	option = {
+		random_list = {
+			50 = {
+				NVX_TABRAS_industrial_complex_1 = yes
+			}
+			50 = {
+				
+			}
+		}
+	}
+}
+
+country_event = { #tabula rasa - industrial_complex fifty percent russia
+	id = NVX_TABRAS.172
+	hidden = yes
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		
+	}
+	
+	option = {
+		random_list = {
+			10 = {
+				NVX_TABRAS_industrial_complex_1 = yes
+			}
+			90 = {
+				
+			}
+		}
+	}
+}
+
+country_event = { #tabula rasa - industrial_complex fifty percent china
+	id = NVX_TABRAS.173
+	hidden = yes
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		
+	}
+	
+	option = {
+		random_list = {
+			40 = {
+				NVX_TABRAS_industrial_complex_1 = yes
+			}
+			60 = {
+				
+			}
+		}
+	}
+}
+
+country_event = { #tabula rasa - arms_factory per state
+	id = NVX_TABRAS.8
+	title = NVX_TABRAS.8.t
+	desc = NVX_TABRAS.8.d
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = NVX_TABRAS.fiftypercent
+		
+		hidden_effect = {
+			every_state = {
+				limit = {
+					NOT = { is_owned_by = SOV }
+					NOT = { is_owned_by = PRC }
+				}
+				state_event = { id = NVX_TABRAS.181 }
+			}
+			every_state = {
+				limit = { is_owned_by = SOV }
+				state_event = { id = NVX_TABRAS.182 }
+			}
+			every_state = {
+				limit = { is_owned_by = PRC }
+				state_event = { id = NVX_TABRAS.183 }
+			}
+			every_country = {
+				random_owned_state = {
+					NVX_TABRAS_arms_factory_1 = yes
+				}
+			}
+			country_event = { id = NVX_TABRAS.9 }
+		}
+	}
+	
+	option = {
+		name = NVX_TABRAS.one
+		
+		hidden_effect = {
+			every_state = {
+				NVX_TABRAS_arms_factory_1 = yes
+			}
+			country_event = { id = NVX_TABRAS.9 }
+		}
+	}
+	
+	option = {
+		name = NVX_TABRAS.two
+		
+		hidden_effect = {
+			every_state = {
+				NVX_TABRAS_arms_factory_2 = yes
+			}
+			country_event = { id = NVX_TABRAS.9 }
+		}
+	}
+	
+	option = {
+		name = NVX_TABRAS.three
+		
+		hidden_effect = {
+			every_state = {
+				NVX_TABRAS_arms_factory_3 = yes
+			}
+			country_event = { id = NVX_TABRAS.9 }
+		}
+	}
+	
+	option = {
+		name = NVX_TABRAS.five
+		
+		hidden_effect = {
+			every_state = {
+				NVX_TABRAS_arms_factory_5 = yes
+			}
+			country_event = { id = NVX_TABRAS.9 }
+		}
+	}
+	
+	option = {
+		name = NVX_TABRAS.seven
+		
+		hidden_effect = {
+			every_state = {
+				NVX_TABRAS_arms_factory_7 = yes
+			}
+			country_event = { id = NVX_TABRAS.9 }
+		}
+	}
+	
+	option = {
+		name = NVX_TABRAS.ten
+		
+		hidden_effect = {
+			every_state = {
+				NVX_TABRAS_arms_factory_10 = yes
+			}
+			country_event = { id = NVX_TABRAS.9 }
+		}
+	}
+}
+
+country_event = { #tabula rasa - arms_factory fifty percent
+	id = NVX_TABRAS.181
+	hidden = yes
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		
+	}
+	
+	option = {
+		random_list = {
+			50 = {
+				NVX_TABRAS_arms_factory_1 = yes
+			}
+			50 = {
+				
+			}
+		}
+	}
+}
+
+country_event = { #tabula rasa - arms_factory fifty percent russia
+	id = NVX_TABRAS.182
+	hidden = yes
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		
+	}
+	
+	option = {
+		random_list = {
+			10 = {
+				NVX_TABRAS_arms_factory_1 = yes
+			}
+			90 = {
+				
+			}
+		}
+	}
+}
+
+country_event = { #tabula rasa - arms_factory fifty percent china
+	id = NVX_TABRAS.183
+	hidden = yes
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		
+	}
+	
+	option = {
+		random_list = {
+			40 = {
+				NVX_TABRAS_arms_factory_1 = yes
+			}
+			60 = {
+				
+			}
+		}
+	}
+}
+
+country_event = { #tabula rasa - dockyard per state
+	id = NVX_TABRAS.9
+	title = NVX_TABRAS.9.t
+	desc = NVX_TABRAS.9.d
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = NVX_TABRAS.fiftypercent
+		
+		hidden_effect = {
+			every_state = {
+				limit = {
+					NOT = { is_owned_by = SOV }
+					NOT = { is_owned_by = PRC }
+				}
+				state_event = { id = NVX_TABRAS.191 }
+			}
+			every_state = {
+				limit = { is_owned_by = SOV }
+				state_event = { id = NVX_TABRAS.192 }
+			}
+			every_state = {
+				limit = { is_owned_by = PRC }
+				state_event = { id = NVX_TABRAS.193 }
+			}
+			every_country = {
+				random_owned_state = {
+					limit = { is_coastal = yes }
+					NVX_TABRAS_dockyard_1 = yes
+				}
+			}
+		}
+	}
+	
+	option = {
+		name = NVX_TABRAS.one
+		
+		hidden_effect = {
+			every_state = {
+				NVX_TABRAS_dockyard_1 = yes
+			}
+		}
+	}
+	
+	option = {
+		name = NVX_TABRAS.two
+		
+		hidden_effect = {
+			every_state = {
+				NVX_TABRAS_dockyard_2 = yes
+			}
+		}
+	}
+	
+	option = {
+		name = NVX_TABRAS.three
+		
+		hidden_effect = {
+			every_state = {
+				NVX_TABRAS_dockyard_3 = yes
+			}
+		}
+	}
+	
+	option = {
+		name = NVX_TABRAS.five
+		
+		hidden_effect = {
+			every_state = {
+				NVX_TABRAS_dockyard_5 = yes
+			}
+		}
+	}
+	
+	option = {
+		name = NVX_TABRAS.seven
+		
+		hidden_effect = {
+			every_state = {
+				NVX_TABRAS_dockyard_7 = yes
+			}
+		}
+	}
+	
+	option = {
+		name = NVX_TABRAS.ten
+		
+		hidden_effect = {
+			every_state = {
+				NVX_TABRAS_dockyard_10 = yes
+			}
+		}
+	}
+}
+
+country_event = { #tabula rasa - dockyard fifty percent
+	id = NVX_TABRAS.191
+	hidden = yes
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		
+	}
+	
+	option = {
+		random_list = {
+			50 = {
+				NVX_TABRAS_dockyard_1 = yes
+			}
+			50 = {
+				
+			}
+		}
+	}
+}
+
+country_event = { #tabula rasa - dockyard fifty percent russia
+	id = NVX_TABRAS.192
+	hidden = yes
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		
+	}
+	
+	option = {
+		random_list = {
+			30 = {
+				NVX_TABRAS_dockyard_1 = yes
+			}
+			70 = {
+				
+			}
+		}
+	}
+}
+
+country_event = { #tabula rasa - dockyard fifty percent china
+	id = NVX_TABRAS.193
+	hidden = yes
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		
+	}
+	
+	option = {
+		random_list = {
+			40 = {
+				NVX_TABRAS_dockyard_1 = yes
+			}
+			60 = {
+				
+			}
+		}
+	}
+}
+
+country_event = { #tabula rasa - industrial_complex flat
+	id = NVX_TABRAS.10
+	title = NVX_TABRAS.10.t
+	desc = NVX_TABRAS.10.d
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = NVX_TABRAS.one
+		
+		hidden_effect = {
+			NVX_TABRAS_industrial_complex_flat_1 = yes
+			country_event = { id = NVX_TABRAS.11 }
+		}
+	}
+	
+	option = {
+		name = NVX_TABRAS.two
+		
+		hidden_effect = {
+			NVX_TABRAS_industrial_complex_flat_1 = yes
+			NVX_TABRAS_industrial_complex_flat_1 = yes
+			country_event = { id = NVX_TABRAS.11 }
+		}
+	}
+	
+	option = {
+		name = NVX_TABRAS.three
+		
+		hidden_effect = {
+			NVX_TABRAS_industrial_complex_flat_1 = yes
+			NVX_TABRAS_industrial_complex_flat_1 = yes
+			NVX_TABRAS_industrial_complex_flat_1 = yes
+			country_event = { id = NVX_TABRAS.11 }
+		}
+	}
+	
+	option = {
+		name = NVX_TABRAS.five
+		
+		hidden_effect = {
+			NVX_TABRAS_industrial_complex_flat_1 = yes
+			NVX_TABRAS_industrial_complex_flat_1 = yes
+			NVX_TABRAS_industrial_complex_flat_1 = yes
+			NVX_TABRAS_industrial_complex_flat_1 = yes
+			NVX_TABRAS_industrial_complex_flat_1 = yes
+			country_event = { id = NVX_TABRAS.11 }
+		}
+	}
+	
+	option = {
+		name = NVX_TABRAS.seven
+		
+		hidden_effect = {
+			NVX_TABRAS_industrial_complex_flat_1 = yes
+			NVX_TABRAS_industrial_complex_flat_1 = yes
+			NVX_TABRAS_industrial_complex_flat_1 = yes
+			NVX_TABRAS_industrial_complex_flat_1 = yes
+			NVX_TABRAS_industrial_complex_flat_1 = yes
+			NVX_TABRAS_industrial_complex_flat_1 = yes
+			NVX_TABRAS_industrial_complex_flat_1 = yes
+			country_event = { id = NVX_TABRAS.11 }
+		}
+	}
+	
+	option = {
+		name = NVX_TABRAS.ten
+		
+		hidden_effect = {
+			NVX_TABRAS_industrial_complex_flat_1 = yes
+			NVX_TABRAS_industrial_complex_flat_1 = yes
+			NVX_TABRAS_industrial_complex_flat_1 = yes
+			NVX_TABRAS_industrial_complex_flat_1 = yes
+			NVX_TABRAS_industrial_complex_flat_1 = yes
+			NVX_TABRAS_industrial_complex_flat_1 = yes
+			NVX_TABRAS_industrial_complex_flat_1 = yes
+			NVX_TABRAS_industrial_complex_flat_1 = yes
+			NVX_TABRAS_industrial_complex_flat_1 = yes
+			NVX_TABRAS_industrial_complex_flat_1 = yes
+			country_event = { id = NVX_TABRAS.11 }
+		}
+	}
+	
+	option = {
+		name = NVX_TABRAS.fifteen
+		
+		hidden_effect = {
+			NVX_TABRAS_industrial_complex_flat_1 = yes
+			NVX_TABRAS_industrial_complex_flat_1 = yes
+			NVX_TABRAS_industrial_complex_flat_1 = yes
+			NVX_TABRAS_industrial_complex_flat_1 = yes
+			NVX_TABRAS_industrial_complex_flat_1 = yes
+			NVX_TABRAS_industrial_complex_flat_1 = yes
+			NVX_TABRAS_industrial_complex_flat_1 = yes
+			NVX_TABRAS_industrial_complex_flat_1 = yes
+			NVX_TABRAS_industrial_complex_flat_1 = yes
+			NVX_TABRAS_industrial_complex_flat_1 = yes
+			NVX_TABRAS_industrial_complex_flat_1 = yes
+			NVX_TABRAS_industrial_complex_flat_1 = yes
+			NVX_TABRAS_industrial_complex_flat_1 = yes
+			NVX_TABRAS_industrial_complex_flat_1 = yes
+			NVX_TABRAS_industrial_complex_flat_1 = yes
+			country_event = { id = NVX_TABRAS.11 }
+		}
+	}
+}
+
+country_event = { #tabula rasa - arms_factory flat
+	id = NVX_TABRAS.11
+	title = NVX_TABRAS.11.t
+	desc = NVX_TABRAS.11.d
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = NVX_TABRAS.one
+		
+		hidden_effect = {
+			NVX_TABRAS_arms_factory_flat_1 = yes
+			country_event = { id = NVX_TABRAS.12 }
+		}
+	}
+	
+	option = {
+		name = NVX_TABRAS.two
+		
+		hidden_effect = {
+			NVX_TABRAS_arms_factory_flat_1 = yes
+			NVX_TABRAS_arms_factory_flat_1 = yes
+			country_event = { id = NVX_TABRAS.12 }
+		}
+	}
+	
+	option = {
+		name = NVX_TABRAS.three
+		
+		hidden_effect = {
+			NVX_TABRAS_arms_factory_flat_1 = yes
+			NVX_TABRAS_arms_factory_flat_1 = yes
+			NVX_TABRAS_arms_factory_flat_1 = yes
+			country_event = { id = NVX_TABRAS.12 }
+		}
+	}
+	
+	option = {
+		name = NVX_TABRAS.five
+		
+		hidden_effect = {
+			NVX_TABRAS_arms_factory_flat_1 = yes
+			NVX_TABRAS_arms_factory_flat_1 = yes
+			NVX_TABRAS_arms_factory_flat_1 = yes
+			NVX_TABRAS_arms_factory_flat_1 = yes
+			NVX_TABRAS_arms_factory_flat_1 = yes
+			country_event = { id = NVX_TABRAS.12 }
+		}
+	}
+	
+	option = {
+		name = NVX_TABRAS.seven
+		
+		hidden_effect = {
+			NVX_TABRAS_arms_factory_flat_1 = yes
+			NVX_TABRAS_arms_factory_flat_1 = yes
+			NVX_TABRAS_arms_factory_flat_1 = yes
+			NVX_TABRAS_arms_factory_flat_1 = yes
+			NVX_TABRAS_arms_factory_flat_1 = yes
+			NVX_TABRAS_arms_factory_flat_1 = yes
+			NVX_TABRAS_arms_factory_flat_1 = yes
+			country_event = { id = NVX_TABRAS.12 }
+		}
+	}
+	
+	option = {
+		name = NVX_TABRAS.ten
+		
+		hidden_effect = {
+			NVX_TABRAS_arms_factory_flat_1 = yes
+			NVX_TABRAS_arms_factory_flat_1 = yes
+			NVX_TABRAS_arms_factory_flat_1 = yes
+			NVX_TABRAS_arms_factory_flat_1 = yes
+			NVX_TABRAS_arms_factory_flat_1 = yes
+			NVX_TABRAS_arms_factory_flat_1 = yes
+			NVX_TABRAS_arms_factory_flat_1 = yes
+			NVX_TABRAS_arms_factory_flat_1 = yes
+			NVX_TABRAS_arms_factory_flat_1 = yes
+			NVX_TABRAS_arms_factory_flat_1 = yes
+			country_event = { id = NVX_TABRAS.12 }
+		}
+	}
+	
+	option = {
+		name = NVX_TABRAS.fifteen
+		
+		hidden_effect = {
+			NVX_TABRAS_arms_factory_flat_1 = yes
+			NVX_TABRAS_arms_factory_flat_1 = yes
+			NVX_TABRAS_arms_factory_flat_1 = yes
+			NVX_TABRAS_arms_factory_flat_1 = yes
+			NVX_TABRAS_arms_factory_flat_1 = yes
+			NVX_TABRAS_arms_factory_flat_1 = yes
+			NVX_TABRAS_arms_factory_flat_1 = yes
+			NVX_TABRAS_arms_factory_flat_1 = yes
+			NVX_TABRAS_arms_factory_flat_1 = yes
+			NVX_TABRAS_arms_factory_flat_1 = yes
+			NVX_TABRAS_arms_factory_flat_1 = yes
+			NVX_TABRAS_arms_factory_flat_1 = yes
+			NVX_TABRAS_arms_factory_flat_1 = yes
+			NVX_TABRAS_arms_factory_flat_1 = yes
+			NVX_TABRAS_arms_factory_flat_1 = yes
+			country_event = { id = NVX_TABRAS.12 }
+		}
+	}
+}
+
+country_event = { #tabula rasa - dockyard flat
+	id = NVX_TABRAS.12
+	title = NVX_TABRAS.12.t
+	desc = NVX_TABRAS.12.d
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = NVX_TABRAS.one
+		
+		hidden_effect = {
+			NVX_TABRAS_dockyard_flat_1 = yes
+			#country_event = { id = NVX_TABRAS.13 }
+		}
+	}
+	
+	option = {
+		name = NVX_TABRAS.two
+		
+		hidden_effect = {
+			NVX_TABRAS_dockyard_flat_1 = yes
+			NVX_TABRAS_dockyard_flat_1 = yes
+			#country_event = { id = NVX_TABRAS.13 }
+		}
+	}
+	
+	option = {
+		name = NVX_TABRAS.three
+		
+		hidden_effect = {
+			NVX_TABRAS_dockyard_flat_1 = yes
+			NVX_TABRAS_dockyard_flat_1 = yes
+			NVX_TABRAS_dockyard_flat_1 = yes
+			#country_event = { id = NVX_TABRAS.13 }
+		}
+	}
+	
+	option = {
+		name = NVX_TABRAS.five
+		
+		hidden_effect = {
+			NVX_TABRAS_dockyard_flat_1 = yes
+			NVX_TABRAS_dockyard_flat_1 = yes
+			NVX_TABRAS_dockyard_flat_1 = yes
+			NVX_TABRAS_dockyard_flat_1 = yes
+			NVX_TABRAS_dockyard_flat_1 = yes
+			#country_event = { id = NVX_TABRAS.13 }
+		}
+	}
+	
+	option = {
+		name = NVX_TABRAS.seven
+		
+		hidden_effect = {
+			NVX_TABRAS_dockyard_flat_1 = yes
+			NVX_TABRAS_dockyard_flat_1 = yes
+			NVX_TABRAS_dockyard_flat_1 = yes
+			NVX_TABRAS_dockyard_flat_1 = yes
+			NVX_TABRAS_dockyard_flat_1 = yes
+			NVX_TABRAS_dockyard_flat_1 = yes
+			NVX_TABRAS_dockyard_flat_1 = yes
+			#country_event = { id = NVX_TABRAS.13 }
+		}
+	}
+	
+	option = {
+		name = NVX_TABRAS.ten
+		
+		hidden_effect = {
+			NVX_TABRAS_dockyard_flat_1 = yes
+			NVX_TABRAS_dockyard_flat_1 = yes
+			NVX_TABRAS_dockyard_flat_1 = yes
+			NVX_TABRAS_dockyard_flat_1 = yes
+			NVX_TABRAS_dockyard_flat_1 = yes
+			NVX_TABRAS_dockyard_flat_1 = yes
+			NVX_TABRAS_dockyard_flat_1 = yes
+			NVX_TABRAS_dockyard_flat_1 = yes
+			NVX_TABRAS_dockyard_flat_1 = yes
+			NVX_TABRAS_dockyard_flat_1 = yes
+			#country_event = { id = NVX_TABRAS.13 }
+		}
+	}
+	
+	option = {
+		name = NVX_TABRAS.fifteen
+		
+		hidden_effect = {
+			NVX_TABRAS_dockyard_flat_1 = yes
+			NVX_TABRAS_dockyard_flat_1 = yes
+			NVX_TABRAS_dockyard_flat_1 = yes
+			NVX_TABRAS_dockyard_flat_1 = yes
+			NVX_TABRAS_dockyard_flat_1 = yes
+			NVX_TABRAS_dockyard_flat_1 = yes
+			NVX_TABRAS_dockyard_flat_1 = yes
+			NVX_TABRAS_dockyard_flat_1 = yes
+			NVX_TABRAS_dockyard_flat_1 = yes
+			NVX_TABRAS_dockyard_flat_1 = yes
+			NVX_TABRAS_dockyard_flat_1 = yes
+			NVX_TABRAS_dockyard_flat_1 = yes
+			NVX_TABRAS_dockyard_flat_1 = yes
+			NVX_TABRAS_dockyard_flat_1 = yes
+			NVX_TABRAS_dockyard_flat_1 = yes
+			#country_event = { id = NVX_TABRAS.13 }
+		}
+	}
+}

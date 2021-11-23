@@ -1,0 +1,275 @@
+﻿add_namespace = NVX_Warfaring
+
+country_event = {
+	id = NVX_Warfaring.0
+	title = NVX_Warfaring.1.t
+	desc = NVX_Warfaring.1.d
+	
+	trigger = {
+		NOT = { has_global_flag = pts_disable_warfaring }
+		NVX_warfaring_attacker_trigger = yes
+	}
+	
+	mean_time_to_happen = {
+		days = 15000
+		modifier = { factor = 5 has_idea = national_development_advanced }
+		modifier = { factor = 3.5 has_idea = national_development_developed }
+		modifier = { factor = 2 has_idea = national_development_developing }
+		modifier = { factor = 0.6 has_government = islamist }
+		modifier = { factor = 0.5 has_government = fascist }
+		modifier = { factor = 0.7 has_government = nationalist }
+		modifier = { factor = 0.9 has_government = reactionary }
+		modifier = { factor = 1.5 has_government = market_liberal }
+		modifier = { factor = 0.9 has_government = democratic_socialist }
+		modifier = { factor = 0.7 has_government = communist }
+		modifier = { factor = 0.8 threat > 0.20 }
+		modifier = { factor = 0.8 threat > 0.40 }
+		modifier = { factor = 0.7 threat > 0.60 }
+		modifier = { factor = 0.7 threat > 0.80 }
+		modifier = { factor = 2 has_global_flag = pts_reduce_warfaring }
+		modifier = { factor = 0.5 has_global_flag = pts_intensify_warfaring }
+		modifier = { factor = 0.05 has_global_flag = pts_chaotic_warfaring }
+	}
+	
+	option = { # Take claimed states
+		name = NVX_Warfaring.0.o1
+		random_neighbor_country = {
+			limit = { NVX_warfaring_target_trigger = yes }
+			country_event = { id = NVX_Warfaring.1 }
+		}
+		
+		ai_chance = {
+			factor = 10
+			
+			modifier = {
+				factor = 1.5
+				OR = {
+					has_government = islamist
+					has_government = nationalist
+					has_government = monarchist
+				}
+			}
+		}
+	}
+	
+	option = { # Puppet
+		name = NVX_Warfaring.0.o2
+		random_neighbor_country = {
+			limit = { NVX_warfaring_target_trigger = yes }
+			country_event = { id = NVX_Warfaring.2 }
+		}
+		
+		trigger = {
+			OR = {
+				has_government = islamist
+				has_government = nationalist
+				has_government = monarchist
+				has_government = democratic_socialist
+				has_government = communist
+			}
+		}
+		ai_chance = {
+			factor = 30
+			
+			modifier = {
+				factor = 0.9
+				has_government = islamist
+			}
+			modifier = {
+				factor = 0.4
+				has_government = nationalist
+			}
+			modifier = {
+				factor = 0.5
+				has_government = monarchist
+			}
+			modifier = {
+				factor = 0.4
+				has_government = democratic_socialist
+			}
+		}
+	}
+	
+	option = { # Flip government
+		name = NVX_Warfaring.0.o3
+		random_neighbor_country = {
+			limit = {
+				NVX_warfaring_target_trigger = yes
+				NVX_warfaring_target_abstention_flip = no
+			}
+			country_event = { id = NVX_Warfaring.3 }
+		}
+		
+		trigger = {
+			NVX_has_government_system_democratic = yes
+			NOT = { has_idea = national_development_undeveloped }
+		}
+		ai_chance = {
+			factor = 30
+			
+			modifier = {
+				factor = 0.6
+				has_idea = national_development_developing
+			}
+			modifier = {
+				factor = 0.3
+				has_idea = national_development_undeveloped
+			}
+		}
+	}
+	
+	option = { # Total conquest
+		name = NVX_Warfaring.0.o4
+		random_neighbor_country = {
+			limit = { NVX_warfaring_target_trigger = yes }
+			country_event = { id = NVX_Warfaring.4 }
+		}
+		
+		trigger = {
+			OR = {
+				has_government = fascist
+				has_government = nationalist
+				has_government = monarchist
+				has_government = communist
+			}
+		}
+		ai_chance = {
+			factor = 30
+			
+			modifier = {
+				factor = 0.4
+				has_government = nationalist
+			}
+			modifier = {
+				factor = 0.2
+				has_government = monarchist
+			}
+			modifier = {
+				factor = 0.3
+				has_government = communist
+			}
+		}
+	}
+}
+
+country_event = {
+	id = NVX_Warfaring.1
+	title = NVX_Warfaring.1.t
+	desc = NVX_Warfaring.1.d
+	picture = GFX_report_event_warfaring_mobilization_for_war
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = NVX_Warfaring.o.takeit
+		FROM = { country_event = { days = 49 id = NVX_Warfaring.11 } }
+	}
+}
+
+country_event = {
+	id = NVX_Warfaring.2
+	title = NVX_Warfaring.1.t
+	desc = NVX_Warfaring.1.d
+	picture = GFX_report_event_warfaring_mobilization_for_war
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = NVX_Warfaring.o.takeit
+		FROM = { country_event = { days = 49 id = NVX_Warfaring.21 } }
+	}
+}
+
+country_event = {
+	id = NVX_Warfaring.3
+	title = NVX_Warfaring.1.t
+	desc = NVX_Warfaring.1.d
+	picture = GFX_report_event_warfaring_mobilization_for_war
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = NVX_Warfaring.o.takeit
+		FROM = { country_event = { days = 49 id = NVX_Warfaring.31 } }
+	}
+}
+
+country_event = {
+	id = NVX_Warfaring.4
+	title = NVX_Warfaring.1.t
+	desc = NVX_Warfaring.1.d
+	picture = GFX_report_event_warfaring_mobilization_for_war
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = NVX_Warfaring.o.takeit
+		FROM = { country_event = { days = 49 id = NVX_Warfaring.41 } }
+	}
+}
+
+country_event = { # Take claimed states
+	id = NVX_Warfaring.11
+	hidden = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		FROM = {
+			random_owned_state = {
+				limit = {
+					any_neighbor_state = {
+						is_owned_by = ROOT
+					}
+				}
+				add_claim_by = ROOT
+			}
+		}
+		create_wargoal = {
+			type = take_state
+			target = FROM
+		}
+	}
+}
+
+country_event = { # Puppet
+	id = NVX_Warfaring.21
+	hidden = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = FROM
+		}
+	}
+}
+
+country_event = { # Flip government
+	id = NVX_Warfaring.31
+	hidden = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		create_wargoal = {
+			type = topple_government
+			target = FROM
+		}
+	}
+}
+
+country_event = { # Total conquest
+	id = NVX_Warfaring.41
+	hidden = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		create_wargoal = {
+			type = annex_everything
+			target = FROM
+		}
+	}
+}

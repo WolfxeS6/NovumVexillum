@@ -1,0 +1,102 @@
+﻿###########################
+# Test Events
+###########################
+
+add_namespace = test
+
+# Test Event 1
+country_event = {
+	id = test.1
+	hidden = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		load_focus_tree = china_focus
+	}
+}
+
+#Test Vote
+country_event = {
+	id = test.2
+	title = "Vote!"
+	desc = "Cast your vote!"
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		set_country_flag = vote_abstain
+	}
+	
+	option = {
+		name = "Yes!"
+		clr_country_flag = vote_abstain
+		set_country_flag = vote_yes
+		
+		ai_chance = { base = 30 }
+	}
+	option = {
+		name = "No!"
+		clr_country_flag = vote_abstain
+		set_country_flag = vote_no
+		
+		ai_chance = { base = 30 }
+	}
+	option = {
+		name = "Oof. Don't care."
+		
+		ai_chance = { base = 30 }
+	}
+}
+
+#Test Vote Result
+news_event = {
+	id = test.3
+	title = "Results are in!"
+	desc = "These are the vote results!"
+	
+	is_triggered_only = yes
+	major = yes
+	
+	immediate = {
+		custom_effect_tooltip = "Yes:"
+		if = {
+			limit = { any_country = { has_country_flag = vote_yes } }
+			every_country = {
+				limit = { has_country_flag = vote_yes }
+			}
+		}
+		custom_effect_tooltip = "No:"
+		if = {
+			limit = { any_country = { has_country_flag = vote_no } }
+			every_country = {
+				limit = { has_country_flag = vote_no }
+			}
+		}
+		custom_effect_tooltip = "Abstained:"
+		if = {
+			limit = { any_country = { has_country_flag = vote_abstain } }
+			every_country = {
+				limit = { has_country_flag = vote_abstain }
+			}
+		}
+	}
+	
+	option = {
+		name = "Okay."
+	}
+}
+
+#Test Vote Wipe
+country_event = {
+	id = test.4
+	hidden = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		clr_country_flag = vote_abstain
+		clr_country_flag = vote_no
+		clr_country_flag = vote_yes
+	}
+}

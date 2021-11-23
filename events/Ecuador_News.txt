@@ -1,0 +1,68 @@
+﻿add_namespace = ecuador_news
+
+#Julian Assange extradition
+news_event = {
+	id = ecuador_news.1
+	title = ecuador_news.1.t
+	desc = ecuador_news.1.d
+	picture = GFX_news_event_ecu_julian_assange_extradition
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		NOT = { has_global_flag = NVX_flag_julian_assange_arrested }
+	}
+	
+	option = {
+		name = ecuador_news.1.o1
+		trigger = { original_tag = ENG }
+	}
+	
+	option = {
+		name = ecuador_news.1.o2
+		trigger = { original_tag = ECU }
+	}
+	
+	option = {
+		name = ecuador_news.1.o3
+		trigger = {
+			NOT = { original_tag = ENG }
+			NOT = { original_tag = ECU }
+		}
+		
+		NVX_secret_idea_effect_julian_assange_rescue_option = yes
+	}
+}
+
+#Julian Assange extradition - if Ecuador dies
+news_event = {
+	id = ecuador_news.2
+	title = ecuador_news.2.t
+	desc = ecuador_news.2.d
+	picture = GFX_news_event_ecu_julian_assange_extradition
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = ecuador_news.1.o1
+		trigger = { original_tag = ENG }
+	}
+	
+	option = {
+		name = ecuador_news.1.o3
+		trigger = { NOT = { original_tag = ENG } }
+		
+		NVX_secret_idea_effect_julian_assange_rescue_option = yes
+	}
+}
+
+news_event = {
+	id = ecuador_news.4
+	hidden = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		set_global_flag = NVX_flag_julian_assange_arrested
+	}
+}

@@ -1,0 +1,2133 @@
+focus_tree = {
+	id = okinawa_focus
+	country = {
+		factor = 0
+		
+		modifier = {
+			add = 10
+			tag = RYU
+		}
+	}
+	
+	continuous_focus_position = { x = 150 y = 800 }
+	
+	
+	######################
+	#
+	# Politics
+	#
+	######################
+	
+	focus = {
+		id = RYU_our_future
+		icon = ryukyu_our_future
+		cost = 8.00
+		x = 7
+		y = 0
+		
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	
+		cancel_if_invalid = no
+		continue_if_invalid = no
+		available_if_capitulated = yes
+		
+		completion_reward = {
+			add_political_power = 150
+		}
+		
+		ai_will_do = {
+			factor = 2
+		}
+	}
+
+	focus = {
+		id = RYU_japanese_okinawa
+		icon = become_puppet
+		cost = 10.00
+		x = 2
+		y = 1
+		
+		available = {
+			is_subject = yes
+		}
+		
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	
+		prerequisite = {
+			focus = RYU_our_future
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		completion_reward = {
+			add_political_power = 150
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	focus = {
+		id = RYU_press_cooperation
+		icon = political_pressure
+		cost = 10.00
+		x = 1
+		y = 2
+		
+		available = {
+			is_subject = yes
+		}
+		
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	
+		prerequisite = {
+			focus = RYU_japanese_okinawa
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		completion_reward = {
+			add_ideas = RYU_newspaper_funding
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	focus = {
+		id = RYU_integrated_okinawa
+		icon = entente
+		cost = 7.00
+		x = 3
+		y = 2
+		
+		available = {
+			is_subject = yes
+			NOT = { has_government = nationalist }
+		}
+		
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
+	
+		prerequisite = {
+			focus = RYU_japanese_okinawa
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		completion_reward = {
+			add_stability = 0.1
+			add_popularity = {
+				ideology = nationalist
+				popularity = -0.05
+			}
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	focus = {
+		id = RYU_enactment_of_basic_law
+		icon = constitution
+		cost = 10.00
+		x = 2
+		y = 3
+		
+		available = {
+			is_subject = yes
+		}
+		
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	
+		prerequisite = {
+			focus = RYU_integrated_okinawa
+			focus = RYU_press_cooperation
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		completion_reward = {
+			add_political_power = 150
+			news_event = { id = NV_RYU_news.1 hours = 6 }
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	focus = {
+		id = RYU_haitai_uchinaa
+		icon = defence
+		cost = 10.00
+		x = 2
+		y = 4
+		
+		available = {
+			is_subject = yes
+		}
+		
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	
+		prerequisite = {
+			focus = RYU_enactment_of_basic_law
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		completion_reward = {
+			add_political_power = 150
+			
+			if = {
+				limit = {
+					has_idea = RYU_worrying_freedom
+				}
+				remove_ideas = RYU_worrying_freedom
+			}
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	focus = {
+		id = RYU_three_mountains
+		icon = japanese_monarchy
+		cost = 10.00
+		x = 5
+		y = 1
+		
+		available = {
+			is_subject = no
+		}
+		
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	
+		prerequisite = {
+			focus = RYU_our_future
+		}
+		
+		mutually_exclusive = {
+			focus = RYU_spirit_of_democracy
+		}
+		
+		mutually_exclusive = {
+			focus = RYU_red_islands_of_revolution
+		}
+		
+		mutually_exclusive = {
+			focus = RYU_okinawan_okinawa
+		}
+				
+		mutually_exclusive = {
+			focus = RYU_only_juche
+		}
+		
+
+		cancel_if_invalid = no
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		completion_reward = {
+			add_stability = -0.1
+			set_politics = { ruling_party = monarchist elections_allowed = no }
+			news_event = { id = NV_RYU_news.2 hours = 6 }
+			add_ideas = government_system_absolute_monarchy
+			add_popularity = {
+				ideology = monarchist
+				popularity = 0.4
+			}
+		}
+		
+		ai_will_do = {
+			factor = 0.25
+			modifier = {
+		    factor = 0
+		    OR = {
+				  has_game_rule = {
+					rule = RYU_ai_behavior
+					option = RYU_NATIONALIST
+					}
+				  has_game_rule = {
+					rule = RYU_ai_behavior
+					option = RYU_DEMOCRACY
+					}
+				  has_game_rule = {
+					rule = RYU_ai_behavior
+					option = RYU_COMMUNIST
+					}
+				  has_game_rule = {
+					rule = RYU_ai_behavior
+					option = RYU_JUCHE
+					}
+				}
+		    }
+		}
+	}
+	
+	focus = {
+		id = RYU_traditional_cultural_revival
+		icon = monarchy5
+		cost = 10.00
+		x = 5
+		y = 2
+		
+		available = {
+			is_subject = no
+		}
+		
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	
+		prerequisite = {
+			focus = RYU_three_mountains
+		}
+		
+		cancel_if_invalid = no
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		completion_reward = {
+			add_ideas = RYU_okinawan_shinto
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	focus = {
+		id = RYU_coronation_in_shuri
+		icon = monarchy
+		cost = 10.00
+		x = 5
+		y = 3
+		
+		available = {
+			is_subject = no
+		}
+		
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
+	
+		prerequisite = {
+			focus = RYU_traditional_cultural_revival
+		}
+		
+		cancel_if_invalid = no
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		completion_reward = {
+			add_stability = 0.05
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	focus = {
+		id = RYU_implementation_of_the_nobility_system
+		icon = military_mission
+		cost = 10.00
+		x = 5
+		y = 4
+		
+		available = {
+			is_subject = no
+		}
+		
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	
+		prerequisite = {
+			focus = RYU_coronation_in_shuri
+		}
+		
+		cancel_if_invalid = no
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		completion_reward = {
+			add_ideas = RYU_aristocrat
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	focus = {
+		id = RYU_eternal_kingdom
+		icon = samurai
+		cost = 10.00
+		x = 5
+		y = 5
+		
+		available = {
+			is_subject = no
+		}
+		
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	
+		prerequisite = {
+			focus = RYU_implementation_of_the_nobility_system
+		}
+		
+		cancel_if_invalid = no
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		completion_reward = {
+			add_ideas = idea_focus_generic_national_heritage
+			if = {
+				limit = {
+					has_idea = RYU_worrying_freedom
+				}
+				remove_ideas = RYU_worrying_freedom
+			}
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	focus = {
+		id = RYU_okinawan_okinawa
+		icon = national_unity
+		cost = 10.00
+		x = 8
+		y = 1
+		
+		available = {
+			is_subject = no
+		}
+		
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	
+		prerequisite = {
+			focus = RYU_our_future
+		}
+		
+		mutually_exclusive = {
+			focus = RYU_spirit_of_democracy
+		}
+		
+		mutually_exclusive = {
+			focus = RYU_red_islands_of_revolution
+		}
+		
+		mutually_exclusive = {
+			focus = RYU_three_mountains
+		}
+				
+		mutually_exclusive = {
+			focus = RYU_only_juche
+		}
+		
+
+		cancel_if_invalid = no
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		completion_reward = {		  
+			add_stability = -0.05
+			set_politics = { ruling_party = nationalist elections_allowed = yes }
+			news_event = { id = NV_RYU_news.4 hours = 6 }
+			add_ideas = government_system_parliamentary_republic
+			add_popularity = {
+				ideology = nationalist
+				popularity = 0.4
+			}
+		}
+		
+		ai_will_do = {
+			factor = 1
+			modifier = {
+		    factor = 0
+		    OR = {
+				  has_game_rule = {
+					rule = RYU_ai_behavior
+					option = RYU_MONARCHIST
+					}
+				  has_game_rule = {
+					rule = RYU_ai_behavior
+					option = RYU_DEMOCRACY
+					}
+				  has_game_rule = {
+					rule = RYU_ai_behavior
+					option = RYU_COMMUNIST
+					}
+				  has_game_rule = {
+					rule = RYU_ai_behavior
+					option = RYU_JUCHE
+					}
+				}
+		    }
+		}
+	}
+	
+	focus = {
+		id = RYU_kariyushi_ryukyu
+		icon = constitution
+		cost = 10.00
+		x = 8
+		y = 2
+		
+		available = {
+			is_subject = no
+		}
+		
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	
+		prerequisite = {
+			focus = RYU_okinawan_okinawa
+		}
+
+		cancel_if_invalid = no
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		completion_reward = {
+			add_ideas = RYU_uchinaa_first
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	focus = {
+		id = RYU_language_resurrection
+		icon = improve_relations
+		cost = 10.00
+		x = 7
+		y = 3
+		
+		available = {
+			is_subject = no
+		}
+		
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	
+		prerequisite = {
+			focus = RYU_kariyushi_ryukyu
+		}
+
+		cancel_if_invalid = no
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		completion_reward = {
+			add_ideas = RYU_one_language_nation
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	focus = {
+		id = RYU_patriotic_education
+		icon = national_greatness
+		cost = 10.00
+		x = 9
+		y = 3
+		
+		available = {
+			is_subject = no
+		}
+		
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	
+		prerequisite = {
+			focus = RYU_kariyushi_ryukyu
+		}
+
+		cancel_if_invalid = no
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		completion_reward = {
+			add_ideas = political_power_bonus
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	focus = {
+		id = RYU_undefeated_okinawa
+		icon = major_alliance
+		cost = 10.00
+		x = 8
+		y = 4
+		
+		available = {
+			is_subject = no
+		}
+		
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	
+		prerequisite = {
+			focus = RYU_language_resurrection
+		}
+
+		prerequisite = {
+			focus = RYU_patriotic_education
+		}
+		
+		cancel_if_invalid = no
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		completion_reward = {
+			add_ideas = idea_focus_generic_realpolitik
+			
+			if = {
+				limit = {
+					has_idea = RYU_worrying_freedom
+				}
+				remove_ideas = RYU_worrying_freedom
+			}
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	focus = {
+		id = RYU_spirit_of_democracy
+		icon = democracy
+		cost = 10.00
+		x = 12
+		y = 1
+		
+		available = {
+			is_subject = no
+			OR = {
+				has_democratic_form_of_government = yes
+				has_government = nationalist
+			}
+		}
+		
+		
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
+	
+		prerequisite = {
+			focus = RYU_our_future
+		}
+		
+		mutually_exclusive = {
+			focus = RYU_okinawan_okinawa
+		}
+		
+		mutually_exclusive = {
+			focus = RYU_red_islands_of_revolution
+		}
+		
+		mutually_exclusive = {
+			focus = RYU_three_mountains
+		}
+				
+		mutually_exclusive = {
+			focus = RYU_only_juche
+		}
+		
+
+		cancel_if_invalid = no
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		completion_reward = {
+			add_stability = 0.1
+			news_event = { id = NV_RYU_news.3 hours = 6 }
+			add_popularity = {
+				ideology = monarchist
+				popularity = -0.1
+			}
+			add_popularity = {
+				ideology = fascist
+				popularity = -0.1
+			}
+			add_popularity = {
+				ideology = communist
+				popularity = -0.1
+			}
+			add_popularity = {
+				ideology = nationalist
+				popularity = -0.05
+			}
+		}
+		
+		ai_will_do = {
+			factor = 1
+			modifier = {
+		    factor = 0
+		    OR = {
+				  has_game_rule = {
+					rule = RYU_ai_behavior
+					option = RYU_MONARCHIST
+					}
+				  has_game_rule = {
+					rule = RYU_ai_behavior
+					option = RYU_NATIONALIST
+					}
+				  has_game_rule = {
+					rule = RYU_ai_behavior
+					option = RYU_COMMUNIST
+					}
+				  has_game_rule = {
+					rule = RYU_ai_behavior
+					option = RYU_JUCHE
+					}
+				}
+		    }
+		}
+	}
+	
+	focus = {
+		id = RYU_Island_of_liberty
+		icon = blue_dragon
+		cost = 10.00
+		x = 12
+		y = 2
+		
+		available = {
+			is_subject = no
+			OR = {
+				has_democratic_form_of_government = yes
+				has_government = nationalist
+			}
+		}
+		
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	
+		prerequisite = {
+			focus = RYU_spirit_of_democracy
+		}
+		
+		cancel_if_invalid = no
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		completion_reward = {
+			add_political_power = 150
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	focus = {
+		id = RYU_grand_coalition
+		icon = demand_territory2
+		cost = 10.00
+		x = 11
+		y = 3
+		
+		available = {
+			is_subject = no
+		}
+		
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	
+		prerequisite = {
+			focus = RYU_Island_of_liberty
+		}
+		
+		cancel_if_invalid = no
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		completion_reward = {
+			add_ideas = RYU_harmonious_democracy
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	focus = {
+		id = RYU_dual_language_system
+		icon = alliance
+		cost = 10.00
+		x = 13
+		y = 3
+		
+		available = {
+			is_subject = no
+		}
+		
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	
+		prerequisite = {
+			focus = RYU_Island_of_liberty
+		}
+		
+		cancel_if_invalid = no
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		completion_reward = {
+			add_ideas = RYU_two_language_nation
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	focus = {
+		id = RYU_switzerland_in_asia
+		icon = neutrality
+		cost = 10.00
+		x = 12
+		y = 4
+		
+		available = {
+			is_subject = no
+			is_in_faction = no
+		}
+		
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	
+		prerequisite = {
+			focus = RYU_grand_coalition
+		}
+		
+		prerequisite = {
+			focus = RYU_dual_language_system
+		}
+		
+		cancel_if_invalid = no
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		completion_reward = {
+			add_political_power = 120
+			add_war_support = 0.10
+			add_ideas = neutrality_idea
+			if = {
+				limit = {
+					has_idea = RYU_worrying_freedom
+				}
+				remove_ideas = RYU_worrying_freedom
+			}
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	focus = {
+		id = RYU_red_islands_of_revolution
+		icon = red_dragon
+		cost = 10.00
+		x = 15
+		y = 1
+		
+		available = {
+			is_subject = no
+		}
+		
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	
+		prerequisite = {
+			focus = RYU_our_future
+		}
+		
+		mutually_exclusive = {
+			focus = RYU_okinawan_okinawa
+		}
+		
+		mutually_exclusive = {
+			focus = RYU_spirit_of_democracy
+		}
+		
+		mutually_exclusive = {
+			focus = RYU_three_mountains
+		}
+		
+		mutually_exclusive = {
+			focus = RYU_only_juche
+		}
+		
+		cancel_if_invalid = no
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		completion_reward = {
+			add_stability = -0.15
+			set_politics = { ruling_party = communist elections_allowed = no }
+			add_ideas = government_system_autocracy
+			news_event = { id = NV_RYU_news.5 hours = 6 }
+			add_popularity = {
+				ideology = communist
+				popularity = 0.4
+			}
+		}
+		
+		ai_will_do = {
+			factor = 0.5
+			modifier = {
+		    factor = 0
+		    OR = {
+				  has_game_rule = {
+					rule = RYU_ai_behavior
+					option = RYU_MONARCHIST
+					}
+				  has_game_rule = {
+					rule = RYU_ai_behavior
+					option = RYU_NATIONALIST
+					}
+				  has_game_rule = {
+					rule = RYU_ai_behavior
+					option = RYU_DEMOCRACY
+					}
+				  has_game_rule = {
+					rule = RYU_ai_behavior
+					option = RYU_JUCHE
+					}
+				}
+		    }
+		}
+	}
+	
+	focus = {
+		id = RYU_red_constitution
+		icon = constitution
+		cost = 10.00
+		x = 14
+		y = 2
+		
+		available = {
+			is_subject = no
+		}
+		
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
+	
+		prerequisite = {
+			focus = RYU_red_islands_of_revolution
+		}
+		
+		
+		cancel_if_invalid = no
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		completion_reward = {
+			add_stability = 0.05
+			add_war_support = 0.10
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	focus = {
+		id = RYU_military_base_recycling
+		icon = army_officers_communist
+		cost = 10.00
+		x = 16
+		y = 2
+		
+		available = {
+			is_subject = no
+		}
+		
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	
+		prerequisite = {
+			focus = RYU_red_islands_of_revolution
+			focus = RYU_only_juche
+		}
+		
+		cancel_if_invalid = no
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		completion_reward = {
+			add_equipment_to_stockpile = {
+				type = support_equipment
+				amount = 200
+				producer = USA
+			}
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = 1500
+				producer = USA
+			}
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	focus = {
+		id = RYU_alliance_with_kariyushi
+		icon = destroy_society
+		cost = 10.00
+		x = 15
+		y = 3
+		
+		available = {
+			is_subject = no
+		}
+		
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	
+		prerequisite = {
+			focus = RYU_red_constitution
+		}
+		
+		prerequisite = {
+			focus = RYU_military_base_recycling
+		}
+		
+		cancel_if_invalid = no
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		completion_reward = {
+			add_ideas = RYU_national_bolshevism
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	focus = {
+		id = RYU_cuba_in_asia
+		icon = propaganda
+		cost = 10.00
+		x = 15
+		y = 4
+		
+		available = {
+			is_subject = no
+		}
+		
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	
+		prerequisite = {
+			focus = RYU_alliance_with_kariyushi
+		}
+		
+		cancel_if_invalid = no
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		completion_reward = {
+			add_ideas = idea_focus_generic_will_of_the_people
+			if = {
+				limit = {
+					has_idea = RYU_worrying_freedom
+				}
+				remove_ideas = RYU_worrying_freedom
+			}
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	focus = {
+		id = RYU_only_juche
+		icon = skull
+		cost = 10.00
+		x = 19
+		y = 1
+		
+		available = {
+			is_subject = no
+		}
+		
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	
+		prerequisite = {
+			focus = RYU_our_future
+		}
+		
+		mutually_exclusive = {
+			focus = RYU_okinawan_okinawa
+		}
+		
+		mutually_exclusive = {
+			focus = RYU_spirit_of_democracy
+		}
+		
+		mutually_exclusive = {
+			focus = RYU_three_mountains
+		}
+		
+		mutually_exclusive = {
+			focus = RYU_red_islands_of_revolution
+		}
+		
+		cancel_if_invalid = no
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		completion_reward = {
+			add_stability = -0.20
+			set_politics = { ruling_party = fascist elections_allowed = no }
+			add_ideas = government_system_one_party
+			add_ideas = immigration_policy_closed_country
+			add_ideas = civil_liberties_restricted
+			news_event = { id = NV_RYU_news.9 hours = 6 }
+			add_popularity = {
+				ideology = fascist
+				popularity = 0.4
+			}
+		}
+		
+		ai_will_do = {
+			factor = 0.3 #Juche in Okinawa? What a fool!
+			modifier = {
+		    factor = 0
+		    OR = {
+				  has_game_rule = {
+					rule = RYU_ai_behavior
+					option = RYU_MONARCHIST
+					}
+				  has_game_rule = {
+					rule = RYU_ai_behavior
+					option = RYU_NATIONALIST
+					}
+				  has_game_rule = {
+					rule = RYU_ai_behavior
+					option = RYU_DEMOCRACY
+					}
+				  has_game_rule = {
+					rule = RYU_ai_behavior
+					option = RYU_COMMUNIST
+					}
+				}
+		    }
+		}
+	}
+	
+	focus = {
+		id = RYU_with_kim
+		icon = align_to_north_korea
+		cost = 10.00
+		x = 18
+		y = 2
+		
+		available = {
+			is_subject = no
+			PRK = { is_subject = no }
+			PRK = { has_democratic_form_of_government = no }
+			country_exists = PRK
+			NOT = { has_war_with = PRK }
+		}
+		
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	
+		prerequisite = {
+			focus = RYU_only_juche
+		}
+		
+		mutually_exclusive = {
+			focus = RYU_without_kim
+		}
+		
+		cancel_if_invalid = no
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		completion_reward = {
+			add_stability = -0.05
+			PRK = { country_event = { id = NV_RYU_events.13 days = 3 } }
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	focus = {
+		id = RYU_without_kim
+		icon = infantry_japan
+		cost = 10.00
+		x = 20
+		y = 2
+		
+		available = {
+			is_subject = no
+		}
+		
+		mutually_exclusive = {
+			focus = RYU_with_kim
+		}
+		
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	
+		prerequisite = {
+			focus = RYU_only_juche
+		}
+		
+		cancel_if_invalid = no
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		completion_reward = {
+			add_stability = 0.05
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	focus = {
+		id = RYU_juche_constitution
+		icon = constitution
+		cost = 10.00
+		x = 18
+		y = 3
+		
+		available = {
+			is_subject = no
+		}
+		
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	
+		prerequisite = {
+			focus = RYU_with_kim
+			focus = RYU_without_kim
+		}
+		
+		cancel_if_invalid = no
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		completion_reward = {
+			add_ideas = civil_liberties_totalitarian
+			add_ideas = welfare_none
+			add_stability = 0.05
+			add_popularity = {
+				ideology = fascist
+				popularity = 0.6
+			}
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	focus = {
+		id = RYU_songun
+		icon = infantry_axis2
+		cost = 10.00
+		x = 20
+		y = 3
+		
+		available = {
+			is_subject = no
+		}
+		
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	
+		prerequisite = {
+			focus = RYU_with_kim
+			focus = RYU_without_kim
+		}
+		
+		cancel_if_invalid = no
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		completion_reward = {
+			add_ideas = RYU_songun
+			add_ideas = extensive_conscription
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	focus = {
+		id = RYU_best_ryukyu
+		icon = industry_military
+		cost = 10.00
+		x = 19
+		y = 4
+		
+		available = {
+			is_subject = no
+		}
+		
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	
+		prerequisite = {
+			focus = RYU_songun
+		}
+		
+		prerequisite = {
+			focus = RYU_juche_constitution
+		}
+		
+		cancel_if_invalid = no
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		completion_reward = {
+			add_war_support = 0.15
+			add_ideas = idea_focus_generic_army_of_purity
+			if = {
+				limit = {
+					has_idea = RYU_worrying_freedom
+				}
+				remove_ideas = RYU_worrying_freedom
+			}
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	######################
+	#
+	# Economic & Army
+	#
+	######################
+	
+	focus = {
+		id = RYU_construction_of_industrial_facilities
+		icon = construction4
+		cost = 10.00
+		x = 22
+		y = 0
+		
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+	
+		mutually_exclusive = {
+			focus = RYU_island_for_tourists
+		}
+		
+		cancel_if_invalid = no
+		continue_if_invalid = no
+		available_if_capitulated = yes
+		
+		available = {
+			has_full_control_of_state = 526
+		}
+		
+		completion_reward = {
+			526 = {	add_extra_state_shared_building_slots = 2 }
+			526 = { add_resource = { type = steel amount = 6 } }
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	focus = {
+		id = RYU_island_for_tourists
+		icon = japan_akihabara
+		cost = 10.00
+		x = 24
+		y = 0
+		
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+	
+		mutually_exclusive = {
+			focus = RYU_construction_of_industrial_facilities
+		}
+		
+		cancel_if_invalid = no
+		continue_if_invalid = no
+		available_if_capitulated = yes
+		
+		completion_reward = {
+			custom_effect_tooltip = RYU_War_tt
+			add_ideas = RYU_booming_tourism
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	focus = {
+		id = RYU_naha_metro_plan
+		icon = infrastructure
+		cost = 10.00
+		x = 23
+		y = 1
+		
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+	
+		prerequisite = {
+			focus = RYU_construction_of_industrial_facilities
+			focus = RYU_island_for_tourists
+		}
+		
+		cancel_if_invalid = no
+		continue_if_invalid = no
+		available_if_capitulated = yes
+		
+		completion_reward = {
+			526 = { add_building_construction = { type = infrastructure level = 1 instant_build = yes } }
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	focus = {
+		id = RYU_NHK_okinawa
+		icon = production
+		cost = 10.00
+		x = 22
+		y = 2
+		
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+	
+		prerequisite = {
+			focus = RYU_naha_metro_plan
+		}
+		
+		cancel_if_invalid = no
+		continue_if_invalid = no
+		available_if_capitulated = yes
+		
+		completion_reward = {
+			add_tech_bonus = {
+				name = industry_bonus
+				bonus = 1
+				category = electronics
+			}
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	focus = {
+		id = RYU_developing_kokusai_dori
+		icon = self_management
+		cost = 10.00
+		x = 22
+		y = 3
+		
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+	
+		prerequisite = {
+			focus = RYU_NHK_okinawa
+		}
+		
+		available = {
+			has_full_control_of_state = 526
+		}
+		
+		cancel_if_invalid = no
+		continue_if_invalid = no
+		available_if_capitulated = yes
+		
+		completion_reward = {
+			526 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	focus = {
+		id = RYU_construction_of_small_shipyard
+		icon = naval_dockyards
+		cost = 10.00
+		x = 22
+		y = 4
+		
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+	
+		prerequisite = {
+			focus = RYU_developing_kokusai_dori
+		}
+		
+		available = {
+			has_full_control_of_state = 526
+		}
+		
+		cancel_if_invalid = no
+		continue_if_invalid = no
+		available_if_capitulated = yes
+		
+		completion_reward = {
+			526 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = dockyard
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	focus = {
+		id = RYU_fund_the_university_of_ryukyus
+		icon = scientific_exchange
+		cost = 10.00
+		x = 24
+		y = 2
+		
+		search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_RESEARCH }
+	
+		prerequisite = {
+			focus = RYU_naha_metro_plan
+		}
+		
+		cancel_if_invalid = no
+		continue_if_invalid = no
+		available_if_capitulated = yes
+		
+		completion_reward = {
+			add_research_slot = 1
+			add_ideas = scientific_advances
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	focus = {
+		id = RYU_fund_naha_airport
+		icon = air_production
+		cost = 10.00
+		x = 24
+		y = 3
+		
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+	
+		prerequisite = {
+			focus = RYU_NHK_okinawa
+		}
+		
+		available = {
+			has_full_control_of_state = 526
+		}
+		
+		cancel_if_invalid = no
+		continue_if_invalid = no
+		available_if_capitulated = yes
+		
+		completion_reward = {
+			526 = {
+				add_building_construction = {
+					type = air_base
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	focus = {
+		id = RYU_support_orion_breweries
+		icon = industry_civilian
+		cost = 10.00
+		x = 24
+		y = 4
+		
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+	
+		prerequisite = {
+			focus = RYU_fund_naha_airport
+		}
+		
+		available = {
+			has_full_control_of_state = 526
+		}
+		
+		cancel_if_invalid = no
+		continue_if_invalid = no
+		available_if_capitulated = yes
+		
+		completion_reward = {
+			add_ideas = RYU_orion_breweries
+			526 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	focus = {
+		id = RYU_ryukyu_defense_force
+		icon = army_logistics
+		cost = 10.00
+		x = 27
+		y = 0
+		
+		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
+		
+		cancel_if_invalid = no
+		continue_if_invalid = no
+		available_if_capitulated = yes
+		
+		available = {
+			has_full_control_of_state = 526
+		}
+		
+		completion_reward = {
+			army_experience = 50
+			navy_experience = 50
+			air_experience = 50
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	focus = {
+		id = RYU_armed_police
+		icon = infantry_axis2
+		cost = 10.00
+		x = 26
+		y = 1
+		
+		prerequisite = {
+			focus = RYU_ryukyu_defense_force
+		}
+		
+		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
+		
+		cancel_if_invalid = no
+		continue_if_invalid = no
+		available_if_capitulated = yes
+		
+		available = {
+			has_full_control_of_state = 526
+		}
+		
+		completion_reward = {
+			custom_effect_tooltip = RYU_police_tt
+			hidden_effect = {
+				load_oob = RYU_Police
+				add_equipment_to_stockpile = {
+					type = infantry_equipment
+					amount = 1000
+					producer = JAP
+				}
+			}
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	focus = {
+		id = RYU_vehicle_for_ryukyu
+		icon = motorized
+		cost = 10.00
+		x = 26
+		y = 2
+		
+		prerequisite = {
+			focus = RYU_armed_police
+		}
+		
+		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
+		
+		cancel_if_invalid = no
+		continue_if_invalid = no
+		available_if_capitulated = yes
+		
+		available = {
+			has_full_control_of_state = 526
+		}
+		
+		completion_reward = {
+			add_ideas = idea_focus_generic_motorized_focus
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	focus = {
+		id = RYU_acceptance_of_immigrants
+		icon = infantry_allies
+		cost = 10.00
+		x = 26
+		y = 3
+		
+		prerequisite = {
+			focus = RYU_vehicle_for_ryukyu
+		}
+		
+		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
+		
+		cancel_if_invalid = no
+		continue_if_invalid = no
+		available_if_capitulated = yes
+		
+		completion_reward = {
+			add_manpower = 35000
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	focus = {
+		id = RYU_officer_training
+		icon = army_officers
+		cost = 10.00
+		x = 26
+		y = 4
+		
+		prerequisite = {
+			focus = RYU_acceptance_of_immigrants
+		}
+		
+		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
+		
+		cancel_if_invalid = no
+		continue_if_invalid = no
+		available_if_capitulated = yes
+		
+		completion_reward = {
+			add_ideas = idea_focus_army_officer_school
+			add_tech_bonus = {
+				name = land_doc_bonus
+				bonus = 1
+				uses = 2
+				category = land_doctrine
+			}
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	focus = {
+		id = RYU_coast_guard
+		icon = navy
+		cost = 10.00
+		x = 28
+		y = 1
+		
+		prerequisite = {
+			focus = RYU_ryukyu_defense_force
+		}
+		
+		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
+		
+		cancel_if_invalid = no
+		continue_if_invalid = no
+		available_if_capitulated = yes
+		
+		available = {
+			has_full_control_of_state = 526
+		}
+		
+		completion_reward = {
+			526 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = dockyard
+					level = 1
+					instant_build = yes
+				}
+			}
+			hidden_effect = {
+				country_event = { id = NV_RYU_events.11 days = 7 }
+			}
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	focus = {
+		id = RYU_to_protect_ryukyu
+		icon = naval_doctrine
+		cost = 10.00
+		x = 28
+		y = 2
+		
+		prerequisite = {
+			focus = RYU_coast_guard
+		}
+		
+		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
+		
+		cancel_if_invalid = no
+		continue_if_invalid = no
+		available_if_capitulated = yes
+		
+		available = {
+			has_full_control_of_state = 526
+		}
+		
+		completion_reward = {
+			add_tech_bonus = {
+				name = nav_doctrine_bonus
+				bonus = 1
+				uses = 2
+				category = naval_doctrine
+			}
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	focus = {
+		id = RYU_small_ship_project
+		icon = cruisers
+		cost = 10.00
+		x = 28
+		y = 3
+		
+		prerequisite = {
+			focus = RYU_to_protect_ryukyu
+		}
+		
+		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
+		
+		cancel_if_invalid = no
+		continue_if_invalid = no
+		available_if_capitulated = yes
+		
+		available = {
+			has_full_control_of_state = 526
+		}
+		
+		completion_reward = {
+			add_tech_bonus = {
+				name = dd_bonus
+				bonus = 1
+				uses = 1
+				category = dd_tech
+			}
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	focus = {
+		id = RYU_submarine_program
+		icon = submarines
+		cost = 10.00
+		x = 28
+		y = 4
+		
+		prerequisite = {
+			focus = RYU_small_ship_project
+		}
+		
+		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
+		
+		cancel_if_invalid = no
+		continue_if_invalid = no
+		available_if_capitulated = yes
+		
+		available = {
+			has_full_control_of_state = 526
+		}
+		
+		completion_reward = {
+			add_tech_bonus = {
+				name = ss_bonus
+				bonus = 1
+				uses = 1
+				category = ss_tech
+			}
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	
+	######################
+	#
+	# Diplomacy
+	#
+	######################
+	
+	
+	focus = {
+		id = RYU_join_the_united_nations
+		icon = align_to_united_nations
+		cost = 10.00
+		x = 11
+		y = 6
+		
+		search_filters = {  }
+		
+		available = {
+			NOT = { has_idea = RYU_worrying_freedom }
+			is_subject = no
+			has_offensive_war = no
+		}
+		
+		cancel_if_invalid = no
+		continue_if_invalid = no
+		available_if_capitulated = yes
+		
+		
+		completion_reward = {
+			country_event = { id = NV_RYU_events.7 }
+			news_event = { id = NV_RYU_news.6 hours = 3 }
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	focus = {
+		id = RYU_amami_stabilization
+		icon = improve_relations_dark_green
+		cost = 10.00
+		x = 14
+		y = 6
+		
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
+		
+		available = {
+			NOT = { has_idea = RYU_worrying_freedom }
+			has_full_control_of_state = 526
+		}
+		
+		cancel_if_invalid = no
+		continue_if_invalid = no
+		available_if_capitulated = yes
+		
+		completion_reward = {
+			remove_ideas = RYU_angry_amami
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	focus = {
+		id = RYU_will_definitely_join_the_un
+		icon = war2_green
+		cost = 10.00
+		x = 10
+		y = 7
+		
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		
+		available = {
+			has_idea = partially_recognized_state
+			has_global_flag = RYU_un_join_veto
+			#if = {
+				#limit = { 
+					#NOT = { original_tag = RYU }
+					OR = { 
+						any_other_country = {
+							is_major = yes
+							is_in_faction_with = RYU
+						}
+					RYU = { is_major = yes }
+					}
+				#}
+			#}
+		}
+		
+		prerequisite = {
+			focus = RYU_join_the_united_nations
+		}
+		
+		cancel_if_invalid = no
+		continue_if_invalid = no
+		available_if_capitulated = yes
+		
+		completion_reward = {
+			remove_ideas = partially_recognized_state
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	focus = {
+		id = RYU_invite_foreigen_corporation
+		icon = consumer_goods
+		cost = 10.00
+		x = 13
+		y = 7
+		
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		
+		available = {
+			NOT = { has_idea = partially_recognized_state }
+			is_subject = no
+		}
+		
+		prerequisite = {
+			focus = RYU_join_the_united_nations
+		}
+		
+		prerequisite = {
+			focus = RYU_amami_stabilization
+		}
+		
+		cancel_if_invalid = no
+		continue_if_invalid = no
+		available_if_capitulated = yes
+		
+		completion_reward = {
+			add_offsite_building = { type = industrial_complex  level = 1 }
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	focus = {
+		id = RYU_asian_trade_agreement
+		icon = money
+		cost = 10.00
+		x = 15
+		y = 7
+		
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		
+		prerequisite = {
+			focus = RYU_join_the_united_nations
+		}
+		
+		prerequisite = {
+			focus = RYU_amami_stabilization
+		}
+		
+		cancel_if_invalid = no
+		continue_if_invalid = no
+		available_if_capitulated = yes
+		
+		completion_reward = {
+			every_country = {
+				limit = {
+					OR = {
+						original_tag = JAP
+						original_tag = PRC
+						original_tag = KOR
+						original_tag = CHI
+						original_tag = PRK
+						original_tag = PHI
+					}
+				}
+				increase_trade_influence_by_1 = yes
+			}
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	focus = {
+		id = RYU_demanding_reparations_from_the_us
+		icon = attack_america
+		cost = 10.00
+		x = 17
+		y = 7
+		
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		
+		available = {
+			has_war = no
+			country_exists = USA
+			NOT = { has_war_with = USA }
+			NOT = { has_idea = partially_recognized_state }
+		}
+		
+		prerequisite = {
+			focus = RYU_join_the_united_nations
+		}
+		
+		prerequisite = {
+			focus = RYU_amami_stabilization
+		}
+		
+		cancel_if_invalid = no
+		continue_if_invalid = no
+		available_if_capitulated = yes
+		
+		completion_reward = {
+			USA = { country_event = { id = NV_RYU_events.4 days = 7 } }
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+}

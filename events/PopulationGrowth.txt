@@ -1,0 +1,23 @@
+﻿add_namespace = population_growth
+
+#Workaround/fix if a country has no Population Growth modifier.
+country_event = {
+	id = population_growth.1
+	hidden = yes
+	
+	trigger = {
+		NOT = { has_idea = population_growth_explosion }
+		NOT = { has_idea = population_growth_rapid }
+		NOT = { has_idea = population_growth_steady }
+		NOT = { has_idea = population_growth_stagnation }
+		NOT = { has_idea = population_growth_decline }
+	}
+	
+	mean_time_to_happen = {
+		days = 10
+	}
+	
+	option = {
+		add_ideas = population_growth_stagnation
+	}
+}

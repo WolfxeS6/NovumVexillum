@@ -1,0 +1,61 @@
+formable_nation_decisions = {
+	
+	form_scandinavia = {
+		visible = {
+			OR = {
+				original_tag = DEN
+				original_tag = NOR
+				original_tag = SWE
+			}
+			is_subject = no
+		}
+		
+		available = {
+			OR = {
+				has_democratic_form_of_government = yes
+				has_government = monarchist
+			}
+			OR = {
+				original_tag = DEN
+				original_tag = NOR
+				original_tag = SWE
+			}
+			OR = {
+				original_tag = DEN
+				DEN = { is_subject_of = ROOT }
+				DEN = { exists = no }
+			}
+			OR = {
+				original_tag = NOR
+				NOR = { is_subject_of = ROOT }
+				NOR = { exists = no }
+			}
+			OR = {
+				original_tag = SWE
+				SWE = { is_subject_of = ROOT }
+				SWE = { exists = no }
+			}
+		}
+		
+		icon = scandinavia
+		
+		cost = 210
+		fire_only_once = yes
+		
+		complete_effect = {
+			add_stability = 0.05
+			add_war_support = 0.05
+			set_country_flag = has_formed_scandinavia
+			set_cosmetic_tag = Scandinavia
+			add_named_threat = {
+				name = threat_formation_of_scandinavia
+				threat = -2
+			}
+		}
+		
+		ai_will_do = {
+			factor = 15
+		}
+	}
+	
+}

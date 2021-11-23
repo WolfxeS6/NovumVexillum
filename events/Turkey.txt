@@ -1,0 +1,150 @@
+﻿add_namespace = turkey
+
+#Coup Attempt in Turkey
+country_event = {
+	id = turkey.1
+	title = turkey.1.t
+	desc = turkey.1.d
+	picture = GFX_report_event_turkish_coup
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		has_government = conservative
+	}
+	
+	option = {	#We will make them suffer.
+		name = turkey.1.o1
+		add_political_power = -25
+		add_stability = -0.05
+		country_event = {
+			id = turkey.2
+			days = 15
+		}
+	}
+}
+
+#Response to the Coup Attempt
+country_event = {
+	id = turkey.2 
+	title = turkey.2.t
+	desc = turkey.2.d
+	picture = GFX_report_event_turkish_coup
+	
+	is_triggered_only = yes
+	
+	option = {	#We will find a way to pin this on Gülen
+		name = turkey.2.o1
+		add_political_power = 35
+		add_popularity = {
+			ideology = conservative
+			popularity = 0.06
+		}
+		add_popularity = {
+			ideology = islamist
+			popularity = -0.02
+		}
+		
+		ai_chance = { factor = 96 }
+	}
+	
+	option = {	#We should launch a serious investigation.
+		name = turkey.2.o2
+		add_stability = 0.04
+		hidden_effect = {
+			random_list = {
+				55 = {
+					country_event = { id = turkey.3 days = 40 }
+				}
+				15 = {
+					country_event = { id = turkey.4 days = 40 }
+				}
+				15 = {
+					country_event = { id = turkey.5 days = 40 }
+				}
+				15 = {
+					country_event = { id = turkey.6 days = 40 }
+				}
+			}
+		}
+		
+		ai_chance = { factor = 4 }
+	}
+}
+
+#The investigation brings up nothing
+country_event = {
+	id = turkey.3
+	title = turkey.3.t
+	desc = turkey.3.d
+	picture = GFX_report_event_turkish_coup
+	
+	is_triggered_only = yes
+	
+	option = {	#Damn!
+		name = turkey.3.o1
+		add_political_power = 20
+	}
+}
+
+#The investigation points to Gülen
+country_event = {
+	id = turkey.4
+	title = turkey.4.t
+	desc = turkey.4.d
+	picture = GFX_report_event_turkish_coup
+	
+	is_triggered_only = yes
+	
+	option = {	#As expected!
+		name = turkey.4.o1
+		add_political_power = 50
+		add_stability = 0.1
+		add_popularity = {
+			ideology = islamist
+			popularity = -0.04
+		}
+	}
+}
+
+#The investigation points to the Kurds
+country_event = {
+	id = turkey.5
+	title = turkey.5.t
+	desc = turkey.5.d
+	picture = GFX_report_event_turkish_coup
+	
+	is_triggered_only = yes
+	
+	option = {	#These bastards.
+		name = turkey.5.o1
+		add_political_power = 40
+		add_popularity = {
+			ideology = conservative
+			popularity = 0.07
+		}
+	}
+}
+
+#The investigation points to Communist Insurgents
+country_event = {
+	id = turkey.6
+	title = turkey.6.t
+	desc = turkey.6.d
+	picture = GFX_report_event_turkish_coup
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		NOT = { has_government = communist }
+	}
+	
+	option = {	#That was... unexpected?
+		name = turkey.6.o1
+		add_stability = 0.06
+		add_popularity = {
+			ideology = communist
+			popularity = -0.1
+		}
+	}
+}

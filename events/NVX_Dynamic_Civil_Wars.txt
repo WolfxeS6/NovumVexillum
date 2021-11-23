@@ -1,0 +1,242 @@
+﻿# Written by E. Wolfe #
+
+add_namespace = nvx_dynamic_civil_wars
+
+country_event = { #civil war brewing
+	id = nvx_dynamic_civil_wars.1
+	title = nvx_dynamic_civil_wars.1.t
+	desc = {
+		text = nvx_dynamic_civil_wars.1.d1
+		trigger = {
+			NVX_has_government_ideology_democratic = yes
+		}
+	}
+	desc = {
+		text = nvx_dynamic_civil_wars.1.d2
+		trigger = {
+			NVX_has_government_ideology_authoritarian = yes
+		}
+	}
+	picture = GFX_report_event_dynamic_civil_wars_coming
+	
+	trigger = {
+		NOT = { has_global_flag = sandbox_disable_dynamic_civil_wars }
+		NOT = { has_country_flag = NVX_flag_dynamic_civil_wars_brewing }
+		NOT = { has_country_flag = NVX_flag_dynamic_civil_wars_avoided }
+		NOT = { has_country_flag = NVX_flag_dynamic_civil_wars_weathered }
+		NVX_DCW_start_validity = yes
+		always = no
+	}
+	
+	mean_time_to_happen = {
+		days = 365
+		modifier = { factor = 0.5 check_variable = { NVX_history_wars_declared_immoral > 9 } }
+		modifier = { factor = 0.5 has_idea = economy_tax_extreme }
+		modifier = { factor = 0.5 has_idea = immigration_policy_open_borders }
+		modifier = { factor = 1.25 has_idea = civil_liberties_limited }
+		modifier = { factor = 1.5 has_idea = civil_liberties_restricted }
+		modifier = { factor = 2 has_idea = civil_liberties_totalitarian }
+		modifier = { factor = 2 NVX_has_government_ideology_democratic = yes }
+	}
+	
+	immediate = {
+		set_country_flag = {
+			flag = NVX_flag_dynamic_civil_wars_brewing
+			days = 90
+			value = 1
+		}
+		set_variable = { NVX_VAR_DCW_war_desire = 3 }
+		if = {
+			limit = { has_idea = public_safety_secret_police }
+			add_to_variable = { NVX_VAR_DCW_war_desire = 1 }
+		}
+		if = {
+			limit = { has_idea = welfare_none }
+			add_to_variable = { NVX_VAR_DCW_war_desire = 1 }
+		}
+		if = {
+			limit = { has_idea = civil_liberties_free }
+			subtract_from_variable = { NVX_VAR_DCW_war_desire = 1 }
+		}
+		if = {
+			limit = { has_idea = public_safety_secret_police }
+			set_country_flag = NVX_DCW_had_public_safety_secret_police
+		}
+		if = {
+			limit = { has_idea = civil_liberties_totalitarian }
+			set_country_flag = NVX_DCW_had_civil_liberties_totalitarian
+		}
+		if = {
+			limit = { has_idea = civil_liberties_restricted }
+			set_country_flag = NVX_DCW_had_civil_liberties_restricted
+		}
+		if = {
+			limit = { has_idea = welfare_none }
+			set_country_flag = NVX_DCW_had_welfare_none
+		}
+	}
+	
+	option = { #call election
+		name = nvx_dynamic_civil_wars.1.o1
+		trigger = {
+			NVX_has_government_ideology_democratic = yes
+			NOT = { has_idea = idea_USA_political_establishment }
+		}
+		
+		country_event = { id = election.2 }
+		NVX_DCW_clear_flags = yes
+		set_country_flag = {
+			flag = NVX_flag_dynamic_civil_wars_avoided
+			days = 730
+			value = 1
+		}
+		
+		ai_chance = {
+			factor = 10
+			
+			modifier = {
+				factor = 0
+				is_major = yes
+			}
+		}
+	}
+	
+	option = { #make promises
+		name = nvx_dynamic_civil_wars.1.o2
+		trigger = {
+			
+		}
+		
+		add_political_power = -100
+		subtract_from_variable = { NVX_VAR_DCW_war_desire = 1 }
+		hidden_effect = {
+			country_event = {
+				id = nvx_dynamic_civil_wars.9
+				days = 90
+			}
+			country_event = {
+				id = nvx_dynamic_civil_wars.3
+				days = 20
+			}
+		}
+		
+		ai_chance = {
+			factor = 100
+			
+			modifier = {
+				factor = 0
+				NVX_has_government_ideology_authoritarian = yes
+				has_idea = public_safety_secret_police
+			}
+		}
+	}
+	
+	option = { #execute revolutionaries
+		name = nvx_dynamic_civil_wars.1.o3
+		trigger = {
+			NVX_has_government_ideology_authoritarian = yes
+			has_idea = public_safety_secret_police
+		}
+		
+		add_political_power = -50
+		random_list = {
+			75 = {
+				country_event = {
+					id = nvx_dynamic_civil_wars.2
+					days = 90
+				}
+			}
+			25 = {
+				country_event = {
+					id = nvx_dynamic_civil_wars.9
+					days = 90
+				}
+			}
+		}
+		
+		ai_chance = {
+			factor = 100
+		}
+	}
+	
+	option = { #let it come
+		name = nvx_dynamic_civil_wars.1.o4
+		trigger = {
+			
+		}
+		
+		country_event = {
+			id = nvx_dynamic_civil_wars.9
+			days = 90
+		}
+		
+		ai_chance = {
+			factor = 10
+		}
+	}
+}
+
+
+
+
+
+
+
+
+country_event = { #civil war start
+	id = nvx_dynamic_civil_wars.9
+	title = nvx_dynamic_civil_wars.9.t
+	desc = nvx_dynamic_civil_wars.9.d
+	picture = GFX_report_event_dynamic_civil_wars_start
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		
+	}
+	
+	option = { #civil war
+		name = nvx_dynamic_civil_wars.9.o1
+		trigger = {
+			check_variable = { NVX_VAR_DCW_war_desire > 0 }
+		}
+		
+		NVX_DCW_clear_flags = yes
+		set_country_flag = {
+			flag = NVX_flag_dynamic_civil_wars_weathered
+			days = 3650
+			value = 1
+		}
+		
+		ai_chance = {
+			factor = 1
+		}
+	}
+}
+
+country_event = { #civil war start
+	id = nvx_dynamic_civil_wars.10
+	title = nvx_dynamic_civil_wars.10.t
+	desc = nvx_dynamic_civil_wars.10.d
+	picture = GFX_report_event_dynamic_civil_wars_avoided
+	
+	is_triggered_only = yes
+	
+	option = { #successfully avoided
+		name = nvx_dynamic_civil_wars.9.o1
+		trigger = {
+			check_variable = { NVX_VAR_DCW_war_desire < 1 }
+		}
+		
+		NVX_DCW_clear_flags = yes
+		set_country_flag = {
+			flag = NVX_flag_dynamic_civil_wars_avoided
+			days = 3650
+			value = 1
+		}
+		
+		ai_chance = {
+			factor = 1
+		}
+	}
+}

@@ -1,0 +1,164 @@
+
+#
+# Writer : Ran Mitake
+# The State of Japan events
+#
+
+add_namespace = NV_JPN_rising_sun_events
+
+# Japan's Merge Intimidation
+country_event = {
+	id = NV_JPN_rising_sun_events.1
+	title = {
+		text = NV_JPN_rising_sun_events.1.t1
+		trigger = { FROM = { tag = JAP } }
+	}
+	title = {
+		text = NV_JPN_rising_sun_events.1.t2
+		trigger = { NOT = { FROM = { tag = JAP } } }
+	}
+	desc = {
+		text = NV_JPN_rising_sun_events.1a.desc
+		trigger = { FROM = { tag = JAP } }
+	}
+	desc = {
+		text = NV_JPN_rising_sun_events.1b.desc
+		trigger = { NOT = { FROM = { tag = JAP } } }
+	}
+	picture = GFX_report_event_protests
+
+	is_triggered_only = yes
+	
+	option = {
+		name = NV_JPN_rising_sun_events.1.a
+		ai_chance = { factor = 100 }
+		FROM = { country_event = { id = NV_JPN_rising_sun_events.2 } }
+	}
+	
+	option = {
+		name = NV_JPN_rising_sun_events.1.b
+		ai_chance = { factor = 0 }
+		FROM = { country_event = { id = NV_JPN_rising_sun_events.3 } }
+		}
+	
+}
+
+# They give in
+country_event = {
+	id = NV_JPN_rising_sun_events.2
+	title = NV_JPN_rising_sun_events.2.t
+	desc = NV_JPN_rising_sun_events.2.desc
+	picture = GFX_report_event_protests
+
+	is_triggered_only = yes
+	
+	option = {
+		name = NV_JPN_rising_sun_events.2.a
+		annex_country = { 
+				target = FROM 
+				transfer_troops = yes
+		}
+	}
+	
+	
+}
+
+# They refuse to intimidate
+country_event = {
+	id = NV_JPN_rising_sun_events.3
+	title = NV_JPN_rising_sun_events.3.t
+	desc = NV_JPN_rising_sun_events.3.desc
+	picture = GFX_report_event_protests
+
+	is_triggered_only = yes
+	
+	option = {
+		name = NV_JPN_rising_sun_events.3.a
+		ai_chance = { factor = 100 }
+		declare_war_on = { 
+			target = FROM
+			type = annex_everything
+		}
+	}
+	
+	option = {
+		name = NV_JPN_rising_sun_events.3.b
+		ai_chance = { factor = 0 }
+		}
+	
+}
+
+# Japan's Threat to the Philippines
+country_event = {
+	id = NV_JPN_rising_sun_events.4
+	title = NV_JPN_rising_sun_events.4.t
+	desc = NV_JPN_rising_sun_events.4.desc
+	picture = GFX_report_event_japanese_flag
+
+	is_triggered_only = yes
+	
+	option = {
+		name = NV_JPN_rising_sun_events.1.a
+		ai_chance = { factor = 2 } #Southeast Asian countries have the power to fight against Japan.
+		FROM = { country_event = { id = NV_JPN_rising_sun_events.5 } }
+	}
+	
+	option = {
+		name = NV_JPN_rising_sun_events.1.b
+		ai_chance = { factor = 98 }
+		FROM = { country_event = { id = NV_JPN_rising_sun_events.6 } }
+		}
+	
+}
+
+# They give in
+country_event = {
+	id = NV_JPN_rising_sun_events.5
+	title = NV_JPN_rising_sun_events.5.t
+	desc = NV_JPN_rising_sun_events.5.desc
+	picture = GFX_report_event_protests
+
+	is_triggered_only = yes
+	
+	option = {
+		name = NV_JPN_rising_sun_events.5.a
+		ai_chance = { factor = 0 }
+		annex_country = { 
+				target = FROM 
+				transfer_troops = yes
+		}
+	}
+	
+	option = {
+		name = NV_JPN_rising_sun_events.5.b
+		ai_chance = { factor = 100 }
+		set_autonomy = { target = FROM autonomy_state = autonomy_puppet }
+	}
+	
+}
+
+# They refuse to intimidate
+country_event = {
+	id = NV_JPN_rising_sun_events.6
+	title = NV_JPN_rising_sun_events.6.t
+	desc = NV_JPN_rising_sun_events.6.desc
+	picture = GFX_report_event_protests
+
+	is_triggered_only = yes
+	
+	option = {
+		name = NV_JPN_rising_sun_events.6.a
+		ai_chance = { factor = 100 }
+		declare_war_on = { 
+			target = FROM
+			type = annex_everything
+		}
+	}
+	
+	option = {
+		name = NV_JPN_rising_sun_events.6.b
+		ai_chance = { factor = 0 }
+		}
+	
+}
+

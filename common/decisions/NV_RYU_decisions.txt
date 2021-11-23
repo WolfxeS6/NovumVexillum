@@ -1,0 +1,114 @@
+
+#
+# Writer : Ran Mitake
+# The Ryukyu Decisions
+#
+
+##############################################
+###
+### Ryukyu Join UN
+###
+##############################################
+
+RYU_ryukyu_un_categories = {
+
+	RYU_approval = {
+
+		icon = generic_nationalism
+
+		#available = {
+		#	country_exists = RYU
+		#	NOT = { has_global_flag = RYU_un_join_veto }
+		#}
+
+		available = {
+			hidden_trigger = { always = no }
+		}
+		
+		days_mission_timeout = 30
+		priority = 200
+
+		cancel_if_not_visible = yes
+		is_good = no
+		
+		fire_only_once = yes
+
+		visible = {
+			NOT = { has_global_flag = RYU_un_join_veto }
+		}
+		
+		 timeout_effect = { #complete_effect
+			RYU = { remove_ideas = partially_recognized_state }
+			if = {
+				limit = { original_tag = RYU }
+				news_event = { id = NV_RYU_news.7 days = 1 }
+			}
+		}
+	}
+	
+	RYU_veto = {
+
+		icon = generic_nationalism
+
+		available = {
+			country_exists = RYU
+		}
+
+		fire_only_once = yes
+
+		visible = {
+			NOT = { original_tag = RYU }
+			NOT = { has_global_flag = RYU_un_join_veto }
+			RYU = { has_completed_focus = RYU_join_the_united_nations }
+			RYU = { has_idea = partially_recognized_state }
+		}
+		
+		complete_effect = {
+			set_global_flag = RYU_un_join_veto
+			news_event = { id = NV_RYU_news.8 hours = 3 }
+			RYU = { country_event = { id = NV_RYU_events.12 } }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	RYU_docking_rights_request = {
+
+		icon = generic_nationalism
+
+		available = {
+			country_exists = RYU
+		}
+
+		fire_only_once = yes
+
+		visible = {
+			NOT = { original_tag = RYU }
+			NOT = { has_global_flag = RYU_un_join_veto }
+			RYU = { has_completed_focus = RYU_join_the_united_nations }
+			RYU = { has_idea = partially_recognized_state }
+		}
+		
+		complete_effect = {
+			RYU = { country_event = { id = NV_RYU_events.8 } }
+		}
+		
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 100
+				OR = {
+					original_tag = PRC
+					original_tag = SOV
+					original_tag = USA
+					original_tag = KOR #If R.O.K. (South Korea) becomes a permanent member of the UN
+					original_tag = PRK #If D.P.R.K. (North Korea) becomes a permanent member of the UN
+					original_tag = JAP #If Japan becomes a permanent member of the UN
+				}
+			}
+		}
+	}
+
+}

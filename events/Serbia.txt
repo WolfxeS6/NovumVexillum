@@ -1,0 +1,63 @@
+﻿add_namespace = serbia
+
+#Independence of Montenegro
+country_event = {
+	id = serbia.1
+	title = serbia.1.t
+	desc = serbia.1.d
+	picture = GFX_report_event_montenegro_referendum
+	
+	trigger = {
+		tag = SER
+		NOT = { has_country_flag = SER_montenegro_referendum }
+		MNT = { exists = no }
+		controls_state = 105
+		date > 2006.5.18
+		has_democratic_form_of_government = yes
+	}
+	
+	mean_time_to_happen = {
+		days = 4
+	}
+	
+	option = {	#We are sad to see them go.
+		name = serbia.1.o1
+		MNT = { transfer_state = 105 }
+		set_country_flag = SER_montenegro_referendum
+		news_event = { id = news.17 }
+		drop_cosmetic_tag = yes
+		add_stability = -0.01
+		add_political_power = -25
+		add_ideas = centralization_unitary
+	}
+}
+
+#Independence of Kosovo
+country_event = {
+	id = serbia.2
+	title = serbia.2.t
+	desc = serbia.2.d
+	picture = GFX_report_event_kosovo_independence
+	
+	trigger = {
+		tag = SER
+		NOT = { has_country_flag = SER_kosovo_independence }
+		KOS = { exists = no }
+		controls_state = 785
+		date > 2008.2.17
+	}
+	
+	mean_time_to_happen = {
+		days = 4
+	}
+	
+	option = {	#We are sad to see them go.
+		name = serbia.2.o1
+		KOS = { transfer_state = 785 }
+		set_country_flag = SER_kosovo_independence
+		news_event = { id = news.18 }
+		add_stability = -0.03
+		add_political_power = -50
+		785 = { set_demilitarized_zone = no }
+	}
+}

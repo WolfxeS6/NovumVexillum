@@ -1,0 +1,92 @@
+NVX_ECO_calc = {
+	# TAXES #
+	if = {
+		limit = { has_idea = economy_tax_extreme }
+		set_variable = { NVX_ECO_growth = NVX_ECO_tax_extreme }
+	}
+	if = {
+		limit = { has_idea = economy_tax_high }
+		set_variable = { NVX_ECO_growth = NVX_ECO_tax_high }
+	}
+	if = {
+		limit = { has_idea = economy_tax_moderate }
+		set_variable = { NVX_ECO_growth = NVX_ECO_tax_moderate }
+	}
+	if = {
+		limit = { has_idea = economy_tax_low }
+		set_variable = { NVX_ECO_growth = NVX_ECO_tax_low }
+	}
+	if = {
+		limit = { has_idea = economy_tax_meager }
+		set_variable = { NVX_ECO_growth = NVX_ECO_tax_meager }
+	}
+	if = {
+		limit = { has_idea = economy_tax_robotic }
+		set_variable = { NVX_ECO_growth = NVX_ECO_tax_low }
+	}
+	if = {
+		limit = { has_idea = national_development_advanced }
+		add_to_variable = { NVX_ECO_growth = NVX_ECO_tax_meager }
+	}
+	# MODERATE TAX DECAY #
+	if = {
+		limit = {
+			check_variable = { NVX_ECO_health > 0 }
+			has_idea = economy_tax_moderate
+		}
+		subtract_from_variable = { NVX_ECO_growth = NVX_ECO_tax_moderate_decay }
+	}
+	if = {
+		limit = {
+			check_variable = { NVX_ECO_health < 0 }
+			has_idea = economy_tax_moderate
+		}
+		add_to_variable = { NVX_ECO_growth = NVX_ECO_tax_moderate_decay }
+	}
+	# LPA EFFECTS #
+	if = {
+		limit = {
+			check_variable = { NVX_ECO_health > 20 }
+			NVX_ECOLITE_in_eco_union = yes
+		}
+		subtract_from_variable = { NVX_ECO_growth = 0.125 }
+	}
+	if = {
+		limit = {
+			check_variable = { NVX_ECO_health < 20 }
+			OR = {
+				NVX_ECOLITE_in_eco_union = yes
+				NVX_ECOLITE_factionalism = yes
+			}
+		}
+		add_to_variable = { NVX_ECO_growth = 0.5 }
+	}
+	if = {
+		limit = { has_decision = NVX_policies_E_free_market }
+		add_to_variable = { NVX_ECO_growth = 0.25 }
+	}
+	if = {
+		limit = { has_decision = NVX_policies_E_infrastructure_overhaul }
+		subtract_from_variable = { NVX_ECO_growth = 0.25 }
+	}
+	if = {
+		limit = { has_decision = NVX_policies_E_fund_production }
+		subtract_from_variable = { NVX_ECO_growth = 0.25 }
+	}
+	if = {
+		limit = { has_decision = NVX_policies_E_minerals_to_market }
+		add_to_variable = { NVX_ECO_growth = 0.125 }
+	}
+	if = {
+		limit = { has_decision = NVX_policies_E_tax_the_rich }
+		add_to_variable = { NVX_ECO_growth = 0.25 }
+	}
+	if = {
+		limit = { has_decision = NVX_policies_S_education_funding }
+		subtract_from_variable = { NVX_ECO_growth = 0.25 }
+	}
+	if = {
+		limit = { has_decision = NVX_policies_S_cut_science_funding }
+		add_to_variable = { NVX_ECO_growth = 0.125 }
+	}
+}

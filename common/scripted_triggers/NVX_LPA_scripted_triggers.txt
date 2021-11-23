@@ -1,0 +1,91 @@
+### LAWS POLICIES ACTS ###
+NVX_LPA_policies_available_1 = {
+	OR = {
+		check_variable = { NVX_LPA_policies_max_slots = 0 }
+		check_variable = { NVX_LPA_policies_available_slots > 0 }
+	}
+}
+
+NVX_ECOLITE_in_eco_union = {
+	OR = {
+		has_idea = idea_eu_member
+	}
+}
+
+NVX_ECOLITE_factionalism = {
+	is_in_faction = yes
+	any_country = {
+		is_in_faction_with = PREV
+		is_puppet = no
+		is_subject = no
+	}
+	has_decision = NVX_policies_P_factionalism
+}
+
+NVX_ECOLITE_health_greater_than_0 = {
+	custom_trigger_tooltip = {
+		tooltip = TT_NVX_ECOLITE_ecohealth_greater0
+		check_variable = { NVX_ECO_health > 0 }
+	}
+}
+
+NVX_ECO_pax_req_puppet_restrictions = {
+	OR = {
+		AND = {
+			original_tag = ISR
+			ROOT = { original_tag = PAL }
+		}
+		AND = {
+			original_tag = PAL
+			ROOT = { original_tag = ISR }
+		}
+		AND = {
+			original_tag = JAP
+			ROOT = { original_tag = KOR }
+		}
+		AND = {
+			original_tag = KOR
+			ROOT = { original_tag = JAP }
+		}
+		AND = {
+			original_tag = TUR
+			ROOT = { original_tag = ARM }
+		}
+		AND = {
+			original_tag = ARM
+			ROOT = { original_tag = TUR }
+		}
+		AND = {
+			original_tag = RAJ
+			ROOT = { original_tag = PAK }
+		}
+		AND = {
+			original_tag = PAK
+			ROOT = { original_tag = RAJ }
+		}
+		AND = {
+			original_tag = IRE
+			ROOT = { original_tag = ENG }
+		}
+		AND = {
+			original_tag = ENG
+			ROOT = { original_tag = IRE }
+		}
+		AND = {
+			original_tag = ARM
+			ROOT = { original_tag = AZR }
+		}
+		AND = {
+			original_tag = AZR
+			ROOT = { original_tag = ARM }
+		}
+		AND = {
+			original_tag = TUR
+			ROOT = { original_tag = GRE }
+		}
+		AND = {
+			original_tag = GRE
+			ROOT = { original_tag = TUR }
+		}
+	}
+}

@@ -1,0 +1,101 @@
+﻿add_namespace = islam
+
+#Sunnis like Sunnis, Shiites like Shiites, they hate one another
+country_event = {
+	id = islam.1
+	hidden = yes
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		set_country_flag = has_islamic_modifiers
+		if = {
+			limit = {
+				has_country_flag = sunni_islam
+			}
+			every_country = {
+				limit = { has_country_flag = sunni_islam }
+				add_opinion_modifier = { target = FROM modifier = fellow_sunni }
+				add_opinion_modifier = { target = FROM modifier = fellow_sunni_trade }
+			}
+			every_country = {
+				limit = { has_country_flag = shia_islam }
+				add_opinion_modifier = { target = FROM modifier = opposing_faith }
+				add_opinion_modifier = { target = FROM modifier = opposing_faith_trade }
+			}
+		}
+		if = {
+			limit = { has_country_flag = shia_islam }
+			every_country = {
+				limit = { has_country_flag = sunni_islam }
+				add_opinion_modifier = { target = FROM modifier = opposing_faith }
+				add_opinion_modifier = { target = FROM modifier = opposing_faith_trade }
+			}
+			every_country = {
+				limit = { has_country_flag = shia_islam }
+				add_opinion_modifier = { target = FROM modifier = fellow_shia }
+				add_opinion_modifier = { target = FROM modifier = fellow_shia_trade }
+			}
+		}
+	}
+	
+	option = {
+		name = hidden_effect.option
+	}
+}
+
+#Apply the Holy War modifier event
+country_event = {
+	id = islam.2
+	hidden = yes
+	is_triggered_only = yes
+	
+	option = {
+		if = {
+			limit = {
+				has_country_flag = sunni_islam 
+			}
+			every_country = {
+				limit = {
+					OR = {
+						has_country_flag = shia_islam
+						NOT = { has_government = islamist }
+					}
+				}
+				country_event = islam.3
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = shia_islam 
+			}
+			every_country = {
+				limit = {
+					OR = {
+						has_country_flag = sunni
+						NOT = { has_government = islamist }
+					}
+				}
+				country_event = islam.3
+			}
+		}
+	}
+}
+country_event = {
+	id = islam.3
+	hidden = yes
+	is_triggered_only = yes
+	
+	option = {
+		FROM = {
+			add_opinion_modifier = {
+				target = ROOT
+				modifier = holy_war
+			}
+			add_opinion_modifier = {
+				target = ROOT
+				modifier = holy_war_trade
+			}
+		}
+	}
+}

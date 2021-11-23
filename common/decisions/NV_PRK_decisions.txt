@@ -1,0 +1,47 @@
+
+#
+# Writer : Ran Mitake
+# The Democratic People's Republic of Korea Decisions
+#
+
+##############################################
+###
+### Heisei Depression
+###
+##############################################
+
+PRK_north_korea_project_decisions_counter = {
+
+	PRK_suppressing_chauvinist = {
+
+		icon = generic_operation
+		
+		available = {
+		JAP = { has_country_flag = JAP_prk_break_flag }
+		has_war = no
+		NOT = { is_in_faction_with = JAP }
+		JAP = { check_variable = { north_korean_project_juche_value > 0 } }
+		}
+		
+		cost = 50
+		days_remove = 21
+
+		activation = {
+
+		}
+		
+		remove_effect = {
+			JAP = { add_to_variable = { var = north_korean_project_juche_value value = -0.03 } }
+			custom_effect_tooltip = JAP_down_juche_three
+		}
+
+		complete_effect = {
+		}
+
+		ai_will_do = {
+			factor = 3
+		}
+	}
+
+
+}

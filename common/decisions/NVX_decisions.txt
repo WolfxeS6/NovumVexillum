@@ -1,0 +1,1757 @@
+NVX_pulling_the_strings_cat = {
+	
+	TEST = {
+		icon = ger_mefo_bills
+		
+		available = {
+			367 = {
+				free_building_slots = {
+					building = arms_factory
+					size > 10
+					include_locked = no
+				}
+			}
+		}
+		
+		visible = {
+			is_debug = yes
+		}
+		
+		fire_only_once = no
+		
+		cost = 0
+		
+		complete_effect = {
+			#set_variable = { NVX_fisc = num_equipment@modern_tank_equipment }
+			#set_variable = { NVX_fisc = num_ships_with_type@battleship }
+			#set_variable = { NVX_fisc = resource_exported@steel }
+			#NVX_econ_calculate_budget_secondary = yes
+			#set_variable = { NVX_fisc = manpower_k }
+			#set_variable = { NVX_fisc = CAPCON_shared_building_limit }
+			#set_variable = { NVX_fisc = CAPCON_state_building_limit }
+			#set_variable = { NVX_fisc = num_battalions_with_type@mot_anti_tank_brigade }
+			#CAPCON_calc_costs_initial = yes
+			#NVX_econ_calculate_budget_primary = yes
+			#NVX_econ_calculate_budget_secondary = yes
+			#NVX_econ_calculate_budget_final = yes
+			#add_stability = NVX_fisc_migration_impact_stability
+			#SUBVERSIVE_civilian_vehicle_confiscation_set_var = yes
+			#OVERLORD = { set_variable = { NVX_fisc = 10 } }
+			#set_cosmetic_tag = ottoman_empire
+			#set_variable = { NVX_battle_royale_manpower_return = max_available_manpower_k }
+			#subtract_from_variable = { NVX_battle_royale_manpower_return = manpower_k }
+			#multiply_variable = { NVX_battle_royale_manpower_return = 1000 }
+			#set_variable = { NVX_battle_royale_manpower_return = random }
+			#multiply_variable = { NVX_battle_royale_manpower_return = 100 }
+			#set_variable = { NVX_LPA_policies_focus_future_months = 35 }
+			#set_variable = { NVX_ECO_health = 20 }
+			
+		}
+	}
+	
+	TEST2 = {
+		icon = ger_mefo_bills
+		
+		available = {
+#			var:ninehour = {
+#				PREV = {
+#					has_opinion = {
+#						target = PREV
+#						value > 1
+#					}
+#				}
+#			}
+		}
+		
+		visible = {
+			is_debug = yes
+		}
+		
+		fire_only_once = no
+		
+		cost = 0
+		
+		complete_effect = {
+#			var:ninehour = {
+#				set_stability = 0
+#			}
+			every_country = {
+				delete_unit = {
+					#state = 1
+					disband = yes
+				}
+			}
+			add_manpower = var:NVX_battle_royale_manpower_return
+		}
+	}
+}
+	
+political_actions = {
+	
+	NVX_one_party_election = {
+		icon = NVX_policies_political
+		
+		available = {
+			has_political_power > 50
+		}
+		
+		visible = {
+			has_idea = government_system_one_party
+			has_elections = no
+			always = no
+		}
+		
+		fire_only_once = no
+		
+		days_re_enable = 730
+		
+		cost = 50
+		
+		complete_effect = {
+			country_event = { id = election.2 }
+		}
+		
+		ai_will_do = {
+			base = 0
+		}
+	}
+	
+#	inf = {
+#		icon = ger_mefo_bills
+#		
+#		fire_only_once = no
+#		
+#		cost = 0
+#		
+#		complete_effect = {
+#			set_variable = { NVX_fisc = CAPCON_ai_test_infrastructure }
+#		}
+#		
+#		ai_will_do = {
+#			base = 0
+#		}
+#	}
+#	
+#	airbase = {
+#		icon = ger_mefo_bills
+#		
+#		fire_only_once = no
+#		
+#		cost = 0
+#		
+#		complete_effect = {
+#			set_variable = { NVX_fisc = CAPCON_ai_test_air_base }
+#		}
+#		
+#		ai_will_do = {
+#			base = 0
+#		}
+#	}
+#	
+#	antiair = {
+#		icon = ger_mefo_bills
+#		
+#		fire_only_once = no
+#		
+#		cost = 0
+#		
+#		complete_effect = {
+#			set_variable = { NVX_fisc = CAPCON_ai_test_anti_air }
+#		}
+#		
+#		ai_will_do = {
+#			base = 0
+#		}
+#	}
+#	
+#	radar = {
+#		icon = ger_mefo_bills
+#		
+#		fire_only_once = no
+#		
+#		cost = 0
+#		
+#		complete_effect = {
+#			set_variable = { NVX_fisc = CAPCON_ai_test_radar }
+#		}
+#		
+#		ai_will_do = {
+#			base = 0
+#		}
+#	}
+#	
+#	milfac = {
+#		icon = ger_mefo_bills
+#		
+#		fire_only_once = no
+#		
+#		cost = 0
+#		
+#		complete_effect = {
+#			set_variable = { NVX_fisc = CAPCON_ai_test_military_factory }
+#		}
+#		
+#		ai_will_do = {
+#			base = 0
+#		}
+#	}
+#	
+#	civfac = {
+#		icon = ger_mefo_bills
+#		
+#		fire_only_once = no
+#		
+#		cost = 0
+#		
+#		complete_effect = {
+#			set_variable = { NVX_fisc = CAPCON_ai_test_civilian_factory }
+#		}
+#		
+#		ai_will_do = {
+#			base = 0
+#		}
+#	}
+#	
+#	navfac = {
+#		icon = ger_mefo_bills
+#		
+#		fire_only_once = no
+#		
+#		cost = 0
+#		
+#		complete_effect = {
+#			set_variable = { NVX_fisc = CAPCON_ai_test_dockyard }
+#		}
+#		
+#		ai_will_do = {
+#			base = 0
+#		}
+#	}
+#	
+#	refine = {
+#		icon = ger_mefo_bills
+#		
+#		fire_only_once = no
+#		
+#		cost = 0
+#		
+#		complete_effect = {
+#			set_variable = { NVX_fisc = CAPCON_ai_test_refinery }
+#		}
+#		
+#		ai_will_do = {
+#			base = 0
+#		}
+#	}
+#	
+#	silo = {
+#		icon = ger_mefo_bills
+#		
+#		fire_only_once = no
+#		
+#		cost = 0
+#		
+#		complete_effect = {
+#			set_variable = { NVX_fisc = CAPCON_ai_test_fuel_silo }
+#		}
+#		
+#		ai_will_do = {
+#			base = 0
+#		}
+#	}
+#	
+#	recycling = {
+#		icon = ger_mefo_bills
+#		
+#		fire_only_once = no
+#		
+#		cost = 0
+#		
+#		complete_effect = {
+#			set_variable = { NVX_fisc = capcon_ai_build_recycling_center_click }
+#		}
+#		
+#		ai_will_do = {
+#			base = 0
+#		}
+#	}
+	
+	NVX_cheat_increase_fourth_estate = {
+		icon = ger_mefo_bills
+		
+		available = {
+			has_political_power > 50
+		}
+		
+		visible = {
+			has_global_flag = sandbox_disable_natural_estate_drift
+			OR = {
+				has_idea_with_trait = idea_advisor_islamic_preacher
+				has_idea_with_trait = fascist_politician
+				has_idea_with_trait = idea_advisor_fascist_blackshirt
+				has_idea_with_trait = idea_advisor_nationalistic_bigot
+				has_idea_with_trait = idea_advisor_royal_aristocrat
+				has_idea_with_trait = idea_advisor_reactionary_constitutionalist
+				has_idea_with_trait = idea_advisor_conservative_orator
+				has_idea_with_trait = idea_advisor_free_market_capitalist
+				has_idea_with_trait = idea_advisor_social_crusader
+				has_idea_with_trait = idea_advisor_working_class_supporter
+				has_idea_with_trait = idea_advisor_environmental_politician
+				has_idea_with_trait = idea_advisor_left_wing_revolutionary
+				has_idea_with_trait = idea_advisor_communist_revolutionary
+			}
+		}
+		
+		fire_only_once = no
+		
+		days_re_enable = 90
+		
+		cost = 0
+		
+		complete_effect = {
+			if = {
+				limit = { has_idea_with_trait = idea_advisor_islamic_preacher }
+				fourth_estate_propaganda_islamist = yes
+			}
+			if = {
+				limit = {
+					OR = {
+						has_idea_with_trait = fascist_politician
+						has_idea_with_trait = idea_advisor_fascist_blackshirt
+					}
+				}
+				fourth_estate_propaganda_fascist = yes
+			}
+			if = {
+				limit = { has_idea_with_trait = idea_advisor_nationalistic_bigot }
+				fourth_estate_propaganda_nationalist = yes
+			}
+			if = {
+				limit = { has_idea_with_trait = idea_advisor_royal_aristocrat }
+				fourth_estate_propaganda_monarchist = yes
+			}
+			if = {
+				limit = { has_idea_with_trait = idea_advisor_reactionary_constitutionalist }
+				fourth_estate_propaganda_reactionary = yes
+			}
+			if = {
+				limit = { has_idea_with_trait = idea_advisor_conservative_orator }
+				fourth_estate_propaganda_conservative = yes
+			}
+			if = {
+				limit = { has_idea_with_trait = idea_advisor_free_market_capitalist }
+				fourth_estate_propaganda_market_liberal = yes
+			}
+			if = {
+				limit = { has_idea_with_trait = idea_advisor_social_crusader }
+				fourth_estate_propaganda_social_liberal = yes
+			}
+			if = {
+				limit = { has_idea_with_trait = idea_advisor_working_class_supporter }
+				fourth_estate_propaganda_social_democrat = yes
+			}
+			if = {
+				limit = { has_idea_with_trait = idea_advisor_environmental_politician }
+				fourth_estate_propaganda_progressive = yes
+			}
+			if = {
+				limit = { has_idea_with_trait = idea_advisor_left_wing_revolutionary }
+				fourth_estate_propaganda_democratic_socialist = yes
+			}
+			if = {
+				limit = { has_idea_with_trait = idea_advisor_communist_revolutionary }
+				fourth_estate_propaganda_communist = yes
+			}
+		}
+		
+		ai_will_do = {
+			base = 0
+		}
+	}
+	
+	NVX_authoritarian_increase_fourth_estate = {
+		icon = ger_mefo_bills
+		
+		available = {
+			has_political_power > 50
+		}
+		
+		visible = {
+			OR = {
+				NVX_has_government_system_authoritarian = yes
+				has_idea = civil_liberties_totalitarian
+				has_global_flag = sandbox_disable_natural_estate_drift
+			}
+			estates_has_own_fourth_estate5 = no
+		}
+		
+		fire_only_once = no
+		
+		days_re_enable = 365
+		
+		cost = 0
+		
+		complete_effect = {
+			if = {
+				limit = { has_government = islamist }
+				fourth_estate_propaganda_islamist = yes
+			}
+			if = {
+				limit = { has_government = fascist }
+				fourth_estate_propaganda_fascist = yes
+			}
+			if = {
+				limit = { has_government = nationalist }
+				fourth_estate_propaganda_nationalist = yes
+			}
+			if = {
+				limit = { has_government = monarchist }
+				fourth_estate_propaganda_monarchist = yes
+			}
+			if = {
+				limit = { has_government = reactionary }
+				fourth_estate_propaganda_reactionary = yes
+			}
+			if = {
+				limit = { has_government = conservative }
+				fourth_estate_propaganda_conservative = yes
+			}
+			if = {
+				limit = { has_government = market_liberal }
+				fourth_estate_propaganda_market_liberal = yes
+			}
+			if = {
+				limit = { has_government = social_liberal }
+				fourth_estate_propaganda_social_liberal = yes
+			}
+			if = {
+				limit = { has_government = social_democrat }
+				fourth_estate_propaganda_social_democrat = yes
+			}
+			if = {
+				limit = { has_government = progressive }
+				fourth_estate_propaganda_progressive = yes
+			}
+			if = {
+				limit = { has_government = democratic_socialist }
+				fourth_estate_propaganda_democratic_socialist = yes
+			}
+			if = {
+				limit = { has_government = communist }
+				fourth_estate_propaganda_communist = yes
+			}
+		}
+		
+		ai_will_do = {
+			base = 0
+			
+			modifier = {
+				add = 90
+				AND = {
+					estates_has_own_fourth_estate1 = no
+					estates_has_own_fourth_estate2 = no
+					estates_has_own_fourth_estate3 = no
+					estates_has_own_fourth_estate4 = no
+					estates_has_own_fourth_estate5 = no
+				}
+			}
+			modifier = {
+				add = 5
+				estates_has_own_fourth_estate_wants_more1 = yes
+			}
+			modifier = {
+				add = 4
+				estates_has_own_fourth_estate_wants_more2 = yes
+			}
+			modifier = {
+				add = 3
+				estates_has_own_fourth_estate_wants_more3 = yes
+			}
+			modifier = {
+				add = 2
+				estates_has_own_fourth_estate_wants_more4 = yes
+			}
+		}
+	}
+	
+	NVX_authoritarian_attack_fourth_estate_islamist = {
+		icon = ger_mefo_bills
+		
+		available = {
+			has_political_power > 50
+		}
+		
+		visible = {
+			OR = {
+				AND = {
+					NVX_has_government_system_authoritarian = yes
+					NOT = { has_government = islamist }
+				}
+				has_global_flag = sandbox_disable_natural_estate_drift
+			}
+			has_islamist_fourth_estate = yes
+		}
+		
+		fire_only_once = no
+		
+		days_re_enable = 365
+		
+		cost = 0
+		
+		complete_effect = {
+			fourth_estate_attack_islamist = yes
+		}
+		
+		ai_will_do = {
+			base = 0
+			
+			modifier = {
+				add = -25
+				has_government = islamist
+			}
+			modifier = {
+				add = 1
+				has_political_power > 200
+			}
+			modifier = {
+				add = 1
+				islamist > 0.19
+			}
+			modifier = {
+				add = 3
+				islamist > 0.29
+			}
+			modifier = {
+				add = 20
+				islamist > 0.39
+			}
+		}
+	}
+	
+	NVX_authoritarian_attack_fourth_estate_fascist = {
+		icon = ger_mefo_bills
+		
+		available = {
+			has_political_power > 50
+		}
+		
+		visible = {
+			OR = {
+				AND = {
+					NVX_has_government_system_authoritarian = yes
+					NOT = { has_government = fascist }
+				}
+				has_global_flag = sandbox_disable_natural_estate_drift
+			}
+			has_fascist_fourth_estate = yes
+		}
+		
+		fire_only_once = no
+		
+		days_re_enable = 365
+		
+		cost = 0
+		
+		complete_effect = {
+			fourth_estate_attack_fascist = yes
+		}
+		
+		ai_will_do = {
+			base = 0
+			
+			modifier = {
+				add = -25
+				has_government = fascist
+			}
+			modifier = {
+				add = 1
+				has_political_power > 200
+			}
+			modifier = {
+				add = 1
+				fascist > 0.19
+			}
+			modifier = {
+				add = 3
+				fascist > 0.29
+			}
+			modifier = {
+				add = 20
+				fascist > 0.39
+			}
+		}
+	}
+	
+	NVX_authoritarian_attack_fourth_estate_nationalist = {
+		icon = ger_mefo_bills
+		
+		available = {
+			has_political_power > 50
+		}
+		
+		visible = {
+			OR = {
+				AND = {
+					NVX_has_government_system_authoritarian = yes
+					NOT = { has_government = nationalist }
+				}
+				has_global_flag = sandbox_disable_natural_estate_drift
+			}
+			has_nationalist_fourth_estate = yes
+		}
+		
+		fire_only_once = no
+		
+		days_re_enable = 365
+		
+		cost = 0
+		
+		complete_effect = {
+			fourth_estate_attack_nationalist = yes
+		}
+		
+		ai_will_do = {
+			base = 0
+			
+			modifier = {
+				add = -25
+				has_government = nationalist
+			}
+			modifier = {
+				add = 1
+				has_political_power > 200
+			}
+			modifier = {
+				add = 1
+				nationalist > 0.19
+			}
+			modifier = {
+				add = 3
+				nationalist > 0.29
+			}
+			modifier = {
+				add = 20
+				nationalist > 0.39
+			}
+		}
+	}
+	
+	NVX_authoritarian_attack_fourth_estate_monarchist = {
+		icon = ger_mefo_bills
+		
+		available = {
+			has_political_power > 50
+		}
+		
+		visible = {
+			OR = {
+				AND = {
+					NVX_has_government_system_authoritarian = yes
+					NOT = { has_government = monarchist }
+				}
+				has_global_flag = sandbox_disable_natural_estate_drift
+			}
+			has_monarchist_fourth_estate = yes
+		}
+		
+		fire_only_once = no
+		
+		days_re_enable = 365
+		
+		cost = 0
+		
+		complete_effect = {
+			fourth_estate_attack_monarchist = yes
+		}
+		
+		ai_will_do = {
+			base = 0
+			
+			modifier = {
+				add = -25
+				has_government = monarchist
+			}
+			modifier = {
+				add = 1
+				has_political_power > 200
+			}
+			modifier = {
+				add = 1
+				monarchist > 0.19
+			}
+			modifier = {
+				add = 3
+				monarchist > 0.29
+			}
+			modifier = {
+				add = 20
+				monarchist > 0.39
+			}
+		}
+	}
+	
+	NVX_authoritarian_attack_fourth_estate_reactionary = {
+		icon = ger_mefo_bills
+		
+		available = {
+			has_political_power > 50
+		}
+		
+		visible = {
+			OR = {
+				AND = {
+					NVX_has_government_system_authoritarian = yes
+					NOT = { has_government = reactionary }
+				}
+				has_global_flag = sandbox_disable_natural_estate_drift
+			}
+			has_reactionary_fourth_estate = yes
+		}
+		
+		fire_only_once = no
+		
+		days_re_enable = 365
+		
+		cost = 0
+		
+		complete_effect = {
+			fourth_estate_attack_reactionary = yes
+		}
+		
+		ai_will_do = {
+			base = 0
+			
+			modifier = {
+				add = -25
+				has_government = reactionary
+			}
+			modifier = {
+				add = 1
+				has_political_power > 200
+			}
+			modifier = {
+				add = 1
+				reactionary > 0.19
+			}
+			modifier = {
+				add = 3
+				reactionary > 0.29
+			}
+			modifier = {
+				add = 20
+				reactionary > 0.39
+			}
+		}
+	}
+	
+	NVX_authoritarian_attack_fourth_estate_conservative = {
+		icon = ger_mefo_bills
+		
+		available = {
+			has_political_power > 50
+		}
+		
+		visible = {
+			OR = {
+				AND = {
+					NVX_has_government_system_authoritarian = yes
+					NOT = { has_government = conservative }
+				}
+				has_global_flag = sandbox_disable_natural_estate_drift
+			}
+			has_conservative_fourth_estate = yes
+		}
+		
+		fire_only_once = no
+		
+		days_re_enable = 365
+		
+		cost = 0
+		
+		complete_effect = {
+			fourth_estate_attack_conservative = yes
+		}
+		
+		ai_will_do = {
+			base = 0
+			
+			modifier = {
+				add = -25
+				has_government = conservative
+			}
+			modifier = {
+				add = 1
+				has_political_power > 200
+			}
+			modifier = {
+				add = 1
+				conservative > 0.19
+			}
+			modifier = {
+				add = 3
+				conservative > 0.29
+			}
+			modifier = {
+				add = 20
+				conservative > 0.39
+			}
+		}
+	}
+	
+	NVX_authoritarian_attack_fourth_estate_market_liberal = {
+		icon = ger_mefo_bills
+		
+		available = {
+			has_political_power > 50
+		}
+		
+		visible = {
+			OR = {
+				AND = {
+					NVX_has_government_system_authoritarian = yes
+					NOT = { has_government = market_liberal }
+				}
+				has_global_flag = sandbox_disable_natural_estate_drift
+			}
+			has_market_liberal_fourth_estate = yes
+		}
+		
+		fire_only_once = no
+		
+		days_re_enable = 365
+		
+		cost = 0
+		
+		complete_effect = {
+			fourth_estate_attack_market_liberal = yes
+		}
+		
+		ai_will_do = {
+			base = 0
+			
+			modifier = {
+				add = -25
+				has_government = market_liberal
+			}
+			modifier = {
+				add = 1
+				has_political_power > 200
+			}
+			modifier = {
+				add = 1
+				market_liberal > 0.19
+			}
+			modifier = {
+				add = 3
+				market_liberal > 0.29
+			}
+			modifier = {
+				add = 20
+				market_liberal > 0.39
+			}
+		}
+	}
+	
+	NVX_authoritarian_attack_fourth_estate_social_liberal = {
+		icon = ger_mefo_bills
+		
+		available = {
+			has_political_power > 50
+		}
+		
+		visible = {
+			OR = {
+				AND = {
+					NVX_has_government_system_authoritarian = yes
+					NOT = { has_government = social_liberal }
+				}
+				has_global_flag = sandbox_disable_natural_estate_drift
+			}
+			has_social_liberal_fourth_estate = yes
+		}
+		
+		fire_only_once = no
+		
+		days_re_enable = 365
+		
+		cost = 0
+		
+		complete_effect = {
+			fourth_estate_attack_social_liberal = yes
+		}
+		
+		ai_will_do = {
+			base = 0
+			
+			modifier = {
+				add = -25
+				has_government = social_liberal
+			}
+			modifier = {
+				add = 1
+				has_political_power > 200
+			}
+			modifier = {
+				add = 1
+				social_liberal > 0.19
+			}
+			modifier = {
+				add = 3
+				social_liberal > 0.29
+			}
+			modifier = {
+				add = 20
+				social_liberal > 0.39
+			}
+		}
+	}
+	
+	NVX_authoritarian_attack_fourth_estate_social_democrat = {
+		icon = ger_mefo_bills
+		
+		available = {
+			has_political_power > 50
+		}
+		
+		visible = {
+			OR = {
+				AND = {
+					NVX_has_government_system_authoritarian = yes
+					NOT = { has_government = social_democrat }
+				}
+				has_global_flag = sandbox_disable_natural_estate_drift
+			}
+			has_social_democrat_fourth_estate = yes
+		}
+		
+		fire_only_once = no
+		
+		days_re_enable = 365
+		
+		cost = 0
+		
+		complete_effect = {
+			fourth_estate_attack_social_democrat = yes
+		}
+		
+		ai_will_do = {
+			base = 0
+			
+			modifier = {
+				add = -25
+				has_government = social_democrat
+			}
+			modifier = {
+				add = 1
+				has_political_power > 200
+			}
+			modifier = {
+				add = 1
+				social_democrat > 0.19
+			}
+			modifier = {
+				add = 3
+				social_democrat > 0.29
+			}
+			modifier = {
+				add = 20
+				social_democrat > 0.39
+			}
+		}
+	}
+	
+	NVX_authoritarian_attack_fourth_estate_progressive = {
+		icon = ger_mefo_bills
+		
+		available = {
+			has_political_power > 50
+		}
+		
+		visible = {
+			OR = {
+				AND = {
+					NVX_has_government_system_authoritarian = yes
+					NOT = { has_government = progressive }
+				}
+				has_global_flag = sandbox_disable_natural_estate_drift
+			}
+			has_progressive_fourth_estate = yes
+		}
+		
+		fire_only_once = no
+		
+		days_re_enable = 365
+		
+		cost = 0
+		
+		complete_effect = {
+			fourth_estate_attack_progressive = yes
+		}
+		
+		ai_will_do = {
+			base = 0
+			
+			modifier = {
+				add = -25
+				has_government = progressive
+			}
+			modifier = {
+				add = 1
+				has_political_power > 200
+			}
+			modifier = {
+				add = 1
+				progressive > 0.19
+			}
+			modifier = {
+				add = 3
+				progressive > 0.29
+			}
+			modifier = {
+				add = 20
+				progressive > 0.39
+			}
+		}
+	}
+	
+	NVX_authoritarian_attack_fourth_estate_democratic_socialist = {
+		icon = ger_mefo_bills
+		
+		available = {
+			has_political_power > 50
+		}
+		
+		visible = {
+			OR = {
+				AND = {
+					NVX_has_government_system_authoritarian = yes
+					NOT = { has_government = democratic_socialist }
+				}
+				has_global_flag = sandbox_disable_natural_estate_drift
+			}
+			has_democratic_socialist_fourth_estate = yes
+		}
+		
+		fire_only_once = no
+		
+		days_re_enable = 365
+		
+		cost = 0
+		
+		complete_effect = {
+			fourth_estate_attack_democratic_socialist = yes
+		}
+		
+		ai_will_do = {
+			base = 0
+			
+			modifier = {
+				add = -25
+				has_government = democratic_socialist
+			}
+			modifier = {
+				add = 1
+				has_political_power > 200
+			}
+			modifier = {
+				add = 1
+				democratic_socialist > 0.19
+			}
+			modifier = {
+				add = 3
+				democratic_socialist > 0.29
+			}
+			modifier = {
+				add = 20
+				democratic_socialist > 0.39
+			}
+		}
+	}
+	
+	NVX_authoritarian_attack_fourth_estate_communist = {
+		icon = ger_mefo_bills
+		
+		available = {
+			has_political_power > 50
+		}
+		
+		visible = {
+			OR = {
+				AND = {
+					NVX_has_government_system_authoritarian = yes
+					NOT = { has_government = communist }
+				}
+				has_global_flag = sandbox_disable_natural_estate_drift
+			}
+			has_communist_fourth_estate = yes
+		}
+		
+		fire_only_once = no
+		
+		days_re_enable = 365
+		
+		cost = 0
+		
+		complete_effect = {
+			fourth_estate_attack_communist = yes
+		}
+		
+		ai_will_do = {
+			base = 0
+			
+			modifier = {
+				add = -25
+				has_government = communist
+			}
+			modifier = {
+				add = 1
+				has_political_power > 200
+			}
+			modifier = {
+				add = 1
+				communist > 0.19
+			}
+			modifier = {
+				add = 3
+				communist > 0.29
+			}
+			modifier = {
+				add = 20
+				communist > 0.39
+			}
+		}
+	}
+}
+
+economic_policy = {
+	
+	improved_worker_conditions = {
+		icon = generic_industry
+
+		available = {
+			has_stability < 1.0
+		}
+
+		visible = {
+			always = yes
+		}
+
+		fire_only_once = no
+
+		modifier = {
+			stability_weekly = 0.005
+			consumer_goods_factor = 0.05
+			industrial_capacity_factory = -0.1
+		}
+
+		days_remove = 180
+		days_re_enable = 540
+
+		cost = 140
+
+		complete_effect = {
+
+		}
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 1
+				has_stability < 0.6
+			}
+		}
+	}
+
+	infrastructure_building_slot = {
+		icon = generic_construction
+
+        allowed = {
+            always = yes
+        }
+
+        cost = 100
+        fire_only_once = no
+
+        days_re_enable = 30
+
+		available = {
+			any_owned_state = {
+				NOT = { has_state_flag = infrastructure_building_slot_flag }
+				is_fully_controlled_by = ROOT
+				free_building_slots = {
+					building = infrastructure
+					size < 1
+				}
+			}
+		}
+		visible = {
+			any_owned_state = {
+				NOT = { has_state_flag = infrastructure_building_slot_flag }
+				is_fully_controlled_by = ROOT
+				free_building_slots = {
+					building = infrastructure
+					size < 1
+				}
+			}
+		}
+		complete_effect = {
+			random_owned_state = {
+				limit = {
+					is_fully_controlled_by = ROOT
+					is_owned_by = ROOT
+            		free_building_slots = {
+						building = industrial_complex
+						size > 1
+						include_locked = yes
+					}
+					free_building_slots = {
+						building = infrastructure
+						size < 1
+					}
+					NOT = { has_state_flag = infrastructure_building_slot_flag }
+				}
+				add_extra_state_shared_building_slots = 1
+				set_state_flag = infrastructure_building_slot_flag
+			}
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 10
+				any_owned_state = { free_building_slots = { building = industrial_complex size < 1 include_locked = no } }
+			}
+		}
+	}
+
+	MCX_MDS_outsourced_workshops = {
+		icon = generic_construction
+
+		available = {
+			
+		}
+
+		visible = {
+			is_ai = no
+		}
+
+		fire_only_once = yes
+
+		cost = 150
+
+		complete_effect = {
+			add_offsite_building = {
+				type = industrial_complex
+				level = 2
+			}
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+	MCX_MDS_lease_military_factories = {
+		icon = ger_military_buildup
+
+		visible = {
+			is_ai = no
+			has_war = no
+		}
+
+		complete_effect = {
+			add_offsite_building = { type = arms_factory level = 2 }
+		}
+
+		remove_effect = {
+			add_offsite_building = { type = arms_factory level = -2 }
+		}
+		
+		modifier = {
+			consumer_goods_factor = 0.05
+		}
+
+		days_remove = 200
+		days_re_enable = 200
+		cost = 150
+	
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+	MCX_MDS_lease_dockyards = {
+		icon = generic_construction
+
+		visible = {
+			is_ai = no
+			has_war = no
+			any_state = {
+				is_controlled_by = ROOT
+				is_coastal = yes
+			}
+		}
+	
+		complete_effect = {
+			add_offsite_building = { type = dockyard level = 5 }
+		}
+		
+		remove_effect = {
+			add_offsite_building = { type = dockyard level = -5 }
+		}
+		
+		modifier = {
+			consumer_goods_factor = 0.1
+		}
+	
+		days_remove = 200
+		days_re_enable = 200
+		cost = 150
+	
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+	MCX_MDS_Social_Programs = {
+		available = {
+			
+		}
+		visible = {
+			is_ai = no
+		}
+		
+		fire_only_once = no
+		
+		modifier = {
+			MONTHLY_POPULATION = 0.3
+			industrial_capacity_factory = -0.1
+		}
+		
+		days_remove = 180
+		days_re_enable = 540
+		
+		cost = 100
+		
+		complete_effect = {
+			
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+	MCX_MDS_employ_civilian_workshops = {
+		icon = generic_industry
+
+		visible = {
+		}
+	
+		modifier = {
+			industrial_capacity_factory = 0.1
+			stability_weekly = -0.002
+		}
+	
+		days_remove = 80
+		days_re_enable = 200
+		cost = 75
+	
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	MCX_MDS_finance_public_news_offices = {
+		icon = ger_mefo_bills
+
+		visible = {
+		}
+	
+		modifier = {
+			stability_weekly = 0.001
+			research_speed_factor = 0.01
+			production_speed_buildings_factor = 0.05
+			industry_free_repair_factor = 0.2
+		}
+	
+		days_remove = 100
+		days_re_enable = 365
+		cost = 100
+	
+		ai_will_do = {
+			factor = 1
+		}
+	}
+}
+
+political_actions = {
+	
+	promises_of_peace = {
+
+		icon = generic_political_discourse
+
+		available = {
+			has_war = no
+			has_war_support > 0.2
+			has_stability < 1.0
+		}
+
+		visible = {
+			always = yes
+		}
+
+		remove_trigger = {
+			has_war = yes
+			has_war_support < 0.05
+		}
+
+		fire_only_once = no
+
+		modifier = {
+			stability_weekly = 0.005
+			war_support_weekly = -0.01
+			political_power_gain = -0.5
+		}
+
+		days_remove = 90
+		days_re_enable = 360
+
+		cost = 50
+
+		complete_effect = {
+
+		}
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 1
+				has_stability < 0.4
+			}
+		}
+	}
+	
+	war_propaganda = {
+
+		icon = generic_prepare_civil_war
+
+		available = {
+			NOT = { has_country_flag = war_propaganda_campaign_running }
+			threat > 0.5
+			has_war_support < 0.5
+			has_offensive_war = no
+		}
+
+		visible = {
+			
+		}
+
+		fire_only_once = no
+
+		days_remove = 90
+		days_re_enable = 180
+
+		cost = 150
+
+		modifier = {
+			war_support_weekly = 0.01
+		}
+
+		complete_effect = {
+			set_country_flag = war_propaganda_campaign_running
+		}
+		remove_effect = {
+			clr_country_flag = war_propaganda_campaign_running
+		}
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 1
+				has_war_support < 0.4
+				has_war = yes
+			}
+		}
+	}
+	
+	NVX_stop_warmongering = {
+		
+		icon = policies_stop_warmongering
+		
+		available = {
+			
+		}
+		
+		visible = {
+			has_idea = NVX_idea_warmongering
+		}
+		
+		cost = 0
+		
+		complete_effect = {
+			remove_ideas = NVX_idea_warmongering
+		}
+		
+		ai_will_do = {
+			base = 0
+		}
+	}
+	
+	NVX_political_snap_election = {
+		
+		icon = generic_political_discourse
+		
+		visible = {
+			OR = {
+				has_idea = government_system_parliamentary_republic
+				has_idea = government_system_constitutional_monarchy
+			}
+			has_elections = yes
+			NOT = { has_idea = economy_depression }
+			is_ai = no
+		}
+		
+		days_re_enable = 1825
+		
+		cost = 100
+		
+		complete_effect = {
+			country_event = { id = election.2 }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+}
+
+NVX_AI_decisions_cat = {
+	
+	NVX_AI_convert_to_organized_industry = {
+		
+		icon = generic_industry
+		
+		available = {
+			num_of_controlled_states > 19
+			industrial_complex > 34
+			has_tech = dispersed_industry
+			has_war = no
+		}
+		
+		visible = {
+			has_country_flag = country_behavior_dispersed
+			is_ai = yes
+		}
+		
+		fire_only_once = yes
+		
+		complete_effect = {
+			clr_country_flag = country_behavior_dispersed
+			set_technology = {
+				concentrated_industry = 1
+				dispersed_industry = 0
+				dispersed_industry2 = 0
+				dispersed_industry3 = 0
+				dispersed_industry4 = 0
+				dispersed_industry5 = 0
+				dispersed_industry6 = 0
+				dispersed_industry7 = 0
+				dispersed_industry8 = 0
+				dispersed_industry9 = 0
+			}
+		}
+		
+		ai_will_do = {
+			factor = 90
+		}
+	}
+	
+	NVX_AI_convert_to_organized_industry_puppet = {
+		
+		icon = generic_industry
+		
+		available = {
+			OR = {
+				OVERLORD = { has_tech = concentrated_industry7 }
+				AND = {
+					OVERLORD = { has_tech = concentrated_industry2 }
+					num_of_controlled_states > 3
+				}
+			}
+			has_tech = dispersed_industry
+			has_war = no
+		}
+		
+		visible = {
+			has_country_flag = country_behavior_dispersed
+			OR = {
+				is_puppet = yes
+				is_subject = yes
+			}
+			is_ai = yes
+		}
+		
+		fire_only_once = yes
+		
+		complete_effect = {
+			clr_country_flag = country_behavior_dispersed
+			set_technology = {
+				concentrated_industry = 1
+				dispersed_industry = 0
+				dispersed_industry2 = 0
+				dispersed_industry3 = 0
+				dispersed_industry4 = 0
+				dispersed_industry5 = 0
+				dispersed_industry6 = 0
+				dispersed_industry7 = 0
+				dispersed_industry8 = 0
+				dispersed_industry9 = 0
+			}
+		}
+		
+		ai_will_do = {
+			factor = 90
+		}
+	}
+	
+	NVX_AI_remove_indolent_behavior = {
+		
+		icon = generic_industry
+		
+		available = {
+			num_of_controlled_states > 19
+			arms_factory  > 34
+		}
+		
+		visible = {
+			has_country_flag = country_behavior_indolent
+			is_ai = yes
+		}
+		
+		fire_only_once = yes
+		
+		complete_effect = {
+			clr_country_flag = country_behavior_indolent
+		}
+		
+		ai_will_do = {
+			factor = 90
+		}
+	}
+	
+	NVX_AI_remove_indolent_behavior_puppet = {
+		
+		icon = generic_industry
+		
+		available = {
+			OVERLORD = {
+				OR = {
+					has_tech = main_battle_tank7
+					has_tech = fighter7
+					has_tech = near_future_ship_hull_cruiser
+					has_tech = near_future_light_cruiser
+					has_tech = near_future_heavy_cruiser
+				}
+			}
+		}
+		
+		visible = {
+			has_country_flag = country_behavior_indolent
+			OR = {
+				is_puppet = yes
+				is_subject = yes
+			}
+			is_ai = yes
+		}
+		
+		fire_only_once = yes
+		
+		complete_effect = {
+			clr_country_flag = country_behavior_indolent
+		}
+		
+		ai_will_do = {
+			factor = 90
+		}
+	}
+	
+	NVX_AI_IRQ_give_state_to_SYR = {
+		
+		icon = generic_industry
+		
+		visible = {
+			original_tag = IRQ
+			OR = {
+				has_country_flag = IRQ_took_state_680
+				has_country_flag = IRQ_took_state_814
+			}
+			NOT = { has_war_with = SYR }
+			is_ai = yes
+		}
+		
+		fire_only_once = no
+		
+		complete_effect = {
+			if = {
+				limit = {
+					owns_state = 680
+					has_country_flag = IRQ_took_state_680
+				}
+				SYR = { set_state_owner = 680 }
+				clr_country_flag = IRQ_took_state_680
+			}
+			if = {
+				limit = {
+					owns_state = 814
+					has_country_flag = IRQ_took_state_814
+				}
+				SYR = { set_state_owner = 814 }
+				clr_country_flag = IRQ_took_state_814
+			}
+		}
+		
+		ai_will_do = {
+			factor = 90
+		}
+	}
+	
+	NVX_AI_SYR_give_state_to_IRQ = {
+		
+		icon = generic_industry
+		
+		visible = {
+			original_tag = SYR
+			OR = {
+				has_country_flag = SYR_took_state_676
+				has_country_flag = SYR_took_state_815
+			}
+			NOT = { has_war_with = IRQ }
+			is_ai = yes
+		}
+		
+		fire_only_once = no
+		
+		complete_effect = {
+			if = {
+				limit = {
+					owns_state = 676
+					has_country_flag = SYR_took_state_676
+				}
+				IRQ = { set_state_owner = 676 }
+				clr_country_flag = SYR_took_state_676
+			}
+			if = {
+				limit = {
+					owns_state = 815
+					has_country_flag = SYR_took_state_815
+				}
+				IRQ = { set_state_owner = 815 }
+				clr_country_flag = SYR_took_state_815
+			}
+		}
+		
+		ai_will_do = {
+			factor = 90
+		}
+	}
+}

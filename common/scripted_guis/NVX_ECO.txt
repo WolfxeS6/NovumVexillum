@@ -1,0 +1,748 @@
+scripted_gui = {
+	
+	## FISC CONTAINER ##
+	NVX_ECOLITE_fisc = {
+		window_name = "NVX_ECOLITE_fisc_container"
+		parent_window_token = top_bar
+		context_type = player_context
+		
+		visible = {
+			NOT = { has_country_flag = DPTS_change_fisc_container }
+		}
+		
+		effects = {
+			NVX_ECOLITE_fisc_click = {
+				NVX_ECO_calc = yes
+			}
+			NVX_ECOLITE_fisc_shift_right_click = {
+				set_country_flag = DPTS_change_fisc_container
+			}
+		}
+	}
+	
+	NVX_ECOLITE_fisc2 = {
+		window_name = "NVX_ECOLITE_fisc2_container"
+		parent_window_token = top_bar
+		context_type = player_context
+		
+		visible = {
+			has_country_flag = DPTS_change_fisc_container
+		}
+		
+		effects = {
+			NVX_ECOLITE_fisc2_click = {
+				NVX_ECO_calc = yes
+			}
+			NVX_ECOLITE_fisc2_shift_right_click = {
+				clr_country_flag = DPTS_change_fisc_container
+			}
+		}
+	}
+	
+	## DIPLOMACY ECONOMY BUTTON ##
+	income_diplo = {
+		window_name = "income_diplo_container"
+		parent_window_token = selected_country_view
+		context_type = selected_country_context
+		
+		visible = {
+			
+		}
+		
+		effects = {
+			money_bg_click = {
+				ROOT = {
+					set_temp_variable = { show_info = 1 }
+					subtract_from_temp_variable = { show_info = show_info_panel }
+					set_variable = { show_info_panel = show_info }
+				}
+			}
+		}
+	}
+	
+	expanded_info_panel = {
+		window_name = "expanded_info_container"
+		parent_window_token = selected_country_view
+		context_type = selected_country_context
+		
+		visible = {
+			ROOT = { check_variable = { show_info_panel > 0 } }
+		}
+		
+		effects = {
+			close_expanded_info_container_click = {
+				ROOT = {
+					set_temp_variable = { show_info = 1 }
+					subtract_from_temp_variable = { show_info = show_info_panel }
+					set_variable = { show_info_panel = show_info }
+				}
+			}
+		}
+		
+		properties = {
+			expanded_info_centralization = {
+				image = "[GetCentralizationStatus]"
+			}
+			expanded_info_government_system = {
+				image = "[GetGovernmentSystemStatus]"
+			}
+			expanded_info_national_development = {
+				image = "[GetNationalDevelopmentStatus]"
+			}
+			expanded_info_economy = {
+				image = "[GetEconomyStatus]"
+			}
+			expanded_info_economy_tax_rate = {
+				image = "[GetEconomyTaxRateStatus]"
+			}
+			expanded_info_trade_laws = {
+				image = "[GetTradeLawsStatus]"
+			}
+			expanded_info_mobilization_laws = {
+				image = "[GetMobilizationLawsStatus]"
+			}
+			expanded_info_mobilization_service_time = {
+				image = "[GetMobilizationServiceTimeStatus]"
+			}
+			expanded_info_public_safety = {
+				image = "[GetPublicSafetyStatus]"
+			}
+			expanded_info_immigration_policy = {
+				image = "[GetImmigrationPolicyStatus]"
+			}
+			expanded_info_civil_liberties = {
+				image = "[GetCivilLibertiesStatus]"
+			}
+			expanded_info_welfare = {
+				image = "[GetWelfareStatus]"
+			}
+		}
+	}
+	
+	## ESTATES ##
+	NVX_estates_natural_change_background = {
+		window_name = "NVX_estates_natural_change_container"
+		parent_window_token = decision_tab
+		context_type = player_context
+		
+		visible = {
+			always = yes
+		}
+	}
+	
+	NVX_estates_natural_change_hide = {
+		window_name = "NVX_estates_natural_change_hide_container"
+		parent_window_token = decision_tab
+		context_type = player_context
+		
+		visible = {
+			NOT = { has_country_flag = NVX_estate_natural_changes_hide }
+		}
+		
+		effects = {
+			display_estates_button_click = {
+				set_country_flag = NVX_estate_natural_changes_hide
+			}
+		}
+		
+		ai_enabled = {
+			always = no
+		}
+		
+		ai_weights = {
+			display_estates_button_click = {
+				ai_will_do = {
+					factor = 0
+				}
+                ignore_lower_weights = {
+                    factor = 0
+                }
+			}
+		}
+	}
+	
+	NVX_estates_natural_change_show = {
+		window_name = "NVX_estates_natural_change_show_container"
+		parent_window_token = decision_tab
+		context_type = player_context
+		
+		visible = {
+			has_country_flag = NVX_estate_natural_changes_hide
+		}
+		
+		effects = {
+			display_estates_button_click = {
+				clr_country_flag = NVX_estate_natural_changes_hide
+			}
+		}
+		
+		ai_enabled = {
+			always = no
+		}
+		
+		ai_weights = {
+			display_estates_button_click = {
+				ai_will_do = {
+					factor = 0
+				}
+                ignore_lower_weights = {
+                    factor = 0
+                }
+			}
+		}
+	}
+	
+	## ORACLE AI SHOW/HIDE CATEGORY ##
+	NVX_oracle_ai_display_background = {
+		window_name = "NVX_oracle_ai_display_container"
+		parent_window_token = decision_tab
+		context_type = player_context
+		
+		visible = {
+			always = yes
+		}
+	}
+	
+	NVX_oracle_ai_display_hide = {
+		window_name = "NVX_oracle_ai_display_hide_container"
+		parent_window_token = decision_tab
+		context_type = player_context
+		
+		visible = {
+			NOT = { has_country_flag = NVX_oracle_ai_display_hide }
+		}
+		
+		effects = {
+			display_oracle_ai_button_click = {
+				set_country_flag = NVX_oracle_ai_display_hide
+			}
+		}
+		
+		ai_enabled = {
+			always = no
+		}
+		
+		ai_weights = {
+			display_oracle_ai_button_click = {
+				ai_will_do = {
+					factor = 0
+				}
+                ignore_lower_weights = {
+                    factor = 0
+                }
+			}
+		}
+	}
+	
+	NVX_oracle_ai_display_show = {
+		window_name = "NVX_oracle_ai_display_show_container"
+		parent_window_token = decision_tab
+		context_type = player_context
+		
+		visible = {
+			has_country_flag = NVX_oracle_ai_display_hide
+		}
+		
+		effects = {
+			display_oracle_ai_button_click = {
+				clr_country_flag = NVX_oracle_ai_display_hide
+			}
+		}
+		
+		ai_enabled = {
+			always = no
+		}
+		
+		ai_weights = {
+			display_oracle_ai_button_click = {
+				ai_will_do = {
+					factor = 0
+				}
+                ignore_lower_weights = {
+                    factor = 0
+                }
+			}
+		}
+	}
+	
+	## STATE CORING ##
+	NVX_core_state = {
+		context_type = selected_state_context
+		window_name = "NVX_core_state_interface_show_container"
+		parent_window_token = selected_state_view
+		
+		visible = {
+			ROOT = {
+				is_ai = no
+				has_political_power > 0
+				has_war = no
+			}
+			is_controlled_by = ROOT
+			NOT = { is_core_of = ROOT }
+			OR = {
+				has_resistance = no
+				compliance > 89.99
+			}
+			check_variable = { NVX_COUP_opposition = 0 } # not in a coup
+		}
+		
+		effects = {
+			NVX_core_state_click = {
+				add_core_of = ROOT
+				remove_core_of = ZZZ
+				ROOT = {
+					set_variable = { NVX_VAR_core_state_expense = 0 }
+					subtract_from_variable = { NVX_VAR_core_state_expense = PREV.NVX_VAR_core_state_expense }
+					add_political_power = var:NVX_VAR_core_state_expense
+				}
+				if = {
+					limit = {
+						NOT = {
+							OR = {
+								AND = {
+									is_on_continent = europe
+									ROOT = {
+										capital_scope = { is_on_continent = europe }
+									}
+								}
+								AND = {
+									is_on_continent = north_america
+									ROOT = {
+										capital_scope = { is_on_continent = north_america }
+									}
+								}
+								AND = {
+									is_on_continent = south_america
+									ROOT = {
+										capital_scope = { is_on_continent = south_america }
+									}
+								}
+								AND = {
+									OR = {
+										is_on_continent = australia
+										is_on_continent = asia
+									}
+									ROOT = {
+										OR = {
+											capital_scope = { is_on_continent = australia }
+											capital_scope = { is_on_continent = asia }
+										}
+									}
+								}
+								AND = {
+									is_on_continent = africa
+									ROOT = {
+										capital_scope = { is_on_continent = africa }
+									}
+								}
+								AND = {
+									is_on_continent = middle_east
+									ROOT = {
+										capital_scope = { is_on_continent = middle_east }
+									}
+								}
+							}
+						}
+					}
+					ROOT = { add_political_power = -10 }
+				}
+				if = {
+					limit = {
+						NOT = { any_neighbor_state = { is_core_of = ROOT } }
+					}
+					ROOT = { add_political_power = -10 }
+				}
+			}
+		}
+		
+#		ai_enabled = {
+#			ROOT = { any_owned_state = { is_core_of = ZZZ } }
+#			compliance > 89.99
+#		}
+#		
+#		ai_test_interval = 360
+#		
+#		ai_check = {
+#			ROOT = { has_political_power > 0 }
+#		}
+#		
+#		ai_weights = {
+#			NVX_core_state_click = {
+#				ai_will_do = {
+#					base = 100
+#				}
+#			}
+#		}
+	}
+	
+	## STATE SLOT EXPANSION ##
+	NVX_expand_state = {
+		context_type = selected_state_context
+		window_name = "NVX_expand_state_container"
+		parent_window_token = selected_state_view
+		
+		visible = {
+			is_controlled_by = ROOT
+			is_core_of = ROOT
+			free_building_slots = {
+				building = industrial_complex
+				size > 0
+				include_locked = yes
+			}
+			ROOT = {
+				check_variable = { NVX_ECO_health > 4 }
+				NOT = { has_country_flag = NVX_expand_state_cooldown }
+			}
+		}
+		
+		effects = {
+			NVX_expand_state_shift_click = {
+				add_extra_state_shared_building_slots = 1
+				ROOT = {
+					subtract_from_variable = { NVX_ECO_health = 5 }
+					set_country_flag = {
+						flag = NVX_expand_state_cooldown
+						days = 180
+						value = 1
+					}
+				}
+			}
+		}
+	}
+	
+	## PUPPET FUNDING ##
+	puppet_funding = {
+		window_name = "puppet_funding_container"
+		parent_window_token = selected_country_view
+		context_type = selected_country_context
+		
+		visible = {
+			ROOT = {
+				check_variable = { NVX_ECO_health > -100 }
+				has_decision = NVX_policies_P_benevolent_dominion
+				is_ai = no
+			}
+			check_variable = { NVX_ECO_health < 100 }
+			OR = {
+				is_puppet_of = ROOT
+				is_subject_of = ROOT
+			}
+			NOT = { has_country_flag = NVX_benevolent_dominion_cooldown }
+		}
+		
+		effects = {
+			puppet_funding_button_shift_click = {
+				ROOT = { subtract_from_variable = { NVX_ECO_health = 1 } }
+				add_to_variable = { NVX_ECO_health = 1 }
+				add_autonomy_score = {
+					value = -50
+					localization = TT_NVX_LPA_benevolent_dominion_donated
+				}
+			}
+			puppet_funding_button_shift_right_click = {
+				ROOT = { add_to_variable = { NVX_ECO_health = 1 } }
+				subtract_from_variable = { NVX_ECO_health = 1 }
+				add_autonomy_score = {
+					value = 250
+					localization = TT_NVX_LPA_benevolent_dominion_taxed
+				}
+#				set_country_flag = {
+#					flag = NVX_benevolent_dominion_cooldown
+#					days = 60
+#					value = 1
+#				}
+			}
+		}
+		
+		triggers = {
+			puppet_funding_button_shift_right_click_enabled = {
+				NOT = { compare_autonomy_progress_ratio > 0.99 }
+			}
+		}
+	}
+	
+	## PAX COUNTER ##
+	
+	NVX_ECO_pax = {
+		window_name = "NVX_ECO_pax_container"
+		parent_window_token = top_bar
+		context_type = player_context
+		
+		visible = {
+			NOT = { has_country_flag = DPTS_change_fisc_container }
+			has_decision = NVX_policies_P_diplomatic_harmony
+		}
+		
+		effects = {
+			NVX_ECO_pax_click = {
+				
+			}
+			NVX_ECO_pax_shift_right_click = {
+				set_country_flag = DPTS_change_fisc_container
+			}
+		}
+	}
+	
+	NVX_ECO_pax2 = {
+		window_name = "NVX_ECO_pax2_container"
+		parent_window_token = top_bar
+		context_type = player_context
+		
+		visible = {
+			has_country_flag = DPTS_change_fisc_container
+			has_decision = NVX_policies_P_diplomatic_harmony
+		}
+		
+		effects = {
+			NVX_ECO_pax2_click = {
+				
+			}
+			NVX_ECO_pax2_shift_right_click = {
+				clr_country_flag = DPTS_change_fisc_container
+			}
+		}
+	}
+	
+	## PAX REQ STATE ##
+	
+	NVX_ECO_pax_req_state = {
+		context_type = selected_state_context
+		window_name = "NVX_ECO_pax_req_state_container"
+		parent_window_token = selected_state_view
+		
+		visible = {
+			ROOT = {
+				is_ai = no
+				has_decision = NVX_policies_P_diplomatic_harmony
+				NOT = { has_country_flag = NVX_ECO_pax_req_state_cooldown }
+			}
+			owner = {
+				is_ai = yes
+				num_of_controlled_states > 1
+				is_puppet = no
+				is_subject = no
+				NOT = { has_country_flag = NVX_ECO_pax_req_state_asked_cooldown }
+				NOT = { has_country_flag = NVX_ECO_pax_req_state_sold_cooldown }
+				NOT = { has_government = fascist }
+				NOT = { has_government = nationalist }
+				NOT = { has_government = communist }
+			}
+			NOT = { is_controlled_by = ROOT }
+			is_capital = no
+			OR = {
+				is_island_state = yes
+				any_neighbor_state = {
+					is_owned_and_controlled_by = ROOT
+				}
+			}
+		}
+		
+		effects = {
+			NVX_ECO_pax_req_state_click = {
+				ROOT = {
+					set_variable = { NVX_ECO_pax_state_id = PREV }
+					set_variable = { NVX_ECO_pax_state_refund = PREV.NVX_ECO_pax_state_value }
+					divide_variable = { NVX_ECO_pax_state_refund = 2 }
+					round_variable = NVX_ECO_pax_state_refund
+					set_variable = { NVX_ECO_pax_state_payment = PREV.NVX_ECO_pax_state_value }
+					divide_variable = { NVX_ECO_pax_state_payment = 3 }
+					subtract_from_variable = { NVX_ECO_pax = PREV.NVX_ECO_pax_state_value }
+					PREV.owner = {
+						country_event = { id = NVX_ECO.2 days = 3 }
+					}
+					set_country_flag = {
+						flag = NVX_ECO_pax_req_state_cooldown
+						days = 30
+						value = 1
+					}
+				}
+				owner = {
+					set_country_flag = {
+						flag = NVX_ECO_pax_req_state_asked_cooldown
+						days = 30
+						value = 1
+					}
+				}
+			}
+		}
+		
+		triggers = {
+			NVX_ECO_pax_req_state_click_enabled = {
+				ROOT = {
+					check_variable = {
+						var = NVX_ECO_pax
+						value = PREV.NVX_ECO_pax_state_value
+						compare = greater_than_or_equals
+					}
+				}
+			}
+		}
+	}
+	
+	## PAX REQ PUPPET ##
+	
+	NVX_ECO_pax_req_puppet = {
+		window_name = "NVX_ECO_pax_req_puppet_container"
+		parent_window_token = selected_country_view
+		context_type = selected_country_context
+		
+		visible = {
+			ROOT = {
+				is_ai = no
+				has_decision = NVX_policies_P_diplomatic_harmony
+				NOT = { has_country_flag = NVX_ECO_pax_req_puppet_cooldown }
+			}
+			is_ai = yes
+			OR = {
+				AND = {
+					NVX_has_government_ideology_democratic = yes
+					ROOT = { NVX_has_government_ideology_democratic = yes }
+				}
+				AND = {
+					has_government = islamist
+					ROOT = { has_government = islamist }
+				}
+				AND = {
+					has_government = communist
+					ROOT = { has_government = communist }
+				}
+			}
+			NOT = { has_government = nationalist }
+			NOT = { has_country_flag = NVX_ECO_pax_req_puppet_asked_cooldown }
+			is_major = no
+			has_war = no
+			is_puppet = no
+			is_subject = no
+			NOT = { has_idea = national_development_advanced }
+			OR = {
+				is_neighbor_of = ROOT
+				any_owned_state = { is_coastal = yes }
+			}
+			NVX_ECO_pax_req_puppet_restrictions = no
+		}
+		
+		effects = {
+			NVX_ECO_pax_req_puppet_click = {
+				NVX_ECO_pax_puppet_cost_calc = yes
+				if = {
+					limit = {
+						check_variable = {
+							var = ROOT.NVX_ECO_pax
+							value = ROOT.NVX_ECO_pax_puppet_cost
+							compare = greater_than_or_equals
+						}
+					}
+					ROOT = {
+						subtract_from_variable = { NVX_ECO_pax = NVX_ECO_pax_puppet_cost }
+						set_variable = { NVX_ECO_pax_puppet_refund = NVX_ECO_pax_puppet_cost }
+						divide_variable = { NVX_ECO_pax_puppet_refund = 2 }
+						round_variable = NVX_ECO_pax_puppet_refund
+						set_country_flag = {
+							flag = NVX_ECO_pax_req_puppet_cooldown
+							days = 30
+							value = 1
+						}
+					}
+					set_country_flag = {
+						flag = NVX_ECO_pax_req_puppet_asked_cooldown
+						days = 30
+						value = 1
+					}
+					country_event = { id = NVX_ECO.4 days = 3 }
+				}
+			}
+			NVX_ECO_pax_req_puppet_right_click = {
+				NVX_ECO_pax_puppet_cost_calc = yes
+			}
+		}
+	}
+	
+	## PAX FORCE PEACE ##
+	
+	NVX_ECO_pax_force_peace = {
+		window_name = "NVX_ECO_pax_force_peace_container"
+		parent_window_token = selected_country_view
+		context_type = selected_country_context
+		
+		visible = {
+			ROOT = {
+				is_ai = no
+				has_decision = NVX_policies_P_diplomatic_harmony
+			}
+			has_war_with = ROOT
+			is_puppet = no
+			is_subject = no
+			OR = {
+				is_in_faction = no
+				OR = {
+					is_faction_leader = yes
+					AND = {
+						is_in_faction = yes
+						faction_leader = {
+							NOT = { has_war_with = ROOT }
+						}
+					}
+				}
+			}
+		}
+		
+		effects = {
+			NVX_ECO_pax_force_peace_click = {
+				ROOT = { subtract_from_variable = { NVX_ECO_pax = 30 } }
+				white_peace = ROOT
+				if = {
+					limit = { is_in_faction = yes }
+					every_country = {
+						limit = { is_in_faction_with = PREV }
+						white_peace = ROOT
+					}
+				}
+				if = {
+					limit = {
+						OR = {
+							has_idea = idea_eu_member
+							any_allied_country = {
+								has_idea = idea_eu_member
+							}
+						}
+					}
+					every_country = {
+						limit = { has_idea = idea_eu_member }
+						white_peace = ROOT
+					}
+				}
+			}
+		}
+		
+		triggers = {
+			NVX_ECO_pax_force_peace_click_enabled = {
+				ROOT = {
+					check_variable = {
+						var = NVX_ECO_pax
+						value = 30
+						compare = greater_than_or_equals
+					}
+				}
+			}
+		}
+	}
+	
+	## COUPS ##
+	
+	# OPPOSITION #
+	NVX_COUP_opposition = {
+		window_name = "NVX_COUP_opposition_container"
+		parent_window_token = top_bar
+		context_type = player_context
+		
+		visible = {
+			check_variable = { NVX_COUP_opposition > 0 }
+		}
+		
+		effects = {
+			NVX_COUP_opposition_click = {
+				
+			}
+		}
+	}
+}

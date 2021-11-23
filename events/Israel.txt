@@ -1,0 +1,393 @@
+﻿add_namespace = israel
+
+#Retreat from Lebanon
+country_event = {
+	id = israel.1
+	title = israel.1.t
+	desc = israel.1.d
+	picture = GFX_report_event_retreat_from_lebanon
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = ISR
+		NOT = { has_country_flag = isr_retreat_from_lebanon }
+		date > 2000.5.20
+		date < 2001.1.1
+	}
+	
+	immediate = {
+		set_country_flag = isr_retreat_from_lebanon
+	}
+	
+	option = {
+		name = israel.1.o1
+		add_stability = 0.03
+		news_event = {
+			id = news.48
+			hours = 3
+		}
+	}
+}
+
+#Golan Negotiations with Syria
+country_event = {
+	id = israel.2
+	title = israel.2.t
+	desc = israel.2.d
+	picture = GFX_report_event_golan_negotiations
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = ISR
+		NOT = { has_country_flag = isr_2000_golan_negotiations_start_event }
+		has_country_flag = isr_retreat_from_lebanon
+		date > 2000.6.15
+		date < 2001.1.1
+	}
+	
+	immediate = {
+		set_country_flag = isr_2000_golan_negotiations_start_event
+	}
+	
+	option = {	#Yay
+		name = israel.2.o1
+		custom_effect_tooltip = tooltip_event_israel.2.o1
+		set_country_flag = isr_2000_golan_negotiations_accepted_negotiations
+		SYR = {
+			country_event = {
+				id = israel.3
+				hours = 3
+			}
+		}
+		ai_chance = {
+			factor = 65
+		}
+	}
+	
+	option = {	#Nay
+		name = israel.2.o2
+		set_country_flag = isr_2000_golan_negotiations_refused_negotiations
+		news_event = {
+			id = news.45
+			hours = 3
+		}
+		every_country = {
+			limit = {
+				OR = {
+					tag = SYR
+					tag = LEB
+					tag = JOR
+					tag = IRQ
+					tag = PER
+					tag = EGY
+					tag = SAU
+					tag = KUW
+					tag = BAH
+					tag = QAT
+					tag = OMA
+					tag = YEM
+					tag = TUR
+					tag = NCY
+					tag = LBA
+					tag = ALG
+				}
+			}
+			add_opinion_modifier = {
+				modifier = recent_actions_negative
+				target = ISR
+			}
+		}
+		ai_chance = {
+			factor = 35
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
+		}
+	}
+}
+
+#Syria: Israel offers negotiations
+country_event = {
+	id = israel.3
+	title = israel.3.t
+	desc = israel.3.d
+	picture = GFX_report_event_golan_negotiations
+	
+	is_triggered_only = yes
+	
+	option = {	#We can accept that
+		name = israel.3.o1
+		set_country_flag = syr_2000_golan_negotiations_accepted_negotiations
+		ISR = {
+			country_event = {
+				id = israel.4
+				hours = 3
+			}
+		}
+		ai_chance = {
+			factor = 35
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
+		}
+	}
+	
+	option = {	#We will not negotiate with Israel
+		name = israel.3.o2
+		set_country_flag = syr_2000_golan_negotiations_refused_negotiations
+		news_event = {
+			id = news.46
+			hours = 3
+		}
+		ai_chance = {
+			factor = 65
+		}
+	}
+}
+
+#Israel: Syria is willing to negotiate
+country_event = {
+	id = israel.4
+	title = israel.4.t
+	desc = israel.4.d
+	picture = GFX_report_event_golan_negotiations
+	
+	is_triggered_only = yes
+	
+	option = {	#Only an alliance will secure our common border.
+		name = israel.4.o1
+		custom_effect_tooltip = tooltip_event_israel.4.o1
+		SYR = {
+			country_event = {
+				id = israel.5
+				hours = 3
+			}
+		}
+		add_stability = -0.1
+		ai_chance = {
+			factor = 75
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
+		}
+	}
+	
+	option = {	#A military cooperation program should defuse tensions.
+		name = israel.4.o2
+		custom_effect_tooltip = tooltip_event_israel.4.o2
+		SYR = {
+			country_event = {
+				id = israel.6
+				hours = 3
+			}
+		}
+		ai_chance = {
+			factor = 25
+		}
+	}
+}
+
+#Syria: Israel offers alliance
+country_event = {
+	id = israel.5
+	title = israel.5.t
+	desc = israel.5.d
+	picture = GFX_report_event_golan_negotiations
+	
+	is_triggered_only = yes
+	
+	option = {	#We accept
+		name = israel.5.o1
+		ISR = { 
+			create_faction = levantine_alliance
+			add_to_faction = ISR
+			add_to_faction = SYR
+			add_opinion_modifier = {
+				modifier = recent_actions_very_positive
+				target = SYR
+			}
+		}
+		SYR = {
+			transfer_state = 881
+			add_opinion_modifier = {
+				modifier = recent_actions_very_positive
+				target = ISR
+			}
+		}
+		881 = { remove_core_of = ISR }
+		
+		add_stability = -0.25
+		
+		news_event = {
+			id = news.47
+			hours = 3
+		}
+		ai_chance = {
+			factor = 85
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
+		}
+		
+		LEB = {
+			add_opinion_modifier = {
+				modifier = recent_actions_negative
+				target = SYR
+			}
+		}
+		EGY = {
+			add_opinion_modifier = {
+				modifier = recent_actions_negative
+				target = SYR
+			}
+		}
+		PAL = {
+			add_opinion_modifier = {
+				modifier = recent_actions_negative
+				target = SYR
+			}
+		}
+		IRQ = {
+			add_opinion_modifier = {
+				modifier = recent_actions_negative
+				target = SYR
+			}
+		}
+		PER = {
+			add_opinion_modifier = {
+				modifier = recent_actions_negative
+				target = SYR
+			}
+		}
+		SAU = {
+			add_opinion_modifier = {
+				modifier = recent_actions_negative
+				target = SYR
+			}
+		}
+		KUW = {
+			add_opinion_modifier = {
+				modifier = recent_actions_negative
+				target = SYR
+			}
+		}
+		
+		set_country_flag = syr_faction_with_israel
+	}
+	
+	option = {	#We refuse
+		name = israel.5.o2
+		add_stability = 0.05
+		news_event = {
+			id = news.46
+			hours = 3
+		}
+		ai_chance = {
+			factor = 15
+		}
+	}
+}
+
+#Syria: Israel offers military cooperation
+country_event = {
+	id = israel.6
+	title = israel.6.t
+	desc = israel.6.d
+	picture = GFX_report_event_golan_negotiations
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = israel.6.o1
+		SYR = {
+			army_experience = 50
+			air_experience = 50
+			navy_experience = 50
+			transfer_state = 881
+			add_opinion_modifier = {
+				modifier = recent_actions_very_positive
+				target = ISR
+			}
+		}
+		add_stability = -0.075
+		ISR = {
+			army_experience = 50
+			air_experience = 50
+			navy_experience = 50
+			add_opinion_modifier = {
+				modifier = recent_actions_very_positive
+				target = SYR
+			}
+		}
+		881 = { remove_core_of = ISR }
+		
+		LEB = {
+			add_opinion_modifier = {
+				modifier = recent_actions_negative
+				target = SYR
+			}
+		}
+		EGY = {
+			add_opinion_modifier = {
+				modifier = recent_actions_negative
+				target = SYR
+			}
+		}
+		PAL = {
+			add_opinion_modifier = {
+				modifier = recent_actions_negative
+				target = SYR
+			}
+		}
+		IRQ = {
+			add_opinion_modifier = {
+				modifier = recent_actions_negative
+				target = SYR
+			}
+		}
+		PER = {
+			add_opinion_modifier = {
+				modifier = recent_actions_negative
+				target = SYR
+			}
+		}
+		SAU = {
+			add_opinion_modifier = {
+				modifier = recent_actions_negative
+				target = SYR
+			}
+		}
+		KUW = {
+			add_opinion_modifier = {
+				modifier = recent_actions_negative
+				target = SYR
+			}
+		}
+		
+		set_country_flag = syr_military_cooperation_with_israel
+		
+		news_event = {
+			id = news.47
+			hours = 3
+		}
+	}
+	
+	option = {	#We refuse
+		name = israel.6.o2
+		add_stability = 0.075
+		news_event = {
+			id = news.46
+			hours = 3
+		}
+	}
+}
+
+#########################################
+############	NEWS	#################
+#########################################
