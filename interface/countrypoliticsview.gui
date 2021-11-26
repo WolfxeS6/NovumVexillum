@@ -1,4 +1,4 @@
-guiTypes = { #NVX# Tag for changes
+guiTypes = {
 
 	containerWindowType = {
 		name = "countrypoliticsview"
@@ -51,45 +51,25 @@ guiTypes = { #NVX# Tag for changes
 			frame = 1
 		}
 
-		containerWindowType = { #NVX# Change
-#			name = "chart_explanation"
-#			position = { x = 18 y = 116 }
-#			size = { width = 330 height = 70 }
-#			clipping = no
-#			
-##			background = {
-##				name = "Background"		
-##				spriteType ="GFX_pol_piechart_bg"
-##			}
-#			
-#			gridBoxType = {
-#				name = "parties_grid"
-#				position = { x = 260 y = 184 }
-#				size = { width = 100%% height = 100%% }
-#				slotsize = { width = 230 height = 16 }
-#				format = "UPPER_LEFT"
-#			}
-
+		containerWindowType = {
 			name = "chart_explanation"
-			position = { x = 300 y = 298 }
-			size = { width = 245 height = 79 }
-			clipping = yes
-			verticalScrollbar = "right_vertical_slider"
-			margin = { top = 3 bottom = 2}
-			background = {
-				name = "Background"
-				spriteType ="GFX_diplo_ideology_scroll_box_bg"
-				position = { x = 37 y = 3 }
-			}
+			position = { x = 18 y = 116 }
+			size = { width = 330 height = 70 }
+			clipping = no
+			
+#			background = {
+#				name = "Background"		
+#				spriteType ="GFX_pol_piechart_bg"
+#			}
 			
 			gridBoxType = {
 				name = "parties_grid"
-				position = { x = -20 y = -5 }
-				size = { width = 230 height = 80 }
-				slotsize = { width = 230 height = 14 }
+				position = { x = 260 y = 184 }
+				size = { width = 100%% height = 100%% }
+				slotsize = { width = 230 height = 16 }
 				format = "UPPER_LEFT"
 			}
-		} #/NVX#
+		}
 
 		
 		containerWindowType = {
@@ -182,21 +162,23 @@ guiTypes = { #NVX# Tag for changes
 			
 			instantTextboxType = {
 				name = "elections"
-				position = { x = 9 y = 34 }
+				position = { x = 9 y = 29 }
 				font = "hoi_16mbs"
 				text = "elections"
 				maxWidth = 155
-				maxHeight = 20
+				maxHeight = 32
+				vertical_alignment = center
 			}
 			
 			instantTextboxType = {
 				name = "faction_name"
-				position = { x = 103 y = -45 }
+				position = { x = 105 y = -45 }
 				font = "hoi_18mbs"
 				text = "faction"
-				maxWidth = 193
+				maxWidth = 195
 				maxHeight = 20
-				format = centre				
+				multiline = no
+				format = left
 			}
 			
 			buttonType = {
@@ -423,9 +405,8 @@ guiTypes = { #NVX# Tag for changes
 			
 			containerWindowType = {
 				name = "national_spirit_container"
-				position = { x = 90 y = 19 }
-				size = { width = 365 height = 68 }
-				
+				position = { x = 99 y = 16 }
+				size = { width = 364 height = 74 }
 				verticalScrollbar = "right_vertical_slider"
 				
 				background = {
@@ -435,16 +416,17 @@ guiTypes = { #NVX# Tag for changes
 				
 				gridboxtype = {
 					name = "spirit_grid"
-					position = { x = 12 y = 0 }
-					size = { width = 350 height = 100%% }
-					slotsize = { width = 60 height = 68 }
-					max_slots = { x = 8 y = 1 }
+					position = { x = 1 y = 2 }
+					size = { width = 354 height = 68 }
+					slotsize = { width = 59 height = 68 }
+					max_slots = { x = 6 y = 1 }
 					format = "UPPER_LEFT"
 				}
 				gridboxtype = {
 					name = "spirit_grid_over_defined"
-					size = { width = 350 height = 100%% }
-					slotsize = { width = 33 height = 32 }
+					position = { x = 10 y = 1 }
+					size = { width = 330 height = 68 }
+					slotsize = { width = 33 height = 34 }
 					max_slots_horizontal = 10
 					format = "UPPER_LEFT"
 				}
@@ -465,11 +447,11 @@ guiTypes = { #NVX# Tag for changes
 
 		instantTextboxType = {
 			name = "leader_name"
-			position = { x = 18 y = 271 }
+			position = { x = 18 y = 262 }
 			font = "hoi_18mbs"
 			text = "leader_name"
 			maxWidth = 155
-			maxHeight = 20
+			maxHeight = 36
 			format = center
 			vertical_alignment = center
 		}
@@ -479,6 +461,8 @@ guiTypes = { #NVX# Tag for changes
 			position = { x = 0 y = 425 }
 			size = { width=100%% height=100%% }
 			verticalScrollbar = "right_vertical_slider"
+			scroll_wheel_factor = 40
+			smooth_scrolling = yes
 			margin = { top = 14 bottom = 13}
 		
 			background = {
@@ -647,7 +631,7 @@ guiTypes = { #NVX# Tag for changes
 		
 		gridboxtype = {
 			name = "ideas_grid"
-			position = { x = 11 y = 46 } #NVX# x from 17
+			position = { x = 17 y = 46 }
 			size = { width = 100%% height = 100%% }
 			slotsize = { width = 80 height = 64 }
 			max_slots = { x = 7 y = 1 }
@@ -663,7 +647,7 @@ guiTypes = { #NVX# Tag for changes
 		show_animation_type = decelerated
 		hide_animation_type = accelerated
 		animation_time = 300
-		size = { width=500 height=830 } #NVX# height from 590
+		size = { width=500 height=590 }
 		show_sound = open_sub_window
 		
 		background = {
@@ -699,6 +683,8 @@ guiTypes = { #NVX# Tag for changes
 				position = { x = 0 y = -8 }
 				size = { width=500 height=-4 }
 				verticalScrollbar = "right_vertical_slider"
+				scroll_wheel_factor = 37
+				smooth_scrolling = yes
 				margin = { top = 4 bottom = 12}	
 
 				background = {
@@ -716,7 +702,7 @@ guiTypes = { #NVX# Tag for changes
 					name = "box_grid"
 					position = { x = 10 y = 10 }
 					size = { width = 500 height = 1 }
-					slotsize = { width = 231 height = 75 }
+					slotsize = { width = 231 height = 74 }
 					max_slots_horizontal = 2
 					add_horizontal = yes
 					format = "UPPER_LEFT"
@@ -726,7 +712,7 @@ guiTypes = { #NVX# Tag for changes
 					name = "box_list"
 					position = { x = 10 y = 10 }
 					size = { width = 500 height = 1 }
-					slotsize = { width = 462 height = 75 }
+					slotsize = { width = 462 height = 74 }
 					add_horizontal = no
 					format = "UPPER_LEFT"
 				}
@@ -814,12 +800,11 @@ guiTypes = { #NVX# Tag for changes
 		iconType = {
 			name = "idea_traits"
 			position = { x = 43 y = 46 }
-			spriteType = "GFX_NVX_idea_traits_strip" #NVX# change
+			spriteType = "GFX_idea_traits_strip"
 			centerposition = yes
 			alwaystransparent = yes
 			frame = 1
 		}
-		
 	}
 	
 	containerWindowType = {
@@ -835,7 +820,7 @@ guiTypes = { #NVX# Tag for changes
 			
 		iconType = {
 			name = "icon"
-			position = { x = 49 y = 38 } #NVX# x from 42
+			position = { x = 42 y = 38 }
 			spriteType = "GFX_placeholder_bordered"
 			centerposition = yes
 			alwaystransparent = yes
@@ -843,8 +828,8 @@ guiTypes = { #NVX# Tag for changes
 
 		iconType = {
 			name = "idea_traits"
-			position = { x = 60 y = 51 } #NVX# x from 53
-			spriteType = "GFX_NVX_idea_traits_strip" #NVX# from "GFX_idea_traits_strip"
+			position = { x = 53 y = 51 }
+			spriteType = "GFX_idea_traits_strip"
 			centerposition = yes
 			alwaystransparent = yes
 			frame = 1
@@ -852,7 +837,7 @@ guiTypes = { #NVX# Tag for changes
 		
 		containerWindowType = {
 		    name = "traits_container"
-		    position = { x = 86 y = 0 }	#NVX# x from 76
+		    position = { x = 76 y = 0 }	
 		    show_position = { x = 0 y = 0 }
 			size = { width=170 height=100%% }
 			
@@ -894,7 +879,7 @@ guiTypes = { #NVX# Tag for changes
 
 		instantTextboxType = {
 			name = "stats"
-			position = { x = 55 y = 32 }
+			position = { x = 300 y = 32 }
 			font = "hoi_16mbs"
 			text = ""
 			maxWidth = 142
@@ -926,7 +911,7 @@ guiTypes = { #NVX# Tag for changes
 		iconType = {
 			name = "idea_traits"
 			position = { x = 53 y = 51 }
-			spriteType = "GFX_NVX_idea_traits_strip" #NVX# change
+			spriteType = "GFX_idea_traits_strip"
 			centerposition = yes
 			alwaystransparent = yes
 			frame = 1
@@ -1025,7 +1010,7 @@ guiTypes = { #NVX# Tag for changes
 			font = "hoi_16mbs"
 			text = "party name"
 			fixedsize = yes
-			maxWidth = 170
+			maxWidth = 175
 			maxHeight = 18
 		}
 	}
@@ -1055,6 +1040,8 @@ guiTypes = { #NVX# Tag for changes
 			size = { width=548 height=100%% }
 			clipping = yes
 			verticalScrollbar = "right_vertical_slider"
+			scroll_wheel_factor = 40
+			smooth_scrolling = yes
 			margin = { top = 15 bottom = 15}
 		
 			background = {
@@ -1118,7 +1105,7 @@ guiTypes = { #NVX# Tag for changes
 		buttonType = {
 			name = "autonomy_country_flag"
 			quadTextureSprite ="GFX_player_flag"
-			position = { x= 10 y = 9 }
+			position = { x= 12 y = 10 }
 			Orientation = "UPPER_LEFT"
 		}	
 
@@ -1238,6 +1225,8 @@ guiTypes = { #NVX# Tag for changes
 			size = { width=548 height=100%% }
 			clipping = yes
 			verticalScrollbar = "right_vertical_slider"
+			scroll_wheel_factor = 40
+			smooth_scrolling = yes
 			margin = { top = 15 bottom = 15}
 		
 			background = {
@@ -1300,7 +1289,7 @@ guiTypes = { #NVX# Tag for changes
 		buttonType = {
 			name = "country_flag"
 			quadTextureSprite ="GFX_player_flag"
-			position = { x= 10 y = 5 }
+			position = { x= 12 y = 8 }
 			Orientation = "UPPER_LEFT"
 		}
 
@@ -1379,7 +1368,7 @@ guiTypes = { #NVX# Tag for changes
 		buttonType = {
 			name = "exile_country_flag"
 			quadTextureSprite ="GFX_player_flag"
-			position = { x= 10 y = 5 }
+			position = { x= 12 y = 7 }
 			Orientation = "UPPER_LEFT"
 		}
 
@@ -1535,7 +1524,7 @@ guiTypes = { #NVX# Tag for changes
 		iconType = {
 			name = "flag"
 			quadTextureSprite ="GFX_flag_small2"
-			position = { x= 50 y = 6 }
+			position = { x= 51 y = 7 }
 			Orientation = "UPPER_LEFT"
 		}
 		
