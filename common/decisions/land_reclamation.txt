@@ -1,0 +1,66 @@
+economic_policy = {
+	create_markerwaard = {
+
+		icon = GFX_decision_generic_construction
+		allowed = {		
+		}
+		available = {
+			has_full_control_of_state = 1025
+			has_full_control_of_state = 7
+			has_full_control_of_state = 841
+		}
+	
+		visible = {
+		owns_state = 1025
+		NOT = { has_global_flag = markerwaard_done }
+		}
+	
+		fire_only_once = yes
+	
+		days_remove = 300
+	
+		cost = 100
+	
+		modifier = {
+			civilian_factory_use = 5
+		}
+
+		complete_effect = {
+		}
+	
+		remove_effect = {
+			if = {
+				limit = {
+				AND = {
+								has_full_control_of_state = 1025
+								has_full_control_of_state = 7
+								has_full_control_of_state = 841
+				}
+				}
+				set_global_flag = markerwaard_done
+				#set_state_owner = 1026
+				1026 = {
+				set_demilitarized_zone = no
+				set_state_name = "Markerwaard"
+				add_manpower = 55000
+				 	set_state_category = state_level_1
+					#add_core_of = FROM
+					set_building_level = {
+					type = infrastructure
+					level = 4
+					instant_build = yes
+					}
+				}
+			set_victory_points = {
+			province = 13289
+			value = 1
+			}
+				#country_event = { id = wtt_news.40 hours = 6}
+			}
+		}
+		ai_will_do = {
+			factor = 10			
+		}
+	}
+	
+}
