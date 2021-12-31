@@ -1,0 +1,48 @@
+add_namespace = Iraqi_Freedom
+
+#Invasion of Iraq
+country_event = {
+	id = Iraqi_Freedom.1
+	title = usa.72.t
+	desc =  usa.72.d
+	picture = GFX_report_event_iraq_war3
+
+	is_triggered_only = yes
+
+	trigger = {
+		IRQ = { has_government = nationalist }
+		NOT = { IRQ = { has_non_aggression_pact_with  = USA } }
+		NOT = { IRQ = { is_in_faction_with  = USA } }
+		NOT = { IRQ = { is_in_faction_with  = SOV } }
+		NOT = { IRQ = { is_in_faction_with  = PRC } }
+		NOT = { has_global_flag = sandbox_tabula_rasa }
+		has_country_flag = usa_9_11
+		date > 2003.3.18
+		date < 2003.3.20
+	}
+
+	immediate = {
+		set_global_flag = operation_iraqi_freedom
+	}
+
+	option = {
+		name = usa.72.o1
+		set_global_flag = american_invasion_of_iraq
+		
+		declare_war_on = {
+			target = IRQ
+			type = puppet_wargoal_focus
+		}
+
+		hidden_effect = {
+			load_oob = "LEX_USA_invading_force_IRQ"
+			USA = {
+				set_province_controller = 13316
+			}
+			news_event = {
+				id = usa_news.19
+				hours = 6
+			}
+		}
+	}
+}

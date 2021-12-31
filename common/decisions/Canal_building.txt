@@ -1,0 +1,43 @@
+economic_policy = {
+	build_thai_canal = {
+
+		icon = GFX_decision_generic_construction
+		allowed = {		
+		}
+		available = {
+			has_full_control_of_state = 724
+		}
+	
+		visible = {
+		owns_state = 724
+		NOT = { has_global_flag = thai_canal_built }
+		}
+	
+		fire_only_once = yes
+	
+		days_remove = 300
+	
+		cost = 100
+	
+		modifier = {
+			civilian_factory_use = 5
+		}
+
+		complete_effect = {
+		}
+	
+		remove_effect = {
+			if = {
+				limit = {
+				has_full_control_of_state = 724
+				}
+				set_global_flag = thai_canal_built
+				#country_event = { id = wtt_news.40 hours = 6}
+			}
+		}
+		ai_will_do = {
+			factor = 10			
+		}
+	}
+	
+}

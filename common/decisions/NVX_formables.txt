@@ -1,30 +1,30 @@
 NVX_formable_cat = {
-	rename_kaliningrad_to_konigsberg = {
-		#icon = generic_industry
+	#rename_kaliningrad_to_konigsberg = {
+	#	#icon = generic_industry
 		
-		available = {
+	#	available = {
 			
-		}
+	#	}
 		
-		visible = {
-			original_tag = GER
-			owns_state = 741
-		}
+	#	visible = {
+	#		original_tag = GER
+	#		owns_state = 741
+	#	}
 		
-		fire_only_once = yes
+	#	fire_only_once = yes
 		
-		cost = 50
+	#	cost = 50
 		
-		complete_effect = {
-			set_province_name = { id = 6332 name = "Königsberg"}
-			GER = { add_state_core = 741 }
-			741 = { set_state_name = "Prussia" }
-		}
+	#	complete_effect = {
+	#		set_province_name = { id = 6332 name = "Königsberg"}
+	#		GER = { add_state_core = 741 }
+	#		741 = { set_state_name = "Prussia" }
+	#	}
 		
-		ai_will_do = {
-			base = 10
-		}
-	}
+	#	ai_will_do = {
+	#		base = 10
+	#	}
+	#}
 	
 	rename_istanbul_to_constantinople = {
 		#icon = generic_industry
@@ -63,13 +63,21 @@ NVX_formable_cat = {
 					owns_state = 4
 					owns_state = 152
 					owns_state = 153
+					owns_state = 1017
+					owns_state = 969
+					owns_state = 970
+					owns_state = 39
 				}
 			}
 		}
 		
 		visible = {
 			original_tag = GER
+			OR = {
 			GER = { has_government = monarchist }
+			GER = { has_government = fascist }
+			GER = { has_government = nationalist }
+			}
 			GER = {
 				is_subject = no
 				is_puppet = no
@@ -94,21 +102,42 @@ NVX_formable_cat = {
 				limit = { AUS = { owns_state = 4 } }
 				GER = {
 					add_state_core = 4
-					set_state_owner = 4
 				}
 			}
 			if = {
 				limit = { AUS = { owns_state = 152 } }
 				GER = {
 					add_state_core = 152
-					set_state_owner = 152
 				}
 			}
 			if = {
 				limit = { AUS = { owns_state = 153 } }
 				GER = {
 					add_state_core = 153
-					set_state_owner = 153
+				}
+			}
+			if = {
+				limit = { AUS = { owns_state = 1017 } }
+				GER = {
+					add_state_core = 1017
+				}
+			}
+			if = {
+				limit = { AUS = { owns_state = 969 } }
+				GER = {
+					add_state_core = 969
+				}
+			}
+			if = {
+				limit = { AUS = { owns_state = 970 } }
+				GER = {
+					add_state_core = 970
+				}
+			}
+			if = {
+				limit = { AUS = { owns_state = 39 } }
+				GER = {
+					add_state_core = 39
 				}
 			}
 			AUS = {
@@ -197,7 +226,7 @@ NVX_formable_cat = {
 		available = {
 			owns_state = 107
 			count_triggers = {
-				amount = 12
+				amount = 20
 				owns_state = 900
 				owns_state = 102
 				owns_state = 736
@@ -213,7 +242,15 @@ NVX_formable_cat = {
 				owns_state = 105
 				owns_state = 108
 				owns_state = 785
-				owns_state = 106
+				owns_state = 106			
+				owns_state = 974
+				owns_state = 975
+				owns_state = 1094
+				owns_state = 977
+				owns_state = 978
+				owns_state = 1125
+				owns_state = 976
+				owns_state = 978
 			}
 		}
 		
@@ -261,6 +298,14 @@ NVX_formable_cat = {
 			add_state_core = 108
 			add_state_core = 785
 			add_state_core = 106
+			add_state_core = 974
+			add_state_core = 975
+			add_state_core = 1094
+			add_state_core = 977
+			add_state_core = 978
+			add_state_core = 1125
+			add_state_core = 976
+			add_state_core = 978			
 		}
 		
 		ai_will_do = {
@@ -319,7 +364,14 @@ NVX_formable_cat = {
 				owns_state = 489
 				owns_state = 493
 				owns_state = 910
-				owns_state = 695
+				owns_state = 695				
+				owns_state = 1030
+				owns_state = 1098
+				owns_state = 1096
+				owns_state = 1095
+				owns_state = 1097
+				owns_state = 1130
+				owns_state = 1131
 			}
 		}
 		
@@ -347,7 +399,7 @@ NVX_formable_cat = {
 		complete_effect = {
 			set_cosmetic_tag = CSA_golden_circle
 			set_capital = {
-				state = 315
+				state = 371
 			}
 		}
 		
@@ -363,9 +415,13 @@ NVX_formable_cat = {
 			owns_state = 153
 			owns_state = 152
 			owns_state = 4
+			owns_state = 1017
+			owns_state = 969
+			owns_state = 970
 			owns_state = 155
 			owns_state = 43
 			owns_state = 154
+			owns_state = 962
 		}
 		
 		visible = {
@@ -388,40 +444,53 @@ NVX_formable_cat = {
 			add_state_core = 153
 			add_state_core = 152
 			add_state_core = 4
+			add_state_core = 1017
+			add_state_core = 969
+			add_state_core = 970
 			add_state_core = 155
 			add_state_core = 43
 			add_state_core = 39
 			add_state_core = 154
+			add_state_core = 962
 			if = {
 				limit = { NVX_has_government_democratic = no }
 				add_state_core = 900
 				add_state_core = 102
+				add_state_core = 974
 				add_state_core = 736
 				add_state_core = 103
 				add_state_core = 109
-				add_state_core = 104
-				add_state_core = 848
-				add_state_core = 850
-				add_state_core = 851
-				add_state_core = 849
+				add_state_core = 1094
+				add_state_core = 975
 				add_state_core = 163
+				add_state_core = 109
 				add_state_core = 45
-				add_state_claim = 69
-				add_state_claim = 9
-				add_state_claim = 74
-				add_state_claim = 75
-				add_state_claim = 72
-				add_state_claim = 70
-				add_state_claim = 71
-				add_state_claim = 664
+				add_state_core = 9
+				add_state_core = 75
+				add_state_core = 69
+				add_state_core = 72
+				add_state_core = 71
+				add_state_core = 70
+				add_state_core = 664
+				add_state_core = 73
+				add_state_core = 45
+				add_state_core = 82
+				add_state_core = 84
+				add_state_core = 265
+				add_state_core = 516
+				add_state_core = 76
+				add_state_core = 83 
 				add_state_claim = 88
-				add_state_claim = 73
-				add_state_claim = 89
-				add_state_claim = 76
-				add_state_claim = 82
-				add_state_claim = 83
-				add_state_claim = 84
 				add_state_claim = 91
+				add_state_claim = 89
+				add_state_claim = 80
+				add_state_claim = 978
+				add_state_claim = 977
+				add_state_claim = 6626
+				add_state_claim = 104
+				add_state_claim = 848
+				add_state_claim = 850
+				add_state_claim = 849				
 			}
 		}
 		
@@ -440,31 +509,47 @@ NVX_formable_cat = {
 		
 		available = {
 			count_triggers = {
-				amount = 16
+				amount = 33				
 				owns_state = 677
 				owns_state = 554
 				owns_state = 680
 				owns_state = 814
+				owns_state = 1004
+				owns_state = 1005
+				owns_state = 1049
+				owns_state = 1047
+				owns_state = 1003
+				owns_state = 1048
+				owns_state = 1046
+				owns_state = 1049
 				owns_state = 553
-				owns_state = 815
-				owns_state = 676
-				owns_state = 291
-				owns_state = 455
 				owns_state = 881
 				owns_state = 454
-				owns_state = 914
 				owns_state = 810
-				owns_state = 812
 				owns_state = 915
+				owns_state = 812
 				owns_state = 811
+				owns_state = 914
+				owns_state = 453
+				owns_state = 455
+				owns_state = 993
+				owns_state = 675
+				owns_state = 1041
+				owns_state = 1016
+				owns_state = 815
+				owns_state = 676
+				owns_state = 1014
+				owns_state = 1015
+				owns_state = 1042
+				owns_state = 291
+				owns_state = 1043
+				owns_state = 1044
+				owns_state = 1002
 				owns_state = 656
 				owns_state = 894
 				owns_state = 679
 				owns_state = 895
 				owns_state = 293
-				owns_state = 183
-				owns_state = 886
-				owns_state = 164
 			}
 		}
 		
@@ -489,6 +574,9 @@ NVX_formable_cat = {
 			owns_state = 350
 			owns_state = 352
 			owns_state = 827
+			owns_state = 998
+			owns_state = 1000
+			owns_state = 999
 		}
 		
 		fire_only_once = yes
@@ -501,30 +589,56 @@ NVX_formable_cat = {
 				set_cosmetic_tag = simple_ottoman_empire
 				else = { set_cosmetic_tag = ottoman_empire }
 			}
-			add_state_core = 677
-			add_state_core = 554
-			add_state_core = 680
-			add_state_core = 814
-			add_state_core = 815
-			add_state_core = 676
-			add_state_core = 291
-			add_state_core = 553
-			add_state_core = 164
-			add_state_core = 183
-			add_state_claim = 455
-			add_state_claim = 894
-			add_state_claim = 679
-			add_state_claim = 895
-			add_state_claim = 293
-			add_state_claim = 656
-			add_state_claim = 886
-			add_state_claim = 881
-			add_state_claim = 454
-			add_state_claim = 914
-			add_state_claim = 810
-			add_state_claim = 812
-			add_state_claim = 915
-			add_state_claim = 811
+			hidden_effect = {
+				add_state_core = 677
+				add_state_core = 554
+				add_state_core = 680
+				add_state_core = 814
+				add_state_core = 1004
+				add_state_core = 1005
+				add_state_core = 1049
+				add_state_core = 1047
+				add_state_core = 1003
+				add_state_core = 1048
+				add_state_core = 1046
+				add_state_core = 1049
+				add_state_core = 553
+				add_state_core = 881
+				add_state_core = 810
+				add_state_core = 915
+				add_state_core = 811
+				add_state_core = 914
+				add_state_core = 453
+				add_state_core = 455
+				add_state_core = 993
+				add_state_core = 675
+				add_state_core = 1041
+				add_state_core = 1016
+				add_state_core = 815
+				add_state_core = 676
+				add_state_core = 1014
+				add_state_core = 1015
+				add_state_core = 1042
+				add_state_core = 291
+				add_state_core = 1043
+				add_state_core = 1044
+				add_state_core = 1002
+				add_state_core = 656
+				add_state_core = 894
+				add_state_core = 679
+				add_state_core = 895
+				add_state_core = 293			
+				add_state_claim = 454				
+				add_state_claim = 812
+				}
+				custom_effect_tooltip = ottoman_formation_tt
+				add_threat = 1
+				if = {
+				limit = { NCY = { is_subject_of = TUR } }
+				annex_country = { target = TUR transfer_troops = yes }
+				add_state_core = 836
+				add_state_claim = 183
+				}
 		}
 		
 		ai_will_do = {
@@ -543,7 +657,6 @@ NVX_formable_cat = {
 		available = {
 			owns_state = 69
 			owns_state = 9
-			owns_state = 74
 			owns_state = 72
 			owns_state = 75
 			owns_state = 70
@@ -573,7 +686,6 @@ NVX_formable_cat = {
 			}
 			add_state_core = 69
 			add_state_core = 9
-			add_state_core = 74
 			add_state_core = 72
 			add_state_core = 75
 			add_state_core = 70
@@ -603,7 +715,15 @@ NVX_formable_cat = {
 			owns_state = 676
 			owns_state = 675
 			owns_state = 291
+			owns_state = 1016
+			owns_state = 1041
+			owns_state = 1014
+			owns_state = 1015
+			owns_state = 1042
+			owns_state = 1043
+			owns_state = 1044
 			owns_state = 455
+			owns_state = 993
 			owns_state = 915
 			OR = {
 				has_idea = centralization_federal
@@ -630,13 +750,21 @@ NVX_formable_cat = {
 				else = { set_cosmetic_tag = arabfed }
 			}
 			set_capital = {
-				state =291
+				state = 291
 			}
 			add_state_core = 815
 			add_state_core = 676
 			add_state_core = 675
 			add_state_core = 291
+			add_state_core = 1016
+			add_state_core = 1041
+			add_state_core = 1014
+			add_state_core = 1015
+			add_state_core = 1042
+			add_state_core = 1043
+			add_state_core = 1044
 			add_state_core = 455
+			add_state_core = 933
 			add_state_core = 915
 		}
 		
