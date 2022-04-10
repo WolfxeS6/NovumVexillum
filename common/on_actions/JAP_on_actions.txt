@@ -1,0 +1,176 @@
+on_actions = {
+	
+	on_startup = {
+		effect = {
+			JAP = {
+				JAP_JieitaiPopularity_minmax_effect = yes
+				JAP_JieitaiDiscipline_minmax_effect = yes
+			}
+		}
+	}
+
+	on_weekly_KOR = {
+		effect = {
+			if = {
+				limit = {
+					NOT = { has_global_flag = dokdo_and_takeshima_global_flag }
+				}
+				add_to_variable = { var = GetDokdoSupport value = -0.1 }
+				Dokdo_Takeshima_setting = yes
+			}
+		}
+	}
+	
+	on_weekly_JAP = {
+		effect = {
+			if = {
+				limit = {
+					NOT = { has_global_flag = dokdo_and_takeshima_global_flag }
+				}
+				add_to_variable = { var = GetTakeshimaSupport value = -0.1 }
+				Dokdo_Takeshima_setting = yes
+			}
+		}
+		effect = {
+			if = {
+				limit = {
+					#NOT = { has_country_flag = JAP_JieitaiPopularity_automatic_edit_flag }
+					JAP_need_JieitaiDiscipline_50 = yes
+					check_variable = { JieitaiPopularity > 20 }
+				}
+				#set_country_flag = { flag = JAP_JieitaiPopularity_automatic_edit_flag value = 1 days = 13 }
+				JAP_JieitaiPopularity_automatic_edit = yes
+			}
+		}
+		effect = {
+			if = {
+				limit = {
+					#NOT = { has_country_flag = JAP_JieitaiDiscipline_automatic_edit_flag }
+					JAP_need_JieitaiPopularity_50 = yes
+					check_variable = { JieitaiDiscipline > 20 }
+				}
+				#set_country_flag = { flag = JAP_JieitaiDiscipline_automatic_edit_flag value = 1 days = 13 }
+				JAP_JieitaiDiscipline_automatic_edit = yes
+			}
+		}
+
+	}
+	
+	on_monthly_KOR = { 
+		effect = {
+			if = {
+				limit = { 1082 = {	has_dynamic_modifier = { modifier = dynamic_takeshima_token_4 }	} }
+				add_to_variable = { var = GetDokdoSupport value = -7 }
+				Dokdo_Takeshima_setting = yes
+			}
+			else_if = {
+				limit = { 1082 = {	has_dynamic_modifier = { modifier = dynamic_takeshima_token_3 }	} }
+				add_to_variable = { var = GetDokdoSupport value = -5 }
+				Dokdo_Takeshima_setting = yes
+			}
+			else_if = {
+				limit = { 1082 = {	has_dynamic_modifier = { modifier = dynamic_takeshima_token_2 }	} }
+				add_to_variable = { var = GetDokdoSupport value = -4 }
+				Dokdo_Takeshima_setting = yes
+			}
+			else_if = {
+				limit = { 1082 = {	has_dynamic_modifier = { modifier = dynamic_takeshima_token_1 }	} }
+				add_to_variable = { var = GetDokdoSupport value = -3 }
+				Dokdo_Takeshima_setting = yes
+			}
+		}
+	}
+	
+	on_monthly_JAP = { 
+		effect = { 
+			IF = {
+				limit = { has_idea = JAP_focus_on_discipline }
+				JAP_JieitaiDiscipline_add_5_effect = yes
+			}
+			IF = {
+				limit = { has_idea = JAP_focus_on_popularity }
+				JAP_JieitaiPopularity_add_5_effect = yes
+			}
+		}
+		effect = {
+			if = {
+				limit = { 1082 = {	has_dynamic_modifier = { modifier = dynamic_dokdo_token_4 }	} }
+				add_to_variable = { var = GetTakeshimaSupport value = -7 }
+				Dokdo_Takeshima_setting = yes
+			}
+			else_if = {
+				limit = { 1082 = {	has_dynamic_modifier = { modifier = dynamic_dokdo_token_3 }	} }
+				add_to_variable = { var = GetTakeshimaSupport value = -5 }
+				Dokdo_Takeshima_setting = yes
+			}
+			else_if = {
+				limit = { 1082 = {	has_dynamic_modifier = { modifier = dynamic_dokdo_token_2 }	} }
+				add_to_variable = { var = GetTakeshimaSupport value = -4 }
+				Dokdo_Takeshima_setting = yes
+			}
+			else_if = {
+				limit = { 1082 = {	has_dynamic_modifier = { modifier = dynamic_dokdo_token_1 }	} }
+				add_to_variable = { var = GetTakeshimaSupport value = -3 }
+				Dokdo_Takeshima_setting = yes
+			}
+		}
+	}
+	
+	on_state_control_changed = {
+		effect = {
+			if = {
+				limit = {
+					ROOT = { NOT = { tag = JAP } }
+					FROM.FROM = { 
+						has_dynamic_modifier = { modifier = dynamic_okinawa_separatism }
+					}
+				}
+				FROM.FROM = { 
+					remove_dynamic_modifier = { modifier = dynamic_okinawa_separatism } 
+				}
+			}
+		}
+		effect = {
+			if = {
+				limit = {
+					ROOT = { NOT = { tag = JAP } }
+					FROM.FROM = { 
+						has_dynamic_modifier = { modifier = dynamic_electricity_problem }
+					}
+				}
+				FROM.FROM = { 
+					remove_dynamic_modifier = { modifier = dynamic_electricity_problem } 
+				}
+			}
+		}
+		effect = {
+			if = {
+				limit = {
+					ROOT = { NOT = { tag = JAP } }
+					FROM.FROM = { 
+						has_dynamic_modifier = { modifier = dynamic_zainichi_problem }
+					}
+				}
+				FROM.FROM = { 
+					remove_dynamic_modifier = { modifier = dynamic_zainichi_problem } 
+				}
+			}
+		}
+		effect = {
+			if = {
+				limit = {
+					FROM.FROM = { 
+						AND = { 
+							has_state_flag = JAP_zainichi_state
+							NOT = { has_dynamic_modifier = { modifier = dynamic_zainichi_problem } }
+							is_owned_and_controlled_by = JAP
+						}
+					}
+				}
+				FROM.FROM = { 
+					add_dynamic_modifier = { modifier = dynamic_zainichi_problem } 
+				}
+			}
+		}
+	}
+}
