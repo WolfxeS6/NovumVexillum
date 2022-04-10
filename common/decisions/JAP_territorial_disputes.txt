@@ -1,0 +1,319 @@
+
+#
+# Writer : Ran Mitake
+#
+
+JAPKOR_dokdo_and_takeshima = {
+
+	##### 
+	## JAPAN
+	#####
+
+	JAP_diplomatic_criticism = {
+		icon = hol_draw_up_staff_plans
+
+		ai_will_do = {
+			base = 1
+		}
+
+		available = {
+			NOT = { 1082 = { has_dynamic_modifier = { modifier = dynamic_takeshima_token_4 } } }
+		}
+
+		visible = {
+			original_tag = JAP
+		}
+
+		cost = 35
+		days_remove = 42
+		
+		remove_effect = {
+			custom_effect_tooltip = JAP_takeshima_token
+			add_to_variable = { var = GetTakeshimaSupport value = 2 }
+			Dokdo_Takeshima_setting = yes
+			random_list = {
+				40 = { JAP_add_takeshima_token = yes }
+				60 = { }
+			}
+		}
+	}
+	
+	JAP_creation_of_history_education_program = {
+		icon = hol_draw_up_staff_plans
+
+		ai_will_do = {
+			base = 1
+		}
+
+		available = {
+			NOT = { 1082 = { has_dynamic_modifier = { modifier = dynamic_takeshima_token_4 } } }
+		}
+
+		visible = {
+			original_tag = JAP
+		}
+
+		cost = 50
+		days_remove = 42
+		
+		remove_effect = {
+			custom_effect_tooltip = JAP_takeshima_token
+			add_to_variable = { var = GetTakeshimaSupport value = 3 }
+			Dokdo_Takeshima_setting = yes
+			random_list = {
+				60 = { JAP_add_takeshima_token = yes }
+				40 = { }
+			}
+		}
+	}
+	
+	JAP_promote_takeshima_overseas = {
+		icon = hol_draw_up_staff_plans
+
+		ai_will_do = {
+			base = 1
+		}
+
+		available = {
+			NOT = { 1082 = { has_dynamic_modifier = { modifier = dynamic_takeshima_token_4 } } }
+		}
+
+		visible = {
+			original_tag = JAP
+		}
+
+		cost = 75
+		days_remove = 42
+		
+		remove_effect = {
+			custom_effect_tooltip = JAP_takeshima_token
+			add_to_variable = { var = GetTakeshimaSupport value = 3 }
+			Dokdo_Takeshima_setting = yes
+			random_list = {
+				90 = { JAP_add_takeshima_token = yes }
+				10 = { }
+			}
+		}
+	}
+	
+	JAP_budget_cuts_related_to_takeshima = {
+		icon = hol_draw_up_staff_plans
+
+		ai_will_do = {
+			base = 0
+		}
+
+		available = {
+		}
+
+		visible = {
+			original_tag = JAP
+		}
+
+		cost = 0
+		days_remove = 42
+		
+		remove_effect = {
+			KOR_add_dokdo_token = yes
+			add_political_power = 50
+		}
+	}
+	
+	JAP_proposed_territorial_negotiations = {
+		icon = hol_draw_up_staff_plans
+
+		ai_will_do = {
+			base = 0
+		}
+
+		available = {
+		}
+
+		visible = {
+			original_tag = JAP
+		}
+
+		cost = 0
+		days_re_enable = 365
+		
+		remove_effect = {
+			
+		}
+	}
+	
+	JAP_force_them_to_give_up = {
+		icon = hol_draw_up_staff_plans
+
+		ai_will_do = {
+			base = 100
+		}
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = liancourt_victory_tt
+				OR = {
+					1082 = { has_dynamic_modifier = { modifier = dynamic_takeshima_token_1 } }
+					1082 = { has_dynamic_modifier = { modifier = dynamic_takeshima_token_2 } }
+					1082 = { has_dynamic_modifier = { modifier = dynamic_takeshima_token_3 } }
+					1082 = { has_dynamic_modifier = { modifier = dynamic_takeshima_token_4 } }
+				}
+				KOR = { check_variable = { GetDokdoSupport < 20 } }
+			}
+		}
+
+		visible = {
+			original_tag = JAP
+		}
+
+		cost = 0
+		
+		complete_effect = {
+			news_event = { id = NV_JPN_news.31 }
+		}
+	}
+	
+	##### 
+	## KOREA
+	#####
+
+	KOR_dokdo_sightseeing_program = {
+		icon = hol_draw_up_staff_plans
+
+		ai_will_do = {
+			base = 1
+		}
+
+		available = {
+			NOT = { 1082 = { has_dynamic_modifier = { modifier = dynamic_takeshima_token_4 } } }
+		}
+
+		visible = {
+			original_tag = KOR
+		}
+
+		cost = 35
+		days_remove = 42
+		
+		remove_effect = {
+			custom_effect_tooltip = KOR_dokdo_token
+			add_to_variable = { var = GetDokdoSupport value = 2 }
+			Dokdo_Takeshima_setting = yes
+			random_list = {
+				40 = { KOR_add_dokdo_token = yes }
+				60 = { }
+			}
+		}
+	}
+	
+	KOR_creation_of_history_education_program = {
+		icon = hol_draw_up_staff_plans
+
+		ai_will_do = {
+			base = 1
+		}
+
+		available = {
+			NOT = { 1082 = { has_dynamic_modifier = { modifier = dynamic_takeshima_token_4 } } }
+		}
+
+		visible = {
+			original_tag = KOR
+		}
+
+		cost = 50
+		days_remove = 42
+		
+		remove_effect = {
+			custom_effect_tooltip = JAP_takeshima_token
+			add_to_variable = { var = GetDokdoSupport value = 3 }
+			Dokdo_Takeshima_setting = yes
+			random_list = {
+				60 = { KOR_add_dokdo_token = yes }
+				40 = { }
+			}
+		}
+	}
+	
+	KOR_promote_dokdo_overseas = {
+		icon = hol_draw_up_staff_plans
+
+		ai_will_do = {
+			base = 1
+		}
+
+		available = {
+			NOT = { 1082 = { has_dynamic_modifier = { modifier = dynamic_takeshima_token_4 } } }
+		}
+
+		visible = {
+			original_tag = KOR
+		}
+
+		cost = 75
+		days_remove = 42
+		
+		remove_effect = {
+			custom_effect_tooltip = JAP_takeshima_token
+			add_to_variable = { var = GetDokdoSupport value = 3 }
+			Dokdo_Takeshima_setting = yes
+			random_list = {
+				90 = { KOR_add_dokdo_token = yes }
+				10 = { }
+			}
+		}
+	}
+	
+	KOR_budget_cuts_related_to_dokdo = {
+		icon = hol_draw_up_staff_plans
+
+		ai_will_do = {
+			base = 0
+		}
+
+		available = {
+		}
+
+		visible = {
+			original_tag = KOR
+		}
+
+		cost = 0
+		days_remove = 42
+		
+		remove_effect = {
+			JAP_add_takeshima_token = yes
+			add_political_power = 50
+		}
+	}
+	
+	KOR_force_them_to_give_up = {
+		icon = hol_draw_up_staff_plans
+
+		ai_will_do = {
+			base = 100
+		}
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = liancourt_victory_tt
+				OR = {
+					1082 = { has_dynamic_modifier = { modifier = dynamic_dokdo_token_1 } }
+					1082 = { has_dynamic_modifier = { modifier = dynamic_dokdo_token_2 } }
+					1082 = { has_dynamic_modifier = { modifier = dynamic_dokdo_token_3 } }
+					1082 = { has_dynamic_modifier = { modifier = dynamic_dokdo_token_4 } }
+				}
+				JAP = { check_variable = { GetTakeshimaSupport < 20 } }
+			}
+		}
+
+		visible = {
+			original_tag = KOR
+		}
+
+		cost = 0
+		
+		complete_effect = {
+			news_event = { id = NV_JPN_news.32 }
+		}
+	}
+}
