@@ -10,10 +10,23 @@ JAPKOR_dokdo_and_takeshima = {
 	#####
 
 	JAP_diplomatic_criticism = {
-		icon = hol_draw_up_staff_plans
+		icon = generic_political_discourse
 
 		ai_will_do = {
 			base = 1
+			modifier = {
+				factor = 3
+				has_political_power > 200
+			}
+			modifier = {
+				factor = 5
+				OR = {
+					1082 = { has_dynamic_modifier = { modifier = dynamic_dokdo_token_1 } }
+					1082 = { has_dynamic_modifier = { modifier = dynamic_dokdo_token_2 } }
+					1082 = { has_dynamic_modifier = { modifier = dynamic_dokdo_token_3 } }
+					1082 = { has_dynamic_modifier = { modifier = dynamic_dokdo_token_4 } }
+				}
+			}
 		}
 
 		available = {
@@ -39,10 +52,23 @@ JAPKOR_dokdo_and_takeshima = {
 	}
 	
 	JAP_creation_of_history_education_program = {
-		icon = hol_draw_up_staff_plans
+		icon = generic_political_discourse
 
 		ai_will_do = {
 			base = 1
+			modifier = {
+				factor = 3
+				has_political_power > 200
+			}
+			modifier = {
+				factor = 5
+				OR = {
+					1082 = { has_dynamic_modifier = { modifier = dynamic_dokdo_token_1 } }
+					1082 = { has_dynamic_modifier = { modifier = dynamic_dokdo_token_2 } }
+					1082 = { has_dynamic_modifier = { modifier = dynamic_dokdo_token_3 } }
+					1082 = { has_dynamic_modifier = { modifier = dynamic_dokdo_token_4 } }
+				}
+			}
 		}
 
 		available = {
@@ -68,10 +94,23 @@ JAPKOR_dokdo_and_takeshima = {
 	}
 	
 	JAP_promote_takeshima_overseas = {
-		icon = hol_draw_up_staff_plans
+		icon = generic_political_discourse
 
 		ai_will_do = {
 			base = 1
+			modifier = {
+				factor = 3
+				has_political_power > 200
+			}
+			modifier = {
+				factor = 5
+				OR = {
+					1082 = { has_dynamic_modifier = { modifier = dynamic_dokdo_token_1 } }
+					1082 = { has_dynamic_modifier = { modifier = dynamic_dokdo_token_2 } }
+					1082 = { has_dynamic_modifier = { modifier = dynamic_dokdo_token_3 } }
+					1082 = { has_dynamic_modifier = { modifier = dynamic_dokdo_token_4 } }
+				}
+			}
 		}
 
 		available = {
@@ -119,30 +158,30 @@ JAPKOR_dokdo_and_takeshima = {
 		}
 	}
 	
-	JAP_proposed_territorial_negotiations = {
-		icon = hol_draw_up_staff_plans
+	#JAP_proposed_territorial_negotiations = {
+	#	icon = hol_draw_up_staff_plans
 
-		ai_will_do = {
-			base = 0
-		}
+	#	ai_will_do = {
+	#		base = 0
+	#	}
 
-		available = {
-		}
+	#	available = {
+	#	}
 
-		visible = {
-			original_tag = JAP
-		}
+	#	visible = {
+	#		original_tag = JAP
+	#	}
 
-		cost = 0
-		days_re_enable = 365
+	#	cost = 0
+	#	days_re_enable = 365
 		
-		remove_effect = {
-			
-		}
-	}
+	#	remove_effect = {
+	#		
+	#	}
+	#}
 	
 	JAP_force_them_to_give_up = {
-		icon = hol_draw_up_staff_plans
+		icon = GFX_decision_hol_exchange_intelligence_data
 
 		ai_will_do = {
 			base = 100
@@ -172,15 +211,79 @@ JAPKOR_dokdo_and_takeshima = {
 		}
 	}
 	
+	JAP_use_military_options = {
+		icon = GFX_decision_generic_break_treaty
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 10
+				OR = {
+					has_government = islamist
+					has_government = fascist
+					has_government = nationalist
+					has_government = communist
+					has_government = reactionary
+				}
+			}
+			modifier = {
+				add = 3
+				OR = {
+					KOR = { has_war = yes }
+					ROOT = { is_in_faction = yes }
+				}
+			}
+			modifier = {
+				add = 5
+				OR = {
+					KOR = { has_war_with = PRK }
+					KOR = { has_war_with = PRC }
+				}
+			}
+		}
+
+		available = {
+			NOT = { KOR = { is_in_faction_with = JAP } }
+			is_subject = no
+			has_completed_focus = JAP_takeshima_problems
+		}
+
+		visible = {
+			original_tag = JAP
+		}
+
+		cost = 15
+		
+		complete_effect = {
+			set_global_flag = dokdo_and_takeshima_global_flag
+			#JAP = { transfer_state = 1082 }
+			hidden_effect = { news_event = { id = NV_JPN_news.33 } }
+			KOR = { country_event = { id = NV_JPN_events.13 } }
+		}
+	}
+	
 	##### 
 	## KOREA
 	#####
 
 	KOR_dokdo_sightseeing_program = {
-		icon = hol_draw_up_staff_plans
+		icon = generic_political_discourse
 
 		ai_will_do = {
 			base = 1
+			modifier = {
+				factor = 3
+				has_political_power > 200
+			}
+			modifier = {
+				factor = 5
+				OR = {
+					1082 = { has_dynamic_modifier = { modifier = dynamic_takeshima_token_1 } }
+					1082 = { has_dynamic_modifier = { modifier = dynamic_takeshima_token_2 } }
+					1082 = { has_dynamic_modifier = { modifier = dynamic_takeshima_token_3 } }
+					1082 = { has_dynamic_modifier = { modifier = dynamic_takeshima_token_4 } }
+				}
+			}
 		}
 
 		available = {
@@ -206,10 +309,23 @@ JAPKOR_dokdo_and_takeshima = {
 	}
 	
 	KOR_creation_of_history_education_program = {
-		icon = hol_draw_up_staff_plans
+		icon = generic_political_discourse
 
 		ai_will_do = {
 			base = 1
+			modifier = {
+				factor = 3
+				has_political_power > 200
+			}
+			modifier = {
+				factor = 5
+				OR = {
+					1082 = { has_dynamic_modifier = { modifier = dynamic_takeshima_token_1 } }
+					1082 = { has_dynamic_modifier = { modifier = dynamic_takeshima_token_2 } }
+					1082 = { has_dynamic_modifier = { modifier = dynamic_takeshima_token_3 } }
+					1082 = { has_dynamic_modifier = { modifier = dynamic_takeshima_token_4 } }
+				}
+			}
 		}
 
 		available = {
@@ -224,7 +340,7 @@ JAPKOR_dokdo_and_takeshima = {
 		days_remove = 42
 		
 		remove_effect = {
-			custom_effect_tooltip = JAP_takeshima_token
+			custom_effect_tooltip = KOR_dokdo_token
 			add_to_variable = { var = GetDokdoSupport value = 3 }
 			Dokdo_Takeshima_setting = yes
 			random_list = {
@@ -235,10 +351,23 @@ JAPKOR_dokdo_and_takeshima = {
 	}
 	
 	KOR_promote_dokdo_overseas = {
-		icon = hol_draw_up_staff_plans
+		icon = generic_political_discourse
 
 		ai_will_do = {
 			base = 1
+			modifier = {
+				factor = 3
+				has_political_power > 200
+			}
+			modifier = {
+				factor = 5
+				OR = {
+					1082 = { has_dynamic_modifier = { modifier = dynamic_takeshima_token_1 } }
+					1082 = { has_dynamic_modifier = { modifier = dynamic_takeshima_token_2 } }
+					1082 = { has_dynamic_modifier = { modifier = dynamic_takeshima_token_3 } }
+					1082 = { has_dynamic_modifier = { modifier = dynamic_takeshima_token_4 } }
+				}
+			}
 		}
 
 		available = {
@@ -253,7 +382,7 @@ JAPKOR_dokdo_and_takeshima = {
 		days_remove = 42
 		
 		remove_effect = {
-			custom_effect_tooltip = JAP_takeshima_token
+			custom_effect_tooltip = KOR_dokdo_token
 			add_to_variable = { var = GetDokdoSupport value = 3 }
 			Dokdo_Takeshima_setting = yes
 			random_list = {
@@ -287,7 +416,7 @@ JAPKOR_dokdo_and_takeshima = {
 	}
 	
 	KOR_force_them_to_give_up = {
-		icon = hol_draw_up_staff_plans
+		icon = GFX_decision_hol_exchange_intelligence_data
 
 		ai_will_do = {
 			base = 100
