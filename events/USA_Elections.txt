@@ -7,7 +7,7 @@ country_event = {
 	id = election_USA.1
 	title = election_USA.1.t
 	desc = election_USA.1.d
-	picture = GFX_report_event_USA_election_2000_bush_gore
+	picture = GFX_report_event_election_2000_bush_gore
 
 	is_triggered_only = yes
 	
@@ -31,6 +31,8 @@ country_event = {
 				id = usa.66
 				days = 40
 			}
+			promote_character = USA_al_gore
+			
 			create_country_leader = {
 				name = "Michael Badnarik"
 				desc = "POLITICIAN_USA_MICHAEL_BADNARIK_DESC"
@@ -60,17 +62,7 @@ country_event = {
 			popularity = 0.03
 		}
 		hidden_effect = {
-			create_country_leader = {
-				name = "John Kerry"
-				desc = "POLITICIAN_USA_JOHN_KERRY_DESC"
-				picture = "John_Kerry.dds"
-				expire = "2050.1.1"
-				ideology = liberalist
-				
-				traits = {
-				
-				}
-			}
+			
 		}
 		add_political_power = 15
 		set_country_flag = usa_bush_victory_2000
@@ -90,6 +82,7 @@ country_event = {
 				is_historical_focus_on = yes
 			}
 		}
+		
 		set_politics = {
 			ruling_party = social_liberal
 			elections_allowed = yes
@@ -97,17 +90,6 @@ country_event = {
 		add_popularity = {
 			ideology = social_liberal
 			popularity = 0.03
-		}
-		create_country_leader = {
-			name = "Al Gore"
-			desc = "POLITICIAN_USA_AL_GORE_DESC"
-			picture = "Al_Gore.dds"
-			expire = "2050.1.1"
-			ideology = liberalist
-			
-			traits = {
-			
-			}
 		}
 		hidden_effect = {
 			create_country_leader = {
@@ -122,6 +104,7 @@ country_event = {
 				}
 			}
 		}
+		
 		add_political_power = -15
 		set_country_flag = usa_gore_victory_2000
 		
@@ -190,17 +173,7 @@ country_event = {
 		}
 		add_political_power = 20
 		hidden_effect = {
-			create_country_leader = {
-				name = "Barack Obama"
-				desc = "POLITICIAN_USA_BARACK_OBAMA_DESC"
-				picture = "Barack_Obama.dds"
-				expire = "2050.1.1"
-				ideology = liberalist
-			
-				traits = {
-				
-				}
-			}
+			promote_character = USA_barack_obama
 		}
 		ai_chance = {
 			factor = 75
@@ -227,18 +200,10 @@ country_event = {
 			ideology = social_liberal
 			popularity = 0.03
 		}
+		promote_character = USA_john_kerry
+
 		hidden_effect = {
-			create_country_leader = {
-				name = "Newt Gingrich"
-				desc = "POLITICIAN_USA_NEWT_GINGRICH_DESC"
-				picture = "Newt_Gingrich.dds"
-				expire = "2050.1.1"
-				ideology = constitutionalist
 			
-				traits = {
-				
-				}
-			}
 		}
 		ai_chance = {
 			factor = 25
@@ -261,17 +226,6 @@ country_event = {
 		}
 		add_political_power = 20
 		hidden_effect = {
-			create_country_leader = {
-				name = "John McCain"
-				desc = "POLITICIAN_USA_JOHN_MCCAIN_DESC"
-				picture = "John_McCain.dds"
-				expire = "2050.1.1"
-				ideology = fiscal_conservative
-			
-				traits = {
-				
-				}
-			}
 		}
 		ai_chance = {
 			factor = 75
@@ -304,17 +258,6 @@ country_event = {
 			}
 		}
 		hidden_effect = {
-			create_country_leader = {
-				name = "Barack Obama"
-				desc = "POLITICIAN_USA_BARACK_OBAMA_DESC"
-				picture = "Barack_Obama.dds"
-				expire = "2050.1.1"
-				ideology = liberalist
-				
-				traits = {
-				
-				}
-			}
 		}
 		ai_chance = {
 			factor = 25
@@ -332,7 +275,7 @@ country_event = {
 	id = election_USA.3
 	title = election_USA.3.t
 	desc = election_USA.3.d
-	picture = GFX_report_event_USA_election_2008_mccain_obama
+	picture = GFX_report_event_election_2008_mccain_obama
 	
 	is_triggered_only = yes
 	
@@ -361,18 +304,7 @@ country_event = {
 			ideology = social_liberal
 			popularity = 0.03
 		}
-		
-		create_country_leader = {
-			name = "Barack Obama"
-			picture = "Barack_Obama.dds"
-			expire = "2050.1.1"
-			ideology = liberalist
-			
-			traits = {
-			
-			}
-		}
-		
+		promote_character = USA_barack_obama
 		news_event = {
 			id = news_USA.4
 			hours = 6
@@ -397,17 +329,7 @@ country_event = {
 			ideology = conservative
 			popularity = 0.03
 		}
-		
-		create_country_leader = {
-			name = "John McCain"
-			picture = "John_McCain.dds"
-			expire = "2050.1.1"
-			ideology = fiscal_conservative
-			
-			traits = {
-			
-			}
-		}
+		promote_character = USA_john_mccain
 		
 		ai_chance = {
 			factor = 25
@@ -426,7 +348,7 @@ country_event = {
 	id = election_USA.4
 	title = election_USA.4.t
 	desc = election_USA.4.d
-	picture = GFX_report_event_USA_election_2012_romney_obama
+	picture = GFX_report_event_election_2012_romney_obama
 	
 	is_triggered_only = yes
 	
@@ -442,6 +364,16 @@ country_event = {
 	
 	immediate = {
 		set_country_flag = usa_election_2012
+		if = {
+			limit = {
+				NOT = {
+					has_country_leader = { 
+						name = "Barack Obama"
+					}
+				}
+			}
+			promote_character = USA_barack_obama
+		}
 	}
 	
 	option = {	#Obama
@@ -461,16 +393,6 @@ country_event = {
 			hours = 6
 		}
 		
-		create_country_leader = {
-			name = "Barack Obama"
-			picture = "Barack_Obama.dds"
-			expire = "2050.1.1"
-			ideology = liberalist
-			
-			traits = {
-			
-			}
-		}
 		
 		ai_chance = {
 			factor = 75
@@ -492,12 +414,7 @@ country_event = {
 			popularity = 0.03
 		}
 		
-		create_country_leader = {
-			name = "Mitt Romney"
-			picture = "Mitt_Romney.dds"
-			expire = "2050.1.1"
-			ideology = constitutionalist
-		}
+		promote_character = USA_Mitt_Romney
 		
 		ai_chance = {
 			factor = 25
@@ -699,15 +616,7 @@ country_event = {
 			ideology = conservative
 			popularity = 0.03
 		}
-		create_country_leader = {
-			name = "Donald Trump"
-			picture = "Donald_Trump.dds"
-			ideology = right_wing_conservative
-			traits = {
-				friend_of_russia
-				enemy_of_china
-			}
-		}
+		promote_character = USA_Donald_Trump
 		
 		news_event = {
 			id = news_USA.5
@@ -729,11 +638,7 @@ country_event = {
 		trigger = { has_country_flag = republican_nomination_2016_cruz }
 		set_politics = { ruling_party = conservative elections_allowed = yes }
 		add_popularity = { ideology = conservative popularity = 0.03 }
-		create_country_leader = {
-			name = "Ted Cruz"
-			picture = "Ted_Cruz.dds"
-			ideology = right_wing_conservative
-		}
+		promote_character = USA_Ted_Cruz
 		
 		ai_chance = {
 			factor = 10
@@ -746,11 +651,7 @@ country_event = {
 		trigger = { has_country_flag = republican_nomination_2016_rubio }
 		set_politics = { ruling_party = conservative elections_allowed = yes }
 		add_popularity = { ideology = conservative popularity = 0.03 }
-		create_country_leader = {
-			name = "Marco Rubio"
-			picture = "Marco_Rubio.dds"
-			ideology = fiscal_conservative
-		}
+		promote_character = USA_Marco_Rubio
 		
 		ai_chance = {
 			factor = 10
@@ -763,11 +664,8 @@ country_event = {
 		trigger = { has_country_flag = republican_nomination_2016_kasich }
 		set_politics = { ruling_party = conservative elections_allowed = yes }
 		add_popularity = { ideology = conservative popularity = 0.03 }
-		create_country_leader = {
-			name = "John Kasich"
-			picture = "John_Kasich.dds"
-			ideology = christian_democrat
-		}
+
+		promote_character = USA_John_Kasich
 		
 		ai_chance = {
 			factor = 10
@@ -802,17 +700,7 @@ country_event = {
 			hours = 6
 		}
 		
-		create_country_leader = {
-			name = "Hillary Clinton"
-			picture = "Hillary_Clinton.dds"
-			ideology = centrist
-			
-			traits = {
-				friend_of_germany
-				friend_of_britain
-				friend_of_france
-			}
-		}
+		promote_character = USA_Hillary_Clinton
 		
 		ai_chance = {
 			factor = 10
@@ -829,11 +717,7 @@ country_event = {
 		add_popularity = { ideology = progressive popularity = 0.03 }
 		add_popularity = { ideology = democratic_socialist popularity = 0.03 }
 		
-		create_country_leader = {
-			name = "Bernie Sanders"
-			picture = "Bernie_Sanders.dds"
-			ideology = liberalist
-		}
+		promote_character = USA_Bernie_Sanders
 		
 		ai_chance = {
 			factor = 10
@@ -886,10 +770,23 @@ country_event = {
 				has_country_flag = republican_nomination_2020_trump
 			}
 		}
-		
+		set_politics = {
+			ruling_party = conservative
+			elections_allowed = yes
+		}
 		add_popularity = {
 			ideology = conservative
 			popularity = 0.05
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_country_leader = { 
+						name = "Donald Trump"
+					}
+				}
+			}
+			promote_character = USA_Donald_Trump
 		}
 		
 		ai_chance = {
@@ -916,6 +813,16 @@ country_event = {
 			ideology = conservative
 			popularity = 0.03
 		}
+		if = {
+			limit = {
+				NOT = {
+					has_country_leader = { 
+						name = "Ted Cruz"
+					}
+				}
+			}
+			promote_character = USA_Ted_Cruz
+		}
 		
 		ai_chance = {
 			factor = 10
@@ -940,6 +847,16 @@ country_event = {
 		add_popularity = {
 			ideology = conservative
 			popularity = 0.03
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_country_leader = { 
+						name = "Marco Rubio"
+					}
+				}
+			}
+			promote_character = USA_Marco_Rubio
 		}
 		
 		ai_chance = {
@@ -966,6 +883,8 @@ country_event = {
 			ideology = social_liberal
 			popularity = 0.03
 		}
+
+		promote_character = USA_Joe_Biden
 		
 		ai_chance = {
 			factor = 10
@@ -991,7 +910,16 @@ country_event = {
 			ideology = social_liberal
 			popularity = 0.03
 		}
-		
+		if = {
+			limit = {
+				NOT = {
+					has_country_leader = { 
+						name = "Bernie Sanders"
+					}
+				}
+			}
+			promote_character = USA_Bernie_Sanders
+		}
 		ai_chance = {
 			factor = 10
 			modifier = {
@@ -1016,6 +944,7 @@ country_event = {
 			ideology = social_liberal
 			popularity = 0.03
 		}
+		promote_character = USA_Tulsi_Gabbard2020
 		
 		ai_chance = {
 			factor = 10
