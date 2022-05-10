@@ -1,0 +1,360 @@
+add_namespace = fne
+
+# The Fall of Basrah
+news_event = {
+	id = fne.1
+	title = fne.1.t
+	desc = fne.1.d
+	picture = GFX_news_event_Abrams_Fallujah
+
+	major = yes
+	
+	trigger = {
+		OR = {
+			1002 = { is_controlled_by = USA }
+			1002 = { is_controlled_by = ENG }
+		}
+		1002 = { is_owned_by = IRQ }
+		USA = { 
+			has_war_with = IRQ 
+			NOT = { has_global_flag = fall_of_Basrah }
+		}
+	}
+	
+	immediate = {
+		set_global_flag = fall_of_Basrah
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	option = {
+		name = fne.1.a
+		trigger = {
+			NOT = {
+				TAG = USA
+				TAG = IRQ
+			}
+		}
+	}
+	option = {
+		name = fne.1.b
+		trigger = { TAG = USA }
+	}
+	option = {
+		name = fne.1.c
+		trigger = { TAG = IRQ }
+	}
+}
+
+# The Fall of Baghdad
+news_event = {
+	id = fne.2
+	title = fne.2.t
+	desc = fne.2.d
+	picture = GFX_news_event_US_tanks_baghdad
+	
+	major = yes
+	
+	trigger = {
+		OR = {
+			291 = { is_controlled_by = USA }
+			291 = { is_controlled_by = ENG }
+		}
+		291 = { is_owned_by = IRQ }
+		USA = { 
+			has_war_with = IRQ 
+			NOT = { has_global_flag = fall_of_Baghdad }
+		}
+	}
+	
+	immediate = {
+		set_global_flag = fall_of_Baghdad
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	option = {
+		name = fne.2.a
+		trigger = {
+			NOT = {
+				TAG = USA
+				TAG = IRQ
+			}
+		}
+	}
+	option = {
+		name = fne.2.b
+		trigger = { TAG = USA }
+	}
+	option = {
+		name = fne.2.c
+		trigger = { TAG = IRQ }
+	}
+}
+
+# UK join Iraqi Freedom
+news_event = {
+	id = fne.3
+	title = fne.3.t
+	desc = fne.3.d
+	picture = GFX_news_event_brits_iraq
+	
+	major = yes
+	is_triggered_only = yes
+	
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+	
+	option = {
+		name = fne.3.a
+		trigger = {
+			NOT = {
+			OR = {
+				TAG = ENG
+				TAG = USA
+				TAG = IRQ
+			}
+			}
+		}
+	}
+	option = {
+		name = fne.3.b
+		trigger = { TAG = USA }
+	}
+	option = {
+		name = fne.3.c
+		trigger = { TAG = IRQ }
+	}
+		option = {
+		name = fne.3.e
+		trigger = { TAG = ENG }
+	}
+}
+
+# Turkey join Iraqi Freedom
+news_event = {
+	id = fne.4
+	title = fne.4.t
+	desc = fne.4.d
+	picture = GFX_news_event_turkey_usa
+	
+	
+	major = yes
+	is_triggered_only = yes
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+	
+	option = {
+		name = fne.4.a
+		trigger = {
+			NOT = {
+			OR = {
+				TAG = TUR
+				TAG = IRQ
+				TAG = USA
+			}
+			}
+		}
+	}
+	option = {
+		name = fne.4.b
+		trigger = { TAG = USA }
+	}
+	option = {
+		name = fne.4.c
+		trigger = { TAG = IRQ }
+	}
+		option = {
+		name = fne.4.e
+		trigger = { TAG = TUR }
+	}
+}
+
+# Saddam Press Conference
+news_event = {
+	id = fne.5
+	title = fne.5.t
+	desc = fne.5.d
+	picture = GFX_news_event_saddam_speech_picture
+	
+	major = yes
+	is_triggered_only = yes
+	
+	
+	option = {
+		name = fne.5.a
+		trigger = {
+			NOT = { has_war_with = IRQ }
+			NOT = { tag = IRQ }
+		}
+	}
+	option = {
+		name = fne.5.b
+		trigger = { tag = IRQ }
+	}
+	option = {
+		name = fne.5.c
+		trigger = { TAG = USA }
+	}
+		option = {
+		name = fne.5.e
+		trigger = { 
+		has_war_with = IRQ 
+		NOT = { tag = USA }
+		}
+		
+	}
+}
+
+
+#Iraqi Collapse
+news_event = {
+	id = fne.6
+	title = fne.6.t
+	desc = fne.6.d
+	picture = GFX_news_event_highway_of_death_iraq
+	
+	major = yes
+	is_triggered_only = yes
+
+	
+	option = {
+		name = fne.6.a
+		trigger = {
+			NOT = { has_war_with = IRQ }
+			NOT = { tag = IRQ }
+		}
+	}
+	option = {
+		name = fne.6.b
+		trigger = { tag = IRQ }
+	}
+		option = {
+		name = fne.6.e
+		trigger = { has_war_with = IRQ }
+	}
+}
+
+#Weapons of mass desctruction
+news_event = {
+	id = fne.7
+	title = fne.7.t
+	desc = fne.7.d
+	picture = GFX_news_event_NBC_marines
+	
+	major = yes
+	fire_only_once = yes
+	
+	trigger = {
+	OR = {
+		IRQ = {
+		is_puppet_of = USA
+		}
+		IRQ = {
+		is_in_faction_with = USA
+		}
+	}
+	}
+	
+	
+	mean_time_to_happen = {
+		days = 200
+	}
+	
+	
+	option = {
+		name = fne.7.a
+		trigger = {
+			NOT = { tag = USA }
+			NOT = { tag = IRQ }
+		}
+	}
+	option = {
+		name = fne.7.b
+		trigger = { tag = IRQ }
+	}
+		option = {
+		name = fne.7.c
+		trigger = { 			
+		tag = USA 
+		}
+	}
+}
+
+#Iraqi Freedom
+news_event = {
+	id = fne.8
+	title = fne.8.t
+	desc = fne.8.d
+	picture = GFX_news_event_Bradley_Iraq
+	
+	major = yes
+	is_triggered_only
+	
+	trigger = {
+	USA = { 
+	has_global_flag = operation_iraqi_freedom
+	}
+	}
+	
+	
+	option = {
+		name = fne.8.a
+		trigger = {
+			NOT = { tag = USA }
+			NOT = { tag = ENG }
+			NOT = { tag = IRQ }
+		}
+	}
+	option = {
+		name = fne.8.b
+		trigger = { tag = IRQ }
+	}
+		option = {
+		name = fne.8.c
+		trigger = { tag = USA }
+	}
+}
+
+
+#Bush Ultimatum
+news_event = {
+	id = fne.9
+	title = fne.9.t
+	desc = fne.9.d
+	picture = GFX_news_event_bush_ultimatum
+	
+	major = yes
+	is_triggered_only
+	
+	trigger = {
+	USA = { 
+	has_global_flag = iraq_resolution
+	}
+	}	
+	
+	option = {
+		name = fne.9.a
+		trigger = {
+			NOT = { tag = USA }
+			NOT = { tag = ENG }
+			NOT = { tag = IRQ }
+		}
+	}
+	option = {
+		name = fne.9.b
+		trigger = { tag = IRQ }
+	}
+		option = {
+		name = fne.9.c
+		trigger = { tag = USA }
+	}
+}

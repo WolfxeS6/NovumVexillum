@@ -1,0 +1,35 @@
+add_namespace = miscFlavor
+
+# The Fall of Basrah
+news_event = {
+	id = miscFlavor.1
+	title = miscFlavor.1.t
+	desc = miscFlavor.1.d
+	picture = GFX_news_event_concorde_crash
+
+	major = yes
+	fire_only_once = yes
+	
+	trigger = {
+
+	}
+	
+	option = {
+		name = miscFlavor.1.a
+		trigger = {
+			NOT = {
+				TAG = FRA
+				TAG = ENG
+			}
+		}
+	}
+	option = {
+		name = miscFlavor.1.b
+		trigger = { 
+		OR = {
+			TAG = FRA
+			TAG = ENG
+		}
+		}
+	}
+}

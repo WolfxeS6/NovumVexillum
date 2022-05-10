@@ -1,0 +1,111 @@
+add_namespace = ENG_flavor
+
+#Invasion of Iraq
+country_event = {
+	id = ENG_flavor.1
+	title = ENG_flavor.1.t
+	desc =  ENG_flavor.1.d
+	picture = GFX_report_event_iraq_war3
+
+	is_triggered_only = yes
+
+	trigger = {
+		USA = { has_war_with = IRQ }
+		has_global_flag = operation_iraqi_freedom
+		has_country_flag = ENG_iraqi_freedom_ok
+		NOT = { has_global_flag = UK_iraqi_freedom }
+		tag = ENG
+
+	}
+
+	immediate = {
+		set_global_flag = UK_iraqi_freedom
+	}
+
+	option = {
+		name = ENG_flavor.1.o1
+		
+		add_to_war = { 
+			targeted_alliance = USA
+			enemy = IRQ
+			hostility_reason = asked_to_join
+		}
+
+		hidden_effect = {
+			load_oob = "UK_invading_force_IRQ"
+			news_event = {
+				id = fne.3
+				hours = 6
+			}
+		}
+	}
+}
+
+#Invasion of Iraq demand
+country_event = {
+	id = ENG_flavor.2
+	title = ENG_flavor.2.t
+	desc =  ENG_flavor.2.d
+	picture = GFX_report_event_iraq_war2
+
+	is_triggered_only = yes
+	trigger = {
+	tag = ENG
+	}
+
+
+	option = {
+		name = ENG_flavor.2.o1
+		add_political_power = -10
+		set_country_flag = ENG_iraqi_freedom_ok
+		ai_chance = { factor = 80 }
+	
+
+	}
+	
+		option = {
+		name = ENG_flavor.2.o2
+		add_political_power = -50
+		ai_chance = { factor = 20 }
+		
+
+	}
+}
+
+
+#End of Invasion
+country_event = {
+	id = ENG_flavor.3
+	title = ENG_flavor.3.t
+	desc =  ENG_flavor.3.d
+	picture = GFX_report_event_iraq_war6
+
+	fire_only_once = yes
+
+	trigger = {
+	tag = ENG
+	}
+	trigger = {
+	has_global_flag = success_of_operation_iraqi_freedom
+	}
+
+
+	option = {
+		name = ENG_flavor.3.o1
+	add_political_power = 25
+	hidden_effect = {
+	delete_unit_template_and_units = {
+    division_template = "Iraq Air Assault Brigade"
+    disband = no
+		}
+		delete_unit_template_and_units = {
+    division_template = "Iraq Armored Brigade"
+    disband = no
+		}
+		delete_unit_template_and_units = {
+    division_template = "Iraq Infantry Brigade"
+    disband = no
+		}
+		}
+	}
+}

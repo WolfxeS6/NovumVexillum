@@ -1,0 +1,395 @@
+decisions_iraq = {
+
+	work_on_military_IRQ = {
+	
+	
+	    available = { 
+		command_power > 100
+		has_army_experience > 150
+			}
+		allowed = { 
+		tag = IRQ
+			}
+		visible = {		
+		OR = {
+		has_idea = iraq_army_heavy
+		has_idea = iraq_army_light
+		}
+		}
+		
+		icon = generic_prepare_civil_war
+
+		cost = 50
+		days_remove = 180		
+		
+
+		complete_effect = {
+		add_command_power = -100
+		army_experience = -150
+		
+		if = {
+		limit = { 
+		has_idea = iraq_army_light
+		} 
+		remove_ideas = iraq_army_light
+		}
+		
+		if = {
+		limit = { 
+		has_idea = iraq_army_heavy
+		}
+		swap_ideas = { 
+					remove_idea = iraq_army_heavy
+					add_idea = iraq_army_light
+				}
+		}
+			
+		}		
+		ai_will_do = {
+			base = 0
+			modifier = {
+			add = 40
+			is_historical_focus_on = no
+			}
+			modifier = {
+			add = 100
+			NOT = {
+				OR = {
+				has_government = nationalist
+				has_government = fascist
+				has_government = islamist
+				has_government = communist
+				}
+			}
+			}
+		}
+		
+	}
+	
+	
+	recognize_Kurdistan_IRQ = {
+	
+	
+	    available = { 
+		has_war = no
+		owns_state = 1182
+			}
+		allowed = { 
+		tag = IRQ
+			}
+		visible = {		
+		has_idea = iraq_embargo_heavy
+		}
+		
+		icon = democracy
+
+		cost = 50		
+		fire_only_once = yes
+
+		complete_effect = {
+		
+		add_war_support = -0.05
+		
+		815 = { 
+		remove_claim_by = IRQ
+		}
+		1182 = {
+		remove_core_of  = IRQ
+		transfer_state_to = KUR
+		}
+		
+		KUR = {
+		remove_ideas = partially_recognized_state
+		}
+
+		swap_ideas = { 
+					remove_idea = iraq_embargo_heavy
+					add_idea = iraq_embargo_light
+				}		
+		}		
+		
+		ai_will_do = {
+			base = 0
+			modifier = {
+			add = 10
+			is_historical_focus_on = no
+			}
+		}
+	}
+	
+	
+	ask_for_no_embargo = {
+	
+	    available = {
+		has_war = no		
+		NOT = {
+		OR = {
+		has_government = nationalist
+		has_government = fascist
+		has_government = islamist
+		has_government = communist
+		}
+		}
+			}
+		allowed = { 
+		tag = IRQ
+			}
+		visible = {		
+		has_idea = iraq_embargo_heavy
+		}
+		
+		icon = democracy
+
+		cost = 10		
+		fire_only_once = yes
+
+		complete_effect = {
+
+		if = {
+		limit = { 
+		has_idea = iraq_embargo_heavy
+		}
+		remove_ideas = iraq_embargo_heavy
+		}
+		
+		if = {
+		limit = { 
+		has_idea = iraq_embargo_light
+		}
+		remove_ideas = iraq_embargo_light
+		}
+		
+		}		
+		
+		ai_will_do = {
+			base = 1000
+		}
+	}
+
+
+
+}
+decisions_iraqi_freedom = {
+
+	iraq_hold_two_weeks = {
+	
+	
+	    allowed = { 
+		tag = IRQ 
+			}
+		activation = {
+		has_war_with = USA		
+		}
+		available = {
+		OR = {
+			has_war = no
+			NOT = {
+			controls_state  = 291
+			}
+		}
+		}
+
+		
+		icon = armed_forces_officers
+
+		days_mission_timeout = 14		
+		#cost = 35
+		is_good = yes
+		fire_only_once = yes
+		days_remove = 30
+		
+		timeout_effect = {
+			add_war_support = 0.05
+			add_stability = 0.02
+			set_country_flag = iraq_held_two_weeks
+			country_event = {
+			id = IRQ_flavor.5
+			hours = 1
+			}
+		}
+		
+		
+	}
+	
+		iraq_war_capabilities_mission = {
+	
+	    allowed = { 
+		tag = IRQ 
+			}
+		activation = {
+		has_war_with = USA
+		has_country_flag = iraq_held_two_weeks		
+		}
+		available = {
+			has_full_control_of_state = 1045
+			has_full_control_of_state = 1182
+			has_full_control_of_state = 1002
+			has_full_control_of_state = 675
+			has_full_control_of_state = 1044 
+			has_full_control_of_state = 1043
+			has_full_control_of_state = 1015
+			has_full_control_of_state = 1042
+			has_full_control_of_state = 291
+			has_full_control_of_state = 1014
+			has_full_control_of_state = 815
+			has_full_control_of_state = 1041
+			has_full_control_of_state = 676 
+			has_full_control_of_state = 1016
+		}
+		icon = generic_prepare_civil_war
+
+		days_mission_timeout = 180
+		#cost = 35
+		is_good = no
+		fire_only_once = yes
+		days_remove = 30		
+		
+		timeout_effect = {
+			country_event = {
+			id = IRQ_flavor.2
+			hours = 1
+			}
+		}
+		complete_effect = {
+			country_event = {
+			id = IRQ_flavor.3
+			}
+		
+		}
+		
+	
+		cancel_trigger = {	
+		is_subject = yes
+		}
+		
+	}
+	
+	iraq_war_anti_air_mission = {
+	
+	
+	    allowed = { 
+		tag = IRQ 
+			}
+		activation = {
+		has_war_with = USA
+			has_full_control_of_state = 1045
+			has_full_control_of_state = 1182
+			has_full_control_of_state = 1002
+			has_full_control_of_state = 675
+			has_full_control_of_state = 1044 
+			has_full_control_of_state = 1043
+			has_full_control_of_state = 1015
+			has_full_control_of_state = 1042
+			has_full_control_of_state = 291
+			has_full_control_of_state = 1014
+			has_full_control_of_state = 815
+			has_full_control_of_state = 1041
+			has_full_control_of_state = 676 
+			has_full_control_of_state = 1016
+			has_full_control_of_state = 656	
+		}
+		available = {
+		anti_air_building > 5
+		}
+		icon = generic_prepare_civil_war
+
+		days_mission_timeout = 180
+		#cost = 35
+		is_good = no
+		fire_only_once = yes
+		days_remove = 30		
+		
+		timeout_effect = {
+			country_event = {
+			id = IRQ_flavor.2
+			}
+		}
+		complete_effect = {
+			country_event = {
+			id = IRQ_flavor.4
+			}
+		
+		}
+		
+	
+		cancel_trigger = {	
+		is_subject = yes
+		}
+		
+	}
+	
+	iraq_arab_volunteers = {
+	
+	
+	   allowed = { 
+		tag = IRQ 
+			}
+		visible = {		
+		has_war_with = USA
+		}
+		
+		icon = generic_prepare_civil_war
+
+		cost = 50
+		fire_only_once = yes
+		#days_remove = 30		
+		
+
+		complete_effect = {
+
+			
+		random_list = {
+				50 = {
+				country_event = {
+				id = IRQ_flavor.6
+							}
+					}
+				25 = {
+				country_event = {
+				id = IRQ_flavor.7
+							}
+				}
+				25 = {
+				country_event = {
+				id = IRQ_flavor.8
+							}
+					}
+			}
+		
+		}		
+	}
+	
+	Baghdad_capital = {
+	
+	
+	   allowed = { 
+		tag = IRQ 
+			}
+		visible = {		
+		291 = { 
+		is_capital = no
+		}
+		}
+		
+		icon = generic_prepare_civil_war
+
+		cost = 25
+		fire_only_once = yes
+		#days_remove = 30		
+		
+
+		complete_effect = {
+		set_capital = {state = 291}
+		
+		}		
+		ai_will_do = {
+			base = 100
+			modifier = {
+			add = -110
+			has_war_with = USA
+			}
+		}
+	}
+	
+
+}	
