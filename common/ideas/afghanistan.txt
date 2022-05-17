@@ -2,19 +2,126 @@ ideas = {
 
 	country = {
 	
-		AFG_the_northern_alliance = {
+		AFG_northern_alliance_guerilla = {
 		
-			picture = FRA_army_of_aggression_focus
+			picture = tfv_can_conscription_crisis
 			
 			allowed = {
 				always = no
 			}
 			
 			modifier = {
-				stability_factor = -0.25
+				stability_factor = -0.025
 				political_power_factor = -0.25
 				army_morale_factor = -0.1
 				army_org_factor = -0.1
+				army_attack_factor = -0.025
+				conscription_factor = -0.15
+			}
+			
+		}
+		
+		AFG_bad_tech = {
+		
+			picture = SOV_organize_wreckers
+			
+			allowed = {
+				always = no
+			}
+			
+			research_bonus = { 
+				electronics = -0.15 
+				armor = -0.15 
+				air_equipment = -0.15 
+			}
+				
+			equipment_bonus = {	
+				armor = {
+					reliability = -0.25
+					soft_attack = -0.15
+					hard_attack = -0.15
+					armor_value  = -0.15
+					instant = yes
+				}
+				fighter_equipment = {
+					reliability = -0.25
+					air_agility = -0.2
+				}
+				CAS_equipment = {
+					reliability = -0.25
+					air_agility = -0.2
+				}
+				tac_bomber_equipment = {
+					reliability = -0.25
+					air_agility = -0.2
+				}
+				strat_bomber_equipment = {
+					reliability = -0.25
+					air_agility = -0.2
+				}
+			}
+			
+		}
+		
+		AFG_northern_alliance = {
+		
+			picture = northern_alliance
+			
+			allowed = {
+				always = no
+			}
+			
+			modifier = {
+				army_core_defence_factor = 0.1
+				dig_in_speed_factor = 0.25
+				max_dig_in = 2.5
+				army_org_factor = 0.2
+			}
+			targeted_modifier = {
+					tag = TAL
+					#attack_bonus_against = 0.05
+					defense_bonus_against = 0.05
+			}
+			
+		}
+		
+		AFG_US_bombing_idea = {
+			picture = US_bombing
+			
+			allowed = { 
+			has_war = yes
+			}
+			removal_cost = -1
+			
+			modifier = {
+			
+			army_core_attack_factor = 0.05
+			army_org_factor = 0.05
+			army_org_regain = 0.10
+			supply_consumption_factor = -0.2
+			ai_focus_aggressive_factor = 1.0
+			army_armor_speed_factor = 0.05
+			recon_factor = 0.2
+			}
+			
+		}
+		
+		TAL_US_bombing_idea = {
+			picture = US_bombing
+			
+			allowed = { 
+			has_war = yes
+			}
+			removal_cost = -1
+			
+			modifier = {
+			
+			army_org_factor = -0.4
+			army_org_regain = -0.4
+			army_attack_factor = -0.25
+			army_defence_factor = -0.25
+			cas_damage_reduction = -0.3
+			army_speed_factor = -0.15
 			}
 			
 		}
