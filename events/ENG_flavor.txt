@@ -84,14 +84,20 @@ country_event = {
 
 	trigger = {
 	tag = ENG
-	}
-	trigger = {
+	OR = {
 	has_global_flag = success_of_operation_iraqi_freedom
+	IRQ = { is_puppet_of = USA }
+	}
+	NOT = {
+	has_country_flag = IRQ_invasion_units_deleted 
+	}
 	}
 
 
 	option = {
 		name = ENG_flavor.3.o1
+		
+	set_country_flag = IRQ_invasion_units_deleted 
 	add_political_power = 25
 	hidden_effect = {
 	delete_unit_template_and_units = {

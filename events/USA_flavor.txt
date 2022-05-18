@@ -194,16 +194,22 @@ country_event = {
 	desc =  USA_flavor.5.d
 	picture = GFX_report_event_iraq_war6
 
-	fire_only_once = yes
-
 	trigger = {
 	tag = USA
+	OR = {
 	has_global_flag = success_of_operation_iraqi_freedom
+	IRQ = { is_puppet_of = USA }
+	}
+	NOT = {
+	has_country_flag = IRQ_invasion_units_deleted 
+	}
 	}
 
 
 	option = {
-		name = USA_flavor.5.o1
+	name = USA_flavor.5.o1
+	
+	set_country_flag = IRQ_invasion_units_deleted 
 	add_political_power = 25
 	delete_unit_template_and_units = {
     division_template = "Iraq Independent Artillery Brigade"
