@@ -4059,6 +4059,67 @@ JAP_jieitai_system = {
 		}
 	}
 
+	JAP_resurrection_of_army = {
+		icon = generic_agreement
+
+		#allowed = { always = yes }
+		
+		available = {
+			OR = {
+				has_completed_focus = JAP_right_of_collective_self_defense
+				has_idea = japanese_article_9_adapted
+			}
+		}
+
+		visible = {
+			NOT = { has_country_flag = Japanese_Army_flag }
+		}
+
+		cost = 15
+		fire_only_once = yes
+		
+		days_remove = 42
+				
+		modifier = {
+		}
+		
+		remove_effect = {
+			hidden_effect = {
+				remove_ideas = { japanese_article_9 }
+				remove_ideas = { japanese_article_9_adapted }
+				news_event = NV_JPN_news.34
+			}
+			set_country_flag = Japanese_Army_flag
+			JAP_JieitaiPopularity_add_2_half_effect = yes
+			JAP_JieitaiDiscipline_add_2_half_effect = yes
+			army_experience = 50
+		}
+
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 1
+				has_war = yes
+			}
+			modifier = {
+				add = 1
+				is_in_faction = yes
+			}
+			modifier = {
+				add = 10
+				has_government = fascist
+			}
+			modifier = {
+				add = 10
+				has_government = nationalist
+			}
+			modifier = {
+				add = 10
+				has_government = communist
+			}
+		}
+	}
+
 	JAP_debug_point_ = {
 		icon = generic_agreement
 
