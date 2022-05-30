@@ -48,11 +48,11 @@ ideas = {
 			}
 			
 			modifier = {
-				consumer_goods_factor = 0.03
+				consumer_goods_factor = 0.01
 				agency_upgrade_time = -0.1
 				resistance_damage_to_garrison = -0.1
 				foreign_subversive_activites = -0.1
-				join_faction_tension = -0.05
+				stability_factor = 0.025
 			}
 			
 			cancel_if_invalid = no
@@ -97,11 +97,11 @@ ideas = {
 			
 			modifier = {
 				custom_modifier_tooltip = TT_NVX_LPA_plus_policy_slot_1
-				consumer_goods_factor = 0.06
+				consumer_goods_factor = 0.02
 				agency_upgrade_time = -0.2
 				resistance_damage_to_garrison = -0.15
 				foreign_subversive_activites = -0.15
-				join_faction_tension = -0.07
+				stability_factor = 0.05
 			}
 			
 			cancel_if_invalid = no
@@ -146,11 +146,11 @@ ideas = {
 			
 			modifier = {
 				custom_modifier_tooltip = TT_NVX_LPA_plus_policy_slot_1
-				consumer_goods_factor = 0.1
+				consumer_goods_factor = 0.03
 				agency_upgrade_time = -0.3
 				resistance_damage_to_garrison = -0.2
 				foreign_subversive_activites = -0.2
-				join_faction_tension = -0.1
+				stability_factor = 0.075
 				custom_modifier_tooltip = TT_NVX_LEG_public_safety_secret_police
 			}
 			
@@ -186,7 +186,9 @@ ideas = {
 			
 			modifier = {
 				MONTHLY_POPULATION = 0.4
-				stability_weekly = -0.001
+				#stability_weekly = -0.001
+				political_power_cost = 0.2
+				stability_factor = -0.05
 			}
 			
 			cancel_if_invalid = no
@@ -206,9 +208,10 @@ ideas = {
 			}
 			
 			modifier = {
-				consumer_goods_factor = 0.02
+				political_power_cost = 0.1
+				#consumer_goods_factor = 0.02
 				MONTHLY_POPULATION = 0.2
-				stability_factor = -0.05
+				stability_factor = -0.025
 			}
 			
 			cancel_if_invalid = no
@@ -228,12 +231,12 @@ ideas = {
 			}
 			
 			available = {
-				has_government = market_liberal
+				#has_government = market_liberal
 				has_war = yes
 				OR = {
 					AND = {
 						is_major = yes
-						casualties > 500000
+						casualties > 250000
 					}
 					AND = {
 						is_major = no
@@ -247,10 +250,11 @@ ideas = {
 			}
 			
 			modifier = {
-				consumer_goods_factor = 0.01
-				MONTHLY_POPULATION = 0.25
-				conscription = 0.02
-				weekly_manpower = 500
+				consumer_goods_factor = 0.02
+				MONTHLY_POPULATION = 0.20
+				conscription = 0.005
+				weekly_manpower = 1000
+				stability_factor = -0.025
 			}
 			
 			cancel_if_invalid = no
@@ -270,7 +274,8 @@ ideas = {
 			}
 			
 			modifier = {
-				consumer_goods_factor = 0.04
+				consumer_goods_factor = 0.02
+				stability_factor = 0.05
 			}
 			
 			cancel_if_invalid = no
@@ -293,9 +298,14 @@ ideas = {
 			}
 			
 			modifier = {
+				political_power_cost = 0.2
 				consumer_goods_factor = 0.05
 				MONTHLY_POPULATION = -0.2
 				stability_factor = 0.1
+				airforce_intel_to_others = -30
+				civilian_intel_to_others = -30
+				navy_intel_to_others = -30
+				enemy_operative_detection_chance_factor = 0.5
 			}
 			
 			cancel_if_invalid = no
@@ -320,6 +330,7 @@ ideas = {
 			
 			modifier = {
 				research_speed_factor = 0.05
+				war_support_factor = -0.05
 			}
 			
 			cancel_if_invalid = no
@@ -347,12 +358,12 @@ ideas = {
 			}
 			
 			modifier = {
-				consumer_goods_factor = 0.04
+				consumer_goods_factor = 0.02
 				industrial_capacity_factory = 0.05
 				industrial_capacity_dockyard = 0.05
 				drift_defence_factor = 0.15
 				war_support_factor = 0.05
-				research_speed_factor = 0.03
+				research_speed_factor = 0.025				
 				custom_modifier_tooltip = TT_NVX_LEG_civil_liberties_limited
 			}
 			
@@ -399,12 +410,12 @@ ideas = {
 			}
 			
 			modifier = {
-				consumer_goods_factor = 0.07
-				industrial_capacity_factory = 0.07
-				industrial_capacity_dockyard = 0.07
+				consumer_goods_factor = 0.04
+				industrial_capacity_factory = 0.075
+				industrial_capacity_dockyard = 0.075
+				war_stability_factor = 0.1
 				drift_defence_factor = 0.3
-				war_support_factor = 0.1
-				research_speed_factor = 0.01
+				war_support_factor = 0.10
 				custom_modifier_tooltip = TT_NVX_LEG_civil_liberties_restricted
 			}
 			
@@ -449,11 +460,12 @@ ideas = {
 			}
 			
 			modifier = {
-				consumer_goods_factor = 0.1
+				consumer_goods_factor = 0.06
 				industrial_capacity_factory = 0.1
 				industrial_capacity_dockyard = 0.1
 				drift_defence_factor = 0.45
 				war_support_factor = 0.15
+				war_stability_factor = 0.2
 				custom_modifier_tooltip = TT_NVX_LEG_civil_liberties_totalitarian
 			}
 			
@@ -473,7 +485,7 @@ ideas = {
 		law = yes
 		
 		welfare_none = {
-			cost = 150
+			cost = 200 # 150
 			removal_cost = -1
 			level = 1
 			
@@ -494,7 +506,7 @@ ideas = {
 		}
 		
 		welfare_basic_subsidies = {
-			cost = 150
+			cost = 200#150
 			removal_cost = -1
 			level = 2
 			
@@ -507,7 +519,7 @@ ideas = {
 			}
 			
 			modifier = {
-				consumer_goods_factor = 0.05
+				consumer_goods_factor = 0.025
 				political_power_gain = 0.05
 			}
 			
@@ -517,7 +529,7 @@ ideas = {
 		}
 		
 		welfare_modest_assistance = {
-			cost = 150
+			cost = 200#150
 			removal_cost = -1
 			level = 3
 			
@@ -530,7 +542,7 @@ ideas = {
 			}
 			
 			modifier = {
-				consumer_goods_factor = 0.1
+				consumer_goods_factor = 0.05
 				monthly_population = 0.05
 				stability_factor = 0.05
 				political_power_gain = 0.1
@@ -540,7 +552,7 @@ ideas = {
 		}
 		
 		welfare_considerable_assistance = {
-			cost = 150
+			cost = 200#150
 			removal_cost = -1
 			level = 4
 			
@@ -553,7 +565,7 @@ ideas = {
 			}
 			
 			modifier = {
-				consumer_goods_factor = 0.15
+				consumer_goods_factor = 0.075
 				monthly_population = 0.07
 				stability_factor = 0.1
 				political_power_gain = 0.15
@@ -563,7 +575,7 @@ ideas = {
 		}
 		
 		welfare_universal_basic_income = {
-			cost = 150
+			cost = 200#150
 			removal_cost = -1
 			level = 5
 			
@@ -576,7 +588,7 @@ ideas = {
 			}
 			
 			modifier = {
-				consumer_goods_factor = 0.3
+				consumer_goods_factor = 0.15
 				monthly_population = 0.1
 				stability_factor = 0.1
 				political_power_gain = 0.3
