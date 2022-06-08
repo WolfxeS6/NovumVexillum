@@ -1,4 +1,74 @@
 NVX_pulling_the_strings_cat = {
+
+
+	NVX_DPTS_faster_build = {
+		
+		available = {
+			
+		}
+		
+		visible = {
+			OR = {
+				date < 2000.1.2
+				AND = {
+					has_start_date > 2016.6.1
+					date < 2016.6.2
+				}
+				has_country_flag = NVX_Cheats_reshow_PTS
+			}
+			has_game_rule = {
+				rule = PTS_FASTER_BUILD
+				option = DEFAULT
+			}
+			is_ai = no
+		}
+		
+		icon = generic_construction
+		
+		fire_only_once = yes
+		
+		cost = 0
+		
+		complete_effect = {
+			hidden_effect = {
+				every_country = {
+					add_ideas = NVX_idea_economy_disabled_bonus_build_speed
+				}
+			set_global_flag = economy_disabled
+			}
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	NVX_DPTS_faster_build = { # in case of...
+		
+		available = {
+			
+		}
+		
+		visible = {
+			#is_ai = yes
+			has_global_flag = economy_disabled
+			NOT = { has_idea = NVX_idea_economy_disabled_bonus_build_speed }
+		}
+		
+		icon = generic_construction
+		
+		fire_only_once = yes
+		
+		cost = 0
+		
+		complete_effect = {
+				add_ideas = NVX_idea_economy_disabled_bonus_build_speed
+		}
+		
+		ai_will_do = {
+			factor = 200
+		}
+	}
 	
 	NVX_DPTS_disband_factions = {
 		
@@ -170,6 +240,7 @@ NVX_pulling_the_strings_cat = {
 					diplomatic_relation = { country = BRU relation = guarantee active = no }
 					diplomatic_relation = { country = MLT relation = guarantee active = no }
 					diplomatic_relation = { country = CYP relation = guarantee active = no }
+					diplomatic_relation = { country = KUR relation = guarantee active = no }
 				}
 				FRA = {
 					diplomatic_relation = { country = DJI relation = guarantee active = no }
@@ -221,6 +292,7 @@ NVX_pulling_the_strings_cat = {
 					diplomatic_relation = { country = NZL relation = guarantee active = no }
 					diplomatic_relation = { country = PLU relation = guarantee active = no }
 					diplomatic_relation = { country = CHI relation = guarantee active = no }
+					diplomatic_relation = { country = KUR relation = guarantee active = no }
 				}
 			}
 		}
