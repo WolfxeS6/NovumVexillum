@@ -1,0 +1,1737 @@
+### search_filters = {FOCUS_FILTER_POLITICAL}
+### search_filters = {FOCUS_FILTER_RESEARCH}
+### search_filters = {FOCUS_FILTER_INDUSTRY}
+### search_filters = {FOCUS_FILTER_STABILITY}
+### search_filters = {FOCUS_FILTER_WAR_SUPPORT}
+### search_filters = {FOCUS_FILTER_MANPOWER}
+
+	focus_tree = {
+		id = ainu_focus_tree
+		
+		country = {
+			factor = 0
+			modifier = {
+				add = 10
+					original_tag = AIN
+			}
+		}
+		
+		
+		continuous_focus_position = { x = 5 y = 4000 }
+		
+		default = no
+
+		shared_focus = AIN_hokkaido_government_established
+		shared_focus = AIN_republic_of_hokkaido
+		shared_focus = AIN_people_s_republic
+	}
+
+	#First Focus
+
+	shared_focus = {
+		id = AIN_hokkaido_government_established
+		icon = kor_sakura
+		x = 1
+		y = 0
+		cost = 5
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		search_filters = {FOCUS_FILTER_POLITICAL}
+
+		completion_reward = {
+			add_stability = -0.1
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = AIN_transfer_of_police_force
+		icon = defence
+		x = -1
+		y = 1
+		cost = 8
+
+		prerequisite = { 
+			focus = AIN_hokkaido_government_established
+		}
+
+		available = {
+		}
+
+		relative_position_id = AIN_hokkaido_government_established
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			custom_effect_tooltip = AIN_police_tt
+			hidden_effect = {
+				load_oob = AIN_Police
+				add_equipment_to_stockpile = {
+					type = infantry_equipment
+					amount = 1000
+					producer = JAP
+				}
+			}
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = AIN_restore_order
+		icon = kor_samurai
+		x = -1
+		y = 2
+		cost = 8
+
+		prerequisite = { 
+			focus = AIN_transfer_of_police_force
+		}
+
+		available = {
+		}
+
+		relative_position_id = AIN_hokkaido_government_established
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_timed_idea = { idea = AIN_reconstruction days = 180 }
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = AIN_declaration_of_martial_law
+		icon = samurai
+		x = 2
+		y = 1
+		cost = 8
+
+		prerequisite = { 
+			focus = AIN_hokkaido_government_established
+		}
+
+		available = {
+		}
+
+		relative_position_id = AIN_hokkaido_government_established
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_stability = 0.05
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = AIN_seizure_of_japanese_capital
+		icon = major_alliance
+		x = 1
+		y = 2
+		cost = 8
+
+		prerequisite = { 
+			focus = AIN_declaration_of_martial_law
+		}
+		
+		mutually_exclusive = {
+			focus = AIN_transfer_of_property_to_a_leader_state
+		}
+
+
+		available = {
+			is_subject = no
+		}
+
+		relative_position_id = AIN_hokkaido_government_established
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_timed_idea = { idea = AIN_seized_property days = 365 }
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = AIN_transfer_of_property_to_a_leader_state
+		icon = major_alliance
+		x = 3
+		y = 2
+		cost = 8
+
+		prerequisite = { 
+			focus = AIN_declaration_of_martial_law
+		}
+		
+		mutually_exclusive = {
+			focus = AIN_seizure_of_japanese_capital
+		}
+
+		available = {
+			is_subject = yes
+		}
+
+		relative_position_id = AIN_hokkaido_government_established
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			every_other_country = {
+				limit = { has_subject = AIN }
+				add_timed_idea = { idea = AIN_seized_property days = 365 }
+			}
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = AIN_new_ezo
+		icon = AIN_ezo
+		x = 0
+		y = 3
+		cost = 8
+
+		prerequisite = { 
+			focus = AIN_restore_order
+		}
+
+		prerequisite = { 
+			focus = AIN_seizure_of_japanese_capital
+			focus = AIN_transfer_of_property_to_a_leader_state
+		}
+
+		available = {
+		}
+
+		relative_position_id = AIN_hokkaido_government_established
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			if = {
+				limit = {
+					has_full_control_of_state = 536
+				}
+				536 = {
+					add_extra_state_shared_building_slots = 1
+				}
+			}
+			if = {
+				limit = {
+					has_full_control_of_state = 952
+				}
+				952 = {
+					add_extra_state_shared_building_slots = 1
+				}
+			}
+			if = {
+				limit = {
+					has_full_control_of_state = 953
+				}
+				953 = {
+					add_extra_state_shared_building_slots = 1
+				}
+			}
+
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = AIN_industrial_infrastructure_development
+		icon = infrastructure
+		x = -1
+		y = 4
+		cost = 8
+
+		prerequisite = { 
+			focus = AIN_new_ezo
+		}
+
+		available = {
+		}
+
+		relative_position_id = AIN_hokkaido_government_established
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			if = {
+				limit = {
+					has_full_control_of_state = 536
+				}
+				536 = {
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			if = {
+				limit = {
+					has_full_control_of_state = 952
+				}
+				952 = {
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			if = {
+				limit = {
+					has_full_control_of_state = 953
+				}
+				953 = {
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			if = {
+				limit = {
+					has_full_control_of_state = 951
+				}
+				951 = {
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			if = {
+				limit = {
+					has_full_control_of_state = 555
+				}
+				555 = {
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = AIN_reopens_hokkaido_university
+		icon = research
+		x = 0
+		y = 5
+		cost = 8
+
+		prerequisite = { 
+			focus = AIN_industrial_infrastructure_development
+		}
+
+		prerequisite = { 
+			focus = AIN_reorganization_of_JRH
+		}
+
+		available = {
+			has_full_control_of_state = 536
+		}
+
+		relative_position_id = AIN_hokkaido_government_established
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_research_slot = 1
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = AIN_dairy_support
+		icon = agriculture
+		x = -1
+		y = 6
+		cost = 8
+
+		prerequisite = { 
+			focus = AIN_industrial_infrastructure_development
+		}
+
+		prerequisite = { 
+			focus = AIN_reopens_hokkaido_university
+		}
+
+		available = {
+		}
+
+		relative_position_id = AIN_hokkaido_government_established
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_ideas = AIN_ainu_dairy
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = AIN_reorganization_of_JRH
+		icon = AIN_JRH
+		x = 1
+		y = 4
+		cost = 8
+
+		prerequisite = { 
+			focus = AIN_new_ezo
+		}
+
+		available = {
+		}
+
+		relative_position_id = AIN_hokkaido_government_established
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			remove_ideas = { AIN_JRH_problem }
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = AIN_invigorate_the_economy
+		icon = JAP_economic_train
+		x = 1
+		y = 6
+		cost = 8
+
+		prerequisite = { 
+			focus = AIN_reorganization_of_JRH
+		}
+
+		prerequisite = { 
+			focus = AIN_reopens_hokkaido_university
+		}
+
+		available = {
+		}
+
+		relative_position_id = AIN_hokkaido_government_established
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 1.0
+				uses = 2
+				category = industry
+			}
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = AIN_the_end_of_martial_law
+		icon = entente
+		x = 0
+		y = 7
+		cost = 3
+
+		prerequisite = { 
+			focus = AIN_invigorate_the_economy
+		}
+
+		prerequisite = { 
+			focus = AIN_dairy_support
+		}
+
+		prerequisite = { 
+			focus = AIN_reopens_hokkaido_university
+		}
+
+		available = {
+		}
+
+		relative_position_id = AIN_hokkaido_government_established
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			custom_effect_tooltip = AIN_end_prologue_tt
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	#Democratic Focus
+
+	shared_focus = {
+		id = AIN_republic_of_hokkaido
+		icon = JAP_election
+		x = 9
+		y = 0
+		cost = 5
+
+		available = {
+			has_completed_focus = AIN_the_end_of_martial_law
+			NOT = { has_government = fascist }
+			NOT = { has_government = communist }
+		}
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		search_filters = {FOCUS_FILTER_POLITICAL}
+
+		completion_reward = {
+			add_political_power = 140
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = AIN_ainu_friendly_government
+		icon = AIN_ainu_base_flag
+		x = -1
+		y = 1
+		cost = 8
+
+		prerequisite = { 
+			focus = AIN_republic_of_hokkaido
+		}
+
+		available = {
+			NOT = {has_completed_focus = AIN_japanese_friendly_government }
+			OR = {
+				has_government = nationalist
+				has_government = progressive
+				has_government = social_democrat
+				has_government = democratic_socialist
+				has_government = conservative
+			}
+		}
+
+		relative_position_id = AIN_republic_of_hokkaido
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_stability = 0.05
+			remove_ideas = AIN_confusion_of_identity
+			set_province_name = { id = 10444 name = "Sariporopet" } #Sapporo
+			set_province_name = { id = 3962 name = "Usukeshi" } #Hakodate
+			set_province_name = { id = 12421 name = "Chuppt" } #Asahigawa
+			set_province_name = { id = 4646 name = "Cipasiri" } #Abashiri
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+	
+	shared_focus = {
+		id = AIN_ainu_language_education
+		icon = propaganda
+		x = -2
+		y = 2
+		cost = 8
+
+		prerequisite = { 
+			focus = AIN_ainu_friendly_government
+		}
+
+		available = {
+		}
+
+		relative_position_id = AIN_republic_of_hokkaido
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_ideas = AIN_ainu_education
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = AIN_our_history
+		icon = JAP_history_stop
+		x = -2
+		y = 4
+		cost = 8
+
+		prerequisite = { 
+			focus = AIN_ainu_language_education
+		}
+
+		bypass = {
+			NOT = { has_idea = AIN_three_peoples }
+		}
+
+		available = {
+		}
+
+		relative_position_id = AIN_republic_of_hokkaido
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			remove_ideas = AIN_three_peoples
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = AIN_succession_to_the_ainu_culture_promotion_act
+		icon = major_alliance
+		x = -3
+		y = 5
+		cost = 8
+
+		prerequisite = { 
+			focus = AIN_our_history
+		}
+
+		available = {
+		}
+
+		relative_position_id = AIN_republic_of_hokkaido
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_ideas = AIN_ainu_s_pride
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = AIN_alliance_with_koreans
+		icon = kor_dual_korean_democracy_flag
+		x = -1
+		y = 5
+		cost = 8
+
+		prerequisite = { 
+			focus = AIN_our_history
+		}
+
+		available = {
+		}
+
+		relative_position_id = AIN_republic_of_hokkaido
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_ideas = AIN_ainu_support_of_koreans
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+	
+	shared_focus = {
+		id = AIN_development_of_ainu_tourist_attractions
+		icon = japan_akihabara
+		x = 0
+		y = 2
+		cost = 8
+
+		prerequisite = { 
+			focus = AIN_ainu_friendly_government
+		}
+
+		available = {
+		}
+
+		relative_position_id = AIN_republic_of_hokkaido
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			if = {
+				limit = {
+					has_full_control_of_state = 536
+				}
+				536 = {
+					add_extra_state_shared_building_slots = 1
+				}
+			}
+			if = {
+				limit = {
+					has_full_control_of_state = 952
+				}
+				952 = {
+					add_extra_state_shared_building_slots = 1
+				}
+			}
+			if = {
+				limit = {
+					has_full_control_of_state = 953
+				}
+				953 = {
+					add_extra_state_shared_building_slots = 1
+				}
+			}
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+	
+	shared_focus = {
+		id = AIN_right_to_hunt_whales
+		icon = naval_dockyards
+		x = -1
+		y = 3
+		cost = 8
+
+		prerequisite = { 
+			focus = AIN_ainu_friendly_government
+		}
+
+		available = {
+		}
+
+		relative_position_id = AIN_republic_of_hokkaido
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			random_owned_state = {
+				limit = {
+					is_core_of = ROOT
+					is_controlled_by = ROOT
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+	
+	shared_focus = {
+		id = AIN_establishment_of_the_ainu_human_rights_organization
+		icon = constitution
+		x = 1
+		y = 3
+		cost = 8
+
+		prerequisite = { 
+			focus = AIN_ainu_friendly_government
+		}
+
+		available = {
+		}
+
+		relative_position_id = AIN_republic_of_hokkaido
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_ideas = AIN_ainu_human_rights_organization
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+	
+	shared_focus = {
+		id = AIN_hokkaido_army
+		icon = infantry_japan
+		x = 4
+		y = 1
+		cost = 8
+
+		prerequisite = { 
+			focus = AIN_republic_of_hokkaido
+		}
+
+		available = {
+		}
+
+		relative_position_id = AIN_republic_of_hokkaido
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_doctrine_cost_reduction = {
+				cost_reduction = 0.5
+				uses = 1
+				category = land_doctrine
+			}
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = AIN_hokkaido_navy
+		icon = navy
+		x = 3
+		y = 2
+		cost = 8
+
+		prerequisite = { 
+			focus = AIN_hokkaido_army
+		}
+
+		available = {
+		}
+
+		relative_position_id = AIN_republic_of_hokkaido
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_tech_bonus = {
+				name = nav_doctrine_bonus
+				bonus = 1.0
+				uses = 2
+				category = naval_doctrine
+			}
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = AIN_hokkaido_air_force
+		icon = airforce
+		x = 5
+		y = 2
+		cost = 8
+
+		prerequisite = { 
+			focus = AIN_hokkaido_army
+		}
+
+		available = {
+		}
+
+		relative_position_id = AIN_republic_of_hokkaido
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_doctrine_cost_reduction = {
+				name = air_doc_bonus
+				cost_reduction = 0.5
+				uses = 2
+				category = air_doctrine
+			}
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = AIN_japanese_friendly_government
+		icon = AIN_ainu_hokkaido_flag
+		x = 8
+		y = 1
+		cost = 8
+
+		prerequisite = { 
+			focus = AIN_republic_of_hokkaido
+		}
+
+		available = {
+			NOT = { has_completed_focus = AIN_ainu_friendly_government }
+			NOT = { has_government = nationalist }
+			NOT = { has_government = progressive }
+		}
+
+		relative_position_id = AIN_republic_of_hokkaido
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_stability = 0.15
+			remove_ideas = AIN_confusion_of_identity
+			set_cosmetic_tag = AIN_Hokkaido
+		}
+		
+		ai_will_do = {
+			base = 3
+		}
+	}
+	
+	shared_focus = {
+		id = AIN_japanese_language_first
+		icon = JAP_history
+		x = 7
+		y = 2
+		cost = 8
+
+		prerequisite = { 
+			focus = AIN_japanese_friendly_government
+		}
+
+		available = {
+		}
+
+		relative_position_id = AIN_republic_of_hokkaido
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_ideas = AIN_japanese_education
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+	
+	shared_focus = {
+		id = AIN_don_t_lose_balance
+		icon = kor_ukiyoe
+		x = 7
+		y = 4
+		cost = 8
+
+		prerequisite = { 
+			focus = AIN_japanese_language_first
+		}
+
+		bypass = {
+			NOT = { has_idea = AIN_three_peoples }
+		}
+
+		available = {
+		}
+
+		relative_position_id = AIN_republic_of_hokkaido
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			remove_ideas = AIN_three_peoples
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+	
+	shared_focus = {
+		id = AIN_fishery_support
+		icon = naval_dockyards
+		x = 8
+		y = 3
+		cost = 8
+
+		prerequisite = { 
+			focus = AIN_japanese_friendly_government
+		}
+
+		available = {
+			has_idea = AIN_ainu_dairy
+		}
+
+		relative_position_id = AIN_republic_of_hokkaido
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = AIN_ainu_dairy
+				add_idea = AIN_ainu_dairy_2
+			}
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+	
+	shared_focus = {
+		id = AIN_horse_must_run
+		icon = infrastructure
+		x = 9
+		y = 2
+		cost = 8
+
+		prerequisite = { 
+			focus = AIN_japanese_friendly_government
+		}
+
+		available = {
+		}
+
+		relative_position_id = AIN_republic_of_hokkaido
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_ideas = AIN_umamusume
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+	
+	shared_focus = {
+		id = AIN_industrialization_in_hokkaido
+		icon = industry_civilian
+		x = 11
+		y = 2
+		cost = 8
+
+		prerequisite = { 
+			focus = AIN_japanese_friendly_government
+		}
+
+		available = {
+		}
+
+		relative_position_id = AIN_republic_of_hokkaido
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			random_owned_state = {
+				limit = {
+					is_core_of = ROOT
+					is_controlled_by = ROOT
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+	
+	shared_focus = {
+		id = AIN_sapporo_breweries
+		icon = production2
+		x = 10
+		y = 3
+		cost = 8
+
+		prerequisite = { 
+			focus = AIN_industrialization_in_hokkaido
+		}
+
+		available = {
+		}
+
+		relative_position_id = AIN_republic_of_hokkaido
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_offsite_building = {
+				type = industrial_complex
+				level = 2
+			}
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	#Communist Focus
+
+	shared_focus = {
+		id = AIN_people_s_republic
+		icon = kor_revolution
+		x = 27
+		y = 0
+		cost = 5
+
+		available = {
+			has_completed_focus = AIN_the_end_of_martial_law
+			OR = {	
+				has_government = fascist
+				has_government = communist
+			}
+		}
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		search_filters = {FOCUS_FILTER_POLITICAL}
+
+		completion_reward = {
+			add_political_power = 140
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = AIN_flag_of_the_juche
+		icon = fascism2
+		x = -1
+		y = 1
+		cost = 8
+
+		prerequisite = { 
+			focus = AIN_people_s_republic
+		}
+
+		available = {
+			has_government = fascist
+			NOT = { has_completed_focus = AIN_flag_of_the_soviet }
+		}
+
+		relative_position_id = AIN_people_s_republic
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_ideas = government_system_one_party
+			remove_ideas = AIN_confusion_of_identity
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = AIN_grand_purge
+		icon = AIN_purge
+		x = -2
+		y = 2
+		cost = 8
+
+		prerequisite = { 
+			focus = AIN_flag_of_the_juche
+		}
+
+		available = {
+		}
+
+		relative_position_id = AIN_people_s_republic
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_manpower = -10000
+			
+			if = {
+				limit = {  has_idea = civil_liberties_free  }
+				swap_ideas = {
+					remove_idea = civil_liberties_free
+					add_idea = civil_liberties_totalitarian
+				}
+			}
+			else_if = {
+				limit = {  has_idea = civil_liberties_limited  }
+				swap_ideas = {
+					remove_idea = civil_liberties_limited
+					add_idea = civil_liberties_totalitarian
+				}
+			}
+			else_if = {
+				limit = {  has_idea = civil_liberties_restricted  }
+				swap_ideas = {
+					remove_idea = civil_liberties_restricted
+					add_idea = civil_liberties_totalitarian
+				}
+			}
+
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = AIN_racial_superiority
+		icon = fascism
+		x = -2
+		y = 3
+		cost = 8
+
+		prerequisite = { 
+			focus = AIN_grand_purge
+		}
+
+		available = {
+		}
+
+		bypass = {
+			NOT = { has_idea = AIN_three_peoples }
+		}
+
+		relative_position_id = AIN_people_s_republic
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			remove_ideas = AIN_three_peoples
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = AIN_internet_illegalization
+		icon = communism4
+		x = -4
+		y = 3
+		cost = 8
+
+		prerequisite = { 
+			focus = AIN_grand_purge
+		}
+
+		available = {
+		}
+
+		relative_position_id = AIN_people_s_republic
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			if = {
+				limit = {  has_idea = public_safety_local_law_enforcement  }
+				swap_ideas = {
+					remove_idea = public_safety_local_law_enforcement
+					add_idea = public_safety_secret_police
+				}
+			}
+			else_if = {
+				limit = {  has_idea = public_safety_subsidized_agencies  }
+				swap_ideas = {
+					remove_idea = public_safety_subsidized_agencies
+					add_idea = public_safety_secret_police
+				}
+			}
+			else_if = {
+				limit = {  has_idea = public_safety_central_law_office  }
+				swap_ideas = {
+					remove_idea = public_safety_central_law_office
+					add_idea = public_safety_secret_police
+				}
+			}
+			else = {
+				add_stability = 0.1
+			}
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = AIN_thoughtcrime 
+		icon = AIN_thoughtcrime
+		x = -4
+		y = 5
+		cost = 8
+
+		prerequisite = { 
+			focus = AIN_internet_illegalization
+		}
+
+		available = {
+		}
+
+		relative_position_id = AIN_people_s_republic
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_war_support = 0.15
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = AIN_construction_of_gulag
+		icon = skull
+		x = -3
+		y = 4
+		cost = 8
+
+		prerequisite = { 
+			focus = AIN_grand_purge
+		}
+
+		available = {
+		}
+
+		relative_position_id = AIN_people_s_republic
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_manpower = -20000
+			536 = {
+				add_resource = { type = steel amount = 13 }
+			}
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = AIN_flag_of_the_soviet
+		icon = kor_revolution_mass
+		x = 3
+		y = 1
+		cost = 8
+
+		prerequisite = { 
+			focus = AIN_people_s_republic
+		}
+
+		available = {
+			NOT = { has_completed_focus = AIN_flag_of_the_juche }
+			NOT = { has_government = fascist }
+		}
+
+		relative_position_id = AIN_people_s_republic
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_ideas = government_system_one_party
+			remove_ideas = AIN_confusion_of_identity
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = AIN_national_harmony
+		icon = constitution
+		x = 3
+		y = 3
+		cost = 8
+
+		prerequisite = { 
+			focus = AIN_flag_of_the_soviet
+		}
+
+		available = {
+		}
+
+		bypass = {
+			NOT = { has_idea = AIN_three_peoples }
+		}
+
+		relative_position_id = AIN_people_s_republic
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			remove_ideas = AIN_three_peoples
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = AIN_compensation_for_ainu
+		icon = AIN_ainu_base_flag
+		x = 2
+		y = 4
+		cost = 8
+
+		prerequisite = { 
+			focus = AIN_national_harmony
+		}
+
+		available = {
+			NOT = { has_idea = AIN_ainu_s_pride }
+		}
+
+		relative_position_id = AIN_people_s_republic
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_ideas = AIN_ainu_s_pride
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = AIN_ainu_autonomous_region
+		icon = propaganda_communist
+		x = 4
+		y = 4
+		cost = 8
+
+		prerequisite = { 
+			focus = AIN_national_harmony
+		}
+
+		available = {
+		}
+
+		relative_position_id = AIN_people_s_republic
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_ideas = AIN_ainu_autonomous_government
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = AIN_nationalization_of_enterprises
+		icon = industry_civilian
+		x = 4
+		y = 2
+		cost = 8
+
+		prerequisite = { 
+			focus = AIN_flag_of_the_soviet
+		}
+
+		available = {
+			has_full_control_of_state = 536
+		}
+
+		relative_position_id = AIN_people_s_republic
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			536 = {
+				add_resource = { type = steel amount = 6 }
+			}
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = AIN_heavy_industrial_development
+		icon = industry_military
+		x = 5
+		y = 3
+		cost = 8
+
+		prerequisite = { 
+			focus = AIN_nationalization_of_enterprises
+		}
+
+		available = {
+		}
+
+		relative_position_id = AIN_people_s_republic
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			random_owned_state = {
+				limit = {
+					is_core_of = ROOT
+					is_controlled_by = ROOT
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = AIN_people_s_army
+		icon = infantry_japan
+		x = 1
+		y = 1
+		cost = 8
+
+		prerequisite = { 
+			focus = AIN_people_s_republic
+		}
+
+		available = {
+		}
+
+		relative_position_id = AIN_people_s_republic
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_doctrine_cost_reduction = {
+				cost_reduction = 0.5
+				uses = 1
+				category = land_doctrine
+			}
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = AIN_people_s_air_force
+		icon = airforce
+		x = 0
+		y = 2
+		cost = 8
+
+		prerequisite = { 
+			focus = AIN_people_s_army
+		}
+
+		available = {
+		}
+
+		relative_position_id = AIN_people_s_republic
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_doctrine_cost_reduction = {
+				name = air_doc_bonus
+				cost_reduction = 0.5
+				uses = 2
+				category = air_doctrine
+			}
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = AIN_people_s_navy
+		icon = navy
+		x = 2
+		y = 2
+		cost = 8
+
+		prerequisite = { 
+			focus = AIN_people_s_army
+		}
+
+		available = {
+		}
+
+		relative_position_id = AIN_people_s_republic
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_tech_bonus = {
+				name = nav_doctrine_bonus
+				bonus = 1.0
+				uses = 2
+				category = naval_doctrine
+			}
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
