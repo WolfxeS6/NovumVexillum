@@ -1,0 +1,70 @@
+political_actions = {
+
+	work_on_domestic_affairs = {
+	
+	
+	    available = {
+			}
+		allowed = { 
+			OR = {
+			tag = CAN
+			tag = SPR
+			tag = TUR
+		}
+			}
+		visible = {	
+			OR = {
+			has_idea = quebec_separatism
+			has_idea = catalonia_separatism
+			has_idea = kurdish_separatism
+		}
+		}
+		
+		icon = generic_political_actions
+
+		cost = 150
+		days_remove = 730		
+		
+		modifier = {
+			political_power_factor = -0.15
+		}
+
+		remove_effect = {
+
+		
+		if = {
+		limit = { 
+		has_idea = quebec_separatism
+		} 
+		remove_ideas = quebec_separatism
+		}
+		
+		if = {
+		limit = { 
+		has_idea = catalonia_separatism
+		} 
+		remove_ideas = catalonia_separatism
+		}
+		
+		if = {
+		limit = { 
+		has_idea = kurdish_separatism
+		} 
+		remove_ideas = kurdish_separatism
+		}
+		
+
+			
+		}		
+		ai_will_do = {
+			base = 10
+			modifier = {
+			add = 40
+			is_historical_focus_on = no
+			}
+		}
+		
+	}
+
+
+}
