@@ -61,3 +61,47 @@ country_event = {
 		785 = { set_demilitarized_zone = no }
 	}
 }
+
+#Milosevic overthrow 
+country_event = {
+	id = serbia.3
+	title = serbia.3.t
+	desc = serbia.3.d
+	picture = GFX_report_event_buldozer_revolution
+	
+	trigger = {
+		tag = SER
+		NOT = { has_country_flag = SER_Milosevic_overthrown }
+	}
+	
+	mean_time_to_happen = {
+	}
+	
+	option = {	#
+		name = serbia.3.o1
+		set_country_flag = SER_Milosevic_overthrown
+		#news_event = { id = news. }
+		add_stability = -0.03
+		add_political_power = -50
+		
+		add_popularity = {
+		ideology = democratic_socialist
+		popularity = -0.15
+		}
+		
+		set_politics = {
+		ruling_party = conservative
+		elections_allowed = yes
+		last_election = "2000.9.24"
+		election_frequency = 48
+		}
+		
+	}
+	option = {	#
+		name = serbia.3.o2
+		#news_event = { id = news. }
+		add_stability = -0.05
+		add_war_support = -0.1
+		add_political_power = -100
+	}
+}
