@@ -1,0 +1,30 @@
+on_actions = {
+	on_nuke_drop = {
+		effect = {
+			if = {
+				limit = {
+					FROM = {
+						is_core_of = RAJ
+					}
+					has_global_flag = RAJ_nuke_1
+					NOT = {
+						has_global_flag = RAJ_nuke_2
+					}
+				}
+				set_global_flag = RAJ_nuke_2
+			}
+			if = {
+				limit = {
+					FROM = {
+						is_core_of = RAJ
+					}
+					NOT = {
+						has_global_flag = RAJ_nuke_1
+					}
+				}
+				set_global_flag = RAJ_nuke_1
+			}
+			
+		}
+	}
+}

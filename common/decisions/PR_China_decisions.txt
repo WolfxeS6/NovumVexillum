@@ -1,0 +1,450 @@
+
+#### CHINA CONGRESS ####
+
+PRC_committee = {
+
+	PRC_small_guanxi_effort = { #Connecting Small Guanxi with Committee members
+		icon = generic_political_discourse
+		
+		available = {
+			check_variable = { central_committee_support < central_committee_total }
+			
+			not = {
+				has_decision = PRC_medium_guanxi_effort
+			}
+			OR = {
+				political_power_daily > 0.3
+				has_political_power > 10
+			}
+		}
+		
+		cost = 0
+		
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				committee_low_support_trigger = yes
+				factor = 0.5
+			}
+			modifier = {
+				committee_medium_support_trigger = yes
+				factor = 0.5
+			}
+			modifier = {
+				committee_high_support_trigger = yes
+				factor = 0
+			}
+		}
+		
+		modifier = {
+			political_power_gain = -0.3
+		}
+		
+		days_remove = 30
+		
+		remove_effect = {
+			PRC_committee_small_support = yes
+		}
+	}
+	
+	PRC_medium_guanxi_effort = { #Connecting Small Guanxi with Committee members
+		icon = generic_political_discourse
+		available = {
+		
+			check_variable = { central_committee_support < central_committee_total }
+			
+			not = {
+				has_decision = PRC_small_guanxi_effort
+			}
+			OR = {
+				political_power_daily > 0.75
+				has_political_power > 35
+			}
+		}
+		cost = 0
+		
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				committee_low_support_trigger = yes
+				factor = 0.3
+			}
+			modifier = {
+				committee_medium_support_trigger = yes
+				factor = 0.2
+			}
+			modifier = {
+				committee_high_support_trigger = yes
+				factor = 0
+			}
+		}
+		
+		modifier = {
+			political_power_gain = -0.75
+		}
+		
+		days_remove = 45
+		
+		remove_effect = {
+			PRC_committee_medium_support = yes
+		}
+	}
+	
+	PRC_support_for_international_students = {
+		icon = ger_mefo_bills
+		available = {
+			committee_medium_support_trigger = yes 
+		}
+		cost = 25
+		days_remove = 90
+		days_re_enable = 275
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				committee_low_support_trigger = yes
+				factor = 0
+			}
+		}
+		modifier = { research_speed_factor = 0.08 }
+		
+		remove_effect = {
+			PRC_committee_medium_opposition = yes
+		}
+	}
+	
+	PRC_foreign_cultural_regulation = {
+		icon = eng_propaganda_campaigns
+		
+		available = {
+			committee_low_support_trigger = yes 
+			has_stability < 1.0
+		}
+		cost = 15
+		days_remove = 90
+		days_re_enable = 210
+		
+		ai_will_do = {
+			factor = 1000
+			modifier = {
+				committee_low_support_trigger = yes
+				factor = 0
+			}
+			modifier = {
+				has_stability > 0.5
+				factor = 0.5
+			}
+			modifier = {
+				has_stability > 0.65
+				factor = 0.5
+			}
+			modifier = {
+				has_stability > 0.8
+				factor = 0
+			}
+		}
+		
+		modifier = { stability_weekly = 0.005 }
+		
+		complete_effect = {
+			PRC_committee_medium_opposition = yes
+		}
+	}
+	
+	PRC_crush_feminist = {
+		icon = ger_mefo_bills
+		
+		available = {
+			committee_medium_support_trigger = yes 
+			NOT = {
+				has_country_flag = PRC_cursh_feminist_flag
+			}
+			NOT = {
+				has_country_flag = PRC_approval_feminist_flag
+			}
+		}
+		
+		visible = {
+			NOT = {
+				has_country_flag = PRC_approval_feminist_flag
+			}
+		}
+		
+		cost = 25
+		days_remove = -1
+		
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				committee_low_support_trigger = yes
+				factor = 0
+			}
+		}
+		
+		complete_effect = {
+			custom_effect_tooltip = prc_only_one_choice_tt
+			PRC_committee_small_opposition = yes
+			set_country_flag = PRC_cursh_feminist_flag
+			add_stability = 0.15
+		}
+	}
+	
+	PRC_approval_feminist = {
+		icon = ger_mefo_bills
+		
+		available = {
+			committee_medium_support_trigger = yes 
+			NOT = {
+				has_country_flag = PRC_cursh_feminist_flag
+			}
+			NOT = {
+				has_country_flag = PRC_approval_feminist_flag
+			}
+		}
+		
+		visible = {
+			NOT = {
+				has_country_flag = PRC_cursh_feminist_flag
+			}
+		}
+		
+		cost = 25
+		days_remove = -1
+		
+		ai_will_do = {
+			factor = 5
+			modifier = {
+				committee_low_support_trigger = yes
+				factor = 0
+			}
+		}
+		
+		complete_effect = {
+			custom_effect_tooltip = prc_only_one_choice_tt
+			PRC_committee_medium_opposition = yes
+			add_ideas = PRC_feminism_of_china 
+			set_country_flag = PRC_approval_feminist_flag
+			add_stability = 0.15
+		}
+	}
+	
+	PRC_strengthening_national_atheism = {
+		icon = ger_mefo_bills
+		
+		available = {
+			committee_medium_support_trigger = yes 
+			has_government = communist
+			NOT = {
+				has_country_flag = PRC_strengthening_national_atheism_flag
+			}
+			NOT = {
+				has_country_flag = PRC_allow_christian_mission_flag
+			}
+		}
+		
+		visible = {
+			NOT = {
+				has_country_flag = PRC_allow_christian_mission_flag
+			}
+		}
+		
+		cost = 25
+		days_remove = -1
+		
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				committee_low_support_trigger = yes
+				factor = 0
+			}
+		}
+		
+		complete_effect = {
+			custom_effect_tooltip = prc_only_one_choice_tt
+			add_ideas = PRC_national_atheism 
+			set_country_flag = PRC_strengthening_national_atheism_flag
+			PRC_committee_small_opposition = yes
+		}
+	}
+	
+	PRC_allow_christian_mission = {
+		icon = ger_mefo_bills
+		
+		available = {
+			committee_medium_support_trigger = yes 
+			NOT = {
+				has_country_flag = PRC_strengthening_national_atheism_flag
+			}
+			NOT = {
+				has_country_flag = PRC_allow_christian_mission_flag
+			}
+		}
+		
+		visible = {
+			NOT = {
+				has_country_flag = PRC_strengthening_national_atheism_flag
+			}
+		}
+		
+		
+		cost = 25
+		days_remove = -1
+		
+		ai_will_do = {
+			factor = 0
+		}
+		
+		complete_effect = {
+			custom_effect_tooltip = prc_only_one_choice_tt
+			add_ideas = PRC_religious_liberty 
+			set_country_flag = PRC_allow_christian_mission_flag
+			PRC_committee_medium_opposition = yes
+		}
+	}
+}
+
+PRC_south_america_invitation = {
+
+	PRC_beijing_secret_talks = {
+		icon = generic_agreement
+
+		allowed = { tag = PRC }
+
+		available = {
+			#committee_medium_support_trigger = yes 
+			FROM = {
+				has_war = no
+				is_subject = no
+				is_neutral = no
+			}
+		}
+
+		visible = {
+			ROOT = { original_tag = PRC }
+			ROOT = { is_faction_leader = yes }
+			has_global_flag = PRC_south_america
+			FROM = {
+				exists = yes
+				is_in_faction = no
+			}
+		}
+
+		cost = 25
+		fire_only_once = yes
+
+		priority = 10
+		targets = { VEN CHL ECU BOL BRA ARG } #South America Anti-America Nations
+		
+		#target_root_trigger = { has_completed_focus = ? }
+		
+		target_trigger = {
+			exists = yes
+			FROM = { is_in_faction = no	}
+		}
+
+		complete_effect = {
+			#PRC_committee_medium_opposition = yes
+			#log = "[GetDateText]: [Root.GetName]: Decision PRC_beijing_secret_talks target: [From.GetName]"
+			FROM = {
+				set_country_flag = PRC_invited_beijing
+				country_event = { id = moh_south_prchina.1 days = 2 }
+			}
+		}
+
+		ai_will_do = {
+			factor = 300
+		}
+	}
+}
+
+PRC_belt_and_road_initiative_category = {
+
+	PRC_invited_bri_decision_debug = {
+		icon = generic_agreement
+
+		allowed = { always = yes }
+
+		on_map_mode = map_and_decisions_view
+		
+		available = {
+			always = yes
+		}
+
+		visible = {
+			is_debug = yes #DEBUG
+		}
+
+		cost = 0
+		fire_only_once = no
+
+		priority = 10
+				
+		complete_effect = {
+			custom_effect_tooltip = DEBUG
+			add_political_power = 9999 #DECISION DEBUG
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	PRC_invited_bri_decision = {
+		icon = DI_nationalism
+
+		allowed = { always = yes }
+
+		#on_map_mode = map_and_decisions_view
+		
+		available = {
+			committee_medium_support_trigger = yes 
+			OR = {
+				FROM = { is_subject = no }
+				FROM = { is_subject_of = ROOT }
+			}
+			NOT = { has_war_with = PRC }
+			has_civil_war = no
+			ic_ratio = {
+				tag = FROM
+				ratio > 0.5
+			}
+		}
+
+		visible = {
+			FROM = { NOT = { has_country_flag = PRC_invited_bri } }
+			FROM = { NOT = { has_war_with = PRC } }
+			has_global_flag = PRC_belt_and_road_initiative_global_flag
+			if = {
+			limit = { FROM = { is_subject = no } }
+				has_opinion = {
+					target = FROM
+					value = 5
+				}
+			}
+		}
+
+		cost = 25
+		fire_only_once = yes
+
+		priority = 10
+				
+		target_trigger = {
+			exists = yes
+			FROM = { capital_scope = { is_on_continent = asia } }
+			FROM = { is_major = no }
+		}
+
+		complete_effect = {
+			PRC_committee_medium_opposition = yes
+			#log = "[GetDateText]: [Root.GetName]: Decision PRC_beijing_secret_talks target: [From.GetName]"
+			FROM = {
+				set_country_flag = PRC_invited_bri
+				country_event = { id = china.36 days = 2 }
+			}
+		}
+
+		ai_will_do = {
+			factor = 150
+		}
+	}
+}
+

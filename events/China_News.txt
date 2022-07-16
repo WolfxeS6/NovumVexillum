@@ -882,3 +882,63 @@ news_event = {
 		name = china_news.26.o1
 	}
 }
+
+#The Coup D'etat in Beijing
+news_event = { 
+	id = china_news.27
+	title = china_news.27.t
+	desc = china_news.27.d
+	picture = GFX_news_event_china_and_taiwan
+	
+	is_triggered_only = yes
+
+	option = { #Interesting
+		name = china_news.27.o1
+	}
+}
+
+#China Dream
+news_event = { 
+	id = china_news.28
+	title = china_news.28.t
+	desc = china_news.28.d
+	picture = GFX_news_event_chinese_soldiers
+	
+	is_triggered_only = yes
+
+	option = { #Interesting
+		name = china_news.28.a
+	}
+}
+
+#[From.GetName] joins the Chinese Alliance
+news_event = {
+	id = china_news.29
+	title = china_news.29.t
+	desc = china_news.29.d
+	picture = GFX_news_event_chinese_soldiers
+	
+	major = yes
+	is_triggered_only = yes
+	
+	option = {
+		name = china_news.29.a
+		trigger = { original_tag = PRC }
+	}
+	
+	option = {
+		name = china_news.29.b
+		trigger = { original_tag = USA }
+	}
+	
+	
+	option = {
+		name = china_news.29.c
+		trigger = { 
+			NOT = { 
+				AND = { original_tag = PRC
+						original_tag = USA }
+			}
+		}
+	}
+}

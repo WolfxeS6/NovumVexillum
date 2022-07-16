@@ -1,0 +1,81 @@
+
+PRC_committee_small_support = {
+	custom_effect_tooltip = prc_committee_small_support_tt
+	set_temp_variable = { temp_factor = random }
+	multiply_temp_variable = { temp_factor = 8 }
+	clamp_temp_variable = { var = temp_factor max = 8 min = 4 }
+	add_to_variable = { central_committee_support = temp_factor }
+	round_variable = central_committee_support
+	clamp_variable = { var = central_committee_support max = central_committee_total min = 0 }
+	PRC_recalc_congress_icon_frames = yes
+}
+
+PRC_committee_medium_support = {
+	custom_effect_tooltip = prc_committee_medium_support_tt
+	set_temp_variable = { temp_factor = random }
+	multiply_temp_variable = { temp_factor = 20 }
+	clamp_temp_variable = { var = temp_factor max = 20 min = 10 }
+	add_to_variable = { central_committee_support = temp_factor }
+	round_variable = central_committee_support
+	clamp_variable = { var = central_committee_support max = central_committee_total min = 0 }
+	PRC_recalc_congress_icon_frames = yes
+}
+
+PRC_committee_large_support = {
+	custom_effect_tooltip = prc_committee_large_support_tt
+	set_temp_variable = { temp_factor = random }
+	multiply_temp_variable = { temp_factor = 60 }
+	clamp_temp_variable = { var = temp_factor max = 60 min = 40 }
+	add_to_variable = { central_committee_support = temp_factor }
+	round_variable = central_committee_support
+	clamp_variable = { var = central_committee_support max = central_committee_total min = 0 }
+	PRC_recalc_congress_icon_frames = yes
+}
+
+PRC_committee_small_opposition = {
+	custom_effect_tooltip = prc_committee_small_opposition_tt
+	set_temp_variable = { temp_factor = random }
+	multiply_temp_variable = { temp_factor = -8 }
+	add_to_variable = { central_committee_support = temp_factor }
+	round_variable = central_committee_support
+	clamp_variable = { var = central_committee_support max = central_committee_total min = 0 }
+	PRC_recalc_congress_icon_frames = yes
+}
+
+PRC_committee_medium_opposition = {
+	custom_effect_tooltip = prc_committee_medium_opposition_tt
+	set_temp_variable = { temp_factor = random }
+	multiply_temp_variable = { temp_factor = -16 }
+	add_to_variable = { central_committee_support = temp_factor }
+	round_variable = central_committee_support
+	clamp_variable = { var = central_committee_support max = central_committee_total min = 0 }
+	PRC_recalc_congress_icon_frames = yes
+}
+
+PRC_committee_large_opposition = {
+	custom_effect_tooltip = prc_committee_large_opposition_tt
+	set_temp_variable = { temp_factor = random }
+	multiply_temp_variable = { temp_factor = -50 }
+	add_to_variable = { central_committee_support = temp_factor }
+	round_variable = central_committee_support
+	clamp_variable = { var = central_committee_support max = central_committee_total min = 0 }
+	PRC_recalc_congress_icon_frames = yes
+}
+
+PRC_recalc_congress_icon_frames = {
+	set_temp_variable = { central_committee_temp = central_committee_support }
+	divide_temp_variable = { central_committee_temp = central_committee_total }
+	multiply_temp_variable = { central_committee_temp = 21 }
+	if = {
+		limit = { check_variable = { central_committee_temp > 0 } }
+		clamp_temp_variable = {
+			var = central_committee_temp
+			min = 1
+			max = 21
+		}
+	}
+	else = {
+		set_temp_variable = { central_committee_temp = 1 }
+	}
+	set_variable = { current_central_committee_icon_frame = central_committee_temp }
+}

@@ -20,17 +20,42 @@ country_event = {
 	
 	option = {	#We accept!
 		name = china.1.o1
+		
+		
+		hidden_effect = {
+			add_ai_strategy = {
+				type = befriend
+				id = "PRC"
+				value = 200
+			}
+			add_ai_strategy = {
+				type = alliance
+				id = "PRC"
+				value = 200
+			}
+			PRC = {
+				add_ai_strategy = {
+					type = befriend
+					id = FROM
+					value = 200
+				}
+				add_ai_strategy = {
+					type = alliance
+					id = FROM
+					value = 200
+				}
+			}
+		}
 
 		PRC = {
 			add_to_faction = FROM
-			
 			country_event = {
 				id = china.2
 			}
 		}
 		
 		ai_chance = {
-			factor = 50
+			factor = 70
 
 			modifier = {
 				factor = 25
@@ -63,8 +88,8 @@ country_event = {
 				id = china.3
 			}
 		}
-	ai_chance = {
-			factor = 50
+		ai_chance = {
+			factor = 30
 
 			modifier = {
 				factor = 75
@@ -1489,4 +1514,563 @@ country_event = {	#FROM requests Chinese Alliance membership.
 	}
 }
 
-#########################################################################################################################################################################
+# To give in or fight
+country_event = {
+	id = china.30
+	title = china.30.t
+	desc = china.30.d
+	
+	picture = GFX_report_event_china_government
+
+	is_triggered_only = yes
+	
+	option = {
+		name = china.30.a #We have no Choice
+		ai_chance = { 
+			factor = 60
+			modifier = {
+				factor = 0
+				is_in_faction = yes
+			}
+			modifier = {
+				factor = 0.8
+				strength_ratio = { tag = PRC ratio < 1.8 }
+			}
+		}
+		FROM = { country_event = { id = china.31 } }
+	}
+	
+	option = {
+		name = china.30.b #I'd rather fight than be enslaved
+		ai_chance = { factor = 40 }
+		FROM = { country_event = { id = china.32 } }
+	}
+	
+}
+
+# [From.GetName] accepted our offer
+country_event = {
+	id = china.31
+	title = china.31.t
+	desc = china.31.d
+	picture = GFX_report_event_china_government
+
+	is_triggered_only = yes
+	
+	option = {
+		name = china.31.a
+			set_autonomy = {
+				target = FROM
+				autonomy_state = autonomy_tributary_state
+			}
+	}
+}
+
+# [From.GetName] rejects our offer
+country_event = {
+	id = china.32
+	title = china.32.t
+	desc = china.32.d
+	picture = GFX_report_event_china_government
+
+	is_triggered_only = yes
+	
+	option = {
+		name = china.32.a
+		ai_chance = { factor = 100 }
+			declare_war_on = { 
+				target = FROM
+				type = puppet_wargoal_focus
+			}
+	}
+	
+	option = {
+		name = china.32.b
+		ai_chance = { factor = 0 }
+		add_stability = -0.05
+	}
+}
+
+# [PRC.GetName] demand for one country and two countries
+country_event = {
+	id = china.33
+	title = china.33.t
+	desc = china.33.d
+	
+	picture = GFX_report_event_ccp
+
+	is_triggered_only = yes
+	
+	option = {
+		name = china.33.a #We have no Choice
+		ai_chance = { 
+			factor = 20
+			modifier = {
+				factor = 0
+				is_in_faction = yes
+			}
+			modifier = {
+				factor = 0.1
+				original_tag = CHI #Taiwan is Never give up
+			}
+			modifier = {
+				factor = 0.8
+				strength_ratio = { tag = PRC ratio < 1.8 }
+			}
+		}
+		FROM = { country_event = { id = china.34 } }
+	}
+	
+	option = {
+		name = china.33.b #I'd rather fight than be enslaved
+		ai_chance = { factor = 80 }
+		FROM = { country_event = { id = china.35 } }
+	}
+	
+}
+
+# [From.GetName] joins the Union
+country_event = {
+	id = china.34
+	title = china.34.t
+	desc = china.34.d
+	picture = GFX_report_event_protests
+
+	is_triggered_only = yes
+	
+	option = {
+		name = china.34.a
+			set_autonomy = {
+				target = FROM
+				autonomy_state = autonomy_one_country_two_systems
+			}
+	}
+	
+}
+
+# [From.GetName] rejects our offer
+country_event = {
+	id = china.35
+	title = china.35.t
+	desc = china.35.d
+	picture = GFX_report_event_protests
+
+	is_triggered_only = yes
+	
+	option = {
+		name = china.35.a
+		ai_chance = { factor = 100 
+			modifier = {
+				factor = 0
+					if = {
+						FROM = { tag = CHI }
+						}
+					}
+			}
+			declare_war_on = { 
+				target = FROM
+				type = annex_everything
+			}
+	}
+	
+	option = {
+		name = china.35.b
+		ai_chance = { factor = 0 
+			modifier = {
+				factor = 100
+					if = {
+						FROM = { tag = CHI }
+						}
+			}
+		}
+		add_stability = -0.05
+	}
+}
+
+# Belt And Road Invitation
+country_event = {
+	id = china.36
+	title = china.36.t
+	desc = china.36.d
+	picture = GFX_report_event_china_government
+
+	is_triggered_only = yes
+	
+	option = {
+		name = moh_prchina.30.a
+		ai_chance = { factor = 80 }
+		add_ideas = { PRC_belt_and_road_1 }
+		PRC = { country_event = { id = china.37 days = 1 } }
+	}
+	
+	option = {
+		name = moh_prchina.30.b
+		trigger = { NOT = { is_puppet_of = PRC } }
+		ai_chance = { factor = 20
+			modifier = {
+				factor = 0
+				is_in_faction_with = PRC
+			}
+		}
+		PRC = { country_event = { id = china.38 days = 1 } }
+		
+	}
+}
+
+# [From.GetName] accept the request
+country_event = {
+	id = china.37
+	title = china.37.t
+	desc = china.37.d
+	picture = GFX_report_event_china_government
+
+	is_triggered_only = yes
+	
+	option = {
+		name = china.37.a
+	}
+}
+
+# [From.GetName] refusal the request
+country_event = {
+	id = china.38
+	title = china.38.t
+	desc = china.38.d
+	picture = GFX_report_event_china_government
+
+	is_triggered_only = yes
+	
+	option = {
+		name = china.38.a
+	}
+}
+
+# The time of revolution?
+country_event = {
+	id = china.39
+	title = china.39.t
+	desc = china.39.d
+	picture = GFX_report_event_china_government
+
+	is_triggered_only = yes
+	
+	option = {
+		name = china.39.a
+		ai_chance = { 
+			factor = 80 
+			modifier = {
+				factor = 0
+				OR = {
+					has_country_leader = {
+						character = prk_Hyon_Yong_Chol
+						ruling_only = yes
+					}
+					has_war = yes
+					
+					KOR = {
+						alliance_strength_ratio > 1.2
+					}
+				}
+			}
+		}
+			create_wargoal = {
+				target = KOR
+				type = annex_everything
+			}
+			add_timed_idea = { idea = PRK_china_military_advisory_group days = 180 }
+			
+			hidden_effect = {
+				add_ai_strategy = {
+					type = declare_war
+					id = KOR
+					value = 100
+				}
+			}
+	}
+	
+	option = {
+		name = china.39.b
+		ai_chance = { 
+			factor = 20 
+		}
+		PRC = { country_event = { id = china.40 days = 1 } }
+		
+	}
+}
+
+# [From.GetName] refusal the request
+country_event = {
+	id = china.40
+	title = china.40.t
+	desc = china.40.d
+	picture = GFX_report_event_china_government
+
+	is_triggered_only = yes
+	
+	option = {
+		name = china.40.a
+	}
+}
+
+add_namespace = moh_south_prchina
+
+# [PRC.GetLeader] invites us to Beijing
+country_event = {
+	id = moh_south_prchina.1
+	title = moh_south_prchina.1.t
+	desc = moh_south_prchina.1.d
+	picture = GFX_report_event_china_government
+
+	is_triggered_only = yes
+	
+	option = {
+		name = moh_south_prchina.1.a #Send an ambassador to the conference room
+		ai_chance = { factor = 100 }
+		PRC = { country_event = { id = moh_south_prchina.2 days = 3 } }
+	}
+	
+	option = {
+		name = moh_south_prchina.1.b #We will remain neutral
+		ai_chance = { factor = 0 }
+		PRC = { country_event = { id = moh_south_prchina.9 } }
+	}
+}
+
+# Succeeding Secret Talks with [From.GetName]
+country_event = {
+	id = moh_south_prchina.2
+	title = moh_south_prchina.2.t
+	desc = moh_south_prchina.2.d
+	picture = GFX_report_event_china_government
+
+	is_triggered_only = yes
+	
+	option = {
+		name = moh_south_prchina.2.a 
+		ai_chance = { factor = 100 }
+		FROM = { country_event = { id = moh_south_prchina.3 days = 4 } } #7 Days
+	}
+}
+
+# Our Proposal
+country_event = {
+	id = moh_south_prchina.3
+	title = moh_south_prchina.3.t
+	desc = moh_south_prchina.3.desc
+	picture = GFX_report_event_china_government
+
+	is_triggered_only = yes
+	
+	option = {
+		name = moh_south_prchina.3.a #We will form a military alliance with China
+		ai_chance = { factor = 60 
+			modifier = {
+				has_country_leader = {
+						name = "Hugo Chávez"
+						ruling_only = yes
+				}
+				add = 40
+			}
+			modifier = {
+				PRC = { surrender_progress > 0.1 } #If China shows signs of weakness...
+				add = -20
+			}
+			modifier = {
+				PRC = { surrender_progress > 0.3 }
+				add = -20
+			}
+			modifier = {
+				PRC = { surrender_progress > 0.5 } #They won't be allies of a defeated nation.
+				add = -20
+			}
+		}
+		add_ai_strategy = {
+			type = alliance
+			id = "PRC"
+			value = 200
+		}
+		PRC = { country_event = { id = moh_south_prchina.4 days = 3 } }
+	}
+	
+	option = {
+		name = moh_south_prchina.3.b #Dispatch of weapons and Unofficial volunteer troops
+		ai_chance = { factor = 20 }
+		add_ai_strategy = {
+			type = alliance
+			id = "PRC"
+			value = 50
+		}
+		add_manpower = -8000 
+		effect_tooltip = {
+			send_equipment = { target = PRC type = infantry_equipment amount = 500 }
+		}
+		add_ai_strategy = {
+    			type = support
+     			id = "PRC"			
+ 				value = 200
+    	}
+		add_ai_strategy = {
+    			type = send_volunteers_desire
+     			id = "PRC"			
+ 				value = 200
+    	}
+		PRC = { country_event = { id = moh_south_prchina.5 days = 3 } }
+	}
+	
+	option = {
+		name = moh_south_prchina.3.c #Dispatch of weapons
+		ai_chance = { factor = 10 }
+		effect_tooltip = {
+			send_equipment = { target = PRC type = infantry_equipment amount = 500 }
+		}
+		add_ai_strategy = {
+    			type = support
+     			id = "PRC"			
+ 				value = 200
+    	}
+		add_ai_strategy = {
+			type = alliance
+			id = "PRC"
+			value = 50
+		}
+		add_ai_strategy = {
+    			type = send_volunteers_desire
+     			id = "PRC"			
+ 				value = 50
+    	}
+		PRC = { country_event = { id = moh_south_prchina.6 days = 3 } }
+	}
+	
+	option = {
+		name = moh_south_prchina.3.d #Break down the talks
+		ai_chance = { factor = 0 
+			modifier = {
+				PRC = { surrender_progress > 0.1 } #
+				add = 20
+			}
+			modifier = {
+				PRC = { surrender_progress > 0.3 } 
+				add = 20
+			}
+			modifier = {
+				PRC = { surrender_progress > 0.5 } #They won't be allies of a defeated nation.
+				add = 20
+			}
+		}
+		PRC = { country_event = { id = moh_south_prchina.7 days = 3 } }
+	}
+}
+
+# [From.GetName] to ally with China
+country_event = {
+	id = moh_south_prchina.4
+	title = moh_south_prchina.4.t
+	desc = moh_south_prchina.4.d
+	picture = GFX_report_event_china_government
+
+	is_triggered_only = yes
+	
+	option = {
+		name = moh_south_prchina.4.a
+		add_to_faction = FROM
+		
+		add_ai_strategy = {
+			type = alliance
+			id = FROM
+			value = 200
+		}
+		FROM = { country_event = { id = moh_south_prchina.8 } }
+		add_opinion_modifier = { target = FROM modifier = declaration_of_friendship }
+	}
+}
+
+# [From.GetName] Volunteer Troops and Weapon Support
+country_event = {
+	id = moh_south_prchina.5
+	title = moh_south_prchina.5.t
+	desc = moh_south_prchina.5.d
+	picture = GFX_report_event_china_government
+
+	is_triggered_only = yes
+	
+	option = {
+		name = moh_south_prchina.5.a
+		FROM = { send_equipment = { target = PRC type = infantry_equipment amount = 500 } }
+		add_manpower = 8000
+		FROM = { country_event = { id = moh_south_prchina.8 } }
+		add_opinion_modifier = { target = FROM modifier = declaration_of_friendship }
+	}
+}
+
+# [From.GetName] Weapon Support
+country_event = {
+	id = moh_south_prchina.6
+	title = moh_south_prchina.6.t
+	desc = moh_south_prchina.6.d
+	picture = GFX_report_event_china_government
+
+	is_triggered_only = yes
+	
+	option = {
+		name = moh_south_prchina.6.a
+		FROM = { send_equipment = { target = PRC type = infantry_equipment amount = 500 } }
+		FROM = { country_event = { id = moh_south_prchina.8 } }
+		add_opinion_modifier = { target = FROM modifier = declaration_of_friendship }
+	}
+}
+
+# Negotiations break down
+country_event = {
+	id = moh_south_prchina.7
+	title = moh_south_prchina.7.t
+	desc = moh_south_prchina.7.d
+	picture = GFX_report_event_china_government
+
+	is_triggered_only = yes
+	
+	option = {
+		name = moh_south_prchina.7.a
+		add_political_power = -50
+	}
+}
+
+# The end of the Beijing talks
+country_event = {
+	id = moh_south_prchina.8
+	title = moh_south_prchina.8.t
+	desc = moh_south_prchina.8.d
+	picture = GFX_report_event_china_government
+
+	is_triggered_only = yes
+	
+	option = {
+		name = moh_south_prchina.8.a
+			add_offsite_building = { type = industrial_complex level = 2 } #Thanks China!
+			add_tech_bonus = {
+				bonus = 1.0
+				uses = 1
+				category = infantry_weapons	#Chinese Weapons Tech
+			}
+			add_war_support = 0.15
+			add_opinion_modifier = { target = PRC modifier = declaration_of_friendship }
+			
+			hidden_effect = {
+				news_event = { id = china_news.29 }
+			}
+	}
+}
+
+# Negotiations break down
+country_event = {
+	id = moh_south_prchina.9
+	title = moh_south_prchina.9.t
+	desc = moh_south_prchina.9.d
+	picture = GFX_report_event_china_government
+
+	is_triggered_only = yes
+	
+	option = {
+		name = moh_south_prchina.9.a
+		#add_political_power = -50
+	}
+}
