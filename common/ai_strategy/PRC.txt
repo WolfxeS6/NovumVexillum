@@ -1,0 +1,162 @@
+# befriend
+# conquer
+# antagonize
+# build_ship
+# build_army
+# unit_ratio
+# build_building
+# research_tech
+# garrison
+# protect
+# influence
+
+PRC_stock_up_on_trains = {
+
+	allowed = {
+		original_tag = PRC
+	}
+
+	enable = {
+		has_war = no
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = min_wanted_supply_trains
+		value = 100
+	}
+}
+
+pr_china_america_crush_ai = {
+	allowed = {
+		original_tag = PRC
+	}
+	enable = {
+		has_completed_focus = PRC_area_denial
+		country_exists = USA
+	}
+	abort = {
+		NOT = {
+			country_exists = USA
+		}
+	}
+
+	ai_strategy = {
+		type = antagonize
+		id = "USA"
+		value = 200
+	}
+	
+	ai_strategy = {
+		type = consider_weak
+		id = "USA"
+		value = 75
+	}
+}
+
+
+PRC_building_boats_is_great = {
+	allowed = {
+		original_tag = PRC
+	}
+	enable = {
+		num_of_civilian_factories_available_for_projects > 15
+	}
+
+	abort = {
+
+	}
+
+	ai_strategy = {
+		type = dockyard_to_military_factory_ratio
+		value = 40  #aim for a 2-1 ratio on naval factories
+	}
+}
+
+PRC_area_priority = {
+	allowed = {
+		original_tag = JAP
+	}
+	enable = {
+		always = yes
+	}
+
+	ai_strategy = {
+		type = area_priority
+		id = europe
+		value = 20
+	}
+
+	ai_strategy = {
+		type = area_priority
+		id = scandinavia
+		value = -30
+	}
+
+	ai_strategy = {
+		type = area_priority
+		id = north_america
+		value = 50
+	}
+
+	ai_strategy = {
+		type = area_priority
+		id = south_america
+		value = 50
+	}
+
+	ai_strategy = {
+		type = area_priority
+		id = asia
+		value = 100
+	}
+
+	ai_strategy = {
+		type = area_priority
+		id = middle_east
+		value = 30
+	}
+	ai_strategy = {
+		type = area_priority
+		id = suez
+		value = 20
+	}
+
+	ai_strategy = {
+		type = area_priority
+		id = africa
+		value = -60
+	}
+
+	ai_strategy = {
+		type = area_priority
+		id = pacific
+		value = 80
+	}
+
+	ai_strategy = {
+		type = area_priority
+		id = oceania
+		value = 80
+	}
+}
+
+PRC_USA_we_love_islands = {
+	allowed = {
+		OR = {
+			original_tag = PRC
+			original_tag = USA
+		}
+	}
+	enable = {
+		PRC = { has_war_with = USA }
+	}
+
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = area_priority
+		id = pacific
+		value = 140
+	}
+}
