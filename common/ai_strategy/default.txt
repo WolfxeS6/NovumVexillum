@@ -18,7 +18,17 @@ default_unit_production = {
 	enable = {
 		always = yes
 	}
+	ai_strategy = {
+		type = role_ratio
+		id = garrison
+		value = 5
+	}
 	
+	ai_strategy = {
+		type = role_ratio
+		id = suppression
+		value = 2
+	}
 	ai_strategy = {
 		type = role_ratio
 		id = paratroopers
@@ -28,7 +38,7 @@ default_unit_production = {
 	ai_strategy = {
 		type = role_ratio
 		id = mountaineers
-		value = 4
+		value = 0
 	}
 
 	ai_strategy = {
@@ -52,7 +62,7 @@ default_unit_production = {
 	ai_strategy = {
 		type = role_ratio
 		id = infantry
-		value = 80
+		value = 60
 	}
 	
 	#Air unit factors
@@ -560,33 +570,28 @@ highered_armored_production = {
 
 default_garrison_production = {
 	enable = {
-		NOT = { 
-			original_tag = GER 
-			original_tag = SOV
-			original_tag = USA
-			original_tag = CHI
-			original_tag = FRA
-			original_tag = JAP
-			original_tag = ENG
+		OR = {
+			ai_wants_divisions >  12 #Massively decreasing the amount of garrison and suppression the AI wants
+			has_idea = national_development_developed
 		}
-		ai_wants_divisions >  12 #Massively decreasing the amount of garrison and suppression the AI wants
-		is_major = yes
+		
 	}
 	abort = {
 		ai_wants_divisions < 13 #Massively decreasing the amount of garrison and suppression the AI wants
 		is_major = no
+		NOT = {has_idea = national_development_developed}
 	}
 
 	ai_strategy = {
 		type = role_ratio
 		id = garrison
-		value = 5
+		value = -500
 	}
 	
 	ai_strategy = {
 		type = role_ratio
 		id = suppression
-		value = 2
+		value = -500
 	}
 }
 
