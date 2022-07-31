@@ -75,7 +75,7 @@ PRC_building_boats_is_great = {
 
 PRC_area_priority = {
 	allowed = {
-		original_tag = PRC
+		original_tag = JAP
 	}
 	enable = {
 		always = yes
@@ -158,5 +158,44 @@ PRC_USA_we_love_islands = {
 		type = area_priority
 		id = pacific
 		value = 140
+	}
+}
+
+pr_china_india_must_crush_ai = {
+	allowed = {
+		original_tag = PRC
+	}
+	
+	enable = {
+		has_completed_focus = PRC_Indian_Invasion
+		country_exists = RAJ
+	}
+	
+	abort = {
+		OR = {
+			NOT = {
+				country_exists = RAJ
+			}
+			RAJ = { is_puppet_of = PRC }
+			is_in_faction_with = RAJ
+		}
+	}
+
+	ai_strategy = {
+		type = antagonize
+		id = "RAJ"
+		value = 200
+	}
+	
+	ai_strategy = {
+		type = consider_weak
+		id = "RAJ"
+		value = 75
+	}
+	
+	ai_strategy = {
+		type = conquer
+		id = "RAJ"
+		value = 75
 	}
 }

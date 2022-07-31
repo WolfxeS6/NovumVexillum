@@ -1,0 +1,123 @@
+
+##################################
+#
+#  INDIA - CHINA WAR DECISIONS
+#
+#  BY RAN MITAKE
+#
+##################################
+
+RAJ_PRC_WAR = {
+
+	RAJ_indian_chinese_war_surrender_decision = {
+	
+		priority = 100
+		cost = 0
+		
+		fire_only_once = yes
+		
+		allowed = {
+			original_tag = RAJ #India 
+		}
+
+		visible = {
+			has_war_with = PRC
+		}
+		
+		available = {
+			OR = {
+				AND = { #An important city has been occupied
+						if = {
+							limit = {
+								441 = { is_owned_by = RAJ }
+							}
+							441 = {
+								CONTROLLER = {
+									has_war_with = RAJ
+									is_in_faction_with = PRC
+								}
+							}
+						}
+						if = {
+							limit = {
+								437 = { is_owned_by = RAJ } #Himachal
+							}
+							437 = {
+								CONTROLLER = {
+									has_war_with = RAJ
+									is_in_faction_with = PRC
+								}
+							}
+						}
+						#RAJ = { surrender_progress > 0.3 }
+				}
+				#AND = { #damage from a nuclear attack
+				#	has_global_flag = RAJ_nuke_1
+				#	has_global_flag = RAJ_nuke_2
+				#	RAJ = { surrender_progress > 0.3 }
+				#	#NOT = { PRC = { surrender_progress > 0.1 } }
+				#}
+				RAJ = { surrender_progress > 0.2 }
+			}
+		}
+		
+		complete_effect = {
+			custom_effect_tooltip = raj_prc_war_surrender_tt #If they accept, the war will end.
+			PRC = { country_event = { id = china.41 } }
+		}
+		
+		ai_will_do = {
+			factor = 1000
+				modifier = {
+					PRC = { surrender_progress > 0.1 } #We have hope of victory.
+					factor = 0
+				}
+		}
+	}
+
+	PRC_indian_chinese_war_surrender_decision = {
+	
+		priority = 100
+		cost = 0
+		
+		fire_only_once = yes
+		
+		allowed = {
+			original_tag = PRC
+		}
+
+		visible = {
+			has_war_with = RAJ
+		}
+		
+		available = {
+			OR = {
+				PRC = { surrender_progress > 0.2 }
+				if = {
+					limit = {
+						322 = { is_owned_by = PRC }
+					}
+						322 = {
+							CONTROLLER = {
+								has_war_with = PRC
+								is_in_faction_with = RAJ
+						}
+					}
+				}
+			}
+		}
+		
+		complete_effect = {
+			custom_effect_tooltip = raj_prc_war_surrender_tt #If they accept, the war will end.
+			RAJ = { country_event = { id = china.43 } }
+		}
+		
+		ai_will_do = {
+			factor = 1000
+				modifier = {
+					RAJ = { surrender_progress > 0.1 } #We have hope of victory.
+					factor = 0
+				}
+		}
+	}
+}

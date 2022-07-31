@@ -1812,6 +1812,182 @@ country_event = {
 	}
 }
 
+
+##########################################################
+###
+###
+### INDIA-CHINA EVENTS
+###
+###
+##########################################################
+
+# [RAJ.GetName]'s Surrender Negotiations
+country_event = {
+	id = china.41
+	title = china.41.t
+	desc = china.41.desc
+	picture = GFX_report_event_china_government
+
+	is_triggered_only = yes
+	
+	option = {
+		name = china.41.a
+		ai_chance = { factor = 100 } #INDIA IS MUST DIE
+		PRC_committee_large_support = yes
+		set_global_flag = PRC_RAJ_war_end
+		RAJ = { country_event = { id = china.42 days = 1 } }
+	}
+	
+	option = {
+		name = china.41.b
+		ai_chance = { factor = 0 }
+		add_stability = -0.05
+		RAJ = { country_event = { id = china.45 days = 1 } }
+	}
+}
+
+# [RAJ.GetName]'s Surrender
+country_event = {
+	id = china.42
+	title = china.42.t
+	desc = china.42.desc
+	picture = GFX_report_event_china_government
+
+	is_triggered_only = yes
+	
+	option = {
+		name = china.42.a
+		hidden_effect = {
+			news_event = { id = china_news.30 }
+		}
+			
+		add_timed_idea = { idea = RAJ_war_reparations days = 730 } #Two Years
+		
+		every_country = {
+			limit = {
+				NOT = { original_tag = RAJ }
+				#has_capitulated = no
+				is_in_faction_with = RAJ
+				has_war_with = PRC
+			}
+			leave_faction = yes
+		}
+		
+		#Give Province
+		if = {
+			limit = {
+				ROOT = { owns_state = 434 } #Arunachal Pardesh
+			}
+			PRC = { transfer_state = 434 }
+		}
+		
+		if = {
+			limit = {
+				AND = {
+					ROOT = { owns_state = 441 } #Kashmir
+					PAK = { is_in_faction_with = PRC }
+				}
+			}
+			PAK = { transfer_state = 441 }
+		}
+		
+		white_peace = PRC
+	}
+	
+}
+
+# [PRC.GetName]'s Surrender Negotiations
+country_event = {
+	id = china.43
+	title = china.43.t
+	desc = china.43.desc
+	picture = GFX_report_event_china_government
+
+	is_triggered_only = yes
+	
+	option = {
+		name = china.43.a #
+		ai_chance = { factor = 100 } #INDIA IS MUST DIE
+		set_global_flag = PRC_RAJ_war_end
+		PRC = { country_event = { id = china.44 days = 1 } }
+	}
+	
+	option = {
+		name = china.43.b
+		ai_chance = { factor = 0 }
+		add_stability = -0.05
+		PRC = { country_event = { id = china.45 days = 1 } }
+	}
+}
+
+# [PRC.GetName]'s Surrender
+country_event = {
+	id = china.44
+	title = china.44.t
+	desc = china.44.desc
+	picture = GFX_report_event_china_government
+
+	is_triggered_only = yes
+	
+	option = {
+		name = china.44.a
+		hidden_effect = {
+			news_event = { id = china_news.31 }
+		}
+			
+		add_timed_idea = { idea = PRC_war_reparations days = 730 } #Two Years
+		
+		#Give Province
+		if = {
+			limit = {
+				ROOT = { owns_state = 788 } #Aksai Chin
+			}
+			PRC = { transfer_state = 788 }
+		}
+		
+		#release = TIB
+		#set_autonomy = { target = TIB autonomy_state = autonomy_free }
+		
+		white_peace = RAJ
+	}
+	
+}
+
+# [FROM.GetName]'s Refusal to Negotiate
+country_event = {
+	id = china.45
+	title = china.45.t
+	desc = china.45.desc
+	picture = GFX_report_event_china_government
+
+	is_triggered_only = yes
+	
+	option = {
+		name = china.45.a
+	}
+	
+}
+
+
+# Debug - PRC / RAJ war
+country_event = {
+	id = china.999
+	title = china.999.t
+	desc = china.999.desc
+	picture = GFX_report_event_china_government
+
+	is_triggered_only = yes
+	
+	option = {
+		name = china.999.a
+		create_wargoal = {
+			target = RAJ
+			type = topple_government
+		}
+	}
+	
+}
+
 add_namespace = moh_south_prchina
 
 # [PRC.GetLeader] invites us to Beijing

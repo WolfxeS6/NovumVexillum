@@ -778,6 +778,46 @@ ideas = {
 				monthly_population = -0.01
 			}
 		}
+
+		PRC_war_reparations = {
+			allowed = { always = no }
+
+			picture =  generic_foreign_capital
+
+			removal_cost = -1
+			
+			available = {
+				NOT = { has_war_with = RAJ }
+			}
+			
+			targeted_modifier = {
+				tag = RAJ
+				cic_to_target_factor = 0.1
+				mic_to_target_factor = 0
+				extra_trade_to_target_factor = 0.4
+				trade_cost_for_target_factor = -0.2
+			}
+		}
+
+		RAJ_war_reparations = {
+			allowed = { always = no }
+			
+			available = {
+				NOT = { has_war_with = PRC }
+			}
+
+			picture =  generic_foreign_capital
+
+			removal_cost = -1
+			
+			targeted_modifier = {
+				tag = PRC
+				cic_to_target_factor = 0.1
+				mic_to_target_factor = 0
+				extra_trade_to_target_factor = 0.4
+				trade_cost_for_target_factor = -0.2
+			}
+		}
 	}
 	
 
