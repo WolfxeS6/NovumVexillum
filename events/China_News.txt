@@ -772,8 +772,8 @@ news_event = {
 		name = china_news.21.o2
 		trigger = {
 			OR = {
-				original_tag = USA
-				is_in_faction_with = USA
+				original_tag = PRC
+				is_in_faction_with = PRC
 			}
 		}
 		
@@ -995,6 +995,51 @@ news_event = {
 		trigger = { 
 			NOT = { original_tag = RAJ }
 			NOT = { original_tag = PRC }
+		}
+	}
+}
+
+#China-America War
+news_event = {
+	id = china_news.32
+	title = china_news.32.t
+	desc = china_news.32.d
+	picture = GFX_news_event_united_states_navy
+	
+	major = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		set_global_flag = prc_america_china_war_sp
+	}
+	
+	option = {
+		name = china_news.32.a
+		trigger = {
+			OR = {
+				is_in_faction_with = USA
+				original_tag = USA
+			}
+		}
+	}
+	
+	option = {
+		name = china_news.32.b
+		trigger = {
+			OR = {
+				is_in_faction_with = PRC
+				original_tag = PRC
+			}
+		}
+	}
+	
+	option = {
+		name = china_news.32.c
+		trigger = { 
+			NOT = { original_tag = USA }
+			NOT = { original_tag = PRC }
+			NOT = { is_in_faction_with = USA }
+			NOT = { is_in_faction_with = PRC }
 		}
 	}
 }
