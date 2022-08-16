@@ -114,7 +114,7 @@
 
     #Economic Start
 	focus = {
-		id = PRC_economic_revitalization
+		id = PRC_results_of_the_southern_tour
 		icon = industry_civilian
 		x = 6
 		y = 0
@@ -1062,7 +1062,7 @@
 
 		completion_reward = {
 			custom_effect_tooltip = PRC_little_global_tension
-			PRK = { country_event = { id = moh_prchina.33 days = 3 random_days = 5 } } #DPR Korea
+			PRK = { country_event = { id = china.39 days = 3 random_days = 5 } } #DPR Korea
 			
 			hidden_effect = {
 				add_named_threat = {
@@ -1156,9 +1156,9 @@
 					}
 			}
 			
-			add_doctrine_cost_reduction = {
+			add_tech_bonus = {
 				name = nav_doctrine_bonus
-				cost_reduction = 0.5
+				bonus = 1.0
 				uses = 2
 				category = naval_doctrine
 			}
@@ -1790,104 +1790,23 @@
    }
 
    ########################################################################################################################################################
-   #Northern Development
+   #Economic
 
-	focus = {
-		id = PRC_northern_infrastructure
-		icon = infrastructure
-		x = @northern_tree
-		y = 1
-		cost = 7
+   focus = {
+      id = PRC_improvement_of_the_rail_network
+      icon = research
+      x = -2
+      y = 1
+      cost = 10
+
+      relative_position_id = PRC_results_of_the_southern_tour
 
 		prerequisite = {
-		focus = PRC_economic_revitalization
+		   focus = PRC_results_of_the_southern_tour
 		}
 
 		completion_reward = {
-
-			609 = {
-			add_building_construction = {
-			type = infrastructure
-			level = 2
-			instant_build = yes
-			}
-			}
-
-			610 = {
-			add_building_construction = {
-			type = infrastructure
-			level = 2
-			instant_build = yes
-			}
-			}
-
-			608 = {
-			add_building_construction = {
-			type = infrastructure
-			level = 2
-			instant_build = yes
-			}
-			}
-
-			716 = {
-			add_building_construction = {
-			type = infrastructure
-			level = 2
-			instant_build = yes
-			}
-			}
 		}
-
-		ai_will_do = {
-			factor = 10
-		}
-	}
-
-   focus = {
-      id = PRC_northern_industry
-      icon = industry_civilian
-      x = @northern_tree
-      y = 2
-      cost = 7
-
-      prerequisite = {
-         focus = PRC_northern_infrastructure
-      }
-
-      completion_reward = {
-            
-         609 = {
-            add_building_construction = {
-               type = industrial_complex
-               level = 1
-               instant_build = yes
-            }
-            }
-
-         610 = {
-            add_building_construction = {
-               type = industrial_complex
-               level = 1
-               instant_build = yes
-            }
-            }
-
-         608 = {
-            add_building_construction = {
-               type = industrial_complex
-               level = 1
-               instant_build = yes
-            }
-            }
-
-         716 = {
-            add_building_construction = {
-               type = industrial_complex
-               level = 1
-               instant_build = yes
-            }
-            }
-         }
 
 		ai_will_do = {
 			factor = 10
@@ -1895,438 +1814,20 @@
    }
 
    focus = {
-      id = PRC_northern_military_industry
-      icon = industry_military
-      x = @northern_tree
+      id = PRC_inland_industrialization
+      icon = research
+      x = -2
       y = 3
-      cost = 8
+      cost = 10
 
-      prerequisite = {
-         focus = PRC_northern_industry
-      }
-
-      completion_reward = {
-            
-         609 = {
-            add_building_construction = {
-               type = arms_factory
-               level = 1
-               instant_build = yes
-            }
-            }
-
-         610 = {
-            add_building_construction = {
-               type = arms_factory
-               level = 1
-               instant_build = yes
-            }
-            }
-
-         608 = {
-            add_building_construction = {
-               type = arms_factory
-               level = 1
-               instant_build = yes
-            }
-            }
-
-         716 = {
-            add_building_construction = {
-               type = arms_factory
-               level = 1
-               instant_build = yes
-            }
-            }
-		}
-
-		ai_will_do = {
-			factor = 10
-		}
-   }
-    
-   #########################################################################################################################################################
-   #Eastern Development
-
-   focus = {
-      id = PRC_eastern_infrastructure
-      icon = infrastructure
-      x = @eastern_tree
-      y = 1
-      cost = 7
-
-      prerequisite = {
-         focus = PRC_economic_revitalization
-      }
-
-      completion_reward = {
-            
-         614 = {
-            add_building_construction = {
-               type = infrastructure
-               level = 2
-               instant_build = yes
-            }
-            }
-
-         597 = {
-            add_building_construction = {
-               type = infrastructure
-               level = 2
-               instant_build = yes
-            }
-            }
-
-         598 = {
-            add_building_construction = {
-               type = infrastructure
-               level = 2
-               instant_build = yes
-            }
-            }
-
-         607 = {
-            add_building_construction = {
-               type = infrastructure
-               level = 2
-               instant_build = yes
-            }
-            }
-         }
-
-		ai_will_do = {
-			factor = 10
-		}
-   }
-
-   focus = {
-      id = PRC_eastern_industry
-      icon = industry_civilian
-      x = @eastern_tree
-      y = 2
-      cost = 7
-
-      prerequisite = {
-         focus = PRC_eastern_infrastructure
-      }
-
-      completion_reward = {
-            
-         614 = {
-            add_building_construction = {
-               type = industrial_complex
-               level = 1
-               instant_build = yes
-            }
-            }
-
-         597 = {
-            add_building_construction = {
-               type = industrial_complex
-               level = 1
-               instant_build = yes
-            }
-            }
-
-         598 = {
-            add_building_construction = {
-               type = industrial_complex
-               level = 1
-               instant_build = yes
-            }
-            }
-
-         607 = {
-            add_building_construction = {
-               type = industrial_complex
-               level = 1
-               instant_build = yes
-            }
-            }
-         }
-
-		ai_will_do = {
-			factor = 10
-		}
-   }
-
-   focus = {
-      id = PRC_eastern_military_industry
-      icon = industry_military
-      x = @eastern_tree
-      y = 3
-      cost = 8
-
-      prerequisite = {
-         focus = PRC_eastern_industry
-      }
-
-      completion_reward = {
-            
-         614 = {
-            add_building_construction = {
-               type = arms_factory
-               level = 1
-               instant_build = yes
-            }
-            }
-
-         597 = {
-            add_building_construction = {
-               type = arms_factory
-               level = 1
-               instant_build = yes
-            }
-            }
-
-         598 = {
-            add_building_construction = {
-               type = arms_factory
-               level = 1
-               instant_build = yes
-            }
-            }
-
-         607 = {
-            add_building_construction = {
-               type = arms_factory
-               level = 1
-               instant_build = yes
-            }
-            }
-         }
-
-		ai_will_do = {
-			factor = 10
-		}
-   }
-
-   #########################################################################################################################################################
-   #Southern Development
-
-   focus = {
-      id = PRC_southern_infrastructure
-      icon = infrastructure
-      x = @southern_tree
-      y = 1
-      cost = 7
-
-      prerequisite = {
-         focus = PRC_economic_revitalization
-      }
-
-      completion_reward = {
-            
-         592 = {
-            add_building_construction = {
-               type = infrastructure
-               level = 2
-               instant_build = yes
-            }
-            }
-
-         593 = {
-            add_building_construction = {
-               type = infrastructure
-               level = 2
-               instant_build = yes
-            }
-            }
-
-         595 = {
-            add_building_construction = {
-               type = infrastructure
-               level = 2
-               instant_build = yes
-            }
-            }
-
-         600 = {
-            add_building_construction = {
-               type = infrastructure
-               level = 2
-               instant_build = yes
-            }
-            }
-         }
-
-		ai_will_do = {
-			factor = 10
-		}
-   }
-
-   focus = {
-      id = PRC_southern_industry
-      icon = industry_civilian
-      x = @southern_tree
-      y = 2
-      cost = 7
-
-      prerequisite = {
-         focus = PRC_southern_infrastructure
-      }
-
-		completion_reward = {
-
-			592 = {
-				add_building_construction = {
-				type = industrial_complex
-				level = 1
-				instant_build = yes
-				}
-			}
-
-			593 = {
-				add_building_construction = {
-				type = industrial_complex
-				level = 1
-				instant_build = yes
-				}
-			}
-
-			595 = {
-				add_building_construction = {
-				type = industrial_complex
-				level = 1
-				instant_build = yes
-				}
-			}
-
-			600 = {
-				add_building_construction = {
-				type = industrial_complex
-				level = 1
-				instant_build = yes
-				}
-			}
-		}
-
-		ai_will_do = {
-			factor = 10
-		}
-   }
-
-   focus = {
-      id = PRC_southern_military_industry
-      icon = industry_military
-      x = @southern_tree
-      y = 3
-      cost = 8
-
-      prerequisite = {
-         focus = PRC_southern_industry
-      }
-
-      completion_reward = {
-            
-         592 = {
-            add_building_construction = {
-               type = arms_factory
-               level = 1
-               instant_build = yes
-            }
-            }
-
-         593 = {
-            add_building_construction = {
-               type = arms_factory
-               level = 1
-               instant_build = yes
-            }
-            }
-
-         595 = {
-            add_building_construction = {
-               type = arms_factory
-               level = 1
-               instant_build = yes
-            }
-            }
-
-         600 = {
-            add_building_construction = {
-               type = arms_factory
-               level = 1
-               instant_build = yes
-            }
-            }
-         }
-
-		ai_will_do = {
-			factor = 10
-		}
-   }
-
-   focus = {
-      id = PRC_hainan_naval_development
-      icon = naval_dockyards
-      x = @southern_tree
-      y = 4
-      cost = 8
+      relative_position_id = PRC_results_of_the_southern_tour
 
 		prerequisite = {
-		focus = PRC_southern_military_industry
+		   focus = PRC_improvement_of_the_rail_network
 		}
 
 		completion_reward = {
-
-		591 = { add_building_construction = { type = naval_base province = 1070 level = 5 instant_build = yes } }
-		591 = { add_building_construction = { type = dockyard level = 5 instant_build = yes } }
 		}
-
-		ai_will_do = {
-			factor = 10
-		}
-	}
-
-   #########################################################################################################################################################
-   #Central Development
-
-   focus = {
-      id = PRC_central_infrastructure
-      icon = infrastructure
-      x = @central_tree
-      y = 1
-      cost = 7
-
-      prerequisite = {
-         focus = PRC_economic_revitalization
-      }
-
-      completion_reward = {
-            
-         622 = {
-            add_building_construction = {
-               type = infrastructure
-               level = 2
-               instant_build = yes
-            }
-            }
-
-         615 = {
-            add_building_construction = {
-               type = infrastructure
-               level = 2
-               instant_build = yes
-            }
-            }
-
-         620 = {
-            add_building_construction = {
-               type = infrastructure
-               level = 2
-               instant_build = yes
-            }
-            }
-
-         602 = {
-            add_building_construction = {
-               type = infrastructure
-               level = 2
-               instant_build = yes
-            }
-            }
-         }
 
 		ai_will_do = {
 			factor = 10
@@ -2334,156 +1835,41 @@
    }
 
    focus = {
-      id = PRC_central_industry
-      icon = industry_civilian
-      x = @central_tree
-      y = 2
-      cost = 7
-
-      prerequisite = {
-         focus = PRC_central_infrastructure
-      }
-
-      completion_reward = {
-            
-         622 = {
-            add_building_construction = {
-               type = industrial_complex
-               level = 1
-               instant_build = yes
-            }
-            }
-
-         615 = {
-            add_building_construction = {
-               type = industrial_complex
-               level = 1
-               instant_build = yes
-            }
-            }
-
-         620 = {
-            add_building_construction = {
-               type = industrial_complex
-               level = 1
-               instant_build = yes
-            }
-            }
-
-         602 = {
-            add_building_construction = {
-               type = industrial_complex
-               level = 1
-               instant_build = yes
-            }
-            }
-         }
-
-		ai_will_do = {
-			factor = 10
-		}
-   }
-
-   focus = {
-      id = PRC_central_military_industry
-      icon = industry_military
-      x = @central_tree
+      id = PRC_inland_industrialization
+      icon = research
+      x = -2
       y = 3
-      cost = 8
+      cost = 10
 
-      prerequisite = {
-         focus = PRC_central_industry
-      }
+      relative_position_id = PRC_results_of_the_southern_tour
 
-      completion_reward = {
-            
-         622 = {
-            add_building_construction = {
-               type = arms_factory
-               level = 1
-               instant_build = yes
-            }
-            }
+		prerequisite = {
+		   focus = PRC_improvement_of_the_rail_network
+		}
 
-         615 = {
-            add_building_construction = {
-               type = arms_factory
-               level = 1
-               instant_build = yes
-            }
-            }
-
-         620 = {
-            add_building_construction = {
-               type = arms_factory
-               level = 1
-               instant_build = yes
-            }
-            }
-
-         602 = {
-            add_building_construction = {
-               type = arms_factory
-               level = 1
-               instant_build = yes
-            }
-            }
-         }
+		completion_reward = {
+		}
 
 		ai_will_do = {
 			factor = 10
 		}
    }
 
-   #########################################################################################################################################################
-   #Western Development
-
    focus = {
-      id = PRC_western_infrastructure
-      icon = infrastructure
-      x = @western_tree
+      id = PRC_project_985_maintenance
+      icon = research
+      x = 0
       y = 1
-      cost = 7
+      cost = 10
 
-      prerequisite = {
-         focus = PRC_economic_revitalization
-      }
+      relative_position_id = PRC_results_of_the_southern_tour
 
+		prerequisite = {
+		   focus = PRC_results_of_the_southern_tour
+		}
 
-      completion_reward = {
-            
-         616 = {
-            add_building_construction = {
-               type = infrastructure
-               level = 2
-               instant_build = yes
-            }
-            }
-
-         283 = {
-            add_building_construction = {
-               type = infrastructure
-               level = 2
-               instant_build = yes
-            }
-            }
-
-         604 = {
-            add_building_construction = {
-               type = infrastructure
-               level = 2
-               instant_build = yes
-            }
-            }
-
-         325 = {
-            add_building_construction = {
-               type = infrastructure
-               level = 2
-               instant_build = yes
-            }
-            }
-         }
+		completion_reward = {
+		}
 
 		ai_will_do = {
 			factor = 10
@@ -2491,50 +1877,24 @@
    }
 
    focus = {
-      id = PRC_western_industry
-      icon = industry_civilian
-      x = @western_tree
+      id = PRC_domestic_expert
+      icon = research
+      x = -1
       y = 2
-      cost = 7
+      cost = 10
 
-      prerequisite = {
-         focus = PRC_western_infrastructure
-      }
+      relative_position_id = PRC_results_of_the_southern_tour
 
-      completion_reward = {
-            
-         616 = {
-            add_building_construction = {
-               type = industrial_complex
-               level = 1
-               instant_build = yes
-            }
-            }
+		prerequisite = {
+		   focus = PRC_project_985_maintenance
+		}
 
-         283 = {
-            add_building_construction = {
-               type = industrial_complex
-               level = 1
-               instant_build = yes
-            }
-            }
+		mutually_exclusive = {
+			focus = PRC_foreign_expert
+		}
 
-         604 = {
-            add_building_construction = {
-               type = industrial_complex
-               level = 1
-               instant_build = yes
-            }
-            }
-
-         325 = {
-            add_building_construction = {
-               type = industrial_complex
-               level = 1
-               instant_build = yes
-            }
-            }
-         }
+		completion_reward = {
+		}
 
 		ai_will_do = {
 			factor = 10
@@ -2542,50 +1902,24 @@
    }
 
    focus = {
-      id = PRC_western_military_industry
-      icon = industry_military
-      x = @western_tree
-      y = 3
-      cost = 8
+      id = PRC_foreign_expert
+      icon = research
+      x = 1
+      y = 2
+      cost = 10
 
-      prerequisite = {
-         focus = PRC_western_industry
-      }
+      relative_position_id = PRC_results_of_the_southern_tour
 
-      completion_reward = {
-            
-         616 = {
-            add_building_construction = {
-               type = arms_factory
-               level = 1
-               instant_build = yes
-            }
-            }
+		prerequisite = {
+		   focus = PRC_project_985_maintenance
+		}
 
-         283 = {
-            add_building_construction = {
-               type = arms_factory
-               level = 1
-               instant_build = yes
-            }
-            }
+		mutually_exclusive = {
+			focus = PRC_domestic_expert
+		}
 
-         604 = {
-            add_building_construction = {
-               type = arms_factory
-               level = 1
-               instant_build = yes
-            }
-            }
-
-         325 = {
-            add_building_construction = {
-               type = arms_factory
-               level = 1
-               instant_build = yes
-            }
-            }
-         }
+		completion_reward = {
+		}
 
 		ai_will_do = {
 			factor = 10
@@ -2593,55 +1927,34 @@
    }
 
    focus = {
-      id = PRC_xinjiang_infrastructure
-      icon = infrastructure
-      x = @western_tree
-      y = 4
-      cost = 8
+      id = PRC_coastal_urban_development
+      icon = research
+      x = 2
+      y = 1
+      cost = 10
 
-      prerequisite = {
-         focus = PRC_western_military_industry
-      }
+      relative_position_id = PRC_results_of_the_southern_tour
 
-      completion_reward = {
-            
-         617 = {
-            add_building_construction = {
-               type = infrastructure
-               level = 2
-               instant_build = yes
-            }
-            }
+		prerequisite = {
+		   focus = PRC_results_of_the_southern_tour
+		}
 
-         619 = {
-            add_building_construction = {
-               type = infrastructure
-               level = 2
-               instant_build = yes
-            }
-            }
-
-         618 = {
-            add_building_construction = {
-               type = infrastructure
-               level = 2
-               instant_build = yes
-            }
-            }
-
-         287 = {
-            add_building_construction = {
-               type = infrastructure
-               level = 2
-               instant_build = yes
-            }
-            }
-         }
+		completion_reward = {
+		}
 
 		ai_will_do = {
 			factor = 10
 		}
    }
+
+#Confucius Institute
+
+
+
+
+
+
+
 
    #########################################################################################################################################################
 
