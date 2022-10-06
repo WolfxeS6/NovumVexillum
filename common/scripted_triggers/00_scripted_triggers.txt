@@ -685,6 +685,38 @@ is_core_or_compliance_60 = {
 	}
 }
 
+has_same_ideology = {
+	custom_trigger_tooltip = {
+		tooltip = has_same_ideology_tt
+		OR = {
+			AND = {
+				has_democratic_form_of_government = yes
+				ROOT = { has_democratic_form_of_government = yes}
+			}
+			AND = {
+				has_government = fascist
+				ROOT = { has_government = fascist }
+			}
+			AND = {
+				has_government = communist
+				ROOT = { has_government = communist }
+			}
+			AND = {
+				has_government = monarchist
+				ROOT = { has_government = monarchist }
+			}
+			AND = {
+				has_government = islamist
+				ROOT = { has_government = islamist }
+			}
+			AND = {
+				has_government = nationalist
+				ROOT = { has_government = nationalist }
+			}
+		}
+	}
+}
+
 has_specialist_level_trigger = {
 	skill > 5
 	skill < 6
