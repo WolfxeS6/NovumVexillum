@@ -14,6 +14,12 @@ country_event = {
 			NOT = { has_idea = idea_USA_political_establishment }
 			#NOT = { tag = USA }
 		}
+		if = {
+			limit = {
+				original_tag = KOR
+			}
+			date > 2003.6.1
+		}
 		NOT = { has_country_flag = russia_election_2000 }
 		NOT = { has_idea = government_system_provisional }
 	}
@@ -165,8 +171,74 @@ country_event = {
 		}
 		add_political_power = 20
 		
+		if = {
+			limit = { 
+				original_tag = KOR 
+				has_government = conservative
+			}
+			KOR_co_op_end_election_effect = yes
+			KOR_win_left_wing_co_op_effect = yes
+			country_event = { id = korea_election.8 hours = 4 }
+		}
+		else_if = {
+			limit = { 
+				original_tag = KOR 
+				has_government = social_liberal
+			}
+			KOR_co_op_end_election_effect = yes
+			KOR_win_left_wing_co_op_effect = yes
+			country_event = { id = korea_election.7 hours = 4 }
+		}
+		else_if = {
+			limit = { 
+				original_tag = KOR 
+				has_government = democratic_socialist
+			}
+			KOR_co_op_end_election_effect = yes
+			KOR_win_left_wing_co_op_effect = yes
+		}
+		else_if = {
+			limit = { 
+				original_tag = KOR 
+				has_government = islamist
+			}
+			KOR_co_op_end_election_effect = yes
+			KOR_win_right_wing_co_op_effect = yes
+		}
+		else_if = {
+			limit = { 
+				original_tag = KOR 
+				has_government = market_liberal
+			}
+			KOR_co_op_end_election_effect = yes
+			KOR_win_right_wing_co_op_effect = yes
+			country_event = { id = korea_election.9 hours = 4 }
+		}
+		else_if = {
+			limit = { 
+				original_tag = KOR 
+				has_government = reactionary
+			}
+			KOR_co_op_end_election_effect = yes
+			KOR_win_right_wing_co_op_effect = yes
+		}
+		
 		ai_chance = {
 			factor = 10
+			modifier = {
+				factor = 0
+				AND = { 
+					original_tag = KOR
+					is_historical_focus_on = yes
+					has_government = social_liberal
+					has_game_rule = {
+						rule = KOR_AI_BEHAVIOR
+						option = DEFAULT
+					}
+					date < "2008.1.1" #Historical 2007 presidential election
+					#Korean unique election events will added in the future
+				}
+			}
 		}
 	}
 	
@@ -180,6 +252,18 @@ country_event = {
 		set_politics = {
 			ruling_party = islamist
 			elections_allowed = yes
+		}
+		
+		if = {
+			limit = { original_tag = KOR }
+			KOR_co_op_end_election_effect = yes
+			KOR_win_right_wing_co_op_effect = yes
+		}
+		else_if = {
+			limit = { original_tag = JAP }
+			remove_power_balance = {
+				id = JAP_power_balance
+			}
 		}
 		
 		ai_chance = {
@@ -200,6 +284,17 @@ country_event = {
 			elections_allowed = no
 		}
 		
+		if = {
+			limit = { original_tag = KOR }
+			KOR_co_op_end_election_effect = yes
+		}
+		else_if = {
+			limit = { original_tag = JAP }
+			remove_power_balance = {
+				id = JAP_power_balance
+			}
+		}
+		
 		ai_chance = {
 			factor = 2
 		}
@@ -215,6 +310,17 @@ country_event = {
 		set_politics = {
 			ruling_party = nationalist
 			elections_allowed = yes
+		}
+		
+		if = {
+			limit = { original_tag = KOR }
+			KOR_co_op_end_election_effect = yes
+		}
+		else_if = {
+			limit = { original_tag = JAP }
+			remove_power_balance = {
+				id = JAP_power_balance
+			}
 		}
 		
 		ai_chance = {
@@ -235,6 +341,17 @@ country_event = {
 			elections_allowed = no
 		}
 		
+		if = {
+			limit = { original_tag = KOR }
+			KOR_co_op_end_election_effect = yes
+		}
+		else_if = {
+			limit = { original_tag = JAP }
+			remove_power_balance = {
+				id = JAP_power_balance
+			}
+		}
+		
 		ai_chance = {
 			factor = 2
 		}
@@ -250,6 +367,22 @@ country_event = {
 		set_politics = {
 			ruling_party = reactionary
 			elections_allowed = yes
+		}
+		
+		if = {
+			limit = { original_tag = KOR }
+			KOR_co_op_end_election_effect = yes
+			KOR_win_right_wing_co_op_effect = yes
+		}
+		else_if = {
+			limit = { original_tag = JAP }
+			set_power_balance = {
+				id = JAP_power_balance
+				left_side = JAP_hoshu_boryu # will keep the last set side if not specified
+				right_side = JAP_hoshu_honryu # will keep the last set side if not specified
+				#set_default = yes # whether or not to reset the power balance to the initial value, default = no
+				set_value = -0.5
+			}
 		}
 		
 		ai_chance = {
@@ -269,6 +402,23 @@ country_event = {
 			elections_allowed = yes
 		}
 		
+		if = {
+			limit = { original_tag = KOR }
+			KOR_co_op_end_election_effect = yes
+			KOR_win_left_wing_co_op_effect = yes
+			country_event = { id = korea_election.8 hours = 4 }
+		}
+		else_if = {
+			limit = { original_tag = JAP }
+			set_power_balance = {
+				id = JAP_power_balance
+				left_side = JAP_hoshu_boryu # will keep the last set side if not specified
+				right_side = JAP_hoshu_honryu # will keep the last set side if not specified
+				#set_default = yes # whether or not to reset the power balance to the initial value, default = no
+				set_value = 0.0
+			}
+		}
+		
 		ai_chance = {
 			factor = 2
 		}
@@ -284,6 +434,23 @@ country_event = {
 		set_politics = {
 			ruling_party = market_liberal
 			elections_allowed = yes
+		}
+		
+		if = {
+			limit = { original_tag = KOR }
+			KOR_co_op_end_election_effect = yes
+			KOR_win_right_wing_co_op_effect = yes
+			country_event = { id = korea_election.9 hours = 4 }
+		}
+		else_if = {
+			limit = { original_tag = JAP }
+			set_power_balance = {
+				id = JAP_power_balance
+				left_side = JAP_hoshu_boryu # will keep the last set side if not specified
+				right_side = JAP_hoshu_honryu # will keep the last set side if not specified
+				#set_default = yes # whether or not to reset the power balance to the initial value, default = no
+				set_value = 0.0
+			}
 		}
 		
 		ai_chance = {
@@ -303,6 +470,23 @@ country_event = {
 			elections_allowed = yes
 		}
 		
+		if = {
+			limit = { original_tag = KOR }
+			KOR_co_op_end_election_effect = yes
+			KOR_win_left_wing_co_op_effect = yes
+			country_event = { id = korea_election.7 hours = 4 }
+		}
+		else_if = {
+			limit = { original_tag = JAP }
+			set_power_balance = {
+				id = JAP_power_balance
+				left_side = JAP_liberalism # will keep the last set side if not specified
+				right_side = JAP_socialism # will keep the last set side if not specified
+				#set_default = yes # whether or not to reset the power balance to the initial value, default = no
+				set_value = 0.0
+			}
+		}
+		
 		ai_chance = {
 			factor = 2
 		}
@@ -318,6 +502,17 @@ country_event = {
 		set_politics = {
 			ruling_party = social_democrat
 			elections_allowed = yes
+		}
+		
+		if = {
+			limit = { original_tag = KOR }
+			KOR_co_op_end_election_effect = yes
+		}
+		else_if = {
+			limit = { original_tag = JAP }
+			remove_power_balance = {
+				id = JAP_power_balance
+			}
 		}
 		
 		ai_chance = {
@@ -337,6 +532,17 @@ country_event = {
 			elections_allowed = yes
 		}
 		
+		if = {
+			limit = { original_tag = KOR }
+			KOR_co_op_end_election_effect = yes
+		}
+		else_if = {
+			limit = { original_tag = JAP }
+			remove_power_balance = {
+				id = JAP_power_balance
+			}
+		}
+		
 		ai_chance = {
 			factor = 2
 		}
@@ -352,6 +558,17 @@ country_event = {
 		set_politics = {
 			ruling_party = democratic_socialist
 			elections_allowed = yes
+		}
+		if = {
+			limit = { original_tag = KOR }
+			KOR_co_op_end_election_effect = yes
+			KOR_win_left_wing_co_op_effect = yes
+		}
+		else_if = {
+			limit = { original_tag = JAP }
+			remove_power_balance = {
+				id = JAP_power_balance
+			}
 		}
 		
 		ai_chance = {
@@ -370,6 +587,17 @@ country_event = {
 		set_politics = {
 			ruling_party = communist
 			elections_allowed = no
+		}
+		
+		if = {
+			limit = { original_tag = KOR }
+			KOR_co_op_end_election_effect = yes
+		}
+		else_if = {
+			limit = { original_tag = JAP }
+			remove_power_balance = {
+				id = JAP_power_balance
+			}
 		}
 		
 		ai_chance = {

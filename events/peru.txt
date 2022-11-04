@@ -1,0 +1,99 @@
+﻿add_namespace = peru
+add_namespace = peru_news
+
+#Alberto Fujimori's exile
+country_event = {
+	id = peru.1
+	title = peru.1.t
+	desc = peru.1.desc
+	picture = GFX_report_event_JAP_fujimori_airplane
+	
+	trigger = {
+		original_tag = PRU
+		date > 2000.06.01
+	}
+	
+	mean_time_to_happen = {
+		days = 180
+	}
+	
+	immediate = {
+		hidden_effect = {
+			add_opinion_modifier = {
+				target = JAP
+				modifier = JAP_accepting_fujimori_s_exile
+			}
+		}
+	}
+	
+	fire_only_once = yes
+	
+	immediate = {
+		hidden_effect = { 
+			JAP = { country_event = { id = peru.2 } } 
+			news_event = { id = japan_news.15 days = 3 }
+		}
+		
+		retire_character = PRU_alberto_fujimori
+	}
+	
+	option = {
+		name = peru.1.a
+		set_politics = {
+			ruling_party = market_liberal
+			elections_allowed = yes
+		}
+		add_popularity = {
+			ideology = reactionary
+			popularity = -0.5
+		}
+	}
+}
+
+#Alberto Fujimori's exile
+country_event = {
+	id = peru.2
+	title = peru.2.t
+	desc = peru.2.desc
+	picture = GFX_report_event_JAP_fujimori_airplane
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = peru.2.a
+		set_country_flag = JAP_fujimori_exile_flag
+	}
+}
+
+#Alberto Fujimori's Arrest
+news_event = {
+	id = peru_news.1
+	title = peru_news.1.t
+	desc = peru_news.1.desc
+	picture = GFX_news_event_alberto_fujimori_2
+	
+	is_triggered_only = yes
+	major = yes
+	
+	option = {
+		name = peru_news.1.a
+		trigger = {
+			original_tag = JAP
+		}
+	}
+	
+	option = {
+		name = peru_news.1.b
+		trigger = {
+			original_tag = PRU
+		}
+	}
+	
+	option = {
+		name = peru_news.1.c
+		trigger = {
+			NOT = { original_tag = JAP }
+			NOT = { original_tag = PRU }
+		}
+	}
+}

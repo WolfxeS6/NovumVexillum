@@ -1,4 +1,11 @@
 ﻿add_namespace = japan
+add_namespace = japan_communist_civil_war
+add_namespace = japan_exile_korea
+add_namespace = japan_news
+add_namespace = japan_state
+add_namespace = japan_flavor_events
+add_namespace = japan_okinawa_events
+add_namespace = japan_foreign_politics_events
 
 #Invitation to the Japanese Alliance
 country_event = {
@@ -389,7 +396,7 @@ country_event = {
 country_event = {
 	id = japan.15
 	title = japan.15.t
-	desc = japan.15.d
+	desc = japan.15.desc
 	picture = GFX_report_event_hospital
 	
 	is_triggered_only = yes
@@ -397,14 +404,20 @@ country_event = {
 	trigger = { has_government = conservative }
 	
 	immediate = {
-		hidden_effect = { country_event = { id = japan.16 days = 4 } }
-		hidden_effect = {
+		hidden_effect = { 
+			country_event = { id = japan.21 days = 4 } 
+			news_event = { id = japan_news.2 }
 			create_country_leader = {
-				name = "The Diet"
+				name = "Mikio Aoki"
 				ideology = fiscal_conservative
-				picture = "The_Diet.dds"
+				picture = "mikio_aoki.dds"
 				
 				traits = { vacancy }
+			}
+			set_party_name = { 
+				ideology = conservative
+				name = JAP_conservative_jikorenritsu
+				long_name = JAP_conservative_long_jikorenritsu
 			}
 		}
 	}
@@ -416,27 +429,28 @@ country_event = {
 }
 
 #Keizo Obuchi replaced
-country_event = {
-	id = japan.16
-	title = japan.16.t
-	desc = japan.16.d
-	picture = GFX_report_event_yoshiro_mori
-	
-	is_triggered_only = yes
-	
-	immediate = {
-		hidden_effect = { country_event = { id = japan.18 days = 40 } }
-	}
-	
-	option = {
-		name = japan.16.o1
-		create_country_leader = {
-			name = "Yoshirō Mori"
-			ideology = fiscal_conservative
-			picture = "Yoshiro_Mori.dds"
-		}
-	}
-}
+#country_event = {
+#	id = japan.16
+#	title = japan.16.t
+#	desc = japan.16.d
+#	picture = GFX_report_event_yoshiro_mori
+#	
+#	is_triggered_only = yes
+#	
+#	immediate = {
+#		hidden_effect = { country_event = { id = japan.18 days = 40 } }
+#	}
+#	
+#	option = {
+#		name = japan.16.o1
+#		create_country_leader = {
+#			name = "Yoshiro Mori" #ō
+#			ideology = fiscal_conservative
+#			picture = "Yoshiro_Mori.dds"
+#			traits = { cursed_tongue lack_of_legitimacy_1 political_incompetence }
+#		}
+#	}
+#}
 
 #2000 Naka-Meguro derailment
 country_event = {
@@ -497,11 +511,11 @@ country_event = {
 	id = japan.19
 	title = japan.19.t
 	desc = japan.19.d
-	picture = GFX_report_event_red_guards
+	picture = GFX_report_event_JAP_fusako_shigenobu
 	
 	is_triggered_only = yes
 	
-	option = {	#Damn communists!
+	option = {
 		name = japan.19.o1
 		add_stability = 0.01
 		add_political_power = 10
@@ -509,18 +523,6 @@ country_event = {
 			ideology = communist
 			popularity = -0.03
 		}
-		ai_chance = { factor = 90 }
-	}
-	
-	option = {	#Set her free.
-		name = japan.19.o2
-		add_stability = -0.03
-		add_political_power = -30
-		add_popularity = {
-			ideology = communist
-			popularity = 0.03
-		}
-		ai_chance = { factor = 10 }
 	}
 }
 
@@ -539,6 +541,5207 @@ country_event = {
 		add_political_power = -100
 		hidden_effect = { 
 			news_event = { id = news.89 hours = 8 }
+		}
+	}
+}
+
+#Closed-door Meeting
+country_event = {
+	id = japan.21
+	title = japan.21.t
+	desc = japan.21.desc
+	picture = GFX_report_event_JAP_yoshiro_mori_1
+	
+	is_triggered_only = yes
+	
+	option = {	#Did we really make the right choice?
+		name = japan.21.a
+		add_stability = -0.05
+		#add_political_power = -100
+		hidden_effect = { country_event = { id = japan.22 days = 4 } }
+	}
+}
+
+#The End of a Closed-door Meeting
+country_event = {
+	id = japan.22
+	title = japan.22.t
+	desc = japan.22.desc
+	picture = GFX_report_event_JAP_koichi_kato
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		
+		hidden_effect = { 
+			recruit_character = JAP_Yoshiro_Mori
+			country_event = { id = japan.23 days = 30 } 
+		}
+	}
+	
+	option = {	#It's a complicated situation
+		name = japan.22.a
+		#add_stability = -0.05
+		hidden_effect = { country_event = { id = japan.26 days = 21 } } 
+		hidden_effect = { country_event = { id = japan.28 days = 7 } }
+		load_focus_tree = japan_focus_general
+		
+		add_country_leader_role = {
+			character = JAP_Yoshiro_Mori
+			country_leader = {
+				ideology = fiscal_conservative
+				traits = { cursed_tongue lack_of_legitimacy_1 political_incompetence }
+			}
+			promote_leader = yes 
+		}
+		
+	}
+}
+
+#Obuchi Keizo's Death
+country_event = {
+	id = japan.23
+	title = japan.23.t
+	desc = japan.23.desc
+	picture = GFX_report_event_JAP_keizo_obuchi_death
+	
+	is_triggered_only = yes
+	
+	option = {	#Oh no!
+		name = japan.23.a
+		add_political_power = -10
+	}
+}
+
+#Broken Hope
+country_event = {
+	id = japan.24
+	title = japan.24.t
+	desc = japan.24.desc
+	picture = GFX_report_event_tokyo_night
+	
+	is_triggered_only = yes
+	
+	option = {	#He was seriously shocked
+		name = japan.24.a
+		add_stability = -0.01
+	}
+}
+
+#The Creation of the New Conservative Party
+country_event = {
+	id = japan.25
+	title = japan.25.t
+	desc = japan.25.desc
+	picture = GFX_report_event_tokyo_night
+	
+	is_triggered_only = yes
+	
+	option = {	#Thank you, everyone
+		name = japan.25.a
+		add_stability = -0.01
+	}
+}
+
+#Aoki being sued by Opposition Parties
+country_event = {
+	id = japan.26
+	title = japan.26.t
+	desc = japan.26.desc
+	picture = GFX_report_event_JAP_mikio_aoki
+	
+	is_triggered_only = yes
+	
+	option = {	#...the prosecution has decided not to prosecute Aoki.
+		name = japan.26.a
+		JAP_GetKatoSupport_subtract_3_effect = yes
+		
+		modifier = {
+			factor = 0
+			has_game_rule = {
+				rule = JAP_AI_BEHAVIOR
+				option = DEMOCRATIC_ALT_KATO
+			}
+		}
+	}
+	
+	option = {	#Aoki will stand trial on charges of impersonating the prime minister
+		name = japan.26.b
+		hidden_effect = { country_event = { id = japan.27 days = 9 } }
+	}
+}
+
+#Arrested Aoki
+country_event = {
+	id = japan.27
+	title = japan.27.t
+	desc = japan.27.desc
+	picture = GFX_report_event_JAP_National_Assembly
+	
+	is_triggered_only = yes
+	
+	option = {	#Kato has gained considerable support
+		name = japan.27.a
+		add_stability = -0.02
+		JAP_GetKatoSupport_add_7_effect = yes
+	}
+}
+
+#The Rebellion is coming
+country_event = {
+	id = japan.28
+	title = japan.28.t
+	desc = japan.28.desc
+	picture = GFX_report_event_JAP_koichi_kato
+	
+	is_triggered_only = yes
+	
+	option = {	#However, Mori will win! (Play Mori).
+		name = japan.28.a
+		set_country_flag = JAP_kato_angry_flag
+		set_country_flag = JAP_play_mori
+		
+		ai_chance = {
+		factor = 1
+			modifier = {
+				factor = 0
+				has_game_rule = {
+					rule = JAP_AI_BEHAVIOR
+					option = DEMOCRATIC_ALT_KATO
+				}
+			}
+			modifier = {
+				factor = 0
+				has_game_rule = {
+					rule = JAP_AI_BEHAVIOR
+					option = NATIONALIST_TAMOGAMI
+				}
+			}
+		}
+	}
+	
+	option = {	#For Japan, for the real Prime Minister! (Play Kato)
+		name = japan.28.b
+		set_country_flag = JAP_kato_angry_flag
+		set_country_flag = JAP_play_kato
+		
+		ai_chance = {
+		factor = 1
+			modifier = {
+				factor = 0
+				has_game_rule = {
+					rule = JAP_AI_BEHAVIOR
+					option = DEMOCRATIC_JAPAN
+				}
+			}
+			modifier = {
+				factor = 0
+				has_game_rule = {
+					rule = JAP_AI_BEHAVIOR
+					option = DEMOCRATIC_KAMEI
+				}
+			}
+			modifier = {
+				factor = 0
+				has_game_rule = {
+					rule = JAP_AI_BEHAVIOR
+					option = COMMUNIST_MAO
+				}
+			}
+			modifier = {
+				factor = 0
+				has_game_rule = {
+					rule = JAP_AI_BEHAVIOR
+					option = COMMUNIST_TRO
+				}
+			}
+			modifier = {
+				factor = 0
+				has_game_rule = {
+					rule = JAP_AI_BEHAVIOR
+					option = COMMUNIST_RANDOM
+				}
+			}
+		}
+	}
+}
+
+
+#Alliance between the Opposition Partires and Kato
+country_event = {
+	id = japan.29
+	title = japan.29.t
+	desc = japan.29.desc
+	picture = GFX_report_event_JAP_National_Assembly
+	
+	is_triggered_only = yes
+	
+	option = {	#The great change begins
+		name = japan.29.a
+		add_stability = -0.01
+	}
+}
+
+#Kato's Rebellion
+country_event = {
+	id = japan.30
+	title = japan.30.t
+	desc = japan.30.desc
+	picture = GFX_report_event_JAP_koichi_kato_2
+	
+	is_triggered_only = yes
+	
+	option = {	#Vote of no confidence was Passed
+		trigger = {
+			check_variable = {
+				var = GetKatoSupport
+				value = 50.000
+				compare = greater_than_or_equals
+			}
+		}
+	
+		name = japan.30.a
+		add_stability = -0.01
+		country_event = { id = japan.32 days = 1 }
+	}
+	
+	option = {	#Vote of no confidence was Rejected
+		trigger = {
+			check_variable = { GetKatoSupport < 50 }
+		}
+		
+		name = japan.30.b
+		add_stability = -0.01
+		country_event = { id = japan.31 days = 3 }
+	}
+}
+
+#Collapse of the Kato faction
+country_event = {
+	id = japan.31
+	title = japan.31.t
+	desc = japan.31.desc
+	picture = GFX_report_event_JAP_LDP
+	
+	is_triggered_only = yes
+	
+	option = {	#The rebellion is over
+		name = japan.31.a
+		add_stability = -0.01
+		load_focus_tree = japan_focus_after_kato
+		
+		set_power_balance = {
+			id = JAP_power_balance
+			left_side = JAP_hoshu_boryu # will keep the last set side if not specified
+			right_side = JAP_hoshu_honryu # will keep the last set side if not specified
+			#set_default = yes # whether or not to reset the power balance to the initial value, default = no
+			set_value = 0.2
+		}
+	}
+}
+
+#The Collapse of the Liberal Democratic Party
+country_event = {
+	id = japan.32
+	title = japan.32.t
+	desc = japan.32.desc
+	picture = GFX_report_event_JAP_LDP
+	
+	is_triggered_only = yes
+	
+	option = {	#"...and the Kato cabinet began."
+		name = japan.32.a
+		load_focus_tree = japan_focus_democratic
+		
+		set_politics = {
+			ruling_party = social_liberal
+			elections_allowed = yes
+		}
+		add_popularity = {
+			ideology = conservative
+			popularity = -0.5
+		}
+		add_popularity = {
+			ideology = social_liberal
+			popularity = 0.2
+		}
+		
+		retire_character = JAP_Yoshiro_Mori #Sayonara
+		
+		create_country_leader = {
+			name = "Koichi Kato"
+			desc = "POLITICS_WINSTON_CHURCHILL_DESC"
+			picture = "gfx/leaders/JAP/koichi_kato.dds"
+			ideology = centrist
+			traits = {
+				rising_reformer
+			}
+		}
+		
+		set_power_balance = {
+			id = JAP_power_balance
+			left_side = JAP_liberalism # will keep the last set side if not specified
+			right_side = JAP_socialism # will keep the last set side if not specified
+			#set_default = yes # whether or not to reset the power balance to the initial value, default = no
+			set_value = -0.1
+		}
+		
+		hidden_effect = {
+			news_event = { id = japan_news.1 }
+			country_event = { id = japan.33 days = 12 }
+		
+			set_party_name = { 
+				ideology = conservative
+				name = JAP_conservative_ncp
+				long_name = JAP_conservative_long_ncp 
+			}
+		
+			set_party_name = { 
+				ideology = reactionary
+				name = JAP_reactionary_ncp
+				long_name = JAP_reactionary_long_ncp 
+			}
+			
+			country_event = { id = japan.69 days = 180 } #180 Days
+			
+			create_country_leader = {
+				name = "Mikio Aoki"
+				ideology = fiscal_conservative
+				picture = "mikio_aoki.dds"
+				traits = {  }
+			}
+		}
+		
+		set_country_flag = jap_ldp_collapse
+	}
+}
+
+#The Formation of a Coalition Government
+country_event = {
+	id = japan.33
+	title = japan.33.t
+	desc = japan.33.desc
+	picture = GFX_report_event_tokyo_night
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan.33.a #"...Kato only negotiates with Ozawa."
+		hidden_effect = {
+			country_event = { id = japan.36 days = 35 }
+		}
+	}
+	
+	option = {
+		name = japan.33.b
+		add_popularity = {
+			ideology = democratic_socialist
+			popularity = 0.04
+		}
+		set_country_flag = kato_co_op_JCP
+		add_to_variable = { JAP_far_right_anger = 1 }
+		add_country_leader_trait = coalition_government_JCP
+		
+		hidden_effect = {
+			country_event = { id = japan.34 days = 12 }
+			country_event = { id = japan.36 days = 35 }
+		}
+	}
+}
+
+#The Republicanism
+country_event = {
+	id = japan.34
+	title = japan.34.t
+	desc = japan.34.desc
+	picture = GFX_report_event_JAP_National_Assembly
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan.34.a
+		add_political_power = -10
+	}
+	
+	option = {
+		name = japan.34.b
+		add_popularity = {
+			ideology = democratic_socialist
+			popularity = 0.03
+		}
+		add_to_variable = { JAP_far_right_anger = 1 }
+	}
+}
+
+#Previous Government Investigation
+country_event = {
+	id = japan.36
+	title = japan.36.t
+	desc = japan.36.desc
+	picture = GFX_report_event_JAP_LDP
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan.36.a
+		add_popularity = {
+			ideology = democratic_socialist
+			popularity = 0.02
+		}
+		add_to_variable = { JAP_far_right_anger = 1 }
+		
+		hidden_effect = {
+			country_event = { id = japan.37 days = 16 }
+		}
+	}
+	
+	option = {
+		name = japan.36.b
+	}
+}
+
+#Mori Investigation
+country_event = {
+	id = japan.37
+	title = japan.37.t
+	desc = japan.37.desc
+	picture = GFX_report_event_JAP_yoshiro_mori_1
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan.37.a
+		add_popularity = {
+			ideology = conservative
+			popularity = -0.03
+		}
+	}
+}
+
+#Ehime Maru Incident
+country_event = {
+	id = japan.39
+	title = japan.39.t
+	desc = japan.39.desc
+	picture = GFX_report_event_JAP_ehime_maru
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan.39.a
+		add_popularity = {
+			ideology = conservative
+			popularity = -0.03
+		}
+		hidden_effect = {
+			country_event = { id = japan.40 days = 7 random = 14 } 
+		}
+	}
+}
+
+#Aftermath of the Ehime Maru Incident
+country_event = {
+	id = japan.40
+	title = japan.40.t
+	desc = japan.40.desc
+	picture = GFX_report_event_JAP_ehime_maru
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan.40.a
+		set_country_flag = jap_ehime_maru
+		custom_effect_tooltip = jap_ehime_maru_tt
+		
+	}
+}
+
+#[ROOT.GetName] to Prepare for Civil War
+country_event = {
+	id = japan.41
+	title = japan.41.t
+	desc = japan.41.desc
+	picture = GFX_report_event_JAP_jieitai_1
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan.41.a
+		add_popularity = {
+			ideology = communist
+			popularity = 0.05
+		}
+	}
+}
+
+#Day of Revolution
+country_event = {
+	id = japan.42
+	title = japan.42.t
+	desc = japan.42.desc
+	picture = GFX_report_event_red_guards
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan.42.a
+		# Launch The Civil War
+		hidden_effect = {
+			country_event = { id = japan.58 days = 19 random = 14 } 
+			add_ideas = government_system_one_party
+		}
+		
+		start_civil_war = {
+			ideology = ROOT
+			ruling_party = communist
+			size = 0.5
+		}
+		
+		create_country_leader = {
+			name = "Provisional Govenment"
+			ideology = marxist
+			desc = "POLITICS_JAP_PROVISIONAL_GOVERNMENT_COMMUNIST_DESC"
+			picture = "gfx/leaders/JAP/red_provisional_government.dds"
+			traits = {
+				JAP_communist_alliance JAP_desperate_gambit JAP_uchi_geba
+			}
+		}
+		
+		set_global_flag = JAP_communist_civil_war
+		set_cosmetic_tag = JAP_left_rev_army
+		add_ideas = JAP_last_struggle
+		load_focus_tree = japan_focus_communist
+		
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = 1000
+			producer = ROOT
+		}
+		
+		random_country = {
+			limit = {
+				original_tag = JAP
+				has_war_with = ROOT
+				NOT = { has_government = communist }
+			}
+			set_cosmetic_tag = anti_communist_japan
+			
+		}
+		
+		hidden_effect = {
+			news_event = { id = japan_news.3 }
+			
+			division_template = { name = "Japanese People's Regiment" division_names_group = JAP_INF_01 is_locked = yes regiments = { infantry = { x = 0 y = 0 } infantry = { x = 1 y = 0 } infantry = { x = 2 y = 0 } } }
+			532 = {
+					create_unit = { 
+						division = "name = \"1. Japanese People's Regiment\" division_template = \"Japanese People's Regiment\" start_experience_factor = 0" 
+						owner = ROOT
+					}
+					create_unit = { 
+						division = "name = \"2. Japanese People's Regiment\" division_template = \"Japanese People's Regiment\" start_experience_factor = 0" 
+						owner = ROOT
+					}
+					create_unit = { 
+						division = "name = \"3. Japanese People's Regiment\" division_template = \"Japanese People's Regiment\" start_experience_factor = 0" 
+						owner = ROOT
+					}
+					create_unit = { 
+						division = "name = \"4. Japanese People's Regiment\" division_template = \"Japanese People's Regiment\" start_experience_factor = 0" 
+						owner = ROOT
+					}
+					create_unit = { 
+						division = "name = \"5. Japanese People's Regiment\" division_template = \"Japanese People's Regiment\" start_experience_factor = 0" 
+						owner = ROOT
+					}
+				}
+				531 = {
+					create_unit = { 
+						division = "name = \"6. Japanese People's Regiment\" division_template = \"Japanese People's Regiment\" start_experience_factor = 0" 
+						owner = ROOT
+					}
+					create_unit = { 
+						division = "name = \"7. Japanese People's Regiment\" division_template = \"Japanese People's Regiment\" start_experience_factor = 0" 
+						owner = ROOT
+					}
+					create_unit = { 
+						division = "name = \"8. Japanese People's Regiment\" division_template = \"Japanese People's Regiment\" start_experience_factor = 0" 
+						owner = ROOT
+					}
+					create_unit = { 
+						division = "name = \"9. Japanese People's Regiment\" division_template = \"Japanese People's Regiment\" start_experience_factor = 0" 
+						owner = ROOT
+					}
+					create_unit = { 
+						division = "name = \"10. Japanese People's Regiment\" division_template = \"Japanese People's Regiment\" start_experience_factor = 0" 
+						owner = ROOT
+					}
+				}
+				534 = {
+					create_unit = { 
+						division = "name = \"11. Japanese People's Regiment\" division_template = \"Japanese People's Regiment\" start_experience_factor = 0" 
+						owner = ROOT
+					}
+					create_unit = { 
+						division = "name = \"12. Japanese People's Regiment\" division_template = \"Japanese People's Regiment\" start_experience_factor = 0" 
+						owner = ROOT
+					}
+				}
+				535 = {
+					create_unit = { 
+						division = "name = \"13. Japanese People's Regiment\" division_template = \"Japanese People's Regiment\" start_experience_factor = 0" 
+						owner = ROOT
+					}
+					create_unit = { 
+						division = "name = \"14. Japanese People's Regiment\" division_template = \"Japanese People's Regiment\" start_experience_factor = 0" 
+						owner = ROOT
+					}
+				}
+				537 = {
+					create_unit = { 
+						division = "name = \"15. Japanese People's Regiment\" division_template = \"Japanese People's Regiment\" start_experience_factor = 0" 
+						owner = ROOT
+					}
+				}
+			}
+	}
+}
+
+#The End of a Civil War
+country_event = {
+	id = japan.43
+	title = japan.43.t
+	desc = japan.43.desc
+	picture = GFX_report_event_tokyo_night
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan.43.a
+		hidden_effect = {
+			remove_ideas = JAP_last_struggle
+			remove_ideas = JAP_seizure_of_capitalist_property_idea
+			remove_ideas = JAP_foreigner_volunteer
+			remove_ideas = JAP_narita_idea
+			remove_ideas = JAP_general_strike_by_workers
+			remove_ideas = JAP_zainichi_volunteer
+			
+			news_event = { id = japan_news.4 hours = 6 }
+		}
+		
+		if = {
+			limit = { has_government = communist }
+			# Set capital 
+			country_event = {
+				id = japan.44
+				days = 7
+				random_days = 5
+			}
+		}
+		
+		if = {
+			limit = { NOT = { has_government = communist } }
+			load_focus_tree = japan_focus_general
+		}
+	}
+}
+
+#The Capital of Revolutionary Japan
+country_event = {
+	id = japan.44
+	title = japan.44.t
+	desc = japan.44.desc
+	picture = GFX_report_event_tokyo_night
+	
+	is_triggered_only = yes
+	
+	option = { #Toyko
+		name = japan.44.a
+		ai_chance = {
+			base = 10
+		}
+		set_capital = { state = 282 }
+	}
+	
+	option = { #Kyoto
+		name = japan.44.b
+		ai_chance = {
+			base = 5
+		}
+		set_capital = { state = 531 }
+	}
+}
+
+#Aftermath of the Ehime Maru Incident
+country_event = {
+	id = japan.45
+	title = japan.45.t
+	desc = japan.45.desc
+	picture = GFX_report_event_tokyo_night
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan.45.a
+		set_country_flag = jap_ehime_maru
+		add_manpower = -9
+		add_political_power = -100
+	}
+}
+
+#Declaration of the Republic of Japan
+country_event = {
+	id = japan.46
+	title = japan.46.t
+	desc = japan.46.desc
+	picture = GFX_report_event_JAP_imperial_palace
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan.46.a #sacrifice for progress
+		swap_ideas = {
+			remove_idea = government_system_constitutional_monarchy
+			add_idea = government_system_parliamentary_republic
+		}
+		
+		add_timed_idea = { idea = JAP_abolition_of_the_monarchy days = 180 }
+		
+		hidden_effect = {
+			news_event = { id = japan_news.7 hours = 6 }
+			remove_ideas = { idea_JAP_emperor_akihito }
+			remove_ideas = { JAP_emperor_naruhito }
+		}
+		
+	}
+}
+
+#Japan's New History Textbook
+country_event = {
+	id = japan.47
+	title = japan.47.t
+	desc = japan.47.desc
+	picture = GFX_report_event_manchukuo_event
+	
+	is_triggered_only = yes
+	
+	option = {
+		trigger = { original_tag = JAP }
+		name = japan.47.a #Other East Asian countries must be angry with us...
+		
+		add_popularity = {
+			ideology = nationalist
+			popularity = 0.02
+		}
+		
+		hidden_effect = {
+			news_event = { id = japan_news.14 hours = 6 }
+		}
+	}
+	
+	option = {
+		trigger = { NOT = { original_tag = JAP } }
+		name = japan.47.b #This is an unacceptable provocation
+	}
+}
+
+#Assassination of Shinzo Abe
+country_event = {
+	id = japan.48
+	title = japan.48.t
+	desc = japan.48.desc
+	picture = GFX_report_event_JAP_shinzo_abe
+	
+	fire_only_once = yes
+
+	trigger = {
+		tag = JAP
+		date > 2022.4.1
+		OR = {
+			has_completed_focus = JAP_connection_with_unification_church
+			has_completed_focus = JAP_cooperation_with_unification_church
+		}
+		NOT = { 
+			has_country_leader = {
+				ruling_only = yes 
+				character = "Shinzo Abe" 
+			}
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 120 #Four
+	}
+
+	option = {	
+		name = japan.48.a
+		news_event = { id = japan_news.16 }
+		set_country_flag = jap_dead_shinzo_abe
+	}
+	
+}
+
+#Political Change in Communist Japan
+country_event = {
+	id = japan.49
+	title = japan.49.t
+	desc = japan.49.desc
+	picture = GFX_report_event_JAP_National_Assembly
+	
+	fire_only_once = yes
+
+	trigger = {
+		tag = JAP
+		has_government = communist
+		has_idea = advisor_JAP_Sumire_Uesaka
+		has_completed_focus = JAP_triumph_of_trotskyism #Pro-Soviet
+		NOT = { 
+			has_country_leader = {
+				ruling_only = yes 
+				character = "Sumire Uesaka" 
+			}
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 720
+	}
+
+	option = {	
+		name = japan.49.a
+		#ai_chance = { factor = 34 }
+		create_country_leader = {
+			name = JAP_sumire_uesaka
+			desc = "POLITICS_Sumire_Uesaka_DESC"
+			traits = { pro_communist_voice_actor military_expert_sumire }
+			picture = "sumire_uesaka.dds"
+			ideology = marxist
+		}
+	}
+
+	option = {	
+		name = japan.49.b
+		#ai_chance = { factor = 66 }
+	}
+	
+}
+
+# Anthem for the Japan
+country_event = {
+	id = japan.50
+	title = japan.50.t
+	desc = japan.50.desc
+	picture = GFX_report_event_japanese_flag
+
+	trigger = {
+		tag = JAP
+		JAP = { has_government = communist }
+		has_civil_war = no
+	}
+
+	fire_only_once = yes
+	
+	mean_time_to_happen = {
+		days = 120 #Four
+	}
+	
+	option = {
+		name = japan.50.a
+		ai_chance = { factor = 34 }
+		add_stability = 0.02
+	}
+	
+	option = {
+		name = japan.50.b
+		ai_chance = { factor = 33 }
+		add_stability = 0.02
+	}
+	
+	option = {
+		name = japan.50.c
+		ai_chance = { factor = 33 }
+		add_stability = 0.02
+	}
+}
+
+#Reiwa Period
+country_event = {
+	id = japan.51
+	title = japan.51.t
+	desc = japan.51.desc
+	picture = GFX_report_event_japanese_flag
+	
+	fire_only_once = yes
+
+	trigger = {
+		tag = JAP
+		OR = {
+			has_idea = government_system_constitutional_monarchy
+			has_idea = government_system_absolute_monarchy
+			has_idea = government_system_imperial
+			has_government = nationalist
+			has_government = fascist
+		}
+		date > 2019.4.1
+		date < 2019.4.30
+		not = { has_country_flag = JAP_Reiwa_Period }
+	}
+	
+	immediate = {
+		set_country_flag = JAP_Reiwa_Period
+	}
+
+	option = {	
+		name = japan.51.a
+			swap_ideas = {
+				remove_idea = idea_JAP_emperor_akihito
+				add_idea = JAP_emperor_naruhito
+			}
+			  create_country_leader = {
+				name = "Naruhito"
+				ideology = absolute_monarchist
+				  picture = "Naruhito.dds"
+				traits = { tenno }
+			  }
+			set_country_flag = JAP_Reiwa_Period
+			news_event = { id = japan_news.8 }
+		}
+	
+}
+
+# Japan's Alliance Proposal
+country_event = {
+	id = japan.52
+	title = japan.52.t
+	desc = japan.52.desc
+	picture = GFX_report_event_japanese_flag
+
+	is_triggered_only = yes
+	
+	option = {
+		name = japan.52.a
+		ai_chance = { factor = 100 }
+		FROM = { country_event = { id = japan.53 } }
+		set_country_flag = alliance_nippon_daisuki
+	}
+	
+	option = {
+		name = japan.52.b
+		ai_chance = { factor = 0 }
+		FROM = { country_event = { id = japan.54 } }
+	}
+}
+
+# [FROM.GetName] is with us
+country_event = {
+	id = japan.53
+	title = japan.53.t
+	desc = japan.53.desc
+	picture = GFX_report_event_samurai
+
+	is_triggered_only = yes
+	
+	immediate = {
+		hidden_effect = {
+			news_event = { id = japan_news.9 }
+		}
+	}
+	
+	option = {
+		name = japan.53.a
+		add_to_faction = FROM
+		
+	}
+}
+  
+# [FROM.GetName] Rejected Alliance
+country_event = {
+	id = japan.54
+	title = japan.54.t
+	desc = japan.54.desc
+	picture = GFX_report_event_sunset
+
+	is_triggered_only = yes
+	
+	option = {
+		name = japan.54.a
+	}
+}
+
+#Legalization of Japanese Culture in Korea
+country_event = {
+	id = japan.55
+	title = japan.55.t
+	desc = japan.55.desc
+	picture = GFX_report_event_computer
+
+	is_triggered_only = yes
+	
+	option = {
+		name = japan.55.a
+	}
+}
+
+#Legalization of Japanese Culture in Korea
+country_event = {
+	id = japan.56
+	title = japan.56.t
+	desc = japan.56.desc
+	picture = GFX_report_event_computer
+
+	is_triggered_only = yes
+	
+	option = {
+		name = japan.56.a
+	}
+}
+
+#Legalization of Japanese Culture in Korea
+country_event = {
+	id = japan.57
+	title = japan.57.t
+	desc = japan.57.desc
+	picture = GFX_report_event_computer
+
+	is_triggered_only = yes
+	
+	option = {
+		name = japan.57.a
+	}
+}
+
+#The Red Queen and Wonderland
+country_event = {
+	id = japan.58
+	title = japan.58.t
+	desc = japan.58.desc
+	picture = GFX_report_event_red_guards
+
+	is_triggered_only = yes
+	
+	option = {
+		name = japan.58.a
+		create_corps_commander = {
+			traits = { JAP_communist_sympathizer trait_mountaineer urban_assault_specialist trickster }
+			name = "Fusako Shigenobu"
+			picture = "generals/fusako_shigenobu.dds"
+			attack_skill = 4
+			defense_skill = 1
+			planning_skill = 3
+			logistics_skill = 4
+			skill = 3
+		}
+	}
+}
+  
+# The collapse of Korean Democracy
+country_event = {
+	id = japan.59
+	title = japan.59.t
+	picture = GFX_report_event_sunset
+
+	desc = {
+		text = japan.59.desc_1
+		trigger = { 
+			OR = { 
+				KOR = { has_government = communist } 
+				KOR = { has_government = fascist } 
+			}
+		}
+	}
+	
+	desc = {
+		text = japan.59.desc_2
+		trigger = { KOR = { has_government = islamist } }
+	}
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan.59.a
+		add_war_support = 0.05
+	}
+}
+
+# [JAP.GetName]'s proposal for joint naval training
+country_event = {
+	id = japan.61
+	title = japan.61.t
+	desc = japan.61.desc
+	picture = GFX_report_event_japanese_flag
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan.61.a
+		JAP = { country_event = { id = japan.62 days = 7 } }
+		navy_experience = 25
+		add_doctrine_cost_reduction = {
+			cost_reduction = 0.75
+			uses = 1
+			category = naval_doctrine
+		}
+		ai_chance = {
+			factor = 30
+			modifier = {
+				has_opinion = {
+					target = KOR
+					value > 35
+				}
+				add = 70
+			}
+		}
+	}
+	
+	option = {
+		name = japan.61.b
+		JAP = { country_event = { id = japan.63 days = 7 } }
+		ai_chance = {
+			factor = 70
+		}
+	}
+}
+
+# [FROM.GetName]'s Approval of Joint Naval Training
+country_event = {
+	id = japan.62
+	title = japan.62.t
+	desc = japan.62.desc
+	picture = GFX_report_event_japanese_flag
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan.62.a
+		navy_experience = 25
+		add_doctrine_cost_reduction = {
+			cost_reduction = 0.75
+			uses = 1
+			category = naval_doctrine
+		}
+	}
+}
+
+# [FROM.GetName]'s Refusal of Joint Naval Training
+country_event = {
+	id = japan.63
+	title = japan.63.t
+	desc = japan.63.desc
+	picture = GFX_report_event_japanese_flag
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan.63.a
+	}
+}
+
+#Edano, rise up 
+country_event = { 
+	id = japan.64
+	title = japan.64.t
+	desc = japan.64.desc
+	picture = GFX_report_event_political_deal
+
+	trigger = {
+		tag = JAP
+		date > 2015.1.1
+		date < 2015.12.1
+		NOT = { 
+			OR = {
+				has_government = fascist
+				has_government = nationalist 
+				has_government = communist 
+				has_country_leader = { ruling_only = yes name = "Yukio Edano" }
+			}
+		}
+	}
+
+	fire_only_once = yes
+
+	mean_time_to_happen = {
+		days = 72
+	}
+	
+	
+	option = {
+		name = japan.64.a
+		ai_chance = { factor = 100 }
+			create_country_leader = {
+			name = "Yukio Edano" #Yukio "Edanon" Edano
+			picture = "Yukio_Edano.dds"
+			ideology = liberalist
+		}
+	}
+	
+	option = {
+		name = japan.64.b
+		ai_chance = { factor = 0 }
+		add_stability = -0.02
+	}
+}
+
+#Taro Aso
+country_event = { 
+	id = japan.65
+	title = japan.65.t
+	desc = japan.65.desc.a
+	picture = GFX_report_event_political_deal
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan.65.a
+		create_country_leader = {
+			name = "Taro Aso"
+			picture = "taro_aso.dds"
+			desc = "POLITICS_Taro_Aso_DEMOCRAT_DESC"
+			ideology = christian_democrat #Taro Aso is Catholic Politian
+			traits = { rosen_aso }
+		}
+		hidden_effect = {
+			JAP = { country_event = { id = japan.66 days = 355 } }
+		}
+	}
+}
+
+#Shinzo Abe's Priod
+country_event = { 
+	id = japan.66
+	title = japan.66.t
+	desc = japan.66.desc.a
+	picture = GFX_report_event_political_deal
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		NOT = { has_country_flag = jap_dead_shinzo_abe }
+	}
+	
+	option = {
+		name = japan.66.a
+		ai_chance = { factor = 30 
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
+		}
+		add_stability = -0.02
+	}
+	
+	option = {
+		name = japan.66.b
+		ai_chance = { factor = 70 }
+		create_country_leader = {
+    	name = "Shinzo Abe"
+		picture = "Shinzo_Abe.dds"
+		desc = "POLITICS_Shinzo_Abe_DESC"
+		traits = { determination_of_japan }
+    	ideology = right_wing_conservative
+		}
+	}
+}
+
+# Yoshihide Suga
+country_event = {
+	id = japan.67
+	title = japan.67.t
+	desc = japan.67.desc
+	picture = GFX_report_event_political_deal
+
+	trigger = {
+		original_tag = JAP
+		date > 2020.6.1
+		date < 2021.6.1
+		has_country_leader = { ruling_only = yes name = "Shinzo Abe" }
+	}
+
+	fire_only_once = yes
+	
+	mean_time_to_happen = {
+		days = 72
+	}
+	
+	option = {
+		name = japan.67.a
+		ai_chance = { factor = 60 }
+		create_country_leader = {
+    	name = "Yoshihide Suga"
+		picture = "Yoshihide_Suga.dds"
+		desc = "POLITICS_Yoshihide_suga_DESC"
+    	ideology = constitutionalist
+		}
+	}
+	
+	option = {
+		name = japan.67.b
+		ai_chance = { 
+			factor = 3 
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
+		}
+		create_country_leader = {
+			name = "Taro Aso"
+			picture = "taro_aso.dds"
+			desc = "POLITICS_Taro_Aso_DEMOCRAT_DESC"
+			ideology = christian_democrat #Taro Aso is Catholic Politian
+			traits = { rosen_aso }
+		}
+	}
+	
+	option = {
+		name = japan.67.c #Shinjiro Koizumi
+		ai_chance = { 
+			factor = 2 
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
+		}
+		create_country_leader = {
+			name = "Shinjiro Koizumi"
+			desc = "POLITICS_Shinjiro_Koizumi_DESC"
+			traits = { }
+			picture = "shinjiro_koizumi.dds"
+			ideology = constitutionalist
+		}
+	}
+	
+	option = {
+		name = japan.67.d #Shigeru Ishiba
+		ai_chance = { 
+			factor = 35 
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
+		}
+		
+		create_country_leader = {
+			name = "Shigeru Ishiba"
+			desc = "POLITICS_Shigeru_Ishiba_DESC"
+			traits = { }
+			picture = "shigeru_ishiba.dds"
+			ideology = right_wing_conservative
+		}
+	}
+	
+}
+
+#Kato's Cabinet in Crisis
+country_event = { 
+	id = japan.69
+	title = japan.69.t
+	desc = japan.69.desc
+	picture = GFX_report_event_political_deal
+	
+	trigger = {
+		check_variable = { JAP_far_right_anger > 0 } #1
+	}
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan.69.a
+		add_to_variable = { JAP_far_right_anger = 1 }
+		
+		hidden_effect = {
+			JAP = { country_event = { id = japan.70 days = 35 } }
+		}
+	}
+	
+	option = {
+		name = japan.69.b
+		
+		if = {
+			limit = { has_country_flag = kato_co_op_JCP }
+			create_country_leader = {
+				name = "Taku Yamasaki"
+				desc = "POLITICS_Taku_Yamasaki_DESC"
+				traits = { military_reformist coalition_government_JCP }
+				picture = "taku_yamasaki.dds"
+				ideology = moderate
+			}
+		}
+		else = {
+			create_country_leader = {
+				name = "Taku Yamasaki"
+				desc = "POLITICS_Taku_Yamasaki_DESC"
+				traits = { military_reformist }
+				picture = "taku_yamasaki.dds"
+				ideology = moderate
+			}
+		}
+		
+		hidden_effect = {
+			JAP = { country_event = { id = japan.70 days = 35 } }
+		}
+	}
+	
+	option = {
+		name = japan.69.c
+		trigger = { has_country_flag = kato_co_op_JCP }
+		add_to_variable = { JAP_far_right_anger = 2 }
+		
+		set_politics = {
+			ruling_party = democratic_socialist
+			elections_allowed = yes
+		}
+		add_popularity = {
+			ideology = democratic_socialist
+			popularity = 0.25
+		}
+		
+		hidden_effect = {
+			JAP = { country_event = { id = japan.70 days = 35 } }
+		}
+	}
+}
+
+# Coup Plot
+country_event = {
+	id = japan.70
+	title = japan.70.t
+	desc = japan.70.desc
+	picture = GFX_report_event_JAP_jieitai_2
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		check_variable = { JAP_far_right_anger > 2 } #3
+	}
+	
+	option = {
+		name = japan.70.a
+		ai_chance = {
+			factor = 60 
+			modifier = {
+				factor = 0
+				has_game_rule = {
+					rule = JAP_AI_BEHAVIOR
+					option = NATIONALIST_TAMOGAMI
+				}
+			}
+		}
+		hidden_effect = {
+			JAP = { country_event = { id = japan.72 days = 7 } }
+		}
+	}
+	
+	option = {
+		name = japan.70.b
+		ai_chance = { factor = 40
+			modifier = {
+				factor = 0
+				has_game_rule = {
+					rule = JAP_AI_BEHAVIOR
+					option = DEMOCRATIC_RANDOM
+				}
+			}
+			modifier = {
+				factor = 0
+				has_game_rule = {
+					rule = JAP_AI_BEHAVIOR
+					option = DEMOCRATIC_ALT_KATO
+				}
+			}
+		}
+		
+		hidden_effect = {
+			JAP = { country_event = { id = japan.71 days = 7 } }
+		}
+	}
+	
+}
+
+# Heisei Restoration Day
+country_event = {
+	id = japan.71
+	title = japan.71.t
+	desc = japan.71.desc
+	picture = GFX_report_event_JAP_jieitai_2
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan.71.a
+		load_focus_tree = japan_focus_nationalist
+		
+		add_popularity = {
+			ideology = nationalist
+			popularity = 0.3
+		}
+		
+		set_politics = {
+			ruling_party = nationalist
+			elections_allowed = no
+		}
+		
+		hidden_effect = {
+			news_event = { id = japan_news.6 }
+			add_ideas = government_system_one_party
+		}
+	}
+}
+
+# The Discovery of a Coup Plot
+country_event = {
+	id = japan.72
+	title = japan.72.t
+	desc = japan.72.desc
+	picture = GFX_report_event_computer
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan.72.a
+		
+		add_popularity = {
+			ideology = nationalist
+			popularity = -0.1
+		}
+	}
+}
+
+
+# Koichi Kato's Home arson attack
+country_event = {
+	id = japan.73
+	title = japan.73.t
+	
+	desc = {
+		text = japan.73.desc_1
+		trigger = { 
+			NOT = { has_country_leader = { 
+				name = "Koichi Kato"
+				ruling_only = yes
+			} }
+		}
+	}
+	
+	desc = {
+		text = japan.73.desc_2
+		trigger = { 
+			has_country_leader = { 
+				name = "Koichi Kato"
+				ruling_only = yes
+			}
+		}
+	}
+	
+	picture = GFX_report_event_political_deal
+
+	trigger = {
+		original_tag = JAP
+		date > 2005.1.1
+		date < 2006.6.1
+		has_democratic_form_of_government = yes
+	}
+
+	fire_only_once = yes
+	
+	mean_time_to_happen = {
+		days = 188
+	}
+	
+	option = {
+		name = japan.73.a
+		
+		add_stability = -0.01
+		
+		hidden_effect = {
+			JAP = { country_event = { id = japan.74 days = 7 } }
+		}
+	}
+}
+
+# Tomomi Inada Controversy
+country_event = {
+	id = japan.74
+	title = japan.74.t
+	desc = japan.74.desc
+	picture = GFX_report_event_computer
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan.74.a
+		
+		add_popularity = {
+			ideology = conservative
+			popularity = -0.01
+		}
+	}
+}
+
+#What should We do with the old imperial family?
+country_event = {
+	id = japan.75
+	title = japan.75.t
+	desc = japan.75.desc
+	picture = GFX_report_event_JAP_imperial_palace
+	
+	is_triggered_only = yes
+	
+	option = {	#They will all die
+		name = japan.75.a
+		retire_character = JAP_akihito
+		create_country_leader = {
+			name = "Tsuneyasu Takeda" #collateral families
+			ideology = absolute_monarchist
+			picture = "Tsuneyasu_Takeda.dds"
+			traits = { tenno }
+		}
+		
+		add_stability = -0.1
+	}
+	
+	option = {	#Finish by executing one Emperor Akihito
+		name = japan.75.b
+		retire_character = JAP_akihito
+		create_country_leader = {
+			name = "Naruhito"
+			ideology = absolute_monarchist
+			picture = "Naruhito.dds"
+			traits = { tenno }
+		}
+		set_country_flag = JAP_Reiwa_Period
+		
+		add_stability = -0.05
+		add_popularity = {
+			ideology = communist
+			popularity = -0.01
+		}
+	}
+	
+	option = {	#No, they'll live as ordinary citizens
+		name = japan.75.c
+		add_popularity = {
+			ideology = communist
+			popularity = -0.04
+		}
+	}
+}
+
+# Kato and Yamasaki's Alliance
+country_event = {
+	id = japan.76
+	title = japan.76.t
+	desc = japan.76.desc
+	picture = GFX_report_event_computer
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan.76.a
+		JAP_GetKatoSupport_add_7_effect = yes
+	}
+}
+
+# Junichiro Koizumi Against Kato
+country_event = {
+	id = japan.77
+	title = japan.77.t
+	desc = japan.77.desc
+	picture = GFX_report_event_computer
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan.77.a
+		JAP_GetKatoSupport_subtract_7_effect = yes
+	}
+}
+
+# The Pressure of Hiromu Nonaka
+country_event = {
+	id = japan.78
+	title = japan.78.t
+	desc = japan.78.desc
+	picture = GFX_report_event_computer
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan.78.a
+		JAP_GetKatoSupport_subtract_7_effect = yes
+	}
+}
+
+# Kato Becomes Highly Popular on the Internet
+country_event = {
+	id = japan.79
+	title = japan.79.t
+	desc = japan.79.desc
+	picture = GFX_report_event_computer
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan.79.a
+		JAP_GetKatoSupport_add_7_effect = yes
+	}
+}
+
+# Kato Suspected of Contact with Foreign Countries
+country_event = {
+	id = japan.80
+	title = japan.80.t
+	desc = japan.80.desc
+	picture = GFX_report_event_computer
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan.80.a
+		JAP_GetKatoSupport_subtract_7_effect = yes
+	}
+}
+
+# Mori's 'state system' remarks
+country_event = {
+	id = japan.81
+	title = japan.81.t
+	desc = japan.81.desc
+	picture = GFX_report_event_computer
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan.81.a
+		JAP_GetKatoSupport_add_7_effect = yes
+	}
+}
+	
+#Debug
+country_event = {
+	id = japan.999
+	title = japan.34.t
+	desc = japan.34.desc
+	picture = GFX_report_event_tokyo_night
+	
+	is_triggered_only = yes
+				
+	option = {
+		name = japan.34.a
+		load_focus_tree = japan_focus_nationalist
+	}
+	
+	option = {
+		name = japan.34.b
+		# Launch The Civil War
+		start_civil_war = {
+			ideology = ROOT
+			ruling_party = communist
+			size = 0.5
+		}
+		create_country_leader = {
+			name = "Provisional Govenment"
+			ideology = marxist
+			desc = "POLITICS_JAP_PROVISIONAL_GOVERNMENT_COMMUNIST_DESC"
+			picture = "gfx/leaders/JAP/red_provisional_government.dds"
+			traits = {
+				JAP_communist_alliance JAP_desperate_gambit JAP_uchi_geba
+			}
+		}
+		set_cosmetic_tag = JAP_left_rev_army
+		add_ideas = JAP_last_struggle
+		load_focus_tree = japan_focus_communist
+		
+		random_country = {
+			limit = {
+				original_tag = JAP
+				has_war_with = ROOT
+				NOT = { has_government = communist }
+			}
+			set_cosmetic_tag = anti_communist_japan
+			
+		}
+	}
+				
+	option = {
+		name = debugc
+		load_focus_tree = japan_focus_democratic
+		set_power_balance = {
+			id = JAP_power_balance
+			left_side = JAP_hoshu_boryu # will keep the last set side if not specified
+			right_side = JAP_hoshu_honryu # will keep the last set side if not specified
+			#set_default = yes # whether or not to reset the power balance to the initial value, default = no
+			set_value = 0.2
+		}
+	}
+}
+
+#Debug
+country_event = {
+	id = japan.998
+	title = japan.34.t
+	desc = japan.34.desc
+	picture = GFX_report_event_tokyo_night
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = b
+		create_country_leader = {
+			name = JAP_naohiko_matsudaira
+			ideology = marxist
+			desc = "POLITICS_JAP_PROVISIONAL_GOVERNMENT_COMMUNIST_DESC"
+			picture = "gfx/leaders/JAP/naohiko_matsudaira.dds"
+			traits = {
+				revolutionary_propagandist
+			}
+		}
+	}
+	
+	option = {
+		name = a
+		create_country_leader = {
+			name = "Takeo Shimizu"
+			ideology = leninist
+			desc = "POLITICS_JAP_PROVISIONAL_GOVERNMENT_COMMUNIST_DESC"
+			picture = "gfx/leaders/JAP/takeo_shimizu.dds"
+			traits = {
+				pc_military_naval_affairs
+			}
+		}
+		set_cosmetic_tag = JAP_chugakuha
+		
+	}
+}
+
+
+#######################
+#
+# Japanese Civil War
+#
+#######################
+
+#Burning Yasukuni Shrine
+country_event = {
+	id = japan_communist_civil_war.1
+	title = japan_communist_civil_war.1.t
+	desc = japan_communist_civil_war.1.desc
+	picture = GFX_report_event_tokyo_night
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan_communist_civil_war.1.a
+		add_political_power = 25
+	}
+}
+
+#The Fulfillment of the Revolution
+country_event = {
+	id = japan_communist_civil_war.2
+	title = japan_communist_civil_war.2.t
+	desc = japan_communist_civil_war.2.desc
+	picture = GFX_report_event_tokyo_night
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan_communist_civil_war.2.a
+	}
+}
+
+#The Fulfillment of the Revolution
+country_event = {
+	id = japan_communist_civil_war.4
+	title = japan_communist_civil_war.4.t
+	desc = japan_communist_civil_war.4.desc
+	picture = GFX_report_event_tokyo_night
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan_communist_civil_war.4.a
+		division_template = { name = "Japanese Red Army" division_names_group = JAP_INF_01 is_locked = yes regiments = { infantry = { x = 0 y = 0 } infantry = { x = 1 y = 0 } infantry = { x = 2 y = 0 } } }
+			532 = {
+					create_unit = { 
+						division = "name = \"1. Red Army Regiment\" division_template = \"Japanese Red Army\" start_experience_factor = 0" 
+						owner = ROOT
+					}
+					create_unit = { 
+						division = "name = \"2. Red Armys Regiment\" division_template = \"Japanese Red Army\" start_experience_factor = 0" 
+						owner = ROOT
+					}
+					create_unit = { 
+						division = "name = \"3. Red Army Regiment\" division_template = \"Japanese Red Army\" start_experience_factor = 0" 
+						owner = ROOT
+					}
+					create_unit = { 
+						division = "name = \"4. Red Army Regiment\" division_template = \"Japanese Red Army\" start_experience_factor = 0" 
+						owner = ROOT
+					}
+					create_unit = { 
+						division = "name = \"5. Red Army Regiment\" division_template = \"Japanese Red Army\" start_experience_factor = 0" 
+						owner = ROOT
+					}
+			}
+	}
+}
+
+#Should We apply for the Japanese Communist Revolution?
+country_event = {
+	id = japan_communist_civil_war.5
+	title = japan_communist_civil_war.5.t
+	desc = japan_communist_civil_war.5.desc
+	picture = GFX_report_event_tokyo_night
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan_communist_civil_war.5.a
+		trigger = {
+			has_equipment = {
+				infantry_equipment > 199
+			}
+		}
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = -200
+		}
+		JAP = {
+			country_event = {
+				id = japan_communist_civil_war.6
+				days = 3
+				random_days = 5
+			}
+		}
+			
+		ai_chance = { 
+			base = 40
+		}
+	}
+	
+	option = {
+		name = japan_communist_civil_war.5.b
+		trigger = {
+			has_equipment = {
+				infantry_equipment > 999
+			}
+		}
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = -1000
+		}
+		JAP = {
+			country_event = {
+				id = japan_communist_civil_war.7
+				days = 3
+				random_days = 5
+			}
+		}
+		ai_chance = { 
+			base = 40
+		}
+	}
+	
+	option = {
+		name = japan_communist_civil_war.5.c
+		
+		JAP = {
+			country_event = {
+				id = japan_communist_civil_war.8
+				days = 3
+				random_days = 5
+			}
+		}
+		
+		ai_chance = { 
+			base = 20
+		}
+	}
+}
+
+#[PRC.GetName] Donates Firearms
+country_event = {
+	id = japan_communist_civil_war.6
+	title = japan_communist_civil_war.6.t
+	desc = japan_communist_civil_war.6.desc
+	picture = GFX_report_event_tokyo_night
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan_communist_civil_war.6.a
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = 200
+			producer = FROM
+		}
+	}
+}
+
+#[PRC.GetName] Donates Firearms
+country_event = {
+	id = japan_communist_civil_war.7
+	title = japan_communist_civil_war.7.t
+	desc = japan_communist_civil_war.7.desc
+	picture = GFX_report_event_tokyo_night
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan_communist_civil_war.7.a
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = 1000
+			producer = FROM
+		}
+	}
+}
+
+#[PRC.GetName] Rejects Our Request
+country_event = {
+	id = japan_communist_civil_war.8
+	title = japan_communist_civil_war.8.t
+	desc = japan_communist_civil_war.8.desc
+	picture = GFX_report_event_tokyo_night
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan_communist_civil_war.8.a
+	}
+}
+
+#######################
+#
+# Korean Exile Content
+#
+#######################
+
+
+#Kim Dae-jung's exile
+country_event = {
+	id = japan_exile_korea.1
+	title = japan_exile_korea.1.t
+	desc = japan_exile_korea.1.desc
+	picture = GFX_report_event_JAP_kim_dae_jung_akihito
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan_exile_korea.1.a
+		add_political_power = 10
+		
+		hidden_effect = {
+			JAP = { country_event = { id = japan_exile_korea.3 days = 30 } }
+		}
+	}
+}
+
+#Korean Government's Wanted
+country_event = {
+	id = japan_exile_korea.2
+	title = japan_exile_korea.2.t
+	desc = japan_exile_korea.2.desc
+	picture = GFX_report_event_KOR_nationalist_angry_1
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan_exile_korea.2.a
+		add_political_power = 35
+	}
+	
+	option = {
+		name = japan_exile_korea.2.b
+		add_political_power = -150
+	}
+}
+
+#Provisional Government of the Republic of Korea
+country_event = {
+	id = japan_exile_korea.3
+	title = japan_exile_korea.3.t
+	desc = japan_exile_korea.3.desc
+	picture = GFX_report_event_JAP_korea_japan
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan_exile_korea.3.a
+		ai_chance = { factor = 100 }
+		add_ideas = JAP_KPG_1
+		
+		hidden_effect = {
+			JAP = { country_event = { id = japan_exile_korea.4 days = 14 } }
+			JAP = { country_event = { id = japan_exile_korea.5 days = 21 } }
+			JAP = { country_event = { id = japan_exile_korea.6 days = 70 } }
+			news_event = { id = japan_news.20 }
+		}
+	}
+	
+	option = {
+		name = japan_exile_korea.3.b
+		ai_chance = { factor = 0 }
+		add_political_power = -150
+		add_war_support = -0.05
+	}
+}
+
+#Korean Liberation Army Question
+country_event = {
+	id = japan_exile_korea.4
+	title = japan_exile_korea.4.t
+	desc = japan_exile_korea.4.desc
+	picture = GFX_report_event_JAP_National_Assembly
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan_exile_korea.4.a
+		add_political_power = 35
+	}
+	
+	option = {
+		name = japan_exile_korea.4.b
+		add_political_power = -50
+		swap_ideas = {
+			remove_idea = JAP_KPG_1
+			add_idea = JAP_KPG_2
+		}
+	}
+	
+	option = {
+		name = japan_exile_korea.4.c
+		add_political_power = -100
+		swap_ideas = {
+			remove_idea = JAP_KPG_1
+			add_idea = JAP_KPG_3
+		}
+	}
+}
+
+#Korean Boat People
+country_event = {
+	id = japan_exile_korea.5
+	title = japan_exile_korea.5.t
+	desc = japan_exile_korea.5.desc
+	picture = GFX_report_event_sunset
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan_exile_korea.5.a
+		add_political_power = 25
+	}
+	
+	option = {
+		name = japan_exile_korea.5.b
+		add_political_power = -50
+		
+		add_tech_bonus = {
+			bonus = 2.0
+			uses = 1
+			category = industry
+		}
+			
+		random_owned_controlled_state = {
+			limit = {
+				is_core_of = JAP
+				state_population_k > 500
+				NOT = { has_state_flag = JAP_zainichi_state }
+			}
+			set_state_flag = JAP_zainichi_state
+			add_dynamic_modifier = { modifier = dynamic_mindan } #Pro-South Korean
+			add_extra_state_shared_building_slots = 2
+			add_building_construction = {
+				type = industrial_complex
+				level = 2
+				instant_build = yes
+			}
+		}
+	}
+	
+	option = {
+		name = japan_exile_korea.5.c
+		add_political_power = -100
+		
+		add_tech_bonus = {
+			bonus = 2.0
+			uses = 1
+			category = industry
+		}
+		
+		random_owned_controlled_state = {
+			limit = {
+				is_core_of = JAP
+				state_population_k > 500
+				NOT = { has_state_flag = JAP_zainichi_state }
+			}
+			set_state_flag = JAP_zainichi_state
+			add_dynamic_modifier = { modifier = dynamic_mindan } #Pro-South Korean
+			add_extra_state_shared_building_slots = 2
+			add_building_construction = {
+				type = industrial_complex
+				level = 2
+				instant_build = yes
+			}
+		}
+
+		random_owned_controlled_state = {
+			limit = {
+				is_core_of = JAP
+				state_population_k > 500
+				NOT = { has_state_flag = JAP_zainichi_state }
+			}
+			set_state_flag = JAP_zainichi_state
+			add_dynamic_modifier = { modifier = dynamic_mindan } #Pro-South Korean
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = industrial_complex
+				level = 1
+				instant_build = yes
+			}
+		}
+
+		random_owned_controlled_state = {
+			limit = {
+				is_core_of = JAP
+				state_population_k > 500
+				NOT = { has_state_flag = JAP_zainichi_state }
+			}
+			set_state_flag = JAP_zainichi_state
+			add_dynamic_modifier = { modifier = dynamic_mindan } #Pro-South Korean
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = industrial_complex
+				level = 1
+				instant_build = yes
+			}
+		}
+	}
+}
+
+#Korean Presidential Election
+country_event = {
+	id = japan_exile_korea.6
+	title = japan_exile_korea.6.t
+	desc = japan_exile_korea.6.desc
+	picture = GFX_report_event_KOR_2000_general_election
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan_exile_korea.6.a
+		trigger = {
+			NOT = { has_government = progressive }
+			NOT = { has_government = social_liberal }
+			NOT = { has_government = democratic_socialist }
+			NOT = { has_government = social_democrat }
+			NOT = { has_government = communist }
+		}
+		set_global_flag = KOR_provisional_right
+		
+		hidden_effect = {
+			news_event = { id = japan_news.21 }
+		}
+	}
+	
+	option = {
+		name = japan_exile_korea.6.b
+		trigger = {
+			OR = {
+				has_government = progressive
+				has_government = social_liberal
+				has_government = democratic_socialist
+				has_government = social_democrat
+				has_government = communist
+			}
+		}
+		set_global_flag = KOR_provisional_left
+		
+		hidden_effect = {
+			news_event = { id = japan_news.21 }
+		}
+	}
+}
+
+#War for the Liberation of Korea
+country_event = {
+	id = japan_exile_korea.7
+	title = japan_exile_korea.7.t
+	
+	desc = {
+		text = japan_exile_korea.7.desc_1
+		trigger = { has_global_flag = KOR_provisional_right }
+	}
+	
+	desc = {
+		text = japan_exile_korea.7.desc_2
+		trigger = { has_global_flag = KOR_provisional_left }
+	}
+	
+	picture = GFX_report_event_JAP_korea_japan
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan_exile_korea.7.a
+		random_list = {
+			25 = { 
+				add_manpower = 2000 
+				add_equipment_to_stockpile = { 
+					type = support_equipment
+					amount = 500
+					producer = ROOT
+				}
+			}
+			50 = { 
+				add_manpower = 5000 
+				add_equipment_to_stockpile = { 
+					type = support_equipment
+					amount = 800
+					producer = ROOT
+				}
+			}
+			15 = { 
+				add_manpower = 8000 
+				add_equipment_to_stockpile = { 
+					type = support_equipment
+					amount = 1000
+					producer = ROOT
+				}
+			}
+			10 = { 
+				add_manpower = 15000 
+				add_equipment_to_stockpile = { 
+					type = support_equipment
+					amount = 1500
+					producer = ROOT
+				}
+			}
+		}
+	}
+}
+
+#Death of Kim Dae-jung
+country_event = {
+	id = japan_exile_korea.8
+	title = japan_exile_korea.8.t
+	desc = japan_exile_korea.8.desc
+	picture = GFX_report_event_hospital
+	
+	trigger = { 
+		OR = { 
+			has_global_flag = KOR_provisional_left
+			has_global_flag = KOR_provisional_right
+		}
+		date > 2009.06.01
+	}
+	
+	mean_time_to_happen = {
+		days = 600
+	}
+	
+	fire_only_once = yes
+	
+	option = {
+		name = japan_exile_korea.8.a
+	}
+}
+
+#War for the Liberation of Korea
+country_event = {
+	id = japan_exile_korea.9
+	title = japan_exile_korea.9.t
+	
+	desc = {
+		text = japan_exile_korea.9.desc_1
+		trigger = { has_global_flag = KOR_provisional_right }
+	}
+	
+	desc = {
+		text = japan_exile_korea.9.desc_2
+		trigger = { has_global_flag = KOR_provisional_left }
+	}
+	
+	picture = GFX_report_event_JAP_korea_japan
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan_exile_korea.9.a
+		
+		if = {
+			limit = {
+				any_state = { 
+					owner = {
+						OR = {
+							is_core_of = KOR
+							is_subject_of = JAP
+							original_tag = JAP
+						}
+					}
+				}
+			}
+			transfer_state_to = KOR
+		}
+		
+		if = {
+			limit = {
+				KOR = { is_subject_of = JAP }
+				has_global_flag = KOR_provisional_left
+			}
+			KOR = {
+				
+				hidden_effect = {
+					
+					set_popularities = {
+						social_democrat = 60
+						fascist = 8
+						democratic_socialist = 8
+						social_liberal = 5
+						reactionary = 1
+						market_liberal = 8
+						conservative = 10
+					}
+					
+					create_country_leader = {
+						name = "Roh Hoe-chan"
+						desc = "POLITICS_ROH_HOE_CHAN_DESC"
+						picture = "roh_hoe_chan.dds"
+						expire = "2099.12.1"
+						ideology = social_democrat_ideology
+						traits = {
+							
+						}
+					}
+				}
+			
+				load_focus_tree = KOR_focus_tree_democracy
+				
+				set_politics = {
+					ruling_party = social_democrat
+					elections_allowed = yes
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				KOR = { NOT = { is_subject_of = JAP } }
+				has_global_flag = KOR_provisional_left
+			}
+			ROOT = { puppet = KOR }
+			release = KOR
+			
+			KOR = {
+				
+				hidden_effect = {
+					set_popularities = {
+						social_democrat = 60
+						fascist = 8
+						democratic_socialist = 8
+						social_liberal = 5
+						reactionary = 1
+						market_liberal = 8
+						conservative = 10
+					}
+				
+					create_country_leader = {
+						name = "Roh Hoe-chan"
+						desc = "POLITICS_ROH_HOE_CHAN_DESC"
+						picture = "roh_hoe_chan.dds"
+						expire = "2099.12.1"
+						ideology = social_democrat_ideology
+						traits = {
+							
+						}
+					}
+				}
+			
+				load_focus_tree = KOR_focus_tree_democracy
+				
+				set_politics = {
+					ruling_party = social_democrat
+					elections_allowed = yes
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				KOR = { is_subject_of = JAP }
+				has_global_flag = KOR_provisional_right
+			}
+			
+			KOR = {
+				
+				hidden_effect = {
+					set_popularities = {
+						conservative = 60
+						fascist = 8
+						democratic_socialist = 8
+						social_liberal = 5
+						reactionary = 1
+						market_liberal = 8
+						social_democrat = 10
+					}
+				
+					create_country_leader = {
+						name = "Park Jie-won"
+						desc = "POLITICS_PARK_JIE_WON_DESC"
+						picture = "Park_Jie_won.dds"
+						expire = "2099.12.1"
+						ideology = constitutionalist
+						traits = {
+							KOR_former_far_right
+							KOR_anti_fascist_fighter
+							KOR_9th_level_politician
+						}
+					}
+				}
+			
+				load_focus_tree = KOR_focus_tree_democracy
+				
+				set_politics = {
+					ruling_party = conservative
+					elections_allowed = yes
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				KOR = { NOT = { is_subject_of = JAP } }
+				has_global_flag = KOR_provisional_right
+			}
+			ROOT = { puppet = KOR }
+			release = KOR
+			
+			KOR = {
+				
+				hidden_effect = {
+					
+					set_popularities = {
+						conservative = 60
+						fascist = 8
+						democratic_socialist = 8
+						social_liberal = 5
+						reactionary = 1
+						market_liberal = 8
+						social_democrat = 10
+					}
+
+
+					create_country_leader = {
+						name = "Park Jie-won"
+						desc = "POLITICS_PARK_JIE_WON_DESC"
+						picture = "Park_Jie_won.dds"
+						expire = "2099.12.1"
+						ideology = constitutionalist
+						traits = {
+							KOR_former_far_right
+							KOR_anti_fascist_fighter
+							KOR_9th_level_politician
+						}
+					}
+				}
+			
+				load_focus_tree = KOR_focus_tree_democracy
+				
+				set_politics = {
+					ruling_party = conservative
+					elections_allowed = yes
+				}
+			}
+		}
+		
+		if = {
+			limit = {
+				1082= { is_owned_by = KOR } 
+			}
+			JAP = { transfer_state = 1082 }
+		}
+		
+		clr_global_flag = KOR_provisional_left
+		clr_global_flag = KOR_provisional_right
+		
+		hidden_effect = {
+			remove_ideas = JAP_KPG_1
+			remove_ideas = JAP_KPG_2
+			remove_ideas = JAP_KPG_3
+			
+			news_event = { id = japan_news.18 }
+		}
+		
+	}
+}
+
+# Negative Result in [FROM.State.GetName]
+state_event = {
+	id = japan_state.1
+	title = japan_state.1.t
+	desc = japan_state.1.desc
+	picture = GFX_report_event_KOR_2000_general_election
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan_state.1.a
+		
+	}
+	
+}
+
+# Ordinary Result in [FROM.State.GetName]
+state_event = {
+	id = japan_state.2
+	title = japan_state.2.t
+	desc = japan_state.2.desc
+	picture = GFX_report_event_KOR_2000_general_election
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan_state.2.a
+		ROOT = { JAP_set_approval_rating_plus_1 = yes }
+	}
+	
+}
+
+
+# Perfect Result in [FROM.State.GetName]
+state_event = {
+	id = japan_state.3
+	title = japan_state.3.t
+	desc = japan_state.3.desc
+	picture = GFX_report_event_KOR_2000_general_election
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan_state.3.a
+		ROOT = { JAP_set_approval_rating_plus_2 = yes }
+	}
+	
+}
+
+
+	
+#Kato's Rebellion
+news_event = {
+	id = japan_news.1
+	title = japan_news.1.t
+	desc = japan_news.1.desc
+	picture = GFX_news_event_Kato_s_Rebellion
+	
+	is_triggered_only = yes
+	major = yes
+	
+	option = {
+		name = japan_news.1.a
+		trigger = {
+			original_tag = JAP
+		}
+	}
+	
+	option = {
+		name = japan_news.1.b
+		trigger = {
+			NOT = { original_tag = JAP }
+		}
+	}
+}
+
+#[JAP.GetName]'s Prime Minister in a coma
+news_event = {
+	id = japan_news.2
+	title = japan_news.2.t
+	desc = japan_news.2.desc
+	picture = GFX_news_event_japanese_national_diet
+	
+	is_triggered_only = yes
+	major = yes
+	
+	option = {
+		name = japan_news.2.a
+		trigger = {
+			original_tag = JAP
+		}
+	}
+	
+	option = {
+		name = japan_news.2.b
+		trigger = {
+			NOT = { original_tag = JAP }
+		}
+	}
+}
+
+#[JAP.GetName]'s Communist Civil War
+news_event = {
+	id = japan_news.3
+	title = japan_news.3.t
+	desc = japan_news.3.desc
+	picture = GFX_news_event_japan_army
+	
+	is_triggered_only = yes
+	major = yes
+	
+	option = {
+		name = japan_news.3.a
+		trigger = {
+			original_tag = JAP
+		}
+	}
+	
+	option = {
+		name = japan_news.3.b
+		trigger = {
+			NOT = { original_tag = JAP }
+		}
+	}
+}
+
+#End of the Japanese Civil War
+news_event = {
+	id = japan_news.4
+	title = japan_news.4.t
+	desc = japan_news.4.desc
+	picture = GFX_news_event_japan_prime_minister_s_official_residence
+	
+	is_triggered_only = yes
+	major = yes
+	
+	option = {
+		name = japan_news.4.a
+		trigger = {
+			original_tag = JAP
+		}
+	}
+	
+	option = {
+		name = japan_news.4.b
+		trigger = {
+			NOT = { original_tag = JAP }
+		}
+	}
+}
+
+#Yoshiro Mori Disgracefully Expelled
+news_event = {
+	id = japan_news.5
+	title = japan_news.5.t
+	desc = japan_news.5.desc
+	picture = GFX_news_event_japanese_national_diet
+	
+	is_triggered_only = yes
+	major = yes
+	
+	option = {
+		name = japan_news.5.a
+		trigger = {
+			original_tag = JAP
+		}
+	}
+	
+	option = {
+		name = japan_news.5.b
+		trigger = {
+			NOT = { original_tag = JAP }
+		}
+	}
+}
+
+#Japanese Military Coup
+news_event = {
+	id = japan_news.6
+	title = japan_news.6.t
+	desc = japan_news.6.desc
+	picture = GFX_news_event_toshio_tamogami
+	
+	is_triggered_only = yes
+	major = yes
+	
+	option = {
+		name = japan_news.6.a
+		trigger = {
+			original_tag = JAP
+		}
+	}
+	
+	option = {
+		name = japan_news.6.b
+		trigger = {
+			NOT = { original_tag = JAP }
+		}
+	}
+}
+
+#Japanese Declaration of the Republic
+news_event = {
+	id = japan_news.7
+	title = japan_news.7.t
+	desc = japan_news.7.desc
+	picture = GFX_news_event_japanese_imperial_palace
+	
+	is_triggered_only = yes
+	major = yes
+	
+	option = {
+		name = japan_news.7.a
+	}
+}
+
+# The Reiwa Period
+news_event = {
+	id = japan_news.8
+	title = japan_news.8.t
+	desc = japan_news.8.desc
+	picture = GFX_news_event_naruhito
+
+	major = yes
+	is_triggered_only = yes
+	
+	option = {
+		name = japan_news.8.a
+	}
+	
+}
+
+# [FROM.GetName] signs military alliance with [JAP.GetName]
+news_event = {
+	id = japan_news.9
+	title = japan_news.9.t
+	desc = japan_news.9.desc
+	picture = GFX_news_event_japanese_national_diet
+
+	major = yes
+	is_triggered_only = yes
+	
+	option = {
+		name = japan_news.9.a
+	}
+	
+}
+
+# [KOR.GetName] Withdraws from Takeshima
+news_event = {
+	id = japan_news.10
+	title = japan_news.10.t
+	desc = japan_news.10.desc
+	picture = GFX_news_event_liancourt_rocks
+
+	major = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		hidden_effect = { JAP = { transfer_state = 1082 }
+		set_global_flag = dokdo_and_takeshima_global_flag
+		1082 = { remove_core_of = KOR }
+		}
+	}
+	
+	option = {
+		name = japan_news.10.a
+		trigger = {
+			original_tag = JAP
+		}
+	}
+	
+	option = {
+		name = japan_news.10.b
+		trigger = {
+			original_tag = KOR
+		}
+			add_political_power = -150
+			add_stability = -0.1
+	}
+	
+	option = {
+		name = japan_news.10.c
+		trigger = {
+			NOT = { original_tag = KOR }
+			NOT = { original_tag = JAP }
+		}
+	}
+}
+
+# [JAP.GetName]'s Declaration of Abandonment of Dokdo
+news_event = {
+	id = japan_news.11
+	title = japan_news.11.t
+	desc = japan_news.11.desc
+	picture = GFX_news_event_liancourt_rocks
+
+	major = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		set_global_flag = dokdo_and_takeshima_global_flag
+		hidden_effect = { 1082 = { remove_core_of = JAP } }
+	}
+	
+	option = {
+		name = japan_news.11.a
+		trigger = {
+			original_tag = KOR
+		}
+	}
+	
+	option = {
+		name = japan_news.11.b
+		trigger = {
+			original_tag = JAP
+		}
+			add_political_power = -150
+			add_stability = -0.1
+	}
+	
+	option = {
+		name = japan_news.11.c
+		trigger = {
+			NOT = { original_tag = KOR }
+			NOT = { original_tag = JAP }
+		}
+	}
+}
+
+# [JAP.GetName]'s Liancourt Occupation
+news_event = {
+	id = japan_news.12
+	title = japan_news.12.t
+	desc = japan_news.12.desc
+	picture = GFX_news_event_liancourt_rocks_2
+
+	major = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		hidden_effect = { JAP = { transfer_state = 1082 } }
+		set_global_flag = dokdo_and_takeshima_global_flag
+	}
+	
+	option = {
+		name = japan_news.12.a
+		trigger = {
+			original_tag = KOR
+		}
+			add_political_power = -150
+			add_stability = -0.1
+	}
+	
+	option = {
+		name = japan_news.12.b
+		trigger = {
+			original_tag = JAP
+		}
+	}
+	
+	option = {
+		name = japan_news.12.c
+		trigger = {
+			NOT = { original_tag = KOR }
+			NOT = { original_tag = JAP }
+		}
+	}
+}
+
+# Self-Defense Forces Became Army
+news_event = {
+	id = japan_news.13
+	title = japan_news.13.t
+	desc = japan_news.13.desc
+	picture = GFX_news_event_japanese_nationalism2
+
+	major = yes
+	is_triggered_only = yes
+	
+	option = {
+		name = japan_news.13.a
+		trigger = {
+			original_tag = JAP
+		}
+	}
+	
+	option = {
+		name = japan_news.13.b
+		trigger = {
+			NOT = { original_tag = JAP }
+		}
+	}
+}
+
+# Japanese Textbook Debate
+news_event = {
+	id = japan_news.14
+	title = japan_news.14.t
+	desc = japan_news.14.desc
+	picture = GFX_news_event_japanese_textbook
+
+	major = yes
+	is_triggered_only = yes
+	
+	option = {
+		name = japan_news.14.a
+	}
+	
+}
+
+#Alberto Fujimori's exile
+news_event = {
+	id = japan_news.15
+	title = japan_news.15.t
+	desc = japan_news.15.desc
+	picture = GFX_news_event_alberto_fujimori_1
+	
+	is_triggered_only = yes
+	major = yes
+	
+	option = {
+		name = japan_news.15.a
+		trigger = {
+			original_tag = JAP
+		}
+	}
+	
+	option = {
+		name = japan_news.15.b
+		trigger = {
+			original_tag = PRU
+		}
+	}
+	
+	option = {
+		name = japan_news.15.c
+		trigger = {
+			NOT = { original_tag = JAP }
+			NOT = { original_tag = PRU }
+		}
+	}
+}
+
+#Shinzo Abe Assassination
+news_event = {
+	id = japan_news.16
+	title = japan_news.16.t
+	desc = japan_news.16.desc
+	picture = GFX_news_event_abe_assassination
+	
+	is_triggered_only = yes
+	major = yes
+	
+	option = {
+		name = japan_news.16.a
+		trigger = {
+			original_tag = JAP
+		}
+	}
+	
+	option = {
+		name = japan_news.16.b
+		trigger = {
+			NOT = { original_tag = JAP }
+		}
+	}
+}
+
+
+#Tokyo Conference
+news_event = {
+	id = japan_news.17
+	title = japan_news.17.t
+	desc = japan_news.17.desc
+	picture = GFX_news_event_japan_prime_minister_s_official_residence
+	
+	is_triggered_only = yes
+	major = yes
+	
+	option = {
+		name = japan_news.17.a
+		trigger = {
+			NOT  = { original_tag = PRC }
+			NOT  = { original_tag = JAP }
+		}
+	}
+	
+	option = {
+		name = japan_news.17.b
+		trigger = {
+			original_tag = PRC
+		}
+	}
+	
+	option = {
+		name = japan_news.17.c
+		trigger = {
+			original_tag = JAP
+		}
+	}
+}
+
+#Return of the Provisional Government of the Republic of Korea
+news_event = {
+	id = japan_news.18
+	title = japan_news.18.t
+	desc = japan_news.18.desc
+	picture = GFX_news_event_korea_manse
+	
+	is_triggered_only = yes
+	major = yes
+	
+	option = {
+		name = japan_news.18.a
+	}
+}
+
+# [Root.GetName]'s Grant of Autonomy to Okinawa
+news_event = {
+	id = japan_news.19
+	title = japan_news.19.t
+	desc = japan_news.19.desc
+	picture = GFX_news_event_ryukyu_independence
+
+	major = yes
+	is_triggered_only = yes
+	
+	option = {
+		name = japan_news.19.a
+		trigger = {
+			original_tag = JAP
+		}
+	}
+	
+	option = {
+		name = japan_news.19.b
+		trigger = {
+			NOT = { original_tag = JAP }
+		}
+	}
+}
+
+#The Establishment of the Korean government in exile
+news_event = {
+	id = japan_news.20
+	title = japan_news.20.t
+	desc = japan_news.20.desc
+	picture = GFX_news_event_japanese_national_diet
+	
+	is_triggered_only = yes
+	major = yes
+	
+	option = {
+		name = japan_news.20.a
+		trigger = {
+			original_tag = JAP
+		}
+	}
+	
+	option = {
+		name = japan_news.20.b
+		trigger = {
+			original_tag = KOR
+		}
+	}
+	
+	option = {
+		name = japan_news.20.c
+		trigger = {
+			NOT = { original_tag = JAP }
+			NOT = { original_tag = KOR }
+		}
+	}
+}
+
+#The Establishment of the Korean government in exile
+news_event = {
+	id = japan_news.21
+	title = japan_news.21.t
+	
+	desc = {
+		text = japan_news.21.desc_1
+		trigger = { has_global_flag = KOR_provisional_right }
+	}
+	
+	desc = {
+		text = japan_news.21.desc_2
+		trigger = { has_global_flag = KOR_provisional_left }
+	}
+	
+	picture = GFX_news_event_japanese_national_diet
+	
+	is_triggered_only = yes
+	major = yes
+	
+	option = {
+		name = japan_news.21.a
+		trigger = {
+			original_tag = JAP
+		}
+	}
+	
+	option = {
+		name = japan_news.21.b
+		trigger = {
+			original_tag = KOR
+		}
+	}
+	
+	option = {
+		name = japan_news.21.c
+		trigger = {
+			NOT = { original_tag = JAP }
+			NOT = { original_tag = KOR }
+		}
+	}
+}
+
+########################################
+##
+## Flavor Events
+##
+########################################
+
+# Saburo Sakai's death
+country_event = {
+	id = japan_flavor_events.1
+	title = japan_flavor_events.1.t
+	desc = japan_flavor_events.1.desc
+	picture = GFX_report_event_JAP_saburo_sakai
+
+	trigger = {
+		date > 2000.9.1
+		date < 2001.9.1
+		tag = JAP
+	}
+
+	fire_only_once = yes
+	
+	mean_time_to_happen = {
+		days = 30
+	}
+	
+	option = {
+		name = japan_flavor_events.1.a
+		add_political_power = -10
+		set_country_flag = dead_saburo_sakai
+	}
+}
+
+# 2001 Japan Airlines mid-air incident
+country_event = {
+	id = japan_flavor_events.2
+	title = japan_flavor_events.2.t
+	desc = japan_flavor_events.2.desc
+	picture = GFX_report_event_passenger_plane
+
+	trigger = {
+		date > 2001.1.21
+		date < 2001.12.31
+		tag = JAP
+	}
+
+	fire_only_once = yes
+	
+	mean_time_to_happen = {
+		days = 30
+	}
+	
+	option = {
+		name = japan_flavor_events.2.a
+		add_political_power = -10
+	}
+}
+
+#Seiichi Yoshie's death
+country_event = {
+	id = japan_flavor_events.3
+	title = japan_flavor_events.3.t
+	desc = japan_flavor_events.3.desc
+	picture = GFX_report_event_japanese_flag
+
+	trigger = {
+		date > 2000.5.1
+		date < 2001.5.1
+		tag = JAP
+	}
+
+	fire_only_once = yes
+	
+	mean_time_to_happen = {
+		days = 30
+	}
+	
+	option = {
+		name = japan_flavor_events.3.a
+		add_political_power = -5
+		set_country_flag = dead_seiichi_yoshie
+	}
+}
+
+#Hiroshi Nagata's death
+country_event = {
+	id = japan_flavor_events.4
+	title = japan_flavor_events.4.t
+	desc = japan_flavor_events.4.desc
+	picture = GFX_report_event_japanese_flag
+
+	trigger = {
+		date > 2013.11.1
+		date < 2014.12.1
+		tag = JAP
+	}
+
+	fire_only_once = yes
+	
+	mean_time_to_happen = {
+		days = 30
+	}
+	
+	option = {
+		name = NV_JPN_flavor_events.4.a
+		add_political_power = -5
+		set_country_flag = dead_hiroshi_nagata
+	}
+}
+
+#Haru Urara, Don't Give Up!
+country_event = {
+	id = japan_flavor_events.5
+	title = japan_flavor_events.5.t
+	desc = japan_flavor_events.5.desc
+	picture = GFX_report_event_JAP_haruurara
+	
+	fire_only_once = yes
+	
+	trigger = {
+		original_tag = JAP
+		date > 2001.6.1
+		date < 2002.12.31 
+	}
+
+	mean_time_to_happen = { 
+		days = 35
+	}
+	
+	option = {
+		name = japan_flavor_events.5.a
+		add_political_power = 1
+		
+		hidden_effect = {
+			random_list = {
+				85 = { country_event = { id = japan_flavor_events.6 days = 900 } }
+				15 = { country_event = { id = japan_flavor_events.7 days = 180 } }
+			}
+		}
+	}
+}
+
+#Haru Urara's Retirement
+country_event = {
+	id = japan_flavor_events.6
+	title = japan_flavor_events.6.t
+	desc = japan_flavor_events.6.desc
+	picture = GFX_report_event_JAP_haruurara
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan_flavor_events.6.a
+		add_political_power = 1
+	}
+}
+
+#Haru Urara's First Victory
+country_event = {
+	id = japan_flavor_events.7
+	title = japan_flavor_events.7.t
+	desc = japan_flavor_events.7.desc
+	picture = GFX_report_event_JAP_haruurara
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan_flavor_events.7.a
+		add_political_power = 106
+	}
+}
+
+#Kabuki-cho Building Fire Case
+country_event = {
+	id = japan_flavor_events.8
+	title = japan_flavor_events.8.t
+	desc = japan_flavor_events.8.desc
+	picture = GFX_report_event_tokyo_night
+	
+	fire_only_once = yes
+	
+	trigger = {
+		original_tag = JAP
+		date > 2001.8.1 #Historical 9.1
+		date < 2001.12.31 
+	}
+
+	mean_time_to_happen = { 
+		days = 12
+	}
+	
+	option = {
+		name = japan_flavor_events.5.a
+		add_political_power = -25
+	}
+}
+
+#The Birth of Princess Aiko
+country_event = {
+	id = japan_flavor_events.9
+	title = japan_flavor_events.9.t
+	desc = japan_flavor_events.9.desc
+	picture = GFX_report_event_JAP_imperial_palace
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		original_tag = JAP
+		date < 2001.12.31 
+		OR = {
+			has_idea = government_system_constitutional_monarchy
+			has_idea = government_system_absolute_monarchy
+			has_idea = government_system_imperial
+			has_government = nationalist
+			has_government = fascist
+		}
+	}
+	
+	option = {
+		name = japan_flavor_events.9.a
+		add_political_power = 15
+	}
+}
+
+#The Birth of Prince Hisahito
+country_event = {
+	id = japan_flavor_events.10
+	title = japan_flavor_events.10.t
+	desc = japan_flavor_events.10.desc
+	picture = GFX_report_event_JAP_imperial_palace
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		original_tag = JAP
+		date < 2007.12.31 
+		OR = {
+			has_idea = government_system_constitutional_monarchy
+			has_idea = government_system_absolute_monarchy
+			has_idea = government_system_imperial
+			has_government = nationalist
+			has_government = fascist
+		}
+	}
+	
+	option = {
+		name = japan_flavor_events.10.a
+		add_political_power = 15
+	}
+}
+
+# Pixiv
+country_event = {
+	id = japan_flavor_events.11
+	title = japan_flavor_events.11.t
+	desc = japan_flavor_events.11.desc
+	picture = GFX_report_event_computer
+
+	trigger = {
+		tag = JAP
+		date > 2007.8.1
+		date < 2008.9.1
+		NOT = { has_government = nationalist }
+	}
+
+	fire_only_once = yes
+	
+	mean_time_to_happen = {
+		days = 30
+	}
+	
+	option = {
+		name = japan_flavor_events.11.a
+		add_political_power = 10
+	}
+}
+
+# Fujimori running for Election
+country_event = {
+	id = japan_flavor_events.12
+	title = japan_flavor_events.12.t
+	desc = japan_flavor_events.12.desc
+	picture = GFX_report_event_JAP_National_Assembly
+
+	trigger = {
+		tag = JAP
+		date > 2007.1.1
+		date < 2008.1.1
+		has_country_flag = JAP_fujimori_exile_flag
+		NOT = { has_government = communist }
+	}
+
+	fire_only_once = yes
+	
+	mean_time_to_happen = {
+		days = 41
+	}
+	
+	option = {
+		name = japan_flavor_events.12.a
+		add_popularity = {
+			ideology = market_liberal
+			popularity = 0.01
+		}
+	}
+}
+
+# Shizuka Kamei's proposal to move the emperor's residence
+country_event = {
+	id = japan_flavor_events.13
+	title = japan_flavor_events.13.t
+	desc = japan_flavor_events.13.desc
+	picture = GFX_report_event_JAP_National_Assembly
+
+	trigger = {
+		tag = JAP
+		date > 2005.1.1
+		date < 2010.1.1
+		NOT = { has_government = communist }
+		has_idea = idea_JAP_emperor_akihito
+	}
+
+	fire_only_once = yes
+	
+	mean_time_to_happen = {
+		days = 700
+	}
+	
+	option = {
+		name = japan_flavor_events.13.a
+		add_political_power = -10
+	}
+}
+
+########################################
+##
+## Okinawa Events
+##
+########################################
+
+country_event = {	#Chosuke Yara and Kariyushi's rally to claim independence
+	id = japan_okinawa_events.1
+	title = japan_okinawa_events.1.t
+	desc = japan_okinawa_events.1.desc
+	picture = GFX_report_event_kariyushi_event
+	
+	trigger = {
+		original_tag = JAP
+		has_full_control_of_state = 526 #Okinawa
+		NOT = { country_exists = RYU }
+		NOT = { has_country_flag = JAP_japanese_okinawa }
+		NOT = { has_country_flag = JAP_kariyushi_illegal }
+	}
+	
+	mean_time_to_happen = {
+		days = 600
+		modifier = { factor = 0.9 has_country_flag = { flag = national_stability value > 90 } }
+		modifier = { factor = 0.9 has_country_flag = { flag = national_stability value > 80 } }
+		modifier = { factor = 0.9 has_country_flag = { flag = national_stability value > 75 } }
+		modifier = { factor = 1.05 has_country_flag = { flag = national_stability value < 50 } }
+		modifier = { factor = 1.05 has_country_flag = { flag = national_stability value < 45 } }
+		modifier = { factor = 1.1 has_country_flag = { flag = national_stability value < 40 } }
+		modifier = { factor = 1.2 has_country_flag = { flag = national_stability value < 35 } }
+		modifier = { factor = 1.2 has_country_flag = { flag = national_stability value < 30 } }
+		modifier = { factor = 1.3 has_country_flag = { flag = national_stability value < 25 } }
+		modifier = { factor = 2.0 has_country_flag = { flag = national_stability value < 20 } }
+	}
+	
+	option = {
+		name = japan_okinawa_events.1.a
+			526 = { 
+				add_compliance = -5
+				add_resistance = 5
+			}
+	}
+}
+
+country_event = {	#Okinawa Social Mass Party Claims Ryukyu Autonomous Government
+	id = japan_okinawa_events.2
+	title = japan_okinawa_events.2.t
+	desc = japan_okinawa_events.2.desc
+	picture = GFX_report_event_stability
+	
+	trigger = {
+		original_tag = JAP
+		has_full_control_of_state = 526 #Okinawa
+		NOT = { country_exists = RYU }
+		NOT = { has_country_flag = JAP_japanese_okinawa }
+	}
+	
+	mean_time_to_happen = {
+		days = 720
+		modifier = { factor = 0.9 has_country_flag = { flag = national_stability value > 90 } }
+		modifier = { factor = 0.9 has_country_flag = { flag = national_stability value > 80 } }
+		modifier = { factor = 0.9 has_country_flag = { flag = national_stability value > 75 } }
+		modifier = { factor = 1.05 has_country_flag = { flag = national_stability value < 50 } }
+		modifier = { factor = 1.05 has_country_flag = { flag = national_stability value < 45 } }
+		modifier = { factor = 1.05 has_country_flag = { flag = national_stability value < 40 } }
+		modifier = { factor = 1.05 has_country_flag = { flag = national_stability value < 35 } }
+		modifier = { factor = 1.1 has_country_flag = { flag = national_stability value < 30 } }
+		modifier = { factor = 1.1 has_country_flag = { flag = national_stability value < 25 } }
+		modifier = { factor = 1.2 has_country_flag = { flag = national_stability value < 20 } }
+		modifier = { factor = 0.1 has_democratic_form_of_government = no }
+	}
+	
+	option = {
+		name = japan_okinawa_events.2.a
+			526 = { 
+				add_compliance = -5
+				add_resistance = -1
+			}
+	}
+}
+
+country_event = {	#Kariyushi Club Riot
+	id = japan_okinawa_events.3
+	title = japan_okinawa_events.3.t
+	desc = japan_okinawa_events.3.desc
+	picture = GFX_report_event_kariyushi_event
+	
+	trigger = {
+		original_tag = JAP
+		has_full_control_of_state = 526 #Okinawa
+		NOT = { country_exists = RYU }
+		NOT = { has_country_flag = JAP_japanese_okinawa }
+		has_country_flag = JAP_kariyushi_illegal
+	}
+	
+	mean_time_to_happen = {
+		days = 600
+		modifier = { factor = 0.9 has_country_flag = { flag = national_stability value > 90 } }
+		modifier = { factor = 0.9 has_country_flag = { flag = national_stability value > 80 } }
+		modifier = { factor = 0.9 has_country_flag = { flag = national_stability value > 75 } }
+		modifier = { factor = 1.05 has_country_flag = { flag = national_stability value < 50 } }
+		modifier = { factor = 1.05 has_country_flag = { flag = national_stability value < 45 } }
+		modifier = { factor = 1.05 has_country_flag = { flag = national_stability value < 40 } }
+		modifier = { factor = 1.05 has_country_flag = { flag = national_stability value < 35 } }
+		modifier = { factor = 1.1 has_country_flag = { flag = national_stability value < 30 } }
+		modifier = { factor = 1.1 has_country_flag = { flag = national_stability value < 25 } }
+		modifier = { factor = 1.2 has_country_flag = { flag = national_stability value < 20 } }
+	}
+	
+	option = {
+		name = japan_okinawa_events.3.a
+			526 = { 
+				add_compliance = -3
+				add_resistance = 7
+			}
+	}
+}
+
+country_event = {	#The Kariyushi Club has a growing number of supporters
+	id = japan_okinawa_events.4
+	title = japan_okinawa_events.4.t
+	desc = japan_okinawa_events.4.desc
+	picture = GFX_report_event_kariyushi_event
+	
+	trigger = {
+		original_tag = JAP
+		has_full_control_of_state = 526 #Okinawa
+		NOT = { country_exists = RYU }
+		NOT = { has_country_flag = JAP_japanese_okinawa }
+		NOT = { has_country_flag = JAP_kariyushi_illegal }
+	}
+	
+	mean_time_to_happen = {
+		days = 600
+		modifier = { factor = 0.9 has_country_flag = { flag = national_stability value > 90 } }
+		modifier = { factor = 0.9 has_country_flag = { flag = national_stability value > 80 } }
+		modifier = { factor = 0.9 has_country_flag = { flag = national_stability value > 75 } }
+		modifier = { factor = 1.05 has_country_flag = { flag = national_stability value < 50 } }
+		modifier = { factor = 1.05 has_country_flag = { flag = national_stability value < 45 } }
+		modifier = { factor = 1.1 has_country_flag = { flag = national_stability value < 40 } }
+		modifier = { factor = 1.2 has_country_flag = { flag = national_stability value < 35 } }
+		modifier = { factor = 1.2 has_country_flag = { flag = national_stability value < 30 } }
+		modifier = { factor = 1.3 has_country_flag = { flag = national_stability value < 25 } }
+		modifier = { factor = 1.5 has_country_flag = { flag = national_stability value < 20 } }
+	}
+	
+	option = {
+		name = japan_okinawa_events.4.a
+			526 = { 
+				add_compliance = -4
+				add_resistance = 3
+			}
+	}
+}
+
+
+country_event = {	#The Kariyushi Club Criticized in Okinawa
+	id = japan_okinawa_events.5
+	title = japan_okinawa_events.5.t
+	desc = japan_okinawa_events.5.desc
+	picture = GFX_report_event_kariyushi_event
+	
+	trigger = {
+		original_tag = JAP
+		has_full_control_of_state = 526 #Okinawa
+		NOT = { country_exists = RYU }
+		NOT = { has_country_flag = JAP_japanese_okinawa }
+	}
+	
+	mean_time_to_happen = {
+		days = 600
+		modifier = { factor = 0.9 has_country_flag = { flag = national_stability value < 50 } }
+		modifier = { factor = 0.9 has_country_flag = { flag = national_stability value < 45 } }
+		modifier = { factor = 0.9 has_country_flag = { flag = national_stability value < 40 } }
+		modifier = { factor = 0.9 has_country_flag = { flag = national_stability value < 35 } }
+		modifier = { factor = 0.9 has_country_flag = { flag = national_stability value < 30 } }
+		modifier = { factor = 0.9 has_country_flag = { flag = national_stability value < 25 } }
+		modifier = { factor = 0.1 has_country_flag = { flag = national_stability value < 20 } }
+	}
+	
+	option = {
+		name = japan_okinawa_events.5.a
+			526 = { 
+				add_compliance = 3
+				add_resistance = -5
+			}
+	}
+}
+
+country_event = {	#Establish an Autonomous Government in Ryukyu
+	id = japan_okinawa_events.6
+	title = japan_okinawa_events.6.t
+	desc = japan_okinawa_events.6.desc
+	picture = GFX_report_event_kariyushi_event
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan_okinawa_events.6.a
+		ai_chance = { factor = 100 }
+			hidden_effect = {
+				news_event = { id = japan_news.19 days = 1 }
+				RYU = { country_event = { id = NV_RYU_events.1 days = 1 } }
+				RYU = { set_country_flag = RYU_autonomy_japan }
+				526 = { 
+					remove_dynamic_modifier = { modifier = dynamic_okinawa_separatism }
+					remove_dynamic_modifier = { modifier = dynamic_angry_okinawaese }
+					remove_dynamic_modifier = { modifier = dynamic_massive_okinawa_riots }
+				}
+			}
+			release_puppet = RYU
+			if = {
+				limit = {
+					AND = {
+						RYU = { owns_state = 876 } #Senkaku
+					}
+				}
+				JAP = { transfer_state = 876 }
+				876 = { add_core_of = JAP }
+			}
+	}
+	
+	option = {
+		name = japan_okinawa_events.6.b
+		ai_chance = { factor = 0 }
+			hidden_effect = {
+				news_event = { id = japan_news.19 days = 1 }
+				RYU = { country_event = { id = NV_RYU_events.1 days = 1 } }
+				RYU = { set_country_flag = RYU_autonomy_japan }
+				526 = { 
+					remove_dynamic_modifier = { modifier = dynamic_okinawa_separatism }
+					remove_dynamic_modifier = { modifier = dynamic_angry_okinawaese }
+					remove_dynamic_modifier = { modifier = dynamic_massive_okinawa_riots }
+				}
+			}
+			release_puppet = RYU
+			if = {
+				limit = {
+					AND = {
+						RYU = { owns_state = 876 } #Senkaku
+					}
+				}
+				JAP = { transfer_state = 876 }
+				876 = { add_core_of = JAP }
+			}
+		RYU = { change_tag_from = JAP }
+	}
+}
+
+
+# [FROM.GetNameDefCap] Demands the Return of Kuril
+country_event = {
+	id = japan_foreign_politics_events.1
+	title = japan_foreign_politics_events.1.t
+	desc = japan_foreign_politics_events.1.desc
+	picture = GFX_report_event_generic_conference
+
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			add_opinion_modifier = {
+				target = FROM
+				modifier = JAP_pressured_our_government
+			}
+		}
+	}
+			
+	option = { #Accept
+		name = japan_foreign_politics_events.1.a
+		
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 10
+				NOT = { is_in_faction_with = FROM }
+				strength_ratio = {
+					tag = FROM
+					ratio < 0.6
+				}
+			}
+			modifier = {
+				factor = 5
+				NOT = { is_in_faction_with = FROM }
+				alliance_strength_ratio < 0.6
+			}
+			modifier = {
+				factor = 100
+				is_subject_of = FROM
+			}
+			modifier = {
+				factor = 10
+				is_in_faction_with = FROM
+				has_opinion = {
+					target = FROM
+					value > 75
+				}
+			}
+			modifier = {
+				factor = 0.5
+				NOT = { is_in_faction_with = FROM }
+				strength_ratio = {
+					tag = FROM
+					ratio > 0.8
+				}
+			}
+			modifier = {
+				factor = 0
+				NOT = { is_in_faction_with = FROM }
+				strength_ratio = {
+					tag = FROM
+					ratio > 1
+				}
+			}
+		}
+
+		FROM = {
+			effect_tooltip = {
+				if = {
+					limit = {
+						ROOT = { controls_state = 951 }
+					}
+					transfer_state = 951 #Southern Kuril
+				}
+				if = {
+					limit = {
+						ROOT = { controls_state = 555 }
+					}
+					transfer_state = 555 #Kuril
+				}
+				add_opinion_modifier = {
+					target = ROOT
+					modifier = JAP_complied_with_our_demands
+				}
+			}
+			hidden_effect = {
+				country_event = japan_foreign_politics_events.2
+			}
+		}	
+	}
+
+	option = { #Refuse
+		name = japan_foreign_politics_events.1.b
+		
+		ai_chance = {
+			base = 10
+		}
+
+		FROM = {
+			effect_tooltip = {
+				add_opinion_modifier = {
+					target = ROOT
+					modifier = JAP_rejected_our_demands
+				}
+				create_wargoal = {
+					type = puppet_wargoal_focus
+					target = ROOT
+				}
+			}
+			hidden_effect = {
+				country_event = japan_foreign_politics_events.5
+			}
+		}
+	}
+}
+
+# Chishima Returned
+country_event = {
+	id = japan_foreign_politics_events.2
+	title = japan_foreign_politics_events.2.t
+	desc = japan_foreign_politics_events.2.desc
+	picture = GFX_report_event_generic_usa_treaty
+
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			add_opinion_modifier = {
+				target = FROM
+				modifier = JAP_complied_with_our_demands
+			}
+		}
+	}
+
+	option = { #Ok
+		name = japan_foreign_politics_events.2.a
+		
+		if = {
+			limit = {
+				ROOT = { controls_state = 951 }
+			}
+			transfer_state = 951 #Southern Kuril
+		}
+		if = {
+			limit = {
+				ROOT = { controls_state = 555 }
+			}
+			transfer_state = 555 #Kuril
+		}
+		
+		effect_tooltip = {
+			FROM = {
+				add_opinion_modifier = {
+					target = ROOT
+					modifier = JAP_pressured_our_government
+				}
+			}
+		}
+	}
+}
+
+# Southen Chishima Returned
+country_event = {
+	id = japan_foreign_politics_events.3
+	title = japan_foreign_politics_events.3.t
+	desc = japan_foreign_politics_events.3.desc
+	picture = GFX_report_event_generic_usa_treaty
+
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			add_opinion_modifier = {
+				target = FROM
+				modifier = JAP_complied_with_our_demands
+			}
+		}
+	}
+
+	option = { #Ok
+		name = japan_foreign_politics_events.3.a
+		
+		if = {
+			limit = {
+				ROOT = { controls_state = 951 }
+			}
+			transfer_state = 951 #Southern Kuril
+		}
+		
+		effect_tooltip = {
+			FROM = {
+				add_opinion_modifier = {
+					target = ROOT
+					modifier = JAP_pressured_our_government
+				}
+			}
+		}
+	}
+}
+
+# [FROM.GetNameDefCap] Demands the Return of Kuril
+country_event = {
+	id = japan_foreign_politics_events.4
+	title = japan_foreign_politics_events.4.t
+	desc = japan_foreign_politics_events.4.desc
+	picture = GFX_report_event_generic_conference
+
+	is_triggered_only = yes
+			
+	option = { #Accept
+		name = japan_foreign_politics_events.1.a
+		
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 10
+				NOT = { is_in_faction_with = FROM }
+				strength_ratio = {
+					tag = FROM
+					ratio < 0.6
+				}
+			}
+			modifier = {
+				factor = 5
+				NOT = { is_in_faction_with = FROM }
+				alliance_strength_ratio < 0.6
+			}
+			modifier = {
+				factor = 100
+				is_subject_of = FROM
+			}
+			modifier = {
+				factor = 10
+				is_in_faction_with = FROM
+				has_opinion = {
+					target = FROM
+					value > 25
+				}
+			}
+		}
+
+		FROM = {
+			effect_tooltip = {
+				if = {
+					limit = {
+						ROOT = { controls_state = 951 }
+					}
+					transfer_state = 951 #Southern Kuril
+				}
+				
+				add_opinion_modifier = {
+					target = ROOT
+					modifier = JAP_complied_with_our_demands
+				}
+			}
+			hidden_effect = {
+				country_event = japan_foreign_politics_events.3
+			}
+		}	
+	}
+
+	option = { #Refuse
+		name = japan_foreign_politics_events.1.b
+		
+		ai_chance = {
+			base = 10
+		}
+
+		FROM = {
+			effect_tooltip = {
+				add_opinion_modifier = {
+					target = ROOT
+					modifier = JAP_failure_our_negotiations
+				}
+			}
+			hidden_effect = {
+				country_event = japan_foreign_politics_events.9
+			}
+		}
+	}
+}
+
+
+# [FROM.GetNameDefCap] refuses
+country_event = {
+	id = japan_foreign_politics_events.5
+	title = japan_foreign_politics_events.5.t
+	desc = japan_foreign_politics_events.5.desc
+	picture = GFX_report_event_generic_usa_treaty
+
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			add_opinion_modifier = {
+				target = FROM
+				modifier = JAP_rejected_our_demands
+			}
+		}
+	}
+
+	option = { #WAAAAAGH!
+		name = japan_foreign_politics_events.5.a
+
+		ai_chance = {
+			base = 10
+			modifier = {
+				factor = 5
+				strength_ratio = {
+					tag = FROM
+					ratio > 1
+				}
+			}
+			modifier = {
+				factor = 2
+				has_war = yes
+				alliance_strength_ratio > 0.8
+			}
+			modifier = {
+				factor = 0.5
+				is_in_faction_with = FROM
+				has_opinion = {
+					target = FROM
+					value > 75
+				}
+			}
+			modifier = {
+				factor = 0.5
+				strength_ratio = {
+					tag = FROM
+					ratio < 0.8
+				}
+			}
+			modifier = {
+				factor = 0
+				is_in_faction_with = FROM
+			}
+		}
+		
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = FROM
+		}
+	}
+
+	option = { #Leave it be
+		name = japan_foreign_politics_events.5.b
+
+		ai_chance = {
+			base = 10
+		}
+	}
+}
+
+
+# [FROM.GetNameDefCap] Demands the Renunciation of Sovereignty over 'Senkaku'
+country_event = {
+	id = japan_foreign_politics_events.6
+	title = japan_foreign_politics_events.6.t
+	desc = japan_foreign_politics_events.6.desc
+	picture = GFX_report_event_generic_conference
+
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			add_opinion_modifier = {
+				target = FROM
+				modifier = JAP_pressured_our_government
+			}
+		}
+	}
+			
+	option = { #Accept
+		name = japan_foreign_politics_events.6.a
+		
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 10
+				NOT = { is_in_faction_with = FROM }
+				strength_ratio = {
+					tag = FROM
+					ratio < 0.6
+				}
+			}
+			modifier = {
+				factor = 5
+				NOT = { is_in_faction_with = FROM }
+				alliance_strength_ratio < 0.6
+			}
+			modifier = {
+				factor = 100
+				is_subject_of = FROM
+			}
+			modifier = {
+				factor = 10
+				is_in_faction_with = FROM
+				has_opinion = {
+					target = FROM
+					value > 75
+				}
+			}
+			modifier = {
+				factor = 0.5
+				NOT = { is_in_faction_with = FROM }
+				strength_ratio = {
+					tag = FROM
+					ratio > 0.8
+				}
+			}
+			modifier = {
+				factor = 0
+				NOT = { is_in_faction_with = FROM }
+				strength_ratio = {
+					tag = FROM
+					ratio > 1
+				}
+			}
+		}
+
+		FROM = {
+			effect_tooltip = {
+				876 = { remove_claim_by = ROOT }
+			}
+			hidden_effect = {
+				country_event = japan_foreign_politics_events.7
+			}
+		}	
+	}
+
+	option = { #Refuse
+		name = japan_foreign_politics_events.6.b
+		
+		ai_chance = {
+			base = 10
+		}
+
+		FROM = {
+			effect_tooltip = {
+				add_opinion_modifier = {
+					target = ROOT
+					modifier = JAP_rejected_our_demands
+				}
+				create_wargoal = {
+					type = puppet_wargoal_focus
+					target = ROOT
+				}
+			}
+			hidden_effect = {
+				country_event = japan_foreign_politics_events.8
+			}
+		}
+	}
+}
+
+
+# Protecting the Senkaku Islands
+country_event = {
+	id = japan_foreign_politics_events.7
+	title = japan_foreign_politics_events.7.t
+	desc = japan_foreign_politics_events.7.desc
+	picture = GFX_report_event_generic_usa_treaty
+
+	is_triggered_only = yes
+
+	option = { #WAAAAAGH!
+		name = japan_foreign_politics_events.7.a
+		876 = { remove_claim_by = PRC }
+	}
+}
+
+# [FROM.GetNameDefCap] refuses
+country_event = {
+	id = japan_foreign_politics_events.8
+	title = japan_foreign_politics_events.8.t
+	desc = japan_foreign_politics_events.8.desc
+	picture = GFX_report_event_generic_usa_treaty
+
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			add_opinion_modifier = {
+				target = FROM
+				modifier = JAP_rejected_our_demands
+			}
+		}
+	}
+
+	option = { #WAAAAAGH!
+		name = japan_foreign_politics_events.8.a
+
+		ai_chance = {
+			base = 10
+			modifier = {
+				factor = 5
+				strength_ratio = {
+					tag = FROM
+					ratio > 1
+				}
+			}
+			modifier = {
+				factor = 2
+				has_war = yes
+				alliance_strength_ratio > 0.8
+			}
+			modifier = {
+				factor = 0.5
+				is_in_faction_with = FROM
+				has_opinion = {
+					target = FROM
+					value > 75
+				}
+			}
+			modifier = {
+				factor = 0.5
+				strength_ratio = {
+					tag = FROM
+					ratio < 0.8
+				}
+			}
+			modifier = {
+				factor = 0
+				is_in_faction_with = FROM
+			}
+		}
+		
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = FROM
+		}
+	}
+
+	option = { #Leave it be
+		name = japan_foreign_politics_events.8.b
+
+		ai_chance = {
+			base = 10
+		}
+	}
+}
+
+# [FROM.GetNameDefCap] refuses
+country_event = {
+	id = japan_foreign_politics_events.9
+	title = japan_foreign_politics_events.9.t
+	desc = japan_foreign_politics_events.9.desc
+	picture = GFX_report_event_generic_usa_treaty
+
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			add_opinion_modifier = {
+				target = FROM
+				modifier = JAP_failure_our_negotiations
+			}
+		}
+	}
+
+	option = { #WAAAAAGH!
+		name = japan_foreign_politics_events.9.a
+		
+	}
+}
+
+#[FROM.GetNameDefCap] wants to join the alliance
+country_event = { 
+	id = japan_foreign_politics_events.10
+	title = japan_foreign_politics_events.10.t
+	desc = japan_foreign_politics_events.10.desc
+	is_triggered_only = yes
+	picture = GFX_report_event_generic_conference
+
+	# good idea
+	option = { 
+		name = japan_foreign_politics_events.10.a
+		ai_chance = {
+			base = 10
+		}
+		add_to_faction = FROM
+		set_country_flag = alliance_nippon_daisuki
+	}
+	# no 
+	option = {
+		name = japan_foreign_politics_events.10.b
+		ai_chance = {
+			base = 0
+		}	
+		FROM = { 
+			country_event = {
+				id = japan_foreign_politics_events.11
+				hours = 4
+				random_hours = 8
+			}
+		}
+	}
+}
+
+# Our alliance proposal was rejected
+country_event = {
+	id = japan_foreign_politics_events.11
+	title = japan_foreign_politics_events.11.t
+	desc = japan_foreign_politics_events.11.desc
+	picture = GFX_report_event_generic_usa_treaty
+
+	is_triggered_only = yes
+
+	option = { #WAAAAAGH!
+		name = japan_foreign_politics_events.11.a
+		
+	}
+}
+
+# [FROM.GetNameDefCap] Suggesting Their Protection
+country_event = {
+	id = japan_foreign_politics_events.12
+	title = japan_foreign_politics_events.12.t
+	desc = japan_foreign_politics_events.12.desc
+	picture = GFX_report_event_generic_conference
+
+	is_triggered_only = yes
+	
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			add_opinion_modifier = {
+				target = FROM
+				modifier = JAP_pressured_our_government
+			}
+		}
+	}
+			
+	option = { #Accept
+		name = japan_foreign_politics_events.12.a
+		
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 10
+				NOT = { is_in_faction_with = FROM }
+				strength_ratio = {
+					tag = FROM
+					ratio < 0.6
+				}
+			}
+			modifier = {
+				factor = 5
+				NOT = { is_in_faction_with = FROM }
+				alliance_strength_ratio < 0.6
+			}
+			modifier = {
+				factor = 100
+				is_subject_of = FROM
+			}
+			modifier = {
+				factor = 10
+				is_in_faction_with = FROM
+				has_opinion = {
+					target = FROM
+					value > 75
+				}
+			}
+			modifier = {
+				factor = 0.5
+				NOT = { is_in_faction_with = FROM }
+				strength_ratio = {
+					tag = FROM
+					ratio > 0.8
+				}
+			}
+			modifier = {
+				factor = 0
+				NOT = { is_in_faction_with = FROM }
+				strength_ratio = {
+					tag = FROM
+					ratio > 1
+				}
+			}
+		}
+
+		FROM = {
+			effect_tooltip = {
+				puppet = {
+					target = ROOT
+					end_civil_wars = no
+					end_wars = no
+				}
+			}
+		}
+		
+		hidden_effect = {
+			country_event = japan_foreign_politics_events.13
+		}
+	}
+
+	option = { #Refuse
+		name = japan_foreign_politics_events.12.b
+		
+		ai_chance = {
+			base = 10
+		}
+
+		FROM = {
+			effect_tooltip = {
+				add_opinion_modifier = {
+					target = ROOT
+					modifier = JAP_failure_our_negotiations
+				}
+				if = {
+					limit = { has_government = nationalist }
+					create_wargoal = {
+						type = puppet_wargoal_focus
+						target = ROOT
+					}
+				}
+			}
+			hidden_effect = {
+				country_event = japan_foreign_politics_events.14
+			}
+		}
+	}
+}
+
+# [FROM.GetNameDefCap] forsaken sovereignty
+country_event = {
+	id = japan_foreign_politics_events.13
+	title = japan_foreign_politics_events.13.t
+	desc = japan_foreign_politics_events.13.desc
+	picture = GFX_report_event_generic_usa_treaty
+
+	is_triggered_only = yes
+
+	option = { #A wise choice!
+		name = japan_foreign_politics_events.13.a
+		
+		FROM = {
+			puppet = {
+				target = ROOT
+				end_civil_wars = no
+				end_wars = no
+			}
+		}
+	}
+}
+
+#[FROM.GetNameDefCap] wants to join the alliance
+country_event = {
+	id = japan_foreign_politics_events.14
+	title = japan_foreign_politics_events.14.t
+	desc = japan_foreign_politics_events.14.desc
+	is_triggered_only = yes
+	picture = GFX_report_event_generic_conference
+
+	immediate = {
+		hidden_effect = {
+			add_opinion_modifier = {
+				target = FROM
+				modifier = JAP_failure_our_negotiations
+			}
+		}
+	}
+	
+	# good idea
+	option = { 
+		name = japan_foreign_politics_events.14.a
+		ai_chance = {
+			base = 1
+		}
+		
+	}
+	
+	# no 
+	option = {
+		name = japan_foreign_politics_events.14.b
+		trigger = { 
+			OR = {
+				has_government = fascist 
+				has_government = nationalist 
+			}
+		}
+		ai_chance = {
+			base = 10
+		}	
+		
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = FROM
+		}
+		
+	}
+}
+
+#[JAP.GetNameDefCap] wants to intervene in the Korean War
+country_event = {
+	id = japan_foreign_politics_events.15
+	title = japan_foreign_politics_events.15.t
+	desc = japan_foreign_politics_events.15.d
+	picture = GFX_report_event_JAP_National_Assembly
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan_foreign_politics_events.15.a #We need their help
+		
+		ai_chance = {
+			base = 10
+			modifier = {
+				factor = 2
+				has_opinion = {
+					target = FROM
+					value > 25
+				}
+			}
+			modifier = {
+				factor = 5
+				has_opinion = {
+					target = FROM
+					value > 60
+				}
+			}
+		}
+		
+		FROM = {
+			effect_tooltip = {
+				#declare_war_on = { 
+				#	target = PRK
+				#	type = annex_everything
+				#}
+				add_to_war = {
+					targeted_alliance = KOR
+					enemy = PRK
+				}
+			}
+			
+			hidden_effect = {
+				country_event = japan_foreign_politics_events.16
+			}
+		}
+	}
+	
+	option = {
+		name = japan_foreign_politics_events.15.b #No! We will never accept the Japanese.
+		
+		ai_chance = {
+			base = 10
+		}
+		
+		FROM = {
+			hidden_effect = {
+				country_event = japan_foreign_politics_events.17
+			}
+		}
+	}
+}
+
+#[KOR.GetNameDefCap]'s Approval
+country_event = {
+	id = japan_foreign_politics_events.16
+	title = japan_foreign_politics_events.16.t
+	desc = japan_foreign_politics_events.16.desc
+	picture = GFX_report_event_JAP_National_Assembly
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan_foreign_politics_events.16.a #We need their help
+		
+		add_to_war = {
+			targeted_alliance = KOR
+			enemy = PRK
+		}
+	}
+}
+
+#[KOR.GetNameDefCap]'s Reject
+country_event = {
+	id = japan_foreign_politics_events.17
+	title = japan_foreign_politics_events.17.t
+	desc = japan_foreign_politics_events.17.desc
+	picture = GFX_report_event_JAP_National_Assembly
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan_foreign_politics_events.17.a #That's bad news...
+	}
+}
+
+# [JAP.GetNameDefCap] wants a non-aggression treaty
+country_event = {
+	id = japan_foreign_politics_events.18
+	title = japan_foreign_politics_events.18.t
+	desc = japan_foreign_politics_events.18.desc
+	picture = GFX_report_event_JAP_National_Assembly
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan_foreign_politics_events.18.a #We need their help
+		
+		ai_chance = {
+			base = 10
+		}
+		
+		diplomatic_relation = {
+			country = FROM
+			relation = non_aggression_pact
+			active = yes
+		}
+		
+		FROM = {
+			hidden_effect = {
+				country_event = japan_foreign_politics_events.19
+			}
+		}
+	}
+	
+	option = {
+		name = japan_foreign_politics_events.18.b #No! We will never accept the Japanese.
+		
+		ai_chance = {
+			base = 0
+		}
+		
+		FROM = {
+			hidden_effect = {
+				country_event = japan_foreign_politics_events.20
+			}
+		}
+	}
+}
+
+# [FROM.GetNameDefCap]'s Approval
+country_event = {
+	id = japan_foreign_politics_events.19
+	title = japan_foreign_politics_events.19.t
+	desc = japan_foreign_politics_events.19.desc
+	picture = GFX_report_event_JAP_National_Assembly
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan_foreign_politics_events.19.a #Great News
+		
+		diplomatic_relation = {
+			country = FROM
+			relation = non_aggression_pact
+			active = yes
+		}
+	}
+}
+
+# [FROM.GetNameDefCap]'s Reject
+country_event = {
+	id = japan_foreign_politics_events.20
+	title = japan_foreign_politics_events.20.t
+	desc = japan_foreign_politics_events.20.desc
+	picture = GFX_report_event_JAP_National_Assembly
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan_foreign_politics_events.19.a #Damn
+	}
+}
+
+# The Expulsion of Fujimori
+country_event = {
+	id = japan_foreign_politics_events.21
+	title = japan_foreign_politics_events.21.t
+	desc = japan_foreign_politics_events.21.desc
+	picture = GFX_report_event_JAP_fujimori_wheelchair
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan_foreign_politics_events.21.a
+		
+		clr_country_flag = JAP_fujimori_exile_flag
+		
+		PRU = {
+			hidden_effect = {
+				country_event = japan_foreign_politics_events.22
+			}
+		}
+	}
+}
+
+# The Expulsion of Fujimori
+country_event = {
+	id = japan_foreign_politics_events.22
+	title = japan_foreign_politics_events.22.t
+	desc = japan_foreign_politics_events.22.desc
+	picture = GFX_report_event_JAP_fujimori_wheelchair
+	
+	immediate = {
+		hidden_effect = {
+			remove_opinion_modifier = {
+				target = JAP
+				modifier = JAP_accepting_fujimori_s_exile
+			}
+			news_event = { id = peru_news.1 days = 3 }
+		}
+	}
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan_foreign_politics_events.22.a
+	}
+}
+
+# [FROM.GetNameDefCap]'s negotiations on oil rights
+country_event = {
+	id = japan_foreign_politics_events.23
+	title = japan_foreign_politics_events.23.t
+	desc = japan_foreign_politics_events.23.desc
+	picture = GFX_report_event_generic_conference
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan_foreign_politics_events.23.a #Provide oil
+		
+		ai_chance = {
+			base = 10
+		}
+		
+		effect_tooltip = {
+			if = { 
+				limit = { has_full_control_of_state = 489 } #Zulia
+				give_resource_rights = { receiver = FROM state = 489 }
+				
+				489 = {
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = industrial_complex
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+		}
+		
+		FROM = {
+			hidden_effect = {
+				country_event = japan_foreign_politics_events.24
+			}
+		}
+	}
+	
+	option = {
+		name = japan_foreign_politics_events.23.b #We don't need them
+		
+		ai_chance = {
+			base = 0
+		}
+		
+		FROM = {
+			hidden_effect = {
+				country_event = japan_foreign_politics_events.25
+			}
+		}
+	}
+}
+
+# Negotiations on oil rights
+country_event = {
+	id = japan_foreign_politics_events.24
+	title = japan_foreign_politics_events.24.t
+	desc = japan_foreign_politics_events.24.desc
+	picture = GFX_report_event_generic_conference
+	
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			add_opinion_modifier = {
+				target = FROM
+				modifier = JAP_complied_with_our_demands
+			}
+		}
+	}
+	
+	option = {
+		name = japan_foreign_politics_events.24.a
+		FROM = { give_resource_rights = { receiver = ROOT state = 489 } }
+		489 = {
+			add_extra_state_shared_building_slots = 2
+			add_building_construction = {
+				type = industrial_complex
+				level = 2
+				instant_build = yes
+			}
+		}
+	}
+}
+
+# Negotiations on oil rights
+country_event = {
+	id = japan_foreign_politics_events.25
+	title = japan_foreign_politics_events.25.t
+	desc = japan_foreign_politics_events.25.desc
+	picture = GFX_report_event_generic_conference
+	
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			add_opinion_modifier = {
+				target = FROM
+				modifier = JAP_failure_our_negotiations
+			}
+		}
+	}
+	
+	option = {
+		name = japan_foreign_politics_events.25.a
+	}
+}
+
+# China Separatist Conference
+country_event = {
+	id = japan_foreign_politics_events.26
+	title = japan_foreign_politics_events.26.t
+	desc = japan_foreign_politics_events.26.desc
+	picture = GFX_report_event_samurai
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan_foreign_politics_events.26.a
+		trigger = { original_tag = JAP }
+		set_global_flag = japan_support_chinese_sparatist
+		news_event = japan_news.17
+	}
+	
+	option = {
+		name = japan_foreign_politics_events.26.b
+		trigger = { original_tag = PRC }
+		add_stability = -0.05
+		hidden_effect = {
+			add_opinion_modifier = {
+				target = FROM
+				modifier = JAP_separatist_incitement
+			}
+		}
+	}
+}
+
+# [JAP.GetLeader]'s Declaration of Human Rights
+country_event = {
+	id = japan_foreign_politics_events.27
+	title = japan_foreign_politics_events.27.t
+	desc = japan_foreign_politics_events.27.desc
+	picture = GFX_report_event_samurai
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan_foreign_politics_events.27.a
+		trigger = { original_tag = JAP }
+		add_war_support = 0.05
+		
+		random_owned_controlled_state = {
+			limit = {
+				is_core_of = ROOT
+				free_building_slots = {
+				building = arms_factory
+				size > 0
+					include_locked = yes
+				}
+				state_population_k > 500
+			}
+			add_extra_state_shared_building_slots = 2
+			add_building_construction = {
+				type = arms_factory
+				level = 2
+				instant_build = yes
+			}
+		}
+		
+		random_owned_controlled_state = {
+			limit = {
+				is_core_of = ROOT
+				free_building_slots = {
+				building = arms_factory
+				size > 0
+					include_locked = yes
+				}
+				state_population_k > 500
+			}
+			add_extra_state_shared_building_slots = 2
+			add_building_construction = {
+				type = arms_factory
+				level = 2
+				instant_build = yes
+			}
+		}
+	}
+	
+	option = {
+		name = japan_foreign_politics_events.27.b
+		trigger = { original_tag = PRC }
+		add_war_support = 0.05
+		
+		random_owned_controlled_state = {
+			limit = {
+				is_core_of = ROOT
+				free_building_slots = {
+				building = arms_factory
+				size > 0
+					include_locked = yes
+				}
+				state_population_k > 500
+			}
+			add_extra_state_shared_building_slots = 2
+			add_building_construction = {
+				type = arms_factory
+				level = 2
+				instant_build = yes
+			}
+		}
+	}
+}
+
+# Burning Dokdo
+country_event = {
+	id = japan_foreign_politics_events.28
+	title = japan_foreign_politics_events.28.t
+	desc = japan_foreign_politics_events.28.desc
+	picture = GFX_report_event_liancourt_event_1
+
+	is_triggered_only = yes
+	
+	option = {
+		name = japan_foreign_politics_events.28.a
+		ai_chance = { factor = 0 }
+		add_political_power = -150
+		JAP = { country_event = { id = japan_foreign_politics_events.29 } }
+	}
+	
+	option = {
+		name = japan_foreign_politics_events.28.b
+		ai_chance = { factor = 100 }
+		create_wargoal = {
+			type = take_state_focus
+			target = JAP
+			generator = { 1082 }
+		}
+		JAP = { country_event = { id = japan_foreign_politics_events.30 } }
+	}
+}
+
+# Takeshima Day
+country_event = {
+	id = japan_foreign_politics_events.29
+	title = japan_foreign_politics_events.29.t
+	desc = japan_foreign_politics_events.29.desc
+	picture = GFX_report_event_liancourt_event_1
+
+	is_triggered_only = yes
+	
+	option = {
+		name = japan_foreign_politics_events.29.a
+		add_political_power = 150
+	}
+}
+
+# South Korea's War Preparation
+country_event = {
+	id = japan_foreign_politics_events.30
+	title = japan_foreign_politics_events.30.t
+	desc = japan_foreign_politics_events.30.desc
+	picture = GFX_report_event_anti_japanese_event_2
+
+	is_triggered_only = yes
+	
+	option = {
+		name = japan_foreign_politics_events.30.a
+	}
+}
+
+# [FROM.GetName]'s Communist Guerrilla Support
+country_event = {
+	id = japan_foreign_politics_events.31
+	title = japan_foreign_politics_events.31.t
+	desc = japan_foreign_politics_events.31.desc
+	picture = GFX_report_event_tokyo_night
+
+	is_triggered_only = yes
+	
+	option = {
+		name = japan_foreign_politics_events.31.a
+		ai_chance = { factor = 100 }
+		add_timed_idea = { idea = JAP_communist_guerrilla days = 90 }
+	}
+	
+	option = {
+		name = japan_foreign_politics_events.31.b
+		ai_chance = { factor = 0 }
+		trigger = { has_equipment = { infantry_equipment > 499 } }
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = -500
+		}
+	}
+}
+
+# [FROM.GetName]'s Communist Guerrilla Support
+country_event = {
+	id = japan_foreign_politics_events.31
+	title = japan_foreign_politics_events.31.t
+	desc = japan_foreign_politics_events.31.desc
+	picture = GFX_report_event_tokyo_night
+
+	is_triggered_only = yes
+	
+	option = {
+		name = japan_foreign_politics_events.31.a
+		ai_chance = { factor = 100 }
+		add_timed_idea = { idea = JAP_communist_guerrilla days = 90 }
+	}
+	
+	option = {
+		name = japan_foreign_politics_events.31.b
+		ai_chance = { factor = 0 }
+		trigger = { has_equipment = { infantry_equipment > 499 } }
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = -500
+		}
+	}
+}
+
+# [FROM.GetName]'s Communist Guerrilla Support
+country_event = {
+	id = japan_foreign_politics_events.32
+	title = japan_foreign_politics_events.32.t
+	desc = japan_foreign_politics_events.32.desc
+	picture = GFX_report_event_tokyo_night
+
+	is_triggered_only = yes
+	
+	option = {
+		name = japan_foreign_politics_events.32.a
+		ai_chance = { factor = 80 }
+		JAP = { puppet = ROOT }
+	}
+	
+	option = {
+		name = japan_foreign_politics_events.32.b
+		ai_chance = { factor = 20 }
+		
+		start_civil_war = {
+			ideology = communist
+			ruling_party = ROOT
+			size = 0.5
+		}
+		
+		random_country = {
+			limit = {
+				original_tag = ROOT
+				has_government = communist
+			}
+			JAP = { puppet = ROOT }
 		}
 	}
 }
