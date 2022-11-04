@@ -37,3 +37,64 @@ JAP_need_JieitaiDiscipline_70 = {
 		check_variable = { JieitaiDiscipline > 70 }
 	}
 }
+
+JAP_need_kakushin_government = {
+	custom_trigger_tooltip = {
+		tooltip = JAP_need_kakushin_government_tt
+		OR = {
+			has_government = social_liberal
+			has_government = social_democrat
+			has_government = progressive
+			has_government = democratic_socialist
+			has_government = communist
+		}
+	}
+}
+
+JAP_need_hoshu_government = {
+	custom_trigger_tooltip = {
+		tooltip = JAP_need_hoshu_government_tt
+		AND = {
+			NOT = { has_government = social_liberal }
+			NOT = { has_government = social_democrat }
+			NOT = { has_government = progressive }
+			NOT = { has_government = democratic_socialist }
+			NOT = { has_government = communist }
+		}
+	}
+}
+
+JAP_is_historical_ai = {
+	OR = {
+		AND = {
+			is_historical_focus_on = yes
+			has_game_rule = {
+				rule = JAP_ai_behavior
+				option = DEFAULT
+			}	
+		}
+		has_country_flag = JAP_AI_RANDOM_NEUTRALITY_HISTORICAL
+		has_game_rule = {
+			rule = JAP_ai_behavior
+			option = HISTORICAL
+		}
+	}
+}
+
+JAP_no_okinawa = {
+	if = {
+		limit = {
+			has_game_rule = {
+				rule = allow_release_nations
+				option = FREE
+			}
+			OR = { 
+				original_tag = JAP
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_ALLOW_RELEASE_NATIONS_KURDISTAN_TOOLTIP
+			NOT = { FROM = { tag = RYU } }
+		}
+	}
+}

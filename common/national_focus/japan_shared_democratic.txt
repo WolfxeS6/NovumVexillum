@@ -1,0 +1,2174 @@
+
+### search_filters = {FOCUS_FILTER_BALANCE_OF_POWER}
+
+	#### nationalist diplomacy
+	
+	shared_focus = {
+		id = JAP_triumph_of_democracy
+		icon = JAP_election
+		cost = 5
+		x = 58
+		y = 0
+		
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	
+		completion_reward = {
+			add_political_power = 150
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	shared_focus = {
+		id = JAP_kakushin_route
+		icon = JAP_the_left
+		cost = 0
+		x = -4
+		y = 1
+		
+		bypass = {
+			JAP_need_kakushin_government = yes
+		}
+
+		available = {
+			JAP_need_kakushin_government = yes
+		}
+		
+		prerequisite = { 
+			focus = JAP_triumph_of_democracy
+		}
+
+		relative_position_id = JAP_triumph_of_democracy
+
+		search_filters = {  }
+	
+		completion_reward = {
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	shared_focus = {
+		id = JAP_minority_rights
+		icon = JAP_flower_hand
+		cost = 7.2
+		x = -1
+		y = 1
+		
+		available = {
+			JAP_need_kakushin_government = yes
+		}
+		
+		prerequisite = { 
+			focus = JAP_kakushin_route
+		}
+
+		relative_position_id = JAP_kakushin_route
+
+		search_filters = {  }
+	
+		completion_reward = {
+			add_ideas = { JAP_feminism_1 }
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	shared_focus = {
+		id = JAP_reflection_on_colonial_rule
+		icon = JAP_history
+		cost = 7.2
+		x = -3
+		y = 2
+		
+		available = {
+			JAP_need_kakushin_government = yes
+		}
+		
+		prerequisite = { 
+			focus = JAP_minority_rights
+		}
+
+		relative_position_id = JAP_kakushin_route
+
+		search_filters = { FOCUS_FILTER_BALANCE_OF_POWER }
+	
+		completion_reward = {
+			JAP_bop_medium_increase_effect = yes
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	shared_focus = {
+		id = JAP_closed_yasukuni 
+		icon = JAP_yasukini
+		cost = 7.2
+		x = -3
+		y = 3
+		
+		available = {
+			JAP_need_kakushin_government = yes
+		}
+		
+		prerequisite = { 
+			focus = JAP_reflection_on_colonial_rule
+		}
+
+		relative_position_id = JAP_kakushin_route
+
+		search_filters = { FOCUS_FILTER_BALANCE_OF_POWER }
+	
+		completion_reward = {
+			JAP_bop_medium_increase_effect = yes
+			custom_effect_tooltip = JAP_closed_yasukuni_tt
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	shared_focus = {
+		id = JAP_ban_on_xenophobic_groups
+		icon = JAP_global_immigrants
+		cost = 7.2
+		x = -3
+		y = 4
+		
+		available = {
+			JAP_need_kakushin_government = yes
+		}
+		
+		prerequisite = { 
+			focus = JAP_closed_yasukuni
+		}
+
+		relative_position_id = JAP_kakushin_route
+
+		search_filters = {  }
+	
+		completion_reward = {
+			JAP_bop_medium_increase_effect = yes
+
+			if = {
+				limit = { has_idea = JAP_foreign_rights_1 }
+				swap_ideas = {
+					remove_idea = JAP_foreign_rights_1
+					add_idea = JAP_foreign_rights_2
+				}
+			}
+			else = {
+				add_ideas = JAP_foreign_rights_1
+			}
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	shared_focus = {
+		id = JAP_feminist_organization_support
+		icon = kor_masters_of_our_own_fate
+		cost = 7.2
+		x = -1
+		y = 2
+		
+		available = {
+			JAP_need_kakushin_government = yes
+		}
+		
+		prerequisite = { 
+			focus = JAP_minority_rights
+		}
+
+		relative_position_id = JAP_kakushin_route
+
+		search_filters = {  }
+	
+		completion_reward = {
+			if = {
+				limit = { has_idea = JAP_feminism_1 }
+				swap_ideas = {
+					remove_idea = JAP_feminism_1
+					add_idea = JAP_feminism_2
+				}
+			}
+			else_if = {
+				limit = { has_idea = JAP_feminism_2 }
+				swap_ideas = {
+					remove_idea = JAP_feminism_2
+					add_idea = JAP_feminism_3
+				}
+			}
+			else = {
+				add_ideas = JAP_feminism_1
+			}
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	shared_focus = {
+		id = JAP_fufubessei_movement
+		icon = democracy
+		cost = 7.2
+		x = -1
+		y = 3
+		
+		
+		available = {
+			JAP_need_kakushin_government = yes
+		}
+
+		prerequisite = { 
+			focus = JAP_feminist_organization_support
+		}
+
+		relative_position_id = JAP_kakushin_route
+
+		search_filters = {  }
+	
+		completion_reward = {
+			if = {
+				limit = { has_idea = JAP_feminism_1 }
+				swap_ideas = {
+					remove_idea = JAP_feminism_1
+					add_idea = JAP_feminism_2
+				}
+			}
+			else_if = {
+				limit = { has_idea = JAP_feminism_2 }
+				swap_ideas = {
+					remove_idea = JAP_feminism_2
+					add_idea = JAP_feminism_3
+				}
+			}
+			else = {
+				add_ideas = JAP_feminism_1
+			}
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	shared_focus = {
+		id = JAP_legalization_of_same_sex_marriage
+		icon = generic_LGBT_flag
+		cost = 7.2
+		x = -1
+		y = 4
+		
+		available = {
+			JAP_need_kakushin_government = yes
+		}
+		
+		prerequisite = { 
+			focus = JAP_fufubessei_movement
+		}
+
+		relative_position_id = JAP_kakushin_route
+
+		search_filters = {  }
+	
+		completion_reward = {
+			add_ideas = { JAP_same_sex_marriage }
+
+			if = {
+				limit = { has_idea = JAP_same_sex_marriage_local }
+				remove_ideas = JAP_same_sex_marriage_local
+			}
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	###### privatization of postal services
+	
+	shared_focus = {
+		id = JAP_privatization_of_postal_services
+		icon = JAP_japan_post_chain
+		cost = 5
+		x = -2
+		y = 2
+
+		available = {
+			JAP_need_hoshu_government = yes
+		}
+		
+		prerequisite = { 
+			focus = JAP_kakushin_route
+			focus = JAP_conservative_route
+		}
+
+		mutually_exclusive = {
+			focus = JAP_internal_opposition_to_privatization
+		}
+
+		mutually_exclusive = {
+			focus = JAP_cessation_of_privatization
+		}
+
+		relative_position_id = JAP_triumph_of_democracy
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	
+		completion_reward = {
+			add_offsite_building = { type = industrial_complex level = 2 }
+		}
+		
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	
+	shared_focus = {
+		id = JAP_ousting_oppositionists_from_our_party
+		icon = propaganda
+		cost = 5
+		x = -2
+		y = 4
+		
+		prerequisite = { 
+			focus = JAP_privatization_of_postal_services
+		}
+
+		relative_position_id = JAP_triumph_of_democracy
+
+		search_filters = {  }
+	
+		completion_reward = {
+			fourth_estate_conservative_increase = yes
+			add_popularity = { ideology = market_liberal popularity = -0.05 }
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	shared_focus = {
+		id = JAP_internal_opposition_to_privatization
+		icon = JAP_japan_post_cracks
+		cost = 5
+		x = 0
+		y = 2
+
+		available = {
+			is_subject = no
+			JAP_need_hoshu_government = yes
+		}
+		
+		prerequisite = { 
+			focus = JAP_kakushin_route
+			focus = JAP_conservative_route
+		}
+
+		mutually_exclusive = {
+			focus = JAP_privatization_of_postal_services
+		}
+
+		mutually_exclusive = {
+			focus = JAP_cessation_of_privatization
+		}
+
+		relative_position_id = JAP_triumph_of_democracy
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	
+		completion_reward = {
+
+			#hidden_effect = {
+			#	set_temp_variable = { temp_conservative = JAP.party_popularity_100@conservative}
+			#	set_temp_variable = { temp_market_liberal = JAP.party_popularity_100@market_liberal}
+			#
+			#	set_popularities = {
+			#		market_liberal = temp_conservative
+			#		conservative = temp_market_liberal
+			#	}
+			#}
+			
+			ROOT = {
+				add_popularity = {
+					ideology = market_liberal
+					popularity = 0.2
+				}
+				add_popularity = {
+					ideology = conservative
+					popularity = -0.3
+				}
+				set_politics = {
+					ruling_party = market_liberal
+					elections_allowed = yes
+				}
+			}
+		}
+		
+		ai_will_do = {
+			factor = 100
+		}
+	}
+
+	shared_focus = {
+		id = JAP_new_conservatism
+		icon = democracy
+		cost = 5
+		x = 0
+		y = 4
+		
+		prerequisite = { 
+			focus = JAP_internal_opposition_to_privatization
+		}
+
+		relative_position_id = JAP_triumph_of_democracy
+
+		search_filters = {  }
+	
+		completion_reward = {
+			add_popularity = {
+				ideology = market_liberal
+				popularity = 0.05
+			}
+			fourth_estate_market_liberal_increase = yes
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	shared_focus = {
+		id = JAP_cessation_of_privatization
+		icon = JAP_japan_post
+		cost = 5
+		x = 2
+		y = 2
+		
+		available = {
+			JAP_need_kakushin_government = yes
+		}
+		
+		prerequisite = { 
+			focus = JAP_kakushin_route
+			focus = JAP_conservative_route
+		}
+
+		mutually_exclusive = {
+			focus = JAP_internal_opposition_to_privatization
+		}
+
+		mutually_exclusive = {
+			focus = JAP_privatization_of_postal_services
+		}
+
+		relative_position_id = JAP_triumph_of_democracy
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	
+		completion_reward = {
+			add_political_power = 150
+		}
+		
+		ai_will_do = {
+			factor = 100
+		}
+	}
+
+	shared_focus = {
+		id = JAP_no_more_privatization
+		icon = JAP_break_chain_gold
+		cost = 5
+		x = 2
+		y = 4
+		
+		prerequisite = { 
+			focus = JAP_cessation_of_privatization
+		}
+
+		relative_position_id = JAP_triumph_of_democracy
+
+		search_filters = {  }
+	
+		completion_reward = {
+			add_popularity = { ideology = conservative popularity = -0.05 }
+			add_offsite_building = { type = industrial_complex level = 1 }
+			fourth_estate_social_liberal_increase = yes
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	shared_focus = {
+		id = JAP_end_of_the_postal_privatization_issue
+		icon = JAP_hinomaru
+		cost = 5
+		x = 0
+		y = 5
+		
+		prerequisite = { 
+			focus = JAP_ousting_oppositionists_from_our_party
+			focus = JAP_new_conservatism
+			focus = JAP_no_more_privatization
+		}
+
+		relative_position_id = JAP_triumph_of_democracy
+
+		search_filters = {  }
+	
+		completion_reward = {
+			add_political_power = 150
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	shared_focus = {
+		id = JAP_political_innovation
+		icon = constitution
+		cost = 7.2
+		x = -6
+		y = 1
+		
+		available = {
+			JAP_need_kakushin_government = yes
+		}
+		
+		prerequisite = { 
+			focus = JAP_kakushin_route
+		}
+
+		relative_position_id = JAP_kakushin_route
+
+		search_filters = {  }
+	
+		completion_reward = {
+			if = {
+				limit = { has_idea = JAP_political_reform_1 }
+				swap_ideas = {
+					remove_idea = JAP_political_reform_1
+					add_idea = JAP_political_reform_2
+				}
+			}
+			else_if = {
+				limit = { has_idea = JAP_political_reform_2 }
+				swap_ideas = {
+					remove_idea = JAP_political_reform_2
+					add_idea = JAP_political_reform_3
+				}
+			}
+			else = {
+				add_ideas = JAP_political_reform_1
+			}
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	shared_focus = {
+		id = JAP_democratic_open_of_information
+		icon = JAP_camera_focus
+		cost = 7.2
+		x = -7
+		y = 2
+		
+		available = {
+			JAP_need_kakushin_government = yes
+		}
+		
+		prerequisite = { 
+			focus = JAP_political_innovation
+		}
+
+		relative_position_id = JAP_kakushin_route
+
+		search_filters = {  }
+	
+		completion_reward = {
+			if = {
+				limit = { has_idea = JAP_political_reform_1 }
+				swap_ideas = {
+					remove_idea = JAP_political_reform_1
+					add_idea = JAP_political_reform_2
+				}
+			}
+			else_if = {
+				limit = { has_idea = JAP_political_reform_2 }
+				swap_ideas = {
+					remove_idea = JAP_political_reform_2
+					add_idea = JAP_political_reform_3
+				}
+			}
+			else = {
+				add_ideas = JAP_political_reform_1
+			}
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	shared_focus = {
+		id = JAP_ban_seitokofukin
+		icon = JAP_break_chain_gold
+		cost = 7.2
+		x = -7
+		y = 3
+		
+		available = {
+			JAP_need_kakushin_government = yes
+		}
+		
+		prerequisite = { 
+			focus = JAP_democratic_open_of_information
+		}
+
+		relative_position_id = JAP_kakushin_route
+
+		search_filters = { FOCUS_FILTER_BALANCE_OF_POWER }
+	
+		completion_reward = {
+			JAP_bop_high_increase_effect = yes
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	shared_focus = {
+		id = JAP_reduction_in_university_tuition
+		icon = research
+		cost = 7.2
+		x = -5
+		y = 2
+		
+		available = {
+			JAP_need_kakushin_government = yes
+		}
+		
+		prerequisite = { 
+			focus = JAP_political_innovation
+		}
+
+		relative_position_id = JAP_kakushin_route
+
+		search_filters = {  }
+	
+		completion_reward = {
+			add_ideas = idea_focus_generic_reckless_progress
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	shared_focus = {
+		id = JAP_right_of_foreigners_to_vote
+		icon = JAP_sakura_hinomaru
+		cost = 7.2
+		x = -5
+		y = 3
+		
+		available = {
+			JAP_need_kakushin_government = yes
+		}
+		
+		prerequisite = { 
+			focus = JAP_reduction_in_university_tuition
+		}
+
+		relative_position_id = JAP_kakushin_route
+
+		search_filters = {  }
+	
+		completion_reward = {
+			if = {
+				limit = { has_idea = JAP_foreign_rights_1 }
+				swap_ideas = {
+					remove_idea = JAP_foreign_rights_1
+					add_idea = JAP_foreign_rights_2
+				}
+			}
+			else = {
+				add_ideas = JAP_foreign_rights_1
+			}
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	shared_focus = {
+		id = JAP_completion_of_the_reform
+		icon = JAP_flower_hand
+		cost = 7.2
+		x = -6
+		y = 4
+		
+		available = {
+			JAP_need_kakushin_government = yes
+		}
+		
+		prerequisite = { 
+			focus = JAP_ban_seitokofukin
+		}
+		
+		prerequisite = { 
+			focus = JAP_right_of_foreigners_to_vote
+		}
+
+		relative_position_id = JAP_kakushin_route
+
+		search_filters = {  }
+	
+		completion_reward = {
+			if = {
+				limit = { has_idea = JAP_political_reform_1 }
+				swap_ideas = {
+					remove_idea = JAP_political_reform_1
+					add_idea = JAP_political_reform_2
+				}
+			}
+			else_if = {
+				limit = { has_idea = JAP_political_reform_2 }
+				swap_ideas = {
+					remove_idea = JAP_political_reform_2
+					add_idea = JAP_political_reform_3
+				}
+			}
+			else = {
+				add_ideas = JAP_political_reform_1
+			}
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	shared_focus = {
+		id = JAP_socialist_japan
+		icon = communism
+		cost = 7.2
+		x = -10
+		y = 1
+		
+		available = {
+			OR = {
+				has_government = democratic_socialist
+				has_country_leader_with_trait = coalition_government_JCP
+			}
+		}
+		
+		prerequisite = { 
+			focus = JAP_kakushin_route
+		}
+
+		relative_position_id = JAP_kakushin_route
+
+		search_filters = {  }
+	
+		completion_reward = {
+			add_timed_idea = { idea = JAP_power_gaining_communist days = 365 }
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	shared_focus = {
+		id = JAP_support_of_intellectuals
+		icon = communism2
+		cost = 7.2
+		x = -11
+		y = 2
+		
+		available = {
+			OR = {
+				has_government = democratic_socialist
+				has_country_leader_with_trait = coalition_government_JCP
+			}
+		}
+		
+		prerequisite = { 
+			focus = JAP_socialist_japan
+		}
+
+		relative_position_id = JAP_kakushin_route
+
+		search_filters = {  }
+	
+		completion_reward = {
+			add_ideas = { JAP_left_wing_scholars }
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	shared_focus = {
+		id = JAP_give_power_to_labor_union
+		icon = trade_deal
+		cost = 7.2
+		x = -9
+		y = 2
+		
+		available = {
+			OR = {
+				has_government = democratic_socialist
+				has_country_leader_with_trait = coalition_government_JCP
+			}
+		}
+		
+		prerequisite = { 
+			focus = JAP_socialist_japan
+		}
+
+		relative_position_id = JAP_kakushin_route
+
+		search_filters = {  }
+	
+		completion_reward = {
+			add_ideas = { JAP_empowered_working_class }
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	shared_focus = {
+		id = JAP_dream_of_the_japanese_republic
+		icon = communism3
+		cost = 7.2
+		x = -9
+		y = 3
+		
+		available = {
+			OR = {
+				has_government = democratic_socialist
+				AND = {
+					has_country_leader_with_trait = coalition_government_JCP
+					democratic_socialist > 0.25
+				}
+			}
+			has_idea = { government_system_constitutional_monarchy }
+		}
+		
+		prerequisite = { 
+			focus = JAP_give_power_to_labor_union
+		}
+
+		mutually_exclusive = {
+			focus = JAP_monarchy_socialism
+		}
+
+		relative_position_id = JAP_kakushin_route
+
+		search_filters = {  }
+	
+		completion_reward = {
+			country_event = { id = japan.46 } 
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	shared_focus = {
+		id = JAP_monarchy_socialism
+		icon = kor_revolution_mass
+		cost = 7.2
+		x = -11
+		y = 3
+		
+		available = {
+			OR = {
+				has_government = democratic_socialist
+				AND = {
+					has_country_leader_with_trait = coalition_government_JCP
+					democratic_socialist > 0.25
+				}
+			}
+			has_idea = government_system_constitutional_monarchy
+		}
+		
+		prerequisite = { 
+			focus = JAP_support_of_intellectuals
+		}
+
+		mutually_exclusive = {
+			focus = JAP_dream_of_the_japanese_republic
+		}
+
+		relative_position_id = JAP_kakushin_route
+
+		search_filters = {  }
+	
+		completion_reward = {
+			add_political_power = 150
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	shared_focus = {
+		id = JAP_conservative_route
+		icon = JAP_the_right
+		cost = 0
+		x = 4
+		y = 1
+
+		bypass = {
+			JAP_need_hoshu_government = yes
+		}
+
+		available = {
+			JAP_need_hoshu_government = yes
+		}
+		
+		prerequisite = { 
+			focus = JAP_triumph_of_democracy
+		}
+
+		relative_position_id = JAP_triumph_of_democracy
+
+		search_filters = {  }
+	
+		completion_reward = {
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	shared_focus = {
+		id = JAP_progressive_conservative
+		icon = constitution
+		cost = 7.2
+		x = 2
+		y = 1
+
+		available = {
+			JAP_need_hoshu_government = yes
+		}
+		
+		prerequisite = { 
+			focus = JAP_conservative_route
+		}
+
+		relative_position_id = JAP_conservative_route
+
+		search_filters = {  }
+	
+		completion_reward = {
+			if = {
+				limit = { has_idea = JAP_progressive_conservative_1 }
+				swap_ideas = {
+					remove_idea = JAP_progressive_conservative_1
+					add_idea = JAP_progressive_conservative_2
+				}
+			}
+			else_if = {
+				limit = { has_idea = JAP_progressive_conservative_2 }
+				swap_ideas = {
+					remove_idea = JAP_progressive_conservative_2
+					add_idea = JAP_economy_of_japan_right_3
+				}
+			}
+			else = {
+				add_ideas = JAP_progressive_conservative_1
+			}
+			add_war_support = 0.05
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	shared_focus = {
+		id = JAP_work_and_family_balance #work-family balance
+		icon = JAP_organize_wreckers
+		cost = 7.2
+		x = 1
+		y = 2
+
+		available = {
+			JAP_need_hoshu_government = yes
+		}
+		
+		prerequisite = { 
+			focus = JAP_progressive_conservative
+		}
+
+		relative_position_id = JAP_conservative_route
+
+		search_filters = {  }
+	
+		completion_reward = {
+			if = {
+				limit = { has_idea = JAP_progressive_conservative_1 }
+				swap_ideas = {
+					remove_idea = JAP_progressive_conservative_1
+					add_idea = JAP_progressive_conservative_2
+				}
+			}
+			else_if = {
+				limit = { has_idea = JAP_progressive_conservative_2 }
+				swap_ideas = {
+					remove_idea = JAP_progressive_conservative_2
+					add_idea = JAP_economy_of_japan_right_3
+				}
+			}
+			else = {
+				add_ideas = JAP_progressive_conservative_1
+			}
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	shared_focus = {
+		id = JAP_legalization_of_same_sex_marriage_by_local_governments
+		icon = generic_LGBT_flag
+		cost = 7.2
+		x = 1
+		y = 3
+
+		available = {
+			JAP_need_hoshu_government = yes
+
+			NOT = { has_idea = JAP_same_sex_marriage }
+		}
+		
+		prerequisite = { 
+			focus = JAP_work_and_family_balance
+		}
+
+		relative_position_id = JAP_conservative_route
+
+		search_filters = {  }
+	
+		completion_reward = {
+			add_ideas = { JAP_same_sex_marriage_local }
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	shared_focus = {
+		id = JAP_healthy_family
+		icon = agriculture
+		cost = 7.2
+		x = 3
+		y = 2
+		
+		available = {
+			JAP_need_hoshu_government = yes
+		}
+
+		prerequisite = { 
+			focus = JAP_progressive_conservative
+		}
+
+		relative_position_id = JAP_conservative_route
+
+		search_filters = {  }
+	
+		completion_reward = {
+			if = {
+				limit = { has_idea = JAP_progressive_conservative_1 }
+				swap_ideas = {
+					remove_idea = JAP_progressive_conservative_1
+					add_idea = JAP_progressive_conservative_2
+				}
+			}
+			else_if = {
+				limit = { has_idea = JAP_progressive_conservative_2 }
+				swap_ideas = {
+					remove_idea = JAP_progressive_conservative_2
+					add_idea = JAP_economy_of_japan_right_3
+				}
+			}
+			else = {
+				add_ideas = JAP_progressive_conservative_1
+			}
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	shared_focus = {
+		id = JAP_rejection_of_totalitarianism
+		icon = JAP_history
+		cost = 7.2
+		x = 3
+		y = 3
+		
+		available = {
+			JAP_need_hoshu_government = yes
+		}
+
+		prerequisite = { 
+			focus = JAP_progressive_conservative
+		}
+
+		relative_position_id = JAP_conservative_route
+
+		search_filters = {  }
+	
+		completion_reward = {
+			JAP_bop_medium_increase_effect = yes
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	shared_focus = {
+		id = JAP_connection_with_unification_church
+		icon = JAP_with_unification_church
+		cost = 7.2
+		x = 4
+		y = 1
+		
+		available = {
+			JAP_need_hoshu_government = yes
+		}
+		
+		prerequisite = { 
+			focus = JAP_conservative_route
+		}
+
+		relative_position_id = JAP_conservative_route
+
+		search_filters = { FOCUS_FILTER_BALANCE_OF_POWER }
+	
+		completion_reward = {
+			JAP_bop_high_decrease_effect = yes
+
+			custom_effect_tooltip = available_political_advisor
+			show_ideas_tooltip = advisor_JAP_han_hak_ja
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	shared_focus = {
+		id = JAP_connection_with_soka_gakkai
+		icon = JAP_with_soka_gakkai
+		cost = 7.2
+		x = 6
+		y = 1
+		
+		available = {
+			JAP_need_hoshu_government = yes
+		}
+		
+		prerequisite = { 
+			focus = JAP_conservative_route
+		}
+
+		relative_position_id = JAP_conservative_route
+
+		search_filters = { FOCUS_FILTER_BALANCE_OF_POWER }
+	
+		completion_reward = {
+			JAP_bop_high_increase_effect = yes
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	shared_focus = {
+		id = JAP_nippon_kaigi
+		icon = kor_samurai
+		cost = 7.2
+		x = 5
+		y = 2
+		
+		available = {
+			JAP_need_hoshu_government = yes
+		}
+		
+		prerequisite = { 
+			focus = JAP_conservative_route
+		}
+
+		relative_position_id = JAP_conservative_route
+
+		search_filters = {  }
+	
+		completion_reward = {
+			JAP_bop_medium_decrease_effect = yes
+			
+			custom_effect_tooltip = available_political_advisor
+			show_ideas_tooltip = advisor_JAP_sanae_takaichi
+			show_ideas_tooltip = advisor_JAP_yoshimi_watanabe
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	shared_focus = {
+		id = JAP_SDS_Act
+		icon = army_logistics
+		cost = 7.2
+		x = 5
+		y = 3
+		
+		available = {
+			JAP_need_hoshu_government = yes
+		}
+		
+		prerequisite = { 
+			focus = JAP_nippon_kaigi
+		}
+
+		relative_position_id = JAP_conservative_route
+
+		search_filters = { FOCUS_FILTER_BALANCE_OF_POWER }
+	
+		completion_reward = {
+			JAP_bop_medium_decrease_effect = yes
+
+			if = {
+				limit = { has_government = reactionary }
+			add_popularity = {
+				ideology = reactionary
+				popularity = 0.05
+			  }
+			}
+			if = {
+				limit = { has_government = conservative }
+			add_popularity = {
+				ideology = conservative
+				popularity = 0.05
+			  }
+			}
+			add_stability = 0.05
+			add_ideas = idea_focus_expanded_secret_services
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	shared_focus = {
+		id = JAP_netto_uyoku
+		icon = propaganda
+		cost = 7.2
+		x = 7
+		y = 3
+		
+		available = {
+			JAP_need_hoshu_government = yes
+		}
+		
+		prerequisite = { 
+			focus = JAP_nippon_kaigi
+		}
+
+		relative_position_id = JAP_conservative_route
+
+		search_filters = { FOCUS_FILTER_BALANCE_OF_POWER }
+	
+		completion_reward = {
+			JAP_bop_medium_decrease_effect = yes
+			add_ideas = JAP_netto_uyoku_idea
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	shared_focus = {
+		id = JAP_reactionary_japan
+		icon = kor_ukiyoe
+		cost = 7.2
+		x = 9
+		y = 1
+		
+		prerequisite = { 
+			focus = JAP_conservative_route
+		}
+
+		available = {
+			OR = { 
+				has_government = reactionary
+				has_government = nationalist
+				has_government = fascist
+			}
+		}
+		
+		relative_position_id = JAP_conservative_route
+
+		search_filters = {  }
+	
+		completion_reward = {
+			add_timed_idea = { idea = JAP_power_gaining_reactionary days = 365 }
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	shared_focus = {
+		id = JAP_deprivation_of_zainichi_privileges
+		icon = kor_shinto_and_korea
+		cost = 5
+		x = 8
+		y = 2
+		
+		available = {
+			OR = { 
+				has_government = reactionary
+				has_government = nationalist
+				has_government = fascist
+			}
+		}
+
+		prerequisite = { 
+			focus = JAP_reactionary_japan
+		}
+
+		relative_position_id = JAP_conservative_route
+
+		search_filters = { FOCUS_FILTER_BALANCE_OF_POWER FOCUS_FILTER_WAR_SUPPORT }
+	
+		completion_reward = {
+			JAP_bop_high_decrease_effect = yes
+			add_stability = -0.02
+			add_war_support = 0.05
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	shared_focus = {
+		id = JAP_emphasis_on_patriotism
+		icon = JAP_history_stop
+		cost = 5
+		x = 10
+		y = 2
+		
+		available = {
+			OR = { 
+				has_government = reactionary
+				has_government = nationalist
+				has_government = fascist
+			}
+		}
+
+		prerequisite = { 
+			focus = JAP_reactionary_japan
+		}
+
+		relative_position_id = JAP_conservative_route
+
+		search_filters = { FOCUS_FILTER_BALANCE_OF_POWER FOCUS_FILTER_WAR_SUPPORT }
+	
+		completion_reward = {
+			JAP_bop_low_decrease_effect = yes
+			add_stability = -0.02
+			add_war_support = 0.05
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	##### 
+
+	shared_focus = {
+		id = JAP_democratic_realism
+		icon = JAP_sakura_hinomaru
+		cost = 5
+		x = -1
+		y = 1
+
+		available = {
+			is_subject = no
+		}
+		
+		prerequisite = { 
+			focus = JAP_end_of_the_postal_privatization_issue
+		}
+
+		mutually_exclusive = {
+			focus = JAP_democratic_jingoism
+		}
+
+		relative_position_id = JAP_end_of_the_postal_privatization_issue
+
+		search_filters = {  }
+	
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = JAP_afterglow_of_sun
+				add_idea = JAP_if_only_the_light_of_afterglow
+			}
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	shared_focus = {
+		id = JAP_democratic_jingoism
+		icon = JAP_dai_toa_kyoeiken
+		cost = 5
+		x = 1
+		y = 1
+
+		available = {
+			is_subject = no
+		}
+		
+		prerequisite = { 
+			focus = JAP_end_of_the_postal_privatization_issue
+		}
+
+		mutually_exclusive = {
+			focus = JAP_democratic_realism
+		}
+
+		relative_position_id = JAP_end_of_the_postal_privatization_issue
+
+		search_filters = {  }
+	
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = JAP_afterglow_of_sun
+				add_idea = JAP_night_sky_patrol_of_tomorrow
+			}
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	shared_focus = {
+		id = JAP_beacon_of_freedom_in_east_asia
+		icon = JAP_revolutionary_conference
+		cost = 5
+		x = 1
+		y = 2
+		
+		prerequisite = { 
+			focus = JAP_democratic_jingoism
+		}
+
+		mutually_exclusive = {
+			focus = JAP_alliance_with_usa
+		}
+
+		mutually_exclusive = {
+			focus = JAP_people_of_peace
+		}
+
+		available = {
+			is_subject = no
+			is_in_faction = no
+		}
+
+		relative_position_id = JAP_end_of_the_postal_privatization_issue
+
+		search_filters = {  }
+	
+		completion_reward = {
+			create_faction = JAP_east_asian_alliance
+			unlock_decision_category_tooltip = JAP_find_alliance
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	shared_focus = {
+		id = JAP_alliance_with_usa
+		icon = align_to_america
+		cost = 5
+		x = -1
+		y = 2
+		
+		prerequisite = { 
+			focus = JAP_democratic_realism
+			focus = JAP_democratic_jingoism
+		}
+
+		available = {
+			is_subject = no
+			is_in_faction = no
+			USA = { is_subject = no }
+			USA = { is_faction_leader = yes }
+			NOT = { has_war_with = USA }
+		}
+
+		mutually_exclusive = {
+			focus = JAP_people_of_peace
+		}
+
+		mutually_exclusive = {
+			focus = JAP_beacon_of_freedom_in_east_asia
+		}
+
+		relative_position_id = JAP_end_of_the_postal_privatization_issue
+
+		search_filters = {  }
+	
+		completion_reward = {
+			USA = { 
+				country_event = {
+					id = japan_foreign_politics_events.10
+					hours = 4
+					random_hours = 8
+				}
+			}
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	shared_focus = {
+		id = JAP_military_cooperation_with_usa
+		icon = army_officers
+		cost = 5
+		x = -2
+		y = 3
+		
+		prerequisite = { 
+			focus = JAP_alliance_with_usa
+		}
+
+		relative_position_id = JAP_end_of_the_postal_privatization_issue
+
+		search_filters = {  }
+	
+		available = {
+			is_in_faction_with = USA
+		}
+
+		completion_reward = {
+			army_experience = 30
+			add_offsite_building = { type = arms_factory level = 2 }
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	shared_focus = {
+		id = JAP_people_of_peace
+		icon = JAP_peaceful
+		cost = 5
+		x = -4
+		y = 2
+		
+		available = {
+			is_subject = no
+		}
+
+		prerequisite = { 
+			focus = JAP_democratic_realism
+		}
+
+		mutually_exclusive = {
+			focus = JAP_alliance_with_usa
+		}
+
+		mutually_exclusive = {
+			focus = JAP_beacon_of_freedom_in_east_asia
+		}
+
+		relative_position_id = JAP_end_of_the_postal_privatization_issue
+
+		search_filters = {  }
+	
+		completion_reward = {
+			add_political_power = 150
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	shared_focus = {
+		id = JAP_improving_relations_with_korea
+		icon = align_to_south_korea
+		cost = 5
+		x = -6
+		y = 2
+		
+		available = {
+			is_subject = no
+			
+			KOR = {
+				exists = yes
+				is_subject = no
+				NOT = {
+					has_war_with = JAP
+				}
+				NOT = { has_government = fascist } #JUCHE
+			}
+		}
+		
+		prerequisite = { 
+			focus = JAP_democratic_realism
+		}
+
+		relative_position_id = JAP_end_of_the_postal_privatization_issue
+
+		search_filters = {  }
+	
+		completion_reward = {
+			add_ideas = { JAP_compensation_for_colonial_rule }
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	shared_focus = {
+		id = JAP_preparing_for_danger
+		icon = defence
+		cost = 5
+		x = -4
+		y = 3
+		
+		prerequisite = { 
+			focus = JAP_democratic_realism
+		}
+
+		relative_position_id = JAP_end_of_the_postal_privatization_issue
+
+		search_filters = {  }
+	
+		completion_reward = {
+			add_ideas = { JAP_fortress_japan_idea }
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	shared_focus = {
+		id = JAP_against_terrorism
+		icon = JAP_guerrilla_support
+		cost = 5
+		x = 4
+		y = 1
+		
+		prerequisite = { 
+			focus = JAP_end_of_the_postal_privatization_issue
+		}
+
+		relative_position_id = JAP_end_of_the_postal_privatization_issue
+
+		search_filters = {  }
+	
+		completion_reward = {
+			add_ideas = { JAP_volunteer_against_terrorism }
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	shared_focus = {
+		id = JAP_taiwan_s_freedom_guarantee
+		icon = focus_prc_liberation_taiwan
+		cost = 5
+		x = 3
+		y = 2
+		
+		available = {
+			is_subject = no
+		}
+		
+		prerequisite = { 
+			focus = JAP_democratic_jingoism
+		}
+
+		relative_position_id = JAP_end_of_the_postal_privatization_issue
+
+		search_filters = {  }
+	
+		completion_reward = {
+			CHI = { country_event = { id = japan_foreign_politics_events.12 hours = 4 random_hours = 2 } }
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	shared_focus = {
+		id = JAP_removing_china_s_influence_from_senkaku
+		icon = attack_china
+		cost = 5
+		x = 2
+		y = 4
+		
+		available = {
+			is_subject = no
+			country_exists = PRC
+			NOT = { has_war_with = PRC }
+			NOT = { is_in_faction_with = PRC }
+			has_full_control_of_state = 876
+			#876 = { is_claimed_by = PRC }
+		}
+		
+		prerequisite = { 
+			focus = JAP_democratic_jingoism
+		}
+
+		prerequisite = { 
+			focus = JAP_against_terrorism
+		}
+
+		relative_position_id = JAP_end_of_the_postal_privatization_issue
+
+		search_filters = { FOCUS_FILTER_ANNEXATION }
+	
+		completion_reward = {
+			PRC = { country_event = { id = japan_foreign_politics_events.6 hours = 4 random_hours = 2 } }
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	shared_focus = {
+		id = JAP_restoration_of_northern_territories
+		icon = attack_russia
+		cost = 5
+		x = 4
+		y = 3
+		
+		available = {
+			is_subject = no
+		}
+
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				has_civil_war = yes
+			}	
+		}
+
+		bypass = {
+			951 = { is_owned_by = ROOT }
+			555 = { is_owned_by = ROOT }
+		}
+		
+		prerequisite = { 
+			focus = JAP_democratic_jingoism
+		}
+		
+		prerequisite = { 
+			focus = JAP_against_terrorism
+		}
+
+		mutually_exclusive = {
+			focus = JAP_southern_kuril_negotiations
+		}
+			
+		relative_position_id = JAP_end_of_the_postal_privatization_issue
+
+		search_filters = { FOCUS_FILTER_ANNEXATION }
+	
+		completion_reward = {
+			if = {
+				limit = {
+					951 = { NOT = { is_claimed_by = ROOT } }
+				}
+				add_state_claim = 951
+			}
+			if = {
+				limit = {
+					555 = { NOT = { is_claimed_by = ROOT } }
+				}
+				add_state_claim = 555
+			}
+
+			if = { #ONE CONTROLLER
+				limit = {
+					951 = {
+						controller = {
+							controls_state = 555
+						}
+					}
+				}
+				if = {
+					limit = {
+						951 = {
+							controller = {
+								NOT = { has_war_with = ROOT }
+							}
+						}
+					}
+					951 = {
+						controller = {
+							country_event = { id = japan_foreign_politics_events.1 hours = 4 random_hours = 2 }
+							custom_effect_tooltip = if_they_accept
+							effect_tooltip = {
+								ROOT = { transfer_state = 951 } #Southen Kuril
+								ROOT = { transfer_state = 555 } #Northen Kuril
+								add_opinion_modifier = {
+									target = ROOT
+									modifier = JAP_failure_our_negotiations
+								}
+							}
+						}
+					}
+				}
+			}
+			else = { #TWO DIFFERENT CONTROLLERS
+				if = {
+					limit = {
+						951 = {
+							controller = {
+								NOT = { has_war_with = ROOT }
+							}
+						}
+					}
+					951 = {
+						controller = {
+							country_event = { id = japan_foreign_politics_events.1 hours = 4 random_hours = 2 }
+							custom_effect_tooltip = if_they_accept
+							effect_tooltip = {
+								ROOT = { transfer_state = 951 } #Southen Kuril
+								add_opinion_modifier = {
+									target = ROOT
+									modifier = JAP_pressured_our_government
+								}
+							}
+						}
+					}
+				}
+				if = {
+					limit = {
+						555 = {
+							controller = {
+								NOT = { has_war_with = ROOT }
+							}
+						}
+					}
+					555 = {
+						controller = {
+							country_event = { id = japan_foreign_politics_events.1 hours = 4 random_hours = 2 }
+							custom_effect_tooltip = if_they_accept
+							effect_tooltip = {
+								ROOT = { transfer_state = 555 } #Northen Kuril
+								add_opinion_modifier = {
+									target = ROOT
+									modifier = JAP_pressured_our_government
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	shared_focus = {
+		id = JAP_southern_kuril_negotiations
+		icon = JAP_nigeria_with_snow
+		cost = 5
+		x = 0
+		y = 3
+		
+		available = {
+			is_subject = no
+		}
+		
+		prerequisite = { 
+			focus = JAP_democratic_realism
+			focus = JAP_democratic_jingoism
+		}
+
+		bypass = {
+			951 = { is_owned_by = ROOT }
+		}
+
+		mutually_exclusive = {
+			focus = JAP_restoration_of_northern_territories
+		}
+			
+		relative_position_id = JAP_end_of_the_postal_privatization_issue
+
+		search_filters = { FOCUS_FILTER_ANNEXATION }
+	
+		completion_reward = {
+			if = {
+				limit = {
+					951 = { NOT = { is_claimed_by = ROOT } }
+				}
+				add_state_claim = 951
+			}
+			
+			951 = {
+				controller = {
+					country_event = { id = japan_foreign_politics_events.4 hours = 4 random_hours = 2 }
+					custom_effect_tooltip = if_they_accept
+					effect_tooltip = {
+						ROOT = { transfer_state = 951 } #Southen Kuril
+						add_opinion_modifier = {
+							target = ROOT
+							modifier = JAP_pressured_our_government
+						}
+					}
+				}
+			}
+		}
+		
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				has_civil_war = yes
+			}	
+		}
+	}
+
+	shared_focus = {
+		id = JAP_korean_crisis
+		icon = JAP_korean_flag_down
+		cost = 5
+		x = 5
+		y = 2
+	
+		available = {
+			is_subject = no
+			country_exists = KOR
+			NOT = { has_war_with = KOR }
+			NOT = { JAP = { is_in_faction_with = KOR } }
+			KOR = { has_government = fascist }
+		}
+		
+		prerequisite = { 
+			focus = JAP_against_terrorism
+		}
+
+		relative_position_id = JAP_end_of_the_postal_privatization_issue
+
+		search_filters = { FOCUS_FILTER_ANNEXATION }
+		
+		completion_reward = {
+			create_wargoal = {
+				target = KOR
+				type = puppet_wargoal_focus
+			}
+			
+			hidden_effect = {
+				add_ai_strategy = {
+					type = declare_war
+					id = KOR
+					value = 100
+				}
+			}
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	shared_focus = {
+		id = JAP_north_korea_prevention_war
+		icon = attack_north_korea
+		cost = 5
+		x = 6
+		y = 3
+		
+		available = {
+			is_subject = no
+		}
+		
+		prerequisite = { 
+			focus = JAP_against_terrorism
+		}
+		
+		prerequisite = { 
+			focus = JAP_democratic_jingoism
+		}
+
+		relative_position_id = JAP_end_of_the_postal_privatization_issue
+
+		search_filters = { FOCUS_FILTER_ANNEXATION }
+	
+		available = {
+			is_subject = no
+			country_exists = PRK
+			NOT = { has_war_with = PRK }
+			NOT = { JAP = { is_in_faction_with = PRK } }
+			OR = {
+				PRK = { has_government = fascist }
+				PRK = { has_government = communist }
+				PRK = { has_government = nationalist }
+			}
+		}
+		
+		completion_reward = {
+			create_wargoal = {
+				target = PRK
+				type = puppet_wargoal_focus
+			}
+			
+			hidden_effect = {
+				add_ai_strategy = {
+					type = declare_war
+					id = PRK
+					value = 100
+				}
+			}
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	shared_focus = {
+		id = JAP_south_korea_prevention_war
+		icon = attack_south_korea
+		cost = 5
+		x = 8
+		y = 3
+
+		prerequisite = { 
+			focus = JAP_against_terrorism
+		}
+		
+		prerequisite = { 
+			focus = JAP_democratic_jingoism
+		}
+
+		relative_position_id = JAP_end_of_the_postal_privatization_issue
+
+		search_filters = { FOCUS_FILTER_ANNEXATION }
+	
+		available = {
+			is_subject = no
+			country_exists = KOR
+			NOT = { has_war_with = KOR }
+			NOT = { JAP = { is_in_faction_with = KOR } }
+			KOR = {
+					has_added_tension_amount > 0.01
+			}
+		}
+		
+		completion_reward = {
+			create_wargoal = {
+				target = KOR
+				type = puppet_wargoal_focus
+			}
+			
+			hidden_effect = {
+				add_ai_strategy = {
+					type = declare_war
+					id = KOR
+					value = 100
+				}
+			}
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	shared_focus = {
+		id = JAP_suggestions_for_korea
+		icon = focus_prc_remove_dprk
+		cost = 5
+		x = 7
+		y = 2
+		
+		available = {
+			is_subject = no
+			KOR = { has_war_with = PRK }
+			NOT = { has_war_with = PRK }
+			NOT = { has_war_with = KOR }
+		}
+
+		prerequisite = { 
+			focus = JAP_against_terrorism
+		}
+
+		relative_position_id = JAP_end_of_the_postal_privatization_issue
+
+		search_filters = { FOCUS_FILTER_ANNEXATION }
+	
+		completion_reward = {
+			KOR = { country_event = { id = japan_foreign_politics_events.15 hours = 4 random_hours = 2 } }
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}

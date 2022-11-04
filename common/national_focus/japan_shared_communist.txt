@@ -1,0 +1,1760 @@
+
+	#### communist government
+
+	shared_focus = {
+		id = JAP_the_time_for_revolution
+		icon = JAP_communist_revolution
+		cost = 0
+		x = 48
+		y = 0
+
+		bypass = {
+			has_civil_war = yes
+		}
+
+		search_filters = {  }
+	
+		completion_reward = {
+			custom_effect_tooltip = JAP_the_time_for_revolution_tt
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	shared_focus = {
+		id = JAP_burn_narita
+		icon = JAP_sanriduka
+		cost = 3
+		x = -1
+		y = 1
+		
+		prerequisite = { 
+			focus = JAP_the_time_for_revolution
+		}
+
+		bypass = {
+			has_civil_war = no
+		}
+
+		relative_position_id = JAP_the_time_for_revolution
+
+		search_filters = {  }
+	
+		completion_reward = {
+			add_ideas = JAP_narita_idea
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	shared_focus = {
+		id = JAP_external_support
+		icon = kor_torchbearers_of_tomorrow
+		cost = 3
+		x = -3
+		y = 1
+		
+		prerequisite = { 
+			focus = JAP_the_time_for_revolution
+		}
+
+		bypass = {
+			has_civil_war = no
+		}
+
+		relative_position_id = JAP_the_time_for_revolution
+
+		search_filters = {  }
+	
+		completion_reward = {
+			add_political_power = 150
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	shared_focus = {
+		id = JAP_seek_help_from_china
+		icon = communism
+		cost = 5
+		x = -4
+		y = 2
+		
+		prerequisite = { 
+			focus = JAP_external_support
+		}
+
+		bypass = {
+			has_civil_war = no
+		}
+
+		available = {
+			country_exists = PRC
+			PRC = { is_faction_leader = yes }
+			PRC = { has_government = communist }
+			PRC = { has_war = no }
+		}
+
+		relative_position_id = JAP_the_time_for_revolution
+
+		search_filters = {  }
+	
+		completion_reward = {
+			PRC = { country_event = japan_communist_civil_war.5 }
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	shared_focus = {
+		id = JAP_help_of_foreign_revolutionaries
+		icon = JAP_peaceful
+		cost = 3
+		x = -2
+		y = 2
+		
+		prerequisite = { 
+			focus = JAP_external_support
+		}
+
+		bypass = {
+			has_civil_war = no
+		}
+
+		relative_position_id = JAP_the_time_for_revolution
+
+		search_filters = {  }
+	
+		completion_reward = {
+			add_ideas = JAP_foreigner_volunteer
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	shared_focus = {
+		id = JAP_alliance_between_the_enemy
+		icon = JAP_communist_unite
+		cost = 3
+		x = 1
+		y = 1
+		
+		prerequisite = { 
+			focus = JAP_the_time_for_revolution
+		}
+
+		bypass = {
+			has_civil_war = no
+		}
+
+		relative_position_id = JAP_the_time_for_revolution
+
+		search_filters = {  }
+	
+		completion_reward = {
+			country_event = japan_communist_civil_war.4
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	shared_focus = {
+		id = JAP_seizure_of_capitalist_property
+		icon = JAP_break_chain_gold
+		cost = 3
+		x = 0
+		y = 2
+		
+		prerequisite = { 
+			focus = JAP_alliance_between_the_enemy
+		}
+
+		bypass = {
+			has_civil_war = no
+		}
+
+		relative_position_id = JAP_the_time_for_revolution
+
+		search_filters = {  }
+	
+		completion_reward = {
+			add_ideas = JAP_seizure_of_capitalist_property_idea
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	shared_focus = {
+		id = JAP_destruction_of_yasukuni
+		icon = JAP_yasukini_fire
+		cost = 3
+		x = 3
+		y = 1
+		
+		prerequisite = { 
+			focus = JAP_the_time_for_revolution
+		}
+
+		bypass = {
+			has_civil_war = no
+		}
+
+		relative_position_id = JAP_the_time_for_revolution
+
+		search_filters = {  }
+	
+		completion_reward = {
+			country_event = { id = japan_communist_civil_war.1 }
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	shared_focus = {
+		id = JAP_coalition_of_zainichi
+		icon = JAP_zainichi_soren_army
+		cost = 3
+		x = 2
+		y = 2
+		
+		prerequisite = { 
+			focus = JAP_destruction_of_yasukuni
+		}
+
+		bypass = {
+			has_civil_war = no
+		}
+
+		relative_position_id = JAP_the_time_for_revolution
+
+		search_filters = {  }
+	
+		completion_reward = {
+			add_ideas = JAP_zainichi_volunteer
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	shared_focus = {
+		id = JAP_war_for_workers
+		icon = JAP_organize_wreckers
+		cost = 5
+		x = 4
+		y = 2
+		
+		prerequisite = { 
+			focus = JAP_destruction_of_yasukuni
+		}
+
+		bypass = {
+			has_civil_war = no
+		}
+
+		relative_position_id = JAP_the_time_for_revolution
+
+		search_filters = {  }
+	
+		completion_reward = {
+			JPN = { add_timed_idea = { idea = JAP_general_strike_by_workers days = 365 } }
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	shared_focus = {
+		id = JAP_accomplishment_of_the_revolution
+		icon = kor_masters_of_our_own_fate
+		cost = 3
+		x = 0
+		y = 3
+
+		available = {
+			has_civil_war = no
+		}
+		
+		prerequisite = { 
+			focus = JAP_seizure_of_capitalist_property
+		}
+
+		relative_position_id = JAP_the_time_for_revolution
+
+		search_filters = {  }
+	
+		completion_reward = {
+			fourth_estate_communist_increase = yes
+			add_timed_idea = { idea = JAP_communist_reconstruction days = 720 }
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	#### communist diplomacy
+	
+#	shared_focus = {
+#		id = JAP_communist_diplomacy
+#		icon = JAP_economic_train
+#		cost = 5
+#		x = 0
+#		y = 4
+#		
+#		prerequisite = { 
+#			focus = JAP_accomplishment_of_the_revolution
+#		}
+#
+	#	relative_position_id = JAP_the_time_for_revolution
+	#	search_filters = {  }
+	#
+	#	completion_reward = {
+	#		add_political_power = 150
+	#	}
+	#	
+	#	ai_will_do = {
+	#		factor = 1
+	#	}
+	#}
+
+	shared_focus = {
+		id = JAP_world_revolution
+		icon = JAP_revolutionary_conference
+		cost = 5.00
+
+		prerequisite = { 
+			focus = JAP_accomplishment_of_the_revolution
+		}
+
+		available = {
+			is_subject = no
+			NOT = { has_country_leader = { name = "Provisional Govenment" ruling_only = yes} }
+		}
+
+		relative_position_id = JAP_the_time_for_revolution
+
+		x = 0
+		y = 4
+		
+		search_filters = {  }
+	
+
+		completion_reward = {
+			set_rule = {
+				can_create_factions = yes
+			}
+			create_faction = JAP_true_soviet
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	shared_focus = {
+		id = JAP_american_revolution
+		icon = JAP_navy_dockyard_2
+		cost = 5.00
+
+		prerequisite = { 
+			focus = JAP_world_revolution
+		}
+
+		available = {
+			is_subject = no
+		}
+
+		relative_position_id = JAP_world_revolution
+
+		x = -6
+		y = 1
+		
+		search_filters = {  }
+	
+
+		completion_reward = {
+			custom_effect_tooltip = JAP_american_revolution_tt
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	shared_focus = {
+		id = JAP_exile_fujimori
+		icon = JAP_fujimori
+		cost = 5.00
+
+		prerequisite = { 
+			focus = JAP_american_revolution
+		}
+
+		relative_position_id = JAP_american_revolution
+
+		x = 0
+		y = 1
+		
+		search_filters = {  }
+	
+		available = {
+			has_country_flag = JAP_fujimori_exile_flag
+		}
+	
+		bypass = {
+			NOT = {has_country_flag = JAP_fujimori_exile_flag}
+		}
+
+		completion_reward = {
+			country_event = { id = japan_foreign_politics_events.21 }
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	shared_focus = {
+		id = JAP_spirit_of_che_guevara
+		icon = focus_prc_remove_america
+		cost = 5.00
+
+		prerequisite = { 
+			focus = JAP_exile_fujimori
+		}
+
+		relative_position_id = JAP_american_revolution
+
+		x = 0
+		y = 2
+		
+		search_filters = {  }
+	
+
+		completion_reward = {
+			add_ideas = JAP_great_enemy_in_the_east_idea
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	shared_focus = {
+		id = JAP_destruction_of_american_imperialism
+		icon = focus_prc_remove_america_2
+		cost = 5.00
+
+		prerequisite = { 
+			focus = JAP_spirit_of_che_guevara
+		}
+
+		available = {
+			country_exists = USA
+			NOT = { is_in_faction_with = USA }
+			is_subject = no
+		}
+
+		relative_position_id = JAP_american_revolution
+
+		x = 0
+		y = 3
+		
+		search_filters = {  }
+	
+
+		completion_reward = {
+			create_wargoal = {
+				target = USA
+				type = puppet_wargoal_focus
+			}
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	shared_focus = {
+		id = JAP_solidarity_with_left_wing_state
+		icon = kor_revolution_mass
+		cost = 5.00
+
+		prerequisite = { 
+			focus = JAP_american_revolution
+		}
+
+		prerequisite = { 
+			focus = JAP_african_revolution
+		}
+
+		bypass = {
+			NOT = {
+				any_other_country = {
+					OR = { #Communists and Socialists
+						has_government = communist
+						has_country_leader_ideology = democratic_socialist_ideology
+						#has_country_leader_ideology = social_democrat_ideology
+					}
+					NOT = { has_war_with = ROOT }
+					is_in_faction = no
+				}
+			}
+		}
+
+		relative_position_id = JAP_american_revolution
+
+		x = 2
+		y = 1
+		
+		search_filters = {  }
+	
+
+		completion_reward = {
+			if = {
+				limit = {
+					any_other_country = {
+						OR = { #Communists and Socialists
+							has_government = communist
+							has_country_leader_ideology = democratic_socialist_ideology
+							#has_country_leader_ideology = social_democrat_ideology
+						}
+						NOT = { has_war_with = ROOT }
+						is_in_faction = no
+					}
+				}
+				custom_effect_tooltip = generic_current_effects
+				every_other_country = {
+					limit = {
+						OR = { #Communists and Socialists
+							has_government = communist
+							has_country_leader_ideology = democratic_socialist_ideology
+							#has_country_leader_ideology = social_democrat_ideology
+						}
+						NOT = { has_war_with = ROOT }
+						is_in_faction = no
+					}
+					country_event = { id = japan.52 hours = 4 random_hours = 2 }
+				}
+			}
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	shared_focus = {
+		id = JAP_alliance_with_cuba
+		icon = align_to_cuba
+		cost = 5.00
+
+		prerequisite = { 
+			focus = JAP_solidarity_with_left_wing_state
+		}
+
+		relative_position_id = JAP_american_revolution
+
+		x = 2
+		y = 2
+		
+		search_filters = {  }
+	
+		available = { 
+			is_subject = no
+			country_exists = CUB
+			NOT = { has_war_with = CUB }
+			NOT = { JAP = { is_in_faction_with = CUB } }
+		}
+
+		bypass = {
+			JAP = { is_in_faction_with = CUB }
+		}
+
+		completion_reward = {
+			CUB = { country_event = { id = japan.52 hours = 4 random_hours = 2 } }
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	shared_focus = {
+		id = JAP_alliance_with_venezuela
+		icon = align_to_venezuela
+		cost = 5.00
+
+		prerequisite = { 
+			focus = JAP_solidarity_with_left_wing_state
+		}
+
+		relative_position_id = JAP_american_revolution
+
+		x = 4
+		y = 2
+		
+		search_filters = {  }
+	
+	
+		available = { 
+			is_subject = no
+			country_exists = VEN
+			NOT = { has_war_with = VEN }
+			NOT = { JAP = { is_in_faction_with = VEN } }
+		}
+
+		bypass = {
+			JAP = { is_in_faction_with = VEN }
+		}
+
+		completion_reward = {
+			VEN = { country_event = { id = japan.52 hours = 4 random_hours = 2 } }
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	shared_focus = {
+		id = JAP_venezuela_oil_negotiations
+		icon = infantry_japan
+		cost = 5.00
+
+		prerequisite = { 
+			focus = JAP_alliance_with_venezuela
+		}
+
+		relative_position_id = JAP_american_revolution
+
+		x = 4
+		y = 3
+		
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		available = {
+			VEN = { has_full_control_of_state = 489 }
+			VEN = { is_subject = no }
+			NOT = { has_war_with = VEN }
+		}
+
+		completion_reward = {
+			VEN = { country_event = { id = japan_foreign_politics_events.23 hours = 4 random_hours = 2 } }
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	shared_focus = {
+		id = JAP_african_revolution
+		icon = JAP_navy_dockyard_2
+		cost = 5.00
+
+		prerequisite = { 
+			focus = JAP_world_revolution
+		}
+
+		available = {
+			is_subject = no
+		}
+
+		relative_position_id = JAP_world_revolution
+
+		x = 0
+		y = 1
+		
+		search_filters = {  }
+	
+
+		completion_reward = {
+			custom_effect_tooltip = JAP_african_revolution_tt
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	#shared_focus = {
+	#	id = JAP_guerrilla_support
+	#	icon = JAP_guerrilla_support
+	#	cost = 5.00
+#
+#		prerequisite = { 
+#			focus = JAP_african_revolution
+#		}
+#
+#		relative_position_id = JAP_african_revolution
+#
+#		x = -1
+#		y = 1
+#		
+#		search_filters = {  }
+#	
+#
+#		completion_reward = {
+#			custom_effect_tooltip = JAP_guerrilla_support_tt
+#			set_variable = { var = japan_gerrilla_cost value = 5.0 }
+#		}
+#		
+#		ai_will_do = {
+#			factor = 1
+#		}
+#	}
+	
+	shared_focus = {
+		id = JAP_direct_intervention
+		icon = JAP_develop_polish_shipbuilding
+		cost = 5.00
+
+		prerequisite = { 
+			focus = JAP_african_revolution
+		}
+
+		relative_position_id = JAP_african_revolution
+
+		x = 1
+		y = 1
+		
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+	
+
+		completion_reward = {
+			custom_effect_tooltip = JAP_direct_intervention_tt
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	shared_focus = {
+		id = JAP_destruction_of_the_compromiseist
+		icon = JAP_peaceful
+		cost = 5.00
+
+		prerequisite = { 
+			focus = JAP_direct_intervention
+		}
+
+		relative_position_id = JAP_african_revolution
+
+		x = 1
+		y = 2
+		
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+	
+
+		completion_reward = {
+			add_war_support = 0.1
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	shared_focus = {
+		id = JAP_africa_s_economic_freedom
+		icon = JAP_break_chain_gold
+		cost = 5.00
+
+		prerequisite = { 
+			focus = JAP_african_revolution
+		}
+
+		relative_position_id = JAP_african_revolution
+
+		x = 3
+		y = 1
+		
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+	
+
+		completion_reward = {
+			custom_effect_tooltip = JAP_africa_s_economic_freedom_tt
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	shared_focus = {
+		id = JAP_promotion_of_agriculture_in_africa
+		icon = agriculture
+		cost = 5.00
+
+		prerequisite = { 
+			focus = JAP_africa_s_economic_freedom
+		}
+
+		prerequisite = { 
+			focus = JAP_maoist_community
+		}
+
+		relative_position_id = JAP_african_revolution
+
+		x = 4
+		y = 2
+		
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+	
+
+		completion_reward = {
+			custom_effect_tooltip = JAP_promotion_of_agriculture_in_africa_tt
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	shared_focus = {
+		id = JAP_communist_economic_community
+		icon = communism
+		cost = 5.00
+
+		prerequisite = { 
+			focus = JAP_world_revolution
+		}
+
+		available = {
+			num_subjects > 0
+		}
+
+		relative_position_id = JAP_world_revolution
+
+		x = 6
+		y = 1
+		
+		search_filters = {FOCUS_FILTER_INDUSTRY FOCUS_FILTER_RESEARCH}
+
+		completion_reward = {
+			if = {
+				limit = {
+					num_subjects > 0
+				}
+				add_ideas = JAP_comecon_jap_default
+				#custom_effect_tooltip = SOV_found_the_comecon_subjects_tt
+				every_other_country = {
+					limit = {
+						is_subject_of = ROOT
+					}
+					add_ideas = JAP_comecon_jap_default
+				}
+
+				#custom_effect_tooltip = SOV_found_the_comecon_program_tt
+				hidden_effect = {
+					add_to_tech_sharing_group = technology_sharing_group
+					every_country = {
+						limit = {
+							is_subject_of = ROOT
+						}
+						add_to_tech_sharing_group = technology_sharing_group
+					}
+				}
+			}
+			else = { #Early tooltip for when Soviets have no subjects
+				effect_tooltip = {
+					add_ideas = JAP_comecon_jap_default
+				}
+				#custom_effect_tooltip = SOV_found_the_comecon_subjects_tt
+				effect_tooltip = {
+					add_ideas = JAP_comecon_puppet_default
+				}
+				#custom_effect_tooltip = SOV_found_the_comecon_program_tt
+			}
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	shared_focus = {
+		id = JAP_maoist_community
+		icon = JAP_mao_cloud
+		cost = 5.00
+
+		prerequisite = { 
+			focus = JAP_communist_economic_community
+		}
+
+		mutually_exclusive = {
+			focus = JAP_fourth_international
+		}
+
+		available = {
+			has_completed_focus = JAP_jwcp_win
+		}
+
+
+		relative_position_id = JAP_communist_economic_community
+
+		x = -1
+		y = 1
+		
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+	
+
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = JAP_comecon_jap_default
+				add_idea = JAP_comecon_jap_maoist
+			}
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	shared_focus = {
+		id = JAP_liberation_of_china
+		icon = attack_china
+		cost = 5.00
+
+		prerequisite = { 
+			focus = JAP_maoist_community
+			focus = JAP_fourth_international
+		}
+
+		mutually_exclusive = {
+			focus = JAP_solidarity_with_china
+		}
+
+		available = {
+			country_exists = PRC
+			NOT = { is_in_faction_with = PRC }
+			is_subject = no
+		}
+
+		relative_position_id = JAP_communist_economic_community
+
+		x = 1
+		y = 3
+		
+		search_filters = {  }
+	
+		completion_reward = {
+			create_wargoal = {
+				target = PRC
+				type = puppet_wargoal_focus
+			}
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	shared_focus = {
+		id = JAP_solidarity_with_china
+		icon = align_to_china
+		cost = 5.00
+
+		prerequisite = { 
+			focus = JAP_maoist_community
+		}
+
+		mutually_exclusive = {
+			focus = JAP_liberation_of_china
+		}
+
+		relative_position_id = JAP_communist_economic_community
+
+		x = -1
+		y = 3
+		
+		search_filters = {  }
+	
+
+		completion_reward = {
+			PRC = { country_event = { id = japan_foreign_politics_events.18 hours = 4 random_hours = 2 } }
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	shared_focus = {
+		id = JAP_fourth_international
+		icon = JAP_trotsky_flower
+		cost = 5.00
+
+		prerequisite = { 
+			focus = JAP_communist_economic_community
+		}
+
+		mutually_exclusive = {
+			focus = JAP_maoist_community
+		}
+
+		available = {
+			has_completed_focus = JAP_chugakuha_win
+		}
+
+		relative_position_id = JAP_communist_economic_community
+
+		x = 1
+		y = 1
+		
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+	
+
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = JAP_comecon_jap_default
+				add_idea = JAP_comecon_jap_trotsky
+			}
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	shared_focus = {
+		id = JAP_economic_cooperation
+		icon = JAP_communist_unite_2
+		cost = 5.00
+
+		prerequisite = { 
+			focus = JAP_maoist_community
+			focus = JAP_fourth_international
+		}
+
+		relative_position_id = JAP_communist_economic_community
+
+		x = 0
+		y = 2
+		
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+	
+
+		completion_reward = {
+			#custom_effect_tooltip = JAP_economic_cooperation_tt
+			unlock_decision_category_tooltip = JAP_comecon_dec_cat
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	shared_focus = {
+		id = JAP_korean_q_communist
+		icon = communism2
+		cost = 5.00
+
+		prerequisite = { 
+			focus = JAP_world_revolution
+		}
+
+		relative_position_id = JAP_world_revolution
+
+		x = -8
+		y = 1
+		
+		search_filters = {  }
+	
+
+		completion_reward = {
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	shared_focus = {
+		id = JAP_maintaining_relations_with_korea
+		icon = kor_dual_korean_democracy_flag
+		cost = 5.00
+
+		prerequisite = { 
+			focus = JAP_korean_q_communist
+		}
+
+		relative_position_id = JAP_korean_q_communist
+
+		x = 0
+		y = 1
+		
+		available = {
+			is_subject = no
+			
+			KOR = {
+				exists = yes
+				is_subject = no
+				NOT = {
+					has_war_with = JAP
+				}
+				NOT = { has_government = fascist } #JUCHE
+			}
+		}
+
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+	
+		completion_reward = {
+			add_ideas = { JAP_compensation_for_colonial_rule }
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	shared_focus = {
+		id = JAP_destruction_of_fake_communism
+		icon = JAP_chain_lee_seok_ki
+		cost = 5.00
+
+		prerequisite = { 
+			focus = JAP_korean_q_communist
+		}
+
+		available = {
+			KOR = { has_government = fascist }
+			country_exists = KOR
+			NOT = { is_in_faction_with = KOR }
+			is_subject = no
+		}
+
+		relative_position_id = JAP_korean_q_communist
+
+		x = -2
+		y = 1
+		
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+	
+
+		completion_reward = {
+			create_wargoal = {
+				target = KOR
+				type = puppet_wargoal_focus
+			}
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	#shared_focus = {
+	#	id = JAP_cut_off_juche_s_head
+	#	icon = jap_gambling
+	#	cost = 5.00
+#
+#		prerequisite = { 
+#			focus = JAP_korean_q_communist
+#		}
+#
+#		relative_position_id = JAP_korean_q_communist
+#
+#		x = -1
+#		y = 2
+#		
+#		search_filters = { FOCUS_FILTER_INDUSTRY }
+#	
+#
+#		completion_reward = {
+#		}
+#		
+#		ai_will_do = {
+#			factor = 1
+#		}
+#	}
+
+
+	#### communist government
+	
+	shared_focus = {
+		id = JAP_communist_policy
+		icon = JAP_economic_train
+		cost = 2
+		x = 10
+		y = 4
+		
+		prerequisite = { 
+			focus = JAP_accomplishment_of_the_revolution
+		}
+
+		relative_position_id = JAP_the_time_for_revolution
+		search_filters = { FOCUS_FILTER_STABILITY }
+	
+		completion_reward = {
+			add_stability = 0.1
+			
+			swap_ideas = {
+				remove_idea = JAP_afterglow_of_sun
+				add_idea = JAP_beyond_afterglow_communist
+			}
+		}
+		
+		ai_will_do = {
+			factor = 4
+		}
+	}
+
+	shared_focus = {
+		id = JAP_jwcp_win
+		icon = focus_prc_china_dream
+		cost = 5
+		x = -1
+		y = 1
+		
+		prerequisite = { 
+			focus = JAP_communist_policy
+		}
+
+		mutually_exclusive = {
+			focus = JAP_chugakuha_win
+		}
+
+		relative_position_id = JAP_communist_policy
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	
+		completion_reward = {
+			retire_country_leader = yes
+			hidden_effect = {
+				create_country_leader = {
+					name = JAP_naohiko_matsudaira
+					ideology = maoist
+					desc = "POLITICS_JAP_naohiko_matsudaira_DESC"
+					picture = "gfx/leaders/JAP/naohiko_matsudaira.dds"
+					traits = {
+						revolutionary_propagandist
+					}
+				}
+			}
+		}
+		
+		ai_will_do = {
+			factor = 8 
+			#A slightly lower probability than Chukaku-ha.
+			#Chukaku-ha is more influential
+			modifier = {
+				factor = 0
+				has_game_rule = {
+					rule = JAP_AI_BEHAVIOR
+					option = COMMUNIST_TRO
+				}
+			}
+		}
+	}
+
+	shared_focus = {
+		id = JAP_triumph_of_maoism
+		icon = AIN_thoughtcrime
+		cost = 5
+		x = -1
+		y = 3
+		
+		prerequisite = { 
+			focus = JAP_jwcp_win
+		}
+
+		relative_position_id = JAP_communist_policy
+		search_filters = {  }
+	
+		completion_reward = {
+			add_war_support = 0.1
+			fourth_estate_communist_increase = yes
+		}
+		
+		ai_will_do = {
+			factor = 3
+		}
+	}
+
+	shared_focus = {
+		id = JAP_chugakuha_win
+		icon = focus_prc_karl_marx
+		cost = 5
+		x = 1
+		y = 1
+		
+		prerequisite = { 
+			focus = JAP_communist_policy
+		}
+
+		mutually_exclusive = {
+			focus = JAP_jwcp_win
+		}
+
+		relative_position_id = JAP_communist_policy
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	
+		completion_reward = {
+			retire_country_leader = yes
+			set_party_name = { 
+				ideology = communist
+				name = JAP_communist_chukakuha
+				long_name = JAP_communist_long_chukakuha
+			}
+
+			hidden_effect = {
+				create_country_leader = {
+					name = JAP_takeo_shimizu
+					ideology = trotskyist
+					desc = "POLITICS_JAP_takeo_shimizu_DESC"
+					picture = "gfx/leaders/JAP/takeo_shimizu.dds"
+					traits = {
+						trotskyist_revolutionist
+					}
+				}
+			}
+			set_cosmetic_tag = JAP_chugakuha
+		}
+		
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 0
+				has_game_rule = {
+					rule = JAP_AI_BEHAVIOR
+					option = COMMUNIST_MAO
+				}
+			}
+		}
+	}
+
+	shared_focus = {
+		id = JAP_triumph_of_trotskyism
+		icon = kor_masters_of_our_own_fate
+		cost = 5
+		x = 1
+		y = 3
+		
+		prerequisite = { 
+			focus = JAP_chugakuha_win
+		}
+
+		relative_position_id = JAP_communist_policy
+		search_filters = {  }
+	
+		completion_reward = {
+			add_offsite_building = { type = industrial_complex level = 2 }
+			fourth_estate_communist_increase = yes
+		}
+		
+		ai_will_do = {
+			factor = 3
+		}
+	}
+
+	shared_focus = {
+		id = JAP_elimination_of_monarchists
+		icon = JAP_no_need_tenno
+		cost = 5
+		x = 0
+		y = 2
+		
+		prerequisite = { 
+			focus = JAP_communist_policy
+		}
+
+		relative_position_id = JAP_communist_policy
+		search_filters = {  }
+	
+		completion_reward = {
+			country_event = japan.75
+		}
+		
+		ai_will_do = {
+			factor = 2
+		}
+	}
+
+	shared_focus = {
+		id = JAP_declaration_of_the_republic_constitution
+		icon = constitution
+		cost = 5
+		x = 0
+		y = 4
+		
+		prerequisite = { 
+			focus = JAP_elimination_of_monarchists
+		}
+
+		prerequisite = { 
+			focus = JAP_triumph_of_maoism
+			focus = JAP_triumph_of_trotskyism
+		}
+
+		relative_position_id = JAP_communist_policy
+		search_filters = {  }
+	
+		completion_reward = {
+			add_stability = 0.15
+		}
+		
+		ai_will_do = {
+			factor = 5
+		}
+	}
+
+	shared_focus = {
+		id = JAP_remove_right_wing_remainers
+		icon = communism2
+		cost = 6
+		x = -4
+		y = 1
+		
+		prerequisite = { 
+			focus = JAP_declaration_of_the_republic_constitution
+		}
+
+		relative_position_id = JAP_declaration_of_the_republic_constitution
+		search_filters = {  }
+	
+		completion_reward = {
+			add_timed_idea = { idea = JAP_right_purge days = 365 }
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	shared_focus = {
+		id = JAP_removal_unification_church
+		icon = communism3
+		cost = 6
+		x = -1
+		y = 1
+		
+		prerequisite = { 
+			focus = JAP_remove_right_wing_remainers
+		}
+
+		relative_position_id = JAP_remove_right_wing_remainers
+		search_filters = {  }
+	
+		completion_reward = {
+			add_ideas = JAP_national_atheism
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	shared_focus = {
+		id = JAP_country_supported_by_workers
+		icon = trade_deal
+		cost = 6
+		x = -1
+		y = 2
+		
+		prerequisite = { 
+			focus = JAP_removal_unification_church
+		}
+
+		relative_position_id = JAP_remove_right_wing_remainers
+		search_filters = {  }
+	
+		completion_reward = {
+			add_ideas = { JAP_empowered_working_class }
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	shared_focus = {
+		id = JAP_right_of_more_women
+		icon = kor_revolution_mass
+		cost = 6
+		x = 1
+		y = 1
+		
+		prerequisite = { 
+			focus = JAP_remove_right_wing_remainers
+		}
+
+		relative_position_id = JAP_remove_right_wing_remainers
+		search_filters = {  }
+	
+		completion_reward = {
+			add_ideas = { JAP_feminism_1 }
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	shared_focus = {
+		id = JAP_national_equality
+		icon = kor_ukiyoe
+		cost = 6
+		x = 1
+		y = 2
+		
+		prerequisite = { 
+			focus = JAP_right_of_more_women
+		}
+
+		relative_position_id = JAP_remove_right_wing_remainers
+		search_filters = {  }
+	
+		completion_reward = {
+			if = {
+				limit = { has_idea = JAP_feminism_1 }
+				swap_ideas = {
+					remove_idea = JAP_feminism_1
+					add_idea = JAP_feminism_2
+				}
+			}
+			else_if = {
+				limit = { has_idea = JAP_feminism_2 }
+				swap_ideas = {
+					remove_idea = JAP_feminism_2
+					add_idea = JAP_feminism_3
+				}
+			}
+			else = {
+				add_ideas = JAP_feminism_1
+			}
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	shared_focus = {
+		id = JAP_everyone_s_right_to_work
+		icon = JAP_industry_1
+		cost = 6
+		x = 0
+		y = 3
+		
+		prerequisite = { 
+			focus = JAP_country_supported_by_workers
+		}
+		
+		prerequisite = { 
+			focus = JAP_national_equality
+		}
+
+		relative_position_id = JAP_remove_right_wing_remainers
+		search_filters = {  }
+	
+		completion_reward = {
+			if = {
+				limit = { has_idea = JAP_feminism_1 }
+				swap_ideas = {
+					remove_idea = JAP_feminism_1
+					add_idea = JAP_feminism_2
+				}
+			}
+			else_if = {
+				limit = { has_idea = JAP_feminism_2 }
+				swap_ideas = {
+					remove_idea = JAP_feminism_2
+					add_idea = JAP_feminism_3
+				}
+			}
+			else = {
+				add_ideas = JAP_feminism_1
+			}
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	shared_focus = {
+		id = JAP_take_over_the_university
+		icon = research
+		cost = 6
+		x = 0
+		y = 1
+		
+		prerequisite = { 
+			focus = JAP_declaration_of_the_republic_constitution
+		}
+
+		relative_position_id = JAP_declaration_of_the_republic_constitution
+		search_filters = {  }
+	
+		completion_reward = {
+			add_ideas = JAP_support_of_the_students
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	shared_focus = {
+		id = JAP_education_for_all
+		icon = JAP_flower_hand
+		cost = 6
+		x = -1
+		y = 1
+		
+		prerequisite = { 
+			focus = JAP_take_over_the_university
+		}
+
+		relative_position_id = JAP_take_over_the_university
+		search_filters = {  }
+	
+		completion_reward = {
+			add_ideas = JAP_free_education
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	shared_focus = {
+		id = JAP_support_for_the_academia
+		icon = JAP_robot_arm
+		cost = 6
+		x = 1
+		y = 1
+		
+		prerequisite = { 
+			focus = JAP_take_over_the_university
+		}
+
+		relative_position_id = JAP_take_over_the_university
+		search_filters = {  }
+	
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 3.0
+				uses = 1
+				category = electronics
+			}
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	shared_focus = {
+		id = JAP_welfare_for_everyone
+		icon = JAP_organize_wreckers
+		cost = 6
+		x = -7
+		y = 1
+		
+		prerequisite = { 
+			focus = JAP_declaration_of_the_republic_constitution
+		}
+
+		relative_position_id = JAP_declaration_of_the_republic_constitution
+		search_filters = {  }
+	
+		completion_reward = {
+			if = {
+				limit = { 
+						OR = {
+							has_idea = welfare_none
+						}
+				}
+				swap_ideas = {
+					remove_idea = welfare_none
+					add_idea = welfare_modest_assistance
+				}
+			}
+			else_if = {
+				limit = { 
+						OR = {
+							has_idea = welfare_basic_subsidies
+						}
+				}
+				swap_ideas = {
+					remove_idea = welfare_basic_subsidies
+					add_idea = welfare_modest_assistance
+				}
+			}
+			else = {
+				add_stability = 0.1
+			}
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	shared_focus = {
+		id = JAP_nation_for_the_disabled
+		icon = democracy
+		cost = 6
+		x = -1
+		y = 1
+		
+		prerequisite = { 
+			focus = JAP_welfare_for_everyone
+		}
+
+		relative_position_id = JAP_welfare_for_everyone
+		search_filters = {  }
+	
+		completion_reward = {
+			add_political_power = 150
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	shared_focus = {
+		id = JAP_LGBT_rights_issues
+		icon = generic_LGBT_flag
+		cost = 6
+		x = 0
+		y = 2
+		
+		prerequisite = { 
+			focus = JAP_welfare_for_everyone
+		}
+
+		relative_position_id = JAP_welfare_for_everyone
+		search_filters = {  }
+	
+		completion_reward = {
+			add_ideas = { JAP_same_sex_marriage }
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}

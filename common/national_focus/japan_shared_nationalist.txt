@@ -1,0 +1,1137 @@
+
+	#### nationalist diplomacy
+	
+	shared_focus = {
+		id = JAP_nationalist_diplomacy
+		icon = JAP_sakura_hinomaru
+		cost = 5
+		x = 50
+		y = 0
+		
+		search_filters = {  }
+	
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = JAP_afterglow_of_sun
+				add_idea = JAP_beyond_afterglow_natioalist
+			}
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	shared_focus = {
+		id = JAP_guardian_of_human_rights
+		icon = JAP_hinomaru
+		cost = 6
+		x = -5
+		y = 1
+		
+		prerequisite = { 
+			focus = JAP_nationalist_diplomacy
+		}
+
+		bypass = {
+			OR = {
+				NOT = { country_exists = PRC }
+				JAP = { is_in_faction_with = PRC }
+			}
+		}
+
+		relative_position_id = JAP_nationalist_diplomacy
+
+		search_filters = {  }
+	
+		completion_reward = {			
+			ROOT = { country_event = { id = japan_foreign_politics_events.27 hours = 4 random_hours = 2 } }
+			PRC = { country_event = { id = japan_foreign_politics_events.27 hours = 4 random_hours = 2 } }
+		}
+		
+		ai_will_do = {
+			factor = 5
+		}
+	}
+
+	shared_focus = {
+		id = JAP_korean_war_of_liberation
+		icon = JAP_chain_lee_seok_ki
+		cost = 5
+		x = -7
+		y = 2
+		
+		prerequisite = { 
+			focus = JAP_guardian_of_human_rights
+		}
+
+		relative_position_id = JAP_nationalist_diplomacy
+	
+		available = {
+			is_subject = no
+			country_exists = KOR
+			NOT = { has_war_with = KOR }
+			NOT = { JAP = { is_in_faction_with = KOR } }
+			KOR = { has_government = fascist }
+		}
+
+		search_filters = { FOCUS_FILTER_ANNEXATION }
+		
+		completion_reward = {
+			create_wargoal = {
+				target = KOR
+				type = puppet_wargoal_focus
+			}
+			
+			hidden_effect = {
+				add_ai_strategy = {
+					type = declare_war
+					id = KOR
+					value = 100
+				}
+			}
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	shared_focus = {
+		id = JAP_alliance_with_chinese_minorities
+		icon = JAP_alliance_with_chinese_minorities
+		cost = 5
+		x = -5
+		y = 2
+		
+		prerequisite = { 
+			focus = JAP_guardian_of_human_rights
+		}
+	
+		available = {
+			is_subject = no
+			country_exists = PRC
+			NOT = { has_war_with = PRC }
+			NOT = { JAP = { is_in_faction_with = PRC } }
+			OR = {
+				NOT = { country_exists = SIK } #Uyghur
+				NOT = { country_exists = TIB } #Tibet
+				NOT = { country_exists = MEN } #Inner Mongolia
+			}
+		}
+
+		relative_position_id = JAP_nationalist_diplomacy
+
+		search_filters = {  }
+	
+		completion_reward = {
+			ROOT = { country_event = { id = japan_foreign_politics_events.26 hours = 4 random_hours = 2 } }
+			PRC = { country_event = { id = japan_foreign_politics_events.26 hours = 4 random_hours = 2 } }
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	shared_focus = {
+		id = JAP_GEACPS_alliance
+		icon = JAP_dai_toa_kyoeiken
+		cost = 5
+		x = -3
+		y = 2
+		
+		prerequisite = { 
+			focus = JAP_guardian_of_human_rights
+		}
+
+		relative_position_id = JAP_nationalist_diplomacy
+		search_filters = {  }
+	
+		completion_reward = {
+			create_faction = JAP_daitoa_kyoeiken
+			unlock_decision_category_tooltip = JAP_find_alliance
+		}
+		
+		ai_will_do = {
+			factor = 5
+		}
+	}
+
+	shared_focus = {
+		id = JAP_great_enemy_in_the_west
+		icon = fascism
+		cost = 5
+		x = 0
+		y = 1
+		
+		prerequisite = { 
+			focus = JAP_nationalist_diplomacy
+		}
+
+		relative_position_id = JAP_nationalist_diplomacy
+		search_filters = {  }
+	
+		completion_reward = {
+			add_ideas = JAP_great_enemy_in_the_west_idea
+		}
+		
+		ai_will_do = {
+			factor = 2
+		}
+	}
+
+	shared_focus = {
+		id = JAP_alliance_with_korea
+		icon = JAP_japan_korea_two_flag
+		cost = 5
+		x = -1
+		y = 2
+		
+		prerequisite = { 
+			focus = JAP_great_enemy_in_the_west
+		}
+
+		mutually_exclusive = {
+			focus = JAP_pressure_on_korea
+		}
+
+		relative_position_id = JAP_nationalist_diplomacy
+		search_filters = {  }
+	
+		completion_reward = {
+			KOR = { country_event = { id = japan_foreign_politics_events.18 hours = 4 random_hours = 2 } }
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	shared_focus = {
+		id = JAP_pressure_on_korea
+		icon = JAP_korean_flag_down
+		cost = 5
+		x = 1
+		y = 2
+		
+		prerequisite = { 
+			focus = JAP_great_enemy_in_the_west
+		}
+
+		mutually_exclusive = {
+			focus = JAP_alliance_with_korea
+		}
+
+		bypass = {
+			OR = { 
+				NOT = { country_exists = KOR }
+				JAP = { is_in_faction_with = KOR }
+			}
+		}
+
+		available = {
+			is_subject = no
+			country_exists = KOR
+			NOT = { has_war_with = KOR }
+			NOT = { JAP = { is_in_faction_with = KOR } }
+		}
+
+		relative_position_id = JAP_nationalist_diplomacy
+		search_filters = {  }
+	
+		completion_reward = {
+			KOR = { country_event = { id = japan_foreign_politics_events.12 hours = 4 random_hours = 2 } }
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	shared_focus = {
+		id = JAP_cooperation_with_DPR_korea
+		icon = JAP_japan_dpr_korea_two_flag
+		cost = 5
+		x = -1
+		y = 3
+		
+		prerequisite = { 
+			focus = JAP_alliance_with_korea
+			focus = JAP_pressure_on_korea
+		}
+
+		mutually_exclusive = {
+			focus = JAP_pressure_on_DPR_korea
+		}
+
+		relative_position_id = JAP_nationalist_diplomacy
+		search_filters = {  }
+	
+		completion_reward = {
+			PRK = { country_event = { id = japan_foreign_politics_events.18 hours = 4 random_hours = 2 } }
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	shared_focus = {
+		id = JAP_pressure_on_DPR_korea
+		icon = attack_north_korea
+		cost = 5
+		x = 1
+		y = 3
+		
+		prerequisite = { 
+			focus = JAP_alliance_with_korea
+			focus = JAP_pressure_on_korea
+		}
+
+		mutually_exclusive = {
+			focus = JAP_cooperation_with_DPR_korea
+		}
+
+		bypass = {
+			OR = { 
+				NOT = { country_exists = PRK }
+				JAP = { is_in_faction_with = PRK }
+			}
+		}
+		
+		available = {
+			is_subject = no
+			country_exists = PRK
+			NOT = { has_war_with = PRK }
+			NOT = { JAP = { is_in_faction_with = PRK } }
+		}
+
+		relative_position_id = JAP_nationalist_diplomacy
+		search_filters = {  }
+	
+		completion_reward = {
+			PRK = { country_event = { id = japan_foreign_politics_events.12 hours = 4 random_hours = 2 } }
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	shared_focus = {
+		id = JAP_liberation_of_china
+		icon = attack_china
+		cost = 5
+		x = 0
+		y = 4
+		
+		prerequisite = { 
+			focus = JAP_pressure_on_DPR_korea
+			focus = JAP_cooperation_with_DPR_korea
+		}
+
+		relative_position_id = JAP_nationalist_diplomacy
+		search_filters = {  }
+	
+		available = {
+			is_subject = no
+			country_exists = PRC
+			NOT = { has_war_with = PRC }
+			NOT = { JAP = { is_in_faction_with = PRC } }
+		}
+		
+		completion_reward = {
+			create_wargoal = {
+				target = PRC
+				type = puppet_wargoal_focus
+			}
+			
+			hidden_effect = {
+				add_ai_strategy = {
+					type = declare_war
+					id = PRC
+					value = 100
+				}
+			}
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	shared_focus = {
+		id = JAP_great_enemy_in_the_east
+		icon = fascism
+		cost = 5
+		x = 4
+		y = 1
+		
+		prerequisite = { 
+			focus = JAP_nationalist_diplomacy
+		}
+
+		relative_position_id = JAP_nationalist_diplomacy
+		search_filters = {  }
+	
+		completion_reward = {
+			add_ideas = JAP_great_enemy_in_the_east_idea
+		}
+		
+		ai_will_do = {
+			factor = 2
+		}
+	}
+
+	shared_focus = {
+		id = JAP_attack_the_united_states
+		icon = focus_prc_remove_america_2
+		cost = 5
+		x = 4
+		y = 2
+		
+		prerequisite = { 
+			focus = JAP_nationalist_diplomacy
+		}
+
+		relative_position_id = JAP_nationalist_diplomacy
+		search_filters = {  }
+	
+		available = {
+			is_subject = no
+			country_exists = USA
+			NOT = { has_war_with = USA }
+			NOT = { JAP = { is_in_faction_with = USA } }
+		}
+		
+		completion_reward = {
+			create_wargoal = {
+				target = USA
+				type = puppet_wargoal_focus
+			}
+			
+			hidden_effect = {
+				add_ai_strategy = {
+					type = declare_war
+					id = USA
+					value = 100
+				}
+			}
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	shared_focus = {
+		id = JAP_emergency_naval_investment_plan
+		icon = naval_dockyards
+		cost = 5
+		x = 3
+		y = 3
+		
+		prerequisite = { 
+			focus = JAP_great_enemy_in_the_east
+		}
+
+		relative_position_id = JAP_nationalist_diplomacy
+		search_filters = {  }
+	
+		available = {
+			has_full_control_of_state = 282
+		}
+
+		completion_reward = {
+			282 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+			}
+			282 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	shared_focus = {
+		id = JAP_oil_problem
+		icon = production2
+		cost = 5
+		x = 5
+		y = 3
+		
+		prerequisite = { 
+			focus = JAP_great_enemy_in_the_east
+		}
+
+		available = {
+			VEN = { has_full_control_of_state = 489 }
+			VEN = { is_subject = no }
+			NOT = { has_war_with = VEN }
+		}
+
+		relative_position_id = JAP_nationalist_diplomacy
+		search_filters = {  }
+	
+		completion_reward = {
+			VEN = { country_event = { id = japan_foreign_politics_events.23 hours = 4 random_hours = 2 } }
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	shared_focus = {
+		id = JAP_russia_is_nigeria_with_snow
+		icon = JAP_nigeria_with_snow
+		cost = 5
+		x = 7
+		y = 1
+		
+		prerequisite = { 
+			focus = JAP_nationalist_diplomacy
+		}
+
+		relative_position_id = JAP_nationalist_diplomacy
+		search_filters = {  }
+	
+		completion_reward = {
+			add_ideas = JAP_russia_is_nigeria_with_snow_idea
+		}
+		
+		ai_will_do = {
+			factor = 2
+		}
+	}
+
+	shared_focus = {
+		id = JAP_demand_kuril 
+		icon = attack_russia
+		cost = 5
+		x = 6
+		y = 2
+		
+		prerequisite = { 
+			focus = JAP_russia_is_nigeria_with_snow
+		}
+
+		mutually_exclusive = {
+			focus = JAP_request_for_russian_alliance
+		}
+
+		relative_position_id = JAP_nationalist_diplomacy
+		search_filters = {  }
+	
+		available = {
+			is_subject = no
+		}
+
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				has_civil_war = yes
+			}	
+		}
+
+		bypass = {
+			951 = { is_owned_by = ROOT }
+			555 = { is_owned_by = ROOT }
+		}
+
+		search_filters = { FOCUS_FILTER_ANNEXATION }
+	
+		completion_reward = {
+			if = {
+				limit = {
+					951 = { NOT = { is_claimed_by = ROOT } }
+				}
+				add_state_claim = 951
+			}
+			if = {
+				limit = {
+					555 = { NOT = { is_claimed_by = ROOT } }
+				}
+				add_state_claim = 555
+			}
+
+			if = { #ONE CONTROLLER
+				limit = {
+					951 = {
+						controller = {
+							controls_state = 555
+						}
+					}
+				}
+				if = {
+					limit = {
+						951 = {
+							controller = {
+								NOT = { has_war_with = ROOT }
+							}
+						}
+					}
+					951 = {
+						controller = {
+							country_event = { id = japan_foreign_politics_events.1 hours = 4 random_hours = 2 }
+							custom_effect_tooltip = if_they_accept
+							effect_tooltip = {
+								ROOT = { transfer_state = 951 } #Southen Kuril
+								ROOT = { transfer_state = 555 } #Northen Kuril
+								add_opinion_modifier = {
+									target = ROOT
+									modifier = SOV_pressured_our_government
+								}
+							}
+						}
+					}
+				}
+			}
+			else = { #TWO DIFFERENT CONTROLLERS
+				if = {
+					limit = {
+						951 = {
+							controller = {
+								NOT = { has_war_with = ROOT }
+							}
+						}
+					}
+					951 = {
+						controller = {
+							country_event = { id = japan_foreign_politics_events.1 hours = 4 random_hours = 2 }
+							custom_effect_tooltip = if_they_accept
+							effect_tooltip = {
+								ROOT = { transfer_state = 951 } #Southen Kuril
+								add_opinion_modifier = {
+									target = ROOT
+									modifier = SOV_pressured_our_government
+								}
+							}
+						}
+					}
+				}
+				if = {
+					limit = {
+						555 = {
+							controller = {
+								NOT = { has_war_with = ROOT }
+							}
+						}
+					}
+					555 = {
+						controller = {
+							country_event = { id = japan_foreign_politics_events.1 hours = 4 random_hours = 2 }
+							custom_effect_tooltip = if_they_accept
+							effect_tooltip = {
+								ROOT = { transfer_state = 555 } #Northen Kuril
+								add_opinion_modifier = {
+									target = ROOT
+									modifier = SOV_pressured_our_government
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	shared_focus = {
+		id = JAP_request_for_russian_alliance
+		icon = JAP_japan_russia_two_flag
+		cost = 5
+		x = 8
+		y = 2
+		
+		prerequisite = { 
+			focus = JAP_russia_is_nigeria_with_snow
+		}
+
+		mutually_exclusive = {
+			focus = JAP_demand_kuril
+		}
+
+		relative_position_id = JAP_nationalist_diplomacy
+		search_filters = {  }
+	
+		completion_reward = {
+			SOV = { country_event = { id = japan_foreign_politics_events.18 hours = 4 random_hours = 2 } }
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	#### nationalist government
+	
+	shared_focus = {
+		id = JAP_nationalist_government
+		icon = JAP_sakura_hinomaru
+		cost = 5
+		x = 66
+		y = 0
+		
+		search_filters = {  }
+	
+		completion_reward = {
+			if = {
+				limit = {  has_idea = public_safety_local_law_enforcement  }
+				swap_ideas = {
+					remove_idea = public_safety_local_law_enforcement
+					add_idea = public_safety_secret_police
+				}
+			}
+			else_if = {
+				limit = {  has_idea = public_safety_subsidized_agencies  }
+				swap_ideas = {
+					remove_idea = public_safety_subsidized_agencies
+					add_idea = public_safety_secret_police
+				}
+			}
+			else_if = {
+				limit = {  has_idea = public_safety_central_law_office  }
+				swap_ideas = {
+					remove_idea = public_safety_central_law_office
+					add_idea = public_safety_secret_police
+				}
+			}
+			else = {
+				add_stability = 0.1
+			}
+		}
+		
+		ai_will_do = {
+			factor = 2
+		}
+	}
+	
+	shared_focus = {
+		id = JAP_cooperation_with_unification_church
+		icon = JAP_with_unification_church
+		cost = 5
+		x = -4
+		y = 1
+		
+		relative_position_id = JAP_nationalist_government
+		
+		prerequisite = { 
+			focus = JAP_nationalist_government
+		}
+
+		search_filters = {  }
+	
+		completion_reward = {
+			custom_effect_tooltip = available_political_advisor
+			show_ideas_tooltip = advisor_JAP_han_hak_ja
+		}
+		
+		ai_will_do = {
+			factor = 1.5
+		}
+	}
+	
+	shared_focus = {
+		id = JAP_anti_communist_declaration
+		icon = fascism
+		cost = 5
+		x = -2
+		y = 1
+		
+		relative_position_id = JAP_cooperation_with_unification_church
+		
+		prerequisite = { 
+			focus = JAP_cooperation_with_unification_church
+		}
+
+		search_filters = {  }
+	
+		completion_reward = {
+			add_ideas = JAP_anti_communist_declaration_idea
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	shared_focus = {
+		id = JAP_support_far_right 
+		icon = kor_samurai
+		cost = 5
+		x = -2
+		y = 2
+		
+		relative_position_id = JAP_cooperation_with_unification_church
+		
+		prerequisite = { 
+			focus = JAP_anti_communist_declaration
+		}
+
+		search_filters = {  }
+	
+		completion_reward = {
+			custom_effect_tooltip = available_political_advisor
+			show_ideas_tooltip = advisor_JAP_sanae_takaichi
+			show_ideas_tooltip = advisor_JAP_yoshimi_watanabe
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	shared_focus = {
+		id = JAP_arrest_of_the_JCP
+		icon = fascism
+		cost = 2
+		x = 0
+		y = 1
+		
+		relative_position_id = JAP_cooperation_with_unification_church
+		
+		prerequisite = { 
+			focus = JAP_cooperation_with_unification_church
+		}
+
+		search_filters = {  }
+	
+		completion_reward = {
+			add_timed_idea = { idea = JAP_red_purge days = 365 }
+		}
+		
+		ai_will_do = {
+			factor = 2.5
+		}
+	}
+	
+	shared_focus = {
+		id = JAP_conservative_cooperation_commitment
+		icon = JAP_election_compromise
+		cost = 5
+		x = 0
+		y = 2
+		
+		relative_position_id = JAP_cooperation_with_unification_church
+		
+		prerequisite = { 
+			focus = JAP_arrest_of_the_JCP
+		}
+
+		search_filters = {  }
+	
+		completion_reward = {
+			add_stability = 0.1
+			fourth_estate_conservative_increase = yes
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	shared_focus = {
+		id = JAP_netto_uyoku_nat
+		icon = JAP_hinomaru
+		cost = 5
+		x = 2
+		y = 1
+		
+		relative_position_id = JAP_cooperation_with_unification_church
+		
+		prerequisite = { 
+			focus = JAP_cooperation_with_unification_church
+		}
+
+		search_filters = {  }
+	
+		completion_reward = {
+			add_ideas = JAP_netto_uyoku_idea
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	shared_focus = {
+		id = JAP_restrictions_on_foreigners_rights
+		icon = kor_japanese_palace
+		cost = 5
+		x = 2
+		y = 2
+		
+		relative_position_id = JAP_cooperation_with_unification_church
+		
+		prerequisite = { 
+			focus = JAP_netto_uyoku_nat
+		}
+
+		search_filters = {  }
+	
+		completion_reward = {
+			add_war_support = 0.1
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	shared_focus = {
+		id = JAP_declaration_of_the_nat_constitution
+		icon = fascism
+		cost = 5
+		x = 0
+		y = 3
+		
+		relative_position_id = JAP_cooperation_with_unification_church
+		
+		prerequisite = { 
+			focus = JAP_restrictions_on_foreigners_rights
+		}
+		prerequisite = { 
+			focus = JAP_support_far_right
+		}
+
+		search_filters = {  }
+	
+		completion_reward = {
+			add_country_leader_trait = great_constitution
+
+			add_field_marshal_role = {
+				character = "JAP_toshio_tamogami"
+				traits={ old_guard politically_connected media_personality }
+				skill=1
+				attack_skill=1
+				defense_skill=1
+				planning_skill=1
+				logistics_skill=1
+				legacy_id=0
+			}
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	shared_focus = {
+		id = JAP_continuation_of_privatization
+		icon = JAP_japan_post_chain
+		cost = 5
+		x = 0
+		y = 1
+		
+		relative_position_id = JAP_nationalist_government
+		
+		prerequisite = { 
+			focus = JAP_nationalist_government
+		}
+
+		search_filters = {  }
+	
+		completion_reward = {
+			add_offsite_building = { type = industrial_complex level = 2 }
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	shared_focus = {
+		id = JAP_control_of_the_bureaucracy
+		icon = kor_break_unite
+		cost = 5
+		x = 0
+		y = 4
+		
+		relative_position_id = JAP_nationalist_government
+		
+		prerequisite = { 
+			focus = JAP_nationalist_government
+		}
+
+		search_filters = {  }
+	
+		completion_reward = {
+			add_stability = 0.1
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	shared_focus = {
+		id = JAP_ganbare_nippon
+		icon = JAP_the_right
+		cost = 5
+		x = 3
+		y = 1
+		
+		relative_position_id = JAP_nationalist_government
+		
+		prerequisite = { 
+			focus = JAP_nationalist_government
+		}
+
+		search_filters = {  }
+	
+		completion_reward = {
+			add_country_leader_trait = immortal_samurai
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	shared_focus = {
+		id = JAP_patriotic_press
+		icon = propaganda
+		cost = 5
+		x = -1
+		y = 1
+		
+		relative_position_id = JAP_ganbare_nippon
+		
+		prerequisite = { 
+			focus = JAP_ganbare_nippon
+		}
+
+		search_filters = {  }
+	
+		completion_reward = {
+			
+			if = {
+				limit = {  has_idea = civil_liberties_free  }
+				swap_ideas = {
+					remove_idea = civil_liberties_free
+					add_idea = civil_liberties_totalitarian
+				}
+			}
+			else_if = {
+				limit = {  has_idea = civil_liberties_limited  }
+				swap_ideas = {
+					remove_idea = civil_liberties_limited
+					add_idea = civil_liberties_totalitarian
+				}
+			}
+			else_if = {
+				limit = {  has_idea = civil_liberties_restricted  }
+				swap_ideas = {
+					remove_idea = civil_liberties_restricted
+					add_idea = civil_liberties_totalitarian
+				}
+			}
+			else = {
+				add_stability = 0.1
+			}
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	shared_focus = {
+		id = JAP_patriotic_education
+		icon = JAP_history
+		cost = 5
+		x = 1
+		y = 1
+		
+		relative_position_id = JAP_ganbare_nippon
+		
+		prerequisite = { 
+			focus = JAP_ganbare_nippon
+		}
+
+		search_filters = {  }
+	
+		completion_reward = {
+			add_ideas = JAP_spiritual_mobilization
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	shared_focus = {
+		id = JAP_true_freedom_of_speech
+		icon = JAP_camera_focus
+		cost = 5
+		x = 0
+		y = 3
+		
+		relative_position_id = JAP_ganbare_nippon
+		
+		prerequisite = { 
+			focus = JAP_ganbare_nippon
+		}
+
+		search_filters = {  }
+	
+		completion_reward = {
+			add_ideas = JAP_opposition_to_political_correctness
+			
+			add_timed_idea = { idea = JAP_power_gaining_reactionary days = 180 }
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	shared_focus = {
+		id = JAP_dignified_japan
+		icon = JAP_dai_toa_kyoeiken
+		cost = 7
+		x = 0
+		y = 5
+		
+		relative_position_id = JAP_nationalist_government
+		
+		prerequisite = { 
+			focus = JAP_declaration_of_the_nat_constitution
+		}
+		
+		prerequisite = { 
+			focus = JAP_control_of_the_bureaucracy
+		}
+		
+		prerequisite = { 
+			focus = JAP_true_freedom_of_speech
+		}
+
+		search_filters = {  }
+	
+		completion_reward = {
+			swap_ruler_traits = {
+				remove = immortal_samurai
+				add = immortal_samurai_2
+			}
+		}
+		
+		ai_will_do = {
+			factor = 2
+		}
+	}

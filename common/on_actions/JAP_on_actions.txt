@@ -6,6 +6,13 @@ on_actions = {
 				JAP_JieitaiPopularity_minmax_effect = yes
 				JAP_JieitaiDiscipline_minmax_effect = yes
 			}
+			282 = {	#Tokyo
+				set_state_flag = JAP_right_state
+				JAP_set_high_approval_rating = yes
+			}
+		}
+		effect = {
+			JAP_no_okinawa = yes
 		}
 	}
 
@@ -22,6 +29,19 @@ on_actions = {
 	}
 	
 	on_weekly_JAP = {
+		effect = {
+			every_state = {
+				limit = {
+					AND = {
+						is_owned_and_controlled_by = JAP
+						is_core_of = JAP
+						state_population_k > 500 #NO SENKAKU
+						check_variable = { JAP_state_loyalty = 0 }
+					}
+				}
+				JAP_set_middle_approval_rating = yes
+			}
+		}
 		effect = {
 			if = {
 				limit = {
@@ -169,6 +189,94 @@ on_actions = {
 				}
 				FROM.FROM = { 
 					add_dynamic_modifier = { modifier = dynamic_zainichi_problem } 
+				}
+			}
+		}
+	}
+	
+	on_civil_war_end = {
+		effect = {
+			# After Japan Communist Civil War
+			if = {
+				limit = {
+					original_tag = JAP
+					has_global_flag = JAP_communist_civil_war
+				}
+				clr_global_flag = JAP_communist_civil_war
+				set_global_flag = JAP_communist_civil_war_over
+				ROOT = { 
+					delete_unit_template_and_units = {
+						division_template = "Japanese People's Regiment"
+						disband = no
+					}
+					delete_unit_template_and_units = {
+						division_template = "Japanese Red Army"
+						disband = no
+					}
+				}
+				ROOT = { 
+					country_event = {
+						id = japan.43
+						days = 1
+						random_hours = 8
+					}
+				} # Trigger the Post Civil War effects
+			}
+		}
+	}
+	
+	on_war = {
+		effect = {
+			if = {
+				limit = {
+					original_tag = JAP
+					has_war_with = KOR
+					OR = {
+						has_global_flag = KOR_provisional_left
+						has_global_flag = KOR_provisional_right
+					}
+				}
+				ROOT = { 
+					country_event = {
+						id = japan_exile_korea.7
+						hours = 4
+						random_hours = 8
+					}
+				}
+			}
+		}
+	}
+	
+	on_peace = {
+		effect = {
+			if = {
+				limit = {
+					original_tag = JAP
+					OR = {
+						has_global_flag = KOR_provisional_left
+						has_global_flag = KOR_provisional_right
+					}
+					OR = {
+						KOR = { is_subject_of = JAP }
+						AND = {
+							525 = { 
+								owner = {
+									OR = {
+										original_tag = JAP
+										is_subject_of = JAP
+									}
+								}
+							}
+							NOT = { country_exists = KOR }
+						}
+					}
+				}
+				ROOT = { 
+					country_event = {
+						id = japan_exile_korea.9
+						hours = 4
+						random_hours = 8
+					}
 				}
 			}
 		}

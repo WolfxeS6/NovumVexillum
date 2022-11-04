@@ -1,74 +1,27 @@
 
 JAP_habatsu_system = {
+	allowed = {
+		original_tag = JAP
+	}
+}
+
+JAP_kato_mori = {
 	icon = usa_congress
-	picture = GFX_decision_cat_picture_chi_political_support
-	allowed = {
-		original_tag = JAP
-	}
-	
-	scripted_gui = jap_congress_decision_ui	
-	priority = 50
-}
 
-JAP_KOR_korean_project_decisions = {
-	visible = {
-		has_country_flag = JAP_rok_break_flag
-	}
+	scripted_gui = JAP_kato_and_mori_ui	
 	
 	allowed = {
 		original_tag = JAP
 	}
 	
-	priority = {
-		base = 0
-		modifier = {
-			add = 10
-			has_country_flag = JAP_rok_break_flag
-			any_other_country = {
-				has_country_flag = JAP_rok_break_flag
-			}
-		}
-	}
-	
-	#custom_icon = {
-	#	tag = KOR
-	#	value = Korean_project_icon_value
-	#	desc = JAP_KOR_korean_project_breakdown
-#
-#		#visible = {
-#		#	has_event_target = scope_CHI
-#		#}
-#	}
-}
-
-JAP_PRK_korean_project_decisions = {
 	visible = {
-		has_country_flag = JAP_prk_break_flag
+		has_country_flag = JAP_kato_angry_flag
+		NOT = { has_country_flag = JAP_kato_rebellion_flag }
 	}
 	
-	allowed = {
-		original_tag = JAP
-	}
-}
-
-JAP_CHI_taiwan_project_decisions = {
-	visible = {
-		has_country_flag = JAP_chi_break_flag
-	}
+	visible_when_empty = yes
+	priority = 25
 	
-	allowed = {
-		original_tag = JAP
-	}
-}
-
-JAP_PRK_north_korea_project_decisions = {
-	visible = {
-		has_country_flag = JAP_prk_break_flag
-	}
-	
-	allowed = {
-		original_tag = JAP
-	}
 }
 
 JAP_the_culture_project_decisions = {
@@ -137,30 +90,6 @@ JAP_southren_occupation_decisions = {
 }
 
 #### Heisei Depression
-
-JAP_heisei_depression_moderate_decisions = {
-	icon = japan
-	
-	visible = {
-		has_completed_focus = JAP_moderate_reform
-	}
-	
-	allowed = {
-		original_tag = JAP
-	}
-}
-
-JAP_heisei_depression_radical_decisions = {
-	icon = japan
-	
-	visible = {
-		has_completed_focus = JAP_radical_reform
-	}
-	
-	allowed = {
-		original_tag = JAP
-	}
-}
 
 #### expansion of Japan
 
@@ -255,17 +184,6 @@ JAP_jieitai_system = {
 ##### IoEF
 
 JAP_IoEF = {
-
-	#on_map_area = {
-	#	target_array = owned_states
-	#	target_trigger = {
-	#		FROM = {
-	#			has_dynamic_modifier = { modifier = dynamic_electricity_problem }
-	#		}
-	#	}
-	#	name = TUR_kemalist_state_management_map_category_name
-	#	zoom = 150
-	#}
 	
 	visible = {
 		has_completed_focus = JAP_generator_standard_unification
@@ -297,5 +215,71 @@ JAPKOR_dokdo_and_takeshima = {
 			original_tag = JAP
 			original_tag = KOR
 		}
+	}
+}
+
+JAP_rail_plan = {
+	picture = GFX_decision_cat_picture_train
+	
+	visible = {
+		has_completed_focus = JAP_improvement_of_railway_network
+	}
+	
+	allowed = {
+		original_tag = JAP
+	}
+}
+
+JAP_comecon_dec_cat = {
+	priority = 13
+
+	icon = SOV_civil_puppet_interaction
+	picture = GFX_decision_cat_picture_soviet_comecon
+
+	allowed = {
+		original_tag = JAP
+	}
+
+	visible = {
+		has_completed_focus = JAP_communist_economic_community
+	}
+}
+
+JAP_find_alliance = {
+	priority = 13
+
+	allowed = {
+		original_tag = JAP
+	}
+
+	visible = {
+		OR = {
+			has_completed_focus = JAP_GEACPS_alliance
+			has_completed_focus = JAP_beacon_of_freedom_in_east_asia
+		}
+	}
+}
+
+JAP_regional_development_plan = {
+	priority = 8
+
+	allowed = {
+		original_tag = JAP
+	}
+
+	visible = {
+		has_completed_focus = JAP_support_for_steel_companies
+	}
+}
+
+JAP_world_revolution_projcet = {
+	priority = 35
+
+	allowed = {
+		original_tag = JAP
+	}
+
+	visible = {
+		has_completed_focus = JAP_world_revolution
 	}
 }
