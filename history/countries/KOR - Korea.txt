@@ -9,11 +9,83 @@ if = {
 	}
 }
 
-set_research_slots = 5
-set_convoys = 580
-set_stability = 0.7
+country_event = { id = korea_parliamentary_system.0 days = 48 random = 140 } 
+country_event = { id = korea_parliamentary_system.3 days = 160 random = 112 } 
+
+2000.1.1 = {
+	country_event = { id = south_korea.138 days = 100 }
+	country_event = { id = south_korea.130 days = 227 } #8.15
+}
+
+set_variable = { var = KORRegimeStability value = 60.0 }
+set_variable = { var = KORRegimeStability_min value = 0 }
+set_variable = { var = KORRegimeStability_max value = 100 }
+set_variable = { var = KORBulgomVar value = 100 }
+
+set_variable = { var = KOR_fundamentalists_loyalty_status value = 0 }
+set_variable = { var = KOR_reactionists_loyalty_status value = 0 }
+set_variable = { var = KOR_neocon_loyalty_status value = 0 }
+set_variable = { var = KOR_conservatism_loyalty_status value = 0 }
+set_variable = { var = KOR_social_liberalism_loyalty_status value = 0 }
+set_variable = { var = KOR_democratic_socialism_loyalty_status value = 0 }
+set_variable = { var = KOR_social_democracy_loyalty_status value = 0 }
+set_variable = { var = KOR_NL_loyalty_status value = 0 }
+set_variable = { var = KOR_feminism_loyalty_status value = 0 }
+set_variable = { var = KOR_centrist_loyalty_status value = 0 }
+set_variable = { var = KOR_independent_loyalty_status value = 0 }
+
+set_variable = { var = KOR_fundamentalists_seats_status value = 0 }
+set_variable = { var = KOR_reactionists_seats_status value = 11 }
+set_variable = { var = KOR_neocon_seats_status value = 107 }
+set_variable = { var = KOR_conservatism_seats_status value = 80 }
+set_variable = { var = KOR_social_liberalism_seats_status value = 18 }
+set_variable = { var = KOR_democratic_socialism_seats_status value = 0 }
+set_variable = { var = KOR_social_democracy_seats_status value = 0 }
+set_variable = { var = KOR_NL_seats_status value = 0 }
+set_variable = { var = KOR_feminism_seats_status value = 0 }
+set_variable = { var = KOR_centrist_seats_status value = 52 }
+set_variable = { var = KOR_independent_seats_status value = 32 }
+
+set_variable = { var = KOR_all_loyalty_status value = 0 }
+set_variable = { var = KOR_all_seats_status value = 300 }
+set_variable = { var = KOR_half_seats_status value = 150 }
+
+set_variable = { var = KOR_parliament_seat_support_array^0 value = 8 }
+set_variable = { var = KOR_parliament_seat_support_array^1 value = 28 }
+set_variable = { var = KOR_parliament_seat_support_array^2 value = 140 }
+set_variable = { var = KOR_parliament_seat_support_array^3 value = 70 }
+set_variable = { var = KOR_parliament_seat_support_array^4 value = 43 }
+set_variable = { var = KOR_parliament_seat_support_array^5 value = 0 }
+set_variable = { var = KOR_parliament_seat_support_array^6 value = 11 }
+set_variable = { var = KOR_parliament_seat_support_array^7 value = 0 }
+set_variable = { var = KOR_parliament_seat_support_array^8 value = 0 }
+set_variable = { var = KOR_parliament_seat_support_array^9 value = 0 }
+set_variable = { var = KOR_parliament_seat_support_array^10 value = 0 }
 
 set_variable = { GetDokdoSupport = 60.0 }
+
+add_dynamic_modifier = { modifier = KOR_national_assembly_dynamic_modifier }
+
+set_country_flag = unique_theorist
+set_country_flag = unique_high_command
+set_country_flag = unique_air_chief
+set_country_flag = unique_navy_chief
+set_country_flag = unique_army_chief
+set_country_flag = unique_industrial_concern
+set_country_flag = unique_political_advisor_nomal
+set_country_flag = unique_political_advisor_party_boost
+set_country_flag = KOR_centrist_coalition
+set_country_flag = KOR_social_liberalism_coalition
+set_country_flag = KOR_democratic_socialism_coalition
+set_country_flag = unique_tank_manufacturer
+set_country_flag = unique_naval_manufacturer
+set_country_flag = unique_aircraft_manufacturer
+
+load_focus_tree = KOR_focus_tree_2000
+
+set_research_slots = 4
+set_convoys = 580
+set_stability = 0.7
 
 set_country_flag = country_language_korean
 
@@ -133,13 +205,37 @@ if = {
 add_ideas = {
 	national_development_developed
 	economy_growth
-	immigration_policy_loose_regulations
-	civil_liberties_free
+	#immigration_policy_loose_regulations
+	#civil_liberties_free
+	
+	civil_liberties_restricted
+	public_safety_central_law_office
+	welfare_none
+	immigration_policy_strict_regulations
 	population_growth_stagnation
 	extensive_conscription
 	free_trade
+	mobilization_service_time_pure_race_only
+	
+	KOR_WT_OPCON
+	KOR_balancer_theory
+	KOR_political_violence
+	KOR_coalition_on_the_brink_of_collapse
+	KOR_cultural_isolation_crisis
+	KOR_danilminjok
+	kor_descendant_of_the_Imperial_army_1
+	generic_asia_idea_article_29	
+	generic_asia_idea_civilian_forced_labor_system
+	KOR_female_rights_1
+	KOR_non_trade_union
+	
+	prime_minister_kim_jong_pil
+	
+	kor_barbarous_training
+	kor_tools
+	kor_yamatodamashii
 }
-
+	
 give_military_access = USA
 
 add_opinion_modifier = {
@@ -149,8 +245,13 @@ add_opinion_modifier = {
 
 add_opinion_modifier = {
 	target = PRK
-	modifier = rival
+	modifier = sunshine_policy_opinion
 }
+
+#add_opinion_modifier = {
+#	target = PRK
+#	modifier = rival
+#}
 
 add_opinion_modifier = {
 	target = PRK
@@ -158,60 +259,141 @@ add_opinion_modifier = {
 }
 
 set_politics = {	
-	ruling_party = social_liberal
-	last_election = "1998.12.5"
+	ruling_party = conservative
+	last_election = "1997.12.5"
 	election_frequency = 60
 	elections_allowed = yes
 }
 
 set_popularities = {
+	#Left Wings
     nationalist = 2
-    conservative = 30
-    market_liberal = 10
-    social_liberal = 45
     social_democrat = 5
-    progressive = 5
+	
+	#Right Wings
+	reactionary = 7
+    market_liberal = 38
+
+	#Centre-Left Wings
+    conservative = 30
+    social_liberal = 15
     democratic_socialist = 3
 }
-recruit_character = KOR_chun_doohwan
-recruit_character = KOR_kim_daejung
-recruit_character = KOR_lee_hoichang
-recruit_character = KOR_hong_sehwa
-recruit_character = KOR_park_jiewon
-recruit_character = KOR_sim_sangjung
-recruit_character = KOR_ha_seungsoo
-recruit_character = KOR_geum_min
-recruit_character = KOR_kim_kwanjin
-recruit_character = KOR_han_mingoo
-recruit_character = KOR_jeong_seungjo
-recruit_character = KOR_jang_jungyu
-recruit_character = KOR_lee_sanghoon
-recruit_character = KOR_lee_soonjin
-recruit_character = KOR_park_chanju
-recruit_character = KOR_kim_jangsoo
-recruit_character = KOR_choi_ikbong
-recruit_character = KOR_lee_seungdo
-recruit_character = KOR_kwon_ohsung
-recruit_character = KOR_park_sunwoo
-recruit_character = KOR_song_myungsoon
-recruit_character = KOR_jung_hosub
-recruit_character = KOR_lee_kisik
-recruit_character = KOR_song_youngmoo
-recruit_character = KOR_sim_seungseob
-recruit_character = KOR_kim_sungchan
-recruit_character = KOR_shinwoo_kim
-recruit_character = KOR_chul_yun
-recruit_character = KOR_shinwoo_jeong
-recruit_character = KOR_kwang_lee
+
+# Korea Leaders
+recruit_character = kor_kim_dae_jung
+recruit_character = kor_roh_moo_hyun
+recruit_character = kor_lee_hoi_chang
+recruit_character = kor_lee_jae_myung
+recruit_character = prime_minister_lee_jae_myung
+recruit_character = kor_park_geun_hye
+recruit_character = kor_sim_sang_jung
+recruit_character = kor_lee_seok_ki
+recruit_character = kor_lee_nak_yon
+recruit_character = kor_baek_ki_wan
+recruit_character = kor_lee_jung_hee
+recruit_character = kor_moon_chang_geuk
+recruit_character = kor_ayane_sakura
+recruit_character = kor_vladimir_tikhonov
+recruit_character = kor_yoon_seo_in
+recruit_character = kor_lee_myung_bak
+recruit_character = kor_bakufu
+recruit_character = kor_kim_dae_jung_return
+recruit_character = kor_yi_won
+
+#general
+recruit_character = kor_paik_sun_yup
+recruit_character = kor_Kim_hyun_jip
+recruit_character = kor_kim_byung_kwan
+recruit_character = kor_yoon_eui_cheol
+recruit_character = kor_Park_jung_yi
+recruit_character = kor_Roh_Kyung_hee
+recruit_character = kor_Kim_Kwan_Jin
+recruit_character = kor_Han_Min_Goo
+recruit_character = kor_Jeong_Seung_Jo
+recruit_character = kor_Jang_Jun_Gyu
+recruit_character = kor_Lee_Sang_Hoon
+recruit_character = kor_Lee_Soon_Jin
+recruit_character = kor_Park_Chan_ju
+recruit_character = kor_Kim_Jang_soo
+recruit_character = kor_Choi_Ik_Bong
+recruit_character = kor_Lee_Seung_do
+recruit_character = kor_Kwon_Oh_sung
+recruit_character = kor_Park_Sun_woo
+recruit_character = kor_Song_Myung_soon
+
+recruit_character = kor_Jung_Ho_Sub
+recruit_character = kor_Lee_Ki_Sik
+recruit_character = kor_Song_Young_moo
+recruit_character = kor_Sim_Seung_Seob
+recruit_character = kor_Kim_Sung_chan
+
+#advisor
+recruit_character = kor_chang_ha_joon
+recruit_character = kor_choo_mi_ae
+recruit_character = kor_eun_soo_mi
+recruit_character = kor_park_won_soon
+recruit_character = kor_pyo_chang_won
+recruit_character = kor_cho_kuk
+recruit_character = kor_park_jie_won
+recruit_character = kor_kim_han_gil
+recruit_character = kor_ahn_hee_jung
+recruit_character = kor_na_kyung_won
+recruit_character = kor_yoo_seung_min
+recruit_character = kor_chang_je_won
+recruit_character = kor_joo_ho_young
+recruit_character = kor_lee_jae_oh
+recruit_character = kor_kim_chong_in
+recruit_character = kor_Park_gi_wan
+recruit_character = kor_Park_woong
+recruit_character = kor_Park_in_ho
+
+
+##### GENERAL
+
+# Edited by. Ran Mitake
+
+# FIELD MARSHAL
+## United Nations Command
+#create_field_marshal = {
+#	name = "Thomas A. Schwartz" #Add submod
+#	picture = "generals/Thomas_A_Schwartz.dds"
+#	traits = { infantry_officer brilliant_strategist defensive_doctrine harsh_leader 
+#	war_hero #Vietnam War
+#	}
+#	id = 62501 #He is an American and will return to the U.S. if South Korea goes to war with the U.S.
+#	skill = 4
+#	attack_skill = 4
+#	defense_skill = 4
+#	planning_skill = 2
+#	logistics_skill = 3
+#}
 
 
 2015.10.1 = {
+	load_focus_tree = KOR_focus_tree_democracy
+	retire_character = kor_kim_dae_jung
+	country_event = { id = south_korea.130 days = 319 } #8.15
+	set_country_flag = kor_roh_moo_hyun_dead
+	
+	remove_ideas = {
+		KOR_political_violence
+		KOR_coalition_on_the_brink_of_collapse
+		KOR_cultural_isolation_crisis
+		KOR_female_rights_1
+		prime_minister_kim_jong_pil
+	}
+	
+	add_ideas = {
+		KOR_female_rights_3
+	}
+	
 	set_politics = {
 		ruling_party = conservative
 		last_election = "2012.4.11"
 		election_frequency = 60
 		elections_allowed = yes
-}
+	}
 
     set_popularities = {
         conservative = 48
@@ -220,6 +402,19 @@ recruit_character = KOR_kwang_lee
         progressive = 2
     }
 
+	create_country_leader = {
+		name = "Moon Jae-in"
+		picture = "Moon_Jae_In.dds"
+		ideology = christian_democrat
+		traits = { KOR_undaunted_nationalist }
+	}
+	
+	create_country_leader = {
+		name = "Lee Nak-yon"
+		picture = "Lee_Nak_yon.dds"
+		ideology = liberalist
+		traits = {  }
+	}
 }
 
 ### VARIANTS ###
