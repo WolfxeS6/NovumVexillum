@@ -1,0 +1,117 @@
+scripted_gui = {
+
+	japanese_state_window = {
+		context_type = selected_state_context
+		window_name = "JAP_state_gui_panel"
+		parent_window_token = selected_state_view
+
+		ai_enabled = {
+			tag = JAP
+		}
+
+		visible = {
+			always = no #Sealed for the time being because of the bug issue
+		
+			ROOT = { original_tag = JAP }
+			is_owned_by = ROOT
+			is_core_of = ROOT
+			state_population_k > 500 #NO SENKAKU
+		}
+
+		effects = {
+			### Anime Support
+			JAP_State_decision_Support_Anime_button_click = {
+				set_state_flag = { flag = JAP_state_decision_support_anime_declared days = 350 value = 1 }
+				ROOT = { add_political_power = -75 }
+			}
+			### Parties Support
+			JAP_State_decision_Support_parties_button_click = {
+				set_state_flag = { flag = JAP_state_decision_support_parties_declared days = 120 value = 1 }
+				ROOT = { add_political_power = -25 }
+			}
+			### Rural Support
+			JAP_State_decision_Support_industry_button_click = {
+				set_state_flag = { flag = JAP_state_decision_support_industry_declared days = 120 value = 1 }
+				add_dynamic_modifier = {
+					modifier = JAP_state_decision_support_industry_token
+					days = 120
+					scope = THIS #.owner
+				}
+				ROOT = { add_political_power = -25 }
+				THIS = {
+					random_list = {
+						10 = {
+							modifier = {
+								add = 10
+								has_stability < 0.6
+							}
+							modifier = {
+								add = 10
+								has_stability < 0.4
+							}
+							modifier = {
+								add = 20
+								has_stability < 0.3
+							}
+							
+							state_event = { id = japan_state.1 days = 120 }
+						}
+						85 = { 		
+							modifier = {
+								add = -10
+								has_stability < 0.6
+							}
+							modifier = {
+								add = -5
+								has_stability < 0.4
+							}
+							modifier = {
+								add = -20
+								has_stability < 0.3
+							}
+							#JAP_set_approval_rating_plus_1 = yes
+							state_event = { id = japan_state.2 days = 120 }
+						}
+						5 = { 		
+							modifier = {
+								add = -5
+								has_stability < 0.4
+							}
+							#JAP_set_approval_rating_plus_2 = yes
+							state_event = { id = japan_state.3 days = 120 }
+						}
+					}
+				}
+			}
+		}
+
+		triggers = {
+			JAP_State_decision_Support_Anime_button_click_enabled = {
+				NOT = { has_state_flag = JAP_state_decision_support_anime_declared }
+				ROOT = {
+					has_political_power > 74
+					has_completed_focus = JAP_promote_rural_with_animation
+				}
+			}
+			JAP_State_decision_Support_parties_button_click_enabled = {
+				NOT = { has_state_flag = JAP_state_decision_support_parties_declared }
+				ROOT = {
+					has_political_power > 24
+				}
+			}
+			JAP_State_decision_Support_industry_button_click_enabled = {
+				NOT = { has_state_flag = JAP_state_decision_support_industry_declared }
+				ROOT = {
+					has_completed_focus = JAP_rural_problem
+					has_political_power > 24
+				}
+			}
+		}
+
+		properties = {
+		}
+
+	}
+
+}
+
