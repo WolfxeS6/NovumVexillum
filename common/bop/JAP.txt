@@ -1,0 +1,336 @@
+
+JAP_power_balance = {
+	initial_value = -0.25
+	left_side = JAP_hoshu_boryu	
+	right_side = JAP_hoshu_honryu	
+	decision_category = JAP_habatsu_system
+
+	### Neutral status
+	range = {
+		id = JAP_balance_range
+		min = -0.10
+		max = 0.10
+		modifier = {
+		}
+		on_activate = {
+
+		}
+		on_deactivate = {
+			
+		}
+	}
+	
+	### Hoshu Boryu (Minor Con)
+	side = {
+		id = JAP_hoshu_boryu	
+		icon = GFX_bop_JAP_hoshu_boryu
+
+		range = {
+			id = JAP_hoshu_boryu_low_control_range
+			min = -0.3
+			max = -0.1
+			modifier = {
+				political_advisor_cost_factor = 0.1
+			}
+			on_activate = {
+				
+			}
+			on_deactivate = {
+				
+			}
+		}
+
+		range = {
+			id = JAP_hoshu_boryu_medium_control_range
+			min = -0.6
+			max = -0.3
+			modifier = {
+				stability_factor = -0.03
+				political_advisor_cost_factor = 0.15
+				offensive_war_stability_factor = 0.1
+				war_support_factor = 0.05
+			}
+			on_activate = {
+				
+			}
+			on_deactivate = {
+				
+			}
+		}
+
+		range = {
+			id = JAP_hoshu_boryu_high_control_range
+			min = -0.9
+			max = -0.6
+			modifier = {
+				stability_factor = -0.05
+				political_advisor_cost_factor = 0.2
+				offensive_war_stability_factor = 0.15
+				war_support_factor = 0.1
+				experience_gain_army = 0.01
+				experience_gain_air = 0.01
+				experience_gain_navy = 0.01
+			}
+			on_activate = {
+			}
+			on_deactivate = {
+				
+			}
+		}
+
+		range = {
+			id = JAP_hoshu_boryu_total_control_range
+			min = -1
+			max = -0.9
+			modifier = {
+				stability_factor = -0.07
+				political_advisor_cost_factor = 0.25
+				offensive_war_stability_factor = 0.2
+				war_support_factor = 0.15
+				experience_gain_army = 0.04
+				experience_gain_air = 0.04
+				experience_gain_navy = 0.04
+			}
+			on_activate = {
+			}
+			on_deactivate = {
+				
+			}
+		}
+	}
+	
+	### Hoshu Honryu (Major Con)
+	side = {
+		id = JAP_hoshu_honryu	
+		icon = GFX_bop_JAP_hoshu_honryu
+
+		range = {
+			id = JAP_hoshu_honryu_low_control_range
+			min = 0.1
+			max = 0.3
+			modifier = {
+				political_power_factor = 0.05
+				stability_factor = 0.01
+				consumer_goods_factor = -0.02
+				justify_war_goal_time = 0.1
+			}
+			on_activate = {
+			}
+			on_deactivate = {
+				
+			}
+		}
+
+		range = {
+			id = JAP_hoshu_honryu_medium_control_range
+			min = 0.3
+			max = 0.6
+			modifier = {
+				political_power_factor = 0.07
+				consumer_goods_factor = -0.05
+				stability_factor = 0.02
+				justify_war_goal_time = 0.2
+			}
+			on_activate = {
+				
+			}
+			on_deactivate = {
+				
+			}
+		}
+
+		range = {
+			id = JAP_hoshu_honryu_high_control_range
+			min = 0.6
+			max = 0.9
+			modifier = {
+				political_power_factor = 0.1
+				stability_factor = 0.03
+				consumer_goods_factor = -0.07
+				justify_war_goal_time = 0.25
+			}
+			on_activate = {
+				
+			}
+			on_deactivate = {
+				
+			}
+		}
+
+		range = {
+			id = JAP_hoshu_honryu_total_control_range
+			min = 0.9
+			max = 1
+			modifier = {
+				political_power_factor = 0.15
+				stability_factor = 0.05
+				consumer_goods_factor = -0.1
+				justify_war_goal_time = 0.33
+			}
+			on_activate = {
+			}
+			on_deactivate = {
+			}
+		}
+	}
+	
+	### Liberalism
+	side = {
+		id = JAP_liberalism
+		icon = GFX_bop_JAP_innovation
+
+		range = {
+			id = JAP_liberalism_low_control_range
+			min = -0.3
+			max = -0.1
+			modifier = {
+				war_support_factor = 0.1
+				max_command_power_mult = 0.1
+				#consumer_goods_factor = 0.1
+			}
+			on_activate = {
+				
+			}
+			on_deactivate = {
+				
+			}
+		}
+
+		range = {
+			id = JAP_liberalism_medium_control_range
+			min = -0.6
+			max = -0.3
+			modifier = {
+				war_support_factor = 0.1
+				max_command_power_mult = 0.1
+				#consumer_goods_factor = 0.1
+				political_power_factor = 0.02
+			}
+			on_activate = {
+				
+			}
+			on_deactivate = {
+				
+			}
+		}
+
+		range = {
+			id = JAP_liberalism_high_control_range
+			min = -0.9
+			max = -0.6
+			modifier = {
+				war_support_factor = 0.1
+				max_command_power_mult = 0.15
+				#consumer_goods_factor = 0.15
+				political_power_factor = 0.05
+				equipment_conversion_speed = 0.05
+			}
+			on_activate = {
+			}
+			on_deactivate = {
+				
+			}
+		}
+
+		range = {
+			id = JAP_liberalism_total_control_range
+			min = -1
+			max = -0.9
+			modifier = {
+				war_support_factor = 0.1
+				max_command_power_mult = 0.15
+				#consumer_goods_factor = 0.2
+				political_power_factor = 0.05
+				equipment_conversion_speed = 0.1
+			}
+			on_activate = {
+			}
+			on_deactivate = {
+				
+			}
+		}
+	}
+	
+	### socialism
+	side = {
+		id = JAP_socialism
+		icon = GFX_bop_JAP_socialism
+
+		range = {
+			id = JAP_socialism_low_control_range
+			min = 0.1
+			max = 0.3
+			modifier = {
+				max_surrender_limit_offset = 0.02
+				annex_cost_factor = 0.02
+				political_advisor_cost_factor = -0.05
+				democratic_socialist_drift = 0.02
+			}
+			on_activate = {
+			}
+			on_deactivate = {
+				
+			}
+		}
+
+		range = {
+			id = JAP_socialism_medium_control_range
+			min = 0.3
+			max = 0.6
+			modifier = {
+				max_surrender_limit_offset = 0.04
+				annex_cost_factor = 0.05
+				drift_defence_factor = 0.1
+				political_advisor_cost_factor = -0.1
+				research_speed_factor = 0.05
+				democratic_socialist_drift = 0.03
+			}
+			on_activate = {
+				
+			}
+			on_deactivate = {
+				
+			}
+		}
+
+		range = {
+			id = JAP_socialism_high_control_range
+			min = 0.6
+			max = 0.9
+			modifier = {
+				max_surrender_limit_offset = 0.06
+				annex_cost_factor = 0.1
+				drift_defence_factor = 0.1
+				political_advisor_cost_factor = -0.2
+				research_speed_factor = 0.05
+				democratic_socialist_drift = 0.04
+			}
+			on_activate = {
+				
+			}
+			on_deactivate = {
+				
+			}
+		}
+
+		range = {
+			id = JAP_socialism_total_control_range
+			min = 0.9
+			max = 1
+			modifier = {
+				max_surrender_limit_offset = 0.08
+				annex_cost_factor = 0.2
+				drift_defence_factor = 0.1
+				political_advisor_cost_factor = -0.2
+				research_speed_factor = 0.05
+				democratic_socialist_drift = 0.05
+			}
+			on_activate = {
+			}
+			on_deactivate = {
+			}
+		}
+	}
+	
+}
+
