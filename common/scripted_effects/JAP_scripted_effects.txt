@@ -185,7 +185,7 @@ JAP_JieitaiPopularity_automatic_edit = {
 		limit = { check_variable = { JieitaiPopularity > 70 } }
 		set_temp_variable = { JieitaiPopularity_subtract_modifier = 0.15 }
 	}
-	else_if = {
+	else = {
 		limit = { check_variable = { JieitaiPopularity > 50 } }
 		set_temp_variable = { JieitaiPopularity_subtract_modifier = 0.1 }
 	}
@@ -198,7 +198,7 @@ JAP_JieitaiDiscipline_automatic_edit = {
 		limit = { check_variable = { JieitaiDiscipline > 70 } }
 		set_temp_variable = { JieitaiDiscipline_subtract_modifier = 0.15 }
 	}
-	else_if = {
+	else = {
 		limit = { check_variable = { JieitaiDiscipline > 50 } }
 		set_temp_variable = { JieitaiDiscipline_subtract_modifier = 0.1 }
 	}
@@ -339,5 +339,490 @@ JAP_D_dynamic_modifers_effect = {
 		set_variable = { var = JAP_p_d_special_forces_cap_modifier value = -0.2 }
 		set_variable = { var = JAP_p_d_army_org_factor_modifier value = -0.2 }
 		set_variable = { var = JAP_p_d_army_org_regain_modifier value = -0.2 }
+	}
+}
+
+JAP_GetKatoSupport_add_3_effect = {
+	add_to_variable = { var = GetKatoSupport value = 3 }
+	custom_effect_tooltip = JAP_GetKatoSupport_3_tt
+	JAP_GetKatoSupport_minmax_effect = yes
+}
+
+JAP_GetKatoSupport_add_5_effect = {
+	add_to_variable = { var = GetKatoSupport value = 5 }
+	custom_effect_tooltip = JAP_GetKatoSupport_5_tt
+	JAP_GetKatoSupport_minmax_effect = yes
+}
+
+JAP_GetKatoSupport_add_7_effect = {
+	add_to_variable = { var = GetKatoSupport value = 7 }
+	custom_effect_tooltip = JAP_GetKatoSupport_7_tt
+	JAP_GetKatoSupport_minmax_effect = yes
+}
+
+JAP_GetKatoSupport_minmax_effect = {
+	clamp_variable = {
+		var = GetKatoSupport
+		min = 0
+		max = 100
+	}
+}
+
+JAP_GetKatoSupport_subtract_3_effect = {
+	add_to_variable = { var = GetKatoSupport value = -3 }
+	custom_effect_tooltip = JAP_subtract_KatoSupport_3_tt
+	JAP_GetKatoSupport_minmax_effect = yes
+}
+
+JAP_GetKatoSupport_subtract_5_effect = {
+	add_to_variable = { var = GetKatoSupport value = -5 }
+	custom_effect_tooltip = JAP_subtract_KatoSupport_5_tt
+	JAP_GetKatoSupport_minmax_effect = yes
+}
+
+JAP_GetKatoSupport_subtract_7_effect = {
+	add_to_variable = { var = GetKatoSupport value = -7 }
+	custom_effect_tooltip = JAP_subtract_KatoSupport_7_tt
+	JAP_GetKatoSupport_minmax_effect = yes
+}
+
+JAP_GetKatoSupport_minmax_effect = {
+	clamp_variable = {
+		var = GetKatoSupport
+		min = 0
+		max = 100
+	}
+}
+
+JAP_heisei_fukyo_down_effect = {
+#custom_effect_tooltip = PRK_national_bankruptcy_down_tt
+	if = {
+		limit = { has_idea = JAP_heisei_fukyo_4 }
+		swap_ideas = {
+			remove_idea = JAP_heisei_fukyo_4
+			add_idea = JAP_heisei_fukyo_3
+		}
+	}
+	else_if = {
+		limit = { has_idea = JAP_heisei_fukyo_3 }
+		swap_ideas = {
+			remove_idea = JAP_heisei_fukyo_3
+			add_idea = JAP_heisei_fukyo_2
+		}
+	}
+	else_if = {
+		limit = { has_idea = JAP_heisei_fukyo_2 }
+		swap_ideas = {
+			remove_idea = JAP_heisei_fukyo_2
+			add_idea = JAP_heisei_fukyo_1
+		}
+	}
+	else_if = {
+		limit = { has_idea = JAP_heisei_fukyo_1 }
+		remove_ideas = JAP_heisei_fukyo_1
+	}
+}
+
+JAP_set_approval_rating_plus_1 = {
+	if = {
+		limit = { check_variable = { JAP_state_loyalty < 2 } }
+		JAP_set_low_approval_rating = yes
+		custom_effect_tooltip = state_01
+	}
+	else_if = {
+		limit = { check_variable = { JAP_state_loyalty = 2 } }
+		JAP_set_middle_approval_rating = yes
+		custom_effect_tooltip = state_02
+	}
+	else_if = {
+		limit = { check_variable = { JAP_state_loyalty = 3 } }
+		JAP_set_high_approval_rating = yes
+		custom_effect_tooltip = state_03
+	}
+	else = {
+		JAP_set_very_high_approval_rating = yes
+		custom_effect_tooltip = else
+	}
+}
+
+JAP_set_approval_rating_plus_2 = {
+	if = {
+		limit = { check_variable = { JAP_state_loyalty < 2 } }
+		JAP_set_middle_approval_rating = yes
+		custom_effect_tooltip = state_01
+	}
+	else_if = {
+		limit = { check_variable = { JAP_state_loyalty = 2 } }
+		JAP_set_high_approval_rating = yes
+		custom_effect_tooltip = state_02
+	}
+	else = {
+		JAP_set_very_high_approval_rating = yes
+		custom_effect_tooltip = else
+	}
+}
+
+JAP_set_low_approval_rating = {
+	set_variable = { JAP_state_loyalty = 2 }
+	if = {
+		limit = {
+			is_owned_and_controlled_by = JAP
+			is_core_of = JAP
+		}
+		hidden_effect = {
+			if = {
+				limit = { has_dynamic_modifier = { modifier = very_high_approval_rating } }
+				remove_dynamic_modifier = { modifier = very_high_approval_rating }
+			}
+			if = {
+				limit = { has_dynamic_modifier = { modifier = high_approval_rating } }
+				remove_dynamic_modifier = { modifier = high_approval_rating }
+			}
+			if = {
+				limit = { has_dynamic_modifier = { modifier = very_low_approval_rating } }
+				remove_dynamic_modifier = { modifier = very_low_approval_rating }
+			}
+			if = {
+				limit = { NOT = { has_dynamic_modifier = { modifier = low_approval_rating } } }
+				add_dynamic_modifier = { 
+					modifier = low_approval_rating 
+					scope = THIS.owner 
+				}
+			}
+		}
+	}
+}
+
+JAP_set_middle_approval_rating = {
+	set_variable = { JAP_state_loyalty = 3 }
+	if = {
+		limit = {
+			is_owned_and_controlled_by = JAP
+			is_core_of = JAP
+		}
+		hidden_effect = {
+			if = {
+				limit = { has_dynamic_modifier = { modifier = very_high_approval_rating } }
+				remove_dynamic_modifier = { modifier = very_high_approval_rating }
+			}
+			if = {
+				limit = { has_dynamic_modifier = { modifier = low_approval_rating } }
+				remove_dynamic_modifier = { modifier = low_approval_rating }
+			}
+			if = {
+				limit = { has_dynamic_modifier = { modifier = high_approval_rating } }
+				remove_dynamic_modifier = { modifier = high_approval_rating }
+			}
+			if = {
+				limit = { has_dynamic_modifier = { modifier = very_low_approval_rating } }
+				remove_dynamic_modifier = { modifier = very_low_approval_rating }
+			}
+		}
+	}
+}
+
+JAP_set_high_approval_rating = {
+	set_variable = { JAP_state_loyalty = 4 }
+	if = {
+		limit = {
+			is_owned_and_controlled_by = JAP
+			is_core_of = JAP
+		}
+		hidden_effect = {
+			if = {
+				limit = { has_dynamic_modifier = { modifier = very_high_approval_rating } }
+				remove_dynamic_modifier = { modifier = very_high_approval_rating }
+			}
+			if = {
+				limit = { has_dynamic_modifier = { modifier = low_approval_rating } }
+				remove_dynamic_modifier = { modifier = low_approval_rating }
+			}
+			if = {
+				limit = { has_dynamic_modifier = { modifier = very_low_approval_rating } }
+				remove_dynamic_modifier = { modifier = very_low_approval_rating }
+			}
+			if = {
+				limit = { NOT = { has_dynamic_modifier = { modifier = high_approval_rating } } }
+				add_dynamic_modifier = { 
+					modifier = high_approval_rating 
+					scope = THIS.owner 
+				}
+			}
+		}
+	}
+}
+
+JAP_set_very_high_approval_rating = {
+	set_variable = { JAP_state_loyalty = 5 }
+	if = {
+		limit = {
+			is_owned_and_controlled_by = JAP
+			is_core_of = JAP
+		}
+		hidden_effect = {
+			if = {
+				limit = { has_dynamic_modifier = { modifier = very_high_approval_rating } }
+				remove_dynamic_modifier = { modifier = very_high_approval_rating }
+			}
+			if = {
+				limit = { has_dynamic_modifier = { modifier = low_approval_rating } }
+				remove_dynamic_modifier = { modifier = low_approval_rating }
+			}
+			if = {
+				limit = { has_dynamic_modifier = { modifier = very_low_approval_rating } }
+				remove_dynamic_modifier = { modifier = very_low_approval_rating }
+			}
+			if = {
+				limit = { NOT = { has_dynamic_modifier = { modifier = high_approval_rating } } }
+				add_dynamic_modifier = { 
+					modifier = high_approval_rating
+					scope = THIS.owner  
+				}
+			}
+		}
+	}
+}
+
+
+########   #######  ########
+##     ## ##     ## ##     ##
+##     ## ##     ## ##     ##
+########  ##     ## ########
+##     ## ##     ## ##
+##     ## ##     ## ##
+########   #######  ##
+
+
+JAP_initiate_balance_of_power_effect = {
+	set_power_balance = {
+		id = JAP_power_balance
+		left_side = JAP_hoshu_boryu # will keep the last set side if not specified
+		right_side = JAP_hoshu_honryu # will keep the last set side if not specified
+		set_default = yes # whether or not to reset the power balance to the initial value, default = no
+		#set_value = 0.25 # if specified will set the value of the power balance, this option will override the effect of set_default so the two options should not be used together. if neither set_default or set_value is specified the current value of the power balance will not change
+	}
+}
+
+JAP_bop_absurdly_high_increase_effect = {
+	add_power_balance_value = {
+		id = JAP_power_balance
+		value = 1
+	}
+}
+
+JAP_bop_very_high_increase_effect = {
+	add_power_balance_value = {
+		id = JAP_power_balance
+		value = 0.25
+	}
+}
+
+JAP_bop_high_increase_effect = {
+	add_power_balance_value = {
+		id = JAP_power_balance
+		value = 0.2
+	}
+}
+
+JAP_bop_medium_increase_effect = {
+	add_power_balance_value = {
+		id = JAP_power_balance
+		value = 0.15
+	}
+}
+
+JAP_bop_low_increase_effect = {
+	add_power_balance_value = {
+		id = JAP_power_balance
+		value = 0.1
+	}
+}
+
+JAP_bop_very_low_increase_effect = {
+	add_power_balance_value = {
+		id = JAP_power_balance
+		value = 0.05
+	}
+}
+
+JAP_bop_absurdly_high_decrease_effect = {
+	add_power_balance_value = {
+		id = JAP_power_balance
+		value = -1
+	}
+}
+
+JAP_bop_very_high_decrease_effect = {
+	add_power_balance_value = {
+		id = JAP_power_balance
+		value = -0.25
+	}
+}
+
+JAP_bop_high_decrease_effect = {
+	add_power_balance_value = {
+		id = JAP_power_balance
+		value = -0.2
+	}
+}
+
+JAP_bop_medium_decrease_effect = {
+	add_power_balance_value = {
+		id = JAP_power_balance
+		value = -0.15
+	}
+}
+
+JAP_bop_low_decrease_effect = {
+	add_power_balance_value = {
+		id = JAP_power_balance
+		value = -0.1
+	}
+}
+
+JAP_bop_very_low_decrease_effect = {
+	add_power_balance_value = {
+		id = JAP_power_balance
+		value = -0.05
+	}
+}
+
+JAP_mao_economic_plan_effect = {
+#custom_effect_tooltip = PRK_national_bankruptcy_down_tt
+	if = {
+		limit = { has_idea = JAP_economy_of_japan_base }
+		swap_ideas = {
+			remove_idea = JAP_economy_of_japan_base
+			add_idea = JAP_economy_of_japan_mao_1
+		}
+	}
+	else_if = {
+		limit = { has_idea = JAP_economy_of_japan_mao_1 }
+		swap_ideas = {
+			remove_idea = JAP_economy_of_japan_mao_1
+			add_idea = JAP_economy_of_japan_mao_2
+		}
+	}
+	else_if = {
+		limit = { has_idea = JAP_economy_of_japan_mao_2 }
+		swap_ideas = {
+			remove_idea = JAP_economy_of_japan_mao_2
+			add_idea = JAP_economy_of_japan_mao_3
+		}
+	}
+	else_if = {
+		limit = { has_idea = JAP_economy_of_japan_mao_3 }
+		swap_ideas = {
+			remove_idea = JAP_economy_of_japan_mao_3
+			add_idea = JAP_economy_of_japan_mao_4
+		}
+	}
+	else = {
+		effect_tooltip = { add_ideas = JAP_economy_of_japan_mao_1 }
+	}
+}
+
+JAP_tro_economic_plan_effect = {
+#custom_effect_tooltip = PRK_national_bankruptcy_down_tt
+	if = {
+		limit = { has_idea = JAP_economy_of_japan_base }
+		swap_ideas = {
+			remove_idea = JAP_economy_of_japan_base
+			add_idea = JAP_economy_of_japan_tro_1
+		}
+	}
+	else_if = {
+		limit = { has_idea = JAP_economy_of_japan_tro_1 }
+		swap_ideas = {
+			remove_idea = JAP_economy_of_japan_tro_1
+			add_idea = JAP_economy_of_japan_tro_2
+		}
+	}
+	else_if = {
+		limit = { has_idea = JAP_economy_of_japan_tro_2 }
+		swap_ideas = {
+			remove_idea = JAP_economy_of_japan_tro_2
+			add_idea = JAP_economy_of_japan_tro_3
+		}
+	}
+	else_if = {
+		limit = { has_idea = JAP_economy_of_japan_tro_3 }
+		swap_ideas = {
+			remove_idea = JAP_economy_of_japan_tro_3
+			add_idea = JAP_economy_of_japan_tro_4
+		}
+	}
+	else = {
+		effect_tooltip = { add_ideas = JAP_economy_of_japan_tro_1 }
+	}
+}
+
+JAP_left_economic_plan_effect = {
+#custom_effect_tooltip = PRK_national_bankruptcy_down_tt
+	if = {
+		limit = { has_idea = JAP_economy_of_japan_base }
+		swap_ideas = {
+			remove_idea = JAP_economy_of_japan_base
+			add_idea = JAP_economy_of_japan_left_1
+		}
+	}
+	else_if = {
+		limit = { has_idea = JAP_economy_of_japan_left_1 }
+		swap_ideas = {
+			remove_idea = JAP_economy_of_japan_left_1
+			add_idea = JAP_economy_of_japan_left_2
+		}
+	}
+	else_if = {
+		limit = { has_idea = JAP_economy_of_japan_left_2 }
+		swap_ideas = {
+			remove_idea = JAP_economy_of_japan_left_2
+			add_idea = JAP_economy_of_japan_left_3
+		}
+	}
+	else_if = {
+		limit = { has_idea = JAP_economy_of_japan_left_3 }
+		swap_ideas = {
+			remove_idea = JAP_economy_of_japan_left_3
+			add_idea = JAP_economy_of_japan_left_4
+		}
+	}
+	else = {
+		effect_tooltip = { add_ideas = JAP_economy_of_japan_left_1 }
+	}
+}
+
+JAP_right_economic_plan_effect = {
+#custom_effect_tooltip = PRK_national_bankruptcy_down_tt
+	if = {
+		limit = { has_idea = JAP_economy_of_japan_base }
+		swap_ideas = {
+			remove_idea = JAP_economy_of_japan_base
+			add_idea = JAP_economy_of_japan_right_1
+		}
+	}
+	else_if = {
+		limit = { has_idea = JAP_economy_of_japan_right_1 }
+		swap_ideas = {
+			remove_idea = JAP_economy_of_japan_right_1
+			add_idea = JAP_economy_of_japan_right_2
+		}
+	}
+	else_if = {
+		limit = { has_idea = JAP_economy_of_japan_right_2 }
+		swap_ideas = {
+			remove_idea = JAP_economy_of_japan_right_2
+			add_idea = JAP_economy_of_japan_right_3
+		}
+	}
+	else_if = {
+		limit = { has_idea = JAP_economy_of_japan_right_3 }
+		swap_ideas = {
+			remove_idea = JAP_economy_of_japan_right_3
+			add_idea = JAP_economy_of_japan_right_4
+		}
+	}
+	else = {
+		effect_tooltip = { add_ideas = JAP_economy_of_japan_right_1 }
 	}
 }
