@@ -1665,6 +1665,25 @@ ideas = {
 			}
 		}
 		
+		JAP_comecon_JAP_industrialization = {
+			name = JAP_comecon_jap_default
+
+			picture = generic_flexible_foreign_policy
+
+			removal_cost = -1
+			
+			allowed = {
+				always = no # Added via event
+			}
+
+			modifier = {
+				consumer_goods_factor = -0.1
+				autonomy_gain_trade_factor = -0.75
+				autonomy_manpower_share = -1
+				production_speed_buildings_factor = 0.2
+			}
+		}
+		
 		JAP_comecon_puppet_industrialization = {
 			name = JAP_comecon_jap_default
 
@@ -2672,9 +2691,9 @@ ideas = {
 			removal_cost = -1
 			
 			modifier = {
-				modifier_army_sub_unit_marine_attack_factor = 0.1
-				modifier_army_sub_unit_marine_speed_factor = 0.1
-				modifier_army_sub_unit_marine_max_org_factor = 0.15
+				modifier_army_marine_attack_factor = 0.1
+				modifier_army_marine_speed_factor = 0.1
+				modifier_army_marine_max_org_factor = 0.15
 			}
 	
 		}
@@ -2910,7 +2929,7 @@ ideas = {
 
 			modifier = {
 				weekly_manpower = 400
-				communism_drift = 0.01
+				communist_drift = 0.01
 				resistance_damage_to_garrison_on_our_occupied_states = 0.1
 			}
 		}
@@ -3519,7 +3538,7 @@ political_advisor = {
 					is_in_faction_with = SOV
 				}
 				date > 2011.04.01
-				NOT = { has_country_leader = { ruling_only = yes character = "Sumire Uesaka" } }
+				NOT = { has_country_leader = { ruling_only = yes name = "Sumire Uesaka" } }
 			}
 			
 			visible = {
@@ -3913,8 +3932,9 @@ political_advisor = {
 			traits = { rosen_aso }
 			
 			available = {
+				JAP_need_hoshu_government = yes
 				has_completed_focus = JAP_infinite_debt
-				NOT = { has_country_leader = { ruling_only = yes character = "Taro Aso" } }
+				NOT = { has_country_leader = { ruling_only = yes name = "Taro Aso" } }
 			}
 			
 			visible = {
@@ -3935,7 +3955,8 @@ political_advisor = {
 			traits = { determination_of_japan }
 			
 			available = {
-				NOT = { has_country_leader = { ruling_only = yes character = "Shinzo Abe" } }
+				JAP_need_hoshu_government = yes
+				NOT = { has_country_leader = { ruling_only = yes name = "Shinzo Abe" } }
 				NOT = { has_country_flag = jap_dead_shinzo_abe }
 			}
 			
