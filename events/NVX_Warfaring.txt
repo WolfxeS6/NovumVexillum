@@ -31,23 +31,44 @@ country_event = {
 		modifier = { factor = 0.05 has_global_flag = pts_chaotic_warfaring }
 	}
 	
-	option = { # Take claimed states
-		name = NVX_Warfaring.0.o1
-		random_neighbor_country = {
-			limit = { NVX_warfaring_target_trigger = yes }
-			country_event = { id = NVX_Warfaring.1 }
-		}
+	# option = { # Take claimed states
+	# 	name = NVX_Warfaring.0.o1
+	# 	random_neighbor_country = {
+	# 		limit = { NVX_warfaring_target_trigger = yes }
+	# 		country_event = { id = NVX_Warfaring.1 }
+	# 	}
+		
+	# 	ai_chance = {
+	# 		factor = 10
+			
+	# 		modifier = {
+	# 			factor = 1.5
+	# 			OR = {
+	# 				has_government = islamist
+	# 				has_government = nationalist
+	# 				has_government = monarchist
+	# 			}
+	# 		}
+	# 	}
+	# }
+	option = { # False Alarm
+		name = NVX_Warfaring.0.o5
 		
 		ai_chance = {
-			factor = 10
+			factor = 5
 			
 			modifier = {
-				factor = 1.5
-				OR = {
-					has_government = islamist
-					has_government = nationalist
-					has_government = monarchist
+				factor = 500
+				
+				limit = {
+					any_neighbor_country = {
+						has_war = yes
+					}
 				}
+			}
+			modifier = {
+				factor = 500
+				has_war = yes
 			}
 		}
 	}
@@ -108,11 +129,11 @@ country_event = {
 			factor = 30
 			
 			modifier = {
-				factor = 0.6
+				factor = 0.3
 				has_idea = national_development_developing
 			}
 			modifier = {
-				factor = 0.3
+				factor = 0.1
 				has_idea = national_development_undeveloped
 			}
 		}
@@ -176,7 +197,12 @@ country_event = {
 	
 	option = {
 		name = NVX_Warfaring.o.takeit
-		FROM = { country_event = { days = 49 id = NVX_Warfaring.21 } }
+		if = {
+			limit = {
+				FROM = {NOT = {has_war = yes}}
+			}
+			FROM = { country_event = { days = 49 id = NVX_Warfaring.21 } }
+		}
 	}
 }
 
@@ -190,7 +216,12 @@ country_event = {
 	
 	option = {
 		name = NVX_Warfaring.o.takeit
-		FROM = { country_event = { days = 49 id = NVX_Warfaring.31 } }
+		if = {
+			limit = {
+				FROM = {NOT = {has_war = yes}}
+			}
+			FROM = { country_event = { days = 49 id = NVX_Warfaring.31 } }
+		}
 	}
 }
 
@@ -204,7 +235,12 @@ country_event = {
 	
 	option = {
 		name = NVX_Warfaring.o.takeit
-		FROM = { country_event = { days = 49 id = NVX_Warfaring.41 } }
+		if = {
+			limit = {
+				FROM = {NOT = {has_war = yes}}
+			}
+			FROM = { country_event = { days = 49 id = NVX_Warfaring.41 } }
+		}
 	}
 }
 
@@ -215,20 +251,25 @@ country_event = { # Take claimed states
 	is_triggered_only = yes
 	
 	option = {
-		FROM = {
-			random_owned_state = {
-				limit = {
-					any_neighbor_state = {
-						is_owned_by = ROOT
-					}
-				}
-				add_claim_by = ROOT
+		if = {
+			limit = {
+				FROM = {NOT = {has_war = yes}}
 			}
-		}
-		create_wargoal = {
-			type = take_state
-			target = FROM
-		}
+			FROM = {
+				random_owned_state = {
+					limit = {
+						any_neighbor_state = {
+							is_owned_by = ROOT
+						}
+					}
+					add_claim_by = ROOT
+				}
+			}
+			create_wargoal = {
+				type = take_state
+				target = FROM
+			}
+		}	
 	}
 }
 
