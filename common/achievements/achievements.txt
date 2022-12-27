@@ -1,0 +1,473 @@
+# possible - filters out achivements on game start so we dont have to check everything all the 
+#time
+## happened - checks if achivement happened
+#
+unique_id = NVX_achievements
+
+revolutionary_broadwayist_league = {
+	#picture = GFX_revolutionary_broadwayist_league
+	
+	possible = {
+		is_ironman = yes
+		difficulty > 1
+		#has_start_date < 2000.01.02
+		has_any_custom_difficulty_setting = no
+		game_rules_allow_achievements = yes
+		original_tag = JAP
+	}
+	
+	happened = {
+		OR = {
+			has_country_leader = { name = "Sumire Uesaka" ruling_only = yes}
+			has_idea = advisor_JAP_Sumire_Uesaka
+		}
+			AND = {
+				408 = {
+					OR = {
+						controller = {
+							OR = {
+								is_puppet_of = JAP
+								tag = JAP
+							}
+						}
+					}
+				}
+				219 = {
+					OR = {
+						controller = {
+							OR = {
+								is_puppet_of = JAP
+								tag = JAP
+							}
+						}
+					}
+				}
+				217 = {
+					OR = {
+						controller = {
+							OR = {
+								is_puppet_of = JAP
+								tag = JAP
+							}
+						}
+					}
+				}
+				195 = {
+					OR = {
+						controller = {
+							OR = {
+								is_puppet_of = JAP
+								tag = JAP
+							}
+						}
+					}
+				}
+			}
+	}
+}
+
+wore_clothes_made_of_silk_going_back_home = {
+	possible = {
+		is_ironman = yes
+		difficulty > 1
+		#has_start_date < 2000.01.02
+		has_any_custom_difficulty_setting = no
+		game_rules_allow_achievements = yes
+		original_tag = KOR
+	}
+	
+	happened = {
+		OR = {
+			custom_trigger_tooltip = {
+				tooltip = japanese_korean_achievements_tt 
+				has_country_leader = { character = kor_lee_myung_bak ruling_only = yes}
+				has_country_leader = { character = kor_ayane_sakura ruling_only = yes}
+			}
+		}
+		AND = {
+			has_full_control_of_state = 1033 #Kanto
+			has_full_control_of_state = 282 #Tokyo
+			has_full_control_of_state = 528 #Nagasaki
+			has_full_control_of_state = 529 #Hiroshima
+			has_full_control_of_state = 530 #Takushima
+			has_full_control_of_state = 531 #Kyoto
+			has_full_control_of_state = 532 #Nagoya
+			has_full_control_of_state = 533 #Akita
+			has_full_control_of_state = 534 #Niigata
+			has_full_control_of_state = 535 #Nagano
+			has_full_control_of_state = 536 #Donan
+			has_full_control_of_state = 952 #Doboku
+			has_full_control_of_state = 953 #Doto
+			has_full_control_of_state = 954 #Osaka
+			has_full_control_of_state = 955 #Kitatohoku
+			has_full_control_of_state = 956 #Tsushima
+		}
+	}
+}
+
+europe_one_and_united = {
+
+	possible = {
+		is_ironman = yes
+		difficulty > 1
+		#has_start_date < 2000.01.02
+		has_any_custom_difficulty_setting = no
+		game_rules_allow_achievements = yes
+		#OR = {
+		#	original_tag = FRA
+		#	original_tag = GER
+		#	original_tag = ENG
+		#}
+	}
+	
+	happened = {
+		custom_trigger_tooltip = {
+			tooltip = europe_one_and_united_tt 
+			has_cosmetic_tag = EUU
+		}
+	}
+}
+
+freedom_democracy_and_oil = {
+	possible = {
+		is_ironman = yes
+		difficulty > 1
+		#has_start_date < 2000.01.02
+		has_any_custom_difficulty_setting = no
+		game_rules_allow_achievements = yes
+		original_tag = USA
+	}
+	
+	happened = {
+		AND = {
+			any_state = {
+				is_core_of = IRQ
+				is_controlled_by = ROOT
+			}
+			any_state = {
+				is_core_of = SYR
+				is_controlled_by = ROOT
+			}
+		}
+	}
+}
+
+fallout_achievements = {
+	possible = {
+		is_ironman = yes
+		difficulty > 1
+		#has_start_date < 2000.01.02
+		has_any_custom_difficulty_setting = no
+		game_rules_allow_achievements = yes
+		original_tag = PRC
+	}
+	
+	happened = {
+		has_global_flag = achievement_fallout_flag
+	}
+}
+
+towards_the_future = {
+	possible = {
+		is_ironman = yes
+		difficulty > 1
+		#has_start_date < 2000.01.02
+		has_any_custom_difficulty_setting = no
+		game_rules_allow_achievements = yes
+	}
+	
+	happened = {
+		has_idea = national_development_advanced
+	}
+}
+
+beyond_earth = {
+	possible = {
+		is_ironman = yes
+		difficulty > 1
+		#has_start_date < 2000.01.02
+		has_any_custom_difficulty_setting = no
+		game_rules_allow_achievements = yes
+	}
+	
+	happened = {
+		has_tech = advanced_rocket_engines
+	}
+}
+
+god_save_the_queen = {
+	possible = {
+		is_ironman = yes
+		difficulty > 1
+		#has_start_date < 2000.01.02
+		has_any_custom_difficulty_setting = no
+		game_rules_allow_achievements = yes
+		original_tag = ENG
+	}
+	
+	happened = {
+		AND = {
+			has_idea = ENG_queen_elizabeth_2
+			CAN = { is_puppet_of = ENG }
+			AST = { is_puppet_of = ENG }
+			NZL = { is_puppet_of = ENG }
+			SRL = { is_puppet_of = ENG }
+			SAF = { is_puppet_of = ENG }
+			NGA = { is_puppet_of = ENG }
+			GAM = { is_puppet_of = ENG }
+			JAM = { is_puppet_of = ENG }
+			CAN = { is_puppet_of = ENG }
+			PAK = { is_puppet_of = ENG }
+			MLT = { is_puppet_of = ENG }
+			#TUV = { is_puppet_of = ENG }
+			PNG = { is_puppet_of = ENG }
+			UGA = { is_puppet_of = ENG }
+			KEN = { is_puppet_of = ENG }
+			SIE = { is_puppet_of = ENG }
+		}
+	}
+}
+
+paradox_overseas_branch = {
+	possible = {
+		is_ironman = yes
+		difficulty > 1
+		#has_start_date < 2000.01.02
+		has_any_custom_difficulty_setting = no
+		game_rules_allow_achievements = yes
+		original_tag = SWE
+	}
+	
+	happened = {
+		AND = {
+			ENG = { is_licensing_any_to = SWE }
+			FRA = { is_licensing_any_to = SWE }
+			GER = { is_licensing_any_to = SWE }
+			SPR = { is_licensing_any_to = SWE }
+			POL = { is_licensing_any_to = SWE }
+			JAP = { is_licensing_any_to = SWE }
+			TUR = { is_licensing_any_to = SWE }
+			KOR = { is_licensing_any_to = SWE }
+			PRC = { is_licensing_any_to = SWE }
+		}
+	}
+}
+
+le_lotus_bleu = {
+	possible = {
+		is_ironman = yes
+		difficulty > 1
+		#has_start_date < 2000.01.02
+		has_any_custom_difficulty_setting = no
+		game_rules_allow_achievements = yes
+		original_tag = FRA
+	}
+	
+	happened = {
+		is_in_faction_with = PRC
+		has_democratic_form_of_government = yes
+	}
+}
+
+three_hurrahs_for_germany = {
+	possible = {
+		is_ironman = yes
+		difficulty > 1
+		#has_start_date < 2000.01.02
+		has_any_custom_difficulty_setting = no
+		game_rules_allow_achievements = yes
+		original_tag = GER
+	}
+	
+	happened = {
+		any_state = {
+			is_core_of = AST
+			is_controlled_by = GER
+		}
+	}
+}
+
+golden_kamuy = {
+	possible = {
+		is_ironman = yes
+		difficulty > 1
+		#has_start_date < 2000.01.02
+		has_any_custom_difficulty_setting = no
+		game_rules_allow_achievements = yes
+		original_tag = AIN
+	}
+	
+	happened = {
+		num_of_factories > 49
+	}
+}
+
+last_finno_korean_hyperwar = {
+	possible = {
+		is_ironman = yes
+		difficulty > 1
+		#has_start_date < 2000.01.02
+		has_any_custom_difficulty_setting = no
+		game_rules_allow_achievements = yes
+		original_tag = FIN
+	}
+	
+	happened = {
+		AND = { 
+			any_state = {
+				is_core_of = KOR
+				is_controlled_by = FIN
+			}
+			any_state = {
+				is_core_of = PRK
+				is_controlled_by = FIN
+			}
+		}
+	}
+}
+
+catholic_orthodox_reunification = {
+	possible = {
+		is_ironman = yes
+		difficulty > 1
+		#has_start_date < 2000.01.02
+		has_any_custom_difficulty_setting = no
+		game_rules_allow_achievements = yes
+		original_tag = ETH
+	}
+	
+	happened = {
+		AND = {
+			has_full_control_of_state = 835 #Vatican
+			has_full_control_of_state = 2 #Latium
+		}
+	}
+}
+
+armed_neutral = {
+	possible = {
+		is_ironman = yes
+		difficulty > 1
+		#has_start_date < 2000.01.02
+		has_any_custom_difficulty_setting = no
+		game_rules_allow_achievements = yes
+		original_tag = JAP #SWI
+	}
+	
+	happened = {
+		has_navy_size = {
+			unit = carrier
+			size > 7
+		}
+	}
+}
+
+i_dont_like_poutine = {
+	possible = {
+		is_ironman = yes
+		difficulty > 1
+		#has_start_date < 2000.01.02
+		has_any_custom_difficulty_setting = no
+		game_rules_allow_achievements = yes
+		original_tag = SOV
+	}
+	
+	happened = {
+		NOT = { has_country_leader = { name = "Vladimir Putin" ruling_only = yes } }
+		CAN = { 
+			has_opinion = {
+				target = SOV
+				value > 90
+			}
+		}	
+	}
+}
+
+han_shot_first = {
+	possible = {
+		is_ironman = yes
+		difficulty > 1
+		#has_start_date < 2000.01.02
+		has_any_custom_difficulty_setting = no
+		game_rules_allow_achievements = yes
+		original_tag = KOR
+	}
+	
+	happened = {
+		OR = {
+			has_country_leader = { name = "Han Myeong-sook" ruling_only = yes}
+			#has_idea = prime_minister_han_myeong_sook
+		}
+		any_country = {
+			is_major = yes
+			KOR = { has_offensive_war_with = PREV }
+		}
+	}
+}
+
+finally_a_real_iceland = {
+	possible = {
+		is_ironman = yes
+		difficulty > 1
+		#has_start_date < 2000.01.02
+		has_any_custom_difficulty_setting = no
+		game_rules_allow_achievements = yes
+		original_tag = ICE
+	}
+	
+	happened = {
+		101 = {
+			OR = {
+				controller = {
+					OR = {
+						is_puppet_of = ICE
+						tag = ICE
+					}
+				}
+			}
+		}
+	}
+}
+
+in_the_arms_of_family = {
+	possible = {
+		is_ironman = yes
+		difficulty > 1
+		#has_start_date < 2000.01.02
+		has_any_custom_difficulty_setting = no
+		game_rules_allow_achievements = yes
+		original_tag = USA
+	}
+	
+	happened = {
+		ENG = {
+			is_exiled_in = USA
+		}
+	}
+}
+
+poland_can_go_into_space = {
+	possible = {
+		is_ironman = yes
+		difficulty > 1
+		#has_start_date < 2000.01.02
+		has_any_custom_difficulty_setting = no
+		game_rules_allow_achievements = yes
+		original_tag = SOV
+	}
+	
+	happened = {
+		SOV = {
+			casualties_inflicted_by = {
+				opponent = POL
+				thousands > 100
+			}
+		}
+		POL = {
+			casualties_inflicted_by = {
+				opponent = SOV
+				thousands < 10
+			}
+		}
+	}
+}
