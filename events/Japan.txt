@@ -658,6 +658,8 @@ country_event = {
 		name = japan.26.a
 		JAP_GetKatoSupport_subtract_3_effect = yes
 		
+		ai_chance = {
+		factor = 1
 		modifier = {
 			factor = 0
 			has_game_rule = {
@@ -665,11 +667,15 @@ country_event = {
 				option = DEMOCRATIC_ALT_KATO
 			}
 		}
+		}
 	}
 	
 	option = {	#Aoki will stand trial on charges of impersonating the prime minister
 		name = japan.26.b
 		hidden_effect = { country_event = { id = japan.27 days = 9 } }
+		ai_chance = {
+		factor = 1
+		}
 	}
 }
 
@@ -729,6 +735,15 @@ country_event = {
 		
 		ai_chance = {
 		factor = 1
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+				has_game_rule = {
+					rule = JAP_AI_BEHAVIOR
+					option = DEFAULT
+				}
+			}
+			
 			modifier = {
 				factor = 0
 				has_game_rule = {
@@ -1137,7 +1152,7 @@ country_event = {
 		hidden_effect = {
 			news_event = { id = japan_news.3 }
 			
-			division_template = { name = "Japanese People's Regiment"  is_locked = yes regiments = { infantry = { x = 0 y = 0 } infantry = { x = 1 y = 0 } infantry = { x = 2 y = 0 } } }
+			division_template = { name = "Japanese People's Regiment" division_names_group = JAP_INF_01 is_locked = yes regiments = { infantry = { x = 0 y = 0 } infantry = { x = 1 y = 0 } infantry = { x = 2 y = 0 } } }
 			532 = {
 					create_unit = { 
 						division = "name = \"1. Japanese People's Regiment\" division_template = \"Japanese People's Regiment\" start_experience_factor = 0" 
@@ -2472,7 +2487,7 @@ country_event = {
 	
 	option = {
 		name = japan_communist_civil_war.4.a
-		division_template = { name = "Japanese Red Army" is_locked = yes regiments = { infantry = { x = 0 y = 0 } infantry = { x = 1 y = 0 } infantry = { x = 2 y = 0 } } }
+		division_template = { name = "Japanese Red Army" division_names_group = JAP_INF_01 is_locked = yes regiments = { infantry = { x = 0 y = 0 } infantry = { x = 1 y = 0 } infantry = { x = 2 y = 0 } } }
 			532 = {
 					create_unit = { 
 						division = "name = \"1. Red Army Regiment\" division_template = \"Japanese Red Army\" start_experience_factor = 0" 
@@ -3296,6 +3311,10 @@ news_event = {
 	
 	is_triggered_only = yes
 	major = yes
+	
+	immediate = {
+		set_global_flag = jap_japan_civil_war_sp
+	}
 	
 	option = {
 		name = japan_news.3.a
@@ -5670,6 +5689,32 @@ country_event = {
 	
 	option = {
 		name = japan_foreign_politics_events.30.a
+	}
+}
+
+# [FROM.GetName]'s Communist Guerrilla Support
+country_event = {
+	id = japan_foreign_politics_events.31
+	title = japan_foreign_politics_events.31.t
+	desc = japan_foreign_politics_events.31.desc
+	picture = GFX_report_event_tokyo_night
+
+	is_triggered_only = yes
+	
+	option = {
+		name = japan_foreign_politics_events.31.a
+		ai_chance = { factor = 100 }
+		add_timed_idea = { idea = JAP_communist_guerrilla days = 90 }
+	}
+	
+	option = {
+		name = japan_foreign_politics_events.31.b
+		ai_chance = { factor = 0 }
+		trigger = { has_equipment = { infantry_equipment > 499 } }
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = -500
+		}
 	}
 }
 
