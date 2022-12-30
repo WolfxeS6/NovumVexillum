@@ -658,6 +658,8 @@ country_event = {
 		name = japan.26.a
 		JAP_GetKatoSupport_subtract_3_effect = yes
 		
+		ai_chance = {
+		factor = 1
 		modifier = {
 			factor = 0
 			has_game_rule = {
@@ -665,11 +667,15 @@ country_event = {
 				option = DEMOCRATIC_ALT_KATO
 			}
 		}
+		}
 	}
 	
 	option = {	#Aoki will stand trial on charges of impersonating the prime minister
 		name = japan.26.b
 		hidden_effect = { country_event = { id = japan.27 days = 9 } }
+		ai_chance = {
+		factor = 1
+		}
 	}
 }
 
@@ -729,6 +735,15 @@ country_event = {
 		
 		ai_chance = {
 		factor = 1
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+				has_game_rule = {
+					rule = JAP_AI_BEHAVIOR
+					option = DEFAULT
+				}
+			}
+			
 			modifier = {
 				factor = 0
 				has_game_rule = {
@@ -1137,7 +1152,7 @@ country_event = {
 		hidden_effect = {
 			news_event = { id = japan_news.3 }
 			
-			division_template = { name = "Japanese People's Regiment"  is_locked = yes regiments = { infantry = { x = 0 y = 0 } infantry = { x = 1 y = 0 } infantry = { x = 2 y = 0 } } }
+			division_template = { name = "Japanese People's Regiment" is_locked = yes regiments = { infantry = { x = 0 y = 0 } infantry = { x = 1 y = 0 } infantry = { x = 2 y = 0 } } }
 			532 = {
 					create_unit = { 
 						division = "name = \"1. Japanese People's Regiment\" division_template = \"Japanese People's Regiment\" start_experience_factor = 0" 
@@ -3296,6 +3311,10 @@ news_event = {
 	
 	is_triggered_only = yes
 	major = yes
+	
+	immediate = {
+		set_global_flag = jap_japan_civil_war_sp
+	}
 	
 	option = {
 		name = japan_news.3.a
