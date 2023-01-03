@@ -5,6 +5,8 @@ add_namespace = korea_parliamentary
 add_namespace = korea_parliamentary_system
 add_namespace = korean_war
 add_namespace = kor_jpn_culture_war
+add_namespace = korea_flavor_events
+add_namespace = korea_reunification_events
 
 #################
 #
@@ -381,6 +383,21 @@ news_event = {
 	}
 }
 
+#Establishing Autonomy Government of Jeju
+news_event = {
+	id = rok_news.16
+	title = rok_news.16.t
+	desc = rok_news.16.desc
+	picture = GFX_news_event_south_korea
+
+	major = yes
+	is_triggered_only = yes
+	
+	option = {
+		name = rok_news.16.a
+	}
+}
+
 #Reunification of the Korean Peninsula
 news_event = {
 	id = rok_news.17
@@ -402,6 +419,10 @@ news_event = {
 		}
 		else = {
 			set_global_flag = KOR_super_event_democratic_korea_reunification_2_sp
+		}
+		
+		hidden_effect = {
+			country_event = { id = korea_reunification_events.1 days = 5 }
 		}
 	}
 	
@@ -458,6 +479,10 @@ news_event = {
 
 	immediate = {
 		set_global_flag = KOR_super_event_nationalist_korea_reunification_sp
+		
+		hidden_effect = {
+			country_event = { id = korea_reunification_events.1 days = 5 }
+		}
 	}
 	
 	major = yes
@@ -487,6 +512,10 @@ news_event = {
 
 	immediate = {
 		set_global_flag = KOR_super_event_anarchy_korea_reunification_sp
+		
+		hidden_effect = {
+			country_event = { id = korea_reunification_events.1 days = 5 }
+		}
 	}
 	
 	major = yes
@@ -516,6 +545,10 @@ news_event = {
 
 	immediate = {
 		set_global_flag = KOR_super_event_roj_korea_reunification_sp
+		
+		hidden_effect = {
+			country_event = { id = korea_reunification_events.1 days = 5 }
+		}
 	}
 	
 	major = yes
@@ -1807,6 +1840,10 @@ country_event = {
 	
 	is_triggered_only = yes
 	
+	immediate = {
+		hidden_effect = { set_global_flag = peaceful_reunification_korea }
+	}
+	
 	option = {
 		name = south_korea.56.a
 
@@ -2088,8 +2125,8 @@ country_event = {
 		original_tag = KOR
 		country_exists = PRK
 		USA = { has_country_flag = usa_9_11 }
-		#PRK = { NOT = { has_completed_focus = prk_lyuh_woon_hyung_s_unfulfilled_dream } }
-		#PRK = { NOT = { has_completed_focus = prk_ryongchon_gamble } }
+		PRK = { NOT = { has_completed_focus = prk_lyuh_woon_hyung_s_unfulfilled_dream } }
+		PRK = { NOT = { has_completed_focus = prk_ryongchon_gamble } }
 		NOT = { has_war_with = PRK }
 	}
 	
@@ -2116,28 +2153,28 @@ country_event = {
 }
 
 #Choose the Prime Minister
-country_event = {
-	id = south_korea.70
-	title = south_korea.70.t
-	desc = south_korea.70.desc
-	picture = GFX_report_event_asian_generic_national_assembly2
-	
-	is_triggered_only = yes
-	
-	option = {
-		name = south_korea.70.a
-		KOR_postnationalist_to_gain_strength = yes
-		KOR_clear_prime_minster_effect = yes
-		add_ideas = prime_minister_yoon_seo_in
-	}
-	
-	option = {
-		name = south_korea.70.b
-		KOR_fundamentalism_to_gain_strength = yes
-		KOR_clear_prime_minster_effect = yes
-		add_ideas = prime_minister_jeon_kwang_hoon
-	}
-}
+#country_event = {
+#	id = south_korea.70
+#	title = south_korea.70.t
+#	desc = south_korea.70.desc
+#	picture = GFX_report_event_asian_generic_national_assembly2
+#	
+#	is_triggered_only = yes
+#	
+#	option = {
+#		name = south_korea.70.a
+#		KOR_postnationalist_to_gain_strength = yes
+#		KOR_clear_prime_minster_effect = yes
+#		add_ideas = prime_minister_yoon_seo_in
+#	}
+#	
+#	option = {
+#		name = south_korea.70.b
+#		KOR_fundamentalism_to_gain_strength = yes
+#		KOR_clear_prime_minster_effect = yes
+#		add_ideas = prime_minister_jeon_kwang_hoon
+#	}
+#}
 
 #Left Korea, and Couldn't come back
 country_event = {
@@ -2980,22 +3017,22 @@ country_event = {
 	desc = south_korea.98.desc
 	picture = GFX_report_event_asian_generic_national_assembly
 	
-	#is_triggered_only = yes
+	is_triggered_only = yes
 	
-	fire_only_once = yes
+	#fire_only_once = yes
 	
-	mean_time_to_happen = {
-		days = 100
-	}
+	#mean_time_to_happen = {
+	#	days = 100
+	#}
 	
-	trigger = {
-		original_tag = KOR
-		has_country_leader = {
-			character = kor_moon_chang_geuk
-			ruling_only = yes
-		}
-		has_country_flag = kor_power_post_nationalist_flag
-	}
+	#trigger = {
+	#	original_tag = KOR
+	#	has_country_leader = {
+	#		character = kor_moon_chang_geuk
+	#		ruling_only = yes
+	#	}
+	#	has_country_flag = kor_power_post_nationalist_flag
+	#}
 	
 	option = {
 		name = south_korea.98.a
@@ -3039,6 +3076,8 @@ country_event = {
 			remove_ideas = kor_divine_trials_idea
 			remove_ideas = kor_spiritual_war_idea
 			remove_ideas = kor_missionary_committee
+			
+			remove_power_balance = { id = KOR_fundamentalist_power_balance }
 		}
 	}
 }
@@ -4053,8 +4092,8 @@ country_event = {
 	
 	trigger = {
 		original_tag = KOR
-		date > 2022.4.1
-		date < 2022.5.1
+		date > 2003.4.1
+		date < 2003.5.1
 	}
 	
 	option = {
@@ -4089,6 +4128,684 @@ country_event = {
 	option = {
 		name = south_korea.143.a
 		add_ideas = { KOR_military_gay_hunting }
+	}
+}
+
+#Kim Jong-il Moe Affair
+country_event = {
+	id = korea_flavor_events.1
+	title = korea_flavor_events.1.t
+	desc = korea_flavor_events.1.desc
+	picture = GFX_report_event_KOR_KOR_korean_court
+	
+	mean_time_to_happen = {
+		days = 230
+	}
+	
+	fire_only_once = yes
+	
+	trigger = {
+		original_tag = KOR
+		has_completed_focus = kor_victory_democracy
+		OR = {
+			has_government = islamist
+			has_government = market_liberal
+			has_government = reactionary
+		}
+		date > 2007.1.1 #Twitter was created in 2006
+		PRK = {
+			has_country_leader = { 
+				character = prk_kim_jong_il
+				ruling_only = yes
+			}
+		}
+		NOT = { has_country_flag = parliament_legislation_abolishing_national_security_law_flag } #The National Security Law must exist.
+	}
+	
+	option = {
+		name = korea_flavor_events.1.a
+		add_political_power = -75
+		
+		hidden_effect = {
+			country_event = { id = korea_flavor_events.2 days = 14 }
+		}
+	}
+
+}
+
+#International Controversial Kim Jong-il Moe Affair
+country_event = {
+	id = korea_flavor_events.2
+	title = korea_flavor_events.2.t
+	desc = korea_flavor_events.2.desc
+	picture = GFX_report_event_computer
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = korea_flavor_events.2.a
+		add_political_power = -75
+		
+		hidden_effect = {
+			country_event = { id = korea_flavor_events.3 days = 180 }
+		}
+	}
+
+}
+
+#Park Jung-geun's Appeal
+country_event = {
+	id = korea_flavor_events.3
+	title = korea_flavor_events.3.t
+	desc = korea_flavor_events.3.desc
+	picture = GFX_report_event_KOR_KOR_korean_court
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = korea_flavor_events.3.a
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 0
+				OR = {
+					has_game_rule = {
+						rule = KOR_AI_BEHAVIOR
+						option = DEMOCRATIC_HISTORICAL_KOR
+					}
+					AND = {
+						is_historical_focus_on = yes
+						has_game_rule = {
+							rule = KOR_AI_BEHAVIOR
+							option = DEFAULT
+						}
+					}
+				}	
+			}
+		}
+		
+		custom_effect_tooltip = kor_more_influence_right_con_1_10_tt
+		set_variable = { KOR_move_support = 0 }
+		randomize_variable = {
+			var = KOR_move_support
+			distribution = binomial
+			min = 1
+			max = 10
+		}
+		round_variable = KOR_move_support
+		KOR_add_neocon_support_effect = yes
+		
+		add_popularity = {
+			ideology = market_liberal
+			popularity = 0.04
+		}
+	}
+	
+	option = {
+		name = korea_flavor_events.3.b
+		ai_chance = {
+			base = 2
+		}
+		
+		custom_effect_tooltip = kor_more_influence_pro_roh_1_10_tt
+		set_variable = { KOR_move_support = 0 }
+		randomize_variable = {
+			var = KOR_move_support
+			distribution = binomial
+			min = 1
+			max = 10
+		}
+		round_variable = KOR_move_support
+		KOR_add_social_liberalism_support_effect = yes
+		
+		add_popularity = {
+			ideology = social_liberal
+			popularity = 0.04
+		}
+	}
+
+}
+
+#Mad Cow Disease Demonstration
+country_event = {
+	id = korea_flavor_events.4
+	title = korea_flavor_events.4.t
+	desc = korea_flavor_events.4.desc
+	picture = GFX_report_event_KOR_candle_revolution_1
+	
+	mean_time_to_happen = {
+		days = 190
+	}
+	
+	fire_only_once = yes
+	
+	trigger = {
+		original_tag = KOR
+		has_completed_focus = kor_victory_democracy
+		country_exists = USA		
+		has_opinion = {
+			target = USA
+			value > 25
+		}
+		
+		OR = {
+			has_government = islamist
+			has_government = market_liberal
+			has_government = reactionary
+		}
+		
+		date > 2008.6.1
+	}
+	
+	option = {
+		name = korea_flavor_events.4.a
+		add_political_power = -25
+		add_popularity = {
+			ideology = social_democrat
+			popularity = 0.01
+		}
+		add_popularity = {
+			ideology = social_liberal
+			popularity = 0.01
+		}
+		add_popularity = {
+			ideology = democratic_socialist
+			popularity = 0.01
+		}
+	}
+
+}
+
+#The Death of a Christian Anarchist
+country_event = {
+	id = korea_flavor_events.6
+	title = korea_flavor_events.6.t
+	desc = korea_flavor_events.6.desc
+	picture = GFX_report_event_computer
+	
+	mean_time_to_happen = {
+		days = 220
+	}
+	
+	fire_only_once = yes
+	
+	trigger = {
+		original_tag = KOR
+		date > 2006.9.1
+	}
+	
+	option = {
+		name = korea_flavor_events.6.a
+		set_country_flag = kwon_jeong_saeng_dead
+	}
+}
+
+#The Daemado's Day
+country_event = {
+	id = korea_flavor_events.8
+	title = korea_flavor_events.8.t
+	desc = korea_flavor_events.8.desc
+	picture = GFX_report_event_KOR_nationalist_angry_1
+	
+	mean_time_to_happen = {
+		days = 100
+	}
+	
+	fire_only_once = yes
+	
+	trigger = {
+		original_tag = KOR
+		date > 2004.9.1
+		AND = {
+			NOT = { has_completed_focus = kor_moon_chang_geuk_government }
+			NOT = { has_completed_focus = kor_no_government }
+		}
+		country_exists = JAP
+		NOT = { is_puppet_of = JAP }
+		has_war = no
+	}
+	
+	option = {
+		name = korea_flavor_events.8.a
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 0
+				OR = {
+					has_game_rule = {
+						rule = KOR_AI_BEHAVIOR
+						option = DEMOCRATIC_HISTORICAL_KOR
+					}
+					AND = {
+						is_historical_focus_on = yes
+						has_game_rule = {
+							rule = KOR_AI_BEHAVIOR
+							option = DEFAULT
+						}
+					}
+				}	
+			}
+		}
+		
+		add_war_support = -0.02
+	}
+	
+	option = {
+		name = korea_flavor_events.8.b
+		ai_chance = {
+			base = 1.8
+		}
+		
+		if = {
+			limit = { has_completed_focus = kor_victory_democracy }
+			custom_effect_tooltip = kor_more_influence_nl_1_10_tt
+			set_variable = { KOR_move_support = 0 }
+			randomize_variable = {
+				var = KOR_move_support
+				distribution = binomial
+				min = 1
+				max = 10
+			}
+			round_variable = KOR_move_support
+			KOR_add_NL_support_effect = yes
+			
+			add_popularity = {
+				ideology = fascist
+				popularity = 0.02
+			}
+			
+			add_popularity = {
+				ideology = nationalist
+				popularity = 0.02
+			}
+		}
+		else = {
+			add_popularity = {
+				ideology = fascist
+				popularity = 0.02
+			}
+			
+			add_popularity = {
+				ideology = nationalist
+				popularity = 0.02
+			}
+		}
+		
+		add_war_support = 0.05
+		
+		hidden_effect = {
+			JAP = { country_event = { id = korea_flavor_events.9 } }
+		}
+	}
+}
+
+#The Daemado's Day
+country_event = {
+	id = korea_flavor_events.9
+	title = korea_flavor_events.9.t
+	desc = korea_flavor_events.9.desc
+	picture = GFX_report_event_KOR_nationalist_angry_1
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = korea_flavor_events.9.a
+		
+		add_war_support = 0.05
+	}
+}
+
+#The Pledge of Allegiance Dispute
+country_event = {
+	id = korea_flavor_events.7
+	title = korea_flavor_events.7.t
+	desc = korea_flavor_events.7.desc
+	picture = GFX_report_event_KOR_national_flag_1
+	
+	mean_time_to_happen = {
+		days = 190
+	}
+	
+	fire_only_once = yes
+	
+	trigger = {
+		original_tag = KOR
+		date > 2007.1.1
+		has_completed_focus = kor_victory_democracy
+	}
+	
+	option = {
+		name = korea_flavor_events.7.a
+		custom_effect_tooltip = kor_more_influence_nl_1_10_tt
+		set_variable = { KOR_move_support = 0 }
+		randomize_variable = {
+			var = KOR_move_support
+			distribution = binomial
+			min = 1
+			max = 10
+		}
+		round_variable = KOR_move_support
+		KOR_add_NL_support_effect = yes
+		
+		add_popularity = {
+			ideology = fascist
+			popularity = 0.02
+		}
+		
+		add_popularity = {
+			ideology = nationalist
+			popularity = 0.02
+		}
+	}
+	
+	option = {
+		name = korea_flavor_events.7.b
+		add_popularity = {
+			ideology = social_liberal
+			popularity = 0.02
+		}
+	}
+	
+	option = {
+		name = korea_flavor_events.7.c
+		custom_effect_tooltip = kor_more_influence_pd_1_10_tt
+		set_variable = { KOR_move_support = 0 }
+		randomize_variable = {
+			var = KOR_move_support
+			distribution = binomial
+			min = 1
+			max = 10
+		}
+		round_variable = KOR_move_support
+		KOR_add_social_democracy_support_effect = yes
+		
+		add_popularity = {
+			ideology = social_democrat
+			popularity = 0.03
+		}
+	}
+}
+
+#The Trial of the Chongpung Case
+country_event = {
+	id = korea_flavor_events.10
+	title = korea_flavor_events.10.t
+	desc = {
+		text = korea_flavor_events.10.desc_1 #Historical
+		trigger = {
+			KOR = { 
+				NOT = { has_country_leader = {
+					character = kor_lee_hoi_chang
+					ruling_only = yes
+				} }
+			}
+		}
+	}
+	desc = {
+		text = korea_flavor_events.10.desc_2 #Alt-Historical
+		trigger = {
+			KOR = { 
+				has_country_leader = {
+					character = kor_lee_hoi_chang
+					ruling_only = yes
+				}
+			}
+		}
+	}
+	
+	picture = GFX_report_event_KOR_korean_court_2
+	
+	mean_time_to_happen = {
+		days = 120
+	}
+	
+	fire_only_once = yes
+	
+	trigger = {
+		original_tag = KOR
+		date > 2003.3.1
+		has_completed_focus = kor_victory_democracy
+	}
+	
+	option = {
+		name = korea_flavor_events.10.a
+		ai_chance = {
+			base = 2
+		}
+		
+		add_popularity = {
+			ideology = market_liberal
+			popularity = 0.01
+		}
+	}
+	
+	option = {
+		name = korea_flavor_events.10.b
+		trigger = { 
+			NOT = { 
+				has_country_leader = {
+					character = kor_lee_hoi_chang
+					ruling_only = yes
+				} 
+			}
+		}
+		
+		ai_chance = {
+			base = 1.5
+			modifier = {
+				factor = 0
+				OR = {
+					has_game_rule = {
+						rule = KOR_AI_BEHAVIOR
+						option = DEMOCRATIC_HISTORICAL_KOR
+					}
+					AND = {
+						is_historical_focus_on = yes
+						has_game_rule = {
+							rule = KOR_AI_BEHAVIOR
+							option = DEFAULT
+						}
+					}
+				}	
+			}
+		}
+		
+		custom_effect_tooltip = kor_more_influence_pro_park_1_10_tt
+		set_variable = { KOR_move_support = 0 }
+		randomize_variable = {
+			var = KOR_move_support
+			distribution = binomial
+			min = 1
+			max = 10
+		}
+		round_variable = KOR_move_support
+		KOR_add_reactionists_support_effect = yes
+		add_popularity = {
+			ideology = reactionary
+			popularity = 0.07
+		}
+		
+		set_country_flag = kor_chongpung_guilty
+		custom_effect_tooltip = kor_chongpung_guilty_tt
+		retire_character = kor_lee_hoi_chang
+	}
+}
+
+#Sea of Japan or the East Sea?
+country_event = {
+	id = korea_flavor_events.11
+	title = korea_flavor_events.11.t
+	desc = korea_flavor_events.11.desc
+	picture = GFX_report_event_KOR_east_sea
+	
+	mean_time_to_happen = {
+		days = 100
+	}
+	
+	fire_only_once = yes
+	
+	trigger = {
+		original_tag = KOR
+		date > 2003.6.1
+		AND = {
+			NOT = { has_completed_focus = kor_moon_chang_geuk_government }
+			NOT = { has_completed_focus = kor_no_government }
+		}
+		country_exists = JAP
+		NOT = { is_puppet_of = JAP }
+		has_war = no
+	}
+	
+	option = {
+		name = korea_flavor_events.11.a
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 0
+				OR = {
+					has_game_rule = {
+						rule = KOR_AI_BEHAVIOR
+						option = DEMOCRATIC_HISTORICAL_KOR
+					}
+					AND = {
+						is_historical_focus_on = yes
+						has_game_rule = {
+							rule = KOR_AI_BEHAVIOR
+							option = DEFAULT
+						}
+					}
+				}	
+			}
+		}
+		
+		if = {
+			limit = { has_completed_focus = kor_victory_democracy }
+			custom_effect_tooltip = kor_more_influence_nl_1_10_tt
+			set_variable = { KOR_move_support = 0 }
+			randomize_variable = {
+				var = KOR_move_support
+				distribution = binomial
+				min = 1
+				max = 10
+			}
+			round_variable = KOR_move_support
+			KOR_add_NL_support_effect = yes
+			
+			add_popularity = {
+				ideology = fascist
+				popularity = 0.02
+			}
+			
+			add_popularity = {
+				ideology = nationalist
+				popularity = 0.02
+			}
+		}
+		else = {
+			add_popularity = {
+				ideology = fascist
+				popularity = 0.02
+			}
+			
+			add_popularity = {
+				ideology = nationalist
+				popularity = 0.02
+			}
+		}
+		
+	}
+	
+	option = {
+		name = korea_flavor_events.11.b
+		ai_chance = {
+			base = 1.8
+		}
+		
+		if = {
+			limit = { has_completed_focus = kor_victory_democracy }
+			custom_effect_tooltip = kor_more_influence_right_con_1_10_tt
+			set_variable = { KOR_move_support = 0 }
+			randomize_variable = {
+				var = KOR_move_support
+				distribution = binomial
+				min = 1
+				max = 10
+			}
+			round_variable = KOR_move_support
+			KOR_add_neocon_support_effect = yes
+			
+			add_popularity = {
+				ideology = market_liberal
+				popularity = 0.02
+			}
+		}
+		else = {
+			add_popularity = {
+				ideology = market_liberal
+				popularity = 0.02
+			}
+		}
+	}
+}
+
+#####################################################
+#
+#      Republic of Korea
+#
+#                                        Reunification Events
+#
+#  - Ran Mitake
+#
+#####################################################
+
+#Social Problems in North Korea
+country_event = {
+	id = korea_reunification_events.1
+	title = korea_reunification_events.1.t
+	desc = korea_reunification_events.1.desc
+	picture = GFX_report_event_PRK_dprk_generals
+	
+	immediate = {
+		hidden_effect = {
+			country_event = { id = korea_reunification_events.2 days = 5 }
+		}
+	}
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = korea_reunification_events.1.a
+		
+		
+		every_state = {
+			limit = {
+				is_core_of = PRK
+				is_owned_by = KOR
+			}
+			add_dynamic_modifier = { modifier = backlash_against_korean_reunification }
+		}
+	}
+}
+
+#Pingdu of North Koreans
+country_event = {
+	id = korea_reunification_events.2
+	title = korea_reunification_events.2.t
+	desc = korea_reunification_events.2.desc
+	picture = GFX_report_event_PRK_dprk_generals
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = korea_reunification_events.2.a
+		
+		every_state = {
+			limit = {
+				is_core_of = PRK
+				is_owned_by = KOR
+			}
+			add_dynamic_modifier = { modifier = pingdu_drug_addicts }
+		}
 	}
 }
 
@@ -4226,6 +4943,14 @@ country_event = {
 	
 	option = {
 		name = korea_election.3.a
+		set_power_balance = {
+			id = KOR_power_balance
+			left_side = KOR_orthodox_conservative_power # will keep the last set side if not specified
+			right_side = KOR_young_conservative_power # will keep the last set side if not specified
+			#set_default = yes # whether or not to reset the power balance to the initial value, default = no
+			set_value = 0.1
+		}
+		
 		hidden_effect = {
 			#retire_ideology_leader = conservative
 			retire_character = kor_kim_dae_jung
@@ -4367,9 +5092,16 @@ country_event = {
 		KOR_win_right_wing_co_op_effect = yes
 		
 		load_focus_tree = KOR_focus_tree_moon_chang_geuk
-		add_ideas = kor_postnationalist_christian_rivalry_balanced
+		#add_ideas = kor_postnationalist_christian_rivalry_balanced #Changed BoP
 		set_cosmetic_tag = KOR_JAPANESE
 		
+		set_power_balance = {
+			id = KOR_fundamentalist_power_balance
+			left_side = KOR_fundamentalist_power # will keep the last set side if not specified
+			right_side = KOR_post_nationalist_power # will keep the last set side if not specified
+			#set_default = yes # whether or not to reset the power balance to the initial value, default = no
+			set_value = -0.3
+		}
 		
 		set_politics = { ruling_party = islamist elections_allowed = no }
 		
@@ -7169,7 +7901,7 @@ country_event = {
 	option = {
 		name = korean_war.99.a
 		load_focus_tree = KOR_focus_tree_moon_chang_geuk
-		add_ideas = kor_postnationalist_christian_rivalry_balanced
+		#add_ideas = kor_postnationalist_christian_rivalry_balanced
 		set_cosmetic_tag = KOR_JAPANESE
 		set_popularities = {
 				islamist = 75
