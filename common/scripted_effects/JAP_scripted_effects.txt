@@ -6,6 +6,25 @@
 JAP_reset_propaganda_campaign_slot_effect = {
 	hidden_effect = {
 		# No use "old poster"
+		if = {
+			limit = {
+				check_variable = { JAP_poster_left_icon_frame = JAP_propaganda_campaign_to_remove }
+			}
+			set_variable = { JAP_poster_left_icon_frame = JAP_propaganda_empty_slot_index }
+		}
+		else_if = {
+			limit = {
+				check_variable = { JAP_poster_center_icon_frame = JAP_propaganda_campaign_to_remove }
+			}
+			set_variable = { JAP_poster_center_icon_frame = JAP_propaganda_empty_slot_index }
+		}
+		else_if = {
+			limit = {
+				check_variable = { JAP_poster_right_icon_frame = JAP_propaganda_campaign_to_remove }
+			}
+			set_variable = { JAP_poster_right_icon_frame = JAP_propaganda_empty_slot_index }
+		}
+		set_variable = { JAP_propaganda_campaign_to_remove = 0 } # Reset var
 	}
 }
 
