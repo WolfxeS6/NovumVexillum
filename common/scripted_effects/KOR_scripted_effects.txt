@@ -33,7 +33,6 @@ KOR_loyalty_setting_effect = {
 }
 
 KOR_parties_support_setting_effect = {
-	KOR_national_assembly_modifers_effect = yes
 	
 	clamp_variable = {
 		var = KOR_parliament_seat_support_array^0
@@ -197,6 +196,7 @@ KOR_parties_support_setting_effect = {
 		add_to_variable = { var = KOR_all_left_wing_party_seats_status  value = KOR_democratic_socialism_seats_status }
 		
 		korean_init_parliament = yes
+		KOR_national_assembly_modifers_effect = yes
 }
 
 korean_overflow_and_minor_check = {
@@ -1229,7 +1229,7 @@ KOR_seats_general_election_effect = {
 	set_variable = { KOR_independent_seats_status = KOR_parliament_seat_support_array^10 }
 }
 
-KOR_fundamentalism_to_gain_strength = {
+KOR_bop_high_decrease_effect = {
 #custom_effect_tooltip = PRK_national_bankruptcy_down_tt
 	if = {
 		limit = { has_idea = kor_postnationalist_rivalry_win_2 }
@@ -1428,19 +1428,24 @@ KOR_win_left_wing_co_op_effect = {
 }
 
 KOR_clear_prime_minster_effect = {
-	remove_ideas = prime_minister_chung_hong_won
-	remove_ideas = prime_minister_goh_kun
-	remove_ideas = prime_minister_han_myeong_sook
-	remove_ideas = prime_minister_hwang_kyo_ahn
-	remove_ideas = prime_minister_hyun_soong_jong
-	remove_ideas = prime_minister_kim_jong_pil
-	remove_ideas = prime_minister_lee_nak_yon
-	remove_ideas = prime_minister_rhyu_si_min
-	remove_ideas = prime_minister_yoon_seo_in
-	remove_ideas = prime_minister_jeon_kwang_hoon
-	remove_ideas = prime_minister_paek_ki_wan
-	remove_ideas = prime_minister_kwon_young_ghil
-	remove_ideas = prime_minister_lee_jae_myung
+	custom_effect_tooltip = KOR_clear_prime_minster_effect_tt
+	hidden_effect = {
+		remove_ideas = prime_minister_chung_hong_won
+		remove_ideas = prime_minister_goh_kun
+		remove_ideas = prime_minister_han_myeong_sook
+		remove_ideas = prime_minister_hwang_kyo_ahn
+		remove_ideas = prime_minister_hyun_soong_jong
+		remove_ideas = prime_minister_kim_jong_pil
+		remove_ideas = prime_minister_lee_nak_yon
+		remove_ideas = prime_minister_rhyu_si_min
+		#remove_ideas = prime_minister_yoon_seo_in
+		remove_ideas = prime_minister_jeon_kwang_hoon
+		remove_ideas = prime_minister_paek_ki_wan
+		remove_ideas = prime_minister_kwon_young_ghil
+		remove_ideas = prime_minister_lee_jae_myung
+		remove_ideas = prime_minister_ahn_cheol_soo
+		remove_ideas = prime_minister_han_duck_soo
+	}
 }
 
 KOR_RegimeStability_subtract_10_effect = {
@@ -2963,5 +2968,327 @@ KOR_national_assembly_modifers_effect = {
 		set_variable = { var = KOR_na_war_support_dynamic_modifier value = -0.25 }
 		set_variable = { var = KOR_na_party_popularity_stability_factor_dynamic_modifier value = -0.25 }
 		set_variable = { var = KOR_na_enemy_justify_war_goal_time_dynamic_modifier value = -0.4 }
+	}
+}
+
+KOR_initiate_balance_of_power_effect = {
+	set_power_balance = {
+		id = KOR_power_balance
+		left_side = KOR_orthodox_conservative_power # will keep the last set side if not specified
+		right_side = KOR_young_conservative_power # will keep the last set side if not specified
+		set_default = yes # whether or not to reset the power balance to the initial value, default = no
+		#set_value = 0.25 # if specified will set the value of the power balance, this option will override the effect of set_default so the two options should not be used together. if neither set_default or set_value is specified the current value of the power balance will not change
+	}
+}
+
+KOR_bop_absurdly_high_increase_effect = {
+	if = {
+		limit = { has_power_balance = { id = KOR_power_balance }}
+		add_power_balance_value = {
+			id = KOR_power_balance
+			value = 1
+		}
+	}
+	else_if = {
+		limit = { has_power_balance = { id = KOR_fundamentalist_power_balance }}
+		add_power_balance_value = {
+			id = KOR_fundamentalist_power_balance
+			value = 1
+		}
+	}
+}
+
+KOR_bop_very_high_increase_effect = {
+	if = {
+		limit = { has_power_balance = { id = KOR_power_balance }}
+		add_power_balance_value = {
+			id = KOR_power_balance
+			value = 0.25
+		}
+	}
+	else_if = {
+		limit = { has_power_balance = { id = KOR_fundamentalist_power_balance }}
+		add_power_balance_value = {
+			id = KOR_fundamentalist_power_balance
+			value = 0.25
+		}
+	}
+}
+
+KOR_bop_high_increase_effect = {
+	if = {
+		limit = { has_power_balance = { id = KOR_power_balance }}
+		add_power_balance_value = {
+			id = KOR_power_balance
+			value = 0.2
+		}
+	}
+	else_if = {
+		limit = { has_power_balance = { id = KOR_fundamentalist_power_balance }}
+		add_power_balance_value = {
+			id = KOR_fundamentalist_power_balance
+			value = 0.2
+		}
+	}
+}
+
+KOR_bop_medium_increase_effect = {
+	if = {
+		limit = { has_power_balance = { id = KOR_power_balance } }
+		add_power_balance_value = {
+			id = KOR_power_balance
+			value = 0.15
+		}
+	}
+	else_if = {
+		limit = { has_power_balance = { id = KOR_fundamentalist_power_balance } }
+		add_power_balance_value = {
+			id = KOR_fundamentalist_power_balance
+			value = 0.15
+		}
+	}
+}
+
+KOR_bop_low_increase_effect = {
+	if = {
+		limit = { has_power_balance = { id = KOR_power_balance } }
+		add_power_balance_value = {
+			id = KOR_power_balance
+			value = 0.1
+		}
+	}
+	else_if = {
+		limit = { has_power_balance = { id = KOR_fundamentalist_power_balance }}
+		add_power_balance_value = {
+			id = KOR_fundamentalist_power_balance
+			value = 0.1
+		}
+	}
+}
+
+KOR_bop_very_low_increase_effect = {
+	if = {
+		limit = { has_power_balance = { id = KOR_power_balance }}
+		add_power_balance_value = {
+			id = KOR_power_balance
+			value = 0.05
+		}
+	}
+	else_if = {
+		limit = { has_power_balance = { id = KOR_fundamentalist_power_balance }}
+		add_power_balance_value = {
+			id = KOR_fundamentalist_power_balance
+			value = 0.05
+		}
+	}
+}
+
+KOR_bop_absurdly_high_decrease_effect = {
+	if = {
+		limit = { has_power_balance = { id = KOR_power_balance }}
+		add_power_balance_value = {
+			id = KOR_power_balance
+			value = -1
+		}
+	}
+	else_if = {
+		limit = { has_power_balance = { id = KOR_fundamentalist_power_balance }}
+		add_power_balance_value = {
+			id = KOR_fundamentalist_power_balance
+			value = -1
+		}
+	}
+}
+
+KOR_bop_very_high_decrease_effect = {
+	if = {
+		limit = { has_power_balance = { id = KOR_power_balance }}
+		add_power_balance_value = {
+			id = KOR_power_balance
+			value = -0.25
+		}
+	}
+	else_if = {
+		limit = { has_power_balance = { id = KOR_fundamentalist_power_balance }}
+		add_power_balance_value = {
+			id = KOR_fundamentalist_power_balance
+			value = -0.25
+		}
+	}
+}
+
+KOR_bop_high_decrease_effect = {
+	if = {
+		limit = { has_power_balance = { id = KOR_power_balance }}
+		add_power_balance_value = {
+			id = KOR_power_balance
+			value = -0.2
+		}
+	}
+	else_if = {
+		limit = { has_power_balance = { id = KOR_fundamentalist_power_balance }}
+		add_power_balance_value = {
+			id = KOR_fundamentalist_power_balance
+			value = -0.2
+		}
+	}
+}
+
+KOR_bop_medium_decrease_effect = {
+	if = {
+		limit = { has_power_balance = { id = KOR_power_balance }}
+		add_power_balance_value = {
+			id = KOR_power_balance
+			value = -0.15
+		}
+	}
+	else_if = {
+		limit = { has_power_balance = { id = KOR_fundamentalist_power_balance }}
+		add_power_balance_value = {
+			id = KOR_fundamentalist_power_balance
+			value = -0.15
+		}
+	}
+}
+
+KOR_bop_low_decrease_effect = {
+	if = {
+		limit = { has_power_balance = { id = KOR_power_balance }}
+		add_power_balance_value = {
+			id = KOR_power_balance
+			value = -0.1
+		}
+	}
+	else_if = {
+		limit = { has_power_balance = { id = KOR_fundamentalist_power_balance }}
+		add_power_balance_value = {
+			id = KOR_fundamentalist_power_balance
+			value = -0.1
+		}
+	}
+}
+
+KOR_bop_very_low_decrease_effect = {
+	if = {
+		limit = { has_power_balance = { id = KOR_power_balance }}
+		add_power_balance_value = {
+			id = KOR_power_balance
+			value = -0.05
+		}
+	}
+	else_if = {
+		limit = { has_power_balance = { id = KOR_fundamentalist_power_balance }}
+		add_power_balance_value = {
+			id = KOR_fundamentalist_power_balance
+			value = -0.05
+		}
+	}
+}
+
+KOR_left_economic_system_effect = {
+	if = {
+		limit = { has_idea = KOR_economy_of_korea_left_1 }
+		swap_ideas = {
+			remove_idea = KOR_economy_of_korea_left_1
+			add_idea = KOR_economy_of_korea_left_2
+		}
+	}
+	else_if = {
+		limit = { has_idea = KOR_economy_of_korea_left_2 }
+		swap_ideas = {
+			remove_idea = KOR_economy_of_korea_left_2
+			add_idea = KOR_economy_of_korea_left_3
+		}
+	}
+	else_if = {
+		limit = { has_idea = KOR_economy_of_korea_left_3 }
+		swap_ideas = {
+			remove_idea = KOR_economy_of_korea_left_3
+			add_idea = KOR_economy_of_korea_left_4
+		}
+	}
+	else = {
+		add_ideas = KOR_economy_of_korea_left_1
+	}
+}
+
+KOR_reformed_judicial_system_effect = {
+	if = {
+		limit = { has_idea = KOR_reformed_judicial_system_1 }
+		swap_ideas = {
+			remove_idea = KOR_reformed_judicial_system_1
+			add_idea = KOR_reformed_judicial_system_2
+		}
+	}
+	else_if = {
+		limit = { has_idea = KOR_reformed_judicial_system_2 }
+		swap_ideas = {
+			remove_idea = KOR_reformed_judicial_system_2
+			add_idea = KOR_reformed_judicial_system_3
+		}
+	}
+	else_if = {
+		limit = { has_idea = KOR_reformed_judicial_system_3 }
+		swap_ideas = {
+			remove_idea = KOR_reformed_judicial_system_3
+			add_idea = KOR_reformed_judicial_system_4
+		}
+	}
+	else = {
+		add_ideas = KOR_reformed_judicial_system_1
+	}
+}
+
+KOR_right_economic_system_effect = {
+	if = {
+		limit = { has_idea = KOR_economy_of_korea_right_1 }
+		swap_ideas = {
+			remove_idea = KOR_economy_of_korea_right_1
+			add_idea = KOR_economy_of_korea_right_2
+		}
+	}
+	else_if = {
+		limit = { has_idea = KOR_economy_of_korea_right_2 }
+		swap_ideas = {
+			remove_idea = KOR_economy_of_korea_right_2
+			add_idea = KOR_economy_of_korea_right_3
+		}
+	}
+	else_if = {
+		limit = { has_idea = KOR_economy_of_korea_right_3 }
+		swap_ideas = {
+			remove_idea = KOR_economy_of_korea_right_3
+			add_idea = KOR_economy_of_korea_right_4
+		}
+	}
+	else = {
+		add_ideas = KOR_economy_of_korea_right_1
+	}
+}
+
+KOR_promotion_of_patriotism_effect = {
+	if = {
+		limit = { has_idea = KOR_promotion_of_patriotism_1 }
+		swap_ideas = {
+			remove_idea = KOR_promotion_of_patriotism_1
+			add_idea = KOR_promotion_of_patriotism_2
+		}
+	}
+	else_if = {
+		limit = { has_idea = KOR_promotion_of_patriotism_2 }
+		swap_ideas = {
+			remove_idea = KOR_promotion_of_patriotism_2
+			add_idea = KOR_promotion_of_patriotism_3
+		}
+	}
+	else_if = {
+		limit = { has_idea = KOR_promotion_of_patriotism_3 }
+		swap_ideas = {
+			remove_idea = KOR_promotion_of_patriotism_3
+			add_idea = KOR_promotion_of_patriotism_4
+		}
+	}
+	else = {
+		add_ideas = KOR_promotion_of_patriotism_1
 	}
 }

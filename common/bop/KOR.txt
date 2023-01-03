@@ -1,0 +1,313 @@
+
+KOR_power_balance = {
+	initial_value = -0.25
+	left_side = KOR_orthodox_conservative_power	
+	right_side = KOR_young_conservative_power	
+	decision_category = KOR_conservative_faction_decision
+
+	### Neutral status
+	range = {
+		id = KOR_balance_range
+		min = -0.10
+		max = 0.10
+		modifier = {
+		}
+		on_activate = {
+
+		}
+		on_deactivate = {
+			
+		}
+	}
+	
+	### PRK_theocracy_power
+	side = {
+		id = KOR_orthodox_conservative_power	
+		icon = GFX_bop_KOR_market_conservatism
+
+		range = {
+			id = KOR_orthodox_power_low_control_range
+			min = -0.4
+			max = -0.1
+			modifier = {
+				political_advisor_cost_factor = 0.1
+			}
+			on_activate = {
+				
+			}
+			on_deactivate = {
+				
+			}
+		}
+
+		range = {
+			id = KOR_orthodox_power_medium_control_range
+			min = -0.9
+			max = -0.4
+			modifier = {
+				stability_factor = -0.03
+				political_advisor_cost_factor = 0.15
+				offensive_war_stability_factor = 0.1
+				war_support_factor = 0.05
+			}
+			on_activate = {
+				
+			}
+			on_deactivate = {
+				
+			}
+		}
+
+		range = {
+			id = KOR_orthodox_power_total_control_range
+			min = -1
+			max = -0.9
+			modifier = {
+				stability_factor = -0.07
+				political_advisor_cost_factor = 0.25
+				offensive_war_stability_factor = 0.2
+				war_support_factor = 0.15
+				experience_gain_army = 0.04
+				experience_gain_air = 0.04
+				experience_gain_navy = 0.04
+			}
+			on_activate = {
+			}
+			on_deactivate = {
+				
+			}
+		}
+	}
+	
+	### PRK_secularistic_power
+	side = {
+		id = KOR_young_conservative_power
+		icon = GFX_bop_KOR_innovation
+
+		range = {
+			id = KOR_young_power_low_control_range
+			min = 0.1
+			max = 0.4
+			modifier = {
+				political_power_factor = 0.05
+				stability_factor = 0.01
+				consumer_goods_factor = -0.02
+				justify_war_goal_time = 0.1
+			}
+			on_activate = {
+			}
+			on_deactivate = {
+				
+			}
+		}
+
+		range = {
+			id = KOR_young_power_medium_control_range
+			min = 0.4
+			max = 0.9
+			modifier = {
+				political_power_factor = 0.07
+				consumer_goods_factor = -0.05
+				stability_factor = 0.02
+				justify_war_goal_time = 0.2
+			}
+			on_activate = {
+				
+			}
+			on_deactivate = {
+				
+			}
+		}
+
+		range = {
+			id = KOR_young_total_control_range
+			min = 0.9
+			max = 1
+			modifier = {
+				political_power_factor = 0.15
+				stability_factor = 0.05
+				consumer_goods_factor = -0.1
+				justify_war_goal_time = 0.33
+			}
+			on_activate = {
+			}
+			on_deactivate = {
+			}
+		}
+	}
+	
+}
+
+KOR_fundamentalist_power_balance = {
+	initial_value = -0.25
+	left_side = KOR_fundamentalist_power	
+	right_side = KOR_post_nationalist_power	
+	decision_category = kor_roj_roll
+
+	### Neutral status
+	range = {
+		id = KOR_balance_range
+		min = -0.10
+		max = 0.10
+		modifier = {
+		}
+		on_activate = {
+
+		}
+		on_deactivate = {
+			
+		}
+	}
+	
+	### KOR_fundamentalist_power
+	side = {
+		id = KOR_fundamentalist_power	
+		icon = GFX_bop_KOR_christian_fundamentalism
+
+		range = {
+			id = KOR_fundamentalism_power_low_control_range
+			min = -0.3
+			max = -0.1
+			modifier = {
+				conscription = 0.02
+				stability_factor = -0.05
+			}
+			on_activate = {
+				
+			}
+			on_deactivate = {
+				
+			}
+		}
+
+		range = {
+			id = KOR_fundamentalism_power_medium_control_range
+			min = -0.6
+			max = -0.3
+			modifier = {
+				conscription = 0.05
+				stability_factor = -0.07
+			}
+			on_activate = {
+				
+			}
+			on_deactivate = {
+				
+			}
+		}
+
+		range = {
+			id = KOR_fundamentalism_power_high_control_range
+			min = -0.9
+			max = -0.6
+			modifier = {
+				conscription = 0.05
+				stability_factor = -0.07
+				command_power_gain_mult = 0.1
+				experience_gain_army_factor = 0.1
+				experience_gain_air_factor = 0.1
+				experience_gain_navy_factor = 0.1
+			}
+			on_activate = {
+			}
+			on_deactivate = {
+				
+			}
+		}
+
+		range = {
+			id = KOR_fundamentalism_power_total_control_range
+			min = -1
+			max = -0.9
+			modifier = {
+				conscription = 0.05
+				stability_factor = -0.07
+				command_power_gain_mult = 0.15
+				experience_gain_army_factor = 0.15
+				experience_gain_air_factor = 0.15
+				experience_gain_navy_factor = 0.15
+			}
+			on_activate = {
+			}
+			on_deactivate = {
+				
+			}
+		}
+	}
+	
+	### KOR_post_nationalist_power
+	side = {
+		id = KOR_post_nationalist_power	
+		icon = GFX_bop_KOR_pro_japanese
+
+		range = {
+			id = KOR_post_nationalist_power_low_control_range
+			min = 0.1
+			max = 0.3
+			modifier = {
+				research_speed_factor = 0.02
+				production_speed_arms_factory_factor = -0.05
+			}
+			on_activate = {
+			}
+			on_deactivate = {
+				
+			}
+		}
+
+		range = {
+			id = KOR_post_nationalist_power_medium_control_range
+			min = 0.3
+			max = 0.6
+			modifier = {
+				research_speed_factor = 0.05
+				production_speed_arms_factory_factor = -0.07
+			}
+			on_activate = {
+				
+			}
+			on_deactivate = {
+				
+			}
+		}
+
+		range = {
+			id = KOR_post_nationalist_power_high_control_range
+			min = 0.6
+			max = 0.9
+			modifier = {
+				research_speed_factor = 0.05
+				production_speed_arms_factory_factor = -0.07
+				compliance_growth = 0.05
+				puppet_cost_factor = -0.1
+				industrial_capacity_factory = 0.1
+			}
+			on_activate = {
+				
+			}
+			on_deactivate = {
+				
+			}
+		}
+
+		range = {
+			id = KOR_post_nationalist_power_total_control_range
+			min = 0.9
+			max = 1
+			modifier = {
+				research_speed_factor = 0.05
+				production_speed_arms_factory_factor = -0.07
+				compliance_growth = 0.05
+				puppet_cost_factor = -0.1
+				industrial_capacity_factory = 0.1
+				offensive_war_stability_factor = 0.3
+			}
+			on_activate = {
+				country_event = { id = south_korea.98 }
+			}
+			on_deactivate = {
+			}
+		}
+	}
+	
+}
