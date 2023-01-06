@@ -1105,6 +1105,7 @@ country_event = {
 		# Launch The Civil War
 		hidden_effect = {
 			country_event = { id = japan.58 days = 19 random = 14 } 
+			country_event = { id = japan_communist_civil_war.3 days = 9 random = 32 } 
 			add_ideas = government_system_one_party
 		}
 
@@ -2473,6 +2474,69 @@ country_event = {
 	
 	option = {
 		name = japan_communist_civil_war.2.a
+	}
+}
+
+#Independence of Okinawa
+country_event = {
+	id = japan_communist_civil_war.3
+	title = japan_communist_civil_war.3.t
+	desc = japan_communist_civil_war.3.desc
+	picture = GFX_report_event_okinawa_prefectural_assembly_event
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan_communist_civil_war.3.a #Traitors!
+		ai_chance = { 
+			base = 100
+		}
+		hidden_effect = {
+			#news_event = { id = japan_news.19 days = 1 }
+			#RYU = { country_event = { id = NV_RYU_events.1 days = 1 } }
+			526 = { 
+				remove_dynamic_modifier = { modifier = dynamic_okinawa_separatism }
+				remove_dynamic_modifier = { modifier = dynamic_angry_okinawaese }
+				remove_dynamic_modifier = { modifier = dynamic_massive_okinawa_riots }
+			}
+		}
+		release = RYU
+		if = {
+			limit = {
+				AND = {
+					RYU = { owns_state = 876 } #Senkaku
+				}
+			}
+			JAP = { transfer_state = 876 }
+			876 = { add_core_of = JAP }
+		}
+	}
+	
+	option = {
+		name = japan_communist_civil_war.3.b #For Okinawa
+		ai_chance = { 
+			base = 0
+		}
+		hidden_effect = {
+			#news_event = { id = japan_news.19 days = 1 }
+			#RYU = { country_event = { id = NV_RYU_events.1 days = 1 } }
+			526 = { 
+				remove_dynamic_modifier = { modifier = dynamic_okinawa_separatism }
+				remove_dynamic_modifier = { modifier = dynamic_angry_okinawaese }
+				remove_dynamic_modifier = { modifier = dynamic_massive_okinawa_riots }
+			}
+		}
+		release = RYU
+		if = {
+			limit = {
+				AND = {
+					RYU = { owns_state = 876 } #Senkaku
+				}
+			}
+			JAP = { transfer_state = 876 }
+			876 = { add_core_of = JAP }
+		}
+		RYU = { change_tag_from = JAP }
 	}
 }
 
