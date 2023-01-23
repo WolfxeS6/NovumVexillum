@@ -168,14 +168,24 @@ KOR_add_dokdo_token = {
 }
 
 Dokdo_Takeshima_setting = {
-	clamp_variable = {
-		var = GetTakeshimaSupport
-		min = 0
-		max = 100
+	if = {
+		limit = {
+			has_variable = GetTakeshimaSupport
+		}
+		clamp_variable = {
+			var = GetTakeshimaSupport
+			min = 0
+			max = 100
+		}
 	}
-	clamp_variable = {
-		var = GetDokdoSupport
-		min = 0
-		max = 100
+	if = {
+		limit = {
+			has_variable = GetDokdoSupport
+		}
+		clamp_variable = {
+			var = GetDokdoSupport
+			min = 0
+			max = 100
+		}
 	}
 }
