@@ -574,7 +574,7 @@ country_event = {
 	immediate = {
 		
 		hidden_effect = { 
-			#recruit_character = JAP_Yoshiro_Mori
+			recruit_character = JAP_Yoshiro_Mori
 			country_event = { id = japan.23 days = 30 } 
 		}
 	}
@@ -709,6 +709,8 @@ country_event = {
 		set_country_flag = JAP_kato_angry_flag
 		set_country_flag = JAP_play_mori
 		
+		set_variable = { GetKatoSupport = 45 }
+		
 		ai_chance = {
 		factor = 1
 			modifier = {
@@ -732,6 +734,8 @@ country_event = {
 		name = japan.28.b
 		set_country_flag = JAP_kato_angry_flag
 		set_country_flag = JAP_play_kato
+		
+		set_variable = { GetKatoSupport = 30 }
 		
 		ai_chance = {
 		factor = 1
@@ -1567,9 +1571,9 @@ country_event = {
 	is_triggered_only = yes
 	
 	immediate = {
-		hidden_effect = {
-			news_event = { id = japan_news.9 }
-		}
+		#hidden_effect = {
+		#	news_event = { id = japan_news.9 }
+		#}
 	}
 	
 	option = {
@@ -1649,7 +1653,7 @@ country_event = {
 		create_corps_commander = {
 			traits = { JAP_communist_sympathizer trait_mountaineer urban_assault_specialist trickster }
 			name = "Fusako Shigenobu"
-			picture = "generals/fusako_shigenobu.dds"
+			portrait_path = "gfx/leaders/JAP/generals/fusako_shigenobu.dds"
 			attack_skill = 4
 			defense_skill = 1
 			planning_skill = 3
@@ -2017,6 +2021,9 @@ country_event = {
 		add_popularity = {
 			ideology = democratic_socialist
 			popularity = 0.25
+		}
+		remove_power_balance = {
+			id = JAP_power_balance
 		}
 		
 		hidden_effect = {
@@ -3268,9 +3275,6 @@ country_event = {
 			JAP = { transfer_state = 1082 }
 		}
 		
-		clr_global_flag = KOR_provisional_left
-		clr_global_flag = KOR_provisional_right
-		
 		hidden_effect = {
 			remove_ideas = JAP_KPG_1
 			remove_ideas = JAP_KPG_2
@@ -3793,7 +3797,21 @@ news_event = {
 news_event = {
 	id = japan_news.18
 	title = japan_news.18.t
-	desc = japan_news.18.desc
+	
+	desc = {
+		text = japan_news.18.desc_1
+		trigger = {
+			has_global_flag = KOR_provisional_right
+		}
+	}
+	
+	desc = {
+		text = japan_news.18.desc_2
+		trigger = {
+			has_global_flag = KOR_provisional_left
+		}
+	}
+	
 	picture = GFX_news_event_korea_manse
 	
 	is_triggered_only = yes
@@ -3801,6 +3819,9 @@ news_event = {
 	
 	option = {
 		name = japan_news.18.a
+		
+		clr_global_flag = KOR_provisional_left
+		clr_global_flag = KOR_provisional_right
 	}
 }
 
@@ -4096,7 +4117,7 @@ country_event = {
 	}
 	
 	option = {
-		name = japan_flavor_events.5.a
+		name = japan_flavor_events.8.a
 		add_political_power = -25
 	}
 }
