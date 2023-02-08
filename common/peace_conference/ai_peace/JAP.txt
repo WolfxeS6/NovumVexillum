@@ -1,0 +1,38 @@
+# Scripted AI desire for peace actions.
+# See documentation.info file for more detailed scripting information.
+
+peace_ai_desires = {
+
+    JAP_japan_puppet_tibet = {
+        peace_action_type = puppet
+        enable = {
+            ROOT.FROM = { tag = TIB }
+            ROOT.FROM.FROM.FROM = { is_core_of = TIB }
+            tag = JAP
+        }
+        ai_desire = 150
+    }
+
+    JAP_japan_puppet_uyghur = {
+        peace_action_type = puppet
+        enable = {
+            ROOT.FROM = { tag = SIK }
+            ROOT.FROM.FROM.FROM = { is_core_of = SIK }
+            tag = JAP
+        }
+        ai_desire = 150
+    }
+	
+    JAP_wants_takeshima = {
+        peace_action_type = take_states
+        enable = {
+            ROOT.FROM.FROM.FROM = {
+                state = 1082
+            }
+            ROOT.FROM = { tag = SOV }
+        }
+
+        ai_desire = 400  # 400 percent higher desire
+    }
+	
+}
