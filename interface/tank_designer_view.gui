@@ -10,7 +10,8 @@ guiTypes = {
 		orientation = CENTER
 		origo = center
 		show_sound = "ui_tank_designer_panel_appear"
-
+		clipping = no
+		
 		background = {
 			name = "Background"
 			spriteType ="GFX_tank_designer_popup_bg"
@@ -33,7 +34,7 @@ guiTypes = {
 			text = "DESIGNER_EXPERIENCE"
 			pdx_tooltip = "CURRENT_EXPERIENCE"
 		}
-
+		
 		containerWindowType = {
 			name = "icon_selection_container"
 			position = { x=340 y=70 }
@@ -67,7 +68,7 @@ guiTypes = {
 			maxHeight = 20
 			format = centre
 		}
-
+		
 		# window with the equipment preview and the buttons to select the modules
 		containerWindowType = {
 			name = "equipment_modules"
@@ -103,6 +104,7 @@ guiTypes = {
 			@fixed_btn_mod_col_6 = 439
 
 			@fixed_btn_mod_row_0 = 1
+			@fixed_btn_mod_row_01 = 30
 			@fixed_btn_mod_row_1 = 300
 
 			# Code checks this position to know if module is in upper or low row to
@@ -163,6 +165,18 @@ guiTypes = {
 			positionType = {
 				name = "pos_custom_module_slot_window_8"
 				position = { x=@fixed_btn_mod_col_5 y=@fixed_btn_mod_row_0 }
+			}
+			positionType = {
+				name = "pos_custom_module_slot_window_9"
+				position = { x=@fixed_btn_mod_col_4 y=@fixed_btn_mod_row_1 }
+			}
+			positionType = {
+				name = "pos_custom_module_slot_window_10"
+				position = { x=@fixed_btn_mod_col_5 y=@fixed_btn_mod_row_1 }
+			}
+			positionType = {
+				name = "pos_custom_module_slot_window_11"
+				position = { x=@fixed_btn_mod_col_6 y=@fixed_btn_mod_row_1 }
 			}
 
 			######################################################################
@@ -277,7 +291,7 @@ guiTypes = {
 			position = { x = 461 y = 382 }
 		}
 
-		# right hand side, stats and terrain adjusters
+		# right hand side stats
 		containerWindowType = {
 			name = "info"
 			position = { x=536 y=13}
@@ -385,7 +399,7 @@ guiTypes = {
 				}
 			}
 		}
-
+		
 		iconType = {
 			name = "select_model"
 			position = { x=540 y=265 }
@@ -657,7 +671,7 @@ guiTypes = {
 			buttonType = {
 				name = "name_reset"
 				position = { x = -31 y = -1 }
-				quadTextureSprite ="GFX_checkbox_small_red"
+				quadTextureSprite ="GFX_NV_btn_reset"
 				clicksound = "ui_tank_designer_reset"
 				orientation = "upper_right"
 			}
@@ -691,7 +705,7 @@ guiTypes = {
 					name = "equipments_grid"
 					position = { x = 8 y = 0 }
 					size = { width = 199 height = 100%% }
-					slotsize = { width = 220 height = 50 }
+					slotsize = { width = 220 height = 60 }
 					max_slots_horizontal = 1
 					format = "UPPER_LEFT"
 
@@ -778,11 +792,12 @@ guiTypes = {
 					max_slots_horizontal = 1
 					format = "UPPER_LEFT"
 
-					# contains designer_role_entry
+					# contains tank_designer_role_entry
 
 				}
 			}
 		}
+		
 		buttonType = {
 			name = "toggle_comparison_button"
 			position = {x=-97 y=4}
@@ -791,7 +806,7 @@ guiTypes = {
 			clicksound = click_default
 			pdx_tooltip = "EQUIPMENT_COMPARISON"
 		}
-
+		
 		buttonType = {
 			name = "close_button"
 			position = { x = -44 y = 6 }
@@ -891,13 +906,15 @@ guiTypes = {
 				name = "gb_modules"
 				position = { x=17 y=70 }
 				size = { width=510 height=10 }
-				slotsize = { width = 247 height = 69 }
+				slotsize = { width = 247 height = 69 } 
 				max_slots_horizontal = 2
 				format = UPPER_LEFT
 
 				# code inserts equipment_module_category_entry or equipment_module_entry here
 			}
 		}
+		
+		
 		containerWindowType = {
 			name = "designer_intel_container"
 			size = { width = 317 height = 540 }
@@ -1193,11 +1210,12 @@ guiTypes = {
 				}
 			}
 		}
+		
 	}
 
 	# tank role entry for the drop-down menu
 	containerWindowType = {
-		name = "designer_role_entry"
+		name = "tank_designer_role_entry"
 		size = { width = 277 height = 50 }
 		clipping = no
 		
@@ -1236,5 +1254,7 @@ guiTypes = {
 			position = { x = 247 y = 17 }
 			alwaystransparent = yes
 		}
+		
 	}
+	
 }

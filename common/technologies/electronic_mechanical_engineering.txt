@@ -47,6 +47,7 @@ technologies = {
 		}
 		enable_equipment_modules = { 
 			ship_radar_1
+			tank_radio_2
 		}
 		land_reinforce_rate = 0.05
 		
@@ -138,6 +139,7 @@ technologies = {
 		}
 		enable_equipment_modules = { 
 			ship_radar_2
+			tank_active_protection
 		}
 		
 		path = {
@@ -185,6 +187,7 @@ technologies = {
 		
 		enable_equipment_modules = { 
 			ship_radar_3
+			tank_radio_3
 		}
 		static_anti_air_hit_chance_factor = 0.2
 		air_accidents_factor = -0.1
@@ -287,6 +290,7 @@ technologies = {
 		}
 		enable_equipment_modules = { 
 			ship_radar_4
+			tank_radio_4
 		}
 		
 		path = {
@@ -386,6 +390,9 @@ technologies = {
 			level = 6
 		}
 		static_anti_air_hit_chance_factor = 0.05
+		enable_equipment_modules ={
+			tank_radio_5
+		}
 		
 		path = {
 			leads_to_tech = improved_quantum_radar 
@@ -675,7 +682,10 @@ technologies = {
 	advanced_computing_machine = {
 		
 		research_speed_factor = 0.05
-		
+		enable_equipment_modules = {
+			tank_battlefield_integration
+			tank_ai_turret
+		}
 		path = {
 			leads_to_tech = near_future_computing_machine 
 			research_cost_coeff = 1
@@ -724,7 +734,7 @@ technologies = {
 	near_future_computing_machine = {
 		
 		research_speed_factor = 0.05
-		
+
 		path = {
 			leads_to_tech = future_computing_machine 
 			research_cost_coeff = 1
@@ -815,405 +825,389 @@ technologies = {
 		}
 	}
 	
-	basic_encryption = {
-		
-		# encryption 1
-		encryption = 1
-		allow_branch = {
-			NOT = { has_dlc = "La Resistance" }
-		}
-		research_cost = 1
-		start_year = 2002
-		folder = {
-			name = electronics_folder
-			position = { x = 0 y = 4 }
-		}
-		
-		categories = {
-			electronics
-			encryption_tech
-		}
-		
-		ai_will_do = {
-			factor = 1.75
-			
-			modifier = {
-				factor = 1.5
-				num_of_military_factories < 30
-			}
-			modifier = {
-				factor = 3
-				OR = {
-					original_tag = PRC
-					original_tag = SOV
-					original_tag = USA
-				}
-			}
-		}
-	}
-	
-	improved_encryption = {
-		
-		# encryption 2
-		encryption = 1
-		allow_branch = {
-			NOT = { has_dlc = "La Resistance" }
-		}
-		research_cost = 1
-		start_year = 2008
-		folder = {
-			name = electronics_folder
-			position = { x = 0 y = 8 }
-		}
-		
-		categories = {
-			electronics
-			encryption_tech
-		}
-		
-		ai_will_do = {
-			factor = 1.75
-			
-			modifier = {
-				factor = 1.5
-				num_of_military_factories < 30
-			}
-			modifier = {
-				factor = 3
-				OR = {
-					original_tag = PRC
-					original_tag = SOV
-					original_tag = USA
-				}
-			}
-		}
-	}
-	
-	advanced_encryption = {
-		
-		# encryption 3
-		encryption = 1
-		allow_branch = {
-			NOT = { has_dlc = "La Resistance" }
-		}
-		research_cost = 1
-		start_year = 2016
-		
-		folder = {
-			name = electronics_folder
-			position = { x = 0 y = 12 }
-		}
-		
-		categories = {
-			electronics
-			encryption_tech
-		}
-		
-		ai_will_do = {
-			factor = 1.75
-			
-			modifier = {
-				factor = 1.5
-				num_of_military_factories < 30
-			}
-			modifier = {
-				factor = 3
-				OR = {
-					original_tag = PRC
-					original_tag = SOV
-					original_tag = USA
-				}
-			}
-		}
-	}
-	
-	near_future_encryption = {
-		
-		# encryption 4
-		encryption = 1
-		allow_branch = {
-			NOT = { has_dlc = "La Resistance" }
-		}
-		research_cost = 1
-		start_year = 2024
-		folder = {
-			name = electronics_folder
-			position = { x = 0 y = 16 }
-		}
-		
-		categories = {
-			electronics
-			encryption_tech
-		}
-		
-		ai_will_do = {
-			factor = 1.75
-			
-			modifier = {
-				factor = 1.5
-				num_of_military_factories < 30
-			}
-			modifier = {
-				factor = 3
-				OR = {
-					original_tag = PRC
-					original_tag = SOV
-					original_tag = USA
-				}
-			}
-		}
-	}
-	
-	future_encryption = {
-		
-		# encryption 5
-		encryption = 1
-		allow_branch = {
-			NOT = { has_dlc = "La Resistance" }
-		}
-		research_cost = 1
-		start_year = 2032
-		folder = {
-			name = electronics_folder
-			position = { x = 0 y = 20 }
-		}
-		
-		categories = {
-			electronics
-			encryption_tech
-		}
-		
-		ai_will_do = {
-			factor = 1.75
-			
-			modifier = {
-				factor = 1.5
-				num_of_military_factories < 30
-			}
-			modifier = {
-				factor = 3
-				OR = {
-					original_tag = PRC
-					original_tag = SOV
-					original_tag = USA
-				}
-			}
-		}
-	}
-	
-	basic_decryption = {
-		
-		# decryption 1
-		decryption = 1
-		allow_branch = {
-			NOT = { has_dlc = "La Resistance" }
-		}
-		research_cost = 1.5
-		start_year = 2002
-		folder = {
-			name = electronics_folder
-			position = { x = 4 y = 4 }
-		}
-		
-		categories = {
-			electronics
-			decryption_tech
-		}
-		
-		ai_will_do = {
-			factor = 1.5
-			
-			modifier = {
-				factor = 3
-				has_war = yes
-			}
-			modifier = {
-				factor = 1.5
-				num_of_military_factories < 30
-			}
-			modifier = {
-				factor = 3
-				OR = {
-					original_tag = PRC
-					original_tag = SOV
-					original_tag = USA
-				}
-			}
-		}
-	}
-	
-	improved_decryption = {
-		
-		# decryption 2
-		decryption = 1
-		allow_branch = {
-			NOT = { has_dlc = "La Resistance" }
-		}
-		research_cost = 1.5
-		start_year = 2008
-		folder = {
-			name = electronics_folder
-			position = { x = 4 y = 8 }
-		}
-		
-		categories = {
-			electronics
-			decryption_tech
-		}
-		
-		ai_will_do = {
-			factor = 1.5
-			
-			modifier = {
-				factor = 3
-				has_war = yes
-			}
-			modifier = {
-				factor = 1.5
-				num_of_military_factories < 30
-			}
-			modifier = {
-				factor = 3
-				OR = {
-					original_tag = PRC
-					original_tag = SOV
-					original_tag = USA
-				}
-			}
-		}
-	}
-	
-	advanced_decryption = {
-		
-		# decryption 3
-		decryption = 1
-		allow_branch = {
-			NOT = { has_dlc = "La Resistance" }
-		}
-		research_cost = 1.5
-		start_year = 2016
-		folder = {
-			name = electronics_folder
-			position = { x = 4 y = 12 }
-		}
-		
-		categories = {
-			electronics
-			decryption_tech
-		}
-		
-		ai_will_do = {
-			factor = 1.5
-			
-			modifier = {
-				factor = 3
-				has_war = yes
-			}
-			modifier = {
-				factor = 1.5
-				num_of_military_factories < 30
-			}#E#W
-			modifier = {
-				factor = 3
-				OR = {
-					original_tag = PRC
-					original_tag = SOV
-					original_tag = USA
-				}
-			}
-		}
-	}
-	
-	near_future_decryption = {
-		
-		# decryption 4
-		decryption = 1
-		allow_branch = {
-			NOT = { has_dlc = "La Resistance" }
-		}
-		research_cost = 1.5
-		start_year = 2024
-		folder = {
-			name = electronics_folder
-			position = { x = 4 y = 16 }
-		}
-		
-		categories = {
-			electronics
-			decryption_tech
-		}
-		
-		ai_will_do = {
-			factor = 1.5
-			
-			modifier = {
-				factor = 3
-				has_war = yes
-			}
-			modifier = {
-				factor = 1.5
-				num_of_military_factories < 30
-			}
-			modifier = {
-				factor = 3
-				OR = {
-					original_tag = PRC
-					original_tag = SOV
-					original_tag = USA
-				}
-			}
-		}
-	}
-	
-	future_decryption = {
-		
-		# decryption 5
-		decryption = 1
-		allow_branch = {
-			NOT = { has_dlc = "La Resistance" }
-		}
-		research_cost = 1.5
-		start_year = 2032
-		folder = {
-			name = electronics_folder
-			position = { x = 4 y = 20 }
-		}
-		
-		categories = {
-			electronics
-			decryption_tech
-		}
-		
-		ai_will_do = {
-			factor = 1.5
-			
-			modifier = {
-				factor = 3
-				has_war = yes
-			}
-			modifier = {
-				factor = 1.5
-				num_of_military_factories < 30
-			}
-			modifier = {
-				factor = 3
-				OR = {
-					original_tag = PRC
-					original_tag = SOV
-					original_tag = USA
-				}
-			}
-		}
-	}
+#	basic_encryption = {
+#		
+#		# encryption 1
+#		encryption = 1
+#		
+#		research_cost = 1
+#		start_year = 2002
+#		folder = {
+#			name = electronics_folder
+#			position = { x = 0 y = 4 }
+#		}
+#		
+#		categories = {
+#			electronics
+#			encryption_tech
+#		}
+#		
+#		ai_will_do = {
+#			factor = 1.75
+#			
+#			modifier = {
+#				factor = 1.5
+#				num_of_military_factories < 30
+#			}
+#			modifier = {
+#				factor = 3
+#				OR = {
+#					original_tag = PRC
+#					original_tag = SOV
+#					original_tag = USA
+#				}
+#			}
+#		}
+#	}
+#	
+#	improved_encryption = {
+#		
+#		# encryption 2
+#		encryption = 1
+#		
+#		research_cost = 1
+#		start_year = 2008
+#		folder = {
+#			name = electronics_folder
+#			position = { x = 0 y = 8 }
+#		}
+#		
+#		categories = {
+#			electronics
+#			encryption_tech
+#		}
+#		
+#		ai_will_do = {
+#			factor = 1.75
+#			
+#			modifier = {
+#				factor = 1.5
+#				num_of_military_factories < 30
+#			}
+#			modifier = {
+#				factor = 3
+#				OR = {
+#					original_tag = PRC
+#					original_tag = SOV
+#					original_tag = USA
+#				}
+#			}
+#		}
+#	}
+#	
+#	advanced_encryption = {
+#		
+#		# encryption 3
+#		encryption = 1
+#		
+#		research_cost = 1
+#		start_year = 2016
+#		
+#		folder = {
+#			name = electronics_folder
+#			position = { x = 0 y = 12 }
+#		}
+#		
+#		categories = {
+#			electronics
+#			encryption_tech
+#		}
+#		
+#		ai_will_do = {
+#			factor = 1.75
+#			
+#			modifier = {
+#				factor = 1.5
+#				num_of_military_factories < 30
+#			}
+#			modifier = {
+#				factor = 3
+#				OR = {
+#					original_tag = PRC
+#					original_tag = SOV
+#					original_tag = USA
+#				}
+#			}
+#		}
+#	}
+#	
+#	near_future_encryption = {
+#		
+#		# encryption 4
+#		encryption = 1
+#		
+#		research_cost = 1
+#		start_year = 2024
+#		folder = {
+#			name = electronics_folder
+#			position = { x = 0 y = 16 }
+#		}
+#		
+#		categories = {
+#			electronics
+#			encryption_tech
+#		}
+#		
+#		ai_will_do = {
+#			factor = 1.75
+#			
+#			modifier = {
+#				factor = 1.5
+#				num_of_military_factories < 30
+#			}
+#			modifier = {
+#				factor = 3
+#				OR = {
+#					original_tag = PRC
+#					original_tag = SOV
+#					original_tag = USA
+#				}
+#			}
+#		}
+#	}
+#	
+#	future_encryption = {
+#		
+#		# encryption 5
+#		encryption = 1
+#		
+#		research_cost = 1
+#		start_year = 2032
+#		folder = {
+#			name = electronics_folder
+#			position = { x = 0 y = 20 }
+#		}
+#		
+#		categories = {
+#			electronics
+#			encryption_tech
+#		}
+#		
+#		ai_will_do = {
+#			factor = 1.75
+#			
+#			modifier = {
+#				factor = 1.5
+#				num_of_military_factories < 30
+#			}
+#			modifier = {
+#				factor = 3
+#				OR = {
+#					original_tag = PRC
+#					original_tag = SOV
+#					original_tag = USA
+#				}
+#			}
+#		}
+#	}
+#	
+#	basic_decryption = {
+#		
+#		# decryption 1
+#		decryption = 1
+#		
+#		research_cost = 1.5
+#		start_year = 2002
+#		folder = {
+#			name = electronics_folder
+#			position = { x = 4 y = 4 }
+#		}
+#		
+#		categories = {
+#			electronics
+#			decryption_tech
+#		}
+#		
+#		ai_will_do = {
+#			factor = 1.5
+#			
+#			modifier = {
+#				factor = 3
+#				has_war = yes
+#			}
+#			modifier = {
+#				factor = 1.5
+#				num_of_military_factories < 30
+#			}
+#			modifier = {
+#				factor = 3
+#				OR = {
+#					original_tag = PRC
+#					original_tag = SOV
+#					original_tag = USA
+#				}
+#			}
+#		}
+#	}
+#	
+#	improved_decryption = {
+#		
+#		# decryption 2
+#		decryption = 1
+#		
+#		research_cost = 1.5
+#		start_year = 2008
+#		folder = {
+#			name = electronics_folder
+#			position = { x = 4 y = 8 }
+#		}
+#		
+#		categories = {
+#			electronics
+#			decryption_tech
+#		}
+#		
+#		ai_will_do = {
+#			factor = 1.5
+#			
+#			modifier = {
+#				factor = 3
+#				has_war = yes
+#			}
+#			modifier = {
+#				factor = 1.5
+#				num_of_military_factories < 30
+#			}
+#			modifier = {
+#				factor = 3
+#				OR = {
+#					original_tag = PRC
+#					original_tag = SOV
+#					original_tag = USA
+#				}
+#			}
+#		}
+#	}
+#	
+#	advanced_decryption = {
+#		
+#		# decryption 3
+#		decryption = 1
+#		
+#		research_cost = 1.5
+#		start_year = 2016
+#		folder = {
+#			name = electronics_folder
+#			position = { x = 4 y = 12 }
+#		}
+#		
+#		categories = {
+#			electronics
+#			decryption_tech
+#		}
+#		
+#		ai_will_do = {
+#			factor = 1.5
+#			
+#			modifier = {
+#				factor = 3
+#				has_war = yes
+#			}
+#			modifier = {
+#				factor = 1.5
+#				num_of_military_factories < 30
+#			}#E##W
+#			modifier = {
+#				factor = 3
+#				OR = {
+#					original_tag = PRC
+#					original_tag = SOV
+#					original_tag = USA
+#				}
+#			}
+#		}
+#	}
+#	
+#	near_future_decryption = {
+#		
+#		# decryption 4
+#		decryption = 1
+#		
+#		research_cost = 1.5
+#		start_year = 2024
+#		folder = {
+#			name = electronics_folder
+#			position = { x = 4 y = 16 }
+#		}
+#		
+#		categories = {
+#			electronics
+#			decryption_tech
+#		}
+#		
+#		ai_will_do = {
+#			factor = 1.5
+#			
+#			modifier = {
+#				factor = 3
+#				has_war = yes
+#			}
+#			modifier = {
+#				factor = 1.5
+#				num_of_military_factories < 30
+#			}
+#			modifier = {
+#				factor = 3
+#				OR = {
+#					original_tag = PRC
+#					original_tag = SOV
+#					original_tag = USA
+#				}
+#			}
+#		}
+#	}
+#	
+#	future_decryption = {
+#		
+#		# decryption 5
+#		decryption = 1
+#		
+#		research_cost = 1.5
+#		start_year = 2032
+#		folder = {
+#			name = electronics_folder
+#			position = { x = 4 y = 20 }
+#		}
+#		
+#		categories = {
+#			electronics
+#			decryption_tech
+#		}
+#		
+#		ai_will_do = {
+#			factor = 1.5
+#			
+#			modifier = {
+#				factor = 3
+#				has_war = yes
+#			}
+#			modifier = {
+#				factor = 1.5
+#				num_of_military_factories < 30
+#			}
+#			modifier = {
+#				factor = 3
+#				OR = {
+#					original_tag = PRC
+#					original_tag = SOV
+#					original_tag = USA
+#				}
+#			}
+#		}
+#	}
 	
 	basic_fire_control_system = {
 		
 		enable_equipment_modules = { 
 			ship_fire_control_system_1
+			tank_auto_targetter
 		}
 		
 		allow_branch = {
-			has_dlc = "Man the Guns"
+			OR = {
+				has_dlc = "Man the Guns"
+				has_dlc = "No Step Back"
+			}
 		}
 		
 		research_cost = 1
@@ -1300,10 +1294,14 @@ technologies = {
 		
 		enable_equipment_modules = { 
 			ship_fire_control_system_3
+			tank_auto_targetter_2
 		}
 		
 		allow_branch = {
-			has_dlc = "Man the Guns"
+			OR= {
+				has_dlc = "Man the Guns"
+				has_dlc = "No Step Back"
+			}
 		}
 		
 		research_cost = 1
@@ -1439,11 +1437,11 @@ technologies = {
 		}
 		
 		research_cost = 1.5
-		start_year = 2008
+		start_year = 1980
 		
 		folder = {
 			name = electronics_folder
-			position = { x = 2 y = 2 }
+			position = { x = 2 y = 0 }
 		}
 	
 		ai_will_do = {
@@ -1452,10 +1450,6 @@ technologies = {
 		
 		categories = {
 			rocketry
-		}
-		
-		allow = {
-			NOT = { has_global_flag = DPTS_disable_nukes }
 		}
 	}
 	
@@ -1469,15 +1463,6 @@ technologies = {
 			guided_missile_equipment_1
 		}
 		
-		rocket_artillery = {
-			soft_attack = 0.05
-		}
-		rocket_artillery_brigade = {
-			soft_attack = 0.05
-		}
-		mot_rocket_artillery_brigade = {
-			soft_attack = 0.05
-		}
 		motorized_rocket_brigade = {
 			soft_attack = 0.05
 		}
@@ -1497,7 +1482,7 @@ technologies = {
 		}
 		
 		research_cost = 2
-		start_year = 2012
+		start_year = 2008
 		folder = {
 			name = electronics_folder
 			position = { x = 2 y = 4 }
@@ -1527,15 +1512,6 @@ technologies = {
 			guided_missile_equipment_2
 		}
 		
-		rocket_artillery = {
-			soft_attack = 0.05
-		}
-		rocket_artillery_brigade = {
-			soft_attack = 0.05
-		}
-		mot_rocket_artillery_brigade = {
-			soft_attack = 0.05
-		}
 		motorized_rocket_brigade = {
 			soft_attack = 0.05
 		}
@@ -1550,7 +1526,7 @@ technologies = {
 		
 		folder = {
 			name = electronics_folder
-			position = { x = 2 y = 6 }
+			position = { x = 2 y = 8 }
 		}
 		
 		ai_will_do = {
@@ -1572,16 +1548,7 @@ technologies = {
 			#rocket_interceptor_equipment_3
 			guided_missile_equipment_3
 		}
-		
-		rocket_artillery = {
-			soft_attack = 0.05
-		}
-		rocket_artillery_brigade = {
-			soft_attack = 0.05
-		}
-		mot_rocket_artillery_brigade = {
-			soft_attack = 0.05
-		}
+
 		motorized_rocket_brigade = {
 			soft_attack = 0.05
 		}
@@ -1591,7 +1558,7 @@ technologies = {
 		
 		folder = {
 			name = electronics_folder
-			position = { x = 2 y = 8 }
+			position = { x = 2 y = 10 }
 		}
 		
 		ai_will_do = {
@@ -1642,12 +1609,14 @@ technologies = {
 			leads_to_tech = nuclear_reactor 
 			research_cost_coeff = 1
 		}
-		
+		enable_equipment_modules = {
+			tank_uranium_armor
+		}
 		start_year = 2004
 		research_cost = 5
 		folder = {
 			name = electronics_folder
-			position = { x = 0 y = 0 }
+			position = { x = 0 y = 2 }
 		}
 		
 		ai_will_do = {
@@ -1662,10 +1631,6 @@ technologies = {
 		categories = {
 			nuclear
 		}
-		
-		allow = {
-			NOT = { has_idea = national_development_undeveloped }
-		}
 	}
 	
 	nuclear_reactor = {
@@ -1676,7 +1641,7 @@ technologies = {
 		research_cost = 5
 		folder = {
 			name = electronics_folder
-			position = { x = 0 y = 2 }
+			position = { x = 0 y = 4 }
 		}
 
 		path = {
@@ -1684,10 +1649,7 @@ technologies = {
 			research_cost_coeff = 1
 		}
 		
-		path = {
-			leads_to_tech = experimental_rockets
-			research_cost_coeff = 1
-		}
+
 		
 		ai_will_do = {
 			factor = 0
@@ -1706,6 +1668,10 @@ technologies = {
 			building = nuclear_reactor
 			level = 1
 		}
+		
+		allow = {
+			NOT = { has_global_flag = DPTS_disable_nukes }
+		}
 	}
 
 	nukes = {
@@ -1714,13 +1680,9 @@ technologies = {
 		research_cost = 5
 		folder = {
 			name = electronics_folder
-			position = { x = 0 y = 4 }
+			position = { x = 0 y = 6 }
 		}
 		
-		path = {
-			leads_to_tech = rocket_engines 
-			research_cost_coeff = 1
-		}
 		
 		ai_will_do = {
 			factor = 0

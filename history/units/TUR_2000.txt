@@ -3,7 +3,7 @@
 	
 	regiments = {
 		infantry = { x = 0 y = 0 }
-		infantry = { x = 1 y = 0 }
+		cavalry = { x = 1 y = 0 }
 	}
 	priority = 0
 }
@@ -13,6 +13,8 @@ division_template = {
 	
 	regiments = {
 		infantry = { x = 0 y = 0 }
+		infantry = { x = 0 y = 1 }
+		infantry = { x = 0 y = 2 }
 	}
 	support = {
 		engineer = { x = 0 y = 0 }
@@ -78,15 +80,22 @@ division_template = {
 		paratrooper = { x = 0 y = 0 }
 		paratrooper = { x = 0 y = 1 }
 		paratrooper = { x = 0 y = 2 }
-		paratrooper = { x = 0 y = 3 }
-		paratrooper = { x = 0 y = 4 }
+		paratrooper = { x = 1 y = 0 }
+		paratrooper = { x = 1 y = 1 }
+		paratrooper = { x = 1 y = 2 }
+		paratrooper = { x = 2 y = 0 }
+		paratrooper = { x = 2 y = 1 }
+		paratrooper = { x = 2 y = 2 }
 	}
+	
 	support = {
 		field_hospital = { x = 0 y = 0 }
-		engineer = { x = 0 y = 1 }
-		mot_recon = { x = 0 y = 2 }
-		artillery = { x = 0 y = 3 }
+		mot_recon = { x = 0 y = 1 }
+		artillery = { x = 0 y = 2 }
+		anti_air = { x = 0 y = 3 }
+		mot_recon = { x = 0 y = 4 }
 	}
+	
 	priority = 2
 }
 division_template = {
@@ -106,15 +115,34 @@ division_template = {
 		mot_recon = { x = 0 y = 2 }
 	}
 }
+
 division_template = {
-	name = "Artillery Regiment"
+	name = "Armored Division"
 	
 	regiments = {
-		mot_artillery_brigade = { x = 0 y = 0 }
+		modern_armor = { x = 0 y = 0 }
+		modern_armor = { x = 0 y = 1 }
+		modern_armor = { x = 0 y = 2 }
+		modern_armor = { x = 0 y = 3 }
+		modern_armor = { x = 0 y = 4 }
+		mechanized = { x = 1 y = 0 }
+		mechanized = { x = 1 y = 1 }
+		light_mechanized = { x = 1 y = 2 }
+		light_mechanized = { x = 1 y = 3 }
+		light_mechanized = { x = 1 y = 4 }
+		mot_artillery_brigade = { x = 2 y = 0 }
+		mot_artillery_brigade = { x = 2 y = 1 }
+		mot_artillery_brigade = { x = 2 y = 2 }
+		light_mechanized = { x = 3 y = 0 }
+		light_mechanized = { x = 3 y = 1 }
 	}
+	
 	support = {
 		engineer = { x = 0 y = 0 }
-		mot_recon = { x = 0 y = 1 }
+		military_police = { x = 0 y = 1 }
+		field_hospital = { x = 0 y = 2 }
+		anti_air = { x = 0 y = 3 }
+		mot_recon = { x = 0 y = 4 }
 	}
 }
 division_template = {
@@ -136,29 +164,31 @@ division_template = {
 
 division_template = {
 	name = "Infantry Division"
-
+	
 	regiments = {
-		infantry = { x = 0 y = 0 }
-		infantry = { x = 0 y = 1 }
-		infantry = { x = 0 y = 2 }
-		mot_artillery_brigade = { x = 0 y = 3 }
-		infantry = { x = 1 y = 0 }
-		infantry = { x = 1 y = 1 }
-		infantry = { x = 1 y = 2 }
-		mot_artillery_brigade = { x = 1 y = 3 }
-		infantry = { x = 2 y = 0 }
-		infantry = { x = 2 y = 1 }
-		infantry = { x = 2 y = 2 }
-		mot_artillery_brigade = { x = 2 y = 3 }
-		light_mechanized = { x = 3 y = 0 }
-		light_mechanized = { x = 3 y = 1 }
-		light_mechanized = { x = 3 y = 2 }
-	}
+		mechanized = { x = 0 y = 0 }
+		motorized = { x = 0 y = 1 }
+		motorized = { x = 0 y = 2 }
+		light_mechanized = { x = 1 y = 0 }
+		motorized = { x = 1 y = 1 }
+		motorized = { x = 1 y = 2 }
+		light_mechanized = { x = 2 y = 0 }
+		motorized = { x = 2 y = 1 }
+		motorized = { x = 2 y = 2 }
+		mot_artillery_brigade = { x = 3 y = 0 }
+		mot_artillery_brigade = { x = 3 y = 1 }
+		mot_artillery_brigade = { x = 3 y = 2 }
+		light_mechanized = { x = 4 y = 0 }
+		light_mechanized = { x = 4 y = 1 }
+		}
+	
 	support = {
-		field_hospital = { x = 0 y = 0 }
-		engineer = { x = 0 y = 1 }
-		mot_recon = { x = 0 y = 2 }
+		engineer = { x = 0 y = 0 }
+		military_police = { x = 0 y = 1 }
+		field_hospital = { x = 0 y = 2 }
+		mot_recon = { x = 0 y = 3 }
 	}
+	
 }
 
 division_template = {
@@ -180,16 +210,9 @@ units = {
 
 	division = {
 		name = "Cumhurbaşkanlığı Muhafız Alayı"
-		location = 15642	#Ankara
+		location = 11747	#Ankara
 		division_template = "Presidential Guard Regiment"
 		start_experience_factor = 0.1
-		force_equipment_variants = { infantry_equipment_1 = { owner = "TUR" version_name = "G3A7A1" } }
-	}
-#1. Ordu, 2. Kolordu - 1. Army, II Corps
-	division = { name = "102. Topçu Alayı"
-		location = 3879	#Keşan
-		division_template = "Artillery Regiment"
-		start_experience_factor = 0.15
 		force_equipment_variants = { infantry_equipment_1 = { owner = "TUR" version_name = "G3A7A1" } }
 	}
 	division = {
@@ -213,7 +236,7 @@ units = {
 	division = {
 		name = "18. Zırhlı Tugay"
 		location = 6864	#Ortaköy
-		division_template = "Armored Brigade"
+		division_template = "Armored Division"
 		start_experience_factor = 0.15
 		force_equipment_variants = { infantry_equipment_1 = { owner = "TUR" version_name = "G3A7A1" } }
 		force_equipment_variants = { mechanized_equipment_1 = { owner = "TUR" } }
@@ -222,7 +245,7 @@ units = {
 	division = {
 		name = "95. Zırhlı Tugay"
 		location = 3879	#Malkara
-		division_template = "Armored Brigade"
+		division_template = "Armored Division"
 		start_experience_factor = 0.15
 		force_equipment_variants = { infantry_equipment_1 = { owner = "TUR" version_name = "G3A7A1" } }
 		force_equipment_variants = { mechanized_equipment_1 = { owner = "TUR" } }
@@ -239,7 +262,7 @@ units = {
 	division = {
 		name = "1. Zırhlı Tugay"
 		location = 11829 #Hadımköy
-		division_template = "Armored Brigade"
+		division_template = "Armored Division"
 		start_experience_factor = 0.15
 		force_equipment_variants = { infantry_equipment_1 = { owner = "TUR" version_name = "G3A7A1" } }
 		force_equipment_variants = { mechanized_equipment_1 = { owner = "TUR" } }
@@ -255,7 +278,7 @@ units = {
 	division = {
 		name = "26. Zırhlı Tugay"
 		location = 9833 #Hadımköy
-		division_template = "Armored Brigade"
+		division_template = "Armored Division"
 		start_experience_factor = 0.15
 		force_equipment_variants = { infantry_equipment_1 = { owner = "TUR" version_name = "G3A7A1" } }
 		force_equipment_variants = { mechanized_equipment_1 = { owner = "TUR" } }
@@ -264,24 +287,16 @@ units = {
 	division = {
 		name = "66. Zırhlı Tugay"
 		location = 9833 #Hadımköy
-		division_template = "Armored Brigade"
+		division_template = "Armored Division"
 		start_experience_factor = 0.15
 		force_equipment_variants = { infantry_equipment_1 = { owner = "TUR" version_name = "G3A7A1" } }
 		force_equipment_variants = { mechanized_equipment_1 = { owner = "TUR" } }
 		force_equipment_variants = { modern_tank_equipment_1 = { owner = "TUR" version_name = "M48A5T2" } }
 	}
-	#1. Ordu, 5. Kolordu - 1. Army V Corps
-	division = {
-		name = "105. Topçu Alayı"
-		location = 6895	#Çorlu
-		division_template = "Artillery Regiment"
-		start_experience_factor = 0.15
-		force_equipment_variants = { infantry_equipment_1 = { owner = "TUR" version_name = "G3A7A1" } }
-	}
 	division = {
 		name = "3. Zırhlı Tugay"
 		location = 6895 #Çerkezköy
-		division_template = "Armored Brigade"
+		division_template = "Armored Division"
 		start_experience_factor = 0.15
 		force_equipment_variants = { infantry_equipment_1 = { owner = "TUR" version_name = "G3A7A1" } }
 		force_equipment_variants = { mechanized_equipment_1 = { owner = "TUR" } }
@@ -290,7 +305,7 @@ units = {
 	division = {
 		name = "10. Zırhlı Tugay"
 		location = 922 #Babaeski
-		division_template = "Armored Brigade"
+		division_template = "Armored Division"
 		start_experience_factor = 0.15
 		force_equipment_variants = { infantry_equipment_1 = { owner = "TUR" version_name = "G3A7A1" } }
 		force_equipment_variants = { mechanized_equipment_1 = { owner = "TUR" } }
@@ -341,18 +356,10 @@ units = {
 		force_equipment_variants = { mechanized_equipment_1 = { owner = "TUR" } }
 		force_equipment_variants = { modern_tank_equipment_1 = { owner = "TUR" version_name = "M48A5T2" } }
 	}
-	#1. Ordu, 15. Kolordu - 1. Army XV Corps
-	division = {
-		name = "115. Topçu Alayı"
-		location = 11811	#Gebze
-		division_template = "Artillery Regiment"
-		start_experience_factor = 0.15
-		force_equipment_variants = { infantry_equipment_1 = { owner = "TUR" version_name = "G3A7A1" } }
-	}
 	division = {
 		name = "2. Zırhlı Tugay"
 		location = 11829	#Maltepe
-		division_template = "Armored Brigade"
+		division_template = "Armored Division"
 		start_experience_factor = 0.15
 		force_equipment_variants = { infantry_equipment_1 = { owner = "TUR" version_name = "G3A7A1" } }
 		force_equipment_variants = { mechanized_equipment_1 = { owner = "TUR" } }
@@ -383,22 +390,21 @@ units = {
 	}
 	division = {
 		name = "28. Mekanize Piyade Tugayı"
-		location = 15642	#Mamak
+		location = 11747	#Mamak
 		division_template = "Mechanized Infantry Brigade"
 		start_experience_factor = 0.15
 		force_equipment_variants = { infantry_equipment_1 = { owner = "TUR" version_name = "G3A7A1" } }
 		force_equipment_variants = { mechanized_equipment_1 = { owner = "TUR" } }
 	}
 	division = {
-		name = "58. Topçu Alayı"
-		location = 15642	#Ankara
-		division_template = "Artillery Regiment"
-		start_experience_factor = 0.15
-		force_equipment_variants = { infantry_equipment_1 = { owner = "TUR" version_name = "G3A7A1" } }
+		name = "1. Komando Tugayı"
+		location = 6977	#Kayseri
+		division_template = "Airborne Brigade"
+		start_experience_factor = 0.4
 	}
 	division = {
-		name = "1. Komando Tugayı"
-		location = 15637	#Kayseri
+		name = "7. Komando Tugayı"
+		location = 6977	#Kayseri
 		division_template = "Airborne Brigade"
 		start_experience_factor = 0.4
 	}
@@ -417,16 +423,9 @@ units = {
 		force_equipment_variants = { infantry_equipment_1 = { owner = "TUR" version_name = "G3A7A1" } }
 	}
 	division = {
-		name = "106. Topçu Alayı"
-		location = 15623	#İslahiye
-		division_template = "Artillery Regiment"
-		start_experience_factor = 0.15
-		force_equipment_variants = { infantry_equipment_1 = { owner = "TUR" version_name = "G3A7A1" } }
-	}
-	division = {
 		name = "5. Zırhlı Tugay"
-		location = 3889
-		division_template = "Armored Brigade"
+		location = 9893
+		division_template = "Armored Division"
 		start_experience_factor = 0.15
 		force_equipment_variants = { infantry_equipment_1 = { owner = "TUR" version_name = "G3A7A1" } }
 		force_equipment_variants = { mechanized_equipment_1 = { owner = "TUR" } }
@@ -464,7 +463,7 @@ units = {
 	division = {
 		name = "172. Zırhlı Tugay"
 		location = 7530	#Silopi
-		division_template = "Armored Brigade"
+		division_template = "Armored Division"
 		start_experience_factor = 0.15
 		force_equipment_variants = { infantry_equipment_1 = { owner = "TUR" version_name = "G3A7A1" } }
 	}
@@ -494,7 +493,7 @@ units = {
 	}
 	division = {
 		name = "10. Piyade Tugayı"
-		location = 15617	#Tatvan
+		location = 9858	#Tatvan
 		division_template = "Motorized Infantry Brigade"
 		start_experience_factor = 0.15
 		force_equipment_variants = { infantry_equipment_1 = { owner = "TUR" version_name = "G3A7A1" } }
@@ -516,15 +515,14 @@ units = {
 		force_equipment_variants = { modern_tank_equipment_1 = { owner = "TUR" version_name = "M48A5T2" } }
 	}
 	division = {
-		name = "108. Topçu Alayı"
-		location = 6935	#Ercis
-		division_template = "Artillery Regiment"
-		start_experience_factor = 0.15
-		force_equipment_variants = { infantry_equipment_1 = { owner = "TUR" version_name = "G3A7A1" } }
+		name = "4. Komando Tugayı"
+		location = 9954	#Tunceli
+		division_template = "Mountaineer Commando Brigade"
+		start_experience_factor = 0.3
 	}
 	division = {
-		name = "4. Komando Tugayı"
-		location = 9868	#Tunceli
+		name = "6. Komando Tugayı"
+		location = 9954	#Tunceli
 		division_template = "Mountaineer Commando Brigade"
 		start_experience_factor = 0.3
 	}
@@ -544,13 +542,6 @@ units = {
 		force_equipment_variants = { infantry_equipment_1 = { owner = "TUR" version_name = "G3A7A1" } }
 		force_equipment_variants = { mechanized_equipment_1 = { owner = "TUR" } }
 		force_equipment_variants = { modern_tank_equipment_1 = { owner = "TUR" version_name = "M48A5T2" } }
-	}
-	division = {
-		name = "109. Topçu Alayı"
-		location = 6895	#Susuzharmanlar
-		division_template = "Artillery Regiment"
-		start_experience_factor = 0.15
-		force_equipment_variants = { infantry_equipment_1 = { owner = "TUR" version_name = "G3A7A1" } }
 	}
 	division = {
 		name = "7. Mekanize Piyade Tugayı"
@@ -581,7 +572,7 @@ units = {
 	}
 	division = {
 		name = "4. Zırhlı Tugay"
-		location = 9868	#Aşkale
+		location = 9954	#Aşkale
 		division_template = "Armored Brigade"
 		start_experience_factor = 0.15
 		force_equipment_variants = { infantry_equipment_1 = { owner = "TUR" version_name = "G3A7A1" } }
@@ -612,23 +603,46 @@ units = {
 	division = {
 		name = "220. Zırhlı Alay"
 		location = 10472	#Sarıkamış
-		division_template = "Armored Brigade"
+		division_template = "Armored Division"
 		start_experience_factor = 0.15
 		force_equipment_variants = { infantry_equipment_1 = { owner = "TUR" version_name = "G3A7A1" } }
 		force_equipment_variants = { modern_tank_equipment_1 = { owner = "TUR" version_name = "M48A5T2" } }
 		force_equipment_variants = { mechanized_equipment_1 = { owner = "TUR" } }
 	}
-	division = {
-		name = "107. Topçu Alayı"
-		location = 15607	#Siverek
-		division_template = "Artillery Regiment"
-		start_experience_factor = 0.15
-		force_equipment_variants = { infantry_equipment_1 = { owner = "TUR" version_name = "G3A7A1" } }
-	}
 	#Ege Ordusu - Aegean Army
 	division = {
 		name = "Amfibi Deniz Piyade Tugayı"
 		location = 4112	#Izmir
+		division_template = "Marine Brigade"
+		start_experience_factor = 0.4
+	}
+	division = {
+		name = "2.Amfibi Deniz Piyade Tugayı"
+		location = 4112	#Izmir
+		division_template = "Marine Brigade"
+		start_experience_factor = 0.4
+	}
+	division = {
+		name = "3.Amfibi Deniz Piyade Tugayı"
+		location = 4112	#Izmir
+		division_template = "Marine Brigade"
+		start_experience_factor = 0.4
+	}
+	division = {
+		name = "4.Amfibi Deniz Piyade Tugayı"
+		location = 4112	#Izmir
+		division_template = "Marine Brigade"
+		start_experience_factor = 0.4
+	}
+	division = {
+		name = "Su Altı Taarruz Timi"
+		location = 1005	#Antalya
+		division_template = "Marine Brigade"
+		start_experience_factor = 0.4
+	}
+	division = {
+		name = "Su Altı Taarruz Timi"
+		location = 1005	#Antalya
 		division_template = "Marine Brigade"
 		start_experience_factor = 0.4
 	}
@@ -650,13 +664,6 @@ units = {
 		name = "3. Piyade Eğitim Tugayı"
 		location = 1005	#Antalya
 		division_template = "Infantry Regiment"
-		start_experience_factor = 0.1
-		force_equipment_variants = { infantry_equipment_1 = { owner = "TUR" version_name = "G3A7A1" } }
-	}
-	division = {
-		name = "57. Topçu Eğitim Tugayı"
-		location = 4112	#Izmir
-		division_template = "Artillery Regiment"
 		start_experience_factor = 0.1
 		force_equipment_variants = { infantry_equipment_1 = { owner = "TUR" version_name = "G3A7A1" } }
 	}
@@ -685,20 +692,37 @@ units = {
 	division = {
 		name = "KTBK 14. Zırhlı Tugay"
 		location = 11984
-		division_template = "Armored Brigade"
-		start_experience_factor = 0.15
-		force_equipment_variants = { infantry_equipment_1 = { owner = "TUR" version_name = "G3A7A1" } }
-	}
-	division = {
-		name = "KTBK 109. Topçu Alayı"
-		location = 11984
-		division_template = "Artillery Regiment"
+		division_template = "Armored Division"
 		start_experience_factor = 0.15
 		force_equipment_variants = { infantry_equipment_1 = { owner = "TUR" version_name = "G3A7A1" } }
 	}
 	#Gendarmerie Units
 	division = {
 		name = "Jandarma 23. Sınır Tümeni"
+		location = 1463	#Hakkari
+		division_template = "Gendarmerie Brigade"
+		start_experience_factor = 0.15
+		force_equipment_variants = { infantry_equipment_1 = { owner = "UKR" version_name = "AKM" } }
+		force_equipment_variants = { light_mechanized_equipment_2 = { owner = "SOV" } }
+	}
+	division = {
+		name = "Jandarma 22. Sınır Tümeni"
+		location = 1463	#Hakkari
+		division_template = "Gendarmerie Brigade"
+		start_experience_factor = 0.15
+		force_equipment_variants = { infantry_equipment_1 = { owner = "UKR" version_name = "AKM" } }
+		force_equipment_variants = { light_mechanized_equipment_2 = { owner = "SOV" } }
+	}
+	division = {
+		name = "Jandarma 19. Sınır Tümeni"
+		location = 1463	#Hakkari
+		division_template = "Gendarmerie Brigade"
+		start_experience_factor = 0.15
+		force_equipment_variants = { infantry_equipment_1 = { owner = "UKR" version_name = "AKM" } }
+		force_equipment_variants = { light_mechanized_equipment_2 = { owner = "SOV" } }
+	}
+	division = {
+		name = "Jandarma 24. Sınır Tümeni"
 		location = 1463	#Hakkari
 		division_template = "Gendarmerie Brigade"
 		start_experience_factor = 0.15
@@ -736,7 +760,6 @@ units = {
 #Güney Görev Grup Komutanlığı - Muğla
 #Denizaltı Filosu Komutanlığı - Kocaeli - Submarine Fleet Command
 
-### Air OOB ###
 instant_effect = {
 	add_equipment_to_stockpile = {
 		type = fighter_equipment_3
