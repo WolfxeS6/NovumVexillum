@@ -1,0 +1,406 @@
+﻿# Division template historical names system. Is a new method of naming the divisions based on the names-group assigned to it's template.
+# If we run out of all historical names, the names will be assigned in the old way.
+#
+# Each group has a made up tag. Use it if you want to append more, or replace existing names with the extra txt files (modding).
+#
+# for_countries - lists all countries that can use it. If empty, or entire tag is missing, all countries in the world can use it.
+#
+# can_use - is a trigger that locks/unlocks the group under specific circumstances. The trigger is in a country scope.
+#
+# division_types - is a list of tokens to corresponding unit types. A player can in fact use any group of names for a div.template
+#                  however this tag is a helper for an automated choice (for AI, or if the group must switch on it's own, because
+#                  for example the current one is no longer available due to the can_use trigger saying so).
+#                  In automated choice, the division template must have at least 1 of the following types for it to be chosen.
+#
+# fallback_name - Is going to be used if we run out of the scripted historical names. If you want to use the old division naming
+#                 mechanics to be used for fallbacks, then just skip this option.
+#
+# unordered - It's a list of historical division names that did not have a number. Regardless if such names happened in history or not
+#             this option is available here mainly for a mods.
+#
+# ordered - Is a list of all historical names. 
+#           Numbers must start from 1 and up. 
+#           Numbers can't repeat in one scope.
+#           If you script the name for this group, at the same number (for example in a mod in another file), the name will be override.
+#           All arguments between the brackets must be separated by spaces. Each argument is wrapped in "quotas".
+#           1st argument = The name. It must contain either: 
+#                          %d (for decimal number placement)
+#                          %s (for string number placement - ROMAN numbers like XIV).
+#           2nd argument is optional = A localizable text describing this historical division. The text will be visible in the tooltip
+#                                      where you choose the historical division name.
+#           3rd argument is optional = An URL preferably pointing to the WIKI. It's a future feature that is not currently working in
+#                                      the current game version.
+
+EGY_INF_01 = 
+{
+	name = "Infantry Divisions"
+
+	can_use = { 
+		has_country_flag = country_language_arabic
+	}
+
+	division_types = { "infantry" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { EGY_GAR_01 }
+
+	fallback_name = "Firqat al-Mushaa al-%dr"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "Firqat al-Mushaa al-%di" }
+		2 = { "Firqat al-Mushaa al-%di" }
+		3 = { "Firqat al-Mushaa al-%di" }
+		4 = { "Firqat al-Mushaa al-%di" }
+		5 = { "Firqat al-Mushaa al-%di" }
+		6 = { "Firqat al-Mushaa al-%di" }
+		7 = { "Firqat al-Mushaa al-%di" }
+		8 = { "Firqat al-Mushaa al-%di" }
+		9 = { "Firqat al-Mushaa al-%di" }
+		10 = { "Firqat al-Mushaa al-%di" }
+		11 = { "Firqat al-Mushaa al-%dr" }
+		12 = { "Firqat al-Mushaa al-%dr" }
+		13 = { "Firqat al-Mushaa al-%dr" }
+		14 = { "Firqat al-Mushaa al-%dr" }
+		15 = { "Firqat al-Mushaa al-%dr" }
+		16 = { "Firqat al-Mushaa al-%dr" }
+		17 = { "Firqat al-Mushaa al-%dr" }
+		18 = { "Firqat al-Mushaa al-%dr" }
+		19 = { "Firqat al-Mushaa al-%dr" }
+		20 = { "Firqat al-Mushaa al-%dr" }
+
+	}
+}
+
+EGY_CAV_01 = 
+{
+	name = "Cavalry Divisions"
+
+	can_use = { 
+		has_country_flag = country_language_arabic
+	}
+
+	division_types = { "cavalry" }
+
+	fallback_name = "Firqat Silah al-Fursan al-%dr"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "Firqat Silah al-Fursan al-%di" }
+		2 = { "Firqat Silah al-Fursan al-%di" }
+		3 = { "Firqat Silah al-Fursan al-%di" }
+		4 = { "Firqat Silah al-Fursan al-%di" }
+		5 = { "Firqat Silah al-Fursan al-%di" }
+		6 = { "Firqat Silah al-Fursan al-%di" }
+		7 = { "Firqat Silah al-Fursan al-%di" }
+		8 = { "Firqat Silah al-Fursan al-%di" }
+		9 = { "Firqat Silah al-Fursan al-%di" }
+		10 = { "Firqat Silah al-Fursan al-%di" }
+		11 = { "Firqat Silah al-Fursan al-%dr" }
+		12 = { "Firqat Silah al-Fursan al-%dr" }
+		13 = { "Firqat Silah al-Fursan al-%dr" }
+		14 = { "Firqat Silah al-Fursan al-%dr" }
+		15 = { "Firqat Silah al-Fursan al-%dr" }
+
+	}
+}
+
+EGY_MOT_01 = 
+{
+	name = "Motorised Divisions"
+
+	can_use = { 
+		has_country_flag = country_language_arabic
+	}
+
+	division_types = { "motorized" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { EGY_INF_01 }
+
+	fallback_name = "Firqat al-Mushat al-Mutanaqila al-%dr"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "Firqat al-Mushat al-Mutanaqila al-%di" }
+		2 = { "Firqat al-Mushat al-Mutanaqila al-%di" }
+		3 = { "Firqat al-Mushat al-Mutanaqila al-%di" }
+		4 = { "Firqat al-Mushat al-Mutanaqila al-%di" }
+		5 = { "Firqat al-Mushat al-Mutanaqila al-%di" }
+		6 = { "Firqat al-Mushat al-Mutanaqila al-%di" }
+		7 = { "Firqat al-Mushat al-Mutanaqila al-%di" }
+		8 = { "Firqat al-Mushat al-Mutanaqila al-%di" }
+		9 = { "Firqat al-Mushat al-Mutanaqila al-%di" }
+		10 = { "Firqat al-Mushat al-Mutanaqila al-%di" }
+		11 = { "Firqat al-Mushat al-Mutanaqila al-%dr" }
+		12 = { "Firqat al-Mushat al-Mutanaqila al-%dr" }
+		13 = { "Firqat al-Mushat al-Mutanaqila al-%dr" }
+		14 = { "Firqat al-Mushat al-Mutanaqila al-%dr" }
+		15 = { "Firqat al-Mushat al-Mutanaqila al-%dr" }
+		16 = { "Firqat al-Mushat al-Mutanaqila al-%dr" }
+		17 = { "Firqat al-Mushat al-Mutanaqila al-%dr" }
+		18 = { "Firqat al-Mushat al-Mutanaqila al-%dr" }
+		19 = { "Firqat al-Mushat al-Mutanaqila al-%dr" }
+		20 = { "Firqat al-Mushat al-Mutanaqila al-%dr" }
+
+	}
+}
+
+EGY_ARM_01 = 
+{
+	name = "Armoured Divisions"
+
+	can_use = { 
+		has_country_flag = country_language_arabic
+	}
+
+	division_types = { "light_armor" "medium_armor" "heavy_armor" "modern_armor" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { EGY_CAV_01 }
+
+	fallback_name = "Firqat al-Mudaraea al-%dr"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "Firqat al-Mudaraea al-%di" }
+		2 = { "Firqat al-Mudaraea al-%di" }
+		3 = { "Firqat al-Mudaraea al-%di" }
+		4 = { "Firqat al-Mudaraea al-%di" }
+		5 = { "Firqat al-Mudaraea al-%di" }
+		6 = { "Firqat al-Mudaraea al-%di" }
+		7 = { "Firqat al-Mudaraea al-%di" }
+		8 = { "Firqat al-Mudaraea al-%di" }
+		9 = { "Firqat al-Mudaraea al-%di" }
+		10 = { "Firqat al-Mudaraea al-%di" }
+		11 = { "Firqat al-Mudaraea al-%dr" }
+		12 = { "Firqat al-Mudaraea al-%dr" }
+		13 = { "Firqat al-Mudaraea al-%dr" }
+		14 = { "Firqat al-Mudaraea al-%dr" }
+		15 = { "Firqat al-Mudaraea al-%dr" }
+
+	}
+}
+
+EGY_MEC_01 = 
+{
+	name = "Mechanised Divisions"
+
+	can_use = { 
+		has_country_flag = country_language_arabic
+	}
+
+	division_types = { "mechanized"  }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { EGY_INF_01 }
+
+	fallback_name = "Firqat al-Mushat al-Mikanikia al-%dr"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "Firqat al-Mushat al-Mikanikia al-%di" }
+		2 = { "Firqat al-Mushat al-Mikanikia al-%di" }
+		3 = { "Firqat al-Mushat al-Mikanikia al-%di" }
+		4 = { "Firqat al-Mushat al-Mikanikia al-%di" }
+		5 = { "Firqat al-Mushat al-Mikanikia al-%di" }
+		6 = { "Firqat al-Mushat al-Mikanikia al-%di" }
+		7 = { "Firqat al-Mushat al-Mikanikia al-%di" }
+		8 = { "Firqat al-Mushat al-Mikanikia al-%di" }
+		9 = { "Firqat al-Mushat al-Mikanikia al-%di" }
+		10 = { "Firqat al-Mushat al-Mikanikia al-%di" }
+		11 = { "Firqat al-Mushat al-Mikanikia al-%dr" }
+		12 = { "Firqat al-Mushat al-Mikanikia al-%dr" }
+		13 = { "Firqat al-Mushat al-Mikanikia al-%dr" }
+		14 = { "Firqat al-Mushat al-Mikanikia al-%dr" }
+		15 = { "Firqat al-Mushat al-Mikanikia al-%dr" }
+		16 = { "Firqat al-Mushat al-Mikanikia al-%dr" }
+		17 = { "Firqat al-Mushat al-Mikanikia al-%dr" }
+		18 = { "Firqat al-Mushat al-Mikanikia al-%dr" }
+		19 = { "Firqat al-Mushat al-Mikanikia al-%dr" }
+		20 = { "Firqat al-Mushat al-Mikanikia al-%dr" }
+
+	}
+}
+
+EGY_GAR_01 = 
+{
+	name = "Garrison Divisions"
+
+	can_use = { 
+		has_country_flag = country_language_arabic
+	}
+
+	division_types = { "infantry" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { EGY_INF_01 }
+
+	fallback_name = "Shuebat al-Haras al-%dr"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "Shuebat al-Haras al-%di" }
+		2 = { "Shuebat al-Haras al-%di" }
+		3 = { "Shuebat al-Haras al-%di" }
+		4 = { "Shuebat al-Haras al-%di" }
+		5 = { "Shuebat al-Haras al-%di" }
+		6 = { "Shuebat al-Haras al-%di" }
+		7 = { "Shuebat al-Haras al-%di" }
+		8 = { "Shuebat al-Haras al-%di" }
+		9 = { "Shuebat al-Haras al-%di" }
+		10 = { "Shuebat al-Haras al-%di" }
+		11 = { "Shuebat al-Haras al-%dr" }
+		12 = { "Shuebat al-Haras al-%dr" }
+		13 = { "Shuebat al-Haras al-%dr" }
+		14 = { "Shuebat al-Haras al-%dr" }
+		15 = { "Shuebat al-Haras al-%dr" }
+		16 = { "Shuebat al-Haras al-%dr" }
+		17 = { "Shuebat al-Haras al-%dr" }
+		18 = { "Shuebat al-Haras al-%dr" }
+		19 = { "Shuebat al-Haras al-%dr" }
+		20 = { "Shuebat al-Haras al-%dr" }
+
+	}
+}
+
+EGY_MAR_01 = 
+{
+	name = "Marine Divisions"
+
+	can_use = { 
+		has_country_flag = country_language_arabic
+	}
+
+	division_types = { "marine" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { EGY_INF_01 }
+
+	fallback_name = "Firqat Mashaat al-Bahria al-%dr"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "Firqat Mashaat al-Bahria al-%di" }
+		2 = { "Firqat Mashaat al-Bahria al-%di" }
+		3 = { "Firqat Mashaat al-Bahria al-%di" }
+		4 = { "Firqat Mashaat al-Bahria al-%di" }
+		5 = { "Firqat Mashaat al-Bahria al-%di" }
+		6 = { "Firqat Mashaat al-Bahria al-%di" }
+		7 = { "Firqat Mashaat al-Bahria al-%di" }
+		8 = { "Firqat Mashaat al-Bahria al-%di" }
+		9 = { "Firqat Mashaat al-Bahria al-%di" }
+		10 = { "Firqat Mashaat al-Bahria al-%di" }
+		11 = { "Firqat Mashaat al-Bahria al-%dr" }
+		12 = { "Firqat Mashaat al-Bahria al-%dr" }
+		13 = { "Firqat Mashaat al-Bahria al-%dr" }
+		14 = { "Firqat Mashaat al-Bahria al-%dr" }
+		15 = { "Firqat Mashaat al-Bahria al-%dr" }
+		16 = { "Firqat Mashaat al-Bahria al-%dr" }
+		17 = { "Firqat Mashaat al-Bahria al-%dr" }
+		18 = { "Firqat Mashaat al-Bahria al-%dr" }
+		19 = { "Firqat Mashaat al-Bahria al-%dr" }
+		20 = { "Firqat Mashaat al-Bahria al-%dr" }
+
+	}
+}
+
+EGY_MTN_01 = 
+{
+	name = "Mountain Divisions"
+
+	can_use = { 
+		has_country_flag = country_language_arabic
+	}
+
+	division_types = { "mountaineers" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { EGY_INF_01 }
+
+	fallback_name = "Firqat Mashaat al-Jabal al-%dr"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "Firqat Mashaat al-Jabal al-%di" }
+		2 = { "Firqat Mashaat al-Jabal al-%di" }
+		3 = { "Firqat Mashaat al-Jabal al-%di" }
+		4 = { "Firqat Mashaat al-Jabal al-%di" }
+		5 = { "Firqat Mashaat al-Jabal al-%di" }
+		6 = { "Firqat Mashaat al-Jabal al-%di" }
+		7 = { "Firqat Mashaat al-Jabal al-%di" }
+		8 = { "Firqat Mashaat al-Jabal al-%di" }
+		9 = { "Firqat Mashaat al-Jabal al-%di" }
+		10 = { "Firqat Mashaat al-Jabal al-%di" }
+		11 = { "Firqat Mashaat al-Jabal al-%dr" }
+		12 = { "Firqat Mashaat al-Jabal al-%dr" }
+		13 = { "Firqat Mashaat al-Jabal al-%dr" }
+		14 = { "Firqat Mashaat al-Jabal al-%dr" }
+		15 = { "Firqat Mashaat al-Jabal al-%dr" }
+		16 = { "Firqat Mashaat al-Jabal al-%dr" }
+		17 = { "Firqat Mashaat al-Jabal al-%dr" }
+		18 = { "Firqat Mashaat al-Jabal al-%dr" }
+		19 = { "Firqat Mashaat al-Jabal al-%dr" }
+		20 = { "Firqat Mashaat al-Jabal al-%dr" }
+
+	}
+}
+
+EGY_PAR_01 = 
+{
+	name = "Paratrooper Divisions"
+
+	can_use = { 
+		has_country_flag = country_language_arabic
+	}
+
+	division_types = { "paratrooper" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { EGY_INF_01 }
+
+	fallback_name = "al-Mushat al-Mahmulat Jawana al-%dr"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "al-Mushat al-Mahmulat Jawana al-%di" }
+		2 = { "al-Mushat al-Mahmulat Jawana al-%di" }
+		3 = { "al-Mushat al-Mahmulat Jawana al-%di" }
+		4 = { "al-Mushat al-Mahmulat Jawana al-%di" }
+		5 = { "al-Mushat al-Mahmulat Jawana al-%di" }
+		6 = { "al-Mushat al-Mahmulat Jawana al-%di" }
+		7 = { "al-Mushat al-Mahmulat Jawana al-%di" }
+		8 = { "al-Mushat al-Mahmulat Jawana al-%di" }
+		9 = { "al-Mushat al-Mahmulat Jawana al-%di" }
+		10 = { "al-Mushat al-Mahmulat Jawana al-%di" }
+		11 = { "al-Mushat al-Mahmulat Jawana al-%dr" }
+		12 = { "al-Mushat al-Mahmulat Jawana al-%dr" }
+		13 = { "al-Mushat al-Mahmulat Jawana al-%dr" }
+		14 = { "al-Mushat al-Mahmulat Jawana al-%dr" }
+		15 = { "al-Mushat al-Mahmulat Jawana al-%dr" }
+		16 = { "al-Mushat al-Mahmulat Jawana al-%dr" }
+		17 = { "al-Mushat al-Mahmulat Jawana al-%dr" }
+		18 = { "al-Mushat al-Mahmulat Jawana al-%dr" }
+		19 = { "al-Mushat al-Mahmulat Jawana al-%dr" }
+		20 = { "al-Mushat al-Mahmulat Jawana al-%dr" }
+
+	}
+}

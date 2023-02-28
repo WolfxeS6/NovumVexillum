@@ -1,0 +1,412 @@
+﻿# Division template historical names system. Is a new method of naming the divisions based on the names-group assigned to it's template.
+# If we run out of all historical names, the names will be assigned in the old way.
+#
+# Each group has a made up tag. Use it if you want to append more, or replace existing names with the extra txt files (modding).
+#
+# for_countries - lists all countries that can use it. If empty, or entire tag is missing, all countries in the world can use it.
+#
+# can_use - is a trigger that locks/unlocks the group under specific circumstances. The trigger is in a country scope.
+#
+# division_types - is a list of tokens to corresponding unit types. A player can in fact use any group of names for a div.template
+#                  however this tag is a helper for an automated choice (for AI, or if the group must switch on it's own, because
+#                  for example the current one is no longer available due to the can_use trigger saying so).
+#                  In automated choice, the division template must have at least 1 of the following types for it to be chosen.
+#
+# fallback_name - Is going to be used if we run out of the scripted historical names. If you want to use the old division naming
+#                 mechanics to be used for fallbacks, then just skip this option.
+#
+# unordered - It's a list of historical division names that did not have a number. Regardless if such names happened in history or not
+#             this option is available here mainly for a mods.
+#
+# ordered - Is a list of all historical names. 
+#           Numbers must start from 1 and up. 
+#           Numbers can't repeat in one scope.
+#           If you script the name for this group, at the same number (for example in a mod in another file), the name will be override.
+#           All arguments between the brackets must be separated by spaces. Each argument is wrapped in "quotas".
+#           1st argument = The name. It must contain either: 
+#                          %d (for decimal number placement)
+#                          %s (for string number placement - ROMAN numbers like XIV).
+#           2nd argument is optional = A localizable text describing this historical division. The text will be visible in the tooltip
+#                                      where you choose the historical division name.
+#           3rd argument is optional = An URL preferably pointing to the WIKI. It's a future feature that is not currently working in
+#                                      the current game version.
+
+##### This is the generic set of namelists for all Spanish-speaking countries ####
+	# xxx_01 lists based primarily on Mexican historical/modern naming (most Latin American countries follow the same naming)
+	# xxx_02 lists based primarily on Argentinian and Chilean historical/modern naming (several other Latin American countries follow the same naming)
+CHINESE_INF_01 = 
+{
+	name = "Infantry Division"
+
+	can_use = { 
+		has_country_flag = country_language_chinese
+	}
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { CHINESE_INF_01 }
+
+	fallback_name = "%d Bùbīng Shī"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d Bùbīng Shī" }
+		2 = { "%d Bùbīng Shī" }
+		3 = { "%d Bùbīng Shī" }
+		4 = { "%d Bùbīng Shī" }
+		5 = { "%d Bùbīng Shī" }
+		6 = { "%d Bùbīng Shī" }
+		7 = { "%d Bùbīng Shī" }
+		8 = { "%d Bùbīng Shī" }
+		9 = { "%d Bùbīng Shī" }
+		10 = { "%d Bùbīng Shī" }
+		11 = { "%d Bùbīng Shī" }
+		12 = { "%d Bùbīng Shī" }
+		13 = { "%d Bùbīng Shī" }
+		14 = { "%d Bùbīng Shī" }
+		15 = { "%d Bùbīng Shī" }
+		16 = { "%d Bùbīng Shī" }
+		17 = { "%d Bùbīng Shī" }
+		18 = { "%d Bùbīng Shī" }
+		19 = { "%d Bùbīng Shī" }
+		20 = { "%d Bùbīng Shī" }		
+	}
+}
+
+CHINESE_INFB_01 = 
+{
+	name = "Infantry Brigade"
+
+	can_use = { 
+		has_country_flag = country_language_chinese
+	}
+
+	division_types = { "infantry" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { CHINESE_INF_01 }
+
+	fallback_name = "%d Bùbīng Lǚ"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d Bùbīng Lǚ" }
+		2 = { "%d Bùbīng Lǚ" }
+		3 = { "%d Bùbīng Lǚ" }
+		4 = { "%d Bùbīng Lǚ" }
+		5 = { "%d Bùbīng Lǚ" }
+		6 = { "%d Bùbīng Lǚ" }
+		7 = { "%d Bùbīng Lǚ" }
+		8 = { "%d Bùbīng Lǚ" }
+		9 = { "%d Bùbīng Lǚ" }
+		10 = { "%d Bùbīng Lǚ" }
+		11 = { "%d Bùbīng Lǚ" }
+		12 = { "%d Bùbīng Lǚ" }
+		13 = { "%d Bùbīng Lǚ" }
+		14 = { "%d Bùbīng Lǚ" }
+		15 = { "%d Bùbīng Lǚ" }
+		16 = { "%d Bùbīng Lǚ" }
+		17 = { "%d Bùbīng Lǚ" }
+		18 = { "%d Bùbīng Lǚ" }
+		19 = { "%d Bùbīng Lǚ" }
+		20 = { "%d Bùbīng Lǚ" }		
+	}
+}
+
+CHINESE_CAV_01 = 
+{
+	name = "Cavalry Division"
+
+	can_use = { 
+		has_country_flag = country_language_chinese
+	}
+
+	division_types = { "cavalry" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { CHINESE_INF_01 }
+
+	fallback_name = "%d Qíbīng Shī"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d Qíbīng Shī" }
+		2 = { "%d Qíbīng Shī" }
+		3 = { "%d Qíbīng Shī" }
+		4 = { "%d Qíbīng Shī" }
+		5 = { "%d Qíbīng Shī" }
+		6 = { "%d Qíbīng Shī" }
+		7 = { "%d Qíbīng Shī" }
+		8 = { "%d Qíbīng Shī" }
+		9 = { "%d Qíbīng Shī" }
+		10 = { "%d Qíbīng Shī" }
+	}
+}
+
+CHINESE_CAVB_01 = 
+{
+	name = "Cavalry Brigade"
+
+	can_use = { 
+		has_country_flag = country_language_chinese
+	}
+
+	division_types = { "cavalry" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { CHINESE_INF_01 }
+
+	fallback_name = "%d Qíbīng Lǚ"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d Qíbīng Lǚ" }
+		2 = { "%d Qíbīng Lǚ" }
+		3 = { "%d Qíbīng Lǚ" }
+		4 = { "%d Qíbīng Lǚ" }
+		5 = { "%d Qíbīng Lǚ" }
+		6 = { "%d Qíbīng Lǚ" }
+		7 = { "%d Qíbīng Lǚ" }
+		8 = { "%d Qíbīng Lǚ" }
+		9 = { "%d Qíbīng Lǚ" }
+		10 = { "%d Qíbīng Lǚ" }
+	}
+}
+
+CHINESE_MOT_01 = 
+{
+	name = "Motorized Infantry"
+
+	can_use = { 
+		has_country_flag = country_language_chinese
+	}
+
+	division_types = { "motorized" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { CHINESE_INF_02 }
+
+	fallback_name = "%d Jīdòng Shī"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d Jīdòng Shī" }
+		2 = { "%d Jīdòng Shī" }
+		3 = { "%d Jīdòng Shī" }
+		4 = { "%d Jīdòng Shī" }
+		5 = { "%d Jīdòng Shī" }
+		6 = { "%d Jīdòng Shī" }
+		7 = { "%d Jīdòng Shī" }
+		8 = { "%d Jīdòng Shī" }
+		9 = { "%d Jīdòng Shī" }
+		10 = { "%d Jīdòng Shī" }
+	}
+}
+
+CHINESE_MEC_01 = 
+{
+	name = "Mechanized Infantry"
+
+	can_use = { 
+		has_country_flag = country_language_chinese
+	}
+
+	division_types = { "mechanized" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { CHINESE_INF_02 }
+
+	fallback_name = "%d Jīxièhuà Shī"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d Jīxièhuà Shī" }
+		2 = { "%d Jīxièhuà Shī" }
+		3 = { "%d Jīxièhuà Shī" }
+		4 = { "%d Jīxièhuà Shī" }
+		5 = { "%d Jīxièhuà Shī" }
+		6 = { "%d Jīxièhuà Shī" }
+		7 = { "%d Jīxièhuà Shī" }
+		8 = { "%d Jīxièhuà Shī" }
+		9 = { "%d Jīxièhuà Shī" }
+		10 = { "%d Jīxièhuà Shī" }
+	}
+}
+
+CHINESE_ARM_01 = 
+{
+	name = "Armored Division"
+
+	can_use = { 
+		has_country_flag = country_language_chinese
+	}
+
+	division_types = { "light_armor" "medium_armor" "heavy_armor" "modern_armor" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { CHINESE_INF_01 }
+
+	fallback_name = "%d Zhuāngjiǎ Shī"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d Zhuāngjiǎ Shī" }
+		2 = { "%d Zhuāngjiǎ Shī" }
+		3 = { "%d Zhuāngjiǎ Shī" }
+		4 = { "%d Zhuāngjiǎ Shī" }
+		5 = { "%d Zhuāngjiǎ Shī" }
+		6 = { "%d Zhuāngjiǎ Shī" }
+		7 = { "%d Zhuāngjiǎ Shī" }
+		8 = { "%d Zhuāngjiǎ Shī" }
+		9 = { "%d Zhuāngjiǎ Shī" }
+		10 = { "%d Zhuāngjiǎ Shī" }
+	}
+}
+
+CHINESE_PAR_01 = 
+{
+	name = "Parachute Division"
+
+	can_use = { 
+		has_country_flag = country_language_chinese
+	}
+
+	division_types = { "paratrooper" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { CHINESE_INF_01 }
+
+	fallback_name = "%d Sǎnbīng Shī"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d Sǎnbīng Shī" }
+		2 = { "%d Sǎnbīng Shī" }
+		3 = { "%d Sǎnbīng Shī" }
+		4 = { "%d Sǎnbīng Shī" }
+		5 = { "%d Sǎnbīng Shī" }
+		6 = { "%d Sǎnbīng Shī" }
+		7 = { "%d Sǎnbīng Shī" }
+		8 = { "%d Sǎnbīng Shī" }
+		9 = { "%d Sǎnbīng Shī" }
+		10 = { "%d Sǎnbīng Shī" }
+	}
+}
+
+CHINESE_MAR_01 = 
+{
+	name = "Marine Infantry Division"
+
+	can_use = { 
+		has_country_flag = country_language_chinese
+	}
+
+	division_types = { "marine" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { CHINESE_INF_01 }
+
+	fallback_name = "%d Hǎijūn Bùbīng Shī"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d Hǎijūn Bùbīng Shī" }
+		2 = { "%d Hǎijūn Bùbīng Shī" }
+		3 = { "%d Hǎijūn Bùbīng Shī" }
+		4 = { "%d Hǎijūn Bùbīng Shī" }
+		5 = { "%d Hǎijūn Bùbīng Shī" }
+		6 = { "%d Hǎijūn Bùbīng Shī" }
+		7 = { "%d Hǎijūn Bùbīng Shī" }
+		8 = { "%d Hǎijūn Bùbīng Shī" }
+		9 = { "%d Hǎijūn Bùbīng Shī" }
+		10 = { "%d Hǎijūn Bùbīng Shī" }
+	}
+}
+
+CHINESE_MNT_01 = 
+{
+	name = "Mountain Division"
+
+	can_use = { 
+		has_country_flag = country_language_chinese
+	}
+
+	division_types = { "mountaineers" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { CHINESE_INF_01 }
+
+	fallback_name = "%d Shāndì Bùbīng Shī"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d Shāndì Bùbīng Shī" }
+		2 = { "%d Shāndì Bùbīng Shī" }
+		3 = { "%d Shāndì Bùbīng Shī" }
+		4 = { "%d Shāndì Bùbīng Shī" }
+		5 = { "%d Shāndì Bùbīng Shī" }
+		6 = { "%d Shāndì Bùbīng Shī" }
+		7 = { "%d Shāndì Bùbīng Shī" }
+		8 = { "%d Shāndì Bùbīng Shī" }
+		9 = { "%d Shāndì Bùbīng Shī" }
+		10 = { "%d Shāndì Bùbīng Shī" }
+	}
+}
+
+CHINESE_GAR_01 = 
+{
+	name = "Garrison Division"
+
+	can_use = { 
+		has_country_flag = country_language_chinese
+	}
+
+	division_types = { "infantry" }
+
+	fallback_name = "%d Zhùjūn Shī"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d Zhùjūn Shī" }
+		2 = { "%d Zhùjūn Shī" }
+		3 = { "%d Zhùjūn Shī" }
+		4 = { "%d Zhùjūn Shī" }
+		5 = { "%d Zhùjūn Shī" }
+		6 = { "%d Zhùjūn Shī" }
+		7 = { "%d Zhùjūn Shī" }
+		8 = { "%d Zhùjūn Shī" }
+		9 = { "%d Zhùjūn Shī" }
+		10 = { "%d Zhùjūn Shī" }
+		11 = { "%d Zhùjūn Shī" }
+		12 = { "%d Zhùjūn Shī" }
+		13 = { "%d Zhùjūn Shī" }
+		14 = { "%d Zhùjūn Shī" }
+		15 = { "%d Zhùjūn Shī" }
+		16 = { "%d Zhùjūn Shī" }
+		17 = { "%d Zhùjūn Shī" }
+		18 = { "%d Zhùjūn Shī" }
+		19 = { "%d Zhùjūn Shī" }
+		20 = { "%d Zhùjūn Shī" }		
+	}
+}
