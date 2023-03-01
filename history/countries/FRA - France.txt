@@ -1,6 +1,14 @@
 ﻿capital = 16
 
-oob = "FRA_2000"
+if = {
+	limit = {
+		 has_dlc = "No Step Back" 
+	}
+	set_oob = "FRA_2000_nsb"
+	else = {
+		set_oob = "FRA_2000"
+	}
+}
 if = {
 	limit = { has_dlc = "Man the Guns" }
 		set_naval_oob = "FRA_2000_naval_mtg"
@@ -9,7 +17,7 @@ if = {
 	}
 }
 
-set_research_slots = 5
+set_research_slots = 4
 set_convoys = 1000
 set_stability = 0.5
 
@@ -287,10 +295,10 @@ if = {
 		basic_medium_battery = 1
 		basic_heavy_battery = 1
 		basic_secondary_battery = 1
-		basic_nuclear_reactors = 1
 		mtg_transport = 1
 		basic_naval_mines = 1
 		submarine_mine_laying = 1
+		basic_nuclear_reactors = 1
 	}
 }
 
@@ -388,7 +396,6 @@ recruit_character = FRA_emmanuel_de_oliveira
 recruit_character = FRA_jeanbaptiste_dupuis
 recruit_character = FRA_louis_jaurès
 
-
 2001.1.1 = {
 	complete_national_focus = FRA_the_french_economy
 	complete_national_focus = FRA_civilian_buildup
@@ -448,6 +455,7 @@ recruit_character = FRA_louis_jaurès
 		picture = "Nicolas_Sarkozy.dds"
 		ideology = gaullist
 	}
+
 }
 
 2008.1.1 = {
@@ -663,10 +671,11 @@ if = {
 		modules = {
 			fixed_ship_deck_slot_1 = ship_deck_space
 			fixed_ship_deck_slot_2 = ship_deck_space
-			fixed_ship_anti_air_slot = ship_anti_air_1
-			fixed_ship_radar_slot = ship_radar_1
+			fixed_ship_anti_air_slot = empty
+			fixed_ship_radar_slot = empty
 			fixed_ship_engine_slot = carrier_ship_engine_1
 			fixed_ship_secondaries_slot = empty
+			
 		}
 		obsolete = yes
 	}
@@ -677,11 +686,12 @@ if = {
 		modules = {
 			fixed_ship_deck_slot_1 = ship_deck_space
 			fixed_ship_deck_slot_2 = ship_deck_space
-			fixed_ship_anti_air_slot = ship_anti_air_2
-			fixed_ship_radar_slot = ship_radar_1
-			fixed_ship_engine_slot = carrier_ship_engine_n1
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = carrier_ship_engine_1
 			fixed_ship_secondaries_slot = empty
-			front_1_custom_slot = empty
+			front_1_custom_slot = ship_deck_space
+			
 		}
 		obsolete = no
 	}
