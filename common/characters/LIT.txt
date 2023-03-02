@@ -1,43 +1,4 @@
 characters={
-	LIT_rolandas_paksas={
-		name="Rolandas Paksas"
-		portraits={
-			civilian={
-				large="gfx/leaders/LIT/Rolandas_Paksas.dds"
-			}
-		}
-		country_leader={
-			ideology=democratic_socialist_ideology
-			expire="1.1.1.1"
-			id=-1
-		}
-	}
-	LIT_artūras_paulauskas={
-		name="Artūras Paulauskas"
-		portraits={
-			civilian={
-				large="gfx/leaders/LIT/Arturas_Paulauskas.dds"
-			}
-		}
-		country_leader={
-			ideology=liberalist
-			expire="1.1.1.1"
-			id=-1
-		}
-	}
-	LIT_algirdas_brazauskas={
-		name="Algirdas Brazauskas"
-		portraits={
-			civilian={
-				large="gfx/leaders/LIT/Algirdas_Butkevicius.dds"
-			}
-		}
-		country_leader={
-			ideology=social_democrat_ideology
-			expire="1.1.1.1"
-			id=-1
-		}
-	}
 	LIT_andrius_kubilius={
 		name="Andrius Kubilius"
 		portraits={
@@ -47,32 +8,7 @@ characters={
 		}
 		country_leader={
 			ideology=christian_democrat
-			expire="1.1.1.1"
-			id=-1
-		}
-	}
-	LIT_rapolas_gediminas_sakalnikas={
-		name="Rapolas Gediminas Sakalnikas"
-		portraits={
-			civilian={
-				large="gfx/leaders/LIT/Rapolas_G_Sakalnikas.dds"
-			}
-		}
-		country_leader={
-			ideology=national_democrat
-			expire="1.1.1.1"
-			id=-1
-		}
-	}
-	LIT_mindaugas_gervaldas={
-		name="Mindaugas Gervaldas"
-		portraits={
-			civilian={
-				large="gfx/leaders/LIT/Mindaugas_Gervaldas.dds"
-			}
-		}
-		country_leader={
-			ideology=national_socialist
+			traits={ cabinet_crisis }
 			expire="1.1.1.1"
 			id=-1
 		}
@@ -81,76 +17,11 @@ characters={
 		name="Romualdas Ozolas"
 		portraits={
 			civilian={
-				large="gfx/leaders/LIT/Romualdas_Ozolas.dds"
+				large="gfx/leaders/LIT/Valdemaras_Tomasevskis.dds"
 			}
 		}
 		country_leader={
 			ideology=counter_progressive_democrat
-			expire="1.1.1.1"
-			id=-1
-		}
-	}
-	LIT_naglis_puteikis={
-		name="Naglis Puteikis"
-		portraits={
-			civilian={
-				large="gfx/leaders/LIT/Naglis_Puteikis.dds"
-			}
-		}
-		country_leader={
-			ideology=libertarian
-			expire="1.1.1.1"
-			id=-1
-		}
-	}
-	LIT_ramunas_karbauskis={
-		name="Ramunas Karbauskis"
-		portraits={
-			civilian={
-				large="gfx/leaders/LIT/Ramunas_Karbauskis.dds"
-			}
-		}
-		country_leader={
-			ideology=green
-			expire="2050.1.1.1"
-			id=-1
-		}
-	}
-	LIT_giedrius_petružis={
-		name="Giedrius Petružis"
-		portraits={
-			civilian={
-				large="gfx/leaders/LIT/Giedrius_Petruzis.dds"
-			}
-		}
-		country_leader={
-			ideology=leninist
-			expire="2050.1.1.1"
-			id=-1
-		}
-	}
-	LIT_paulius_gediminaitis={
-		name="Paulius Gediminaitis"
-		portraits={
-			civilian={
-				large="gfx/leaders/LIT/Paulius_Gediminatis.dds"
-			}
-		}
-		country_leader={
-			ideology=absolute_monarchist
-			expire="1.1.1.1"
-			id=-1
-		}
-	}
-	LIT_mykolas_rimša={
-		name="Mykolas Rimša"
-		portraits={
-			civilian={
-				large="gfx/leaders/LIT/Mykolas_Rimsa.dds"
-			}
-		}
-		country_leader={
-			ideology=islamic_authoritarian
 			expire="1.1.1.1"
 			id=-1
 		}
@@ -165,10 +36,24 @@ characters={
 				large="gfx/leaders/LIT/Portrait_Jonas_Zukas.dds"
 			}
 		}
+		advisor={
+			slot = army_chief
+			idea_token = jonas_vytautas_Žukas
+			allowed = {
+					original_tag = LIT
+				}
+				traits = {
+					army_chief_offensive_2
+				}
+				cost = 100
+				ai_will_do = {
+					factor = 1.000
+				}
+		}
 		field_marshal={
 			traits={ old_guard offensive_doctrine }
-			skill=1
-			attack_skill=1
+			skill=2
+			attack_skill=3
 			defense_skill=1
 			planning_skill=1
 			logistics_skill=1
@@ -184,6 +69,21 @@ characters={
 			army={
 				large="gfx/leaders/LIT/Portrait_Arvydas_Pocius.dds"
 			}
+		}
+		advisor={
+			slot = high_command
+			idea_token = arvydas_pocius
+			ledger = army
+				allowed = {
+					original_tag = LIT
+				}
+				traits = {
+					army_regrouping_2
+				}
+				cost = 100
+				ai_will_do = {
+					factor = 1.000
+				}
 		}
 		field_marshal={
 			traits={ inspirational_leader }
@@ -204,6 +104,21 @@ characters={
 			army={
 				large="gfx/leaders/LIT/Portrait_Vitalius_Vaiksnoras.dds"
 			}
+		}
+		advisor={
+			slot = high_command
+			idea_token = vitalijus_vaikšnoras
+			ledger = army
+				allowed = {
+					original_tag = LIT
+				}
+				traits = {
+					army_logistics_1
+				}
+				cost = 100
+				ai_will_do = {
+					factor = 1.000
+				}
 		}
 		field_marshal={
 			traits={ thorough_planner }
@@ -687,6 +602,140 @@ characters={
 			maneuvering_skill=1
 			coordination_skill=1
 			legacy_id=-1
+		}
+	}
+	LIT_Česlovas_juršėnas={
+		name="Česlovas Juršėnas"
+		portraits={
+			civilian={
+				large="gfx/leaders/LIT/Ceslovas_Jursenas.dds"
+			}
+		}
+		country_leader={
+			ideology=leninist
+			expire="1.1.1.1"
+			id=-1
+		}
+	}
+	LIT_jonas_pinskus={
+		name="Jonas Pinskus"
+		portraits={
+			civilian={
+				large="gfx/leaders/LIT/Jonas_Pinskus.dds"
+			}
+		}
+		country_leader={
+			ideology=social_democrat_ideology
+			expire="1.1.1.1"
+			id=-1
+		}
+	}
+	LIT_the_royal_house_of_lithuania_association={
+		name="The Royal House of Lithuania Association"
+		portraits={
+			civilian={
+				large="gfx/leaders/LIT/RHLA.dds"
+			}
+		}
+		country_leader={
+			ideology=absolute_monarchist
+			expire="1.1.1.1"
+			id=-1
+		}
+	}
+	LIT_mindaugas_murza={
+		name="Mindaugas Murza"
+		portraits={
+			civilian={
+				large="gfx/leaders/LIT/Mindaugas_Murza.dds"
+			}
+		}
+		country_leader={
+			ideology=national_socialist
+			expire="1.1.1.1"
+			id=-1
+		}
+	}
+	LIT_vytautas_radžvilas={
+		name="Vytautas Radžvilas"
+		portraits={
+			civilian={
+				large="gfx/leaders/LIT/Vytautas_Radzvilas.dds"
+			}
+		}
+		country_leader={
+			ideology=national_democrat
+			expire="1.1.1.1"
+			id=-1
+		}
+	}
+	LIT_ramūnas_karbauskis={
+		name="Ramūnas Karbauskis"
+		portraits={
+			civilian={
+				large="gfx/leaders/LIT/Ramunas_Karbauskis.dds"
+			}
+		}
+		country_leader={
+			ideology=green
+			expire="1.1.1.1"
+			id=-1
+		}
+	}
+	LIT_jaunius_trinkūnas={
+		name="Jaunius Trinkūnas"
+		portraits={
+			civilian={
+				large="gfx/leaders/LIT/Jonas_Trinkunas.dds"
+			}
+		}
+		country_leader={
+			desc="POLITICS_Jonas_Trinkunas_DESC"
+			ideology=neo_paganism
+			traits={ friend_of_india Folklorist }
+			expire="1.1.1.1"
+			id=-1
+		}
+	}
+	LIT_kazys_almenas={
+		name="Kazys Almenas"
+		portraits={
+			civilian={
+				large="gfx/leaders/Europe/politician2.dds"
+			}
+		}
+		country_leader={
+			ideology=market_liberal_ideology
+			traits={ finance_graduate }
+			expire="2006.1.1.12"
+			id=-1
+		}
+	}
+	LIT_kazimieras_grinius={
+		name="Kazimieras Grinius"
+		portraits={
+			civilian={
+				large="gfx/leaders/Europe/politician9.dds"
+			}
+		}
+		country_leader={
+			ideology=liberalist
+			traits={ SPR_min_ns_aire }
+			expire="2014.1.1.12"
+			id=-1
+		}
+	}
+	LIT_visvaldas_grinius={
+		name="Visvaldas Grinius"
+		portraits={
+			civilian={
+				large="gfx/leaders/Europe/politician12.dds"
+			}
+		}
+		country_leader={
+			ideology=democratic_socialist_ideology
+			expire="2005.1.1.12"
+			id=-1
 		}
 	}
 }
