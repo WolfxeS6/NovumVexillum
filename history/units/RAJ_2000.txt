@@ -15,9 +15,9 @@
 		infantry = { x = 2 y = 2 }
 		infantry = { x = 3 y = 0 }
 		infantry = { x = 3 y = 1 }
-		infantry = { x = 4 y = 0 }
-		infantry = { x = 4 y = 1 }
-		infantry = { x = 4 y = 2 }
+		#infantry = { x = 4 y = 0 }
+		#infantry = { x = 4 y = 1 }
+		#infantry = { x = 4 y = 2 }
 	}
 	
 	support = {
@@ -32,6 +32,7 @@ division_template = {
 		infantry = { x = 0 y = 0 }
 		infantry = { x = 0 y = 1 }
 		infantry = { x = 0 y = 2 }
+		infantry = { x = 1 y = 0 }
 	}
 	
 	support = {
@@ -58,15 +59,15 @@ division_template = {
 		mountaineers = { x = 0 y = 0 }
 		mountaineers = { x = 0 y = 1 }
 		mountaineers = { x = 0 y = 2 }
-		mountaineers = { x = 0 y = 3 }
-		mountaineers = { x = 1 y = 0 }
-		mountaineers = { x = 1 y = 1 }
-		mountaineers = { x = 1 y = 2 }
-		mountaineers = { x = 1 y = 3 }
-		mountaineers = { x = 2 y = 0 }
-		mountaineers = { x = 2 y = 1 }
-		mountaineers = { x = 2 y = 2 }
-		mountaineers = { x = 2 y = 3 }
+		infantry = { x = 0 y = 3 }
+		infantry = { x = 1 y = 0 }
+		infantry = { x = 1 y = 1 }
+		infantry = { x = 1 y = 2 }
+		infantry = { x = 1 y = 3 }
+		infantry = { x = 2 y = 0 }
+		infantry = { x = 2 y = 1 }
+		infantry = { x = 2 y = 2 }
+		infantry = { x = 2 y = 3 }
 	}
 	
 	support = {
@@ -82,6 +83,9 @@ division_template = {
 		motorized = { x = 0 y = 1 }
 		motorized = { x = 0 y = 2 }
 		motorized = { x = 0 y = 3 }
+		motorized = { x = 1 y = 0 }
+		motorized = { x = 1 y = 1 }
+		modern_armor = { x = 2 y = 0 }
 	}
 	
 	support = {
@@ -97,24 +101,13 @@ division_template = {
 	regiments = {
 		modern_armor = { x = 0 y = 0 }
 		modern_armor = { x = 0 y = 1 }
-		modern_armor = { x = 0 y = 2 }
-		modern_armor = { x = 0 y = 3 }
-		modern_armor = { x = 1 y = 0 }
+		motorized = { x = 1 y = 0 }
 		motorized = { x = 1 y = 1 }
 		motorized = { x = 1 y = 2 }
-		motorized = { x = 1 y = 3 }
-		motorized = { x = 2 y = 0 }
-		motorized = { x = 2 y = 1 }
-		mechanized = { x = 2 y = 2 }
-		motorized = { x = 2 y = 3 }
-		motorized = { x = 3 y = 0 }
-		motorized = { x = 3 y = 1 }
-		motorized = { x = 3 y = 2 }
 	}
 	
 	support = {
 		engineer = { x = 0 y = 0 }
-		field_hospital = { x = 0 y = 0 }
 	}
 }
 
@@ -151,10 +144,10 @@ division_template = {
 	name = "Reconnaissance Brigade"
 	
 	regiments = {
-		motorized = { x = 0 y = 0 }
-		motorized = { x = 0 y = 1 }
-		motorized = { x = 1 y = 0 }
-		motorized = { x = 1 y = 1 }
+		infantry = { x = 0 y = 0 }
+		infantry = { x = 0 y = 1 }
+		infantry = { x = 1 y = 0 }
+		infantry = { x = 1 y = 1 }
 	}
 }
 
@@ -213,7 +206,7 @@ units = {
 	
 	division = {
 		name = "3rd Infantry Division"
-		location = 10729
+		location = 12005
 		division_template = "Infantry Division"
 		start_experience_factor = 0.3
 	}
@@ -227,7 +220,7 @@ units = {
 	
 	division = {
 		name = "5th Infantry Division"
-		location = 7106
+		location = 12005
 		division_template = "Infantry Division"
 		start_experience_factor = 0.3
 	}
@@ -304,7 +297,7 @@ units = {
 	
 	division = {
 		name = "21st Infantry Division"
-		location = 2002
+		location = 10066
 		division_template = "Infantry Division"
 		start_experience_factor = 0.3
 	}
@@ -325,7 +318,7 @@ units = {
 	
 	division = {
 		name = "25th Infantry Division"
-		location = 2002
+		location = 10066
 		division_template = "Infantry Division"
 		start_experience_factor = 0.3
 	}
@@ -675,7 +668,7 @@ units = {
 	
 	division = {
 		name = "6th Independent Recon Brigade"
-		location = 2002
+		location = 10066
 		division_template = "Reconnaissance Brigade"
 		start_experience_factor = 0.3
 	}
@@ -700,21 +693,8 @@ units = {
 		division_template = "Reconnaissance Brigade"
 		start_experience_factor = 0.3
 	}
-	
 }
-
 instant_effect = {
-	
-	add_equipment_production = {
-		equipment = {
-			type = infantry_equipment_1
-			creator = "RAJ"
-		}
-		requested_factories = 5
-		progress = 0.1
-		efficiency = 100
-		amount = 250000
-	}
 	add_equipment_to_stockpile = {
 		type = cv_CAS_equipment_2
 		amount = 23
@@ -775,5 +755,4 @@ instant_effect = {
 		amount = 45
 		producer = SOV
 	}
-	
 }
