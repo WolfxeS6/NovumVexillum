@@ -2,6 +2,14 @@
 
 oob = "URG_2000"
 
+if = {
+	limit = { has_dlc = "Man the Guns" }
+		set_naval_oob = "URG_2000_naval_mtg"
+	else = {
+		set_naval_oob = "URG_2000_naval_legacy"
+	}
+}
+
 set_research_slots = 3
 set_convoys = 235
 set_stability = 0.75
@@ -206,10 +214,47 @@ set_technology = {
 	fuel_refining = 1
 }
 
+if = {
+	limit = { not = { has_dlc = "Man the Guns" } }
+	set_technology = {
+		early_patrol_boat = 1
+		early_destroyer = 1
+		early_light_cruiser = 1
+		basic_light_cruiser = 1
+		early_submarine = 1
+		transport = 1
+	}
+}
+if = {
+	limit = { has_dlc = "Man the Guns" }
+	set_technology = {
+		early_ship_hull_patrol_boat = 1
+		early_ship_hull_light = 1
+		early_ship_hull_cruiser = 1
+		basic_ship_hull_cruiser = 1
+		early_ship_hull_submarine = 1
+		smoke_generator = 1
+		sonar = 1
+		basic_depth_charges = 1
+		improved_airplane_launcher = 1
+		basic_cruiser_armor_scheme = 1
+		basic_torpedo = 1
+		basic_battery = 1
+		basic_light_battery = 1
+		basic_medium_battery = 1
+		basic_secondary_battery = 1
+		mtg_transport = 1
+		basic_naval_mines = 1
+		submarine_mine_laying = 1
+	}
+}
+
 add_ideas = {
 	economy_recession
 	immigration_policy_loose_regulations
 	population_growth_stagnation
+	civil_liberties_free
+	neutrality_idea
 }
 
 set_politics = {	
@@ -232,7 +277,20 @@ set_popularities = {
     communist = 10
 }
 
-recruit_character = URG_julio_maría_sanguinetti
+### Political Leaders ###
+recruit_character = URG_julio_maria_sanguinetti
+recruit_character = URG_jorge_batlle
+recruit_character = URG_jose_mujica
+recruit_character = URG_tabare_vazquez
+recruit_character = URG_danilo_astori
+recruit_character = URG_edgardo_novick
+recruit_character = URG_cesar_vega
+recruit_character = URG_luis_alberto_lacalle
+recruit_character = URG_capybara_i
+recruit_character = URG_alem_garcia
+recruit_character = URG_nicolas_cotugno
+
+### Generals and Admirals ###
 recruit_character = URG_guido_manini_ríos
 recruit_character = URG_washington_roberto_martínez_angelucci
 recruit_character = URG_carlos_humberto_loitey
@@ -246,20 +304,45 @@ recruit_character = URG_jorge_haboosh
 recruit_character = URG_josé_luis_oliveira
 recruit_character = URG_leonardo_gustavo_alfonso_chiappara
 recruit_character = URG_ricardo_giambruno
-recruit_character = URG_cecilio_roca
-recruit_character = URG_antonio_flores
-recruit_character = URG_juan_ramón_gonzález
-recruit_character = URG_marcial_gonzález
-recruit_character = URG_juan_manuel_rivarola
-recruit_character = URG_manuel_rivarola
-recruit_character = URG_lorenzo_rivera
-recruit_character = URG_carlos_maza
-recruit_character = URG_julio_maza
-recruit_character = URG_máximo_meza
-recruit_character = URG_marcial_cruz
 
 
 2015.1.1 = {
 }
 
+if = {
+	limit = { has_dlc = "Man the Guns" }
 
+	create_equipment_variant = {
+		name = "Kondor II Class"
+		type = ship_hull_light_1
+		name_group = GENERIC_MINESWEEPER_NAMES
+		modules = {
+			fixed_ship_battery_slot = ship_light_battery_1
+			fixed_ship_anti_air_slot = empty
+			fixed_ship_fire_control_system_slot = empty
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = light_ship_engine_1
+			fixed_ship_torpedo_slot = empty
+			mid_1_custom_slot = ship_depth_charge_1
+			rear_1_custom_slot = ship_mine_sweeper_1
+		}
+	}
+
+	create_equipment_variant = {
+		name = "Uruguay Class"
+		type = ship_hull_cruiser_1
+		name_group = GENERIC_CL_NAMES
+		modules = {
+			fixed_ship_battery_slot = ship_light_medium_battery_1
+			fixed_ship_secondaries_slot = empty
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_fire_control_system_slot = ship_sonar_1
+			fixed_ship_radar_slot = ship_radar_1
+			fixed_ship_engine_slot = cruiser_ship_engine_1
+			fixed_ship_armor_slot = empty
+			mid_1_custom_slot = empty
+			mid_2_custom_slot = ship_torpedo_1
+			rear_1_custom_slot = ship_light_battery_1
+		}	
+	}
+}	
