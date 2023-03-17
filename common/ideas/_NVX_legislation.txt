@@ -17,8 +17,8 @@ ideas = {
 			}
 			
 			modifier = {
-				foreign_subversive_activites = -0.05
-				operation_cost = 0.2
+				operation_cost = 0.3
+				political_power_cost = 0.1
 			}
 			
 			default = yes
@@ -53,6 +53,7 @@ ideas = {
 				resistance_damage_to_garrison = -0.1
 				foreign_subversive_activites = -0.1
 				stability_factor = 0.025
+				enemy_operative_detection_chance_factor = 0.1
 			}
 			
 			cancel_if_invalid = no
@@ -102,6 +103,7 @@ ideas = {
 				resistance_damage_to_garrison = -0.15
 				foreign_subversive_activites = -0.15
 				stability_factor = 0.05
+				enemy_operative_detection_chance_factor = 0.2
 			}
 			
 			cancel_if_invalid = no
@@ -137,7 +139,14 @@ ideas = {
 			level = 4
 			
 			available = {
-				
+				NOT = { 
+					OR = {
+						has_government = market_liberal
+						has_government = social_liberal
+						has_government = social_democrat
+						has_government = progressive
+					}
+				}
 			}
 			
 			on_add = {
@@ -150,7 +159,8 @@ ideas = {
 				agency_upgrade_time = -0.3
 				resistance_damage_to_garrison = -0.2
 				foreign_subversive_activites = -0.2
-				stability_factor = 0.075
+				stability_factor = 0.10
+				enemy_operative_detection_chance_factor = 0.3
 				custom_modifier_tooltip = TT_NVX_LEG_public_safety_secret_police
 			}
 			
@@ -176,8 +186,9 @@ ideas = {
 			level = 1
 			
 			available = {
-				NOT = { has_government = fascist }
-				NOT = { has_government = nationalist }
+				NOT = { 
+					NVX_has_government_ideology_authoritarian = yes
+				}
 			}
 			
 			on_add = {
@@ -187,8 +198,11 @@ ideas = {
 			modifier = {
 				MONTHLY_POPULATION = 0.4
 				#stability_weekly = -0.001
-				political_power_cost = 0.2
-				stability_factor = -0.05
+				political_power_cost = 0.4
+				stability_factor = -0.10
+				industrial_capacity_factory = 0.05
+				production_speed_buildings_factor = 0.05
+				research_speed_factor = 0.10
 			}
 			
 			cancel_if_invalid = no
@@ -208,10 +222,13 @@ ideas = {
 			}
 			
 			modifier = {
-				political_power_cost = 0.1
+				political_power_cost = 0.20
 				#consumer_goods_factor = 0.02
 				MONTHLY_POPULATION = 0.2
-				stability_factor = -0.025
+				stability_factor = -0.05
+				industrial_capacity_factory = 0.025
+				production_speed_buildings_factor = 0.025
+				research_speed_factor = 0.05
 			}
 			
 			cancel_if_invalid = no
@@ -250,7 +267,7 @@ ideas = {
 			}
 			
 			modifier = {
-				consumer_goods_factor = 0.02
+				consumer_goods_factor = 0.01
 				MONTHLY_POPULATION = 0.20
 				conscription = 0.005
 				weekly_manpower = 1000
@@ -274,7 +291,7 @@ ideas = {
 			}
 			
 			modifier = {
-				consumer_goods_factor = 0.02
+				consumer_goods_factor = 0.01
 				stability_factor = 0.05
 			}
 			
@@ -289,8 +306,14 @@ ideas = {
 			level = 4
 			
 			available = {
-				NOT = { has_government = progressive }
-				NOT = { has_government = democratic_socialist }
+				NOT = { 
+					OR = {
+						has_government = market_liberal
+						has_government = social_liberal
+						has_government = social_democrat
+						has_government = progressive
+					}
+				}
 			}
 			
 			on_add = {
@@ -299,7 +322,7 @@ ideas = {
 			
 			modifier = {
 				political_power_cost = 0.2
-				consumer_goods_factor = 0.05
+				consumer_goods_factor = 0.02
 				MONTHLY_POPULATION = -0.2
 				stability_factor = 0.1
 				airforce_intel_to_others = -30
@@ -452,7 +475,7 @@ ideas = {
 			level = 4
 			
 			available = {
-				
+				NVX_has_government_ideology_authoritarian = yes
 			}
 			
 			on_add = {
