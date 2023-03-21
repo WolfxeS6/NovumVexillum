@@ -1270,6 +1270,8 @@ country_event = {
 		#2003
 		news_event = { id = fne.9 days = 553 }	#March 18th: Ultimatum
 		country_event = { id = usa.72 days = 555 }	#March 20th: Invasion of Iraq
+		#2004
+		country_event = { id = usa.100 days = 950 }	#March - August
 	}
 }
 
@@ -2844,5 +2846,36 @@ country_event = {
 		}
 		
 		ai_chance = { factor = 0 }
+	}
+}
+#Syrian sanctions
+country_event = {
+	id = usa.100
+	title = usa.100.t
+	desc = usa.100.d
+	picture = GFX_report_event_political_deal
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	option = {
+		name = usa.100.o1
+		SYR = {
+			country_event = syria.8
+		}
+		trigger = {
+			NOT = {
+				SYR = {
+					has_democratic_form_of_government = yes
+				}
+			}
+		}
+	}
+	option = {
+		name = usa.100.o2
+		trigger = {
+			SYR = {
+				has_democratic_form_of_government = yes
+			}
+		}
 	}
 }

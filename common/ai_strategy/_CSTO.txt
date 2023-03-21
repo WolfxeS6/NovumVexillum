@@ -1,7 +1,8 @@
 seek_CSTO_membership = {
 	
 	enable = {
-	
+
+		NOT = { has_global_flag = DPTS_dismantle_factions}
 		NOT = { tag = SOV }
 		
 		SOV = { is_in_faction = yes }
@@ -74,5 +75,26 @@ seek_CSTO_membership = {
 		type = alliance
 		id = "SOV"
 		value = 125
+	}
+}
+## Armenia + Azeris are on their own in a fight, it's for CSTO but could be anyone
+
+enable = {
+	OR = {
+		NOT = { tag = AZR }
+		NOT = { tag = ARM }
+	}
+	NOT = {threat > 0.2}
+	ai_strategy = {
+		type = dont_join_wars_with
+		id = ARM
+		value = 150
+		target_country = AZR
+	}
+	ai_strategy = {
+		type = dont_join_wars_with
+		id = AZR
+		value = 150
+		target_country = ARM
 	}
 }
