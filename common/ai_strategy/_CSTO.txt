@@ -78,13 +78,14 @@ seek_CSTO_membership = {
 	}
 }
 ## Armenia + Azeris are on their own in a fight, it's for CSTO but could be anyone
-
-enable = {
-	OR = {
-		NOT = { tag = AZR }
-		NOT = { tag = ARM }
+Armenia_Azeris_left_alone = {
+	enable = {
+		OR = {
+			NOT = { tag = AZR }
+			NOT = { tag = ARM }
+		}
+		NOT = {threat > 0.2}
 	}
-	NOT = {threat > 0.2}
 	ai_strategy = {
 		type = dont_join_wars_with
 		id = ARM
