@@ -372,15 +372,16 @@
 			custom_effect_tooltip = kor_with_friends_2000_general_election_tt
 			add_to_variable = { var = KOR_parliament_seat_support_array^2 value = -3 }
 			add_to_variable = { var = KOR_parliament_seat_support_array^3 value = 3 }
-			random_owned_state = {
-				limit = { 
-					is_core_of = ROOT 
-					NOT = {
-						has_state_flag = kor_regional_development_target
-					}	
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 1
+						include_locked = yes
+					}
+					state_population_k > 500
 				}
 				add_extra_state_shared_building_slots = 2
-				set_state_flag = kor_regional_development_target
 			}
 		}
 		
