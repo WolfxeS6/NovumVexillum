@@ -2350,6 +2350,65 @@ country_event = {
 		JAP_GetKatoSupport_add_7_effect = yes
 	}
 }
+
+# Visit by a Former President of Korea
+country_event = {
+	id = japan.82
+	title = japan.82.t
+	desc = japan.82.desc
+	picture = GFX_report_event_japanese_flag
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		date < 2003.01.01
+		AND = {
+			country_exists = KOR
+			NOT = { has_war_with = KOR }
+		}
+	}
+	
+	option = {
+		name = japan.82.a
+		ai_chance = { factor = 80 }
+		add_political_power = 20
+	}
+	
+	option = {
+		name = japan.82.b
+		ai_chance = { 
+			factor = 20 
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+				has_game_rule = {
+					rule = JAP_AI_BEHAVIOR
+					option = DEFAULT
+				}
+			}
+		}
+		add_manpower = 1
+		
+		set_country_flag = JAP_kim_young_sam_flag
+		KOR = { country_event = { id = japan.83 days = 3 } }
+	}
+}
+
+# Naturalization of Kim Young-sam
+country_event = {
+	id = japan.83
+	title = japan.83.t
+	desc = japan.83.desc
+	picture = GFX_report_event_japanese_flag
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan.83.a
+		add_manpower = -1
+		add_political_power = -50
+	}
+}
 	
 #Debug
 country_event = {
@@ -3922,6 +3981,39 @@ news_event = {
 		trigger = {
 			NOT = { original_tag = JAP }
 			NOT = { original_tag = KOR }
+		}
+	}
+}
+
+#Withdrawal of U.S. bases in Okinawa
+news_event = {
+	id = japan_news.22
+	title = japan_news.22.t
+	desc = japan_news.22.desc
+	picture = GFX_news_event_japanese_national_diet
+	
+	is_triggered_only = yes
+	major = yes
+	
+	option = {
+		name = japan_news.22.a
+		trigger = {
+			owns_state = 526
+		}
+	}
+	
+	option = {
+		name = japan_news.22.b
+		trigger = {
+			original_tag = USA
+		}
+	}
+	
+	option = {
+		name = japan_news.22.c
+		trigger = {
+			NOT = { owns_state = 526 }
+			NOT = { original_tag = USA }
 		}
 	}
 }
@@ -5852,5 +5944,22 @@ country_event = {
 			}
 			JAP = { puppet = ROOT }
 		}
+	}
+}
+
+#Demanding the withdrawal of U.S. bases in Okinawa
+country_event = {
+	id = japan_foreign_politics_events.33
+	title = japan_foreign_politics_events.33.t
+	desc = japan_foreign_politics_events.33.desc
+	picture = GFX_report_event_tokyo_night
+
+	is_triggered_only = yes
+	
+	option = {
+		name = japan_foreign_politics_events.33.a
+		
+		FROM = { transfer_state = 1246 }
+		1246 = { add_core_of = FROM }
 	}
 }

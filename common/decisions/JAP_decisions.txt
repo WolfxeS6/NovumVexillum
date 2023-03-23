@@ -431,6 +431,62 @@ JAP_taiwan_domination_decisions = {
 	}
 }
 
+diplomatic_decisions = {
+	
+	JAP_demolition_of_us_base = {
+		icon = generic_political_discourse
+		
+		allowed = { 
+			OR = { 
+				original_tag = JAP 
+				original_tag = RYU
+			}
+		}
+		
+		visible = {
+			USA = { owns_state = 1246 }
+			ROOT = { owns_state = 526 }
+		}
+
+		available = {
+			has_war = no
+			NOT = { is_subject_of = USA }
+		}
+		
+		cost = 25
+		fire_only_once = yes
+
+		complete_effect = {
+			USA = { country_event = { id = japan_foreign_politics_events.33 } }
+			
+			hidden_effect = {
+				news_event = { id = japan_news.22 }
+			}
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				factor = 100
+				AND = {
+					ROOT = { has_democratic_form_of_government = no }
+					NOT = { 
+						ROOT = { is_in_faction_with = USA } 
+					}
+				}
+			}
+			modifier = {
+				factor = 100
+				AND = {
+					NOT = { 
+						ROOT = { is_in_faction_with = USA } 
+					}
+					ROOT = { is_in_faction = yes }
+				}
+			}
+		}
+	}
+}
 
 JAP_okinawa_issues_decisions = {
 
@@ -591,48 +647,6 @@ JAP_okinawa_issues_decisions = {
 			modifier = {
 				factor = 10
 				526 = { resistance > 50 }
-			}
-		}
-	}
-	
-	JAP_demolition_of_us_base = {
-		icon = generic_political_discourse
-		
-		allowed = { original_tag = JAP }
-		
-		visible = {
-			FROM = { owns_state = 526 } #Taiwan
-		}
-
-		available = {
-			JAP = { has_democratic_form_of_government = yes }
-			NOT = { has_country_flag = JAP_okinawa_wating_flag }
-			has_war = no
-			is_in_faction_with = USA
-		}
-		
-		cost = 25
-		fire_only_once = yes
-
-		days_remove = 70
-
-		complete_effect = {
-			set_country_flag = JAP_okinawa_wating_flag
-		}
-		
-		remove_effect = {
-			clr_country_flag = JAP_okinawa_wating_flag
-			526 = { 
-				add_compliance = 15
-				add_resistance = -10
-			}
-		}
-		
-		ai_will_do = {
-			factor = 1
-			modifier = {
-				factor = 10
-				526 = { resistance > 30 }
 			}
 		}
 	}
