@@ -285,6 +285,10 @@ NVX_COUP_civil_war_transfer_ideas_set = {
 	}
 	# service time #
 	if = {
+		limit = { has_idea = mobilization_service_time_corrupt }
+		set_country_flag = NVX_COUP_prev_mobilization_service_time_corrupt
+	}
+	if = {
 		limit = { has_idea = mobilization_service_time_levy }
 		set_country_flag = NVX_COUP_prev_mobilization_service_time_levy
 	}
@@ -588,6 +592,10 @@ NVX_COUP_civil_war_transfer_ideas = {
 		add_ideas = scraping_the_barrel
 	}
 	# service time #
+	if = {
+		limit = { PREV = { has_country_flag = NVX_COUP_prev_mobilization_service_time_corrupt } }
+		add_ideas = mobilization_service_time_corrupt
+	}
 	if = {
 		limit = { PREV = { has_country_flag = NVX_COUP_prev_mobilization_service_time_levy } }
 		add_ideas = mobilization_service_time_levy
