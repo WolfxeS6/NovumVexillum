@@ -27,7 +27,7 @@ NVX_prospect_for_resources_africa = {
 			781 = {
 				is_controlled_by = Root
 				NOT = {
-					has_state_flag = tungsten_rwanda_developed
+					has_state_flag = tungsten_developed
 				}
 			}
 
@@ -63,7 +63,7 @@ NVX_prospect_for_resources_africa = {
 			}
 		}
 		remove_effect = {
-			781 = { set_state_flag = tungsten_rwanda_developed }
+			781 = { set_state_flag = tungsten_developed }
 			781 = {
 				add_resource = {
 					type = tungsten
@@ -99,7 +99,7 @@ NVX_prospect_for_resources_africa = {
 			863 = {
 				is_controlled_by = Root
 				NOT = {
-					has_state_flag = tungsten_kivu_developed
+					has_state_flag = tungsten_developed
 				}
 			}
 		}
@@ -134,7 +134,7 @@ NVX_prospect_for_resources_africa = {
 			}
 		}
 		remove_effect = {
-			863 = { set_state_flag = tungsten_kivu_developed }
+			863 = { set_state_flag = tungsten_developed }
 			863 = {
 				add_resource = {
 					type = tungsten
@@ -175,7 +175,7 @@ NVX_prospect_for_resources_africa = {
 			775 = {
 				is_controlled_by = Root
 				NOT = {
-					has_state_flag = alu_guinea_conakry_developed
+					has_state_flag = alu_developed
 				}
 			}
 		}
@@ -210,7 +210,7 @@ NVX_prospect_for_resources_africa = {
 			}
 		}
 		remove_effect = {
-			775 = { set_state_flag = alu_guinea_conakry_developed }
+			775 = { set_state_flag = alu_developed }
 			775 = {
 				add_resource = {
 					type = aluminium
@@ -245,7 +245,7 @@ NVX_prospect_for_resources_africa = {
 			865 = {
 				is_controlled_by = Root
 				NOT = {
-					has_state_flag = steel_katanga_developed
+					has_state_flag = steel_developed
 				}
 			}
 		}
@@ -280,7 +280,7 @@ NVX_prospect_for_resources_africa = {
 			}
 		}
 		remove_effect = {
-			865 = { set_state_flag = steel_katanga_developed }
+			865 = { set_state_flag = steel_developed }
 			865 = {
 				add_resource = {
 					type = steel
@@ -315,7 +315,7 @@ NVX_prospect_for_resources_africa = {
 			557 = {
 				is_controlled_by = Root
 				NOT = {
-					has_state_flag = steel_mauritania_developed
+					has_state_flag = steel_developed
 				}
 			}
 		}
@@ -350,7 +350,7 @@ NVX_prospect_for_resources_africa = {
 			}
 		}
 		remove_effect = {
-			557 = { set_state_flag = steel_mauritania_developed }
+			557 = { set_state_flag = steel_developed }
 			557 = {
 				add_resource = {
 					type = steel
@@ -385,7 +385,7 @@ NVX_prospect_for_resources_africa = {
 			775 = {
 				is_controlled_by = Root
 				NOT = {
-					has_state_flag = rubber_guinea_conakry_developed
+					has_state_flag = rubber_developed
 				}
 			}
 		}
@@ -420,8 +420,78 @@ NVX_prospect_for_resources_africa = {
 			}
 		}
 		remove_effect = {
-			775 = { set_state_flag = rubber_guinea_conakry_developed }
+			775 = { set_state_flag = rubber_developed }
 			775 = {
+				add_resource = {
+					type = rubber
+					amount = 10
+				}
+			}
+		}
+	}
+	
+	rubber_centrafrican = { 
+
+		icon = rubber
+
+		allowed = {
+
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+				state = 660
+			}
+		}
+
+		available = {
+			has_tech = excavation1
+			has_stability > 0.25
+			num_of_civilian_factories_available_for_projects > 1
+			controls_state = 660
+		}
+
+		visible = {
+			660 = {
+				is_controlled_by = Root
+				NOT = {
+					has_state_flag = rubber_developed
+				}
+			}
+		}
+		fire_only_once = yes
+
+		cost = 25
+		days_remove = 365
+
+		modifier = {
+			civilian_factory_use = 1
+			political_power_cost = 0.1		
+		}
+
+		ai_will_do = {
+			base = 0.3
+			modifier = {  # Too low PP
+				factor = 0.5
+					has_political_power < 80
+			}
+			modifier = { #We have plenty of PP, avanti!
+				factor = 3
+				has_political_power > 200
+			}
+			modifier = { #Running out of the stuff, need more!
+				factor = 5
+				any_controlled_state = {
+					has_resources_amount = {
+						resource = rubber
+						amount < 1
+					}
+				}
+			}
+		}
+		remove_effect = {
+			660 = { set_state_flag = rubber_developed }
+			660 = {
 				add_resource = {
 					type = rubber
 					amount = 10
@@ -455,7 +525,7 @@ NVX_prospect_for_resources_africa = {
 			700 = {
 				is_controlled_by = Root
 				NOT = {
-					has_state_flag = rubber_sierra_leone_developed
+					has_state_flag = rubber_developed
 				}
 			}
 		}
@@ -490,7 +560,7 @@ NVX_prospect_for_resources_africa = {
 			}
 		}
 		remove_effect = {
-			700 = { set_state_flag = rubber_sierra_leone_developed }
+			700 = { set_state_flag = rubber_developed }
 			700 = {
 				add_resource = {
 					type = rubber
@@ -525,7 +595,7 @@ NVX_prospect_for_resources_africa = {
 			298 = {
 				is_controlled_by = Root
 				NOT = {
-					has_state_flag = rubber_liberia_developed
+					has_state_flag = rubber_developed
 				}
 			}
 		}
@@ -560,7 +630,7 @@ NVX_prospect_for_resources_africa = {
 			}
 		}
 		remove_effect = {
-			298 = { set_state_flag = rubber_liberia_developed }
+			298 = { set_state_flag = rubber_developed }
 			298 = {
 				add_resource = {
 					type = rubber
@@ -596,7 +666,7 @@ NVX_prospect_for_resources_africa = {
 			1102 = {
 				is_controlled_by = Root
 				NOT = {
-					has_state_flag = rubber_cote_ivoire_developed
+					has_state_flag = rubber_developed
 				}
 			}
 		}
@@ -631,7 +701,7 @@ NVX_prospect_for_resources_africa = {
 			}
 		}
 		remove_effect = {
-			1102 = { set_state_flag = rubber_cote_ivoire_developed }
+			1102 = { set_state_flag = rubber_developed }
 			1102 = {
 				add_resource = {
 					type = rubber
@@ -673,7 +743,7 @@ NVX_prospect_for_resources_africa = {
 			1105 = {
 				is_controlled_by = Root
 				NOT = {
-					has_state_flag = rubber_ghana_developed
+					has_state_flag = rubber_developed
 				}
 			}
 		}
@@ -708,7 +778,7 @@ NVX_prospect_for_resources_africa = {
 			}
 		}
 		remove_effect = {
-			1105 = { set_state_flag = rubber_ghana_developed }
+			1105 = { set_state_flag = rubber_developed }
 			1105 = {
 				add_resource = {
 					type = rubber
@@ -744,7 +814,7 @@ NVX_prospect_for_resources_africa = {
 			764 = {
 				is_controlled_by = Root
 				NOT = {
-					has_state_flag = rubber_nigeria_developed
+					has_state_flag = rubber_developed
 				}
 			}
 		}
@@ -779,7 +849,7 @@ NVX_prospect_for_resources_africa = {
 			}
 		}
 		remove_effect = {
-			764 = { set_state_flag = rubber_nigeria_developed }
+			764 = { set_state_flag = rubber_developed }
 			764 = {
 				add_resource = {
 					type = rubber
@@ -816,7 +886,7 @@ NVX_prospect_for_resources_africa = {
 			756 = {
 				is_controlled_by = Root
 				NOT = {
-					has_state_flag = rubber_cameroon_developed
+					has_state_flag = rubber_developed
 				}
 			}
 		}
@@ -851,7 +921,7 @@ NVX_prospect_for_resources_africa = {
 			}
 		}
 		remove_effect = {
-			756 = { set_state_flag = rubber_cameroon_developed }
+			756 = { set_state_flag = rubber_developed }
 			756 = {
 				add_resource = {
 					type = rubber
@@ -886,7 +956,7 @@ NVX_prospect_for_resources_africa = {
 			539 = {
 				is_controlled_by = Root
 				NOT = {
-					has_state_flag = rubber_gabon_developed
+					has_state_flag = rubber_developed
 				}
 			}
 		}
@@ -921,7 +991,7 @@ NVX_prospect_for_resources_africa = {
 			}
 		}
 		remove_effect = {
-			539 = { set_state_flag = rubber_gabon_developed }
+			539 = { set_state_flag = rubber_developed }
 			539 = {
 				add_resource = {
 					type = rubber
@@ -956,7 +1026,7 @@ NVX_prospect_for_resources_africa = {
 			759 = {
 				is_controlled_by = Root
 				NOT = {
-					has_state_flag = rubber_congo_developed
+					has_state_flag = rubber_developed
 				}
 			}
 		}
@@ -991,7 +1061,7 @@ NVX_prospect_for_resources_africa = {
 			}
 		}
 		remove_effect = {
-			759 = { set_state_flag = rubber_congo_developed }
+			759 = { set_state_flag = rubber_developed }
 			759 = {
 				add_resource = {
 					type = rubber
@@ -1030,7 +1100,7 @@ NVX_prospect_for_resources_africa = {
 			1007 = {
 				is_controlled_by = Root
 				NOT = {
-					has_state_flag = rubber_south_DRC_developed
+					has_state_flag = rubber_developed
 				}
 			}
 		}
@@ -1065,7 +1135,7 @@ NVX_prospect_for_resources_africa = {
 			}
 		}
 		remove_effect = {
-			1007 = { set_state_flag = rubber_south_DRC_developed }
+			1007 = { set_state_flag = rubber_developed }
 			1007 = {
 				add_resource = {
 					type = rubber
@@ -1114,7 +1184,7 @@ NVX_prospect_for_resources_africa = {
 			1111 = {
 				is_controlled_by = Root
 				NOT = {
-					has_state_flag = rubber_north_DRC_developed
+					has_state_flag = rubber_developed
 				}
 			}
 		}
@@ -1149,7 +1219,7 @@ NVX_prospect_for_resources_africa = {
 			}
 		}
 		remove_effect = {
-			1111 = { set_state_flag = rubber_north_DRC_developed }
+			1111 = { set_state_flag = rubber_developed }
 			1111 = {
 				add_resource = {
 					type = rubber
@@ -1171,9 +1241,128 @@ NVX_prospect_for_resources_africa = {
 		}
 	}
 	
+	oil_nigeria = { 
+
+		icon = oil
+
+		allowed = {
+
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+				state = 764
+			}
+		}
+
+		available = {
+			has_tech = excavation1
+			has_stability > 0.25
+			num_of_civilian_factories_available_for_projects > 1
+			controls_state = 764
+		}
+
+		visible = {
+			764 = {
+				is_controlled_by = Root
+				NOT = {
+					has_state_flag = oil_developed
+				}
+			}
+		}
+		fire_only_once = yes
+
+		cost = 25
+		days_remove = 365
+
+		modifier = {
+			civilian_factory_use = 1
+			political_power_cost = 0.1		
+		}
+
+		ai_will_do = {
+			base = 0.3
+			modifier = {  # Too low PP
+				factor = 0.5
+					has_political_power < 80
+			}
+			modifier = { #We have plenty of PP, avanti!
+				factor = 3
+				has_political_power > 200
+			}
+		}
+		remove_effect = {
+			764 = { set_state_flag = oil_developed }
+			764 = {
+				add_resource = {
+					type = oil
+					amount = 15
+					}
+				}
+		}
+	}
 	
-	
-	
+	oil_ghana = { 
+
+		icon = oil
+
+		allowed = {
+
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+				state = 274
+			}
+		}
+
+		available = {
+			has_tech = excavation2
+			has_stability > 0.25
+			num_of_civilian_factories_available_for_projects > 1
+			controls_state = 274
+		}
+
+		visible = {
+			274 = {
+				is_controlled_by = Root
+				NOT = {
+					has_state_flag = oil_developed
+				}
+			}
+		}
+		fire_only_once = yes
+
+		cost = 25
+		days_remove = 365
+
+		modifier = {
+			civilian_factory_use = 1
+			political_power_cost = 0.1		
+		}
+
+		ai_will_do = {
+			base = 0.3
+			modifier = {  # Too low PP
+				factor = 0.5
+					has_political_power < 80
+			}
+			modifier = { #We have plenty of PP, avanti!
+				factor = 3
+				has_political_power > 200
+			}
+		}
+		remove_effect = {
+			274 = { set_state_flag = oil_developed }
+			274 = {
+				add_resource = {
+					type = oil
+					amount = 15
+					}
+				}
+		}
+	}
+
 	
 	
 	
