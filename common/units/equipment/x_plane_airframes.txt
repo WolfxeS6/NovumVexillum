@@ -3,74 +3,34 @@
 
 duplicate_archetypes = {
 
-	# small_plane
-
-	small_plane_cas_airframe = {
-		archetype = small_plane_airframe
-		type = cas
-		picture = archetype_CAS_equipment
-		air_map_icon_frame = 2
-		interface_overview_category_index = 0
-		substitute = cv_small_plane_cas_airframe
-	}
-	cv_small_plane_cas_airframe = {
-		archetype = cv_small_plane_airframe
-		type = cas
-		#ai_type = cv_cas
-		picture = archetype_CAS_equipment
-		air_map_icon_frame = 17
-		interface_overview_category_index = 0
-	}
-
-	small_plane_naval_bomber_airframe = {
-		archetype = small_plane_airframe
-		type = naval_bomber
-		picture = archetype_heavy_fighter_equipment
-		air_map_icon_frame = 3
-		interface_overview_category_index = 2
-		substitute = cv_small_plane_naval_bomber_airframe
-	}
-	cv_small_plane_naval_bomber_airframe = {
-		archetype = cv_small_plane_airframe
-		type = naval_bomber
-		#ai_type = cv_naval_bomber
-		picture = archetype_heavy_fighter_equipment
-		air_map_icon_frame = 18
-		interface_overview_category_index = 2
-		default_carrier_composition_weight = 1
-	}
-
-	small_plane_suicide_airframe = {
-		archetype = small_plane_airframe
-		type = suicide
-		picture = archetype_rocket_interceptor_equipment
-		air_map_icon_frame = 15
-		interface_overview_category_index = -1 # Do not include these in the intel or airforce overview.
-		substitute = cv_small_plane_suicide_airframe
-		forbid_mission_type = training
-	}
-	cv_small_plane_suicide_airframe = {
-		archetype = cv_small_plane_airframe
-		type = suicide
-		#ai_type = cv_suicide
-		picture = archetype_rocket_interceptor_equipment
-		air_map_icon_frame = 19
-		interface_overview_category_index = -1 # Do not include these in the intel or airforce overview.
-		forbid_mission_type = training
-	}
-
 	# medium_plane
-
-	medium_plane_fighter_airframe = {
+	medium_plane_naval_bomber_airframe = {
 		archetype = medium_plane_airframe
-		type = fighter
+		type = naval_bomber
 		ai_type = heavy_fighter
-		for_each = {
-			air_superiority = { set = 1.25 }
+		variant_name = {
+			medium_plane_naval_bomber_airframe_1 = nav_bomber_equipment_1
+			medium_plane_naval_bomber_airframe_2 = nav_bomber_equipment_2
+			medium_plane_naval_bomber_airframe_3 = nav_bomber_equipment_3
 		}
 		sprite = light_plane
 		air_map_icon_frame = 8
 		interface_overview_category_index = 3
+		substitute = cv_medium_plane_naval_bomber_airframe
+	}
+	cv_medium_plane_naval_bomber_airframe = {
+		archetype = cv_small_plane_airframe
+		type = naval_bomber
+		ai_type = cv_naval_bomber
+		picture = archetype_heavy_fighter_equipment
+		variant_name = {
+			cv_medium_plane_naval_bomber_airframe_1 = cv_nav_bomber_equipment_1
+			cv_medium_plane_naval_bomber_airframe_2 = cv_nav_bomber_equipment_2
+			cv_medium_plane_naval_bomber_airframe_3 = cv_nav_bomber_equipment_3
+		}
+		air_map_icon_frame = 18
+		interface_overview_category_index = 2
+		default_carrier_composition_weight = 1
 	}
 
 	medium_plane_scout_plane_airframe = {
@@ -135,7 +95,7 @@ equipments = {
 	fighter_equipment_0 = {
 		year = 1950
 
-		archetype = small_plane_airframe
+		archetype = medium_plane_airframe
 		priority = 5
 
 		allow_mission_type = {
@@ -192,7 +152,7 @@ equipments = {
 	fighter_equipment_1 = {
 		year = 1960
 
-		archetype = small_plane_airframe
+		archetype = medium_plane_airframe
 		parent = fighter_equipment_0
 		priority = 10
 
@@ -227,7 +187,7 @@ equipments = {
 	fighter_equipment_2 = {
 		year = 1980
 
-		archetype = small_plane_airframe
+		archetype = medium_plane_airframe
 		parent = fighter_equipment_1
 		priority = 10
 
@@ -261,7 +221,7 @@ equipments = {
 	fighter_equipment_3 = {
 		year = 2000
 
-		archetype = small_plane_airframe
+		archetype = medium_plane_airframe
 		parent = fighter_equipment_2
 		priority = 10
 
@@ -292,7 +252,7 @@ equipments = {
 	fighter_equipment_4 = {
 		year = 2006
 
-		archetype = small_plane_airframe
+		archetype = medium_plane_airframe
 		parent = fighter_equipment_3
 		priority = 10
 
@@ -323,7 +283,7 @@ equipments = {
 	fighter_equipment_5 = {
 		year = 2012
 
-		archetype = small_plane_airframe
+		archetype = medium_plane_airframe
 		parent = fighter_equipment_4
 		priority = 10
 
@@ -354,7 +314,7 @@ equipments = {
 	fighter_equipment_6 = {
 		year = 2018
 
-		archetype = small_plane_airframe
+		archetype = medium_plane_airframe
 		parent = fighter_equipment_5
 		priority = 10
 
@@ -385,7 +345,7 @@ equipments = {
 	fighter_equipment_7 = {
 		year = 2024
 
-		archetype = small_plane_airframe
+		archetype = medium_plane_airframe
 		parent = fighter_equipment_6
 		priority = 10
 
@@ -416,7 +376,7 @@ equipments = {
 	fighter_equipment_8 = {
 		year = 2030
 
-		archetype = small_plane_airframe
+		archetype = medium_plane_airframe
 		parent = fighter_equipment_7
 		priority = 10
 
@@ -849,7 +809,7 @@ equipments = {
 	CAS_equipment_1 = {
 		year = 1960
 
-		archetype = small_plane_cas_airframe
+		archetype = small_plane_airframe
 		priority = 40
 
 		allow_mission_type = {
@@ -894,7 +854,7 @@ equipments = {
 	CAS_equipment_2 = {
 		year = 1980
 
-		archetype = small_plane_cas_airframe
+		archetype = small_plane_airframe
 		parent = CAS_equipment_1
 		priority = 40
 
@@ -926,7 +886,7 @@ equipments = {
 	CAS_equipment_3 = {
 		year = 2006
 
-		archetype = small_plane_cas_airframe
+		archetype = small_plane_airframe
 		parent = CAS_equipment_2
 		priority = 40
 
@@ -964,7 +924,7 @@ equipments = {
 	cv_CAS_equipment_1 = {
 		year = 1960
 
-		archetype = cv_small_plane_cas_airframe
+		archetype = cv_small_plane_airframe
 		carrier_capable = yes
 		priority = 50
 
@@ -1012,7 +972,7 @@ equipments = {
 	cv_CAS_equipment_2 = {
 		year = 1980
 
-		archetype = cv_small_plane_cas_airframe
+		archetype = cv_small_plane_airframe
 		parent = cv_CAS_equipment_1
 		carrier_capable = yes
 		priority = 50
@@ -1045,7 +1005,7 @@ equipments = {
 	cv_CAS_equipment_3 = {
 		year = 2006
 
-		archetype = cv_small_plane_cas_airframe
+		archetype = cv_small_plane_airframe
 		parent = cv_CAS_equipment_2
 		carrier_capable = yes
 		priority = 50
@@ -1084,7 +1044,7 @@ equipments = {
 	nav_bomber_equipment_1 = {
 		year = 1936
 
-		archetype = small_plane_naval_bomber_airframe
+		archetype = medium_plane_naval_bomber_airframe
 		priority = 60
 
 		allow_mission_type = {
@@ -1130,7 +1090,7 @@ equipments = {
 	nav_bomber_equipment_2 = {
 		year = 1980
 
-		archetype = small_plane_naval_bomber_airframe
+		archetype = medium_plane_naval_bomber_airframe
 		parent = nav_bomber_equipment_1
 		priority = 60
 
@@ -1161,7 +1121,7 @@ equipments = {
 	nav_bomber_equipment_3 = {
 		year = 2000
 
-		archetype = small_plane_naval_bomber_airframe
+		archetype = medium_plane_naval_bomber_airframe
 		parent = nav_bomber_equipment_2
 		priority = 60
 
@@ -1190,7 +1150,7 @@ equipments = {
 	nav_bomber_equipment_4 = {
 		year = 2006
 
-		archetype = small_plane_naval_bomber_airframe
+		archetype = medium_plane_naval_bomber_airframe
 		parent = nav_bomber_equipment_3
 		priority = 60
 
@@ -1219,7 +1179,7 @@ equipments = {
 	nav_bomber_equipment_5 = {
 		year = 2012
 
-		archetype = small_plane_naval_bomber_airframe
+		archetype = medium_plane_naval_bomber_airframe
 		parent = nav_bomber_equipment_4
 		priority = 60
 
@@ -1248,7 +1208,7 @@ equipments = {
 	nav_bomber_equipment_6 = {
 		year = 2024
 
-		archetype = small_plane_naval_bomber_airframe
+		archetype = medium_plane_naval_bomber_airframe
 		parent = nav_bomber_equipment_5
 		priority = 60
 
@@ -1285,7 +1245,7 @@ equipments = {
 	cv_nav_bomber_equipment_1 = {
 		year = 1960
 
-		archetype = cv_small_plane_naval_bomber_airframe
+		archetype = cv_medium_plane_naval_bomber_airframe
 		carrier_capable = yes
 		priority = 70
 
@@ -1334,7 +1294,7 @@ equipments = {
 	cv_nav_bomber_equipment_2 = {
 		year = 1980
 
-		archetype = cv_small_plane_naval_bomber_airframe
+		archetype = cv_medium_plane_naval_bomber_airframe
 		parent = cv_nav_bomber_equipment_1
 		carrier_capable = yes
 		priority = 70
@@ -1364,7 +1324,7 @@ equipments = {
 	cv_nav_bomber_equipment_3 = {
 		year = 2000
 
-		archetype = cv_small_plane_naval_bomber_airframe
+		archetype = cv_medium_plane_naval_bomber_airframe
 		parent = cv_nav_bomber_equipment_2
 		carrier_capable = yes
 		priority = 70
@@ -1392,7 +1352,7 @@ equipments = {
 	cv_nav_bomber_equipment_4 = {
 		year = 2006
 
-		archetype = cv_small_plane_naval_bomber_airframe
+		archetype = cv_medium_plane_naval_bomber_airframe
 		parent = cv_nav_bomber_equipment_3
 		carrier_capable = yes
 		priority = 70
@@ -1420,7 +1380,7 @@ equipments = {
 	cv_nav_bomber_equipment_5 = {
 		year = 2012
 
-		archetype = cv_small_plane_naval_bomber_airframe
+		archetype = cv_medium_plane_naval_bomber_airframe
 		parent = cv_nav_bomber_equipment_4
 		carrier_capable = yes
 		priority = 70
@@ -1448,7 +1408,7 @@ equipments = {
 	cv_nav_bomber_equipment_6 = {
 		year = 2000
 
-		archetype = cv_small_plane_naval_bomber_airframe
+		archetype = cv_medium_plane_naval_bomber_airframe
 		parent = cv_nav_bomber_equipment_5
 		carrier_capable = yes
 		priority = 70
@@ -1622,7 +1582,7 @@ equipments = {
 	tac_bomber_equipment_0 = {
 		year = 2000
 
-		archetype = medium_plane_airframe
+		archetype = uav_plane_airframe
 		priority = 105
 
 		allow_mission_type = {
@@ -1672,7 +1632,7 @@ equipments = {
 	tac_bomber_equipment_1 = {
 		year = 2000
 
-		archetype = medium_plane_airframe
+		archetype = uav_plane_airframe
 		parent = tac_bomber_equipment_0
 		priority = 110
 
@@ -1703,7 +1663,7 @@ equipments = {
 	tac_bomber_equipment_2 = {
 		year = 2006
 
-		archetype = medium_plane_airframe
+		archetype = uav_plane_airframe
 		parent = tac_bomber_equipment_1
 		priority = 110
 
@@ -1734,7 +1694,7 @@ equipments = {
 	tac_bomber_equipment_3 = {
 		year = 2018
 
-		archetype = medium_plane_airframe
+		archetype = uav_plane_airframe
 		parent = tac_bomber_equipment_2
 		priority = 110
 
@@ -1765,7 +1725,7 @@ equipments = {
 	tac_bomber_equipment_4 = {
 		year = 2024
 
-		archetype = medium_plane_airframe
+		archetype = uav_plane_airframe
 		parent = tac_bomber_equipment_3
 		priority = 110
 
@@ -1796,7 +1756,7 @@ equipments = {
 	tac_bomber_equipment_5 = {
 		year = 2030
 
-		archetype = medium_plane_airframe
+		archetype = uav_plane_airframe
 		parent = tac_bomber_equipment_4
 		priority = 110
 

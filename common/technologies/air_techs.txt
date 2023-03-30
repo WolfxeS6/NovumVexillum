@@ -913,58 +913,6 @@ technologies = {
 		}
 	}
 	
-	CAS3 = {
-		
-		enable_equipments = {
-			CAS_equipment_3
-		}
-		
-		sub_technologies = {
-			cv_CAS3
-		}
-		
-		research_cost = 3
-		start_year = 2006
-		folder = {
-			name = air_techs_folder
-			position = { x = 0 y = @2006 }
-		}
-		
-		categories = {
-			light_air
-			cas_bomber
-			air_equipment
-		}
-		
-		ai_will_do = {
-			factor = 1
-			
-			modifier = {
-				factor = 2
-				is_major = yes
-			}
-			modifier = {
-				factor = 2
-				has_offensive_war = yes
-			}
-			modifier = {
-				factor = 3
-				original_tag = USA
-			}
-			modifier = {
-				factor = 3
-				has_deployed_air_force_size = {
-					size > 300
-					type = cas
-				}
-			}
-			modifier = {
-				factor = 0
-				behavior_indolent_trigger = yes
-			}
-		}
-	}
-	
 	cv_CAS1 = {
 		
 		enable_equipments = {
@@ -1016,49 +964,6 @@ technologies = {
 		
 		research_cost = 2
 		start_year = 1980
-		
-		categories = {
-			naval_air
-			air_equipment
-		}
-		
-		ai_will_do = {
-			factor = 1
-			
-			modifier = {
-				factor = 2
-				OR = {
-					original_tag = ENG
-					original_tag = SOV
-				}
-			}
-			modifier = {
-				factor = 1.5
-				has_offensive_war = yes
-			}
-			modifier = {
-				factor = 2
-				has_navy_size = { type = carrier size > 0 }
-			}
-			modifier = {
-				factor = 0
-				OR = {
-					has_tech = CAS3
-					is_researching_technology = CAS3
-					has_navy_size = { type = carrier size < 1 }
-				}
-			}
-		}
-	}
-	
-	cv_CAS3 = {
-		
-		enable_equipments = {
-			cv_CAS_equipment_3
-		}
-		
-		research_cost = 2
-		start_year = 2006
 		
 		categories = {
 			naval_air
