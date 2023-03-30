@@ -1,4 +1,92 @@
 decisions_ENG = {
+
+	
+	uk_oil_decline = {
+	
+	
+	    allowed = { 
+			OR = {
+				controls_state  = 131
+				controls_state  = 121
+				controls_state  = 136
+				controls_state  = 120
+			}
+			}
+		activation = {
+			 
+		}
+		available = { #how to keep the oil production
+			
+		}
+		
+		cancel_trigger = {
+			 date > 2006.2.1
+		}
+
+		
+		icon = oil
+
+		days_mission_timeout = 730		
+		#cost = 35
+		is_good = no
+		#fire_only_once = yes
+		days_remove = 10
+		
+	
+		timeout_effect = {
+		IF = {
+			limit = {
+				controls_state  = 131
+			}
+			131 = {
+					add_resource = {
+						type = oil
+						amount = -5
+					}
+				}
+				
+			}
+		IF = {
+			limit = {
+				controls_state  = 121
+			}
+			121 = {
+					add_resource = {
+						type = oil
+						amount = -5
+					}
+				}
+				
+			}
+		IF = {
+			limit = {
+				controls_state  = 136
+			}
+			136 = {
+					add_resource = {
+						type = oil
+						amount = -15
+					}
+				}
+				
+			}
+		IF = {
+			limit = {
+				controls_state  = 120
+			}
+			120 = {
+					add_resource = {
+						type = oil
+						amount = -5
+					}
+				}
+				
+			}
+		}
+		
+		
+	}
+	
 	falkland_policy = {
 		visible = {
 			country_exists = ARG
@@ -6,6 +94,7 @@ decisions_ENG = {
 		}
 		
 		available = {
+			original_tag = ENG
 			NOT = { has_war_with = ARG }
 			is_subject = no
 		}
