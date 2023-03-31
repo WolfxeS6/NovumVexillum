@@ -39,3 +39,318 @@ news_event = {
 		days = 1
 	}
 }
+
+#Hormuz Strait blocked
+news_event = {
+	id = miscFlavor.2
+	title = miscFlavor.2.t
+	desc = miscFlavor.2.d
+	picture = GFX_news_event_¨jet_hormuz_gulf
+
+	major = yes
+	is_triggered_only = yes
+
+	
+	option = {
+		name = miscFlavor.2.a
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+}
+
+
+#Hormuz Strait opened
+country_event = {
+	id = miscFlavor.3
+	title = miscFlavor.3.t
+	desc = miscFlavor.3.d
+	picture = GFX_report_event_IranJetHormuzGulfTanker
+
+	trigger = {
+		has_country_flag = HORMUZ_STRAIT_BLOCKER
+		OR = {
+			surrender_progress > 0.5
+			NOT = {	has_full_control_of_state = 414	}
+			}
+	}
+	
+	option = {
+		name = miscFlavor.3.a
+		news_event = {
+				id = miscFlavor.6
+				random_hours = 12
+			}
+		clr_global_flag  = HORMUZ_STRAIT_BLOCKED
+		clr_country_flag = HORMUZ_STRAIT_BLOCKER
+		
+		every_country = {
+					limit = {
+						has_opinion_modifier = terrorist_menace
+						has_opinion_modifier = terrorist_menace_trade
+					}
+					remove_opinion_modifier = {
+						target = ROOT
+						modifier = terrorist_menace
+					}
+					remove_opinion_modifier = {
+						target = ROOT
+						modifier = terrorist_menace_trade
+					}
+					ROOT = { 
+						remove_opinion_modifier = {
+						target = PREV
+						modifier = trade_blockade
+						}
+					}
+				}
+		
+		every_state = {
+			limit =  {
+				has_state_flag = blockade_flag
+			}
+			remove_dynamic_modifier = { modifier = blockade }
+			clr_state_flag = blockade_flag
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 10
+	}
+}
+
+
+#Hormuz Strait blocked, loss of oil prod
+country_event = {
+	id = miscFlavor.4
+	title = miscFlavor.4.t
+	desc = miscFlavor.4.d
+	picture = GFX_report_event_IranJetHormuzGulfTanker
+
+	is_triggered_only = yes
+	trigger = {
+		OR = {
+			owns_state = 1006
+			owns_state = 825
+			owns_state = 856
+			owns_state = 658
+			owns_state = 826
+			owns_state = 656
+			owns_state = 1002
+			owns_state = 413
+			owns_state = 412
+			}
+	}
+	
+	option = {
+		name = miscFlavor.4.a
+		
+		IF = {
+			limit = {
+				owns_state  = 1006
+			}
+			1006 = {
+					add_dynamic_modifier = { modifier = blockade } 
+					set_state_flag = blockade_flag
+			}	
+		}
+		IF = {
+			limit = {
+				owns_state  = 825
+			}
+			825 = {
+					add_dynamic_modifier = { modifier = blockade } 
+					set_state_flag = blockade_flag
+			}	
+		}
+		IF = {
+			limit = {
+				owns_state  = 856
+			}
+			856 = {
+					add_dynamic_modifier = { modifier = blockade } 
+					set_state_flag = blockade_flag
+			}	
+		}
+		IF = {
+			limit = {
+				owns_state  = 658
+			}
+			658 = {
+					add_dynamic_modifier = { modifier = blockade } 
+					set_state_flag = blockade_flag
+			}	
+		}
+		IF = {
+			limit = {
+				owns_state  = 826
+			}
+			826 = {
+					add_dynamic_modifier = { modifier = blockade } 
+					set_state_flag = blockade_flag
+			}	
+		}
+		IF = {
+			limit = {
+				owns_state  = 656
+			}
+			656 = {
+					add_dynamic_modifier = { modifier = blockade } 
+					set_state_flag = blockade_flag
+			}	
+		}
+		IF = {
+			limit = {
+				owns_state  = 1002
+			}
+			1002 = {
+					add_dynamic_modifier = { modifier = blockade } 
+					set_state_flag = blockade_flag
+			}	
+		}
+		IF = {
+			limit = {
+				owns_state  = 413
+			}
+			413 = {
+					add_dynamic_modifier = { modifier = blockade } 
+					set_state_flag = blockade_flag
+			}	
+		}
+		IF = {
+			limit = {
+				owns_state  = 412
+			}
+			412 = {
+					add_dynamic_modifier = { modifier = blockade } 
+					set_state_flag = blockade_flag
+			}	
+		}
+		
+	}
+
+}
+
+#Hormuz Strait opened by choice
+country_event = {
+	id = miscFlavor.5
+	title = miscFlavor.5.t
+	desc = miscFlavor.5.d
+	picture = GFX_report_event_IranJetHormuzGulfTanker
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		has_country_flag = HORMUZ_STRAIT_BLOCKER
+	}
+	
+	option = {
+		name = miscFlavor.5.a
+		news_event = {
+				id = miscFlavor.6
+				random_hours = 12
+			}
+		clr_global_flag  = HORMUZ_STRAIT_BLOCKED
+		clr_country_flag = HORMUZ_STRAIT_BLOCKER
+		
+		every_country = {
+					limit = {
+						has_opinion_modifier = terrorist_menace
+						has_opinion_modifier = terrorist_menace_trade
+					}
+					remove_opinion_modifier = {
+						target = ROOT
+						modifier = terrorist_menace
+					}
+					remove_opinion_modifier = {
+						target = ROOT
+						modifier = terrorist_menace_trade
+					}
+					ROOT = { 
+						remove_opinion_modifier = {
+						target = PREV
+						modifier = trade_blockade
+						}
+					}
+				}
+		
+		every_state = {
+			limit =  {
+				has_state_flag = blockade_flag
+			}
+			remove_dynamic_modifier = { modifier = blockade }
+			clr_state_flag = blockade_flag
+		}
+	}
+
+}
+
+#Hormuz Strait blocked
+news_event = {
+	id = miscFlavor.6
+	title = miscFlavor.6.t
+	desc = miscFlavor.6.d
+	picture = GFX_news_event_¨jet_hormuz_gulf
+
+	major = yes
+	is_triggered_only = yes
+
+	
+	option = {
+		name = miscFlavor.6.a
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+}
+
+#USA response to Hormuz Blockade
+country_event = {
+	id = miscFlavor.7
+	title = miscFlavor.7.t
+	desc = miscFlavor.7.d
+	picture = GFX_report_event_IranJetHormuzGulfTanker
+	
+	is_triggered_only = yes
+	fire_only_once = yes
+	
+	trigger = {
+		tag = USA
+	}
+	
+	option = {
+		name = miscFlavor.7.a
+		add_political_power = 10
+		add_stability = -0.05
+		add_war_support = 0.05
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = FROM
+		}
+		
+		ai_chance = {
+			factor = 70				
+		}
+
+	}
+	option = {
+		name = miscFlavor.7.b
+		add_political_power = -10
+		add_stability = 0.025
+		add_war_support = -0.025
+		
+		ai_chance = {
+			factor = 30	
+			modifier = {
+					add = -30
+					FROM = {
+						is_ai = no
+					}
+				}			
+		}
+		
+	}
+
+}

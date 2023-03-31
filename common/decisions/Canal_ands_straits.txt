@@ -1,0 +1,202 @@
+economic_policy = {
+	build_thai_canal = {
+
+		icon = GFX_decision_generic_construction
+		allowed = {		
+		}
+		available = {
+			has_full_control_of_state = 724
+		}
+	
+		visible = {
+		owns_state = 724
+		NOT = { has_global_flag = thai_canal_built }
+		}
+	
+		fire_only_once = yes
+	
+		days_remove = 300
+	
+		cost = 100
+	
+		modifier = {
+			civilian_factory_use = 5
+		}
+
+		complete_effect = {
+		}
+	
+		remove_effect = {
+			if = {
+				limit = {
+				has_full_control_of_state = 724
+				}
+				set_global_flag = thai_canal_built
+				#country_event = { id = wtt_news.40 hours = 6}
+			}
+		}
+		ai_will_do = {
+			factor = 10			
+		}
+	}
+}
+
+diplomatic_decisions = {	
+	block_hormuz_strait = {
+
+		icon = GFX_decision_armed_forces_officers
+		allowed = {		
+			#original_tag = PER # more countries too ?
+		}
+		available = {
+			has_full_control_of_state = 414
+		}
+	
+		visible = {	
+			OR = {
+				has_full_control_of_state = 414
+				original_tag = PER
+				}
+			NOT = { has_global_flag = HORMUZ_STRAIT_BLOCKED }
+		}
+	
+		cost = 100
+	
+		complete_effect = {
+			set_global_flag = HORMUZ_STRAIT_BLOCKED
+			set_country_flag = HORMUZ_STRAIT_BLOCKER
+			add_named_threat = {
+			threat = 3
+			name = block_hormuz_threat
+			}
+			
+			news_event = {
+				id = miscFlavor.2
+				random_hours = 12
+			}
+			
+			every_country = { 
+				limit = {
+					OR = {
+						owns_state = 1006
+						owns_state = 825
+						owns_state = 856
+						owns_state = 658
+						owns_state = 826
+						owns_state = 656
+						owns_state = 1002
+						owns_state = 413
+						owns_state = 412
+					}
+					NOT = {
+						OR = {
+						is_ally_with = ROOT
+						tag = ROOT
+						}
+					}
+				}
+				country_event = {
+					id = miscFlavor.4
+					random_hours = 6
+				}
+				USA = {
+					country_event = {
+						id = miscFlavor.7
+						days = 2
+						random_hours = 24
+					}
+				}
+			}
+			
+			every_country = {
+					limit = {
+						NOT = { is_ally_with = ROOT }
+					}
+					add_opinion_modifier = {
+						target = ROOT
+						modifier = terrorist_menace
+					}
+					add_opinion_modifier = {
+						target = ROOT
+						modifier = terrorist_menace_trade
+					}
+					reverse_add_opinion_modifier = {
+					target = ROOT
+					modifier = trade_blockade
+					}
+				}
+
+		}
+	
+		ai_will_do = {
+			factor = 2	
+			modifier = {
+					add = 50
+					USA = {
+						OR = {
+						has_war_with = SOV
+						has_war_with = GER
+						has_war_with = PRC
+						has_war_with = RAJ
+						has_war_with = JAP
+						}
+					}
+				}
+			modifier = {
+					add = 3
+					USA = {
+						OR = {
+						has_war_with = TAL
+						has_war_with = IRQ
+						}
+					}
+				}	
+			modifier = {
+					add = 5
+					threat > 0.5
+				}
+			modifier = {
+					factor = 0.0
+					has_elections = yes
+				}			
+		}
+	}
+	
+	open_hormuz_strait = {
+
+		icon = GFX_decision_armed_forces_officers
+		allowed = {		
+			#original_tag = PER # more countries too ?
+		}
+		available = {
+			has_full_control_of_state = 414
+		}
+	
+		visible = {
+			has_global_flag = HORMUZ_STRAIT_BLOCKED
+			has_country_flag = HORMUZ_STRAIT_BLOCKER
+		}
+	
+		cost = 20
+	
+		modifier = {
+			
+		}
+
+		complete_effect = {
+			
+			country_event = {
+				id = miscFlavor.5
+			}	
+		}
+	
+		ai_will_do = {
+			factor = 0	
+			modifier = {
+					add = 100
+				has_elections = yes	
+			}	
+		}
+	}
+	
+}
