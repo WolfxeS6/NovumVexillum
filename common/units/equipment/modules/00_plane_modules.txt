@@ -528,7 +528,37 @@ equipment_modules = {
 ##  ##  ## ##       ##     ## ##        ##     ## ##   ### ##    ## 
  ###  ###  ######## ##     ## ##         #######  ##    ##  ######  
 
-	light_mg_2x = {
+	heli_light_mg_2x = {
+		abbreviation = "lmg2"
+		category = weapon_heli_mg
+		sfx = sfx_ui_sd_module_turret
+		add_equipment_type = cas
+
+		add_stats = {
+			build_cost_ic = 1
+			weight = 1
+		}
+		xp_cost = 1
+		allow_mission_type = {
+			cas
+		}
+	}
+	heli_heavy_mg_2x = {
+		abbreviation = "hmg2"
+		category = weapon_heli_mg
+		sfx = sfx_ui_sd_module_turret
+		add_equipment_type = cas
+
+		add_stats = {
+			build_cost_ic = 2
+			weight = 2
+		}
+		xp_cost = 1
+		allow_mission_type = {
+			cas
+		}
+	}
+ 	light_mg_2x = {
 		abbreviation = "lmg2"
 		category = fighter_weapon_mg
 		sfx = sfx_ui_sd_module_turret
@@ -784,7 +814,47 @@ equipment_modules = {
 		}
 		dismantle_cost_ic = 0.5
 	}
+	heli_small_bomb_bay = {
+		abbreviation = "sbb"
+		category = cas_weapon_heli
+		sfx = sfx_ui_sd_module_turret
+		add_equipment_type = { cas tactical_bomber }
 
+		add_stats = {
+			build_cost_ic = 3
+			air_agility = -15
+			weight = 5
+		}
+		xp_cost = 2
+		allow_mission_type = {
+			cas
+			attack_logistics
+			port_strike
+		}
+		mission_type_stats = {
+			limit = {
+				cas
+				attack_logistics
+			}
+			add_stats = {
+				air_ground_attack = 8
+				weight = 0
+			}
+		}
+		mission_type_stats = {
+			limit = {
+				port_strike
+			}
+			add_stats = {
+				naval_strike_attack = 2
+				weight = 0
+			}
+			add_average_stats = {
+				naval_strike_targetting = 4
+			}
+		}
+		dismantle_cost_ic = 3.5
+	}
 	small_bomb_bay = {
 		abbreviation = "sbb"
 		category = cas_weapon
@@ -1229,13 +1299,79 @@ equipment_modules = {
 
 	armor_plate_medium = {
 		abbreviation = "apm"
-		category = plane_special_module_medium
+		category = plane_special_module_stealth
 		sfx = sfx_ui_sd_module_turret
 
 		add_stats = {
 			air_defence = 6
 			build_cost_ic = 3
 			weight = 6
+		}
+		multiply_stats = {
+			air_range = -0.1
+		}
+		xp_cost = 1
+		dismantle_cost_ic = 1
+	}
+	armor_stealth_medium = {
+		abbreviation = "apm"
+		category = plane_special_module_stealth
+		sfx = sfx_ui_sd_module_turret
+
+		add_stats = {
+			air_defence = 2
+			build_cost_ic = 6
+			weight = 1
+		}
+		multiply_stats = {
+			air_range = -0.1
+		}
+		xp_cost = 1
+		dismantle_cost_ic = 1
+	}
+	###targetting
+	plane_targetting_system_1_medium = {
+		abbreviation = "apm"
+		category = plane_special_module_targetting
+		sfx = sfx_ui_sd_module_turret
+
+		add_stats = {
+			air_defence = 2
+			build_cost_ic = 3
+			weight = 1
+		}
+		multiply_stats = {
+			air_range = -0.1
+		}
+		xp_cost = 1
+		dismantle_cost_ic = 1
+	}
+	plane_targetting_system_2_medium = {
+		abbreviation = "apm"
+		category = plane_special_module_targetting
+		sfx = sfx_ui_sd_module_turret
+
+		add_stats = {
+			air_defence = 2
+			build_cost_ic = 3
+			weight = 1
+		}
+		multiply_stats = {
+			air_range = -0.1
+		}
+		xp_cost = 1
+		dismantle_cost_ic = 1
+	}
+	####Countermeasures
+	plane_counter_measures_1_medium = {
+		abbreviation = "apm"
+		category = plane_special_module_countermeasures
+		sfx = sfx_ui_sd_module_turret
+
+		add_stats = {
+			air_defence = 2
+			build_cost_ic = 3
+			weight = 1
 		}
 		multiply_stats = {
 			air_range = -0.1
