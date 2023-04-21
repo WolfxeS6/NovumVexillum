@@ -4,23 +4,23 @@ NVX_ECO_calc = {
 		limit = { has_idea = economy_tax_extreme }
 		set_variable = { NVX_ECO_growth = NVX_ECO_tax_extreme }
 	}
-	if = {
+	else_if = {
 		limit = { has_idea = economy_tax_high }
 		set_variable = { NVX_ECO_growth = NVX_ECO_tax_high }
 	}
-	if = {
+	else_if = {
 		limit = { has_idea = economy_tax_moderate }
 		set_variable = { NVX_ECO_growth = NVX_ECO_tax_moderate }
 	}
-	if = {
+	else_if = {
 		limit = { has_idea = economy_tax_low }
 		set_variable = { NVX_ECO_growth = NVX_ECO_tax_low }
 	}
-	if = {
+	else_if = {
 		limit = { has_idea = economy_tax_meager }
 		set_variable = { NVX_ECO_growth = NVX_ECO_tax_meager }
 	}
-	if = {
+	else_if = {
 		limit = { has_idea = economy_tax_robotic }
 		set_variable = { NVX_ECO_growth = NVX_ECO_tax_low }
 	}
@@ -36,7 +36,7 @@ NVX_ECO_calc = {
 		}
 		subtract_from_variable = { NVX_ECO_growth = NVX_ECO_tax_moderate_decay }
 	}
-	if = {
+	else_if = {
 		limit = {
 			check_variable = { NVX_ECO_health < 0 }
 			has_idea = economy_tax_moderate
@@ -51,7 +51,7 @@ NVX_ECO_calc = {
 		}
 		subtract_from_variable = { NVX_ECO_growth = 0.125 }
 	}
-	if = {
+	else_if = {
 		limit = {
 			check_variable = { NVX_ECO_health < 20 }
 			OR = {

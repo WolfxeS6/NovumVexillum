@@ -3,154 +3,6 @@ add_namespace = nvx_fourth_estates
 
 ### FOURTH ESTATE CHANGES ###
 ## NATURAL SHIFTS ##
-country_event = {#Clear 5th estates if alongside 4th estates
-	id = nvx_fourth_estates.0
-	hidden = yes
-	
-	trigger = {
-		OR = {
-			AND = {
-				has_islamist_fourth_estate = yes
-				has_islamist_fifth_estate = yes
-			}
-			AND = {
-				has_fascist_fourth_estate = yes
-				has_fascist_fifth_estate = yes
-			}
-			AND = {
-				has_nationalist_fourth_estate = yes
-				has_nationalist_fifth_estate = yes
-			}
-			AND = {
-				has_monarchist_fourth_estate = yes
-				has_monarchist_fifth_estate = yes
-			}
-			AND = {
-				has_reactionary_fourth_estate = yes
-				has_reactionary_fifth_estate = yes
-			}
-			AND = {
-				has_conservative_fourth_estate = yes
-				has_conservative_fifth_estate = yes
-			}
-			AND = {
-				has_market_liberal_fourth_estate = yes
-				has_market_liberal_fifth_estate = yes
-			}
-			AND = {
-				has_social_liberal_fourth_estate = yes
-				has_social_liberal_fifth_estate = yes
-			}
-			AND = {
-				has_social_democrat_fourth_estate = yes
-				has_social_democrat_fifth_estate = yes
-			}
-			AND = {
-				has_progressive_fourth_estate = yes
-				has_progressive_fifth_estate = yes
-			}
-			AND = {
-				has_democratic_socialist_fourth_estate = yes
-				has_democratic_socialist_fifth_estate = yes
-			}
-			AND = {
-				has_communist_fourth_estate = yes
-				has_communist_fifth_estate = yes
-			}
-		}
-	}
-	
-	mean_time_to_happen = {
-		days = 2
-	}
-	
-	immediate = {
-		if = {
-			limit = {
-				has_islamist_fourth_estate = yes
-				has_islamist_fifth_estate = yes
-			}
-			fifth_estate_islamist_decrease = yes
-		}
-		if = {
-			limit = {
-				has_fascist_fourth_estate = yes
-				has_fascist_fifth_estate = yes
-			}
-			fifth_estate_fascist_decrease = yes
-		}
-		if = {
-			limit = {
-				has_nationalist_fourth_estate = yes
-				has_nationalist_fifth_estate = yes
-			}
-			fifth_estate_nationalist_decrease = yes
-		}
-		if = {
-			limit = {
-				has_monarchist_fourth_estate = yes
-				has_monarchist_fifth_estate = yes
-			}
-			fifth_estate_monarchist_decrease = yes
-		}
-		if = {
-			limit = {
-				has_reactionary_fourth_estate = yes
-				has_reactionary_fifth_estate = yes
-			}
-			fifth_estate_reactionary_decrease = yes
-		}
-		if = {
-			limit = {
-				has_conservative_fourth_estate = yes
-				has_conservative_fifth_estate = yes
-			}
-			fifth_estate_conservative_decrease = yes
-		}
-		if = {
-			limit = {
-				has_market_liberal_fourth_estate = yes
-				has_market_liberal_fifth_estate = yes
-			}
-			fifth_estate_market_liberal_decrease = yes
-		}
-		if = {
-			limit = {
-				has_social_liberal_fourth_estate = yes
-				has_social_liberal_fifth_estate = yes
-			}
-			fifth_estate_social_liberal_decrease = yes
-		}
-		if = {
-			limit = {
-				has_social_democrat_fourth_estate = yes
-				has_social_democrat_fifth_estate = yes
-			}
-			fifth_estate_social_democrat_decrease = yes
-		}
-		if = {
-			limit = {
-				has_progressive_fourth_estate = yes
-				has_progressive_fifth_estate = yes
-			}
-			fifth_estate_progressive_decrease = yes
-		}
-		if = {
-			limit = {
-				has_democratic_socialist_fourth_estate = yes
-				has_democratic_socialist_fifth_estate = yes
-			}
-			fifth_estate_democratic_socialist_decrease = yes
-		}
-		if = {
-			limit = {
-				has_communist_fourth_estate = yes
-				has_communist_fifth_estate = yes
-			}
-			fifth_estate_communist_decrease = yes
-		}
-	}
-}
 
 country_event = { #Fourth estate natural increase islamist
 	id = nvx_fourth_estates.1
@@ -213,7 +65,6 @@ country_event = { #Fourth estate natural increase islamist
 		days = 420
 		modifier = { factor = 1.5 has_idea = civil_liberties_restricted }
 		modifier = { factor = 1.25 has_idea = civil_liberties_limited }
-		modifier = { factor = 0.5 OR = { has_idea = fifth_estate_islamist4 has_idea = fifth_estate_islamist5 } }
 		modifier = { factor = 0.3 has_idea = fourth_estate_islamist1 islamist > 0.399 }
 		modifier = { factor = 0.3 has_idea = fourth_estate_islamist2 islamist > 0.499 }
 		modifier = { factor = 0.3 has_idea = fourth_estate_islamist3 islamist > 0.599 }
@@ -361,7 +212,6 @@ country_event = { #Fourth estate natural increase fascist
 		days = 420
 		modifier = { factor = 1.5 has_idea = civil_liberties_restricted }
 		modifier = { factor = 1.25 has_idea = civil_liberties_limited }
-		modifier = { factor = 0.5 OR = { has_idea = fifth_estate_fascist4 has_idea = fifth_estate_fascist5 } }
 		modifier = { factor = 0.3 has_idea = fourth_estate_fascist1 fascist > 0.399 }
 		modifier = { factor = 0.3 has_idea = fourth_estate_fascist2 fascist > 0.499 }
 		modifier = { factor = 0.3 has_idea = fourth_estate_fascist3 fascist > 0.599 }
@@ -509,7 +359,6 @@ country_event = { #Fourth estate natural increase nationalist
 		days = 420
 		modifier = { factor = 1.5 has_idea = civil_liberties_restricted }
 		modifier = { factor = 1.25 has_idea = civil_liberties_limited }
-		modifier = { factor = 0.5 OR = { has_idea = fifth_estate_nationalist4 has_idea = fifth_estate_nationalist5 } }
 		modifier = { factor = 0.3 has_idea = fourth_estate_nationalist1 nationalist > 0.399 }
 		modifier = { factor = 0.3 has_idea = fourth_estate_nationalist2 nationalist > 0.499 }
 		modifier = { factor = 0.3 has_idea = fourth_estate_nationalist3 nationalist > 0.599 }
@@ -657,7 +506,6 @@ country_event = { #Fourth estate natural increase monarchist
 		days = 420
 		modifier = { factor = 1.5 has_idea = civil_liberties_restricted }
 		modifier = { factor = 1.25 has_idea = civil_liberties_limited }
-		modifier = { factor = 0.5 OR = { has_idea = fifth_estate_monarchist4 has_idea = fifth_estate_monarchist5 } }
 		modifier = { factor = 0.3 has_idea = fourth_estate_monarchist1 monarchist > 0.399 }
 		modifier = { factor = 0.3 has_idea = fourth_estate_monarchist2 monarchist > 0.499 }
 		modifier = { factor = 0.3 has_idea = fourth_estate_monarchist3 monarchist > 0.599 }
@@ -805,7 +653,6 @@ country_event = { #Fourth estate natural increase reactionary
 		days = 420
 		modifier = { factor = 1.5 has_idea = civil_liberties_restricted }
 		modifier = { factor = 1.25 has_idea = civil_liberties_limited }
-		modifier = { factor = 0.5 OR = { has_idea = fifth_estate_reactionary4 has_idea = fifth_estate_reactionary5 } }
 		modifier = { factor = 0.3 has_idea = fourth_estate_reactionary1 reactionary > 0.399 }
 		modifier = { factor = 0.3 has_idea = fourth_estate_reactionary2 reactionary > 0.499 }
 		modifier = { factor = 0.3 has_idea = fourth_estate_reactionary3 reactionary > 0.599 }
@@ -953,7 +800,6 @@ country_event = { #Fourth estate natural increase conservative
 		days = 420
 		modifier = { factor = 1.5 has_idea = civil_liberties_restricted }
 		modifier = { factor = 1.25 has_idea = civil_liberties_limited }
-		modifier = { factor = 0.5 OR = { has_idea = fifth_estate_conservative4 has_idea = fifth_estate_conservative5 } }
 		modifier = { factor = 0.3 has_idea = fourth_estate_conservative1 conservative > 0.399 }
 		modifier = { factor = 0.3 has_idea = fourth_estate_conservative2 conservative > 0.499 }
 		modifier = { factor = 0.3 has_idea = fourth_estate_conservative3 conservative > 0.599 }
@@ -1101,7 +947,6 @@ country_event = { #Fourth estate natural increase market_liberal
 		days = 420
 		modifier = { factor = 1.5 has_idea = civil_liberties_restricted }
 		modifier = { factor = 1.25 has_idea = civil_liberties_limited }
-		modifier = { factor = 0.5 OR = { has_idea = fifth_estate_market_liberal4 has_idea = fifth_estate_market_liberal5 } }
 		modifier = { factor = 0.3 has_idea = fourth_estate_market_liberal1 market_liberal > 0.399 }
 		modifier = { factor = 0.3 has_idea = fourth_estate_market_liberal2 market_liberal > 0.499 }
 		modifier = { factor = 0.3 has_idea = fourth_estate_market_liberal3 market_liberal > 0.599 }
@@ -1249,7 +1094,6 @@ country_event = { #Fourth estate natural increase social_liberal
 		days = 420
 		modifier = { factor = 1.5 has_idea = civil_liberties_restricted }
 		modifier = { factor = 1.25 has_idea = civil_liberties_limited }
-		modifier = { factor = 0.5 OR = { has_idea = fifth_estate_social_liberal4 has_idea = fifth_estate_social_liberal5 } }
 		modifier = { factor = 0.3 has_idea = fourth_estate_social_liberal1 social_liberal > 0.399 }
 		modifier = { factor = 0.3 has_idea = fourth_estate_social_liberal2 social_liberal > 0.499 }
 		modifier = { factor = 0.3 has_idea = fourth_estate_social_liberal3 social_liberal > 0.599 }
@@ -1397,7 +1241,6 @@ country_event = { #Fourth estate natural increase social_democrat
 		days = 420
 		modifier = { factor = 1.5 has_idea = civil_liberties_restricted }
 		modifier = { factor = 1.25 has_idea = civil_liberties_limited }
-		modifier = { factor = 0.5 OR = { has_idea = fifth_estate_social_democrat4 has_idea = fifth_estate_social_democrat5 } }
 		modifier = { factor = 0.3 has_idea = fourth_estate_social_democrat1 social_democrat > 0.399 }
 		modifier = { factor = 0.3 has_idea = fourth_estate_social_democrat2 social_democrat > 0.499 }
 		modifier = { factor = 0.3 has_idea = fourth_estate_social_democrat3 social_democrat > 0.599 }
@@ -1545,7 +1388,6 @@ country_event = { #Fourth estate natural increase progressive
 		days = 420
 		modifier = { factor = 1.5 has_idea = civil_liberties_restricted }
 		modifier = { factor = 1.25 has_idea = civil_liberties_limited }
-		modifier = { factor = 0.5 OR = { has_idea = fifth_estate_progressive4 has_idea = fifth_estate_progressive5 } }
 		modifier = { factor = 0.3 has_idea = fourth_estate_progressive1 progressive > 0.399 }
 		modifier = { factor = 0.3 has_idea = fourth_estate_progressive2 progressive > 0.499 }
 		modifier = { factor = 0.3 has_idea = fourth_estate_progressive3 progressive > 0.599 }
@@ -1693,7 +1535,6 @@ country_event = { #Fourth estate natural increase democratic_socialist
 		days = 420
 		modifier = { factor = 1.5 has_idea = civil_liberties_restricted }
 		modifier = { factor = 1.25 has_idea = civil_liberties_limited }
-		modifier = { factor = 0.5 OR = { has_idea = fifth_estate_democratic_socialist4 has_idea = fifth_estate_democratic_socialist5 } }
 		modifier = { factor = 0.3 has_idea = fourth_estate_democratic_socialist1 democratic_socialist > 0.399 }
 		modifier = { factor = 0.3 has_idea = fourth_estate_democratic_socialist2 democratic_socialist > 0.499 }
 		modifier = { factor = 0.3 has_idea = fourth_estate_democratic_socialist3 democratic_socialist > 0.599 }
@@ -1841,7 +1682,6 @@ country_event = { #Fourth estate natural increase communist
 		days = 420
 		modifier = { factor = 1.5 has_idea = civil_liberties_restricted }
 		modifier = { factor = 1.25 has_idea = civil_liberties_limited }
-		modifier = { factor = 0.5 OR = { has_idea = fifth_estate_communist4 has_idea = fifth_estate_communist5 } }
 		modifier = { factor = 0.3 has_idea = fourth_estate_communist1 communist > 0.399 }
 		modifier = { factor = 0.3 has_idea = fourth_estate_communist2 communist > 0.499 }
 		modifier = { factor = 0.3 has_idea = fourth_estate_communist3 communist > 0.599 }

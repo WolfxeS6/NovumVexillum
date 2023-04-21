@@ -1,0 +1,128 @@
+on_actions = {
+    on_monthly_USA = {
+        effect = {
+            if = {
+                limit = {
+                    NOT = { has_global_flag = pts_disable_warfaring }
+                }
+                if = {
+                    limit = {
+                        has_global_flag = pts_reduce_warfaring
+                    }
+                    every_country = {
+                        limit = {
+                            NVX_warfaring_attacker_trigger = yes
+                        }
+                        random_list = {
+                            1 = {
+                                modifier = { factor = 1.1 threat > 0.20 }
+                                modifier = { factor = 1.1 threat > 0.40 }
+                                modifier = { factor = 1.1 threat > 0.60 }
+                                modifier = { factor = 0.1 has_idea = national_development_advanced }
+                                modifier = { factor = 0.25 has_idea = national_development_developed }
+                                modifier = { factor = 0.8 has_idea = national_development_developing }
+                                modifier = { factor = 3 has_democratic_form_of_government = no}
+                                modifier = { factor = 1.9 has_government = reactionary }
+                                country_event = {
+                                    id = NVX_Warfaring.100 # let's go to war
+                                    days = 20
+                                    random_days = 10
+                                }
+                            }
+                            50000 = {
+    
+                            }
+                        }
+                    }
+                }
+                else_if = {
+                    limit = {
+                        has_global_flag = pts_chaotic_warfaring
+                    }
+                    every_country = {
+                        limit = {
+                            NVX_warfaring_attacker_trigger = yes
+                        }
+                        random_list = {
+                            1 = {
+                                modifier = { factor = 1.1 threat > 0.20 }
+                                modifier = { factor = 1.1 threat > 0.40 }
+                                modifier = { factor = 1.1 threat > 0.60 }
+                                modifier = { factor = 0.1 has_idea = national_development_advanced }
+                                modifier = { factor = 0.25 has_idea = national_development_developed }
+                                modifier = { factor = 0.8 has_idea = national_development_developing }
+                                modifier = { factor = 3 has_democratic_form_of_government = no}
+                                modifier = { factor = 1.9 has_government = reactionary }
+                                country_event = {
+                                    id = NVX_Warfaring.100 # let's go to war
+                                    days = 20
+                                    random_days = 10
+                                }
+                            }
+                            5000 = {
+    
+                            }
+                        }
+                    }
+                }
+                else_if = {
+                    limit = {
+                        has_global_flag = pts_intensify_warfaring
+                    }
+                    every_country = {
+                        limit = {
+                            NVX_warfaring_attacker_trigger = yes
+                        }
+                        random_list = {
+                            1 = {
+                                modifier = { factor = 1.1 threat > 0.20 }
+                                modifier = { factor = 1.1 threat > 0.40 }
+                                modifier = { factor = 1.1 threat > 0.60 }
+                                modifier = { factor = 0.1 has_idea = national_development_advanced }
+                                modifier = { factor = 0.25 has_idea = national_development_developed }
+                                modifier = { factor = 0.8 has_idea = national_development_developing }
+                                modifier = { factor = 3 has_democratic_form_of_government = no}
+                                modifier = { factor = 1.9 has_government = reactionary }
+                                country_event = {
+                                    id = NVX_Warfaring.100 # let's go to war
+                                    days = 20
+                                    random_days = 10
+                                }
+                            }
+                            10000 = {
+    
+                            }
+                        }
+                    }
+                }
+                else = {
+                    every_country = {
+                        limit = {
+                            NVX_warfaring_attacker_trigger = yes
+                        }
+                        random_list = {
+                            1 = {
+                                modifier = { factor = 1.1 threat > 0.20 }
+                                modifier = { factor = 1.1 threat > 0.40 }
+                                modifier = { factor = 1.1 threat > 0.60 }
+                                modifier = { factor = 0.1 has_idea = national_development_advanced }
+                                modifier = { factor = 0.25 has_idea = national_development_developed }
+                                modifier = { factor = 0.8 has_idea = national_development_developing }
+                                modifier = { factor = 3 has_democratic_form_of_government = no}
+                                modifier = { factor = 1.9 has_government = reactionary }
+                                country_event = {
+                                    id = NVX_Warfaring.100 # let's go to war
+                                    days = 20
+                                    random_days = 10
+                                }
+                            }
+                            20000 = {
+    
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

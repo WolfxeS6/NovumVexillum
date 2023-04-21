@@ -312,3 +312,114 @@ country_event = { # Total conquest
 		}
 	}
 }
+country_event = {
+	id = NVX_Warfaring.100
+	title = NVX_Warfaring.100.t
+	desc = NVX_Warfaring.100.d
+	
+	is_triggered_only = yes
+	option = { # False Alarm
+		name = NVX_Warfaring.100.o5
+		
+		ai_chance = {
+			factor = 5
+			
+			modifier = {
+				factor = 500
+				
+				any_neighbor_country = {
+					has_war = yes
+				}
+			}
+			modifier = {
+				factor = 500
+				has_war = yes
+			}
+		}
+	}
+	
+	option = { # Puppet
+		name = NVX_Warfaring.100.o2
+		random_neighbor_country = {
+			limit = { NVX_warfaring_target_trigger = yes }
+			country_event = { id = NVX_Warfaring.2 }
+		}
+		
+		ai_chance = {
+			factor = 30
+			
+			modifier = {
+				factor = 0.9
+				has_government = islamist
+			}
+			modifier = {
+				factor = 0.4
+				has_government = nationalist
+			}
+			modifier = {
+				factor = 0.5
+				has_government = monarchist
+			}
+			modifier = {
+				factor = 0.8
+				has_government = democratic_socialist
+			}
+		}
+	}
+	
+	option = { # Flip government
+		name = NVX_Warfaring.100.o3
+		random_neighbor_country = {
+			limit = {
+				NVX_warfaring_target_trigger = yes
+				NVX_warfaring_target_abstention_flip = no
+			}
+			country_event = { id = NVX_Warfaring.3 }
+		}
+		
+		trigger = {
+			NVX_has_government_system_democratic = yes
+			NOT = { has_idea = national_development_undeveloped }
+		}
+		ai_chance = {
+			factor = 20
+			
+			modifier = {
+				factor = 0.3
+				has_idea = national_development_developing
+			}
+			modifier = {
+				factor = 0.1
+				has_idea = national_development_undeveloped
+			}
+		}
+	}
+	
+	option = { # Total conquest
+		name = NVX_Warfaring.100.o4
+		random_neighbor_country = {
+			limit = { NVX_warfaring_target_trigger = yes }
+			country_event = { id = NVX_Warfaring.4 }
+		}
+		ai_chance = {
+			factor = 30
+			
+			modifier = {
+				factor = 0.4
+				has_government = nationalist
+			}
+			modifier = {
+				factor = 0.2
+				has_government = monarchist
+			}
+			modifier = {
+				factor = 0.3
+				has_government = communist
+			}
+			modifier = {
+				factor = 0.1
+				has_democratic_form_of_government = yes
+			}
+		}
+	}
+}
