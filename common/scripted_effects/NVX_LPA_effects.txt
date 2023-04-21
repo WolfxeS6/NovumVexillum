@@ -112,7 +112,7 @@ NVX_ECO_start = {
 
 NVX_ECO_monthly = {
 	if = {
-		limit = { check_variable = { NVX_ECO_tax_extreme = 0 } }
+		limit = { check_variable = { NVX_ECO_tax_extreme = 0 } } #check if it's broken
 		NVX_LPA_calc_slots = yes
 		NVX_ECO_start = yes
 		NVX_national_preferences_set = yes
@@ -128,46 +128,70 @@ NVX_ECO_monthly = {
 	# GROWTH #
 	if = {
 		limit = {
-			check_variable = { NVX_ECO_health > 89.999 }
-			NOT = { has_idea = economy_boom }
+			check_variable = { NVX_ECO_health > -30 }
+			check_variable = { NVX_ECO_health < 30 }
 		}
-		add_ideas = economy_boom
-		country_event = { id = NVX_ECO.1 }
+		if = {
+			limit = {
+				NOT = { has_idea = economy_stagnation }
+			}
+			add_ideas = economy_stagnation
+			country_event = { id = NVX_ECO.1 }
+		}
 	}
-	if = {
+	else_if = {
+		limit = {
+			check_variable = { NVX_ECO_health > 89.999 }
+			
+		}
+		if = {
+			limit = {
+				NOT = { has_idea = economy_boom }
+			}
+			add_ideas = economy_boom
+			country_event = { id = NVX_ECO.1 }
+		}
+	}
+	else_if = {
 		limit = {
 			check_variable = { NVX_ECO_health > 29.999 }
 			check_variable = { NVX_ECO_health < 90 }
-			NOT = { has_idea = economy_growth }
+			
 		}
-		add_ideas = economy_growth
-		country_event = { id = NVX_ECO.1 }
-	}
-	if = {
-		limit = {
-			check_variable = { NVX_ECO_health > -30 }
-			check_variable = { NVX_ECO_health < 30 }
-			NOT = { has_idea = economy_stagnation }
+		if = {
+			limit = {
+				NOT = { has_idea = economy_growth }
+			}
+			add_ideas = economy_growth
+			country_event = { id = NVX_ECO.1 }
 		}
-		add_ideas = economy_stagnation
-		country_event = { id = NVX_ECO.1 }
 	}
-	if = {
+	else_if = {
 		limit = {
 			check_variable = { NVX_ECO_health > -90 }
 			check_variable = { NVX_ECO_health < -29.999 }
 			NOT = { has_idea = economy_recession }
 		}
-		add_ideas = economy_recession
-		country_event = { id = NVX_ECO.1 }
+		if = {
+			limit = {
+				NOT = { has_idea = economy_recession }
+			}
+			add_ideas = economy_recession
+			country_event = { id = NVX_ECO.1 }
+		}
 	}
-	if = {
+	else_if = {
 		limit = {
 			check_variable = { NVX_ECO_health < -89.999 }
 			NOT = { has_idea = economy_depression }
 		}
-		add_ideas = economy_depression
-		country_event = { id = NVX_ECO.1 }
+		if = {
+			limit = {
+				NOT = { has_idea = economy_depression }
+			}
+			add_ideas = economy_depression
+			country_event = { id = NVX_ECO.1 }
+		}
 	}
 }
 
