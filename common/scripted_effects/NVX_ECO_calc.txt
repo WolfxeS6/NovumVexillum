@@ -1,5 +1,6 @@
 NVX_ECO_calc = {
 	# TAXES #
+	set_variable = {NVX_ECO_Policy_Tooltip = 0}
 	if = {
 		limit = { has_idea = economy_tax_extreme }
 		set_variable = { NVX_ECO_growth = NVX_ECO_tax_extreme }
@@ -60,33 +61,46 @@ NVX_ECO_calc = {
 			}
 		}
 		add_to_variable = { NVX_ECO_growth = 0.5 }
+		if = {
+			limit = {
+				NVX_ECOLITE_in_eco_union = no
+			}
+			add_to_variable = { NVX_ECO_Policy_Tooltip = 0.5 }
+		}
 	}
 	if = {
 		limit = { has_decision = NVX_policies_E_free_market }
 		add_to_variable = { NVX_ECO_growth = 0.25 }
+		add_to_variable = { NVX_ECO_Policy_Tooltip = 0.25 }
 	}
 	if = {
 		limit = { has_decision = NVX_policies_E_infrastructure_overhaul }
 		subtract_from_variable = { NVX_ECO_growth = 0.25 }
+		subtract_from_variable = { NVX_ECO_Policy_Tooltip = 0.25 }
 	}
 	if = {
 		limit = { has_decision = NVX_policies_E_fund_production }
 		subtract_from_variable = { NVX_ECO_growth = 0.25 }
+		subtract_from_variable = { NVX_ECO_Policy_Tooltip = 0.25 }
 	}
 	if = {
 		limit = { has_decision = NVX_policies_E_minerals_to_market }
 		add_to_variable = { NVX_ECO_growth = 0.125 }
+		add_to_variable = { NVX_ECO_Policy_Tooltip = 0.125 }
 	}
 	if = {
 		limit = { has_decision = NVX_policies_E_tax_the_rich }
 		add_to_variable = { NVX_ECO_growth = 0.25 }
+		add_to_variable = { NVX_ECO_Policy_Tooltip = 0.25 }
 	}
 	if = {
 		limit = { has_decision = NVX_policies_S_education_funding }
 		subtract_from_variable = { NVX_ECO_growth = 0.25 }
+		subtract_from_variable = { NVX_ECO_Policy_Tooltip = 0.25 }
 	}
 	if = {
 		limit = { has_decision = NVX_policies_S_cut_science_funding }
 		add_to_variable = { NVX_ECO_growth = 0.125 }
+		add_to_variable = { NVX_ECO_Policy_Tooltip = 0.125 }
 	}
 }
