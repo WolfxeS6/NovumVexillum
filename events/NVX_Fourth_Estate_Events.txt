@@ -615,21 +615,7 @@ country_event = { #Fourth estate aberrant increase islamist
 	desc = nvx_fourth_estates.aberrant_increase.d
 	picture = GFX_report_event_fourth_estate_increase
 	
-	trigger = {
-		NOT = { has_government = islamist }
-		NOT = { has_idea = civil_liberties_totalitarian }
-		NOT = { has_global_flag = sandbox_disable_aberrant_estate_drift }
-	}
-	
-	mean_time_to_happen = {
-		days = 2000
-		modifier = { factor = 1.5 has_islamist_fourth_estate = yes }
-		modifier = { factor = 2 AND = { NOT = { has_country_flag = sunni_islam } NOT = { has_country_flag = shia_islam } } }
-		modifier = { factor = 1.5 has_idea = civil_liberties_restricted }
-		modifier = { factor = 1.5 estates_has_government_outlier = yes }
-		modifier = { factor = 0.9 islamist > 0.009 }
-		modifier = { factor = 0.8 islamist > 0.019 }
-	}
+	is_triggered_only = yes
 	
 	option = {
 		name = nvx_estates.o.carryon
@@ -686,21 +672,7 @@ country_event = { #Fourth estate aberrant decrease islamist
 	id = nvx_fourth_estates.32
 	hidden = yes
 	
-	trigger = {
-		NOT = { has_government = islamist OR = { has_idea = civil_liberties_restricted has_idea = civil_liberties_totalitarian } }
-		NOT = { has_global_flag = sandbox_disable_aberrant_estate_drift }
-		has_islamist_fourth_estate = yes
-	}
-	
-	mean_time_to_happen = {
-		days = 2000
-		modifier = { factor = 3 islamist > 0.49 }
-		modifier = { factor = 2 islamist > 0.29 }
-		modifier = { factor = 1.5 has_idea = civil_liberties_restricted }
-		modifier = { factor = 1.5 has_idea = civil_liberties_totalitarian }
-		modifier = { factor = 1.5 estates_has_government_outlier = yes }
-		modifier = { factor = 0.8 islamist < 0.01 }
-	}
+	is_triggered_only = yes
 	
 	immediate = {
 		set_country_flag = NVX_flag_fourth_estate_islamist
@@ -721,20 +693,7 @@ country_event = { #Fourth estate aberrant increase fascist
 	desc = nvx_fourth_estates.aberrant_increase.d
 	picture = GFX_report_event_fourth_estate_increase
 	
-	trigger = {
-		NOT = { has_government = fascist }
-		NOT = { has_idea = civil_liberties_totalitarian }
-		NOT = { has_global_flag = sandbox_disable_aberrant_estate_drift }
-	}
-	
-	mean_time_to_happen = {
-		days = 2000
-		modifier = { factor = 1.5 has_fascist_fourth_estate = yes }
-		modifier = { factor = 1.5 has_idea = civil_liberties_restricted }
-		modifier = { factor = 1.5 estates_has_government_right_wing = yes }
-		modifier = { factor = 0.9 fascist > 0.009 }
-		modifier = { factor = 0.8 fascist > 0.019 }
-	}
+	is_triggered_only = yes
 	
 	option = {
 		name = nvx_estates.o.carryon
@@ -791,21 +750,7 @@ country_event = { #Fourth estate aberrant decrease fascist
 	id = nvx_fourth_estates.34
 	hidden = yes
 	
-	trigger = {
-		NOT = { has_government = fascist OR = { has_idea = civil_liberties_restricted has_idea = civil_liberties_totalitarian } }
-		NOT = { has_global_flag = sandbox_disable_aberrant_estate_drift }
-		has_fascist_fourth_estate = yes
-	}
-	
-	mean_time_to_happen = {
-		days = 2000
-		modifier = { factor = 3 fascist > 0.49 }
-		modifier = { factor = 2 fascist > 0.29 }
-		modifier = { factor = 1.5 has_idea = civil_liberties_restricted }
-		modifier = { factor = 1.5 has_idea = civil_liberties_totalitarian }
-		modifier = { factor = 1.5 estates_has_government_right_wing = yes }
-		modifier = { factor = 0.8 fascist < 0.01 }
-	}
+	is_triggered_only = yes
 	
 	immediate = {
 		set_country_flag = NVX_flag_fourth_estate_fascist
@@ -826,20 +771,7 @@ country_event = { #Fourth estate aberrant increase nationalist
 	desc = nvx_fourth_estates.aberrant_increase.d
 	picture = GFX_report_event_fourth_estate_increase
 	
-	trigger = {
-		NOT = { has_government = nationalist }
-		NOT = { has_idea = civil_liberties_totalitarian }
-		NOT = { has_global_flag = sandbox_disable_aberrant_estate_drift }
-	}
-	
-	mean_time_to_happen = {
-		days = 2000
-		modifier = { factor = 1.5 has_nationalist_fourth_estate = yes }
-		modifier = { factor = 1.5 has_idea = civil_liberties_restricted }
-		modifier = { factor = 1.5 estates_has_government_right_wing = yes }
-		modifier = { factor = 0.9 nationalist > 0.009 }
-		modifier = { factor = 0.8 nationalist > 0.019 }
-	}
+	is_triggered_only = yes
 	
 	option = {
 		name = nvx_estates.o.carryon
@@ -896,21 +828,7 @@ country_event = { #Fourth estate aberrant decrease nationalist
 	id = nvx_fourth_estates.36
 	hidden = yes
 	
-	trigger = {
-		NOT = { has_government = nationalist OR = { has_idea = civil_liberties_restricted has_idea = civil_liberties_totalitarian } }
-		NOT = { has_global_flag = sandbox_disable_aberrant_estate_drift }
-		has_nationalist_fourth_estate = yes
-	}
-	
-	mean_time_to_happen = {
-		days = 2000
-		modifier = { factor = 3 nationalist > 0.49 }
-		modifier = { factor = 2 nationalist > 0.29 }
-		modifier = { factor = 1.5 has_idea = civil_liberties_restricted }
-		modifier = { factor = 1.5 has_idea = civil_liberties_totalitarian }
-		modifier = { factor = 1.5 estates_has_government_right_wing = yes }
-		modifier = { factor = 0.8 nationalist < 0.01 }
-	}
+	is_triggered_only = yes
 	
 	immediate = {
 		set_country_flag = NVX_flag_fourth_estate_nationalist
@@ -931,21 +849,7 @@ country_event = { #Fourth estate aberrant increase monarchist
 	desc = nvx_fourth_estates.aberrant_increase.d
 	picture = GFX_report_event_fourth_estate_increase
 	
-	trigger = {
-		NOT = { original_tag = USA }
-		NOT = { has_government = monarchist }
-		NOT = { has_idea = civil_liberties_totalitarian }
-		NOT = { has_global_flag = sandbox_disable_aberrant_estate_drift }
-	}
-	
-	mean_time_to_happen = {
-		days = 2000
-		modifier = { factor = 1.5 has_monarchist_fourth_estate = yes }
-		modifier = { factor = 1.5 has_idea = civil_liberties_restricted }
-		modifier = { factor = 1.5 estates_has_government_outlier = yes }
-		modifier = { factor = 0.9 monarchist > 0.009 }
-		modifier = { factor = 0.8 monarchist > 0.019 }
-	}
+	is_triggered_only = yes
 	
 	option = {
 		name = nvx_estates.o.carryon
@@ -1002,21 +906,7 @@ country_event = { #Fourth estate aberrant decrease monarchist
 	id = nvx_fourth_estates.38
 	hidden = yes
 	
-	trigger = {
-		NOT = { has_government = monarchist OR = { has_idea = civil_liberties_restricted has_idea = civil_liberties_totalitarian } }
-		NOT = { has_global_flag = sandbox_disable_aberrant_estate_drift }
-		has_monarchist_fourth_estate = yes
-	}
-	
-	mean_time_to_happen = {
-		days = 2000
-		modifier = { factor = 3 monarchist > 0.49 }
-		modifier = { factor = 2 monarchist > 0.29 }
-		modifier = { factor = 1.5 has_idea = civil_liberties_restricted }
-		modifier = { factor = 1.5 has_idea = civil_liberties_totalitarian }
-		modifier = { factor = 1.5 estates_has_government_outlier = yes }
-		modifier = { factor = 0.8 monarchist < 0.01 }
-	}
+	is_triggered_only = yes
 	
 	immediate = {
 		set_country_flag = NVX_flag_fourth_estate_monarchist
@@ -1037,29 +927,7 @@ country_event = { #Fourth estate aberrant increase reactionary
 	desc = nvx_fourth_estates.aberrant_increase.d
 	picture = GFX_report_event_fourth_estate_increase
 	
-	trigger = {
-		NOT = { has_government = reactionary }
-		NOT = { has_idea = civil_liberties_totalitarian }
-		NOT = { has_global_flag = sandbox_disable_aberrant_estate_drift }
-	}
-	
-	mean_time_to_happen = {
-		days = 2000
-		modifier = { factor = 1.5 has_reactionary_fourth_estate = yes }
-		modifier = { factor = 1.5 has_idea = civil_liberties_restricted }
-		modifier = { factor = 1.5 estates_has_government_outlier = yes }
-		modifier = { factor = 0.9 reactionary > 0.009 }
-		modifier = { factor = 0.8 reactionary > 0.019 }
-	}
-	
-	option = {
-		name = nvx_estates.o.carryon
-		fourth_estate_reactionary_increase = yes
-		
-		ai_chance = {
-			factor = 10
-		}
-	}
+	is_triggered_only = yes
 	
 	option = {
 		name = nvx_estates.o.injunction
@@ -1107,21 +975,7 @@ country_event = { #Fourth estate aberrant decrease reactionary
 	id = nvx_fourth_estates.40
 	hidden = yes
 	
-	trigger = {
-		NOT = { has_government = reactionary OR = { has_idea = civil_liberties_restricted has_idea = civil_liberties_totalitarian } }
-		NOT = { has_global_flag = sandbox_disable_aberrant_estate_drift }
-		has_reactionary_fourth_estate = yes
-	}
-	
-	mean_time_to_happen = {
-		days = 2000
-		modifier = { factor = 3 reactionary > 0.49 }
-		modifier = { factor = 2 reactionary > 0.29 }
-		modifier = { factor = 1.5 has_idea = civil_liberties_restricted }
-		modifier = { factor = 1.5 has_idea = civil_liberties_totalitarian }
-		modifier = { factor = 1.5 estates_has_government_outlier = yes }
-		modifier = { factor = 0.8 reactionary < 0.01 }
-	}
+	is_triggered_only = yes
 	
 	immediate = {
 		set_country_flag = NVX_flag_fourth_estate_reactionary
@@ -1142,20 +996,7 @@ country_event = { #Fourth estate aberrant increase conservative
 	desc = nvx_fourth_estates.aberrant_increase.d
 	picture = GFX_report_event_fourth_estate_increase
 	
-	trigger = {
-		NOT = { has_government = conservative }
-		NOT = { has_idea = civil_liberties_totalitarian }
-		NOT = { has_global_flag = sandbox_disable_aberrant_estate_drift }
-	}
-	
-	mean_time_to_happen = {
-		days = 2000
-		modifier = { factor = 1.5 has_conservative_fourth_estate = yes }
-		modifier = { factor = 1.5 has_idea = civil_liberties_restricted }
-		modifier = { factor = 1.5 estates_has_government_right_wing = yes }
-		modifier = { factor = 0.9 conservative > 0.009 }
-		modifier = { factor = 0.8 conservative > 0.019 }
-	}
+	is_triggered_only = yes
 	
 	option = {
 		name = nvx_estates.o.carryon
@@ -1212,21 +1053,7 @@ country_event = { #Fourth estate aberrant decrease conservative
 	id = nvx_fourth_estates.42
 	hidden = yes
 	
-	trigger = {
-		NOT = { has_government = conservative OR = { has_idea = civil_liberties_restricted has_idea = civil_liberties_totalitarian } }
-		NOT = { has_global_flag = sandbox_disable_aberrant_estate_drift }
-		has_conservative_fourth_estate = yes
-	}
-	
-	mean_time_to_happen = {
-		days = 2000
-		modifier = { factor = 3 conservative > 0.49 }
-		modifier = { factor = 2 conservative > 0.29 }
-		modifier = { factor = 1.5 has_idea = civil_liberties_restricted }
-		modifier = { factor = 1.5 has_idea = civil_liberties_totalitarian }
-		modifier = { factor = 1.5 estates_has_government_right_wing = yes }
-		modifier = { factor = 0.8 conservative < 0.01 }
-	}
+	is_triggered_only = yes
 	
 	immediate = {
 		set_country_flag = NVX_flag_fourth_estate_conservative
@@ -1247,20 +1074,7 @@ country_event = { #Fourth estate aberrant increase market_liberal
 	desc = nvx_fourth_estates.aberrant_increase.d
 	picture = GFX_report_event_fourth_estate_increase
 	
-	trigger = {
-		NOT = { has_government = market_liberal }
-		NOT = { has_idea = civil_liberties_totalitarian }
-		NOT = { has_global_flag = sandbox_disable_aberrant_estate_drift }
-	}
-	
-	mean_time_to_happen = {
-		days = 1776
-		modifier = { factor = 1.6 has_market_liberal_fourth_estate = yes }
-		modifier = { factor = 1.6 has_idea = civil_liberties_restricted }
-		modifier = { factor = 1.6 estates_has_government_right_wing = yes }
-		modifier = { factor = 0.9 market_liberal > 0.009 }
-		modifier = { factor = 0.9 market_liberal > 0.019 }
-	}
+	is_triggered_only = yes
 	
 	option = {
 		name = nvx_estates.o.carryon
@@ -1317,21 +1131,7 @@ country_event = { #Fourth estate aberrant decrease market_liberal
 	id = nvx_fourth_estates.44
 	hidden = yes
 	
-	trigger = {
-		NOT = { has_government = market_liberal OR = { has_idea = civil_liberties_restricted has_idea = civil_liberties_totalitarian } }
-		NOT = { has_global_flag = sandbox_disable_aberrant_estate_drift }
-		has_market_liberal_fourth_estate = yes
-	}
-	
-	mean_time_to_happen = {
-		days = 2000
-		modifier = { factor = 3 market_liberal > 0.49 }
-		modifier = { factor = 2 market_liberal > 0.29 }
-		modifier = { factor = 1.5 has_idea = civil_liberties_restricted }
-		modifier = { factor = 1.5 has_idea = civil_liberties_totalitarian }
-		modifier = { factor = 1.5 estates_has_government_right_wing = yes }
-		modifier = { factor = 0.8 market_liberal < 0.01 }
-	}
+	is_triggered_only = yes
 	
 	immediate = {
 		set_country_flag = NVX_flag_fourth_estate_market_liberal
@@ -1352,20 +1152,7 @@ country_event = { #Fourth estate aberrant increase social_liberal
 	desc = nvx_fourth_estates.aberrant_increase.d
 	picture = GFX_report_event_fourth_estate_increase
 	
-	trigger = {
-		NOT = { has_government = social_liberal }
-		NOT = { has_idea = civil_liberties_totalitarian }
-		NOT = { has_global_flag = sandbox_disable_aberrant_estate_drift }
-	}
-	
-	mean_time_to_happen = {
-		days = 2000
-		modifier = { factor = 1.5 has_social_liberal_fourth_estate = yes }
-		modifier = { factor = 1.5 has_idea = civil_liberties_restricted }
-		modifier = { factor = 1.5 estates_has_government_left_wing = yes }
-		modifier = { factor = 0.9 social_liberal > 0.009 }
-		modifier = { factor = 0.8 social_liberal > 0.019 }
-	}
+	is_triggered_only = yes
 	
 	option = {
 		name = nvx_estates.o.carryon
@@ -1422,21 +1209,7 @@ country_event = { #Fourth estate aberrant decrease social_liberal
 	id = nvx_fourth_estates.46
 	hidden = yes
 	
-	trigger = {
-		NOT = { has_government = social_liberal OR = { has_idea = civil_liberties_restricted has_idea = civil_liberties_totalitarian } }
-		NOT = { has_global_flag = sandbox_disable_aberrant_estate_drift }
-		has_social_liberal_fourth_estate = yes
-	}
-	
-	mean_time_to_happen = {
-		days = 2000
-		modifier = { factor = 3 social_liberal > 0.49 }
-		modifier = { factor = 2 social_liberal > 0.29 }
-		modifier = { factor = 1.5 has_idea = civil_liberties_restricted }
-		modifier = { factor = 1.5 has_idea = civil_liberties_totalitarian }
-		modifier = { factor = 1.5 estates_has_government_left_wing = yes }
-		modifier = { factor = 0.8 social_liberal < 0.01 }
-	}
+	is_triggered_only = yes
 	
 	immediate = {
 		set_country_flag = NVX_flag_fourth_estate_social_liberal
@@ -1457,20 +1230,7 @@ country_event = { #Fourth estate aberrant increase social_democrat
 	desc = nvx_fourth_estates.aberrant_increase.d
 	picture = GFX_report_event_fourth_estate_increase
 	
-	trigger = {
-		NOT = { has_government = social_democrat }
-		NOT = { has_idea = civil_liberties_totalitarian }
-		NOT = { has_global_flag = sandbox_disable_aberrant_estate_drift }
-	}
-	
-	mean_time_to_happen = {
-		days = 2000
-		modifier = { factor = 1.5 has_social_democrat_fourth_estate = yes }
-		modifier = { factor = 1.5 has_idea = civil_liberties_restricted }
-		modifier = { factor = 1.5 estates_has_government_left_wing = yes }
-		modifier = { factor = 0.9 social_democrat > 0.009 }
-		modifier = { factor = 0.8 social_democrat > 0.019 }
-	}
+	is_triggered_only = yes
 	
 	option = {
 		name = nvx_estates.o.carryon
@@ -1527,21 +1287,7 @@ country_event = { #Fourth estate aberrant decrease social_democrat
 	id = nvx_fourth_estates.48
 	hidden = yes
 	
-	trigger = {
-		NOT = { has_government = social_democrat OR = { has_idea = civil_liberties_restricted has_idea = civil_liberties_totalitarian } }
-		NOT = { has_global_flag = sandbox_disable_aberrant_estate_drift }
-		has_social_democrat_fourth_estate = yes
-	}
-	
-	mean_time_to_happen = {
-		days = 2000
-		modifier = { factor = 3 social_democrat > 0.49 }
-		modifier = { factor = 2 social_democrat > 0.29 }
-		modifier = { factor = 1.5 has_idea = civil_liberties_restricted }
-		modifier = { factor = 1.5 has_idea = civil_liberties_totalitarian }
-		modifier = { factor = 1.5 estates_has_government_left_wing = yes }
-		modifier = { factor = 0.8 social_democrat < 0.01 }
-	}
+	is_triggered_only = yes
 	
 	immediate = {
 		set_country_flag = NVX_flag_fourth_estate_social_democrat
@@ -1562,20 +1308,7 @@ country_event = { #Fourth estate aberrant increase progressive
 	desc = nvx_fourth_estates.aberrant_increase.d
 	picture = GFX_report_event_fourth_estate_increase
 	
-	trigger = {
-		NOT = { has_government = progressive }
-		NOT = { has_idea = civil_liberties_totalitarian }
-		NOT = { has_global_flag = sandbox_disable_aberrant_estate_drift }
-	}
-	
-	mean_time_to_happen = {
-		days = 2000
-		modifier = { factor = 1.5 has_progressive_fourth_estate = yes }
-		modifier = { factor = 1.5 has_idea = civil_liberties_restricted }
-		modifier = { factor = 1.5 estates_has_government_left_wing = yes }
-		modifier = { factor = 0.9 progressive > 0.009 }
-		modifier = { factor = 0.8 progressive > 0.019 }
-	}
+	is_triggered_only = yes
 	
 	option = {
 		name = nvx_estates.o.carryon
@@ -1632,21 +1365,7 @@ country_event = { #Fourth estate aberrant decrease progressive
 	id = nvx_fourth_estates.50
 	hidden = yes
 	
-	trigger = {
-		NOT = { has_government = progressive OR = { has_idea = civil_liberties_restricted has_idea = civil_liberties_totalitarian } }
-		NOT = { has_global_flag = sandbox_disable_aberrant_estate_drift }
-		has_progressive_fourth_estate = yes
-	}
-	
-	mean_time_to_happen = {
-		days = 2000
-		modifier = { factor = 3 progressive > 0.49 }
-		modifier = { factor = 2 progressive > 0.29 }
-		modifier = { factor = 1.5 has_idea = civil_liberties_restricted }
-		modifier = { factor = 1.5 has_idea = civil_liberties_totalitarian }
-		modifier = { factor = 1.5 estates_has_government_left_wing = yes }
-		modifier = { factor = 0.8 progressive < 0.01 }
-	}
+	is_triggered_only = yes
 	
 	immediate = {
 		set_country_flag = NVX_flag_fourth_estate_progressive
@@ -1667,20 +1386,7 @@ country_event = { #Fourth estate aberrant increase democratic_socialist
 	desc = nvx_fourth_estates.aberrant_increase.d
 	picture = GFX_report_event_fourth_estate_increase
 	
-	trigger = {
-		NOT = { has_government = democratic_socialist }
-		NOT = { has_idea = civil_liberties_totalitarian }
-		NOT = { has_global_flag = sandbox_disable_aberrant_estate_drift }
-	}
-	
-	mean_time_to_happen = {
-		days = 2000
-		modifier = { factor = 1.5 has_democratic_socialist_fourth_estate = yes }
-		modifier = { factor = 1.5 has_idea = civil_liberties_restricted }
-		modifier = { factor = 1.5 estates_has_government_left_wing = yes }
-		modifier = { factor = 0.9 democratic_socialist > 0.009 }
-		modifier = { factor = 0.8 democratic_socialist > 0.019 }
-	}
+	is_triggered_only = yes
 	
 	option = {
 		name = nvx_estates.o.carryon
@@ -1737,21 +1443,7 @@ country_event = { #Fourth estate aberrant decrease democratic_socialist
 	id = nvx_fourth_estates.52
 	hidden = yes
 	
-	trigger = {
-		NOT = { has_government = democratic_socialist OR = { has_idea = civil_liberties_restricted has_idea = civil_liberties_totalitarian } }
-		NOT = { has_global_flag = sandbox_disable_aberrant_estate_drift }
-		has_democratic_socialist_fourth_estate = yes
-	}
-	
-	mean_time_to_happen = {
-		days = 2000
-		modifier = { factor = 3 democratic_socialist > 0.49 }
-		modifier = { factor = 2 democratic_socialist > 0.29 }
-		modifier = { factor = 1.5 has_idea = civil_liberties_restricted }
-		modifier = { factor = 1.5 has_idea = civil_liberties_totalitarian }
-		modifier = { factor = 1.5 estates_has_government_left_wing = yes }
-		modifier = { factor = 0.8 democratic_socialist < 0.01 }
-	}
+	is_triggered_only = yes
 	
 	immediate = {
 		set_country_flag = NVX_flag_fourth_estate_democratic_socialist
@@ -1772,20 +1464,7 @@ country_event = { #Fourth estate aberrant increase communist
 	desc = nvx_fourth_estates.aberrant_increase.d
 	picture = GFX_report_event_fourth_estate_increase
 	
-	trigger = {
-		NOT = { has_government = communist }
-		NOT = { has_idea = civil_liberties_totalitarian }
-		NOT = { has_global_flag = sandbox_disable_aberrant_estate_drift }
-	}
-	
-	mean_time_to_happen = {
-		days = 2000
-		modifier = { factor = 1.5 has_communist_fourth_estate = yes }
-		modifier = { factor = 1.5 has_idea = civil_liberties_restricted }
-		modifier = { factor = 1.5 estates_has_government_left_wing = yes }
-		modifier = { factor = 0.9 communist > 0.009 }
-		modifier = { factor = 0.8 communist > 0.019 }
-	}
+	is_triggered_only = yes
 	
 	option = {
 		name = nvx_estates.o.carryon
@@ -1842,21 +1521,7 @@ country_event = { #Fourth estate aberrant decrease communist
 	id = nvx_fourth_estates.54
 	hidden = yes
 	
-	trigger = {
-		NOT = { has_government = communist OR = { has_idea = civil_liberties_restricted has_idea = civil_liberties_totalitarian } }
-		NOT = { has_global_flag = sandbox_disable_aberrant_estate_drift }
-		has_communist_fourth_estate = yes
-	}
-	
-	mean_time_to_happen = {
-		days = 2000
-		modifier = { factor = 3 communist > 0.49 }
-		modifier = { factor = 2 communist > 0.29 }
-		modifier = { factor = 1.5 has_idea = civil_liberties_restricted }
-		modifier = { factor = 1.5 has_idea = civil_liberties_totalitarian }
-		modifier = { factor = 1.5 estates_has_government_left_wing = yes }
-		modifier = { factor = 0.8 communist < 0.01 }
-	}
+	is_triggered_only = yes
 	
 	immediate = {
 		set_country_flag = NVX_flag_fourth_estate_communist
