@@ -1,0 +1,267 @@
+NVX_Event_manager_monthly = {
+    random_list = {
+        200 = {
+            modifier = { factor = 1.5 has_stability  > 0.80 }
+        }
+        2= { #workers protests
+            modifier = {	#Authoritarian states will get protests more frequently.
+                factor = 1.5
+                OR = {
+                    has_government = monarchist
+                    has_government = fascist
+                    has_government = communist
+                    has_government = nationalist
+                }
+            }
+            modifier = {	#Left Wing Democracies will get protests less frequently.
+                factor = 0.4
+                OR = {
+                    has_government = social_democrat
+                    has_government = progressive
+                    has_government = democratic_socialist
+                }
+            }
+            modifier = {
+                factor = 1.5
+                has_offensive_war = yes
+            }
+            modifier = {
+                factor = 0.5
+                has_defensive_war = yes
+            }
+            country_event = {
+                id = generic.1
+                days = 10
+                random_hours = 12
+                random_days = 10
+            }
+        }
+        2= { #Hospital Funding
+            country_event = {
+                id = generic.2
+                days = 10
+                random_hours = 12
+                random_days = 10
+            }
+        }
+        2= { #Suburb Riots
+            modifier = {
+                factor = 1.8
+                has_war = yes
+            }
+            modifier = {
+                factor = 1.8
+                has_offensive_war = yes
+            }
+            modifier = { factor = 1.5 has_stability  < 0.60 }
+            modifier = { factor = 1.5 has_stability  < 0.40 }
+            modifier = {
+                factor = 0.75
+                has_democratic_form_of_government = yes
+            }
+            country_event = {
+                id = generic.3
+                days = 10
+                random_hours = 12
+                random_days = 10
+            }
+        }
+        3= { #Parliamentary Crisis
+            trigger = {
+                has_democratic_form_of_government = yes
+            }
+            modifier = { factor = 1.5 has_stability  < 0.60 }
+            modifier = { factor = 1.5 has_stability  < 0.40 }
+            country_event = {
+                id = generic.4
+                days = 10
+                random_hours = 12
+                random_days = 10
+            }
+        }
+        3= { #Reform Administration Laws
+            trigger = {
+                has_stability  < 0.8
+            }
+            modifier = { factor = 1.5 has_stability  < 0.60 }
+            modifier = { factor = 1.5 has_stability  < 0.40 }
+            country_event = {
+                id = generic.5
+                days = 10
+                random_hours = 12
+                random_days = 10
+            }
+        }
+        2= { #Local Separatists gain support
+            trigger = {
+                has_stability  < 0.7
+                has_democratic_form_of_government = yes
+                num_of_controlled_states > 1
+            }
+            modifier = { factor = 1.5 has_stability  < 0.50 }
+            modifier = { factor = 1.5 has_stability  < 0.30 }
+            country_event = {
+                id = generic.6
+                days = 10
+                random_hours = 12
+                random_days = 10
+            }
+        }
+        2= { #Prison Break
+            trigger = {
+                num_of_controlled_states > 1
+            }
+            modifier = { factor = 1.5 has_stability  < 0.60 }
+            modifier = { factor = 1.5 has_stability  < 0.40 }
+            country_event = {
+                id = generic.7
+                days = 10
+                random_hours = 12
+                random_days = 10
+            }
+        }
+        1= { #Racial Violence against Ethnic Minorities
+            trigger = {
+                num_of_controlled_states > 1
+                has_stability  < 0.7
+            }
+            modifier = { factor = 1.5 has_stability  < 0.60 }
+            modifier = { factor = 1.5 has_stability  < 0.40 }
+            country_event = {
+                id = generic.8
+                days = 10
+                random_hours = 12
+                random_days = 10
+            }
+        }
+        1= { #Demand for more Direct Democracy
+            trigger = {
+                has_democratic_form_of_government = yes
+                num_of_controlled_states > 1
+                NOT = { has_idea = swiss_political_system }
+            }
+            modifier = { factor = 1.5 has_stability  < 0.60 }
+            modifier = { factor = 1.5 has_stability  < 0.40 }
+            country_event = {
+                id = generic.9
+                days = 10
+                random_hours = 12
+                random_days = 10
+            }
+        }
+        3= { #Controversial Ruling
+            modifier = { factor = 1.5 has_stability  < 0.60 }
+            modifier = { factor = 2.5 has_stability  < 0.40 }
+            country_event = {
+                id = generic.10
+                days = 10
+                random_hours = 12
+                random_days = 10
+            }
+        }
+        3= { #Steel Producer Scandal
+            trigger ={
+                num_of_controlled_states > 1
+                has_stability < 0.65
+                NOT = { has_government = communist }
+                any_owned_state = {
+                    state_population > 25000
+                }
+            }
+            modifier = { factor = 1.5 has_stability  < 0.50 }
+            modifier = { factor = 2.5 has_stability  < 0.30 }
+            country_event = {
+                id = generic.11
+                days = 10
+                random_hours = 12
+                random_days = 10
+            }
+        }
+        3= { #Airline Scandal
+            modifier = { factor = 1.5 has_stability  < 0.60 }
+            modifier = { factor = 1.5 has_stability  < 0.40 }
+            country_event = {
+                id = generic.13
+                days = 10
+                random_hours = 12
+                random_days = 10
+            }
+        }
+        3= { #Military Excesses
+            trigger = {
+                has_stability  < 0.70
+                num_of_controlled_states > 1
+                any_owned_state = {
+                    state_population > 100000
+                }
+                has_army_manpower = { size > 50000 }
+            }
+            modifier = { factor = 1.5 has_stability  < 0.60 }
+            modifier = { factor = 1.5 has_stability  < 0.40 }
+            country_event = {
+                id = generic.14
+                days = 10
+                random_hours = 12
+                random_days = 10
+            }
+        }
+        2= { #Shariah Patrols (Islamist countries)
+            trigger = {
+                OR = {
+                    has_government = islamist
+                    islamist > 0.25
+                }
+                has_stability  < 0.80
+            }
+            modifier = { factor = 1.5 has_stability  < 0.60 }
+            modifier = { factor = 1.5 has_stability  < 0.40 }
+            country_event = {
+                id = generic.15
+                days = 10
+                random_hours = 12
+                random_days = 10
+            }
+        }
+        3= { #Outstanding Political Activist
+            trigger = {
+                has_democratic_form_of_government = yes
+                has_stability  > 0.30
+            }
+            modifier = { factor = 1.2 has_stability  > 0.60 }
+            modifier = { factor = 1.2 has_stability  > 0.40 }
+            country_event = {
+                id = generic.16
+                days = 10
+                random_hours = 12
+                random_days = 10
+            }
+        }
+        2= { #Increase in Political Attention
+            trigger = {
+                has_democratic_form_of_government = yes
+            }
+            modifier = { factor = 1.5 has_stability  > 0.70 }
+            modifier = { factor = 1.5 has_stability  > 0.50 }
+            country_event = {
+                id = generic.17
+                days = 10
+                random_hours = 12
+                random_days = 10
+            }
+        }
+        2= { #Conspiracy Theories take hold
+            trigger = {
+                has_stability  < 0.70
+                num_of_controlled_states > 1
+            }
+            modifier = { factor = 1.5 has_stability  > 0.70 }
+            modifier = { factor = 1.5 has_stability  > 0.50 }
+            country_event = {
+                id = generic.18
+                days = 10
+                random_hours = 12
+                random_days = 10
+            }
+        }
+    }
+}
