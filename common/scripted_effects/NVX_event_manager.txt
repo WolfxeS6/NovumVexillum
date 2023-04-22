@@ -1,6 +1,6 @@
 NVX_Event_manager_monthly = {
     random_list = {
-        200 = {
+        150 = {
             modifier = { factor = 1.5 has_stability  > 0.80 }
         }
         2= { #workers protests
@@ -262,6 +262,1415 @@ NVX_Event_manager_monthly = {
                 random_hours = 12
                 random_days = 10
             }
+        }
+    }
+}
+NVX_Estate_manager_monthly = {
+    150 = {
+        modifier = { factor = 1.2 has_stability  > 0.80 }
+    }
+    2= { #Fourth estate natural increase islamist
+        trigger = {
+            NOT = { has_idea = civil_liberties_totalitarian }
+            NOT = {
+                AND = {
+                    has_government = islamist
+                    NVX_has_government_system_authoritarian = yes
+                }
+            }
+            OR = {
+                AND = {
+                    islamist > 0.199
+                    has_islamist_fourth_estate = no
+                }
+                AND = {
+                    islamist > 0.299
+                    NOT = {
+                        OR = {
+                            has_idea = fourth_estate_islamist2
+                            has_idea = fourth_estate_islamist3
+                            has_idea = fourth_estate_islamist4
+                            has_idea = fourth_estate_islamist5
+                        }
+                    }
+                }
+                AND = {
+                    islamist > 0.399
+                    NOT = {
+                        OR = {
+                            has_idea = fourth_estate_islamist3
+                            has_idea = fourth_estate_islamist4
+                            has_idea = fourth_estate_islamist5
+                        }
+                    }
+                }
+                AND = {
+                    islamist > 0.499
+                    NOT = {
+                        OR = {
+                            has_idea = fourth_estate_islamist4
+                            has_idea = fourth_estate_islamist5
+                        }
+                    }
+                }
+                AND = {
+                    islamist > 0.599
+                    NOT = {
+                        has_idea = fourth_estate_islamist5
+                    }
+                }
+            }
+        }
+        modifier = { factor = 0.5 has_idea = civil_liberties_restricted }
+		modifier = { factor = 0.25 has_idea = civil_liberties_limited }
+		modifier = { factor = 3.3 has_idea = fourth_estate_islamist1 islamist > 0.399 }
+		modifier = { factor = 3.3 has_idea = fourth_estate_islamist2 islamist > 0.499 }
+		modifier = { factor = 3.3 has_idea = fourth_estate_islamist3 islamist > 0.599 }
+		modifier = { factor = 3.3 has_idea = fourth_estate_islamist4 islamist > 0.699 }
+        country_event = {
+            id = nvx_fourth_estates.1
+            days = 10
+            random_hours = 12
+            random_days = 10
+        }
+    }
+    2= { #Fourth estate natural decrease islamist
+        trigger = {
+            OR = {
+                AND = {
+                    islamist < 0.20
+                    has_islamist_fourth_estate = yes
+                }
+                AND = {
+                    islamist < 0.30
+                    OR = {
+                        has_idea = fourth_estate_islamist2
+                        has_idea = fourth_estate_islamist3
+                        has_idea = fourth_estate_islamist4
+                        has_idea = fourth_estate_islamist5
+                    }
+                }
+                AND = {
+                    islamist < 0.40
+                    OR = {
+                        has_idea = fourth_estate_islamist3
+                        has_idea = fourth_estate_islamist4
+                        has_idea = fourth_estate_islamist5
+                    }
+                }
+                AND = {
+                    islamist < 0.50
+                    OR = {
+                        has_idea = fourth_estate_islamist4
+                        has_idea = fourth_estate_islamist5
+                    }
+                }
+                AND = {
+                    islamist < 0.60
+                    has_idea = fourth_estate_islamist5
+                }
+            }
+        }
+        modifier = { factor = 0.1 has_idea = civil_liberties_totalitarian }
+		modifier = { factor = 0.25 has_idea = civil_liberties_restricted }
+		modifier = { factor = 0.6 has_idea = civil_liberties_limited }
+		modifier = { factor = 1.5 islamist < 0.10 }
+		modifier = { factor = 3.3 has_idea = fourth_estate_islamist2 islamist < 0.20 }
+		modifier = { factor = 3.3 has_idea = fourth_estate_islamist3 islamist < 0.30 }
+		modifier = { factor = 3.3 has_idea = fourth_estate_islamist4 islamist < 0.40 }
+		modifier = { factor = 3.3 has_idea = fourth_estate_islamist5 islamist < 0.50 }
+        country_event = {
+            id = nvx_fourth_estates.2
+            days = 10
+            random_hours = 12
+            random_days = 10
+        }
+    }
+    2= { #Fourth estate natural increase fascist
+        trigger = {
+            NOT = { has_idea = civil_liberties_totalitarian }
+            NOT = {
+                AND = {
+                    has_government = fascist
+                    NVX_has_government_system_authoritarian = yes
+                }
+            }
+            OR = {
+                AND = {
+                    fascist > 0.199
+                    has_fascist_fourth_estate = no
+                }
+                AND = {
+                    fascist > 0.299
+                    NOT = {
+                        OR = {
+                            has_idea = fourth_estate_fascist2
+                            has_idea = fourth_estate_fascist3
+                            has_idea = fourth_estate_fascist4
+                            has_idea = fourth_estate_fascist5
+                        }
+                    }
+                }
+                AND = {
+                    fascist > 0.399
+                    NOT = {
+                        OR = {
+                            has_idea = fourth_estate_fascist3
+                            has_idea = fourth_estate_fascist4
+                            has_idea = fourth_estate_fascist5
+                        }
+                    }
+                }
+                AND = {
+                    fascist > 0.499
+                    NOT = {
+                        OR = {
+                            has_idea = fourth_estate_fascist4
+                            has_idea = fourth_estate_fascist5
+                        }
+                    }
+                }
+                AND = {
+                    fascist > 0.599
+                    NOT = {
+                        has_idea = fourth_estate_fascist5
+                    }
+                }
+            }
+        }
+        modifier = { factor = 0.1 has_idea = civil_liberties_restricted }
+		modifier = { factor = 0.25 has_idea = civil_liberties_limited }
+		modifier = { factor = 3.3 has_idea = fourth_estate_fascist1 fascist > 0.399 }
+		modifier = { factor = 3.3 has_idea = fourth_estate_fascist2 fascist > 0.499 }
+		modifier = { factor = 3.3 has_idea = fourth_estate_fascist3 fascist > 0.599 }
+		modifier = { factor = 3.3 has_idea = fourth_estate_fascist4 fascist > 0.699 }
+        country_event = {
+            id = nvx_fourth_estates.3
+            days = 10
+            random_hours = 12
+            random_days = 10
+        }
+    }
+    2= { #Fourth estate natural decrease fascist
+        trigger = {
+            OR = {
+                AND = {
+                    fascist < 0.20
+                    has_fascist_fourth_estate = yes
+                }
+                AND = {
+                    fascist < 0.30
+                    OR = {
+                        has_idea = fourth_estate_fascist2
+                        has_idea = fourth_estate_fascist3
+                        has_idea = fourth_estate_fascist4
+                        has_idea = fourth_estate_fascist5
+                    }
+                }
+                AND = {
+                    fascist < 0.40
+                    OR = {
+                        has_idea = fourth_estate_fascist3
+                        has_idea = fourth_estate_fascist4
+                        has_idea = fourth_estate_fascist5
+                    }
+                }
+                AND = {
+                    fascist < 0.50
+                    OR = {
+                        has_idea = fourth_estate_fascist4
+                        has_idea = fourth_estate_fascist5
+                    }
+                }
+                AND = {
+                    fascist < 0.60
+                    has_idea = fourth_estate_fascist5
+                }
+            }
+        }
+        modifier = { factor = 0.1 has_idea = civil_liberties_totalitarian }
+		modifier = { factor = 0.25 has_idea = civil_liberties_restricted }
+		modifier = { factor = 0.6 has_idea = civil_liberties_limited }
+		modifier = { factor = 1.5 fascist < 0.10 }
+		modifier = { factor = 3.3 has_idea = fourth_estate_fascist2 fascist < 0.20 }
+		modifier = { factor = 3.3 has_idea = fourth_estate_fascist3 fascist < 0.30 }
+		modifier = { factor = 3.3 has_idea = fourth_estate_fascist4 fascist < 0.40 }
+		modifier = { factor = 3.3 has_idea = fourth_estate_fascist5 fascist < 0.50 }
+        country_event = {
+            id = nvx_fourth_estates.4
+            days = 10
+            random_hours = 12
+            random_days = 10
+        }
+    }
+    2= { #Fourth estate natural increase nationalist
+        trigger = {
+            NOT = { has_idea = civil_liberties_totalitarian }
+            NOT = {
+                AND = {
+                    has_government = nationalist
+                    NVX_has_government_system_authoritarian = yes
+                }
+            }
+            OR = {
+                AND = {
+                    nationalist > 0.199
+                    has_nationalist_fourth_estate = no
+                }
+                AND = {
+                    nationalist > 0.299
+                    NOT = {
+                        OR = {
+                            has_idea = fourth_estate_nationalist2
+                            has_idea = fourth_estate_nationalist3
+                            has_idea = fourth_estate_nationalist4
+                            has_idea = fourth_estate_nationalist5
+                        }
+                    }
+                }
+                AND = {
+                    nationalist > 0.399
+                    NOT = {
+                        OR = {
+                            has_idea = fourth_estate_nationalist3
+                            has_idea = fourth_estate_nationalist4
+                            has_idea = fourth_estate_nationalist5
+                        }
+                    }
+                }
+                AND = {
+                    nationalist > 0.499
+                    NOT = {
+                        OR = {
+                            has_idea = fourth_estate_nationalist4
+                            has_idea = fourth_estate_nationalist5
+                        }
+                    }
+                }
+                AND = {
+                    nationalist > 0.599
+                    NOT = {
+                        has_idea = fourth_estate_nationalist5
+                    }
+                }
+            }
+        }
+        modifier = { factor = 0.1 has_idea = civil_liberties_restricted }
+		modifier = { factor = 0.25 has_idea = civil_liberties_limited }
+		modifier = { factor = 3.3 has_idea = fourth_estate_nationalist1 nationalist > 0.399 }
+		modifier = { factor = 3.3 has_idea = fourth_estate_nationalist2 nationalist > 0.499 }
+		modifier = { factor = 3.3 has_idea = fourth_estate_nationalist3 nationalist > 0.599 }
+		modifier = { factor = 3.3 has_idea = fourth_estate_nationalist4 nationalist > 0.699 }
+        country_event = {
+            id = nvx_fourth_estates.5
+            days = 10
+            random_hours = 12
+            random_days = 10
+        }
+    }
+    2= { #Fourth estate natural decrease nationalist
+        trigger = {
+            OR = {
+                AND = {
+                    nationalist < 0.20
+                    has_nationalist_fourth_estate = yes
+                }
+                AND = {
+                    nationalist < 0.30
+                    OR = {
+                        has_idea = fourth_estate_nationalist2
+                        has_idea = fourth_estate_nationalist3
+                        has_idea = fourth_estate_nationalist4
+                        has_idea = fourth_estate_nationalist5
+                    }
+                }
+                AND = {
+                    nationalist < 0.40
+                    OR = {
+                        has_idea = fourth_estate_nationalist3
+                        has_idea = fourth_estate_nationalist4
+                        has_idea = fourth_estate_nationalist5
+                    }
+                }
+                AND = {
+                    nationalist < 0.50
+                    OR = {
+                        has_idea = fourth_estate_nationalist4
+                        has_idea = fourth_estate_nationalist5
+                    }
+                }
+                AND = {
+                    nationalist < 0.60
+                    has_idea = fourth_estate_nationalist5
+                }
+            }
+        }
+        modifier = { factor = 0.1 has_idea = civil_liberties_totalitarian }
+		modifier = { factor = 0.25 has_idea = civil_liberties_restricted }
+		modifier = { factor = 0.6 has_idea = civil_liberties_limited }
+		modifier = { factor = 1.5 nationalist < 0.10 }
+		modifier = { factor = 3.3 has_idea = fourth_estate_nationalist2 nationalist < 0.20 }
+		modifier = { factor = 3.3 has_idea = fourth_estate_nationalist3 nationalist < 0.30 }
+		modifier = { factor = 3.3 has_idea = fourth_estate_nationalist4 nationalist < 0.40 }
+		modifier = { factor = 3.3 has_idea = fourth_estate_nationalist5 nationalist < 0.50 }
+        country_event = {
+            id = nvx_fourth_estates.6
+            days = 10
+            random_hours = 12
+            random_days = 10
+        }
+    }
+    2= { #Fourth estate natural increase monarchist
+        trigger = {
+            NOT = { has_idea = civil_liberties_totalitarian }
+            NOT = {
+                AND = {
+                    has_government = monarchist
+                    NVX_has_government_system_authoritarian = yes
+                }
+            }
+            OR = {
+                AND = {
+                    monarchist > 0.199
+                    has_monarchist_fourth_estate = no
+                }
+                AND = {
+                    monarchist > 0.299
+                    NOT = {
+                        OR = {
+                            has_idea = fourth_estate_monarchist2
+                            has_idea = fourth_estate_monarchist3
+                            has_idea = fourth_estate_monarchist4
+                            has_idea = fourth_estate_monarchist5
+                        }
+                    }
+                }
+                AND = {
+                    monarchist > 0.399
+                    NOT = {
+                        OR = {
+                            has_idea = fourth_estate_monarchist3
+                            has_idea = fourth_estate_monarchist4
+                            has_idea = fourth_estate_monarchist5
+                        }
+                    }
+                }
+                AND = {
+                    monarchist > 0.499
+                    NOT = {
+                        OR = {
+                            has_idea = fourth_estate_monarchist4
+                            has_idea = fourth_estate_monarchist5
+                        }
+                    }
+                }
+                AND = {
+                    monarchist > 0.599
+                    NOT = {
+                        has_idea = fourth_estate_monarchist5
+                    }
+                }
+            }
+        }
+        modifier = { factor = 0.1 has_idea = civil_liberties_restricted }
+		modifier = { factor = 0.25 has_idea = civil_liberties_limited }
+		modifier = { factor = 3.3 has_idea = fourth_estate_monarchist1 monarchist > 0.399 }
+		modifier = { factor = 3.3 has_idea = fourth_estate_monarchist2 monarchist > 0.499 }
+		modifier = { factor = 3.3 has_idea = fourth_estate_monarchist3 monarchist > 0.599 }
+		modifier = { factor = 3.3 has_idea = fourth_estate_monarchist4 monarchist > 0.699 }
+        country_event = {
+            id = nvx_fourth_estates.7
+            days = 10
+            random_hours = 12
+            random_days = 10
+        }
+    }
+    2= { #Fourth estate natural decrease monarchist
+        trigger = {
+            OR = {
+                AND = {
+                    monarchist < 0.20
+                    has_monarchist_fourth_estate = yes
+                }
+                AND = {
+                    monarchist < 0.30
+                    OR = {
+                        has_idea = fourth_estate_monarchist2
+                        has_idea = fourth_estate_monarchist3
+                        has_idea = fourth_estate_monarchist4
+                        has_idea = fourth_estate_monarchist5
+                    }
+                }
+                AND = {
+                    monarchist < 0.40
+                    OR = {
+                        has_idea = fourth_estate_monarchist3
+                        has_idea = fourth_estate_monarchist4
+                        has_idea = fourth_estate_monarchist5
+                    }
+                }
+                AND = {
+                    monarchist < 0.50
+                    OR = {
+                        has_idea = fourth_estate_monarchist4
+                        has_idea = fourth_estate_monarchist5
+                    }
+                }
+                AND = {
+                    monarchist < 0.60
+                    has_idea = fourth_estate_monarchist5
+                }
+            }
+        }
+        modifier = { factor = 0.1 has_idea = civil_liberties_totalitarian }
+		modifier = { factor = 0.25 has_idea = civil_liberties_restricted }
+		modifier = { factor = 0.6 has_idea = civil_liberties_limited }
+		modifier = { factor = 1.5 monarchist < 0.10 }
+		modifier = { factor = 3.3 has_idea = fourth_estate_monarchist2 monarchist < 0.20 }
+		modifier = { factor = 3.3 has_idea = fourth_estate_monarchist3 monarchist < 0.30 }
+		modifier = { factor = 3.3 has_idea = fourth_estate_monarchist4 monarchist < 0.40 }
+		modifier = { factor = 3.3 has_idea = fourth_estate_monarchist5 monarchist < 0.50 }
+        country_event = {
+            id = nvx_fourth_estates.8
+            days = 10
+            random_hours = 12
+            random_days = 10
+        }
+    }
+    2= { #Fourth estate natural increase reactionary
+        trigger = {
+            NOT = { has_idea = civil_liberties_totalitarian }
+            NOT = {
+                AND = {
+                    has_government = reactionary
+                    NVX_has_government_system_authoritarian = yes
+                }
+            }
+            OR = {
+                AND = {
+                    reactionary > 0.199
+                    has_reactionary_fourth_estate = no
+                }
+                AND = {
+                    reactionary > 0.299
+                    NOT = {
+                        OR = {
+                            has_idea = fourth_estate_reactionary2
+                            has_idea = fourth_estate_reactionary3
+                            has_idea = fourth_estate_reactionary4
+                            has_idea = fourth_estate_reactionary5
+                        }
+                    }
+                }
+                AND = {
+                    reactionary > 0.399
+                    NOT = {
+                        OR = {
+                            has_idea = fourth_estate_reactionary3
+                            has_idea = fourth_estate_reactionary4
+                            has_idea = fourth_estate_reactionary5
+                        }
+                    }
+                }
+                AND = {
+                    reactionary > 0.499
+                    NOT = {
+                        OR = {
+                            has_idea = fourth_estate_reactionary4
+                            has_idea = fourth_estate_reactionary5
+                        }
+                    }
+                }
+                AND = {
+                    reactionary > 0.599
+                    NOT = {
+                        has_idea = fourth_estate_reactionary5
+                    }
+                }
+            }
+        }
+        modifier = { factor = 0.1 has_idea = civil_liberties_restricted }
+		modifier = { factor = 0.25 has_idea = civil_liberties_limited }
+		modifier = { factor = 3.3 has_idea = fourth_estate_reactionary1 reactionary > 0.399 }
+		modifier = { factor = 3.3 has_idea = fourth_estate_reactionary2 reactionary > 0.499 }
+		modifier = { factor = 3.3 has_idea = fourth_estate_reactionary3 reactionary > 0.599 }
+		modifier = { factor = 3.3 has_idea = fourth_estate_reactionary4 reactionary > 0.699 }
+        country_event = {
+            id = nvx_fourth_estates.9
+            days = 10
+            random_hours = 12
+            random_days = 10
+        }
+    }
+    2= { #Fourth estate natural decrease reactionary
+        trigger = {
+            OR = {
+                AND = {
+                    reactionary < 0.20
+                    has_reactionary_fourth_estate = yes
+                }
+                AND = {
+                    reactionary < 0.30
+                    OR = {
+                        has_idea = fourth_estate_reactionary2
+                        has_idea = fourth_estate_reactionary3
+                        has_idea = fourth_estate_reactionary4
+                        has_idea = fourth_estate_reactionary5
+                    }
+                }
+                AND = {
+                    reactionary < 0.40
+                    OR = {
+                        has_idea = fourth_estate_reactionary3
+                        has_idea = fourth_estate_reactionary4
+                        has_idea = fourth_estate_reactionary5
+                    }
+                }
+                AND = {
+                    reactionary < 0.50
+                    OR = {
+                        has_idea = fourth_estate_reactionary4
+                        has_idea = fourth_estate_reactionary5
+                    }
+                }
+                AND = {
+                    reactionary < 0.60
+                    has_idea = fourth_estate_reactionary5
+                }
+            }
+        }
+        modifier = { factor = 0.1 has_idea = civil_liberties_totalitarian }
+		modifier = { factor = 0.25 has_idea = civil_liberties_restricted }
+		modifier = { factor = 0.6 has_idea = civil_liberties_limited }
+		modifier = { factor = 1.5 reactionary < 0.10 }
+		modifier = { factor = 3.3 has_idea = fourth_estate_reactionary2 reactionary < 0.20 }
+		modifier = { factor = 3.3 has_idea = fourth_estate_reactionary3 reactionary < 0.30 }
+		modifier = { factor = 3.3 has_idea = fourth_estate_reactionary4 reactionary < 0.40 }
+		modifier = { factor = 3.3 has_idea = fourth_estate_reactionary5 reactionary < 0.50 }
+        country_event = {
+            id = nvx_fourth_estates.10
+            days = 10
+            random_hours = 12
+            random_days = 10
+        }
+    }
+    2= { #Fourth estate natural increase conservative
+        trigger = {
+            NOT = { has_idea = civil_liberties_totalitarian }
+            NOT = {
+                AND = {
+                    has_government = conservative
+                    NVX_has_government_system_authoritarian = yes
+                }
+            }
+            OR = {
+                AND = {
+                    conservative > 0.199
+                    has_conservative_fourth_estate = no
+                }
+                AND = {
+                    conservative > 0.299
+                    NOT = {
+                        OR = {
+                            has_idea = fourth_estate_conservative2
+                            has_idea = fourth_estate_conservative3
+                            has_idea = fourth_estate_conservative4
+                            has_idea = fourth_estate_conservative5
+                        }
+                    }
+                }
+                AND = {
+                    conservative > 0.399
+                    NOT = {
+                        OR = {
+                            has_idea = fourth_estate_conservative3
+                            has_idea = fourth_estate_conservative4
+                            has_idea = fourth_estate_conservative5
+                        }
+                    }
+                }
+                AND = {
+                    conservative > 0.499
+                    NOT = {
+                        OR = {
+                            has_idea = fourth_estate_conservative4
+                            has_idea = fourth_estate_conservative5
+                        }
+                    }
+                }
+                AND = {
+                    conservative > 0.599
+                    NOT = {
+                        has_idea = fourth_estate_conservative5
+                    }
+                }
+            }
+        }
+        modifier = { factor = 0.1 has_idea = civil_liberties_restricted }
+		modifier = { factor = 0.25 has_idea = civil_liberties_limited }
+		modifier = { factor = 3.3 has_idea = fourth_estate_conservative1 conservative > 0.399 }
+		modifier = { factor = 3.3 has_idea = fourth_estate_conservative2 conservative > 0.499 }
+		modifier = { factor = 3.3 has_idea = fourth_estate_conservative3 conservative > 0.599 }
+		modifier = { factor = 3.3 has_idea = fourth_estate_conservative4 conservative > 0.699 }
+        country_event = {
+            id = nvx_fourth_estates.9
+            days = 10
+            random_hours = 12
+            random_days = 10
+        }
+    }
+    2= { #Fourth estate natural decrease conservative
+        trigger = {
+            OR = {
+                AND = {
+                    conservative < 0.20
+                    has_conservative_fourth_estate = yes
+                }
+                AND = {
+                    conservative < 0.30
+                    OR = {
+                        has_idea = fourth_estate_conservative2
+                        has_idea = fourth_estate_conservative3
+                        has_idea = fourth_estate_conservative4
+                        has_idea = fourth_estate_conservative5
+                    }
+                }
+                AND = {
+                    conservative < 0.40
+                    OR = {
+                        has_idea = fourth_estate_conservative3
+                        has_idea = fourth_estate_conservative4
+                        has_idea = fourth_estate_conservative5
+                    }
+                }
+                AND = {
+                    conservative < 0.50
+                    OR = {
+                        has_idea = fourth_estate_conservative4
+                        has_idea = fourth_estate_conservative5
+                    }
+                }
+                AND = {
+                    conservative < 0.60
+                    has_idea = fourth_estate_conservative5
+                }
+            }
+        }
+        modifier = { factor = 0.1 has_idea = civil_liberties_totalitarian }
+		modifier = { factor = 0.25 has_idea = civil_liberties_restricted }
+		modifier = { factor = 0.6 has_idea = civil_liberties_limited }
+		modifier = { factor = 1.5 conservative < 0.10 }
+		modifier = { factor = 3.3 has_idea = fourth_estate_conservative2 conservative < 0.20 }
+		modifier = { factor = 3.3 has_idea = fourth_estate_conservative3 conservative < 0.30 }
+		modifier = { factor = 3.3 has_idea = fourth_estate_conservative4 conservative < 0.40 }
+		modifier = { factor = 3.3 has_idea = fourth_estate_conservative5 conservative < 0.50 }
+        country_event = {
+            id = nvx_fourth_estates.12
+            days = 10
+            random_hours = 12
+            random_days = 10
+        }
+    }
+    2= { #Fourth estate natural increase market_liberal
+        trigger = {
+            NOT = { has_idea = civil_liberties_totalitarian }
+            NOT = {
+                AND = {
+                    has_government = market_liberal
+                    NVX_has_government_system_authoritarian = yes
+                }
+            }
+            OR = {
+                AND = {
+                    market_liberal > 0.199
+                    has_market_liberal_fourth_estate = no
+                }
+                AND = {
+                    market_liberal > 0.299
+                    NOT = {
+                        OR = {
+                            has_idea = fourth_estate_market_liberal2
+                            has_idea = fourth_estate_market_liberal3
+                            has_idea = fourth_estate_market_liberal4
+                            has_idea = fourth_estate_market_liberal5
+                        }
+                    }
+                }
+                AND = {
+                    market_liberal > 0.399
+                    NOT = {
+                        OR = {
+                            has_idea = fourth_estate_market_liberal3
+                            has_idea = fourth_estate_market_liberal4
+                            has_idea = fourth_estate_market_liberal5
+                        }
+                    }
+                }
+                AND = {
+                    market_liberal > 0.499
+                    NOT = {
+                        OR = {
+                            has_idea = fourth_estate_market_liberal4
+                            has_idea = fourth_estate_market_liberal5
+                        }
+                    }
+                }
+                AND = {
+                    market_liberal > 0.599
+                    NOT = {
+                        has_idea = fourth_estate_market_liberal5
+                    }
+                }
+            }
+        }
+        modifier = { factor = 0.1 has_idea = civil_liberties_restricted }
+		modifier = { factor = 0.25 has_idea = civil_liberties_limited }
+		modifier = { factor = 3.3 has_idea = fourth_estate_market_liberal1 market_liberal > 0.399 }
+		modifier = { factor = 3.3 has_idea = fourth_estate_market_liberal2 market_liberal > 0.499 }
+		modifier = { factor = 3.3 has_idea = fourth_estate_market_liberal3 market_liberal > 0.599 }
+		modifier = { factor = 3.3 has_idea = fourth_estate_market_liberal4 market_liberal > 0.699 }
+        country_event = {
+            id = nvx_fourth_estates.13
+            days = 10
+            random_hours = 12
+            random_days = 10
+        }
+    }
+    2= { #Fourth estate natural decrease market_liberal
+        trigger = {
+            OR = {
+                AND = {
+                    market_liberal < 0.20
+                    has_market_liberal_fourth_estate = yes
+                }
+                AND = {
+                    market_liberal < 0.30
+                    OR = {
+                        has_idea = fourth_estate_market_liberal2
+                        has_idea = fourth_estate_market_liberal3
+                        has_idea = fourth_estate_market_liberal4
+                        has_idea = fourth_estate_market_liberal5
+                    }
+                }
+                AND = {
+                    market_liberal < 0.40
+                    OR = {
+                        has_idea = fourth_estate_market_liberal3
+                        has_idea = fourth_estate_market_liberal4
+                        has_idea = fourth_estate_market_liberal5
+                    }
+                }
+                AND = {
+                    market_liberal < 0.50
+                    OR = {
+                        has_idea = fourth_estate_market_liberal4
+                        has_idea = fourth_estate_market_liberal5
+                    }
+                }
+                AND = {
+                    market_liberal < 0.60
+                    has_idea = fourth_estate_market_liberal5
+                }
+            }
+        }
+        modifier = { factor = 0.1 has_idea = civil_liberties_totalitarian }
+		modifier = { factor = 0.25 has_idea = civil_liberties_restricted }
+		modifier = { factor = 0.6 has_idea = civil_liberties_limited }
+		modifier = { factor = 1.5 market_liberal < 0.10 }
+		modifier = { factor = 3.3 has_idea = fourth_estate_market_liberal2 market_liberal < 0.20 }
+		modifier = { factor = 3.3 has_idea = fourth_estate_market_liberal3 market_liberal < 0.30 }
+		modifier = { factor = 3.3 has_idea = fourth_estate_market_liberal4 market_liberal < 0.40 }
+		modifier = { factor = 3.3 has_idea = fourth_estate_market_liberal5 market_liberal < 0.50 }
+        country_event = {
+            id = nvx_fourth_estates.14
+            days = 10
+            random_hours = 12
+            random_days = 10
+        }
+    }
+    2= { #Fourth estate natural increase social_liberal
+        trigger = {
+            NOT = { has_idea = civil_liberties_totalitarian }
+            NOT = {
+                AND = {
+                    has_government = social_liberal
+                    NVX_has_government_system_authoritarian = yes
+                }
+            }
+            OR = {
+                AND = {
+                    social_liberal > 0.199
+                    has_social_liberal_fourth_estate = no
+                }
+                AND = {
+                    social_liberal > 0.299
+                    NOT = {
+                        OR = {
+                            has_idea = fourth_estate_social_liberal2
+                            has_idea = fourth_estate_social_liberal3
+                            has_idea = fourth_estate_social_liberal4
+                            has_idea = fourth_estate_social_liberal5
+                        }
+                    }
+                }
+                AND = {
+                    social_liberal > 0.399
+                    NOT = {
+                        OR = {
+                            has_idea = fourth_estate_social_liberal3
+                            has_idea = fourth_estate_social_liberal4
+                            has_idea = fourth_estate_social_liberal5
+                        }
+                    }
+                }
+                AND = {
+                    social_liberal > 0.499
+                    NOT = {
+                        OR = {
+                            has_idea = fourth_estate_social_liberal4
+                            has_idea = fourth_estate_social_liberal5
+                        }
+                    }
+                }
+                AND = {
+                    social_liberal > 0.599
+                    NOT = {
+                        has_idea = fourth_estate_social_liberal5
+                    }
+                }
+            }
+        }
+        modifier = { factor = 0.1 has_idea = civil_liberties_restricted }
+		modifier = { factor = 0.25 has_idea = civil_liberties_limited }
+		modifier = { factor = 3.3 has_idea = fourth_estate_social_liberal1 social_liberal > 0.399 }
+		modifier = { factor = 3.3 has_idea = fourth_estate_social_liberal2 social_liberal > 0.499 }
+		modifier = { factor = 3.3 has_idea = fourth_estate_social_liberal3 social_liberal > 0.599 }
+		modifier = { factor = 3.3 has_idea = fourth_estate_social_liberal4 social_liberal > 0.699 }
+        country_event = {
+            id = nvx_fourth_estates.15
+            days = 10
+            random_hours = 12
+            random_days = 10
+        }
+    }
+    2= { #Fourth estate natural decrease social_liberal
+        trigger = {
+            OR = {
+                AND = {
+                    social_liberal < 0.20
+                    has_social_liberal_fourth_estate = yes
+                }
+                AND = {
+                    social_liberal < 0.30
+                    OR = {
+                        has_idea = fourth_estate_social_liberal2
+                        has_idea = fourth_estate_social_liberal3
+                        has_idea = fourth_estate_social_liberal4
+                        has_idea = fourth_estate_social_liberal5
+                    }
+                }
+                AND = {
+                    social_liberal < 0.40
+                    OR = {
+                        has_idea = fourth_estate_social_liberal3
+                        has_idea = fourth_estate_social_liberal4
+                        has_idea = fourth_estate_social_liberal5
+                    }
+                }
+                AND = {
+                    social_liberal < 0.50
+                    OR = {
+                        has_idea = fourth_estate_social_liberal4
+                        has_idea = fourth_estate_social_liberal5
+                    }
+                }
+                AND = {
+                    social_liberal < 0.60
+                    has_idea = fourth_estate_social_liberal5
+                }
+            }
+        }
+        modifier = { factor = 0.1 has_idea = civil_liberties_totalitarian }
+		modifier = { factor = 0.25 has_idea = civil_liberties_restricted }
+		modifier = { factor = 0.6 has_idea = civil_liberties_limited }
+		modifier = { factor = 1.5 social_liberal < 0.10 }
+		modifier = { factor = 3.3 has_idea = fourth_estate_social_liberal2 social_liberal < 0.20 }
+		modifier = { factor = 3.3 has_idea = fourth_estate_social_liberal3 social_liberal < 0.30 }
+		modifier = { factor = 3.3 has_idea = fourth_estate_social_liberal4 social_liberal < 0.40 }
+		modifier = { factor = 3.3 has_idea = fourth_estate_social_liberal5 social_liberal < 0.50 }
+        country_event = {
+            id = nvx_fourth_estates.16
+            days = 10
+            random_hours = 12
+            random_days = 10
+        }
+    }
+    2= { #Fourth estate natural increase social_democrat
+        trigger = {
+            NOT = { has_idea = civil_liberties_totalitarian }
+            NOT = {
+                AND = {
+                    has_government = social_democrat
+                    NVX_has_government_system_authoritarian = yes
+                }
+            }
+            OR = {
+                AND = {
+                    social_democrat > 0.199
+                    has_social_democrat_fourth_estate = no
+                }
+                AND = {
+                    social_democrat > 0.299
+                    NOT = {
+                        OR = {
+                            has_idea = fourth_estate_social_democrat2
+                            has_idea = fourth_estate_social_democrat3
+                            has_idea = fourth_estate_social_democrat4
+                            has_idea = fourth_estate_social_democrat5
+                        }
+                    }
+                }
+                AND = {
+                    social_democrat > 0.399
+                    NOT = {
+                        OR = {
+                            has_idea = fourth_estate_social_democrat3
+                            has_idea = fourth_estate_social_democrat4
+                            has_idea = fourth_estate_social_democrat5
+                        }
+                    }
+                }
+                AND = {
+                    social_democrat > 0.499
+                    NOT = {
+                        OR = {
+                            has_idea = fourth_estate_social_democrat4
+                            has_idea = fourth_estate_social_democrat5
+                        }
+                    }
+                }
+                AND = {
+                    social_democrat > 0.599
+                    NOT = {
+                        has_idea = fourth_estate_social_democrat5
+                    }
+                }
+            }
+        }
+        modifier = { factor = 0.1 has_idea = civil_liberties_restricted }
+		modifier = { factor = 0.25 has_idea = civil_liberties_limited }
+		modifier = { factor = 3.3 has_idea = fourth_estate_social_democrat1 social_democrat > 0.399 }
+		modifier = { factor = 3.3 has_idea = fourth_estate_social_democrat2 social_democrat > 0.499 }
+		modifier = { factor = 3.3 has_idea = fourth_estate_social_democrat3 social_democrat > 0.599 }
+		modifier = { factor = 3.3 has_idea = fourth_estate_social_democrat4 social_democrat > 0.699 }
+        country_event = {
+            id = nvx_fourth_estates.17
+            days = 10
+            random_hours = 12
+            random_days = 10
+        }
+    }
+    2= { #Fourth estate natural decrease social_democrat
+        trigger = {
+            OR = {
+                AND = {
+                    social_democrat < 0.20
+                    has_social_democrat_fourth_estate = yes
+                }
+                AND = {
+                    social_democrat < 0.30
+                    OR = {
+                        has_idea = fourth_estate_social_democrat2
+                        has_idea = fourth_estate_social_democrat3
+                        has_idea = fourth_estate_social_democrat4
+                        has_idea = fourth_estate_social_democrat5
+                    }
+                }
+                AND = {
+                    social_democrat < 0.40
+                    OR = {
+                        has_idea = fourth_estate_social_democrat3
+                        has_idea = fourth_estate_social_democrat4
+                        has_idea = fourth_estate_social_democrat5
+                    }
+                }
+                AND = {
+                    social_democrat < 0.50
+                    OR = {
+                        has_idea = fourth_estate_social_democrat4
+                        has_idea = fourth_estate_social_democrat5
+                    }
+                }
+                AND = {
+                    social_democrat < 0.60
+                    has_idea = fourth_estate_social_democrat5
+                }
+            }
+        }
+        modifier = { factor = 0.1 has_idea = civil_liberties_totalitarian }
+		modifier = { factor = 0.25 has_idea = civil_liberties_restricted }
+		modifier = { factor = 0.6 has_idea = civil_liberties_limited }
+		modifier = { factor = 1.5 social_democrat < 0.10 }
+		modifier = { factor = 3.3 has_idea = fourth_estate_social_democrat2 social_democrat < 0.20 }
+		modifier = { factor = 3.3 has_idea = fourth_estate_social_democrat3 social_democrat < 0.30 }
+		modifier = { factor = 3.3 has_idea = fourth_estate_social_democrat4 social_democrat < 0.40 }
+		modifier = { factor = 3.3 has_idea = fourth_estate_social_democrat5 social_democrat < 0.50 }
+        country_event = {
+            id = nvx_fourth_estates.18
+            days = 10
+            random_hours = 12
+            random_days = 10
+        }
+    }
+    2= { #Fourth estate natural increase progressive
+        trigger = {
+            NOT = { has_idea = civil_liberties_totalitarian }
+            NOT = {
+                AND = {
+                    has_government = progressive
+                    NVX_has_government_system_authoritarian = yes
+                }
+            }
+            OR = {
+                AND = {
+                    progressive > 0.199
+                    has_progressive_fourth_estate = no
+                }
+                AND = {
+                    progressive > 0.299
+                    NOT = {
+                        OR = {
+                            has_idea = fourth_estate_progressive2
+                            has_idea = fourth_estate_progressive3
+                            has_idea = fourth_estate_progressive4
+                            has_idea = fourth_estate_progressive5
+                        }
+                    }
+                }
+                AND = {
+                    progressive > 0.399
+                    NOT = {
+                        OR = {
+                            has_idea = fourth_estate_progressive3
+                            has_idea = fourth_estate_progressive4
+                            has_idea = fourth_estate_progressive5
+                        }
+                    }
+                }
+                AND = {
+                    progressive > 0.499
+                    NOT = {
+                        OR = {
+                            has_idea = fourth_estate_progressive4
+                            has_idea = fourth_estate_progressive5
+                        }
+                    }
+                }
+                AND = {
+                    progressive > 0.599
+                    NOT = {
+                        has_idea = fourth_estate_progressive5
+                    }
+                }
+            }
+        }
+        modifier = { factor = 0.1 has_idea = civil_liberties_restricted }
+		modifier = { factor = 0.25 has_idea = civil_liberties_limited }
+		modifier = { factor = 3.3 has_idea = fourth_estate_progressive1 progressive > 0.399 }
+		modifier = { factor = 3.3 has_idea = fourth_estate_progressive2 progressive > 0.499 }
+		modifier = { factor = 3.3 has_idea = fourth_estate_progressive3 progressive > 0.599 }
+		modifier = { factor = 3.3 has_idea = fourth_estate_progressive4 progressive > 0.699 }
+        country_event = {
+            id = nvx_fourth_estates.19
+            days = 10
+            random_hours = 12
+            random_days = 10
+        }
+    }
+    2= { #Fourth estate natural decrease progressive
+        trigger = {
+            OR = {
+                AND = {
+                    progressive < 0.20
+                    has_progressive_fourth_estate = yes
+                }
+                AND = {
+                    progressive < 0.30
+                    OR = {
+                        has_idea = fourth_estate_progressive2
+                        has_idea = fourth_estate_progressive3
+                        has_idea = fourth_estate_progressive4
+                        has_idea = fourth_estate_progressive5
+                    }
+                }
+                AND = {
+                    progressive < 0.40
+                    OR = {
+                        has_idea = fourth_estate_progressive3
+                        has_idea = fourth_estate_progressive4
+                        has_idea = fourth_estate_progressive5
+                    }
+                }
+                AND = {
+                    progressive < 0.50
+                    OR = {
+                        has_idea = fourth_estate_progressive4
+                        has_idea = fourth_estate_progressive5
+                    }
+                }
+                AND = {
+                    progressive < 0.60
+                    has_idea = fourth_estate_progressive5
+                }
+            }
+        }
+        modifier = { factor = 0.1 has_idea = civil_liberties_totalitarian }
+		modifier = { factor = 0.25 has_idea = civil_liberties_restricted }
+		modifier = { factor = 0.6 has_idea = civil_liberties_limited }
+		modifier = { factor = 1.5 progressive < 0.10 }
+		modifier = { factor = 3.3 has_idea = fourth_estate_progressive2 progressive < 0.20 }
+		modifier = { factor = 3.3 has_idea = fourth_estate_progressive3 progressive < 0.30 }
+		modifier = { factor = 3.3 has_idea = fourth_estate_progressive4 progressive < 0.40 }
+		modifier = { factor = 3.3 has_idea = fourth_estate_progressive5 progressive < 0.50 }
+        country_event = {
+            id = nvx_fourth_estates.20
+            days = 10
+            random_hours = 12
+            random_days = 10
+        }
+    }
+    2= { #Fourth estate natural increase democratic_socialist
+        trigger = {
+            NOT = { has_idea = civil_liberties_totalitarian }
+            NOT = {
+                AND = {
+                    has_government = democratic_socialist
+                    NVX_has_government_system_authoritarian = yes
+                }
+            }
+            OR = {
+                AND = {
+                    democratic_socialist > 0.199
+                    has_democratic_socialist_fourth_estate = no
+                }
+                AND = {
+                    democratic_socialist > 0.299
+                    NOT = {
+                        OR = {
+                            has_idea = fourth_estate_democratic_socialist2
+                            has_idea = fourth_estate_democratic_socialist3
+                            has_idea = fourth_estate_democratic_socialist4
+                            has_idea = fourth_estate_democratic_socialist5
+                        }
+                    }
+                }
+                AND = {
+                    democratic_socialist > 0.399
+                    NOT = {
+                        OR = {
+                            has_idea = fourth_estate_democratic_socialist3
+                            has_idea = fourth_estate_democratic_socialist4
+                            has_idea = fourth_estate_democratic_socialist5
+                        }
+                    }
+                }
+                AND = {
+                    democratic_socialist > 0.499
+                    NOT = {
+                        OR = {
+                            has_idea = fourth_estate_democratic_socialist4
+                            has_idea = fourth_estate_democratic_socialist5
+                        }
+                    }
+                }
+                AND = {
+                    democratic_socialist > 0.599
+                    NOT = {
+                        has_idea = fourth_estate_democratic_socialist5
+                    }
+                }
+            }
+        }
+        modifier = { factor = 0.1 has_idea = civil_liberties_restricted }
+		modifier = { factor = 0.25 has_idea = civil_liberties_limited }
+		modifier = { factor = 3.3 has_idea = fourth_estate_democratic_socialist1 democratic_socialist > 0.399 }
+		modifier = { factor = 3.3 has_idea = fourth_estate_democratic_socialist2 democratic_socialist > 0.499 }
+		modifier = { factor = 3.3 has_idea = fourth_estate_democratic_socialist3 democratic_socialist > 0.599 }
+		modifier = { factor = 3.3 has_idea = fourth_estate_democratic_socialist4 democratic_socialist > 0.699 }
+        country_event = {
+            id = nvx_fourth_estates.21
+            days = 10
+            random_hours = 12
+            random_days = 10
+        }
+    }
+    2= { #Fourth estate natural decrease democratic_socialist
+        trigger = {
+            OR = {
+                AND = {
+                    democratic_socialist < 0.20
+                    has_democratic_socialist_fourth_estate = yes
+                }
+                AND = {
+                    democratic_socialist < 0.30
+                    OR = {
+                        has_idea = fourth_estate_democratic_socialist2
+                        has_idea = fourth_estate_democratic_socialist3
+                        has_idea = fourth_estate_democratic_socialist4
+                        has_idea = fourth_estate_democratic_socialist5
+                    }
+                }
+                AND = {
+                    democratic_socialist < 0.40
+                    OR = {
+                        has_idea = fourth_estate_democratic_socialist3
+                        has_idea = fourth_estate_democratic_socialist4
+                        has_idea = fourth_estate_democratic_socialist5
+                    }
+                }
+                AND = {
+                    democratic_socialist < 0.50
+                    OR = {
+                        has_idea = fourth_estate_democratic_socialist4
+                        has_idea = fourth_estate_democratic_socialist5
+                    }
+                }
+                AND = {
+                    democratic_socialist < 0.60
+                    has_idea = fourth_estate_democratic_socialist5
+                }
+            }
+        }
+        modifier = { factor = 0.1 has_idea = civil_liberties_totalitarian }
+		modifier = { factor = 0.25 has_idea = civil_liberties_restricted }
+		modifier = { factor = 0.6 has_idea = civil_liberties_limited }
+		modifier = { factor = 1.5 democratic_socialist < 0.10 }
+		modifier = { factor = 3.3 has_idea = fourth_estate_democratic_socialist2 democratic_socialist < 0.20 }
+		modifier = { factor = 3.3 has_idea = fourth_estate_democratic_socialist3 democratic_socialist < 0.30 }
+		modifier = { factor = 3.3 has_idea = fourth_estate_democratic_socialist4 democratic_socialist < 0.40 }
+		modifier = { factor = 3.3 has_idea = fourth_estate_democratic_socialist5 democratic_socialist < 0.50 }
+        country_event = {
+            id = nvx_fourth_estates.22
+            days = 10
+            random_hours = 12
+            random_days = 10
+        }
+    }
+    2= { #Fourth estate natural increase communist
+        trigger = {
+            NOT = { has_idea = civil_liberties_totalitarian }
+            NOT = {
+                AND = {
+                    has_government = communist
+                    NVX_has_government_system_authoritarian = yes
+                }
+            }
+            OR = {
+                AND = {
+                    communist > 0.199
+                    has_communist_fourth_estate = no
+                }
+                AND = {
+                    communist > 0.299
+                    NOT = {
+                        OR = {
+                            has_idea = fourth_estate_communist2
+                            has_idea = fourth_estate_communist3
+                            has_idea = fourth_estate_communist4
+                            has_idea = fourth_estate_communist5
+                        }
+                    }
+                }
+                AND = {
+                    communist > 0.399
+                    NOT = {
+                        OR = {
+                            has_idea = fourth_estate_communist3
+                            has_idea = fourth_estate_communist4
+                            has_idea = fourth_estate_communist5
+                        }
+                    }
+                }
+                AND = {
+                    communist > 0.499
+                    NOT = {
+                        OR = {
+                            has_idea = fourth_estate_communist4
+                            has_idea = fourth_estate_communist5
+                        }
+                    }
+                }
+                AND = {
+                    communist > 0.599
+                    NOT = {
+                        has_idea = fourth_estate_communist5
+                    }
+                }
+            }
+        }
+        modifier = { factor = 0.1 has_idea = civil_liberties_restricted }
+		modifier = { factor = 0.25 has_idea = civil_liberties_limited }
+		modifier = { factor = 3.3 has_idea = fourth_estate_communist1 communist > 0.399 }
+		modifier = { factor = 3.3 has_idea = fourth_estate_communist2 communist > 0.499 }
+		modifier = { factor = 3.3 has_idea = fourth_estate_communist3 communist > 0.599 }
+		modifier = { factor = 3.3 has_idea = fourth_estate_communist4 communist > 0.699 }
+        country_event = {
+            id = nvx_fourth_estates.23
+            days = 10
+            random_hours = 12
+            random_days = 10
+        }
+    }
+    2= { #Fourth estate natural decrease communist
+        trigger = {
+            OR = {
+                AND = {
+                    communist < 0.20
+                    has_communist_fourth_estate = yes
+                }
+                AND = {
+                    communist < 0.30
+                    OR = {
+                        has_idea = fourth_estate_communist2
+                        has_idea = fourth_estate_communist3
+                        has_idea = fourth_estate_communist4
+                        has_idea = fourth_estate_communist5
+                    }
+                }
+                AND = {
+                    communist < 0.40
+                    OR = {
+                        has_idea = fourth_estate_communist3
+                        has_idea = fourth_estate_communist4
+                        has_idea = fourth_estate_communist5
+                    }
+                }
+                AND = {
+                    communist < 0.50
+                    OR = {
+                        has_idea = fourth_estate_communist4
+                        has_idea = fourth_estate_communist5
+                    }
+                }
+                AND = {
+                    communist < 0.60
+                    has_idea = fourth_estate_communist5
+                }
+            }
+        }
+        modifier = { factor = 0.1 has_idea = civil_liberties_totalitarian }
+		modifier = { factor = 0.25 has_idea = civil_liberties_restricted }
+		modifier = { factor = 0.6 has_idea = civil_liberties_limited }
+		modifier = { factor = 1.5 communist < 0.10 }
+		modifier = { factor = 3.3 has_idea = fourth_estate_communist2 communist < 0.20 }
+		modifier = { factor = 3.3 has_idea = fourth_estate_communist3 communist < 0.30 }
+		modifier = { factor = 3.3 has_idea = fourth_estate_communist4 communist < 0.40 }
+		modifier = { factor = 3.3 has_idea = fourth_estate_communist5 communist < 0.50 }
+        country_event = {
+            id = nvx_fourth_estates.24
+            days = 10
+            random_hours = 12
+            random_days = 10
         }
     }
 }

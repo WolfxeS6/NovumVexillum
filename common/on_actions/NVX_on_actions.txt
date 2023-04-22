@@ -260,7 +260,20 @@ on_actions = {
 				NVX_ECO_monthly = yes
 				NVX_ECO_pax_monthly = yes
 				NVX_LPA_focus_future_monthly = yes
-				NVX_Event_manager_monthly = yes
+				random_list = {
+					50 = {
+						modifier = { factor = 1.5 has_stability  < 0.80 }
+						NVX_Event_manager_monthly = yes
+					}
+					50 = {
+						modifier = { factor = 0 has_global_flag = sandbox_disable_natural_estate_drift }
+						modifier = { factor = 0.5 has_idea = civil_liberties_totalitarian }
+						NVX_Estate_manager_monthly = yes
+					}
+					50 = {
+						modifier = { factor = 2 has_global_flag = sandbox_disable_natural_estate_drift }
+					}
+				}
 			}
 		}
 	}
