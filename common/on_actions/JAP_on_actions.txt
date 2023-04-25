@@ -1,0 +1,284 @@
+on_actions = {
+	
+	on_startup = {
+		effect = {
+			JAP = {
+				JAP_JieitaiPopularity_minmax_effect = yes
+				JAP_JieitaiDiscipline_minmax_effect = yes
+			}
+			282 = {	#Tokyo
+				set_state_flag = JAP_right_state
+				JAP_set_high_approval_rating = yes
+			}
+		}
+		effect = {
+			#JAP_no_okinawa = yes
+		}
+	}
+
+	on_weekly_KOR = {
+		effect = {
+			if = {
+				limit = {
+					NOT = { has_global_flag = dokdo_and_takeshima_global_flag }
+				}
+				add_to_variable = { var = GetDokdoSupport value = -0.1 }
+				Dokdo_Takeshima_setting = yes
+			}
+		}
+	}
+	
+	on_weekly_JAP = {
+		effect = {
+			every_state = {
+				limit = {
+					AND = {
+						is_owned_and_controlled_by = JAP
+						is_core_of = JAP
+						state_population_k > 500 #NO SENKAKU
+						check_variable = { JAP_state_loyalty = 0 }
+					}
+				}
+				JAP_set_middle_approval_rating = yes
+			}
+		}
+		effect = {
+			if = {
+				limit = {
+					NOT = { has_global_flag = dokdo_and_takeshima_global_flag }
+				}
+				add_to_variable = { var = GetTakeshimaSupport value = -0.1 }
+				Dokdo_Takeshima_setting = yes
+			}
+		}
+		effect = {
+			if = {
+				limit = {
+					#NOT = { has_country_flag = JAP_JieitaiPopularity_automatic_edit_flag }
+					JAP_need_JieitaiDiscipline_50 = yes
+					check_variable = { JieitaiPopularity > 20 }
+				}
+				#set_country_flag = { flag = JAP_JieitaiPopularity_automatic_edit_flag value = 1 days = 13 }
+				JAP_JieitaiPopularity_automatic_edit = yes
+			}
+		}
+		effect = {
+			if = {
+				limit = {
+					#NOT = { has_country_flag = JAP_JieitaiDiscipline_automatic_edit_flag }
+					JAP_need_JieitaiPopularity_50 = yes
+					check_variable = { JieitaiDiscipline > 20 }
+				}
+				#set_country_flag = { flag = JAP_JieitaiDiscipline_automatic_edit_flag value = 1 days = 13 }
+				JAP_JieitaiDiscipline_automatic_edit = yes
+			}
+		}
+
+	}
+	
+	on_monthly_KOR = { 
+		effect = {
+			if = {
+				limit = { 1082 = {	has_dynamic_modifier = { modifier = dynamic_takeshima_token_4 }	} }
+				add_to_variable = { var = GetDokdoSupport value = -7 }
+				Dokdo_Takeshima_setting = yes
+			}
+			else_if = {
+				limit = { 1082 = {	has_dynamic_modifier = { modifier = dynamic_takeshima_token_3 }	} }
+				add_to_variable = { var = GetDokdoSupport value = -5 }
+				Dokdo_Takeshima_setting = yes
+			}
+			else_if = {
+				limit = { 1082 = {	has_dynamic_modifier = { modifier = dynamic_takeshima_token_2 }	} }
+				add_to_variable = { var = GetDokdoSupport value = -4 }
+				Dokdo_Takeshima_setting = yes
+			}
+			else_if = {
+				limit = { 1082 = {	has_dynamic_modifier = { modifier = dynamic_takeshima_token_1 }	} }
+				add_to_variable = { var = GetDokdoSupport value = -3 }
+				Dokdo_Takeshima_setting = yes
+			}
+		}
+	}
+	
+	on_monthly_JAP = { 
+		effect = { 
+			IF = {
+				limit = { has_idea = JAP_focus_on_discipline }
+				JAP_JieitaiDiscipline_add_5_effect = yes
+			}
+			IF = {
+				limit = { has_idea = JAP_focus_on_popularity }
+				JAP_JieitaiPopularity_add_5_effect = yes
+			}
+		}
+		effect = {
+			if = {
+				limit = { 1082 = {	has_dynamic_modifier = { modifier = dynamic_dokdo_token_4 }	} }
+				add_to_variable = { var = GetTakeshimaSupport value = -7 }
+				Dokdo_Takeshima_setting = yes
+			}
+			else_if = {
+				limit = { 1082 = {	has_dynamic_modifier = { modifier = dynamic_dokdo_token_3 }	} }
+				add_to_variable = { var = GetTakeshimaSupport value = -5 }
+				Dokdo_Takeshima_setting = yes
+			}
+			else_if = {
+				limit = { 1082 = {	has_dynamic_modifier = { modifier = dynamic_dokdo_token_2 }	} }
+				add_to_variable = { var = GetTakeshimaSupport value = -4 }
+				Dokdo_Takeshima_setting = yes
+			}
+			else_if = {
+				limit = { 1082 = {	has_dynamic_modifier = { modifier = dynamic_dokdo_token_1 }	} }
+				add_to_variable = { var = GetTakeshimaSupport value = -3 }
+				Dokdo_Takeshima_setting = yes
+			}
+		}
+	}
+	
+	on_state_control_changed = {
+		effect = {
+			if = {
+				limit = {
+					ROOT = { NOT = { tag = JAP } }
+					FROM.FROM = { 
+						has_dynamic_modifier = { modifier = dynamic_okinawa_separatism }
+					}
+				}
+				FROM.FROM = { 
+					remove_dynamic_modifier = { modifier = dynamic_okinawa_separatism } 
+				}
+			}
+		}
+		effect = {
+			if = {
+				limit = {
+					ROOT = { NOT = { tag = JAP } }
+					FROM.FROM = { 
+						has_dynamic_modifier = { modifier = dynamic_electricity_problem }
+					}
+				}
+				FROM.FROM = { 
+					remove_dynamic_modifier = { modifier = dynamic_electricity_problem } 
+				}
+			}
+		}
+		effect = {
+			if = {
+				limit = {
+					ROOT = { NOT = { tag = JAP } }
+					FROM.FROM = { 
+						has_dynamic_modifier = { modifier = dynamic_zainichi_problem }
+					}
+				}
+				FROM.FROM = { 
+					remove_dynamic_modifier = { modifier = dynamic_zainichi_problem } 
+				}
+			}
+		}
+		effect = {
+			if = {
+				limit = {
+					FROM.FROM = { 
+						AND = { 
+							has_state_flag = JAP_zainichi_state
+							NOT = { has_dynamic_modifier = { modifier = dynamic_zainichi_problem } }
+							is_owned_and_controlled_by = JAP
+						}
+					}
+				}
+				FROM.FROM = { 
+					add_dynamic_modifier = { modifier = dynamic_zainichi_problem } 
+				}
+			}
+		}
+	}
+	
+	on_civil_war_end = {
+		effect = {
+			# After Japan Communist Civil War
+			if = {
+				limit = {
+					original_tag = JAP
+					has_global_flag = JAP_communist_civil_war
+				}
+				clr_global_flag = JAP_communist_civil_war
+				set_global_flag = JAP_communist_civil_war_over
+				ROOT = { 
+					delete_unit_template_and_units = {
+						division_template = "Japanese People's Regiment"
+						disband = no
+					}
+					delete_unit_template_and_units = {
+						division_template = "Japanese Red Army"
+						disband = no
+					}
+				}
+				ROOT = { 
+					country_event = {
+						id = japan.43
+						days = 1
+						random_hours = 8
+					}
+				} # Trigger the Post Civil War effects
+			}
+		}
+	}
+	
+	on_war = {
+		effect = {
+			if = {
+				limit = {
+					original_tag = JAP
+					has_war_with = KOR
+					OR = {
+						has_global_flag = KOR_provisional_left
+						has_global_flag = KOR_provisional_right
+					}
+				}
+				ROOT = { 
+					country_event = {
+						id = japan_exile_korea.7
+						hours = 4
+						random_hours = 8
+					}
+				}
+			}
+		}
+	}
+	
+	on_peace = {
+		effect = {
+			if = {
+				limit = {
+					original_tag = JAP
+					OR = {
+						has_global_flag = KOR_provisional_left
+						has_global_flag = KOR_provisional_right
+					}
+					OR = {
+						KOR = { is_subject_of = JAP }
+						AND = {
+							525 = { 
+								owner = {
+									OR = {
+										original_tag = JAP
+										is_subject_of = JAP
+									}
+								}
+							}
+							NOT = { country_exists = KOR }
+						}
+					}
+				}
+				ROOT = { 
+					country_event = {
+						id = japan_exile_korea.9
+						hours = 4
+						random_hours = 8
+					}
+				}
+			}
+		}
+	}
+}
