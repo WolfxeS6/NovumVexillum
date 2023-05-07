@@ -95,11 +95,347 @@ entity = {
 	scale = 1.0
 }
 
-## We don't have a UNI tag
-# entity = { 
-# 	clone = "artillery_entity"
-# 	name = "UNI_artillery_entity"
+##汎用自走砲
+##M109
+entity = {
+	name = "geo_m109_entity"
+	pdxmesh = "geo_m109_mesh"
+	
+	state = { name = "idle"				animation = "idle"   animation_blend_time = 0.3 }
+	state = { name = "move"				animation = "move"   animation_blend_time = 0.3 
+		event = { time = 0 node="left_exhaust" particle = "tank_exhaust_particle"  keep_particle = no trigger_once = yes } 
+		event = { time = 0 node="right_exhaust" particle = "tank_exhaust_particle"  keep_particle = no trigger_once = yes } 
+		event = { time = 0 node="left_tracks" particle = "tank_moving_tracks_particle"  keep_particle = no trigger_once = yes}
+		event = { time = 0 node="right_tracks" particle = "tank_moving_tracks_particle"  keep_particle = no trigger_once = yes}
+		event = { trigger_once = yes sound = { soundeffect = "ger_heavy_sp_artillery_moving" } }
+	}
+	state = { name = "retreat"				animation = "move"   animation_blend_time = 0.3 
+		event = { time = 0 node="left_exhaust" particle = "tank_exhaust_particle"  keep_particle = no trigger_once = yes } 
+		event = { time = 0 node="right_exhaust" particle = "tank_exhaust_particle"  keep_particle = no trigger_once = yes } 
+		event = { time = 0 node="left_tracks" particle = "tank_moving_tracks_particle"  keep_particle = no trigger_once = yes}
+		event = { time = 0 node="right_tracks" particle = "tank_moving_tracks_particle"  keep_particle = no trigger_once = yes}
+		event = { trigger_once = yes sound = { soundeffect = "ger_heavy_sp_artillery_moving" } }
+	}
+	state = { name = "attack"			animation = "attack" animation_blend_time = 0.3 
+		event = { time = 0 node="barrel" particle = "heavy_tank_attack_barrel_particle"  keep_particle = yes light = "muzzle_flash" sound = { soundeffect = ger_heavy_sp_artillery_fire }} 
+		event = { time = 0 node="barrel" particle = "heavy_tank_attack_barrel_smoke_particle"  keep_particle = yes light = "muzzle_flash" } 
+	}
+	state = { name = "defend"			animation = "attack" animation_blend_time = 0.3 
+		event = { time = 0 node="barrel" particle = "heavy_tank_attack_barrel_particle"  keep_particle = yes light = "muzzle_flash" sound = { soundeffect = ger_heavy_sp_artillery_fire }} 
+		event = { time = 0 node="barrel" particle = "heavy_tank_attack_barrel_smoke_particle"  keep_particle = yes light = "muzzle_flash" } 
+	}
+	state = { name = "support_attack"	animation = "attack" animation_blend_time = 0.3  
+		event = { time = 0 node="barrel" particle = "heavy_tank_attack_barrel_particle"  keep_particle = yes light = "muzzle_flash" sound = { soundeffect = ger_heavy_sp_artillery_fire }} 
+		event = { time = 0 node="barrel" particle = "heavy_tank_attack_barrel_smoke_particle"  keep_particle = yes light = "muzzle_flash" } 
+	}
+	state = { name = "training"				animation = "idle" 			animation_blend_time = 0.3 animation_speed = 1.0
+		event = { time = 0 node="left_exhaust" particle = "tank_exhaust_particle"  keep_particle = no trigger_once = yes } 
+		event = { time = 0 node="right_exhaust" particle = "tank_exhaust_particle"  keep_particle = no trigger_once = yes } 
+	}
 
-# 	attach = { name = artillery			artillery = "artillery_gun_entity" }
-# 	attach = { name = infantry			infantry = "UNI_infantry_entity" }
-# }
+	scale = 0.7
+	
+	game_data = {
+		texture_anim_speed = 0.5
+	}
+}
+
+##DANA
+entity = {
+	name = "geo_dana_entity"
+	pdxmesh = "geo_dana_mesh"
+	
+	state = { name = "idle"				animation = "idle"   animation_blend_time = 0.3 }
+	state = { name = "move"				animation = "move"   animation_blend_time = 0.3 
+		event = { time = 0 node="left_exhaust" particle = "tank_exhaust_particle"  keep_particle = no trigger_once = yes } 
+		event = { time = 0 node="right_exhaust" particle = "tank_exhaust_particle"  keep_particle = no trigger_once = yes } 
+		event = { time = 0 node="left_tracks" particle = "tank_moving_tracks_particle"  keep_particle = no trigger_once = yes}
+		event = { time = 0 node="right_tracks" particle = "tank_moving_tracks_particle"  keep_particle = no trigger_once = yes}
+		event = { trigger_once = yes sound = { soundeffect = "motorized_unit_move_animation" } }
+	}
+	state = { name = "retreat"				animation = "move"   animation_blend_time = 0.3 
+		event = { time = 0 node="left_exhaust" particle = "tank_exhaust_particle"  keep_particle = no trigger_once = yes } 
+		event = { time = 0 node="right_exhaust" particle = "tank_exhaust_particle"  keep_particle = no trigger_once = yes } 
+		event = { time = 0 node="left_tracks" particle = "tank_moving_tracks_particle"  keep_particle = no trigger_once = yes}
+		event = { time = 0 node="right_tracks" particle = "tank_moving_tracks_particle"  keep_particle = no trigger_once = yes}
+		event = { trigger_once = yes sound = { soundeffect = "motorized_unit_move_animation" } }
+	}
+	state = { name = "attack"			animation = "attack" animation_blend_time = 0.3 
+		event = { time = 0 node="barrel" particle = "heavy_tank_attack_barrel_particle"  keep_particle = yes light = "muzzle_flash" sound = { soundeffect = ger_heavy_sp_artillery_fire }} 
+		event = { time = 0 node="barrel" particle = "heavy_tank_attack_barrel_smoke_particle"  keep_particle = yes light = "muzzle_flash" } 
+	}
+	state = { name = "defend"			animation = "attack" animation_blend_time = 0.3 
+		event = { time = 0 node="barrel" particle = "heavy_tank_attack_barrel_particle"  keep_particle = yes light = "muzzle_flash" sound = { soundeffect = ger_heavy_sp_artillery_fire }} 
+		event = { time = 0 node="barrel" particle = "heavy_tank_attack_barrel_smoke_particle"  keep_particle = yes light = "muzzle_flash" } 
+	}
+	state = { name = "support_attack"	animation = "attack" animation_blend_time = 0.3  
+		event = { time = 0 node="barrel" particle = "heavy_tank_attack_barrel_particle"  keep_particle = yes light = "muzzle_flash" sound = { soundeffect = ger_heavy_sp_artillery_fire }} 
+		event = { time = 0 node="barrel" particle = "heavy_tank_attack_barrel_smoke_particle"  keep_particle = yes light = "muzzle_flash" } 
+	}
+	state = { name = "training"				animation = "idle" 			animation_blend_time = 0.3 animation_speed = 1.0
+		event = { time = 0 node="left_exhaust" particle = "tank_exhaust_particle"  keep_particle = no trigger_once = yes } 
+		event = { time = 0 node="right_exhaust" particle = "tank_exhaust_particle"  keep_particle = no trigger_once = yes } 
+	}
+
+	scale = 0.7
+	
+	game_data = {
+		texture_anim_speed = 0.5
+	}
+}
+
+##2S19ムスタ
+entity = {
+	clone = "geo_m109_entity"
+	name = "geo_2s19_entity"
+	pdxmesh = "geo_2s19_mesh"
+}
+
+##汎用砲兵
+entity = {
+	clone = "geo_2s19_entity"
+	name = "modern_sp_artillery_brigade_entity"
+}
+
+###北米
+##米国
+entity = {
+	clone = "geo_m109_entity"
+	name = "USA_modern_sp_artillery_brigade_entity"
+}
+##カナダ
+entity = {
+	clone = "geo_m109_entity"
+	name = "CAN_modern_sp_artillery_brigade_entity"
+}
+
+###南米
+##ペルー
+entity = {
+	clone = "geo_m109_entity"
+	name = "PRU_modern_sp_artillery_brigade_entity"
+}
+##ブラジル
+entity = {
+	clone = "geo_m109_entity"
+	name = "BRA_modern_sp_artillery_brigade_entity"
+}
+##チリ
+entity = {
+	clone = "geo_m109_entity"
+	name = "CHL_modern_sp_artillery_brigade_entity"
+	pdxmesh = "geo_m109_desert_mesh"
+}
+
+###欧州
+##ギリシャ
+entity = {
+	clone = "geo_m109_entity"
+	name = "GRE_modern_sp_artillery_brigade_entity"
+}
+##スイス
+entity = {
+	clone = "geo_m109_entity"
+	name = "SWI_modern_sp_artillery_brigade_entity"
+}
+##ポルトガル
+entity = {
+	clone = "geo_m109_entity"
+	name = "POR_modern_sp_artillery_brigade_entity"
+}
+##スペイン
+entity = {
+	clone = "geo_m109_entity"
+	name = "SPR_modern_sp_artillery_brigade_entity"
+}
+##オーストリア
+entity = {
+	clone = "geo_m109_entity"
+	name = "AUS_modern_sp_artillery_brigade_entity"
+}
+##ラトビア
+entity = {
+	clone = "geo_m109_entity"
+	name = "LAT_modern_sp_artillery_brigade_entity"
+}
+##ベルギー
+entity = {
+	clone = "geo_m109_entity"
+	name = "BEL_modern_sp_artillery_brigade_entity"
+}
+##デンマーク
+entity = {
+	clone = "geo_m109_entity"
+	name = "DEN_modern_sp_artillery_brigade_entity"
+}
+##ドイツ
+entity = {
+	clone = "geo_m109_entity"
+	name = "GER_modern_sp_artillery_brigade_entity"
+}
+##イタリア
+entity = {
+	clone = "geo_m109_entity"
+	name = "ITA_modern_sp_artillery_brigade_entity"
+}
+##オランダ
+entity = {
+	clone = "geo_m109_entity"
+	name = "HOL_modern_sp_artillery_brigade_entity"
+}
+##ノルウェー
+entity = {
+	clone = "geo_m109_entity"
+	name = "NOR_modern_sp_artillery_brigade_entity"
+}
+##イギリス
+entity = {
+	clone = "geo_m109_entity"
+	name = "ENG_modern_sp_artillery_brigade_entity"
+}
+##チェコ
+entity = {
+	clone = "geo_dana_entity"
+	name = "CZE_modern_sp_artillery_brigade_entity"
+}
+##スロヴァキア
+entity = {
+	clone = "geo_dana_entity"
+	name = "SLO_modern_sp_artillery_brigade_entity"
+}
+##ポーランド
+entity = {
+	clone = "geo_dana_entity"
+	name = "POL_modern_sp_artillery_brigade_entity"
+}
+
+###アジア
+##イラク
+entity = {
+	clone = "geo_m109_entity"
+	name = "IRQ_modern_sp_artillery_brigade_entity"
+	pdxmesh = "geo_m109_desert_mesh"
+}
+##イラン
+entity = {
+	clone = "geo_m109_entity"
+	name = "PER_modern_sp_artillery_brigade_entity"
+	pdxmesh = "geo_m109_desert_mesh"
+}
+##オマーン
+entity = {
+	clone = "geo_m109_entity"
+	name = "OMA_modern_sp_artillery_brigade_entity"
+	pdxmesh = "geo_m109_desert_mesh"
+}
+##UAE
+entity = {
+	clone = "geo_m109_entity"
+	name = "UAE_modern_sp_artillery_brigade_entity"
+	pdxmesh = "geo_m109_desert_mesh"
+}
+##ヨルダン
+entity = {
+	clone = "geo_m109_entity"
+	name = "JOR_modern_sp_artillery_brigade_entity"
+	pdxmesh = "geo_m109_desert_mesh"
+}
+##レバノン
+entity = {
+	clone = "geo_m109_entity"
+	name = "LEB_modern_sp_artillery_brigade_entity"
+	pdxmesh = "geo_m109_desert_mesh"
+}
+##パキスタン
+entity = {
+	clone = "geo_m109_entity"
+	name = "PAK_modern_sp_artillery_brigade_entity"
+	pdxmesh = "geo_m109_desert_mesh"
+}
+##サウジアラビア
+entity = {
+	clone = "geo_m109_entity"
+	name = "SAU_modern_sp_artillery_brigade_entity"
+	pdxmesh = "geo_m109_desert_mesh"
+}
+##中華民国
+entity = {
+	clone = "geo_m109_entity"
+	name = "TAI_modern_sp_artillery_brigade_entity"
+}
+##インドネシア
+entity = {
+	clone = "geo_m109_entity"
+	name = "IND_modern_sp_artillery_brigade_entity"
+}
+##イスラエル
+entity = {
+	clone = "geo_m109_entity"
+	name = "ISR_modern_sp_artillery_brigade_entity"
+	pdxmesh = "geo_m109_desert_mesh"
+}
+##タイ
+entity = {
+	clone = "geo_m109_entity"
+	name = "SIA_modern_sp_artillery_brigade_entity"
+}
+##韓国
+entity = {
+	clone = "geo_m109_entity"
+	name = "KOR_modern_sp_artillery_brigade_entity"
+}
+##グルジア
+entity = {
+	clone = "geo_dana_entity"
+	name = "GEO_modern_sp_artillery_brigade_entity"
+}
+
+###アフリカ
+##チュニジア
+entity = {
+	clone = "geo_m109_entity"
+	name = "TUN_modern_sp_artillery_brigade_entity"
+	pdxmesh = "geo_m109_desert_mesh"
+}
+##エチオピア
+entity = {
+	clone = "geo_m109_entity"
+	name = "ETH_modern_sp_artillery_brigade_entity"
+	pdxmesh = "geo_m109_desert_mesh"
+}
+##ジブチ
+entity = {
+	clone = "geo_m109_entity"
+	name = "DJI_modern_sp_artillery_brigade_entity"
+	pdxmesh = "geo_m109_desert_mesh"
+}
+
+##エジプト
+entity = {
+	clone = "geo_m109_entity"
+	name = "EGY_modern_sp_artillery_brigade_entity"
+	pdxmesh = "geo_m109_desert_mesh"
+}
+##モロッコ
+entity = {
+	clone = "geo_m109_entity"
+	name = "TUN_modern_sp_artillery_brigade_entity"
+	pdxmesh = "geo_m109_desert_mesh"
+}
+##リビア
+entity = {
+	clone = "geo_m109_entity"
+	name = "LBA_modern_sp_artillery_brigade_0_entity"
+	pdxmesh = "geo_dana_LBA_mesh"
+}
+entity = {
+	clone = "geo_m109_entity"
+	name = "LBA_modern_sp_artillery_brigade_entity"
+	pdxmesh = "geo_dana_desert_mesh"
+}
+
+##ウクライナ
+entity = {
+	clone = "geo_2s19_entity"
+	name = "UKR_modern_sp_artillery_brigade_entity"
+}
