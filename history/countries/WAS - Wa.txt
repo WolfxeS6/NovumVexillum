@@ -6,8 +6,24 @@ set_research_slots = 2
 set_convoys = 10
 set_stability = 0.3
 
+set_country_flag = country_language_chinese
 set_country_flag = country_language_burmese
 set_country_flag = country_behavior_dispersed
+
+PRC = {
+	if = {
+		limit = {
+			has_dlc = "Together for Victory"
+		}
+		set_autonomy = {
+			target = WAS
+			autonomous_state = autonomy_chinese_support_warlord_government
+		}
+		else = {
+			puppet = WAS
+		}
+	}
+}
 
 if = {
 	limit = {
@@ -193,8 +209,12 @@ add_ideas = {
 	civil_liberties_restricted
 	population_growth_steady
 	extensive_conscription
-	chinese_help_wa
+	WAS_chinese_help
+	WAS_embrace_the_opium_trade
+	WAS_ineffective_bureaucracy_warlord
 }
+
+recruit_character = WAS_Bao_Youxiang
 
 set_politics = {	
 	ruling_party = communist
@@ -205,10 +225,4 @@ set_politics = {
 
 set_popularities = {
     communist = 100
-}
-
-create_country_leader = {
-	name = "Bao Youxiang"
-	picture = "bao_youxiang.dds"
-	ideology = maoist
 }
