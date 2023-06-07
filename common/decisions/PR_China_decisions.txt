@@ -1,303 +1,107 @@
 
-#### CHINA CONGRESS ####
+PRC_peasant_strike_category = {
+	PRC_looming_mingongs_strike_mission = {
 
-PRC_committee = {
+		allowed = { tag = PRC }
 
-	PRC_small_guanxi_effort = { #Connecting Small Guanxi with Committee members
-		icon = generic_political_discourse
-		
+		icon = POL_looming_peasants_strike
+
 		available = {
-			check_variable = { central_committee_support < central_committee_total }
+			hidden_trigger = { always = no }
+		}
+
+		days_mission_timeout = 365
+		is_good = no
+		fire_only_once = yes
+
+		cancel_trigger = {
+			NOT = { has_idea = PRC_rural_poverty_strike }
+		}
+		
+		activation = {
+			has_idea = PRC_rural_poverty_strike
+		}
+
+		visible = {
+			has_idea = PRC_rural_poverty_strike
+		}
+		
+		cancel_effect = {
+		
+		}
+
+		timeout_effect = {
+			activate_mission = PRC_mingongs_strike
+			swap_ideas = {
+				remove_idea = PRC_rural_poverty_strike
+				add_idea = PRC_rural_poverty_strike_danger
+			}
+			hidden_effect = {
+				country_event = pr_china.39
+			}
+		}
+
+		ai_will_do = {
+			factor = 200
+		}
+	}
+	
+	PRC_mingongs_strike = {
+
+		allowed = { tag = PRC }
+
+		icon = POL_organize_strike_two
+
+		available = {
+			hidden_trigger = { always = no }
+		}
+
+		days_mission_timeout = 150
+		is_good = no
+		fire_only_once = yes
+
+		cancel_trigger = {
+			NOT = { has_idea = PRC_rural_poverty_strike_danger }
+		}
+
+		activation = {
+			has_idea = PRC_rural_poverty_strike_danger
+			NOT = { has_country_flag = mingong_war_happened_flag }
+		}
+
+		visible = {
+			has_idea = PRC_rural_poverty_strike_danger
+		}
+		
+		cancel_effect = {
+		
+		}
+
+		timeout_effect = {
+			country_event = { id = pr_china.101 days = 1 } 
+			country_event = { id = pr_china.102 days = 1 } 
+		
+			hidden_effect = {
+				if = {
+					limit = {
+						TIB = {
+							is_puppet_of = ROOT
+						}
+						set_autonomy = { target = PREV autonomy_state = free }
+					}
+				}
+				if = {
+					limit = {
+						SIK = {
+							is_puppet_of = ROOT
+						}
+						set_autonomy = { target = PREV autonomy_state = free }
+					}
+				}
+			}
 			
-			not = {
-				has_decision = PRC_medium_guanxi_effort
-			}
-			OR = {
-				political_power_daily > 0.3
-				has_political_power > 10
-			}
-		}
-		
-		cost = 0
-		
-		ai_will_do = {
-			factor = 10
-			modifier = {
-				committee_low_support_trigger = yes
-				factor = 0.5
-			}
-			modifier = {
-				committee_medium_support_trigger = yes
-				factor = 0.5
-			}
-			modifier = {
-				committee_high_support_trigger = yes
-				factor = 0
-			}
-		}
-		
-		modifier = {
-			political_power_gain = -0.3
-		}
-		
-		days_remove = 30
-		
-		remove_effect = {
-			PRC_committee_small_support = yes
-		}
-	}
-	
-	PRC_medium_guanxi_effort = { #Connecting Small Guanxi with Committee members
-		icon = generic_political_discourse
-		available = {
-		
-			check_variable = { central_committee_support < central_committee_total }
-			
-			not = {
-				has_decision = PRC_small_guanxi_effort
-			}
-			OR = {
-				political_power_daily > 0.75
-				has_political_power > 35
-			}
-		}
-		cost = 0
-		
-		ai_will_do = {
-			factor = 10
-			modifier = {
-				committee_low_support_trigger = yes
-				factor = 0.3
-			}
-			modifier = {
-				committee_medium_support_trigger = yes
-				factor = 0.2
-			}
-			modifier = {
-				committee_high_support_trigger = yes
-				factor = 0
-			}
-		}
-		
-		modifier = {
-			political_power_gain = -0.75
-		}
-		
-		days_remove = 45
-		
-		remove_effect = {
-			PRC_committee_medium_support = yes
-		}
-	}
-	
-	PRC_support_for_international_students = {
-		icon = ger_mefo_bills
-		available = {
-			committee_medium_support_trigger = yes 
-		}
-		cost = 25
-		days_remove = 90
-		days_re_enable = 275
-		ai_will_do = {
-			factor = 1
-			modifier = {
-				committee_low_support_trigger = yes
-				factor = 0
-			}
-		}
-		modifier = { research_speed_factor = 0.08 }
-		
-		remove_effect = {
-			PRC_committee_medium_opposition = yes
-		}
-	}
-	
-	PRC_foreign_cultural_regulation = {
-		icon = eng_propaganda_campaigns
-		
-		available = {
-			committee_low_support_trigger = yes 
-			has_stability < 1.0
-		}
-		cost = 15
-		days_remove = 90
-		days_re_enable = 210
-		
-		ai_will_do = {
-			factor = 1000
-			modifier = {
-				committee_low_support_trigger = yes
-				factor = 0
-			}
-			modifier = {
-				has_stability > 0.5
-				factor = 0.5
-			}
-			modifier = {
-				has_stability > 0.65
-				factor = 0.5
-			}
-			modifier = {
-				has_stability > 0.8
-				factor = 0
-			}
-		}
-		
-		modifier = { stability_weekly = 0.005 }
-		
-		complete_effect = {
-			PRC_committee_medium_opposition = yes
-		}
-	}
-	
-	PRC_crush_feminist = {
-		icon = ger_mefo_bills
-		
-		available = {
-			committee_medium_support_trigger = yes 
-			NOT = {
-				has_country_flag = PRC_cursh_feminist_flag
-			}
-			NOT = {
-				has_country_flag = PRC_approval_feminist_flag
-			}
-		}
-		
-		visible = {
-			NOT = {
-				has_country_flag = PRC_approval_feminist_flag
-			}
-		}
-		
-		cost = 25
-		days_remove = -1
-		
-		ai_will_do = {
-			factor = 10
-			modifier = {
-				committee_low_support_trigger = yes
-				factor = 0
-			}
-		}
-		
-		complete_effect = {
-			custom_effect_tooltip = prc_only_one_choice_tt
-			PRC_committee_small_opposition = yes
-			set_country_flag = PRC_cursh_feminist_flag
-			add_stability = 0.15
-		}
-	}
-	
-	PRC_approval_feminist = {
-		icon = ger_mefo_bills
-		
-		available = {
-			committee_medium_support_trigger = yes 
-			NOT = {
-				has_country_flag = PRC_cursh_feminist_flag
-			}
-			NOT = {
-				has_country_flag = PRC_approval_feminist_flag
-			}
-		}
-		
-		visible = {
-			NOT = {
-				has_country_flag = PRC_cursh_feminist_flag
-			}
-		}
-		
-		cost = 25
-		days_remove = -1
-		
-		ai_will_do = {
-			factor = 5
-			modifier = {
-				committee_low_support_trigger = yes
-				factor = 0
-			}
-		}
-		
-		complete_effect = {
-			custom_effect_tooltip = prc_only_one_choice_tt
-			PRC_committee_medium_opposition = yes
-			add_ideas = PRC_feminism_of_china 
-			set_country_flag = PRC_approval_feminist_flag
-			add_stability = 0.15
-		}
-	}
-	
-	PRC_strengthening_national_atheism = {
-		icon = ger_mefo_bills
-		
-		available = {
-			committee_medium_support_trigger = yes 
-			has_government = communist
-			NOT = {
-				has_country_flag = PRC_strengthening_national_atheism_flag
-			}
-			NOT = {
-				has_country_flag = PRC_allow_christian_mission_flag
-			}
-		}
-		
-		visible = {
-			NOT = {
-				has_country_flag = PRC_allow_christian_mission_flag
-			}
-		}
-		
-		cost = 25
-		days_remove = -1
-		
-		ai_will_do = {
-			factor = 10
-			modifier = {
-				committee_low_support_trigger = yes
-				factor = 0
-			}
-		}
-		
-		complete_effect = {
-			custom_effect_tooltip = prc_only_one_choice_tt
-			add_ideas = PRC_national_atheism 
-			set_country_flag = PRC_strengthening_national_atheism_flag
-			PRC_committee_small_opposition = yes
-		}
-	}
-	
-	PRC_allow_christian_mission = {
-		icon = ger_mefo_bills
-		
-		available = {
-			committee_medium_support_trigger = yes 
-			NOT = {
-				has_country_flag = PRC_strengthening_national_atheism_flag
-			}
-			NOT = {
-				has_country_flag = PRC_allow_christian_mission_flag
-			}
-		}
-		
-		visible = {
-			NOT = {
-				has_country_flag = PRC_strengthening_national_atheism_flag
-			}
-		}
-		
-		
-		cost = 25
-		days_remove = -1
-		
-		ai_will_do = {
-			factor = 0
-		}
-		
-		complete_effect = {
-			custom_effect_tooltip = prc_only_one_choice_tt
-			add_ideas = PRC_religious_liberty 
-			set_country_flag = PRC_allow_christian_mission_flag
-			PRC_committee_medium_opposition = yes
+			#release = SIK
+			#release = TIB
 		}
 	}
 }
@@ -448,3 +252,2626 @@ PRC_belt_and_road_initiative_category = {
 	}
 }
 
+
+PRC_industrialization_of_china_decisions = {
+
+	PRC_develop_civilian_factory_decision = {
+		name = PRC_develop_factory_name
+		icon = generic_construction
+
+		allowed = { always = no } #activated by effect
+
+		available = {
+			OR = {
+				AND = {
+					FROM = { is_owned_and_controlled_by = ROOT }
+				}
+				AND = {
+					owner = { is_subject_of = ROOT }
+					FROM = { is_owned_and_controlled_by = PREV }
+				}
+			}
+			num_of_civilian_factories_available_for_projects > 2
+		}
+
+		cost = 25
+		days_remove = 90
+		fire_only_once = yes
+		state_target = yes
+
+		modifier = {
+			civilian_factory_use = 3
+		}
+
+		ai_will_do = {
+			factor = 77
+		}
+
+		remove_effect = {
+			FROM = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			
+			limit = {
+				if = { owner = { is_subject_of = ROOT } }
+				add_resistance = 10
+			}
+		}
+	}
+	
+	PRC_develop_military_factory_decision = {
+		name = PRC_develop_factory_name
+		icon = generic_construction
+
+		allowed = { always = no } #activated by effect
+
+		available = {
+			FROM = { is_owned_and_controlled_by = ROOT }
+			num_of_civilian_factories_available_for_projects > 2
+		}
+
+		cost = 25
+		days_remove = 90
+		fire_only_once = yes
+		state_target = yes
+
+		modifier = {
+			civilian_factory_use = 3
+		}
+
+		ai_will_do = {
+			factor = 77
+		}
+
+		remove_effect = {
+			FROM = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	
+	PRC_develop_dockyard_decision = {
+		name = PRC_develop_dockyard_name
+		icon = GFX_decision_generic_merge_plant_ship
+		allowed = { always = no }
+
+		visible = {
+			FROM = { is_owned_and_controlled_by = ROOT }
+		}
+		
+		available = {
+			FROM = { is_owned_and_controlled_by = ROOT }
+			num_of_civilian_factories_available_for_projects > 2
+		}
+
+		fire_only_once = yes
+		state_target = yes
+		
+		cost = 25
+		days_remove = 90
+
+		ai_will_do = { base = 78 }
+		
+		modifier = {
+			civilian_factory_use = 3
+		}
+		
+		remove_effect = {
+			FROM = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = dockyard
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	
+}
+
+exploration_of_resources_outside_china = {
+
+	PRC_daqing_oil_fields = {
+		icon = oil
+		allowed = { always = no }
+
+		available = {
+			FROM = { is_owned_and_controlled_by = ROOT }
+			has_tech = excavation1
+			num_of_civilian_factories_available_for_projects > 2
+		}
+
+		cost = 25
+		days_remove = 60
+		fire_only_once = yes
+		state_target = yes
+
+		modifier = {
+			civilian_factory_use = 3
+		}
+
+		ai_will_do = {
+			factor = 25
+		}
+
+		remove_effect = {
+			add_resource = {
+				type = oil
+				amount = 18
+				state = FROM
+			}
+		}
+	}
+
+	PRC_tarim_oil_fields = {
+		icon = oil
+		allowed = { always = no }
+
+		available = {
+			FROM = { is_owned_and_controlled_by = ROOT }
+			has_tech = excavation1
+			num_of_civilian_factories_available_for_projects > 2
+		}
+
+		cost = 25
+		days_remove = 60
+		fire_only_once = yes
+		state_target = yes
+
+		modifier = {
+			civilian_factory_use = 3
+		}
+
+		ai_will_do = {
+			factor = 25
+		}
+
+		remove_effect = {
+			add_resource = {
+				type = oil
+				amount = 20
+				state = FROM
+			}
+		}
+	}
+
+	PRC_inner_mongolia_steel = {
+	#https://en.wikipedia.org/wiki/Baotou_Steel
+		icon = steel
+		allowed = { always = no }
+
+		available = {
+			FROM = { is_owned_and_controlled_by = ROOT }
+			has_tech = excavation1
+			num_of_civilian_factories_available_for_projects > 2
+		}
+
+		cost = 25
+		days_remove = 60
+		fire_only_once = yes
+		state_target = yes
+
+		modifier = {
+			civilian_factory_use = 3
+		}
+
+		ai_will_do = {
+			factor = 25
+		}
+
+		remove_effect = {
+			add_resource = {
+				type = steel
+				amount = 18
+				state = FROM
+			}
+		}
+	}
+	
+}
+
+PRC_commission_old_soviet_ships = {
+
+	PRC_soviet_convoys = {
+		#https://en.wikipedia.org/wiki/Zubr-class_LCAC
+		icon = generic_naval
+		
+		#allowed = { always = no }
+		
+		available = {
+			UKR = { has_war = no } 
+		}
+		
+		fire_only_once = yes
+		days_remove = 55
+		cost = 15
+
+		ai_will_do = {
+			base = 25
+			modifier = {
+				add = 100
+				naval_strength_ratio = {
+					tag = USA
+					ratio = 0.1
+				}
+			}
+		}
+
+		remove_effect = {
+			add_equipment_to_stockpile = {
+				type = convoy
+				amount = 50
+				producer = UKR
+			}
+		}
+	}
+
+	PRC_soviet_doctrine = {
+		icon = generic_naval
+		#allowed = { always = no }
+		
+		available = {
+			UKR = { has_war = no } 
+		}
+		
+		fire_only_once = yes
+		days_remove = 40
+		cost = 15
+
+		ai_will_do = {
+			base = 25
+			modifier = {
+				add = 100
+				naval_strength_ratio = {
+					tag = USA
+					ratio = 0.1
+				}
+			}
+		}
+
+		remove_effect = {
+			add_doctrine_cost_reduction = {
+				cost_reduction = 0.5
+				uses = 1
+				category = naval_doctrine
+			}
+		}
+	}
+
+	PRC_soviet_naval_weapon_technology = {
+		icon = generic_naval
+		#allowed = { always = no }
+		
+		available = {
+			UKR = { has_war = no } 
+			
+			if = {
+				limit = { is_ai = no }
+				#only player
+				has_opinion = {
+					target = FROM
+					value > 49
+				}
+			}
+		}
+		
+		fire_only_once = yes
+		days_remove = 40
+		cost = 15
+
+		ai_will_do = {
+			base = 25
+			modifier = {
+				add = 100
+				naval_strength_ratio = {
+					tag = USA
+					ratio = 0.1
+				}
+			}
+		}
+
+		remove_effect = {
+			add_tech_bonus = {
+				name = PRC_soviet_naval_weapon_technology
+				bonus = 0.75
+				uses = 3
+				category = naval_equipment
+			}
+		}
+	}
+	
+}
+
+PRC_new_china_plan_decision_category = {
+
+	PRC_bop_increase_communist_influence = {
+		icon = GFX_decision_SOV_secure_the_administration  #TODO_TA set correct icon
+		
+		allowed = { original_tag = PRC }
+		
+		visible = {
+			has_government = communist
+		}
+		
+		available = {
+			if = {
+				limit = { has_completed_focus = PRC_purge_of_the_leftist_opposition }
+				always = yes
+			}
+			else_if = {
+				limit = { has_completed_focus = PRC_crush_the_democrats }
+				OR = {
+					is_power_balance_in_range = {
+						id = PRC_new_china_plan
+						range = PRC_new_china_plan_zero_10
+					}
+					is_power_balance_in_range = {
+						id = PRC_new_china_plan
+						range = PRC_new_china_plan_zero_50
+					}
+					is_power_balance_in_range = {
+						id = PRC_new_china_plan
+						range = PRC_new_china_plan_zero_90
+					}
+					is_power_balance_in_range = {
+						id = PRC_new_china_plan
+						range = PRC_new_china_plan_zero_100
+					}
+				}
+			}
+			else = {
+				OR = {
+					is_power_balance_in_range = {
+						id = PRC_new_china_plan
+						range = PRC_new_china_plan_zero_10
+					}
+					is_power_balance_in_range = {
+						id = PRC_new_china_plan
+						range = PRC_new_china_plan_zero_50
+					}
+				}
+			}
+		}
+		
+		days_remove = 28
+		fire_only_once = no
+		cost = 5
+		
+		modifier = {
+			political_power_factor = -0.1
+		}
+		
+		remove_effect = {
+			PRC_BOP_chinese_reform_small_effect = yes
+		}
+		
+		ai_will_do = {
+			base = 25
+		}
+	}
+
+	PRC_bop_social_credit_system = {
+		icon = GFX_decision_generic_political_discourse  #TODO_TA set correct icon
+		
+		allowed = { original_tag = PRC }
+		
+		visible = {
+			has_government = communist
+			has_completed_focus = PRC_the_centre
+		}
+		
+		available = {
+			if = {
+				limit = { has_completed_focus = PRC_purge_of_the_leftist_opposition }
+				always = yes
+			}
+			else_if = {
+				limit = { has_completed_focus = PRC_crush_the_democrats }
+				OR = {
+					is_power_balance_in_range = {
+						id = PRC_new_china_plan
+						range = PRC_new_china_plan_zero_10
+					}
+					is_power_balance_in_range = {
+						id = PRC_new_china_plan
+						range = PRC_new_china_plan_zero_50
+					}
+					is_power_balance_in_range = {
+						id = PRC_new_china_plan
+						range = PRC_new_china_plan_zero_90
+					}
+					is_power_balance_in_range = {
+						id = PRC_new_china_plan
+						range = PRC_new_china_plan_zero_100
+					}
+				}
+			}
+			else = {
+				OR = {
+					is_power_balance_in_range = {
+						id = PRC_new_china_plan
+						range = PRC_new_china_plan_zero_10
+					}
+					is_power_balance_in_range = {
+						id = PRC_new_china_plan
+						range = PRC_new_china_plan_zero_50
+					}
+				}
+			}
+		}
+		
+		days_remove = 40
+		fire_only_once = yes
+		cost = 25
+		
+		modifier = {
+			#political_power_factor = -0.1
+		}
+		
+		remove_effect = {
+			add_stability = 0.1
+			PRC_BOP_chinese_reform_nomal_effect = yes
+		}
+		
+		ai_will_do = {
+			base = 25
+		}
+	}
+
+	PRC_bop_removal_of_rightists_opposition = {
+		icon = GFX_decision_eng_propaganda_campaigns  #TODO_TA set correct icon
+		
+		allowed = { original_tag = PRC }
+		
+		visible = {
+			has_government = communist
+			has_completed_focus = PRC_removal_of_rightists_opposition
+		}
+		
+		available = {
+			if = {
+				limit = { has_completed_focus = PRC_purge_of_the_leftist_opposition }
+				always = yes
+			}
+			else_if = {
+				limit = { has_completed_focus = PRC_crush_the_democrats }
+				OR = {
+					is_power_balance_in_range = {
+						id = PRC_new_china_plan
+						range = PRC_new_china_plan_zero_10
+					}
+					is_power_balance_in_range = {
+						id = PRC_new_china_plan
+						range = PRC_new_china_plan_zero_50
+					}
+					is_power_balance_in_range = {
+						id = PRC_new_china_plan
+						range = PRC_new_china_plan_zero_90
+					}
+					is_power_balance_in_range = {
+						id = PRC_new_china_plan
+						range = PRC_new_china_plan_zero_100
+					}
+				}
+			}
+			else = {
+				OR = {
+					is_power_balance_in_range = {
+						id = PRC_new_china_plan
+						range = PRC_new_china_plan_zero_10
+					}
+					is_power_balance_in_range = {
+						id = PRC_new_china_plan
+						range = PRC_new_china_plan_zero_50
+					}
+				}
+			}
+		}
+		
+		days_remove = 40
+		fire_only_once = yes
+		cost = 35
+		
+		modifier = {
+			#political_power_factor = -0.1
+		}
+		
+		remove_effect = {
+			add_popularity = {
+				ideology = communist
+				popularity = 0.05
+			}
+			PRC_BOP_chinese_reform_nomal_effect = yes
+		}
+		
+		ai_will_do = {
+			base = 25
+		}
+	}
+
+	PRC_bop_removal_of_leftists_opposition = {
+		icon = GFX_decision_eng_propaganda_campaigns  #TODO_TA set correct icon
+		
+		allowed = { original_tag = PRC }
+		
+		visible = {
+			has_government = communist
+			has_completed_focus = PRC_purge_of_the_leftist_opposition
+		}
+		
+		available = {
+			if = {
+				limit = { has_completed_focus = PRC_purge_of_the_leftist_opposition }
+				always = yes
+			}
+			else_if = {
+				limit = { has_completed_focus = PRC_crush_the_democrats }
+				OR = {
+					is_power_balance_in_range = {
+						id = PRC_new_china_plan
+						range = PRC_new_china_plan_zero_10
+					}
+					is_power_balance_in_range = {
+						id = PRC_new_china_plan
+						range = PRC_new_china_plan_zero_50
+					}
+					is_power_balance_in_range = {
+						id = PRC_new_china_plan
+						range = PRC_new_china_plan_zero_90
+					}
+					is_power_balance_in_range = {
+						id = PRC_new_china_plan
+						range = PRC_new_china_plan_zero_100
+					}
+				}
+			}
+			else = {
+				OR = {
+					is_power_balance_in_range = {
+						id = PRC_new_china_plan
+						range = PRC_new_china_plan_zero_10
+					}
+					is_power_balance_in_range = {
+						id = PRC_new_china_plan
+						range = PRC_new_china_plan_zero_50
+					}
+				}
+			}
+		}
+		
+		days_remove = 40
+		fire_only_once = yes
+		cost = 35
+		
+		modifier = {
+			#political_power_factor = -0.1
+		}
+		
+		remove_effect = {
+			add_popularity = {
+				ideology = communist
+				popularity = 0.05
+			}
+			PRC_BOP_chinese_reform_nomal_effect = yes
+		}
+		
+		ai_will_do = {
+			base = 25
+		}
+	}
+
+	PRC_bop_anti_democratic_holy_war = {
+		icon = GFX_decision_generic_civil_support  #TODO_TA set correct icon
+		
+		allowed = { original_tag = PRC }
+		
+		visible = {
+			has_government = communist
+			has_completed_focus = PRC_crush_the_democrats
+		}
+		
+		available = {
+			if = {
+				limit = { has_completed_focus = PRC_purge_of_the_leftist_opposition }
+				always = yes
+			}
+			else_if = {
+				limit = { has_completed_focus = PRC_crush_the_democrats }
+				OR = {
+					is_power_balance_in_range = {
+						id = PRC_new_china_plan
+						range = PRC_new_china_plan_zero_10
+					}
+					is_power_balance_in_range = {
+						id = PRC_new_china_plan
+						range = PRC_new_china_plan_zero_50
+					}
+					is_power_balance_in_range = {
+						id = PRC_new_china_plan
+						range = PRC_new_china_plan_zero_90
+					}
+					is_power_balance_in_range = {
+						id = PRC_new_china_plan
+						range = PRC_new_china_plan_zero_100
+					}
+				}
+			}
+			else = {
+				OR = {
+					is_power_balance_in_range = {
+						id = PRC_new_china_plan
+						range = PRC_new_china_plan_zero_10
+					}
+					is_power_balance_in_range = {
+						id = PRC_new_china_plan
+						range = PRC_new_china_plan_zero_50
+					}
+				}
+			}
+		}
+		
+		days_remove = 24
+		fire_only_once = no
+		cost = 15
+		
+		modifier = {
+			political_power_factor = -0.1
+		}
+		
+		remove_effect = {
+			add_popularity = {
+				ideology = communist
+				popularity = 0.01
+			}
+			PRC_BOP_chinese_reform_small_effect = yes
+		}
+		
+		ai_will_do = {
+			base = 25
+		}
+	}
+	
+}
+
+PRC_coup_plan_decision_category = {
+
+	PRC_gaining_the_support_of_army = {
+		icon = GFX_decision_SOV_secure_the_administration
+		
+		allowed = { original_tag = PRC }
+		
+		visible = {
+			OR = {
+				has_completed_focus = PRC_help_from_army_in_revolution
+				has_completed_focus = PRC_prepare_for_revolution
+			}
+		}
+		
+		fire_only_once = no
+
+		ai_hint_pp_cost = 5
+		
+		custom_cost_trigger = {
+			command_power > 4
+		}
+		
+		custom_cost_text = decision_cost_CP_5
+		
+		cost = 5
+		
+		days_remove = 14
+				
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -5
+			}
+		}
+		
+		remove_effect = {
+			PRC_BOP_chinese_coup_nomal_effect = yes
+		}
+		
+		ai_will_do = {
+			base = 200
+		}
+	}
+	
+	PRC_gaining_the_support_of_politicians = {
+		icon = GFX_decision_generic_political_discourse
+		
+		allowed = { original_tag = PRC }
+		
+		visible = {
+			OR = {
+				has_completed_focus = PRC_help_from_politicians_in_revolution
+				has_completed_focus = PRC_with_taizidang
+			}
+		}
+		
+		fire_only_once = no
+		
+		custom_cost_text = decision_cost_CP_5
+		
+		cost = 15
+		
+		days_remove = 14
+		
+		remove_effect = {
+			PRC_BOP_chinese_coup_nomal_effect = yes
+		}
+		
+		ai_will_do = {
+			base = 200
+		}
+	}
+	
+	PRC_gaining_the_support_of_democrats = {
+		icon = GFX_decision_generic_political_discourse
+		
+		allowed = { original_tag = PRC }
+		
+		visible = {
+			has_completed_focus = PRC_the_need_for_policy_changes
+		}
+		
+		fire_only_once = no
+		
+		custom_cost_text = decision_cost_CP_5
+		
+		cost = 15
+		
+		days_remove = 14
+		
+		remove_effect = {
+			PRC_BOP_chinese_coup_nomal_effect = yes
+		}
+		
+		ai_will_do = {
+			base = 200
+		}
+	}
+	
+	PRC_gaining_the_support_of_maoists = {
+		icon = GFX_decision_SOV_secure_the_administration
+		
+		allowed = { original_tag = PRC }
+		
+		visible = {
+			has_completed_focus = PRC_looking_back_at_mao_zedong_thought
+		}
+		
+		fire_only_once = no
+		
+		custom_cost_text = decision_cost_CP_5
+		
+		cost = 15
+		
+		days_remove = 14
+		
+		remove_effect = {
+			PRC_BOP_chinese_coup_nomal_effect = yes
+		}
+		
+		ai_will_do = {
+			base = 200
+		}
+	}
+}
+
+PRC_alliance_decisions = {
+	
+	PRC_Invite_pakistan = {
+		name = PRC_Invite_Country
+		icon = generic_agreement
+		
+		visible = {
+			country_exists = PAK
+		}
+
+		available = {
+			NOT = { has_war_with = PAK }
+			OR = {
+				has_global_flag = PRC_world_plan
+				threat > 0.1
+			}
+			FROM = { 
+				is_subject = no
+				OR = {
+					is_in_faction = no
+					is_faction_leader = yes
+				}
+			}
+		}
+
+		targets = { PAK }
+		
+		target_root_trigger = {
+			has_completed_focus = PRC_socialist_foreign_policy
+		}
+		
+		target_trigger = {
+			is_faction_leader = yes
+			FROM = {
+				NOT = { has_war_with = ROOT }
+				is_subject = no
+				OR = {
+					is_in_faction = no
+					is_faction_leader = yes
+				}
+			}
+		}
+
+		cost = 0
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 1000
+			modifier = {
+				factor = 0
+				FROM = {
+					any_owned_state = { 
+						OR = {
+							is_claimed_by = ROOT
+							is_core_of = ROOT
+						} 
+					}
+				}
+			}
+			modifier = {
+				factor = 0
+				FROM = {
+					any_owned_state = { 
+						OR = {
+							is_claimed_by = ROOT
+							is_core_of = ROOT
+						} 
+					}
+				}
+			}
+		}
+
+		complete_effect = {
+			FROM = { country_event = { id = pr_china_diplomacy.1 days = 1 random_hours = 24 } }
+		}
+	}
+	
+	PRC_Invite_iran = {
+		name = PRC_Invite_Country
+		icon = generic_agreement
+		
+		visible = {
+			country_exists = PER
+		}
+
+		available = {
+			NOT = { has_war_with = PER }
+			OR = {
+				has_global_flag = PRC_world_plan
+				threat > 0.1
+			}
+			FROM = { 
+				is_subject = no
+				OR = {
+					is_in_faction = no
+					is_faction_leader = yes
+				}
+			}
+		}
+
+		targets = { PER }
+		
+		target_root_trigger = {
+			has_completed_focus = PRC_socialist_foreign_policy
+		}
+		
+		target_trigger = {
+			is_faction_leader = yes
+			FROM = {
+				NOT = { has_war_with = ROOT }
+				is_subject = no
+				OR = {
+					is_in_faction = no
+					is_faction_leader = yes
+				}
+			}
+		}
+
+		cost = 0
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 1000
+			modifier = {
+				factor = 0
+				FROM = {
+					any_owned_state = { 
+						OR = {
+							is_claimed_by = ROOT
+							is_core_of = ROOT
+						} 
+					}
+				}
+			}
+			modifier = {
+				factor = 0
+				FROM = {
+					any_owned_state = { 
+						OR = {
+							is_claimed_by = ROOT
+							is_core_of = ROOT
+						} 
+					}
+				}
+			}
+		}
+
+		complete_effect = {
+			FROM = { country_event = { id = pr_china_diplomacy.1 days = 1 random_hours = 24 } }
+		}
+	}
+	
+	PRC_Invite_Venezuela = {
+		name = PRC_Invite_Country
+		icon = generic_agreement
+		
+		visible = {
+			country_exists = VEN
+		}
+
+		available = {
+			NOT = { has_war_with = VEN }
+			OR = {
+				has_global_flag = PRC_world_plan
+				threat > 0.1
+			}
+			FROM = { 
+				is_subject = no
+				OR = {
+					is_in_faction = no
+					is_faction_leader = yes
+				}
+			}
+		}
+
+		targets = { VEN }
+		
+		target_root_trigger = {
+			has_completed_focus = PRC_socialist_foreign_policy
+		}
+		
+		ai_will_do = {
+			factor = 1000
+			modifier = {
+				factor = 0
+				FROM = {
+					any_owned_state = { 
+						OR = {
+							is_claimed_by = ROOT
+							is_core_of = ROOT
+						} 
+					}
+				}
+			}
+			modifier = {
+				factor = 0
+				FROM = {
+					any_owned_state = { 
+						OR = {
+							is_claimed_by = ROOT
+							is_core_of = ROOT
+						} 
+					}
+				}
+			}
+		}
+
+		cost = 0
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 1000
+			modifier = {
+				factor = 0
+				FROM = {
+					any_owned_state = { is_claim_or_core_of_ROOT = yes }
+				}
+			}
+			modifier = {
+				factor = 0
+				FROM = {
+					any_owned_state = { is_claim_or_core_of_ROOT = yes }
+				}
+			}
+		}
+
+		complete_effect = {
+			FROM = { country_event = { id = pr_china_diplomacy.1 days = 1 random_hours = 24 } }
+		}
+	}
+	
+	PRC_Invite_DPR_korea = {
+		name = PRC_Invite_Country
+		icon = generic_agreement
+		
+		visible = {
+			country_exists = PRK
+		}
+
+		available = {
+			NOT = { has_war_with = PRK }
+			has_completed_focus = PRC_alliance_with_north_korea
+			OR = {
+				has_global_flag = PRC_world_plan
+				threat > 0.1
+			}
+			FROM = { 
+				is_subject = no
+				OR = {
+					is_in_faction = no
+					is_faction_leader = yes
+				}
+			}
+		}
+
+		targets = { PRK }
+		
+		target_root_trigger = {
+			has_completed_focus = PRC_socialist_foreign_policy
+		}
+		
+		target_trigger = {
+			is_faction_leader = yes
+			FROM = {
+				NOT = { has_war_with = ROOT }
+				is_subject = no
+				OR = {
+					is_in_faction = no
+					is_faction_leader = yes
+				}
+			}
+		}
+
+		cost = 0
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 1000
+			modifier = {
+				factor = 0
+				FROM = {
+					any_owned_state = { 
+						OR = {
+							is_claimed_by = ROOT
+							is_core_of = ROOT
+						} 
+					}
+				}
+			}
+			modifier = {
+				factor = 0
+				FROM = {
+					any_owned_state = { 
+						OR = {
+							is_claimed_by = ROOT
+							is_core_of = ROOT
+						} 
+					}
+				}
+			}
+		}
+
+		complete_effect = {
+			FROM = { country_event = { id = pr_china_diplomacy.1 days = 1 random_hours = 24 } }
+		}
+	}
+	
+	PRC_Invite_korea = {
+		name = PRC_Invite_Country
+		icon = generic_agreement
+		
+		visible = {
+			country_exists = KOR
+		}
+
+		available = {
+			NOT = { has_war_with = KOR }
+			has_completed_focus = PRC_alliance_with_south_korea
+			OR = {
+				has_global_flag = PRC_world_plan
+				threat > 0.1
+			}
+			FROM = { 
+				is_subject = no
+				OR = {
+					is_in_faction = no
+					is_faction_leader = yes
+				}
+			}
+		}
+
+		targets = { KOR }
+		
+		target_root_trigger = {
+			has_completed_focus = PRC_socialist_foreign_policy
+		}
+		
+		target_trigger = {
+			is_faction_leader = yes
+			FROM = {
+				NOT = { has_war_with = ROOT }
+				is_subject = no
+				OR = {
+					is_in_faction = no
+					is_faction_leader = yes
+				}
+			}
+		}
+
+		cost = 0
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 1000
+			modifier = {
+				factor = 0
+				FROM = {
+					any_owned_state = { 
+						OR = {
+							is_claimed_by = ROOT
+							is_core_of = ROOT
+						} 
+					}
+				}
+			}
+			modifier = {
+				factor = 0
+				FROM = {
+					any_owned_state = { 
+						OR = {
+							is_claimed_by = ROOT
+							is_core_of = ROOT
+						} 
+					}
+				}
+			}
+		}
+
+		complete_effect = {
+			FROM = { country_event = { id = pr_china_diplomacy.1 days = 1 random_hours = 24 } }
+		}
+	}
+	
+	PRC_Invite_mongolia = {
+		name = PRC_Invite_Country
+		icon = generic_agreement
+		
+		visible = {
+			country_exists = MON
+		}
+
+		available = {
+			NOT = { has_war_with = MON }
+			has_completed_focus = PRC_the_northen_plan
+			OR = {
+				has_global_flag = PRC_world_plan
+				threat > 0.1
+			}
+			FROM = { 
+				is_subject = no
+				OR = {
+					is_in_faction = no
+					is_faction_leader = yes
+				}
+			}
+		}
+
+		targets = { MON }
+		
+		target_root_trigger = {
+			has_completed_focus = PRC_socialist_foreign_policy
+		}
+		
+		target_trigger = {
+			is_faction_leader = yes
+			FROM = {
+				NOT = { has_war_with = ROOT }
+				is_subject = no
+				OR = {
+					is_in_faction = no
+					is_faction_leader = yes
+				}
+			}
+		}
+
+		cost = 0
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 1000
+			modifier = {
+				factor = 0
+				FROM = {
+					any_owned_state = { 
+						OR = {
+							is_claimed_by = ROOT
+							is_core_of = ROOT
+						} 
+					}
+				}
+			}
+			modifier = {
+				factor = 0
+				FROM = {
+					any_owned_state = { 
+						OR = {
+							is_claimed_by = ROOT
+							is_core_of = ROOT
+						} 
+					}
+				}
+			}
+		}
+
+		complete_effect = {
+			FROM = { country_event = { id = pr_china_diplomacy.1 days = 1 random_hours = 24 } }
+		}
+	}
+	
+	PRC_Invite_vietnam = {
+		name = PRC_Invite_Country
+		icon = generic_agreement
+		
+		visible = {
+			country_exists = VIN
+		}
+
+		available = {
+			NOT = { has_war_with = VIN }
+			has_completed_focus = PRC_potential_southeast_asian_partners
+			OR = {
+				has_global_flag = PRC_world_plan
+				threat > 0.1
+			}
+			FROM = { 
+				is_subject = no
+				OR = {
+					is_in_faction = no
+					is_faction_leader = yes
+				}
+			}
+		}
+
+		targets = { VIN }
+		
+		target_root_trigger = {
+			has_completed_focus = PRC_socialist_foreign_policy
+		}
+		
+		target_trigger = {
+			is_faction_leader = yes
+			FROM = {
+				NOT = { has_war_with = ROOT }
+				is_subject = no
+				OR = {
+					is_in_faction = no
+					is_faction_leader = yes
+				}
+			}
+		}
+
+		cost = 0
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 1000
+			modifier = {
+				factor = 0
+				FROM = {
+					any_owned_state = { 
+						OR = {
+							is_claimed_by = ROOT
+							is_core_of = ROOT
+						} 
+					}
+				}
+			}
+			modifier = {
+				factor = 0
+				FROM = {
+					any_owned_state = { 
+						OR = {
+							is_claimed_by = ROOT
+							is_core_of = ROOT
+						} 
+					}
+				}
+			}
+		}
+
+		complete_effect = {
+			FROM = { country_event = { id = pr_china_diplomacy.1 days = 1 random_hours = 24 } }
+		}
+	}
+	
+	PRC_Invite_laos = {
+		name = PRC_Invite_Country
+		icon = generic_agreement
+		
+		visible = {
+			country_exists = LAO
+		}
+
+		available = {
+			NOT = { has_war_with = LAO }
+			has_completed_focus = PRC_potential_southeast_asian_partners
+			OR = {
+				has_global_flag = PRC_world_plan
+				threat > 0.1
+			}
+			FROM = { 
+				is_subject = no
+				OR = {
+					is_in_faction = no
+					is_faction_leader = yes
+				}
+			}
+		}
+
+		targets = { LAO }
+		
+		target_root_trigger = {
+			has_completed_focus = PRC_socialist_foreign_policy
+		}
+		
+		ai_will_do = {
+			factor = 1000
+			modifier = {
+				factor = 0
+				FROM = {
+					any_owned_state = { 
+						OR = {
+							is_claimed_by = ROOT
+							is_core_of = ROOT
+						} 
+					}
+				}
+			}
+			modifier = {
+				factor = 0
+				FROM = {
+					any_owned_state = { 
+						OR = {
+							is_claimed_by = ROOT
+							is_core_of = ROOT
+						} 
+					}
+				}
+			}
+		}
+
+		cost = 0
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 1000
+			modifier = {
+				factor = 0
+				FROM = {
+					any_owned_state = { is_claim_or_core_of_ROOT = yes }
+				}
+			}
+			modifier = {
+				factor = 0
+				FROM = {
+					any_owned_state = { is_claim_or_core_of_ROOT = yes }
+				}
+			}
+		}
+
+		complete_effect = {
+			FROM = { country_event = { id = pr_china_diplomacy.1 days = 1 random_hours = 24 } }
+		}
+	}
+	
+	PRC_Invite_myanmar = {
+		name = PRC_Invite_Country
+		icon = generic_agreement
+		
+		visible = {
+			country_exists = BRM
+		}
+
+		available = {
+			NOT = { has_war_with = BRM }
+			has_completed_focus = PRC_potential_southeast_asian_partners
+			OR = {
+				has_global_flag = PRC_world_plan
+				threat > 0.1
+			}
+			FROM = { 
+				is_subject = no
+				OR = {
+					is_in_faction = no
+					is_faction_leader = yes
+				}
+			}
+		}
+
+		targets = { BRM }
+		
+		target_root_trigger = {
+			has_completed_focus = PRC_socialist_foreign_policy
+		}
+		
+		target_trigger = {
+			is_faction_leader = yes
+			FROM = {
+				NOT = { has_war_with = ROOT }
+				is_subject = no
+				OR = {
+					is_in_faction = no
+					is_faction_leader = yes
+				}
+			}
+		}
+
+		cost = 0
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 1000
+			modifier = {
+				factor = 0
+				FROM = {
+					any_owned_state = { 
+						OR = {
+							is_claimed_by = ROOT
+							is_core_of = ROOT
+						} 
+					}
+				}
+			}
+			modifier = {
+				factor = 0
+				FROM = {
+					any_owned_state = { 
+						OR = {
+							is_claimed_by = ROOT
+							is_core_of = ROOT
+						} 
+					}
+				}
+			}
+		}
+
+		complete_effect = {
+			FROM = { country_event = { id = pr_china_diplomacy.1 days = 1 random_hours = 24 } }
+		}
+	}
+	
+	
+}
+
+PRC_expansionism_plan = {
+
+	PRC_start_world_plan = {
+		icon = generic_agreement
+		
+		visible = {
+			NOT = { has_global_flag = PRC_world_plan }
+		}
+
+		available = {
+			is_subject = no
+			has_civil_war = no
+		}
+		
+		cost = 0
+		fire_only_once = yes
+
+		ai_will_do = {
+			base = 0
+			
+			#modifier = {
+			#	add = 100
+			#	every_other_country = {
+			#		has_added_tension_amount > 10
+			#	}
+			#}
+			
+			modifier = {
+				add = 100
+				threat > 0.15
+			}
+			
+			modifier = {
+				add = 10
+				JAP = { 
+					OR = {
+						has_completed_focus = JAP_the_time_for_revolution
+						has_completed_focus = JAP_nationalist_government
+					}
+				}
+			}
+			
+			modifier = {
+				add = 10
+				KOR = { 
+					OR = {
+						has_completed_focus = kor_lee_seok_ki_government
+						has_completed_focus = kor_no_government
+					}
+				}
+			}
+			
+			modifier = {
+				add = 5
+				SOV = { 
+					OR = {
+						has_government = fascist
+						has_government = nationalist
+						has_government = communist
+					}
+				}
+			}
+			
+			modifier = {
+				add = 5
+				USA = { 
+					OR = {
+						has_government = fascist
+						has_government = nationalist
+						has_government = communist
+					}
+				}
+			}
+			
+			modifier = {
+				add = 100
+				has_war_with_major = yes
+			}
+		}
+
+		complete_effect = {
+			add_named_threat = { threat = 3 name = PRC_start_world_plan }
+			custom_effect_tooltip = PRC_start_world_plan_tt
+		
+			country_event = { id = pr_china.25 }
+		}
+	}
+	
+	PRC_pressure_mongolia = {
+		name = PRC_pressure_country
+		icon = generic_civil_support
+
+		available = {
+			is_subject = no
+			country_exists = MON
+			NOT = { is_in_faction_with = MON }
+			OR = {
+				has_global_flag = PRC_world_plan
+				threat > 0.25
+			}
+		}
+
+		visible = {
+			has_completed_focus = PRC_socialist_foreign_policy
+		}
+
+		cancel_trigger = {
+			OR = {
+				is_subject = yes
+				#NOT = { can_declare_war_on = var:329.owner }
+			}
+		}
+		
+		targets = { MON }
+		
+		target_root_trigger = {
+			has_completed_focus = PRC_socialist_foreign_policy
+		}
+
+		cost = 30
+		days_remove = 40
+		
+		fire_only_once = yes
+		war_with_target_on_remove = yes
+
+		ai_will_do = {
+			factor = 100
+			modifier = {
+				factor = 0
+				NOT = { has_global_flag = PRC_world_plan }
+			}
+			modifier = {
+				has_war_with = USA
+				factor = 0
+			}
+			modifier = {
+				AND = {
+					has_war_with = PRK
+					surrender_progress > 0.3
+				}
+				factor = 0
+			}
+			modifier = {
+				AND = {
+					has_war_with = KOR
+					surrender_progress > 0.3
+				}
+				factor = 0
+			}
+			modifier = {
+				AND = {
+					has_war_with = SOV
+					surrender_progress > 0.3
+				}
+				factor = 0
+			}
+			modifier = {
+				has_war_with = RAJ
+				factor = 0
+			}
+			modifier = {
+				has_war_with = JAP
+				factor = 0
+			}
+		}
+
+		cancel_effect = {
+			add_political_power = 30
+		}
+
+		complete_effect = {
+		}
+
+		remove_effect = {
+			MON = { country_event = pr_china_diplomacy.7 }
+			custom_effect_tooltip = PRC_diplomatic_demand_tt
+			effect_tooltip = {
+				if = {
+					limit = {
+						has_dlc = "Together for Victory"
+					}
+					set_autonomy = {
+						target = FROM
+						autonomy_state = autonomy_one_country_two_systems
+					}
+				}
+				else = {
+					ROOT = {
+						puppet = FROM
+					}			
+				}
+			}
+		}
+	}
+	
+	PRC_pressure_nepal = {
+		name = PRC_pressure_country
+		icon = generic_civil_support
+
+		available = {
+			is_subject = no
+			country_exists = NEP
+			NOT = { is_in_faction_with = NEP }
+			OR = {
+				has_global_flag = PRC_world_plan
+				threat > 0.25
+			}
+		}
+
+		visible = {
+			has_completed_focus = PRC_socialist_foreign_policy
+		}
+
+		cancel_trigger = {
+			OR = {
+				is_subject = yes
+				#NOT = { can_declare_war_on = var:329.owner }
+			}
+		}
+		
+		targets = { NEP }
+		
+		target_root_trigger = {
+			has_completed_focus = PRC_socialist_foreign_policy
+		}
+
+		cost = 30
+		days_remove = 40
+		
+		fire_only_once = yes
+		war_with_target_on_remove = yes
+
+		ai_will_do = {
+			factor = 100
+			modifier = {
+				factor = 0
+				NOT = { has_global_flag = PRC_world_plan }
+			}
+			modifier = {
+				has_war_with = USA
+				factor = 0
+			}
+			modifier = {
+				AND = {
+					has_war_with = PRK
+					surrender_progress > 0.3
+				}
+				factor = 0
+			}
+			modifier = {
+				AND = {
+					has_war_with = KOR
+					surrender_progress > 0.3
+				}
+				factor = 0
+			}
+			modifier = {
+				AND = {
+					has_war_with = SOV
+					surrender_progress > 0.3
+				}
+				factor = 0
+			}
+			modifier = {
+				has_war_with = RAJ
+				factor = 0
+			}
+			modifier = {
+				has_war_with = JAP
+				factor = 0
+			}
+		}
+
+		cancel_effect = {
+			add_political_power = 30
+		}
+
+		complete_effect = {
+		}
+
+		remove_effect = {
+			NEP = { country_event = pr_china_diplomacy.7 }
+			custom_effect_tooltip = PRC_diplomatic_demand_tt
+			effect_tooltip = {
+				if = {
+					limit = {
+						has_dlc = "Together for Victory"
+					}
+					set_autonomy = {
+						target = FROM
+						autonomy_state = autonomy_one_country_two_systems
+					}
+				}
+				else = {
+					ROOT = {
+						puppet = FROM
+					}			
+				}
+			}
+		}
+	}
+	
+	PRC_pressure_bhutan = {
+		name = PRC_pressure_country
+		icon = generic_civil_support
+
+		available = {
+			is_subject = no
+			country_exists = BHU
+			NOT = { is_in_faction_with = BHU }
+			OR = {
+				has_global_flag = PRC_world_plan
+				threat > 0.25
+			}
+		}
+
+		visible = {
+			has_completed_focus = PRC_socialist_foreign_policy
+		}
+		
+		targets = { BHU }
+		
+		target_root_trigger = {
+			has_completed_focus = PRC_socialist_foreign_policy
+		}
+
+
+		cancel_trigger = {
+			OR = {
+				is_subject = yes
+				#NOT = { can_declare_war_on = var:329.owner }
+			}
+		}
+
+		cost = 30
+		days_remove = 40
+		
+		fire_only_once = yes
+		war_with_target_on_remove = yes
+
+		ai_will_do = {
+			factor = 100
+			modifier = {
+				factor = 0
+				NOT = { has_global_flag = PRC_world_plan }
+			}
+			modifier = {
+				has_war_with = USA
+				factor = 0
+			}
+			modifier = {
+				AND = {
+					has_war_with = PRK
+					surrender_progress > 0.3
+				}
+				factor = 0
+			}
+			modifier = {
+				AND = {
+					has_war_with = KOR
+					surrender_progress > 0.3
+				}
+				factor = 0
+			}
+			modifier = {
+				AND = {
+					has_war_with = SOV
+					surrender_progress > 0.3
+				}
+				factor = 0
+			}
+			modifier = {
+				has_war_with = RAJ
+				factor = 0
+			}
+			modifier = {
+				has_war_with = JAP
+				factor = 0
+			}
+		}
+
+		cancel_effect = {
+			add_political_power = 30
+		}
+
+		complete_effect = {
+		}
+
+		remove_effect = {
+			BHU = { country_event = pr_china_diplomacy.7 }
+			custom_effect_tooltip = PRC_diplomatic_demand_tt
+			effect_tooltip = {
+				if = {
+					limit = {
+						has_dlc = "Together for Victory"
+					}
+					set_autonomy = {
+						target = FROM
+						autonomy_state = autonomy_one_country_two_systems
+					}
+				}
+				else = {
+					ROOT = {
+						puppet = FROM
+					}			
+				}
+			}
+		}
+	}
+	
+	PRC_pressure_spratly_islands = {
+		icon = generic_civil_support
+
+		available = {
+			is_subject = no
+		}
+
+		visible = {
+			has_completed_focus = PRC_socialist_foreign_policy
+		}
+
+		cancel_trigger = {
+			OR = {
+				is_subject = yes
+				#NOT = { can_declare_war_on = var:329.owner }
+			}
+		}
+		
+		target_trigger = { 
+			FROM = {
+				has_spratly_islands = yes
+				NOT = { original_tag = PRC }
+			}
+		}
+		
+		target_root_trigger = {
+			has_completed_focus = PRC_socialist_foreign_policy
+		}
+
+		cost = 15
+		days_remove = 21
+		
+		fire_only_once = yes
+		war_with_target_on_remove = yes
+
+		ai_will_do = {
+			factor = 100
+			modifier = {
+				factor = 0
+				NOT = { has_global_flag = PRC_world_plan }
+			}
+			modifier = {
+				has_war_with = USA
+				factor = 0
+			}
+			modifier = {
+				AND = {
+					has_war_with = PRK
+					surrender_progress > 0.3
+				}
+				factor = 0
+			}
+			modifier = {
+				AND = {
+					has_war_with = KOR
+					surrender_progress > 0.3
+				}
+				factor = 0
+			}
+			modifier = {
+				AND = {
+					has_war_with = SOV
+					surrender_progress > 0.3
+				}
+				factor = 0
+			}
+			modifier = {
+				has_war_with = RAJ
+				factor = 0
+			}
+			modifier = {
+				has_war_with = JAP
+				factor = 0
+			}
+		}
+
+		cancel_effect = {
+			add_political_power = 15
+		}
+
+		complete_effect = {
+		}
+
+		remove_effect = {
+			FROM = { country_event = pr_china_diplomacy.10 }
+		}
+	}
+	
+	PRC_attack_DPR_korea = {
+		name = PRC_attack_country
+		
+		icon = generic_civil_support
+
+		available = {
+			is_subject = no
+			country_exists = PRK
+			NOT = { is_in_faction_with = PRK }
+			has_completed_focus = PRC_north_korea_abandonment
+		}
+
+		visible = {
+			has_completed_focus = PRC_socialist_foreign_policy
+		}
+
+		cancel_trigger = {
+			OR = {
+				is_subject = yes
+				#NOT = { can_declare_war_on = var:329.owner }
+			}
+		}
+		
+		targets = { PRK }
+		
+		target_root_trigger = {
+			has_completed_focus = PRC_socialist_foreign_policy
+		}
+
+		cost = 25
+		days_remove = 25
+		
+		fire_only_once = yes
+		war_with_target_on_remove = yes
+
+		ai_will_do = {
+			factor = 100
+			modifier = {
+				factor = 0
+				OR = {
+					has_war = yes
+				}
+			}
+			
+			modifier = {
+				has_war_with = USA
+				factor = 0
+			}
+			modifier = {
+				AND = {
+					has_war_with = PRK
+					surrender_progress > 0.3
+				}
+				factor = 0
+			}
+			modifier = {
+				AND = {
+					has_war_with = KOR
+					surrender_progress > 0.3
+				}
+				factor = 0
+			}
+			modifier = {
+				AND = {
+					has_war_with = SOV
+					surrender_progress > 0.3
+				}
+				factor = 0
+			}
+			modifier = {
+				has_war_with = RAJ
+				factor = 0
+			}
+			modifier = {
+				has_war_with = JAP
+				factor = 0
+			}
+		}
+
+		cancel_effect = {
+			add_political_power = 25
+		}
+
+		complete_effect = {
+		}
+
+		remove_effect = {
+			declare_war_on = { target = FROM type = annex_everything }
+		}
+	}
+	
+	PRC_attack_okinawa = {
+		name = PRC_attack_country
+		
+		icon = generic_civil_support
+
+		available = {
+			is_subject = no
+			country_exists = RYU
+			NOT = { is_in_faction_with = RYU }
+			has_completed_focus = PRC_the_eastern_plan
+		}
+
+		visible = {
+			has_completed_focus = PRC_socialist_foreign_policy
+		}
+
+		cancel_trigger = {
+			OR = {
+				is_subject = yes
+				#NOT = { can_declare_war_on = var:329.owner }
+			}
+		}
+		
+		targets = { RYU }
+		
+		target_root_trigger = {
+			has_completed_focus = PRC_socialist_foreign_policy
+		}
+
+		cost = 25
+		days_remove = 25
+		
+		fire_only_once = yes
+		war_with_target_on_remove = yes
+
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				factor = 0
+				NOT = { has_global_flag = PRC_world_plan }
+			}
+			modifier = {
+				add = 4
+				RYU = {
+					AND = {
+						has_completed_focus = RYU_only_juche
+						NOT = { is_in_faction_with = PRC }
+					}
+				}
+			}
+		}
+
+		cancel_effect = {
+			add_political_power = 25
+		}
+
+		complete_effect = {
+		}
+
+		remove_effect = {
+			declare_war_on = { target = FROM type = annex_everything }
+		}
+	}
+	
+	PRC_attack_japan = {
+		name = PRC_attack_country
+		
+		icon = generic_civil_support
+
+		available = {
+			is_subject = no
+			country_exists = JAP
+			NOT = { is_in_faction_with = JAP }
+			has_completed_focus = PRC_invasion_of_japan
+		}
+
+		visible = {
+			has_completed_focus = PRC_socialist_foreign_policy
+		}
+
+		cancel_trigger = {
+			OR = {
+				is_subject = yes
+				#NOT = { can_declare_war_on = var:329.owner }
+			}
+		}
+		
+		targets = { JAP }
+		
+		target_root_trigger = {
+			has_completed_focus = PRC_socialist_foreign_policy
+		}
+
+		cost = 25
+		days_remove = 25
+		
+		fire_only_once = yes
+		war_with_target_on_remove = yes
+
+		ai_will_do = {
+			factor = 100
+			modifier = {
+				factor = 0
+				OR = {
+					has_war = yes
+				}
+			}
+		}
+
+		cancel_effect = {
+			add_political_power = 25
+		}
+
+		complete_effect = {
+		}
+
+		remove_effect = {
+			declare_war_on = { target = FROM type = annex_everything }
+		}
+	}
+	
+	PRC_attack_america = {
+		name = PRC_attack_country
+		
+		icon = generic_civil_support
+
+		available = {
+			is_subject = no
+			country_exists = USA
+			NOT = { is_in_faction_with = USA }
+			has_completed_focus = PRC_challenge_to_american_hegemony
+		}
+
+		visible = {
+			has_completed_focus = PRC_socialist_foreign_policy
+		}
+
+		cancel_trigger = {
+			OR = {
+				is_subject = yes
+				#NOT = { can_declare_war_on = var:329.owner }
+			}
+		}
+		
+		targets = { USA }
+		
+		target_root_trigger = {
+			has_completed_focus = PRC_socialist_foreign_policy
+		}
+
+		cost = 25
+		days_remove = 25
+		
+		fire_only_once = yes
+		war_with_target_on_remove = yes
+
+		ai_will_do = {
+			factor = 100
+			modifier = {
+				factor = 0
+				OR = {
+					has_war = yes
+				}
+			}
+		}
+
+		cancel_effect = {
+			add_political_power = 25
+		}
+
+		complete_effect = {
+		}
+
+		remove_effect = {
+			declare_war_on = { target = FROM type = annex_everything }
+		}
+	}
+	
+	PRC_attack_russia = {
+		name = PRC_attack_country
+		
+		icon = generic_civil_support
+
+		available = {
+			is_subject = no
+			country_exists = SOV
+			NOT = { is_in_faction_with = SOV }
+			has_completed_focus = PRC_destruction_of_russia
+		}
+
+		visible = {
+			has_completed_focus = PRC_socialist_foreign_policy
+		}
+
+		cancel_trigger = {
+			OR = {
+				is_subject = yes
+				#NOT = { can_declare_war_on = var:329.owner }
+			}
+		}
+		
+		targets = { SOV }
+		
+		target_root_trigger = {
+			has_completed_focus = PRC_socialist_foreign_policy
+		}
+
+		cost = 25
+		days_remove = 25
+		
+		fire_only_once = yes
+		war_with_target_on_remove = yes
+
+		ai_will_do = {
+			factor = 100
+			modifier = {
+				factor = 0
+				OR = {
+					has_war = yes
+				}
+			}
+		}
+
+		cancel_effect = {
+			add_political_power = 25
+		}
+
+		complete_effect = {
+		}
+
+		remove_effect = {
+			declare_war_on = { target = FROM type = annex_everything }
+		}
+	}
+	
+	PRC_attack_taiwan = {
+		name = PRC_attack_country
+		
+		icon = generic_civil_support
+
+		available = {
+			is_subject = no
+			country_exists = CHI
+			NOT = { is_in_faction_with = CHI }
+			has_completed_focus = PRC_north_korea_abandonment
+		}
+
+		visible = {
+			has_completed_focus = PRC_warning_to_taiwan
+		}
+
+		cancel_trigger = {
+			OR = {
+				is_subject = yes
+			}
+		}
+		
+		targets = { CHI }
+		
+		target_root_trigger = {
+			has_completed_focus = PRC_warning_to_taiwan
+		}
+
+		cost = 25
+		days_remove = 25
+		
+		fire_only_once = yes
+		war_with_target_on_remove = yes
+
+		ai_will_do = {
+			factor = 100
+			modifier = {
+				factor = 0
+				OR = {
+					has_war = yes
+				}
+			}
+			
+			modifier = {
+				has_war_with = USA
+				factor = 0
+			}
+			modifier = {
+				AND = {
+					has_war_with = PRK
+					surrender_progress > 0.3
+				}
+				factor = 0
+			}
+			modifier = {
+				AND = {
+					has_war_with = KOR
+					surrender_progress > 0.3
+				}
+				factor = 0
+			}
+			modifier = {
+				AND = {
+					has_war_with = SOV
+					surrender_progress > 0.3
+				}
+				factor = 0
+			}
+			modifier = {
+				has_war_with = RAJ
+				factor = 0
+			}
+			modifier = {
+				has_war_with = JAP
+				factor = 0
+			}
+		}
+
+		cancel_effect = {
+			add_political_power = 25
+		}
+
+		complete_effect = {
+		}
+
+		remove_effect = {
+			declare_war_on = { target = FROM type = annex_everything }
+		}
+	}
+	
+}
+
+PRC_outer_china_occupation_category = {
+
+	PRC_tibet_assimilate  = {
+		icon = GFX_decision_generic_speech
+		allowed = {
+			original_tag = PRC
+		}
+
+		#available = {
+		#	has_completed_focus = ITA_the_new_emperor_of_ethiopia
+		#}
+
+		target_trigger = {
+			FROM = {
+				has_dynamic_modifier = { modifier = dynamic_tib_separatism }
+			}
+		}
+
+		days_re_enable = 180 #Changing this requires changing the custom tooltip below
+		state_target = yes
+		
+		cost = 35
+		
+		fire_only_once = no
+
+		complete_effect = {
+			FROM = {
+				add_compliance = 5
+			}
+		}
+
+		ai_will_do = {
+			base = 0.8
+		}
+	}
+
+	PRC_uyghur_assimilate = {
+		icon = GFX_decision_generic_speech
+		allowed = {
+			original_tag = PRC
+		}
+
+		#available = {
+		#	has_completed_focus = ITA_the_new_emperor_of_ethiopia
+		#}
+
+		target_trigger = {
+			FROM = {
+				has_dynamic_modifier = { modifier = dynamic_sik_separatism }
+			}
+		}
+
+		days_re_enable = 180 #Changing this requires changing the custom tooltip below
+		state_target = yes
+		cost = 35
+		fire_only_once = no
+
+		complete_effect = {
+			FROM = {
+				add_compliance = 5
+			}
+		}
+
+		ai_will_do = {
+			base = 0.8
+		}
+	}
+
+	PRC_remove_men_separatism = {
+		icon = GFX_decision_generic_speech
+		allowed = {
+			original_tag = PRC
+		}
+
+		available = {
+			divisions_in_state = {
+				state = FROM
+				size > 5
+			}
+			has_completed_focus = PRC_china_can_t_get_any_smaller
+		}
+
+		target_trigger = {
+			FROM = {
+				has_dynamic_modifier = { modifier = dynamic_men_separatism }
+			}
+		}
+
+		days_re_enable = 180 #Changing this requires changing the custom tooltip below
+		state_target = yes
+		cost = 35
+
+		complete_effect = {
+			FROM = {
+				remove_dynamic_modifier = { modifier = dynamic_men_separatism }
+			}
+		}
+
+		ai_will_do = {
+			base = 0.8
+		}
+	}
+
+	PRC_integrate_tibet = {
+		icon = infiltrate_state
+		
+		allowed = {
+			original_tag = PRC
+		}
+
+		available = {
+			AND = {
+				1228 = { resistance < 20 } #o
+				322 = { resistance < 20 } #o
+				919 = { resistance < 20 } #o
+				935 = { resistance < 20 } #O
+				936 = { resistance < 20 } #O
+			} 
+			AND = {
+				1228 = { compliance > 75 }
+				322 = { compliance > 75 }
+				919 = { compliance > 75 }
+				935 = { compliance > 75 }
+				936 = { compliance > 75 }
+			}
+		}
+		
+		cost = 100
+
+		complete_effect = {
+			
+			every_state = {
+				limit = {
+					is_owned_by = ROOT
+					has_dynamic_modifier = { modifier = dynamic_tib_separatism }
+				}
+				remove_dynamic_modifier = { modifier = dynamic_tib_separatism }
+				add_core_of = ROOT
+			}
+			
+		}
+
+		ai_will_do = {
+			base = 20
+		}
+	}
+
+	PRC_integrate_uyghur = {
+		icon = infiltrate_state
+		
+		allowed = {
+			original_tag = PRC
+		}
+
+		available = {
+			AND = {
+				618 = { resistance < 20 } #o
+				617 = { resistance < 20 } #o
+				287 = { resistance < 20 } #o
+				619 = { resistance < 20 } #O
+				1229 = { resistance < 20 } #O
+				1227 = { resistance < 20 } #O
+				788 = { resistance < 20 } #O
+			} 
+			AND = {
+				618 = { compliance > 75 }
+				617 = { compliance > 75 }
+				287 = { compliance > 75 }
+				619 = { compliance > 75 }
+				1229 = { compliance > 75 }
+				1227 = { compliance > 75 }
+				788 = { compliance > 75 }
+			}
+		}
+		
+		cost = 100
+
+		complete_effect = {
+			
+			every_state = {
+				limit = {
+					is_owned_by = ROOT
+					has_dynamic_modifier = { modifier = dynamic_sik_separatism }
+				}
+				remove_dynamic_modifier = { modifier = dynamic_sik_separatism }
+				add_core_of = ROOT
+			}
+			
+		}
+
+		ai_will_do = {
+			base = 20
+		}
+	}
+
+}

@@ -54,6 +54,36 @@ pr_china_america_crush_ai = {
 	}
 }
 
+PRC_civilian_factory_at_first = {
+	allowed = {
+		original_tag = PRC
+	}
+	enable = {
+		date < 2003.1.1
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = building_target
+		id = industrial_complex
+		value = 60
+	}
+}
+
+PRC_focus_on_mils_now = {
+	allowed = {
+		original_tag = PRC
+	}
+	enable = {
+		date > 2003.1.1
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = building_target
+		id = arms_factory
+		value = 200
+	}
+}
 
 PRC_building_boats_is_great = {
 	allowed = {
@@ -89,6 +119,12 @@ PRC_area_priority = {
 
 	ai_strategy = {
 		type = area_priority
+		id = scandinavia
+		value = -30
+	}
+
+	ai_strategy = {
+		type = area_priority
 		id = north_america
 		value = 50
 	}
@@ -109,6 +145,11 @@ PRC_area_priority = {
 		type = area_priority
 		id = middle_east
 		value = 30
+	}
+	ai_strategy = {
+		type = area_priority
+		id = suez
+		value = 20
 	}
 
 	ai_strategy = {
@@ -150,41 +191,137 @@ PRC_USA_we_love_islands = {
 	}
 }
 
-pr_china_india_must_crush_ai = {
+PRC_naval_role_ratios = {
+
+	# from hoi4 vanilla
+
 	allowed = {
+		has_dlc = "Man the Guns"
 		original_tag = PRC
 	}
-	
 	enable = {
-		has_completed_focus = PRC_Indian_Invasion
-		country_exists = RAJ
+		always = yes
 	}
-	
 	abort = {
-		OR = {
-			NOT = {
-				country_exists = RAJ
-			}
-			RAJ = { is_puppet_of = PRC }
-			is_in_faction_with = RAJ
-		}
+		num_of_naval_factories > 60
 	}
 
 	ai_strategy = {
-		type = antagonize
-		id = "RAJ"
+		type = role_ratio
+		id = naval_capital_bb
+		value = 5
+	}
+
+	ai_strategy = {
+		type = role_ratio
+		id = naval_capital_shbb
+		value = 5
+	}
+
+	ai_strategy = {
+		type = role_ratio
+		id = naval_carrier_light
+		value = 10
+	}
+
+	ai_strategy = {
+		type = role_ratio
+		id = naval_carrier
+		value = 15
+	}
+
+	ai_strategy = {
+		type = role_ratio
+		id = naval_submarine
+		value = 50
+	}
+
+	ai_strategy = {
+		type = role_ratio
+		id = naval_screen
+		value = 110
+	}
+
+	ai_strategy = {
+		type = role_ratio
+		id = naval_escort
+		value = 30
+	}
+
+	ai_strategy = {
+		type = role_ratio
+		id = naval_cruiser_light
+		value = 35
+	}
+
+	ai_strategy = {
+		type = role_ratio
+		id = naval_cruiser_heavy
+		value = -50
+	}
+
+	ai_strategy = {
+		type = role_ratio
+		id = naval_mine_sweeper
+		value = 5
+	}
+
+	ai_strategy = {
+		type = role_ratio
+		id = naval_mine_layer
+		value = 5
+	}
+	# general building directives
+	ai_strategy = {
+		type = unit_ratio
+		id = capital_ship
+		value = 5
+	}
+
+	ai_strategy = {
+		type = unit_ratio
+		id = carrier
+		value = 10
+	}
+
+	ai_strategy = {
+		type = unit_ratio
+		id = submarine
+		value = 5
+	}
+
+	ai_strategy = {
+		type = unit_ratio
+		id = screen_ship
+		value = 45
+	}
+
+	ai_strategy = {
+		type = unit_ratio
+		id = convoy
+		value = 20
+	}
+}
+
+seek_chinese_alliance_ai = {
+
+	enable = {
+		has_country_flag = aliance_with_PR_China
+	}
+	
+	abort = {
+		NOT = { has_country_flag = aliance_with_PR_China }
+	}
+	
+	ai_strategy = {
+		type = befriend
+		id = "PRC"
 		value = 200
 	}
 	
 	ai_strategy = {
-		type = consider_weak
-		id = "RAJ"
-		value = 75
-	}
-	
-	ai_strategy = {
-		type = conquer
-		id = "RAJ"
-		value = 75
+		type = alliance
+		id = "PRC"
+		value = 200
 	}
 }

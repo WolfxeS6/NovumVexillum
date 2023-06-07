@@ -1,0 +1,1146 @@
+
+ENG_hong_kong_influence_category = {
+
+	ENG_hong_kong_declaration_of_independence = {
+		icon = generic_nationalism
+		
+		visible = {
+			
+		}
+
+		available = {
+			is_subject = no
+			
+			custom_trigger_tooltip = {
+				tooltip = ENG_influence_over_35_tt
+				check_variable = { var = ENG.ENG_hong_kong_influence_value value = 35 compare = greater_than_or_equals }
+			}
+			custom_trigger_tooltip = {
+				tooltip = ENG_influence_more_15_tt
+				check_variable = { var = eng_temp_hong_kong_influence value = 15 compare = greater_than_or_equals }
+			}
+		}
+
+		ai_will_do = {
+			base = 1000
+		}
+
+		days_remove = 0
+		days_re_enable = 0
+
+		cost = 0
+
+		complete_effect = {
+			set_global_flag = end_hong_kong_conflict
+			
+			news_event = hong_kong_news.4
+			PRC = { country_event = hong_kong_uk_prc.17 }
+			
+			add_timed_idea = { idea = HKN_victory_in_the_Hong_Kong_conflict days = 1095 }
+			every_other_country = {
+				set_autonomy = { target = HKN autonomy_state = autonomy_free }
+			}
+			
+			hidden_effect = {
+			
+			random_other_country = {
+				limit = {
+					original_tag = HKN
+				}
+				
+					add_opinion_modifier = {
+						target = ENG
+						modifier = HKN_free_hong_kong_opinion
+					}
+					
+					drop_cosmetic_tag = yes
+					leave_faction = yes
+					add_ai_strategy = {
+						type = befriend
+						id = ENG
+						value = 200
+					}
+					add_ai_strategy = {
+						type = alliance
+						id = ENG
+						value = 200
+					}
+
+					remove_ideas = HKN_trampled_election_reform
+					remove_ideas = HKN_sino_british_joint_declaration
+					remove_ideas = HKN_british_influence
+					remove_ideas = HKN_chinese_influence
+					
+					#kill_ideology_leader = nationalist
+					kill_country_leader = yes
+					
+						add_country_leader_role = { #
+							character = HKN_Legislative_Council
+							country_leader = {
+								ideology = constitutionalist 
+								desc="POLITICS_Legislative_Council_DESC"
+								traits={HKN_liberate_hong_kong}
+								expire="1.1.1.1"
+								id=-1
+							}
+							promote_leader = yes
+						}
+						add_country_leader_role = { #
+							character = HKN_Legislative_Council
+							country_leader = {
+								ideology = market_liberal_ideology 
+								desc="POLITICS_Legislative_Council_DESC"
+								traits={HKN_liberate_hong_kong}
+								expire="1.1.1.1"
+								id=-1
+							}
+							promote_leader = yes
+						}
+						add_country_leader_role = { #
+							character = HKN_Legislative_Council
+							country_leader = {
+								ideology = liberalist 
+								desc="POLITICS_Legislative_Council_DESC"
+								traits={HKN_liberate_hong_kong}
+								expire="1.1.1.1"
+								id=-1
+							}
+							promote_leader = yes
+						}
+						add_country_leader_role = { #
+							character = HKN_Legislative_Council
+							country_leader = {
+								ideology = social_democrat_ideology 
+								desc="POLITICS_Legislative_Council_DESC"
+								traits={HKN_liberate_hong_kong}
+								expire="1.1.1.1"
+								id=-1
+							}
+							promote_leader = yes
+						}
+						add_country_leader_role = { #
+							character = HKN_Legislative_Council
+							country_leader = {
+								ideology = progressive_ideology 
+								desc="POLITICS_Legislative_Council_DESC"
+								traits={HKN_liberate_hong_kong}
+								expire="1.1.1.1"
+								id=-1
+							}
+							promote_leader = yes
+						}
+						add_country_leader_role = { #
+							character = HKN_Legislative_Council
+							country_leader = {
+								ideology = democratic_socialist_ideology 
+								desc="POLITICS_Legislative_Council_DESC"
+								traits={HKN_liberate_hong_kong}
+								expire="1.1.1.1"
+								id=-1
+							}
+							promote_leader = yes
+						}
+						
+					meta_effect = {
+						text = {
+							set_politics = {
+								ruling_party = social_liberal
+								last_election = "[CURRENT_DATE]"
+								election_frequency = 48
+								elections_allowed = yes
+							}
+						}
+						CURRENT_DATE = "[?global.date.GetDateStringNoHour]"
+					}
+					set_popularities = {
+						communist = 10
+						nationalist = 2
+						social_liberal = 88
+					}
+			}
+			
+			ROOT = {
+				if = {
+					limit = {
+						is_in_faction = yes
+					}
+					diplomatic_relation = {
+   						country = HKN
+   						relation = guarantee
+   						active = yes
+  					}
+					add_to_faction = HKN
+  					add_ai_strategy = {
+						type = befriend
+						id = HKN
+						value = 200
+					}
+					add_ai_strategy = {
+						type = alliance
+						id = HKN
+						value = 200
+					}
+				}
+				else = {
+					diplomatic_relation = {
+   						country = HKN
+   						relation = guarantee
+   						active = yes
+  					}
+  					add_ai_strategy = {
+						type = befriend
+						id = HKN
+						value = 200
+					}
+					add_ai_strategy = {
+						type = alliance
+						id = HKN
+						value = 200
+					}
+				}
+			}
+			
+			}
+		}
+	}
+	
+	ENG_supporting_the_liberal_movement_in_hong_kong = {
+
+		icon = eng_trade_unions_demand
+
+		allowed = {
+			tag = ENG
+		}
+
+		available = {
+		}
+
+		targets = { HKN }
+
+		target_trigger = {
+			FROM = {
+				tag = HKN
+			}
+		}
+
+		days_remove = 20
+
+		cost = 10
+
+		fire_only_once = no
+
+		ai_will_do = {
+			factor = 0.03
+			modifier = {
+				factor = 2
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 10
+				date > 2010.01.01
+			}
+			modifier = {
+				factor = 10
+				date > 2012.01.01
+			}
+			modifier = {
+				factor = 2
+				PRC = {
+					check_variable = { var = PRC.PRC_hong_kong_influence_value value = 20 compare = greater_than_or_equals }
+				} 
+			}
+			modifier = {
+				factor = 0
+				has_country_flag = HKN_hong_kong_problem_ai_timer_flag
+				NOT = { date > 2010.01.01 }
+			}
+		}
+
+		complete_effect = {
+		}
+
+		remove_effect = {
+			ENG_influence_add_5 = yes
+			
+			hidden_effect = {
+				if = {
+					limit = {
+						date < 2010.01.01
+					}
+					random_list = {
+						10 = {
+							modifier = {
+								factor = 2
+								is_historical_focus_on = yes
+							}
+							set_country_flag = { flag = HKN_hong_kong_problem_ai_timer_flag value = 1 days = 50 }
+						}
+						10 = {
+							modifier = {
+								factor = 2
+								is_historical_focus_on = yes
+							}
+							set_country_flag = { flag = HKN_hong_kong_problem_ai_timer_flag value = 1 days = 55 }
+						}
+						10 = {
+							modifier = {
+								factor = 1.5
+								is_historical_focus_on = yes
+							}
+							set_country_flag = { flag = HKN_hong_kong_problem_ai_timer_flag value = 1 days = 60 }
+						}
+						10 = {
+							set_country_flag = { flag = HKN_hong_kong_problem_ai_timer_flag value = 1 days = 65 }
+						}
+						10 = {
+							set_country_flag = { flag = HKN_hong_kong_problem_ai_timer_flag value = 1 days = 70 }
+						}
+						10 = {
+							modifier = {
+								factor = 0.8
+								is_historical_focus_on = yes
+							}
+							set_country_flag = { flag = HKN_hong_kong_problem_ai_timer_flag value = 1 days = 75 }
+						}
+						10 = {
+							modifier = {
+								factor = 0.5
+								is_historical_focus_on = yes
+							}
+							set_country_flag = { flag = HKN_hong_kong_problem_ai_timer_flag value = 1 days = 80 }
+						}
+					}
+				}
+			}
+		}
+	}
+	
+	ENG_hong_kong_immigration_programme = {
+
+		icon = GFX_HKN_hong_kong_influence
+
+		allowed = {
+			tag = ENG
+		}
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = ENG_influence_over_25_tt
+				check_variable = { var = ENG.ENG_hong_kong_influence_value value = 25 compare = greater_than_or_equals }
+			}
+		}
+
+		days_remove = 20
+
+		cost = 10
+
+		fire_only_once = no
+
+		ai_will_do = {
+			factor = 0.03
+			modifier = {
+				factor = 2
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 10
+				date > 2010.01.01
+			}
+			modifier = {
+				factor = 10
+				date > 2012.01.01
+			}
+			modifier = {
+				factor = 5
+				check_variable = { var = prc_temp_hong_kong_influence value = 1 compare = greater_than_or_equals }
+			}
+			modifier = {
+				factor = 0
+				has_country_flag = HKN_hong_kong_problem_ai_timer_flag
+				NOT = { date > 2010.01.01 }
+			}
+		}
+
+		complete_effect = {
+		}
+
+		remove_effect = {
+			ENG_influence_add_7 = yes
+			news_event = hong_kong_news.6
+		}
+	}
+	
+	ENG_suspension_of_extradition_treaty_with_hong_kong = {
+
+		icon = GFX_decision_hol_exchange_intelligence_data
+
+		allowed = {
+			tag = ENG
+		}
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = ENG_influence_over_25_tt
+				check_variable = { var = ENG.ENG_hong_kong_influence_value value = 25 compare = greater_than_or_equals }
+			}
+		}
+
+		targets = { PRC }
+
+		target_trigger = {
+			FROM = {
+				tag = PRC
+			}
+		}
+
+		days_remove = 20
+
+		cost = 10
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 0.03
+			modifier = {
+				factor = 2
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 10
+				date > 2010.01.01
+			}
+			modifier = {
+				factor = 10
+				date > 2012.01.01
+			}
+			modifier = {
+				factor = 10
+				check_variable = { var = prc_temp_hong_kong_influence value = 1 compare = greater_than_or_equals }
+			}
+			modifier = {
+				factor = 10
+				check_variable = { var = prc_temp_hong_kong_influence value = 5 compare = greater_than_or_equals }
+			}
+			modifier = {
+				factor = 0
+				has_country_flag = HKN_hong_kong_problem_ai_timer_flag
+				NOT = { date > 2010.01.01 }
+			}
+		}
+
+		complete_effect = {
+		}
+
+		remove_effect = {
+			ENG_influence_add_7 = yes
+		}
+	}
+	
+	ENG_offer_exile_to_localist_groups = {
+
+		icon = GFX_decision_hol_exchange_intelligence_data
+
+		allowed = {
+			tag = ENG
+		}
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = ENG_influence_over_25_tt
+				check_variable = { var = ENG.ENG_hong_kong_influence_value value = 25 compare = greater_than_or_equals }
+			}
+		}
+
+		days_remove = 20
+
+		cost = 10
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 0.03
+			modifier = {
+				factor = 2
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 10
+				date > 2010.01.01
+			}
+			modifier = {
+				factor = 10
+				date > 2012.01.01
+			}
+			modifier = {
+				factor = 10
+				check_variable = { var = prc_temp_hong_kong_influence value = 1 compare = greater_than_or_equals }
+			}
+			modifier = {
+				factor = 10
+				check_variable = { var = prc_temp_hong_kong_influence value = 5 compare = greater_than_or_equals }
+			}
+			modifier = {
+				factor = 0
+				has_country_flag = HKN_hong_kong_problem_ai_timer_flag
+				NOT = { date > 2010.01.01 }
+			}
+		}
+
+		complete_effect = {
+		}
+
+		remove_effect = {
+			ENG_influence_add_7 = yes
+			ENG = { country_event = hong_kong_uk_prc.11 }
+			PRC = { country_event = hong_kong_uk_prc.11 }
+		}
+	}
+	
+	ENG_diplomatic_protest_against_the_chinese_government = {
+
+		icon = generic_civil_support
+
+		allowed = {
+			tag = ENG
+		}
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = PRC_influence_over_25_tt
+				check_variable = { var = PRC.PRC_hong_kong_influence_value value = 25 compare = greater_than_or_equals }
+			}
+		}
+
+		targets = { PRC }
+
+		target_trigger = {
+			FROM = {
+				tag = PRC
+			}
+		}
+
+		days_remove = 20
+		days_re_enable = 365
+
+		cost = 10
+
+		fire_only_once = no
+
+		ai_will_do = {
+			factor = 0.03
+			modifier = {
+				factor = 2
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 10
+				date > 2012.01.01
+			}
+			modifier = {
+				factor = 10
+				date > 2010.01.01
+			}
+			modifier = {
+				factor = 10
+				date > 2012.01.01
+			}
+			modifier = {
+				factor = 2
+				PRC = {
+					check_variable = { var = PRC.PRC_hong_kong_influence_value value = 20 compare = greater_than_or_equals }
+				} 
+			}
+			modifier = {
+				factor = 10
+				check_variable = { var = prc_temp_hong_kong_influence value = 1 compare = greater_than_or_equals }
+			}
+			modifier = {
+				factor = 10
+				check_variable = { var = prc_temp_hong_kong_influence value = 5 compare = greater_than_or_equals }
+			}
+			modifier = {
+				factor = 0
+				has_country_flag = HKN_hong_kong_problem_ai_timer_flag
+				NOT = { date > 2010.01.01 }
+			}
+		}
+
+		complete_effect = {
+		}
+
+		remove_effect = {
+			FROM = { country_event = hong_kong_uk_prc.7 }
+		}
+	}
+	
+	ENG_embago_ultimatum_to_china = {
+
+		icon = eng_trade_unions_demand
+
+		allowed = {
+			tag = ENG
+		}
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = PRC_influence_over_35_tt
+				check_variable = { var = PRC.PRC_hong_kong_influence_value value = 35 compare = greater_than_or_equals }
+			}
+			NOT = { is_embargoed_by = FROM }
+		}
+
+		targets = { PRC }
+
+		target_trigger = {
+			FROM = {
+				tag = PRC
+			}
+		}
+
+		days_remove = 20
+
+		cost = 10
+
+		fire_only_once = yes
+
+
+		ai_will_do = {
+			factor = 0.03
+			modifier = {
+				factor = 2
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 10
+				date > 2012.01.01
+			}
+			modifier = {
+				factor = 10
+				date > 2010.01.01
+			}
+			modifier = {
+				factor = 10
+				date > 2012.01.01
+			}
+			modifier = {
+				factor = 2
+				PRC = {
+					check_variable = { var = PRC.PRC_hong_kong_influence_value value = 20 compare = greater_than_or_equals }
+				} 
+			}
+			modifier = {
+				factor = 10
+				check_variable = { var = prc_temp_hong_kong_influence value = 1 compare = greater_than_or_equals }
+			}
+			modifier = {
+				factor = 10
+				check_variable = { var = prc_temp_hong_kong_influence value = 5 compare = greater_than_or_equals }
+			}
+			modifier = {
+				factor = 0
+				has_country_flag = HKN_hong_kong_problem_ai_timer_flag
+				NOT = { date > 2010.01.01 }
+			}
+		}
+
+		complete_effect = {
+		}
+
+		remove_effect = {
+			FROM = { country_event = hong_kong_uk_prc.12 }
+		}
+	}
+}
+
+PRC_hong_kong_influence_category = {
+
+	PRC_suspension_of_one_country_two_systems_in_hong_kong = {
+		icon = generic_nationalism
+		visible = {
+			
+		}
+
+		available = {
+			is_subject = no
+			
+			custom_trigger_tooltip = {
+				tooltip = PRC_influence_over_35_tt
+				check_variable = { var = PRC.PRC_hong_kong_influence_value value = 35 compare = greater_than_or_equals }
+			}
+			custom_trigger_tooltip = {
+				tooltip = PRC_influence_more_15_tt
+				check_variable = { var = prc_temp_hong_kong_influence value = 15 compare = greater_than_or_equals }
+			}
+		}
+
+		ai_will_do = {
+			base = 42
+			modifier = {
+				add = 1295 #very specific value
+				always = yes
+			}
+		}
+
+		days_remove = 0
+		days_re_enable = 0
+
+		cost = 0
+
+		complete_effect = {
+			set_global_flag = end_hong_kong_conflict
+			news_event = hong_kong_news.3
+			ENG = { country_event = hong_kong_uk_prc.17 }
+			
+			add_timed_idea = { idea = HKN_victory_in_the_Hong_Kong_conflict days = 1095 }
+			
+			HKN = {
+				remove_ideas = HKN_trampled_election_reform
+				remove_ideas = HKN_sino_british_joint_declaration
+				remove_ideas = HKN_british_influence
+				remove_ideas = HKN_chinese_influence
+			}
+			
+			annex_country = {
+				target = HKN
+				transfer_troops = yes
+			}
+		}
+	}
+	
+	PRC_strengthening_anti_chinese_oppression = {
+
+		icon = GFX_decision_generic_police_action
+
+		allowed = {
+			tag = PRC
+		}
+
+		available = {
+		}
+
+		targets = { HKN }
+
+		target_trigger = {
+			FROM = {
+				tag = HKN
+			}
+		}
+
+		days_remove = 20
+
+		cost = 10
+
+		fire_only_once = no
+
+
+		ai_will_do = {
+			factor = 0.03
+			modifier = {
+				factor = 2
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 10
+				date > 2012.01.01
+			}
+			modifier = {
+				factor = 10
+				date > 2010.01.01
+			}
+			modifier = {
+				factor = 10
+				date > 2012.01.01
+			}
+			modifier = {
+				factor = 2
+				ENG = {
+					check_variable = { var = ENG.ENG_hong_kong_influence_value value = 20 compare = greater_than_or_equals }
+				} 
+			}
+			modifier = {
+				factor = 10
+				check_variable = { var = eng_temp_hong_kong_influence value = 1 compare = greater_than_or_equals }
+			}
+			modifier = {
+				factor = 10
+				check_variable = { var = eng_temp_hong_kong_influence value = 5 compare = greater_than_or_equals }
+			}
+			modifier = {
+				factor = 0
+				has_country_flag = HKN_hong_kong_problem_ai_timer_flag
+				NOT = { date > 2010.01.01 }
+			}
+		}
+
+		complete_effect = {
+		}
+
+		remove_effect = {
+			PRC_influence_add_5 = yes
+		}
+	}
+	
+	PRC_hong_kong_national_security_legislation = {
+
+		icon = GFX_decision_generic_political_discourse
+
+		allowed = {
+			tag = PRC
+		}
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = PRC_influence_over_25_tt
+				check_variable = { var = PRC.PRC_hong_kong_influence_value value = 25 compare = greater_than_or_equals }
+			}
+		}
+
+		days_remove = 20
+
+		cost = 10
+
+		fire_only_once = yes
+
+
+		ai_will_do = {
+			factor = 0.03
+			modifier = {
+				factor = 2
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 10
+				date > 2012.01.01
+			}
+			modifier = {
+				factor = 10
+				date > 2010.01.01
+			}
+			modifier = {
+				factor = 10
+				date > 2012.01.01
+			}
+			modifier = {
+				factor = 2
+				ENG = {
+					check_variable = { var = ENG.ENG_hong_kong_influence_value value = 20 compare = greater_than_or_equals }
+				} 
+			}
+			modifier = {
+				factor = 10
+				check_variable = { var = eng_temp_hong_kong_influence value = 1 compare = greater_than_or_equals }
+			}
+			modifier = {
+				factor = 10
+				check_variable = { var = eng_temp_hong_kong_influence value = 5 compare = greater_than_or_equals }
+			}
+			modifier = {
+				factor = 0
+				has_country_flag = HKN_hong_kong_problem_ai_timer_flag
+				NOT = { date > 2010.01.01 }
+			}
+		}
+
+		complete_effect = {
+		}
+
+		remove_effect = {
+			PRC_influence_add_7 = yes
+			news_event = hong_kong_news.5
+			
+			#custom_effect_tooltip = PRC_influence_add_7_tt
+			#country_event = hong_kong_uk_prc.15
+		}
+	}
+	PRC_attempt_to_enact_hong_kong_extradition_bill = {
+
+		icon = GFX_decision_SWI_swiss_democratic_tradition_campaign
+
+		allowed = {
+			tag = PRC
+		}
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = PRC_influence_over_25_tt
+				check_variable = { var = PRC.PRC_hong_kong_influence_value value = 25 compare = greater_than_or_equals }
+			}
+		}
+
+		days_remove = 20
+
+		cost = 10
+
+		fire_only_once = yes
+
+
+		ai_will_do = {
+			factor = 0.03
+			modifier = {
+				factor = 2
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 10
+				date > 2012.01.01
+			}
+			modifier = {
+				factor = 10
+				date > 2010.01.01
+			}
+			modifier = {
+				factor = 10
+				date > 2012.01.01
+			}
+			modifier = {
+				factor = 2
+				ENG = {
+					check_variable = { var = ENG.ENG_hong_kong_influence_value value = 20 compare = greater_than_or_equals }
+				} 
+			}
+			modifier = {
+				factor = 10
+				check_variable = { var = eng_temp_hong_kong_influence value = 1 compare = greater_than_or_equals }
+			}
+			modifier = {
+				factor = 10
+				check_variable = { var = eng_temp_hong_kong_influence value = 5 compare = greater_than_or_equals }
+			}
+			modifier = {
+				factor = 0
+				has_country_flag = HKN_hong_kong_problem_ai_timer_flag
+				NOT = { date > 2010.01.01 }
+			}
+		}
+
+		complete_effect = {
+		}
+
+		remove_effect = {
+			PRC_influence_add_7 = yes
+		}
+	}
+	PRC_separatists_deprivation_of_seats = {
+
+		icon = GFX_decision_generic_break_treaty
+
+		allowed = {
+			tag = PRC
+		}
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = PRC_influence_over_25_tt
+				check_variable = { var = PRC.PRC_hong_kong_influence_value value = 25 compare = greater_than_or_equals }
+			}
+		}
+
+		days_remove = 20
+
+		cost = 10
+
+		fire_only_once = yes
+
+
+		ai_will_do = {
+			factor = 0.03
+			modifier = {
+				factor = 2
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 10
+				date > 2012.01.01
+			}
+			modifier = {
+				factor = 10
+				date > 2010.01.01
+			}
+			modifier = {
+				factor = 10
+				date > 2012.01.01
+			}
+			modifier = {
+				factor = 2
+				ENG = {
+					check_variable = { var = ENG.ENG_hong_kong_influence_value value = 20 compare = greater_than_or_equals }
+				} 
+			}
+			modifier = {
+				factor = 10
+				check_variable = { var = eng_temp_hong_kong_influence value = 1 compare = greater_than_or_equals }
+			}
+			modifier = {
+				factor = 10
+				check_variable = { var = eng_temp_hong_kong_influence value = 5 compare = greater_than_or_equals }
+			}
+			modifier = {
+				factor = 0
+				has_country_flag = HKN_hong_kong_problem_ai_timer_flag
+				NOT = { date > 2010.01.01 }
+			}
+		}
+
+		complete_effect = {
+		}
+
+		remove_effect = {
+			PRC_influence_add_7 = yes
+		}
+	}
+	PRC_diplomatic_protest_against_the_british_government = {
+
+		icon = GFX_decision_hol_exchange_intelligence_data
+
+		allowed = {
+			tag = PRC
+		}
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = ENG_influence_over_25_tt
+				check_variable = { var = ENG.ENG_hong_kong_influence_value value = 25 compare = greater_than_or_equals }
+			}
+		}
+
+		targets = { ENG }
+
+		target_trigger = {
+			FROM = {
+				tag = ENG
+			}
+		}
+
+		days_remove = 20
+		days_re_enable = 365
+
+		cost = 10
+
+		fire_only_once = no
+
+
+		ai_will_do = {
+			factor = 0.03
+			modifier = {
+				factor = 2
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 10
+				date > 2012.01.01
+			}
+			modifier = {
+				factor = 10
+				date > 2010.01.01
+			}
+			modifier = {
+				factor = 10
+				date > 2012.01.01
+			}
+			modifier = {
+				factor = 2
+				ENG = {
+					check_variable = { var = ENG.ENG_hong_kong_influence_value value = 20 compare = greater_than_or_equals }
+				} 
+			}
+			modifier = {
+				factor = 10
+				check_variable = { var = eng_temp_hong_kong_influence value = 1 compare = greater_than_or_equals }
+			}
+			modifier = {
+				factor = 10
+				check_variable = { var = eng_temp_hong_kong_influence value = 5 compare = greater_than_or_equals }
+			}
+			modifier = {
+				factor = 0
+				has_country_flag = HKN_hong_kong_problem_ai_timer_flag
+				NOT = { date > 2010.01.01 }
+			}
+		}
+
+		complete_effect = {
+		}
+
+		remove_effect = {
+			FROM = { country_event = hong_kong_uk_prc.7 }
+		}
+	}
+	
+	PRC_embago_ultimatum_to_china = {
+
+		icon = eng_trade_unions_demand
+
+		allowed = {
+			tag = PRC
+		}
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = ENG_influence_over_35_tt
+				check_variable = { var = ENG.ENG_hong_kong_influence_value value = 35 compare = greater_than_or_equals }
+			}
+			NOT = { is_embargoed_by = FROM }
+		}
+
+		targets = { ENG }
+
+		target_trigger = {
+			FROM = {
+				tag = ENG
+			}
+		}
+
+		days_remove = 20
+
+		cost = 10
+
+		fire_only_once = yes
+
+
+		ai_will_do = {
+			factor = 0.03
+			modifier = {
+				factor = 2
+				is_historical_focus_on = yes
+			}
+			modifier = {
+				factor = 10
+				date > 2012.01.01
+			}
+			modifier = {
+				factor = 10
+				date > 2010.01.01
+			}
+			modifier = {
+				factor = 10
+				date > 2012.01.01
+			}
+			modifier = {
+				factor = 2
+				ENG = {
+					check_variable = { var = ENG.ENG_hong_kong_influence_value value = 20 compare = greater_than_or_equals }
+				} 
+			}
+			modifier = {
+				factor = 10
+				check_variable = { var = eng_temp_hong_kong_influence value = 1 compare = greater_than_or_equals }
+			}
+			modifier = {
+				factor = 10
+				check_variable = { var = eng_temp_hong_kong_influence value = 5 compare = greater_than_or_equals }
+			}
+			modifier = {
+				factor = 0
+				has_country_flag = HKN_hong_kong_problem_ai_timer_flag
+				NOT = { date > 2010.01.01 }
+			}
+		}
+
+		complete_effect = {
+		}
+
+		remove_effect = {
+			FROM = { country_event = hong_kong_uk_prc.12 }
+		}
+	}
+}

@@ -1,0 +1,548 @@
+
+WAS_wa_state_diplomacy = {
+
+	PRC_wa_switch = {
+		icon = GFX_decision_generic_industry
+
+		available = {
+		}
+
+		visible = {
+			original_tag = PRC
+		}
+
+		cost = 0
+		days_remove = 7
+		fire_only_once = no
+
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 1000
+				AND = {
+					WAS = { is_ai = no }
+					WAS_aggressive_plan = no
+				}
+			}
+		}
+
+		remove_effect = {
+			if = {
+				limit = { has_global_flag = WAS_aggressive_plan_flag }
+				clr_global_flag = WAS_aggressive_plan_flag
+				WAS = { country_event = { id = wa_state.1 hours = 1 } }
+			}
+			else = {
+				set_global_flag = WAS_aggressive_plan_flag
+				WAS = { country_event = { id = wa_state.2 hours = 1 } }
+			}
+		}
+	}
+	
+	PRC_infantry_support_to_wa = {
+
+		icon = generic_civil_support
+
+		available = {
+			has_equipment = { infantry_equipment > 499 }
+			is_subject = no
+		}
+
+		visible = {
+			WAS = { is_puppet_of = ROOT }
+			original_tag = PRC
+		}
+
+		fire_only_once = no
+
+		days_remove = 90
+
+		cost = 0
+
+		days_re_enable = 30
+
+		remove_effect = {
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -500
+			}
+			WAS = { country_event = { id = wa_state.4 hours = 1 } }
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 10
+				AND = {
+					WAS = { is_ai = no }
+					has_equipment = { infantry_equipment > 4999 }
+					WAS = { has_equipment = { infantry_equipment < 999 } }
+				}
+			}
+			modifier = {
+				add = 10
+				AND = {
+					WAS = { is_ai = yes }
+					has_equipment = { infantry_equipment > 9999 }
+					WAS = { has_equipment = { infantry_equipment < 999 } }
+				}
+			}
+		}
+		
+	}
+	
+	PRC_artillery_equipment_to_wa = {
+
+		icon = generic_civil_support
+
+		available = {
+			has_equipment = { artillery_equipment > 99 }
+			is_subject = no
+		}
+
+		visible = {
+			WAS = { is_puppet_of = ROOT }
+			original_tag = PRC
+		}
+
+		fire_only_once = no
+
+		days_remove = 90
+
+		cost = 0
+
+		days_re_enable = 30
+
+		remove_effect = {
+			add_equipment_to_stockpile = { 
+				type = artillery_equipment 
+				amount = -100  
+			}
+			WAS = { country_event = { id = wa_state.5 hours = 1 } }
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 10
+				AND = {
+					WAS = { is_ai = no }
+					has_equipment = { artillery_equipment > 1999 }
+					WAS = { has_equipment = { artillery_equipment < 99 } }
+				}
+			}
+		}
+		
+	}
+	
+	PRC_support_equipment_to_wa = {
+
+		icon = generic_civil_support
+
+		available = {
+			has_equipment = { support_equipment > 99 }
+			is_subject = no
+		}
+
+		visible = {
+			WAS = { is_puppet_of = ROOT }
+			original_tag = PRC
+		}
+
+		fire_only_once = no
+
+		days_remove = 90
+
+		cost = 0
+
+		days_re_enable = 30
+
+		remove_effect = {
+			add_equipment_to_stockpile = { 
+				type = support_equipment 
+				amount = -100  
+			}
+			WAS = { country_event = { id = wa_state.6 hours = 1 } }
+		}
+		
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 10
+				AND = {
+					WAS = { is_ai = no }
+					has_equipment = { support_equipment > 1999 }
+					WAS = { has_equipment = { support_equipment < 99 } }
+				}
+			}
+		}
+		
+	}
+	
+	PRC_dissolution_of_wa_warlords = {
+
+		icon = GFX_decision_generic_political_discourse
+
+		available = {
+			WAS = { is_subject_of = ROOT }
+			is_subject = no
+			is_in_faction_with = BRM
+		}
+
+		visible = {
+			WAS = { is_puppet_of = ROOT }
+			original_tag = PRC
+		}
+
+		fire_only_once = yes
+
+		cost = 0
+
+		remove_effect = {
+			BRM = { country_event = { id = wa_state.14 hours = 1 } }
+		}
+		
+		ai_will_do = {
+			factor = 20
+			modifier = {
+				factor = 0
+				WAS = { is_ai = no }
+			}
+		}
+		
+	}
+
+	WAS_wa_switch = {
+		icon = GFX_decision_generic_industry
+
+		available = {
+		}
+
+		visible = {
+			original_tag = WAS
+		}
+
+		cost = 25
+		days_remove = 7
+		fire_only_once = no
+
+		ai_will_do = {
+			factor = 0
+		}
+
+		remove_effect = {
+			PRC = { country_event = { id = wa_state.3 hours = 10 } }
+		}
+	}
+	
+	WAS_ask_PRC_for_infantry_support = {
+
+		icon = generic_civil_support
+
+		available = {
+			PRC = { has_equipment = { infantry_equipment > 499 } }
+			is_subject_of = PRC
+			has_completed_focus = WAS_ask_china
+		}
+
+		visible = {
+			WAS = { is_puppet_of = PRC }
+			original_tag = WAS
+		}
+
+		fire_only_once = no
+
+		days_remove = 90
+
+		cost = 75
+
+		days_re_enable = 30
+
+		remove_effect = {
+			PRC = { country_event = { id = wa_state.9 hours = 1 } }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	WAS_ask_PRC_for_artillery_equipment = {
+
+		icon = generic_civil_support
+
+		available = {
+			PRC = { has_equipment = { artillery_equipment > 99 } }
+			is_subject_of = PRC
+			has_completed_focus = WAS_ask_china
+		}
+
+		visible = {
+			WAS = { is_puppet_of = PRC }
+			original_tag = WAS
+		}
+
+		fire_only_once = no
+
+		days_remove = 90
+
+		cost = 75
+
+		days_re_enable = 30
+
+		remove_effect = {
+			PRC = { country_event = { id = wa_state.10 hours = 1 } }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	WAS_ask_PRC_for_support_equipment = {
+
+		icon = generic_civil_support
+
+		available = {
+			PRC = { has_equipment = { support_equipment > 99 } }
+			is_subject_of = PRC
+			has_completed_focus = WAS_ask_china
+		}
+
+		visible = {
+			WAS = { is_puppet_of = PRC }
+			original_tag = WAS
+		}
+
+		fire_only_once = no
+
+		days_remove = 90
+
+		cost = 75
+
+		days_re_enable = 30
+
+		remove_effect = {
+			PRC = { country_event = { id = wa_state.11 hours = 1 } }
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	WAS_shan_border_conflict_initiate_incident = {
+		icon = border_war		
+
+		available = {
+			FROM = {
+				924 = {
+					is_controlled_by = FROM
+					any_neighbor_state = {
+						is_fully_controlled_by = ROOT
+						hidden_trigger = { NOT = { has_state_flag = border_incident_active } }
+					}
+					NOT = { has_state_flag = border_incident_active }
+				}
+			}
+			NOT = { has_non_aggression_pact_with = FROM }
+		}
+
+		visible = {
+			FROM = { exists = yes }
+			NOT = { has_war_with = FROM }
+			FROM = {
+				NOT = {
+					is_subject_of = ROOT
+				}
+				NOT = {
+					is_in_faction_with = ROOT
+				}
+			}
+			NOT = {
+				is_subject_of = FROM
+			}
+			AND = {
+				has_global_flag = WAS_aggressive_plan_flag
+				has_completed_focus = WAS_territorial_dispute
+			}
+
+			AND = {
+				NOT = { has_border_war_with = FROM }
+				FROM = {
+					924 = {
+						is_controlled_by = FROM
+						hidden_trigger = { NOT = { has_state_flag = border_incident_active } }
+						any_neighbor_state = {
+							hidden_trigger = { NOT = { has_state_flag = border_incident_active } }
+							is_fully_controlled_by = ROOT
+						}
+					}
+				}
+			}
+		}
+
+		# VPI by Yard1
+		target_root_trigger = {
+			original_tag = WAS
+		}
+		
+		target_array = neighbors
+
+		target_trigger = {
+			FROM = { original_tag = BRM }
+		}
+
+		highlight_states = {
+			highlight_states_trigger = {
+				OR = {
+					state = FROM.defender_state_vs_@ROOT
+					AND = {
+						is_owned_and_controlled_by = FROM
+						hidden_trigger = { NOT = { has_state_flag = border_incident_active } }
+						any_neighbor_state = {
+							hidden_trigger = { NOT = { has_state_flag = border_incident_active } }
+							has_ROOT_at_least_1_div_in_current_state_scope = yes
+							is_fully_controlled_by = ROOT
+						}
+					}
+				}
+			}
+		}
+
+		ai_will_do = {
+			base = 10
+		}
+
+		cost = 0 #at now
+
+		fire_only_once = no
+
+		days_remove = 3
+		days_re_enable = 3
+
+		war_with_target_on_remove = yes
+
+		complete_effect = {
+			start_border_war = {
+				change_state_after_war = no
+				attacker = {
+					state = 1257 #var:defender_state_temp #var:FROM.attacker_state_vs_@ROOT
+					num_provinces = 4
+					on_win = wa_state_border_conflict_won_attacker.1
+					on_lose = wa_state_border_conflict_lost_attacker.1
+					on_cancel = wa_state_border_conflict_canceled_attacker.1
+				}
+				
+				defender = {
+					state = 924 #@ROOT #var:FROM.defender_state_vs_@ROOT
+					num_provinces = 4
+					on_win = wa_state_border_conflict_won_defender.1
+					on_lose = wa_state_border_conflict_lost_defender.1
+					on_cancel = wa_state_border_conflict_canceled_defender.1
+				}
+			}
+		}
+		
+		remove_effect = {
+			hidden_effect = {
+				var:FROM.defender_state_vs_@ROOT = {
+					save_event_target_as = defender_state 
+				}
+				var:FROM.attacker_state_vs_@ROOT = {
+					save_event_target_as = attacker_state 
+				}
+				FROM = {
+					random_owned_controlled_state = {
+						limit = {
+							hidden_trigger = { NOT = { has_state_flag = border_incident_active } }
+							any_neighbor_state = {
+								is_fully_controlled_by = ROOT
+								has_ROOT_at_least_1_div_in_current_state_scope = yes
+								hidden_trigger = { NOT = { has_state_flag = border_incident_active } }
+							}
+						}
+						set_temp_variable = { defender_state_temp = id }
+					}
+				}
+				random_state = {
+					limit = {
+						is_fully_controlled_by = ROOT
+						hidden_trigger = { NOT = { has_state_flag = border_incident_active } }
+						has_ROOT_at_least_1_div_in_current_state_scope = yes
+						any_neighbor_state = {
+							state = var:FROM.defender_state_vs_@ROOT
+						}
+					}
+					set_temp_variable = { attacker_state_temp = id }
+				}
+			}
+			#activate_targeted_decision = { target = FROM decision = WTT_escalate_incident_to_border_conflict }
+		}
+	}
+	
+	WAS_liberation_war = {
+
+		icon = GFX_decision_oppression
+
+		available = {
+			is_subject_of = PRC
+			has_completed_focus = WAS_government_declaration
+			NOT = { is_in_faction_with = BRM }
+		}
+
+		visible = {
+			WAS = { is_puppet_of = PRC }
+			original_tag = WAS
+		}
+
+		fire_only_once = yes
+
+		days_remove = 14
+
+		cost = 0
+
+		remove_effect = {
+			declare_war_on = {
+				target = BRM
+				type = civil_war
+			}
+		}
+		
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	
+	WAS_border_plunder = {
+
+		icon = GFX_decision_oppression
+
+		available = {
+			is_subject_of = PRC
+			has_completed_focus = WAS_territorial_dispute
+			NOT = { is_in_faction_with = BRM }
+		}
+
+		visible = {
+			WAS = { is_puppet_of = PRC }
+			original_tag = WAS
+		}
+
+		fire_only_once = yes
+
+		days_remove = 15
+		days_re_enable = 30
+
+		cost = 0
+
+		remove_effect = {
+			add_political_power = 25
+			BRM = { country_event = { id = wa_state.13 hours = 12 } }
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+}

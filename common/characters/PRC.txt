@@ -1,6 +1,5 @@
 characters={
 	PRC_jiang_zemin={
-		name="Jiang Zemin"
 		portraits={
 			civilian={
 				large="gfx/leaders/PRC/Jiang_Zemin.dds"
@@ -8,51 +7,14 @@ characters={
 		}
 		country_leader={
 			ideology=socialism_with_ccp
+			desc = "POLITICS_JIANG_ZEMIN_DESC"
+			traits = { dictator }
 			expire="1.1.1.1"
 			id=-1
 		}
 	}
-	PRC_ding_shisun={
-		name="Ding Shisun"
-		portraits={
-			civilian={
-				large="gfx/leaders/PRC/Ding_Shisun.dds"
-			}
-		}
-		country_leader={
-			ideology=moderate
-			expire="1.1.1.1"
-			id=-1
-		}
-	}
-	PRC_cheng_siwei={
-		name="Cheng Siwei"
-		portraits={
-			civilian={
-				large="gfx/leaders/PRC/Cheng_Siwei.dds"
-			}
-		}
-		country_leader={
-			ideology=libertarian
-			expire="1.1.1.1"
-			id=-1
-		}
-	}
-	PRC_jiang_zhenghua={
-		name="Jiang Zhenghua"
-		portraits={
-			civilian={
-				large="gfx/leaders/PRC/Jiang_Zhenghua.dds"
-			}
-		}
-		country_leader={
-			ideology=progressive_ideology
-			expire="1.1.1.1"
-			id=-1
-		}
-	}
+	
 	PRC_he_luli={
-		name="He Luli"
 		portraits={
 			civilian={
 				large="gfx/leaders/PRC/He_Luli.dds"
@@ -64,8 +26,8 @@ characters={
 			id=-1
 		}
 	}
+	
 	PRC_jin_youzhi={
-		name="Jin Youzhi"
 		portraits={
 			civilian={
 				large="gfx/leaders/PRC/Jin_Youzhi.dds"
@@ -77,24 +39,52 @@ characters={
 			id=-1
 		}
 	}
-	PRC_xu_jialu={
-		name="Xu Jialu"
+	
+	PRC_zhao_ziyang={
+		portraits={
+			civilian={
+				large="gfx/leaders/PRC/zhao_ziyang.dds"
+			}
+		}
+		#country_leader={
+		#	ideology=social_democrat_ideology
+		#	expire="1.1.1.1"
+		#	id=-1
+		#}
+	}
+	
+	PRC_student_movement={
 		portraits={
 			civilian={
 				large="gfx/leaders/PRC/Xu_Jialu.dds"
 			}
 		}
 		country_leader={
-			ideology=social_democrat_ideology
+			ideology=green
 			expire="1.1.1.1"
 			id=-1
 		}
 	}
+	
+	PRC_joseph_zen={
+		portraits={
+			civilian={
+				large="gfx/leaders/PRC/Joseph_Zen.dds"
+			}
+		}
+		#country_leader={
+		#	ideology=christian_theocracy
+		#	expire="1.1.1.1"
+		#	id=-1
+		#}
+	}
+	
+	
+	
 	PRC_chen_bingde={
-		name="Chen Bingde"
 		portraits={
 			army={
-				small="GFX_idea_generic_political_advisor_europe_1"
+				small="gfx/interface/ideas/PRC/adviser/Chen_Bingde.dds"
 			}
 			army={
 				large="gfx/leaders/PRC/generals/Chen_Bingde.dds"
@@ -107,7 +97,7 @@ characters={
 				original_tag = PRC
 			}
 			traits = {
-				army_chief_drill_2
+				army_regrouping_2
 			}
 			cost = 100
 			ai_will_do = {
@@ -115,19 +105,20 @@ characters={
 			}
 		}
 		field_marshal={
-			skill=3
-			attack_skill=2
-			defense_skill=3
-			planning_skill=2
-			logistics_skill=1
+			traits={ politically_connected }
+			skill=4
+			attack_skill=4
+			defense_skill=4
+			planning_skill=3
+			logistics_skill=3
 			legacy_id=-1
 		}
 	}
-	PRC_liu_zuocheng={
-		name="Liu Zuocheng"
+	PRC_li_zuocheng={
+		#https://en.wikipedia.org/wiki/Li_Zuocheng
 		portraits={
 			army={
-				small="GFX_idea_generic_political_advisor_europe_1"
+				small="gfx/interface/ideas/PRC/adviser/Liu_Zuocheng.dds"
 			}
 			army={
 				large="gfx/leaders/PRC/generals/Liu_Zuocheng.dds"
@@ -135,12 +126,12 @@ characters={
 		}
 		advisor={
 			slot = army_chief
-			idea_token = liu_zuocheng
+			idea_token = PRC_li_zuocheng
 			allowed = {
 				original_tag = PRC
 			}
 			traits = {
-				army_chief_offensive_1
+				army_chief_defensive_2
 			}
 			cost = 100
 			ai_will_do = {
@@ -148,19 +139,21 @@ characters={
 			}
 		}
 		field_marshal={
-			skill=2
-			attack_skill=2
-			defense_skill=1
-			planning_skill=3
-			logistics_skill=1
+			traits={ war_hero engineer_officer trickster trait_mountaineer }
+			#War Hero - The Sino-Vietnamese conflicts of 1979–1991
+			skill=4
+			attack_skill=4
+			defense_skill=5
+			planning_skill=5
+			logistics_skill=6
 			legacy_id=-1
 		}
 	}
 	PRC_guo_boxiong={
-		name="Guo Boxiong"
+		#https://en.wikipedia.org/wiki/Guo_Boxiong
 		portraits={
 			army={
-				small="GFX_idea_generic_political_advisor_europe_1"
+				small="gfx/interface/ideas/PRC/adviser/Guo_Boxiong.dds"
 			}
 			army={
 				large="gfx/leaders/PRC/generals/Guo_Boxiong.dds"
@@ -176,12 +169,13 @@ characters={
 				traits = {
 					army_chief_maneuver_1
 				}
-				cost = 100
+				#cost = 100
 				ai_will_do = {
 					factor = 1.000
 				}
 		}
 		field_marshal={
+			traits={ old_guard politically_connected media_personality trait_PRC_corruption_traits }
 			skill=1
 			attack_skill=1
 			defense_skill=1
@@ -191,10 +185,10 @@ characters={
 		}
 	}
 	PRC_cao_gangchuan={
-		name="Cao Gangchuan"
+	#https://en.wikipedia.org/wiki/Cao_Gangchuan
 		portraits={
 			army={
-				small="GFX_idea_generic_political_advisor_europe_1"
+				small="gfx/interface/ideas/PRC/adviser/Cao_Gangchuan.dds"
 			}
 			army={
 				large="gfx/leaders/PRC/generals/Cao_Gangchuan.dds"
@@ -202,33 +196,34 @@ characters={
 		}
 		advisor={
 			slot = high_command
-			idea_token = cao_gangchuan
+			idea_token = PRC_cao_gangchuan
 			ledger = army
 				allowed = {
 					original_tag = PRC
 				}
 				traits = {
-					army_chief_entrenchment_2
+					army_artillery_2
 				}
-				cost = 100
+				#cost = 100
 				ai_will_do = {
 					factor = 1.000
 				}
 		}
 		field_marshal={
-			skill=1
-			attack_skill=1
-			defense_skill=1
-			planning_skill=1
-			logistics_skill=1
+			traits={ bearer_of_artillery infantry_officer politically_connected }
+			skill=3
+			attack_skill=3
+			defense_skill=4
+			planning_skill=4
+			logistics_skill=4
 			legacy_id=-1
 		}
 	}
 	PRC_liang_guanglie={
-		name="Liang Guanglie"
+	#https://en.wikipedia.org/wiki/Liang_Guanglie
 		portraits={
 			army={
-				small="GFX_idea_generic_political_advisor_europe_1"
+				small="gfx/interface/ideas/PRC/adviser/Liang_Guanglie.dds"
 			}
 			army={
 				large="gfx/leaders/PRC/generals/Liang_Guanglie.dds"
@@ -236,97 +231,103 @@ characters={
 		}
 		advisor={
 			slot = high_command
-			idea_token = liang_guanglie
+			idea_token = PRC_liang_guanglie
 			ledger = army
 				allowed = {
 					original_tag = PRC
 				}
 				traits = {
-					army_armored_1
+					army_infantry_2
 				}
-				cost = 100
+				#cost = 100
 				ai_will_do = {
 					factor = 1.000
 				}
 		}
 		corps_commander={
+			traits={ infantry_officer }
 			skill=3
-			attack_skill=1
-			defense_skill=1
-			planning_skill=1
-			logistics_skill=1
+			attack_skill=4
+			defense_skill=4
+			planning_skill=3
+			logistics_skill=5
 			legacy_id=-1
 		}
 	}
 	PRC_gao_xiaoyan={
-		name="Gao Xiaoyan"
+	#https://en.wikipedia.org/wiki/Gao_Xiaoyan
 		portraits={
 			army={
-				small="GFX_idea_generic_political_advisor_europe_1"
+				small="gfx/interface/ideas/PRC/adviser/Gao_Xiaoyan.dds"
 			}
 			army={
 				large="gfx/leaders/PRC/generals/Gao_Xiaoyan.dds"
 			}
 		}
+		gender = female
 		corps_commander={
-			skill=3
-			attack_skill=1
-			defense_skill=1
-			planning_skill=1
-			logistics_skill=1
+			traits={ career_officer trait_PRC_corruption_traits }
+			skill=2
+			attack_skill=2
+			defense_skill=3
+			planning_skill=3
+			logistics_skill=3
 			legacy_id=-1
 		}
 	}
 	PRC_xu_caihou={
-		name="Xu Caihou"
+	#https://en.wikipedia.org/wiki/Xu_Caihou
 		portraits={
 			army={
-				small="GFX_idea_generic_political_advisor_europe_1"
+				small="gfx/interface/ideas/PRC/adviser/Xu_Caihou.dds"
 			}
 			army={
 				large="gfx/leaders/PRC/generals/Xu_Caihou.dds"
 			}
 		}
 		corps_commander={
-			skill=2
-			attack_skill=1
+			traits={ old_guard politically_connected trait_PRC_corruption_traits }
+			skill=1
+			attack_skill=2
 			defense_skill=1
-			planning_skill=1
+			planning_skill=2
 			logistics_skill=1
 			legacy_id=-1
 		}
 	}
 	PRC_chang_wanquan={
-		name="Chang Wanquan"
+	#https://en.wikipedia.org/wiki/Chang_Wanquan
 		portraits={
 			army={
-				small="GFX_idea_generic_political_advisor_europe_1"
+				small="gfx/interface/ideas/PRC/adviser/Chang_Wanquan.dds"
 			}
 			army={
 				large="gfx/leaders/PRC/generals/Chang_Wanquan.dds"
 			}
 		}
 		corps_commander={
-			skill=2
-			attack_skill=1
-			defense_skill=1
-			planning_skill=1
-			logistics_skill=1
+			traits={ politically_connected }
+			skill=3
+			attack_skill=4
+			defense_skill=3
+			planning_skill=4
+			logistics_skill=4
 			legacy_id=-1
 		}
 	}
 	PRC_fang_fenghui={
-		name="Fang Fenghui"
+	#https://en.wikipedia.org/wiki/Fang_Fenghui
 		portraits={
 			army={
-				small="GFX_idea_generic_political_advisor_europe_1"
+				small="gfx/interface/ideas/PRC/adviser/Fang_Fenghui.dds"
 			}
 			army={
 				large="gfx/leaders/PRC/generals/Fang_Fenghui.dds"
 			}
 		}
 		corps_commander={
-			skill=2
+			traits={ old_guard trait_PRC_corruption_traits desert_fox }
+			skill=1
 			attack_skill=1
 			defense_skill=1
 			planning_skill=1
@@ -335,149 +336,232 @@ characters={
 		}
 	}
 	PRC_li_xianyu={
-		name="Li Xianyu"
+	#https://en.wikipedia.org/wiki/Li_Xianyu
 		portraits={
 			army={
-				small="GFX_idea_generic_political_advisor_europe_1"
+				small="gfx/interface/ideas/PRC/adviser/Li_Xianyu.dds"
 			}
 			army={
 				large="gfx/leaders/PRC/generals/Li_Xianyu.dds"
 			}
 		}
+		advisor={
+			slot = army_chief
+			idea_token = PRC_li_xianyu
+			ledger = army
+				allowed = {
+					original_tag = PRC
+				}
+				traits = {
+					army_chief_drill_3
+				}
+				cost = 200
+				ai_will_do = {
+					factor = 2.000
+				}
+		}
+		gender = female
 		corps_commander={
-			skill=1
-			attack_skill=1
-			defense_skill=1
-			planning_skill=1
-			logistics_skill=1
+			traits={ bearer_of_artillery brilliant_strategist } #trait_PRC_korean_traits
+			skill=4
+			attack_skill=5
+			defense_skill=5
+			planning_skill=4
+			logistics_skill=5
 			legacy_id=-1
 		}
 	}
 	PRC_fan_changlong={
-		name="Fan Changlong"
 		portraits={
 			army={
-				small="GFX_idea_generic_political_advisor_europe_1"
+				small="gfx/interface/ideas/PRC/adviser/Fan_Changlong.dds"
 			}
 			army={
 				large="gfx/leaders/PRC/generals/Fan_Changlong.dds"
 			}
 		}
 		corps_commander={
+			traits={ infantry_officer }
 			skill=1
 			attack_skill=1
 			defense_skill=1
-			planning_skill=1
-			logistics_skill=1
+			planning_skill=2
+			logistics_skill=2
 			legacy_id=-1
 		}
 	}
 	PRC_wei_fenghe={
-		name="Wei Fenghe"
+	#https://en.wikipedia.org/wiki/Wei_Fenghe
 		portraits={
 			army={
-				small="GFX_idea_generic_political_advisor_europe_1"
+				small="gfx/interface/ideas/PRC/adviser/Wei_Fenghe.dds"
 			}
 			army={
 				large="gfx/leaders/PRC/generals/Wei_Fenghe.dds"
 			}
 		}
+		advisor={
+			slot = army_chief
+			idea_token = PRC_wei_fenghe
+			ledger = army
+				allowed = {
+					original_tag = PRC
+				}
+				traits = {
+					army_chief_offensive_2
+				}
+				cost = 100
+				ai_will_do = {
+					factor = 1.000
+				}
+		}
 		corps_commander={
-			skill=1
-			attack_skill=1
-			defense_skill=1
-			planning_skill=1
-			logistics_skill=1
+			traits={ bearer_of_artillery }
+			skill=2
+			attack_skill=3
+			defense_skill=2
+			planning_skill=3
+			logistics_skill=3
 			legacy_id=-1
 		}
 	}
 	PRC_wang_ning={
-		name="Wang Ning"
+	#https://en.wikipedia.org/wiki/Wang_Ning_(general)
 		portraits={
 			army={
-				small="GFX_idea_generic_political_advisor_europe_1"
+				small="gfx/interface/ideas/PRC/adviser/Wang_Ning.dds"
 			}
 			army={
 				large="gfx/leaders/PRC/generals/Wang_Ning.dds"
 			}
 		}
 		corps_commander={
+			traits={ bearer_of_artillery }
 			skill=1
-			attack_skill=1
+			attack_skill=2
 			defense_skill=1
-			planning_skill=1
+			planning_skill=2
 			logistics_skill=1
 			legacy_id=-1
 		}
 	}
 	PRC_liu_yuejun={
-		name="Liu Yuejun"
+		#https://ja.wikipedia.org/wiki/%E5%8A%89%E7%B2%A4%E8%BB%8D
 		portraits={
 			army={
-				small="GFX_idea_generic_political_advisor_europe_1"
+				small="gfx/interface/ideas/PRC/adviser/Liu_Yuejun.dds"
 			}
 			army={
 				large="gfx/leaders/PRC/generals/Liu_Yuejun.dds"
 			}
 		}
 		corps_commander={
+			traits={ politically_connected war_hero }
+			#War Hero - The Sino-Vietnamese conflicts of 1979–1991
 			skill=1
-			attack_skill=1
-			defense_skill=1
+			attack_skill=2
+			defense_skill=2
 			planning_skill=1
 			logistics_skill=1
 			legacy_id=-1
 		}
 	}
-	PRC_qu_jiangguo={
-		name="Qu Jiangguo"
+	PRC_qi_jianguo ={
+	#https://en.wikipedia.org/wiki/Qi_Jianguo
 		portraits={
 			army={
-				small="GFX_idea_generic_political_advisor_europe_1"
+				small="gfx/interface/ideas/PRC/adviser/Qi_Jiangguo.dds"
 			}
 			army={
 				large="gfx/leaders/PRC/generals/Qi_Jiangguo.dds"
 			}
 		}
+		advisor={
+			slot = high_command
+			idea_token = PRC_qi_jianguo
+			ledger = army
+				allowed = {
+					original_tag = PRC
+				}
+				traits = {
+					army_regrouping_3
+				}
+				cost = 200
+				ai_will_do = {
+					factor = 1.000
+				}
+		}
 		corps_commander={
-			skill=1
-			attack_skill=1
-			defense_skill=1
-			planning_skill=1
-			logistics_skill=1
+			traits={ war_hero brilliant_strategist trait_mountaineer }
+			#War Hero - The Sino-Vietnamese conflicts of 1979–1991
+			skill=4
+			attack_skill=4
+			defense_skill=5
+			planning_skill=5
+			logistics_skill=5
 			legacy_id=-1
 		}
 	}
 	PRC_wang_jiaocheng={
-		name="Wang Jiaocheng"
+	#https://en.wikipedia.org/wiki/Wang_Jiaocheng
 		portraits={
 			army={
-				small="GFX_idea_generic_political_advisor_europe_1"
+				small="gfx/interface/ideas/PRC/adviser/Wang_Jiaocheng.dds"
 			}
 			army={
 				large="gfx/leaders/PRC/generals/Wang_Jiaocheng.dds"
 			}
 		}
+		advisor={
+			slot = high_command
+			idea_token = PRC_wang_jiaocheng
+			ledger = army
+				allowed = {
+					original_tag = PRC
+				}
+				traits = {
+					army_armored_1
+				}
+				ai_will_do = {
+					factor = 1.000
+				}
+		}
 		corps_commander={
+			traits={ armor_officer }
 			skill=1
-			attack_skill=1
-			defense_skill=1
+			attack_skill=2
+			defense_skill=2
 			planning_skill=1
 			logistics_skill=1
 			legacy_id=-1
 		}
 	}
 	PRC_zhang_shibo={
-		name="Zhang Shibo"
+		#https://en.wikipedia.org/wiki/Zhang_Shibo
 		portraits={
 			army={
-				small="GFX_idea_generic_political_advisor_europe_1"
+				small="gfx/interface/ideas/PRC/adviser/Zhang_Shibo.dds"
 			}
 			army={
 				large="gfx/leaders/PRC/generals/Zhang_Shibo.dds"
 			}
 		}
+		advisor={
+			slot = high_command
+			idea_token = PRC_zhang_shibo
+			ledger = army
+				allowed = {
+					original_tag = PRC
+				}
+				traits = {
+					army_regrouping_1
+				}
+				ai_will_do = {
+					factor = 1.000
+				}
+		}
 		corps_commander={
+			traits={ trait_cautious }
 			skill=1
 			attack_skill=1
 			defense_skill=1
@@ -487,16 +571,17 @@ characters={
 		}
 	}
 	PRC_zhao_zongqi={
-		name="Zhao Zongqi"
+	#https://en.wikipedia.org/wiki/Zhao_Zongqi
 		portraits={
 			army={
-				small="GFX_idea_generic_political_advisor_europe_1"
+				small="gfx/interface/ideas/PRC/adviser/Zhao_Zongqi.dds"
 			}
 			army={
 				large="gfx/leaders/PRC/generals/Zhao_Zongqi.dds"
 			}
 		}
 		corps_commander={
+			traits={  }
 			skill=1
 			attack_skill=1
 			defense_skill=1
@@ -505,55 +590,173 @@ characters={
 			legacy_id=-1
 		}
 	}
-	PRC_sun_jianguo={
-		name="Sun Jianguo"
+	
+	PRC_chi_haotian={
+	#https://en.wikipedia.org/wiki/Chi_Haotian
 		portraits={
 			army={
-				small="GFX_idea_generic_political_advisor_europe_1"
+				small="gfx/interface/ideas/PRC/adviser/chi_haotian.dds"
+			}
+			army={
+				large="gfx/leaders/PRC/generals/chi_haotian.dds"
+			}
+		}
+		field_marshal={
+			traits={ trait_PRC_loyalist_traits media_personality }
+			skill=1
+			attack_skill=2
+			defense_skill=2
+			planning_skill=1
+			logistics_skill=1
+			legacy_id=-1
+		}
+	}
+	
+	PRC_pei_huailiang={
+	#https://en.wikipedia.org/wiki/Pei_Huailiang
+		portraits={
+			army={
+				small="gfx/interface/ideas/PRC/adviser/pei_huailiang.dds"
+			}
+			army={
+				large="gfx/leaders/PRC/generals/pei_huailiang.dds"
+			}
+		}
+		corps_commander={
+			traits={ career_officer }
+			skill=1
+			attack_skill=1
+			defense_skill=1
+			planning_skill=2
+			logistics_skill=2
+			legacy_id=-1
+		}
+	}
+	
+	PRC_xu_yaoyuan={
+	#https://en.wikipedia.org/wiki/Xu_Yaoyuan
+		portraits={
+			army={
+				small="gfx/interface/ideas/PRC/adviser/Chang_Wanquan.dds"
+			}
+			army={
+				large="gfx/leaders/PRC/generals/xu_yaoyuan.dds"
+			}
+		}
+		corps_commander={
+			traits={ old_guard }
+			skill=1
+			attack_skill=1
+			defense_skill=1
+			planning_skill=1
+			logistics_skill=1
+			legacy_id=-1
+		}
+	}
+	
+	PRC_liu_yuan={
+	#https://en.wikipedia.org/wiki/Liu_Yuan_(PRC_general)
+		portraits={
+			army={
+				small="gfx/interface/ideas/PRC/adviser/liu_yuan.dds"
+			}
+			army={
+				large="gfx/leaders/PRC/generals/liu_yuan.dds"
+			}
+		}
+		corps_commander={
+			traits={ trait_PRC_loyalist_traits career_officer media_personality }
+			skill=2
+			attack_skill=2
+			defense_skill=3
+			planning_skill=2
+			logistics_skill=2
+			legacy_id=-1
+		}
+	}
+	
+	prc_mao_xinyu={
+		portraits={
+			army={
+				small="gfx/interface/ideas/PRC/adviser/prc_mao_xinyu.dds"
+			}
+			army={
+				large="gfx/leaders/PRC/generals/mao_xinyu.dds"
+			}
+		}
+	}
+	
+	###
+	#
+	# Navy
+	###
+	
+	
+	PRC_sun_jianguo={
+		portraits={
+			army={
+				small="gfx/interface/ideas/PRC/adviser/Sun_Jianguo.dds"
 			}
 			army={
 				large="gfx/leaders/PRC/admirals/Sun_Jianguo.dds"
 			}
 		}
 		navy_leader={
-			skill=2
+			traits={ seawolf }
+			skill=1
 			attack_skill=1
-			defense_skill=1
+			defense_skill=2
 			maneuvering_skill=1
 			coordination_skill=1
 			legacy_id=-1
 		}
 	}
 	PRC_wu_shengli={
-		name="Wu Shengli"
+	#https://en.wikipedia.org/wiki/Wu_Shengli
 		portraits={
 			army={
-				small="GFX_idea_generic_political_advisor_europe_1"
+				small="gfx/interface/ideas/PRC/adviser/Wu_Shengli.dds"
 			}
 			army={
 				large="gfx/leaders/PRC/admirals/Wu_Shengli.dds"
 			}
 		}
 		navy_leader={
-			skill=1
-			attack_skill=1
-			defense_skill=1
-			maneuvering_skill=1
-			coordination_skill=1
+			traits={ gentlemanly naval_lineage }
+			skill=2
+			attack_skill=2
+			defense_skill=3
+			maneuvering_skill=2
+			coordination_skill=3
 			legacy_id=-1
+		}
+		advisor={
+			slot = high_command
+			idea_token = PRC_wu_shengli
+			allowed = {
+				original_tag = PRC
+			}
+
+			traits = {
+				navy_naval_air_defense_1
+			}
+			ai_will_do = {
+				factor = 1.000
+			}
 		}
 	}
 	PRC_yao_zhilou={
-		name="Yao Zhilou"
+	#https://baike.baidu.com/item/%E4%B9%88%E5%BF%97%E6%A5%BC/3556580
 		portraits={
 			army={
-				small="GFX_idea_generic_political_advisor_europe_1"
+				small="gfx/interface/ideas/PRC/adviser/Yao_Zhilou.dds"
 			}
 			army={
 				large="gfx/leaders/PRC/admirals/Yao_Zhilou.dds"
 			}
 		}
 		navy_leader={
+			traits={  }
 			skill=1
 			attack_skill=1
 			defense_skill=1
@@ -561,12 +764,26 @@ characters={
 			coordination_skill=1
 			legacy_id=-1
 		}
+		advisor={
+			slot = high_command
+			idea_token = PRC_yao_zhilou
+			allowed = {
+				original_tag = PRC
+			}
+
+			traits = {
+				air_chief_night_operations_2
+			}
+			ai_will_do = {
+				factor = 1.000
+			}
+		}
 	}
 	PRC_yuan_yubai={
-		name="Yuan Yubai"
+	#https://en.wikipedia.org/wiki/Yuan_Yubai
 		portraits={
 			army={
-				small="GFX_idea_generic_political_advisor_europe_1"
+				small="gfx/interface/ideas/PRC/adviser/Yuan_Yubai.dds"
 			}
 			army={
 				large="gfx/leaders/PRC/admirals/Yuan_Yubai.dds"
@@ -574,80 +791,271 @@ characters={
 		}
 		navy_leader={
 			skill=1
-			attack_skill=1
-			defense_skill=1
+			traits={ seawolf }
+			attack_skill=2
+			defense_skill=2
 			maneuvering_skill=1
 			coordination_skill=1
 			legacy_id=-1
 		}
 	}
-	PRC_yang_dong={
-		name="Yang Dong"
+	
+	PRC_STC={
 		portraits={
-			civilian={
-				large="gfx/leaders/Asia/Portrait_Asia_Generic_8.dds"
+			army={
+				small="gfx/interface/ideas/PRC/adviser/PRC_STC.dds"
 			}
 		}
-		country_leader={
-			ideology=islamic_authoritarian
-			traits={ compassionate_gentleman hawk }
-			expire="2012.1.1.12"
-			id=-1
+		advisor={
+			slot = theorist
+			idea_token = PRC_STC
+			allowed = {
+				original_tag = PRC
+			}
+			traits = {
+				naval_focused_command
+			}
+			ai_will_do = {
+				factor = 1.000
+			}
 		}
 	}
-	PRC_cheng_sun={
-		name="Cheng Sun"
+	
+	PRC_NTC={
 		portraits={
-			civilian={
-				large="gfx/leaders/Asia/Portrait_Asia_Generic_land_1.dds"
+			army={
+				small="gfx/interface/ideas/PRC/adviser/PRC_NTC.dds"
 			}
 		}
-		country_leader={
-			ideology=fascist_ideology
-			traits={ friend_of_france }
-			expire="2007.1.1.12"
-			id=-1
+		advisor={
+			slot = theorist
+			idea_token = PRC_NTC
+			allowed = {
+				original_tag = PRC
+			}
+			traits = {
+				army_focused_command
+			}
+			ai_will_do = {
+				factor = 1.000
+			}
 		}
 	}
-	PRC_deng_peng={
-		name="Deng Peng"
+	
+	PRC_ETC={
 		portraits={
-			civilian={
-				large="gfx/leaders/Asia/Portrait_Asia_Generic_land_1.dds"
+			army={
+				small="gfx/interface/ideas/PRC/adviser/PRC_ETC.dds"
 			}
 		}
-		country_leader={
-			ideology=autocrat
-			traits={ enemy_of_america appeaser }
-			expire="2017.1.1.12"
-			id=-1
+		advisor={
+			slot = theorist
+			idea_token = PRC_ETC
+			allowed = {
+				original_tag = PRC
+			}
+			traits = {
+				landing_operation_centred_command
+			}
+			ai_will_do = {
+				factor = 1.000
+			}
 		}
 	}
-	PRC_tan_tian={
-		name="Tan Tian"
+	
+	################
+	
+	#https://en.wikipedia.org/wiki/Dai_Xu
+	PRC_Dai_Xu={
 		portraits={
-			civilian={
-				large="gfx/leaders/Asia/Portrait_Asia_Generic_5.dds"
+			army={
+				small="gfx/interface/ideas/PRC/adviser/Dai_Xu.dds"
 			}
 		}
-		country_leader={
-			ideology=counter_progressive_democrat
-			traits={ enemy_of_russia eager_collaborator }
-			expire="2012.1.1.12"
-			id=-1
+		advisor={
+			slot = air_chief
+			idea_token = PRC_Dai_Xu
+			allowed = {
+				original_tag = PRC
+			}
+			traits = {
+				air_chief_all_weather_2
+			}
+			cost = 100
+			ai_will_do = {
+				factor = 1.000
+			}
 		}
 	}
-	PRC_xie_hu={
-		name="Xie Hu"
+	
+	PRC_Zhou_Kunren={
 		portraits={
-			civilian={
-				large="gfx/leaders/Asia/Portrait_Asia_Generic_6.dds"
+			army={
+				small="gfx/interface/ideas/PRC/adviser/Zhou_Kunren.dds"
 			}
 		}
-		country_leader={
-			ideology=constitutionalist
-			expire="2007.1.1.12"
-			id=-1
+		advisor={
+			slot = navy_chief
+			idea_token = PRC_Zhou_Kunren
+			allowed = {
+				original_tag = PRC
+			}
+			traits = {
+				navy_chief_decisive_battle_2
+			}
+			cost = 100
+			ai_will_do = {
+				factor = 0.100
+			}
+		}
+	}
+	
+	PRC_Ding_Yiping={
+		portraits={
+			army={
+				small="gfx/interface/ideas/PRC/adviser/Ding_Yiping.dds"
+			}
+		}
+		advisor={
+			slot = navy_chief
+			idea_token = PRC_Ding_Yiping
+			allowed = {
+				original_tag = PRC
+			}
+			traits = {
+				navy_chief_naval_aviation_2
+			}
+			cost = 100
+			ai_will_do = {
+				factor = 0.200
+			}
+		}
+	}
+	
+	PRC_Xu_Qiliang={
+		portraits={
+			army={
+				small="gfx/interface/ideas/PRC/adviser/Xu_Qiliang.dds"
+			}
+		}
+		advisor={
+			slot = air_chief
+			idea_token = PRC_Xu_Qiliang
+			allowed = {
+				original_tag = PRC
+			}
+			traits = {
+				air_chief_night_operations_1
+			}
+			cost =  50
+			ai_will_do = {
+				factor = 1.000
+			}
+		}
+	}
+	
+	PRC_Yu_Qingjiang={
+		portraits={
+			army={
+				small="gfx/interface/ideas/PRC/adviser/Yu_Qingjiang.dds"
+			}
+		}
+		advisor={
+			slot = air_chief
+			idea_token = PRC_Yu_Qingjiang
+			allowed = {
+				original_tag = PRC
+			}
+			traits = {
+				air_chief_ground_support_1
+			}
+			cost =  50
+			ai_will_do = {
+				factor = 1.000
+			}
+		}
+	}
+	
+	#
+	################
+	
+	PRC_provisional_government ={
+		name=PRC_provisional_government
+		
+		portraits={
+			civilian={
+				large="gfx/leaders/PRC/provisional_government.dds"
+			}
+		}
+	}
+	
+	PRC_bo_xilai ={
+		name=PRC_bo_xilai
+		
+		portraits={
+			civilian={
+				large="gfx/leaders/PRC/bo_xilai.dds"
+			}
+		}
+	}
+	
+	prc_mao_xinyu={
+		portraits={
+			civilian={
+				large="gfx/leaders/PRC/mao_xinyu.dds"
+			}
+			army={
+				large="gfx/leaders/PRC/mao_xinyu.dds"
+				small="gfx/interface/ideas/PRC/adviser/prc_mao_xinyu.dds"
+			}
+		}
+	}
+	
+	prc_hu_chunhua={
+		portraits={
+			civilian={
+				large="gfx/leaders/PRC/hu_chunhua.dds"
+			}
+		}
+	}
+	
+	prc_li_keqiang={
+		portraits={
+			civilian={
+				large="gfx/leaders/PRC/li_keqiang.dds"
+			}
+		}
+	}
+	
+	prc_Hu_Jintao={
+		portraits={
+			civilian={
+				large="gfx/leaders/PRC/Hu_Jintao.dds"
+			}
+		}
+	}
+	
+	prc_li_peng={
+		portraits={
+			civilian={
+				large="gfx/leaders/PRC/li_peng.dds"
+			}
+		}
+	}
+	
+	prc_xi_jinping={
+		portraits={
+			civilian={
+				large="gfx/leaders/PRC/xi_jinping.dds"
+			}
+		}
+	}
+	
+	prc_zhang_dejiang={
+		portraits={
+			civilian={
+				large="gfx/leaders/PRC/zhang_dejiang.dds"
+			}
 		}
 	}
 }

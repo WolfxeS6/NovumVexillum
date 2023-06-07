@@ -15,8 +15,6 @@ focus_tree = {
 			original_tag = GXC
 		}
 	}
-	
-	default = no
 
 	shared_focus = chinese_minor_chinese_nightmare
 	shared_focus = chinese_minor_in_the_air
@@ -24,7 +22,6 @@ focus_tree = {
 
 	continuous_focus_position = { x = 10 y = 850 }
 }
-
 focus_tree = {
 	id = non_chinese_minor_focus
 	country = {
@@ -32,21 +29,50 @@ focus_tree = {
 		modifier = {
 			add = 10
 			original_tag = TIB
+			NOT = { is_puppet_of = PRC }
 		}
 		modifier = {
 			add = 10
 			original_tag = MEN
+			NOT = { is_puppet_of = PRC }
 		}
 		modifier = {
 			add = 10
 			original_tag = SIK
+			NOT = { is_puppet_of = PRC }
 		}
 	}
 	
-	default = no
-	
 	shared_focus = chinese_minor_chinese_nightmare
 	shared_focus = chinese_minor_problem_of_chinese_residents
+	shared_focus = chinese_minor_in_the_air
+	shared_focus = chinese_minor_army
+
+	continuous_focus_position = { x = 10 y = 850 }
+}
+
+focus_tree = {
+	id = pro_china_chinese_minor_focus
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			original_tag = TIB
+			is_puppet_of = PRC
+		}
+		modifier = {
+			add = 10
+			original_tag = MEN
+			is_puppet_of = PRC
+		}
+		modifier = {
+			add = 10
+			original_tag = SIK
+			is_puppet_of = PRC
+		}
+	}
+	
+	shared_focus = chinese_minor_inauguration_of_the_governor_general
 	shared_focus = chinese_minor_in_the_air
 	shared_focus = chinese_minor_army
 
@@ -790,6 +816,35 @@ focus_tree = {
 				}
 			}
 		}
+		offset = {
+			x = 1
+			y = 0
+			trigger = {
+				OR = {
+					original_tag = HKN
+				}
+			}
+		}
+		offset = {
+			x = -6
+			y = 0
+			trigger = {
+				OR = {
+					AND = {
+						original_tag = TIB
+						is_puppet_of = PRC
+					}
+					AND = {
+						original_tag = SIK
+						is_puppet_of = PRC
+					}
+					AND = {
+						original_tag = MEN
+						is_puppet_of = PRC
+					}
+				}
+			}
+		}
 
 		completion_reward = {
 			air_experience = 25
@@ -965,6 +1020,35 @@ focus_tree = {
 				}
 			}
 		}
+		offset = {
+			x = 1
+			y = 0
+			trigger = {
+				OR = {
+					original_tag = HKN
+				}
+			}
+		}
+		offset = {
+			x = -6
+			y = 0
+			trigger = {
+				OR = {
+					AND = {
+						original_tag = TIB
+						is_puppet_of = PRC
+					}
+					AND = {
+						original_tag = SIK
+						is_puppet_of = PRC
+					}
+					AND = {
+						original_tag = MEN
+						is_puppet_of = PRC
+					}
+				}
+			}
+		}
 
 		search_filters = { FOCUS_FILTER_RESEARCH }
 	
@@ -988,7 +1072,7 @@ focus_tree = {
 
 	shared_focus = {
 		id = chinese_minor_war_economy
-		icon = industry_civilian #JAP_organize_wreckers
+		icon = JAP_organize_wreckers
 		cost = 8
 		x = -1
 		y = 1
@@ -1006,7 +1090,7 @@ focus_tree = {
 				add_extra_state_shared_building_slots = 2
 				add_building_construction = {
 					type = arms_factory
-					level = 2
+					level = 1
 					instant_build = yes
 				}
 			}
@@ -1086,10 +1170,10 @@ focus_tree = {
 						}
 					}
 				}
-				add_extra_state_shared_building_slots = 2
+				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
 					type = arms_factory
-					level = 2
+					level = 1
 					instant_build = yes
 				}
 			}
@@ -1102,7 +1186,7 @@ focus_tree = {
 
 	shared_focus = {
 		id = chinese_minor_complete_the_armament
-		icon = industry_military #JAP_merge_plants
+		icon = JAP_merge_plants
 		cost = 8
 		x = 1
 		y = 2
@@ -1110,14 +1194,194 @@ focus_tree = {
 		relative_position_id = chinese_minor_army
 
 		prerequisite = { 
-			focus = chinese_minor_a_domestic_motor_company
+			focus = chinese_minor_army
 		}
 	
 		search_filters = { FOCUS_FILTER_INDUSTRY }
 
 		completion_reward = {
-			add_offsite_building = { type = industrial_complex level = 2 }
-			add_offsite_building = { type = arms_factory level = 3 }
+			add_offsite_building = { type = industrial_complex level = 1 }
+			add_offsite_building = { type = arms_factory level = 1 }
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	###############
+	#Pro-china
+
+	shared_focus = {
+		#inauguration of the Governor-General
+		id = chinese_minor_inauguration_of_the_governor_general
+		icon = constitution
+		cost = 10
+		x = 4
+		y = 0
+		
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+	
+		completion_reward = {
+			capital_scope = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	shared_focus = {
+		id = chinese_minor_suppression_of_separatists
+		icon = propaganda
+		cost = 10
+		x = -1
+		y = 2
+
+		relative_position_id = chinese_minor_inauguration_of_the_governor_general
+
+		prerequisite = { 
+			focus = chinese_minor_inauguration_of_the_governor_general
+		}
+	
+		search_filters = {  }
+
+		completion_reward = {
+			add_stability = 0.05
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	shared_focus = {
+		#China's Front Line
+		id = chinese_minor_china_s_front_line
+		icon = armor
+		cost = 10
+		x = 1
+		y = 2
+
+		relative_position_id = chinese_minor_inauguration_of_the_governor_general
+
+		prerequisite = { 
+			focus = chinese_minor_inauguration_of_the_governor_general
+		}
+	
+		search_filters = {  }
+
+		completion_reward = {
+			add_ideas = china_s_front_line_idea
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	shared_focus = {
+		#tolerance of indigenous religions
+		id = chinese_minor_tolerance_of_indigenous_religions
+		icon = major_alliance
+		cost = 10
+		x = -2
+		y = 3
+
+		relative_position_id = chinese_minor_inauguration_of_the_governor_general
+
+		prerequisite = { 
+			focus = chinese_minor_suppression_of_separatists
+		}
+	
+		search_filters = {  }
+
+		completion_reward = {
+			add_political_power = 150
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	shared_focus = {
+		#educational program
+		id = chinese_minor_educational_program
+		icon = research
+		cost = 10
+		x = 0
+		y = 3
+
+		relative_position_id = chinese_minor_inauguration_of_the_governor_general
+
+		prerequisite = { 
+			focus = chinese_minor_suppression_of_separatists
+		}
+
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	
+		completion_reward = {
+			add_research_slot = 1
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	shared_focus = {
+		id = chinese_minor_the_most_loyal_SAR
+		#the most loyal SAR
+		icon = defence
+		cost = 10
+		x = 0
+		y = 4
+
+		relative_position_id = chinese_minor_inauguration_of_the_governor_general
+
+		prerequisite = { 
+			focus = chinese_minor_suppression_of_separatists
+		}
+	
+		search_filters = {  }
+
+		completion_reward = {
+			add_ideas = the_most_loyal_SAR_idea
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	shared_focus = {
+		#educational program
+		id = chinese_minor_agricultural_sponsorship
+		icon = agriculture
+		cost = 10
+		x = 2
+		y = 3
+
+		relative_position_id = chinese_minor_inauguration_of_the_governor_general
+
+		prerequisite = { 
+			focus = chinese_minor_suppression_of_separatists
+		}
+	
+		search_filters = { FOCUS_FILTER_INDUSTRY  }
+
+		completion_reward = {
+			capital_scope = {
+				add_extra_state_shared_building_slots = 1
+			}
 		}
 		
 		ai_will_do = {
