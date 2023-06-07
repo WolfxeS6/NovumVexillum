@@ -1,0 +1,44 @@
+on_actions = {
+	
+	on_startup = {
+		effect = {
+			HKN = {
+				country_event = hong_kong_uk_prc.0
+			}
+		}
+	}
+	
+	on_leave_faction = {
+		effect = {
+			if = {
+				limit = {
+					AND = {
+						tag = HKN
+					}
+				}
+				drop_cosmetic_tag = yes
+			}
+		}
+	}
+	
+	on_capitulation = {
+		effect = {
+			IF = {
+				limit = {
+					tag = HKN
+					has_global_flag = end_hong_kong_conflict
+					NOT = { has_government = nationalist }
+				}
+				ENG = {
+					HKN = {
+						become_exiled_in = {
+							target = PREV
+							legitimacy = 5
+						}
+					}
+				}
+			}
+		}
+	}
+	
+}
