@@ -1,0 +1,45 @@
+# Scripted cost modifiers for peace actions.
+# See documentation.info file for more detailed scripting information.
+
+peace_action_modifiers = {
+
+    china_strong_de_jure = {
+        category = treaties_or_conferences
+        peace_action_type = { take_states }
+        enable = {
+            ROOT = { original_tag = PRC }
+            FROM.FROM.FROM = { has_dynamic_modifier = { modifier = dynamic_prc_strong_de_jure } }
+        }
+        cost_multiplier = 0.1
+    }
+
+    china_weak_de_jure = {
+        category = treaties_or_conferences
+        peace_action_type = { take_states }
+        enable = {
+            ROOT = { original_tag = PRC }
+            FROM.FROM.FROM = { has_dynamic_modifier = { modifier = dynamic_prc_weak_de_jure } }
+        }
+        cost_multiplier = 0.5
+    }
+
+    taiwan_weak_de_jure = {
+        category = treaties_or_conferences
+        peace_action_type = { take_states }
+        enable = {
+            ROOT = { original_tag = CHI }
+            FROM.FROM.FROM = { has_dynamic_modifier = { modifier = dynamic_chi_weak_mainland_de_jure } }
+        }
+        cost_multiplier = 0.5
+    }
+
+    taiwan_weak_de_jure = {
+        category = treaties_or_conferences
+        peace_action_type = { take_states }
+        enable = {
+            ROOT = { original_tag = CHI }
+            FROM.FROM.FROM = { has_dynamic_modifier = { modifier = dynamic_chi_weak_mongolia_de_jure } }
+        }
+        cost_multiplier = 0.5
+    }
+}

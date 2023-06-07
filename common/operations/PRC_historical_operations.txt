@@ -1,0 +1,89 @@
+
+murder_dalai_lama = { ### 1/50
+	icon = GFX_murder_trotsky
+	map_icon = GFX_murder_trotsky_map
+	name = murder_dalai_lama
+	desc = murder_dalai_lama_desc
+	days = 270
+
+	priority = 10
+
+	allowed = {
+		original_tag = PRC
+	}
+	available = {
+		NOT = { country_exists = TIB }
+		ROOT = { controls_state = 322 }
+		NOT = { controls_state = 439 } #India
+	}
+	visible = {
+		has_completed_focus = PRC_intolerance_of_tibet
+		NOT = { has_global_flag = flag_dalai_lama_dead }
+		NOT = { has_country_flag = plan_to_assassinate_the_Dalai_Lama }
+		OR = {
+			AND = {
+				FROM = {
+					controls_state = 439 #India
+				}
+			}
+		}	
+	}
+
+	operatives = 1
+
+	# Integer [0-100] - Every operation has a hard requirement of network strength in the target country
+	network_strength = 25
+
+	on_start = {  # SCOPE_OPERATION
+		
+	}
+
+	outcome_modifiers = { operation_outcome operation_infiltrate_outcome }
+	cost_modifiers = { operation_cost operation_infiltrate_cost }
+	risk_modifiers = { operation_risk operation_infiltrate_risk }
+
+	outcome_potential = {
+		custom_effect_tooltip = murder_dalai_lama_outcome_tt
+	}
+	risk_chance = 0.25
+	experience = 5
+	# outcome is an effect that runs when the operation has completed
+	
+	outcome_execute = { # SCOPE_OPERATION
+		ROOT = { set_country_flag = plan_to_assassinate_the_Dalai_Lama } # This operation can only be done once
+		set_global_flag = flag_dalai_lama_dead
+		ROOT = { news_event = { id = pr_china_news.8 } }  #SUCCESS - Kill Trotsky and swap Trotskyite Plot NS
+	}
+	
+	outcome_extra_execute = {
+		ROOT = { set_country_flag = plan_to_assassinate_the_Dalai_Lama } # This operation can only be done once
+		ROOT = { news_event = { id = pr_china_news.12 } } #FAILURE - Trotsky still alive
+	}
+	
+	outcome_extra_chance = 0.50
+	
+	# This is where all the separate phases are defined
+	# Each phase for an operation may have a single actual phase assigned to it, which is determined here
+	phases = { #infiltration 
+		murder_dalai_lama_infiltration = { base = 100 }
+	}
+	phases = { 
+		murder_dalai_lama_attack = { base = 100 }
+	}
+	phases = { 
+		exfiltration_border = { base = 40 }
+		exfiltration_go_to_ground = { base = 50 }
+		#exfiltration_submarine_pickup = { base = 20 }
+		exfiltration_air_pickup = { 
+			base = 10
+			modifier = {
+				ROOT = { 
+					has_equipment = {
+						transport_plane_equipment < 1
+					}
+				}
+				factor = 0 #less likely if we have no transports
+			}
+		}
+	}
+}

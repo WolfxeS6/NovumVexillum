@@ -1,0 +1,59 @@
+# Scripted AI desire for peace actions.
+# See documentation.info file for more detailed scripting information.
+
+peace_ai_desires = {
+
+    # Take agreed on states for Ethiopia if possible
+    PRC_want_taiwan = {
+        peace_action_type = take_states
+        enable = {
+            FROM.FROM.FROM = {
+               has_dynamic_modifier = { modifier = dynamic_prc_strong_de_jure }
+            }
+            ROOT = { original_tag = PRC }
+        }
+
+        ai_desire = 150
+    }
+	
+    PRC_want_de_jure = {
+        peace_action_type = take_states
+        enable = {
+            FROM.FROM.FROM = {
+               has_dynamic_modifier = { modifier = dynamic_prc_weak_de_jure }
+            }
+            ROOT = { original_tag = PRC }
+        }
+
+        ai_desire = 150
+    }
+	
+    CHI_want_de_jure = {
+        peace_action_type = take_states
+        enable = {
+            FROM.FROM.FROM = {
+				has_dynamic_modifier = { modifier = dynamic_chi_weak_mainland_de_jure }
+				is_coastal = yes #only costal
+            }
+            ROOT = { original_tag = CHI }
+        }
+
+        ai_desire = 150
+    }
+	
+    CHI_dont_want_de_jure = {
+        peace_action_type = take_states
+        enable = {
+            FROM.FROM.FROM = {
+				has_dynamic_modifier = { modifier = dynamic_chi_weak_mainland_de_jure }
+				is_coastal = no #only costal
+            }
+            ROOT = { 
+				original_tag = CHI 
+				NOT = { has_government = fascist }
+				NOT = { has_government = nationalist }
+			}
+        }
+        ai_desire = -200
+    }
+}
