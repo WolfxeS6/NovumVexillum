@@ -132,10 +132,10 @@ technologies = {
 		enable_equipments = {
 			medium_plane_airframe_0
 			#medium_plane_fighter_airframe_0
-			medium_plane_scout_plane_airframe_0
+			#medium_plane_scout_plane_airframe_0
 			cv_medium_plane_airframe_0
-			cv_medium_plane_naval_bomber_airframe_0
-			medium_plane_naval_bomber_airframe_0
+			#cv_medium_plane_naval_bomber_airframe_0
+			#medium_plane_naval_bomber_airframe_0
 		}
 		enable_equipment_modules = {
 			aircraft_cannon_1_1x
@@ -170,10 +170,10 @@ technologies = {
 		enable_equipments = {
 			medium_plane_airframe_1
 			#medium_plane_fighter_airframe_1
-			medium_plane_scout_plane_airframe_1
+			#medium_plane_scout_plane_airframe_1
 			cv_medium_plane_airframe_1
-			cv_medium_plane_naval_bomber_airframe_1
-			medium_plane_naval_bomber_airframe_1
+			#cv_medium_plane_naval_bomber_airframe_1
+			#medium_plane_naval_bomber_airframe_1
 		}
 	
 		path = {
@@ -230,10 +230,10 @@ technologies = {
 		enable_equipments = {
 			medium_plane_airframe_2
 			#medium_plane_fighter_airframe_2
-			medium_plane_scout_plane_airframe_2
+			#medium_plane_scout_plane_airframe_2
 			cv_medium_plane_airframe_2
-			cv_medium_plane_naval_bomber_airframe_2
-			medium_plane_naval_bomber_airframe_2
+			#cv_medium_plane_naval_bomber_airframe_2
+			#medium_plane_naval_bomber_airframe_2
 		}
 	
 		path = {
@@ -289,10 +289,10 @@ technologies = {
 		enable_equipments = {
 			medium_plane_airframe_3
 			#medium_plane_fighter_airframe_3
-			medium_plane_scout_plane_airframe_3
+			#medium_plane_scout_plane_airframe_3
 			cv_medium_plane_airframe_3
-			cv_medium_plane_naval_bomber_airframe_3
-			medium_plane_naval_bomber_airframe_3
+			#cv_medium_plane_naval_bomber_airframe_3
+			#medium_plane_naval_bomber_airframe_3
 		}
 		
 		path = {
@@ -342,10 +342,10 @@ technologies = {
 		enable_equipments = {
 			medium_plane_airframe_4
 			#medium_plane_fighter_airframe_4
-			medium_plane_scout_plane_airframe_4
+			#medium_plane_scout_plane_airframe_4
 			cv_medium_plane_airframe_4
-			cv_medium_plane_naval_bomber_airframe_4
-			medium_plane_naval_bomber_airframe_4
+			#cv_medium_plane_naval_bomber_airframe_4
+			#medium_plane_naval_bomber_airframe_4
 		}
 
 		research_cost = 2
@@ -376,7 +376,7 @@ technologies = {
 
 		enable_equipments = {
 			large_plane_airframe_0
-			large_plane_maritime_patrol_plane_airframe_0
+			#large_plane_maritime_patrol_plane_airframe_0_0
 		}
 	
 		path = {
@@ -416,7 +416,7 @@ technologies = {
 
 		enable_equipments = {
 			large_plane_airframe_1
-			large_plane_maritime_patrol_plane_airframe_1
+			#large_plane_maritime_patrol_plane_airframe_0_1
 		}
 	
 		path = {
@@ -456,7 +456,7 @@ technologies = {
 
 		enable_equipments = {
 			large_plane_airframe_2
-			large_plane_maritime_patrol_plane_airframe_2
+			#large_plane_maritime_patrol_plane_airframe_0_2
 		}
 	
 		path = {
@@ -496,7 +496,7 @@ technologies = {
 
 		enable_equipments = {
 			large_plane_airframe_3
-			large_plane_maritime_patrol_plane_airframe_3
+			#large_plane_maritime_patrol_plane_airframe_0_3
 		}
 		
 		path = {
@@ -536,7 +536,200 @@ technologies = {
 
 		enable_equipments = {
 			large_plane_airframe_4
-			large_plane_maritime_patrol_plane_airframe_4
+			#large_plane_maritime_patrol_plane_airframe_0_4
+		}
+		
+		research_cost = 2
+		start_year = 2012
+
+		folder = {
+			name = bba_air_techs_folder
+			position = { x = -1 y = @2012 }
+		}
+		
+		categories = {
+			heavy_air
+			jet_technology
+			cat_strategic_bomber
+		}
+		
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				has_deployed_air_force_size = {
+					size > 500
+					type = strategic_bomber
+				}
+				factor = 4.5
+			}
+		}
+	}
+	
+	iw_naval_airframe = {
+
+		enable_equipments = {
+			naval_plane_airframe_0
+			#naval_plane_maritime_patrol_plane_airframe_0_0
+		}
+	
+		path = {
+			leads_to_tech = basic_naval_airframe
+			research_cost_coeff = 1
+		}
+
+		research_cost = 2
+		start_year = 1960
+		folder = {
+			name = bba_air_techs_folder
+			position = { x = -1 y = @1960 }
+		}
+		
+		categories = {
+			heavy_air
+			air_equipment
+			cat_strategic_bomber
+		}
+		
+		ai_will_do = {
+			factor = 1
+			
+			modifier = {
+				factor = 5
+				tag = ENG
+			}
+			
+			modifier = {
+				factor = 5
+				tag = USA
+			}
+		}
+	}
+	
+	basic_naval_airframe = {
+
+		enable_equipments = {
+			naval_plane_airframe_1
+			#naval_plane_maritime_patrol_plane_airframe_0_1
+		}
+	
+		path = {
+			leads_to_tech = improved_naval_airframe
+			research_cost_coeff = 1
+		}
+
+		research_cost = 2
+		start_year = 1980
+		folder = {
+			name = bba_air_techs_folder
+			position = { x = -1 y = @1980 }
+		}
+		
+		categories = {
+			heavy_air
+			air_equipment
+			cat_strategic_bomber
+		}
+		
+		ai_will_do = {
+			factor = 1
+			
+			modifier = {
+				factor = 5
+				tag = ENG
+			}
+			
+			modifier = {
+				factor = 5
+				tag = USA
+			}
+		}
+	}
+	
+	improved_naval_airframe = {
+
+		enable_equipments = {
+			naval_plane_airframe_2
+			#naval_plane_maritime_patrol_plane_airframe_0_2
+		}
+	
+		path = {
+			leads_to_tech = advanced_naval_airframe
+			research_cost_coeff = 1
+		}
+		
+		research_cost = 2
+		start_year = 2000
+		folder = {
+			name = bba_air_techs_folder
+			position = { x = -1 y = @2000 }
+		}
+		
+		categories = {
+			heavy_air
+			air_equipment
+			cat_strategic_bomber
+		}
+		
+		ai_will_do = {
+			factor = 1
+			
+			modifier = {
+				factor = 5
+				tag = ENG
+			}
+			
+			modifier = {
+				factor = 5
+				tag = USA
+			}
+		}
+	}
+	
+	advanced_naval_airframe = {
+
+		enable_equipments = {
+			naval_plane_airframe_3
+			#naval_plane_maritime_patrol_plane_airframe_0_3
+		}
+		
+		path = {
+			leads_to_tech = modern_naval_airframe
+			research_cost_coeff = 1
+		}
+
+		research_cost = 2
+		start_year = 2006
+		folder = {
+			name = bba_air_techs_folder
+			position = { x = -1 y = @2006 }
+		}
+		
+		categories = {
+			heavy_air
+			air_equipment
+			cat_strategic_bomber
+		}
+		
+		ai_will_do = {
+			factor = 1
+			
+			modifier = {
+				factor = 5
+				tag = ENG
+			}
+			
+			modifier = {
+				factor = 5
+				tag = USA
+			}
+		}
+	}
+	
+	modern_naval_airframe = {
+
+		enable_equipments = {
+			naval_plane_airframe_4
+			#naval_plane_maritime_patrol_plane_airframe_0_4
 		}
 		
 		research_cost = 2
