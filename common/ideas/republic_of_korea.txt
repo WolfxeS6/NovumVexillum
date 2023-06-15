@@ -2160,7 +2160,7 @@ ideas = {
 
 			allowed = {
 				original_tag = kor
-				has_government = fascist
+				has_government = nationalist
 			}
 
 			allowed_civil_war = {
@@ -2179,7 +2179,7 @@ ideas = {
 
 			allowed = {
 				original_tag = kor
-				has_government = fascist
+				has_government = nationalist
 			}
 
 			allowed_civil_war = {
@@ -2189,6 +2189,7 @@ ideas = {
 			modifier = {
 				army_core_attack_factor = 0.2
 				political_power_factor = 0.1
+				nationalist_drift = 0.05
 				fascist_drift = 0.05
 			}
 		}
@@ -4600,6 +4601,34 @@ ideas = {
 			
 			cost = 150
 			removal_cost = 0
+			
+			ai_will_do = {
+				factor = 1
+			}
+		}
+		
+		kor_yi_won_republic = {
+			name = kor_yi_won
+			
+			allowed = { original_tag = KOR }
+			
+			traits = { KOR_emperor_of_republic }
+			
+			cost = 75
+			removal_cost = 0
+			
+			visible = {
+				has_country_flag = monarchist_korea_flag
+			}
+			
+			available = {
+				NOT = { 
+					has_country_leader = {
+						character = kor_yi_won
+						ruling_only = yes
+					} 
+				}
+			}
 			
 			ai_will_do = {
 				factor = 1
