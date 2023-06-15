@@ -3382,7 +3382,48 @@
 		available_if_capitulated = no
 
 		completion_reward = {
-			add_ideas = generic_asia_idea_school_military_training
+			#add_ideas = generic_asia_idea_school_military_training
+			
+			set_technology = { 
+				child_soldier_infantry = 1
+			}
+			
+			hidden_effect = {
+				if = {
+					# no cheat
+					limit = { has_template = "Hakdohogukdan" }
+					delete_unit_template_and_units = { division_template = "Hakdohogukdan" disband = yes }
+				}
+			}
+
+			division_template = {
+				name = "Hakdohogukdan"
+				#division_names_group = PRC_PAR_01
+				regiments = {
+					child_soldier = { x = 0 y = 0 }
+					child_soldier = { x = 0 y = 1 }
+					child_soldier = { x = 0 y = 2 }
+					child_soldier = { x = 1 y = 0 }
+					child_soldier = { x = 1 y = 1 }
+					child_soldier = { x = 1 y = 2 }
+				}
+			}
+
+			random_owned_controlled_state = {
+				prioritize = { 525 }
+				create_unit = {
+					division = "division_template = \"Hakdohogukdan\" start_experience_factor = 0.5"
+					owner = ROOT
+				}
+				create_unit = {
+					division = "division_template = \"Hakdohogukdan\" start_experience_factor = 0.5"
+					owner = ROOT
+				}
+				create_unit = {
+					division = "division_template = \"Hakdohogukdan\" start_experience_factor = 0.5"
+					owner = ROOT
+				}
+			}
 		}
 		
 		ai_will_do = {
@@ -6526,11 +6567,23 @@
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		
 		completion_reward = {
-			hidden_effect = {
-				news_event = { id = rok_news.16 hours = 8 }
-			}
 
 			release_puppet = JEJ
+
+			hidden_effect = {
+				news_event = { id = rok_news.16 hours = 8 }
+
+				if = {
+					limit = {
+						has_dlc = "Together for Victory"
+					}
+					set_autonomy = {
+						target = JEJ
+						autonomous_state = minority_autonomous_region
+					}
+				}
+			}
+			
 			946 = {
 				if = {
 					limit = { 

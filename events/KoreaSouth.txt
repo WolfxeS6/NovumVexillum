@@ -638,6 +638,32 @@ news_event = {
 	}
 }
 
+#The Reconstruction of [KOR.GetName]
+news_event = {
+	id = rok_news.23
+	title = rok_news.23.t
+	desc = rok_news.23.desc
+	
+	picture = GFX_news_event_seoul_night
+
+	major = yes
+	is_triggered_only = yes
+	
+	option = {
+		name = rok_news.23.a
+		trigger = {
+			original_tag = KOR
+		}
+	}
+	
+	option = {
+		name = rok_news.23.b
+		trigger = {
+			NOT = { original_tag = KOR }
+		}
+	}
+}
+
 
 
 
@@ -2646,6 +2672,10 @@ country_event = {
 						rule = KOR_AI_BEHAVIOR
 						option = ANARCHIST_KOR
 					}
+					has_game_rule = {
+						rule = KOR_AI_BEHAVIOR
+						option = FAR_RIGHT_KOR
+					}
 					has_country_flag = kor_non_democratic
 				}	
 			}
@@ -2709,6 +2739,10 @@ country_event = {
 						rule = KOR_AI_BEHAVIOR
 						option = ANARCHIST_KOR
 					}
+					has_game_rule = {
+						rule = KOR_AI_BEHAVIOR
+						option = FAR_RIGHT_KOR
+					}
 					has_country_flag = kor_non_democratic
 				}	
 			}
@@ -2767,6 +2801,10 @@ country_event = {
 					has_game_rule = {
 						rule = KOR_AI_BEHAVIOR
 						option = ANARCHIST_KOR
+					}
+					has_game_rule = {
+						rule = KOR_AI_BEHAVIOR
+						option = FAR_RIGHT_KOR
 					}
 					has_country_flag = kor_non_democratic
 				}	
@@ -2862,6 +2900,10 @@ country_event = {
 						rule = KOR_AI_BEHAVIOR
 						option = ANARCHIST_KOR
 					}
+					has_game_rule = {
+						rule = KOR_AI_BEHAVIOR
+						option = FAR_RIGHT_KOR
+					}
 					has_country_flag = kor_non_democratic
 				}	
 			}
@@ -2955,6 +2997,10 @@ country_event = {
 					has_game_rule = {
 						rule = KOR_AI_BEHAVIOR
 						option = ANARCHIST_KOR
+					}
+					has_game_rule = {
+						rule = KOR_AI_BEHAVIOR
+						option = FAR_RIGHT_KOR
 					}
 					has_country_flag = kor_non_democratic
 				}	
@@ -3978,6 +4024,12 @@ country_event = {
 			ideology = communist
 			popularity = 0.01
 		}
+
+		set_party_name = { 
+			ideology = communist
+			long_name = KOR_communist_party_together_long
+			name = KOR_communist_party_together
+		}
 	}
 }
 
@@ -4112,6 +4164,295 @@ country_event = {
 		add_ideas = { KOR_military_gay_hunting }
 	}
 }
+
+
+#The Old Royal Family who visited [ROOT.GetName]
+country_event = {
+	id = south_korea.149
+	title = south_korea.149.t
+	desc = south_korea.149.desc
+	picture = GFX_report_event_KOR_KOR_baekje
+
+	mean_time_to_happen = {
+		days = 780
+	}
+	
+	fire_only_once = yes
+	
+	trigger = {
+		original_tag = KOR
+		has_completed_focus = kor_victory_democracy
+	}
+	
+	option = {
+		name = south_korea.149.a
+	}
+}
+
+#The Death of the Crown Prince
+country_event = {
+	id = south_korea.150
+	title = south_korea.150.t
+	desc = south_korea.150.desc
+	picture = GFX_report_event_KOR_death_yi_ku
+
+	mean_time_to_happen = {
+		days = 780
+	}
+	
+	fire_only_once = yes
+	
+	trigger = {
+		original_tag = KOR
+		has_completed_focus = kor_victory_democracy
+	}
+	
+	option = {
+		name = south_korea.150.a
+		
+		hidden_effect = {
+			country_event = { id = south_korea.400 days = 100 random = 100 }
+		}
+	}
+}
+
+####################
+#
+# Korean Monarchy Events
+#
+####################
+
+#Restoration of the Empire of Korea?
+country_event = {
+	id = south_korea.400
+	title = south_korea.400.t
+	desc = south_korea.400.desc
+	picture = GFX_report_event_KOR_gyeongbok_palace
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = south_korea.400.a
+		add_popularity = {
+			ideology = monarchist
+			popularity = 0.01
+		}
+		
+		hidden_effect = {
+			country_event = { id = south_korea.401 days = 24 random = 14 }
+		}
+	}
+}
+
+#Imperial Family Divided into Two
+country_event = {
+	id = south_korea.401
+	title = south_korea.401.t
+	desc = south_korea.401.desc
+	picture = GFX_report_event_KOR_korean_march_1
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = south_korea.401.a
+		add_political_power = -25
+		add_popularity = {
+			ideology = monarchist
+			popularity = 0.02
+		}
+		
+		hidden_effect = {
+			country_event = { id = south_korea.402 days = 24 random = 14 }
+		}
+	}
+	
+	option = {
+		name = south_korea.401.b
+		
+		hidden_effect = {
+			country_event = { id = south_korea.408 days = 14 random = 7 }
+		}
+	}
+}
+
+#Poll of Support for the Monarchy
+country_event = {
+	id = south_korea.402
+	title = south_korea.402.t
+	desc = south_korea.402.desc
+	picture = GFX_report_event_computer
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = south_korea.402.a
+		add_stability = -0.01
+		add_popularity = {
+			ideology = monarchist
+			popularity = 0.02
+		}
+		
+		hidden_effect = {
+			country_event = { id = south_korea.403 days = 21 random = 60 }
+		}
+	}
+	
+	option = {
+		name = south_korea.402.b
+		
+		hidden_effect = {
+			country_event = { id = south_korea.408 days = 14 random = 7 }
+		}
+	}
+}
+
+#Debate on the Rebuild of Hwangudan
+country_event = {
+	id = south_korea.403
+	title = south_korea.403.t
+	desc = south_korea.403.desc
+	picture = GFX_report_event_KOR_gyeongbok_palace
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = south_korea.403.a
+		add_political_power = -25
+		add_popularity = {
+			ideology = monarchist
+			popularity = 0.01
+		}
+		
+		hidden_effect = {
+			country_event = { id = south_korea.405 days = 30 random = 14 }
+		}
+	}
+	
+	option = {
+		name = south_korea.403.b
+		
+		hidden_effect = {
+			country_event = { id = south_korea.408 days = 14 random = 7 }
+		}
+	}
+}
+
+#The revival of the Monarchy at the centre of politics
+country_event = {
+	id = south_korea.405
+	title = south_korea.405.t
+	desc = south_korea.405.desc
+	picture = GFX_report_event_KOR_national_assembly_1
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = south_korea.405.a
+		add_stability = -0.02
+		add_popularity = {
+			ideology = monarchist
+			popularity = 0.03
+		}
+		
+		hidden_effect = {
+			country_event = { id = south_korea.406 days = 14 random = 14 }
+		}
+	}
+	
+	option = {
+		name = south_korea.405.b
+		
+		hidden_effect = {
+			country_event = { id = south_korea.409 days = 14 random = 7 }
+		}
+	}
+}
+
+#Demonstration calling for the Revival of the Monarchy
+country_event = {
+	id = south_korea.406
+	title = south_korea.406.t
+	desc = south_korea.406.desc
+	picture = GFX_report_event_KOR_candle_revolution_2
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = south_korea.406.a
+		add_stability = -0.05
+		add_political_power = -50
+		add_popularity = {
+			ideology = monarchist
+			popularity = 0.1
+		}
+		
+		hidden_effect = {
+			country_event = { id = south_korea.407 days = 7 random = 7 }
+		}
+	}
+}
+
+#A Midsummer Night's Dream
+country_event = {
+	id = south_korea.407
+	title = south_korea.407.t
+	desc = south_korea.407.desc
+	picture = GFX_report_event_KOR_yi_won
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = south_korea.407.a
+		add_popularity = {
+			ideology = monarchist
+			popularity = -1
+		}
+		
+		add_stability = 0.08
+		add_political_power = 50
+		
+		set_country_flag = monarchist_korea_flag
+	}
+}
+
+#End of a Dream
+country_event = {
+	id = south_korea.408
+	title = south_korea.408.t
+	desc = south_korea.408.desc
+	picture = GFX_report_event_KOR_national_flag_1
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = south_korea.408.a
+		add_popularity = {
+			ideology = monarchist
+			popularity = -1
+		}
+	}
+}
+
+#End of the Monarchist Protests
+country_event = {
+	id = south_korea.409
+	title = south_korea.409.t
+	desc = south_korea.409.desc
+	picture = GFX_report_event_KOR_candle_revolution_2
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = south_korea.409.a
+		add_popularity = {
+			ideology = monarchist
+			popularity = -1
+		}
+	}
+}
+
+
+####################
 
 #Kim Jong-il Moe Affair
 country_event = {
@@ -5012,8 +5353,8 @@ country_event = {
 			#unit_leader_event = { id = south_korea.64 days = 30 }
 			country_event = { id = south_korea.65 days = 1 }
 			set_popularities = {
-				fascist = 75
-				nationalist = 25
+				nationalist = 75
+				fascist = 25
 			}
 		}
 		
@@ -5021,7 +5362,7 @@ country_event = {
 		set_cosmetic_tag = KOR_JUCHEISM
 		
 		set_politics = {
-			ruling_party = fascist
+			ruling_party = nationalist
 			elections_allowed = no
 		}
 		
@@ -5151,6 +5492,13 @@ country_event = {
 			}
 			promote_leader = yes
 		}
+		
+		set_party_name = { 
+			ideology = communist
+			long_name = KOR_communist_party_anarchy_long 
+			name = KOR_communist_party_anarchy
+		}
+		
 		#create_country_leader = {
 		#	name = "Vladimir Tikhonov"
 		#	desc = "POLITICS_WILLIAM_BIRDWOOD_DESC"
@@ -6208,6 +6556,10 @@ country_event = {
 					rule = KOR_AI_BEHAVIOR
 					option = ANARCHIST_KOR
 					}
+				  has_game_rule = {
+					rule = KOR_AI_BEHAVIOR
+					option = FAR_RIGHT_KOR
+					}
 				}
 		    }
 		}
@@ -6264,6 +6616,10 @@ country_event = {
 				  has_game_rule = {
 					rule = KOR_AI_BEHAVIOR
 					option = ANARCHIST_KOR
+					}
+				  has_game_rule = {
+					rule = KOR_AI_BEHAVIOR
+					option = FAR_RIGHT_KOR
 					}
 				}
 		    }
@@ -6322,6 +6678,10 @@ country_event = {
 				  has_game_rule = {
 					rule = KOR_AI_BEHAVIOR
 					option = ANARCHIST_KOR
+					}
+				  has_game_rule = {
+					rule = KOR_AI_BEHAVIOR
+					option = FAR_RIGHT_KOR
 					}
 				}
 		    }
@@ -6408,6 +6768,10 @@ country_event = {
 					rule = KOR_AI_BEHAVIOR
 					option = ANARCHIST_KOR
 					}
+				  has_game_rule = {
+					rule = KOR_AI_BEHAVIOR
+					option = FAR_RIGHT_KOR
+					}
 				}
 		    }
 		}
@@ -6462,6 +6826,10 @@ country_event = {
 				  has_game_rule = {
 					rule = KOR_AI_BEHAVIOR
 					option = ANARCHIST_KOR
+					}
+				  has_game_rule = {
+					rule = KOR_AI_BEHAVIOR
+					option = FAR_RIGHT_KOR
 					}
 				}
 		    }
