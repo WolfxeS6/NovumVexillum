@@ -1,0 +1,637 @@
+﻿add_namespace = hong_kong_uk_prc
+add_namespace = hong_kong_news
+
+#The Umbrella Movement
+news_event = {
+	id = hong_kong_news.1
+	title = hong_kong_news.1.t
+	desc = hong_kong_news.1.desc
+	picture = GFX_news_event_hong_kong_umbrella
+	
+	is_triggered_only = yes
+	major = yes
+	
+	option = {
+		name = hong_kong_news.1.a
+		trigger = {
+			OR = {
+				original_tag = PRC
+				original_tag = HKN
+			}
+		}
+	}
+	
+	option = {
+		name = hong_kong_news.1.b
+		trigger = {
+			original_tag = ENG
+		}
+	}
+	
+	option = {
+		name = hong_kong_news.1.c
+		trigger = {
+			NOT = { original_tag = PRC }
+			NOT = { original_tag = HKN }
+			NOT = { original_tag = ENG }
+		}
+	}
+}
+
+#The End of Hong Kong
+news_event = {
+	id = hong_kong_news.3
+	title = hong_kong_news.3.t
+	desc = hong_kong_news.3.desc
+	picture = GFX_news_event_annexation_of_hong_kong
+	
+	is_triggered_only = yes
+	major = yes
+	
+	option = {
+		name = hong_kong_news.3.a
+		trigger = {
+			OR = {
+				original_tag = PRC
+				original_tag = HKN
+			}
+		}
+	}
+	
+	option = {
+		name = hong_kong_news.3.b
+		trigger = {
+			original_tag = ENG
+		}
+	}
+	
+	option = {
+		name = hong_kong_news.3.c
+		trigger = {
+			NOT = { original_tag = PRC }
+			NOT = { original_tag = HKN }
+			NOT = { original_tag = ENG }
+		}
+	}
+}
+
+#The Hong Kong Declaration of Independence
+news_event = {
+	id = hong_kong_news.4
+	title = hong_kong_news.4.t
+	desc = hong_kong_news.4.desc
+	picture = GFX_news_event_hong_kong_independence
+	
+	is_triggered_only = yes
+	major = yes
+	
+	option = {
+		name = hong_kong_news.4.a
+		trigger = {
+			OR = {
+				original_tag = PRC
+				original_tag = HKN
+			}
+		}
+	}
+	
+	option = {
+		name = hong_kong_news.4.b
+		trigger = {
+			original_tag = ENG
+		}
+	}
+	
+	option = {
+		name = hong_kong_news.4.c
+		trigger = {
+			NOT = { original_tag = PRC }
+			NOT = { original_tag = HKN }
+			NOT = { original_tag = ENG }
+		}
+	}
+}
+
+#The Hong Kong National Security Law
+news_event = {
+	id = hong_kong_news.5
+	title = hong_kong_news.5.t
+	desc = hong_kong_news.5.desc
+	picture = GFX_news_event_chinese_government
+	
+	is_triggered_only = yes
+	major = yes
+	
+	option = {
+		name = hong_kong_news.5.a
+		trigger = {
+			OR = {
+				original_tag = PRC
+				original_tag = HKN
+			}
+		}
+	}
+	
+	option = {
+		name = hong_kong_news.5.b
+		trigger = {
+			original_tag = ENG
+		}
+		custom_effect_tooltip = PRC_influence_add_7_tt
+	}
+	
+	option = {
+		name = hong_kong_news.5.c
+		trigger = {
+			NOT = { original_tag = PRC }
+			NOT = { original_tag = HKN }
+			NOT = { original_tag = ENG }
+		}
+	}
+}
+
+#[ENG.GetName]'s Immigrant Program in Hong Kong
+news_event = {
+	id = hong_kong_news.6
+	title = hong_kong_news.6.t
+	desc = hong_kong_news.6.desc
+	picture = GFX_news_event_british_flag
+	
+	is_triggered_only = yes
+	major = yes
+	
+	option = {
+		name = hong_kong_news.6.a
+		trigger = {
+			OR = {
+				original_tag = PRC
+				original_tag = HKN
+			}
+		}
+		custom_effect_tooltip = ENG_influence_add_7_tt
+	}
+	
+	option = {
+		name = hong_kong_news.6.b
+		trigger = {
+			original_tag = ENG
+		}
+	}
+	
+	option = {
+		name = hong_kong_news.6.c
+		trigger = {
+			NOT = { original_tag = PRC }
+			NOT = { original_tag = HKN }
+			NOT = { original_tag = ENG }
+		}
+	}
+}
+
+#####
+
+country_event = {
+	id = hong_kong_uk_prc.0
+	title = hong_kong_uk_prc.0.t
+	desc = hong_kong_uk_prc.0.desc
+	picture = GFX_report_event_PRC_Legislative_Council_of_Hong_Kong
+	
+	trigger = {
+		is_ai = no
+	}
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = hong_kong_uk_prc.0.a
+		PRC = { change_tag_from = HKN }
+	}
+	
+	option = {
+		name = hong_kong_uk_prc.0.b
+		ENG = { change_tag_from = HKN }
+	}
+}
+
+country_event = {
+	id = hong_kong_uk_prc.1
+	title = hong_kong_uk_prc.1.t
+	desc = hong_kong_uk_prc.1.desc
+	picture = GFX_report_event_PRC_hong_kong_anti_china_2
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = hong_kong_uk_prc.1.a
+	}
+}
+
+#https://en.wikipedia.org/wiki/123_Democratic_Alliance
+
+country_event = {
+	id = hong_kong_uk_prc.2
+	title = hong_kong_uk_prc.2.t
+	desc = hong_kong_uk_prc.2.desc
+	picture = GFX_report_event_PRC_hong_kong_anti_china_1
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		date < 2002.01.01
+		is_puppet = yes
+	}
+	
+	option = {
+		name = hong_kong_uk_prc.2.a
+		PRC_influence_add_1 = yes
+		
+		hidden_effect = {
+			PRC = { country_event = hong_kong_uk_prc.3 }
+			ENG = { country_event = hong_kong_uk_prc.3 }
+		}
+	}
+}
+
+country_event = {
+	id = hong_kong_uk_prc.3
+	title = hong_kong_uk_prc.2.t
+	desc = hong_kong_uk_prc.2.desc
+	picture = GFX_report_event_PRC_hong_kong_anti_china_1
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = hong_kong_uk_prc.3.a
+		trigger = { original_tag = PRC }
+		custom_effect_tooltip = PRC_influence_add_1_tt
+	}
+	
+	option = {
+		name = hong_kong_uk_prc.3.b
+		trigger = { original_tag = ENG }
+		custom_effect_tooltip = PRC_influence_add_1_tt
+	}
+}
+
+country_event = {
+	id = hong_kong_uk_prc.4
+	title = hong_kong_uk_prc.4.t
+	desc = hong_kong_uk_prc.4.desc
+	picture = GFX_report_event_PRC_Legislative_Council_of_Hong_Kong
+	
+	trigger = {
+		is_puppet_of = PRC
+		NOT = { has_global_flag = end_hong_kong_conflict }
+	}
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = hong_kong_uk_prc.4.a
+		PRC_influence_add_3 = yes
+		
+		hidden_effect = {
+			PRC = { country_event = hong_kong_uk_prc.5 }
+			ENG = { country_event = hong_kong_uk_prc.5 }
+			country_event = { id = hong_kong_uk_prc.2 days = 1460 }
+		}
+	}
+}
+
+country_event = {
+	id = hong_kong_uk_prc.5
+	title = hong_kong_uk_prc.4.t
+	desc = hong_kong_uk_prc.4.desc
+	picture = GFX_report_event_PRC_Legislative_Council_of_Hong_Kong
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = hong_kong_uk_prc.4.a
+		custom_effect_tooltip = PRC_influence_add_3_tt
+	}
+}
+
+country_event = {
+	id = hong_kong_uk_prc.6
+	title = hong_kong_uk_prc.6.t
+	desc = hong_kong_uk_prc.6.desc
+	picture = GFX_report_event_PRC_Legislative_Council_of_Hong_Kong
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = hong_kong_uk_prc.6.a
+	}
+}
+
+#[FROM.GetName] Government's Diplomatic Protest
+country_event = {
+	id = hong_kong_uk_prc.7
+	title = hong_kong_uk_prc.7.t
+	desc = hong_kong_uk_prc.7.desc
+	picture = GFX_report_event_PRC_Legislative_Council_of_Hong_Kong
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = hong_kong_uk_prc.7.a
+		ai_will_do = {
+			factor = 10	
+		}	
+		
+		FROM = { country_event = hong_kong_uk_prc.8 }
+		
+		if = {
+			limit = {
+				original_tag = ENG
+			}
+			ENG_influence_minus_5 = yes
+		}
+		else = {
+			PRC_influence_minus_5 = yes
+		}
+	}
+	
+	option = {
+		name = hong_kong_uk_prc.7.b
+		ai_will_do = {
+			factor = 5
+			modifier = {
+				factor = 0
+				if = {
+					limit = {
+						OR = {
+							has_government = fascist
+							has_government = nationalist
+						}
+					}
+				}
+			}
+			modifier = {
+				factor = 0.5
+				if = {
+					limit = {
+						OR = {
+							has_government = communist
+						}
+					}
+				}
+			}
+		}
+		
+		FROM = { country_event = hong_kong_uk_prc.9	}
+	}
+}
+
+country_event = {
+	id = hong_kong_uk_prc.8
+	title = hong_kong_uk_prc.8.t
+	desc = hong_kong_uk_prc.8.desc
+	picture = GFX_report_event_PRC_Legislative_Council_of_Hong_Kong
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = hong_kong_uk_prc.8.a
+		
+		if = {
+			limit = {
+				FROM = { original_tag = ENG }
+			}
+			custom_effect_tooltip = ENG_influence_minus_5_tt
+		}
+		else = {
+			custom_effect_tooltip = PRC_influence_minus_5_tt
+		}
+	}
+}
+
+country_event = {
+	id = hong_kong_uk_prc.9
+	title = hong_kong_uk_prc.9.t
+	desc = hong_kong_uk_prc.9.desc
+	picture = GFX_report_event_PRC_Legislative_Council_of_Hong_Kong
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = hong_kong_uk_prc.9.a
+		
+		add_opinion_modifier = {
+			target = FROM
+			modifier = HKN_interference_in_HK_domestic_affairs
+		}
+	}
+}
+
+country_event = {
+	id = hong_kong_uk_prc.11
+	title = hong_kong_uk_prc.11.t
+	desc = hong_kong_uk_prc.11.desc
+	picture = GFX_report_event_PRC_Legislative_Council_of_Hong_Kong
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = hong_kong_uk_prc.11.a
+		trigger = { original_tag = ENG }
+		custom_effect_tooltip = ENG_influence_add_7_tt
+	}
+	
+	option = {
+		name = hong_kong_uk_prc.11.b
+		trigger = { original_tag = PRC }
+		custom_effect_tooltip = ENG_influence_add_7_tt
+	}
+}
+
+#[FROM.GetName]'s Economic Threat
+country_event = {
+	id = hong_kong_uk_prc.12
+	title = hong_kong_uk_prc.12.t
+	desc = hong_kong_uk_prc.12.desc
+	picture = GFX_report_event_PRC_black_hong_kong
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = hong_kong_uk_prc.12.a
+		ai_will_do = {
+			factor = 10	
+		}	
+		
+		FROM = { country_event = hong_kong_uk_prc.13 }
+		
+		if = {
+			limit = {
+				original_tag = ENG
+			}
+			ENG_influence_minus_5 = yes
+		}
+		else = {
+			PRC_influence_minus_5 = yes
+		}
+	}
+	
+	option = {
+		name = hong_kong_uk_prc.12.b
+		ai_will_do = {
+			factor = 5
+			modifier = {
+				factor = 0
+				if = {
+					limit = {
+						OR = {
+							has_government = fascist
+							has_government = nationalist
+						}
+					}
+				}
+			}
+			modifier = {
+				factor = 0.5
+				if = {
+					limit = {
+						OR = {
+							has_government = communist
+						}
+					}
+				}
+			}
+		}
+		custom_effect_tooltip = hong_kong_embargo_tt
+		
+		FROM = { country_event = hong_kong_uk_prc.14	}
+	}
+}
+
+country_event = {
+	id = hong_kong_uk_prc.13
+	title = hong_kong_uk_prc.13.t
+	desc = hong_kong_uk_prc.13.desc
+	picture = GFX_report_event_PRC_hong_kong_government
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = hong_kong_uk_prc.13.a
+		
+		if = {
+			limit = {
+				FROM = { original_tag = ENG }
+			}
+			custom_effect_tooltip = ENG_influence_minus_5_tt
+		}
+		else = {
+			custom_effect_tooltip = PRC_influence_minus_5_tt
+		}
+	}
+}
+
+country_event = {
+	id = hong_kong_uk_prc.14
+	title = hong_kong_uk_prc.14.t
+	desc = hong_kong_uk_prc.14.desc
+	picture = GFX_report_event_PRC_hong_kong_government
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = hong_kong_uk_prc.14.a
+		send_embargo = FROM
+	}
+}
+
+country_event = {
+	id = hong_kong_uk_prc.15
+	title = hong_kong_uk_prc.15.t
+	desc = hong_kong_uk_prc.9.desc
+	picture = GFX_report_event_PRC_Legislative_Council_of_Hong_Kong
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = hong_kong_uk_prc.15.a
+		PRC_influence_add_7 = yes
+		ENG = { country_event = hong_kong_uk_prc.16 }
+	}
+}
+
+country_event = {
+	id = hong_kong_uk_prc.16
+	title = hong_kong_uk_prc.15.t
+	desc = hong_kong_uk_prc.15.desc
+	picture = GFX_report_event_PRC_Legislative_Council_of_Hong_Kong
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = hong_kong_uk_prc.16.a
+		custom_effect_tooltip = PRC_influence_add_7_tt
+	}
+}
+
+country_event = {
+	id = hong_kong_uk_prc.17
+	title = hong_kong_uk_prc.17.t
+	desc = hong_kong_uk_prc.17.desc
+	picture = GFX_report_event_PRC_Legislative_Council_of_Hong_Kong
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = hong_kong_uk_prc.17.a
+		trigger = {
+			original_tag = PRC
+		}
+		
+		declare_war_on = { 
+			target = HKN
+			type = annex_everything
+		}
+		#declare_war_on = { 
+		#	target = ENG
+		#	type = annex_everything
+		#}
+	}
+	
+	option = {
+		name = hong_kong_uk_prc.17.b
+		trigger = {
+			original_tag = ENG
+		}
+		declare_war_on = { 
+			target = PRC
+			type = annex_everything
+		}
+	}
+	
+	option = {
+		name = hong_kong_uk_prc.17.c
+		ai_will_do = {
+			factor = 0
+		}	
+		add_stability = -0.2
+	}
+}
+
+
+country_event = {
+	id = hong_kong_uk_prc.999
+	title = hong_kong_uk_prc.999.t
+	desc = hong_kong_uk_prc.999.desc
+	picture = GFX_report_event_PRC_Legislative_Council_of_Hong_Kong
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = hong_kong_uk_prc.999.a
+		ENG_influence_add_7 = yes
+	}
+	
+	option = {
+		name = hong_kong_uk_prc.999.b
+		PRC_influence_add_7 = yes
+	}
+}

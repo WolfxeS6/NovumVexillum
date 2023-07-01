@@ -638,6 +638,32 @@ news_event = {
 	}
 }
 
+#The Reconstruction of [KOR.GetName]
+news_event = {
+	id = rok_news.23
+	title = rok_news.23.t
+	desc = rok_news.23.desc
+	
+	picture = GFX_news_event_seoul_night
+
+	major = yes
+	is_triggered_only = yes
+	
+	option = {
+		name = rok_news.23.a
+		trigger = {
+			original_tag = KOR
+		}
+	}
+	
+	option = {
+		name = rok_news.23.b
+		trigger = {
+			NOT = { original_tag = KOR }
+		}
+	}
+}
+
 
 
 
@@ -3776,11 +3802,11 @@ country_event = {
 	id = south_korea.130
 	title = south_korea.130.t
 	
-	trigger = {
-		NOT = {
-			has_completed_focus = kor_moon_chang_geuk_government
-		}
-	}
+	#trigger = {
+	#	NOT = {
+	#		has_completed_focus = kor_moon_chang_geuk_government
+	#	}
+	#}
 
 	immediate = {
 		hidden_effect = {
@@ -3998,6 +4024,12 @@ country_event = {
 			ideology = communist
 			popularity = 0.01
 		}
+
+		set_party_name = { 
+			ideology = communist
+			long_name = KOR_communist_party_together_long
+			name = KOR_communist_party_together
+		}
 	}
 }
 
@@ -4132,6 +4164,295 @@ country_event = {
 		add_ideas = { KOR_military_gay_hunting }
 	}
 }
+
+
+#The Old Royal Family who visited [ROOT.GetName]
+country_event = {
+	id = south_korea.149
+	title = south_korea.149.t
+	desc = south_korea.149.desc
+	picture = GFX_report_event_KOR_KOR_baekje
+
+	mean_time_to_happen = {
+		days = 780
+	}
+	
+	fire_only_once = yes
+	
+	trigger = {
+		original_tag = KOR
+		has_completed_focus = kor_victory_democracy
+	}
+	
+	option = {
+		name = south_korea.149.a
+	}
+}
+
+#The Death of the Crown Prince
+country_event = {
+	id = south_korea.150
+	title = south_korea.150.t
+	desc = south_korea.150.desc
+	picture = GFX_report_event_KOR_death_yi_ku
+
+	mean_time_to_happen = {
+		days = 780
+	}
+	
+	fire_only_once = yes
+	
+	trigger = {
+		original_tag = KOR
+		has_completed_focus = kor_victory_democracy
+	}
+	
+	option = {
+		name = south_korea.150.a
+		
+		hidden_effect = {
+			country_event = { id = south_korea.400 days = 100 random = 100 }
+		}
+	}
+}
+
+####################
+#
+# Korean Monarchy Events
+#
+####################
+
+#Restoration of the Empire of Korea?
+country_event = {
+	id = south_korea.400
+	title = south_korea.400.t
+	desc = south_korea.400.desc
+	picture = GFX_report_event_KOR_gyeongbok_palace
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = south_korea.400.a
+		add_popularity = {
+			ideology = monarchist
+			popularity = 0.01
+		}
+		
+		hidden_effect = {
+			country_event = { id = south_korea.401 days = 24 random = 14 }
+		}
+	}
+}
+
+#Imperial Family Divided into Two
+country_event = {
+	id = south_korea.401
+	title = south_korea.401.t
+	desc = south_korea.401.desc
+	picture = GFX_report_event_KOR_korean_march_1
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = south_korea.401.a
+		add_political_power = -25
+		add_popularity = {
+			ideology = monarchist
+			popularity = 0.02
+		}
+		
+		hidden_effect = {
+			country_event = { id = south_korea.402 days = 24 random = 14 }
+		}
+	}
+	
+	option = {
+		name = south_korea.401.b
+		
+		hidden_effect = {
+			country_event = { id = south_korea.408 days = 14 random = 7 }
+		}
+	}
+}
+
+#Poll of Support for the Monarchy
+country_event = {
+	id = south_korea.402
+	title = south_korea.402.t
+	desc = south_korea.402.desc
+	picture = GFX_report_event_computer
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = south_korea.402.a
+		add_stability = -0.01
+		add_popularity = {
+			ideology = monarchist
+			popularity = 0.02
+		}
+		
+		hidden_effect = {
+			country_event = { id = south_korea.403 days = 21 random = 60 }
+		}
+	}
+	
+	option = {
+		name = south_korea.402.b
+		
+		hidden_effect = {
+			country_event = { id = south_korea.408 days = 14 random = 7 }
+		}
+	}
+}
+
+#Debate on the Rebuild of Hwangudan
+country_event = {
+	id = south_korea.403
+	title = south_korea.403.t
+	desc = south_korea.403.desc
+	picture = GFX_report_event_KOR_gyeongbok_palace
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = south_korea.403.a
+		add_political_power = -25
+		add_popularity = {
+			ideology = monarchist
+			popularity = 0.01
+		}
+		
+		hidden_effect = {
+			country_event = { id = south_korea.405 days = 30 random = 14 }
+		}
+	}
+	
+	option = {
+		name = south_korea.403.b
+		
+		hidden_effect = {
+			country_event = { id = south_korea.408 days = 14 random = 7 }
+		}
+	}
+}
+
+#The revival of the Monarchy at the centre of politics
+country_event = {
+	id = south_korea.405
+	title = south_korea.405.t
+	desc = south_korea.405.desc
+	picture = GFX_report_event_KOR_national_assembly_1
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = south_korea.405.a
+		add_stability = -0.02
+		add_popularity = {
+			ideology = monarchist
+			popularity = 0.03
+		}
+		
+		hidden_effect = {
+			country_event = { id = south_korea.406 days = 14 random = 14 }
+		}
+	}
+	
+	option = {
+		name = south_korea.405.b
+		
+		hidden_effect = {
+			country_event = { id = south_korea.409 days = 14 random = 7 }
+		}
+	}
+}
+
+#Demonstration calling for the Revival of the Monarchy
+country_event = {
+	id = south_korea.406
+	title = south_korea.406.t
+	desc = south_korea.406.desc
+	picture = GFX_report_event_KOR_candle_revolution_2
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = south_korea.406.a
+		add_stability = -0.05
+		add_political_power = -50
+		add_popularity = {
+			ideology = monarchist
+			popularity = 0.1
+		}
+		
+		hidden_effect = {
+			country_event = { id = south_korea.407 days = 7 random = 7 }
+		}
+	}
+}
+
+#A Midsummer Night's Dream
+country_event = {
+	id = south_korea.407
+	title = south_korea.407.t
+	desc = south_korea.407.desc
+	picture = GFX_report_event_KOR_yi_won
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = south_korea.407.a
+		add_popularity = {
+			ideology = monarchist
+			popularity = -1
+		}
+		
+		add_stability = 0.08
+		add_political_power = 50
+		
+		set_country_flag = monarchist_korea_flag
+	}
+}
+
+#End of a Dream
+country_event = {
+	id = south_korea.408
+	title = south_korea.408.t
+	desc = south_korea.408.desc
+	picture = GFX_report_event_KOR_national_flag_1
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = south_korea.408.a
+		add_popularity = {
+			ideology = monarchist
+			popularity = -1
+		}
+	}
+}
+
+#End of the Monarchist Protests
+country_event = {
+	id = south_korea.409
+	title = south_korea.409.t
+	desc = south_korea.409.desc
+	picture = GFX_report_event_KOR_candle_revolution_2
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = south_korea.409.a
+		add_popularity = {
+			ideology = monarchist
+			popularity = -1
+		}
+	}
+}
+
+
+####################
 
 #Kim Jong-il Moe Affair
 country_event = {
@@ -4359,7 +4680,7 @@ country_event = {
 		original_tag = KOR
 		date > 2004.9.1
 		AND = {
-			NOT = { has_completed_focus = kor_moon_chang_geuk_government }
+			#NOT = { has_completed_focus = kor_moon_chang_geuk_government }
 			NOT = { has_completed_focus = kor_no_government }
 		}
 		country_exists = JAP
@@ -4650,7 +4971,7 @@ country_event = {
 		original_tag = KOR
 		date > 2003.6.1
 		AND = {
-			NOT = { has_completed_focus = kor_moon_chang_geuk_government }
+			#NOT = { has_completed_focus = kor_moon_chang_geuk_government }
 			NOT = { has_completed_focus = kor_no_government }
 		}
 		country_exists = JAP
@@ -5032,8 +5353,8 @@ country_event = {
 			#unit_leader_event = { id = south_korea.64 days = 30 }
 			country_event = { id = south_korea.65 days = 1 }
 			set_popularities = {
-				fascist = 75
-				nationalist = 25
+				nationalist = 75
+				fascist = 25
 			}
 		}
 		
@@ -5041,7 +5362,7 @@ country_event = {
 		set_cosmetic_tag = KOR_JUCHEISM
 		
 		set_politics = {
-			ruling_party = fascist
+			ruling_party = nationalist
 			elections_allowed = no
 		}
 		
@@ -5082,53 +5403,53 @@ country_event = {
 		date < 2003.6.1
 	}
 	
-	option = {
-		name = korea_election.5.a
-		hidden_effect = {
-			news_event = { id = rok_news.3 hours = 8 }
-			#retire_ideology_leader = conservative
-			retire_character = kor_kim_dae_jung
-			set_popularities = {
-					islamist = 75
-				reactionary = 25
-			}
-		}
-		KOR_co_op_end_election_effect = yes
-		KOR_win_right_wing_co_op_effect = yes
-		
-		load_focus_tree = KOR_focus_tree_moon_chang_geuk
-		#add_ideas = kor_postnationalist_christian_rivalry_balanced #Changed BoP
-		set_cosmetic_tag = KOR_JAPANESE
-		
-		set_power_balance = {
-			id = KOR_fundamentalist_power_balance
-			left_side = KOR_fundamentalist_power # will keep the last set side if not specified
-			right_side = KOR_post_nationalist_power # will keep the last set side if not specified
-			#set_default = yes # whether or not to reset the power balance to the initial value, default = no
-			set_value = -0.3
-		}
-		
-		set_politics = { ruling_party = islamist elections_allowed = no }
-		
-		create_country_leader = {
-			name = "Park Jie-won"
-			desc = "POLITICS_PARK_JIE_WON_DESC"
-			picture = "Park_Jie_won.dds"
-			expire = "2099.12.1"
-			ideology = constitutionalist
-			traits = {
-				KOR_former_far_right
-				KOR_anti_fascist_fighter
-				KOR_9th_level_politician
-			}
-		}
-		
-		set_country_flag = KOR_factions_locked_flag
-		
-		hidden_effect = {
-			JAP = { country_event = { id = japan.59 days = 7 } }
-		}
-	}
+	#option = {
+	#	name = korea_election.5.a
+	#	hidden_effect = {
+	#		news_event = { id = rok_news.3 hours = 8 }
+	#		#retire_ideology_leader = conservative
+	#		retire_character = kor_kim_dae_jung
+	#		set_popularities = {
+	#				islamist = 75
+	#			reactionary = 25
+	#		}
+	#	}
+	#	KOR_co_op_end_election_effect = yes
+	#	KOR_win_right_wing_co_op_effect = yes
+	#	
+	#	load_focus_tree = KOR_focus_tree_moon_chang_geuk
+	#	#add_ideas = kor_postnationalist_christian_rivalry_balanced #Changed BoP
+	#	set_cosmetic_tag = KOR_JAPANESE
+	#	
+	#	set_power_balance = {
+	#		id = KOR_fundamentalist_power_balance
+	#		left_side = KOR_fundamentalist_power # will keep the last set side if not specified
+	#		right_side = KOR_post_nationalist_power # will keep the last set side if not specified
+	#		#set_default = yes # whether or not to reset the power balance to the initial value, default = no
+	#		set_value = -0.3
+	#	}
+	#	
+	#	set_politics = { ruling_party = islamist elections_allowed = no }
+	#	
+	#	create_country_leader = {
+	#		name = "Park Jie-won"
+	#		desc = "POLITICS_PARK_JIE_WON_DESC"
+	#		picture = "Park_Jie_won.dds"
+	#		expire = "2099.12.1"
+	#		ideology = constitutionalist
+	#		traits = {
+	#			KOR_former_far_right
+	#			KOR_anti_fascist_fighter
+	#			KOR_9th_level_politician
+	#		}
+	#	}
+	#	
+	#	set_country_flag = KOR_factions_locked_flag
+	#	
+	#	hidden_effect = {
+	#		JAP = { country_event = { id = japan.59 days = 7 } }
+	#	}
+	#}
 	
 	option = {
 		name = korea_election.5.b
@@ -5171,6 +5492,13 @@ country_event = {
 			}
 			promote_leader = yes
 		}
+		
+		set_party_name = { 
+			ideology = communist
+			long_name = KOR_communist_party_anarchy_long 
+			name = KOR_communist_party_anarchy
+		}
+		
 		#create_country_leader = {
 		#	name = "Vladimir Tikhonov"
 		#	desc = "POLITICS_WILLIAM_BIRDWOOD_DESC"
@@ -8026,5 +8354,102 @@ country_event = {
 	option = {
 		name = korean_war.99.a
 		custom_effect_tooltip = KOR_general_election_exit_poll_tt
+	}
+}
+#Debu4
+country_event = {
+	id = korean_war.105
+	title = korean_war.99.t
+	desc = korean_war.99.desc
+	picture = GFX_report_event_asian_generic_national_assembly
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = south_korea.133.a
+		
+		#Han Shot First test
+		
+		add_popularity = {
+			ideology = social_liberal
+			popularity = 1
+		}
+		
+		set_politics = {
+			ruling_party = social_liberal
+			elections_allowed = yes
+		}
+		
+		
+		create_country_leader = {
+			name = "Han Myeong-sook" #KOR_Han_Myeong_sook
+			desc = "POLITICS_Han_Myeong_sook_DESC"
+			picture = "gfx/leaders/KOR/Han_Myeong_sook.dds"
+			ideology = liberalist
+			traits = { KOR_famous_feminist }
+		}
+		
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = SOV
+		}
+		
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = PRC
+		}
+		
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = USA
+		}
+	}
+}
+#Debug5
+country_event = {
+	id = korean_war.106
+	title = korean_war.99.t
+	desc = korean_war.99.desc
+	picture = GFX_report_event_asian_generic_national_assembly
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = south_korea.133.a
+		
+		#Han Shot First test
+		
+		add_popularity = {
+			ideology = market_liberal
+			popularity = 1
+		}
+		
+		set_politics = {
+			ruling_party = market_liberal
+			elections_allowed = yes
+		}
+		
+		create_country_leader = {
+			character = "kor_lee_myung_bak"
+			desc = "POLITICS_LEE_MYUNG_BAK_DESC"
+			picture = "gfx/leaders/KOR/lee_myung_bak.dds"
+			ideology = market_liberal_ideology
+			traits = {  }
+		}
+		
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = SOV
+		}
+		
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = PRC
+		}
+		
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = USA
+		}
 	}
 }

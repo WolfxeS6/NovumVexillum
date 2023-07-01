@@ -995,7 +995,9 @@ ideas = {
 				
 			modifier = {
 				conscription_factor = 0.1	
-				war_support_factor = 0.05		
+				war_support_factor = 0.05	
+				army_defence_against_major_factor = 0.05
+				army_org_regain = 0.05
 			}
 		}
 		
@@ -2158,7 +2160,7 @@ ideas = {
 
 			allowed = {
 				original_tag = kor
-				has_government = fascist
+				has_government = nationalist
 			}
 
 			allowed_civil_war = {
@@ -2177,7 +2179,7 @@ ideas = {
 
 			allowed = {
 				original_tag = kor
-				has_government = fascist
+				has_government = nationalist
 			}
 
 			allowed_civil_war = {
@@ -2187,6 +2189,7 @@ ideas = {
 			modifier = {
 				army_core_attack_factor = 0.2
 				political_power_factor = 0.1
+				nationalist_drift = 0.05
 				fascist_drift = 0.05
 			}
 		}
@@ -3661,6 +3664,10 @@ ideas = {
 			cost = 150
 			removal_cost = 0
 			
+			visible = {
+				KOR_prime_minster_common_left_wing = yes
+			}
+			
 			available = {
 				KOR_prime_minster_common_left_wing = yes
 			}
@@ -3681,8 +3688,13 @@ ideas = {
 			cost = 150
 			removal_cost = 0
 			
+			visible = {
+				KOR_prime_minster_common_left_wing = yes
+			}
+			
 			available = {
 				KOR_prime_minster_common_left_wing = yes
+				NOT = { has_country_flag = KOR_ahn_hee_jung_sexual_assault }
 			}
 			
 			ai_will_do = {
@@ -3698,6 +3710,10 @@ ideas = {
 			
 			cost = 150
 			removal_cost = 0
+			
+			visible = {
+				KOR_prime_minster_common_left_wing = yes
+			}
 			
 			available = {
 				KOR_prime_minster_common_left_wing = yes
@@ -3717,6 +3733,10 @@ ideas = {
 			cost = 150
 			removal_cost = 0
 			
+			visible = {
+				KOR_prime_minster_common_left_wing = yes
+			}
+			
 			available = {
 				KOR_prime_minster_common_left_wing = yes
 			}
@@ -3734,6 +3754,10 @@ ideas = {
 			
 			cost = 150
 			removal_cost = 0
+			
+			visible = {
+				KOR_prime_minster_common_left_wing = yes
+			}
 			
 			available = {
 				KOR_prime_minster_common_left_wing = yes
@@ -3753,6 +3777,10 @@ ideas = {
 			cost = 150
 			removal_cost = 0
 			
+			visible = {
+				KOR_prime_minster_common_left_wing = yes
+			}
+			
 			available = {
 				KOR_prime_minster_common_left_wing = yes
 			}
@@ -3771,6 +3799,10 @@ ideas = {
 			cost = 150
 			removal_cost = 0
 			
+			visible = {
+				KOR_prime_minster_common_left_wing = yes
+			}
+			
 			available = {
 				KOR_prime_minster_common_left_wing = yes
 			}
@@ -3787,6 +3819,10 @@ ideas = {
 			
 			cost = 150
 			removal_cost = 0
+			
+			visible = {
+				KOR_prime_minster_common_left_wing = yes
+			}
 			
 			available = {
 				KOR_prime_minster_common_left_wing = yes
@@ -3805,6 +3841,10 @@ ideas = {
 			cost = 150
 			removal_cost = 0
 			
+			visible = {
+				KOR_prime_minster_common_left_wing = yes
+			}
+			
 			available = {
 				KOR_prime_minster_common_left_wing = yes
 			}
@@ -3821,6 +3861,10 @@ ideas = {
 			
 			cost = 150
 			removal_cost = 0
+			
+			visible = {
+				KOR_prime_minster_common_right_wing = yes
+			}
 			
 			available = {
 				KOR_prime_minster_common_right_wing = yes
@@ -3839,6 +3883,10 @@ ideas = {
 			cost = 150
 			removal_cost = 0
 			
+			visible = {
+				KOR_prime_minster_common_right_wing = yes
+			}
+			
 			available = {
 				KOR_prime_minster_common_right_wing = yes
 			}
@@ -3855,6 +3903,10 @@ ideas = {
 			
 			cost = 150
 			removal_cost = 0
+			
+			visible = {
+				KOR_prime_minster_common_right_wing = yes
+			}
 			
 			available = {
 				KOR_prime_minster_common_right_wing = yes
@@ -3873,6 +3925,10 @@ ideas = {
 			cost = 150
 			removal_cost = 0
 			
+			visible = {
+				KOR_prime_minster_common_right_wing = yes
+			}
+			
 			available = {
 				KOR_prime_minster_common_right_wing = yes
 			}
@@ -3889,6 +3945,10 @@ ideas = {
 			
 			cost = 150
 			removal_cost = 0
+			
+			visible = {
+				KOR_prime_minster_common_right_wing = yes
+			}
 			
 			available = {
 				KOR_prime_minster_common_right_wing = yes
@@ -3907,6 +3967,10 @@ ideas = {
 			cost = 150
 			removal_cost = 0
 			
+			visible = {
+				KOR_prime_minster_jucheist = no
+			}
+			
 			available = {
 				KOR_prime_minster_jucheist = no
 			}
@@ -3915,40 +3979,25 @@ ideas = {
 				factor = 1
 			}
 		}
-		#kor_lee_nak_yon = {
-		#	#picture = "gfx/interface/ideas/KOR/adviser/kor_lee_nak_yon.dds"
-			#allowed = { original_tag = KOR }
-			#
-			#traits = { silent_workhorse }
-			#
-			#cost = 150
-			#removal_cost = 0
-			
-			#available = {
-			#	KOR_prime_minster_common_left_wing = yes
-			#	NOT = { has_idea = prime_minister_lee_nak_yon }
-			#}
-			
-			#ai_will_do = {
-			#	factor = 1
-			#}
-	#	}
+		
 		kor_lee_hoi_chang = {
 			#picture = "gfx/interface/ideas/KOR/adviser/kor_lee_hoi_chang.dds"
 			allowed = { original_tag = KOR }
 			
+			visible = {
+				KOR_prime_minster_common_right_wing = yes
+			}
+			
 			available = {
 				NOT = { has_country_flag = kor_chongpung_guilty }
+				NOT = { has_country_leader = { character = kor_lee_hoi_chang ruling_only = yes} }
+				KOR_prime_minster_common_right_wing = yes
 			}
 			
 			traits = { old_figurehead }
 			
 			cost = 150
 			removal_cost = 0
-			
-			available = {
-				KOR_prime_minster_common_right_wing = yes
-			}
 			
 			ai_will_do = {
 				factor = 1
@@ -3960,12 +4009,17 @@ ideas = {
 			
 			traits = { KOR_human_rights_lawyer }
 			
-			cost = 150
-			removal_cost = 0
-			
-			available = {
+			visible = {
 				KOR_prime_minster_common_left_wing = yes
 			}
+			
+			available = {
+				NOT = { has_country_leader = { character = kor_roh_moo_hyun ruling_only = yes} }
+				KOR_prime_minster_common_left_wing = yes
+			}
+			
+			cost = 150
+			removal_cost = 0
 			
 			ai_will_do = {
 				factor = 1
@@ -3977,8 +4031,16 @@ ideas = {
 			
 			traits = { captain_of_industry }
 			
+			available = {
+				NOT = { has_country_leader = { character = kor_lee_myung_bak ruling_only = yes} }
+			}
+			
 			cost = 150
 			removal_cost = 0
+			
+			visible = {
+				KOR_prime_minster_common_right_wing = yes
+			}
 			
 			available = {
 				KOR_prime_minster_common_right_wing = yes
@@ -3996,6 +4058,10 @@ ideas = {
 			cost = 150
 			removal_cost = 0
 			
+			visible = {
+				KOR_prime_minster_common_right_wing = yes
+			}
+			
 			available = {
 				KOR_prime_minster_common_right_wing = yes
 			}
@@ -4011,6 +4077,10 @@ ideas = {
 			
 			cost = 150
 			removal_cost = 0
+			
+			visible = {
+				KOR_prime_minster_social_democrat = yes
+			}
 			
 			available = {
 				KOR_prime_minster_social_democrat = yes
@@ -4028,6 +4098,10 @@ ideas = {
 			cost = 150
 			removal_cost = 0
 			
+			visible = {
+				KOR_prime_minster_social_democrat = yes
+			}
+			
 			available = {
 				KOR_prime_minster_social_democrat = yes
 			}
@@ -4043,6 +4117,10 @@ ideas = {
 			
 			cost = 150
 			removal_cost = 0
+			
+			visible = {
+				KOR_prime_minster_social_democrat = yes
+			}
 			
 			available = {
 				KOR_prime_minster_social_democrat = yes
@@ -4060,6 +4138,10 @@ ideas = {
 			cost = 150
 			removal_cost = 0
 			
+			visible = {
+				KOR_prime_minster_social_democrat = yes
+			}
+			
 			available = {
 				KOR_prime_minster_social_democrat = yes
 			}
@@ -4075,6 +4157,10 @@ ideas = {
 			
 			cost = 150
 			removal_cost = 0
+			
+			visible = {
+				KOR_prime_minster_social_democrat = yes
+			}
 			
 			available = {
 				KOR_prime_minster_social_democrat = yes
@@ -4092,6 +4178,10 @@ ideas = {
 			cost = 150
 			removal_cost = 0
 			
+			visible = {
+				KOR_prime_minster_social_democrat = yes
+			}
+			
 			available = {
 				KOR_prime_minster_social_democrat = yes
 			}
@@ -4107,6 +4197,10 @@ ideas = {
 			
 			cost = 150
 			removal_cost = 0
+			
+			visible = {
+				KOR_prime_minster_social_democrat = yes
+			}
 			
 			available = {
 				KOR_prime_minster_social_democrat = yes
@@ -4124,6 +4218,10 @@ ideas = {
 			cost = 150
 			removal_cost = 0
 			
+			visible = {
+				KOR_prime_minster_social_democrat = yes
+			}
+			
 			available = {
 				KOR_prime_minster_social_democrat = yes
 			}
@@ -4139,6 +4237,10 @@ ideas = {
 			
 			cost = 150
 			removal_cost = 0
+			
+			visible = {
+				KOR_prime_minster_social_democrat = yes
+			}
 			
 			available = {
 				KOR_prime_minster_social_democrat = yes
@@ -4156,6 +4258,10 @@ ideas = {
 			cost = 150
 			removal_cost = 0
 			
+			visible = {
+				KOR_prime_minster_jucheist = no
+			}
+			
 			available = {
 				KOR_prime_minster_jucheist = no
 			}
@@ -4164,6 +4270,7 @@ ideas = {
 				factor = 1
 			}
 		}
+		
 		kor_lee_jung_hee = {
 			allowed = { original_tag = KOR }
 			
@@ -4171,6 +4278,13 @@ ideas = {
 			
 			cost = 150
 			removal_cost = 0
+			
+			visible = {
+				OR = {
+					KOR_prime_minster_jucheist = yes
+					KOR_prime_minster_social_democrat = yes
+				}
+			}
 			
 			available = {
 				OR = {
@@ -4183,6 +4297,7 @@ ideas = {
 				factor = 1
 			}
 		}
+		
 		kor_lee_seok_ki = {
 			allowed = { original_tag = KOR }
 			
@@ -4190,6 +4305,10 @@ ideas = {
 			
 			cost = 150
 			removal_cost = 0
+			
+			visible = {
+				KOR_prime_minster_jucheist = yes
+			}
 			
 			available = {
 				KOR_prime_minster_jucheist = yes
@@ -4200,6 +4319,7 @@ ideas = {
 				factor = 1
 			}
 		}
+		
 		kor_won_sei_hoon = {
 			allowed = { original_tag = KOR }
 			
@@ -4207,6 +4327,10 @@ ideas = {
 			
 			cost = 150
 			removal_cost = 0
+			
+			visible = {
+				KOR_prime_minster_common_right_wing = yes
+			}
 			
 			available = {
 				KOR_prime_minster_common_right_wing = yes
@@ -4216,6 +4340,7 @@ ideas = {
 				factor = 1
 			}
 		}
+		
 		kor_yuji_hosaka = {
 			allowed = { original_tag = KOR }
 			
@@ -4231,7 +4356,7 @@ ideas = {
 			removal_cost = 0
 			
 			available = {
-				NOT = { has_completed_focus = kor_moon_chang_geuk_government }
+				#NOT = { has_completed_focus = kor_moon_chang_geuk_government }
 				NOT = { is_puppet_of = JAP }
 			}
 			
@@ -4239,6 +4364,7 @@ ideas = {
 				factor = 0.2
 			}
 		}
+		
 		kor_kim_seon_dong = {
 			allowed = { original_tag = KOR }
 			
@@ -4247,6 +4373,10 @@ ideas = {
 			cost = 150
 			removal_cost = 0
 			
+			visible = {
+				KOR_prime_minster_jucheist = yes
+			}
+			
 			available = {
 				KOR_prime_minster_jucheist = yes
 				NOT  = { has_country_flag = korr_post_nationalist_coup_flag }
@@ -4256,6 +4386,7 @@ ideas = {
 				factor = 1
 			}
 		}
+		
 		kor_kim_jae_yeon = {
 			allowed = { original_tag = KOR }
 			
@@ -4264,6 +4395,10 @@ ideas = {
 			cost = 150
 			removal_cost = 0
 			
+			visible = {
+				KOR_prime_minster_jucheist = yes
+			}
+			
 			available = {
 				KOR_prime_minster_jucheist = yes
 				NOT  = { has_country_flag = korr_post_nationalist_coup_flag }
@@ -4273,6 +4408,7 @@ ideas = {
 				factor = 1
 			}
 		}
+		
 		kor_kim_jong_hoon = {
 			allowed = { original_tag = KOR }
 			
@@ -4281,6 +4417,10 @@ ideas = {
 			cost = 150
 			removal_cost = 0
 			
+			visible = {
+				KOR_prime_minster_jucheist = yes
+			}
+			
 			available = {
 				KOR_prime_minster_jucheist = yes
 				NOT  = { has_country_flag = korr_post_nationalist_coup_flag }
@@ -4290,6 +4430,7 @@ ideas = {
 				factor = 1
 			}
 		}
+		
 		kor_yoon_min_ho = {
 			allowed = { original_tag = KOR }
 			
@@ -4298,6 +4439,10 @@ ideas = {
 			cost = 150
 			removal_cost = 0
 			
+			visible = {
+				KOR_prime_minster_jucheist = yes
+			}
+			
 			available = {
 				KOR_prime_minster_jucheist = yes
 				NOT  = { has_country_flag = korr_post_nationalist_coup_flag }
@@ -4307,6 +4452,7 @@ ideas = {
 				factor = 1
 			}
 		}
+		
 		kor_cho_gab_je = {
 			allowed = { original_tag = KOR }
 			
@@ -4314,6 +4460,10 @@ ideas = {
 			
 			cost = 150
 			removal_cost = 0
+			
+			visible = {
+				KOR_prime_minster_common_right_wing = yes
+			}
 			
 			available = {
 				KOR_prime_minster_common_right_wing = yes
@@ -4323,6 +4473,7 @@ ideas = {
 				factor = 1
 			}
 		}
+		
 		kor_kim_moon_soo = {
 			allowed = { original_tag = KOR }
 			
@@ -4330,6 +4481,10 @@ ideas = {
 			
 			cost = 150
 			removal_cost = 0
+			
+			visible = {
+				KOR_prime_minster_common_right_wing = yes
+			}
 			
 			available = {
 				KOR_prime_minster_common_right_wing = yes
@@ -4394,6 +4549,10 @@ ideas = {
 				has_completed_focus = kor_no_government
 			}
 			
+			visible = {
+				has_completed_focus = kor_no_government
+			}
+			
 			traits = { KOR_christian_anarchist }
 			
 			cost = 150
@@ -4426,11 +4585,15 @@ ideas = {
 			}
 		}
 		
-		kor_yoon_seo_in = {
+		KOR_FKI = {
+			name = KOR_FKI
+			picture = kor_generic_adviser_group
 			
 			allowed = { original_tag = KOR }
 			
 			available = {
+				NOT = { has_completed_focus = kor_dissolution_of_the_FKI }
+				NOT = { has_country_flag = kor_remove_chaebol }
 				KOR_prime_minster_common_right_wing = yes
 			}
 			
@@ -4443,6 +4606,36 @@ ideas = {
 				factor = 1
 			}
 		}
+		
+		kor_yi_won_republic = {
+			name = kor_yi_won
+			picture = kor_yi_won
+			
+			allowed = { original_tag = KOR }
+			
+			traits = { KOR_emperor_of_republic }
+			
+			cost = 75
+			removal_cost = 0
+			
+			visible = {
+				has_country_flag = monarchist_korea_flag
+			}
+			
+			available = {
+				NOT = { 
+					has_country_leader = {
+						character = kor_yi_won
+						ruling_only = yes
+					} 
+				}
+			}
+			
+			ai_will_do = {
+				factor = 1
+			}
+		}
+		
 	}
 	
 	tank_manufacturer = {

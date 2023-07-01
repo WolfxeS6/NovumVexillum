@@ -238,18 +238,58 @@ on_actions = {
 	
 	on_monthly = {
 		effect = {
-			set_variable = { NVX_nofisc_division_capacity = num_of_factories }
 			if = {
-				limit = { check_variable = { NVX_nofisc_division_capacity < 24 } }
-				set_variable = { NVX_nofisc_division_capacity = 24 }
+				limit = {
+					country_exists = ROOT
+					NOT = {has_idea = Small_nation}
+				}
+				if = {
+					limit = {
+						NOT = { has_global_flag = pts_disable_warfaring }
+						has_army_manpower = {
+							size > 1000
+						}
+					}
+					NVX_capricious_wars_check = yes
+				}
+				if = {
+					limit = {
+						has_global_flag = sandbox_enable_division_limits
+					}
+					set_variable = { NVX_nofisc_division_capacity = num_of_factories }
+					if = {
+						limit = { check_variable = { NVX_nofisc_division_capacity < 24 } }
+						set_variable = { NVX_nofisc_division_capacity = 24 }
+					}
+					if = {
+						limit = { is_major = yes }
+						multiply_variable = { NVX_nofisc_division_capacity = 2 }
+					}
+				}
+				NVX_ECO_monthly = yes
+				NVX_ECO_pax_monthly = yes
+				NVX_LPA_focus_future_monthly = yes
+				random_list = {
+					50 = {
+						modifier = { factor = 1.5 has_stability  < 0.80 }
+						NVX_Event_manager_monthly = yes
+					}
+					50 = {
+						modifier = { factor = 0 has_global_flag = sandbox_disable_natural_estate_drift }
+						modifier = { factor = 0.5 has_idea = civil_liberties_totalitarian }
+						NVX_Estate_manager_monthly = yes
+					}
+					50 = {
+						modifier = { factor = 2 has_global_flag = sandbox_disable_natural_estate_drift }
+						modifier = { factor = 2 has_global_flag = sandbox_disable_aberrant_estate_drift }
+					}
+					50 = {
+						modifier = { factor = 0 has_global_flag = sandbox_disable_aberrant_estate_drift }
+						modifier = { factor = 0 NOT = { has_idea = civil_liberties_totalitarian } }
+						NVX_Aberrant_Estate_manager_monthly = yes
+					}
+				}
 			}
-			if = {
-				limit = { is_major = yes }
-				multiply_variable = { NVX_nofisc_division_capacity = 2 }
-			}
-			NVX_ECO_monthly = yes
-			NVX_ECO_pax_monthly = yes
-			NVX_LPA_focus_future_monthly = yes
 		}
 	}
 }

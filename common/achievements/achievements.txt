@@ -394,13 +394,12 @@ han_shot_first = {
 	}
 	
 	happened = {
-		OR = {
-			has_country_leader = { name = "Han Myeong-sook" ruling_only = yes}
-			#has_idea = prime_minister_han_myeong_sook
-		}
-		any_country = {
-			is_major = yes
-			KOR = { has_offensive_war_with = PREV }
+		AND = {
+			has_country_leader = { name = KOR_Han_Myeong_sook ruling_only = yes}
+			any_country = {
+				is_major = yes
+				KOR = { has_offensive_war_with = PREV }
+			}
 		}
 	}
 }
@@ -469,5 +468,208 @@ poland_can_go_into_space = {
 				thousands < 10
 			}
 		}
+	}
+}
+
+######
+
+slava_ukrani = {
+	possible = {
+		difficulty > 1
+		has_any_custom_difficulty_setting = no
+		game_rules_allow_achievements = yes
+		original_tag = UKR
+	}
+	
+	happened = {
+		any_state = {
+			is_core_of = SOV
+			is_controlled_by = ROOT
+		}
+	}
+}
+
+yellow_tide = {
+	possible = {
+		difficulty > 1
+		has_any_custom_difficulty_setting = no
+		game_rules_allow_achievements = yes
+	}
+	
+	happened = {
+		all_country = {
+			has_government = market_liberal
+		}
+	}
+}
+
+kurds_in_power = {
+	possible = {
+		difficulty > 1
+		has_any_custom_difficulty_setting = no
+		game_rules_allow_achievements = yes
+		original_tag = KUR
+	}
+	
+	happened = {
+		TUR = {
+			is_puppet_of = KUR
+		}
+	}
+}
+
+#Japanese 
+ninja_slayer = {
+	possible = {
+		difficulty > 1
+		has_any_custom_difficulty_setting = no
+		game_rules_allow_achievements = yes
+		NOT = { original_tag = JAP }
+	}
+	
+	happened = {
+		custom_trigger_tooltip = {
+			tooltip = ninja_slayer_tt
+			has_global_flag = ninja_slayer_flag
+		}
+	}
+}
+
+F_hong_kong = {
+	possible = {
+		difficulty > 1
+		has_any_custom_difficulty_setting = no
+		game_rules_allow_achievements = yes
+		original_tag = ENG
+	}
+	
+	happened = {
+		has_global_flag = end_hong_kong_conflict
+		HKN = { is_puppet = no }
+	}
+}
+
+blue_archive = {
+	possible = {
+		difficulty > 1
+		has_any_custom_difficulty_setting = no
+		game_rules_allow_achievements = yes
+		original_tag = KOR
+	}
+	
+	happened = {
+		has_country_flag = kor_lose_culture_war_flag
+		any_army_leader = {
+			custom_trigger_tooltip = {
+				tooltip = female_tt
+				is_female = yes
+			}
+			skill > 8
+		}
+	}
+}
+
+last_long_march = {
+	possible = {
+		difficulty > 1
+		has_any_custom_difficulty_setting = no
+		game_rules_allow_achievements = yes
+		original_tag = PRC
+	}
+	
+	happened = {
+		has_country_leader = { 
+			character = prc_mao_xinyu
+			ruling_only = yes 
+		}
+	}
+}
+
+ping_peng = {
+	possible = {
+		difficulty > 1
+		has_any_custom_difficulty_setting = no
+		game_rules_allow_achievements = yes
+		original_tag = PRC
+	}
+	
+	happened = {
+		has_country_leader = { 
+			character = prc_li_peng
+			ruling_only = yes 
+		}
+		PRC = { is_spymaster = yes }
+		USA = {
+			ROOT = {
+				intel_level_over = {
+					target = PREV
+					civilian_intel > 0.89
+					army_intel > 0.89
+					airforce_intel > 0.89
+					navy_intel > 0.89
+				}
+			}
+		}
+	}
+}
+
+the_black_sun_covers_the_world = {
+	possible = {
+		difficulty > 1
+		has_any_custom_difficulty_setting = no
+		game_rules_allow_achievements = yes
+	}
+	
+	happened = {
+		all_country = {
+			has_government = fascist
+		}
+	}
+}
+
+koredekatsuru = {
+	possible = {
+		difficulty > 1
+		has_any_custom_difficulty_setting = no
+		game_rules_allow_achievements = yes
+		original_tag = JAP
+	}
+	
+	happened = {
+		has_war = yes
+		has_war_support < 0.1
+		surrender_progress < 0.01
+	}
+}
+
+warm_war = {
+	possible = {
+		difficulty > 1
+		has_any_custom_difficulty_setting = no
+		game_rules_allow_achievements = yes
+		OR = {
+			original_tag = USA
+			original_tag = SOV
+		}
+	}
+	
+	happened = {
+		AND = {
+			USA = { has_government = communist }
+			SOV = { has_government = conservative }
+		}
+	}
+}
+
+holy_alliance = {
+	possible = {
+		difficulty > 1
+		has_any_custom_difficulty_setting = no
+		game_rules_allow_achievements = yes
+		original_tag = PER
+	}
+	
+	happened = {
+		ISR = { is_in_faction_with = ROOT }
 	}
 }

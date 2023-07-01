@@ -24,7 +24,6 @@ defined_text = {
 		trigger = {
 			OR = {
 				has_country_flag = NVX_flag_fourth_estate_islamist
-				has_country_flag = NVX_flag_fifth_estate_islamist
 			}
 		}
 		localization_key = NVX_POLECON_IDEO_ISLAMIST
@@ -33,7 +32,6 @@ defined_text = {
 		trigger = {
 			OR = {
 				has_country_flag = NVX_flag_fourth_estate_fascist
-				has_country_flag = NVX_flag_fifth_estate_fascist
 			}
 		}
 		localization_key = NVX_POLECON_IDEO_FASCIST
@@ -42,7 +40,6 @@ defined_text = {
 		trigger = {
 			OR = {
 				has_country_flag = NVX_flag_fourth_estate_nationalist
-				has_country_flag = NVX_flag_fifth_estate_nationalist
 			}
 		}
 		localization_key = NVX_POLECON_IDEO_NATIONALIST
@@ -51,7 +48,6 @@ defined_text = {
 		trigger = {
 			OR = {
 				has_country_flag = NVX_flag_fourth_estate_monarchist
-				has_country_flag = NVX_flag_fifth_estate_monarchist
 			}
 		}
 		localization_key = NVX_POLECON_IDEO_MONARCHIST
@@ -60,7 +56,6 @@ defined_text = {
 		trigger = {
 			OR = {
 				has_country_flag = NVX_flag_fourth_estate_reactionary
-				has_country_flag = NVX_flag_fifth_estate_reactionary
 			}
 		}
 		localization_key = NVX_POLECON_IDEO_REACTIONARY
@@ -69,7 +64,6 @@ defined_text = {
 		trigger = {
 			OR = {
 				has_country_flag = NVX_flag_fourth_estate_conservative
-				has_country_flag = NVX_flag_fifth_estate_conservative
 			}
 		}
 		localization_key = NVX_POLECON_IDEO_CONSERVATIVE
@@ -78,7 +72,6 @@ defined_text = {
 		trigger = {
 			OR = {
 				has_country_flag = NVX_flag_fourth_estate_market_liberal
-				has_country_flag = NVX_flag_fifth_estate_market_liberal
 			}
 		}
 		localization_key = NVX_POLECON_IDEO_MARKET_LIBERAL
@@ -87,7 +80,6 @@ defined_text = {
 		trigger = {
 			OR = {
 				has_country_flag = NVX_flag_fourth_estate_social_liberal
-				has_country_flag = NVX_flag_fifth_estate_social_liberal
 			}
 		}
 		localization_key = NVX_POLECON_IDEO_SOCIAL_LIBERAL
@@ -96,7 +88,6 @@ defined_text = {
 		trigger = {
 			OR = {
 				has_country_flag = NVX_flag_fourth_estate_social_democrat
-				has_country_flag = NVX_flag_fifth_estate_social_democrat
 			}
 		}
 		localization_key = NVX_POLECON_IDEO_SOCIAL_DEMOCRAT
@@ -105,7 +96,6 @@ defined_text = {
 		trigger = {
 			OR = {
 				has_country_flag = NVX_flag_fourth_estate_progressive
-				has_country_flag = NVX_flag_fifth_estate_progressive
 			}
 		}
 		localization_key = NVX_POLECON_IDEO_PROGRESSIVE
@@ -114,7 +104,6 @@ defined_text = {
 		trigger = {
 			OR = {
 				has_country_flag = NVX_flag_fourth_estate_democratic_socialist
-				has_country_flag = NVX_flag_fifth_estate_democratic_socialist
 			}
 		}
 		localization_key = NVX_POLECON_IDEO_DEMOCRATIC_SOCIALIST
@@ -123,7 +112,6 @@ defined_text = {
 		trigger = {
 			OR = {
 				has_country_flag = NVX_flag_fourth_estate_communist
-				has_country_flag = NVX_flag_fifth_estate_communist
 			}
 		}
 		localization_key = NVX_POLECON_IDEO_COMMUNIST
@@ -987,5 +975,144 @@ defined_text = {
 		localization_key = "welfare_universal_basic_income"
 	}
 }
-
+defined_text = {
+	name = GetGrowthOrDecline
+	
+	text = {
+		trigger = {
+			check_variable = {
+				NVX_ECO_growth > 0
+			}	
+			
+		}
+		localization_key = "NVX_ECONOMIC_GROWTH"
+	}
+	text = {
+		trigger = {
+			check_variable = {
+				NVX_ECO_growth < 0
+			}
+		}
+		localization_key = "NVX_ECONOMIC_DECLINE"
+	}
+	text = {
+		trigger = {
+			check_variable = {
+				NVX_ECO_growth = 0
+			}
+		}
+		localization_key = "NVX_ECONOMIC_NEUTRAL"
+	}
+}
+defined_text = {
+	name = GetEcoBreakdown
+	
+	text = {
+		trigger = {
+			always = yes
+			
+		}
+		localization_key = "NVX_Eco_Breakdown"
+	}
+}
+defined_text = {
+	name = GetFullEcoBreakdownTaxes
+	
+	text = {
+		trigger = {
+			has_idea = economy_tax_extreme
+		}
+		localization_key = "economy_tax_extreme_details"
+	}
+	text = {
+		trigger = {
+			has_idea = economy_tax_high
+		}
+		localization_key = "economy_tax_high_details"
+	}
+	text = {
+		trigger = {
+			has_idea = economy_tax_moderate
+		}
+		localization_key = "economy_tax_moderate_details"
+	}
+	text = {
+		trigger = {
+			has_idea = economy_tax_low
+		}
+		localization_key = "economy_tax_low_details"
+	}
+	text = {
+		trigger = {
+			has_idea = economy_tax_meager
+		}
+		localization_key = "economy_tax_meager_details"
+	}
+	text = {
+		trigger = {
+			has_idea = economy_tax_robotic
+		}
+		localization_key = "economy_tax_robotic_details"
+	}
+}
+defined_text = {
+	name = GetFullEcoDecay
+	
+	text = {
+		trigger = {
+			check_variable = { NVX_ECO_health < 0 }
+			has_idea = economy_tax_moderate
+		}
+		localization_key = "NVX_Eco_decay_up"
+	}
+	text = {
+		trigger = {
+			check_variable = { NVX_ECO_health > 0 }
+			has_idea = economy_tax_moderate
+		}
+		localization_key = "NVX_Eco_decay_down"
+	}
+}
+defined_text = {
+	name = GetFullEcoEU
+	
+	text = {
+		trigger = {
+			check_variable = { NVX_ECO_health > 20 }
+			NVX_ECOLITE_in_eco_union = yes
+		}
+		localization_key = "NVX_eco_eu_effect_down"
+	}
+	text = {
+		trigger = {
+			check_variable = { NVX_ECO_health < 20 }
+			NVX_ECOLITE_in_eco_union = yes
+		}
+		localization_key = "NVX_eco_eu_effect_up"
+	}
+}
+defined_text = {
+	name = GetFullEcoPolicies
+	
+	text = {
+		trigger = {
+			check_variable = { NVX_ECO_Policy_Tooltip > 0 }
+		}
+		localization_key = "NVX_eco_policy_up"
+	}
+	text = {
+		trigger = {
+			check_variable = { NVX_ECO_Policy_Tooltip < 0 }
+			NVX_ECOLITE_in_eco_union = yes
+		}
+		localization_key = "NVX_eco_policy_down"
+	}
+	text = {
+		trigger = {
+			check_variable = { NVX_ECO_Policy_Tooltip = 0 }
+			NVX_ECOLITE_in_eco_union = yes
+		}
+		localization_key = "NVX_eco_policy_same"
+	}
+}
 # Written by E. Wolfe #

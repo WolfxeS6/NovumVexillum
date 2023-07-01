@@ -178,10 +178,6 @@ KOR_kim_dae_jung_gov = {
 						rule = KOR_AI_BEHAVIOR
 						option = ANARCHIST_KOR
 					}
-					has_game_rule = {
-						rule = KOR_AI_BEHAVIOR
-						option = FAR_RIGHT_KOR
-					}
 					has_country_flag = kor_non_democratic
 				}
 			}
@@ -240,10 +236,6 @@ KOR_kim_dae_jung_gov = {
 						rule = KOR_AI_BEHAVIOR
 						option = ANARCHIST_KOR
 					}
-					has_game_rule = {
-						rule = KOR_AI_BEHAVIOR
-						option = FAR_RIGHT_KOR
-					}
 					has_country_flag = kor_non_democratic
 				}
 			}
@@ -300,10 +292,6 @@ KOR_kim_dae_jung_gov = {
 					has_game_rule = {
 						rule = KOR_AI_BEHAVIOR
 						option = ANARCHIST_KOR
-					}
-					has_game_rule = {
-						rule = KOR_AI_BEHAVIOR
-						option = FAR_RIGHT_KOR
 					}
 					has_country_flag = kor_non_democratic
 				}
@@ -3701,7 +3689,7 @@ KOR_influence_korea = {
 		#allowed = { always = yes }
 		
 		available = {
-			#has_completed_focus = prk_109_sangmu
+			has_completed_focus = prk_109_sangmu
 			PRK = { check_variable = { RegimeInfluence = 0 compare = greater_than_or_equals } }
 		}
 
@@ -3749,7 +3737,7 @@ KOR_influence_korea = {
 		#allowed = { always = yes }
 		
 		available = {
-			#has_completed_focus = prk_police_reorganization
+			has_completed_focus = prk_police_reorganization
 			PRK = { check_variable = { RegimeInfluence = 0 compare = greater_than_or_equals } }
 		}
 
@@ -4027,7 +4015,7 @@ KOR_bulgom_project = {
 		complete_effect = {
 			SOV = { country_event = { id = south_korea.78 } }
 			add_equipment_to_stockpile = {
-				type = modern_tank_equipment
+				type = modern_tank_chassis
 				amount = 50
 				producer = SOV
 			}
@@ -4860,7 +4848,7 @@ kor_dprk_rule = {
 		icon = GFX_modifiers_kor_pingdu_drug_addicts
 
 		available = {
-			947 = {
+			948 = {
 				is_controlled_by = ROOT
 			}
 			
@@ -6463,7 +6451,10 @@ KOR_reconstruction_soviet_union_categories = {
 
 		visible = {
 			original_tag = KOR
-			has_country_leader = { ruling_only = yes name = "Vladimir Tikhonov" }
+			has_country_leader = {
+				character = kor_vladimir_tikhonov
+				ruling_only = yes
+			}
 			NOT = { has_global_flag = form_korean_soviet_union_flag }
 		}
 
@@ -6474,8 +6465,57 @@ KOR_reconstruction_soviet_union_categories = {
 				add_core_of = ROOT
 			}
 			hidden_effect = {
-				#news_event = { id = wtt_news.69 hours = 6 }
+				news_event = { id = rok_news.22 hours = 6 }
 				set_global_flag = form_korean_soviet_union_flag
+			}
+		}
+
+		ai_will_do = {
+			factor = 200
+		}
+	}
+}
+
+KOR_reconstruction_goryeo_categories = {
+
+	KOR_reconstruction_goryeo = {
+
+		icon = generic_form_nation
+
+		allowed = {
+			original_tag = KOR
+		}
+
+		available = {
+			is_subject = no
+			has_full_control_of_state = 872
+			has_full_control_of_state = 873
+			has_full_control_of_state = 874
+			has_full_control_of_state = 875
+			has_full_control_of_state = 947
+			has_full_control_of_state = 948
+			has_full_control_of_state = 949
+			has_full_control_of_state = 950
+			
+			has_completed_focus = kor_prosperous_korean_peninsula
+		}
+
+		visible = {
+			original_tag = KOR
+			has_country_leader = {
+				character = kor_lee_seok_ki
+				ruling_only = yes
+			}
+			NOT = { has_global_flag = form_korean_goryeo_flag }
+		}
+
+		complete_effect = {
+			set_cosmetic_tag = KOR_goryeo_juche
+			add_ideas = { centralization_confederate }
+			
+			hidden_effect = {
+				news_event = { id = rok_news.23 hours = 6 }
+				set_global_flag = form_korean_goryeo_flag
 			}
 		}
 

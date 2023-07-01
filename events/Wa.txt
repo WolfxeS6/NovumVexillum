@@ -1,0 +1,655 @@
+﻿add_namespace = wa_state
+add_namespace = wa_state_news
+
+#Wa
+news_event = { 
+	id = wa_state_news.1
+	title = wa_state_news.1.t
+	desc = wa_state_news.1.desc
+	picture = GFX_news_event_wa_state_3
+	
+	major = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = wa_state_news.1.a
+		trigger = { 
+			OR = {
+				original_tag = WAS 
+				is_in_faction_with = WAS 
+			}
+		}
+	}
+	
+	option = {
+		name = wa_state_news.1.b
+		trigger = {
+			is_in_faction_with = BRM
+			original_tag = BRM 
+		}
+	}
+	
+	option = { #Incredible!
+		name = wa_state_news.1.c
+		trigger = {
+			NOT = { is_in_faction_with = WAS }
+			NOT = { is_in_faction_with = BRM }
+		}
+	}
+	
+}
+
+news_event = { 
+	id = wa_state_news.2
+	title = wa_state_news.2.t
+	desc = wa_state_news.2.desc
+	picture = GFX_news_event_wa_state_1
+	
+	major = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = wa_state_news.2.a
+		trigger = { 
+			OR = {
+				original_tag = WAS 
+				is_in_faction_with = WAS 
+			}
+		}
+	}
+	
+	option = {
+		name = wa_state_news.2.b
+		trigger = {
+			NOT = { is_in_faction_with = WAS }
+		}
+	}
+	
+}
+
+news_event = { 
+	id = wa_state_news.3
+	title = wa_state_news.3.t
+	desc = wa_state_news.3.desc
+	picture = GFX_news_event_wa_state_2
+	
+	major = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = wa_state_news.3.a
+		trigger = { 
+			OR = {
+				original_tag = BRM 
+				is_in_faction_with = BRM 
+			}
+		}
+	}
+	
+	option = {
+		name = wa_state_news.3.b
+		trigger = {
+			NOT = { is_in_faction_with = BRM }
+		}
+	}
+	
+}
+
+news_event = { 
+	id = wa_state_news.4
+	title = wa_state_news.4.t
+	desc = wa_state_news.4.desc
+	picture = GFX_news_event_wa_state_2
+	
+	major = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = wa_state_news.4.a
+		trigger = { 
+			OR = {
+				original_tag = BRM 
+				is_in_faction_with = BRM 
+			}
+		}
+	}
+	
+	option = {
+		name = wa_state_news.4.b
+		trigger = {
+			NOT = { is_in_faction_with = BRM }
+		}
+	}
+	
+}
+
+
+country_event = {
+	id = wa_state.1
+	title = wa_state.1.t
+	desc = wa_state.1.desc
+	picture = GFX_report_event_wa_state_army_2
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = wa_state.1.a
+	}
+}
+
+country_event = {
+	id = wa_state.2
+	title = wa_state.2.t
+	desc = wa_state.2.desc
+	picture = GFX_report_event_wa_state_army_2
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = wa_state.2.a
+	}
+}
+
+country_event = {
+	id = wa_state.3
+	title = wa_state.3.t
+	desc = wa_state.3.desc
+	
+	picture = GFX_report_event_wa_state_army_2
+
+	is_triggered_only = yes
+	
+	option = {
+		name = wa_state.3.a
+		WAS = { country_event = { id = wa_state.7 hours = 1 } }
+	}	
+	
+	option = {
+		name = wa_state.3.b
+		WAS = { country_event = { id = wa_state.8 hours = 1 } } 
+		ai_chance = {
+			base = 0
+		}
+		
+	}	
+}
+
+country_event = {
+	id = wa_state.4
+	title = wa_state.4.t
+	desc = wa_state.4.desc
+	
+	picture = GFX_report_event_wa_state_army_1
+
+	is_triggered_only = yes
+	
+	option = {
+		name = wa_state.4.a
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = 500
+			producer = PRC
+		}
+	}
+}
+
+country_event = {
+	id = wa_state.5
+	title = wa_state.5.t
+	desc = wa_state.5.desc
+	
+	picture = GFX_report_event_wa_state_army_1
+
+	is_triggered_only = yes
+	
+	option = {
+		name = wa_state.5.a
+		add_equipment_to_stockpile = {
+			type = artillery_equipment
+			amount = 100
+			producer = PRC
+		}
+	}
+}
+
+country_event = {
+	id = wa_state.6
+	title = wa_state.6.t
+	desc = wa_state.6.desc
+	
+	picture = GFX_report_event_wa_state_army_1
+
+	is_triggered_only = yes
+	
+	option = {
+		name = wa_state.6.a
+		add_equipment_to_stockpile = {
+			type = support_equipment
+			amount = 100
+			producer = PRC
+		}
+	}
+}
+
+country_event = {
+	id = wa_state.7
+	title = wa_state.7.t
+	desc = wa_state.7.desc
+	picture = GFX_report_event_wa_state_army_1
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = wa_state.7.a
+		if = {
+			limit = { has_global_flag = WAS_aggressive_plan_flag }
+			clr_global_flag = WAS_aggressive_plan_flag
+		}
+		else = {
+			set_global_flag = WAS_aggressive_plan_flag
+		}
+	}
+}
+
+country_event = {
+	id = wa_state.8
+	title = wa_state.8.t
+	desc = wa_state.8.desc
+	picture = GFX_report_event_wa_state_army_1
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = wa_state.8.a
+	}
+}
+
+country_event = {
+	id = wa_state.9
+	title = wa_state.9.t
+	desc = wa_state.9.desc
+	picture = GFX_report_event_red_guards
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = wa_state.9.a
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = -500
+		}
+		WAS = { country_event = { id = wa_state.4 hours = 1 } }
+	}
+	
+	option = {
+		name = wa_state.9.b
+		WAS = { country_event = { id = wa_state.12 hours = 1 } }
+	}
+}
+
+country_event = {
+	id = wa_state.10
+	title = wa_state.10.t
+	desc = wa_state.10.desc
+	picture = GFX_report_event_red_guards
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = wa_state.10.a
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = -500
+		}
+		WAS = { country_event = { id = wa_state.5 hours = 1 } }
+	}
+	
+	option = {
+		name = wa_state.10.b
+		WAS = { country_event = { id = wa_state.12 hours = 1 } }
+	}
+}
+
+country_event = {
+	id = wa_state.11
+	title = wa_state.11.t
+	desc = wa_state.11.desc
+	picture = GFX_report_event_red_guards
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = wa_state.11.a
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = -500
+		}
+		WAS = { country_event = { id = wa_state.6 hours = 1 } }
+	}
+	
+	option = {
+		name = wa_state.11.b
+		WAS = { country_event = { id = wa_state.12 hours = 1 } }
+	}
+}
+
+country_event = {
+	id = wa_state.12
+	title = wa_state.12.t
+	desc = wa_state.12.desc
+	picture = GFX_report_event_red_guards
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = wa_state.12.a
+	}
+}
+
+country_event = {
+	id = wa_state.13
+	title = wa_state.13.t
+	desc = wa_state.13.desc
+	
+	picture = GFX_report_event_red_guards
+
+	is_triggered_only = yes
+	
+	option = {
+		name = wa_state.13.a
+		add_political_power = -25
+	}
+}
+
+country_event = {
+	id = wa_state.14
+	title = wa_state.14.t
+	desc = wa_state.14.desc
+	
+	picture = GFX_report_event_political_deal
+
+	is_triggered_only = yes
+	
+	option = {
+		name = wa_state.14.a
+		annex_country = {
+			target = WAS
+			transfer_troops = yes
+		}
+		hidden_effect = {
+			news_event = { id = wa_state_news.4 hours = 24 random_hours = 12 }
+		}
+	}
+}
+
+add_namespace = wa_state_border_conflict_won_attacker
+
+country_event = {
+	id = wa_state_border_conflict_won_attacker.1
+	title = wa_state_border_conflict_won_attacker.1.t
+	desc = wa_state_border_conflict_won_attacker.1.desc
+	
+	picture = GFX_report_event_red_guards
+
+	is_triggered_only = yes
+
+	immediate = {
+		save_event_target_as = our_country
+		FROM = { save_event_target_as = our_state }
+		FROM.FROM = { save_event_target_as = their_country }
+		FROM.FROM.FROM = { save_event_target_as = their_state }
+		remove_targeted_decision = { target = event_target:their_country decision = WTT_border_conflict_time_until_cancelled }
+	}
+	
+	option = {
+		name = wa_state_border_conflict_won_attacker.1.a
+		add_political_power = 100
+		if = {
+			limit = {
+				check_variable = {
+					FROM.FROM.num_owned_states > 1
+				}
+			}
+			transfer_state = FROM.FROM.FROM
+		}
+		else = {
+			FROM.FROM = { ROOT = { annex_country = { target = PREV } } }
+		}
+	}	
+}
+
+add_namespace = wa_state_border_conflict_won_defender
+
+country_event = {
+	id = wa_state_border_conflict_won_defender.1
+	title = wa_state_border_conflict_won_defender.1.t
+	desc = wa_state_border_conflict_won_defender.1.desc
+	
+	picture = GFX_report_event_red_guards
+
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			save_event_target_as = our_country
+			FROM = {
+				save_event_target_as = our_state
+				clr_state_flag = border_incident_active
+			}
+			FROM.FROM = { save_event_target_as = their_country }
+			FROM.FROM.FROM = {
+				save_event_target_as = their_state
+				clr_state_flag = border_incident_active
+			}
+			set_country_flag = show_effect_tooltips
+			clear_variable = attacker_state_vs_@FROM.FROM
+			clear_variable = defender_state_vs_@FROM.FROM
+			remove_targeted_decision = { target = event_target:their_country decision = WTT_border_conflict_time_until_cancelled }
+		}
+	}
+	
+	#Same effect as attacker. Tooltip for their effects
+	option = {
+		name = wa_state_border_conflict_won_defender.1.a
+		add_political_power = 150
+		army_experience = 30
+		add_doctrine_cost_reduction = {
+			name = defensive_border_conflict_won
+			cost_reduction = 0.25
+			uses = 1
+			category = land_doctrine
+		}
+		if = {
+			limit = { has_country_flag = show_effect_tooltips }
+			event_target:their_country = {
+				effect_tooltip = {
+					add_political_power = -150
+					army_experience = 10
+				}
+			}
+			clr_country_flag = show_effect_tooltips
+		}
+	}	
+}
+
+add_namespace = wa_state_border_conflict_lost_attacker
+
+country_event = {
+	id = wa_state_border_conflict_lost_attacker.1
+	title = wa_state_border_conflict_lost_attacker.1.t
+	desc = wa_state_border_conflict_lost_attacker.1.desc
+	
+	picture = GFX_report_event_red_guards
+
+	is_triggered_only = yes
+
+	immediate = {
+		save_event_target_as = our_country
+		FROM = { save_event_target_as = our_state }
+		FROM.FROM = { save_event_target_as = their_country }
+		FROM.FROM.FROM = { save_event_target_as = their_state }
+		set_country_flag = show_effect_tooltips
+		remove_targeted_decision = { target = event_target:their_country decision = WTT_border_conflict_time_until_cancelled }
+	}
+	
+	#Same effect as defender. Tooltip for their effects	
+	option = {
+		name = wa_state_border_conflict_lost_attacker.1.a
+		add_political_power = -150
+		army_experience = 10
+		if = {
+			limit = { has_country_flag = show_effect_tooltips }
+			event_target:their_country = {
+				effect_tooltip = {
+					add_political_power = 150
+					army_experience = 30
+					add_doctrine_cost_reduction = {
+						name = defensive_border_conflict_won
+						cost_reduction = 0.25
+						uses = 1
+						category = land_doctrine
+					}
+				}
+			}
+			clr_country_flag = show_effect_tooltips
+		}
+	}	
+}
+
+add_namespace = wa_state_border_conflict_lost_defender
+
+country_event = {
+	id = wa_state_border_conflict_lost_defender.1
+	title = wa_state_border_conflict_lost_defender.1.t
+	desc = wa_state_border_conflict_lost_defender.1.desc
+	
+	picture = GFX_report_event_red_guards
+
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			save_event_target_as = our_country
+			FROM = {
+				save_event_target_as = our_state
+				clr_state_flag = border_incident_active
+			}
+			FROM.FROM = { save_event_target_as = their_country }
+			FROM.FROM.FROM = {
+				save_event_target_as = their_state
+				clr_state_flag = border_incident_active
+			}
+			set_country_flag = show_effect_tooltips
+			clear_variable = attacker_state_vs_@FROM.FROM
+			clear_variable = defender_state_vs_@FROM.FROM
+			remove_targeted_decision = { target = event_target:their_country decision = WTT_border_conflict_time_until_cancelled }
+		}
+	}
+	
+	#Same effect as attacker. Tooltip for their effects
+	option = {
+		name = wa_state_border_conflict_lost_defender.1.a
+		if = {
+			limit = { has_country_flag = show_effect_tooltips }
+			effect_tooltip = {
+				add_political_power = 100
+				if = {
+					limit = {
+						check_variable = {
+							num_owned_states > 1
+						}
+					}
+					FROM.FROM = { transfer_state = FROM }
+				}
+				else = {
+					FROM.FROM = { annex_country = { target = ROOT } }
+				}				
+			}
+			clr_country_flag = show_effect_tooltips
+		}
+	}	
+}
+
+add_namespace = wa_state_border_conflict_canceled_attacker
+
+country_event = {
+	id = wa_state_border_conflict_canceled_attacker.1
+	title = wa_state_border_conflict_canceled_attacker.1.t
+	desc = wa_state_border_conflict_canceled_attacker.1.desc
+	
+	picture = GFX_report_event_red_guards
+
+	is_triggered_only = yes
+
+	immediate = {
+		save_event_target_as = our_country
+		FROM = { save_event_target_as = our_state }
+		FROM.FROM = { save_event_target_as = their_country }
+		FROM.FROM.FROM = { save_event_target_as = their_state }
+		set_country_flag = show_effect_tooltips
+	}
+	
+	option = {
+		name = wa_state_border_conflict_canceled_attacker.1.a
+		army_experience = 15
+		if = {
+			limit = { has_country_flag = show_effect_tooltips }
+			event_target:their_country = {
+				effect_tooltip = {
+					army_experience = 30
+					add_political_power = 50
+				}
+			}
+			clr_country_flag = show_effect_tooltips
+		}
+	}	
+}
+
+add_namespace = wa_state_border_conflict_canceled_defender
+
+country_event = {
+	id = wa_state_border_conflict_canceled_defender.1
+	title = wa_state_border_conflict_canceled_defender.1.t
+	desc = wa_state_border_conflict_canceled_defender.1.desc
+	
+	picture = GFX_report_event_red_guards
+
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			save_event_target_as = our_country
+			FROM = {
+				save_event_target_as = our_state
+				clr_state_flag = border_incident_active
+			}
+			FROM.FROM = { save_event_target_as = their_country }
+			FROM.FROM.FROM = {
+				save_event_target_as = their_state
+				clr_state_flag = border_incident_active
+			}
+			set_country_flag = show_effect_tooltips
+			clear_variable = attacker_state_vs_@FROM.FROM
+			clear_variable = defender_state_vs_@FROM.FROM
+		}
+	}
+	
+	option = {
+		name = wa_state_border_conflict_canceled_defender.1.a
+		army_experience = 30
+		add_political_power = 50
+		if = {
+			limit = { has_country_flag = show_effect_tooltips }
+			event_target:their_country = {
+				effect_tooltip = {
+					army_experience = 15
+				}
+			}
+			clr_country_flag = show_effect_tooltips
+		}
+	}	
+}

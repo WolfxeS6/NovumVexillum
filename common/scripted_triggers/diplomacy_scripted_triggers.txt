@@ -111,8 +111,88 @@ DIPLOMACY_RELEASE_NATION_ENABLE_TRIGGER = {
 				NOT = { has_dlc = "Man the Guns" }
 				NOT = { original_tag = ENG }
 			}
+			NOT = { original_tag = PRC }
+			NOT = { original_tag = CHI }
+			NOT = { original_tag = KOR }
+			NOT = { original_tag = JAP }
 		}
 		always = yes
+	}
+	if = {
+		limit = {
+			has_game_rule = {
+				rule = allow_release_nations
+				option = FREE
+			}
+			OR = { 
+				original_tag = PRC
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_ALLOW_RELEASE_NATIONS_CHINESE_TOOLTIP
+			NOT = { 
+				FROM = { tag = TIB } 
+				FROM = { tag = SIK } 
+				FROM = { tag = MAN }
+				FROM = { tag = MEN }
+				FROM = { tag = GXC }   
+				FROM = { tag = SHA }  
+				FROM = { tag = CHI }
+			}
+		}
+	}
+	if = {
+		limit = {
+			has_game_rule = {
+				rule = allow_release_nations
+				option = FREE
+			}
+			OR = { 
+				original_tag = CHI
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_ALLOW_RELEASE_NATIONS_CHINESE_TOOLTIP
+			NOT = { 
+				FROM = { tag = PRC }
+			}
+		}
+	}
+	if = {
+		limit = {
+			has_game_rule = {
+				rule = allow_release_nations
+				option = FREE
+			}
+			OR = { 
+				original_tag = KOR
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_ALLOW_RELEASE_NATIONS_KOREAN_TOOLTIP
+			NOT = { 
+				FROM = { tag = JEJ } 
+				FROM = { tag = PRK }   
+			}
+		}
+	}
+	if = {
+		limit = {
+			has_game_rule = {
+				rule = allow_release_nations
+				option = FREE
+			}
+			OR = { 
+				original_tag = JAP
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_ALLOW_RELEASE_NATIONS_JAPANESE_TOOLTIP
+			NOT = { 
+				FROM = { tag = AIN } 
+				FROM = { tag = RYU }   
+			}
+		}
 	}
 	if = {
 		limit = {

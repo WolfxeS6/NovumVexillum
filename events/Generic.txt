@@ -6,48 +6,7 @@ country_event = {	#Worker Protests
 	desc = generic.1.d
 	picture = GFX_report_event_protests
 	
-	trigger = {
-		has_country_flag = {
-			flag = national_stability
-			value < 90
-		}
-	}
-	
-	mean_time_to_happen = {
-		days = 2000
-		modifier = { factor = 1.1 has_country_flag = { flag = national_stability value > 80 } }
-		modifier = { factor = 1.1 has_country_flag = { flag = national_stability value > 70 } }
-		modifier = { factor = 1.1 has_country_flag = { flag = national_stability value > 60 } }
-		modifier = { factor = 0.9 has_country_flag = { flag = national_stability value < 40 } }
-		modifier = { factor = 0.9 has_country_flag = { flag = national_stability value < 30 } }
-		modifier = { factor = 0.9 has_country_flag = { flag = national_stability value < 20 } }
-		modifier = { factor = 0.9 has_country_flag = { flag = national_stability value < 10 } }
-		modifier = {	#Authoritarian states will get protests more frequently.
-			factor = 0.8
-			OR = {
-				has_government = monarchist
-				has_government = fascist
-				has_government = communist
-				has_government = nationalist
-			}
-		}
-		modifier = {	#Left Wing Democracies will get protests less frequently.
-			factor = 1.2
-			OR = {
-				has_government = social_democrat
-				has_government = progressive
-				has_government = democratic_socialist
-			}
-		}
-		modifier = {
-			factor = 0.5
-			has_offensive_war = yes
-		}
-		modifier = {
-			factor = 1.5
-			has_defensive_war = yes
-		}
-	}
+	is_triggered_only = yes
 	
 	option = {
 		name = generic.1.o1
@@ -78,24 +37,7 @@ country_event = {	#Hospital Funding
 	desc = generic.2.d
 	picture = GFX_report_event_hospital
 	
-	trigger = {
-		has_country_flag = {
-			flag = national_stability
-			value < 90
-		}
-	}
-	
-	mean_time_to_happen = {
-		days = 3000
-		modifier = {
-			factor = 0.25
-			has_civil_war = yes
-		}
-		modifier = {
-			factor = 0.8
-			has_war = yes
-		}
-	}
+	is_triggered_only = yes
 	
 	option = {
 		name = generic.2.o1
@@ -117,35 +59,7 @@ country_event = {	#Suburb Riots
 	desc = generic.3.d
 	picture = GFX_report_event_intifada
 	
-	trigger = {
-		has_country_flag = {
-			flag = national_stability
-			value < 90
-		}
-	}
-	
-	mean_time_to_happen = {
-		days = 2000
-		modifier = {
-			factor = 0.8
-			has_war = yes
-		}
-		modifier = {
-			factor = 0.8
-			has_offensive_war = yes
-		}
-		modifier = {
-			factor = 1.25
-			has_democratic_form_of_government = yes
-		}
-		modifier = { factor = 1.1 has_country_flag = { flag = national_stability value > 80 } }
-		modifier = { factor = 1.1 has_country_flag = { flag = national_stability value > 70 } }
-		modifier = { factor = 1.1 has_country_flag = { flag = national_stability value > 60 } }
-		modifier = { factor = 0.9 has_country_flag = { flag = national_stability value < 40 } }
-		modifier = { factor = 0.9 has_country_flag = { flag = national_stability value < 30 } }
-		modifier = { factor = 0.9 has_country_flag = { flag = national_stability value < 20 } }
-		modifier = { factor = 0.9 has_country_flag = { flag = national_stability value < 10 } }
-	}
+	is_triggered_only = yes
 	
 	option = {
 		name = generic.3.o1
@@ -176,19 +90,7 @@ country_event = {	#Parliamentary Crisis
 	desc = generic.4.d
 	picture = GFX_report_event_political_deal2
 	
-	trigger = {
-		has_democratic_form_of_government = yes
-	}
-	
-	mean_time_to_happen = {
-		days = 2000
-		modifier = { factor = 1.1 has_country_flag = { flag = national_stability value > 80 } }
-		modifier = { factor = 1.1 has_country_flag = { flag = national_stability value > 70 } }
-		modifier = { factor = 1.1 has_country_flag = { flag = national_stability value > 60 } }
-		modifier = { factor = 0.9 has_country_flag = { flag = national_stability value < 40 } }
-		modifier = { factor = 0.9 has_country_flag = { flag = national_stability value < 30 } }
-		modifier = { factor = 0.9 has_country_flag = { flag = national_stability value < 20 } }
-	}
+	is_triggered_only = yes
 	
 	option = {
 		name = generic.4.o1
@@ -257,23 +159,7 @@ country_event = {	#Reform Administration Laws
 	desc = generic.5.d
 	picture = GFX_report_event_stability
 	
-	trigger = {
-		has_country_flag = {
-			flag = national_stability
-			value < 60
-		}
-	}
-	
-	mean_time_to_happen = {
-		days = 2000
-		modifier = { factor = 0.95 has_country_flag = { flag = national_stability value < 50 } }
-		modifier = { factor = 0.95 has_country_flag = { flag = national_stability value < 45 } }
-		modifier = { factor = 0.95 has_country_flag = { flag = national_stability value < 40 } }
-		modifier = { factor = 0.95 has_country_flag = { flag = national_stability value < 35 } }
-		modifier = { factor = 0.95 has_country_flag = { flag = national_stability value < 30 } }
-		modifier = { factor = 0.95 has_country_flag = { flag = national_stability value < 25 } }
-		modifier = { factor = 0.95 has_country_flag = { flag = national_stability value < 20 } }
-	}
+	is_triggered_only = yes
 	
 	option = {	#An excellent proposal!
 		name = generic.5.o1
@@ -299,25 +185,7 @@ country_event = {	#Local Separatists gain support
 	desc = generic.6.d
 	picture = GFX_report_event_protests
 	
-	trigger = {
-		has_democratic_form_of_government = yes
-		has_country_flag = {
-			flag = national_stability
-			value < 70
-		}
-		num_of_controlled_states > 1
-	}
-	
-	mean_time_to_happen = {
-		days = 2000
-		modifier = { factor = 0.95 has_country_flag = { flag = national_stability value < 50 } }
-		modifier = { factor = 0.95 has_country_flag = { flag = national_stability value < 45 } }
-		modifier = { factor = 0.95 has_country_flag = { flag = national_stability value < 40 } }
-		modifier = { factor = 0.95 has_country_flag = { flag = national_stability value < 35 } }
-		modifier = { factor = 0.95 has_country_flag = { flag = national_stability value < 30 } }
-		modifier = { factor = 0.95 has_country_flag = { flag = national_stability value < 25 } }
-		modifier = { factor = 0.95 has_country_flag = { flag = national_stability value < 20 } }
-	}
+	is_triggered_only = yes
 	
 	option = {	#Let them talk.
 		name = generic.6.o1
@@ -337,20 +205,7 @@ country_event = {	#Prison Break
 	desc = generic.7.d
 	picture = GFX_report_event_prison
 	
-	trigger = {
-		num_of_controlled_states > 1
-	}
-	
-	mean_time_to_happen = {
-		days = 2000
-		modifier = { factor = 0.95 has_country_flag = { flag = national_stability value < 50 } }
-		modifier = { factor = 0.95 has_country_flag = { flag = national_stability value < 45 } }
-		modifier = { factor = 0.95 has_country_flag = { flag = national_stability value < 40 } }
-		modifier = { factor = 0.95 has_country_flag = { flag = national_stability value < 35 } }
-		modifier = { factor = 0.95 has_country_flag = { flag = national_stability value < 30 } }
-		modifier = { factor = 0.95 has_country_flag = { flag = national_stability value < 25 } }
-		modifier = { factor = 0.95 has_country_flag = { flag = national_stability value < 20 } }
-	}
+	is_triggered_only = yes
 	
 	option = {	#They'll catch him eventually.
 		name = generic.7.o1
@@ -379,24 +234,7 @@ country_event = {	#Racial Violence against Ethnic Minorities
 	desc = generic.8.d
 	picture = GFX_report_event_intifada
 	
-	trigger = {
-		has_country_flag = {
-			flag = national_stability
-			value < 70
-		}
-		num_of_controlled_states > 1
-	}
-	
-	mean_time_to_happen = {
-		days = 10000
-		modifier = { factor = 0.9 has_country_flag = { flag = national_stability value < 50 } }
-		modifier = { factor = 0.9 has_country_flag = { flag = national_stability value < 45 } }
-		modifier = { factor = 0.9 has_country_flag = { flag = national_stability value < 40 } }
-		modifier = { factor = 0.9 has_country_flag = { flag = national_stability value < 35 } }
-		modifier = { factor = 0.9 has_country_flag = { flag = national_stability value < 30 } }
-		modifier = { factor = 0.9 has_country_flag = { flag = national_stability value < 25 } }
-		modifier = { factor = 0.9 has_country_flag = { flag = national_stability value < 20 } }
-	}
+	is_triggered_only = yes
 	
 	option = {	#Bring the criminals to justice
 		trigger = {
@@ -428,23 +266,7 @@ country_event = {	#Demand for more Direct Democracy
 	desc = generic.9.d
 	picture = GFX_report_event_election
 	
-	trigger = {
-		has_democratic_form_of_government = yes
-		num_of_controlled_states > 1
-		NOT = { has_idea = swiss_political_system }
-	}
-	
-	mean_time_to_happen = {
-		days = 10000
-		modifier = {
-			factor = 0.9
-			reactionary > 0.05
-		}
-		modifier = {
-			factor = 0.9
-			reactionary > 0.1
-		}
-	}
+	is_triggered_only = yes
 	
 	option = {
 		name = generic.9.o1
@@ -471,26 +293,7 @@ country_event = {
 	desc = generic.10.d
 	picture = GFX_report_event_jury
 	
-	trigger = {
-		has_country_flag = {
-			flag = national_stability
-			value < 70
-		}
-	}
-	
-	mean_time_to_happen = {
-		days = 2000
-		modifier = { factor = 1.1 has_country_flag = { flag = national_stability value > 65 } }
-		modifier = { factor = 1.1 has_country_flag = { flag = national_stability value > 60 } }
-		modifier = { factor = 1.1 has_country_flag = { flag = national_stability value > 55 } }
-		modifier = { factor = 0.9 has_country_flag = { flag = national_stability value < 50 } }
-		modifier = { factor = 0.9 has_country_flag = { flag = national_stability value < 45 } }
-		modifier = { factor = 0.9 has_country_flag = { flag = national_stability value < 40 } }
-		modifier = { factor = 0.9 has_country_flag = { flag = national_stability value < 35 } }
-		modifier = { factor = 0.9 has_country_flag = { flag = national_stability value < 30 } }
-		modifier = { factor = 0.9 has_country_flag = { flag = national_stability value < 25 } }
-		modifier = { factor = 0.9 has_country_flag = { flag = national_stability value < 20 } }
-	}
+	is_triggered_only = yes
 	
 	option = {
 		name = generic.10.o1
@@ -514,26 +317,7 @@ country_event = {
 	desc = generic.11.d
 	picture = GFX_report_event_mining
 	
-	trigger = {
-		num_of_controlled_states > 1
-		has_country_flag = {
-			flag = national_stability
-			value > 35
-		}
-		NOT = { has_government = communist }
-		any_owned_state = {
-			state_population > 25000
-		}
-	}
-	
-	mean_time_to_happen = {
-		days = 2000
-		modifier = { factor = 1.1 has_country_flag = { flag = national_stability value > 90 } }
-		modifier = { factor = 1.1 has_country_flag = { flag = national_stability value > 80 } }
-		modifier = { factor = 1.1 has_country_flag = { flag = national_stability value > 70 } }
-		modifier = { factor = 1.1 has_country_flag = { flag = national_stability value > 60 } }
-		modifier = { factor = 1.1 has_country_flag = { flag = national_stability value > 50 } }
-	}
+	is_triggered_only = yes
 	
 	option = {	#We need to fight this!
 		name = generic.11.o1
@@ -661,21 +445,7 @@ country_event = {
 	desc = generic.13.d
 	picture = GFX_report_event_passenger_plane
 	
-	trigger = {
-		has_country_flag = {
-			flag = national_stability
-			value < 90
-		}
-	}
-	
-	mean_time_to_happen = {
-		days = 2000
-		modifier = { factor = 1.1 has_country_flag = { flag = national_stability value > 80 } }
-		modifier = { factor = 1.1 has_country_flag = { flag = national_stability value > 70 } }
-		modifier = { factor = 1.1 has_country_flag = { flag = national_stability value > 60 } }
-		modifier = { factor = 1.1 has_country_flag = { flag = national_stability value > 50 } }
-		modifier = { factor = 1.1 has_country_flag = { flag = national_stability value > 40 } }
-	}
+	is_triggered_only = yes
 	
 	option = {
 		name = generic.13.o1
@@ -696,26 +466,7 @@ country_event = {
 	desc = generic.14.d
 	picture = GFX_report_event_border_conflict
 	
-	trigger = {
-		has_country_flag = {
-			flag = national_stability
-			value < 70
-		}
-		num_of_controlled_states > 1
-		any_owned_state = {
-			state_population > 100000
-		}
-		has_army_manpower = { size > 50000 }
-	}
-	
-	mean_time_to_happen = {
-		days = 2000
-		modifier = { factor = 1.1 has_country_flag = { flag = national_stability value > 80 } }
-		modifier = { factor = 1.1 has_country_flag = { flag = national_stability value > 70 } }
-		modifier = { factor = 1.1 has_country_flag = { flag = national_stability value > 60 } }
-		modifier = { factor = 1.1 has_country_flag = { flag = national_stability value > 50 } }
-		modifier = { factor = 1.1 has_country_flag = { flag = national_stability value > 40 } }
-	}
+	is_triggered_only = yes
 	
 	option = {	#Purge the army!
 		name = generic.14.o1
@@ -744,20 +495,7 @@ country_event = {
 	desc = generic.15.d
 	picture = GFX_report_event_angry_mob
 	
-	trigger = {
-		OR = {
-			has_government = islamist
-			islamist > 0.25
-		}
-		has_country_flag = {
-			flag = national_stability
-			value < 80
-		}
-	}
-	
-	mean_time_to_happen = {
-		days = 2000
-	}
+	is_triggered_only = yes
 	
 	option = {	#Good.
 		name = generic.15.o1
@@ -784,17 +522,7 @@ country_event = {
 	desc = generic.16.d
 	picture = GFX_report_event_political_activist
 	
-	trigger = {
-		has_democratic_form_of_government = yes
-		has_country_flag = {
-			flag = national_stability
-			value > 30
-		}
-	}
-	
-	mean_time_to_happen = {
-		days = 2000
-	}
+	is_triggered_only = yes
 	
 	option = {	#An excellent addition!
 		name = generic.16.o1
@@ -810,18 +538,7 @@ country_event = {
 	desc = generic.17.d
 	picture = GFX_report_event_radio_host
 	
-	trigger = {
-		has_democratic_form_of_government = yes
-	}
-	
-	mean_time_to_happen = {
-		days = 3000
-		modifier = { factor = 0.92 has_country_flag = { flag = national_stability value > 90 } }
-		modifier = { factor = 0.92 has_country_flag = { flag = national_stability value > 80 } }
-		modifier = { factor = 0.92 has_country_flag = { flag = national_stability value > 70 } }
-		modifier = { factor = 0.92 has_country_flag = { flag = national_stability value > 60 } }
-		modifier = { factor = 0.92 has_country_flag = { flag = national_stability value > 50 } }
-	}
+	is_triggered_only = yes
 	
 	option = {
 		name = generic.17.o1
@@ -843,20 +560,7 @@ country_event = {
 	desc = generic.18.d
 	picture = GFX_report_event_radio_host
 	
-	trigger = {
-		has_country_flag = {
-			flag = national_stability
-			value < 70
-		}
-		num_of_controlled_states > 1
-	}
-	
-	mean_time_to_happen = {
-		days = 2000
-		modifier = { factor = 0.92 has_country_flag = { flag = national_stability value < 60 } }
-		modifier = { factor = 0.92 has_country_flag = { flag = national_stability value < 45 } }
-		modifier = { factor = 0.92 has_country_flag = { flag = national_stability value < 30 } }
-	}
+	is_triggered_only = yes
 	
 	option = {
 		name = generic.18.o1

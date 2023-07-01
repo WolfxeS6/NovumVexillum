@@ -1,49 +1,41 @@
-
- 		##################
-		###自動車化###
-		##################
-
 ###クローンベース
-###装甲車
-
-# entity = { This requires LAR DLC
-# 	name = "geo_motorized_withgun_entity"
-# 	pdxmesh = "ITA_armored_car_1_mesh"
+###装甲車（射撃するハンヴィー）
+entity = {
+	name = "geo_motorized_withgun_entity"
+	pdxmesh = "geo_m1151_new_mesh"
 	
-# 	state = { name = "idle"				animation = "idle"   animation_blend_time = 0.3 }
-# 	state = { name = "move"				animation = "move"   animation_blend_time = 0.3 
-# 		event = { time = 0 node="exhaust" particle = "tank_exhaust_particle"  keep_particle = no trigger_once = yes } 
-# 		event = { time = 0 node="left_wheel" particle = "tank_moving_tracks_particle"  keep_particle = no trigger_once = yes}
-# 		event = { time = 0 node="right_wheel" particle = "tank_moving_tracks_particle"  keep_particle = no trigger_once = yes}
-# 		event = { trigger_once = yes sound = { soundeffect = "ITA_car_01_Moving" } }
-# 	}
-# 	state = { name = "retreat"				animation = "move"   animation_blend_time = 0.3 
-# 		event = { time = 0 node="exhaust" particle = "tank_exhaust_particle"  keep_particle = no trigger_once = yes } 
-# 		event = { time = 0 node="left_wheel" particle = "tank_moving_tracks_particle"  keep_particle = no trigger_once = yes}
-# 		event = { time = 0 node="right_wheel" particle = "tank_moving_tracks_particle"  keep_particle = no trigger_once = yes}
-# 		event = { trigger_once = yes sound = { soundeffect = "ITA_car_01_Moving" } }
-# 	}
-# 	state = { name = "attack"			animation = "attack" animation_blend_time = 0.3 
-# 		event = { time = 0 node="barrel" particle = "mechanized_attack_barrel_particle"  keep_particle = yes } 
-# 		event = { sound = { soundeffect = "mechanized_units_mg_fire" } }
-# 	}
-# 	state = { name = "defend"			animation = "attack" animation_blend_time = 0.3 
-# 		event = { time = 0 node="barrel" particle = "mechanized_attack_barrel_particle"  keep_particle = yes } 
-# 		event = { sound = { soundeffect = "mechanized_units_mg_fire" } }
-# 	}
-# 	state = { name = "support_attack"	animation = "attack" animation_blend_time = 0.3 
-# 		event = { time = 0 node="barrel" particle = "mechanized_attack_barrel_particle"  keep_particle = yes } 
-# 		event = { sound = { soundeffect = "mechanized_units_mg_fire" } }
-# 	}
-# 	state = { name = "training"				animation = "idle" 			animation_blend_time = 0.3 animation_speed = 1.0
-# 		event = { time = 0 node="exhaust" particle = "tank_exhaust_particle"  keep_particle = no trigger_once = yes }
-# 	}
+	state = { name = "idle"				animation = "idle"   animation_blend_time = 0.3 }
+	state = { name = "move"				animation = "move"   animation_blend_time = 0.3 
+		event = { time = 0 node="exhaust" particle = "tank_exhaust_particle"  keep_particle = no trigger_once = yes } 
+		event = { time = 0 node="left_wheel" particle = "tank_moving_tracks_particle"  keep_particle = no trigger_once = yes}
+		event = { time = 0 node="right_wheel" particle = "tank_moving_tracks_particle"  keep_particle = no trigger_once = yes}
+		event = { trigger_once = yes sound = { soundeffect = "ITA_car_01_Moving" } }
+	}
+	state = { name = "retreat"				animation = "move"   animation_blend_time = 0.3 
+		event = { time = 0 node="exhaust" particle = "tank_exhaust_particle"  keep_particle = no trigger_once = yes } 
+		event = { time = 0 node="left_wheel" particle = "tank_moving_tracks_particle"  keep_particle = no trigger_once = yes}
+		event = { time = 0 node="right_wheel" particle = "tank_moving_tracks_particle"  keep_particle = no trigger_once = yes}
+		event = { trigger_once = yes sound = { soundeffect = "ITA_car_01_Moving" } }
+	}
+	state = { name = "attack"			animation = "attack" animation_blend_time = 0.3 
+		event = { time = 0 node="barrel" particle = "mechanized_attack_barrel_particle"  keep_particle = yes } 
+		event = { sound = { soundeffect = "mechanized_units_mg_fire" } }
+	}
+	state = { name = "defend"			animation = "attack" animation_blend_time = 0.3 
+		event = { time = 0 node="barrel" particle = "mechanized_attack_barrel_particle"  keep_particle = yes } 
+		event = { sound = { soundeffect = "mechanized_units_mg_fire" } }
+	}
+	state = { name = "support_attack"	animation = "attack" animation_blend_time = 0.3 
+		event = { time = 0 node="barrel" particle = "mechanized_attack_barrel_particle"  keep_particle = yes } 
+		event = { sound = { soundeffect = "mechanized_units_mg_fire" } }
+	}
+	state = { name = "training"				animation = "idle" 			animation_blend_time = 0.3 animation_speed = 1.0
+		event = { time = 0 node="exhaust" particle = "tank_exhaust_particle"  keep_particle = no trigger_once = yes }
+	}
 	
-# 	scale = 1
-# }
-
-##ハンヴィー
-
+	scale = 1.8
+}
+##ハンヴィー（射撃しないハンヴィー）
 entity = {
 	name = "generic_motorized_vehicle_entity"
 	pdxmesh = "geo_m1151_mesh"
@@ -52,27 +44,26 @@ entity = {
 	state = { name = "retreat"			animation = "move" 	 		animation_blend_time = 0.3 animation_speed = 1.0
 		event = { time = 0 particle = "tank_moving_tracks_particle"  keep_particle = no trigger_once = yes}
 		event = { time = 0 particle = "tank_moving_tracks_particle"  keep_particle = no trigger_once = yes}
-		event = { trigger_once = yes sound = { soundeffect = "motorized_unit_move_animation" } }
+		event = { trigger_once = yes sound = { soundeffect = "apc_unit_move_animation" } }
 	}
 	state = { name = "death"			animation = "idle" 					animation_blend_time = 0.3 animation_speed = 1.0 }
 	state = { name = "support_attack"	animation = "idle" 	animation_blend_time = 0.3 animation_speed = 1.0 }
 	state = { name = "attack"				animation = "idle" 					animation_blend_time = 0.3 animation_speed = 1.0
 		event = { time = 0 particle = "tank_moving_tracks_particle"  keep_particle = no trigger_once = yes}
 		event = { time = 0 particle = "tank_moving_tracks_particle"  keep_particle = no trigger_once = yes}
-		event = { trigger_once = yes sound = { soundeffect = "motorized_unit_move_animation" } }
+		event = { trigger_once = yes sound = { soundeffect = "apc_unit_move_animation" } }
 	}
 	state = { name = "defend"			animation = "idle" 					animation_blend_time = 0.3 animation_speed = 1.0 }
 	state = { name = "training"				animation = "idle" 				animation_blend_time = 0.3 animation_speed = 1.0 }
 	state = { name = "move"			animation = "move" 			animation_blend_time = 0.3 animation_speed = 1.0
 		event = { time = 0 particle = "tank_moving_tracks_particle"  keep_particle = no trigger_once = yes}
 		event = { time = 0 particle = "tank_moving_tracks_particle"  keep_particle = no trigger_once = yes}
-		event = { trigger_once = yes sound = { soundeffect = "motorized_unit_move_animation" } }
+		event = { trigger_once = yes sound = { soundeffect = "utility_move_animation" } }
 	}
 	scale = 0.8
 }
 
-##機械化歩兵
-
+##自動車化歩兵
 entity = {
 	name = "motorized_entity"
 	pdxmesh = "motorized_frame_mesh"
@@ -91,36 +82,306 @@ entity = {
 	attach = { 	name = "infantry"			infantry = "generic_western_vehicle_infantry_rifle_entity" }
 }
 
-###アフガニスタン
-
-entity = {
-	clone = "motorized_entity"
-	name = "AFG_motorized_entity"
-
-	attach = { 	name = "vehicle"			vehicle = "AFG_motorized_vehicle_entity" }
-	attach = { 	name = "infantry"			infantry = "AFG_infantry_entity" }
-}
-
+###ランドクルーザー汎用
 entity = {
 	clone = "generic_motorized_vehicle_entity"
-	name = "AFG_motorized_vehicle_entity"
-	pdxmesh = "geo_AFG_m1151_mesh"
+	name = "geo_land_cruiser70_entity"
+	pdxmesh = "geo_land_cruiser70_mesh"
+}
+entity = {
+	clone = "generic_motorized_vehicle_entity"
+	name = "geo_land_cruiser70_desert_entity"
+	pdxmesh = "geo_land_cruiser70_desert_mesh"
+}
+##ハンヴィー汎用（射撃版）
+entity = {
+	clone = "geo_motorized_withgun_entity"
+	name = "geo_m1151_entity"
+	pdxmesh = "geo_m1151_new_mesh"
+}
+entity = {
+	clone = "geo_motorized_withgun_entity"
+	name = "geo_m1151_desert_entity"
+	pdxmesh = "geo_m1151_desert_mesh"
+}
+##イヴェコLMV
+entity = {
+	clone = "generic_motorized_vehicle_entity"
+	name = "IvecoLMV_entity"
+	pdxmesh = "geo_ivecoLMV_mesh"
 }
 
-##ウクライナ
+###欧州
+#ALB　アルバニア
+entity = {
+	clone = "motorized_entity"
+	name = "ALB_motorized_entity"
 
+	attach = { 	name = "vehicle"			vehicle = "IvecoLMV_entity" }
+	attach = { 	name = "infantry"			infantry = "infantry_ak47s_entity" }
+}
+#ADO　アンドラ
+#AUS　オーストリア
+entity = {
+	clone = "motorized_entity"
+	name = "AUS_motorized_entity"
+
+	attach = { 	name = "vehicle"			vehicle = "IvecoLMV_entity" }
+	attach = { 	name = "infantry"			infantry = "AUS_vehicle_infantry_rifle_entity" }
+}
+#BEL　ベルギー
+entity = {
+	clone = "motorized_entity"
+	name = "BEL_motorized_entity"
+
+	attach = { 	name = "vehicle"			vehicle = "IvecoLMV_entity" }
+	attach = { 	name = "infantry"			infantry = "BEL_vehicle_infantry_rifle_entity" }
+}
+#BLR　ベラルーシ
+#ロシアが侵略を辞めるまでは実装しません。
+#BOS　ボスニア
+entity = {
+	clone = "motorized_entity"
+	name = "BOS_motorized_entity"
+
+	attach = { 	name = "vehicle"			vehicle = "IvecoLMV_entity" }
+	attach = { 	name = "infantry"			infantry = "BOS_vehicle_infantry_rifle_entity" }
+}
+#BUL　ブルガリア
+entity = {
+	clone = "geo_combined_mechanized_entity"
+	name = "BUL_motorized_entity"
+
+	attach = { 	name = "vehicle"			vehicle = "geo_m1151_entity" }
+	attach = { 	name = "infantry"			infantry = "BUL_vehicle_infantry_rifle_entity" }
+}
+#CAT　カタルーニャ
+#CRE　クレタ
+#CRO　クロアチア
+entity = {
+	clone = "motorized_entity"
+	name = "CRO_motorized_entity"
+
+	attach = { 	name = "vehicle"			vehicle = "IvecoLMV_entity" }
+	attach = { 	name = "infantry"			infantry = "CRO_vehicle_infantry_rifle_entity" }
+}
+#CYP　キプロス
+#CZE　チェコ
+entity = {
+	clone = "motorized_entity"
+	name = "CZE_motorized_entity"
+
+	attach = { 	name = "vehicle"			vehicle = "IvecoLMV_entity" }
+	attach = { 	name = "infantry"			infantry = "CZE_vehicle_infantry_rifle_entity" }
+}
+#DEN　デンマーク
+#ENG　イギリス
+entity = {
+	clone = "motorized_entity"
+	name = "ENG_motorized_entity"
+
+	attach = { 	name = "vehicle"			vehicle = "IvecoLMV_entity" }
+	attach = { 	name = "infantry"			infantry = "ENG_vehicle_infantry_rifle_entity" }
+}
+#EST　エストニア
+entity = {
+	clone = "geo_combined_mechanized_entity"
+	name = "EST_motorized_entity"
+
+	attach = { 	name = "vehicle"			vehicle = "geo_m1151_entity" }
+	attach = { 	name = "infantry"			infantry = "EST_vehicle_infantry_rifle_entity" }
+}
+#FIN　フィンランド
+entity = {
+	clone = "geo_combined_mechanized_entity"
+	name = "FIN_motorized_entity"
+
+	attach = { 	name = "vehicle"			vehicle = "geo_m1151_entity" }
+	attach = { 	name = "infantry"			infantry = "FIN_vehicle_infantry_rifle_entity" }
+}
+#FRA　フランス
+#FYR　北マケドニア
+#GAL　ガリシア
+#GER　ドイツ
+#GRE　ギリシャ
+entity = {
+	clone = "generic_motorized_vehicle_entity"
+	name = "GRE_motorized_vehicle_entity"
+	pdxmesh = "geo_GRE_m1151_mesh"
+}
+entity = {
+	clone = "motorized_entity"
+	name = "GRE_motorized_entity"
+
+	attach = { 	name = "vehicle"			vehicle = "GRE_motorized_vehicle_entity" }
+	attach = { 	name = "infantry"			infantry = "GRE_vehicle_infantry_rifle_entity" }
+}
+#HOL　オランダ
+entity = {
+	clone = "geo_combined_mechanized_entity"
+	name = "HOL_motorized_entity"
+
+	attach = { 	name = "vehicle"			vehicle = "geo_m1151_entity" }
+	attach = { 	name = "infantry"			infantry = "HOL_vehicle_infantry_rifle_entity" }
+}
+#HUN　ハンガリー
+entity = {
+	clone = "geo_combined_mechanized_entity"
+	name = "HUN_motorized_entity"
+
+	attach = { 	name = "vehicle"			vehicle = "geo_m1151_entity" }
+	attach = { 	name = "infantry"			infantry = "HUN_vehicle_infantry_rifle_entity" }
+}
+#ICE　アイスランド
+#IRE　アイルランド
+entity = {
+	clone = "geo_combined_mechanized_entity"
+	name = "IRE_motorized_entity"
+
+	attach = { 	name = "vehicle"			vehicle = "geo_m1151_entity" }
+	attach = { 	name = "infantry"			infantry = "IRE_vehicle_infantry_rifle_entity" }
+}
+#IOM　マン島
+#ITA　イタリア
+entity = {
+	clone = "motorized_entity"
+	name = "ITA_motorized_entity"
+
+	attach = { 	name = "vehicle"			vehicle = "IvecoLMV_entity" }
+	attach = { 	name = "infantry"			infantry = "ITA_vehicle_infantry_rifle_entity" }
+}
+#HLS　バチカン市国
+#KOS　コソヴォ
+#LAT　ラトビア
+#LIC　リヒテンシュタイン
+#LIT　リトアニア
+entity = {
+	clone = "geo_combined_mechanized_entity"
+	name = "LIT_motorized_entity"
+
+	attach = { 	name = "vehicle"			vehicle = "geo_m1151_entity" }
+	attach = { 	name = "infantry"			infantry = "LIT_vehicle_infantry_rifle_entity" }
+}
+#LUX　ルクセンブルク
+entity = {
+	clone = "geo_combined_mechanized_entity"
+	name = "LUX_motorized_entity"
+
+	attach = { 	name = "vehicle"			vehicle = "geo_m1151_entity" }
+	attach = { 	name = "infantry"			infantry = "LUX_vehicle_infantry_rifle_entity" }
+}
+#MLT　マルタ
+#MLO　モルドバ
+entity = {
+	clone = "geo_combined_mechanized_entity"
+	name = "MLO_motorized_entity"
+
+	attach = { 	name = "vehicle"			vehicle = "geo_m1151_entity" }
+	attach = { 	name = "infantry"			infantry = "MLO_vehicle_infantry_rifle_entity" }
+}
+#MNC　モナコ
+#MNT　モンテネグロ
+#NAV　バスク
+#NCY　北キプロス
+#NOR　ノルウェー
+entity = {
+	clone = "motorized_entity"
+	name = "NOR_motorized_entity"
+
+	attach = { 	name = "vehicle"			vehicle = "IvecoLMV_entity" }
+	attach = { 	name = "infantry"			infantry = "NOR_vehicle_infantry_rifle_entity" }
+}
+#POL　ポーランド
+entity = {
+	clone = "geo_m1151_desert_entity"
+	name = "POL_motorized_vehicle_entity"
+}
+entity = {
+	clone = "geo_combined_mechanized_entity"
+	name = "POL_motorized_entity"
+
+	attach = { 	name = "vehicle"			vehicle = "POL_motorized_vehicle_entity" }
+	attach = { 	name = "infantry"			infantry = "POL_vehicle_infantry_rifle_entity" }
+}
+#POR　ポルトガル
+#ROM　ルーマニア
+entity = {
+	clone = "geo_combined_mechanized_entity"
+	name = "ROM_motorized_entity"
+
+	attach = { 	name = "vehicle"			vehicle = "geo_m1151_entity" }
+	attach = { 	name = "infantry"			infantry = "ROM_vehicle_infantry_entity" }
+}
+#SAR　サルディーニャ
+#SCO　スコットランド
+#SER　セルビア
+#SLO　スロバキア
+entity = {
+	clone = "motorized_entity"
+	name = "SLO_motorized_entity"
+
+	attach = { 	name = "vehicle"			vehicle = "IvecoLMV_entity" }
+	attach = { 	name = "infantry"			infantry = "infantry_akm_entity" }
+}
+#SLV　スロベニア
+#SMA　サンマルコ
+#SOV　ロシア
+#ロシアが侵略を辞めるまでは実装しません。
+#SPR　スペイン
+entity = {
+	clone = "motorized_entity"
+	name = "SPR_motorized_entity"
+
+	attach = { 	name = "vehicle"			vehicle = "IvecoLMV_entity" }
+	attach = { 	name = "infantry"			infantry = "SPR_vehicle_infantry_rifle_entity" }
+}
+entity = {
+	clone = "geo_combined_mechanized_entity"
+	name = "BRA_Mot_Marine_Bat_entity"
+
+	attach = { 	name = "vehicle"			vehicle = "geo_m1151_entity" }
+	attach = { 	name = "infantry"			infantry = "SPR_vehicle_infantry_rifle_entity" }
+}
+#SPA　アンダルシア
+#SWE　スウェーデン
+entity = {
+	clone = "geo_motorized_withgun_entity"
+	name = "SWE_motorized_vehicle_entity"
+	pdxmesh = "geo_m1151_SWE_mesh"
+}
+entity = {
+	clone = "geo_combined_mechanized_entity"
+	name = "SWE_motorized_entity"
+
+	attach = { 	name = "vehicle"			vehicle = "SWE_motorized_vehicle_entity" }
+	attach = { 	name = "infantry"			infantry = "SWE_vehicle_infantry_rifle_entity" }
+}
+#SWI　スイス
+#TUR　トルコ
+entity = {
+	clone = "geo_motorized_withgun_entity"
+	name = "geo_kipri_entity"
+	pdxmesh = "geo_kipri_mesh"
+	scale = 2.2
+}
+entity = {
+	clone = "geo_combined_mechanized_entity"
+	name = "TUN_motorized_entity"
+
+	attach = { 	name = "vehicle"			vehicle = "geo_kipri_entity" }
+	attach = { 	name = "infantry"			infantry = "TUN_vehicle_infantry_rifle_entity" }
+}
+#UKR　ウクライナ
 entity = {
 	clone = "generic_motorized_vehicle_entity"
 	name = "UKR_motorized_vehicle_0_entity"
 	pdxmesh = "UKR_m1151_mesh"
 }
-
 entity = {
 	clone = "generic_motorized_vehicle_entity"
 	name = "UKR_motorized_vehicle_entity"
 	pdxmesh = "UKR_kozak2_mesh"
 }
-
 entity = {
 	clone = "motorized_entity"
 	name = "UKR_motorized_entity"
@@ -142,253 +403,733 @@ entity = {
 	attach = { 	name = "vehicle"			vehicle = "UKR_motorized_vehicle_0_entity" }
 	attach = { 	name = "infantry"			infantry = "UKR_infantry_1_entity" }
 }
+#WAS　ウェールズ
+#CHE　チェチェン
+#EUU　欧州連合
+#SIL　シレジア
+#VTB　ビテプスク
 
-##ギリシャ
-
+##中東
+#AFG　アフガニスタン
 entity = {
-	clone = "motorized_entity"
-	name = "GRE_motorized_entity"
-
-	attach = { 	name = "vehicle"			vehicle = "GRE_motorized_vehicle_entity" }
-	attach = { 	name = "infantry"			infantry = "GRE_infantry_entity" }
+	clone = "geo_m1151_desert_entity"
+	name = "AFG_motorized_vehicle_entity"
 }
-
-entity = {
-	clone = "generic_motorized_vehicle_entity"
-	name = "GRE_motorized_vehicle_entity"
-	pdxmesh = "geo_m1151_mesh"
-}
-
-##トルコ
-
-# entity = {
-# 	clone = "geo_motorized_withgun_entity"
-# 	name = "TUR_motorized_vehicle_entity"
-# 	pdxmesh = "geo_kipri_mesh"
-# 	scale = 2.2
-# }
-
 entity = {
 	clone = "geo_combined_mechanized_entity"
-	name = "TUR_motorized_entity"
+	name = "AFG_motorized_entity"
 
-	attach = { 	name = "vehicle"			vehicle = "generic_motorized_vehicle_entity" } #after fix it'll be TUR_motorized_vehicle_entity
-	attach = { 	name = "infantry"			infantry = "TUR_infantry_entity" }
+	attach = { 	name = "vehicle"			vehicle = "AFG_motorized_vehicle_entity" }
+	attach = { 	name = "infantry"			infantry = "AFG_vehicle_infantry_rifle_entity" }
 }
-
-##ポーランド
-
+#ALA　アラウィー州
+#ARA　アラビスタン
+#ARM　アルメニア
 entity = {
-	clone = "generic_motorized_vehicle_entity"
-	name = "POL_motorized_vehicle_entity"
-	pdxmesh = "geo_m1151_mesh"
+	clone = "geo_combined_mechanized_entity"
+	name = "ARM_motorized_entity"
+
+	attach = { 	name = "vehicle"			vehicle = "geo_m1151_entity" }
+	attach = { 	name = "infantry"			infantry = "ARM_vehicle_infantry_rifle_entity" }
 }
-
+#AZE　アゼルバイジャン
 entity = {
-	clone = "motorized_entity"
-	name = "POL_motorized_entity"
+	clone = "geo_combined_mechanized_entity"
+	name = "AZE_motorized_entity"
 
-	attach = { 	name = "vehicle"			vehicle = "POL_motorized_vehicle_entity" }
-	attach = { 	name = "infantry"			infantry = "POL_infantry_entity" }
+	attach = { 	name = "vehicle"			vehicle = "geo_kipri_entity" }
+	attach = { 	name = "infantry"			infantry = "AZE_vehicle_infantry_rifle_entity" }
 }
-
-##グルジア
-
+#BHR　バーレーン
 entity = {
-	clone = "generic_motorized_vehicle_entity"
+	clone = "geo_combined_mechanized_entity"
+	name = "BHR_motorized_entity"
+
+	attach = { 	name = "vehicle"			vehicle = "geo_m1151_desert_entity" }
+	attach = { 	name = "infantry"			infantry = "infantry_m16a2_entity" }
+}
+#BLC　バロチスタン
+#DRU　ドルーズ州
+#GEO　グルジア
+entity = {
+	clone = "geo_motorized_withgun_entity"
 	name = "GEO_motorized_vehicle_entity"
 	pdxmesh = "geo_m1151_GEO_mesh"
-	scale = 1.8
 }
-
 entity = {
 	clone = "geo_combined_mechanized_entity"
 	name = "GEO_motorized_entity"
 
 	attach = { 	name = "vehicle"			vehicle = "GEO_motorized_vehicle_entity" }
-	attach = { 	name = "infantry"			infantry = "GEO_vehicle_infantry_rifle_entity" }
+	attach = { 	name = "infantry"			infantry = "GEO_infantry_2_entity" }
 }
-
-##フィンランド
+#HEJ　ヒジャーズ州
+#IRQ　イラク
+#ISR　イスラエル
+#JOR　ヨルダン
+#KAZ　カザフスタン
 entity = {
 	clone = "geo_combined_mechanized_entity"
-	name = "FIN_motorized_entity"
+	name = "KAZ_motorized_entity"
 
-	attach = { 	name = "vehicle"			vehicle = "generic_motorized_vehicle_entity" }
-	attach = { 	name = "infantry"			infantry = "FIN_vehicle_infantry_rifle_entity" }
+	attach = { 	name = "vehicle"			vehicle = "geo_m1151_entity" }
+	attach = { 	name = "infantry"			infantry = "infantry_ak74_entity" }
 }
-
-##アゼルバイジャン
+#KUW　クウェート
+#KYR　キルギスタン
+#LEB　レバノン
 entity = {
 	clone = "geo_combined_mechanized_entity"
-	name = "AZR_motorized_entity"
+	name = "LEB_motorized_entity"
 
-	attach = { 	name = "vehicle"			vehicle = "generic_motorized_vehicle_entity" } #after fix it'll be TUR_motorized_vehicle_entity
-	attach = { 	name = "infantry"			infantry = "AZR_vehicle_infantry_rifle_entity" }
+	attach = { 	name = "vehicle"			vehicle = "geo_m1151_desert_entity" }
+	attach = { 	name = "infantry"			infantry = "LEB_vehicle_infantry_rifle_entity" }
 }
-
-##アルメニア
+#LOR　ルリスタン
+#NEJ　ナジュド
+#NKR　アルツァフ
 entity = {
-	clone = "geo_combined_mechanized_entity"
-	name = "ARM_motorized_entity"
-
-	attach = { 	name = "vehicle"			vehicle = "generic_motorized_vehicle_entity" }
-	attach = { 	name = "infantry"			infantry = "ARM_vehicle_infantry_rifle_entity" }
-}
-
-##ナゴルノ・カラバフ
-entity = {
-	clone = "geo_combined_mechanized_entity"
+	clone = "ARM_motorized_entity"
 	name = "NGK_motorized_entity"
-
-	attach = { 	name = "vehicle"			vehicle = "generic_motorized_vehicle_entity" }
-	attach = { 	name = "infantry"			infantry = "NGK_vehicle_infantry_rifle_entity" }
 }
-
-##イラク
+#OMA　オマーン
 entity = {
 	clone = "geo_combined_mechanized_entity"
-	name = "IRQ_motorized_entity"
+	name = "OMA_motorized_entity"
 
-	attach = { 	name = "vehicle"			vehicle = "generic_motorized_vehicle_entity" }
-	attach = { 	name = "infantry"			infantry = "IRQ_vehicle_infantry_rifle_entity" }
+	attach = { 	name = "vehicle"			vehicle = "geo_m1151_desert_entity" }
+	attach = { 	name = "infantry"			infantry = "OMA_vehicle_infantry_rifle_entity" }
 }
-
-##ルーマニア
-entity = {
-	clone = "motorized_entity"
-	name = "ROM_motorized_entity"
-
-	attach = { 	name = "vehicle"			vehicle = "generic_motorized_vehicle_entity" }
-	attach = { 	name = "infantry"			infantry = "ROM_infantry_entity" }
-}
-
-##オランダ
+#SCL　パダニア
+#PAK　パキスタン
+#PAL　パレスチナ
+#PER　イラン
+#QAT　カタール
+#QTF　カティーグ州
+#SAU　サウジアラビア
 entity = {
 	clone = "geo_combined_mechanized_entity"
-	name = "HOL_motorized_entity"
+	name = "SAU_motorized_entity"
 
-	attach = { 	name = "vehicle"			vehicle = "generic_motorized_vehicle_entity" }
-	attach = { 	name = "infantry"			infantry = "HOL_vehicle_infantry_rifle_entity" }
+	attach = { 	name = "vehicle"			vehicle = "geo_m1151_desert_entity" }
+	attach = { 	name = "infantry"			infantry = "SAU_vehicle_infantry_rifle_entity" }
 }
-
-##イヴェコLMV採用国
-entity = {
-	clone = "generic_motorized_vehicle_entity"
-	name = "IvecoLMV_entity"
-	pdxmesh = "geo_ivecoLMV_mesh"
-}
-##アルバニア
+#SYR　シリア
 entity = {
 	clone = "motorized_entity"
-	name = "ALB_motorized_entity"
+	name = "SYR_motorized_entity"
 
-	attach = { 	name = "vehicle"			vehicle = "IvecoLMV_entity" }
+	attach = { 	name = "vehicle"			vehicle = "geo_land_cruiser70_desert_entity" }
+	attach = { 	name = "infantry"			infantry = "SYR_vehicle_infantry_rifle_entity" }
+}
+#TAB　タバリスターン
+#TAJ　タジキスタン
+#TRK　トルクメニスタン
+#UAE　アラブ首長国連邦
+entity = {
+	clone = "geo_combined_mechanized_entity"
+	name = "UAE_motorized_entity"
+
+	attach = { 	name = "vehicle"			vehicle = "geo_m1151_desert_entity" }
+	attach = { 	name = "infantry"			infantry = "infantry_m16a2_entity" }
+}
+#UZB　ウズベキスタン
+#YEM　イエメン
+entity = {
+	clone = "geo_combined_mechanized_entity"
+	name = "YEM_motorized_entity"
+
+	attach = { 	name = "vehicle"			vehicle = "geo_m1151_desert_entity" }
 	attach = { 	name = "infantry"			infantry = "infantry_ak47s_entity" }
 }
-##イタリア
-entity = {
-	clone = "motorized_entity"
-	name = "ITA_motorized_entity"
 
-	attach = { 	name = "vehicle"			vehicle = "IvecoLMV_entity" }
-	attach = { 	name = "infantry"			infantry = "ITA_vehicle_infantry_rifle_entity" }
-}
-##イギリス
-entity = {
-	clone = "motorized_entity"
-	name = "ENG_motorized_entity"
-
-	attach = { 	name = "vehicle"			vehicle = "IvecoLMV_entity" }
-	attach = { 	name = "infantry"			infantry = "ENG_vehicle_infantry_rifle_entity" }
-}
-##ベルギー
+#アジア
+#BAN　バングラデシュ
+#BHU　ブータン
+#BRM　ミャンマー
+#BRU　ブルネイ
+#CBD　カンボジア
+#CHI　中華人民共和国
+#ETK　東トルキスタン
+#HKG　香港
+#IND　インドネシア
+#JAP　日本
+#KAC　カチン
+#KAR　カレン
+#KOR　韓国
+#LAO　ラオス
+#MAY　マレーシア
+#MLD　モルディブ
+#MON　モンゴル
+#NEP　ネパール
+#NKO　北朝鮮
+#PHI　フィリピン
 entity = {
 	clone = "geo_combined_mechanized_entity"
-	name = "BEL_motorized_entity"
+	name = "PHI_motorized_entity"
 
-	attach = { 	name = "vehicle"			vehicle = "IvecoLMV_entity" }
-	attach = { 	name = "infantry"			infantry = "BEL_vehicle_infantry_rifle_entity" }
+	attach = { 	name = "vehicle"			vehicle = "geo_m1151_entity" }
+	attach = { 	name = "infantry"			infantry = "infantry_m16a2_entity" }
 }
-##ボスニア
+#RAJ　インド
+#SHN　シャン州
+#SIA　タイ
+entity = {
+	clone = "geo_combined_mechanized_entity"
+	name = "SIA_motorized_entity"
+
+	attach = { 	name = "vehicle"			vehicle = "geo_m1151_entity" }
+	attach = { 	name = "infantry"			infantry = "SIA_vehicle_infantry_rifle_entity" }
+}
+#SIN　シンガポール 
+#SRI　スリランカ
+#CHI　中華民国
+entity = {
+	clone = "geo_combined_mechanized_entity"
+	name = "CHI_motorized_entity"
+
+	attach = { 	name = "vehicle"			vehicle = "geo_m1151_entity" }
+	attach = { 	name = "infantry"			infantry = "infantry_m16a2_entity" }
+}
+#TIB チベット
+#TIM　東ティモール
+#VIE　ベトナム
+#WAA　ワ州
+
+##オセアニア
+#AST　オーストラリア
+#FIJ　フィジー
+#MIC　ミクロネシア連邦
+#NZL　ニュージランド
+#PAP　パプアニューギニア
+#PLY　ポリネシア連邦
+#SOL　ソロモン諸島
+
+##北米
+#CAN　カナダ
+#CAL　カルフォルニア
+#MEX　メキシコ
+entity = {
+	clone = "geo_combined_mechanized_entity"
+	name = "MEX_motorized_entity"
+
+	attach = { 	name = "vehicle"			vehicle = "geo_m1151_entity" }
+	attach = { 	name = "infantry"			infantry = "infantry_g3_wide_entity" }
+}
+#NEN　ニューイングランド
+#USA　アメリカ
+#TEX　テキサス
+#CSA　南部連合
+#RGD　リオグランデ
+#YUC　ユカタン
+#ZAP　サパティスタ
+#CAS　カスケーディア
+#GRL　グリーンランド
+#GLC　五大湖連邦
+#NYK　ニューヨーク
+#PTR　プエルトリコ
+#LKT　ラコタ
+#UDT　デゼレット連合
+#ASK　アラスカ
+#HWI　ハワイ
+
+#カリビアン
+#BAH　バハマ
+#BAR　ハルバドス
+#BLZ　ベリーズ
+#CUB　キューバ
+#DMI　ドミニカ
+#DOM　ドミニカ共和国
+#GRA　グレナダ
+#HAI　ハイチ
 entity = {
 	clone = "motorized_entity"
-	name = "BOS_motorized_entity"
+	name = "HAI_motorized_entity"
 
-	attach = { 	name = "vehicle"			vehicle = "IvecoLMV_entity" }
-	attach = { 	name = "infantry"			infantry = "BOS_vehicle_infantry_rifle_entity" }
+	attach = { 	name = "vehicle"			vehicle = "geo_land_cruiser70_entity" }
+	attach = { 	name = "infantry"			infantry = "HAI_vehicle_infantry_rifle_entity" }
 }
-##ノルウェー
+#JAM　ジャマイカ
+#PAU　パラオ
+#STK　セントキッツ
+#STL　セントルシア 
+#STV　セントヴィンセント
+#TRI　トリニダード
+
+##南米
+#ARG　アルゼンチン
+entity = {
+	clone = "geo_combined_mechanized_entity"
+	name = "ARG_motorized_entity"
+
+	attach = { 	name = "vehicle"			vehicle = "geo_m1151_entity" }
+	attach = { 	name = "infantry"			infantry = "ARG_vehicle_infantry_rifle_entity" }
+}
+#BOL　ボリビア
 entity = {
 	clone = "motorized_entity"
-	name = "NOR_motorized_entity"
+	name = "BOL_motorized_entity"
 
-	attach = { 	name = "vehicle"			vehicle = "IvecoLMV_entity" }
-	attach = { 	name = "infantry"			infantry = "NOR_vehicle_infantry_rifle_entity" }
+	attach = { 	name = "vehicle"			vehicle = "geo_land_cruiser70_entity" }
+	attach = { 	name = "infantry"			infantry = "BOL_vehicle_infantry_rifle_entity" }
 }
-##クロアチア
+#BRA　ブラジル
 entity = {
-	clone = "motorized_entity"
-	name = "CRO_motorized_entity"
-
-	attach = { 	name = "vehicle"			vehicle = "IvecoLMV_entity" }
-	attach = { 	name = "infantry"			infantry = "CRO_vehicle_infantry_rifle_entity" }
+	clone = "IvecoLMV_entity"
+	name = "IvecoLMV_BRA_entity"
+	pdxmesh = "geo_ivecoLMV_BRA_mesh"
 }
-##スペイン
-entity = {
-	clone = "motorized_entity"
-	name = "SPR_motorized_entity"
-
-	attach = { 	name = "vehicle"			vehicle = "IvecoLMV_entity" }
-	attach = { 	name = "infantry"			infantry = "SPR_vehicle_infantry_rifle_entity" }
-}
-##スロバキア
-entity = {
-	clone = "motorized_entity"
-	name = "SLO_motorized_entity"
-
-	attach = { 	name = "vehicle"			vehicle = "IvecoLMV_entity" }
-	attach = { 	name = "infantry"			infantry = "generic_western_vehicle_infantry_rifle_entity" }
-}
-##チェコ
-entity = {
-	clone = "motorized_entity"
-	name = "CZE_motorized_entity"
-
-	attach = { 	name = "vehicle"			vehicle = "IvecoLMV_entity" }
-	attach = { 	name = "infantry"			infantry = "CZE_vehicle_infantry_rifle_entity" }
-}
-##オーストリア
-entity = {
-	clone = "motorized_entity"
-	name = "AUS_motorized_entity"
-
-	attach = { 	name = "vehicle"			vehicle = "IvecoLMV_entity" }
-	attach = { 	name = "infantry"			infantry = "AUS_vehicle_infantry_rifle_entity" }
-}
-##ブラジル
 entity = {
 	clone = "motorized_entity"
 	name = "BRA_motorized_entity"
 
-	attach = { 	name = "vehicle"			vehicle = "IvecoLMV_entity" }
+	attach = { 	name = "vehicle"			vehicle = "IvecoLMV_BRA_entity" }
 	attach = { 	name = "infantry"			infantry = "BRA_vehicle_infantry_rifle_entity" }
 }
+entity = {
+	clone = "motorized_entity"
+	name = "BRA_Mot_Marine_Bat_entity"
 
-##アルジェリア
+	attach = { 	name = "vehicle"			vehicle = "IvecoLMV_BRA_entity" }
+	attach = { 	name = "infantry"			infantry = "BRA_L_Marine_Bat_entity" }
+}
+entity = {
+	clone = "motorized_entity"
+	name = "BRA_Mot_Air_Inf_Bat_entity"
+
+	attach = { 	name = "vehicle"			vehicle = "IvecoLMV_BRA_entity" }
+	attach = { 	name = "infantry"			infantry = "BRA_L_Air_Inf_Bat_entity" }
+}
+#CHL　チリ
+entity = {
+	clone = "geo_combined_mechanized_entity"
+	name = "CHL_motorized_entity"
+
+	attach = { 	name = "vehicle"			vehicle = "geo_m1151_desert_entity" }
+	attach = { 	name = "infantry"			infantry = "CHL_vehicle_infantry_rifle_entity" }
+}
+#COL　コロンビア
+entity = {
+	clone = "geo_combined_mechanized_entity"
+	name = "COL_motorized_entity"
+
+	attach = { 	name = "vehicle"			vehicle = "geo_m1151_entity" }
+	attach = { 	name = "infantry"			infantry = "COL_vehicle_infantry_rifle_entity" }
+}
+#COS　コスタリア
+#ECU　エクアドル
+#ELS　エルサルバドル
+entity = {
+	clone = "motorized_entity"
+	name = "ELS_motorized_entity"
+
+	attach = { 	name = "vehicle"			vehicle = "geo_land_cruiser70_entity" }
+	attach = { 	name = "infantry"			infantry = "BOT_vehicle_infantry_rifle_entity" }
+}
+#FGU　フランス領ギニア
+#GUA　グアテマラ
+entity = {
+	clone = "geo_combined_mechanized_entity"
+	name = "GUA_motorized_entity"
+
+	attach = { 	name = "vehicle"			vehicle = "geo_m1151_entity" }
+	attach = { 	name = "infantry"			infantry = "GUA_vehicle_infantry_rifle_entity" }
+}
+#GUY　ギニア
+#HON　ホンジュラス
+entity = {
+	clone = "geo_combined_mechanized_entity"
+	name = "HON_motorized_entity"
+
+	attach = { 	name = "vehicle"			vehicle = "geo_m1151_entity" }
+	attach = { 	name = "infantry"			infantry = "HON_vehicle_infantry_rifle_entity" }
+}
+#NIC　ニカラグア
+entity = {
+	clone = "motorized_entity"
+	name = "NIC_motorized_entity"
+
+	attach = { 	name = "vehicle"			vehicle = "geo_land_cruiser70_entity" }
+	attach = { 	name = "infantry"			infantry = "NIC_vehicle_infantry_rifle_entity" }
+}
+#PAN　パナマ
+#PAR　パラグアイ
+entity = {
+	clone = "geo_combined_mechanized_entity"
+	name = "PRU_motorized_entity"
+
+	attach = { 	name = "vehicle"			vehicle = "geo_m1151_entity" }
+	attach = { 	name = "infantry"			infantry = "infantry_m16a2_entity" }
+}
+#PAT　パタゴニア
+#PRU　ペルー
+entity = {
+	clone = "geo_combined_mechanized_entity"
+	name = "PRU_motorized_entity"
+
+	attach = { 	name = "vehicle"			vehicle = "geo_m1151_entity" }
+	attach = { 	name = "infantry"			infantry = "PRU_vehicle_infantry_rifle_entity" }
+}
+#SUL　南ブラジル
+#SPL　サンパウロ
+#SUR　スリナム
+#URG　ウルグアイ
+#VEN　ベネズエラ
+
+##　アフリカ
+##　アフリカ汎用
+entity = {
+	clone = "motorized_entity"
+	name = "motorized_African_entity"
+
+	attach = { 	name = "vehicle"			vehicle = "geo_land_cruiser70_desert_entity" }
+	attach = { 	name = "infantry"			infantry = "DRC_vehicle_infantry_rifle_entity" }
+}
+#AGL　アンゴラ
+entity = {
+	clone = "motorized_African_entity"
+	name = "AGL_motorized_entity"
+}
+#ALG アルジェリア
 entity = {
 	clone = "geo_combined_mechanized_entity"
 	name = "ALG_motorized_entity"
 
-	attach = { 	name = "vehicle"			vehicle = "generic_motorized_vehicle_entity" }
-	attach = { 	name = "infantry"			infantry = "ALG_vehicle_infantry_2_rifle_entity" }
+	attach = { 	name = "vehicle"			vehicle = "geo_m1151_desert_entity" }
+	attach = { 	name = "infantry"			infantry = "ALG_vehicle_infantry_rifle_entity" }
 }
+#BEN　ベナン
+entity = {
+	clone = "motorized_African_entity"
+	name = "BEN_motorized_entity"
+}
+#BFA　ブルキナファソ
+entity = {
+	clone = "motorized_African_entity"
+	name = "BFA_motorized_entity"
+}
+#BOT　ボツワナ
+entity = {
+	clone = "motorized_entity"
+	name = "BOT_motorized_entity"
 
-##チュニジア
+	attach = { 	name = "vehicle"			vehicle = "geo_land_cruiser70_desert_entity" }
+	attach = { 	name = "infantry"			infantry = "BOT_vehicle_infantry_rifle_entity" }
+}
+#BUR　ブルンジ
+entity = {
+	clone = "motorized_African_entity"
+	name = "BUR_motorized_entity"
+}
+#CAM　カメルーン
+entity = {
+	clone = "motorized_African_entity"
+	name = "CAM_motorized_entity"
+}
+#CAR　中央アフリカ
+entity = {
+	clone = "motorized_African_entity"
+	name = "CAR_motorized_entity"
+}
+#CDI　コートジボワール
+entity = {
+	clone = "motorized_African_entity"
+	name = "CDI_motorized_entity"
+}
+#FNC　コートジボワールのブーベル軍
+#CHA　チャド
+entity = {
+	clone = "motorized_African_entity"
+	name = "CHA_motorized_entity"
+}
+#CNG　コンゴ
+entity = {
+	clone = "motorized_African_entity"
+	name = "CNG_motorized_entity"
+}
+#CNR　カナリア諸島
+#COM　コモロ
+#DJI　ジブチ
+entity = {
+	clone = "motorized_African_entity"
+	name = "DJI_motorized_entity"
+}
+#DRC　コンゴ民主共和国
+#EGU　赤道ギニア
+entity = {
+	clone = "motorized_African_entity"
+	name = "EGU_motorized_entity"
+}
+#EGY　エジプト
+entity = {
+	clone = "geo_combined_mechanized_entity"
+	name = "EGY_motorized_entity"
+
+	attach = { 	name = "vehicle"			vehicle = "geo_m1151_desert_entity" }
+	attach = { 	name = "infantry"			infantry = "infantry_ak47s_entity" }
+}
+#ERI　エリトリア
+entity = {
+	clone = "motorized_African_entity"
+	name = "ERI_motorized_entity"
+}
+#ETH　エチオピア
+entity = {
+	clone = "motorized_African_entity"
+	name = "ETH_motorized_entity"
+}
+#GAB　ガボン
+entity = {
+	clone = "motorized_African_entity"
+	name = "GAB_motorized_entity"
+}
+#GAH　ガーナ
+entity = {
+	clone = "motorized_African_entity"
+	name = "GAH_motorized_entity"
+}
+#GAM　ガンビア
+entity = {
+	clone = "motorized_African_entity"
+	name = "GAM_motorized_entity"
+}
+#GUB　ギニアビサウ
+entity = {
+	clone = "motorized_African_entity"
+	name = "GUB_motorized_entity"
+}
+#GUI　ギニア
+entity = {
+	clone = "motorized_African_entity"
+	name = "GUI_motorized_entity"
+}
+#KEN　ケニア
+entity = {
+	clone = "motorized_African_entity"
+	name = "KEN_motorized_entity"
+}
+#LBA　リビア
+entity = {
+	clone = "geo_land_cruiser70_entity"
+	name = "geo_land_cruiser70_LBA_entity"
+	pdxmesh = "geo_land_cruiser70_LBA_mesh"
+}
+entity = {
+	clone = "geo_combined_mechanized_entity"
+	name = "LBA_motorized_entity"
+
+	attach = { 	name = "vehicle"			vehicle = "geo_land_cruiser70_LBA_entity" }
+	attach = { 	name = "infantry"			infantry = "LBA_vehicle_infantry_rifle_entity" }
+}
+#LES　レソト
+entity = {
+	clone = "motorized_entity"
+	name = "LES_motorized_entity"
+
+	attach = { 	name = "vehicle"			vehicle = "geo_land_cruiser70_desert_entity" }
+	attach = { 	name = "infantry"			infantry = "LES_vehicle_infantry_rifle_entity" }
+}
+#LIB　リベリア
+entity = {
+	clone = "motorized_African_entity"
+	name = "LIB_motorized_entity"
+}
+#MAD　マダガスカル
+entity = {
+	clone = "motorized_African_entity"
+	name = "MAD_motorized_entity"
+}
+#MAL　マリ
+entity = {
+	clone = "motorized_African_entity"
+	name = "MAL_motorized_entity"
+}
+#MAU　モーリタニア
+entity = {
+	clone = "motorized_African_entity"
+	name = "MAU_motorized_entity"
+}
+#MLW　マラウィ
+entity = {
+	clone = "motorized_African_entity"
+	name = "MLW_motorized_entity"
+}
+#MOR　モロッコ
+entity = {
+	clone = "geo_combined_mechanized_entity"
+	name = "MOR_motorized_entity"
+
+	attach = { 	name = "vehicle"			vehicle = "geo_m1151_desert_entity" }
+	attach = { 	name = "infantry"			infantry = "infantry_ak47s_entity" }
+}
+#MOZ　モザンビーク
+entity = {
+	clone = "motorized_African_entity"
+	name = "MOZ_motorized_entity"
+}
+#MRT　マウリチウス
+#NAM　ナミビア
+entity = {
+	clone = "motorized_African_entity"
+	name = "NAM_motorized_entity"
+}
+#NGR　ニジェール
+entity = {
+	clone = "motorized_African_entity"
+	name = "NGR_motorized_entity"
+}
+#NIG　ナイジェリア
+entity = {
+	clone = "motorized_African_entity"
+	name = "NIG_motorized_entity"
+}
+#RWA　ルワンダ
+entity = {
+	clone = "motorized_African_entity"
+	name = "RWA_motorized_entity"
+}
+#SAF　南アフリカ
+entity = {
+	clone = "geo_combined_mechanized_entity"
+	name = "SAF_motorized_entity"
+
+	attach = { 	name = "vehicle"			vehicle = "geo_m1151_entity" }
+	attach = { 	name = "infantry"			infantry = "SAF_vehicle_infantry_rifle_entity" }
+}
+#SAO　サントメプリンシペ
+entity = {
+	clone = "motorized_African_entity"
+	name = "SAO_motorized_entity"
+}
+#SEN　セネガル
+entity = {
+	clone = "geo_combined_mechanized_entity"
+	name = "SEN_motorized_entity"
+
+	attach = { 	name = "vehicle"			vehicle = "geo_m1151_entity" }
+	attach = { 	name = "infantry"			infantry = "DRC_MD4_infantry_2_entity" }
+}
+#SEY　セーシャル
+#SHA　サハラ・アラブ
+entity = {
+	clone = "motorized_African_entity"
+	name = "SHA_motorized_entity"
+}
+#SIE　シエラレオネ
+entity = {
+	clone = "motorized_African_entity"
+	name = "SIE_motorized_entity"
+}
+#SML　ソマリランド
+entity = {
+	clone = "motorized_African_entity"
+	name = "SML_motorized_entity"
+}
+#SOM　ソマリア
+entity = {
+	clone = "motorized_African_entity"
+	name = "SOM_motorized_entity"
+}
+#SSU　南スーダン
+entity = {
+	clone = "motorized_African_entity"
+	name = "SSU_motorized_entity"
+}
+#STH　セントヘレナ
+#SUD　スーダン
+entity = {
+	clone = "motorized_African_entity"
+	name = "SUD_motorized_entity"
+}
+#SWA　スワジランド
+entity = {
+	clone = "motorized_African_entity"
+	name = "SWA_motorized_entity"
+}
+#TNZ　タンザニア
+entity = {
+	clone = "geo_combined_mechanized_entity"
+	name = "TNZ_motorized_entity"
+
+	attach = { 	name = "vehicle"			vehicle = "geo_m1151_entity" }
+	attach = { 	name = "infantry"			infantry = "DRC_MD4_infantry_2_entity" }
+}
+#TOG　トーゴ
+entity = {
+	clone = "motorized_African_entity"
+	name = "TOG_motorized_entity"
+}
+#TUN　チュニジア
 entity = {
 	clone = "geo_combined_mechanized_entity"
 	name = "TUN_motorized_entity"
 
-	attach = { 	name = "vehicle"			vehicle = "generic_motorized_vehicle_entity" }
+	attach = { 	name = "vehicle"			vehicle = "geo_kipri_entity" }
 	attach = { 	name = "infantry"			infantry = "TUN_vehicle_infantry_rifle_entity" }
 }
+#UGA　ウガンダ
+entity = {
+	clone = "motorized_African_entity"
+	name = "UGA_motorized_entity"
+}
+#VER　カーボベルデ
+#ZAM　ザンビア
+entity = {
+	clone = "motorized_African_entity"
+	name = "ZAM_motorized_entity"
+}
+#ZIM　ジンバブエ
+entity = {
+	clone = "motorized_African_entity"
+	name = "ZIM_motorized_entity"
+}
+
+#非承認国家
+#HZG　ヘルツェゴビナ
+#RSK　スルプスカ
+#ABK　アブハジア
+#ACE　アチェ
+#ADJ　アジャリア
+#AFR　革命評議会
+#AGF　南スーダン反体制派
+#AQY　アルカイダ・イエメン
+#BAL　アンチ・バカラ 
+#DAR　ダルフール
+#FSA　自由シリア
+#GNA　リビア国民合意政府
+#GNC　リビア民族救済政府
+#HAM　ハマス
+#HEZ　ヒズボラ
+#HOR　リビア下院
+#HOU　フーシ派
+#ISI　ダーイッシュ
+#JUB　ジュバランド
+#KUR　クルディスタン
+#LUR　リベリア連合
+#LOG　ロゴン
+#MLC　コンゴ解放運動
+#NOV　ノヴォロシア
+#NUS　アルヌスラ
+#PKK　クルディスタン労働党
+#PMR　トランスニストリア
+#PUN　パントランド
+#RCD　コンゴ民主集会
+#ROJ　ロバジャ
+#SHB　アルシャバブ
+#SEL　セレカ
+#SLA　シナロア・カルテル
+#TRC　ティエラ・カルテル
+#TAM　タマウリパス
+#SNA　ソマリア民族同盟
+#SCO　南オセチア
+#SRF　スーダン革命戦線
+#SWS　南西諸島ソマリア州
+#TAL　アフガニスタン・タリバン　
+#TTP　パキスタン・タリバン
+#TUA　トゥアレグ族
+#UNI　UNITA
+#QUE　ケベック
+#CSM　カサマンス
+#TLS　タリスタン
+#HRM　ホルムズ
+#NPM　ネパールマオイスト

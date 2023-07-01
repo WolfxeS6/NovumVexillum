@@ -79,3 +79,164 @@ PRC_recalc_congress_icon_frames = {
 	}
 	set_variable = { current_central_committee_icon_frame = central_committee_temp }
 }
+
+PRC_influence_add_1 = {
+	PRC = { add_to_variable = { var = PRC_hong_kong_influence_value value = 1 } }
+	custom_effect_tooltip = PRC_influence_add_1_tt
+	hong_kong_influence_setting = yes
+}
+PRC_influence_add_3 = {
+	PRC = { add_to_variable = { var = PRC_hong_kong_influence_value value = 3 } }
+	custom_effect_tooltip = PRC_influence_add_3_tt
+	hong_kong_influence_setting = yes
+}
+PRC_influence_add_5 = {
+	PRC = { add_to_variable = { var = PRC_hong_kong_influence_value value = 5 } }
+	custom_effect_tooltip = PRC_influence_add_5_tt
+	hong_kong_influence_setting = yes
+}
+PRC_influence_add_7 = {
+	PRC = { add_to_variable = { var = PRC_hong_kong_influence_value value = 7 } }
+	custom_effect_tooltip = PRC_influence_add_7_tt
+	hong_kong_influence_setting = yes
+}
+
+ENG_influence_add_1 = {
+	ENG = { add_to_variable = { var = ENG_hong_kong_influence_value value = 1 } }
+	custom_effect_tooltip = ENG_influence_add_1_tt
+	hong_kong_influence_setting = yes
+}
+ENG_influence_add_3 = {
+	ENG = { add_to_variable = { var = ENG_hong_kong_influence_value value = 3 } }
+	custom_effect_tooltip = ENG_influence_add_3_tt
+	hong_kong_influence_setting = yes
+}
+ENG_influence_add_5 = {
+	ENG = { add_to_variable = { var = ENG_hong_kong_influence_value value = 5 } }
+	custom_effect_tooltip = ENG_influence_add_5_tt
+	hong_kong_influence_setting = yes
+}
+ENG_influence_add_7 = {
+	ENG = { add_to_variable = { var = ENG_hong_kong_influence_value value = 7 } }
+	custom_effect_tooltip = ENG_influence_add_7_tt
+	hong_kong_influence_setting = yes
+}
+
+ENG_influence_minus_5 = {
+	if = {
+		limit = { check_variable = { ENG_hong_kong_influence_value > 4 } }
+		ENG = { add_to_variable = { var = ENG_hong_kong_influence_value value = -5 } }
+	}
+	else = { 
+		ENG = { set_variable = { ENG_hong_kong_influence_value = 0 } }
+	}
+	custom_effect_tooltip = ENG_influence_minus_5_tt
+	hong_kong_influence_setting = yes
+}
+
+PRC_influence_minus_5 = {
+	if = {
+		limit = { check_variable = { PRC_hong_kong_influence_value > 4 } }
+		PRC = { add_to_variable = { var = PRC_hong_kong_influence_value value = -5 } }
+	}
+	else = { 
+		PRC = { set_variable = { PRC_hong_kong_influence_value = 0 } }
+	}
+	custom_effect_tooltip = PRC_influence_minus_5_tt
+	hong_kong_influence_setting = yes
+}
+
+hong_kong_influence_setting = {
+	set_variable = { var = eng_temp_hong_kong_influence value = ENG.ENG_hong_kong_influence_value }
+	subtract_from_variable = { var = eng_temp_hong_kong_influence value = PRC.PRC_hong_kong_influence_value }
+	set_variable = { var = prc_temp_hong_kong_influence value = PRC.PRC_hong_kong_influence_value }
+	subtract_from_variable = { var = prc_temp_hong_kong_influence value = ENG.ENG_hong_kong_influence_value }
+}
+
+PRC_BOP_chinese_reform_small_effect = {
+	add_power_balance_value = {
+		id = PRC_new_china_plan
+		value = 0.05
+	}
+
+}
+PRC_BOP_chinese_reform_nomal_effect = {
+	add_power_balance_value = {
+		id = PRC_new_china_plan
+		value = 0.1
+	}
+}
+PRC_BOP_chinese_reform_large_effect = {
+	add_power_balance_value = {
+		id = PRC_new_china_plan
+		value = 0.2
+	}
+}
+
+PRC_add_basic_MBT_templates = {
+	#Type 99
+	create_equipment_variant = {
+		name = "Type 99"
+		type = modern_tank_chassis_3
+		parent_version = 0
+		modules = {
+			main_armament_slot = tank_small_cannon
+			turret_type_slot = tank_modern_tank_turret
+			suspension_type_slot = tank_bogie_suspension
+			armor_type_slot = tank_welded_armor
+			engine_type_slot = tank_gasoline_engine
+			special_type_slot_1 = tank_radio_2
+			optics_slot = tank_optics_2
+			special_type_slot_2 = auto_loader
+		}
+		upgrades = {
+			tank_nsb_engine_upgrade = 1
+			tank_nsb_armor_upgrade = 2
+		}
+		icon = "GFX_PRC_main_battle_tank2_medium"
+	}
+}
+
+PRC_add_improved_MBT_templates = {
+	#Type 99
+	create_equipment_variant = {
+		name = "Type 99A1"
+		type = modern_tank_chassis_3
+		parent_version = 0
+		modules = {
+			main_armament_slot = tank_small_cannon
+			turret_type_slot = tank_modern_tank_turret
+			suspension_type_slot = tank_bogie_suspension
+			armor_type_slot = tank_welded_armor
+			engine_type_slot = tank_gasoline_engine
+			special_type_slot_1 = tank_radio_2
+			optics_slot = tank_optics_2
+			special_type_slot_2 = auto_loader
+		}
+		upgrades = {
+			tank_nsb_engine_upgrade = 2
+			tank_nsb_armor_upgrade = 4
+		}
+		icon = "GFX_PRC_main_battle_tank2_medium"
+	}
+}
+
+PRC_BOP_chinese_coup_small_effect = {
+	add_power_balance_value = {
+		id = PRC_coup_plan
+		value = 0.05
+	}
+
+}
+PRC_BOP_chinese_coup_nomal_effect = {
+	add_power_balance_value = {
+		id = PRC_coup_plan
+		value = 0.1
+	}
+}
+PRC_BOP_chinese_coup_large_effect = {
+	add_power_balance_value = {
+		id = PRC_coup_plan
+		value = 0.2
+	}
+}

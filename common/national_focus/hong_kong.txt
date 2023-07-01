@@ -1,0 +1,851 @@
+focus_tree = {
+	id = hong_kong_focus
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			original_tag = HKN
+		}
+	}
+
+	shared_focus = HKN_devolop_hk
+	shared_focus = HKN_our_future
+	#shared_focus = chinese_minor_in_the_air
+	#shared_focus = chinese_minor_army
+
+	continuous_focus_position = { x = 10 y = 1050 }
+}
+	#### economic
+	
+	shared_focus = {
+		id = HKN_devolop_hk
+		icon = constitution
+		cost = 8
+		x = 2
+		y = 0
+	
+		search_filters = { FOCUS_FILTER_RESEARCH FOCUS_FILTER_INDUSTRY }
+		
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 1.0
+				uses = 2
+				category = electronics
+			}
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	shared_focus = {
+		id = HKN_real_estate_issue
+		icon = construction2
+		cost = 7
+		x = -2
+		y = 1
+
+		prerequisite = { 
+			focus = HKN_devolop_hk
+		}
+
+		relative_position_id = HKN_devolop_hk
+		
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+	
+		completion_reward = {
+			326 = {
+				add_extra_state_shared_building_slots = 2
+			}
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	shared_focus = {
+		id = HKN_improvement_of_public_transportation
+		icon = construction
+		cost = 7
+		x = -2
+		y = 2
+
+		prerequisite = { 
+			focus = HKN_real_estate_issue
+		}
+
+		relative_position_id = HKN_devolop_hk
+		
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+	
+		completion_reward = {
+				326 = {
+					add_building_construction = {
+						type = infrastructure
+						level = 2
+						instant_build = yes
+					}
+				}
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	shared_focus = {
+		id = HKN_improvement_of_transportation_network_with_china
+		icon = infrastructure
+		cost = 7
+		x = -2
+		y = 3
+
+		prerequisite = { 
+			focus = HKN_improvement_of_public_transportation
+		}
+
+		relative_position_id = HKN_devolop_hk
+		
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+	
+		completion_reward = {
+			build_railway = {
+				path = { 10062 7108 }
+			}
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	shared_focus = {
+		id = HKN_center_of_bank
+		icon = money
+		cost = 7
+		x = 1
+		y = 1
+
+		prerequisite = { 
+			focus = HKN_devolop_hk
+		}
+
+		relative_position_id = HKN_devolop_hk
+		
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+	
+		completion_reward = {
+			add_offsite_building = { type = industrial_complex level = 1 }
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	shared_focus = {
+		id = HKN_for_the_poor
+		icon = industry_civilian2
+		cost = 7
+		x = 0
+		y = 2
+
+		prerequisite = { 
+			focus = HKN_center_of_bank
+		}
+
+		mutually_exclusive = {
+			focus = HKN_trickle_down_effect
+		}
+
+		relative_position_id = HKN_devolop_hk
+		
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+	
+		completion_reward = {
+			add_stability = 0.1
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	shared_focus = {
+		id = HKN_trickle_down_effect
+		icon = infrastructure
+		cost = 7
+		x = 2
+		y = 2
+
+		prerequisite = { 
+			focus = HKN_center_of_bank
+		}
+
+		mutually_exclusive = {
+			focus = HKN_for_the_poor
+		}
+
+		relative_position_id = HKN_devolop_hk
+		
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+	
+		completion_reward = {
+			add_political_power = 100
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	shared_focus = {
+		id = HKN_become_the_center_of_international_trade
+		icon = JAP_economic_train
+		cost = 7
+		x = 3
+		y = 3
+
+		prerequisite = { 
+			focus = HKN_trickle_down_effect
+		}
+
+		relative_position_id = HKN_devolop_hk
+		
+		search_filters = { FOCUS_FILTER_RESEARCH }
+
+		completion_reward = {
+			add_research_slot = 1
+		}
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	shared_focus = {
+		id = HKN_free_medical_services
+		icon = industry_civilian
+		cost = 7
+		x = 1
+		y = 3
+
+		prerequisite = { 
+			focus = HKN_trickle_down_effect
+			focus = HKN_for_the_poor
+		}
+
+		relative_position_id = HKN_devolop_hk
+		
+		search_filters = {  }
+	
+		completion_reward = {
+			add_ideas = HKN_expanded_medical_welfare
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	shared_focus = {
+		id = HKN_hong_kong_port_expansion
+		icon = naval_dockyards
+		cost = 7
+		x = 0
+		y = 4
+
+		prerequisite = { 
+			focus = HKN_free_medical_services
+		}
+
+		relative_position_id = HKN_devolop_hk
+		
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+	
+		completion_reward = {
+			326 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = dockyard
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	shared_focus = {
+		id = HKN_construction_of_shipyard
+		icon = naval_dockyards
+		cost = 7
+		x = -1
+		y = 5
+
+		prerequisite = { 
+			focus = HKN_hong_kong_port_expansion
+		}
+
+		relative_position_id = HKN_devolop_hk
+		
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+	
+		completion_reward = {
+			326 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = dockyard
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	shared_focus = {
+		id = HKN_biliteracy_and_trilingualism
+		icon = propaganda
+		cost = 7
+		x = 1
+		y = 5
+
+		prerequisite = { 
+			focus = HKN_hong_kong_port_expansion
+			focus = HKN_small_industry
+		}
+
+		relative_position_id = HKN_devolop_hk
+		
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+	
+		completion_reward = {
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	shared_focus = {
+		id = HKN_small_industry
+		icon = license_production
+		cost = 7
+		x = 2
+		y = 4
+
+		prerequisite = { 
+			focus = HKN_free_medical_services
+		}
+
+		relative_position_id = HKN_devolop_hk
+		
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+	
+		completion_reward = {
+			326 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	shared_focus = {
+		id = HKN_hong_kong_airport
+		icon = airforce
+		cost = 7
+		x = 3
+		y = 5
+
+		prerequisite = { 
+			focus = HKN_small_industry
+		}
+
+		relative_position_id = HKN_devolop_hk
+		
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+	
+		completion_reward = {
+			326 = {
+				add_building_construction = {
+					type = air_base
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	shared_focus = {
+		id = HKN_safe_hong_kong
+		icon = constitution
+		cost = 7
+		x = 1
+		y = 6
+
+		prerequisite = { 
+			focus = HKN_construction_of_shipyard
+			focus = HKN_biliteracy_and_trilingualism
+			focus = HKN_hong_kong_airport
+		}
+
+		relative_position_id = HKN_devolop_hk
+		
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+	
+		completion_reward = {
+			add_political_power = 100
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	shared_focus = {
+		id = HKN_university_of_hong_kong
+		icon = research
+		cost = 7
+		x = 1
+		y = 7
+
+		prerequisite = { 
+			focus = HKN_safe_hong_kong
+		}
+
+		relative_position_id = HKN_devolop_hk
+	
+		search_filters = { FOCUS_FILTER_RESEARCH }
+
+		completion_reward = {
+			add_research_slot = 1
+		}
+		
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	shared_focus = {
+		id = HKN_our_future
+		icon = constitution
+		cost = 5
+		x = 11
+		y = 0
+		
+		search_filters = { }
+	
+		completion_reward = {
+			add_political_power = 150
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	shared_focus = {
+		id = HKN_protected_for_empire
+		icon = home_defense
+		cost = 5
+		x = -2
+		y = 1
+			
+		available = {
+			is_subject = yes
+		}
+
+		prerequisite = { 
+			focus = HKN_our_future
+		}
+
+		relative_position_id = HKN_our_future
+		
+		search_filters = { }
+	
+		completion_reward = {
+			add_stability = 0.1
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	shared_focus = {
+		id = HKN_press_the_independent_faction
+		icon = AIN_purge
+		cost = 5
+		x = -1
+		y = 1
+			
+		available = {
+			is_subject = yes
+		}
+
+		prerequisite = { 
+			focus = HKN_protected_for_empire
+		}
+
+		relative_position_id = HKN_protected_for_empire
+		
+		search_filters = { }
+	
+		completion_reward = {
+			add_popularity = { ideology = nationalist popularity = 0.03 }
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	shared_focus = {
+		id = HKN_decrease_foreign_judges
+		icon = constitution
+		cost = 5
+		x = 1
+		y = 1
+			
+		available = {
+			is_subject = yes
+		}
+
+		prerequisite = { 
+			focus = HKN_protected_for_empire
+		}
+
+		relative_position_id = HKN_protected_for_empire
+		
+		search_filters = { }
+	
+		completion_reward = {
+			add_political_power = 150
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	shared_focus = {
+		id = HKN_wiser_vote
+		icon = defence
+		cost = 5
+		x = 0
+		y = 2
+			
+		available = {
+			is_subject = yes
+		}
+
+		prerequisite = { 
+			focus = HKN_press_the_independent_faction
+		}
+
+		prerequisite = { 
+			focus = HKN_decrease_foreign_judges
+		}
+
+		relative_position_id = HKN_protected_for_empire
+		
+		search_filters = { }
+	
+		completion_reward = {
+			add_ideas = HKN_opposition_suppression
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	shared_focus = {
+		id = HKN_dissolution_of_evil_party
+		icon = dangerous_deal
+		cost = 5
+		x = -2
+		y = 3
+			
+		available = {
+			is_subject = yes
+		}
+
+		prerequisite = { 
+			focus = HKN_wiser_vote
+		}
+
+		relative_position_id = HKN_protected_for_empire
+		
+		search_filters = { }
+	
+		completion_reward = {
+			add_popularity = { ideology = social_liberal popularity = -0.03 }
+			add_popularity = { ideology = communist popularity = 0.03 }
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	shared_focus = {
+		id = HKN_choice_for_HK_s_security
+		icon = AIN_thoughtcrime
+		cost = 5
+		x = 0
+		y = 3
+			
+		available = {
+			is_subject = yes
+		}
+
+		prerequisite = { 
+			focus = HKN_wiser_vote
+		}
+
+		relative_position_id = HKN_protected_for_empire
+		
+		search_filters = { }
+	
+		completion_reward = {
+			add_ideas = HKN_strong_legal_system
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	
+	shared_focus = {
+		id = HKN_free_city
+		icon = major_alliance
+		cost = 5
+		x = 2
+		y = 1
+			
+		available = {
+			is_subject = no
+		}
+
+		prerequisite = { 
+			focus = HKN_our_future
+		}
+
+		relative_position_id = HKN_our_future
+		
+		search_filters = { }
+	
+		completion_reward = {
+			add_war_support = 0.1
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	shared_focus = {
+		id = HKN_international_exchange_of_knowledge
+		icon = research
+		cost = 5
+		x = -1
+		y = 1
+			
+		available = {
+			is_subject = no
+		}
+
+		prerequisite = { 
+			focus = HKN_free_city
+		}
+
+		relative_position_id = HKN_free_city
+		
+		search_filters = { }
+	
+		completion_reward = {
+			add_tech_bonus = {
+				name = industrial_bonus
+				bonus = 1.0
+				uses = 1
+				category = industry
+			}
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	shared_focus = {
+		id = HKN_cultural_development
+		icon = JAP_camera_focus
+		cost = 5
+		x = -1
+		y = 3
+			
+		available = {
+			is_subject = no
+		}
+
+		prerequisite = { 
+			focus = HKN_international_exchange_of_knowledge
+		}
+
+		relative_position_id = HKN_free_city
+		
+		search_filters = { }
+	
+		completion_reward = {
+			add_political_power = 150
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	shared_focus = {
+		id = HKN_elimination_of_pro_china_factions
+		icon = attack_china
+		cost = 5
+		x = 1
+		y = 1
+			
+		available = {
+			is_subject = no
+		}
+
+		prerequisite = { 
+			focus = HKN_free_city
+		}
+
+		relative_position_id = HKN_free_city
+		
+		search_filters = { }
+	
+		completion_reward = {
+			add_popularity = { ideology = nationalist popularity = -1 }
+			add_popularity = { ideology = communist popularity = -1 }
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	shared_focus = {
+		id = HKN_commonwealth_accession
+		icon = align_to_england
+		cost = 5
+		x = 0
+		y = 2
+			
+		available = {
+			is_subject = no
+		}
+
+		prerequisite = { 
+			focus = HKN_free_city
+		}
+
+		mutually_exclusive = {
+			focus = HKN_declaration_of_international_free_city
+		}
+
+		relative_position_id = HKN_free_city
+		
+		search_filters = { }
+	
+		completion_reward = {
+			add_ideas = { commonwealth_of_nations_member }
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	shared_focus = {
+		id = HKN_declaration_of_international_free_city
+		icon = constitution
+		cost = 5
+		x = 2
+		y = 2
+			
+		available = {
+			is_subject = no
+		}
+
+		prerequisite = { 
+			focus = HKN_free_city
+		}
+
+		mutually_exclusive = {
+			focus = HKN_commonwealth_accession
+		}
+
+		relative_position_id = HKN_free_city
+		
+		search_filters = { }
+	
+		completion_reward = {
+			add_stability = 0.1
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	shared_focus = {
+		id = HKN_long_live_democracy
+		icon = democracy
+		cost = 5
+		x = 1
+		y = 3
+			
+		available = {
+			is_subject = no
+		}
+
+		prerequisite = { 
+			focus = HKN_elimination_of_pro_china_factions
+		}
+
+		relative_position_id = HKN_free_city
+		
+		search_filters = { }
+	
+		completion_reward = {
+			add_ideas = HKN_Free_Hong_Kong
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}

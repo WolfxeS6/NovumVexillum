@@ -1,0 +1,975 @@
+focus_tree = {
+	id = wa_focus
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			original_tag = WAS
+		}
+	}
+
+	shared_focus = WAS_de_facto_independent_state
+
+	continuous_focus_position = { x = 10 y = 850 }
+}
+### search_filters = {FOCUS_FILTER_POLITICAL}
+### search_filters = {FOCUS_FILTER_RESEARCH}
+### search_filters = {FOCUS_FILTER_INDUSTRY}
+### search_filters = {FOCUS_FILTER_STABILITY}
+### search_filters = {FOCUS_FILTER_WAR_SUPPORT}
+### search_filters = {FOCUS_FILTER_MANPOWER}
+### search_filters = {FOCUS_FILTER_ANNEXATION}
+### search_filters = {FOCUS_FILTER_SOV_POLITICAL_PARANOIA}
+### search_filters = {FOCUS_FILTER_PROPAGANDA}
+### search_filters = {FOCUS_FILTER_ARMY_XP}
+### search_filters = {FOCUS_FILTER_NAVY_XP}
+### search_filters = {FOCUS_FILTER_AIR_XP}
+### search_filters = {FOCUS_FILTER_ITA_MISSIOLINI}
+### search_filters = {FOCUS_FILTER_BALANCE_OF_POWER}
+
+	shared_focus = {
+		id = WAS_de_facto_independent_state
+		icon = PRC_end_of_democracy_in_the_party
+		x = 6
+		y = 0
+		cost = 10
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		search_filters = {FOCUS_FILTER_POLITICAL}
+
+		completion_reward = {
+			add_political_power = 150
+
+			WAS_Bao_Youxiang = {
+				add_field_marshal_role = {
+					traits = {
+						media_personality old_guard politically_connected trait_reckless
+					}
+					skill = 1
+					attack_skill = 1
+					defense_skill = 1
+					planning_skill = 1
+					logistics_skill = 1
+				}
+			}
+
+			custom_effect_tooltip = WAS_approach_the_young_officers_tt
+			hidden_effect = {
+				create_corps_commander = {
+					traits = { trait_reckless }
+					id = -1 #communist general 1
+					attack_skill = 1
+					defense_skill = 4
+					planning_skill = 3
+					logistics_skill = 2
+					skill = 3
+				}
+			}
+			hidden_effect = {
+				create_corps_commander = {
+					traits = { trait_mountaineer }
+					id = -1 #communist general 2
+					attack_skill = 2
+					defense_skill = 2
+					planning_skill = 1
+					logistics_skill = 2
+					skill = 2
+				}
+			}
+			hidden_effect = {
+				create_corps_commander = {
+					traits = { }
+					id = -1 #communist general 3
+					attack_skill = 4
+					defense_skill = 1
+					planning_skill = 3
+					logistics_skill = 3
+					skill = 3
+				}
+			}
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = WAS_true_leader_of_myanmar
+		icon = PRC_old_posters
+		x = -4
+		y = 1
+		cost = 5
+
+		prerequisite = { 
+			focus = WAS_de_facto_independent_state 
+		}
+
+		available = {
+			is_puppet_of = PRC
+			WAS_aggressive_plan = yes
+		}
+		
+		relative_position_id = WAS_de_facto_independent_state
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_STABILITY }
+	
+		completion_reward = {
+			add_war_support = 0.03
+			add_stability = 0.03
+			add_political_power = 25
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = WAS_factory_for_revolution
+		icon = PRC_make_ammunition
+		x = -1
+		y = 1
+		cost = 10
+
+		available = {
+			is_puppet_of = PRC
+			WAS_aggressive_plan = yes
+		}
+
+		prerequisite = { 
+			focus = WAS_true_leader_of_myanmar 
+		}
+		
+		relative_position_id = WAS_true_leader_of_myanmar
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			capital_scope = {
+				limit = {
+					is_core_of = ROOT
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = arms_factory
+						level = 2
+						instant_build = yes
+					}
+			}
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = WAS_stockpile_of_weapons
+		icon = PRC_equipment_for_soldiers
+		x = 1
+		y = 1
+		cost = 10
+
+		available = {
+			is_puppet_of = PRC
+			WAS_aggressive_plan = yes
+		}
+
+		prerequisite = { 
+			focus = WAS_true_leader_of_myanmar 
+		}
+		
+		relative_position_id = WAS_true_leader_of_myanmar
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = {  }
+
+		completion_reward = {
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = 1000
+				producer = PRC
+			}
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = WAS_territorial_dispute
+		icon = PRC_red_army
+		x = 0
+		y = 2
+		cost = 10
+
+		available = {
+			is_puppet_of = PRC
+			WAS_aggressive_plan = yes
+		}
+
+		prerequisite = { 
+			focus = WAS_stockpile_of_weapons
+		}
+
+		prerequisite = { 
+			focus = WAS_factory_for_revolution
+		}
+		
+		relative_position_id = WAS_true_leader_of_myanmar
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+
+		completion_reward = {
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = WAS_government_declaration
+		icon = PRC_puppet_government
+		x = 0
+		y = 3
+		cost = 10
+
+		available = {
+			is_puppet_of = PRC
+			country_exists = BRM
+			NOT = { is_in_faction_with = BRM }
+			WAS_aggressive_plan = yes
+		}
+
+		bypass = {
+			OR = {
+				has_war_with = BRM
+				NOT = { country_exists = BRM }
+				owns_state = 288
+			}
+		}
+
+		prerequisite = { 
+			focus = WAS_territorial_dispute
+		}
+		
+		relative_position_id = WAS_true_leader_of_myanmar
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+
+		completion_reward = {
+			hidden_effect = {
+				every_state = {
+					limit = {
+						is_owned_by = BRM
+					}
+					ROOT = { 
+						add_state_claim = PREV 
+						set_state_flag = WAS_want_this_state
+					}
+				}
+			}
+		}
+		
+		ai_will_do = {
+			base = 3
+		}
+	}
+
+	shared_focus = {
+		id = WAS_ask_china
+		icon = PRC_Immortal_CCP
+		x = -2
+		y = 2
+		cost = 10
+
+		available = {
+			is_puppet_of = PRC
+			WAS_aggressive_plan = yes
+		}
+
+		prerequisite = { 
+			focus = WAS_stockpile_of_weapons
+		}
+
+		prerequisite = { 
+			focus = WAS_factory_for_revolution
+		}
+		
+		relative_position_id = WAS_true_leader_of_myanmar
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+
+		completion_reward = {
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = WAS_maintaining_the_status_quo
+		icon = PRC_railway
+		x = 0
+		y = 1
+		cost = 10
+
+		available = {
+			is_puppet_of = PRC
+		}
+
+		prerequisite = { 
+			focus = WAS_de_facto_independent_state 
+		}
+		
+		relative_position_id = WAS_de_facto_independent_state
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			1257 = { #pangkham
+				if = {
+					limit = { is_controlled_by = ROOT }
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			1260 = { #mongla
+				if = {
+					limit = { is_controlled_by = ROOT }
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			1259 = { #kongla
+				if = {
+					limit = { is_controlled_by = ROOT }
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			1258 = { #wa hoong
+				if = {
+					limit = { is_controlled_by = ROOT }
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = WAS_more_militias
+		icon = PRC_railway
+		x = 0
+		y = 1
+		cost = 10
+
+		available = {
+			is_puppet_of = PRC
+		}
+
+		prerequisite = { 
+			focus = WAS_maintaining_the_status_quo 
+		}
+		
+		relative_position_id = WAS_maintaining_the_status_quo
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_MANPOWER }
+
+		completion_reward = {
+
+			hidden_effect = {
+				if = {
+					# no cheat
+					limit = { has_template = "Red Brigade" }
+					delete_unit_template_and_units = { division_template = "Militia" disband = yes }
+				}
+			}
+
+			division_template = { 
+				name = "Red Brigade" 
+				division_names_group = PRC_INF_01 #TODO_Manu
+
+				regiments = { 
+					infantry = { x = 0 y = 0 }
+					infantry = { x = 0 y = 1 }
+					infantry = { x = 0 y = 2 }
+					infantry = { x = 1 y = 0 }
+					infantry = { x = 1 y = 1 }
+					infantry = { x = 1 y = 2 }
+				}
+				support = {
+				}
+			}
+
+			capital_scope = {
+				create_unit = {
+					division = "division_template = \"Red Brigade\" start_experience_factor = 0.5 start_equipment_factor = 1.0"
+					owner = ROOT
+					count = 3
+				}
+			}
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = WAS_investment_in_light_industry
+		icon = PRC_getting_rich_first
+		x = -1
+		y = 2
+		cost = 10
+
+		available = {
+			is_puppet_of = PRC
+		}
+
+		prerequisite = { 
+			focus = WAS_more_militias 
+		}
+		
+		relative_position_id = WAS_maintaining_the_status_quo
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+
+			capital_scope = {
+				limit = {
+					is_core_of = ROOT
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = WAS_judiciary_reforms
+		icon = PRC_unnecessary_manpower_reduction
+		x = -1
+		y = 3
+		cost = 10
+
+		available = {
+			is_puppet_of = PRC
+		}
+
+		prerequisite = { 
+			focus = WAS_investment_in_light_industry
+		}
+		
+		relative_position_id = WAS_maintaining_the_status_quo
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_STABILITY }
+
+		completion_reward = {
+			add_stability = 0.1
+
+			remove_ideas = WAS_ineffective_bureaucracy_warlord
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = WAS_land_reform
+		icon = PRC_the_farmers
+		x = 1
+		y = 2
+		cost = 10
+
+		available = {
+			is_puppet_of = PRC
+		}
+
+		prerequisite = { 
+			focus = WAS_more_militias 
+		}
+		
+		relative_position_id = WAS_maintaining_the_status_quo
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			capital_scope = {
+				add_extra_state_shared_building_slots = 2
+			}
+
+			add_ideas = { WAS_land_reform_idea }
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = WAS_education_for_children
+		icon = PRC_Education
+		x = 1
+		y = 3
+		cost = 10
+
+		available = {
+			is_puppet_of = PRC
+		}
+
+		prerequisite = { 
+			focus = WAS_land_reform 
+		}
+		
+		relative_position_id = WAS_maintaining_the_status_quo
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_RESEARCH }
+
+		completion_reward = {
+			add_research_slot = 1
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = WAS_the_triumph_of_maoism
+		icon = PRC_maoists
+		x = 0
+		y = 4
+		cost = 10
+
+		available = {
+			NOT = { country_exists = BRM }
+			owns_state = 288
+		}
+
+		prerequisite = { 
+			focus = WAS_judiciary_reforms 
+			focus = WAS_education_for_children 
+			focus = WAS_government_declaration 
+			focus = WAS_war_on_myanmar 
+		}
+		
+		relative_position_id = WAS_maintaining_the_status_quo
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+
+		completion_reward = {
+			
+			if = {
+				limit = {
+					AND = {
+						has_dlc = "Together for Victory"
+						is_puppet_of = PRC
+					}
+				}
+				PRC = { set_autonomy = { target = ROOT autonomy_state = autonomy_tributary_state } }
+			}
+
+			load_focus_tree = generic_focus
+			set_cosmetic_tag = WAS_united
+
+			swap_ruler_traits = {
+				remove = cornered_fox
+				add = revolutionary_general
+			}
+			remove_ideas = WAS_embrace_the_opium_trade
+			
+			set_global_flag = WA_united_flag
+		}
+		
+		ai_will_do = {
+			base = 100
+		}
+	}
+
+	#shared_focus = {
+	#	id = WAS_opium_for_survival
+	#	icon = PRC_abolition_of_the_hukou
+	#	x = 3
+	#	y = 2
+	#	cost = 10
+#
+#		prerequisite = { 
+#			focus = WAS_maintaining_the_status_quo 
+#			focus = WAS_independence
+#		}
+#
+#		available = {
+#		}
+#		
+#		relative_position_id = WAS_de_facto_independent_state
+#	
+#		cancel_if_invalid = yes
+#		continue_if_invalid = no
+#		available_if_capitulated = no
+#
+#		search_filters = { FOCUS_FILTER_POLITICAL }
+#	
+#		completion_reward = {
+#		}
+#		
+#		ai_will_do = {
+#			base = 5
+#		}
+#	}
+
+	shared_focus = {
+		id = WAS_independence
+		icon = PRC_break_chain
+		x = 6
+		y = 1
+		cost = 10
+
+		prerequisite = { 
+			focus = WAS_de_facto_independent_state 
+		}
+
+		available = {
+			is_puppet = no
+		}
+		
+		relative_position_id = WAS_de_facto_independent_state
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
+	
+		completion_reward = {
+			add_popularity = {
+				ideology = communist 
+				popularity = -0.15
+			}
+
+			add_war_support = -0.03
+			add_stability = -0.03
+			add_political_power = -50
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = WAS_fortification_of_the_land
+		icon = PRC_army_in_defence
+		x = -1
+		y = 1
+		cost = 10
+
+		prerequisite = { 
+			focus = WAS_independence 
+		}
+
+		available = {
+			is_puppet = no
+		}
+		
+		relative_position_id = WAS_independence
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+
+		completion_reward = {
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = WAS_emergency_hand_made_weapon
+		icon = PRC_equipment_for_soldiers
+		x = -1
+		y = 3
+		cost = 10
+
+		prerequisite = { 
+			focus = WAS_fortification_of_the_land
+		}
+
+		available = {
+			is_puppet = no
+		}
+		
+		relative_position_id = WAS_independence
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = {  }
+
+		completion_reward = {
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = 1000
+				producer = PRC
+			}
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = WAS_emergency_tax
+		icon = PRC_three_hand
+		x = 2
+		y = 1
+		cost = 10
+
+		prerequisite = { 
+			focus = WAS_independence 
+		}
+
+		available = {
+			is_puppet = no
+		}
+		
+		relative_position_id = WAS_independence
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	
+		completion_reward = {
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = WAS_surrender_to_myanmar
+		icon = PRC_be_hard_on_our_wicked_son
+		x = 1
+		y = 2
+		cost = 10
+		mutually_exclusive = { focus = WAS_fight_for_our_freedom }
+
+		prerequisite = { 
+			focus = WAS_emergency_tax
+		}
+
+		available = {
+			is_puppet = no
+			country_exists = BRM
+		}
+		
+		relative_position_id = WAS_independence
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	
+		completion_reward = {
+			custom_effect_tooltip = GAME_OVER_TT
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = WAS_fight_for_our_freedom
+		icon = PRC_grand_compromise_in_congress
+		x = 3
+		y = 2
+		cost = 10
+		mutually_exclusive = { focus = WAS_surrender_to_myanmar }
+
+		prerequisite = { 
+			focus = WAS_emergency_tax
+		}
+
+		available = {
+			is_puppet = no
+		}
+		
+		relative_position_id = WAS_independence
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
+	
+		completion_reward = {
+			add_war_support = 0.15
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = WAS_war_on_myanmar
+		icon = PRC_red_army
+		x = 2
+		y = 3
+		cost = 10
+
+		prerequisite = { 
+			focus = WAS_fight_for_our_freedom
+		}
+
+		available = {
+			is_puppet = no
+			country_exists = BRM
+			NOT = { is_in_faction_with = BRM }
+		}
+
+		bypass = {
+			OR = {
+				has_war_with = BRM
+				NOT = { country_exists = BRM }
+				owns_state = 288
+			}
+		}
+		
+		relative_position_id = WAS_independence
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	
+		completion_reward = {
+			create_wargoal = {
+				type = annex_everything
+				target = BRM
+			}
+
+			hidden_effect = {
+				every_state = {
+					limit = {
+						is_owned_by = BRM
+					}
+					ROOT = { 
+						add_state_claim = PREV 
+						set_state_flag = WAS_want_this_state
+					}
+				}
+			}
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}

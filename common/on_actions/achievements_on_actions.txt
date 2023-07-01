@@ -11,4 +11,24 @@ on_actions = {
 			
 		}
 	}
+	
+	on_operative_death = {
+		effect = {
+			# SCOPE  the operative
+			# ROOT   the killer country (optional)
+			# FROM   the country the operative is operating for
+			if = {
+				limit = {
+					FROM = {
+						ROOT = { is_ai = no }
+						original_tag = JAP
+					}
+				}
+				set_global_flag = ninja_slayer_flag
+			}
+			else = {
+				# other cause of death
+			}
+		}
+	}
 }

@@ -1,0 +1,41 @@
+improve_welfare = {
+    if = {
+        limit = {
+            has_idea = welfare_none
+        }
+        swap_ideas = {
+            remove_idea = welfare_none
+            add_idea = welfare_basic_subsidies
+        }
+    }
+    else_if = {
+        limit = {
+            has_idea = welfare_basic_subsidies
+        }
+        swap_ideas = {
+            remove_idea = welfare_basic_subsidies
+            add_idea = welfare_modest_assistance
+        }
+    }
+    else_if = {
+        limit = {
+            has_idea = welfare_modest_assistance
+        }
+        swap_ideas = {
+            remove_idea = welfare_modest_assistance
+            add_idea = welfare_considerable_assistance
+        }
+    }
+    else_if = {
+        limit = {
+            has_idea = welfare_considerable_assistance
+        }
+        swap_ideas = {
+            remove_idea = welfare_considerable_assistance
+            add_idea = welfare_universal_basic_income
+        }
+    }
+    else = {
+        add_stability = 0.05
+    }
+}

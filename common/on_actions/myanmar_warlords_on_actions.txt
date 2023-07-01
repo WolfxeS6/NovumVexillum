@@ -1,0 +1,72 @@
+on_actions = {
+	
+	#on_state_control_changed = {
+	#	#Soviet - Checking for Kyiv falling for overnight test.
+	#	effect = {
+	#		if = {
+	#			limit = {
+	#				FROM.FROM = {
+	#					state = 202
+	#				}
+	#				FROM = {
+	#					original_tag = SOV
+	#				}
+	#				ROOT = { 
+	#					NOT = { original_tag = SOV }
+	#				}
+	#			}
+	#			set_global_flag = kyiv_is_lost
+	#		}
+	#	}
+	#}
+	
+	# ROOT is capitulated country, FROM is winner
+	on_capitulation = {
+		effect = {
+			if = { # If SPD lost the SCW but their allies thereafter win it
+				limit = {
+					original_tag = BRM
+					has_war_with = WAS
+				}
+				
+				WAS = { 
+					white_peace = BRM
+					
+					annex_country = {
+						target = BRM
+						transfer_troops = no
+					}
+					hidden_effect = {
+						news_event = { id = wa_state_news.2 }
+					}
+				}
+			}
+		}
+		effect = {
+			if = { # If SPD lost the SCW but their allies thereafter win it
+				limit = {
+					original_tag = WAS
+					has_war_with = BRM
+				}
+				
+				BRM = { 
+					white_peace = WAS 
+					if = {
+						limit = { WAS = { is_puppet_of = PRC } }
+						white_peace = PRC
+					}
+					
+					annex_country = {
+						target = WAS
+						transfer_troops = no
+					}
+					hidden_effect = {
+						news_event = { id = wa_state_news.3 }
+					}
+				}
+			}
+		}
+	}
+	
+	
+}

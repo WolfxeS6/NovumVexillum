@@ -1,0 +1,252 @@
+
+PRC_new_china_plan = {
+	initial_value = -1
+	left_side = PRC_new_china_plan_zero	
+	right_side = PRC_new_china_plan_end	
+	decision_category = PRC_new_china_plan_decision_category
+
+	### Neutral status
+	range = {
+		id = PRC_new_china_plan_zero_100
+		min = -0.10
+		max = 0.10
+		modifier = {
+		}
+		on_activate = {
+
+		}
+		on_deactivate = {
+			
+		}
+	}
+	
+	### PRK_theocracy_power
+	side = {
+		id = PRC_new_china_plan_zero	
+		icon = GFX_bop_PRC_centre_non_win
+
+		range = {
+			id = PRC_new_china_plan_zero_10
+			min = -1
+			max = -0.9
+			
+			modifier = {
+			}
+			
+			on_activate = {
+			}
+			on_deactivate = {
+				
+			}
+		}
+
+		range = {
+			id = PRC_new_china_plan_zero_50
+			min = -0.9
+			max = -0.5
+			
+			modifier = {
+			}
+			
+			on_activate = {
+				country_event = { id = pr_china.26 }
+				
+			}
+			on_deactivate = {
+				
+			}
+		}
+
+		range = {
+			id = PRC_new_china_plan_zero_90
+			min = -0.5
+			max = -0.1
+			
+			modifier = {
+				war_support_factor = 0.05
+				research_speed_factor = -0.05
+			}
+			
+			on_activate = {
+				
+			}
+			on_deactivate = {
+				
+			}
+		}
+	}
+	
+	side = {
+		id = PRC_new_china_plan_end	
+		icon = GFX_bop_PRC_centre_win
+
+		range = {
+			id = PRC_new_china_plan_zero_150
+			min = 0.1
+			max = 0.5
+			modifier = {
+				trade_laws_cost_factor = -0.1 #Good
+				mobilization_laws_cost_factor = -0.1 #Good
+				economy_cost_factor = -0.1 #Good
+			}
+			
+			on_activate = {
+				country_event = { id = pr_china.27 }
+			}
+			on_deactivate = {
+				
+			}
+		}
+
+		range = {
+			id = PRC_new_china_plan_zero_190
+			min = 0.5
+			max = 0.9
+			modifier = {
+				trade_laws_cost_factor = -0.20 #Good
+				mobilization_laws_cost_factor = -0.20 #Good
+				economy_cost_factor = -0.20 #Good
+				equipment_conversion_speed = -0.05 #Bad
+				production_speed_buildings_factor = 0.075 #Good
+			}
+			on_activate = {
+				
+			}
+			on_deactivate = {
+				
+			}
+		}
+
+		range = {
+			id = PRC_new_china_plan_zero_200
+			min = 0.9
+			max = 1
+			modifier = {
+				trade_laws_cost_factor = -0.3 #Good
+				mobilization_laws_cost_factor = -0.3 #Good
+				economy_cost_factor = -0.3 #Good
+				equipment_conversion_speed = -0.05 #Bad
+				production_speed_buildings_factor = 0.1 #Good
+				training_time_factor = 0.05 #Bad
+			}
+			on_activate = {
+				country_event = { id = pr_china.28 }
+			}
+			on_deactivate = {
+			}
+		}
+	}
+	
+}
+
+
+PRC_coup_plan = {
+	initial_value = -1
+	left_side = PRC_coup_plan_zero	
+	right_side = PRC_coup_plan_end	
+	decision_category = PRC_coup_plan_decision_category
+	
+	### PRK_theocracy_power
+	side = {
+		id = PRC_coup_plan_zero	
+		icon = GFX_bop_PRC_revolt_start
+
+		range = {
+			id = PRC_coup_plan_1
+			min = -1
+			max = -0.8
+			
+			modifier = {
+				stability_factor = -0.03
+			}
+			
+			on_activate = {
+			}
+			on_deactivate = {
+				
+			}
+		}
+
+		range = {
+			id = PRC_coup_plan_2
+			min = -0.8
+			max = -0.3
+			
+			modifier = {
+				stability_factor = -0.05
+				political_power_factor = -0.05
+			}
+			
+			on_activate = {
+				country_event = { id = pr_china.19 }
+			}
+			
+			on_deactivate = {
+				
+			}
+		}
+		
+	}
+
+	### Neutral status
+	range = {
+		id = PRC_coup_plan_3
+		min = -0.30
+		max = 0.30
+		modifier = {
+			stability_factor = -0.1
+			political_power_factor = -0.1
+		}
+		on_activate = {
+				country_event = { id = pr_china.20 }
+		}
+		on_deactivate = {
+			
+		}
+	}
+	
+	side = {
+		id = PRC_coup_plan_end	
+		icon = GFX_bop_PRC_revolt_end
+
+		range = {
+			id = PRC_coup_plan_4
+			min = 0.3
+			max = 0.8
+			modifier = {
+				stability_factor = -0.15
+				political_power_factor = -0.2
+			}
+			
+			on_activate = {
+				if = {
+					limit = { has_completed_focus = PRC_the_right_opposition }
+					country_event = { id = pr_china.21 }
+				}
+				else = {
+					country_event = { id = pr_china.22 }
+				}
+			}
+			on_deactivate = {
+				
+			}
+		}
+
+		range = {
+			id = PRC_coup_plan_5
+			min = 0.8
+			max = 1.0
+			modifier = {
+				stability_factor = -0.2
+				political_power_factor = -0.5
+			}
+			on_activate = {
+				country_event = { id = pr_china.23 }
+			}
+			on_deactivate = {
+				
+			}
+		}
+	}
+	
+}

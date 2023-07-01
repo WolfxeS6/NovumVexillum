@@ -4,7 +4,7 @@
 ##BMP2　機関砲
 
 entity = {
-	name = "light_armor_entity"
+	name = "geo_bmp2_entity"
 	pdxmesh = "geo_bmp2_mesh"
 	
 	state = { name = "idle"				animation = "idle"   animation_blend_time = 0.3 }
@@ -55,7 +55,7 @@ entity = {
 
 entity = {
 	name = "geo_bmp1_entity"
-	pdxmesh = "geo_AFG_bmp1_mesh"
+	pdxmesh = "geo_bmp1_mesh"
 	
 	state = { name = "idle"				animation = "idle"   animation_blend_time = 0.3 }
 	state = { name = "move"				animation = "move"   animation_blend_time = 0.3 
@@ -93,6 +93,47 @@ entity = {
 	}
 }
 
+##BMP3汎用
+entity = {
+	name = "geo_bmp3_entity"
+	pdxmesh = "geo_bmp3_mesh"
+	
+	state = { name = "idle"				animation = "idle"   animation_blend_time = 0.3 }
+	state = { name = "move"				animation = "move"   animation_blend_time = 0.3 
+		event = { time = 0 node="exhaust" particle = "tank_exhaust_particle"  keep_particle = no trigger_once = yes } 
+		event = { time = 0 node="left_wheel" particle = "tank_moving_tracks_particle"  keep_particle = no trigger_once = yes}
+		event = { time = 0 node="right_wheel" particle = "tank_moving_tracks_particle"  keep_particle = no trigger_once = yes}
+		event = { trigger_once = yes sound = { soundeffect = "tank_engine_light_move" } }
+	}
+	state = { name = "retreat"				animation = "move"   animation_blend_time = 0.3 
+		event = { time = 0 node="exhaust" particle = "tank_exhaust_particle"  keep_particle = no trigger_once = yes } 
+		event = { time = 0 node="left_wheel" particle = "tank_moving_tracks_particle"  keep_particle = no trigger_once = yes}
+		event = { time = 0 node="right_wheel" particle = "tank_moving_tracks_particle"  keep_particle = no trigger_once = yes}
+		event = { trigger_once = yes sound = { soundeffect = "tank_engine_light_move" } }
+	}
+	state = { name = "attack"			animation = "attack_30mm" animation_blend_time = 0.3 
+		event = { time = 0 node="barrel" particle = "light_tank_attack_barrel_particle" keep_particle = yes sound = { soundeffect = light_armour_fire } }  
+		event = { time = 0 node="barrel" particle = "light_tank_attack_barrel_smoke_particle"  keep_particle = yes sound = { soundeffect = light_armour_fire } } 
+		event = { time = 0.41 node="barrel" particle = "light_tank_attack_barrel_particle" keep_particle = yes sound = { soundeffect = light_armour_fire } }  
+		event = { time = 0.41 node="barrel" particle = "light_tank_attack_barrel_smoke_particle"  keep_particle = yes sound = { soundeffect = light_armour_fire } } 
+		event = { time = 0.83 node="barrel" particle = "light_tank_attack_barrel_particle" keep_particle = yes sound = { soundeffect = light_armour_fire } }  
+		event = { time = 0.83 node="barrel" particle = "light_tank_attack_barrel_smoke_particle"  keep_particle = yes sound = { soundeffect = light_armour_fire } } 
+	}
+	state = { name = "defend"			animation = "attack_100mm" animation_blend_time = 0.3 
+		event = { time = 0 node="barrel2" particle = "light_tank_attack_barrel_particle"  keep_particle = yes sound = { soundeffect = light_armour_fire } } 
+		event = { time = 0 node="barrel2" particle = "light_tank_attack_barrel_smoke_particle"  keep_particle = yes sound = { soundeffect = light_armour_fire } } 
+	}
+	state = { name = "support_attack"	animation = "attack_100mm" animation_blend_time = 0.3  
+		event = { time = 0 node="barrel2" particle = "light_tank_attack_barrel_particle"  keep_particle = yes sound = { soundeffect = light_armour_fire } } 
+		event = { time = 0 node="barrel2" particle = "light_tank_attack_barrel_smoke_particle"  keep_particle = yes sound = { soundeffect = light_armour_fire } } 
+	}
+	state = { name = "training"				animation = "idle" 			animation_blend_time = 0.3 animation_speed = 1.0
+		event = { time = 0 node="exhaust" particle = "tank_exhaust_particle"  keep_particle = no trigger_once = yes }
+	}
+	
+	scale = 1.2
+}
+
 ##歩兵戦闘車フレーム
 entity = {
 	name = "geo_ifv_frame_entity"
@@ -108,70 +149,72 @@ entity = {
 	state = { name = "move"				animation = "move" 					animation_blend_time = 0.3 animation_speed = 1.0 }
 	scale = 1
 
-	attach = { 	name = "vehicle"			vehicle = "light_armor_entity" }
+	attach = { 	name = "vehicle"			vehicle = "geo_bmp2_entity" }
 	attach = { 	name = "infantry"			infantry = "generic_western_vehicle_infantry_rifle_entity" }
 }
-
-##汎用
-
+##CV90
 entity = {
-	clone = "geo_bmp1_entity"
-	name = "BMP1_light_armor_entity"
-	pdxmesh = "geo_bmp1_mesh"
+	clone = "geo_bmp2_entity"
+	name = "geo_cv90_entity"
+	pdxmesh = "geo_cv9035_mesh"
+	scale = 1.2
+}
+entity = {
+	clone = "geo_cv90_entity"
+	name = "geo_cv9030_mk1_entity"
+	pdxmesh = "geo_cv9030_mk1_mesh"
+}
+entity = {
+	clone = "geo_cv90_entity"
+	name = "geo_cv9030_mk2_entity"
+	pdxmesh = "geo_cv9030_mk2_mesh"
 }
 
 ##アフガニスタン共和国
-
 entity = {
 	clone = "geo_bmp1_entity"
-	name = "AFG_light_armor_entity"
+	name = "AFG_ifv_entity"
 	pdxmesh = "geo_AFG_bmp1_mesh"
 }
 entity = {
 	clone = "geo_ifv_frame_entity"
 	name = "AFG_mechanized_entity"
 
-	attach = { 	name = "vehicle"			vehicle = "AFG_light_armor_entity" }
+	attach = { 	name = "vehicle"			vehicle = "AFG_ifv_entity" }
 	attach = { 	name = "infantry"			infantry = "AFG_infantry_entity" }
 }
 
 ##イラク
-
 entity = {
-	clone = "light_armor_entity"
-	name = "IRQ_light_armor_entity"
+	clone = "geo_bmp2_entity"
+	name = "IRQ_ifv_entity"
 	pdxmesh = "geo_IRA_bmp2_mesh"
 }
-
 entity = {
 	clone = "geo_ifv_frame_entity"
 	name = "IRQ_mechanized_entity"
 
-	attach = { 	name = "vehicle"			vehicle = "IRQ_light_armor_entity" }
+	attach = { 	name = "vehicle"			vehicle = "IRQ_ifv_entity" }
 	attach = { 	name = "infantry"			infantry = "IRQ_infantry_entity" }
 }
 
 ##ウクライナ
 ##歩兵戦闘車
-
 entity = {
-	clone = "light_armor_entity"
+	clone = "geo_bmp2_entity"
 	name = "geo_bmp2_UKR_entity"
 	pdxmesh = "geo_UKR_bmp2_mesh"
 }
-
 entity = {
 	clone = "geo_bmp1_entity"
 	name = "geo_bmp1_UKR_entity"
 	pdxmesh = "geo_UKR_bmp1_mesh"
 }
-
 entity = {
-	clone = "light_armor_entity"
+	clone = "geo_bmp2_entity"
 	name = "geo_bmp1u_UKR_entity"
 	pdxmesh = "geo_bmp1u_mesh"
 }
-
 ##機械化歩兵
 entity = {
 	clone = "geo_ifv_frame_entity"
@@ -180,7 +223,6 @@ entity = {
 	attach = { 	name = "vehicle"			vehicle = "geo_bmp2_UKR_entity" }
 	attach = { 	name = "infantry"			infantry = "UKR_infantry_entity" }
 }
-
 entity = {
 	clone = "geo_ifv_frame_entity"
 	name = "UKR_mechanized_0_entity"
@@ -188,7 +230,6 @@ entity = {
 	attach = { 	name = "vehicle"			vehicle = "geo_bmp1_UKR_entity" }
 	attach = { 	name = "infantry"			infantry = "UKR_infantry_0_entity" }
 }
-
 entity = {
 	clone = "geo_ifv_frame_entity"
 	name = "UKR_mechanized_1_entity"
@@ -196,7 +237,6 @@ entity = {
 	attach = { 	name = "vehicle"			vehicle = "geo_bmp1u_UKR_entity" }
 	attach = { 	name = "infantry"			infantry = "UKR_infantry_1_entity" }
 }
-
 entity = {
 	clone = "geo_ifv_frame_entity"
 	name = "UKR_mechanized_2_entity"
@@ -207,102 +247,96 @@ entity = {
 
 ##エジプト
 entity = {
-	clone = "light_armor_entity"
-	name = "EGY_light_armor_entity"
+	clone = "geo_bmp2_entity"
+	name = "EGY_ifv_entity"
 	pdxmesh = "geo_CHL_aifv_mesh"
 	scale = 1.4
 }
-
 entity = {
 	clone = "geo_ifv_frame_entity"
 	name = "EGY_mechanized_entity"
 
-	attach = { 	name = "vehicle"			vehicle = "EGY_light_armor_entity" }
+	attach = { 	name = "vehicle"			vehicle = "EGY_ifv_entity" }
 	attach = { 	name = "infantry"			infantry = "infantry_NVXGC_akm_entity" }
 }
 
 ##ギリシャ
 entity = {
 	clone = "geo_bmp1_entity"
-	name = "GRE_light_armor_entity"
+	name = "GRE_ifv_entity"
 	pdxmesh = "geo_GRE_bmp1_mesh"
 }
-
 entity = {
 	clone = "geo_ifv_frame_entity"
 	name = "GRE_mechanized_entity"
 
-	attach = { 	name = "vehicle"			vehicle = "GRE_light_armor_entity" }
+	attach = { 	name = "vehicle"			vehicle = "GRE_ifv_entity" }
 	attach = { 	name = "infantry"			infantry = "GRE_infantry_entity" }
 }
 
 ##シリア
 entity = {
-	clone = "light_armor_entity"
-	name = "SYR_light_armor_entity"
+	clone = "geo_bmp2_entity"
+	name = "SYR_ifv_entity"
 	pdxmesh = "geo_SYR_bmp2_ws_mesh"
 }
-
 entity = {
 	clone = "geo_ifv_frame_entity"
 	name = "SYR_mechanized_entity"
 
-	attach = { 	name = "vehicle"			vehicle = "SYR_light_armor_entity" }
+	attach = { 	name = "vehicle"			vehicle = "SYR_ifv_entity" }
 	attach = { 	name = "infantry"			infantry = "SYR_infantry_entity" }
 }
 
 ##チリ
 entity = {
-	clone = "light_armor_entity"
-	name = "CHL_light_armor_entity"
+	clone = "geo_bmp2_entity"
+	name = "CHL_ifv_entity"
 	pdxmesh = "geo_CHL_aifv_mesh"
 	scale = 1.4
 }
-
 entity = {
 	clone = "geo_ifv_frame_entity"
 	name = "CHL_mechanized_entity"
 
-	attach = { 	name = "vehicle"			vehicle = "CHL_light_armor_entity" }
+	attach = { 	name = "vehicle"			vehicle = "CHL_ifv_entity" }
 	attach = { 	name = "infantry"			infantry = "infantry_NVXGC_fal_entity" }
 }
 
 ##トルコ
 entity = {
-	clone = "light_armor_entity"
-	name = "TUR_light_armor_entity"
+	clone = "geo_bmp2_entity"
+	name = "TUR_ifv_entity"
 	pdxmesh = "geo_acv15_mesh"
 	scale = 1.4
 }
-
 entity = {
 	clone = "geo_ifv_frame_entity"
 	name = "TUR_mechanized_entity"
 
-	attach = { 	name = "vehicle"			vehicle = "TUR_light_armor_entity" }
+	attach = { 	name = "vehicle"			vehicle = "TUR_ifv_entity" }
 	attach = { 	name = "infantry"			infantry = "TUR_infantry_entity" }
 }
 
 ##ベルギー
 entity = {
-	clone = "light_armor_entity"
-	name = "BEL_light_armor_entity"
+	clone = "geo_bmp2_entity"
+	name = "BEL_ifv_entity"
 	pdxmesh = "geo_BEL_aifv_mesh"
 	scale = 1.4
 }
-
 entity = {
 	clone = "geo_ifv_frame_entity"
 	name = "BEL_mechanized_entity"
 
-	attach = { 	name = "vehicle"			vehicle = "BEL_light_armor_entity" }
+	attach = { 	name = "vehicle"			vehicle = "BEL_ifv_entity" }
 	attach = { 	name = "infantry"			infantry = "infantry_entity" }
 }
 
 ##オランダ
 entity = {
-	clone = "light_armor_entity"
-	name = "HOL_light_armor_entity"
+	clone = "geo_bmp2_entity"
+	name = "HOL_ifv_entity"
 	pdxmesh = "geo_ypr765_mesh"
 	scale = 1.4
 }
@@ -316,8 +350,8 @@ entity = {
 
 ##レバノン
 entity = {
-	clone = "light_armor_entity"
-	name = "LEB_light_armor_entity"
+	clone = "geo_bmp2_entity"
+	name = "LEB_ifv_entity"
 	pdxmesh = "geo_LEB_aifv_mesh"
 	scale = 1.4
 }
@@ -326,14 +360,14 @@ entity = {
 	clone = "geo_ifv_frame_entity"
 	name = "LEB_mechanized_entity"
 
-	attach = { 	name = "vehicle"			vehicle = "LEB_light_armor_entity" }
+	attach = { 	name = "vehicle"			vehicle = "LEB_ifv_entity" }
 	attach = { 	name = "infantry"			infantry = "LEB_infantry_entity" }
 }
 
 ##ボスニア
 entity = {
-	clone = "light_armor_entity"
-	name = "BOS_light_armor_entity"
+	clone = "geo_bmp2_entity"
+	name = "BOS_ifv_entity"
 	pdxmesh = "geo_m80_mesh"
 }
 
@@ -341,155 +375,158 @@ entity = {
 	clone = "geo_ifv_frame_entity"
 	name = "BOS_mechanized_entity"
 
-	attach = { 	name = "vehicle"			vehicle = "BOS_light_armor_entity" }
+	attach = { 	name = "vehicle"			vehicle = "BOS_ifv_entity" }
 	attach = { 	name = "infantry"			infantry = "BOS_infantry_entity" }
 }
 
 ##ポーランド
 entity = {
-	clone = "light_armor_entity"
-	name = "POL_light_armor_entity"
+	clone = "geo_bmp2_entity"
+	name = "POL_ifv_entity"
 	pdxmesh = "geo_rosomak_mesh"
 	scale = 1
 }
-
 entity = {
 	clone = "geo_ifv_frame_entity"
 	name = "POL_mechanized_entity"
 
-	attach = { 	name = "vehicle"			vehicle = "POL_light_armor_entity" }
+	attach = { 	name = "vehicle"			vehicle = "POL_ifv_entity" }
 	attach = { 	name = "infantry"			infantry = "POL_infantry_entity" }
 }
 
 ##スロベニア
 entity = {
-	clone = "light_armor_entity"
-	name = "SLV_light_armor_entity"
+	clone = "geo_bmp2_entity"
+	name = "SLV_ifv_entity"
 	pdxmesh = "geo_m80_mesh"
 }
-
 entity = {
 	clone = "geo_ifv_frame_entity"
 	name = "SLV_mechanized_entity"
 
-	attach = { 	name = "vehicle"			vehicle = "SLV_light_armor_entity" }
+	attach = { 	name = "vehicle"			vehicle = "SLV_ifv_entity" }
 	attach = { 	name = "infantry"			infantry = "infantry_ak47s_entity" }
 }
 
 ##スロバキア
 
 entity = {
-	clone = "POL_light_armor_entity"
-	name = "SLO_light_armor_entity"
+	clone = "POL_ifv_entity"
+	name = "SLO_ifv_entity"
 	pdxmesh = "geo_patoria_amv_ifv_mesh"
 }
-
 entity = {
 	clone = "geo_ifv_frame_entity"
 	name = "SLO_mechanized_entity"
 
-	attach = { 	name = "vehicle"			vehicle = "SLO_light_armor_entity" }
+	attach = { 	name = "vehicle"			vehicle = "SLO_ifv_entity" }
 	attach = { 	name = "infantry"			infantry = "infantry_ak47s_entity" }
 }
 
 ##クロアチア
 
 entity = {
-	clone = "light_armor_entity"
-	name = "CRO_light_armor_entity"
+	clone = "geo_bmp2_entity"
+	name = "CRO_ifv_entity"
 	pdxmesh = "geo_m80_mesh"
 }
-
 entity = {
 	clone = "geo_ifv_frame_entity"
 	name = "CRO_mechanized_entity"
 
-	attach = { 	name = "vehicle"			vehicle = "CRO_light_armor_entity" }
+	attach = { 	name = "vehicle"			vehicle = "CRO_ifv_entity" }
 	attach = { 	name = "infantry"			infantry = "infantry_ak47s_entity" }
 }
 
 ##セルビア
 
 entity = {
-	clone = "light_armor_entity"
-	name = "SER_light_armor_entity"
+	clone = "geo_bmp2_entity"
+	name = "SER_ifv_entity"
 	pdxmesh = "geo_m80_mesh"
 }
-
 entity = {
 	clone = "geo_ifv_frame_entity"
 	name = "SER_mechanized_entity"
 
-	attach = { 	name = "vehicle"			vehicle = "SER_light_armor_entity" }
+	attach = { 	name = "vehicle"			vehicle = "SER_ifv_entity" }
 	attach = { 	name = "infantry"			infantry = "infantry_ak47s_entity" }
 }
 
 ##マケドニア
 entity = {
-	clone = "light_armor_entity"
-	name = "FYR_light_armor_entity"
+	clone = "geo_bmp2_entity"
+	name = "FYR_ifv_entity"
 	pdxmesh = "geo_m80_mesh"
 }
-
 entity = {
 	clone = "geo_ifv_frame_entity"
 	name = "FYR_mechanized_entity"
 
-	attach = { 	name = "vehicle"			vehicle = "FYR_light_armor_entity" }
+	attach = { 	name = "vehicle"			vehicle = "FYR_ifv_entity" }
 	attach = { 	name = "infantry"			infantry = "infantry_ak47s_entity" }
 }
 
 ##オーストリア
 entity = {
-	clone = "light_armor_entity"
-	name = "AUS_light_armor_entity"
+	clone = "geo_bmp2_entity"
+	name = "AUS_ifv_entity"
 	pdxmesh = "geo_rosomak_mesh"
 	scale = 1
 }
-
 entity = {
 	clone = "geo_ifv_frame_entity"
 	name = "AUS_mechanized_entity"
 
-	attach = { 	name = "vehicle"			vehicle = "AUS_light_armor_entity" }
+	attach = { 	name = "vehicle"			vehicle = "AUS_ifv_entity" }
 	attach = { 	name = "infantry"			infantry = "AUS_infantry_entity" }
 }
 
 ##BMP2採用国
 ##フィンランド
 entity = {
-	clone = "light_armor_entity"
-	name = "FIN_light_armor_entity"
+	clone = "geo_bmp2_entity"
+	name = "FIN_ifv_entity"
 	pdxmesh = "geo_bmp2_FIN_mesh"
 }
-
+entity = {
+	clone = "geo_cv90_entity"
+	name = "geo_cv9030mk2_FIN_entity"
+	pdxmesh = "geo_cv9030_mk2_FIN_mesh"
+}
 entity = {
 	clone = "geo_ifv_frame_entity"
 	name = "FIN_mechanized_entity"
 
-	attach = { 	name = "vehicle"			vehicle = "FIN_light_armor_entity" }
+	attach = { 	name = "vehicle"			vehicle = "FIN_ifv_entity" }
+	attach = { 	name = "infantry"			infantry = "FIN_infantry_entity" }
+}
+entity = {
+	clone = "geo_ifv_frame_entity"
+	name = "FIN_mechanized_2_entity"
+
+	attach = { 	name = "vehicle"			vehicle = "geo_cv9030mk2_FIN_entity" }
 	attach = { 	name = "infantry"			infantry = "FIN_infantry_entity" }
 }
 
 ##アルメニア
 entity = {
-	clone = "light_armor_entity"
-	name = "ARM_light_armor_entity"
+	clone = "geo_bmp2_entity"
+	name = "ARM_ifv_entity"
 	pdxmesh = "geo_bmp2_ARM_mesh"
 }
-
 entity = {
 	clone = "geo_ifv_frame_entity"
 	name = "ARM_mechanized_entity"
 
-	attach = { 	name = "vehicle"			vehicle = "ARM_light_armor_entity" }
+	attach = { 	name = "vehicle"			vehicle = "ARM_ifv_entity" }
 	attach = { 	name = "infantry"			infantry = "ARM_infantry_entity" }
 }
 
 ##ナゴルノ・カラバフ
 entity = {
-	clone = "ARM_light_armor_entity"
-	name = "NGK_light_armor_entity"
+	clone = "ARM_ifv_entity"
+	name = "NGK_ifv_entity"
 }
 
 entity = {
@@ -499,8 +536,8 @@ entity = {
 
 ##グルジア
 entity = {
-	clone = "light_armor_entity"
-	name = "GEO_light_armor_entity"
+	clone = "geo_bmp2_entity"
+	name = "GEO_ifv_entity"
 	pdxmesh = "geo_bmp2_GEO_mesh"
 }
 
@@ -508,35 +545,35 @@ entity = {
 # 	clone = "geo_ifv_frame_entity"
 # 	name = "GEO_mechanized_entity"
 
-# 	attach = { 	name = "vehicle"			vehicle = "GEO_light_armor_entity" }
+# 	attach = { 	name = "vehicle"			vehicle = "GEO_ifv_entity" }
 # 	attach = { 	name = "infantry"			infantry = "GEO_infantry_entity" }
 # }
 
 ##ルーマニア
 entity = {
-	clone = "light_armor_entity"
-	name = "ROM_light_armor_entity"
+	clone = "geo_bmp2_entity"
+	name = "ROM_ifv_entity"
 }
 
 entity = {
 	clone = "geo_ifv_frame_entity"
 	name = "ROM_mechanized_entity"
 
-	attach = { 	name = "vehicle"			vehicle = "ROM_light_armor_entity" }
+	attach = { 	name = "vehicle"			vehicle = "ROM_ifv_entity" }
 	attach = { 	name = "infantry"			infantry = "ROM_infantry_entity" }
 }
 
 ##ハンガリー
 entity = {
-	clone = "light_armor_entity"
-	name = "HUN_light_armor_entity"
+	clone = "geo_bmp2_entity"
+	name = "HUN_ifv_entity"
 }
 
 entity = {
 	clone = "geo_ifv_frame_entity"
 	name = "HUN_mechanized_entity"
 
-	attach = { 	name = "vehicle"			vehicle = "HUN_light_armor_entity" }
+	attach = { 	name = "vehicle"			vehicle = "HUN_ifv_entity" }
 	attach = { 	name = "infantry"			infantry = "HUN_infantry_entity" }
 }
 ##日本
@@ -568,7 +605,7 @@ entity = {
 
 ##アルジェリア
 entity = {
-	clone = "light_armor_entity"
+	clone = "geo_bmp2_entity"
 	name = "ALG_bmp2_entity"
 	pdxmesh = "geo_bmp2_desert_mesh"
 }
@@ -578,4 +615,301 @@ entity = {
 
 	attach = { 	name = "vehicle"			vehicle = "ALG_bmp2_entity" }
 	attach = { 	name = "infantry"			infantry = "ALG_vehicle_infantry_rifle_entity" }
+}
+
+##ブラジル
+entity = {
+	clone = "geo_ifv_frame_entity"
+	name = "BRA_mechanized_entity"
+
+	attach = { 	name = "vehicle"			vehicle = "BRA_mechanized_vehicle_entity" }
+	attach = { 	name = "infantry"			infantry = "BRA_vehicle_infantry_rifle_entity" }
+}
+
+##ボリビア
+entity = {
+	clone = "geo_ifv_frame_entity"
+	name = "BOL_mechanized_entity"
+
+	attach = { 	name = "vehicle"			vehicle = "geo_m113_entity" }
+	attach = { 	name = "infantry"			infantry = "BOL_vehicle_infantry_rifle_entity" }
+}
+##ボツワナ
+entity = {
+	clone = "geo_ifv_frame_entity"
+	name = "BOT_mechanized_entity"
+
+	attach = { 	name = "vehicle"			vehicle = "geo_m113_entity" }
+	attach = { 	name = "infantry"			infantry = "BOT_vehicle_infantry_rifle_entity" }
+}
+##エルサルバドル
+entity = {
+	clone = "geo_ifv_frame_entity"
+	name = "ELS_mechanized_entity"
+
+	attach = { 	name = "vehicle"			vehicle = "geo_m113_entity" }
+	attach = { 	name = "infantry"			infantry = "BOT_vehicle_infantry_rifle_entity" }
+}
+##エストニア
+entity = {
+	clone = "geo_ifv_frame_entity"
+	name = "EST_mechanized_entity"
+
+	attach = { 	name = "vehicle"			vehicle = "geo_m113_entity" }
+	attach = { 	name = "infantry"			infantry = "EST_vehicle_infantry_rifle_entity" }
+}
+##グアテマラ
+entity = {
+	clone = "geo_ifv_frame_entity"
+	name = "GUA_mechanized_entity"
+
+	attach = { 	name = "vehicle"			vehicle = "geo_m113_entity" }
+	attach = { 	name = "infantry"			infantry = "GUA_vehicle_infantry_rifle_entity" }
+}
+##ハイチ
+entity = {
+	clone = "geo_ifv_frame_entity"
+	name = "HAI_mechanized_entity"
+
+	attach = { 	name = "vehicle"			vehicle = "geo_m113_entity" }
+	attach = { 	name = "infantry"			infantry = "HAI_vehicle_infantry_rifle_entity" }
+}
+##ホンジャラス
+entity = {
+	clone = "geo_ifv_frame_entity"
+	name = "HON_mechanized_entity"
+
+	attach = { 	name = "vehicle"			vehicle = "geo_m113_entity" }
+	attach = { 	name = "infantry"			infantry = "HON_vehicle_infantry_rifle_entity" }
+}
+##レソト
+entity = {
+	clone = "geo_ifv_frame_entity"
+	name = "LES_mechanized_entity"
+
+	attach = { 	name = "vehicle"			vehicle = "geo_m113_entity" }
+	attach = { 	name = "infantry"			infantry = "LES_vehicle_infantry_rifle_entity" }
+}
+##ニカラグア
+entity = {
+	clone = "geo_ifv_frame_entity"
+	name = "NIC_mechanized_entity"
+
+	attach = { 	name = "vehicle"			vehicle = "geo_m113_entity" }
+	attach = { 	name = "infantry"			infantry = "NIC_vehicle_infantry_rifle_entity" }
+}
+##ペルー
+entity = {
+	clone = "geo_ifv_frame_entity"
+	name = "PRU_mechanized_entity"
+
+	attach = { 	name = "vehicle"			vehicle = "geo_m113_entity" }
+	attach = { 	name = "infantry"			infantry = "PRU_vehicle_infantry_rifle_entity" }
+}
+##南アフリカ
+entity = {
+	clone = "geo_ifv_frame_entity"
+	name = "SAF_mechanized_entity"
+
+	attach = { 	name = "vehicle"			vehicle = "geo_m113_entity" }
+	attach = { 	name = "infantry"			infantry = "SAF_vehicle_infantry_rifle_entity" }
+}
+##コロンビア
+entity = {
+	clone = "geo_ifv_frame_entity"
+	name = "COL_mechanized_entity"
+
+	attach = { 	name = "vehicle"			vehicle = "geo_m113_entity" }
+	attach = { 	name = "infantry"			infantry = "COL_vehicle_infantry_rifle_entity" }
+}
+
+##モルドバ
+entity = {
+	clone = "geo_ifv_frame_entity"
+	name = "MLO_mechanized_entity"
+
+	attach = { 	name = "vehicle"			vehicle = "geo_bmp1_entity" }
+	attach = { 	name = "infantry"			infantry = "MLO_vehicle_infantry_rifle_entity" }
+}
+
+##アゼルバイジャン
+entity = {
+	clone = "geo_bmp3_entity"
+	name = "AZE_bmp3_entity"
+	pdxmesh = "geo_bmp3_desert_mesh"
+}
+entity = {
+	clone = "geo_ifv_frame_entity"
+	name = "AZE_mechanized_entity"
+
+	attach = { 	name = "vehicle"			vehicle = "AZE_bmp3_entity" }
+	attach = { 	name = "infantry"			infantry = "AZE_vehicle_infantry_rifle_entity" }
+}
+
+##キプロス
+entity = {
+	clone = "geo_bmp3_entity"
+	name = "CYP_bmp3_entity"
+	pdxmesh = "geo_bmp3_desert_mesh"
+}
+entity = {
+	clone = "geo_ifv_frame_entity"
+	name = "CYP_mechanized_entity"
+
+	attach = { 	name = "vehicle"			vehicle = "CYP_bmp3_entity" }
+	attach = { 	name = "infantry"			infantry = "GRE_vehicle_infantry_rifle_entity" }
+}
+
+##インドネシア
+entity = {
+	clone = "geo_ifv_frame_entity"
+	name = "IND_mechanized_entity"
+
+	attach = { 	name = "vehicle"			vehicle = "geo_bmp3_entity" }
+	attach = { 	name = "infantry"			infantry = "IND_vehicle_infantry_rifle_entity" }
+}
+
+##クウェート
+entity = {
+	clone = "geo_bmp3_entity"
+	name = "KUW_bmp3_entity"
+	pdxmesh = "geo_bmp3_desert_mesh"
+}
+entity = {
+	clone = "geo_ifv_frame_entity"
+	name = "KUW_mechanized_entity"
+
+	attach = { 	name = "vehicle"			vehicle = "KUW_bmp3_entity" }
+	attach = { 	name = "infantry"			infantry = "infantry_m16a2_entity" }
+}
+
+##韓国
+entity = {
+	clone = "geo_ifv_frame_entity"
+	name = "KOR_mechanized_entity"
+
+	attach = { 	name = "vehicle"			vehicle = "geo_bmp3_entity" }
+	attach = { 	name = "infantry"			infantry = "KOR_vehicle_infantry_rifle_entity" }
+}
+
+##トルクメニスタン
+entity = {
+	clone = "geo_bmp3_entity"
+	name = "TMS_bmp3_entity"
+	pdxmesh = "geo_bmp3_desert_mesh"
+}
+entity = {
+	clone = "geo_ifv_frame_entity"
+	name = "TMS_mechanized_entity"
+
+	attach = { 	name = "vehicle"			vehicle = "TMS_bmp3_entity" }
+	attach = { 	name = "infantry"			infantry = "infantry_m16a2_entity" }
+}
+
+##UAE
+entity = {
+	clone = "geo_bmp3_entity"
+	name = "UAE_bmp3_entity"
+	pdxmesh = "geo_bmp3_desert_mesh"
+}
+entity = {
+	clone = "geo_ifv_frame_entity"
+	name = "UAE_mechanized_entity"
+
+	attach = { 	name = "vehicle"			vehicle = "UAE_bmp3_entity" }
+	attach = { 	name = "infantry"			infantry = "infantry_m16a2_entity" }
+}
+
+##ベネズエラ
+entity = {
+	clone = "geo_ifv_frame_entity"
+	name = "VEN_mechanized_entity"
+
+	attach = { 	name = "vehicle"			vehicle = "geo_bmp3_entity" }
+	attach = { 	name = "infantry"			infantry = "VEN_vehicle_infantry_rifle_entity" }
+}
+
+##リビア
+entity = {
+	clone = "geo_bmp1_entity"
+	name = "geo_bmp1_LBA_entity"
+	pdxmesh = "geo_bmp1_LBA_mesh"
+}
+entity = {
+	clone = "geo_ifv_frame_entity"
+	name = "LBA_mechanized_entity"
+
+	attach = { 	name = "vehicle"			vehicle = "geo_bmp1_LBA_entity" }
+	attach = { 	name = "infantry"			infantry = "LBA_vehicle_infantry_rifle_entity" }
+}
+
+##デンマーク
+entity = {
+	clone = "geo_ifv_frame_entity"
+	name = "DEN_mechanized_entity"
+
+	attach = { 	name = "vehicle"			vehicle = "geo_cv90_entity" }
+	attach = { 	name = "infantry"			infantry = "DEN_vehicle_infantry_rifle_entity" }
+}
+##スウェーデン
+entity = {
+	clone = "geo_cv90_entity"
+	name = "geo_cv90_SWE_entity"
+	pdxmesh = "geo_cv9035_SWE_mesh"
+	scale = 1
+}
+entity = {
+	clone = "geo_ifv_frame_entity"
+	name = "SWE_mechanized_entity"
+
+	attach = { 	name = "vehicle"			vehicle = "geo_cv90_SWE_entity" }
+	attach = { 	name = "infantry"			infantry = "SWE_vehicle_infantry_rifle_entity" }
+}
+##エストニア
+entity = {
+	clone = "geo_ifv_frame_entity"
+	name = "EST_mechanized_entity"
+
+	attach = { 	name = "vehicle"			vehicle = "geo_cv90_entity" }
+	attach = { 	name = "infantry"			infantry = "EST_vehicle_infantry_rifle_entity" }
+}
+##ノルウェー
+entity = {
+	clone = "geo_ifv_frame_entity"
+	name = "NOR_mechanized_entity"
+
+	attach = { 	name = "vehicle"			vehicle = "geo_cv9030_mk1_entity" }
+	attach = { 	name = "infantry"			infantry = "NOR_vehicle_infantry_rifle_entity" }
+}
+##スイス
+entity = {
+	clone = "geo_ifv_frame_entity"
+	name = "SWI_mechanized_entity"
+
+	attach = { 	name = "vehicle"			vehicle = "geo_cv9030_mk2_entity" }
+	attach = { 	name = "infantry"			infantry = "SWI_vehicle_infantry_rifle_entity" }
+}
+##スロバキア
+entity = {
+	clone = "geo_ifv_frame_entity"
+	name = "SLO_mechanized_entity"
+
+	attach = { 	name = "vehicle"			vehicle = "geo_cv9030_mk2_entity" }
+	attach = { 	name = "infantry"			infantry = "MD4_infantry_2_entity" }
+}
+##チェコ
+entity = {
+	clone = "geo_ifv_frame_entity"
+	name = "CZE_mechanized_entity"
+
+	attach = { 	name = "vehicle"			vehicle = "geo_cv9030_mk2_entity" }
+	attach = { 	name = "infantry"			infantry = "CZE_vehicle_infantry_rifle_entity" }
+}
+##チュニジア
+entity = {
+	clone = "geo_ifv_frame_entity"
+	name = "TUN_mechanized_entity"
+
+	attach = { 	name = "vehicle"			vehicle = "geo_m113_TUN_entity" }
+	attach = { 	name = "infantry"			infantry = "TUN_vehicle_infantry_rifle_entity" }
 }

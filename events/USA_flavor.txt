@@ -80,6 +80,11 @@ country_event = {
 			factor = 2.0 
 			 ENG = { is_ai = no }
 		}
+		modifier = {
+			add = 20
+			is_historical_focus_on = yes
+			}
+		
 		}
 		add_political_power = -20
 		ENG = {
@@ -117,7 +122,11 @@ country_event = {
 		factor = 20
 			modifier = {
 			add = 30
-			 TUR = { is_ai = no }
+			ENG= { is_ai = no }
+			}
+			modifier = {
+			add = 10
+			TUR = { is_ai = no }
 			}
 			}
 		add_political_power = -125
@@ -234,11 +243,10 @@ country_event = {
     division_template = "Iraq Independent Artillery Brigade"
     disband = no
 		}
-		set_division_template_lock = {
-		division_template = "Iraq Mechanized Infantry Brigade"
-		is_locked = no
-		}
-		
+		delete_unit_template_and_units = {
+    division_template = "Iraq Mechanized Infantry Brigade"
+    disband = no
+		}		
 	}
 }
 
@@ -364,6 +372,11 @@ country_event = {
 		tag = IRQ
 		message = peace_IRQ 
 			}
+		KUR = {
+			white_peace = {
+			tag = IRQ 
+				}
+		}
 		country_event = {
 			id = USA_flavor.1
 			days = 2
@@ -455,7 +468,7 @@ country_event = {
 		white_peace = {
 		tag = IRQ
 		message = peace_IRQ 
-			}	
+			}
 
 		delete_unit_template_and_units = {
 		division_template = "Iraq Independent Artillery Brigade"
@@ -480,7 +493,7 @@ country_event = {
 			delete_unit_template_and_units = {
 		division_template = "Iraq Mechanized Infantry Brigade"
 		disband = no
-			}	
+			}		
 			
 			
 		hidden_effect = {
