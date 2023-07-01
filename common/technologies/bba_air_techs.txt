@@ -138,8 +138,8 @@ technologies = {
 			#medium_plane_naval_bomber_airframe_0
 		}
 		enable_equipment_modules = {
-			aircraft_cannon_1_1x
-			aircraft_cannon_2_1x
+			aircraft_cannon_medium_1
+			aircraft_cannon_medium_2
 		}
 		path = {
 			leads_to_tech = basic_medium_airframe
@@ -1140,17 +1140,14 @@ technologies = {
 
 		enable_equipment_modules = {
 			light_mg_2x
-			light_mg_4x
-			lmg_defense_turret
-			lmg_defense_turret_2x
-
-
-			bomb_locks
-					small_bomb_bay
-					medium_bomb_bay
-					large_bomb_bay
-					torpedo_mounting
-					heli_small_bomb_bay
+			aircraft_cannon_short_1
+			aircraft_cannon_medium_1
+			heavy_mg_2x
+			small_bomb_bay
+			rocket_pod
+			large_bomb_bay
+			torpedo_mounting
+			heli_small_bomb_bay
 		}
 		
 		research_cost = 1
@@ -1162,17 +1159,12 @@ technologies = {
 		}
 
 		path = {
-			leads_to_tech = aa_hmg
-			research_cost_coeff = 1
-		}
-
-		path = {
 			leads_to_tech = aa_cannon_1
 			research_cost_coeff = 1
 		}
 
 		path = {
-			leads_to_tech = survivability_studies
+			leads_to_tech = Cold_war_cas
 			research_cost_coeff = 1
 		}
 		
@@ -1195,15 +1187,62 @@ technologies = {
 		}
 	}
 
-	survivability_studies = {
+	Cold_war_cas = {
 
 		enable_equipment_modules = {
-			self_sealing_fuel_tanks_small
-			self_sealing_fuel_tanks_medium
-			self_sealing_fuel_tanks_large
-			armor_plate_small
-			armor_plate_medium
-			armor_plate_large
+			bomb_locks
+			medium_bomb_bay
+			tv_guided_missiles
+			heli_tv_guided_missiles
+			# self_sealing_fuel_tanks_small
+			# self_sealing_fuel_tanks_medium
+			# self_sealing_fuel_tanks_large
+			# armor_plate_small
+			# armor_plate_medium
+			# armor_plate_large
+		}
+		
+		research_cost = 1
+		start_year = 1980
+
+		folder = {
+			name = bba_air_techs_folder
+			position = { x = -1 y = @1980 }
+		}
+		path = {
+			leads_to_tech = Modern_cas
+			research_cost_coeff = 1
+		}
+		categories = {
+			air_equipment
+			plane_modules_tech
+		}
+		
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				date > "1937.1.1"
+				factor = 1.5
+			}
+			modifier = {
+				date > "1938.1.1"
+				factor = 1.5
+			}
+			modifier = {
+				date > "1939.1.1"
+				factor = 3
+			}
+			modifier = {
+				has_War = yes
+				factor = 3
+			}
+		}
+	}
+	Modern_cas = {
+
+		enable_equipment_modules = {
+			gps_guided_bomb
+			modern_cruise_missile
 		}
 		
 		research_cost = 1
@@ -1211,7 +1250,49 @@ technologies = {
 
 		folder = {
 			name = bba_air_techs_folder
-			position = { x = -2 y = @2000 }
+			position = { x = -1 y = @2000 }
+		}
+		path = {
+			leads_to_tech = Advanced_cas
+			research_cost_coeff = 1
+		}
+		categories = {
+			air_equipment
+			plane_modules_tech
+		}
+		
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				date > "1937.1.1"
+				factor = 1.5
+			}
+			modifier = {
+				date > "1938.1.1"
+				factor = 1.5
+			}
+			modifier = {
+				date > "1939.1.1"
+				factor = 3
+			}
+			modifier = {
+				has_War = yes
+				factor = 3
+			}
+		}
+	}
+	Advanced_cas = {
+
+		enable_equipment_modules = {
+			extended_range_gps_guided_bomb
+		}
+		
+		research_cost = 1
+		start_year = 2012
+
+		folder = {
+			name = bba_air_techs_folder
+			position = { x = -1 y = @2012 }
 		}
 
 		categories = {
@@ -1240,13 +1321,11 @@ technologies = {
 		}
 	}
 
-	aa_hmg = {
+	aa_cannon_1 = {
 
 		enable_equipment_modules = {
-			heavy_mg_2x
-			heavy_mg_4x
-			hmg_defense_turret
-			hmg_defense_turret_2x
+			aircraft_cannon_medium_2
+			aircraft_cannon_short_2
 		}
 		
 		research_cost = 1
@@ -1254,48 +1333,7 @@ technologies = {
 
 		folder = {
 			name = bba_air_techs_folder
-			position = { x = 0 y = @2000 }
-		}
-
-		categories = {
-			air_equipment
-			plane_modules_tech
-			cat_air_guns
-		}
-		
-		ai_will_do = {
-			factor = 1
-			modifier = {
-				OR = {
-					has_tech = basic_small_airframe
-					has_tech = basic_medium_airframe
-					has_tech = basic_large_airframe
-				}
-				factor = 5
-			}
-			modifier = {
-				OR = {
-					tag = USA
-					tag = GER
-				}
-				factor = 3
-			}
-		}
-	}
-
-	aa_cannon_1 = {
-
-		enable_equipment_modules = {
-			aircraft_cannon_1_1x
-			aircraft_cannon_1_2x
-		}
-		
-		research_cost = 1
-		start_year = 1980
-
-		folder = {
-			name = bba_air_techs_folder
-			position = { x = 2 y = @1980 }
+			position = { x = 1 y = @2000 }
 		}
 		path = {
 			leads_to_tech = aa_cannon_2
@@ -1331,18 +1369,43 @@ technologies = {
 	aa_cannon_2 = {
 
 		enable_equipment_modules = {
-			aircraft_cannon_2_1x
-			aircraft_cannon_2_2x
-			cannon_defense_turret
-			cannon_defense_turret_2x
+			aircraft_cannon_short_3
 		}
 		
 		research_cost = 1.5
-		start_year = 2006
+		start_year = 2012
 
 		folder = {
 			name = bba_air_techs_folder
-			position = { x = 2 y = @2006 }
+			position = { x = 1 y = @2012 }
+		}
+		path = {
+			leads_to_tech = aa_cannon_3
+			research_cost_coeff = 1
+		}
+		categories = {
+			air_equipment
+			plane_modules_tech
+			cat_air_guns
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	aa_cannon_3 = {
+
+		enable_equipment_modules = {
+			aircraft_cannon_medium_3
+			aircraft_cannon_short_4
+		}
+		
+		research_cost = 1.5
+		start_year = 2024
+
+		folder = {
+			name = bba_air_techs_folder
+			position = { x = 1 y = @2024 }
 		}
 
 		categories = {
