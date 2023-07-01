@@ -3,11 +3,11 @@
 @1960 = -1
 @1980 = 3
 @2000 = 7
-@2006 = 13
-@2012 = 16
+@2006 = 11
+@2012 = 15
 @2018 = 19
-@2024 = 24
-@2030 = 28
+@2024 = 23
+@2030 = 26
 
 #iw_small_airframe = cas only A-10 etc
 #Medium airframe is multirole and MPA!
@@ -568,8 +568,8 @@ technologies = {
 	iw_naval_airframe = {
 
 		enable_equipments = {
-			naval_plane_airframe_0
-			#naval_plane_maritime_patrol_plane_airframe_0_0
+			naval_bomber_plane_airframe_0
+			cv_naval_bomber_plane_airframe_0
 		}
 	
 		path = {
@@ -608,8 +608,8 @@ technologies = {
 	basic_naval_airframe = {
 
 		enable_equipments = {
-			naval_plane_airframe_1
-			#naval_plane_maritime_patrol_plane_airframe_0_1
+			naval_bomber_plane_airframe_1
+			cv_naval_bomber_plane_airframe_1
 		}
 	
 		path = {
@@ -648,8 +648,8 @@ technologies = {
 	improved_naval_airframe = {
 
 		enable_equipments = {
-			naval_plane_airframe_2
-			#naval_plane_maritime_patrol_plane_airframe_0_2
+			naval_bomber_plane_airframe_2
+			cv_naval_bomber_plane_airframe_2
 		}
 	
 		path = {
@@ -688,8 +688,8 @@ technologies = {
 	advanced_naval_airframe = {
 
 		enable_equipments = {
-			naval_plane_airframe_3
-			#naval_plane_maritime_patrol_plane_airframe_0_3
+			naval_bomber_plane_airframe_3
+			cv_naval_bomber_plane_airframe_3
 		}
 		
 		path = {
@@ -728,8 +728,8 @@ technologies = {
 	modern_naval_airframe = {
 
 		enable_equipments = {
-			naval_plane_airframe_4
-			#naval_plane_maritime_patrol_plane_airframe_0_4
+			naval_bomber_plane_airframe_4
+			cv_naval_bomber_plane_airframe_4
 		}
 		
 		research_cost = 2
@@ -738,6 +738,42 @@ technologies = {
 		folder = {
 			name = bba_air_techs_folder
 			position = { x = -1 y = @2012 }
+		}
+		path = {
+			leads_to_tech = future_naval_airframe
+			research_cost_coeff = 1
+		}
+		
+		categories = {
+			heavy_air
+			jet_technology
+			cat_strategic_bomber
+		}
+		
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				has_deployed_air_force_size = {
+					size > 500
+					type = strategic_bomber
+				}
+				factor = 4.5
+			}
+		}
+	}
+	future_naval_airframe = {
+
+		enable_equipments = {
+			naval_bomber_plane_airframe_5
+			cv_naval_bomber_plane_airframe_5
+		}
+		
+		research_cost = 2
+		start_year = 2024
+
+		folder = {
+			name = bba_air_techs_folder
+			position = { x = -1 y = @2024 }
 		}
 		
 		categories = {
