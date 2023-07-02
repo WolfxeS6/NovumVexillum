@@ -73,29 +73,17 @@ if = {
 	#varients
 	#CAS
 	create_equipment_variant = {
-		name = "Su-25" 
-		type = small_plane_airframe_1
-		modules = {
-			fixed_main_weapon_slot = heavy_mg_2x
-			fixed_auxiliary_weapon_slot_1 = medium_bomb_bay
-			engine_type_slot = engine_1_2x
-			special_type_slot_1 = empty
-		}
-	}
-	#Multirole
-	create_equipment_variant = {
-		name = "MiG-23" 
-		type = medium_plane_airframe_0
+		name = "Buccaneer" 
+		type = cv_small_plane_airframe_0
 		modules = {
 			fixed_main_weapon_slot = light_mg_2x
-			fixed_auxiliary_weapon_slot_1 = aircraft_cannon_short_1
+			fixed_auxiliary_weapon_slot_1 = tank_buster_1
 			engine_type_slot = engine_1_2x
 			special_type_slot_1 = empty
 		}
-		obsolete = yes
 	}
 	create_equipment_variant = {
-		name = "MiG-29" 
+		name = "Cheetah" 
 		type = medium_plane_airframe_1
 		modules = {
 			fixed_main_weapon_slot = light_mg_2x
@@ -104,6 +92,18 @@ if = {
 			engine_type_slot = engine_1_2x
 			special_type_slot_1 = empty
 		}
+	}
+	create_equipment_variant = {
+		name = "Mirage F1" 
+		type = medium_plane_airframe_0
+		modules = {
+			fixed_main_weapon_slot = light_mg_2x
+			fixed_auxiliary_weapon_slot_1 = aircraft_cannon_short_1
+			engine_type_slot = engine_1_2x
+			special_type_slot_1 = empty
+		}
+		obsolete = yes
+		icon = "GFX_FRA_fighter2_medium"
 	}
 }
 if = {
@@ -433,5 +433,57 @@ if = {
 			rear_1_custom_slot = empty
 		}
 		obsolete = no
+	}
+}
+
+if = {
+	limit = {
+		NOT = {has_dlc = "By Blood Alone"}
+	}
+	instant_effect = {
+
+		add_equipment_to_stockpile = {
+			type = CAS_equipment_1
+			amount = 48
+			producer = SAF
+		}
+		add_equipment_to_stockpile = {
+			type = fighter_equipment_2
+			amount = 38
+			producer = SAF
+		}
+		add_equipment_to_stockpile = {
+			type = nav_bomber_equipment_1
+			amount = 4
+			producer = SAF
+		}
+		add_equipment_to_stockpile = {
+			type = transport_plane_equipment_1
+			amount = 12
+			producer = USA
+		}
+	}
+}
+if = {
+	limit = {
+		has_dlc = "By Blood Alone"
+	}
+	add_equipment_to_stockpile = {
+		type = medium_plane_airframe_0
+		amount = 51
+		producer = SAF
+		variant_name = "Mirage F1"
+	}
+	add_equipment_to_stockpile = {
+		type = medium_plane_airframe_1
+		amount = 68
+		producer = SAF
+		variant_name = "Cheetah"
+	}
+	add_equipment_to_stockpile = {
+		type = cv_small_plane_airframe_1
+		amount = 16
+		producer = SAF
+		variant_name = "Buccaneer"
 	}
 }
