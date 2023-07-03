@@ -87,16 +87,16 @@ PRC_peasant_strike_category = {
 						TIB = {
 							is_puppet_of = ROOT
 						}
-						set_autonomy = { target = PREV autonomy_state = free }
 					}
+					release_puppet = TIB
 				}
 				if = {
 					limit = {
 						SIK = {
 							is_puppet_of = ROOT
 						}
-						set_autonomy = { target = PREV autonomy_state = free }
 					}
+					release_puppet = SIK
 				}
 			}
 			
@@ -296,9 +296,10 @@ PRC_industrialization_of_china_decisions = {
 					instant_build = yes
 				}
 			}
-			
-			limit = {
-				if = { owner = { is_subject_of = ROOT } }
+			if = {
+				limit = {
+					owner = { is_subject_of = ROOT }
+				}
 				add_resistance = 10
 			}
 		}
