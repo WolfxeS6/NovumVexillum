@@ -85,6 +85,17 @@ if = {
 		obsolete = yes
 	}
 	create_equipment_variant = {
+		name = "J-7" 
+		type = medium_plane_airframe_0
+		modules = {
+			fixed_main_weapon_slot = light_mg_2x
+			fixed_auxiliary_weapon_slot_1 = aircraft_cannon_short_1
+			engine_type_slot = engine_1_2x
+			special_type_slot_1 = empty
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = {
 		name = "MiG-29" 
 		type = medium_plane_airframe_1
 		modules = {
@@ -444,5 +455,60 @@ if = {
 			rear_1_custom_slot = empty
 		}
 		obsolete = no
+	}
+}
+if = {
+	limit = {
+		NOT = {has_dlc = "By Blood Alone"}
+	}
+	instant_effect = {
+		add_equipment_to_stockpile = {
+			type = fighter_equipment_3
+			amount = 30
+			producer = SOV
+		}
+		add_equipment_to_stockpile = {
+			type = fighter_equipment_2
+			amount = 339
+			producer = SOV
+		}
+		add_equipment_to_stockpile = {
+			type = fighter_equipment_2
+			amount = 30
+			producer = PRC
+		}
+		add_equipment_to_stockpile = {
+			type = fighter_equipment_1
+			amount = 125
+			producer = SOV
+		}
+		add_equipment_to_stockpile = {
+			type = transport_plane_equipment_1
+			amount = 6
+			producer = SOV
+		}
+	}
+}
+if = {
+	limit = {
+		has_dlc = "By Blood Alone"
+	}
+	add_equipment_to_stockpile = {
+		type = medium_plane_airframe_0
+		amount = 464
+		producer = SOV
+		variant_name = "MiG-23"
+	}
+	add_equipment_to_stockpile = {
+		type = medium_plane_airframe_0
+		amount = 30
+		producer = PRC
+		variant_name = "J-7" 
+	}
+	add_equipment_to_stockpile = {
+		type = medium_plane_airframe_1
+		amount = 30
+		producer = SOV
+		variant_name = "MiG-29"
 	}
 }
