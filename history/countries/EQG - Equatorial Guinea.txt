@@ -76,18 +76,6 @@ if = {
 			engine_type_slot = engine_1_2x
 			special_type_slot_1 = empty
 		}
-		obsolete = yes
-	}
-	create_equipment_variant = {
-		name = "MiG-29" 
-		type = medium_plane_airframe_1
-		modules = {
-			fixed_main_weapon_slot = light_mg_2x
-			fixed_auxiliary_weapon_slot_1 = aircraft_cannon_short_1
-			fixed_auxiliary_weapon_slot_2 = aircraft_cannon_medium_1
-			engine_type_slot = engine_1_2x
-			special_type_slot_1 = empty
-		}
 	}
 }
 if = {
@@ -314,3 +302,27 @@ recruit_character = EQG_gerardo_ngui
 2016.1.1 = {
 	oob = "EQG_2016"
 }
+if = {
+	limit = {
+		NOT = {has_dlc = "By Blood Alone"}
+	}
+	instant_effect = {
+		add_equipment_to_stockpile = {
+			type = CAS_equipment_2
+			amount =4
+			producer = SOV
+		}
+	}
+}
+if = {
+	limit = {
+		has_dlc = "By Blood Alone"
+	}
+	add_equipment_to_stockpile = {
+		type = small_plane_airframe_1
+		amount = 4
+		producer = SOV
+		variant_name = "Su-25"
+	}
+}
+

@@ -55,20 +55,21 @@ if = {
 		scout_plane1 = 1
 	}
 	#varients
-	#CAS
+	#Multirole
 	create_equipment_variant = {
-		name = "Su-25" 
-		type = small_plane_airframe_1
+		name = "F-5 Tiger II"
+		type = medium_plane_airframe_0
 		modules = {
-			fixed_main_weapon_slot = heavy_mg_2x
-			fixed_auxiliary_weapon_slot_1 = medium_bomb_bay
+			fixed_main_weapon_slot = light_mg_2x
+			fixed_auxiliary_weapon_slot_1 = aircraft_cannon_short_1
 			engine_type_slot = engine_1_2x
 			special_type_slot_1 = empty
 		}
+		icon = "GFX_USA_fighter1_medium"
+		obsolete = yes
 	}
-	#Multirole
 	create_equipment_variant = {
-		name = "MiG-23" 
+		name = "Mirage F1" 
 		type = medium_plane_airframe_0
 		modules = {
 			fixed_main_weapon_slot = light_mg_2x
@@ -77,17 +78,7 @@ if = {
 			special_type_slot_1 = empty
 		}
 		obsolete = yes
-	}
-	create_equipment_variant = {
-		name = "MiG-29" 
-		type = medium_plane_airframe_1
-		modules = {
-			fixed_main_weapon_slot = light_mg_2x
-			fixed_auxiliary_weapon_slot_1 = aircraft_cannon_short_1
-			fixed_auxiliary_weapon_slot_2 = aircraft_cannon_medium_1
-			engine_type_slot = engine_1_2x
-			special_type_slot_1 = empty
-		}
+		icon = "GFX_FRA_fighter2_medium"
 	}
 }
 if = {
@@ -355,5 +346,44 @@ recruit_character = MOR_mohammed_laghmari
 		name = "Saadeddine Othmani"
 		ideology = counter_progressive_democrat
 		picture = "Saadeddine_Othmani.dds"
+	}
+}
+if = {
+	limit = {
+		NOT = {has_dlc = "By Blood Alone"}
+	}
+	instant_effect = {
+		add_equipment_to_stockpile = {
+			type = fighter_equipment_1
+			amount = 23
+			producer = USA
+		}
+		add_equipment_to_stockpile = {
+			type = fighter_equipment_2
+			amount = 20
+			producer = FRA
+		}
+		add_equipment_to_stockpile = {
+			type = fighter_equipment_2
+			amount = 20
+			producer = USA
+		}
+	}
+}
+if = {
+	limit = {
+		has_dlc = "By Blood Alone"
+	}
+	add_equipment_to_stockpile = {
+		type = medium_plane_airframe_0
+		amount = 43
+		producer = USA
+		variant_name = "F-5 Tiger II"
+	}
+	add_equipment_to_stockpile = {
+		type = medium_plane_airframe_0
+		amount = 20
+		producer = FRA
+		variant_name = "Mirage F1" 
 	}
 }

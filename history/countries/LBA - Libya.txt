@@ -66,6 +66,16 @@ if = {
 			special_type_slot_1 = empty
 		}
 	}
+	create_equipment_variant = {
+		name = "Super Galeb" 
+		type = small_plane_airframe_1
+		modules = {
+			fixed_main_weapon_slot = heavy_mg_2x
+			fixed_auxiliary_weapon_slot_1 = tv_guided_missiles
+			engine_type_slot = engine_1_2x
+			special_type_slot_1 = empty
+		}
+	}
 	#Multirole
 	create_equipment_variant = {
 		name = "MiG-23" 
@@ -77,6 +87,18 @@ if = {
 			special_type_slot_1 = empty
 		}
 		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "Mirage F1" 
+		type = medium_plane_airframe_0
+		modules = {
+			fixed_main_weapon_slot = light_mg_2x
+			fixed_auxiliary_weapon_slot_1 = aircraft_cannon_short_1
+			engine_type_slot = engine_1_2x
+			special_type_slot_1 = empty
+		}
+		obsolete = yes
+		icon = "GFX_FRA_fighter2_medium"
 	}
 	create_equipment_variant = {
 		name = "MiG-29" 
@@ -385,4 +407,76 @@ recruit_character = LBA_ahmad_ibn_abd_allah
 	    picture = "Aguila_Saleh_Issa.dds"
 	    ideology = fiscal_conservative
     }
+}
+if = {
+	limit = {
+		NOT = {has_dlc = "By Blood Alone"}
+	}
+	instant_effect = {
+		add_equipment_to_stockpile = {
+			type = fighter_equipment_2
+			amount = 164
+			producer = SOV
+		}
+		add_equipment_to_stockpile = {
+			type = fighter_equipment_2
+			amount = 32
+			producer = FRA
+		}
+		add_equipment_to_stockpile = {
+			type = fighter_equipment_1
+			amount = 20
+			producer = SOV
+		}
+		add_equipment_to_stockpile = {
+			type = CAS_equipment_2
+			amount = 94
+			producer = FRA
+		}
+		add_equipment_to_stockpile = {
+			type = CAS_equipment_2
+			amount = 80
+			producer = SOV
+		}
+		add_equipment_to_stockpile = {
+			type = strat_bomber_equipment_1
+			amount = 7
+			producer = SOV
+		}
+	}
+}
+if = { #every dodgy oob not sure!
+	limit = {
+		has_dlc = "By Blood Alone"
+	}
+	add_equipment_to_stockpile = {
+		type = medium_plane_airframe_0
+		amount = 164
+		producer = SOV
+		variant_name = "MiG-23"
+	}
+	add_equipment_to_stockpile = {
+		type = medium_plane_airframe_0
+		amount = 32
+		producer = FRA
+		variant_name = "Mirage F1"
+	}
+	add_equipment_to_stockpile = {
+		type = medium_plane_airframe_1
+		amount = 6
+		producer = SOV
+		variant_name = "MiG-29"
+	}
+	add_equipment_to_stockpile = {
+		type = small_plane_airframe_1
+		amount = 30
+		producer = SOV
+		variant_name = "Su-25"
+	}
+	add_equipment_to_stockpile = {
+		type = small_plane_airframe_1
+		amount = 50
+		producer = SER
+		variant_name = "Super Galeb"
+	}
 }

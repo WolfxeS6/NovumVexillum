@@ -57,20 +57,9 @@ if = {
 		scout_plane1 = 1
 	}
 	#varients
-	#CAS
-	create_equipment_variant = {
-		name = "Su-25" 
-		type = small_plane_airframe_1
-		modules = {
-			fixed_main_weapon_slot = heavy_mg_2x
-			fixed_auxiliary_weapon_slot_1 = medium_bomb_bay
-			engine_type_slot = engine_1_2x
-			special_type_slot_1 = empty
-		}
-	}
 	#Multirole
 	create_equipment_variant = {
-		name = "MiG-23" 
+		name = "F-5 Tiger II"
 		type = medium_plane_airframe_0
 		modules = {
 			fixed_main_weapon_slot = light_mg_2x
@@ -78,18 +67,8 @@ if = {
 			engine_type_slot = engine_1_2x
 			special_type_slot_1 = empty
 		}
+		icon = "GFX_USA_fighter1_medium"
 		obsolete = yes
-	}
-	create_equipment_variant = {
-		name = "MiG-29" 
-		type = medium_plane_airframe_1
-		modules = {
-			fixed_main_weapon_slot = light_mg_2x
-			fixed_auxiliary_weapon_slot_1 = aircraft_cannon_short_1
-			fixed_auxiliary_weapon_slot_2 = aircraft_cannon_medium_1
-			engine_type_slot = engine_1_2x
-			special_type_slot_1 = empty
-		}
 	}
 }
 if = {
@@ -319,3 +298,28 @@ recruit_character = KEN_uhuru_muchai
 recruit_character = KEN_koitalel_itote
 recruit_character = KEN_uhuru_kimathi
 recruit_character = KEN_koitalel_mathenge
+
+if = {
+	limit = {
+		NOT = {has_dlc = "By Blood Alone"}
+	}
+	instant_effect = {
+		add_equipment_to_stockpile = {
+			type = fighter_equipment_1
+			amount =5
+			producer = USA
+		}
+	
+	}
+}
+if = {
+	limit = {
+		has_dlc = "By Blood Alone"
+	}
+	add_equipment_to_stockpile = {
+		type = medium_plane_airframe_0
+		amount = 5
+		producer = USA
+		variant_name = "F-5 Tiger II"
+	}
+}

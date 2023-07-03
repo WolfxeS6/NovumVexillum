@@ -56,37 +56,26 @@ if = {
 	#varients
 	#CAS
 	create_equipment_variant = {
-		name = "Su-25" 
-		type = small_plane_airframe_1
+		name = "F-100 Super Sabre" 
+		type = small_plane_airframe_0
 		modules = {
 			fixed_main_weapon_slot = heavy_mg_2x
-			fixed_auxiliary_weapon_slot_1 = medium_bomb_bay
+			fixed_auxiliary_weapon_slot_1 = rocket_pod
 			engine_type_slot = engine_1_2x
-			special_type_slot_1 = empty
 		}
+		icon = "GFX_USA_CAS1_medium"
 	}
-	#Multirole
 	create_equipment_variant = {
-		name = "MiG-23" 
+		name = "F-4 Phantom II"
 		type = medium_plane_airframe_0
 		modules = {
 			fixed_main_weapon_slot = light_mg_2x
 			fixed_auxiliary_weapon_slot_1 = aircraft_cannon_short_1
+			fixed_auxiliary_weapon_slot_2 = aircraft_cannon_short_1
 			engine_type_slot = engine_1_2x
 			special_type_slot_1 = empty
 		}
-		obsolete = yes
-	}
-	create_equipment_variant = {
-		name = "MiG-29" 
-		type = medium_plane_airframe_1
-		modules = {
-			fixed_main_weapon_slot = light_mg_2x
-			fixed_auxiliary_weapon_slot_1 = aircraft_cannon_short_1
-			fixed_auxiliary_weapon_slot_2 = aircraft_cannon_medium_1
-			engine_type_slot = engine_1_2x
-			special_type_slot_1 = empty
-		}
+		icon = "GFX_USA_fighter2_medium"
 	}
 }
 if = {
@@ -403,4 +392,23 @@ recruit_character = IRE_alexander_de_valera
         democratic_socialist = 3
         communist = 1
     }
+}
+if = {
+	limit = {
+		NOT = {has_dlc = "By Blood Alone"}
+	}
+	instant_effect = {
+
+		add_equipment_to_stockpile = {
+			type = nav_bomber_equipment_3
+			amount =2
+			producer = USA
+		}
+	
+	}
+}
+if = {
+	limit = {
+		has_dlc = "By Blood Alone"
+	}
 }
