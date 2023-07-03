@@ -359,3 +359,39 @@ recruit_character = ARM_set_mirzoyan
 2016.1.1 = {
 	oob = "ARM_2016"
 }
+if = {
+	limit = {
+		NOT = {has_dlc = "By Blood Alone"}
+	}
+	instant_effect = {
+		add_equipment_to_stockpile = {
+			type = fighter_equipment_2
+			amount = 5
+			producer = SOV
+		}
+		add_equipment_to_stockpile = {
+			type = CAS_equipment_2
+			amount = 7
+			producer = SOV
+		}
+	
+	}
+}
+if = {
+	limit = {
+		has_dlc = "By Blood Alone"
+	}
+	add_equipment_to_stockpile = {
+		type = medium_plane_airframe_0
+		amount = 5
+		producer = SOV
+		variant_name = "MiG-23"
+	}
+	add_equipment_to_stockpile = {
+		type = small_plane_airframe_1
+		amount = 7
+		producer = SOV
+		variant_name = "Su-25"
+	}
+}
+
