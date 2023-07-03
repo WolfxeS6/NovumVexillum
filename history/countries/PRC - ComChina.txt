@@ -1,6 +1,15 @@
 ﻿capital = 608
 
-oob = "PRC_2000"
+
+if = {
+	limit = {
+		 has_dlc = "No Step Back" 
+	}
+	set_oob = "PRC_2000_nsb"
+	else = {
+		set_oob = "PRC_2000"
+	}
+}
 if = {
 	limit = { has_dlc = "Man the Guns" }
 		set_naval_oob = "PRC_2000_naval_mtg"
@@ -167,15 +176,15 @@ set_technology = {
 	tech_maintenance_company = 1
 	
 	## Armor ##
-	main_battle_tank1 = 1
-	main_battle_tank2 = 1
-	main_battle_tank3 = 1
-	light_tank1 = 1
-	light_tank2 = 1
-	mechanised_infantry1 = 1
-	mechanised_infantry2 = 1
-	light_mechanized_infantry1 = 1
-	light_mechanized_infantry2 = 1
+	# main_battle_tank1 = 1
+	# main_battle_tank2 = 1
+	# main_battle_tank3 = 1
+	# light_tank1 = 1
+	# light_tank2 = 1
+	# mechanised_infantry1 = 1
+	# mechanised_infantry2 = 1
+	# light_mechanized_infantry1 = 1
+	# light_mechanized_infantry2 = 1
 	
 	## Artillery ##
 	gw_artillery = 1
@@ -185,20 +194,20 @@ set_technology = {
 	motorized_rocket_unit = 1
 	
 	## Air ##
-	CAS1 = 1
-	CAS2 = 1
-	fighter1 = 1
-	fighter2 = 1
-	fighter3 = 1
-	cv_fighter1 = 1
-	cv_fighter2 = 1
-	naval_bomber1 = 1
-	naval_bomber2 = 1
-	naval_bomber3 = 1
-	cv_naval_bomber1 = 1
-	strategic_bomber1 = 1
-	strategic_bomber2 = 1
-	scout_plane1 = 1
+	# CAS1 = 1
+	# CAS2 = 1
+	# fighter1 = 1
+	# fighter2 = 1
+	# fighter3 = 1
+	# cv_fighter1 = 1
+	# cv_fighter2 = 1
+	# naval_bomber1 = 1
+	# naval_bomber2 = 1
+	# naval_bomber3 = 1
+	# cv_naval_bomber1 = 1
+	# strategic_bomber1 = 1
+	# strategic_bomber2 = 1
+	# scout_plane1 = 1
 	
 	## Engineering ##
 	electronic_mechanical_engineering = 1
@@ -218,6 +227,134 @@ set_technology = {
 	force_rotation = 1
 }
 
+if = {
+	limit = {
+		NOT = {has_dlc = "By Blood Alone"}
+	}
+	set_technology = {
+		CAS1 = 1
+		CAS2 = 1
+		cv_CAS1 = 1
+		cv_CAS2 = 1
+		fighter1 = 1
+		fighter2 = 1
+		cv_fighter1 = 1
+		cv_fighter2 = 1
+		naval_bomber1 = 1
+		naval_bomber2 = 1
+		naval_bomber3 = 1
+		cv_naval_bomber1 = 1
+		cv_naval_bomber2 = 1
+		cv_naval_bomber3 = 1
+		strategic_bomber1 = 1
+		strategic_bomber2 = 1
+		scout_plane1 = 1
+		#create_equipment_variant = { name = "J-6" type = fighter_equipment_1 upgrades = { plane_gun_upgrade = 2 plane_engine_upgrade = 2 plane_reliability_upgrade = 2 } obsolete = yes }
+		#create_equipment_variant = { name = "J-7" type = fighter_equipment_1 upgrades = { plane_gun_upgrade = 5 plane_engine_upgrade = 5 plane_reliability_upgrade = 5 } obsolete = yes }
+		#create_equipment_variant = { name = "H-5" type = strat_bomber_equipment_1  obsolete = yes }
+	}
+}
+if = {
+	limit = {
+		has_dlc = "By Blood Alone"
+	}
+	#tech
+	set_technology = {
+		iw_small_airframe = 1
+		basic_small_airframe = 1
+		iw_medium_airframe = 1
+		basic_medium_airframe = 1
+		iw_heli_airframe = 1
+		iw_naval_airframe = 1
+		basic_naval_airframe = 1
+		iw_large_airframe = 1
+		basic_large_airframe = 1
+		aa_lmg = 1
+		Cold_war_cas = 1
+		engines_1 = 1
+		air_misc = 1
+		scout_plane1 = 1
+	}
+	#varients
+	#CAS
+	create_equipment_variant = {
+		name = "IL-28" 
+		type = small_plane_airframe_0
+		modules = {
+			fixed_main_weapon_slot = light_mg_2x
+			fixed_auxiliary_weapon_slot_1 = small_bomb_bay
+			engine_type_slot = engine_1_2x
+			special_type_slot_1 = empty
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "A-5" 
+		type = small_plane_airframe_1
+		modules = {
+			fixed_main_weapon_slot = light_mg_2x
+			fixed_auxiliary_weapon_slot_1 = small_bomb_bay
+			engine_type_slot = engine_1_2x
+			special_type_slot_1 = empty
+		}
+		obsolete = yes
+	}
+	#Multirole
+	create_equipment_variant = {
+		name = "J-7" 
+		type = medium_plane_airframe_0
+		modules = {
+			fixed_main_weapon_slot = light_mg_2x
+			fixed_auxiliary_weapon_slot_1 = aircraft_cannon_short_1
+			engine_type_slot = engine_1_2x
+			special_type_slot_1 = empty
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "J-8" 
+		type = medium_plane_airframe_0
+		modules = {
+			fixed_main_weapon_slot = light_mg_2x
+			fixed_auxiliary_weapon_slot_1 = aircraft_cannon_short_1
+			fixed_auxiliary_weapon_slot_2 = aircraft_cannon_medium_1
+			engine_type_slot = engine_1_2x
+			special_type_slot_1 = empty
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "J-11" 
+		type = medium_plane_airframe_1
+		modules = {
+			fixed_main_weapon_slot = light_mg_2x
+			fixed_auxiliary_weapon_slot_1 = aircraft_cannon_short_1
+			fixed_auxiliary_weapon_slot_2 = aircraft_cannon_medium_1
+			engine_type_slot = engine_1_2x
+			special_type_slot_1 = empty
+		}
+	}
+	create_equipment_variant = {
+		name = "Su-27" 
+		type = medium_plane_airframe_1
+		modules = {
+			fixed_main_weapon_slot = light_mg_2x
+			fixed_auxiliary_weapon_slot_1 = aircraft_cannon_short_1
+			fixed_auxiliary_weapon_slot_2 = aircraft_cannon_medium_1
+			engine_type_slot = engine_1_2x
+			special_type_slot_1 = empty
+		}
+	}
+	create_equipment_variant = {
+		name = "Xian H-6" 
+		type = large_plane_airframe_0
+		modules = {
+			fixed_main_weapon_slot = large_bomb_bay
+			engine_type_slot = engine_1_4x
+			special_type_slot_1 = empty
+		}
+	}
+}
 if = {
 	limit = { not = { has_dlc = "Man the Guns" } }
 	set_technology = {
@@ -260,6 +397,21 @@ if = {
 	}
 }
 
+if = {
+	limit = {
+		NOT = { has_dlc = "No Step Back" }
+	}
+	set_technology = {
+	main_battle_tank1 = 1
+	main_battle_tank2 = 1
+	main_battle_tank3 = 1
+	light_tank1 = 1
+	mechanised_infantry1 = 1
+	light_mechanized_infantry1 = 1
+	light_mechanized_infantry2 = 1
+	mechanised_infantry2 = 1
+	}
+}
 if = {
 	limit = {
 		has_dlc = "No Step Back"
@@ -405,10 +557,6 @@ if = {
 		icon = "GFX_PRC_light_tank1_medium"
 	}
 }
-
-create_equipment_variant = { name = "J-6" type = fighter_equipment_1 upgrades = { plane_gun_upgrade = 2 plane_engine_upgrade = 2 plane_reliability_upgrade = 2 } obsolete = yes }
-create_equipment_variant = { name = "J-7" type = fighter_equipment_1 upgrades = { plane_gun_upgrade = 5 plane_engine_upgrade = 5 plane_reliability_upgrade = 5 } obsolete = yes }
-create_equipment_variant = { name = "H-5" type = strat_bomber_equipment_1  obsolete = yes }
 
 
 add_ideas = {
@@ -736,3 +884,114 @@ if = {
 		obsolete = no
 	}
 }
+
+if = {
+	limit = {
+		NOT = {has_dlc = "By Blood Alone"}
+	}
+	instant_effect = {
+		add_equipment_to_stockpile = {
+			type = fighter_equipment_3
+			amount = 33
+			producer = PRC
+		}
+		add_equipment_to_stockpile = {
+			type = fighter_equipment_3
+			amount = 24
+			producer = SOV
+		}
+		add_equipment_to_stockpile = {
+			type = fighter_equipment_2
+			amount = 194
+			producer = PRC
+		}
+		add_equipment_to_stockpile = {
+			type = fighter_equipment_1
+			amount = 1248
+			producer = PRC
+		}
+		add_equipment_to_stockpile = {
+			type = CAS_equipment_2
+			amount = 40
+			producer = PRC
+		}
+		add_equipment_to_stockpile = {
+			type = CAS_equipment_1
+			amount = 540
+			producer = PRC
+		}
+		add_equipment_to_stockpile = {
+			type = nav_bomber_equipment_1
+			amount = 4
+			producer = PRC
+		}
+		add_equipment_to_stockpile = {
+			type = nav_bomber_equipment_2
+			amount = 25
+			producer = PRC
+		}
+		add_equipment_to_stockpile = {
+			type = strat_bomber_equipment_2
+			amount = 150
+			producer = PRC
+		}
+		add_equipment_to_stockpile = {
+			type = strat_bomber_equipment_1
+			amount = 80
+			producer = PRC
+		}
+		add_equipment_to_stockpile = {
+			type = transport_plane_equipment_1
+			amount = 20
+			producer = PRC
+		}
+	}
+}
+if = {
+	limit = {
+		has_dlc = "By Blood Alone"
+	}
+	add_equipment_to_stockpile = {
+		type = medium_plane_airframe_0
+		amount = 600
+		producer = PRC
+		variant_name = "J-7"
+	}
+	add_equipment_to_stockpile = {
+		type = medium_plane_airframe_0
+		amount = 30
+		producer = PRC
+		variant_name = "J-8"
+	}
+	add_equipment_to_stockpile = {
+		type = medium_plane_airframe_1
+		amount = 33
+		producer = PRC
+		variant_name = "J-11"
+	}
+	add_equipment_to_stockpile = {
+		type = medium_plane_airframe_1
+		amount = 24
+		producer = SOV
+		variant_name = "Su-27"
+	}
+	add_equipment_to_stockpile = {
+		type = small_plane_airframe_1
+		amount = 349
+		producer = PRC
+		variant_name = "A-5"
+	}
+	add_equipment_to_stockpile = {
+		type = small_plane_airframe_0
+		amount = 300
+		producer = PRC
+		variant_name = "IL-28"
+	}
+	add_equipment_to_stockpile = {
+		type = large_plane_airframe_0
+		amount = 231
+		producer = PRC
+		variant_name = "Xian H-6"
+	}
+}
+

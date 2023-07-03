@@ -4,7 +4,7 @@ sub_units = {
 		priority = 1
 		active = yes
 		type = { fighter cas }
-		need = { small_plane_airframe = 1 }
+		need = { medium_plane_airframe = 1 }
 		categories = { category_fighter }
 		land_air_wing_size = 40
 	}
@@ -14,7 +14,7 @@ sub_units = {
 		priority = 1
 		active = yes
 		type = { fighter cas }
-		need = { cv_small_plane_airframe = 1 }
+		need = { cv_medium_plane_airframe = 1 }
 		categories = { category_fighter }
 		land_air_wing_size = 40
 		carrier_air_wing_size = 10
@@ -25,7 +25,7 @@ sub_units = {
 		priority = 2
 		active = yes
 		type = { cas }
-		need = { small_plane_cas_airframe = 1 }
+		need = { small_plane_airframe = 1 }
 		categories = { category_cas }
 		land_air_wing_size = 40
 	}
@@ -35,7 +35,7 @@ sub_units = {
 		priority = 2
 		active = yes
 		type = { cas }
-		need = { cv_small_plane_cas_airframe = 1 }
+		need = { cv_small_plane_airframe = 1 }
 		categories = { category_cas }
 		land_air_wing_size = 40
 		carrier_air_wing_size = 10
@@ -46,7 +46,7 @@ sub_units = {
 		priority = 3
 		active = yes
 		type = { naval_bomber }
-		need = { small_plane_naval_bomber_airframe = 1 }
+		need = { naval_bomber_plane_airframe = 1 }
 		categories = { category_nav_bomber }
 		land_air_wing_size = 40
 	}
@@ -56,19 +56,29 @@ sub_units = {
 		priority = 3
 		active = yes
 		type = { naval_bomber }
-		need = { cv_small_plane_naval_bomber_airframe = 1 }
+		need = { cv_naval_bomber_plane_airframe = 1 }
 		categories = { category_nav_bomber }
 		land_air_wing_size = 40
 		carrier_air_wing_size = 10
 	}
 	
 	tac_bomber = {
-		sprite = medium_plane
+		sprite = light_plane
 		priority = 4
 		active = yes
 		type = { tactical_bomber }
-		need = { medium_plane_airframe = 1 }
+		need = { uav_plane_airframe = 1 }
 		categories = { category_tac_bomber }
+		land_air_wing_size = 40
+	}
+
+	attack_heli= {
+		sprite = light_plane
+		priority = 4
+		active = yes
+		type = { cas }
+		need = { heli_plane_airframe = 1 }
+		categories = { category_cas }
 		land_air_wing_size = 40
 	}
 	
@@ -100,16 +110,6 @@ sub_units = {
 		need = { transport_plane_equipment = 1 }
 		land_air_wing_size = 40
 	}
-	
-	rocket_interceptor = {
-		sprite = light_plane
-		priority = 7
-		active = yes
-		type = { interceptor }
-		need = { rocket_interceptor_equipment = 1 }
-		land_air_wing_size = 40
-	}
-	
 	guided_missile = {
 		sprite = missile_default
 		priority = 8
