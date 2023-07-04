@@ -1020,7 +1020,48 @@ equipment_modules = {
 		}
 		dismantle_cost_ic = 0.5
 	}
-	heli_tv_guided_missiles = {
+	heli_tank_buster_1 = {
+		abbreviation = "bol"
+		category = cas_weapon_heli
+		sfx = sfx_ui_sd_module_turret
+		add_equipment_type = cas
+
+		add_stats = {
+			build_cost_ic = 1
+		}
+		xp_cost = 2
+		allow_mission_type = {
+			cas
+			attack_logistics
+			naval_bomber
+		}
+		mission_type_stats = {
+			limit = {
+				cas
+				attack_logistics
+			}
+			add_stats = {
+				air_agility = -10
+				weight = 4
+				air_ground_attack = 8
+			}
+		}
+		mission_type_stats = {
+			limit = {
+				naval_bomber
+			}
+			add_stats = {
+				air_agility = -5
+				weight = 4
+				naval_strike_attack = 5
+			}
+			add_average_stats = {
+				naval_strike_targetting = 10
+			}
+		}
+		dismantle_cost_ic = 0.5
+	}
+	heli_tank_buster_2 = {
 		abbreviation = "bol"
 		category = cas_weapon_heli
 		sfx = sfx_ui_sd_module_turret
@@ -1074,6 +1115,7 @@ equipment_modules = {
 		allow_mission_type = {
 			cas
 			attack_logistics
+			naval_bomber
 		}
 		mission_type_stats = {
 			limit = {
@@ -1215,7 +1257,7 @@ equipment_modules = {
 		abbreviation = "mbb"
 		category = cas_weapon
 		sfx = sfx_ui_sd_module_turret
-		add_equipment_type = { cas tactical_bomber }
+		add_equipment_type = { cas }
 
 		add_stats = {
 			build_cost_ic = 10
@@ -1226,7 +1268,7 @@ equipment_modules = {
 		allow_mission_type = {
 			cas
 			attack_logistics
-			strategic_bomber
+			#strategic_bomber
 			port_strike
 		}
 		mission_type_stats = {
@@ -1240,15 +1282,15 @@ equipment_modules = {
 				weight = 0
 			}
 		}
-		mission_type_stats = {
-			limit = {
-				strategic_bomber
-			}
-			add_stats = {
-				air_bombing = 10
-				weight = 0
-			}
-		}
+		# mission_type_stats = {
+		# 	limit = {
+		# 		strategic_bomber
+		# 	}
+		# 	add_stats = {
+		# 		air_bombing = 10
+		# 		weight = 0
+		# 	}
+		# }
 		dismantle_cost_ic = 7
 	}
 	extended_range_gps_guided_bomb = {
@@ -1266,7 +1308,7 @@ equipment_modules = {
 		allow_mission_type = {
 			cas
 			attack_logistics
-			strategic_bomber
+			#strategic_bomber
 			port_strike
 		}
 		mission_type_stats = {
