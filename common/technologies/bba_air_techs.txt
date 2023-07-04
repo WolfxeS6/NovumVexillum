@@ -1981,13 +1981,60 @@ technologies = {
 			engine_4_2x
 			engine_4_4x
 		}
+		path = {
+			leads_to_tech = engines_5
+			research_cost_coeff = 1
+		}
 		
 		research_cost = 1.5
-		start_year = 2006
+		start_year = 2012
 
 		folder = {
 			name = bba_air_techs_folder
-			position = { x = 0 y = @2006 }
+			position = { x = 0 y = @2012 }
+		}
+
+		categories = {
+			air_equipment
+			plane_modules_tech
+			cat_air_engine
+		}
+		
+		ai_will_do = {
+			factor = 5
+			modifier = {
+				is_major = yes
+				factor = 2
+			}
+			modifier = {
+				num_of_military_factories < 10
+				factor = 0
+			}
+			modifier = {
+				date > "1943.1.1"
+				factor = 1.5
+			}
+			modifier = {
+				date > "1944.1.1"
+				factor = 1.5
+			}
+			modifier = {
+				date > "1945.1.1"
+				factor = 3
+			}
+		}
+	}
+	engines_5 = {
+
+		enable_equipment_modules = {
+		}
+		
+		research_cost = 1.5
+		start_year = 2024
+
+		folder = {
+			name = bba_air_techs_folder
+			position = { x = 0 y = @2024 }
 		}
 
 		categories = {
