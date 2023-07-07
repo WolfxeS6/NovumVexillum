@@ -762,9 +762,15 @@ country_event = {
 			relation = non_aggression_pact
 			active = yes
 		}
-		PRK = {
-			country_event = { id = north_korea.28 }
+		if = {
+			limit = {
+				has_global_flag = GC_is_on
+			}
+			PRK = {
+				country_event = { id = north_korea.28 }
+			}
 		}
+		
 	}
 	
 	option = {
@@ -772,8 +778,13 @@ country_event = {
 		ai_chance = {
 			base = 10
 		}
-		PRK = {
-			country_event = { id = north_korea.31 }
+		if = {
+			limit = {
+				has_global_flag = GC_is_on
+			}
+			PRK = {
+				country_event = { id = north_korea.31 }
+			}
 		}
 	}
 }
@@ -798,7 +809,12 @@ country_event = {	#2000 Korean Swit
 	
 	option = {
 		name = south_korea.6.a
-		PRK = { country_event = { id = north_korea.3 } }
+		if = {
+			limit = {
+				has_global_flag = GC_is_on
+			}
+			PRK = { country_event = { id = north_korea.3 } }
+		}
 		add_political_power = -20
 		PRK = { add_to_variable = { var = RegimeInfluence value = 10 } }
 		custom_effect_tooltip = kor_increasing_influence_tt
@@ -818,7 +834,13 @@ country_event = {
 	option = {
 		name = south_korea.8.a
 		add_political_power = 120
-		PRK = { country_event = { id = north_korea.61 } }
+		if = {
+			limit = {
+				has_global_flag = GC_is_on
+			}
+			PRK = { country_event = { id = north_korea.61 } }
+		}
+		
 		PRK = { add_opinion_modifier = { target = ROOT modifier = korean_peace_agreement } }
 		PRK = { add_to_variable = { var = RegimeInfluence value = 15 } }
 		custom_effect_tooltip = kor_increasing_influence_tt
@@ -6192,9 +6214,15 @@ country_event = {
 				is_in_faction = yes
 			}
 		}
-		PRK = {
-			country_event = { id = north_korea.29 }
+		if = {
+			limit = {
+				has_global_flag = GC_is_on
+			}
+			PRK = {
+				country_event = { id = north_korea.29 }
+			}
 		}
+		
 		custom_effect_tooltip = GAME_OVER_TT
 		effect_tooltip = {
 			PRK = { 
@@ -8398,13 +8426,13 @@ country_event = {
 			ruling_party = market_liberal
 			elections_allowed = yes
 		}
-		
-		create_country_leader = {
-			character = "kor_lee_myung_bak"
-			desc = "POLITICS_LEE_MYUNG_BAK_DESC"
-			picture = "gfx/leaders/KOR/lee_myung_bak.dds"
-			ideology = market_liberal_ideology
-			traits = {  }
+		add_country_leader_role = {
+			character = kor_lee_myung_bak
+			promote_leader = yes
+			country_leader = {
+				ideology = market_liberal_ideology
+				expire="1.1.1.1"
+			}
 		}
 		
 		create_wargoal = {
