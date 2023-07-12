@@ -45,7 +45,7 @@ if = {
 		cv_naval_bomber3 = 1
 		strategic_bomber1 = 1
 		strategic_bomber2 = 1
-		scout_plane1 = 1
+		#scout_plane1 = 1
 	}
 }
 if = {
@@ -67,7 +67,7 @@ if = {
 		Cold_war_cas = 1
 		engines_1 = 1
 		air_misc = 1
-		scout_plane1 = 1
+		#scout_plane1 = 1
 	}
 	#varients
 	#CAS
@@ -81,7 +81,7 @@ if = {
 			engine_type_slot = engine_1_2x
 			special_type_slot_1 = empty
 		}
-		icon = "GFX_USA_CAS1_medium"
+		icon = "GFX_A-4_Skyhawk_medium"
 		obsolete = yes
 	}
 	#Multirole
@@ -91,10 +91,12 @@ if = {
 		modules = {
 			fixed_main_weapon_slot = light_mg_2x
 			fixed_auxiliary_weapon_slot_1 = aircraft_cannon_short_1
+			fixed_auxiliary_weapon_slot_2 = rocket_pod
 			engine_type_slot = engine_1_2x
 			special_type_slot_1 = empty
+			special_type_slot_2 = plane_lighten_materials
 		}
-		icon = "GFX_USA_fighter1_medium"
+		icon = "GFX_F-5_Tiger_II_medium"
 		obsolete = yes
 	}
 	create_equipment_variant = {
@@ -107,7 +109,7 @@ if = {
 			engine_type_slot = engine_1_2x
 			special_type_slot_1 = empty
 		}
-		icon = "GFX_USA_fighter3_medium"
+		icon = "GFX_F-16CD_medium"
 	}
 	create_equipment_variant = {
 		name = "F-15C/D Eagle" 
@@ -116,10 +118,11 @@ if = {
 			fixed_main_weapon_slot = light_mg_2x
 			fixed_auxiliary_weapon_slot_1 = aircraft_cannon_short_1
 			fixed_auxiliary_weapon_slot_2 = aircraft_cannon_medium_1
-			engine_type_slot = engine_1_2x
-			special_type_slot_1 = empty
+			engine_type_slot = engine_2_2x
+			special_type_slot_1 = plane_targetting_system_1_medium
+			special_type_slot_2 = empty
 		}
-		icon = "GFX_USA_fighter4_medium"
+		icon = "GFX_F-15E_Strike_Eagle_medium"
 	}
 }
 if = {
@@ -330,7 +333,7 @@ set_technology = {
 	# strategic_bomber1 = 1
 	# strategic_bomber2 = 1
 	# tactical_bomber1 = 1
-	# scout_plane1 = 1
+	# #scout_plane1 = 1
 	
 	## Engineering ##
 	electronic_mechanical_engineering = 1
@@ -441,7 +444,6 @@ if = {
 	limit = {
 		NOT = {has_dlc = "By Blood Alone"}
 	}
-	instant_effect = {
 		add_equipment_to_stockpile = {
 			type = fighter_equipment_3
 			amount = 58
@@ -467,7 +469,6 @@ if = {
 			amount = 5
 			producer = USA
 		}
-	}
 }
 if = {
 	limit = {
@@ -476,19 +477,19 @@ if = {
 	add_equipment_to_stockpile = {
 		type = cv_small_plane_airframe_0
 		amount = 51
-		producer = USA
+		producer = SIG
 		variant_name = "A-4 Skyhawk"
 	}
 	add_equipment_to_stockpile = {
 		type = medium_plane_airframe_1
 		amount = 28
-		producer = USA
+		producer = SIG
 		variant_name = "F-15C/D Eagle"
 	}
 	add_equipment_to_stockpile = {
 		type = medium_plane_airframe_1
 		amount = 58
-		producer = USA
+		producer = SIG
 		variant_name = "F-16C/D"
 	}
 }

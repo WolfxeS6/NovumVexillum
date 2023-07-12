@@ -206,8 +206,6 @@ on_actions = {
 				}
 				news_event = { id = pr_china_news.9 }
 			}
-		}
-		effect = {
 			if = {
 				limit = {
 					original_tag = PRC
@@ -215,8 +213,6 @@ on_actions = {
 				}
 				news_event = { id = pr_china_news.14 }
 			}
-		}
-		effect = {
 			if = {
 				limit = {
 					original_tag = USA
@@ -232,44 +228,32 @@ on_actions = {
 		effect = {
 			if = {
 				limit = {
-					every_owned_state = {
-						limit = {
-							has_dynamic_modifier = { modifier = dynamic_tib_separatism }
-						}
+					any_owned_state = {
+						has_dynamic_modifier = { modifier = dynamic_tib_separatism }
 					}
 				}
 				
-				random_events = {
-					100 = pr_china_outer_worlds.1
-					100 = pr_china_outer_worlds.2
-					100 = pr_china_outer_worlds.3
+				random_list = {
+					100 = {country_event = pr_china_outer_worlds.1}
+					100 = {country_event = pr_china_outer_worlds.2}
+					100 = {country_event = pr_china_outer_worlds.3}
 					4000 = 0
 				}
 			}
-		}
-		effect = {
 			if = {
 				limit = {
-					every_owned_state = {
-						limit = {
-							has_dynamic_modifier = { modifier = dynamic_sik_separatism }
-						}
+					any_owned_state = {
+						has_dynamic_modifier = { modifier = dynamic_sik_separatism }
 					}
 				}
 				
-				random_events = {
-					100 = pr_china_outer_worlds.4
-					100 = pr_china_outer_worlds.5
-					100 = pr_china_outer_worlds.6
+				random_list = {
+					100 = {country_event = pr_china_outer_worlds.4}
+					100 = {country_event = pr_china_outer_worlds.5}
+					100 = {country_event = pr_china_outer_worlds.6}
 					4000 = 0
 				}
 			}
-		}
-	}
-	
-	on_new_term_election = {
-		random_events = {
-			100 = china_election.1
 		}
 	}
 	

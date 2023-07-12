@@ -44,7 +44,7 @@ set_variable = { PRC_rjl_army_core_defence_factor = 0 }
 set_variable = { PRC_rjl_modifier_army_sub_unit_cavalry_speed_factor = 0 }
 set_variable = { PRC_rjl_modifier_army_sub_unit_cavalry_attack_factor = 0 }
 set_variable = { PRC_rjl_unit_cavalry_design_cost_factor = 0 }
-set_variable = { PRC_rjl_unit_camelry_design_cost_factor = 0 }
+#set_variable = { PRC_rjl_unit_camelry_design_cost_factor = 0 }
 set_variable = { PRC_rjl_promote_cost_factor = 0 }
 set_variable = { PRC_rjl_special_forces_cap = 0 }
 set_variable = { PRC_rjl_special_forces_attack_factor = 0 }
@@ -187,11 +187,14 @@ set_technology = {
 	# light_mechanized_infantry2 = 1
 	
 	## Artillery ##
+	coldwar_artillery = 1
 	gw_artillery = 1
 	interwar_antitank = 1
 	interwar_antiair = 1
+	coldwar_antiair = 1
+	coldwar_antitank = 1
 	rocket_artillery = 1
-	motorized_rocket_unit = 1
+	#motorized_rocket_unit = 1
 	
 	## Air ##
 	# CAS1 = 1
@@ -207,7 +210,7 @@ set_technology = {
 	# cv_naval_bomber1 = 1
 	# strategic_bomber1 = 1
 	# strategic_bomber2 = 1
-	# scout_plane1 = 1
+	# #scout_plane1 = 1
 	
 	## Engineering ##
 	electronic_mechanical_engineering = 1
@@ -248,7 +251,7 @@ if = {
 		cv_naval_bomber3 = 1
 		strategic_bomber1 = 1
 		strategic_bomber2 = 1
-		scout_plane1 = 1
+		#scout_plane1 = 1
 		#create_equipment_variant = { name = "J-6" type = fighter_equipment_1 upgrades = { plane_gun_upgrade = 2 plane_engine_upgrade = 2 plane_reliability_upgrade = 2 } obsolete = yes }
 		#create_equipment_variant = { name = "J-7" type = fighter_equipment_1 upgrades = { plane_gun_upgrade = 5 plane_engine_upgrade = 5 plane_reliability_upgrade = 5 } obsolete = yes }
 		#create_equipment_variant = { name = "H-5" type = strat_bomber_equipment_1  obsolete = yes }
@@ -273,7 +276,7 @@ if = {
 		Cold_war_cas = 1
 		engines_1 = 1
 		air_misc = 1
-		scout_plane1 = 1
+		#scout_plane1 = 1
 	}
 	#varients
 	#CAS
@@ -639,11 +642,11 @@ recruit_character = PRC_sun_jianguo
 recruit_character = PRC_wu_shengli
 recruit_character = PRC_yao_zhilou
 recruit_character = PRC_yuan_yubai
-recruit_character = PRC_yang_dong
-recruit_character = PRC_cheng_sun
-recruit_character = PRC_deng_peng
-recruit_character = PRC_tan_tian
-recruit_character = PRC_xie_hu
+#recruit_character = PRC_yang_dong
+#recruit_character = PRC_cheng_sun
+#recruit_character = PRC_deng_peng
+#recruit_character = PRC_tan_tian
+#recruit_character = PRC_xie_hu
 
 recruit_character = PRC_chi_haotian
 recruit_character = PRC_pei_huailiang
@@ -751,7 +754,7 @@ if = {
 			fixed_ship_engine_slot = cruiser_ship_engine_1
 			fixed_ship_armor_slot = ship_armor_cruiser_1
 			fixed_ship_secondaries_slot = ship_secondaries_1
-			mid_1_custom_slot = ship_airplane_launcher_1
+			mid_1_custom_slot = empty #ship_airplane_launcher_1
 			mid_2_custom_slot = ship_anti_air_1
 			rear_1_custom_slot = ship_light_medium_battery_1
 		}
@@ -770,7 +773,7 @@ if = {
 			fixed_ship_armor_slot = ship_armor_cruiser_2
 			fixed_ship_secondaries_slot = ship_secondaries_1
 			front_1_custom_slot = ship_light_medium_battery_2
-			mid_1_custom_slot = ship_airplane_launcher_1
+			mid_1_custom_slot = empty #ship_airplane_launcher_1
 			mid_2_custom_slot = ship_anti_air_1
 			rear_1_custom_slot = ship_light_medium_battery_1
 		}
@@ -788,7 +791,7 @@ if = {
 			fixed_ship_radar_slot = ship_radar_1
 			fixed_ship_engine_slot = cruiser_ship_engine_1
 			fixed_ship_armor_slot = ship_armor_cruiser_1
-			mid_1_custom_slot = ship_airplane_launcher_1
+			mid_1_custom_slot = empty #ship_airplane_launcher_1
 			mid_2_custom_slot = ship_anti_air_1
 			rear_1_custom_slot = ship_medium_battery_1
 		}
@@ -805,7 +808,7 @@ if = {
 			fixed_ship_radar_slot = ship_radar_1
 			fixed_ship_engine_slot = cruiser_ship_engine_2
 			fixed_ship_armor_slot = ship_armor_cruiser_2
-			mid_1_custom_slot = ship_airplane_launcher_1
+			mid_1_custom_slot = empty #ship_airplane_launcher_1
 			mid_2_custom_slot = ship_anti_air_1
 			rear_1_custom_slot = ship_medium_battery_2
 		}
@@ -822,7 +825,7 @@ if = {
 			fixed_ship_radar_slot = ship_radar_1
 			fixed_ship_engine_slot = cruiser_ship_engine_2
 			fixed_ship_armor_slot = ship_armor_cruiser_2
-			mid_1_custom_slot = ship_airplane_launcher_1
+			mid_1_custom_slot = empty #ship_airplane_launcher_1
 			mid_2_custom_slot = ship_anti_air_1
 			rear_1_custom_slot = ship_medium_battery_2
 		}
@@ -889,7 +892,6 @@ if = {
 	limit = {
 		NOT = {has_dlc = "By Blood Alone"}
 	}
-	instant_effect = {
 		add_equipment_to_stockpile = {
 			type = fighter_equipment_3
 			amount = 33
@@ -945,7 +947,6 @@ if = {
 			amount = 20
 			producer = PRC
 		}
-	}
 }
 if = {
 	limit = {
@@ -972,7 +973,7 @@ if = {
 	add_equipment_to_stockpile = {
 		type = medium_plane_airframe_1
 		amount = 24
-		producer = SOV
+		producer = PRC
 		variant_name = "Su-27"
 	}
 	add_equipment_to_stockpile = {

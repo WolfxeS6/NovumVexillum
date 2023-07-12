@@ -36,7 +36,7 @@ if = {
 		cv_naval_bomber3 = 1
 		strategic_bomber1 = 1
 		strategic_bomber2 = 1
-		scout_plane1 = 1
+		#scout_plane1 = 1
 	}
 }
 if = {
@@ -58,7 +58,7 @@ if = {
 		Cold_war_cas = 1
 		engines_1 = 1
 		air_misc = 1
-		scout_plane1 = 1
+		#scout_plane1 = 1
 	}
 	#varients
 	#CAS
@@ -68,11 +68,11 @@ if = {
 		modules = {
 			fixed_main_weapon_slot = light_mg_2x
 			fixed_auxiliary_weapon_slot_1 = medium_bomb_bay
-			fixed_auxiliary_weapon_slot_1 = rocket_pod
+			fixed_auxiliary_weapon_slot_2 = rocket_pod
 			engine_type_slot = engine_1_2x
 			special_type_slot_1 = empty
 		}
-		icon = "GFX_USA_CAS1_medium"
+		icon = "GFX_A-7_Corsair_II_medium"
 		obsolete = yes
 	}
 	#Multirole
@@ -80,13 +80,13 @@ if = {
 		name = "F-4 Phantom II"
 		type = medium_plane_airframe_0
 		modules = {
-			fixed_main_weapon_slot = light_mg_2x
+			fixed_main_weapon_slot = heavy_mg_2x
 			fixed_auxiliary_weapon_slot_1 = aircraft_cannon_short_1
-			fixed_auxiliary_weapon_slot_2 = aircraft_cannon_short_1
+			fixed_auxiliary_weapon_slot_2 = small_bomb_bay
 			engine_type_slot = engine_1_2x
 			special_type_slot_1 = empty
 		}
-		icon = "GFX_USA_fighter2_medium"
+		icon = "GFX_F-4_Phantom_II_medium"
 		obsolete = yes
 	}
 	create_equipment_variant = {
@@ -95,10 +95,12 @@ if = {
 		modules = {
 			fixed_main_weapon_slot = light_mg_2x
 			fixed_auxiliary_weapon_slot_1 = aircraft_cannon_short_1
+			fixed_auxiliary_weapon_slot_2 = rocket_pod
 			engine_type_slot = engine_1_2x
 			special_type_slot_1 = empty
+			special_type_slot_2 = plane_lighten_materials
 		}
-		icon = "GFX_USA_fighter1_medium"
+		icon = "GFX_F-5_Tiger_II_medium"
 		obsolete = yes
 	}
 	create_equipment_variant = {
@@ -123,7 +125,7 @@ if = {
 			engine_type_slot = engine_1_2x
 			special_type_slot_1 = empty
 		}
-		icon = "GFX_USA_fighter3_medium"
+		icon = "GFX_F-16CD_medium"
 	}
 	create_equipment_variant = {
 		name = "Mirage 2000" 
@@ -341,7 +343,7 @@ set_technology = {
 	# cv_naval_bomber2 = 1
 	# strategic_bomber1 = 1
 	# strategic_bomber2 = 1
-	# scout_plane1 = 1
+	# #scout_plane1 = 1
 	
 	## Engineering ##
 	electronic_mechanical_engineering = 1
@@ -619,7 +621,6 @@ if = {
 	limit = {
 		NOT = {has_dlc = "By Blood Alone"}
 	}
-	instant_effect = {
 		add_equipment_to_stockpile = {
 			type = fighter_equipment_3
 			amount =178
@@ -645,7 +646,6 @@ if = {
 			amount =5
 			producer = USA
 		}
-	}
 }
 if = {
 	limit = {
@@ -654,37 +654,37 @@ if = {
 	add_equipment_to_stockpile = {
 		type = cv_small_plane_airframe_0
 		amount = 127
-		producer = USA
+		producer = GRE
 		variant_name = "A-7 Corsair II"
 	}
 	add_equipment_to_stockpile = {
 		type = medium_plane_airframe_0
 		amount = 34
-		producer = USA
+		producer = GRE
 		variant_name = "F-4 Phantom II"
 	}
 	add_equipment_to_stockpile = {
 		type = medium_plane_airframe_0
 		amount = 149
-		producer = USA
+		producer = GRE
 		variant_name = "F-5 Tiger II"
 	}
 	add_equipment_to_stockpile = {
 		type = medium_plane_airframe_0
 		amount = 40
-		producer = FRA
+		producer = GRE
 		variant_name = "Mirage F1"
 	}
 	add_equipment_to_stockpile = {
 		type = medium_plane_airframe_1
 		amount = 158
-		producer = USA
+		producer = GRE
 		variant_name = "F-16C/D"
 	}
 	add_equipment_to_stockpile = {
 		type = medium_plane_airframe_1
 		amount = 24
-		producer = FRA
+		producer = GRE
 		variant_name = "Mirage 2000"
 	}
 }

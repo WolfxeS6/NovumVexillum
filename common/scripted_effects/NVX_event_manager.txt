@@ -1,6 +1,6 @@
 NVX_Event_manager_monthly = {
     random_list = {
-        30 = {
+        200 = {
             modifier = { factor = 1.5 has_stability  > 0.80 }
         }
         2= { #workers protests
@@ -280,7 +280,7 @@ NVX_Event_manager_monthly = {
 }
 NVX_Estate_manager_monthly = {
     random_list = {
-        30 = {
+        50 = {
             modifier = { factor = 1.2 has_stability  > 0.80 }
         }
         2= { #Fourth estate natural increase islamist
@@ -1715,7 +1715,7 @@ NVX_Estate_manager_monthly = {
 }
 NVX_Aberrant_Estate_manager_monthly = {
     random_list = {
-        150 = {
+        180 = {
 
         }
         2= { #Fourth estate aberrant increase islamist
@@ -1844,11 +1844,17 @@ NVX_Aberrant_Estate_manager_monthly = {
 		    modifier = { factor = 0.5 estates_has_government_outlier = yes }
 		    modifier = { factor = 1.1 reactionary > 0.09 }
 		    modifier = { factor = 1.2 reactionary > 0.19 }
-            country_event = {
-                id = nvx_fourth_estates.39
-                days = 10
-                random_hours = 12
-                random_days = 10
+            modifier = { factor = 0 NVX_estates_injuction_trigger = yes }
+            if = {
+                limit = {
+                    NVX_estates_injuction_trigger = yes
+                }
+                country_event = {
+                    id = nvx_fourth_estates.39
+                    days = 10
+                    random_hours = 12
+                    random_days = 10
+                }
             }
         }
         2= { #Fourth estate aberrant decrease reactionary
@@ -2103,7 +2109,7 @@ NVX_capricious_wars_check = {
                         random_days = 10
                     }
                 }
-                2000000 = {
+                4000000 = {
 
                 }
             }
@@ -2133,7 +2139,7 @@ NVX_capricious_wars_check = {
                         random_days = 10
                     }
                 }
-                150000 = {
+                300000 = {
 
                 }
             }
@@ -2163,7 +2169,7 @@ NVX_capricious_wars_check = {
                         random_days = 10
                     }
                 }
-                1100000 = {
+                2200000 = {
 
                 }
             }
@@ -2190,7 +2196,7 @@ NVX_capricious_wars_check = {
                         random_days = 10
                     }
                 }
-                1500000 = {
+                3000000 = {
 
                 }
             }

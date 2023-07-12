@@ -35,7 +35,7 @@ if = {
 		cv_naval_bomber3 = 1
 		strategic_bomber1 = 1
 		strategic_bomber2 = 1
-		scout_plane1 = 1
+		#scout_plane1 = 1
 	}
 }
 if = {
@@ -57,7 +57,7 @@ if = {
 		Cold_war_cas = 1
 		engines_1 = 1
 		air_misc = 1
-		scout_plane1 = 1
+		#scout_plane1 = 1
 	}
 	#varients
 	#CAS
@@ -67,8 +67,10 @@ if = {
 		modules = {
 			fixed_main_weapon_slot = heavy_mg_2x
 			fixed_auxiliary_weapon_slot_1 = medium_bomb_bay
+			fixed_auxiliary_weapon_slot_2 = tank_buster_1
 			engine_type_slot = engine_1_2x
 			special_type_slot_1 = empty
+			special_type_slot_3 = armor_plate_medium
 		}
 	}
 	#Multirole
@@ -99,13 +101,13 @@ if = {
 		name = "F-4 Phantom II"
 		type = medium_plane_airframe_0
 		modules = {
-			fixed_main_weapon_slot = light_mg_2x
+			fixed_main_weapon_slot = heavy_mg_2x
 			fixed_auxiliary_weapon_slot_1 = aircraft_cannon_short_1
-			fixed_auxiliary_weapon_slot_2 = aircraft_cannon_short_1
+			fixed_auxiliary_weapon_slot_2 = small_bomb_bay
 			engine_type_slot = engine_1_2x
 			special_type_slot_1 = empty
 		}
-		icon = "GFX_USA_fighter2_medium"
+		icon = "GFX_F-4_Phantom_II_medium"
 		obsolete = yes
 	}
 	create_equipment_variant = {
@@ -114,10 +116,12 @@ if = {
 		modules = {
 			fixed_main_weapon_slot = light_mg_2x
 			fixed_auxiliary_weapon_slot_1 = aircraft_cannon_short_1
+			fixed_auxiliary_weapon_slot_2 = rocket_pod
 			engine_type_slot = engine_1_2x
 			special_type_slot_1 = empty
+			special_type_slot_2 = plane_lighten_materials
 		}
-		icon = "GFX_USA_fighter1_medium"
+		icon = "GFX_F-5_Tiger_II_medium"
 		obsolete = yes
 	}
 	create_equipment_variant = {
@@ -130,7 +134,7 @@ if = {
 			engine_type_slot = engine_1_2x
 			special_type_slot_1 = empty
 		}
-		icon = "GFX_USA_fighter4_medium"
+		icon = "GFX_F-14_Tomcat_medium"
 	}
 	create_equipment_variant = {
 		name = "MiG-29" 
@@ -334,7 +338,7 @@ set_technology = {
 	# cv_naval_bomber2 = 1
 	# strategic_bomber1 = 1
 	# strategic_bomber2 = 1
-	# scout_plane1 = 1
+	# #scout_plane1 = 1
 	
 	## Industry ##
 	fuel_silos = 1
@@ -507,7 +511,6 @@ if = {
 	limit = {
 		NOT = {has_dlc = "By Blood Alone"}
 	}
-	instant_effect = {
 		add_equipment_to_stockpile = {
 			type = fighter_equipment_3
 			amount = 25
@@ -538,7 +541,6 @@ if = {
 			amount = 35
 			producer = PRC
 		}
-	}
 }
 if = {
 	limit = {
@@ -547,43 +549,43 @@ if = {
 	add_equipment_to_stockpile = {
 		type = medium_plane_airframe_0
 		amount = 12
-		producer = FRA
+		producer = PER
 		variant_name = "Mirage F1" 
 	}
 	add_equipment_to_stockpile = {
 		type = medium_plane_airframe_0
 		amount = 63
-		producer = USA
+		producer = PER
 		variant_name = "F-4 Phantom II"
 	}
 	add_equipment_to_stockpile = {
 		type = medium_plane_airframe_0
 		amount = 40
-		producer = USA
+		producer = PER
 		variant_name = "F-5 Tiger II"
 	}
 	add_equipment_to_stockpile = {
 		type = medium_plane_airframe_0
 		amount = 17
-		producer = PRC
+		producer = PER
 		variant_name = "J-7"
 	}
 	add_equipment_to_stockpile = {
 		type = medium_plane_airframe_1
 		amount = 19
-		producer = SOV
+		producer = PER
 		variant_name = "MiG-29"
 	}
 	add_equipment_to_stockpile = {
 		type = medium_plane_airframe_1
 		amount = 41
-		producer = USA
+		producer = PER
 		variant_name = "F-14 Tomcat" 
 	}
 	add_equipment_to_stockpile = {
 		type = small_plane_airframe_1
 		amount = 23
-		producer = SOV
+		producer = PER
 		variant_name = "Su-25" #Su-24
 	}
 }

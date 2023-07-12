@@ -306,11 +306,11 @@ KOR_kim_dae_jung_gov = {
 		
 		available = {
 			country_exists = JAP
-			JAP = { has_country_leader = { ruling_only = yes name = "Keizo Obuchi" } }
+			JAP = { has_country_leader = { ruling_only = yes character = JAP_keizo_obuchi } }
 		}
 
 		visible = {
-			JAP = { has_country_leader = { ruling_only = yes name = "Keizo Obuchi" } }
+			JAP = { has_country_leader = { ruling_only = yes character = JAP_keizo_obuchi } }
 		}
 
 		cost = 15
@@ -673,108 +673,6 @@ KOR_kim_dae_jung_gov = {
 	#}
 }
 
-
-KOR_kim_dae_jung_foreign_policy = {
-	KOR_east_timor_negotiations = { 
-		icon = generic_agreement
-
-		#allowed = { always = yes }
-		
-		available = {
-			NOT = { country_exists = ETI }
-			country_exists = INS
-		}
-
-		visible = {
-		}
-
-		cost = 15
-		fire_only_once = yes
-				
-		complete_effect = {
-		}
-
-		ai_will_do = {
-			factor = 0
-		}
-	}
-	
-	KOR_support_for_democracy_in_myanmar = { 
-		icon = generic_agreement
-
-		#allowed = { always = yes }
-		
-		available = {
-			country_exists = BRM
-			NOT = { is_in_faction_with = BRM }
-			BRM = { has_democratic_form_of_government = no }
-		}
-
-		visible = {
-		}
-
-		cost = 15
-		fire_only_once = yes
-				
-		complete_effect = {
-		}
-
-		ai_will_do = {
-			factor = 0
-		}
-	}
-	
-	KOR_blame_lee_kuan_yew = { 
-		icon = generic_agreement
-
-		#allowed = { always = yes }
-		
-		available = {
-			country_exists = SIG
-			NOT = { is_in_faction_with = SIG }
-			OR = {
-				SIG = { has_country_leader = { ruling_only = yes name = "Lee Kuan Yew" } }
-				SIG = { has_country_leader = { ruling_only = yes name = "Lee Hsien Loong" } }
-			}
-		}
-
-		visible = {
-		}
-
-		cost = 15
-		fire_only_once = yes
-				
-		complete_effect = {
-		}
-
-		ai_will_do = {
-			factor = 0
-		}
-	}
-	
-	KOR_meeting_for_separated_families = { 
-		icon = generic_agreement
-
-		#allowed = { always = yes }
-		
-		available = {
-			country_exists = PRK
-		}
-
-		visible = {
-		}
-
-		cost = 15
-		fire_only_once = yes
-				
-		complete_effect = {
-		}
-
-		ai_will_do = {
-			factor = 0
-		}
-	}
-}
 
 KOR_parliament_factions = {
 
@@ -3827,29 +3725,6 @@ KOR_influence_korea = {
  #####################
  # Republic of Korea
  #####################
- 
-	#KOR_broadcasting_to_north_korea = { 
-	#	icon = generic_agreement
-	#
-	#	available = {
-	#		NOT = { has_country_leader = { ruling_only = yes name = "Kim Dae-jung" } }
-	#		NOT = { PRK = { check_variable = { RegimeInfluence = 100 compare = greater_than_or_equals } } }
-	#	}
-
-	#	visible = {
-	#		tag = KOR
-	#	}
-
-	#	cost = 75
-	#	fire_only_once = no
-				
-	#	complete_effect = {
-	#	}
-
-	#	ai_will_do = {
-	#		factor = 0
-	#	}
-	#}
  
 	KOR_how_to_influence = { 
 		icon = generic_agreement

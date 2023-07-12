@@ -19,6 +19,7 @@
    shared_focus = PRC_future_of_china_s_economy
    shared_focus = PRC_MSS
    shared_focus = PRC_successor_to_marx_Lenin
+   shared_focus = PRC_taiwan_liberation_war
  }
 
 	shared_focus = {
@@ -568,6 +569,7 @@
 		search_filters = { }
 
 		completion_reward = {
+			add_political_power = 150
 		}
 		
 		ai_will_do = {
@@ -644,16 +646,22 @@
 				}
 
 				PTW = {
-					
+					every_state = {
+						limit = {
+							is_owned_by = NDF
+						}
+						add_core_of = NDF
+					}
+
 					set_politics = {
 						ruling_party = nationalist
 						elections_allowed = no
 					}
 
 					add_manpower = 100000
-					add_ideas = {
-						PRC_taiwan_puppet_idea
-					}
+					#add_ideas = {
+					#	PRC_taiwan_puppet_idea
+					#}
 					add_offsite_building = { type = industrial_complex level = 4 }
 					add_offsite_building = { type = arms_factory level = 4 }
 					add_equipment_to_stockpile = {
@@ -895,118 +903,6 @@
 
 
 	## Army
-	
-	shared_focus = {
-		id = PRC_naval_modernization
-		icon = PRC_naval_modernization
-		x = -2
-		y = 0
-		cost = 5
-
-		relative_position_id = PRC_army_modernization
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = no
-
-		search_filters = {FOCUS_FILTER_INDUSTRY FOCUS_FILTER_NAVY_XP}
-
-		completion_reward = {
-			navy_experience = 25
-			random_owned_controlled_state = {
-				limit = {
-					dockyard > 0
-					free_building_slots = {
-						building = dockyard
-						size > 1
-						include_locked = yes
-					}
-				}
-				add_extra_state_shared_building_slots = 1
-				add_building_construction = {
-					type = dockyard
-					level = 1
-					instant_build = yes
-				}
-			}
-			random_owned_controlled_state = {
-				limit = {
-					dockyard > 0
-					free_building_slots = {
-						building = dockyard
-						size > 1
-						include_locked = yes
-					}
-				}
-				add_extra_state_shared_building_slots = 1
-				add_building_construction = {
-					type = dockyard
-					level = 1
-					instant_build = yes
-				}
-			}
-
-			if = {
-				limit = {
-					NOT = {
-						any_owned_state = {
-							dockyard > 0
-							free_building_slots = {
-								building = dockyard
-								size > 0
-								include_locked = yes
-							}
-						}
-					}
-				}
-				random_owned_controlled_state = {
-					limit = {
-						free_building_slots = {
-							building = dockyard
-							size > 1
-							include_locked = yes
-						}
-					}
-					add_extra_state_shared_building_slots = 1
-					add_building_construction = {
-						type = dockyard
-						level = 1
-						instant_build = yes
-					}
-				}
-				random_owned_controlled_state = {
-					limit = {
-						free_building_slots = {
-							building = dockyard
-							size > 1
-							include_locked = yes
-						}
-					}
-					add_extra_state_shared_building_slots = 1
-					add_building_construction = {
-						type = dockyard
-						level = 1
-						instant_build = yes
-					}
-				}				
-			}
-
-			add_doctrine_cost_reduction = {
-				name = naval_doc_bonus
-				cost_reduction = 0.5
-				uses = 1
-				category = naval_doctrine
-			}
-		}
-		
-		ai_will_do = {
-			base = 1
-			modifier = {
-				factor = 3
-				date > 2000.6.1
-			}
-		}
-	}
 
 	shared_focus = {
 		id = PRC_army_modernization
@@ -1116,6 +1012,118 @@
 		}
 
 		search_filters = { FOCUS_FILTER_ARMY_XP }
+		
+		ai_will_do = {
+			base = 1
+			modifier = {
+				factor = 3
+				date > 2000.6.1
+			}
+		}
+	}
+	
+	shared_focus = {
+		id = PRC_naval_modernization
+		icon = PRC_naval_modernization
+		x = -2
+		y = 0
+		cost = 5
+
+		relative_position_id = PRC_army_modernization
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = {FOCUS_FILTER_INDUSTRY FOCUS_FILTER_NAVY_XP}
+
+		completion_reward = {
+			navy_experience = 25
+			random_owned_controlled_state = {
+				limit = {
+					dockyard > 0
+					free_building_slots = {
+						building = dockyard
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = dockyard
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					dockyard > 0
+					free_building_slots = {
+						building = dockyard
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = dockyard
+					level = 1
+					instant_build = yes
+				}
+			}
+
+			if = {
+				limit = {
+					NOT = {
+						any_owned_state = {
+							dockyard > 0
+							free_building_slots = {
+								building = dockyard
+								size > 0
+								include_locked = yes
+							}
+						}
+					}
+				}
+				random_owned_controlled_state = {
+					limit = {
+						free_building_slots = {
+							building = dockyard
+							size > 1
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = dockyard
+						level = 1
+						instant_build = yes
+					}
+				}
+				random_owned_controlled_state = {
+					limit = {
+						free_building_slots = {
+							building = dockyard
+							size > 1
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = dockyard
+						level = 1
+						instant_build = yes
+					}
+				}				
+			}
+
+			add_doctrine_cost_reduction = {
+				name = naval_doc_bonus
+				cost_reduction = 0.5
+				uses = 1
+				category = naval_doctrine
+			}
+		}
 		
 		ai_will_do = {
 			base = 1
@@ -1270,40 +1278,46 @@
 		search_filters = { }
 
 		completion_reward = {
-
-			592 = {
+			if = {
 				limit = {
-					free_building_slots = {
-						building = dockyard
-						size > 1
-						include_locked = yes
+					592 = {
+						free_building_slots = {
+							building = dockyard
+							size > 1
+							include_locked = yes
+						}
+						is_core_of = ROOT
+						is_owned_by = ROOT
 					}
-					is_core_of = ROOT
-					is_owned_by = ROOT
 				}
-				add_extra_state_shared_building_slots = 2
-				add_building_construction = {
-					type = dockyard
-					level = 2
-					instant_build = yes
+				592 = {
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = dockyard
+						level = 2
+						instant_build = yes
+					}
 				}
 			}
-
-			599 = {
+			if = {
 				limit = {
-					free_building_slots = {
-						building = dockyard
-						size > 1
-						include_locked = yes
+					599 = {
+						free_building_slots = {
+							building = dockyard
+							size > 1
+							include_locked = yes
+						}
+						is_core_of = ROOT
+						is_owned_by = ROOT
 					}
-					is_core_of = ROOT
-					is_owned_by = ROOT
 				}
-				add_extra_state_shared_building_slots = 2
-				add_building_construction = {
-					type = dockyard
-					level = 2
-					instant_build = yes
+				599 = {
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = dockyard
+						level = 2
+						instant_build = yes
+					}
 				}
 			}
 		}
@@ -1312,6 +1326,7 @@
 			base = 1
 		}
 	}
+
 
 	shared_focus = {
 		id = PRC_reinforce_northern_naval_bases
@@ -1333,22 +1348,25 @@
 		search_filters = { }
 
 		completion_reward = {
-
-			716 = {
+			if = {
 				limit = {
-					free_building_slots = {
-						building = dockyard
-						size > 1
-						include_locked = yes
+					716 = {
+						free_building_slots = {
+							building = dockyard
+							size > 1
+							include_locked = yes
+						}
+						is_core_of = ROOT
+						is_owned_by = ROOT
 					}
-					is_core_of = ROOT
-					is_owned_by = ROOT
 				}
-				add_extra_state_shared_building_slots = 2
-				add_building_construction = {
-					type = dockyard
-					level = 2
-					instant_build = yes
+				716 = {
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = dockyard
+						level = 2
+						instant_build = yes
+					}
 				}
 			}
 
@@ -1379,39 +1397,46 @@
 		search_filters = { }
 
 		completion_reward = {
-			613 = {
+			if = {
 				limit = {
-					free_building_slots = {
-						building = dockyard
-						size > 1
-						include_locked = yes
+					613 = {
+						free_building_slots = {
+							building = dockyard
+							size > 1
+							include_locked = yes
+						}
+						is_core_of = ROOT
+						is_owned_by = ROOT
 					}
-					is_core_of = ROOT
-					is_owned_by = ROOT
 				}
-				add_extra_state_shared_building_slots = 2
-				add_building_construction = {
-					type = dockyard
-					level = 2
-					instant_build = yes
+				613 = {
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = dockyard
+						level = 2
+						instant_build = yes
+					}
 				}
 			}
-
-			62 = {
+			if = {
 				limit = {
-					free_building_slots = {
-						building = dockyard
-						size > 1
-						include_locked = yes
+					62 = {
+						free_building_slots = {
+							building = dockyard
+							size > 1
+							include_locked = yes
+						}
+						is_core_of = ROOT
+						is_owned_by = ROOT
 					}
-					is_core_of = ROOT
-					is_owned_by = ROOT
 				}
-				add_extra_state_shared_building_slots = 2
-				add_building_construction = {
-					type = dockyard
-					level = 2
-					instant_build = yes
+				62 = {
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = dockyard
+						level = 2
+						instant_build = yes
+					}
 				}
 			}
 		}
@@ -1953,6 +1978,10 @@
 		search_filters = { }
 
 		completion_reward = {
+			every_army_leader = {
+				add_planning = 1
+			}
+			add_ideas = PRC_chinese_general_staff
 		}
 		
 		ai_will_do = {
@@ -5618,6 +5647,14 @@
 		y = 1
 		cost = 8
 
+		offset = {
+			x = 1
+			y = 0
+			trigger = {
+				has_completed_focus = PRC_the_left_opposition
+			}
+		}
+
 		relative_position_id = PRC_the_right_opposition
 
 		prerequisite = { 
@@ -5657,6 +5694,14 @@
 		x = 2
 		y = 3
 		cost = 8
+
+		offset = {
+			x = 1
+			y = 0
+			trigger = {
+				has_completed_focus = PRC_the_left_opposition
+			}
+		}
 
 		relative_position_id = PRC_the_right_opposition
 
@@ -5787,6 +5832,27 @@
 		continue_if_invalid = no
 		available_if_capitulated = no
 
+		select_effect = {
+			if = {
+				limit = {
+					has_active_mission = PRC_looming_mingongs_strike_mission
+				}
+				add_days_mission_timeout  = {
+					mission = PRC_looming_mingongs_strike_mission
+					days = 56
+				}
+			}
+			if = {
+				limit = {
+					has_active_mission = PRC_mingongs_strike
+				}
+				add_days_mission_timeout  = {
+					mission = PRC_mingongs_strike
+					days = 56
+				}
+			}
+		}
+
 		completion_reward = {			
 			add_ideas = PRC_mao_zedong_thought_idea
 		}
@@ -5870,6 +5936,27 @@
 		continue_if_invalid = no
 		available_if_capitulated = no
 
+		select_effect = {
+			if = {
+				limit = {
+					has_active_mission = PRC_looming_mingongs_strike_mission
+				}
+				add_days_mission_timeout  = {
+					mission = PRC_looming_mingongs_strike_mission
+					days = 56
+				}
+			}
+			if = {
+				limit = {
+					has_active_mission = PRC_mingongs_strike
+				}
+				add_days_mission_timeout  = {
+					mission = PRC_mingongs_strike
+					days = 56
+				}
+			}
+		}
+
 		completion_reward = {
 			custom_effect_tooltip = prc_coup_plan_tt
 		}
@@ -5888,6 +5975,14 @@
 		y = 2
 		cost = 7
 
+		offset = {
+			x = -3
+			y = 0
+			trigger = {
+				has_completed_focus = PRC_the_left_opposition
+			}
+		}
+
 		relative_position_id = PRC_successor_to_marx_Lenin
 		
 		prerequisite = { 
@@ -5902,6 +5997,27 @@
 		available_if_capitulated = no
 		
 		search_filters = { }
+
+		select_effect = {
+			if = {
+				limit = {
+					has_active_mission = PRC_looming_mingongs_strike_mission
+				}
+				add_days_mission_timeout  = {
+					mission = PRC_looming_mingongs_strike_mission
+					days = 49
+				}
+			}
+			if = {
+				limit = {
+					has_active_mission = PRC_mingongs_strike
+				}
+				add_days_mission_timeout  = {
+					mission = PRC_mingongs_strike
+					days = 49
+				}
+			}
+		}
 
 		completion_reward = {
 			add_ideas = PRC_abolition_of_the_hukou_idea
@@ -5938,6 +6054,24 @@
 		select_effect = {
 			country_event = { id = pr_china.9 days = 10 }
 			country_event = { id = pr_china.10 days = 20 }
+			if = {
+				limit = {
+					has_active_mission = PRC_looming_mingongs_strike_mission
+				}
+				add_days_mission_timeout  = {
+					mission = PRC_looming_mingongs_strike_mission
+					days = 56
+				}
+			}
+			if = {
+				limit = {
+					has_active_mission = PRC_mingongs_strike
+				}
+				add_days_mission_timeout  = {
+					mission = PRC_mingongs_strike
+					days = 56
+				}
+			}
 		}
 
 		completion_reward = {			
@@ -6317,6 +6451,14 @@
 		y = 4
 		cost = 7
 
+		offset = {
+			x = -3
+			y = 0
+			trigger = {
+				has_completed_focus = PRC_the_left_opposition
+			}
+		}
+
 		relative_position_id = PRC_successor_to_marx_Lenin
 		
 		prerequisite = { 
@@ -6379,6 +6521,22 @@
 		y = 5
 		cost = 7
 
+		offset = {
+			x = -3
+			y = 0
+			trigger = {
+				has_completed_focus = PRC_the_left_opposition
+			}
+		}
+
+		offset = {
+			x = -3
+			y = 0
+			trigger = {
+				has_completed_focus = PRC_the_right_opposition
+			}
+		}
+
 		relative_position_id = PRC_successor_to_marx_Lenin
 		
 		prerequisite = { 
@@ -6401,6 +6559,16 @@
 		search_filters = { }
 
 		completion_reward = {
+			clr_country_flag = prc_zhao_ziyang_adviser_imprisoned
+			clr_country_flag = prc_liu_xiaobo_imprisoned
+
+			custom_effect_tooltip = PRC_grand_coalition_tt
+			show_ideas_tooltip = prc_liu_xiaobo
+			show_ideas_tooltip = prc_zhao_ziyang_adviser
+			
+			custom_effect_tooltip = PRC_grand_coalition_tt_2
+			
+			show_ideas_tooltip = prc_bo_xilai_advisor
 		}
 		
 		ai_will_do = {
@@ -6414,6 +6582,7 @@
 		x = 0
 		y = 2
 		cost = 8
+		
 		offset = {
 			x = 6
 			y = 0
@@ -6765,7 +6934,7 @@
 
 	shared_focus = {
 		id = PRC_southeast_asian_dominion
-		icon = attack_asean
+		icon = PRC_red_army
 		x = -1
 		y = 1
 		cost = 5
@@ -8082,3 +8251,180 @@
 #			base = 1
 #		}
 #	}
+
+###########
+###
+### War
+###
+###########
+
+
+	shared_focus = {
+		id = PRC_taiwan_liberation_war
+		icon = PRC_taiwanese_attack
+		x = 21
+		y = 7
+		cost = 3
+
+		available = {
+			has_war_with = CHI
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		search_filters = { }
+
+		completion_reward = {
+			add_timed_idea = { idea = PRC_taiwan_liberation_war_idea days = 180 }
+		}
+		
+		ai_will_do = {
+			base = 4
+		}
+	}
+
+	shared_focus = {
+		id = PRC_blitzkrieg
+		icon = PRC_red_army
+		x = 1
+		y = 1
+		cost = 5
+
+		relative_position_id = PRC_taiwan_liberation_war
+
+		prerequisite = { 
+			focus = PRC_taiwan_liberation_war
+		}
+
+		available = {
+			has_war_with = CHI
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {		
+			add_timed_idea = { idea = PRC_landing_operation days = 365 }
+		}
+
+		search_filters = {  }
+		
+		ai_will_do = {
+			base = 4
+		}
+	}
+
+	shared_focus = {
+		id = PRC_inside_collaborator
+		icon = PRC_taiwanese_co_op
+		x = -1
+		y = 1
+		cost = 5
+
+		relative_position_id = PRC_taiwan_liberation_war
+
+		prerequisite = { 
+			focus = PRC_taiwan_liberation_war
+		}
+
+		available = {
+			has_war_with = CHI
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {		
+			add_intel = {
+				target = CHI
+				civilian_intel = 15
+			}
+			add_intel = {
+				target = CHI
+				army_intel = 15
+			}
+			add_intel = {
+				target = CHI
+				airforce_intel = 15
+			}
+			add_intel = {
+				target = CHI
+				navy_intel = 15
+			}
+		}
+
+		search_filters = {  }
+		
+		ai_will_do = {
+			base = 4
+		}
+	}
+
+	shared_focus = {
+		id = PRC_anti_taiwanese_propaganda
+		icon = propaganda
+		x = -1
+		y = 2
+		cost = 5
+
+		relative_position_id = PRC_taiwan_liberation_war
+
+		prerequisite = { 
+			focus = PRC_taiwan_liberation_war
+		}
+
+		available = {
+			has_war_with = CHI
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {		
+			add_manpower = 10000
+			add_war_support = 0.05
+		}
+
+		search_filters = {  }
+		
+		ai_will_do = {
+			base = 4
+		}
+	}
+
+	shared_focus = {
+		id = PRC_with_more_overwhelming_power
+		icon = PRC_with_more_overwhelming_power
+		x = 1
+		y = 2
+		cost = 5
+
+		relative_position_id = PRC_taiwan_liberation_war
+
+		prerequisite = { 
+			focus = PRC_taiwan_liberation_war
+		}
+
+		available = {
+			has_war_with = CHI
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {		
+			add_timed_idea = { idea = PRC_overwhelming_bombing_operation days = 120 }
+		}
+
+		search_filters = {  }
+		
+		ai_will_do = {
+			base = 4
+		}
+	}

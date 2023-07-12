@@ -252,6 +252,7 @@ news_event = {
 	
 	immediate = {
 		set_global_flag = prc_america_china_war_sp
+		activate_superevent_music = yes
 	}
 	
 	option = {
@@ -2186,40 +2187,40 @@ country_event = {
 					WAS = {
 						is_puppet_of = ROOT
 					}
-					set_autonomy = { target = PREV autonomy_state = free }
 				}
+				release_puppet = WAS
 			}
 			if = {
 				limit = {
 					HKN = {
 						is_puppet_of = ROOT
 					}
-					set_autonomy = { target = PREV autonomy_state = free }
 				}
+				release_puppet = HKN
 			}
 			if = {
 				limit = {
 					MCU = {
 						is_puppet_of = ROOT
 					}
-					set_autonomy = { target = PREV autonomy_state = free }
 				}
+				release_puppet = MCU
 			}
 			if = {
 				limit = {
 					TIB = {
 						is_puppet_of = ROOT
 					}
-					set_autonomy = { target = PREV autonomy_state = free }
 				}
+				release_puppet = TIB
 			}
 			if = {
 				limit = {
 					SIK = {
 						is_puppet_of = ROOT
 					}
-					set_autonomy = { target = PREV autonomy_state = free }
 				}
+				release_puppet = SIK
 			}
 			
 			event_target:china_social_democrat_rebel = {
@@ -3573,10 +3574,10 @@ country_event = {
 			base = 0
 		}
 		
-		add_opinion_modifier = {
-			target = FROM
-			modifier = KR_hates_govt
-		}
+		#add_opinion_modifier = {
+		#	target = FROM
+		#	modifier = KR_hates_govt
+		#}
 		FROM = { country_event = pr_china_diplomacy.5 }
 	}
 }
@@ -3618,10 +3619,10 @@ country_event = {
 
 	option = {
 		name = pr_china_diplomacy.5.a
-		add_opinion_modifier = {
-			target = FROM
-			modifier = KR_hates_govt
-		}
+		#add_opinion_modifier = {
+		#	target = FROM
+		#	modifier = KR_hates_govt
+		#}
 	}
 }
 
@@ -3635,10 +3636,10 @@ country_event = { #Country refuses
 
 	option = {
 		name = pr_china_diplomacy.6.a
-		add_opinion_modifier = {
-			target = FROM
-			modifier = KR_disapproves_of_govt
-		}
+		#add_opinion_modifier = {
+		#	target = FROM
+		#	modifier = KR_disapproves_of_govt
+		#}
 	}
 }
 
@@ -3885,10 +3886,8 @@ country_event = {
 		
 		ai_chance = {
 			base = 0
-			if = {
-				limit = {
-					has_completed_focus = JAP_chugakuha_win
-				}
+			modifier = {
+				has_completed_focus = JAP_chugakuha_win
 				add = 25
 			}
 		}
@@ -3980,10 +3979,8 @@ country_event = {
 		
 		ai_chance = {
 			base = 8
-			if = {
-				limit = {
-					is_in_faction_with = FROM
-				}
+			modifier = {
+				is_in_faction_with = FROM
 				factor = 0
 			}
 		}
