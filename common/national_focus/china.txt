@@ -20,6 +20,7 @@
    shared_focus = PRC_MSS
    shared_focus = PRC_successor_to_marx_Lenin
    shared_focus = PRC_taiwan_liberation_war
+   shared_focus = PRC_darkness_sympathizer
  }
 
 	shared_focus = {
@@ -194,8 +195,8 @@
 
 		completion_reward = {
 			activate_targeted_decision = { target = 621 decision = PRC_develop_civilian_factory_decision } #Huhehaote
-			activate_targeted_decision = { target = 921 decision = PRC_develop_civilian_factory_decision } #Xilinguole Meng
 			activate_targeted_decision = { target = 611 decision = PRC_develop_civilian_factory_decision } #Chifeng
+			activate_targeted_decision = { target = 612 decision = PRC_develop_civilian_factory_decision } #Xilinguole Meng
 		}
 		
 		ai_will_do = {
@@ -907,7 +908,7 @@
 	shared_focus = {
 		id = PRC_army_modernization
 		icon = PRC_army_modernization
-		x = 36
+		x = 46
 		y = 0
 		cost = 5
 
@@ -4266,6 +4267,69 @@
 
 	##############################
 	#
+	# Agricultural Problem
+	#
+	##############################
+
+	shared_focus = {
+		id = PRC_MSS
+		icon = PRC_MSS
+		x = 20
+		y = 0
+		cost = 8
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		search_filters = { }
+
+		completion_reward = {			
+			if = {
+				limit = { has_dlc = "La Resistance" }
+				if = {
+					limit = { has_intelligence_agency = no }
+					create_intelligence_agency = yes
+				}
+				else_if = {
+					limit = {
+						NOT = { has_done_agency_upgrade = upgrade_army_department }
+					}
+					upgrade_intelligence_agency = upgrade_army_department
+				}
+				else = {
+					add_political_power = 75
+				}
+				add_ideas = PRC_MSS_lar
+			}
+			else = {
+				add_ideas = PRC_MSS_no_lar
+			}
+		}
+		
+		ai_will_do = {
+			base = 1
+			modifier = {
+				factor = 5
+				has_war = yes
+			}
+			modifier = {
+				factor = 1.5
+				date > 2001.1.1
+			}
+			modifier = {
+				factor = 1.5
+				date > 2003.1.1
+			}
+			modifier = {
+				factor = 2
+				date > 2006.1.1
+			}
+		}
+	}
+
+	##############################
+	#
 	# Potilic
 	#
 	#
@@ -4274,7 +4338,7 @@
 	shared_focus = {
 		id = PRC_successor_to_marx_Lenin
 		icon = PRC_successor_to_marx_Lenin
-		x = 57
+		x = 67
 		y = 0
 		cost = 8
 		offset = {
@@ -4282,6 +4346,38 @@
 			y = 0
 			trigger = {
 				has_completed_focus = PRC_the_centre
+			}
+		}
+
+		mutually_exclusive = { 
+			focus = PRC_darkness_sympathizer
+		}
+
+		select_effect = {
+			if = {
+				limit = {
+					ROOT = { is_ai = yes }
+				}
+
+				#No More AI Civil War	
+				if = {
+					limit = {
+						has_active_mission = PRC_looming_mingongs_strike_mission
+					}
+					add_days_mission_timeout  = {
+						mission = PRC_looming_mingongs_strike_mission
+						days = 9999
+					}
+				}
+				if = {
+					limit = {
+						has_active_mission = PRC_mingongs_strike
+					}
+					add_days_mission_timeout  = {
+						mission = PRC_mingongs_strike
+						days = 9999
+					}
+				}
 			}
 		}
 
@@ -4394,6 +4490,13 @@
 		
 		ai_will_do = {
 			base = 1000
+			modifier = {
+				factor = 0
+				OR = {
+					has_idea = PRC_rural_poverty_strike
+					has_idea = PRC_rural_poverty_strike_danger
+				}	
+			}
 		}
 	}
 
@@ -4426,6 +4529,13 @@
 		
 		ai_will_do = {
 			base = 1000
+			modifier = {
+				factor = 0
+				OR = {
+					has_idea = PRC_rural_poverty_strike
+					has_idea = PRC_rural_poverty_strike_danger
+				}	
+			}
 		}
 	}
 
@@ -4934,7 +5044,14 @@
 		}
 		
 		ai_will_do = {
-			base = 1000
+			base = 25
+			modifier = {
+				factor = 0.5
+				OR = {
+					has_idea = PRC_rural_poverty_strike
+					has_idea = PRC_rural_poverty_strike_danger
+				}	
+			}
 		}
 	}
 
@@ -4969,6 +5086,13 @@
 		
 		ai_will_do = {
 			base = 1000
+			modifier = {
+				factor = 0
+				OR = {
+					has_idea = PRC_rural_poverty_strike
+					has_idea = PRC_rural_poverty_strike_danger
+				}	
+			}
 		}
 	}
 
@@ -5004,6 +5128,13 @@
 		
 		ai_will_do = {
 			base = 1000
+			modifier = {
+				factor = 0
+				OR = {
+					has_idea = PRC_rural_poverty_strike
+					has_idea = PRC_rural_poverty_strike_danger
+				}	
+			}
 		}
 	}
 
@@ -5036,6 +5167,13 @@
 		
 		ai_will_do = {
 			base = 1000
+			modifier = {
+				factor = 0
+				OR = {
+					has_idea = PRC_rural_poverty_strike
+					has_idea = PRC_rural_poverty_strike_danger
+				}	
+			}
 		}
 	}
 
@@ -6711,7 +6849,7 @@
 		}
 		
 		ai_will_do = {
-			base = 10
+			base = 1000
 			modifier = {
 				factor = 1.6
 				has_completed_focus = PRC_the_centre
@@ -6745,7 +6883,7 @@
 		}
 		
 		ai_will_do = {
-			base = 10
+			base = 1000
 			modifier = {
 				factor = 1.6
 				has_completed_focus = PRC_the_right_opposition
@@ -8251,6 +8389,44 @@
 #			base = 1
 #		}
 #	}
+
+
+	shared_focus = {
+		id = PRC_darkness_sympathizer
+		icon = PRC_anti_ccp_start
+		x = 108
+		y = 0
+		cost = 5
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = PRC_darkness_sympathizer_WIP
+				always = no
+			}
+		}
+
+		allow_branch = {
+			NOT = {	has_completed_focus = PRC_successor_to_marx_Lenin }
+		}
+
+		mutually_exclusive = { 
+			focus = PRC_successor_to_marx_Lenin
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {			
+			custom_effect_tooltip = PRC_darkness_sympathizer_tt
+		}
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		
+		ai_will_do = {
+			base = 0
+		}
+	}
 
 ###########
 ###
