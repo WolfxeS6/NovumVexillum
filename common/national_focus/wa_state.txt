@@ -99,7 +99,7 @@ focus_tree = {
 
 	shared_focus = {
 		id = WAS_true_leader_of_myanmar
-		icon = PRC_old_posters
+		icon = PRC_lenin_statue_red_flag
 		x = -4
 		y = 1
 		cost = 5
@@ -157,26 +157,21 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_INDUSTRY }
 
 		completion_reward = {
-			if = {
+			capital_scope = {
 				limit = {
-					capital_scope = {
-						free_building_slots = {
-							building = dockyard
-							size > 1
-							include_locked = yes
-						}
-						is_core_of = ROOT
-						is_owned_by = ROOT
+					is_core_of = ROOT
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
 					}
 				}
-				capital_scope = {
-					add_extra_state_shared_building_slots = 2
+				add_extra_state_shared_building_slots = 2
 					add_building_construction = {
-						type = dockyard
+						type = arms_factory
 						level = 2
 						instant_build = yes
 					}
-				}
 			}
 		}
 		
@@ -251,6 +246,11 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_POLITICAL }
 
 		completion_reward = {
+			custom_effect_tooltip = WAS_territorial_dispute_tt
+
+			924 = {
+				add_core_of = ROOT
+			}
 		}
 		
 		ai_will_do = {
@@ -293,15 +293,13 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_POLITICAL }
 
 		completion_reward = {
-			hidden_effect = {
-				every_state = {
-					limit = {
-						is_owned_by = BRM
-					}
-					ROOT = { 
-						add_state_claim = PREV 
-						set_state_flag = WAS_want_this_state
-					}
+			every_state = {
+				limit = {
+					is_owned_by = BRM
+				}
+				ROOT = { 
+					add_state_claim = PREV 
+					set_state_flag = WAS_want_this_state
 				}
 			}
 		}
@@ -340,6 +338,7 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_POLITICAL }
 
 		completion_reward = {
+			custom_effect_tooltip = WAS_ask_china_tt
 		}
 		
 		ai_will_do = {
@@ -420,7 +419,7 @@ focus_tree = {
 
 	shared_focus = {
 		id = WAS_more_militias
-		icon = PRC_railway
+		icon = PRC_with_more_overwhelming_power
 		x = 0
 		y = 1
 		cost = 10
@@ -505,24 +504,21 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_INDUSTRY }
 
 		completion_reward = {
-			if = {
+
+			capital_scope = {
 				limit = {
-					capital_scope = {
-						is_core_of = ROOT
-						free_building_slots = {
-							building = industrial_complex
-							size > 0
-							include_locked = yes
-						}
+					is_core_of = ROOT
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
 					}
 				}
-				capital_scope = {
-					add_extra_state_shared_building_slots = 1
-					add_building_construction = {
-						type = industrial_complex
-						level = 1
-						instant_build = yes
-					}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
 				}
 			}
 		}
@@ -781,9 +777,48 @@ focus_tree = {
 		continue_if_invalid = no
 		available_if_capitulated = no
 
-		search_filters = { FOCUS_FILTER_POLITICAL }
+		search_filters = {  }
 
 		completion_reward = {
+			1257 = {
+				if = {
+					limit = { is_fully_controlled_by = ROOT }
+					add_building_construction = {
+						type = bunker
+						level = 3
+						province = 4210
+						instant_build = yes
+					}
+					add_building_construction = {
+						type = bunker
+						level = 3
+						province = 7400
+						instant_build = yes
+					}
+				}
+			}
+			1260 = {
+				if = {
+					limit = { is_fully_controlled_by = ROOT }
+					add_building_construction = {
+						type = bunker
+						level = 3
+						province = 16702
+						instant_build = yes
+					}
+				}
+			}
+			1258 = {
+				if = {
+					limit = { is_fully_controlled_by = ROOT }
+					add_building_construction = {
+						type = bunker
+						level = 3
+						province = 7647
+						instant_build = yes
+					}
+				}
+			}
 		}
 		
 		ai_will_do = {
@@ -851,6 +886,7 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_POLITICAL }
 	
 		completion_reward = {
+			add_offsite_building = { type = industrial_complex level = 2 }
 		}
 		
 		ai_will_do = {
@@ -885,6 +921,16 @@ focus_tree = {
 	
 		completion_reward = {
 			custom_effect_tooltip = GAME_OVER_TT
+			
+			hidden_effect = {
+				BRM = {
+					annex_country = {
+						target = WAS
+						transfer_troops = yes
+					}
+				}
+
+			}
 		}
 		
 		ai_will_do = {
