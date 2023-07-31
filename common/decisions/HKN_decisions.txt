@@ -272,6 +272,14 @@ ENG_hong_kong_influence_category = {
 					date < 2006.01.01
 				}
 			}
+			modifier = {
+				factor = 0
+				
+				AND = {
+					has_country_flag = HKN_hong_kong_problem_ai_timer_flag
+					check_variable = { var = prc_temp_hong_kong_influence value = 6 compare = less_than_or_equals }
+				}
+			}
 		}
 
 		complete_effect = {
@@ -838,6 +846,14 @@ PRC_hong_kong_influence_category = {
 					date < 2006.01.01
 				}
 			}
+			modifier = {
+				factor = 0
+				
+				AND = {
+					has_country_flag = HKN_hong_kong_problem_ai_timer_flag
+					check_variable = { var = eng_temp_hong_kong_influence value = 6 compare = less_than_or_equals }
+				}
+			}
 		}
 
 		complete_effect = {
@@ -845,6 +861,57 @@ PRC_hong_kong_influence_category = {
 
 		remove_effect = {
 			PRC_influence_add_5 = yes
+			
+			hidden_effect = {
+				if = {
+					limit = {
+						date < 2010.01.01
+					}
+					random_list = {
+						10 = {
+							modifier = {
+								factor = 2
+								is_historical_focus_on = yes
+							}
+							set_country_flag = { flag = HKN_hong_kong_problem_ai_timer_flag value = 1 days = 50 }
+						}
+						10 = {
+							modifier = {
+								factor = 2
+								is_historical_focus_on = yes
+							}
+							set_country_flag = { flag = HKN_hong_kong_problem_ai_timer_flag value = 1 days = 55 }
+						}
+						10 = {
+							modifier = {
+								factor = 1.5
+								is_historical_focus_on = yes
+							}
+							set_country_flag = { flag = HKN_hong_kong_problem_ai_timer_flag value = 1 days = 60 }
+						}
+						10 = {
+							set_country_flag = { flag = HKN_hong_kong_problem_ai_timer_flag value = 1 days = 65 }
+						}
+						10 = {
+							set_country_flag = { flag = HKN_hong_kong_problem_ai_timer_flag value = 1 days = 70 }
+						}
+						10 = {
+							modifier = {
+								factor = 0.8
+								is_historical_focus_on = yes
+							}
+							set_country_flag = { flag = HKN_hong_kong_problem_ai_timer_flag value = 1 days = 75 }
+						}
+						10 = {
+							modifier = {
+								factor = 0.5
+								is_historical_focus_on = yes
+							}
+							set_country_flag = { flag = HKN_hong_kong_problem_ai_timer_flag value = 1 days = 80 }
+						}
+					}
+				}
+			}
 		}
 	}
 	
