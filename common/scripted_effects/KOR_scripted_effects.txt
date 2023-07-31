@@ -35,72 +35,68 @@ KOR_loyalty_setting_effect = {
 KOR_parties_support_setting_effect = {
 
 	clear_variable = KOR_all_ruling_party_status
-	if = {
-		limit = {
-			 	has_variable = KOR_parliament_seat_support_array^0
-		}
-		clamp_variable = {
-			var = KOR_parliament_seat_support_array^0
-			min = 0
-			max = KOR_all_seats_status
-		}
-		clamp_variable = {
-			var = KOR_parliament_seat_support_array^1
-			min = 0
-			max = KOR_all_seats_status
-		}
-		clamp_variable = {
-			var = KOR_parliament_seat_support_array^2
-			min = 0
-			max = KOR_all_seats_status
-		}
-		clamp_variable = {
-			var = KOR_parliament_seat_support_array^3
-			min = 0
-			max = KOR_all_seats_status
-		}
-		clamp_variable = {
-			var = KOR_parliament_seat_support_array^4
-			min = 0
-			max = KOR_all_seats_status
-		}
-		clamp_variable = {
-			var = KOR_parliament_seat_support_array^5
-			min = 0
-			max = KOR_all_seats_status
-		}
-		clamp_variable = {
-			var = KOR_parliament_seat_support_array^9
-			min = 0
-			max = KOR_all_seats_status
-		}
-		clamp_variable = {
-			var = KOR_parliament_seat_support_array^6
-			min = 0
-			max = KOR_all_seats_status
-		}
-		clamp_variable = {
-			var = KOR_parliament_seat_support_array^7
-			min = 0
-			max = KOR_all_seats_status
-		}
-		clamp_variable = {
-			var = KOR_parliament_seat_support_array^8
-			min = 0
-			max = KOR_all_seats_status
-		}
-		
-		add_to_variable = { var = KOR_all_support_status_base  value = KOR_parliament_seat_support_array^0 }
-		add_to_variable = { var = KOR_all_support_status_base  value = KOR_parliament_seat_support_array^1 }
-		add_to_variable = { var = KOR_all_support_status_base  value = KOR_parliament_seat_support_array^2 }
-		add_to_variable = { var = KOR_all_support_status_base  value = KOR_parliament_seat_support_array^3 }
-		add_to_variable = { var = KOR_all_support_status_base  value = KOR_parliament_seat_support_array^4 }
-		add_to_variable = { var = KOR_all_support_status_base  value = KOR_parliament_seat_support_array^5 }
-		add_to_variable = { var = KOR_all_support_status_base  value = KOR_parliament_seat_support_array^6 }
-		add_to_variable = { var = KOR_all_support_status_base  value = KOR_parliament_seat_support_array^7 }
-		add_to_variable = { var = KOR_all_support_status_base  value = KOR_parliament_seat_support_array^8 }
-		add_to_variable = { var = KOR_all_support_status_base  value = KOR_parliament_seat_support_array^9 }
+	
+	clamp_variable = {
+		var = KOR_parliament_seat_support_array^0
+		min = 0
+		max = KOR_all_seats_status
 	}
+	clamp_variable = {
+		var = KOR_parliament_seat_support_array^1
+		min = 0
+		max = KOR_all_seats_status
+	}
+	clamp_variable = {
+		var = KOR_parliament_seat_support_array^2
+		min = 0
+		max = KOR_all_seats_status
+	}
+	clamp_variable = {
+		var = KOR_parliament_seat_support_array^3
+		min = 0
+		max = KOR_all_seats_status
+	}
+	clamp_variable = {
+		var = KOR_parliament_seat_support_array^4
+		min = 0
+		max = KOR_all_seats_status
+	}
+	clamp_variable = {
+		var = KOR_parliament_seat_support_array^5
+		min = 0
+		max = KOR_all_seats_status
+	}
+	clamp_variable = {
+		var = KOR_parliament_seat_support_array^9
+		min = 0
+		max = KOR_all_seats_status
+	}
+	clamp_variable = {
+		var = KOR_parliament_seat_support_array^6
+		min = 0
+		max = KOR_all_seats_status
+	}
+	clamp_variable = {
+		var = KOR_parliament_seat_support_array^7
+		min = 0
+		max = KOR_all_seats_status
+	}
+	clamp_variable = {
+		var = KOR_parliament_seat_support_array^8
+		min = 0
+		max = KOR_all_seats_status
+	}
+	
+	add_to_variable = { var = KOR_all_support_status_base  value = KOR_parliament_seat_support_array^0 }
+	add_to_variable = { var = KOR_all_support_status_base  value = KOR_parliament_seat_support_array^1 }
+	add_to_variable = { var = KOR_all_support_status_base  value = KOR_parliament_seat_support_array^2 }
+	add_to_variable = { var = KOR_all_support_status_base  value = KOR_parliament_seat_support_array^3 }
+	add_to_variable = { var = KOR_all_support_status_base  value = KOR_parliament_seat_support_array^4 }
+	add_to_variable = { var = KOR_all_support_status_base  value = KOR_parliament_seat_support_array^5 }
+	add_to_variable = { var = KOR_all_support_status_base  value = KOR_parliament_seat_support_array^6 }
+	add_to_variable = { var = KOR_all_support_status_base  value = KOR_parliament_seat_support_array^7 }
+	add_to_variable = { var = KOR_all_support_status_base  value = KOR_parliament_seat_support_array^8 }
+	add_to_variable = { var = KOR_all_support_status_base  value = KOR_parliament_seat_support_array^9 }
 	
 	
 	if = {
@@ -3297,4 +3293,39 @@ KOR_promotion_of_patriotism_effect = {
 	else = {
 		add_ideas = KOR_promotion_of_patriotism_1
 	}
+}
+
+KOR_GetChoiSupport_add_1_effect = {
+	add_to_variable = { var = KOR_autocoup_var value = 1 }
+	custom_effect_tooltip = KOR_GetChoiSupport_1_tt
+}
+
+KOR_GetChoiSupport_add_2_effect = {
+	add_to_variable = { var = KOR_autocoup_var value = 2 }
+	custom_effect_tooltip = KOR_GetChoiSupport_2_tt
+}
+
+KOR_GetChoiSupport_add_3_effect = {
+	add_to_variable = { var = KOR_autocoup_var value = 3 }
+	custom_effect_tooltip = KOR_GetChoiSupport_3_tt
+}
+
+KOR_GetTrotskySupport_add_1_effect = {
+	add_to_variable = { var = KOR_revolution_var value = 1 }
+	custom_effect_tooltip = KOR_GetTrotskySupport_1_tt
+}
+
+KOR_GetTrotskySupport_add_2_effect = {
+	add_to_variable = { var = KOR_revolution_var value = 2 }
+	custom_effect_tooltip = KOR_GetTrotskySupport_2_tt
+}
+
+KOR_GetTrotskySupport_add_3_effect = {
+	add_to_variable = { var = KOR_revolution_var value = 3 }
+	custom_effect_tooltip = KOR_GetTrotskySupport_3_tt
+}
+
+KOR_GetChoiExposure_add_1_effect = {
+	add_to_variable = { var = KOR_choi_exposure_var value = 1 }
+	custom_effect_tooltip = KOR_GetChoiExposure_1_tt
 }

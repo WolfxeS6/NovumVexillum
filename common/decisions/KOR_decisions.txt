@@ -178,6 +178,10 @@ KOR_kim_dae_jung_gov = {
 						rule = KOR_AI_BEHAVIOR
 						option = ANARCHIST_KOR
 					}
+					has_game_rule = {
+						rule = KOR_AI_BEHAVIOR
+						option = AUTHORITARIAN_KOR
+					}
 					has_country_flag = kor_non_democratic
 				}
 			}
@@ -236,6 +240,10 @@ KOR_kim_dae_jung_gov = {
 						rule = KOR_AI_BEHAVIOR
 						option = ANARCHIST_KOR
 					}
+					has_game_rule = {
+						rule = KOR_AI_BEHAVIOR
+						option = AUTHORITARIAN_KOR
+					}
 					has_country_flag = kor_non_democratic
 				}
 			}
@@ -292,6 +300,10 @@ KOR_kim_dae_jung_gov = {
 					has_game_rule = {
 						rule = KOR_AI_BEHAVIOR
 						option = ANARCHIST_KOR
+					}
+					has_game_rule = {
+						rule = KOR_AI_BEHAVIOR
+						option = AUTHORITARIAN_KOR
 					}
 					has_country_flag = kor_non_democratic
 				}
@@ -6870,4 +6882,299 @@ KOR_conservative_faction_decision = {
 			}
 		}
 	}
+}
+
+KOR_100_days_race_cat = {
+
+	KOR_100_days_race = {
+
+		priority = 99
+
+		icon = generic_ignite_civil_war
+
+		available = {
+			hidden_trigger = { always = no }
+		}
+
+		days_mission_timeout = 100
+
+		fire_only_once = yes
+
+		activation = {
+			has_country_flag = KOR_100_days_race_flag
+		}
+
+		visible = {
+			original_tag = KOR
+		}
+
+		cancel_if_not_visible = yes
+
+		is_good = no
+
+		timeout_effect = {
+			custom_effect_tooltip = KOR_100_days_race_tt
+			set_country_flag = kor_choi_plot_end_flag
+			
+			#hidden_effect = {				
+				if = {
+					limit = {
+						AND = {
+							check_variable = {
+								var = KOR_autocoup_var
+								value = KOR_revolution_var
+								compare = greater_than_or_equals
+							}
+							has_country_flag = kor_ready_for_coup_choi
+						}
+					}
+					country_event = { id = south_korea.161 }
+				}
+				else = {
+					country_event = { id = south_korea.162 }
+				}
+			#}
+		}
+	}
+	
+	KOR_movement_of_opposition = {
+
+		icon = GFX_decision_eng_propaganda_campaigns
+
+		available = {
+			hidden_trigger = { always = no }
+		}
+
+		days_mission_timeout = 17
+		#days_re_enable = 12
+		
+		priority = 15
+
+		fire_only_once = no
+
+		activation = {
+			has_completed_focus = kor_sorcerer_will_victory
+			has_country_flag = KOR_100_days_race_flag
+			NOT = { has_country_flag = kor_choi_plot_end_flag }
+		}
+
+		cancel_if_not_visible = yes
+
+		is_good = no
+
+		timeout_effect = {
+			if = {
+				limit = { 
+					check_variable = { KOR_choi_exposure_var < 1 } 
+				}
+				random_list = {
+					10 = { }
+					40 = { KOR_GetTrotskySupport_add_1_effect = yes }
+					40 = { KOR_GetTrotskySupport_add_2_effect = yes }
+					10 = { KOR_GetTrotskySupport_add_3_effect = yes }
+				}
+			}
+			else_if = {
+				limit = { 
+					check_variable = { KOR_choi_exposure_var < 3 } 
+				}
+				random_list = {
+					30 = { KOR_GetTrotskySupport_add_1_effect = yes }
+					60 = { KOR_GetTrotskySupport_add_2_effect = yes }
+					10 = { KOR_GetTrotskySupport_add_3_effect = yes }
+				}
+			}
+			else = {
+				random_list = {
+					10 = { KOR_GetTrotskySupport_add_1_effect = yes }
+					30 = { KOR_GetTrotskySupport_add_2_effect = yes }
+					60 = { KOR_GetTrotskySupport_add_3_effect = yes }
+				}
+			}
+		}
+	}
+	
+	KOR_connecting_with_far_right = {
+		icon = GFX_decision_eng_trade_unions_demand
+
+		#allowed = { always = yes }
+		
+		available = {
+			always = yes
+		}
+
+		visible = {
+			has_completed_focus = kor_sorcerer_will_victory
+		}
+
+		cost = 5
+		fire_only_once = no
+
+		priority = 10
+		
+		days_remove = 14
+				
+		complete_effect = {
+		}
+		
+		remove_effect = {
+			KOR_GetChoiSupport_add_1_effect = yes
+		}
+
+		ai_will_do = {
+			factor = 1000
+		}
+	}
+	
+	KOR_investigate_the_list_of_dissidents = {
+		icon = generic_agreement
+
+		#allowed = { always = yes }
+		
+		available = {
+			always = yes
+		}
+
+		visible = {
+			has_completed_focus = kor_sorcerer_will_victory
+		}
+
+		cost = 7
+		fire_only_once = no
+
+		priority = 10
+		
+		days_remove = 15
+				
+		complete_effect = {
+		}
+		
+		remove_effect = {
+			KOR_GetChoiSupport_add_2_effect = yes
+		}
+
+		ai_will_do = {
+			factor = 1000
+		}
+	}
+	
+	KOR_elaboration_of_the_martial_law = {
+		icon = GFX_decision_generic_military
+
+		#allowed = { always = yes }
+		
+		available = {
+			always = yes
+		}
+
+		visible = {
+			has_completed_focus = kor_sorcerer_will_victory
+		}
+
+
+		ai_hint_pp_cost = 5
+		
+		custom_cost_trigger = {
+			command_power > 4
+		}
+		
+		custom_cost_text = decision_cost_CP_5
+		
+		cost = 5
+		
+		fire_only_once = no
+
+		priority = 10
+		
+		days_remove = 14
+				
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -5
+			}
+		}
+		
+		remove_effect = {
+			KOR_GetChoiSupport_add_3_effect = yes
+		}
+
+		ai_will_do = {
+			factor = 1000
+		}
+	}
+	
+	KOR_pressure_on_entrepreneurs = {
+		icon = GFX_decision_generic_civil_support
+
+		#allowed = { always = yes }
+		
+		available = {
+			always = yes
+		}
+
+		visible = {
+			has_completed_focus = kor_sorcerer_will_victory
+		}
+
+		cost = 0
+		fire_only_once = no
+
+		priority = 10
+		
+		days_remove = 14
+				
+		complete_effect = {
+		}
+		
+		remove_effect = {
+			add_political_power = 25
+			KOR_GetChoiExposure_add_1_effect = yes
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	KOR_100_days_race_choi = {
+		icon = GFX_decision_SWI_expand_covert_operations
+
+		#allowed = { always = yes }
+		
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = KOR_100_days_race_coup_tt
+				check_variable = {
+					var = KOR_autocoup_var
+					value = 5.000
+					compare = greater_than_or_equals 
+				}
+			}
+		}
+
+		visible = {
+			has_completed_focus = kor_sorcerer_will_victory
+		}
+
+		cost = 0
+		fire_only_once = yes
+
+		priority = 15
+		
+		remove_effect = {
+			set_country_flag = kor_ready_for_coup_choi
+		}
+
+		ai_will_do = {
+			factor = 1000
+			modifier = {
+				factor = 0
+				has_game_rule = {
+					rule = KOR_AI_AUTHORITARIAN_BEHAVIOR
+					option = AUTHORITARIAN_BAD_END_KOR
+				}
+			}
+		}
+	}
+	
 }

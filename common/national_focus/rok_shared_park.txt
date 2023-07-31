@@ -1,0 +1,1236 @@
+### search_filters = {FOCUS_FILTER_POLITICAL}
+### search_filters = {FOCUS_FILTER_RESEARCH}
+### search_filters = {FOCUS_FILTER_INDUSTRY}
+### search_filters = {FOCUS_FILTER_STABILITY}
+### search_filters = {FOCUS_FILTER_WAR_SUPPORT}
+### search_filters = {FOCUS_FILTER_MANPOWER}
+
+ ##############
+ ###
+ ### Park Geun-hye
+ ###
+ ##############
+
+	shared_focus = {
+		id = kor_park_geun_hye_government
+		icon = kor_park_geun_hye_government
+		x = 14
+		y = 0
+		cost = 7
+
+		allow_branch = {
+			NOT = { has_country_flag = kor_choi_plot_end_flag }
+		}
+
+		bypass = {
+			has_country_leader = {
+				character = kor_park_geun_hye
+				ruling_only = yes
+			}
+		}
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		search_filters = {FOCUS_FILTER_POLITICAL}
+
+		completion_reward = {
+			custom_effect_tooltip = kor_park_geun_hye_government_tt
+		
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = kor_pro_jucheist_crush
+		icon = kor_pro_jucheist_crush
+		x = -2
+		y = 1
+		cost = 1.2
+		
+		prerequisite = { 
+			focus = kor_park_geun_hye_government
+		}
+
+		relative_position_id = kor_park_geun_hye_government
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		search_filters = { }
+
+		completion_reward = {
+			add_popularity = {
+				ideology = nationalist
+				popularity = -0.2
+			}
+			
+			hidden_effect = {
+				country_event = { id = south_korea.157 }
+			}
+		}
+		
+		ai_will_do = {
+			base = 100
+		}
+	}
+
+	shared_focus = {
+		id = kor_pro_anarchist_crush
+		icon = kor_pro_anarchist_crush
+		x = 0
+		y = 1
+		cost = 1.2
+		
+		prerequisite = { 
+			focus = kor_park_geun_hye_government
+		}
+
+		relative_position_id = kor_park_geun_hye_government
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		search_filters = { }
+
+		completion_reward = {
+			add_popularity = {
+				ideology = communist
+				popularity = -0.1
+			}
+
+			hidden_effect = {
+				country_event = { id = south_korea.156 }
+			}
+		}
+		
+		ai_will_do = {
+			base = 100
+		}
+	}
+
+	shared_focus = {
+		id = kor_pro_progressive_crush
+		icon = kor_pro_progressive_crush
+		x = 2
+		y = 1
+		cost = 1.2
+		
+		prerequisite = { 
+			focus = kor_park_geun_hye_government
+		}
+
+		relative_position_id = kor_park_geun_hye_government
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		search_filters = { }
+
+		completion_reward = {
+			add_popularity = {
+				ideology = market_liberal
+				popularity = -0.1
+			}
+			add_popularity = {
+				ideology = social_liberal
+				popularity = -0.1
+			}
+			add_popularity = {
+				ideology = conservative
+				popularity = -0.1
+			}
+
+			hidden_effect = {
+				country_event = { id = south_korea.158 }
+			}
+		}
+		
+		ai_will_do = {
+			base = 100
+		}
+	}
+
+	shared_focus = {
+		id = kor_we_will_never_surrender
+		icon = kor_we_will_never_surrender
+		x = 1
+		y = 2
+		cost = 1.5
+		
+		mutually_exclusive = { focus = kor_sorcerer_will_victory }
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = kor_we_will_never_surrender_WIP
+				always = no
+			}
+		}
+
+		select_effect = {
+			country_event = { id = south_korea.159 days = 5 }
+			country_event = { id = south_korea.160 days = 10 }
+		}
+
+		prerequisite = { 
+			focus = kor_pro_jucheist_crush
+		}
+		
+		prerequisite = { 
+			focus = kor_pro_anarchist_crush
+		}
+		
+		prerequisite = { 
+			focus = kor_pro_progressive_crush
+		}
+
+		relative_position_id = kor_park_geun_hye_government
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		search_filters = { }
+
+		completion_reward = {
+			custom_effect_tooltip = kor_we_will_never_surrender_tt
+			add_stability = -0.05
+			add_political_power = 75
+		}
+		
+		ai_will_do = {
+			base = 1
+		}
+	}
+
+	shared_focus = {
+		id = kor_overturning_chessboard
+		icon = kor_torchbearers_of_tomorrow
+		x = 1
+		y = 3
+		cost = 3
+
+		prerequisite = { 
+			focus = kor_we_will_never_surrender
+		}
+
+		relative_position_id = kor_park_geun_hye_government
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		search_filters = { }
+
+		completion_reward = {
+			KOR_GetTrotskySupport_add_3_effect = yes
+		}
+		
+		ai_will_do = {
+			base = 1
+		}
+	}
+
+	shared_focus = {
+		id = kor_sorcerer_will_victory
+		icon = kor_sorcerer_will_victory
+		x = -1
+		y = 2
+		cost = 1.5
+		
+		mutually_exclusive = { focus = kor_we_will_never_surrender }
+
+		prerequisite = { 
+			focus = kor_pro_jucheist_crush
+		}
+		
+		prerequisite = { 
+			focus = kor_pro_anarchist_crush
+		}
+		
+		prerequisite = { 
+			focus = kor_pro_progressive_crush
+		}
+
+		select_effect = {
+			country_event = { id = south_korea.159 days = 5 }
+			country_event = { id = south_korea.160 days = 10 }
+		}
+
+		relative_position_id = kor_park_geun_hye_government
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		search_filters = { }
+
+		completion_reward = {
+			set_country_flag = KOR_100_days_race_flag
+			custom_effect_tooltip = kor_sorcerer_will_victory_tt
+			add_political_power = 75
+		}
+		
+		ai_will_do = {
+			base = 100
+		}
+	}
+
+	shared_focus = {
+		id = kor_toward_parliamentary_reform
+		icon = propaganda
+		x = -1
+		y = 3
+		cost = 3
+
+		prerequisite = { 
+			focus = kor_sorcerer_will_victory
+		}
+
+		relative_position_id = kor_park_geun_hye_government
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		search_filters = { }
+
+		completion_reward = {
+			add_stability = 0.05
+			add_political_power = 75
+			KOR_GetChoiSupport_add_3_effect = yes
+		}
+		
+		ai_will_do = {
+			base = 100
+		}
+	}
+
+	shared_focus = {
+		id = kor_final_victory
+		icon = kor_dual_korean_democracy_flag
+		x = 0
+		y = 4
+		cost = 5
+
+		prerequisite = { 
+			focus = kor_toward_parliamentary_reform
+			focus = kor_overturning_chessboard
+		}
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = kor_final_victory_tt
+				always = no
+			}
+		}
+
+		relative_position_id = kor_park_geun_hye_government
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		search_filters = { }
+
+		completion_reward = {
+			custom_effect_tooltip = kor_final_victory_tt
+		}
+		
+		ai_will_do = {
+			base = 1
+		}
+	}
+
+	shared_focus = {
+		id = kor_choi_government
+		icon = kor_sorcerer_will_victory
+		x = 14
+		y = 0
+		cost = 7
+
+		allow_branch = {
+			has_country_flag = kor_choi_plot_end_flag 
+		}
+
+		bypass = {
+			has_country_leader = {
+				character = kor_choi_soon_sil
+				ruling_only = yes
+			}
+		}
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		search_filters = {FOCUS_FILTER_POLITICAL}
+
+		completion_reward = {
+		
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = kor_with_china_aliance
+		icon = align_to_china
+		x = -1
+		y = 1
+		cost = 5
+
+		available = {
+			is_subject = no
+			is_in_faction = no
+			NOT = { has_war_with = PRC }
+			country_exists = PRC
+		}
+
+		prerequisite = { 
+			focus = kor_choi_government
+		}
+
+		mutually_exclusive = { focus = kor_our_way }
+
+		relative_position_id = kor_choi_government
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		search_filters = {}
+
+		completion_reward = {
+			remove_ideas = KOR_balancer_theory
+			PRC = {
+				add_opinion_modifier = {
+					target = ROOT
+					modifier = korean_aliy_trade
+				}
+				add_opinion_modifier = {
+					target = ROOT
+					modifier = korean_aliy
+				}
+			}
+			hidden_effect = {
+				add_ai_strategy = {
+					type = befriend
+					id = PRC
+					value = 25
+				}
+				PRC = {
+					add_ai_strategy = {
+						type = befriend
+						id = ROOT
+						value = 25
+					}
+				}
+			}
+
+			PRC = { country_event = south_korea.83 }
+		}
+		
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	shared_focus = {
+		id = kor_our_way
+		icon = kor_unite_korea
+		x = 1
+		y = 1
+		cost = 5
+
+		prerequisite = { 
+			focus = kor_choi_government
+		}
+
+		mutually_exclusive = { focus = kor_with_china_aliance }
+
+		relative_position_id = kor_choi_government
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		search_filters = {}
+
+		completion_reward = {
+			remove_ideas = KOR_balancer_theory
+			set_rule = { can_create_factions = yes }
+		}
+		
+		ai_will_do = {
+			base = 7
+		}
+	}
+
+	shared_focus = {
+		id = kor_suppress_the_chaebols_focus
+		icon = kor_grab_chaebol_2
+		x = -2
+		y = 3
+		cost = 8
+
+		prerequisite = { 
+			focus = kor_creative_economy_focus
+		}
+
+		relative_position_id = kor_choi_government
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		search_filters = {}
+
+		completion_reward = {
+			add_ideas = { kor_supporting_small_businesses }
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = kor_creative_economy_focus
+		icon = kor_creative_economy
+		x = -2
+		y = 2
+		cost = 8
+
+		prerequisite = { 
+			focus = kor_with_china_aliance
+			focus = kor_our_way
+		}
+
+		relative_position_id = kor_choi_government
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		search_filters = {}
+
+		completion_reward = {
+			add_ideas = { kor_creative_economy_idea }
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = kor_empress_of_the_petite_bourgeoisie
+		icon = money
+		x = -2
+		y = 4
+		cost = 8
+
+		prerequisite = { 
+			focus = kor_suppress_the_chaebols_focus
+		}
+
+		relative_position_id = kor_choi_government
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		search_filters = {}
+
+		completion_reward = {
+			add_stability = 0.1
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = kor_park_chung_heeism
+		icon = kor_park_chung_heeism
+		x = -4
+		y = 2
+		cost = 8
+
+		prerequisite = { 
+			focus = kor_with_china_aliance
+			focus = kor_our_way
+		}
+
+		relative_position_id = kor_choi_government
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		search_filters = {}
+
+		completion_reward = {
+			KOR_promotion_of_patriotism_effect = yes
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = kor_new_humanities
+		icon = kor_break_unite
+		x = -4
+		y = 3
+		cost = 8
+
+		prerequisite = { 
+			focus = kor_park_chung_heeism
+		}
+
+		relative_position_id = kor_choi_government
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		search_filters = {}
+
+		completion_reward = {
+			add_political_power = 150
+			KOR_promotion_of_patriotism_effect = yes
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = kor_tool_for_fatherland
+		icon = fascism
+		x = -4
+		y = 4
+		cost = 8
+
+		prerequisite = { 
+			focus = kor_new_humanities
+		}
+
+		relative_position_id = kor_choi_government
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		search_filters = {}
+
+		completion_reward = {
+			KOR_promotion_of_patriotism_effect = yes
+			add_war_support = 0.05
+
+			add_ideas = { kor_frugal_spirit }
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = kor_clearing_the_leftists_memory
+		icon = propaganda
+		x = -3
+		y = 5
+		cost = 8
+
+		prerequisite = { 
+			focus = kor_tool_for_fatherland
+		}
+		prerequisite = { 
+			focus = kor_empress_of_the_petite_bourgeoisie
+		}
+
+		relative_position_id = kor_choi_government
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		search_filters = {}
+
+		completion_reward = {
+			KOR_promotion_of_patriotism_effect = yes
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = kor_focus_on_diplomacy
+		icon = propaganda
+		x = -5
+		y = 5
+		cost = 8
+
+		prerequisite = { 
+			focus = kor_tool_for_fatherland
+		}
+		prerequisite = { 
+			focus = kor_empress_of_the_petite_bourgeoisie
+		}
+
+		relative_position_id = kor_choi_government
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		search_filters = {}
+
+		completion_reward = {
+			remove_country_leader_trait = KOR_diplomatic_isolation
+		}
+		
+		ai_will_do = {
+			base = 4.5
+		}
+	}
+
+	shared_focus = {
+		id = kor_strengthening_the_government
+		icon = fascism
+		x = -7
+		y = 5
+		cost = 8
+
+		prerequisite = { 
+			focus = kor_tool_for_fatherland
+		}
+		
+		prerequisite = { 
+			focus = kor_empress_of_the_petite_bourgeoisie
+		}
+
+
+		available = {
+			has_completed_focus = kor_free_and_just_society
+			has_completed_focus = kor_clearing_the_leftists_memory
+			has_completed_focus = kor_focus_on_diplomacy
+		}
+
+		relative_position_id = kor_choi_government
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		search_filters = {}
+
+		completion_reward = {
+			KOR_female_right_level_up = yes
+
+			swap_ruler_traits = {
+				remove = KOR_non_legitimacy_adviser
+				add = KOR_non_legitimacy_adviser_2
+			}	
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = kor_support_of_the_peasants
+		icon = agriculture
+		x = -1
+		y = 1
+		cost = 8
+
+		prerequisite = { 
+			focus = kor_strengthening_the_government
+		}
+
+		mutually_exclusive = { focus = kor_support_of_the_city }
+
+		relative_position_id = kor_strengthening_the_government
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		search_filters = {}
+
+		completion_reward = {
+			add_stability = 0.1
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = kor_quasi_monarchy
+		icon = kor_evangelism
+		x = -1
+		y = 2
+		cost = 8
+
+		prerequisite = { 
+			focus = kor_support_of_the_peasants
+		}
+
+		relative_position_id = kor_strengthening_the_government
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		search_filters = {}
+
+		completion_reward = {
+			add_popularity = { ideology = islamist popularity = 0.05 }
+			add_ideas = { kor_spiritual_war_idea }
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = kor_reward_to_the_countryside
+		icon = infrastructure
+		x = -2
+		y = 3
+		cost = 8
+
+		prerequisite = { 
+			focus = kor_support_of_the_peasants
+		}
+
+		relative_position_id = kor_strengthening_the_government
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		search_filters = {}
+
+		completion_reward = {
+			869 = { 
+				add_dynamic_modifier = { modifier = dynamic_intensive_promotion } 
+			}
+			870 = { 
+				add_dynamic_modifier = { modifier = dynamic_intensive_promotion } 
+			}
+			946 = { 
+				add_dynamic_modifier = { modifier = dynamic_intensive_promotion } 
+			}
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = kor_support_of_the_city
+		icon = industry_civilian
+		x = 1
+		y = 1
+		cost = 8
+
+		prerequisite = { 
+			focus = kor_strengthening_the_government
+		}
+
+		mutually_exclusive = { focus = kor_support_of_the_peasants }
+
+		relative_position_id = kor_strengthening_the_government
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		search_filters = {}
+
+		completion_reward = {
+			525 = { 
+				add_dynamic_modifier = { modifier = dynamic_intensive_promotion } 
+			}
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = kor_feminist_government
+		icon = kor_feminism
+		x = 1
+		y = 2
+		cost = 8
+
+		prerequisite = { 
+			focus = kor_support_of_the_city
+		}
+
+		relative_position_id = kor_strengthening_the_government
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		search_filters = {}
+
+		completion_reward = {
+			KOR_female_right_level_up = yes
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = kor_reward_to_the_city
+		icon = industry_civilian2
+		x = 2
+		y = 3
+		cost = 8
+
+		prerequisite = { 
+			focus = kor_support_of_the_city
+		}
+
+		relative_position_id = kor_strengthening_the_government
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		search_filters = {}
+
+		completion_reward = {
+			random_owned_controlled_state = {
+					limit = {
+						is_core_of = KOR
+						industrial_complex > 0
+						state_population_k > 500
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+			random_owned_controlled_state = {
+					limit = {
+						is_core_of = KOR
+						industrial_complex > 0
+						state_population_k > 500
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = kor_eternal_prime_minister
+		icon = fascism2
+		x = 0
+		y = 3
+		cost = 8
+
+		prerequisite = { 
+			focus = kor_feminist_government
+			focus = kor_quasi_monarchy
+		}
+
+		relative_position_id = kor_strengthening_the_government
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		search_filters = {}
+
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = prime_minister_park_geun_hye
+				add_idea = prime_minister_park_geun_hye_enhanced
+			}
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = kor_political_blueprint
+		icon = kor_park_geun_hye_out
+		x = 2
+		y = 2
+		cost = 8
+
+		prerequisite = { 
+			focus = kor_with_china_aliance
+			focus = kor_our_way
+		}
+
+		relative_position_id = kor_choi_government
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		search_filters = {}
+
+		completion_reward = {
+		
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = kor_enlargement_of_the_NIS
+		icon = kor_NIS
+		x = 0
+		y = 3
+		cost = 8
+
+		prerequisite = { 
+			focus = kor_political_blueprint
+		}
+
+		relative_position_id = kor_choi_government
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		search_filters = {}
+
+		completion_reward = {
+			add_ideas = KOR_strong_NIS
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = kor_removal_of_dissidents
+		icon = kor_cogwheel_called_soldier
+		x = 2
+		y = 3
+		cost = 8
+
+		prerequisite = { 
+			focus = kor_political_blueprint
+		}
+
+		relative_position_id = kor_choi_government
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		search_filters = {}
+
+		completion_reward = {
+			add_stability = 0.1
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = kor_support_for_patriotic_organizations
+		icon = kor_anti_north_korea
+		x = 4
+		y = 3
+		cost = 8
+
+		prerequisite = { 
+			focus = kor_political_blueprint
+		}
+
+		relative_position_id = kor_choi_government
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		search_filters = {}
+
+		completion_reward = {
+			add_ideas = { kor_supporting_patriotic_civic_organizations }
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = kor_free_and_just_society
+		icon = kor_dual_korean_democracy_flag
+		x = 2
+		y = 4
+		cost = 8
+
+		prerequisite = { 
+			focus = kor_enlargement_of_the_NIS
+		}
+
+		prerequisite = { 
+			focus = kor_removal_of_dissidents
+		}
+
+		prerequisite = { 
+			focus = kor_support_for_patriotic_organizations
+		}
+
+		relative_position_id = kor_choi_government
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		search_filters = {}
+
+		completion_reward = {
+			remove_country_leader_trait = KOR_plot_of_the_socialists
+
+			KOR_female_right_level_up = yes
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = kor_liberate_korean_peninsula
+		icon = attack_north_korea
+		x = 6
+		y = 2
+		cost = 8
+
+		prerequisite = { 
+			focus = kor_with_china_aliance
+			focus = kor_our_way
+		}
+
+		available = {
+			has_capitulated = no
+			country_exists = PRK
+			NOT = { PRK = {is_in_faction_with = KOR } }
+		}
+
+		select_effect = {
+			random_country = {
+				limit = { controls_state = 948 }
+				ROOT = {
+					add_ai_strategy = {
+						type = prepare_for_war
+						id = PREV
+						value = 100
+					}
+				}
+			}
+		}
+
+		relative_position_id = kor_choi_government
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		search_filters = {}
+
+		completion_reward = {
+			create_wargoal = {
+				target = PRK
+				type = annex_everything
+			}
+		}
+		
+		ai_will_do = {
+			base = 12
+		}
+	}
+
+	shared_focus = {
+		id = kor_elimination_of_communism
+		icon = attack_china
+		x = 6
+		y = 4
+		cost = 8
+
+		prerequisite = { 
+			focus = kor_liberate_korean_peninsula
+		}
+
+		available = {
+			has_capitulated = no
+			country_exists = PRC
+			NOT = { is_in_faction_with = PRC }
+		}
+
+		relative_position_id = kor_choi_government
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		search_filters = {}
+
+		completion_reward = {
+			create_wargoal = {
+				target = PRC
+				type = annex_everything
+			}
+		}
+		
+		ai_will_do = {
+			base = 6
+		}
+	}
