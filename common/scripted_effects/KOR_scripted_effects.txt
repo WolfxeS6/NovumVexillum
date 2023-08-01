@@ -35,56 +35,105 @@ KOR_loyalty_setting_effect = {
 KOR_parties_support_setting_effect = {
 
 	clear_variable = KOR_all_ruling_party_status
-	
-	clamp_variable = {
-		var = KOR_parliament_seat_support_array^0
-		min = 0
-		max = KOR_all_seats_status
+	if = {
+		limit = {
+			has_variable = KOR_parliament_seat_support_array^0
+		}
+		clamp_variable = {
+			var = KOR_parliament_seat_support_array^0
+			min = 0
+			max = 300
+		}
 	}
-	clamp_variable = {
-		var = KOR_parliament_seat_support_array^1
-		min = 0
-		max = KOR_all_seats_status
+	if = {
+		limit = {
+			has_variable = KOR_parliament_seat_support_array^1
+		}
+		clamp_variable = {
+			var = KOR_parliament_seat_support_array^1
+			min = 0
+			max = 300
+		}
 	}
-	clamp_variable = {
-		var = KOR_parliament_seat_support_array^2
-		min = 0
-		max = KOR_all_seats_status
+	if = {
+		limit = {
+			has_variable = KOR_parliament_seat_support_array^2
+		}
+		clamp_variable = {
+			var = KOR_parliament_seat_support_array^2
+			min = 0
+			max = 300
+		}
 	}
-	clamp_variable = {
-		var = KOR_parliament_seat_support_array^3
-		min = 0
-		max = KOR_all_seats_status
+	if = {
+		limit = {
+			has_variable = KOR_parliament_seat_support_array^3
+		}
+		clamp_variable = {
+			var = KOR_parliament_seat_support_array^3
+			min = 0
+			max = 300
+		}
 	}
-	clamp_variable = {
-		var = KOR_parliament_seat_support_array^4
-		min = 0
-		max = KOR_all_seats_status
+	if = {
+		limit = {
+			has_variable = KOR_parliament_seat_support_array^4
+		}
+		clamp_variable = {
+			var = KOR_parliament_seat_support_array^4
+			min = 0
+			max = 300
+		}
 	}
-	clamp_variable = {
-		var = KOR_parliament_seat_support_array^5
-		min = 0
-		max = KOR_all_seats_status
+	if = {
+		limit = {
+			has_variable = KOR_parliament_seat_support_array^5
+		}
+		clamp_variable = {
+			var = KOR_parliament_seat_support_array^5
+			min = 0
+			max = 300
+		}
 	}
-	clamp_variable = {
-		var = KOR_parliament_seat_support_array^9
-		min = 0
-		max = KOR_all_seats_status
+	if = {
+		limit = {
+			has_variable = KOR_parliament_seat_support_array^9
+		}
+		clamp_variable = {
+			var = KOR_parliament_seat_support_array^9
+			min = 0
+			max = 300
+		}
 	}
-	clamp_variable = {
-		var = KOR_parliament_seat_support_array^6
-		min = 0
-		max = KOR_all_seats_status
+	if = {
+		limit = {
+			has_variable = KOR_parliament_seat_support_array^6
+		}
+		clamp_variable = {
+			var = KOR_parliament_seat_support_array^6
+			min = 0
+			max = 300
+		}
 	}
-	clamp_variable = {
-		var = KOR_parliament_seat_support_array^7
-		min = 0
-		max = KOR_all_seats_status
+	if = {
+		limit = {
+			has_variable = KOR_parliament_seat_support_array^7
+		}
+		clamp_variable = {
+			var = KOR_parliament_seat_support_array^7
+			min = 0
+			max = 300
+		}
 	}
-	clamp_variable = {
-		var = KOR_parliament_seat_support_array^8
-		min = 0
-		max = KOR_all_seats_status
+	if = {
+		limit = {
+			has_variable = KOR_parliament_seat_support_array^8
+		}
+		clamp_variable = {
+			var = KOR_parliament_seat_support_array^8
+			min = 0
+			max = 300
+		}
 	}
 	
 	add_to_variable = { var = KOR_all_support_status_base  value = KOR_parliament_seat_support_array^0 }
@@ -262,7 +311,7 @@ korean_overflow_and_minor_check = {
 korean_init_parliament = {
 
 	# check to see if result overflows
-	set_temp_variable = { temp = KOR_all_seats_status }
+	set_temp_variable = { temp = 300 }
 	
 	if = {
 		limit = {
