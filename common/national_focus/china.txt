@@ -2240,6 +2240,15 @@
 		search_filters = { }
 
 		completion_reward = {
+			if = {
+				limit = {
+					has_dlc = "La Resistance"
+				}
+				add_ideas = {PRC_unit_of_hackers}
+			}
+			else = {
+				add_ideas = {PRC_unit_of_hackers_no_lar}
+			}
 		}
 		
 		ai_will_do = {
@@ -2388,6 +2397,7 @@
 		search_filters = { }
 
 		completion_reward = {
+			add_ideas = {PRC_the_superiority_of_technology_idea}
 		}
 		
 		ai_will_do = {
@@ -7402,35 +7412,14 @@
 		available_if_capitulated = no
 
 		completion_reward = {
-			if = {
+			JAP = {
 				limit = {
-					country_exists = KOR
+					NOT = { is_in_faction_with = PRC }
 				}
-				KOR = { country_event = pr_china.38 }
-			}
-			if = {
-				limit = {
-					country_exists = PRK
+				add_opinion_modifier = {
+					target = ROOT
+					modifier = prc_trying_to_invade_us
 				}
-				PRK = { country_event = pr_china.38 }
-			}
-			if = {
-				limit = {
-					country_exists = JAP
-				}
-				JAP = { country_event = pr_china.38 }
-			}
-			if = {
-				limit = {
-					country_exists = RYU
-				}
-				RYU = { country_event = pr_china.38 }
-			}
-			if = {
-				limit = {
-					country_exists = AIN
-				}
-				AIN = { country_event = pr_china.38 }
 			}
 		}
 
@@ -7803,10 +7792,6 @@
 				factor = 0
 				NOT = { has_global_flag = PRC_world_plan }
 			}
-		}
-		
-		ai_will_do = {
-			factor = 1
 			modifier = {
 				has_war_with = USA
 				factor = 0
@@ -7965,48 +7950,68 @@
 		available_if_capitulated = no
 
 		completion_reward = {			
-			if = {
+			GER = {
 				limit = {
-					country_exists = GER
+					NOT = { is_in_faction_with = PRC }
 				}
-				GER = { country_event = pr_china.38 }
+				add_opinion_modifier = {
+					target = ROOT
+					modifier = prc_trying_to_invade_us
+				}
 			}
-			if = {
+			FRA = {
 				limit = {
-					country_exists = FRA
+					NOT = { is_in_faction_with = PRC }
 				}
-				FRA = { country_event = pr_china.38 }
+				add_opinion_modifier = {
+					target = ROOT
+					modifier = prc_trying_to_invade_us
+				}
 			}
-			if = {
+			ENG = {
 				limit = {
-					country_exists = ENG
+					NOT = { is_in_faction_with = PRC }
 				}
-				ENG = { country_event = pr_china.38 }
+				add_opinion_modifier = {
+					target = ROOT
+					modifier = prc_trying_to_invade_us
+				}
 			}
-			if = {
+			ITA = {
 				limit = {
-					country_exists = ITA
+					NOT = { is_in_faction_with = PRC }
 				}
-				ITA = { country_event = pr_china.38 }
+				add_opinion_modifier = {
+					target = ROOT
+					modifier = prc_trying_to_invade_us
+				}
 			}
-
-			if = {
+			CAN = {
 				limit = {
-					country_exists = CAN
+					NOT = { is_in_faction_with = PRC }
 				}
-				CAN = { country_event = pr_china.38 }
+				add_opinion_modifier = {
+					target = ROOT
+					modifier = prc_trying_to_invade_us
+				}
 			}
-			if = {
+			MEX = {
 				limit = {
-					country_exists = MEX
+					NOT = { is_in_faction_with = PRC }
 				}
-				MEX = { country_event = pr_china.38 }
+				add_opinion_modifier = {
+					target = ROOT
+					modifier = prc_trying_to_invade_us
+				}
 			}
-			if = {
+			USA = {
 				limit = {
-					country_exists = USA
+					NOT = { is_in_faction_with = PRC }
 				}
-				USA = { country_event = pr_china.38 }
+				add_opinion_modifier = {
+					target = ROOT
+					modifier = prc_trying_to_invade_us
+				}
 			}
 		}
 
@@ -8209,18 +8214,24 @@
 		available_if_capitulated = no
 
 		completion_reward = {		
-			if = {
+			MON = {
 				limit = {
-					country_exists = MON
+					NOT = { is_in_faction_with = PRC }
 				}
-				MON = { country_event = pr_china.38 }
+				add_opinion_modifier = {
+					target = ROOT
+					modifier = prc_trying_to_invade_us
+				}
 			}
-			if = {
+			SOV = {
 				limit = {
-					country_exists = SOV
+					NOT = { is_in_faction_with = PRC }
 				}
-				SOV = { country_event = pr_china.38 }
-			}	
+				add_opinion_modifier = {
+					target = ROOT
+					modifier = prc_trying_to_invade_us
+				}
+			}
 		}
 
 		search_filters = {  }
