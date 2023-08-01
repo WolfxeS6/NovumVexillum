@@ -8,6 +8,12 @@ NDefines.NMilitary.STRATEGIC_INFRA_SPEED = 15.0;
 NDefines.NMilitary.BASE_LEADER_TRAIT_GAIN_XP = 0.75;
 NDefines.NAir.STRATEGIC_BOMBER_NUKE_AIR_SUPERIORITY = 0.85;
 NDefines.NDiplomacy.TENSION_DECAY = 0.05;
+NDefines.NDiplomacy.TENSION_STATE_VALUE = 0.75;
+NDefines.NDiplomacy.TENSION_ANNEX_NO_CLAIM = 0.75;
+NDefines.NDiplomacy.TENSION_ANNEX_CLAIM = 0.25;
+NDefines.NDiplomacy.TENSION_PUPPET = 0.25;
+NDefines.NDiplomacy.TENSION_FORCE_GOVERNMENT = 0.15;
+NDefines.NDiplomacy.TENSION_JOIN_ATTACKER = 0.1;
 -- Warfaring
 NDefines.NAI.GENERATE_WARGOAL_THREAT_BASELINE = 0.7;	    -- The baseline for what the AI considers the world is getting dangerous and we want to generate wargoals with no antagonize value	
 NDefines.NAI.FORCE_FACTOR_AGAINST_EXTRA_MINOR = 0.3;			-- AI considers generating wargoals against minors below this % of force compared to themselves to get at a bigger enemy.
