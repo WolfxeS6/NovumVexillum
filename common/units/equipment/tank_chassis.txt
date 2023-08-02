@@ -242,7 +242,165 @@ equipments = {
 		archetype = light_tank_chassis
 		parent = light_tank_chassis_2
 		priority = 2000
-		module_slots = inherit
+		module_slots = {
+			main_armament_slot = {
+				required = yes
+				allowed_module_categories = {
+					tank_small_main_armament
+					#tank_medium_main_armament
+					tank_flamethrower
+					tank_heavy_machine_gun
+				}
+			}
+
+			turret_type_slot = {
+				required = yes
+				allowed_module_categories = {
+					tank_light_turret_type
+					tank_medium_turret_type
+				}
+			}
+			suspension_type_slot = {
+				required = yes
+				allowed_module_categories = {
+					tank_suspension_type
+					tank_non_tracked_suspension_type
+				}
+			}
+
+			armor_type_slot = {
+				required = yes
+				allowed_module_categories = {
+					tank_armor_type
+				}
+			}
+
+			engine_type_slot = {
+				required = yes
+				allowed_module_categories = {
+					tank_engine_type
+				}
+			}
+
+			special_type_slot_1 = {
+				required = yes
+				allowed_module_categories = {
+					tank_radio_module
+				}
+			}
+			optics_slot = {
+				required = yes
+				allowed_module_categories = {
+					tank_optic_module
+				}
+			}
+
+			special_type_slot_2 = {
+				required = no
+				allowed_module_categories = {
+					tank_special_module
+				}
+			}
+
+			special_type_slot_3 = {
+				required = no
+				allowed_module_categories = {
+					tank_special_module
+				}
+			}
+
+			special_type_slot_4 = {
+				required = yes
+				allowed_module_categories = {
+					tank_crew_module
+				}
+			}
+			atgm_slot = {
+				required = no
+				allowed_module_categories = {
+					atgm_module
+				}
+			}
+			special_type_slot_5 = {
+				required = yes
+				allowed_module_categories = {
+					tank_special_module
+				}
+			}
+			
+		}
+		module_count_limit = {
+			module = sloped_armor
+			count < 2
+		}		
+		module_count_limit = {
+			module = tank_active_protection
+			count < 2
+		}
+		module_count_limit = {
+			module = tank_auto_targetter
+			count < 2
+		}
+		module_count_limit = {
+			module = tank_blowout_pannels
+			count < 2
+		}
+		module_count_limit = {
+			module = tank_battlefield_integration
+			count < 2
+		}
+		module_count_limit = {
+			category = tank_radio_module
+			count < 2
+		}
+		module_count_limit = {
+			category = tank_secondary_turret
+			count < 2
+		}
+		module_count_limit = {
+			module = amphibious_drive
+			count < 2
+		}
+
+		module_count_limit = {
+			module = wet_ammo_storage
+			count < 2
+		}
+
+		module_count_limit = {
+			module = squeezebore_adaptor
+			count < 2
+		}
+
+		module_count_limit = {
+			module = armor_skirts
+			count < 2
+		}
+
+		module_count_limit = {
+			module = dozer_blade
+			count < 2
+		}
+
+		module_count_limit = {
+			module = easy_maintenance
+			count < 2
+		}
+		module_count_limit = {
+			module = auto_loader
+			count < 2
+		}
+		default_modules = {
+			main_armament_slot = empty
+			turret_type_slot = tank_light_one_man_tank_turret
+			suspension_type_slot = tank_bogie_suspension
+			armor_type_slot = tank_riveted_armor
+			engine_type_slot = tank_diesel_engine
+			special_type_slot_1 = tank_radio_1
+			optics_slot = tank_optics_1
+			special_type_slot_4 = crew_compartment
+			atgm_slot = empty
+		}
 		is_convertable = yes
 		
 		#Misc Abilities
@@ -929,7 +1087,7 @@ equipments = {
 			turret_type_slot = tank_modern_tank_turret
 			suspension_type_slot = tank_bogie_suspension
 			armor_type_slot = tank_welded_armor
-			engine_type_slot = tank_diesel_engine
+			engine_type_slot = tank_gasoline_engine
 			special_type_slot_1 = tank_radio_1
 			optics_slot = tank_optics_1
 			#
@@ -1036,7 +1194,157 @@ equipments = {
 		picture = archetype_modern_tank_equipment
 		derived_variant_name = modern_tank_equipment_4
 		priority = 50
-		module_slots = inherit
+		module_slots = {
+			main_armament_slot = {
+				required = yes
+				allowed_module_categories = {
+					tank_small_main_armament
+					tank_medium_main_armament
+					tank_heavy_main_armament
+				}
+			}
+
+			turret_type_slot = {
+				required = yes
+				allowed_module_categories = {
+					tank_light_turret_type
+					tank_medium_turret_type
+					tank_heavy_turret_type
+					tank_modern_turret_type
+				}
+			}
+
+			suspension_type_slot = {
+				required = yes
+				allowed_module_categories = {
+					tank_suspension_type
+					tank_non_tracked_suspension_type
+				}
+			}
+
+			armor_type_slot = {
+				required = yes
+				allowed_module_categories = {
+					tank_armor_type
+				}
+			}
+
+			engine_type_slot = {
+				required = yes
+				allowed_module_categories = {
+					tank_engine_type
+				}
+			}
+
+			special_type_slot_1 = {
+				required = no
+				allowed_module_categories = {
+					tank_radio_module
+				}
+			}
+			optics_slot = {
+				required = no
+				allowed_module_categories = {
+					tank_optic_module
+				}
+			}
+
+			special_type_slot_2 = {
+				required = no
+				allowed_module_categories = {
+					tank_special_module
+				}
+			}
+
+			special_type_slot_3 = {
+				required = no
+				allowed_module_categories = {
+					tank_special_module
+				}
+			}
+			atgm_slot = {
+				required = no
+				allowed_module_categories = {
+					atgm_module
+				}
+			}
+			special_type_slot_4 = {
+				required = no
+				allowed_module_categories = {
+					tank_special_module
+				}
+			}
+
+		}
+		module_count_limit = {
+			module = sloped_armor
+			count < 2
+		}	
+		module_count_limit = {
+			module = tank_active_protection
+			count < 2
+		}
+		module_count_limit = {
+			module = tank_auto_targetter
+			count < 2
+		}
+		module_count_limit = {
+			module = tank_blowout_pannels
+			count < 2
+		}
+		module_count_limit = {
+			module = tank_battlefield_integration
+			count < 2
+		}	
+		module_count_limit = {
+			category = tank_radio_module
+			count < 2
+		}
+		module_count_limit = {
+			module = amphibious_drive
+			count < 1
+		}
+
+		module_count_limit = {
+			module = wet_ammo_storage
+			count < 2
+		}
+
+		module_count_limit = {
+			module = squeezebore_adaptor
+			count < 2
+		}
+
+		module_count_limit = {
+			module = armor_skirts
+			count < 2
+		}
+
+		module_count_limit = {
+			module = dozer_blade
+			count < 2
+		}
+
+		module_count_limit = {
+			module = easy_maintenance
+			count < 2
+		}
+		module_count_limit = {
+			module = auto_loader
+			count < 2
+		}
+
+		default_modules = {
+			main_armament_slot = empty
+			turret_type_slot = tank_modern_tank_turret
+			suspension_type_slot = tank_bogie_suspension
+			armor_type_slot = tank_welded_armor
+			engine_type_slot = tank_gasoline_engine
+			special_type_slot_1 = tank_radio_1
+			optics_slot = tank_optics_1
+			#
+			atgm_slot = empty
+		}
 		visual_level = 3
 		
 		#Misc Abilities
@@ -1093,7 +1401,151 @@ equipments = {
 		picture = archetype_modern_tank_equipment
 		derived_variant_name = modern_tank_equipment_6
 		priority = 50
-		module_slots = inherit
+		module_slots = {
+			main_armament_slot = {
+				required = yes
+				allowed_module_categories = {
+					tank_small_main_armament
+					tank_medium_main_armament
+					tank_heavy_main_armament
+				}
+			}
+
+			turret_type_slot = {
+				required = yes
+				allowed_module_categories = {
+					tank_light_turret_type
+					tank_medium_turret_type
+					tank_heavy_turret_type
+					tank_modern_turret_type
+				}
+			}
+
+			suspension_type_slot = {
+				required = yes
+				allowed_module_categories = {
+					tank_suspension_type
+					tank_non_tracked_suspension_type
+				}
+			}
+
+			armor_type_slot = {
+				required = yes
+				allowed_module_categories = {
+					tank_armor_type
+				}
+			}
+
+			engine_type_slot = {
+				required = yes
+				allowed_module_categories = {
+					tank_engine_type
+				}
+			}
+
+			special_type_slot_1 = {
+				required = no
+				allowed_module_categories = {
+					tank_radio_module
+				}
+			}
+			optics_slot = {
+				required = no
+				allowed_module_categories = {
+					tank_optic_module
+				}
+			}
+
+			special_type_slot_2 = {
+				required = no
+				allowed_module_categories = {
+					tank_special_module
+				}
+			}
+
+			special_type_slot_3 = {
+				required = no
+				allowed_module_categories = {
+					tank_special_module
+				}
+			}
+			atgm_slot = {
+				required = no
+				allowed_module_categories = {
+					atgm_module
+				}
+			}
+			special_type_slot_4 = {
+				required = no
+				allowed_module_categories = {
+					tank_special_module
+				}
+			}
+			special_type_slot_5 = {
+				required = no
+				allowed_module_categories = {
+					tank_special_module
+				}
+			}
+
+		}
+		module_count_limit = {
+			module = sloped_armor
+			count < 2
+		}	
+		module_count_limit = {
+			module = tank_active_protection
+			count < 2
+		}
+		module_count_limit = {
+			module = tank_auto_targetter
+			count < 2
+		}
+		module_count_limit = {
+			module = tank_blowout_pannels
+			count < 2
+		}
+		module_count_limit = {
+			module = tank_battlefield_integration
+			count < 2
+		}	
+		module_count_limit = {
+			category = tank_radio_module
+			count < 2
+		}
+		module_count_limit = {
+			module = amphibious_drive
+			count < 1
+		}
+
+		module_count_limit = {
+			module = wet_ammo_storage
+			count < 2
+		}
+
+		module_count_limit = {
+			module = squeezebore_adaptor
+			count < 2
+		}
+
+		module_count_limit = {
+			module = armor_skirts
+			count < 2
+		}
+
+		module_count_limit = {
+			module = dozer_blade
+			count < 2
+		}
+
+		module_count_limit = {
+			module = easy_maintenance
+			count < 2
+		}
+		module_count_limit = {
+			module = auto_loader
+			count < 2
+		}
 		visual_level = 5
 		
 		#Misc Abilities
@@ -1123,7 +1575,163 @@ equipments = {
 		picture = archetype_modern_tank_equipment
 		derived_variant_name = modern_tank_equipment_7
 		priority = 50
-		module_slots = inherit
+		module_slots = {
+			main_armament_slot = {
+				required = yes
+				allowed_module_categories = {
+					tank_small_main_armament
+					tank_medium_main_armament
+					tank_heavy_main_armament
+				}
+			}
+
+			turret_type_slot = {
+				required = yes
+				allowed_module_categories = {
+					tank_light_turret_type
+					tank_medium_turret_type
+					tank_heavy_turret_type
+					tank_modern_turret_type
+				}
+			}
+
+			suspension_type_slot = {
+				required = yes
+				allowed_module_categories = {
+					tank_suspension_type
+					tank_non_tracked_suspension_type
+				}
+			}
+
+			armor_type_slot = {
+				required = yes
+				allowed_module_categories = {
+					tank_armor_type
+				}
+			}
+
+			engine_type_slot = {
+				required = yes
+				allowed_module_categories = {
+					tank_engine_type
+				}
+			}
+
+			special_type_slot_1 = {
+				required = no
+				allowed_module_categories = {
+					tank_radio_module
+				}
+			}
+			optics_slot = {
+				required = no
+				allowed_module_categories = {
+					tank_optic_module
+				}
+			}
+
+			special_type_slot_2 = {
+				required = no
+				allowed_module_categories = {
+					tank_special_module
+				}
+			}
+
+			special_type_slot_3 = {
+				required = no
+				allowed_module_categories = {
+					tank_special_module
+				}
+			}
+			atgm_slot = {
+				required = no
+				allowed_module_categories = {
+					atgm_module
+				}
+			}
+			special_type_slot_4 = {
+				required = no
+				allowed_module_categories = {
+					tank_special_module
+				}
+			}
+			special_type_slot_5 = {
+				required = no
+				allowed_module_categories = {
+					tank_special_module
+				}
+			}
+
+		}
+		module_count_limit = {
+			module = sloped_armor
+			count < 2
+		}	
+		module_count_limit = {
+			module = tank_active_protection
+			count < 2
+		}
+		module_count_limit = {
+			module = tank_auto_targetter
+			count < 2
+		}
+		module_count_limit = {
+			module = tank_blowout_pannels
+			count < 2
+		}
+		module_count_limit = {
+			module = tank_battlefield_integration
+			count < 2
+		}	
+		module_count_limit = {
+			category = tank_radio_module
+			count < 2
+		}
+		module_count_limit = {
+			module = amphibious_drive
+			count < 1
+		}
+
+		module_count_limit = {
+			module = wet_ammo_storage
+			count < 2
+		}
+
+		module_count_limit = {
+			module = squeezebore_adaptor
+			count < 2
+		}
+
+		module_count_limit = {
+			module = armor_skirts
+			count < 2
+		}
+
+		module_count_limit = {
+			module = dozer_blade
+			count < 2
+		}
+
+		module_count_limit = {
+			module = easy_maintenance
+			count < 2
+		}
+		module_count_limit = {
+			module = auto_loader
+			count < 2
+		}
+
+		default_modules = {
+			main_armament_slot = empty
+			turret_type_slot = tank_modern_tank_turret
+			suspension_type_slot = tank_bogie_suspension
+			armor_type_slot = tank_welded_armor
+			engine_type_slot = tank_gasoline_engine
+			special_type_slot_1 = tank_radio_1
+			optics_slot = tank_optics_1
+			#
+			atgm_slot = empty
+		}
 		visual_level = 6
 		
 		#Misc Abilities
