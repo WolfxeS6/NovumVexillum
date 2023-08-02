@@ -222,7 +222,7 @@ generic_fighter = {
             plane_targetting_system_3_medium
 			plane_targetting_system_land_3_medium
             plane_targetting_system_4_medium
-            armor_stealth_1_medium
+            armor_stealth_medium
             armor_stealth_2_medium
 		}
 	}
@@ -273,7 +273,7 @@ generic_fighter = {
             plane_targetting_system_3_medium
 			plane_targetting_system_land_3_medium
             plane_targetting_system_4_medium
-            armor_stealth_1_medium
+            armor_stealth_medium
             armor_stealth_2_medium
             armor_stealth_3_medium
 		}
@@ -330,7 +330,7 @@ generic_fighter = {
             plane_targetting_system_4_medium
             plane_targetting_system_5_medium
 			plane_targetting_system_land_5_medium
-            armor_stealth_1_medium
+            armor_stealth_medium
             armor_stealth_2_medium
             armor_stealth_3_medium
 		}
@@ -383,7 +383,408 @@ generic_fighter = {
             plane_targetting_system_4_medium
             plane_targetting_system_5_medium
 			plane_targetting_system_land_5_medium
-            armor_stealth_1_medium
+            armor_stealth_medium
+            armor_stealth_2_medium
+            armor_stealth_3_medium
+            armor_stealth_4_medium
+		}
+	}
+
+}
+
+
+generic_cv_fighter = {
+	category = air
+
+	blocked_for = {}
+
+	available_for = {}
+
+	roles = {
+		air_cv_fighter
+	}
+
+	priority = {
+		factor = 1000
+        modifier = {
+			has_navy_size = {
+				unit = carrier
+ 	  			size < 1
+			}
+			factor = 0
+		}
+	}
+
+	old_fighter_default = {
+		priority = {
+			factor = 1
+			modifier = { 
+				has_tech = basic_medium_airframe
+				factor = 0 #let's not waste XP here
+			}
+		}
+
+		target_variant = {
+			match_value = 1000
+			type = cv_medium_plane_airframe_0
+			modules = {
+				fixed_main_weapon_slot = heavy_mg_2x
+			    fixed_auxiliary_weapon_slot_1 = aircraft_cannon_short_1
+			    fixed_auxiliary_weapon_slot_2 = small_bomb_bay
+			    engine_type_slot = engine_1_2x
+			    special_type_slot_1 = empty
+			}
+		}
+
+		allowed_modules = {
+			engine_1_2x
+            light_mg_2x
+			heavy_mg_2x
+            small_bomb_bay
+            medium_bomb_bay
+            aircraft_cannon_short_1
+            rocket_pod
+            plane_lighten_materials
+		}
+	}
+    eighties_fighter_default = {
+		priority = {
+			factor = 1
+			modifier = { 
+				has_tech = improved_medium_airframe
+				factor = 0 #let's not waste XP here
+			}
+		}
+
+		target_variant = {
+			match_value = 1000
+			type = cv_medium_plane_airframe_1
+			modules = {
+				fixed_main_weapon_slot = light_mg_2x
+                fixed_auxiliary_weapon_slot_1 = aircraft_cannon_short_1
+                fixed_auxiliary_weapon_slot_2 = aircraft_cannon_medium_1
+                engine_type_slot = engine_2_2x
+                special_type_slot_1 = plane_targetting_system_1_medium
+                special_type_slot_2 = empty
+			}
+		}
+
+		allowed_modules = {
+			engine_1_2x
+            engine_2_2x
+            light_mg_2x
+			heavy_mg_2x
+            small_bomb_bay
+            medium_bomb_bay
+            aircraft_cannon_short_1
+            aircraft_cannon_short_2
+            aircraft_cannon_medium_1
+            rocket_pod
+            plane_lighten_materials
+            plane_targetting_system_1_medium
+		}
+	}
+    modern_fighter_default = {
+		priority = {
+			factor = 1
+			modifier = { 
+				has_tech = advanced_medium_airframe
+				factor = 0 #let's not waste XP here
+			}
+		}
+
+		target_variant = {
+			match_value = 1000
+			type = cv_medium_plane_airframe_2
+			modules = {
+				fixed_main_weapon_slot = light_mg_2x
+                fixed_auxiliary_weapon_slot_1 = aircraft_cannon_medium_2
+                fixed_auxiliary_weapon_slot_2 = gps_guided_bomb
+                engine_type_slot = engine_3_2x
+                special_type_slot_1 = plane_targetting_system_3_medium
+                special_type_slot_2 = plane_special_module_countermeasures
+			}
+		}
+
+		allowed_modules = {
+			engine_1_2x
+            engine_2_2x
+            engine_3_2x
+            light_mg_2x
+			heavy_mg_2x
+            small_bomb_bay
+            medium_bomb_bay
+            aircraft_cannon_short_1
+            aircraft_cannon_short_2
+            aircraft_cannon_medium_1
+            aircraft_cannon_medium_2
+            gps_guided_bomb
+            rocket_pod
+            plane_lighten_materials
+            plane_targetting_system_1_medium
+			plane_counter_measures_1_medium
+            plane_targetting_system_2_medium
+			plane_targetting_system_land_2_medium
+            plane_targetting_system_3_medium
+			plane_targetting_system_land_3_medium
+		}
+	}
+    modern_improved_fighter_default = {
+		priority = {
+			factor = 1
+			modifier = { 
+				has_tech = modern_medium_airframe
+				factor = 0 #let's not waste XP here
+			}
+		}
+
+		target_variant = {
+			match_value = 1000
+			type = cv_medium_plane_airframe_3
+			modules = {
+				fixed_main_weapon_slot = light_mg_2x
+                fixed_auxiliary_weapon_slot_1 = aircraft_cannon_medium_2
+                fixed_auxiliary_weapon_slot_2 = gps_guided_bomb
+                engine_type_slot = engine_3_2x
+                special_type_slot_1 = plane_targetting_system_4_medium
+                special_type_slot_2 = plane_special_module_countermeasures
+			}
+		}
+
+		allowed_modules = {
+			engine_1_2x
+            engine_2_2x
+            engine_3_2x
+            light_mg_2x
+			heavy_mg_2x
+            small_bomb_bay
+            medium_bomb_bay
+            aircraft_cannon_short_1
+            aircraft_cannon_short_2
+            aircraft_cannon_medium_1
+            aircraft_cannon_medium_2
+            gps_guided_bomb
+            rocket_pod
+            plane_lighten_materials
+            plane_targetting_system_1_medium
+			plane_counter_measures_1_medium
+            plane_counter_measures_2_medium
+            plane_targetting_system_2_medium
+			plane_targetting_system_land_2_medium
+            plane_targetting_system_3_medium
+			plane_targetting_system_land_3_medium
+            plane_targetting_system_4_medium
+		}
+	}
+    modern_stealth_fighter_default = {
+		priority = {
+			factor = 1
+			modifier = { 
+				has_tech = more_modern_medium_airframe
+				factor = 0 #let's not waste XP here
+			}
+		}
+
+		target_variant = {
+			match_value = 1000
+			type = cv_medium_plane_airframe_4
+			modules = {
+				fixed_main_weapon_slot = light_mg_2x
+                fixed_auxiliary_weapon_slot_1 = aircraft_cannon_short_3
+                fixed_auxiliary_weapon_slot_2 = extended_range_gps_guided_bomb
+                engine_type_slot = engine_4_2x
+                special_type_slot_1 = plane_targetting_system_4_medium
+                special_type_slot_2 = plane_special_module_countermeasures
+                special_type_slot_3 = plane_special_module_stealth
+			}
+		}
+
+		allowed_modules = {
+			engine_1_2x
+            engine_2_2x
+            engine_3_2x
+            engine_4_2x
+            light_mg_2x
+			heavy_mg_2x
+            small_bomb_bay
+            medium_bomb_bay
+            aircraft_cannon_short_1
+            aircraft_cannon_short_2
+            aircraft_cannon_medium_1
+            aircraft_cannon_medium_2
+            gps_guided_bomb
+            rocket_pod
+            plane_lighten_materials
+            plane_targetting_system_1_medium
+			plane_counter_measures_1_medium
+            plane_counter_measures_2_medium
+            plane_targetting_system_2_medium
+			plane_targetting_system_land_2_medium
+            plane_targetting_system_3_medium
+			plane_targetting_system_land_3_medium
+            plane_targetting_system_4_medium
+            armor_stealth_medium
+            armor_stealth_2_medium
+		}
+	}
+    modern_top_tier_stealth_fighter_default = {
+		priority = {
+			factor = 1
+			modifier = { 
+				has_tech = near_future_medium_airframe
+				factor = 0 #let's not waste XP here
+			}
+		}
+
+		target_variant = {
+			match_value = 1000
+			type = cv_medium_plane_airframe_5
+			modules = {
+				fixed_main_weapon_slot = light_mg_2x
+                fixed_auxiliary_weapon_slot_1 = aircraft_cannon_short_3
+                fixed_auxiliary_weapon_slot_2 = extended_range_gps_guided_bomb
+                engine_type_slot = engine_4_2x
+                special_type_slot_1 = plane_targetting_system_4_medium
+                special_type_slot_2 = plane_special_module_countermeasures
+                special_type_slot_3 = plane_special_module_stealth
+			}
+		}
+
+		allowed_modules = {
+			engine_1_2x
+            engine_2_2x
+            engine_3_2x
+            engine_4_2x
+            light_mg_2x
+			heavy_mg_2x
+            small_bomb_bay
+            medium_bomb_bay
+            aircraft_cannon_short_1
+            aircraft_cannon_short_2
+            aircraft_cannon_medium_1
+            aircraft_cannon_medium_2
+            gps_guided_bomb
+            rocket_pod
+            plane_lighten_materials
+            plane_targetting_system_1_medium
+			plane_counter_measures_1_medium
+            plane_counter_measures_2_medium
+            plane_targetting_system_2_medium
+			plane_targetting_system_land_2_medium
+            plane_targetting_system_3_medium
+			plane_targetting_system_land_3_medium
+            plane_targetting_system_4_medium
+            armor_stealth_medium
+            armor_stealth_2_medium
+            armor_stealth_3_medium
+		}
+	}
+    near_future_fighter_default = {
+		priority = {
+			factor = 1
+			modifier = { 
+				has_tech = future_medium_airframe
+				factor = 0 #let's not waste XP here
+			}
+		}
+
+		target_variant = {
+			match_value = 1000
+			type = cv_medium_plane_airframe_6
+			modules = {
+				fixed_main_weapon_slot = light_mg_2x
+                fixed_auxiliary_weapon_slot_1 = aircraft_cannon_medium_3
+                fixed_auxiliary_weapon_slot_2 = extended_range_gps_guided_bomb
+                engine_type_slot = engine_5_2x
+                special_type_slot_1 = plane_targetting_system_5_medium
+                special_type_slot_2 = plane_special_module_countermeasures
+                special_type_slot_3 = plane_special_module_stealth
+			}
+		}
+
+		allowed_modules = {
+			engine_1_2x
+            engine_2_2x
+            engine_3_2x
+            engine_4_2x
+            engine_5_2x
+            light_mg_2x
+			heavy_mg_2x
+            small_bomb_bay
+            medium_bomb_bay
+            aircraft_cannon_short_1
+            aircraft_cannon_short_2
+            aircraft_cannon_short_3
+            aircraft_cannon_medium_1
+            aircraft_cannon_medium_2
+            aircraft_cannon_medium_3
+            gps_guided_bomb
+            rocket_pod
+            plane_lighten_materials
+            plane_targetting_system_1_medium
+			plane_counter_measures_1_medium
+            plane_counter_measures_2_medium
+            plane_targetting_system_2_medium
+			plane_targetting_system_land_2_medium
+            plane_targetting_system_3_medium
+			plane_targetting_system_land_3_medium
+            plane_targetting_system_4_medium
+            plane_targetting_system_5_medium
+			plane_targetting_system_land_5_medium
+            armor_stealth_medium
+            armor_stealth_2_medium
+            armor_stealth_3_medium
+		}
+	}
+    near_future_fighter_default = {
+		priority = {
+			factor = 1
+		}
+
+		target_variant = {
+			match_value = 1000
+			type = cv_medium_plane_airframe_7
+			modules = {
+				fixed_main_weapon_slot = light_mg_2x
+                fixed_auxiliary_weapon_slot_1 = aircraft_cannon_medium_3
+                fixed_auxiliary_weapon_slot_2 = extended_range_gps_guided_bomb
+                engine_type_slot = engine_5_2x
+                special_type_slot_1 = plane_targetting_system_5_medium
+                special_type_slot_2 = plane_special_module_countermeasures
+                special_type_slot_3 = plane_special_module_stealth
+			}
+		}
+
+		allowed_modules = {
+			engine_1_2x
+            engine_2_2x
+            engine_3_2x
+            engine_4_2x
+            engine_5_2x
+            light_mg_2x
+			heavy_mg_2x
+            small_bomb_bay
+            medium_bomb_bay
+            aircraft_cannon_short_1
+            aircraft_cannon_short_2
+            aircraft_cannon_short_3
+            aircraft_cannon_medium_1
+            aircraft_cannon_medium_2
+            aircraft_cannon_medium_3
+            gps_guided_bomb
+            rocket_pod
+            plane_lighten_materials
+            plane_targetting_system_1_medium
+			plane_counter_measures_1_medium
+            plane_counter_measures_2_medium
+            plane_targetting_system_2_medium
+			plane_targetting_system_land_2_medium
+            plane_targetting_system_3_medium
+			plane_targetting_system_land_3_medium
+            plane_targetting_system_4_medium
+            plane_targetting_system_5_medium
+			plane_targetting_system_land_5_medium
+            armor_stealth_medium
             armor_stealth_2_medium
             armor_stealth_3_medium
             armor_stealth_4_medium
