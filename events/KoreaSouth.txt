@@ -5552,6 +5552,38 @@ country_event = {
 	option = {
 		name = korea_flavor_events.11.a
 		ai_chance = {
+			base = 1.8
+		}
+		
+		if = {
+			limit = { has_completed_focus = kor_victory_democracy }
+			custom_effect_tooltip = kor_more_influence_right_con_1_10_tt
+			set_variable = { KOR_move_support = 0 }
+			randomize_variable = {
+				var = KOR_move_support
+				distribution = binomial
+				min = 1
+				max = 10
+			}
+			round_variable = KOR_move_support
+			KOR_add_neocon_support_effect = yes
+			
+			add_popularity = {
+				ideology = market_liberal
+				popularity = 0.02
+			}
+		}
+		else = {
+			add_popularity = {
+				ideology = market_liberal
+				popularity = 0.02
+			}
+		}
+	}
+	
+	option = {
+		name = korea_flavor_events.11.b
+		ai_chance = {
 			base = 1
 			modifier = {
 				factor = 0
@@ -5608,37 +5640,6 @@ country_event = {
 		
 	}
 	
-	option = {
-		name = korea_flavor_events.11.b
-		ai_chance = {
-			base = 1.8
-		}
-		
-		if = {
-			limit = { has_completed_focus = kor_victory_democracy }
-			custom_effect_tooltip = kor_more_influence_right_con_1_10_tt
-			set_variable = { KOR_move_support = 0 }
-			randomize_variable = {
-				var = KOR_move_support
-				distribution = binomial
-				min = 1
-				max = 10
-			}
-			round_variable = KOR_move_support
-			KOR_add_neocon_support_effect = yes
-			
-			add_popularity = {
-				ideology = market_liberal
-				popularity = 0.02
-			}
-		}
-		else = {
-			add_popularity = {
-				ideology = market_liberal
-				popularity = 0.02
-			}
-		}
-	}
 }
 
 #####################################################
