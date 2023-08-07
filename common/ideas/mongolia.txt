@@ -1,0 +1,73 @@
+ideas = {
+
+	country = {
+	
+		MON_economic_dependence_china = {
+			picture = MON_chinese_mongolia
+		
+			cancel = {
+				OR = {
+					is_major = yes
+					has_war_with = PRC
+					PRC = { is_major = no }
+					is_in_faction_with = PRC
+					NOT = { country_exists = PRC }
+				}
+			}
+			
+			allowed = { always = no }
+			allowed_civil_war = { always = no }
+			
+			targeted_modifier = {
+				tag = PRC
+				cic_to_target_factor = 0.1
+				extra_trade_to_target_factor = 0.2
+				trade_cost_for_target_factor = -0.5
+			}
+		}
+	
+		MON_economic_dependence_russia = {
+			picture = MON_russian_mongolia
+		
+			cancel = {
+				OR = {
+					is_major = yes
+					has_war_with = SOV
+					PRC = { is_major = no }
+					is_in_faction_with = SOV
+					NOT = { country_exists = SOV }
+				}
+			}
+			
+			allowed = { always = no }
+			allowed_civil_war = { always = no }
+			
+			targeted_modifier = {
+				tag = SOV
+				cic_to_target_factor = 0.1
+				extra_trade_to_target_factor = 0.2
+				trade_cost_for_target_factor = -0.5
+			}
+		}
+	
+		MON_president_of_mongolia = {
+			picture = generic_goods_red_bonus
+		
+			cancel = {
+				OR = {
+					has_government = islamst
+					has_government = monarchist
+				}
+			}
+			
+			allowed = { always = no }
+			allowed_civil_war = { always = no }
+			
+			traits = { 
+				popular_figurehead
+			}
+		}
+		
+	}
+	
+}
