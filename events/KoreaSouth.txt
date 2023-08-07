@@ -4597,6 +4597,32 @@ country_event = {
 			}
 			promote_leader = yes
 		}
+
+		hidden_effect = {
+			add_ideas = government_system_one_party
+			
+			if = {
+				limit = {  has_idea = civil_liberties_free  }
+				swap_ideas = {
+					remove_idea = civil_liberties_free
+					add_idea = civil_liberties_totalitarian
+				}
+			}
+			else_if = {
+				limit = {  has_idea = civil_liberties_limited  }
+				swap_ideas = {
+					remove_idea = civil_liberties_limited
+					add_idea = civil_liberties_totalitarian
+				}
+			}
+			else_if = {
+				limit = {  has_idea = civil_liberties_restricted  }
+				swap_ideas = {
+					remove_idea = civil_liberties_restricted
+					add_idea = civil_liberties_totalitarian
+				}
+			}
+		}
 		
 		#set_cosmetic_tag = KOR_MAGIC
 		
@@ -4646,6 +4672,28 @@ country_event = {
 		}
 		
 		hidden_effect = {
+			
+			if = {
+				limit = {  has_idea = civil_liberties_free  }
+				swap_ideas = {
+					remove_idea = civil_liberties_free
+					add_idea = civil_liberties_totalitarian
+				}
+			}
+			else_if = {
+				limit = {  has_idea = civil_liberties_limited  }
+				swap_ideas = {
+					remove_idea = civil_liberties_limited
+					add_idea = civil_liberties_totalitarian
+				}
+			}
+			else_if = {
+				limit = {  has_idea = civil_liberties_restricted  }
+				swap_ideas = {
+					remove_idea = civil_liberties_restricted
+					add_idea = civil_liberties_totalitarian
+				}
+			}
 
 			remove_ideas = {
 				kor_descendant_of_the_Imperial_army_1
