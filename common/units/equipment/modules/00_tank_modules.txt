@@ -24,7 +24,7 @@ equipment_modules = {
 		sfx = sfx_ui_sd_module_engine
 
 		add_stats = {
-			build_cost_ic = 3 
+			build_cost_ic = 0 
 			fuel_consumption = 2
 			reliability = 0.25
 		}
@@ -56,7 +56,7 @@ equipment_modules = {
 		sfx = sfx_ui_sd_module_engine
 
 		add_stats = {
-			build_cost_ic = 6
+			build_cost_ic = 3
 			fuel_consumption = 4
 			reliability = -0.1
 		}
@@ -72,7 +72,7 @@ equipment_modules = {
 		sfx = sfx_ui_sd_module_engine
 
 		add_stats = {
-			build_cost_ic = 4 
+			build_cost_ic = 1 
 			fuel_consumption = 1.5
 			reliability = 0.3
 		}
@@ -85,7 +85,7 @@ equipment_modules = {
 
 		add_stats = {
 			defense = 2.0
-			build_cost_ic = 5 
+			build_cost_ic = 2 
 			fuel_consumption = 1
 			reliability = -0.1
 		}
@@ -111,6 +111,9 @@ equipment_modules = {
 			armor_value = -0.2
 
 		}
+		build_cost_resources = {
+			aluminium = 1
+		}
 	}
 
 	tank_cast_armor = {
@@ -129,6 +132,10 @@ equipment_modules = {
 			build_cost_ic = 0.2
 			armor_value = 0.5
 
+		}
+		build_cost_resources = {
+			steel = 1
+			chromium = 1
 		}
 	}
 	tank_uranium_armor = {
@@ -166,6 +173,10 @@ equipment_modules = {
 			armor_value = 0.4
 
 		}
+		build_cost_resources = {
+			steel = 1
+			chromium = 1
+		}
 	}
 
 	###Suspension Types
@@ -176,7 +187,7 @@ equipment_modules = {
 		sfx = sfx_ui_sd_module_sonar
 
 		add_stats = {
-			build_cost_ic = 3
+			build_cost_ic = 2
 			reliability = 0.1
 		}
 		multiply_stats = {
@@ -223,11 +234,11 @@ equipment_modules = {
 
 	tank_wheeled_suspension = {
 		abbreviation = "whe"
-		category = tank_non_tracked_suspension_type
+		category = tank_suspension_type
 		sfx = sfx_ui_sd_module_sonar
 
 		add_stats = {
-			build_cost_ic = 1
+			build_cost_ic = 0.5
 			reliability = 0.15
 			maximum_speed = 4
 		}
@@ -235,11 +246,14 @@ equipment_modules = {
 			build_cost_ic = -0.1
 			hardness = -0.25
 		}
+		build_cost_resources = {
+			rubber = 1
+		}
 	}
 
 	tank_half_track_suspension = {
 		abbreviation = "htr"
-		category = tank_non_tracked_suspension_type
+		category = tank_suspension_type
 		sfx = sfx_ui_sd_module_sonar
 
 		add_stats = {
@@ -310,11 +324,6 @@ equipment_modules = {
 		sfx = sfx_ui_sd_module_turret
 		forbid_equipment_type = anti_air
 
-		allowed_module_categories = {
-			main_armament_slot = {
-				tank_medium_main_armament
-			}
-		}
 		forbid_equipment_type_exact_match_for_category = {
 			tank_medium_main_armament = armor
 			tank_heavy_main_armament = armor
@@ -338,11 +347,6 @@ equipment_modules = {
 		abbreviation = "m1m"
 		category = tank_medium_turret_type
 		sfx = sfx_ui_sd_module_turret
-		allowed_module_categories = {
-			main_armament_slot = {
-				tank_medium_main_armament
-			}
-		}
 		add_stats = {
 			build_cost_ic = 2
 			breakthrough = 8.5
@@ -533,13 +537,6 @@ equipment_modules = {
 			build_cost_ic = 8
 			breakthrough = 24
 		}
-		allowed_module_categories = {
-			main_armament_slot = {
-				tank_small_main_armament
-				tank_medium_main_armament
-				tank_heavy_main_armament
-			}
-		}
 		xp_cost = 2
 		multiply_stats = {
 		}
@@ -554,11 +551,6 @@ equipment_modules = {
 			build_cost_ic = 14
 			breakthrough = 30
 		}
-		allowed_module_categories = {
-			main_armament_slot = {
-				tank_small_main_armament
-			}
-		}
 		xp_cost = 2
 		multiply_stats = {
 			armor_value = 0.1
@@ -572,13 +564,6 @@ equipment_modules = {
 		add_stats = {
 			build_cost_ic = 16
 			breakthrough = 40
-		}
-		allowed_module_categories = {
-			main_armament_slot = {
-				tank_small_main_armament
-				tank_medium_main_armament
-				tank_heavy_main_armament
-			}
 		}
 		xp_cost = 2
 		multiply_stats = {
@@ -1697,7 +1682,7 @@ equipment_modules = {
 
 	auto_loader = {
 		abbreviation = "auto"
-		category = tank_special_module
+		category = tank_special_autoloader
 		sfx = sfx_ui_sd_module_turret
 
 		add_stats = {
@@ -1708,12 +1693,20 @@ equipment_modules = {
 			armor_value = -1.5
 		}
 		xp_cost = 1
+		allowed_module_categories = {
+			special_type_slot_1 = {
+				tank_small_ergonomics_module
+			}
+		}
+		forbid_equipment_type_exact_match_for_category = {
+			tank_small_main_armament = armor
+		}
 		
 	}
 
 	auto_loader_2 = {
 		abbreviation = "auto"
-		category = tank_special_module
+		category = tank_special_autoloader
 		sfx = sfx_ui_sd_module_turret
 		parent = auto_loader
 		add_stats = {
@@ -1724,7 +1717,85 @@ equipment_modules = {
 			armor_value = -0.5
 		}
 		xp_cost = 1
+		allowed_module_categories = {
+			special_type_slot_1 = {
+				tank_small_ergonomics_module
+			}
+		}
+		forbid_equipment_type_exact_match_for_category = {
+			tank_small_main_armament = armor
+		}
 		
+	}
+	ergo_small = {
+		abbreviation = "easy"
+		category = tank_small_ergonomics_module
+		sfx = sfx_ui_sd_module_turret
+
+		add_stats = {
+			reliability = 0.1
+			build_cost_ic = 0.5
+		}
+		xp_cost = 10
+		multiply_stats = {
+			
+		}
+	}
+	ergo_old = {
+		abbreviation = "easy"
+		category = tank_ergonomics_module
+		sfx = sfx_ui_sd_module_turret
+
+		add_stats = {
+			reliability = 0.1
+			build_cost_ic = 0.5
+		}
+		xp_cost = 10
+		multiply_stats = {
+			
+		}
+	}
+	ergo_spacious = {
+		abbreviation = "easy"
+		category = tank_ergonomics_module
+		sfx = sfx_ui_sd_module_turret
+
+		add_stats = {
+			reliability = 0.1
+			build_cost_ic = 0.5
+		}
+		xp_cost = 10
+		multiply_stats = {
+			
+		}
+	}
+	ergo_front_engine = {
+		abbreviation = "easy"
+		category = tank_ergonomics_module
+		sfx = sfx_ui_sd_module_turret
+
+		add_stats = {
+			reliability = 0.1
+			build_cost_ic = 0.5
+		}
+		xp_cost = 10
+		multiply_stats = {
+			
+		}
+	}
+	ergo_ifv_old = {
+		abbreviation = "easy"
+		category = tank_ifv_ergonomics_module
+		sfx = sfx_ui_sd_module_turret
+
+		add_stats = {
+			reliability = 0.1
+			build_cost_ic = 0.5
+		}
+		xp_cost = 10
+		multiply_stats = {
+			
+		}
 	}
 
 	easy_maintenance = {
@@ -1841,7 +1912,7 @@ equipment_modules = {
 	}
 	tank_reactive_armour = {
 		abbreviation = "CRWS"
-		category = tank_special_module
+		category = tank_extra_armour_module
 		sfx = sfx_ui_sd_module_turret
 
 		add_stats = {
@@ -1852,6 +1923,83 @@ equipment_modules = {
 		}
 		xp_cost = 1
 		multiply_stats = {
+		}
+	}
+	tank_reactive_armour_2 = {
+		abbreviation = "CRWS"
+		category = tank_extra_armour_module
+		sfx = sfx_ui_sd_module_turret
+		parent = tank_reactive_armour
+		add_stats = {
+			reliability = -0.05
+			build_cost_ic = 2.2
+			armor_value = 15
+			
+		}
+		xp_cost = 1
+		multiply_stats = {
+		}
+	}
+	tank_reactive_armour_3 = {
+		abbreviation = "CRWS"
+		category = tank_extra_armour_module
+		sfx = sfx_ui_sd_module_turret
+		parent = tank_reactive_armour_2
+		add_stats = {
+			reliability = -0.05
+			build_cost_ic = 2.4
+			armor_value = 20
+			
+		}
+		xp_cost = 1
+		multiply_stats = {
+		}
+	}
+	tank_reactive_armour_4 = {
+		abbreviation = "CRWS"
+		category = tank_extra_armour_module
+		sfx = sfx_ui_sd_module_turret
+		parent = tank_reactive_armour_3
+		add_stats = {
+			reliability = -0.05
+			build_cost_ic = 2.5
+			armor_value = 25
+			
+		}
+		xp_cost = 1
+		multiply_stats = {
+		}
+	}
+	tank_nera_steel = {
+		abbreviation = "CRWS"
+		category = tank_extra_armour_module
+		sfx = sfx_ui_sd_module_turret
+
+		add_stats = {
+			build_cost_ic = 1.8
+			armor_value = 25
+			fuel_consumption = 0.5
+			
+		}
+		xp_cost = 1
+		multiply_stats = {
+			maximum_speed = -0.2
+		}
+	}
+	tank_nera_composite = {
+		abbreviation = "CRWS"
+		category = tank_extra_armour_module
+		sfx = sfx_ui_sd_module_turret
+
+		add_stats = {
+			build_cost_ic = 3.5
+			armor_value = 35
+			fuel_consumption = 0.5
+			
+		}
+		xp_cost = 1
+		multiply_stats = {
+			maximum_speed = -0.2
 		}
 	}
 	tank_active_protection = {
