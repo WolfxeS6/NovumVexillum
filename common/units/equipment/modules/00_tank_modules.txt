@@ -100,16 +100,12 @@ equipment_modules = {
 		sfx = sfx_ui_sd_module_sonar
 
 		add_stats = {
-			#soft_attack = 1 # that's when rivets shoot back because they got dislodged by the shock. That was in fact the first reactive armor.
-			
-			defense = 2
-			breakthrough = 2
 		}
-		xp_cost = 8
+		xp_cost = 3
 		multiply_stats = {
-			build_cost_ic = -0.2
-			armor_value = -0.2
-
+			build_cost_ic = -0.4
+			armor_value = -0.4
+			maximum_speed = 0.2
 		}
 		build_cost_resources = {
 			aluminium = 1
@@ -122,16 +118,13 @@ equipment_modules = {
 		sfx = sfx_ui_sd_module_sonar
 
 		add_stats = {
-			defense = 4
-			breakthrough = 4
-			fuel_consumption = 4
-			maximum_speed = -2.4
+			fuel_consumption = 3
 		}
-		xp_cost = 8
+		xp_cost = 3
 		multiply_stats = {
 			build_cost_ic = 0.2
-			armor_value = 0.5
-
+			armor_value = 0.25
+			maximum_speed = -0.2
 		}
 		build_cost_resources = {
 			steel = 1
@@ -149,7 +142,7 @@ equipment_modules = {
 			fuel_consumption = 4.1
 			maximum_speed = -2.5
 		}
-		xp_cost = 8
+		xp_cost = 3
 		multiply_stats = {
 			build_cost_ic = 0.25
 			armor_value = 0.65
@@ -161,17 +154,9 @@ equipment_modules = {
 		abbreviation = "wel"
 		category = tank_armor_type
 		sfx = sfx_ui_sd_module_sonar
-		xp_cost = 8
+		xp_cost = 3
 		add_stats = {
-			defense = 2
-			breakthrough = 2
-			fuel_consumption = 3
-			maximum_speed = -1
-		}
-
-		multiply_stats = {
-			armor_value = 0.4
-
+			fuel_consumption = 2
 		}
 		build_cost_resources = {
 			steel = 1
@@ -1541,7 +1526,7 @@ equipment_modules = {
 		}
 	}
 
-	secondary_turret_small_cannon = {
+	secondary_turret_close_support_gun = {
 		abbreviation = "tsc"
 		category = tank_secondary_turret
 		sfx = sfx_ui_sd_module_turret
@@ -1580,10 +1565,15 @@ equipment_modules = {
 		sfx = sfx_ui_sd_module_turret
 
 		add_stats = {
-			build_cost_ic = 2
-			breakthrough = 5
+			reliability = -0.05
+			build_cost_ic = 1.5
+			
 		}
 		xp_cost = 1
+		multiply_stats = {
+			soft_attack = 0.1
+			hard_attack = 0.1
+		}
 
 	}
 
@@ -1830,7 +1820,7 @@ equipment_modules = {
 	}
 	CRWS_guns = {
 		abbreviation = "CRWS"
-		category = tank_special_module
+		category = tank_secondary_turret
 		parent = additional_machine_guns
 		sfx = sfx_ui_sd_module_turret
 
@@ -1847,7 +1837,7 @@ equipment_modules = {
 	}
 	tank_blowout_pannels = {
 		abbreviation = "CRWS"
-		category = tank_special_module
+		category = tank_special_autoloader
 		sfx = sfx_ui_sd_module_turret
 
 		add_stats = {
@@ -1881,6 +1871,7 @@ equipment_modules = {
 		abbreviation = "CRWS"
 		category = tank_special_module
 		sfx = sfx_ui_sd_module_turret
+		parent = stabilizer
 
 		add_stats = {
 			reliability = -0.05
