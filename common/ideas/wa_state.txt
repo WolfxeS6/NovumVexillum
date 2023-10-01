@@ -31,6 +31,18 @@ ideas = {
 			}
 		}
 		
+		WAS_embrace_the_opium_trade_weak = {
+			allowed = { always = no }
+
+			picture = prc_permit_opium_trade
+
+			removal_cost = -1
+
+			modifier = {
+				consumer_goods_factor = -0.07
+			}
+		}
+		
 		WAS_ineffective_bureaucracy_warlord = {
 			allowed = { always = no }
 			
@@ -56,6 +68,194 @@ ideas = {
 			modifier = {
 				conscription = 0.005
 				industrial_capacity_factory = 0.05
+			}
+		}
+		
+		WAS_land_reform_idea_2 = {
+			name = WAS_land_reform_idea
+			
+			allowed = { always = no }
+			
+			picture =  ast_all_in
+
+			removal_cost = -1
+
+			modifier = {
+				conscription = 0.007
+				industrial_capacity_factory = 0.07
+			}
+		}
+		
+		WAS_land_reform_idea_3 = {
+			name = WAS_land_reform_idea
+			
+			allowed = { always = no }
+			
+			picture =  ast_all_in
+
+			removal_cost = -1
+
+			modifier = {
+				conscription = 0.005
+				industrial_capacity_factory = 0.05
+				consumer_goods_factor = -0.03
+			}
+		}
+		
+		WAS_use_yuan = {
+			allowed = { always = no }
+
+			picture = prc_permit_opium_trade
+
+			removal_cost = -1
+
+			targeted_modifier = {
+				tag = PRC
+				trade_cost_for_target_factor = -0.2
+				extra_trade_to_target_factor = 0.1
+			}
+			
+			modifier = {
+				consumer_goods_factor = -0.02
+			}
+			
+			cancel = {
+				OR = { 
+					NOT = { country_exists = PRC }
+					has_war_with = PRC
+				}
+			}
+		}
+		
+		WAS_socialist_constitution_weak = {
+			allowed = { always = no }
+
+			picture = communism4
+
+			removal_cost = -1
+			
+			modifier = {
+				political_power_gain = -0.1
+				consumer_goods_factor = -0.05
+			}
+		}
+		
+		WAS_socialist_constitution_strong = {
+			allowed = { always = no }
+
+			picture = communism4
+
+			removal_cost = -1
+			
+			modifier = {
+				political_power_gain = -0.15
+				consumer_goods_factor = -0.05
+				communist_drift = 0.04
+				max_planning = 0.1
+				conscription = 0.02
+			}
+			
+			cancel = {
+				NOT = { has_government = communist }
+			}
+		}
+		
+		WAS_fake_socialist_constitution = {
+			allowed = { always = no }
+
+			picture = communism4
+
+			removal_cost = -1
+			
+			modifier = {
+				political_power_gain = -0.1
+				command_power_gain_mult = 0.05
+				planning_speed = 0.05
+				dig_in_speed_factor = 0.1
+				production_speed_arms_factory_factor = 0.1
+			}
+		}
+		
+		WAS_generic_constitution = {
+			allowed = { always = no }
+
+			picture = constitution
+
+			removal_cost = -1
+			
+			modifier = {
+				political_power_gain = -0.1
+				command_power_gain_mult = 0.05
+				planning_speed = 0.05
+				dig_in_speed_factor = 0.1
+				production_speed_arms_factory_factor = 0.1
+			}
+		}
+		
+		WAS_people_s_liberation_army = {
+			allowed = { always = no }
+
+			picture = generic_infantry_bonus
+
+			removal_cost = -1
+			
+			equipment_bonus = {
+				infantry_equipment = {
+					build_cost_ic = -0.1
+					instant = yes
+				}
+			}
+		}
+		
+		WAS_protracted_warfare = {
+			allowed = { always = no }
+
+			picture = HUN_secret_rearmament
+
+			removal_cost = -1
+			
+			modifier = {
+				army_core_defence_factor = 0.2
+			}
+		}
+		
+		WAS_chinese_culture_first = {
+			allowed = { always = no }
+
+			picture = generic_communist_army
+
+			removal_cost = -1
+			
+			modifier = {
+				max_command_power = 30
+				command_power_gain_mult = 0.1
+			}
+		}
+		
+		WAS_harmonious_army_idea = {
+
+			picture = generic_infantry_bonus
+
+			allowed = { original_tag = PRC }
+
+			removal_cost = -1
+
+			modifier = {
+				conscription = 0.04
+			}
+		}
+		
+		WAS_national_army_for_wa_idea = {
+
+			picture = FRA_scw_intervention_nationalists_focus
+
+			allowed = { original_tag = PRC }
+
+			removal_cost = -1
+
+			modifier = {
+				army_org_regain = 0.1
+				army_core_attack_factor = 0.2
 			}
 		}
 		

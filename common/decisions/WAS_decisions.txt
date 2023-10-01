@@ -546,3 +546,220 @@ WAS_wa_state_diplomacy = {
 		}
 	}
 }
+
+WAS_power_balance_decision_category = {
+
+	WAS_soldiers_who_help_the_farm = {
+		icon = generic_tank
+
+		visible = {
+		}
+
+		available = {
+			has_War = no
+		}
+
+		ai_hint_pp_cost = 5
+		
+		custom_cost_trigger = {
+			command_power > 4
+		}
+		
+		fire_only_once = no
+
+		custom_cost_text = decision_cost_CP_5
+		
+		cost = 0
+		days_remove = 60
+
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -25
+			}
+			add_power_balance_value = {
+				id = WAS_power_balance
+				value = 0.07
+			}
+		}
+
+		ai_will_do = {
+			base = 0.1
+		}
+	}
+
+	WAS_education_of_maoist_ideology_to_citizens = {
+		icon = generic_political_actions
+
+		visible = {
+		}
+
+		available = {
+			has_War = no
+		}
+		
+		fire_only_once = no
+		
+		cost = 5
+		days_remove = 35
+
+		complete_effect = {
+			add_power_balance_value = {
+				id = WAS_power_balance
+				value = 0.07
+			}
+		}
+
+		ai_will_do = {
+			base = 0.1
+		}
+	}
+
+	WAS_army_march_in_the_capital = {
+		icon = eng_blackshirt_march
+
+		visible = {
+		}
+
+		available = {
+			has_War = no
+		}
+		
+		ai_hint_pp_cost = 10
+		
+		custom_cost_trigger = {
+			army_experience > 10
+		}
+		
+		fire_only_once = no
+		
+		custom_cost_text = decision_cost_army_xp_5
+		
+		cost = 15
+		days_remove = 40
+
+		complete_effect = {
+			add_power_balance_value = {
+				id = WAS_power_balance
+				value = -0.1
+			}
+			
+			add_command_power = 10
+		}
+
+		ai_will_do = {
+			base = 0.1
+		}
+	}
+
+	WAS_military_training_for_children = {
+		icon = generic_research
+
+		visible = {
+		}
+
+		available = {
+			has_War = no
+		}
+		
+		fire_only_once = yes
+		
+		cost = 75
+		days_remove = 25
+
+		complete_effect = {
+			add_power_balance_value = {
+				id = WAS_power_balance
+				value = -0.2
+			}
+			
+			set_technology = { 
+				child_soldier_infantry = 1
+			}
+		}
+
+		ai_will_do = {
+			base = 0.1
+		}
+	}
+
+	WAS_investing_in_children_s_education = {
+		icon = generic_research
+
+		visible = {
+		}
+
+		available = {
+			has_War = no
+		}
+		
+		fire_only_once = yes
+		
+		cost = 75
+		days_remove = 25
+
+		complete_effect = {
+			add_power_balance_value = {
+				id = WAS_power_balance
+				value = 0.2
+			}
+		}
+
+		ai_will_do = {
+			base = 0.1
+		}
+	}
+
+	WAS_investing_in_the_opium_agriculture = {
+		icon = eng_trade_unions_demand
+
+		visible = {
+		}
+
+		available = {
+			has_War = no
+		}
+		
+		fire_only_once = yes
+		
+		cost = 15
+		days_remove = 40
+
+		complete_effect = {
+			add_power_balance_value = {
+				id = WAS_power_balance
+				value = -0.2
+			}
+		}
+
+		ai_will_do = {
+			base = 0.1
+		}
+	}
+
+	WAS_investing_in_rubber_cultivation = {
+		icon = generic_industry
+
+		visible = {
+		}
+
+		available = {
+			has_War = no
+		}
+		
+		fire_only_once = yes
+		
+		cost = 25
+		days_remove = 75
+
+		complete_effect = {
+			add_power_balance_value = {
+				id = WAS_power_balance
+				value = 0.2
+			}
+		}
+
+		ai_will_do = {
+			base = 0.1
+		}
+	}
+}

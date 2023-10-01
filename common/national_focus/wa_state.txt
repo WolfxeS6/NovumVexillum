@@ -12,6 +12,19 @@ focus_tree = {
 
 	continuous_focus_position = { x = 10 y = 850 }
 }
+
+focus_tree = {
+	id = wa_myanmar_focus
+	country = {
+		factor = 0
+	}
+
+	shared_focus = WAS_myanmar_unification_conference
+	shared_focus = shared_myanmar_economic_problems
+
+	continuous_focus_position = { x = 380 y = 1000 }
+}
+
 ### search_filters = {FOCUS_FILTER_POLITICAL}
 ### search_filters = {FOCUS_FILTER_RESEARCH}
 ### search_filters = {FOCUS_FILTER_INDUSTRY}
@@ -41,6 +54,10 @@ focus_tree = {
 		search_filters = {FOCUS_FILTER_POLITICAL}
 
 		completion_reward = {
+			set_power_balance = {
+				id = WAS_power_balance
+				set_default = yes
+			}
 			add_political_power = 150
 
 			WAS_Bao_Youxiang = {
@@ -60,7 +77,7 @@ focus_tree = {
 			hidden_effect = {
 				create_corps_commander = {
 					traits = { trait_reckless }
-					id = -1 #communist general 1
+					id = 5901 #communist general 1
 					attack_skill = 1
 					defense_skill = 4
 					planning_skill = 3
@@ -71,7 +88,7 @@ focus_tree = {
 			hidden_effect = {
 				create_corps_commander = {
 					traits = { trait_mountaineer }
-					id = -1 #communist general 2
+					id = 5902 #communist general 2
 					attack_skill = 2
 					defense_skill = 2
 					planning_skill = 1
@@ -82,7 +99,7 @@ focus_tree = {
 			hidden_effect = {
 				create_corps_commander = {
 					traits = { }
-					id = -1 #communist general 3
+					id = 5903 #communist general 3
 					attack_skill = 4
 					defense_skill = 1
 					planning_skill = 3
@@ -669,14 +686,14 @@ focus_tree = {
 				PRC = { set_autonomy = { target = ROOT autonomy_state = autonomy_tributary_state } }
 			}
 
-			load_focus_tree = generic_focus
+			load_focus_tree = wa_myanmar_focus #generic_focus
 			set_cosmetic_tag = WAS_united
 
 			swap_ruler_traits = {
 				remove = cornered_fox
 				add = revolutionary_general
 			}
-			remove_ideas = WAS_embrace_the_opium_trade
+			#remove_ideas = WAS_embrace_the_opium_trade
 			
 			set_global_flag = WA_united_flag
 		}
@@ -686,36 +703,6 @@ focus_tree = {
 		}
 	}
 
-	#shared_focus = {
-	#	id = WAS_opium_for_survival
-	#	icon = PRC_abolition_of_the_hukou
-	#	x = 3
-	#	y = 2
-	#	cost = 10
-#
-#		prerequisite = { 
-#			focus = WAS_maintaining_the_status_quo 
-#			focus = WAS_independence
-#		}
-#
-#		available = {
-#		}
-#		
-#		relative_position_id = WAS_de_facto_independent_state
-#	
-#		cancel_if_invalid = yes
-#		continue_if_invalid = no
-#		available_if_capitulated = no
-#
-#		search_filters = { FOCUS_FILTER_POLITICAL }
-#	
-#		completion_reward = {
-#		}
-#		
-#		ai_will_do = {
-#			base = 5
-#		}
-#	}
 
 	shared_focus = {
 		id = WAS_independence
@@ -1021,6 +1008,2878 @@ focus_tree = {
 					}
 				}
 			}
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+### search_filters = {FOCUS_FILTER_POLITICAL}
+### search_filters = {FOCUS_FILTER_RESEARCH}
+### search_filters = {FOCUS_FILTER_INDUSTRY}
+### search_filters = {FOCUS_FILTER_STABILITY}
+### search_filters = {FOCUS_FILTER_WAR_SUPPORT}
+### search_filters = {FOCUS_FILTER_MANPOWER}
+### search_filters = {FOCUS_FILTER_ANNEXATION}
+### search_filters = {FOCUS_FILTER_SOV_POLITICAL_PARANOIA}
+### search_filters = {FOCUS_FILTER_PROPAGANDA}
+### search_filters = {FOCUS_FILTER_ARMY_XP}
+### search_filters = {FOCUS_FILTER_NAVY_XP}
+### search_filters = {FOCUS_FILTER_AIR_XP}
+### search_filters = {FOCUS_FILTER_ITA_MISSIOLINI}
+### search_filters = {FOCUS_FILTER_BALANCE_OF_POWER}
+
+	shared_focus = {
+		id = WAS_myanmar_unification_conference
+		icon = WAS_myanmar_unification_conference
+		x = 4
+		y = 0
+		cost = 10
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		search_filters = {FOCUS_FILTER_POLITICAL}
+
+		select_effect = {
+			country_event = { id = wa_state.25 }
+			country_event = { id = wa_state.26 days = 5 }
+			country_event = { id = wa_state.27 days = 12 }
+			country_event = { id = wa_state.28 days = 20 }
+			country_event = { id = wa_state.29 days = 30 }
+			country_event = { id = wa_state.31 days = 40 }
+		}
+
+		completion_reward = {
+			custom_effect_tooltip = WAS_long_unification_conference_tt
+
+			hidden_effect = {
+				remove_power_balance = { id = WAS_power_balance }
+			}
+		}
+		
+		ai_will_do = {
+			base = 1000
+		}
+	}
+
+	shared_focus = {
+		id = WAS_kept_our_ideals
+		icon = WAS_kept_our_ideals
+		x = -2
+		y = 1
+		cost = 5
+
+		prerequisite = { 
+			focus = WAS_myanmar_unification_conference 
+		}
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = WAS_myanmar_unification_conference_tt
+				always = no
+			}
+		}
+
+		mutually_exclusive = {
+			focus = WAS_xunzheng
+			focus = WAS_path_for_us
+		}
+		
+		relative_position_id = WAS_myanmar_unification_conference
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_STABILITY }
+	
+		completion_reward = {
+			add_stability = 0.03
+			add_political_power = 25
+
+			WAS_Bao_Youxiang = {
+				set_portraits = {
+					civilian = { large = "gfx/leaders/WAS/bao_youxiang_2.dds" }
+				}
+			}
+
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = WAS_establishment_of_the_commune_parliament
+		icon = WAS_establishment_of_the_commune_parliament
+		x = -1
+		y = 1
+		cost = 10
+
+		prerequisite = { 
+			focus = WAS_kept_our_ideals 
+		}
+		
+		relative_position_id = WAS_kept_our_ideals
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = {  }
+	
+		completion_reward = {
+			add_stability = 0.1
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = WAS_preparation_for_new_constitution
+		icon = WAS_preparation_for_new_constitution_red
+		x = -1
+		y = 2
+		cost = 10
+
+		prerequisite = { 
+			focus = WAS_establishment_of_the_commune_parliament
+		}
+		
+		relative_position_id = WAS_kept_our_ideals
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	
+		completion_reward = {
+			country_event = { id = wa_state.35 }
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = WAS_myanmar_land_reform
+		icon = PRC_the_farmers
+		x = -2
+		y = 3
+		cost = 10
+
+		prerequisite = { 
+			focus = WAS_preparation_for_new_constitution
+		}
+
+		prerequisite = { 
+			focus = WAS_complete_outlawing_of_drugs
+		}
+		
+		relative_position_id = WAS_kept_our_ideals
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = {  }
+	
+		completion_reward = {
+			if = {
+				limit = { has_idea = WAS_land_reform_idea }
+				swap_ideas = {
+					remove_idea = WAS_land_reform_idea
+					add_idea = WAS_land_reform_idea_2
+				}
+			}
+			else = {
+				add_ideas = WAS_land_reform_idea_2
+			}
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = WAS_monetary_reform
+		icon = WAS_monetary_reform
+		x = 0
+		y = 3
+		cost = 10
+
+		prerequisite = { 
+			focus = WAS_preparation_for_new_constitution
+		}
+		
+		relative_position_id = WAS_kept_our_ideals
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+
+		search_filters = {  }
+
+		select_effect = {
+			country_event = { id = wa_state.34 days = 35 }
+		}
+	
+		completion_reward = {
+			add_stability = 0.1
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = WAS_rights_for_minorities
+		icon = WAS_rights_for_minorities
+		x = 2
+		y = 1
+		cost = 10
+
+		prerequisite = { 
+			focus = WAS_kept_our_ideals 
+		}
+		
+		relative_position_id = WAS_kept_our_ideals
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = {  }
+	
+		completion_reward = {
+			add_ideas = centralization_confederate
+
+			every_owned_state = {
+				limit = { NOT = { is_core_of = ROOT } }
+				add_compliance = 10
+			}
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = WAS_complete_outlawing_of_drugs
+		icon = WAS_complete_outlawing_of_drugs
+		x = 2
+		y = 2
+		cost = 5
+
+		prerequisite = { 
+			focus = WAS_rights_for_minorities
+		}
+
+		prerequisite = { 
+			focus = WAS_establishment_of_the_commune_parliament
+		}
+		
+		relative_position_id = WAS_kept_our_ideals
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = {  }
+	
+		completion_reward = {
+			remove_ideas = WAS_embrace_the_opium_trade
+			remove_ideas = WAS_embrace_the_opium_trade_weak
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = WAS_new_government_declaration
+		icon = PRC_lenin_statue_red_flag
+		x = -1
+		y = 4
+		cost = 10
+
+		prerequisite = { 
+			focus = WAS_myanmar_land_reform
+		}
+
+		prerequisite = { 
+			focus = WAS_monetary_reform
+		}
+		
+		relative_position_id = WAS_kept_our_ideals
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	
+		completion_reward = {
+			if = {
+				limit = { NOT = { has_country_flag = WAS_democratic_socialist_government } }
+				add_ideas = government_system_one_party
+				add_stability = 0.05
+			}
+			else = {
+				add_stability = 0.1
+				add_ideas = government_system_parliamentary_republic
+				
+				set_politics = { 
+					ruling_party = democratic_socialist 
+					elections_allowed = yes
+					last_election = "[CURRENT_DATE]"
+					election_frequency = 48
+				}
+
+				add_popularity = {
+					ideology = democratic_socialist
+					popularity = 0.90
+				}
+
+				add_country_leader_role = {
+					character = WAS_Bao_Youxiang
+					country_leader = {
+						ideology = left_wing_nationalism
+						traits = {
+							revolutionary_general
+						}
+					}
+					promote_leader = yes
+				}
+			}
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = WAS_the_first_election
+		icon = PRC_restrictive_multiparty_system
+		x = -1
+		y = 5
+		cost = 5
+
+		prerequisite = { 
+			focus = WAS_new_government_declaration
+		}
+		
+		relative_position_id = WAS_kept_our_ideals
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = {  }
+	
+		completion_reward = {
+			if = {
+				limit = { NOT = { has_country_flag = WAS_democratic_socialist_government } }
+				country_event = { id = wa_state.36 }
+			}
+			else = {
+				country_event = { id = wa_state.37 }
+			}
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = WAS_maoist_new_education
+		icon = PRC_maoists
+		x = 4
+		y = 1
+		cost = 10
+
+		prerequisite = { 
+			focus = WAS_kept_our_ideals 
+			focus = WAS_xunzheng
+		}
+		
+		relative_position_id = WAS_kept_our_ideals
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_RESEARCH }
+
+		completion_reward = {
+			add_research_slot = 1
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = WAS_mandatory_chinese_language_education
+		icon = PRC_Education
+		x = 4
+		y = 2
+		cost = 10
+
+		prerequisite = { 
+			focus = WAS_maoist_new_education
+		}
+		
+		relative_position_id = WAS_kept_our_ideals
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = {  }
+	
+		completion_reward = {
+			every_owned_state = {
+				limit = { NOT = { is_core_of = ROOT } }
+				add_compliance = 5
+				add_resistance = 5
+			}
+
+			add_ideas = WAS_chinese_culture_first
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = WAS_militia_as_regular_army
+		icon = WAS_militia_as_regular_army
+		x = 4
+		y = 3
+		cost = 10
+
+		prerequisite = { 
+			focus = WAS_mandatory_chinese_language_education
+		}
+		
+		relative_position_id = WAS_kept_our_ideals
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = {  }
+	
+		completion_reward = {
+			add_ideas = WAS_people_s_liberation_army
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = WAS_republican_defence_league
+		icon = PRC_with_more_overwhelming_power
+		x = 6
+		y = 3
+		cost = 10
+
+		prerequisite = { 
+			focus = WAS_mandatory_chinese_language_education 
+		}
+		
+		relative_position_id = WAS_kept_our_ideals
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = {  }
+	
+		completion_reward = {
+			add_ideas = WAS_protracted_warfare
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = WAS_xunzheng 
+		#https://zh.wikipedia.org/zh-tw/%E8%A8%93%E6%94%BF 
+		icon = WAS_xunzheng
+		x = 6
+		y = 1
+		cost = 5
+
+		prerequisite = { 
+			focus = WAS_myanmar_unification_conference 
+		}
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = WAS_myanmar_unification_conference_tt
+				always = no
+			}
+		}
+
+		mutually_exclusive = {
+			focus = WAS_kept_our_ideals
+			focus = WAS_path_for_us
+		}
+		
+		relative_position_id = WAS_myanmar_unification_conference
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_STABILITY }
+	
+		completion_reward = {
+			set_politics = { 
+				ruling_party = nationalist 
+				elections_allowed = no
+			}
+
+			add_popularity = {
+				ideology = nationalist
+				popularity = 0.55
+			}
+
+			add_country_leader_role = {
+				character = WAS_Bao_Youxiang
+				country_leader = {
+					ideology = autocrat
+					traits = {
+						revolutionary_general
+					}
+				}
+				promote_leader = yes
+			}
+				
+			add_war_support = 0.03
+			add_stability = -0.07
+
+			add_ideas = government_system_autocracy
+			add_ideas = public_safety_secret_police
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = WAS_support_for_the_military_parliament
+		icon = WAS_support_for_the_military_parliament
+		x = -1
+		y = 1
+		cost = 10
+
+		prerequisite = { 
+			focus = WAS_xunzheng 
+		}
+
+		mutually_exclusive = {
+			focus = WAS_caesar_of_myanmar
+		}
+		
+		relative_position_id = WAS_xunzheng
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	
+		completion_reward = {
+			country_event = { id = wa_state.32 }
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = WAS_caesar_of_myanmar
+		icon = WAS_caesar_of_myanmar
+		x = 1
+		y = 1
+		cost = 10
+
+		prerequisite = { 
+			focus = WAS_xunzheng 
+		}
+
+		mutually_exclusive = {
+			focus = WAS_support_for_the_military_parliament
+		}
+		
+		relative_position_id = WAS_xunzheng
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	
+		completion_reward = {
+			add_country_leader_trait = WAS_caesar_of_myanmar_trait
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = WAS_red_cabinet
+		icon = PRC_end_of_democracy_in_the_party
+		x = 0
+		y = 2
+		cost = 10
+
+		prerequisite = { 
+			focus = WAS_support_for_the_military_parliament 
+			focus = WAS_caesar_of_myanmar 
+		}
+		
+		relative_position_id = WAS_xunzheng
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = {  }
+	
+		completion_reward = {
+			add_stability = 0.1
+
+			hidden_effect = {
+				country_event = { id = wa_state.33 }
+			}
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = WAS_use_of_the_yuan
+		icon = WAS_use_of_the_yuan
+		x = 0
+		y = 3
+		cost = 10
+
+		prerequisite = { 
+			focus = WAS_red_cabinet 
+		}
+
+		available = {
+			country_exists = PRC
+			NOT = { has_war_with = PRC }
+			PRC = { is_major = yes }
+		}
+
+		bypass = {
+			OR = {
+				has_war_with = PRC
+				NOT = { country_exists = PRC }
+				PRC = { is_major = no }
+			}
+		}
+		
+		relative_position_id = WAS_xunzheng
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = {  }
+	
+		completion_reward = {
+			add_ideas = WAS_use_yuan
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = WAS_opium_problem
+		icon = WAS_drugs
+		x = 0
+		y = 4
+		cost = 10
+
+		prerequisite = { 
+			focus = WAS_use_of_the_yuan 
+		}
+
+		available = {
+		}
+		
+		relative_position_id = WAS_xunzheng
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = {  }
+	
+		completion_reward = {
+			if = {
+				limit = { has_idea = WAS_embrace_the_opium_trade_weak }
+				swap_ideas = {
+					remove_idea = WAS_embrace_the_opium_trade_weak
+					add_idea = WAS_embrace_the_opium_trade
+				}
+			}
+			else_if = {
+				limit = { 
+					AND = {
+						NOT = { has_idea = WAS_embrace_the_opium_trade_weak }
+						NOT = { has_idea = WAS_embrace_the_opium_trade }
+					}
+				}
+				add_ideas = WAS_embrace_the_opium_trade
+			}
+			else = {
+				add_political_power = 150
+			}
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = WAS_suppression_of_minorities
+		icon = WAS_suppression_of_minorities
+		x = 2
+		y = 3
+		cost = 10
+
+		prerequisite = { 
+			focus = WAS_red_cabinet 
+			focus = WAS_declaration_of_constitution 
+		}
+		
+		relative_position_id = WAS_xunzheng
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = {  }
+	
+		completion_reward = {
+			add_ideas = centralization_unitary
+
+			every_owned_state = {
+				limit = { NOT = { is_core_of = ROOT } }
+				add_compliance = -5
+				add_resistance = -20
+			}
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = WAS_confiscation_of_land
+		icon = PRC_unnecessary_manpower_reduction
+		x = 4
+		y = 3
+		cost = 10
+
+		prerequisite = { 
+			focus = WAS_red_cabinet 
+			focus = WAS_declaration_of_constitution 
+		}
+		
+		relative_position_id = WAS_xunzheng
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = {  }
+	
+		completion_reward = {
+			if = {
+				limit = { has_idea = WAS_land_reform_idea }
+				swap_ideas = {
+					remove_idea = WAS_land_reform_idea
+					add_idea = WAS_land_reform_idea_3
+				}
+			}
+			else = {
+				add_ideas = WAS_land_reform_idea_3
+			}
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = WAS_new_myanmar
+		icon = PRC_end_of_democracy_in_the_party
+		x = 2
+		y = 4
+		cost = 10
+
+		prerequisite = { 
+			focus = WAS_suppression_of_minorities 
+			focus = WAS_use_of_the_yuan
+			focus = WAS_confiscation_of_land 
+		}
+		
+		relative_position_id = WAS_xunzheng
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = {  }
+	
+		completion_reward = {
+			if = {
+				limit = { has_completed_focus = WAS_path_for_us }
+				add_stability = 0.1
+			}
+			else = {
+				add_ideas = WAS_fake_socialist_constitution
+			}
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = WAS_attainment_of_true_republic_ideals
+		icon = PRC_grand_compromise_in_congress
+		x = 2
+		y = 5
+		cost = 5
+
+		prerequisite = { 
+			focus = WAS_new_myanmar 
+		}
+		
+		relative_position_id = WAS_xunzheng
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = {  }
+	
+		completion_reward = {
+			country_event = { id = wa_state.38 }
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = WAS_path_for_us
+		icon = WAS_path_for_us
+		x = 10
+		y = 1
+		cost = 5
+
+		prerequisite = { 
+			focus = WAS_myanmar_unification_conference 
+		}
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = WAS_myanmar_unification_conference_tt
+				always = no
+			}
+		}
+
+		mutually_exclusive = {
+			focus = WAS_xunzheng
+			focus = WAS_path_for_us
+		}
+		
+		relative_position_id = WAS_myanmar_unification_conference
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_STABILITY }
+	
+		completion_reward = {
+			add_political_power = 100
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = WAS_march_for_isolation
+		icon = PRC_swift_army
+		x = 0
+		y = 1
+		cost = 10
+
+		prerequisite = { 
+			focus = WAS_path_for_us
+		}
+		
+		relative_position_id = WAS_path_for_us
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = {  }
+	
+		completion_reward = {
+			add_ideas = WAS_protracted_warfare
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = WAS_declaration_of_constitution
+		icon = WAS_preparation_for_new_constitution
+		x = 0
+		y = 2
+		cost = 10
+
+		prerequisite = { 
+			focus = WAS_march_for_isolation
+		}
+		
+		relative_position_id = WAS_path_for_us
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = {  }
+	
+		completion_reward = {
+			add_ideas = WAS_generic_constitution
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = WAS_multilingual_education
+		icon = PRC_our_traditions
+		x = 2
+		y = 2
+		cost = 10
+
+		prerequisite = { 
+			focus = WAS_march_for_isolation
+		}
+		
+		relative_position_id = WAS_path_for_us
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_RESEARCH }
+
+		completion_reward = {
+			add_research_slot = 1
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = shared_myanmar_economic_problems
+		icon = infrastructure
+		x = 27
+		y = 0
+		cost = 5
+
+		available = { 
+			owns_state = 288
+			NOT = { country_exists = BRM }
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			every_owned_state = {
+				limit = {
+					is_core_of = ROOT
+					free_building_slots = {
+						building = infrastructure
+						size > 1
+					}
+					is_capital = no 
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		
+		ai_will_do = {
+			base = 15
+		}
+	}
+
+	shared_focus = {
+		id = shared_myanmar_seek_japanese_investments
+		icon = align_to_japan
+		x = -8
+		y = 1
+		cost = 5
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		available = {
+			any_other_country = {
+				original_tag = JAP
+				exists = yes
+				has_capitulated = no
+				is_major = yes
+				NOT = { has_war_with = ROOT }
+			}
+		}
+
+		prerequisite = { 
+			focus = shared_myanmar_economic_problems
+		}
+
+		mutually_exclusive = {
+			focus = shared_myanmar_seek_chinese_investments
+		}
+
+		relative_position_id = shared_myanmar_economic_problems
+		
+		search_filters = {}
+
+		completion_reward = {
+			JAP = {
+				add_opinion_modifier = {
+					target = FROM
+					modifier = diplomatic_support
+				}
+			}
+			
+			capital_scope = {
+				add_extra_state_shared_building_slots = 1
+			}
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = shared_myanmar_japanese_shipyard_support
+		icon = navy2
+		x = -1
+		y = 1
+		cost = 10
+
+		available = {
+			any_other_country = {
+				original_tag = JAP
+				exists = yes
+				has_capitulated = no
+				is_major = yes
+				NOT = { has_war_with = ROOT }
+			}
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		prerequisite = { 
+			focus = shared_myanmar_seek_japanese_investments
+		}
+
+		relative_position_id = shared_myanmar_seek_japanese_investments
+		
+		search_filters = {}
+
+		completion_reward = {
+			navy_experience = 25
+			random_owned_controlled_state = {
+				limit = { is_coastal = yes }
+				add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+					type = dockyard
+					level = 3
+					instant_build = yes
+				}
+			}
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = shared_myanmar_warships_in_myanmar
+		icon = naval_dockyards
+		x = -1
+		y = 2
+		cost = 10
+
+		available = {
+			any_other_country = {
+				original_tag = JAP
+				exists = yes
+				has_capitulated = no
+				is_major = yes
+				NOT = { has_war_with = ROOT }
+			}
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		prerequisite = { 
+			focus = shared_myanmar_japanese_shipyard_support
+		}
+
+		relative_position_id = shared_myanmar_seek_japanese_investments
+		
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			add_equipment_to_stockpile = {
+				type = convoy
+				amount = 20
+				producer = JAP
+			}
+			add_doctrine_cost_reduction = {
+				cost_reduction = 0.5
+				uses = 1
+				category = naval_doctrine
+			}
+			
+			if = {
+				limit = { has_dlc = "Man the Guns" }
+				if = {
+					limit = { NOT = { has_tech = early_ship_hull_light } }
+					set_technology = { 
+						early_ship_hull_light = 1
+					}
+				}
+				
+				create_equipment_variant = {
+					name = "Abukuma-class"
+					type = ship_hull_light_1
+					#name_group = PRC_CV_HISTORICAL 
+					parent_version = 0
+					modules = {
+						fixed_ship_battery_slot = ship_light_battery_1
+						fixed_ship_anti_air_slot = ship_anti_air_1
+						fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+						fixed_ship_radar_slot = empty
+						fixed_ship_engine_slot = light_ship_engine_1
+						fixed_ship_torpedo_slot = ship_torpedo_1
+						mid_1_custom_slot = ship_torpedo_1
+						rear_1_custom_slot = ship_depth_charge_1
+					}
+				}
+				
+				add_equipment_production = {
+					equipment = {
+						type = ship_hull_light_1
+						creator = ROOT 
+						version_name = "Abukuma-class"
+					}
+					name = "Rangoon" #
+					requested_factories = 1
+					progress = 0.8
+					amount = 1
+				}
+				
+				add_equipment_production = {
+					equipment = {
+						type = ship_hull_light_1
+						creator = ROOT 
+						version_name = "Abukuma-class"
+					}
+					name = "Mandalay" #
+					requested_factories = 1
+					progress = 0.6
+					amount = 1
+				}
+				
+				add_equipment_production = {
+					equipment = {
+						type = ship_hull_light_1
+						creator = ROOT 
+						version_name = "Abukuma-class"
+					}
+					name = "Lashio" #
+					requested_factories = 1
+					progress = 0.2
+					amount = 1
+				}
+			}
+			else = {
+				add_tech_bonus = {
+					bonus = 3
+					uses = 1
+					category = dd_tech	
+				}
+			}
+
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = shared_myanmar_the_myanmar_fleet
+		icon = wolf_packs
+		x = -1
+		y = 3
+		cost = 10
+
+		available = {
+			any_other_country = {
+				original_tag = JAP
+				exists = yes
+				has_capitulated = no
+				is_major = yes
+				NOT = { has_war_with = ROOT }
+			}
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		prerequisite = { 
+			focus = shared_myanmar_warships_in_myanmar
+		}
+
+		relative_position_id = shared_myanmar_seek_japanese_investments
+		
+		search_filters = {}
+
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = { is_coastal = yes }
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+			}
+
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = shared_myanmar_japanese_electricity_support
+		icon = jap_economic_developement
+		x = 1
+		y = 1
+		cost = 10
+
+		available = {
+			any_other_country = {
+				original_tag = JAP
+				exists = yes
+				has_capitulated = no
+				is_major = yes
+				NOT = { has_war_with = ROOT }
+			}
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		prerequisite = { 
+			focus = shared_myanmar_seek_japanese_investments
+		}
+
+		relative_position_id = shared_myanmar_seek_japanese_investments
+		
+		search_filters = {}
+
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					is_capital = no
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+					OR = {
+						is_in_home_area = yes
+						NOT = {
+							owner = {
+								any_owned_state = {
+									free_building_slots = {
+										building = industrial_complex
+										size > 0
+										include_locked = yes
+									}
+									is_in_home_area = yes
+								}
+							}
+						}
+					}
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = shared_myanmar_trade_for_the_sea
+		icon = trade_deal
+		x = 1
+		y = 2
+		cost = 10
+
+		available = {
+			any_other_country = {
+				original_tag = JAP
+				exists = yes
+				has_capitulated = no
+				is_major = yes
+				NOT = { has_war_with = ROOT }
+			}
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		prerequisite = { 
+			focus = shared_myanmar_japanese_electricity_support
+		}
+
+		relative_position_id = shared_myanmar_seek_japanese_investments
+		
+		search_filters = {}
+
+		completion_reward = {
+			every_owned_state = {
+				limit = {
+					is_core_of = ROOT
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 1
+			}
+
+			JAP = {
+				increase_trade_influence_by_1 = yes
+				add_opinion_modifier = {
+					target = FROM
+					modifier = trade_mission
+				}
+			}
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = shared_myanmar_limited_japanese_airplane_technology
+		icon = license_production
+		x = 1
+		y = 3
+		cost = 10
+
+		available = {
+			any_other_country = {
+				original_tag = JAP
+				exists = yes
+				has_capitulated = no
+				is_major = yes
+				NOT = { has_war_with = ROOT }
+			}
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		prerequisite = { 
+			focus = shared_myanmar_trade_for_the_sea
+		}
+
+		relative_position_id = shared_myanmar_seek_japanese_investments
+		
+		search_filters = {}
+
+		completion_reward = {
+			JAP = {
+				add_opinion_modifier = { target = FROM modifier = military_deals }
+			}
+
+			air_experience = 25
+			if = {
+				limit = {
+					capital_scope = {
+						NOT = {
+							free_building_slots = {
+								building = air_base
+								size > 1
+							}
+						}
+					}
+				}
+				random_owned_controlled_state = {
+					limit = {
+						free_building_slots = {
+							building = air_base
+							size > 1
+						}
+					}
+					add_building_construction = {
+						type = air_base
+						level = 2
+						instant_build = yes
+					}
+					ROOT = { set_country_flag = aviation_effort_AB }
+				}
+			}
+			if = {
+				limit = {
+					capital_scope = {
+						free_building_slots = {
+							building = air_base
+							size > 1
+						}
+					}
+				}
+				capital_scope = {
+					add_building_construction = {
+						type = air_base
+						level = 2
+						instant_build = yes
+					}
+					ROOT = { set_country_flag = aviation_effort_AB }
+				}
+			}
+
+			add_doctrine_cost_reduction = {
+				name = air_doc_bonus
+				cost_reduction = 0.5
+				uses = 1
+				category = air_doctrine
+			}
+
+			add_tech_bonus = {
+				name = shared_myanmar_limited_japanese_airplane_technology
+				bonus = 1.0
+				uses = 2
+				category = air_equipment
+			}
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = shared_myanmar_seek_chinese_investments
+		icon = align_to_china
+		x = -4
+		y = 1
+		cost = 5
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		available = {
+			any_other_country = {
+				original_tag = PRC
+				exists = yes
+				has_capitulated = no
+				is_major = yes
+				NOT = { has_war_with = ROOT }
+			}
+		}
+
+		prerequisite = { 
+			focus = shared_myanmar_economic_problems
+		}
+
+		mutually_exclusive = {
+			focus = shared_myanmar_seek_japanese_investments
+		}
+
+		relative_position_id = shared_myanmar_economic_problems
+		
+		search_filters = {}
+
+		completion_reward = {
+			PRC = {
+				add_opinion_modifier = {
+					target = FROM
+					modifier = diplomatic_support
+				}
+			}
+
+			capital_scope = {
+				add_extra_state_shared_building_slots = 1
+			}
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = shared_myanmar_chinese_railway_support
+		icon = infrastructure
+		x = -1
+		y = 1
+		cost = 10
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		available = {
+			any_other_country = {
+				original_tag = PRC
+				exists = yes
+				has_capitulated = no
+				is_major = yes
+				NOT = { has_war_with = ROOT }
+			}
+		}
+
+		prerequisite = { 
+			focus = shared_myanmar_seek_chinese_investments
+		}
+
+		relative_position_id = shared_myanmar_seek_chinese_investments
+		
+		search_filters = {}
+
+		completion_reward = {
+			build_railway = {
+				path = { 1492 7562 1170 1257 10473 10776 1522 1114 }
+			}
+			
+			1257 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 1
+			}
+			
+			924 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 1
+			}
+			
+			929 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 1
+			}
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = shared_myanmar_great_army
+		icon = army_logistics
+		x = -1
+		y = 2
+		cost = 10
+		
+		available = {
+			any_other_country = {
+				original_tag = PRC
+				exists = yes
+				has_capitulated = no
+				is_major = yes
+				NOT = { has_war_with = ROOT }
+			}
+		}
+
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		prerequisite = { 
+			focus = shared_myanmar_chinese_railway_support
+		}
+
+		relative_position_id = shared_myanmar_seek_chinese_investments
+			
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = arms_factory
+						size > 0
+						include_locked = yes
+					}
+					OR = {
+						is_in_home_area = yes
+						NOT = {
+							owner = {
+								any_owned_state = {
+									free_building_slots = {
+										building = arms_factory
+										size > 0
+										include_locked = yes
+									}
+									is_in_home_area = yes
+								}
+							}
+						}
+					}
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+
+			add_equipment_to_stockpile = {
+				type = infantry_equipment_1
+				amount = 1000
+				producer = PRC
+			}
+
+			add_tech_bonus = {
+				name = shared_myanmar_great_army
+				bonus = 1.0
+				uses = 1
+				category = infantry_weapons
+			}
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = shared_myanmar_tank_technology
+		icon = infantry_axis
+		x = -1
+		y = 3
+		cost = 10
+		
+		available = {
+			any_other_country = {
+				original_tag = PRC
+				exists = yes
+				has_capitulated = no
+				is_major = yes
+				NOT = { has_war_with = ROOT }
+			}
+		}
+
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		prerequisite = { 
+			focus = shared_myanmar_great_army
+		}
+
+		relative_position_id = shared_myanmar_seek_chinese_investments
+		
+
+		search_filters = { FOCUS_FILTER_RESEARCH }
+
+		completion_reward = {
+			add_tech_bonus = {
+				name = shared_myanmar_tank_technology
+				bonus = 1.0
+				uses = 1
+				category = artillery
+			}
+			add_tech_bonus = {
+				name = shared_myanmar_tank_technology
+				bonus = 1.0
+				uses = 1
+				category = armor
+			}
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = shared_myanmar_myanmar_china_enterprises
+		icon = industry_civilian
+		x = 1
+		y = 1
+		cost = 10
+		
+		available = {
+			any_other_country = {
+				original_tag = PRC
+				exists = yes
+				has_capitulated = no
+				is_major = yes
+				NOT = { has_war_with = ROOT }
+			}
+		}
+
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		prerequisite = { 
+			focus = shared_myanmar_seek_chinese_investments
+		}
+
+		relative_position_id = shared_myanmar_seek_chinese_investments
+		
+		search_filters = {}
+
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					is_capital = no
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+					OR = {
+						is_in_home_area = yes
+						NOT = {
+							owner = {
+								any_owned_state = {
+									free_building_slots = {
+										building = industrial_complex
+										size > 0
+										include_locked = yes
+									}
+									is_in_home_area = yes
+								}
+							}
+						}
+					}
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = shared_myanmar_trade_for_the_land
+		icon = trade_deal
+		x = 1
+		y = 2
+		cost = 10
+		
+		available = {
+			any_other_country = {
+				original_tag = PRC
+				exists = yes
+				has_capitulated = no
+				is_major = yes
+				NOT = { has_war_with = ROOT }
+			}
+		}
+
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		prerequisite = { 
+			focus = shared_myanmar_myanmar_china_enterprises
+		}
+
+		relative_position_id = shared_myanmar_seek_chinese_investments
+		
+		search_filters = {}
+
+		completion_reward = {
+			every_owned_state = {
+				limit = {
+					is_core_of = ROOT
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 1
+			}
+
+			PRC = {
+				increase_trade_influence_by_1 = yes
+				add_opinion_modifier = {
+					target = FROM
+					modifier = trade_mission
+				}
+			}
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = shared_myanmar_chinese_weapons_license
+		icon = license_production
+		x = 1
+		y = 3
+		cost = 10
+		
+		available = {
+			any_other_country = {
+				original_tag = PRC
+				exists = yes
+				has_capitulated = no
+				is_major = yes
+				NOT = { has_war_with = ROOT }
+			}
+		}
+
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		prerequisite = { 
+			focus = shared_myanmar_trade_for_the_land
+		}
+
+		relative_position_id = shared_myanmar_seek_chinese_investments
+		
+		search_filters = {}
+
+		completion_reward = {
+			PRC = {
+				add_opinion_modifier = { target = FROM modifier = military_deals }
+			}
+
+			PRC = { 
+				if = {
+					limit = {
+						PRC = { has_tech = main_battle_tank_chassis_00s }
+					}
+					create_production_license = {
+						target = ROOT
+						equipment = {
+							type = main_battle_tank_chassis_00s
+						}
+						cost_factor = 0.1
+					}
+				}
+				else = {
+					create_production_license = {
+						target = ROOT
+						equipment = {
+							type = main_battle_tank_chassis_80s
+						}
+						cost_factor = 0.1
+					}
+				}
+			}
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = shared_myanmar_economic_modernization
+		icon = construction
+		x = 0
+		y = 1
+		cost = 10
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		prerequisite = { 
+			focus = shared_myanmar_economic_problems
+		}
+
+		relative_position_id = shared_myanmar_economic_problems
+		
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			capital_scope = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = shared_myanmar_focus_on_the_clothing_industry
+		icon = infrastructure
+		x = -1
+		y = 2
+		cost = 10
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		prerequisite = { 
+			focus = shared_myanmar_economic_modernization
+		}
+
+		mutually_exclusive = {
+			focus = shared_myanmar_heavy_industry_challenge
+		}
+
+		relative_position_id = shared_myanmar_economic_problems
+		
+		search_filters = {}
+
+		completion_reward = {
+			every_owned_state = {
+				limit = {
+					is_core_of = ROOT
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 1
+			}
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = shared_myanmar_agriculture
+		icon = agriculture
+		x = -1
+		y = 3
+		cost = 10
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		prerequisite = { 
+			focus = shared_myanmar_focus_on_the_clothing_industry
+		}
+
+		relative_position_id = shared_myanmar_economic_problems
+		
+		search_filters = {}
+
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					is_capital = no
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+					OR = {
+						is_in_home_area = yes
+						NOT = {
+							owner = {
+								any_owned_state = {
+									free_building_slots = {
+										building = industrial_complex
+										size > 0
+										include_locked = yes
+									}
+									is_in_home_area = yes
+								}
+							}
+						}
+					}
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			add_ideas = { myanmar_generic_agriculturalization }
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = shared_myanmar_heavy_industry_challenge
+		icon = industry_civilian
+		x = 1
+		y = 2
+		cost = 10
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		available = {
+			industrial_complex > 12
+		}
+
+		prerequisite = { 
+			focus = shared_myanmar_economic_modernization
+		}
+
+		mutually_exclusive = {
+			focus = shared_myanmar_focus_on_the_clothing_industry
+		}
+
+		relative_position_id = shared_myanmar_economic_problems
+		
+		search_filters = {}
+
+		completion_reward = {
+			add_stability = -0.03
+			add_ideas = { myanmar_generic_industrialization }
+			add_offsite_building = { type = industrial_complex level = 3 }
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = shared_myanmar_arm_the_nation
+		icon = army_logistics
+		x = 1
+		y = 3
+		cost = 10
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		prerequisite = { 
+			focus = shared_myanmar_heavy_industry_challenge
+		}
+
+		relative_position_id = shared_myanmar_economic_problems
+		
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+				}
+				prioritize = { 11 12 13 }
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+				}
+				prioritize = { 814 808 811 }
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+				}
+				prioritize = { 188 810 813 }
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = shared_myanmar_automobile_manufacturing
+		icon = self_management
+		x = 3
+		y = 4
+		cost = 10
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		prerequisite = { 
+			focus = shared_myanmar_arm_the_nation
+		}
+
+		prerequisite = { 
+			focus = shared_myanmar_build_dam
+		}
+
+		available = {
+			industrial_complex > 20
+		}
+
+		relative_position_id = shared_myanmar_economic_problems
+		
+		search_filters = {}
+
+		completion_reward = {
+			add_offsite_building = { type = arms_factory level = 3 }
+			if = {
+				limit = {
+					NOT = {
+						has_tech = motorised_infantry
+					}
+				}
+				add_tech_bonus = {
+					name = shared_myanmar_automobile_manufacturing
+					bonus = 3.0
+					uses = 2
+					category = motorized_equipment
+				}
+			}
+			else = {
+				add_tech_bonus = {
+					name = shared_myanmar_automobile_manufacturing
+					ahead_reduction = 2
+					bonus = 3.0
+					uses = 2
+					category = motorized_equipment
+				}
+			}
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = shared_myanmar_oil_industry
+		icon = consumer_goods
+		x = 3
+		y = 2
+		cost = 10
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		prerequisite = { 
+			focus = shared_myanmar_economic_modernization
+		}
+
+		relative_position_id = shared_myanmar_economic_problems
+		
+		search_filters = {}
+
+		completion_reward = {
+			capital_scope = {
+				add_resource = {
+					type = oil
+					amount = 8
+				}
+			}
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = shared_myanmar_more_jewels
+		icon = money
+		x = 3
+		y = 3
+		cost = 10
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		prerequisite = { 
+			focus = shared_myanmar_oil_industry
+		}
+
+		relative_position_id = shared_myanmar_economic_problems
+		
+		search_filters = {}
+
+		completion_reward = {
+			add_ideas = { myanmar_generic_jewels }
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = shared_myanmar_build_dam
+		icon = constitution
+		x = 5
+		y = 3
+		cost = 10
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		prerequisite = { 
+			focus = shared_myanmar_oil_industry
+		}
+
+		relative_position_id = shared_myanmar_economic_problems
+		
+		search_filters = {}
+
+		completion_reward = {
+			add_ideas = idea_focus_industrial_development_program
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = WAS_self_reliance
+		icon = democracy
+		x = -3
+		y = 10
+		cost = 10
+
+		prerequisite = { 
+			focus = WAS_the_first_election
+			focus = WAS_attainment_of_true_republic_ideals
+		}
+
+		available = {
+			is_puppet = no
+		}
+		
+		relative_position_id = WAS_myanmar_unification_conference
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	
+		completion_reward = {
+			add_war_support = 0.1
+			add_political_power = 150
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = WAS_military_intelligence_department
+		icon = communism
+		x = -1
+		y = 1
+		cost = 10
+
+		prerequisite = { 
+			focus = WAS_self_reliance
+		}
+
+		available = {
+			is_puppet = no
+		}
+		
+		relative_position_id = WAS_self_reliance
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = {  }
+	
+		completion_reward = {
+			if = {
+				limit = { has_dlc = "La Resistance" }
+				if = {
+					limit = { has_intelligence_agency = no }
+					create_intelligence_agency = yes
+					upgrade_intelligence_agency = upgrade_army_department
+				}
+				else = {
+					upgrade_intelligence_agency = upgrade_army_department
+				}
+			}
+			else = {
+				add_political_power = 150
+			}
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = WAS_socialist_academy
+		icon = research
+		x = -1
+		y = 2
+		cost = 10
+
+		available = {
+			is_puppet = no
+			amount_research_slots < 5 #total 5
+		}
+
+		prerequisite = { 
+			focus = WAS_military_intelligence_department
+		}
+		
+		relative_position_id = WAS_self_reliance
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	
+		completion_reward = {
+			add_research_slot = 1
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = WAS_national_army_for_wa
+		icon = PRC_red_army
+		x = 1
+		y = 2
+		cost = 10
+
+		available = {
+			is_puppet = no
+		}
+
+		prerequisite = { 
+			focus = WAS_military_intelligence_department
+		}
+
+		mutually_exclusive = {
+			focus = WAS_harmonious_army
+		}
+		
+		relative_position_id = WAS_self_reliance
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = {  }
+	
+		completion_reward = {
+			add_ideas = WAS_national_army_for_wa_idea
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = WAS_join_china
+		icon = align_to_china
+		x = 2
+		y = 1
+		cost = 10
+
+		available = {
+			is_puppet = no
+			country_exists = PRC
+			NOT = { has_war_with = PRC }
+			PRC = { is_faction_leader = yes }
+		}
+
+		prerequisite = { 
+			focus = WAS_self_reliance
+		}
+
+		mutually_exclusive = {
+			focus = WAS_join_india
+			focus = WAS_wa_first
+		}
+		
+		relative_position_id = WAS_self_reliance
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = {  }
+	
+		completion_reward = {
+			PRC = { country_event = { id = myanmar_generic.1 } }
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = WAS_join_india
+		icon = align_to_india
+		x = 4
+		y = 1
+		cost = 10
+
+		available = {
+			is_puppet = no
+			country_exists = RAJ
+			NOT = { has_war_with = RAJ }
+			RAJ = { is_faction_leader = yes }
+		}
+
+		prerequisite = { 
+			focus = WAS_self_reliance
+		}
+
+		mutually_exclusive = {
+			focus = WAS_join_china
+			focus = WAS_wa_first
+		}
+		
+		relative_position_id = WAS_self_reliance
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = {  }
+	
+		completion_reward = {
+			RAJ = { country_event = { id = myanmar_generic.1 } }
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = WAS_wa_first
+		icon = fascism
+		x = 6
+		y = 1
+		cost = 10
+
+		available = {
+			is_puppet = no
+		}
+
+		prerequisite = { 
+			focus = WAS_self_reliance
+		}
+		
+		mutually_exclusive = {
+			focus = WAS_join_china
+			focus = WAS_join_india
+		}
+
+		relative_position_id = WAS_self_reliance
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = {  }
+	
+		completion_reward = {
+			add_stability = -0.02
+			set_rule = { can_create_factions = yes }
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = WAS_eliminate_neighbor_threats
+		icon = fascism
+		x = 6
+		y = 2
+		cost = 10
+
+		available = {
+			is_puppet = no
+			has_capitulated = no
+			country_exists = BAN
+			NOT = { BAN = {is_in_faction_with = ROOT } }
+		}
+
+		prerequisite = { 
+			focus = WAS_wa_first
+		}
+
+		relative_position_id = WAS_self_reliance
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = {  }
+
+		select_effect = {
+			random_country = {
+				limit = { controls_state = 996 }
+				ROOT = {
+					add_ai_strategy = {
+						type = prepare_for_war
+						id = PREV
+						value = 100
+					}
+				}
+			}
+		}
+
+		completion_reward = {
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = BAN
+			}
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = WAS_harmonious_army
+		icon = major_alliance
+		x = 3
+		y = 2
+		cost = 10
+
+		available = {
+			is_puppet = no
+		}
+
+		prerequisite = { 
+			focus = WAS_military_intelligence_department
+		}
+
+		mutually_exclusive = {
+			focus = WAS_national_army_for_wa
+		}
+		
+		relative_position_id = WAS_self_reliance
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = {  }
+	
+		completion_reward = {
+			add_ideas = WAS_harmonious_army_idea
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = WAS_obedience
+		icon = fascism2
+		x = 8
+		y = 10
+		cost = 10
+
+		available = {
+			is_puppet = yes
+		}
+
+		prerequisite = { 
+			focus = WAS_the_first_election
+			focus = WAS_attainment_of_true_republic_ideals
+		}
+		
+		relative_position_id = WAS_myanmar_unification_conference
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	
+		completion_reward = {
+			add_autonomy_ratio = {
+				value = 0.1
+				localization = WAS_acquisition_of_autonomy
+			}
+			add_stability = 0.1
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = WAS_acquisition_of_autonomy
+		icon = defence
+		x = -3
+		y = 1
+		cost = 10
+
+		available = {
+			is_puppet = yes
+		}
+
+		prerequisite = { 
+			focus = WAS_obedience
+		}
+		
+		relative_position_id = WAS_obedience
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = {  }
+	
+		completion_reward = {
+			add_autonomy_ratio = {
+				value = 0.15
+				localization = WAS_acquisition_of_autonomy
+			}
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = WAS_loyal_wa
+		icon = improve_relations
+		x = -1
+		y = 1
+		cost = 10
+
+		available = {
+			is_puppet_of = PRC
+		}
+
+		prerequisite = { 
+			focus = WAS_obedience
+		}
+		
+		relative_position_id = WAS_obedience
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = {  }
+	
+		completion_reward = {
+			PRC = {
+				add_opinion_modifier = {
+					target = WAS
+					modifier = declaration_of_friendship
+				}
+			}
+
+			add_country_leader_trait = friend_of_china
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = WAS_internal_stabilization
+		icon = constitution
+		x = 1
+		y = 1
+		cost = 10
+
+		available = {
+			is_puppet = yes
+			amount_research_slots < 5 #total 5
+		}
+
+		prerequisite = { 
+			focus = WAS_obedience
+		}
+		
+		relative_position_id = WAS_obedience
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	
+		completion_reward = {
+			add_ideas = idea_focus_generic_public_service_investment
+			add_research_slot = 1
 		}
 		
 		ai_will_do = {

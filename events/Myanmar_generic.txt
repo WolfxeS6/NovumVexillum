@@ -1,0 +1,55 @@
+﻿add_namespace = myanmar_generic
+add_namespace = myanmar_generic_news
+
+country_event = {
+	id = myanmar_generic.1
+	title = myanmar_generic.1.t
+	desc = myanmar_generic.1.d
+	picture = GFX_report_event_political_deal
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = myanmar_generic.1.a
+		ROOT = { add_to_faction = FROM }
+		FROM = { country_event = diplomatic_response.1 }
+		
+		ROOT = {
+			add_ai_strategy = {
+				type = befriend
+				id = FROM
+				value = 100
+			}
+			add_ai_strategy = {
+				type = alliance
+				id = FROM
+				value = 100
+			}
+		}
+		
+		FROM = {
+			add_ai_strategy = {
+				type = befriend
+				id = ROOT
+				value = 100
+			}
+			add_ai_strategy = {
+				type = alliance
+				id = ROOT
+				value = 100
+			}
+		}
+		
+		ai_chance = {
+			base = 98
+		}
+	}
+	
+	option = {
+		name = myanmar_generic.1.b
+		FROM = { country_event = diplomatic_response.2 }
+		ai_chance = {
+			base = 2
+		}
+	}
+}
