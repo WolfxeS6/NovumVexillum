@@ -11,9 +11,31 @@ if = {
 
 set_research_slots = 2
 set_convoys = 270
-set_stability = 0.15
+set_stability = 0.3
 
 set_country_flag = country_language_korean
+
+set_country_flag = unique_theorist
+set_country_flag = unique_high_command
+set_country_flag = unique_air_chief
+set_country_flag = unique_navy_chief
+set_country_flag = unique_army_chief
+set_country_flag = unique_industrial_concern
+set_country_flag = unique_materiel_manufacturer
+set_country_flag = unique_political_advisor_nomal
+set_country_flag = unique_political_advisor_party_boost
+
+set_variable = { var = GetDPRKDollarPoint value = 0 }
+set_variable = { var = GetDPRKEconomicReform value = 0 }
+set_variable = { var = DPRK_GainTime_Cost value = 0 }
+set_variable = { var = PRK_hide_equipment_var value = 0 }
+
+set_variable = { var = GetPRKRefmormersInfluence value = 1 }
+set_variable = { var = GetPRKConservativesInfluence value = 5 }
+set_variable = { var = GetPRKTechnocratsPoliticalChoice value = 2 }
+
+set_variable = { var = PRK_Room_39 value = 0 }
+set_variable = { var = PRK_Room_39_Threat value = 0 }
 
 if = {
 	limit = {
@@ -339,26 +361,80 @@ if = {
 	}
 }
 
+950 = {
+	add_dynamic_modifier = { modifier = dynamic_imperfect_free_trade_zone }
+}
+
 add_ideas = {
 	government_system_one_party
 	economy_recession
-	public_safety_secret_police
 	immigration_policy_closed_country
 	civil_liberties_totalitarian
 	population_growth_steady
 	service_by_requirement
 	closed_economy
+	public_safety_secret_police
+	welfare_none
 	mobilization_service_time_corrupt
+	
+	PRK_economy_tax_zero	
+	PRK_low_legitimacy_5
+	PRK_simhwajo_purge
+	PRK_national_bankruptcy_5
+	PRK_traitor_to_the_revolution
+	PRK_tiny_economic
+	PRK_china_military_alliance
+	PRK_divided_navy_ideas_1
+	prk_burnning_air_force_ideas_1
+	
+	adviser_PRK_kim_jong_il
 }
+
+recruit_character = prk_kim_yong_nam
+recruit_character = prk_kim_jong_il
+recruit_character = prk_hwang_jang_yop
+recruit_character = prk_Joo_Seong_ha
+recruit_character = prk_Hyon_Yong_Chol
+
+recruit_character = PRK_Ri_Myong_Su
+recruit_character = PRK_Ri_Yong_Gil
+recruit_character = PRK_Cho_Ryong_Hae
+recruit_character = PRK_Choe_Pu_Il
+recruit_character = PRK_Hwang_Pyong_So
+recruit_character = PRK_Kim_Kyok_Sik
+recruit_character = PRK_Kim_Myong_Kuk
+recruit_character = PRK_Kim_Won_Hong
+recruit_character = PRK_Kim_Yong_Chun
+recruit_character = PRK_Pak_Yong_Sik
+recruit_character = PRK_Jang_Song_thaek
+recruit_character = PRK_Kim_Kyong_hui
+recruit_character = PRK_Li_Yong_ju
+recruit_character = PRK_Kim_Myong_sik
+recruit_character = prk_Kim_Jong_Un
+
+recruit_character = PRK_kim_jong_kwan
+recruit_character = PRK_oh_il_jong
+recruit_character = PRK_pak_jong_chon
+recruit_character = PRK_ahn_myong_chol
+recruit_character = PRK_kim_il_chol
+recruit_character = PRK_jurij_danilovic_ten
+recruit_character = PRK_kim_jong_gil
+recruit_character = PRK_lee_chul_su
+recruit_character = PRK_kim_shin_jo
 
 add_opinion_modifier = {
 	target = JAP
 	modifier = past_japanese_war_crimes
 }
 
+#add_opinion_modifier = {
+#	target = KOR
+#	modifier = rival
+#}
+
 add_opinion_modifier = {
 	target = KOR
-	modifier = rival
+	modifier = sunshine_policy_opinion
 }
 
 add_opinion_modifier = {
@@ -367,53 +443,74 @@ add_opinion_modifier = {
 }
 
 set_politics = {	
-	ruling_party = communist
-	last_election = "1997.1.1"
-	election_frequency = 48
+	ruling_party = nationalist
+	last_election = "1998.7.26" #https://en.wikipedia.org/wiki/1998_North_Korean_parliamentary_election
+	election_frequency = 60
 	elections_allowed = no
 }
 
 set_popularities = {
-    conservative = 5
-    social_liberal = 6
-    social_democrat = 7
-    progressive = 8
-    democratic_socialist = 19
-    communist = 55
+	fascist = 30 #Pro-Kim Jong-il
+	nationalist = 50 #Technocrat
+	democratic_socialist = 9
+	conservative = 1
+	market_liberal = 10
 }
-recruit_character = PRK_kim_jongil
-recruit_character = PRK_ri_myong_su
-recruit_character = PRK_ri_yong_gil
-recruit_character = PRK_hyon_yong_chol
-recruit_character = PRK_cho_ryong_hae
-recruit_character = PRK_choe_pu_il
-recruit_character = PRK_hwang_pyong_so
-recruit_character = PRK_jo_chun_ryong
-recruit_character = PRK_kim_chun_sop
-recruit_character = PRK_jo_kyong_chol
-recruit_character = PRK_kim_kyok_sik
-recruit_character = PRK_kim_myong_kuk
-recruit_character = PRK_kim_won_hong
-recruit_character = PRK_kim_yong_chun
-recruit_character = PRK_pak_yong_sik
-recruit_character = PRK_jiho_ro
-recruit_character = PRK_youngchul_son
-recruit_character = PRK_minho_gan
-recruit_character = PRK_sungho_ga
-recruit_character = PRK_jaehyun_nam
-recruit_character = PRK_donghae_seol
-recruit_character = PRK_juwon_park
-recruit_character = PRK_seungmin_lee
-recruit_character = PRK_hajoon_myeong
-recruit_character = PRK_byungchul_ju
-recruit_character = PRK_junwoo_jo
 
 2011.12.1 = {
+	set_politics = {	
+		ruling_party = fascist
+		last_election = "2009.3.8" #https://en.wikipedia.org/wiki/2009_North_Korean_parliamentary_election
+		election_frequency = 60
+		elections_allowed = no
+	}
+
+	set_popularities = {
+		fascist = 80
+		nationalist = 10
+		democratic_socialist = 9
+		conservative = 1
+	}
+
 	set_country_flag = prk_death_of_kim_jong_il
+	remove_ideas = adviser_PRK_kim_jong_il
+	
+	unlock_national_focus = prk_end_of_simhwajo_purge
+	unlock_national_focus = prk_kill_chae_mun_tok
+	unlock_national_focus = prk_police_reorganization
+	
+	remove_ideas = PRK_simhwajo_purge
+	create_intelligence_agency = yes #Powibu
+	
+	unlock_national_focus = prk_ohodamdangje
+	unlock_national_focus = prk_foreign_jucheists
+	unlock_national_focus = prk_mein_kampf_to_the_officials
+	
+	remove_ideas = PRK_low_legitimacy_5
+	add_ideas = { PRK_low_legitimacy_4 }
+	
+	unlock_national_focus = prk_oppression_of_reformers
+	unlock_national_focus = prk_harder_caste_system
+	
+	add_ideas = { PRK_caste_system }
+	
+	unlock_national_focus = prk_for_our_beautiful_future
+	unlock_national_focus = prk_we_will_follow_you_only
+	unlock_national_focus = prk_yeonpyeong_gambling
+	
+	KOR = { remove_opinion_modifier = { target = ROOT modifier = sunshine_policy_opinion } }
+	remove_opinion_modifier = { target = KOR modifier = sunshine_policy_opinion }
+	KOR = { remove_opinion_modifier = { target = ROOT modifier = korean_peace_agreement } }
+	remove_opinion_modifier = { target = KOR modifier = korean_peace_agreement }
+	
+	unlock_national_focus = prk_juche_nuclear
+	
 	create_country_leader = {
 		name = "Kim Jong-Un"
 		picture = "Kim_Jong_Un.dds"
 		ideology = juche
+		traits = { juche_korea }
+		id = 1804
 	}
 }
 
