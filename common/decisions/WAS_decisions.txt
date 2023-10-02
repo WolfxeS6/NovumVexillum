@@ -655,6 +655,7 @@ WAS_power_balance_decision_category = {
 		icon = generic_research
 
 		visible = {
+			NOT = { has_country_flag = was_children_policy }
 		}
 
 		available = {
@@ -667,18 +668,76 @@ WAS_power_balance_decision_category = {
 		days_remove = 25
 
 		complete_effect = {
-			add_power_balance_value = {
-				id = WAS_power_balance
-				value = -0.2
-			}
+			set_country_flag = was_children_policy
+			
+			country_event = { id = wa_state.22 }
 			
 			set_technology = { 
 				child_soldier_infantry = 1
+			}
+			
+			add_manpower = 3000
+			
+			hidden_effect = {
+				
+				if = {
+					# no cheat
+					limit = { has_template = "Children Division" }
+					delete_unit_template_and_units = { division_template = "Children Division" disband = yes }
+				}
+
+				division_template = {
+					name = "Children Division"
+					regiments = {
+						child_soldier = { x = 0 y = 0 }
+						child_soldier = { x = 0 y = 1 }
+						child_soldier = { x = 0 y = 2 }
+						child_soldier = { x = 1 y = 0 }
+						child_soldier = { x = 1 y = 1 }
+						child_soldier = { x = 1 y = 2 }
+					}
+				}
+
+				random_owned_controlled_state = {
+					prioritize = { 1257 }
+					create_unit = {
+						division = "division_template = \"Children Division\" start_experience_factor = 0.2"
+						owner = ROOT
+					}
+					create_unit = {
+						division = "division_template = \"Children Division\" start_experience_factor = 0.2"
+						owner = ROOT
+					}
+					create_unit = {
+						division = "division_template = \"Children Division\" start_experience_factor = 0.2"
+						owner = ROOT
+					}
+				}
+				
+				random_owned_controlled_state = {
+					prioritize = { 1258 }
+					create_unit = {
+						division = "division_template = \"Children Division\" start_experience_factor = 0.2"
+						owner = ROOT
+					}
+					create_unit = {
+						division = "division_template = \"Children Division\" start_experience_factor = 0.2"
+						owner = ROOT
+					}
+					create_unit = {
+						division = "division_template = \"Children Division\" start_experience_factor = 0.2"
+						owner = ROOT
+					}
+				}
 			}
 		}
 
 		ai_will_do = {
 			base = 0.1
+			modifier = {
+				factor = 30
+				WAS = { has_war = yes }
+			}
 		}
 	}
 
@@ -686,6 +745,7 @@ WAS_power_balance_decision_category = {
 		icon = generic_research
 
 		visible = {
+			NOT = { has_country_flag = was_children_policy }
 		}
 
 		available = {
@@ -698,10 +758,9 @@ WAS_power_balance_decision_category = {
 		days_remove = 25
 
 		complete_effect = {
-			add_power_balance_value = {
-				id = WAS_power_balance
-				value = 0.2
-			}
+			set_country_flag = was_children_policy
+			
+			country_event = { id = wa_state.23 }
 		}
 
 		ai_will_do = {
@@ -713,6 +772,7 @@ WAS_power_balance_decision_category = {
 		icon = eng_trade_unions_demand
 
 		visible = {
+			NOT = { has_country_flag = was_opium_policy }
 		}
 
 		available = {
@@ -725,6 +785,8 @@ WAS_power_balance_decision_category = {
 		days_remove = 40
 
 		complete_effect = {
+			set_country_flag = was_opium_policy
+			
 			add_power_balance_value = {
 				id = WAS_power_balance
 				value = -0.2
@@ -740,6 +802,7 @@ WAS_power_balance_decision_category = {
 		icon = generic_industry
 
 		visible = {
+			NOT = { has_country_flag = was_opium_policy }
 		}
 
 		available = {
@@ -752,10 +815,19 @@ WAS_power_balance_decision_category = {
 		days_remove = 75
 
 		complete_effect = {
-			add_power_balance_value = {
-				id = WAS_power_balance
-				value = 0.2
+			set_country_flag = was_opium_policy
+			
+			swap_ideas = {
+				remove_idea = WAS_embrace_the_opium_trade
+				add_idea = WAS_embrace_the_opium_trade_weak
 			}
+			
+			add_stability = -0.05	
+			capital_scope = {
+				add_extra_state_shared_building_slots = 2
+			}
+			
+			country_event = { id = wa_state.24 }
 		}
 
 		ai_will_do = {
