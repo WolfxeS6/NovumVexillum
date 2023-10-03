@@ -6,6 +6,8 @@ add_namespace = japan_state
 add_namespace = japan_flavor_events
 add_namespace = japan_okinawa_events
 add_namespace = japan_foreign_politics_events
+add_namespace = japan_parliamentary_system
+add_namespace = japan_LDP_election
 
 #Invitation to the Japanese Alliance
 country_event = {
@@ -412,7 +414,7 @@ country_event = {
 				ideology = fiscal_conservative
 				picture = "mikio_aoki.dds"
 				
-				traits = { vacancy }
+				traits = { vacancy jiminto_main jiminto_heisei_kenkyukai }
 			}
 			set_party_name = { 
 				ideology = conservative
@@ -590,7 +592,7 @@ country_event = {
 			character = JAP_Yoshiro_Mori
 			country_leader = {
 				ideology = fiscal_conservative
-				traits = { cursed_tongue lack_of_legitimacy_1 political_incompetence }
+				traits = { cursed_tongue lack_of_legitimacy_1 political_incompetence jiminto_minor jiminto_seiwakai }
 				desc = "POLITICS_Yoshiro_Mori_DESC"
 			}
 			
@@ -851,13 +853,13 @@ country_event = {
 		add_stability = -0.01
 		load_focus_tree = japan_focus_after_kato
 		
-		set_power_balance = {
-			id = JAP_power_balance
-			left_side = JAP_hoshu_boryu # will keep the last set side if not specified
-			right_side = JAP_hoshu_honryu # will keep the last set side if not specified
-			#set_default = yes # whether or not to reset the power balance to the initial value, default = no
-			set_value = 0.2
-		}
+		#set_power_balance = {
+		#	id = JAP_power_balance
+		#	left_side = JAP_hoshu_boryu # will keep the last set side if not specified
+		#	right_side = JAP_hoshu_honryu # will keep the last set side if not specified
+		#	#set_default = yes # whether or not to reset the power balance to the initial value, default = no
+		#	set_value = 0.2
+		#}
 	}
 }
 
@@ -889,22 +891,22 @@ country_event = {
 		
 		retire_character = JAP_Yoshiro_Mori #Sayonara
 		
-		create_country_leader = {
-			name = "Koichi Kato"
-			desc = "POLITICS_WINSTON_CHURCHILL_DESC"
-			picture = "gfx/leaders/JAP/koichi_kato.dds"
-			ideology = centrist
-			traits = {
-				rising_reformer
+		add_country_leader_role = {
+			character = JAP_koichi_kato
+			country_leader = { 
+				ideology = liberalist 
+				desc = POLITICS_koichi_kato_DESC
+				traits = { rising_reformer }
 			}
+			promote_leader = yes
 		}
-		
+			
 		set_power_balance = {
 			id = JAP_power_balance
 			left_side = JAP_liberalism # will keep the last set side if not specified
 			right_side = JAP_socialism # will keep the last set side if not specified
 			#set_default = yes # whether or not to reset the power balance to the initial value, default = no
-			set_value = -0.1
+			set_value = -0.15
 		}
 		
 		hidden_effect = {
@@ -924,6 +926,8 @@ country_event = {
 			}
 			
 			country_event = { id = japan.69 days = 180 } #180 Days
+			country_event = { id = japan.85 days = 210 random_days = 24 } #210 Days
+			country_event = { id = japan.84 days = 365 random_days = 60 } #365 Days
 			
 			create_country_leader = {
 				name = "Mikio Aoki"
@@ -931,6 +935,8 @@ country_event = {
 				picture = "mikio_aoki.dds"
 				traits = {  }
 			}
+			
+			set_variable = { var = Jiminto_Sosai_Re_election value = 0 } 
 		}
 		
 		set_country_flag = jap_ldp_collapse
@@ -948,6 +954,10 @@ country_event = {
 	
 	option = {
 		name = japan.33.a #"...Kato only negotiates with Ozawa."
+		trigger = { 
+			NOT = { has_country_leader_with_trait = coalition_government_JCP }
+		}
+		
 		hidden_effect = {
 			country_event = { id = japan.36 days = 35 }
 		}
@@ -962,6 +972,11 @@ country_event = {
 		set_country_flag = kato_co_op_JCP
 		add_to_variable = { JAP_far_right_anger = 1 }
 		add_country_leader_trait = coalition_government_JCP
+		
+		if = {
+			limit = { has_country_leader_with_trait = confidence_and_supply_JCP }
+			remove_country_leader_trait = confidence_and_supply_JCP
+		}
 		
 		hidden_effect = {
 			country_event = { id = japan.34 days = 12 }
@@ -1111,11 +1126,6 @@ country_event = {
 			country_event = { id = japan.58 days = 19 random = 14 } 
 			country_event = { id = japan_communist_civil_war.3 days = 9 random = 32 } 
 			add_ideas = government_system_one_party
-
-			add_popularity = {
-				ideology = communist
-				popularity = 0.2
-			}
 		}
 
 		remove_power_balance = { 
@@ -1391,12 +1401,6 @@ country_event = {
 			has_completed_focus = JAP_connection_with_unification_church
 			has_completed_focus = JAP_cooperation_with_unification_church
 		}
-		NOT = { 
-			has_country_leader = {
-				ruling_only = yes 
-				character = "Shinzo Abe" 
-			}
-		}
 	}
 	
 	mean_time_to_happen = {
@@ -1407,6 +1411,27 @@ country_event = {
 		name = japan.48.a
 		news_event = { id = japan_news.16 }
 		set_country_flag = jap_dead_shinzo_abe
+		
+		if = {
+			limit = { 
+				has_country_leader = {
+					ruling_only = yes 
+					character = JAP_shinzo_abe
+				}
+			}
+			
+			retire_character = JAP_shinzo_abe
+			
+			add_country_leader_role = {
+				character = JAP_yoshiro_mori_after_2020
+				country_leader = { 
+					ideology = right_wing_conservative 
+					desc = POLITICS_yoshiro_mori_after_2020_DESC
+					traits = { jiminto_minor jiminto_seiwakai ldp_unpredictable_speech }
+				}
+				promote_leader = yes
+			}
+		}
 	}
 	
 }
@@ -1440,13 +1465,16 @@ country_event = {
 
 	option = {	
 		name = japan.49.a
-		create_country_leader = {
-			name = JAP_sumire_uesaka
-			desc = "POLITICS_Sumire_Uesaka_DESC"
-			traits = { pro_communist_voice_actor military_expert_sumire }
-			picture = "sumire_uesaka.dds"
-			ideology = marxist
+		add_country_leader_role = {
+			character = JAP_sumire_uesaka
+			country_leader = { 
+				ideology = marxist 
+				desc = POLITICS_Sumire_Uesaka_DESC
+				traits = { pro_communist_voice_actor military_expert_sumire }
+			}
+			promote_leader = yes
 		}
+			
 		set_party_name = { 
 			ideology = communist
 			name = JAP_communist_sumire
@@ -1509,6 +1537,7 @@ country_event = {
 
 	trigger = {
 		tag = JAP
+		has_idea = idea_JAP_emperor_akihito
 		OR = {
 			has_idea = government_system_constitutional_monarchy
 			has_idea = government_system_absolute_monarchy
@@ -1539,7 +1568,7 @@ country_event = {
 			  }
 			set_country_flag = JAP_Reiwa_Period
 			news_event = { id = japan_news.8 }
-		}
+	}
 	
 }
 
@@ -1771,198 +1800,198 @@ country_event = {
 }
 
 #Edano, rise up 
-country_event = { 
-	id = japan.64
-	title = japan.64.t
-	desc = japan.64.desc
-	picture = GFX_report_event_political_deal
-
-	trigger = {
-		tag = JAP
-		date > 2015.1.1
-		date < 2015.12.1
-		NOT = { 
-			OR = {
-				has_government = fascist
-				has_government = nationalist 
-				has_government = communist 
-				has_country_leader = { ruling_only = yes name = "Yukio Edano" }
-			}
-		}
-	}
-
-	fire_only_once = yes
-
-	mean_time_to_happen = {
-		days = 72
-	}
-	
-	
-	option = {
-		name = japan.64.a
-		ai_chance = { factor = 100 }
-			create_country_leader = {
-			name = "Yukio Edano" #Yukio "Edanon" Edano
-			picture = "Yukio_Edano.dds"
-			ideology = liberalist
-		}
-	}
-	
-	option = {
-		name = japan.64.b
-		ai_chance = { factor = 0 }
-		add_stability = -0.02
-	}
-}
+#country_event = { 
+#	id = japan.64
+#	title = japan.64.t
+#	desc = japan.64.desc
+#	picture = GFX_report_event_political_deal
+#
+#	trigger = {
+#		tag = JAP
+#		date > 2015.1.1
+#		date < 2015.12.1
+#		NOT = { 
+#			OR = {
+#				has_government = fascist
+#				has_government = nationalist 
+#				has_government = communist 
+#				has_country_leader = { ruling_only = yes name = "Yukio Edano" }
+#			}
+#		}
+#	}
+#
+#	fire_only_once = yes
+#
+#	mean_time_to_happen = {
+#		days = 72
+#	}
+#	
+#	
+#	option = {
+#		name = japan.64.a
+#		ai_chance = { factor = 100 }
+#			create_country_leader = {
+#			name = "Yukio Edano" #Yukio "Edanon" Edano
+#			picture = "Yukio_Edano.dds"
+#			ideology = liberalist
+#		}
+#	}
+#	
+#	option = {
+#		name = japan.64.b
+#		ai_chance = { factor = 0 }
+#		add_stability = -0.02
+#	}
+#}
 
 #Taro Aso
-country_event = { 
-	id = japan.65
-	title = japan.65.t
-	desc = japan.65.desc.a
-	picture = GFX_report_event_political_deal
+#country_event = { 
+#	id = japan.65
+#	title = japan.65.t
+#	desc = japan.65.desc.a
+#	picture = GFX_report_event_political_deal
 	
-	is_triggered_only = yes
-	
-	option = {
-		name = japan.65.a
-		create_country_leader = {
-			name = "Taro Aso"
-			picture = "taro_aso.dds"
-			desc = "POLITICS_Taro_Aso_DEMOCRAT_DESC"
-			ideology = christian_democrat #Taro Aso is Catholic Politian
-			traits = { rosen_aso }
-		}
-		hidden_effect = {
-			JAP = { country_event = { id = japan.66 days = 355 } }
-		}
-	}
-}
+#	is_triggered_only = yes
+#	
+#	option = {
+#		name = japan.65.a
+#		create_country_leader = {
+#			name = "Taro Aso"
+#			picture = "taro_aso.dds"
+#			desc = "POLITICS_Taro_Aso_DEMOCRAT_DESC"
+#			ideology = christian_democrat #Taro Aso is Catholic Politian
+#			traits = { rosen_aso }
+#		}
+#		hidden_effect = {
+#			JAP = { country_event = { id = japan.66 days = 355 } }
+#		}
+#	}
+#}
 
 #Shinzo Abe's Priod
-country_event = { 
-	id = japan.66
-	title = japan.66.t
-	desc = japan.66.desc.a
-	picture = GFX_report_event_political_deal
-	
-	is_triggered_only = yes
-	
-	trigger = {
-		NOT = { has_country_flag = jap_dead_shinzo_abe }
-	}
-	
-	option = {
-		name = japan.66.a
-		ai_chance = { factor = 30 
-			modifier = {
-				factor = 0
-				is_historical_focus_on = yes
-			}
-		}
-		add_stability = -0.02
-	}
-	
-	option = {
-		name = japan.66.b
-		ai_chance = { factor = 70 }
-		create_country_leader = {
-    	name = "Shinzo Abe"
-		picture = "Shinzo_Abe.dds"
-		desc = "POLITICS_Shinzo_Abe_DESC"
-		traits = { determination_of_japan }
-    	ideology = right_wing_conservative
-		}
-	}
-}
+#country_event = { 
+#	id = japan.66
+#	title = japan.66.t
+#	desc = japan.66.desc.a
+#	picture = GFX_report_event_political_deal
+#	
+#	is_triggered_only = yes
+#	
+#	trigger = {
+#		NOT = { has_country_flag = jap_dead_shinzo_abe }
+#	}
+#	
+#	option = {
+#		name = japan.66.a
+#		ai_chance = { factor = 30 
+#			modifier = {
+#				factor = 0
+#				is_historical_focus_on = yes
+#			}
+#		}
+#		add_stability = -0.02
+#	}
+#	
+#	option = {
+#		name = japan.66.b
+#		ai_chance = { factor = 70 }
+#		create_country_leader = {
+#    	name = "Shinzo Abe"
+#		picture = "Shinzo_Abe.dds"
+#		desc = "POLITICS_Shinzo_Abe_DESC"
+#		traits = { determination_of_japan }
+#   	ideology = right_wing_conservative
+#		}
+#	}
+#}
 
 # Yoshihide Suga
-country_event = {
-	id = japan.67
-	title = japan.67.t
-	desc = japan.67.desc
-	picture = GFX_report_event_political_deal
+#country_event = {
+#	id = japan.67
+#	title = japan.67.t
+#	desc = japan.67.desc
+#	picture = GFX_report_event_political_deal
 
-	trigger = {
-		original_tag = JAP
-		date > 2020.6.1
-		date < 2021.6.1
-		has_country_leader = { ruling_only = yes name = "Shinzo Abe" }
-	}
-
-	fire_only_once = yes
+#	trigger = {
+#		original_tag = JAP
+#		date > 2020.6.1
+#		date < 2021.6.1
+#		has_country_leader = { ruling_only = yes name = "Shinzo Abe" }
+#	}
+#
+#	fire_only_once = yes
+#	
+#	mean_time_to_happen = {
+#		days = 72
+#	}
+#	
+#	option = {
+#		name = japan.67.a
+#		ai_chance = { factor = 60 }
+#		create_country_leader = {
+#   	name = "Yoshihide Suga"
+#		picture = "Yoshihide_Suga.dds"
+#		desc = "POLITICS_Yoshihide_suga_DESC"
+#    	ideology = constitutionalist
+#		}
+#	}
 	
-	mean_time_to_happen = {
-		days = 72
-	}
+#	option = {
+#		name = japan.67.b
+#		ai_chance = { 
+#			factor = 3 
+#			modifier = {
+#				factor = 0
+#				is_historical_focus_on = yes
+#			}
+#		}
+#		create_country_leader = {
+#			name = "Taro Aso"
+#			picture = "taro_aso.dds"
+#			desc = "POLITICS_Taro_Aso_DEMOCRAT_DESC"
+#			ideology = christian_democrat #Taro Aso is Catholic Politian
+#			traits = { rosen_aso }
+#		}
+#	}
 	
-	option = {
-		name = japan.67.a
-		ai_chance = { factor = 60 }
-		create_country_leader = {
-    	name = "Yoshihide Suga"
-		picture = "Yoshihide_Suga.dds"
-		desc = "POLITICS_Yoshihide_suga_DESC"
-    	ideology = constitutionalist
-		}
-	}
+#	option = {
+#		name = japan.67.c #Shinjiro Koizumi
+#		ai_chance = { 
+#			factor = 2 
+#			modifier = {
+#				factor = 0
+#				is_historical_focus_on = yes
+#			}
+#		}
+#		create_country_leader = {
+#			name = "Shinjiro Koizumi"
+#			desc = "POLITICS_Shinjiro_Koizumi_DESC"
+#			traits = { }
+#			picture = "shinjiro_koizumi.dds"
+#			ideology = constitutionalist
+#		}
+#	}
 	
-	option = {
-		name = japan.67.b
-		ai_chance = { 
-			factor = 3 
-			modifier = {
-				factor = 0
-				is_historical_focus_on = yes
-			}
-		}
-		create_country_leader = {
-			name = "Taro Aso"
-			picture = "taro_aso.dds"
-			desc = "POLITICS_Taro_Aso_DEMOCRAT_DESC"
-			ideology = christian_democrat #Taro Aso is Catholic Politian
-			traits = { rosen_aso }
-		}
-	}
-	
-	option = {
-		name = japan.67.c #Shinjiro Koizumi
-		ai_chance = { 
-			factor = 2 
-			modifier = {
-				factor = 0
-				is_historical_focus_on = yes
-			}
-		}
-		create_country_leader = {
-			name = "Shinjiro Koizumi"
-			desc = "POLITICS_Shinjiro_Koizumi_DESC"
-			traits = { }
-			picture = "shinjiro_koizumi.dds"
-			ideology = constitutionalist
-		}
-	}
-	
-	option = {
-		name = japan.67.d #Shigeru Ishiba
-		ai_chance = { 
-			factor = 35 
-			modifier = {
-				factor = 0
-				is_historical_focus_on = yes
-			}
-		}
-		
-		create_country_leader = {
-			name = "Shigeru Ishiba"
-			desc = "POLITICS_Shigeru_Ishiba_DESC"
-			traits = { }
-			picture = "shigeru_ishiba.dds"
-			ideology = right_wing_conservative
-		}
-	}
-	
-}
+#	option = {
+#		name = japan.67.d #Shigeru Ishiba
+#		ai_chance = { 
+#			factor = 35 
+#			modifier = {
+#				factor = 0
+#				is_historical_focus_on = yes
+#			}
+#		}
+#		
+#		create_country_leader = {
+#			name = "Shigeru Ishiba"
+#			desc = "POLITICS_Shigeru_Ishiba_DESC"
+#			traits = { }
+#			picture = "shigeru_ishiba.dds"
+#			ideology = right_wing_conservative
+#		}
+#	}
+#	
+#}
 
 #Kato's Cabinet in Crisis
 country_event = { 
@@ -1990,22 +2019,38 @@ country_event = {
 		name = japan.69.b
 		
 		if = {
-			limit = { has_country_flag = kato_co_op_JCP }
-			create_country_leader = {
-				name = "Taku Yamasaki"
-				desc = "POLITICS_Taku_Yamasaki_DESC"
-				traits = { military_reformist coalition_government_JCP }
-				picture = "taku_yamasaki.dds"
-				ideology = moderate
+			limit = { has_country_leader_with_trait = coalition_government_JCP }
+			add_country_leader_role = {
+				character = JAP_taku_yamasaki
+				country_leader = { 
+					ideology = moderate 
+					desc = POLITICS_Taku_Yamasaki_DESC
+					traits = { military_reformist coalition_government_JCP }
+				}
+				promote_leader = yes
+			}
+		}
+		else_if = {
+			limit = { has_country_leader_with_trait = confidence_and_supply_JCP }
+			add_country_leader_role = {
+				character = JAP_taku_yamasaki
+				country_leader = { 
+					ideology = moderate 
+					desc = POLITICS_Taku_Yamasaki_DESC
+					traits = { military_reformist confidence_and_supply_JCP }
+				}
+				promote_leader = yes
 			}
 		}
 		else = {
-			create_country_leader = {
-				name = "Taku Yamasaki"
-				desc = "POLITICS_Taku_Yamasaki_DESC"
-				traits = { military_reformist }
-				picture = "taku_yamasaki.dds"
-				ideology = moderate
+			add_country_leader_role = {
+				character = JAP_taku_yamasaki
+				country_leader = { 
+					ideology = moderate 
+					desc = POLITICS_Taku_Yamasaki_DESC
+					traits = { military_reformist }
+				}
+				promote_leader = yes
 			}
 		}
 		
@@ -2156,7 +2201,7 @@ country_event = {
 		text = japan.73.desc_1
 		trigger = { 
 			NOT = { has_country_leader = { 
-				name = "Koichi Kato"
+				character = JAP_koichi_kato
 				ruling_only = yes
 			} }
 		}
@@ -2166,7 +2211,7 @@ country_event = {
 		text = japan.73.desc_2
 		trigger = { 
 			has_country_leader = { 
-				name = "Koichi Kato"
+				character = JAP_koichi_kato
 				ruling_only = yes
 			}
 		}
@@ -2414,6 +2459,812 @@ country_event = {
 		add_political_power = -50
 	}
 }
+
+# Promise for the Future in Two Years
+country_event = {
+	id = japan.84
+	title = japan.84.t
+	desc = japan.84.desc
+	picture = GFX_report_event_computer
+	
+	trigger = {
+		has_country_leader = { 
+			character = JAP_koichi_kato
+			ruling_only = yes
+		}
+	}
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan.84.a
+		
+		add_political_power = -50
+		
+		hidden_effect = {
+			country_event = { id = japan.86 days = 730 } #2 Years
+		}
+	}
+}
+
+# Confrontation within the DPJ
+country_event = {
+	id = japan.85
+	title = japan.85.t
+	desc = japan.85.desc
+	picture = GFX_report_event_computer
+	
+	trigger = {
+		has_country_leader = { 
+			character = JAP_koichi_kato
+			ruling_only = yes
+		}
+	}
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan.85.a
+		
+		add_political_power = -50
+	}
+}
+
+# DPJ Leadership After Kato's Retire
+country_event = {
+	id = japan.86
+	title = japan.86.t
+	desc = japan.86.desc
+	picture = GFX_report_event_computer
+	
+	trigger = {
+		has_country_leader = { 
+			character = JAP_koichi_kato
+			ruling_only = yes
+		}
+	}
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan.86.a
+		
+		if = {
+			limit = { has_country_leader_with_trait = coalition_government_JCP }
+			add_country_leader_role = {
+				character = JAP_taku_yamasaki
+				country_leader = { 
+					ideology = moderate 
+					desc = POLITICS_Taku_Yamasaki_DESC
+					traits = { military_reformist coalition_government_JCP }
+				}
+				promote_leader = yes
+			}
+		}
+		else_if = {
+			limit = { has_country_leader_with_trait = confidence_and_supply_JCP }
+			add_country_leader_role = {
+				character = JAP_taku_yamasaki
+				country_leader = { 
+					ideology = moderate 
+					desc = POLITICS_Taku_Yamasaki_DESC
+					traits = { military_reformist confidence_and_supply_JCP }
+				}
+				promote_leader = yes
+			}
+		}
+		else = {
+			add_country_leader_role = {
+				character = JAP_taku_yamasaki
+				country_leader = { 
+					ideology = moderate 
+					desc = POLITICS_Taku_Yamasaki_DESC
+					traits = { military_reformist }
+				}
+				promote_leader = yes
+			}
+		}
+		
+		#retire_character = JAP_koichi_kato
+	}
+	
+	option = {
+		name = japan.86.b
+		
+		if = {
+			limit = { has_country_leader_with_trait = coalition_government_JCP }
+			add_country_leader_role = {
+				character = JAP_ichiro_ozawa
+				country_leader = { 
+					ideology = liberalist 
+					desc = POLITICS_Ichiro_Ozawa_DESC
+					traits = { ozawa_destroyer ozawa_quick_determination coalition_government_JCP }
+				}
+				promote_leader = yes
+			}
+		}
+		else_if = {
+			limit = { has_country_leader_with_trait = confidence_and_supply_JCP }
+			add_country_leader_role = {
+				character = JAP_ichiro_ozawa
+				country_leader = { 
+					ideology = liberalist 
+					desc = POLITICS_Ichiro_Ozawa_DESC
+					traits = { ozawa_destroyer ozawa_quick_determination confidence_and_supply_JCP }
+				}
+				promote_leader = yes
+			}
+		}
+		else = {
+			add_country_leader_role = {
+				character = JAP_ichiro_ozawa
+				country_leader = { 
+					ideology = liberalist 
+					desc = POLITICS_Ichiro_Ozawa_DESC
+					traits = { ozawa_destroyer ozawa_quick_determination }
+				}
+				promote_leader = yes
+			}
+		}
+	}
+}
+
+# Yamasaki to retire as DPJ leader
+country_event = {
+	id = japan.87
+	title = japan.87.t
+	desc = japan.87.desc
+	picture = GFX_report_event_JAP_taku_yamasaki
+	
+	trigger = {
+		original_tag = JAP
+		date > 2010.1.1
+		
+		has_country_leader = { 
+			character = JAP_taku_yamasaki
+			ruling_only = yes
+		}
+	}
+	
+	fire_only_once = yes
+	
+	mean_time_to_happen = {
+		days = 36
+	}
+	
+	option = {
+		name = japan.87.a
+		
+		if = {
+			limit = { has_country_leader_with_trait = coalition_government_JCP }
+			add_country_leader_role = {
+				character = JAP_Yoshito_Sengoku
+				country_leader = { 
+					ideology = moderate 
+					desc = POLITICS_Yoshito_Sengoku_DESC
+					traits = { coalition_government_JCP }
+				}
+				promote_leader = yes
+			}
+		}
+		else_if = {
+			limit = { has_country_leader_with_trait = confidence_and_supply_JCP }
+			add_country_leader_role = {
+				character = JAP_Yoshito_Sengoku
+				country_leader = { 
+					ideology = moderate 
+					desc = POLITICS_Taku_Yamasaki_DESC
+					traits = { confidence_and_supply_JCP }
+				}
+				promote_leader = yes
+			}
+		}
+		else = {
+			add_country_leader_role = {
+				character = JAP_Yoshito_Sengoku
+				country_leader = { 
+					ideology = moderate 
+					desc = POLITICS_Taku_Yamasaki_DESC
+					traits = { }
+				}
+				promote_leader = yes
+			}
+		}
+		
+		retire_character = JAP_taku_yamasaki
+	}
+}
+
+# Ichiro Ozawa's heart disease symptoms
+country_event = {
+	id = japan.88
+	title = japan.88.t
+	desc = japan.88.desc
+	picture = GFX_report_event_hospital
+
+	trigger = {
+		original_tag = JAP
+		date > 2006.5.1
+		date < 2006.12.1
+		
+		has_country_leader = { 
+			character = JAP_ichiro_ozawa
+			ruling_only = yes
+		}
+	}
+
+	fire_only_once = yes
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	option = {
+		name = japan.88.a
+		
+		hidden_effect = {
+			country_event = {
+				id = japan.91
+				days = 365
+				random_days = 100
+			}
+		}
+		
+		if = {
+			limit = { has_country_leader_with_trait = coalition_government_JCP }
+			add_country_leader_role = {
+				character = JAP_naoto_kan
+				country_leader = { 
+					ideology = moderate 
+					desc = POLITICS_naoto_kan_DESC
+					traits = { coalition_government_JCP }
+				}
+				promote_leader = yes
+			}
+		}
+		else_if = {
+			limit = { has_country_leader_with_trait = confidence_and_supply_JCP }
+			add_country_leader_role = {
+				character = JAP_naoto_kan
+				country_leader = { 
+					ideology = moderate 
+					desc = POLITICS_naoto_kan_DESC
+					traits = { confidence_and_supply_JCP }
+				}
+				promote_leader = yes
+			}
+		}
+		else = {
+			add_country_leader_role = {
+				character = JAP_naoto_kan
+				country_leader = { 
+					ideology = moderate 
+					desc = POLITICS_naoto_kan_DESC
+					traits = { }
+				}
+				promote_leader = yes
+			}
+		}
+		
+	}
+	
+	option = {
+		name = japan.88.b
+		
+		hidden_effect = {
+			country_event = {
+				id = japan.89
+				days = 365
+				random_days = 60
+			}
+		}
+		
+		JAP_ichiro_ozawa = {
+			set_portraits = {
+				civilian = { large = "gfx/leaders/JAP/ichiro_ozawa_2.dds" } #bad end
+			}
+		}
+	}
+}
+
+# Death of Ichiro Ozawa
+country_event = {
+	id = japan.89
+	title = japan.89.t
+	desc = japan.89.desc
+	picture = GFX_report_event_hospital
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan.89.a
+		
+		set_country_flag = dead_ichiro_ozawa
+		
+		if = {
+			limit = { has_country_leader_with_trait = coalition_government_JCP }
+			add_country_leader_role = {
+				character = JAP_taku_yamasaki
+				country_leader = { 
+					ideology = moderate 
+					desc = POLITICS_Taku_Yamasaki_DESC
+					traits = { military_reformist coalition_government_JCP }
+				}
+				promote_leader = yes
+			}
+		}
+		else_if = {
+			limit = { has_country_leader_with_trait = confidence_and_supply_JCP }
+			add_country_leader_role = {
+				character = JAP_taku_yamasaki
+				country_leader = { 
+					ideology = moderate 
+					desc = POLITICS_Taku_Yamasaki_DESC
+					traits = { military_reformist confidence_and_supply_JCP }
+				}
+				promote_leader = yes
+			}
+		}
+		else = {
+			add_country_leader_role = {
+				character = JAP_taku_yamasaki
+				country_leader = { 
+					ideology = moderate 
+					desc = POLITICS_Taku_Yamasaki_DESC
+					traits = { military_reformist }
+				}
+				promote_leader = yes
+			}
+		}
+		
+		retire_character = JAP_ichiro_ozawa
+		
+		hidden_effect = {
+			country_event = {
+				id = japan.90
+				days = 5
+			}
+		}
+	}
+	
+	option = {
+		name = japan.89.b
+		trigger = {
+			OR = {
+				has_country_leader_with_trait = coalition_government_JCP
+				democratic_socialist > 0.2
+			}
+		}
+		
+		set_politics = {
+			ruling_party = democratic_socialist
+			elections_allowed = yes
+		}
+		
+		if = {
+			limit = { democratic_socialist < 0.25 }
+			add_popularity = {
+				ideology = democratic_socialist
+				popularity = 0.3
+			}
+		}
+		else = {
+			add_popularity = {
+				ideology = democratic_socialist
+				popularity = 0.1
+			}
+		}
+		
+		set_country_flag = dead_ichiro_ozawa
+		retire_character = JAP_ichiro_ozawa
+		
+		hidden_effect = {
+			country_event = {
+				id = japan.90
+				days = 5
+			}
+		}
+	}
+}
+
+# Funeral of Ichiro Ozawa
+country_event = {
+	id = japan.90
+	title = japan.90.t
+	desc = japan.90.desc
+	picture = GFX_report_event_computer
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan.90.a
+		
+		add_political_power = -15
+	}
+}
+
+# Ichiro Ozawa's Health Is Improving
+country_event = {
+	id = japan.91
+	title = japan.91.t
+	desc = japan.91.desc
+	picture = GFX_report_event_computer
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan.91.a
+		
+		add_political_power = 25
+		add_popularity = {
+			ideology = social_liberal
+			popularity = 0.03
+		}
+	}
+}
+
+# Nobutaka Machimura's cerebral infarction outbreak
+country_event = {
+	id = japan.92
+	title = japan.92.t
+	
+	desc = {
+		text = japan.92.desc_1
+		trigger = { 
+			NOT = {
+				has_country_leader = { 
+					character = JAP_nobutaka_machimura
+					ruling_only = yes
+				} 
+			}
+		}
+	}
+	
+	desc = {
+		text = japan.92.desc_2
+		trigger = { 
+			has_country_leader = { 
+				character = JAP_nobutaka_machimura
+				ruling_only = yes
+			} 
+		}
+	}
+	
+	picture = GFX_report_event_japanese_flag
+	
+	trigger = {
+		original_tag = JAP
+		date > 2015.5.1
+		date < 2015.12.1
+		has_completed_focus = JAP_triumph_of_democracy
+	}
+
+	fire_only_once = yes
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	
+	option = {
+		name = japan.92.a
+		set_country_flag = retire_nobutaka_machimura
+		
+		if = {
+			limit = { 
+				has_country_leader = { 
+					character = JAP_nobutaka_machimura
+					ruling_only = yes
+				}
+			}
+			
+			add_country_leader_role = {
+				character = JAP_yoshiaki_wada
+				country_leader = { 
+					ideology = constitutionalist 
+					desc = POLITICS_yoshiaki_wada_DESC
+					traits = { jiminto_minor jiminto_seiwakai }
+				}
+				promote_leader = yes
+			}
+		}
+		
+		retire_character = JAP_nobutaka_machimura
+	}
+}
+
+# Fumio Kishida Assassination Attempt
+country_event = {
+	id = japan.93
+	title = japan.93.t
+	desc = japan.93.desc
+	picture = GFX_report_event_samurai
+
+	is_triggered_only = yes
+	
+	option = {
+		name = japan.93.a
+		ai_chance = {
+		factor = 1
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+				has_game_rule = {
+					rule = JAP_AI_BEHAVIOR
+					option = DEFAULT
+				}
+			}
+		}
+		
+		set_country_flag = dead_fumio_kishida
+		
+		if = {
+			limit = { 
+				has_country_leader = {
+					ruling_only = yes 
+					character = JAP_fumio_kishida
+				}
+			}
+			
+			retire_character = JAP_fumio_kishida
+			
+			add_country_leader_role = {
+				character = JAP_yoshiro_mori_after_2020
+				country_leader = { 
+					ideology = right_wing_conservative 
+					desc = POLITICS_yoshiro_mori_after_2020_DESC
+					traits = { jiminto_minor jiminto_seiwakai ldp_unpredictable_speech }
+				}
+				promote_leader = yes
+			}
+		}
+		
+	}
+	
+	option = {
+		name = japan.93.b
+		ai_chance = {
+		factor = 1
+		}
+		
+		
+	}
+}
+
+##########
+#
+#
+#
+##########
+
+# Economic random events - trigger 
+#TODO_TA remove logging
+country_event = {
+	id = japan.300
+	title = japan.300.t
+	desc = japan.300.desc
+	
+	is_triggered_only = yes
+	hidden = yes 
+	
+	trigger = {
+		NOT = { has_global_flag = end_heisei_fukyo }
+	}
+	
+	picture = GFX_report_event_japanese_flag
+	
+	immediate = {
+		# Re-trigger event in like 3 months time
+		country_event = {
+			id = japan.300
+			days = 90 # could be longer if it feels to spammy
+			random_days = 46 # use a bit here, to make it not feel too railroaded
+		}
+	}
+	option = { # this one triggers only when not a GIE
+		name = japan.300.a
+		trigger = {
+			NOT = { has_global_flag = end_heisei_fukyo }
+		}
+		random_list = {
+			# Do Nothing
+			35 = { # this should probably be somewhere between 25% and 50% of the total weight (before any modifiers)
+				modifier = {
+					factor = 1.5 
+					has_war = yes 
+				}
+				log = "random event 1"
+			}
+
+			15 = { 
+				country_event = {
+					id = japan.301
+					hours = 0 
+					random_hours = 8 
+				}
+				log = "random event 2"
+			}
+			15 = { 
+				country_event = {
+					id = japan.302
+					hours = 0 
+					random_hours = 8 
+				}
+				log = "random event 3"
+			}
+			15 = { 
+				country_event = {
+					id = japan.303
+					hours = 0 
+					random_hours = 8 
+				}
+				log = "random event 4"
+			}
+			15 = { 
+				country_event = {
+					id = japan.304
+					hours = 0 
+					random_hours = 8 
+				}
+				log = "random event 4"
+			}
+			15 = { 
+				country_event = {
+					id = japan.305
+					hours = 0 
+					random_hours = 8 
+				}
+				log = "random event 4"
+			}
+			15 = { 
+				country_event = {
+					id = japan.306
+					hours = 0 
+					random_hours = 8 
+				}
+				log = "random event 4"
+			}
+
+
+		}
+		
+	}
+	option = {
+		name = japan.300.b
+		trigger = {
+			has_global_flag = end_heisei_fukyo
+		}
+		
+		# Do Nothing
+	}
+}
+
+#The 100-yen Shops becomes more Popular
+country_event = {
+	id = japan.301
+	title = japan.301.t
+	desc = japan.301.desc
+	picture = GFX_report_event_JAP_100_yen
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan.301.a
+		random_list = { 
+			90 = { JAP_Getdeflation_add_3_effect = yes }
+			10 = { JAP_Getdeflation_add_5_effect = yes }
+		}
+	}
+}
+
+#Big Businesses Increasing Retained Earnings
+country_event = {
+	id = japan.302
+	title = japan.302.t
+	desc = japan.302.desc
+	picture = GFX_report_event_JAP_tokyo
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan.302.a
+		random_list = { 
+			90 = { JAP_Getdeflation_add_3_effect = yes }
+			10 = { JAP_Getdeflation_add_5_effect = yes }
+		}
+	}
+}
+
+#Rising Prices of Daily Necessities
+country_event = {
+	id = japan.303
+	title = japan.303.t
+	desc = japan.303.desc
+	picture = GFX_report_event_tokyo_night
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan.303.a
+		random_list = { 
+			90 = { JAP_Getdeflation_subtract_3_effect = yes }
+			10 = { JAP_Getdeflation_subtract_5_effect = yes }
+		}
+	}
+}
+
+#Japan's Economic Health
+country_event = {
+	id = japan.304
+	title = japan.304.t
+	desc = japan.304.desc
+	picture = GFX_report_event_JAP_japanese_economic
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan.304.a
+		random_list = { 
+			90 = { JAP_Getdeflation_subtract_3_effect = yes }
+			10 = { JAP_Getdeflation_subtract_5_effect = yes }
+		}
+		random_list = { 
+			90 = { JAP_Getdebt_subtract_3_effect = yes }
+			10 = { JAP_Getdebt_subtract_5_effect = yes }
+		}
+	}
+}
+
+#Yen trusted by foreigners as a Safe Asset
+country_event = {
+	id = japan.305
+	title = japan.305.t
+	desc = japan.305.desc
+	picture = GFX_report_event_JAP_japanese_yen
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan.305.a
+		random_list = { 
+			90 = { JAP_Getdebt_subtract_3_effect = yes }
+			10 = { JAP_Getdebt_subtract_5_effect = yes }
+		}
+	}
+}
+
+#Increase in Government Debt
+country_event = {
+	id = japan.306
+	title = japan.306.t
+	desc = japan.306.desc
+	picture = GFX_report_event_JAP_National_Assembly
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan.306.a
+		random_list = { 
+			90 = { JAP_Getdebt_add_3_effect = yes }
+			10 = { JAP_Getdebt_add_5_effect = yes }
+		}
+	}
+}
+
+# Communist Plot
+country_event = {
+	id = japan.84
+	title = japan.84.t
+	desc = japan.84.desc
+	picture = GFX_report_event_japanese_flag
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan.84.a
+		activate_decision = JAP_the_second_hand_of_a_clock
+	}
+}
 	
 #Debug
 country_event = {
@@ -2516,6 +3367,78 @@ country_event = {
 	}
 }
 
+#Debug
+country_event = {
+	id = japan.997
+	title = japan.34.t
+	desc = japan.34.desc
+	picture = GFX_report_event_tokyo_night
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = b
+		JAP_reset_LDP_faction_background_effect = yes
+		JAP_reset_LDP_faction_icon_effect = yes
+	}
+}
+
+
+#Debug
+country_event = {
+	id = japan.996
+	title = japan.34.t
+	desc = japan.34.desc
+	picture = GFX_report_event_tokyo_night
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = b
+		create_country_leader = {
+			name = "Fumihito"
+			ideology = absolute_monarchist
+			desc = "POLITICS_ALT_FUMIHITO_DESC"
+			picture = "gfx/leaders/JAP/fumihito.dds"
+			traits = {
+				arahitogami unprepared_emperor
+			}
+		}
+		
+		set_politics = {
+			ruling_party = monarchist
+			elections_allowed = no
+		}
+	}
+}
+
+#Debug
+country_event = {
+	id = japan.995
+	title = japan.34.t
+	desc = japan.34.desc
+	picture = GFX_report_event_tokyo_night
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = b
+		create_country_leader = {
+			name = "Icihro Ozawa"
+			ideology = moderate
+			desc = "POLITICS_Ichiro_Ozawa_DESC"
+			picture = "gfx/leaders/JAP/ichiro_ozawa.dds"
+			traits = {
+				ozawa_destroyer ozawa_quick_determination
+			}
+		}
+		
+		set_politics = {
+			ruling_party = social_liberal
+			elections_allowed = no
+		}
+	}
+}
 
 #######################
 #
@@ -3351,53 +4274,53 @@ country_event = {
 }
 
 # Negative Result in [FROM.State.GetName]
-state_event = {
-	id = japan_state.1
-	title = japan_state.1.t
-	desc = japan_state.1.desc
-	picture = GFX_report_event_KOR_2000_general_election
-	
-	is_triggered_only = yes
-	
-	option = {
-		name = japan_state.1.a
-		
-	}
-	
-}
+#state_event = {
+#	id = japan_state.1
+#	title = japan_state.1.t
+#	desc = japan_state.1.desc
+#	picture = GFX_report_event_KOR_2000_general_election
+#	
+#	is_triggered_only = yes
+#	
+#	option = {
+#		name = japan_state.1.a
+#		
+#	}
+#	
+#}
 
 # Ordinary Result in [FROM.State.GetName]
-state_event = {
-	id = japan_state.2
-	title = japan_state.2.t
-	desc = japan_state.2.desc
-	picture = GFX_report_event_KOR_2000_general_election
-	
-	is_triggered_only = yes
-	
-	option = {
-		name = japan_state.2.a
-		ROOT = { JAP_set_approval_rating_plus_1 = yes }
-	}
-	
-}
+#state_event = {
+#	id = japan_state.2
+#	title = japan_state.2.t
+#	desc = japan_state.2.desc
+#	picture = GFX_report_event_KOR_2000_general_election
+#	
+#	is_triggered_only = yes
+#	
+#	option = {
+#		name = japan_state.2.a
+#		ROOT = { JAP_set_approval_rating_plus_1 = yes }
+#	}
+#	
+#}
 
 
 # Perfect Result in [FROM.State.GetName]
-state_event = {
-	id = japan_state.3
-	title = japan_state.3.t
-	desc = japan_state.3.desc
-	picture = GFX_report_event_KOR_2000_general_election
-	
-	is_triggered_only = yes
-	
-	option = {
-		name = japan_state.3.a
-		ROOT = { JAP_set_approval_rating_plus_2 = yes }
-	}
-	
-}
+#state_event = {
+#	id = japan_state.3
+#	title = japan_state.3.t
+#	desc = japan_state.3.desc
+#	picture = GFX_report_event_KOR_2000_general_election
+#	
+#	is_triggered_only = yes
+#	
+#	option = {
+#		name = japan_state.3.a
+#		ROOT = { JAP_set_approval_rating_plus_2 = yes }
+#	}
+#	
+#}
 
 
 	
@@ -4023,6 +4946,125 @@ news_event = {
 	}
 }
 
+# [ROOT.GetName]'s LDP Leadership Election
+news_event = {
+	id = japan_news.23
+	title = japan_news.23.t
+	desc = japan_news.23.desc
+	picture = GFX_news_event_japanese_national_diet
+
+	major = yes
+	is_triggered_only = yes
+	
+	option = {
+		name = japan_news.23.a
+		trigger = {
+			original_tag = JAP
+		}
+	}
+	
+	option = {
+		name = japan_news.23.b
+		trigger = {
+			AND = {
+				NOT = { original_tag = JAP }
+				NOT = { has_war_with = JAP }
+			}
+			
+		}
+	}
+	
+	option = {
+		name = japan_news.23.c
+		trigger = {
+			AND = {
+				NOT = { original_tag = JAP }
+				has_war_with = JAP
+			}
+		}
+	}
+	
+}
+
+# [ROOT.GetName]'s LDP Leadership Election
+news_event = {
+	id = japan_news.24
+	title = japan_news.24.t
+
+	desc = {
+		text = japan_news.24.desc_1
+		trigger = { FROM = { has_country_leader_with_trait = jiminto_main } }
+	}
+	desc = {
+		text = japan_news.24.desc_2
+		trigger = { FROM = { has_country_leader_with_trait = jiminto_minor } }
+	}
+	desc = {
+		text = japan_news.24.desc_3
+		trigger = { FROM = { has_country_leader_with_trait = jiminto_non_faction } }
+	}
+
+	picture = GFX_news_event_japanese_national_diet
+
+	major = yes
+	is_triggered_only = yes
+	
+	option = {
+		name = japan_news.24.a
+		trigger = {
+			original_tag = JAP
+		}
+	}
+	
+	option = {
+		name = japan_news.24.b
+		trigger = {
+			AND = {
+				NOT = { original_tag = JAP }
+				NOT = { has_war_with = JAP }
+			}
+			
+		}
+	}
+	
+	option = {
+		name = japan_news.24.c
+		trigger = {
+			AND = {
+				NOT = { original_tag = JAP }
+				has_war_with = JAP
+			}
+		}
+	}
+	
+}
+
+# Japanese Leadership Election (New Leader)
+news_event = {
+	id = japan_news.24
+	title = japan_news.24.t
+	desc = japan_news.24.desc
+	picture = GFX_news_event_japanese_national_diet
+
+	major = yes
+	is_triggered_only = yes
+	
+	option = {
+		name = japan_news.24.a
+		trigger = {
+			original_tag = JAP
+		}
+	}
+	
+	option = {
+		name = japan_news.24.b
+		trigger = {
+			NOT = { original_tag = JAP }
+		}
+	}
+	
+}
+
 ########################################
 ##
 ## Flavor Events
@@ -4356,6 +5398,478 @@ country_event = {
 	}
 }
 
+#Shinichi Fujimura Incident
+country_event = {
+	id = japan_flavor_events.14
+	title = japan_flavor_events.14.t
+	desc = japan_flavor_events.14.desc
+	picture = GFX_report_event_JAP_shinichi_fujimura
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan_flavor_events.14.a
+		add_political_power = -25
+		hidden_effect = {
+			country_event = { id = japan_flavor_events.15 days = 60 }
+		}
+	}
+}
+
+#Mitsuo Kagawa Incident
+country_event = {
+	id = japan_flavor_events.15
+	title = japan_flavor_events.15.t
+	desc = japan_flavor_events.15.desc
+	picture = GFX_report_event_computer
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan_flavor_events.15.a
+		add_political_power = -25
+	}
+}
+
+# Fujimori running for Election
+country_event = {
+	id = japan_flavor_events.16
+	title = japan_flavor_events.16.t
+	desc = japan_flavor_events.16.desc
+	picture = GFX_report_event_JAP_2000_JCP
+
+	trigger = {
+		tag = JAP
+		date > 2000.9.1
+		date < 2001.1.1
+	}
+
+	fire_only_once = yes
+	
+	mean_time_to_happen = {
+		days = 4
+	}
+	
+	option = {
+		name = japan_flavor_events.16.a
+		retire_character = JAP_tetsuzo_fuwa
+		hidden_effect = { JAP_kazuo_shii = { set_nationality = ROOT } }
+		
+		add_country_leader_role = {
+			character = JAP_kazuo_shii
+			country_leader = { 
+				ideology = democratic_socialist_ideology 
+				desc = POLITICS_kazuo_shii_DESC
+				traits = { ultimate_pianist }
+			}
+			promote_leader = yes
+		}
+	}
+}
+
+#The Ra Committee is Established
+country_event = {
+	id = japan_flavor_events.17
+	title = japan_flavor_events.17.t
+	desc = japan_flavor_events.17.desc
+	picture = GFX_report_event_JAP_taku_yamasaki
+	
+	trigger = { 
+		has_completed_focus = JAP_triumph_of_democracy
+	}
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan_flavor_events.17.a
+		add_popularity = {
+			ideology = social_liberal
+			popularity = 0.03
+		}
+	}
+}
+
+#Like a long dream
+country_event = {
+	id = japan_flavor_events.18
+	title = japan_flavor_events.18.t
+	desc = japan_flavor_events.18.desc
+	picture = GFX_report_event_JAP_2000_kazuo_shii
+	
+	trigger = { 
+		original_tag = JAP
+		has_country_leader = {
+		    character = JAP_kazuo_shii
+		    ruling_only = yes
+		}
+		has_government = democratic_socialist
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	fire_only_once = yes
+	
+	option = {
+		name = japan_flavor_events.18.a
+		hidden_effect = {
+			country_event = {
+				id = japan_flavor_events.19
+				days = 60
+				random_days = 50
+			}
+		}
+	}
+}
+
+#Determination Symphony
+country_event = {
+	id = japan_flavor_events.19
+	title = japan_flavor_events.19.t
+	desc = japan_flavor_events.19.desc
+	picture = GFX_report_event_JAP_kazuo_shii_piano
+	
+	trigger = { 
+		has_country_leader = {
+		    character = JAP_kazuo_shii
+		    ruling_only = yes
+		}
+	}
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan_flavor_events.19.a
+		add_popularity = {
+			ideology = democratic_socialist
+			popularity = 0.03
+		}
+	}
+}
+
+#SEGA Fails in the Game Industry
+country_event = {
+	id = japan_flavor_events.20
+	title = japan_flavor_events.20.t
+	desc = japan_flavor_events.20.desc
+	picture = GFX_report_event_computer
+	
+	trigger = { 
+		NOT = { has_government = communist }
+	}
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan_flavor_events.20.a
+	}
+}
+
+#Yukio Mishima's Unpublished Literature Discovered
+country_event = {
+	id = japan_flavor_events.21
+	title = japan_flavor_events.21.t
+	desc = japan_flavor_events.21.desc
+	picture = GFX_report_event_JAP_yukio_mishima
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan_flavor_events.21.a
+	}
+}
+
+#Haruka Murakami's New Novel, Kafka on the Shore
+country_event = {
+	id = japan_flavor_events.22
+	title = japan_flavor_events.22.t
+	desc = japan_flavor_events.22.desc
+	picture = GFX_report_event_JAP_haruki_murakami
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan_flavor_events.22.a
+	}
+}
+
+#[GetYear] Miyagi Earthquakes
+country_event = {
+	id = japan_flavor_events.23
+	title = japan_flavor_events.23.t
+	desc = japan_flavor_events.23.desc
+	picture = GFX_report_event_tokyo_night
+	
+	trigger = {
+		owns_state = 533
+		date > 2003.5.1
+		date < 2004.1.1
+	}
+	
+	mean_time_to_happen = {
+		days = 32
+	}
+	
+	fire_only_once = yes
+	
+	option = {
+		name = japan_flavor_events.23.a
+		
+		533 = {
+			damage_building = {
+				type = industrial_complex
+				damage = 1
+			}
+			damage_building = {
+				type = infrastructure
+				damage = 2
+			}
+		}
+	}
+}
+
+#Okinawa Soldier Explosion Accident
+country_event = {
+	id = japan_flavor_events.24
+	title = japan_flavor_events.24.t
+	desc = japan_flavor_events.24.desc
+	picture = GFX_report_event_JAP_okinawa_unexploded
+	
+	trigger = {
+		owns_state = 526 #Okinawa
+		date > 2003.1.1
+		date < 2004.1.1
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	fire_only_once = yes
+	
+	option = {
+		name = japan_flavor_events.24.a
+		add_manpower = -1
+		
+		526 = {
+			damage_building = {
+				type = infrastructure
+				damage = 0.25
+			}
+		}
+	}
+}
+
+#[GetYear] Chuetsu Earthquake
+country_event = {
+	id = japan_flavor_events.25
+	title = japan_flavor_events.25.t
+	desc = japan_flavor_events.25.desc
+	picture = GFX_report_event_tokyo_night
+	
+	trigger = {
+		owns_state = 534
+		date > 2004.7.1
+		date < 2005.6.1
+	}
+	
+	mean_time_to_happen = {
+		days = 32
+	}
+	
+	fire_only_once = yes
+	
+	option = {
+		name = japan_flavor_events.24.a
+		
+		534 = {
+			damage_building = {
+				type = industrial_complex
+				damage = 1
+			}
+			damage_building = {
+				type = infrastructure
+				damage = 2
+			}
+		}
+	}
+}
+
+#Nintendo And Sony Compete In The Game Market
+country_event = {
+	id = japan_flavor_events.26
+	title = japan_flavor_events.26.t
+	desc = japan_flavor_events.26.desc
+	picture = GFX_report_event_computer
+	
+	trigger = { 
+		NOT = { has_government = communist }
+	}
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan_flavor_events.26.a
+	}
+}
+
+#Rebellion of Hironomiya
+country_event = {
+	id = japan_flavor_events.27
+	title = japan_flavor_events.27.t
+	desc = japan_flavor_events.27.desc
+	picture = GFX_report_event_JAP_imperial_palace
+	
+	trigger = { 
+		has_idea = {idea_JAP_emperor_akihito}
+	}
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan_flavor_events.27.a
+		add_stability = 0.01
+	}
+}
+
+country_event = {
+	id = japan_flavor_events.1000
+	title = japan_flavor_events.1000.t
+	desc = japan_flavor_events.1000.desc
+	picture = GFX_report_event_JAP_2000_JCP
+
+	trigger = {
+		tag = JAP
+		has_country_leader = {
+		    character = JAP_kazuo_shii
+		    ruling_only = no
+		}
+		date > 2010.1.1
+	}
+
+	mean_time_to_happen = {
+		days = 2
+	}
+
+	fire_only_once = yes
+
+	hidden = yes
+	
+	option = {
+		name = japan_flavor_events.16.a
+		
+		JAP_kazuo_shii = {
+			set_portraits = {
+				civilian = { large = "gfx/leaders/JAP/kazuo_shii_2.dds" } #
+			}
+		}
+	}
+}
+
+country_event = {
+	id = japan_flavor_events.1001
+	title = japan_flavor_events.1001.t
+	desc = japan_flavor_events.1001.desc
+	picture = GFX_report_event_JAP_2000_JCP
+
+	trigger = {
+		tag = JAP
+		has_country_leader = {
+		    character = JAP_kazuo_shii
+		    ruling_only = no
+		}
+		date > 2020.1.1
+	}
+
+	mean_time_to_happen = {
+		days = 2
+	}
+
+	fire_only_once = yes
+
+	hidden = yes
+	
+	option = {
+		name = japan_flavor_events.16.a
+		
+		JAP_kazuo_shii = {
+			set_portraits = {
+				civilian = { large = "gfx/leaders/JAP/kazuo_shii_3.dds" } #
+			}
+		}
+	}
+}
+
+country_event = {
+	id = japan_flavor_events.1002
+	title = japan_flavor_events.1002.t
+	desc = japan_flavor_events.1002.desc
+	picture = GFX_report_event_JAP_2000_JCP
+
+	trigger = {
+		tag = JAP
+		has_country_leader = {
+		    character = JAP_shinzo_abe
+		    ruling_only = no
+		}
+		date > 2010.1.1
+	}
+
+	mean_time_to_happen = {
+		days = 2
+	}
+
+	fire_only_once = yes
+
+	hidden = yes
+	
+	option = {
+		name = japan_flavor_events.16.a
+		
+		JAP_shinzo_abe = {
+			set_portraits = {
+				civilian = { large = "gfx/leaders/JAP/Shinzo_Abe_2.dds" } #
+			}
+		}
+	}
+}
+
+country_event = {
+	id = japan_flavor_events.1002
+	title = japan_flavor_events.1002.t
+	desc = japan_flavor_events.1002.desc
+	picture = GFX_report_event_JAP_2000_JCP
+
+	trigger = {
+		tag = JAP
+		has_country_leader = {
+		    character = JAP_shinzo_abe
+		    ruling_only = no
+		}
+		date > 2020.1.1
+	}
+
+	mean_time_to_happen = {
+		days = 2
+	}
+
+	fire_only_once = yes
+
+	hidden = yes
+	
+	option = {
+		name = japan_flavor_events.16.a
+		
+		JAP_shinzo_abe = {
+			set_portraits = {
+				civilian = { large = "gfx/leaders/JAP/Shinzo_Abe_3.dds" } #
+			}
+		}
+	}
+}
+
+
 ########################################
 ##
 ## Okinawa Events
@@ -4575,6 +6089,16 @@ country_event = {	#Establish an Autonomous Government in Ryukyu
 				JAP = { transfer_state = 876 }
 				876 = { add_core_of = JAP }
 			}
+			
+			if = {
+				limit = {
+					has_dlc = "Together for Victory"
+				}
+				set_autonomy = {
+					target = RYU
+					autonomous_state = minority_autonomous_region
+				}
+			}
 	}
 	
 	option = {
@@ -4600,7 +6124,18 @@ country_event = {	#Establish an Autonomous Government in Ryukyu
 				JAP = { transfer_state = 876 }
 				876 = { add_core_of = JAP }
 			}
-		RYU = { change_tag_from = JAP }
+			
+			if = {
+				limit = {
+					has_dlc = "Together for Victory"
+				}
+				set_autonomy = {
+					target = RYU
+					autonomous_state = minority_autonomous_region
+				}
+			}
+			
+			RYU = { change_tag_from = JAP }
 	}
 }
 
@@ -5967,4 +7502,1517 @@ country_event = {
 		FROM = { transfer_state = 1246 }
 		1246 = { add_core_of = FROM }
 	}
+}
+
+#####################################################################
+#####################################################################
+#####################################################################
+#
+# Japanese Diet
+#
+#####################################################################
+#####################################################################
+#####################################################################
+
+country_event = {
+	id = japan_parliamentary_system.0
+	title = japan_parliamentary_system.0.t
+	desc = japan_parliamentary_system.0.desc
+	
+	is_triggered_only = yes
+	hidden = yes 
+	
+	trigger = {
+		NOT = { has_country_flag = jap_ldp_collapse }
+	}
+	
+	picture = GFX_report_event_japanese_flag
+	
+	immediate = {
+		# Re-trigger event in like 3 months time
+		country_event = {
+			id = japan_parliamentary_system.0
+			days = 95
+			random_days = 52
+		}
+	}
+	option = { # this one triggers only when not a GIE
+		name = japan_parliamentary_system.0.a
+		trigger = {
+			AND = {
+				has_completed_focus = JAP_triumph_of_democracy
+				has_government = conservative
+				NOT = { has_country_flag = jap_ldp_collapse }
+			}
+		}
+		random_list = {
+			# Do Nothing
+			30 = {
+				modifier = {
+					factor = 1.5 
+					has_war = yes 
+				}
+				log = "random event 1"
+			}
+
+			15 = { 
+				country_event = {
+					id = japan_parliamentary_system.1
+					hours = 0 
+					random_hours = 8 
+				}
+				log = "random event 2"
+			}
+			15 = { 
+				country_event = {
+					id = japan_parliamentary_system.2
+					hours = 0 
+					random_hours = 8 
+				}
+				log = "random event 3"
+			}
+			15 = { 
+				country_event = {
+					id = japan_parliamentary_system.3
+					hours = 0 
+					random_hours = 8 
+				}
+				log = "random event 4"
+			}
+			15 = { 
+				country_event = {
+					id = japan_parliamentary_system.4
+					hours = 0 
+					random_hours = 8 
+				}
+				log = "random event 5"
+			}
+			15 = { 
+				country_event = {
+					id = japan_parliamentary_system.5
+					hours = 0 
+					random_hours = 8 
+				}
+				log = "random event 6"
+			}
+			15 = { 
+				country_event = {
+					id = japan_parliamentary_system.6
+					hours = 0 
+					random_hours = 8 
+				}
+				log = "random event 7"
+			}
+			15 = { 
+				country_event = {
+					id = japan_parliamentary_system.7
+					hours = 0 
+					random_hours = 8 
+				}
+				log = "random event 8"
+			}
+			15 = { 
+				country_event = {
+					id = japan_parliamentary_system.8
+					hours = 0 
+					random_hours = 8 
+				}
+				log = "random event 9"
+			}
+			15 = { 
+				country_event = {
+					id = japan_parliamentary_system.9
+					hours = 0 
+					random_hours = 8 
+				}
+				log = "random event 10"
+			}
+			15 = { 
+				country_event = {
+					id = japan_parliamentary_system.10
+					hours = 0 
+					random_hours = 8 
+				}
+				log = "random event 11"
+			}
+			15 = { 
+				country_event = {
+					id = japan_parliamentary_system.11
+					hours = 0 
+					random_hours = 8 
+				}
+				log = "random event 12"
+			}
+
+
+		}
+		
+	}
+	option = {
+		name = japan_parliamentary_system.0.b
+		trigger = {
+			OR = {
+				NOT = { has_completed_focus = JAP_triumph_of_democracy }
+				NOT = { has_government = conservative }
+				has_country_flag = jap_ldp_collapse
+			}
+		}
+		
+		# Do Nothing
+	}
+}
+
+# Koenkai in support of Hoshu Honryu
+country_event = {
+	id = japan_parliamentary_system.1
+	title = japan_parliamentary_system.1.t
+	desc = japan_parliamentary_system.1.desc
+	picture = GFX_report_event_JAP_sponsor
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan_parliamentary_system.1.a
+		random_list = {				
+			5 = { add_political_power = 25 }
+			5 = { JAP_LDP_add_Hoshu_Honryu_1_effect = yes }
+			25 = { JAP_LDP_add_Hoshu_Honryu_3_effect = yes }
+			7 = { JAP_LDP_add_Hoshu_Honryu_5_effect = yes }
+		}
+	}
+	
+	option = {
+		name = japan_parliamentary_system.1.b
+		add_political_power = -10
+	}
+}
+
+# Koenkai in support of Hoshu Boryu
+country_event = {
+	id = japan_parliamentary_system.2
+	title = japan_parliamentary_system.2.t
+	desc = japan_parliamentary_system.2.desc
+	picture = GFX_report_event_JAP_sponsor
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan_parliamentary_system.2.a
+		random_list = {				
+			5 = { add_political_power = 25 }
+			5 = { JAP_LDP_add_Hoshu_Boryu_1_effect = yes }
+			25 = { JAP_LDP_add_Hoshu_Boryu_3_effect = yes }
+			7 = { JAP_LDP_add_Hoshu_Boryu_5_effect = yes }
+		}
+	}
+	
+	option = {
+		name = japan_parliamentary_system.2.b
+		add_political_power = -10
+	}
+}
+
+# Is the Economy a priority or is National Defense priority?
+country_event = {
+	id = japan_parliamentary_system.3
+	title = japan_parliamentary_system.3.t
+	desc = japan_parliamentary_system.3.desc
+	picture = GFX_report_event_JAP_National_Assembly
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan_parliamentary_system.3.a
+		random_list = {				
+			5 = { add_war_support = 0.01 }
+			5 = { JAP_LDP_add_Hoshu_Boryu_1_effect = yes }
+			30 = { JAP_LDP_add_Hoshu_Boryu_3_effect = yes }
+			10 = { JAP_LDP_add_Hoshu_Boryu_5_effect = yes }
+		}
+	}
+	
+	option = {
+		name = japan_parliamentary_system.3.b
+		random_list = {				
+			5 = { add_stability = 0.01 }
+			5 = { JAP_LDP_add_Hoshu_Honryu_1_effect = yes }
+			30 = { JAP_LDP_add_Hoshu_Honryu_3_effect = yes }
+			10 = { JAP_LDP_add_Hoshu_Honryu_5_effect = yes }
+		}
+	}
+	
+	option = {
+		name = japan_parliamentary_system.3.c
+		add_political_power = -10
+	}
+}
+
+# Heisei Kenkyukai Gets Supporters
+country_event = {
+	id = japan_parliamentary_system.4
+	title = japan_parliamentary_system.4.t
+	desc = japan_parliamentary_system.4.desc
+	picture = GFX_report_event_computer
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan_parliamentary_system.4.a
+		if = {
+			limit = {	has_country_leader_with_trait = jiminto_heisei_kenkyukai }
+			random_list = {				
+				2 = { JAP_LDP_add_Hoshu_Honryu_1_effect = yes }
+				30 = { JAP_LDP_add_Hoshu_Honryu_3_effect = yes }
+				15 = { JAP_LDP_add_Hoshu_Honryu_5_effect = yes }
+			}
+		}
+		else = {
+			random_list = {
+				10 = { JAP_LDP_add_Hoshu_Honryu_1_effect = yes }
+				30 = { JAP_LDP_add_Hoshu_Honryu_3_effect = yes }
+				5 = { JAP_LDP_add_Hoshu_Honryu_5_effect = yes }
+			}
+		}
+	}
+	
+	option = {
+		name = japan_parliamentary_system.4.b
+		add_political_power = 25
+	}
+}
+
+# Kochikai Gets Supporters
+country_event = {
+	id = japan_parliamentary_system.5
+	title = japan_parliamentary_system.5.t
+	desc = japan_parliamentary_system.5.desc
+	picture = GFX_report_event_computer
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan_parliamentary_system.5.a		
+		if = {
+			limit = {	has_country_leader_with_trait = jiminto_kouchikai }
+			random_list = {				
+				2 = { JAP_LDP_add_Hoshu_Honryu_1_effect = yes }
+				30 = { JAP_LDP_add_Hoshu_Honryu_3_effect = yes }
+				15 = { JAP_LDP_add_Hoshu_Honryu_5_effect = yes }
+			}
+		}
+		else = {
+			random_list = {
+				10 = { JAP_LDP_add_Hoshu_Honryu_1_effect = yes }
+				30 = { JAP_LDP_add_Hoshu_Honryu_3_effect = yes }
+				5 = { JAP_LDP_add_Hoshu_Honryu_5_effect = yes }
+			}
+		}
+	}
+	
+	option = {
+		name = japan_parliamentary_system.5.b
+		add_political_power = 25
+	}
+}
+
+# Seiwakai Gets Supporters
+country_event = {
+	id = japan_parliamentary_system.6
+	title = japan_parliamentary_system.6.t
+	desc = japan_parliamentary_system.6.desc
+	picture = GFX_report_event_computer
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan_parliamentary_system.6.a
+		if = {
+			limit = {	has_country_leader_with_trait = jiminto_seiwakai }
+			random_list = {
+				2 = { JAP_LDP_add_Hoshu_Boryu_1_effect = yes }
+				30 = { JAP_LDP_add_Hoshu_Boryu_3_effect = yes }
+				15 = { JAP_LDP_add_Hoshu_Boryu_5_effect = yes }
+			}
+		}
+		else = {
+			random_list = {
+				10 = { JAP_LDP_add_Hoshu_Boryu_1_effect = yes }
+				30 = { JAP_LDP_add_Hoshu_Boryu_3_effect = yes }
+				5 = { JAP_LDP_add_Hoshu_Boryu_5_effect = yes }
+			}
+		}
+		
+	}
+	
+	option = {
+		name = japan_parliamentary_system.6.b
+		add_political_power = 25
+	}
+}
+
+# Shisuikai Gets Supporters
+country_event = {
+	id = japan_parliamentary_system.7
+	title = japan_parliamentary_system.7.t
+	desc = japan_parliamentary_system.7.desc
+	picture = GFX_report_event_computer
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan_parliamentary_system.7.a
+		if = {
+			limit = {	has_country_leader_with_trait = jiminto_shisuikai }
+			random_list = {
+				2 = { JAP_LDP_add_Hoshu_Boryu_1_effect = yes }
+				30 = { JAP_LDP_add_Hoshu_Boryu_3_effect = yes }
+				15 = { JAP_LDP_add_Hoshu_Boryu_5_effect = yes }
+			}
+		}
+		else = {
+			random_list = {
+				10 = { JAP_LDP_add_Hoshu_Boryu_1_effect = yes }
+				30 = { JAP_LDP_add_Hoshu_Boryu_3_effect = yes }
+				5 = { JAP_LDP_add_Hoshu_Boryu_5_effect = yes }
+			}
+		}
+	}
+	
+	option = {
+		name = japan_parliamentary_system.7.b
+		add_political_power = 25
+	}
+}
+
+# Inappropriate Comment by Taro Aso
+country_event = {
+	id = japan_parliamentary_system.8
+	title = japan_parliamentary_system.8.t
+	desc = japan_parliamentary_system.8.desc
+	picture = GFX_report_event_JAP_taro_aso
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan_parliamentary_system.8.a
+		random_list = {
+			10 = { JAP_LDP_add_Hoshu_Honryu_1_effect = yes }
+			30 = { JAP_LDP_add_Hoshu_Honryu_3_effect = yes }
+			5 = { JAP_LDP_add_Hoshu_Honryu_5_effect = yes }
+		}
+	}
+	
+	option = {
+		name = japan_parliamentary_system.8.b
+		add_political_power = -25
+	}
+}
+
+# The Ruling party is Criticized
+country_event = {
+	id = japan_parliamentary_system.9
+	title = japan_parliamentary_system.9.t
+	desc = japan_parliamentary_system.9.desc
+	picture = GFX_report_event_JAP_LDP
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan_parliamentary_system.9.a
+		
+		if = {
+			limit = {	has_country_leader_with_trait = jiminto_main }
+			random_list = {
+				10 = { JAP_LDP_add_Hoshu_Boryu_1_effect = yes }
+				30 = { JAP_LDP_add_Hoshu_Boryu_3_effect = yes }
+				5 = { JAP_LDP_add_Hoshu_Boryu_5_effect = yes }
+			}
+		}
+		else_if = { 
+			limit = {	has_country_leader_with_trait = jiminto_minor }
+			random_list = {
+				10 = { JAP_LDP_add_Hoshu_Honryu_1_effect = yes }
+				30 = { JAP_LDP_add_Hoshu_Honryu_3_effect = yes }
+				5 = { JAP_LDP_add_Hoshu_Honryu_5_effect = yes }
+			}
+		}
+		
+		random_list = {
+			10 = {
+				add_popularity = {
+					ideology = conservative
+					popularity = -0.02
+				}
+			}
+			10 = {
+				add_political_power = -25
+			}
+			10 = {
+				add_political_power = -15
+			}
+		}
+	}
+}
+
+# Other Faction's Politician who criticizes the Prime Minister
+country_event = {
+	id = japan_parliamentary_system.10
+	title = japan_parliamentary_system.10.t
+	desc = japan_parliamentary_system.10.desc
+	picture = GFX_report_event_JAP_National_Assembly
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan_parliamentary_system.10.a
+		random_list = {
+			5 = {
+				add_popularity = {
+					ideology = conservative
+					popularity = -0.02
+				}
+			}
+			20 = {
+				add_political_power = -25
+			}
+			10 = {
+				add_political_power = -15
+			}
+		}
+	}
+	
+	option = {
+		name = japan_parliamentary_system.10.b
+	}
+}
+
+# How should we look at Japan's past history?
+country_event = {
+	id = japan_parliamentary_system.11
+	title = japan_parliamentary_system.11.t
+	desc = japan_parliamentary_system.11.desc
+	picture = GFX_report_event_pacific_war
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan_parliamentary_system.11.a
+	}
+	
+	option = {
+		name = japan_parliamentary_system.11.b
+	}
+	
+	option = {
+		name = japan_parliamentary_system.11.c
+		add_political_power = -10
+	}
+}
+
+# How should we look at Japan's past history?
+#country_event = {
+#	id = japan_parliamentary_system.999
+#	title = japan_parliamentary_system.11.t
+#	desc = japan_parliamentary_system.11.desc
+#	picture = GFX_report_event_pacific_war
+#	
+#	is_triggered_only = yes
+#	
+#	option = {
+#		name = japan_parliamentary_system.11.a
+#		
+#		add_popularity = {
+#			ideology = nationalist
+#			popularity = 0.6
+#		}
+#		add_popularity = {
+#			ideology = communist
+#			popularity = 0.15
+#		}
+#		
+#		set_politics = {
+#			ruling_party = nationalist
+#			elections_allowed = no
+#		}
+#		
+#		create_country_leader = {
+#			name = "Shigeto Nagano"
+#			desc = "POLITICS_Han_Myeong_sook_DESC"
+#			picture = "gfx/leaders/JAP/shigeto_nagano.dds"
+#			ideology = autocrat
+#			traits = {  }
+#		}
+#		set_party_name = { 
+#			ideology = nationalist
+#			long_name = JAP_nationalist_shigeto 
+#			name = JAP_nationalist_shigeto
+#		}
+#	}
+#}
+
+#
+country_event = {
+	id = japan_LDP_election.1
+	title = japan_LDP_election.1.t
+	desc = japan_LDP_election.1.desc
+	picture = GFX_report_event_JAP_LDP_election_1
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan_LDP_election.1.a
+		trigger = { 
+			check_variable = { LDP_faction_var > 50 }
+		}
+		
+		country_event = japan_LDP_election.2
+		
+		#if = {
+		#	limit = { has_country_leader_with_trait = jiminto_main }
+		#	country_event = japan_LDP_election.2
+		#}
+		#else = {
+		#	country_event = japan_LDP_election.3
+		#}
+	}
+	
+	option = {
+		name = japan_LDP_election.1.b
+		trigger = { 
+			check_variable = { LDP_faction_var < 50 }
+		} 
+		
+		country_event = japan_LDP_election.4
+		
+		#if = {
+		#	limit = { has_country_leader_with_trait = jiminto_minor }
+		#	country_event = japan_LDP_election.4
+		#}
+		#else = {
+		#	country_event = japan_LDP_election.5
+		#}
+	}
+	
+	option = {
+		name = japan_LDP_election.1.c
+		trigger = { 
+			AND = {
+				check_variable = { LDP_faction_var < 60 }
+				check_variable = { LDP_faction_var > 40 }
+			}
+		} 
+		
+		country_event = japan_LDP_election.6
+	}
+}
+
+country_event = {
+	id = japan_LDP_election.2
+	
+	title = {
+		text = japan_LDP_election.2.t_1
+		trigger = { has_country_leader_with_trait = jiminto_main }
+	}
+	title = {
+		text = japan_LDP_election.2.t_2
+		trigger = { NOT = { has_country_leader_with_trait = jiminto_main } }
+	}
+	
+	desc = {
+		text = japan_LDP_election.2.desc_1
+		trigger = { has_country_leader_with_trait = jiminto_main }
+	}
+	
+	desc = {
+		text = japan_LDP_election.2.desc_2
+		trigger = { 
+			OR = {
+				AND = {
+					has_country_leader_with_trait = jiminto_main
+					has_country_flag = LDP_party_Reelection_3 
+					check_variable = { Jiminto_Sosai_Re_election value = 2 compare = equals }
+				}
+				AND = {
+					has_country_leader_with_trait = jiminto_main
+					NOT = { has_country_flag = LDP_party_Reelection_3 }
+					check_variable = { Jiminto_Sosai_Re_election value = 1 compare = equals }
+				}
+			}
+		}
+	}
+	
+	desc = {
+		text = japan_LDP_election.2.desc_3
+		trigger = { NOT = { has_country_leader_with_trait = jiminto_main } }
+	}
+	
+	desc = {
+		text = japan_LDP_election.2.desc_4
+		trigger = { 
+			AND = {
+				has_country_leader_with_trait = jiminto_main 
+				has_country_flag = jap_resign_of_the_prime_minister
+			}
+		}
+	}
+	
+	picture = GFX_report_event_JAP_LDP_election_2
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan_LDP_election.2.a #[ROOT.GetLeader] is Prime Minister again!
+		trigger = {
+			OR = {
+				AND = {
+					NOT = { has_country_flag = jap_resign_of_the_prime_minister }
+					has_country_leader_with_trait = jiminto_main
+					has_country_flag = LDP_party_Reelection_3 
+					check_variable = { Jiminto_Sosai_Re_election < 2 }
+				}
+				AND = {
+					NOT = { has_country_flag = jap_resign_of_the_prime_minister }
+					has_country_leader_with_trait = jiminto_main
+					NOT = { has_country_flag = LDP_party_Reelection_3 }
+					check_variable = { Jiminto_Sosai_Re_election < 1 }
+				}
+			}
+		}
+		add_to_variable = { Jiminto_Sosai_Re_election = 1 }
+
+		hidden_effect = {
+			news_event = { id = japan_news.23 hours = 0 random_hours = 8 }
+		}
+	}
+	
+	option = {
+		name = japan_LDP_election.2.b #We will elect a New Prime Minister!
+		set_variable = { Jiminto_Sosai_Re_election = 0 }
+		clr_country_flag = jap_resign_of_the_prime_minister
+		
+		country_event = japan_LDP_election.3
+	}
+}
+
+country_event = {
+	id = japan_LDP_election.3
+	title = japan_LDP_election.3.t
+	desc = japan_LDP_election.3.desc
+	
+	picture = GFX_report_event_JAP_LDP
+	
+	is_triggered_only = yes
+	
+	#########################
+	#
+	# Kochikai
+	#
+	#########################
+	
+	option = {
+		name = japan_LDP_election.3.a #Kochikai, Taro Aso
+		trigger = {
+			date < 2020.01.01
+			NOT = { has_country_leader = { character = JAP_taro_aso ruling_only = yes } }
+		}
+		
+		add_country_leader_role = {
+			character = JAP_taro_aso
+			country_leader = { 
+				ideology = christian_democrat 
+				desc = POLITICS_taro_aso_DESC
+				traits = { jiminto_main jiminto_kouchikai rosen_aso }
+			}
+			promote_leader = yes
+		}
+
+		hidden_effect = {
+			news_event = { id = japan_news.24 hours = 0 random_hours = 8 }
+		}
+	}
+	
+	option = {
+		name = japan_LDP_election.3.b #Kochikai, Sadakazu Tanigaki
+		trigger = {
+			date < 2020.01.01
+			NOT = { has_country_leader = { character = JAP_sadakazu_tanigaki ruling_only = yes } }
+		}
+		
+		add_country_leader_role = {
+			character = JAP_sadakazu_tanigaki
+			country_leader = { 
+				ideology = fiscal_conservative 
+				desc = POLITICS_sadakazu_tanigaki_DESC
+				traits = { jiminto_main jiminto_kouchikai }
+			}
+			promote_leader = yes
+		}
+
+		hidden_effect = {
+			news_event = { id = japan_news.24 hours = 0 random_hours = 8 }
+		}
+	}
+	
+	option = {
+		name = japan_LDP_election.3.c #Kochikai, Taro Kono
+		trigger = {
+			date > 2019.12.31
+			NOT = { has_country_leader = { character = JAP_taro_kono ruling_only = yes } }
+		}
+		
+		add_country_leader_role = {
+			character = JAP_taro_kono
+			country_leader = { 
+				ideology = right_wing_conservative 
+				desc = POLITICS_taro_kono_DESC
+				traits = { jiminto_main jiminto_kouchikai }
+			}
+			promote_leader = yes
+		}
+
+		hidden_effect = {
+			news_event = { id = japan_news.24 hours = 0 random_hours = 8 }
+		}
+	}
+	
+	option = {
+		name = japan_LDP_election.3.d #Kochikai, Fumio Kishida
+		trigger = {
+			date > 2019.12.31
+			NOT = { has_country_flag = dead_fumio_kishida }
+			NOT = { has_country_leader = { character = JAP_fumio_kishida ruling_only = yes } }
+		}
+		
+		add_country_leader_role = {
+			character = JAP_fumio_kishida
+			country_leader = { 
+				ideology = fiscal_conservative 
+				desc = POLITICS_fumio_kishida_DESC
+				traits = { jiminto_main jiminto_kouchikai }
+			}
+			promote_leader = yes
+		}
+
+		hidden_effect = {
+			news_event = { id = japan_news.24 hours = 0 random_hours = 8 }
+		}
+	}
+	
+	option = {
+		name = japan_LDP_election.3.e #Kochikai, Yoshimasa Hayashi
+		trigger = {
+			date > 2019.12.31
+			has_country_flag = dead_fumio_kishida
+			NOT = { has_country_leader = { character = JAP_yoshimasa_hayashi ruling_only = yes } }
+		}
+		
+		add_country_leader_role = {
+			character = JAP_yoshimasa_hayashi
+			country_leader = { 
+				ideology = fiscal_conservative 
+				desc = POLITICS_yoshimasa_hayashi_DESC
+				traits = { jiminto_main jiminto_kouchikai }
+			}
+			promote_leader = yes
+		}
+
+		hidden_effect = {
+			news_event = { id = japan_news.24 hours = 0 random_hours = 8 }
+		}
+	}
+	
+	#########################
+	#
+	# Heisei Kenkyukai
+	#
+	#########################
+	
+	option = {
+		name = japan_LDP_election.3.f #Heisei Kenkyukai, Fukushiro Nukaga
+		trigger = {
+			date < 2019.12.31
+			NOT = { has_country_leader = { character = JAP_fukushiro_nukaga ruling_only = yes } }
+		}
+		
+		add_country_leader_role = {
+			character = JAP_fukushiro_nukaga
+			country_leader = { 
+				ideology = fiscal_conservative 
+				desc = POLITICS_fukushiro_nukaga_DESC
+				traits = { jiminto_main jiminto_heisei_kenkyukai }
+			}
+			promote_leader = yes
+		}
+
+		hidden_effect = {
+			news_event = { id = japan_news.24 hours = 0 random_hours = 8 }
+		}
+	}
+	
+	option = {
+		name = japan_LDP_election.3.g #Heisei Kenkyukai, Yuji Tsushima
+		trigger = {
+			date < 2009.12.31
+			NOT = { has_country_leader = { character = JAP_yuji_tsushima ruling_only = yes } }
+		}
+		
+		add_country_leader_role = {
+			character = JAP_yuji_tsushima
+			country_leader = { 
+				ideology = fiscal_conservative 
+				desc = POLITICS_yuji_tsushima_DESC
+				traits = { jiminto_main jiminto_heisei_kenkyukai }
+			}
+			promote_leader = yes
+		}
+
+		hidden_effect = {
+			news_event = { id = japan_news.24 hours = 0 random_hours = 8 }
+		}
+	}
+	
+	option = {
+		name = japan_LDP_election.3.h #Heisei Kenkyukai, Toshimitsu Motegi
+		trigger = {
+			date > 2010.01.01
+			NOT = { has_country_leader = { character = JAP_toshimitsu_motegi ruling_only = yes } }
+		}
+		
+		add_country_leader_role = {
+			character = JAP_toshimitsu_motegi
+			country_leader = { 
+				ideology = fiscal_conservative 
+				desc = POLITICS_toshimitsu_motegi_DESC
+				traits = { jiminto_main jiminto_heisei_kenkyukai }
+			}
+			promote_leader = yes
+		}
+
+		hidden_effect = {
+			news_event = { id = japan_news.24 hours = 0 random_hours = 8 }
+		}
+	}
+	
+	option = {
+		name = japan_LDP_election.3.i #Heisei Kenkyukai, Hajime Funada
+		trigger = {
+			date > 2020.01.01
+			NOT = { has_country_leader = { character = JAP_hajime_funada ruling_only = yes } }
+		}
+		
+		add_country_leader_role = {
+			character = JAP_hajime_funada
+			country_leader = { 
+				ideology = fiscal_conservative 
+				desc = POLITICS_hajime_funada_DESC
+				traits = { jiminto_main jiminto_heisei_kenkyukai }
+			}
+			promote_leader = yes
+		}
+
+		hidden_effect = {
+			news_event = { id = japan_news.24 hours = 0 random_hours = 8 }
+		}
+	}
+	
+}
+
+country_event = {
+	id = japan_LDP_election.4
+	
+	title = {
+		text = japan_LDP_election.4.t_1
+		trigger = { has_country_leader_with_trait = jiminto_minor }
+	}
+	title = {
+		text = japan_LDP_election.4.t_2
+		trigger = { NOT = { has_country_leader_with_trait = jiminto_minor } }
+	}
+	
+	desc = {
+		text = japan_LDP_election.4.desc_1
+		trigger = { has_country_leader_with_trait = jiminto_minor }
+	}
+	
+	
+	desc = {
+		text = japan_LDP_election.4.desc_2
+		trigger = { 
+			OR = {
+				AND = {
+					has_country_leader_with_trait = jiminto_minor
+					has_country_flag = LDP_party_Reelection_3 
+					check_variable = { Jiminto_Sosai_Re_election value = 2 compare = equals }
+				}
+				AND = {
+					has_country_leader_with_trait = jiminto_minor
+					NOT = { has_country_flag = LDP_party_Reelection_3 }
+					check_variable = { Jiminto_Sosai_Re_election value = 1 compare = equals }
+				}
+			}
+		}
+	}
+	
+	desc = {
+		text = japan_LDP_election.4.desc_3
+		trigger = { NOT = { has_country_leader_with_trait = jiminto_minor } }
+	}
+	
+	desc = {
+		text = japan_LDP_election.4.desc_4
+		trigger = { 
+			AND = {
+				has_country_leader_with_trait = jiminto_minor 
+				has_country_flag = jap_resign_of_the_prime_minister
+			}
+		}
+	}
+	
+	picture = GFX_report_event_JAP_LDP_election_2
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan_LDP_election.4.a #[ROOT.GetLeader] is Prime Minister again!
+		trigger = {
+			OR = {
+				AND = {
+					NOT = { has_country_flag = jap_resign_of_the_prime_minister }
+					has_country_leader_with_trait = jiminto_minor
+					has_country_flag = LDP_party_Reelection_3 
+					check_variable = { Jiminto_Sosai_Re_election < 2 }
+				}
+				AND = {
+					NOT = { has_country_flag = jap_resign_of_the_prime_minister }
+					has_country_leader_with_trait = jiminto_minor
+					NOT = { has_country_flag = LDP_party_Reelection_3 }
+					check_variable = { Jiminto_Sosai_Re_election < 1 }
+				}
+			}
+		}
+		add_to_variable = { Jiminto_Sosai_Re_election = 1 }
+
+		hidden_effect = {
+			news_event = { id = japan_news.23 hours = 0 random_hours = 8 }
+		}
+	}
+	
+	option = {
+		name = japan_LDP_election.4.b #We will elect a New Prime Minister!
+		set_variable = { Jiminto_Sosai_Re_election = 0 }
+		clr_country_flag = jap_resign_of_the_prime_minister
+		
+		country_event = japan_LDP_election.5
+	}
+}
+
+country_event = {
+	id = japan_LDP_election.5
+	title = japan_LDP_election.5.t
+	desc = japan_LDP_election.5.desc
+	
+	picture = GFX_report_event_JAP_LDP
+	
+	is_triggered_only = yes
+	
+	#########################
+	#
+	# Seiwakai
+	#
+	#########################
+	
+	option = {
+		name = japan_LDP_election.5.a #Seiwakai, Yasuo Fukuda
+		trigger = {
+			date < 2010.01.01
+			NOT = { has_country_leader = { character = JAP_yasuo_fukuda ruling_only = yes } }
+		}
+		
+		add_country_leader_role = {
+			character = JAP_yasuo_fukuda
+			country_leader = { 
+				ideology = constitutionalist 
+				desc = POLITICS_yasuo_fukuda_DESC
+				traits = { jiminto_minor jiminto_seiwakai }
+			}
+			promote_leader = yes
+		}
+
+		hidden_effect = {
+			news_event = { id = japan_news.24 hours = 0 random_hours = 8 }
+		}
+	}
+	
+	option = {
+		name = japan_LDP_election.5.b #Seiwakai, Shinzo Abe
+		trigger = {
+			NOT = { has_country_flag = dead_shinzo_abe }
+			NOT = { has_country_leader = { character = JAP_shinzo_abe ruling_only = yes } }
+		}
+		if = {
+			limit = { date < 2010.01.01 }
+			add_country_leader_role = {
+				character = JAP_shinzo_abe
+				country_leader = { 
+					ideology = right_wing_conservative 
+					desc = POLITICS_Shinzo_Abe_DESC
+					traits = { jiminto_minor jiminto_seiwakai determination_of_japan }
+				}
+				promote_leader = yes
+			}
+		}
+		else_if = {
+			limit = { date < 2020.01.01 }
+			add_country_leader_role = {
+				character = JAP_shinzo_abe
+				country_leader = { 
+					ideology = right_wing_conservative 
+					desc = POLITICS_Shinzo_Abe_DESC
+					traits = { jiminto_minor jiminto_seiwakai determination_of_japan }
+				}
+				promote_leader = yes
+			}
+			JAP_shinzo_abe = {
+				set_portraits = {
+					civilian = { large = "gfx/leaders/JAP/Shinzo_Abe_2.dds" }
+				}
+			}
+		}
+		else = {
+			add_country_leader_role = {
+				character = JAP_shinzo_abe
+				country_leader = { 
+					ideology = right_wing_conservative 
+					desc = POLITICS_Shinzo_Abe_DESC
+					traits = { jiminto_minor jiminto_seiwakai determination_of_japan }
+				}
+				promote_leader = yes
+			}
+			JAP_shinzo_abe = {
+				set_portraits = {
+					civilian = { large = "gfx/leaders/JAP/Shinzo_Abe_3.dds" }
+				}
+			}
+		}
+
+		hidden_effect = {
+			news_event = { id = japan_news.24 hours = 0 random_hours = 8 }
+		}
+	}
+	
+	option = {
+		name = japan_LDP_election.5.c #Seiwakai, Nobutaka Machimura
+		trigger = {
+			NOT = { has_country_flag = retire_nobutaka_machimura }
+			NOT = { has_country_leader = { character = JAP_nobutaka_machimura ruling_only = yes } }
+			date > 2009.12.31
+		}
+		
+		add_country_leader_role = {
+			character = JAP_nobutaka_machimura
+			country_leader = { 
+				ideology = constitutionalist 
+				desc = POLITICS_nobutaka_machimura_DESC
+				traits = { jiminto_minor jiminto_seiwakai }
+			}
+			promote_leader = yes
+		}
+
+		hidden_effect = {
+			news_event = { id = japan_news.24 hours = 0 random_hours = 8 }
+		}
+	}
+	
+	option = {
+		name = japan_LDP_election.5.d #Seiwakai, Nobuteru Ishihara
+		trigger = {
+			has_country_flag = retire_nobutaka_machimura
+			date > 2009.12.31
+			date < 2020.01.01
+			NOT = { has_country_leader = { character = JAP_nobuteru_ishihara ruling_only = yes } }
+		}
+		
+		add_country_leader_role = {
+			character = JAP_nobuteru_ishihara
+			country_leader = { 
+				ideology = constitutionalist 
+				desc = POLITICS_nobuteru_ishihara_DESC
+				traits = { jiminto_minor jiminto_seiwakai }
+			}
+			promote_leader = yes
+		}
+
+		hidden_effect = {
+			news_event = { id = japan_news.24 hours = 0 random_hours = 8 }
+		}
+	}
+	
+	option = {
+		name = japan_LDP_election.5.e #Seiwakai, Ryu Shionoya
+		trigger = {
+			date > 2019.12.31
+			NOT = { has_country_leader = { character = JAP_ryu_shionoya ruling_only = yes } }
+		}
+		
+		add_country_leader_role = {
+			character = JAP_ryu_shionoya
+			country_leader = { 
+				ideology = constitutionalist 
+				desc = POLITICS_ryu_shionoya_DESC
+				traits = { jiminto_minor jiminto_seiwakai }
+			}
+			promote_leader = yes
+		}
+
+		hidden_effect = {
+			news_event = { id = japan_news.24 hours = 0 random_hours = 8 }
+		}
+	}
+	
+	option = {
+		name = japan_LDP_election.5.f #Seiwakai, Yoshiro  Mori
+		trigger = {
+			date > 2019.12.31
+			has_country_flag = dead_shinzo_abe
+			NOT = { has_country_leader = { character = JAP_yoshiro_mori_after_2020 ruling_only = yes } }
+		}
+		
+		add_country_leader_role = {
+			character = JAP_yoshiro_mori_after_2020
+			country_leader = { 
+				ideology = right_wing_conservative 
+				desc = POLITICS_yoshiro_mori_after_2020_DESC
+				traits = { jiminto_minor jiminto_seiwakai ldp_unpredictable_speech }
+			}
+			promote_leader = yes
+		}
+
+		hidden_effect = {
+			news_event = { id = japan_news.24 hours = 0 random_hours = 8 }
+		}
+	}
+	
+	#########################
+	#
+	# Shisuikai
+	#
+	#########################
+	
+	option = {
+		name = japan_LDP_election.5.g #Shisuikai, Takeo Kawamura  
+		trigger = {
+			date < 2020.01.01
+			NOT = { has_country_leader = { character = JAP_takeo_kawamura ruling_only = yes } }
+		}
+		
+		add_country_leader_role = {
+			character = JAP_takeo_kawamura
+			country_leader = { 
+				ideology = constitutionalist 
+				desc = POLITICS_takeo_kawamura_DESC
+				traits = { jiminto_minor jiminto_shisuikai }
+			}
+			promote_leader = yes
+		}
+
+		hidden_effect = {
+			news_event = { id = japan_news.24 hours = 0 random_hours = 8 }
+		}
+	}
+	
+	option = {
+		name = japan_LDP_election.5.h #Shisuikai, Bunmei Ibuki  
+		trigger = {
+			date < 2010.01.01
+			NOT = { has_country_leader = { character = JAP_bunmei_ibuki ruling_only = yes } }
+		}
+		
+		add_country_leader_role = {
+			character = JAP_bunmei_ibuki
+			country_leader = { 
+				ideology = constitutionalist 
+				desc = POLITICS_bunmei_ibuki_DESC
+				traits = { jiminto_minor jiminto_shisuikai }
+			}
+			promote_leader = yes
+		}
+
+		hidden_effect = {
+			news_event = { id = japan_news.24 hours = 0 random_hours = 8 }
+		}
+	}
+	
+	option = {
+		name = japan_LDP_election.5.i #Shisuikai, Toshihiro Nikai
+		trigger = {
+			date > 2009.12.31
+			NOT = { has_country_leader = { character = JAP_toshihiro_nikai ruling_only = yes } }
+		}
+		
+		add_country_leader_role = {
+			character = JAP_toshihiro_nikai
+			country_leader = { 
+				ideology = constitutionalist 
+				desc = POLITICS_toshihiro_nikai_DESC
+				traits = { jiminto_minor jiminto_shisuikai }
+			}
+			promote_leader = yes
+		}
+
+		hidden_effect = {
+			news_event = { id = japan_news.24 hours = 0 random_hours = 8 }
+		}
+	}
+	
+	option = {
+		name = japan_LDP_election.5.j #Shisuikai, Goshi Hosono
+		trigger = {
+			date > 2019.12.31
+			NOT = { has_country_leader = { character = JAP_goshi_hosono ruling_only = yes } }
+		}
+		
+		add_country_leader_role = {
+			character = JAP_goshi_hosono
+			country_leader = { 
+				ideology = constitutionalist 
+				desc = POLITICS_goshi_hosono_DESC
+				traits = { jiminto_minor jiminto_shisuikai }
+			}
+			promote_leader = yes
+		}
+
+		hidden_effect = {
+			news_event = { id = japan_news.24 hours = 0 random_hours = 8 }
+		}
+	}
+	
+}
+
+country_event = {
+	id = japan_LDP_election.6
+	
+	title = {
+		text = japan_LDP_election.6.t_1
+		trigger = { has_country_leader_with_trait = jiminto_non_faction }
+	}
+	title = {
+		text = japan_LDP_election.6.t_2
+		trigger = { NOT = { has_country_leader_with_trait = jiminto_non_faction } }
+	}
+	
+	desc = {
+		text = japan_LDP_election.6.desc_1
+		trigger = { has_country_leader_with_trait = jiminto_non_faction }
+	}
+	
+	desc = {
+		text = japan_LDP_election.6.desc_2
+		trigger = { NOT = { has_country_leader_with_trait = jiminto_non_faction } }
+	}
+	
+	picture = GFX_report_event_JAP_LDP_election_2
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = japan_LDP_election.4.a #[ROOT.GetLeader] is Prime Minister again!
+		trigger = {
+			OR = {
+				AND = {
+					NOT = { has_country_flag = jap_resign_of_the_prime_minister }
+					has_country_flag = LDP_party_Reelection_3 
+					check_variable = { Jiminto_Sosai_Re_election < 2 }
+				}
+				AND = {
+					NOT = { has_country_flag = jap_resign_of_the_prime_minister }
+					NOT = { has_country_flag = LDP_party_Reelection_3 }
+					check_variable = { Jiminto_Sosai_Re_election < 1 }
+				}
+			}
+		}
+		add_to_variable = { Jiminto_Sosai_Re_election = 1 }
+
+		hidden_effect = {
+			news_event = { id = japan_news.23 hours = 0 random_hours = 8 }
+		}
+	}
+	
+	option = {
+		name = japan_LDP_election.4.b #We will elect a New Prime Minister!
+		set_variable = { Jiminto_Sosai_Re_election = 0 }
+		
+		country_event = japan_LDP_election.7
+	}
+}
+
+country_event = {
+	id = japan_LDP_election.7
+	title = japan_LDP_election.7.t
+	desc = japan_LDP_election.7.desc
+	
+	picture = GFX_report_event_JAP_LDP
+	
+	is_triggered_only = yes
+	
+	#########################
+	#
+	# Others
+	#
+	#########################
+	
+	option = {
+		name = japan_LDP_election.7.a #Kaoru Yosano
+		trigger = {
+			date < 2020.01.01
+			NOT = { has_country_leader = { character = JAP_kaoru_yosano ruling_only = yes } }
+		}
+		
+		add_country_leader_role = {
+			character = JAP_kaoru_yosano
+			country_leader = { 
+				ideology = fiscal_conservative 
+				desc = POLITICS_kaoru_yosano_DESC
+				traits = { jiminto_non_faction }
+			}
+			promote_leader = yes
+		}
+
+		hidden_effect = {
+			news_event = { id = japan_news.24 hours = 0 random_hours = 8 }
+		}
+	}
+	
+	option = {
+		name = japan_LDP_election.7.b #Taro Nakayama
+		trigger = {
+			date < 2010.01.01
+			NOT = { has_country_leader = { character = JAP_taro_nakayama ruling_only = yes } }
+		}
+		
+		add_country_leader_role = {
+			character = JAP_taro_nakayama
+			country_leader = { 
+				ideology = fiscal_conservative 
+				desc = POLITICS_taro_nakayama_DESC
+				traits = { jiminto_non_faction ldp_wise_old_man }
+			}
+			promote_leader = yes
+		}
+
+		hidden_effect = {
+			news_event = { id = japan_news.24 hours = 0 random_hours = 8 }
+		}
+	}
+	
+	option = {
+		name = japan_LDP_election.7.c #Shigeru Ishiba
+		trigger = {
+			date > 2009.12.31
+			NOT = { has_country_leader = { character = JAP_shigeru_ishiba ruling_only = yes } }
+		}
+		
+		add_country_leader_role = {
+			character = JAP_shigeru_ishiba
+			country_leader = { 
+				ideology = constitutionalist 
+				desc = POLITICS_shigeru_ishiba_DESC
+				traits = { jiminto_non_faction }
+			}
+			promote_leader = yes
+		}
+
+		hidden_effect = {
+			news_event = { id = japan_news.24 hours = 0 random_hours = 8 }
+		}
+	}
+	
+	option = {
+		name = japan_LDP_election.7.d #Seiko Noda
+		trigger = {
+			date > 2009.12.31
+			NOT = { has_country_leader = { character = JAP_seiko_noda ruling_only = yes } }
+		}
+		
+		add_country_leader_role = {
+			character = JAP_seiko_noda
+			country_leader = { 
+				ideology = constitutionalist 
+				desc = POLITICS_seiko_noda_DESC
+				traits = { jiminto_non_faction }
+			}
+			promote_leader = yes
+		}
+
+		hidden_effect = {
+			news_event = { id = japan_news.24 hours = 0 random_hours = 8 }
+		}
+	}
+	
+	option = {
+		name = japan_LDP_election.7.e #Sanae Takaichi
+		trigger = {
+			date > 2019.12.31
+			NOT = { has_country_leader = { character = JAP_sanae_takaichi ruling_only = yes } }
+		}
+		
+		add_country_leader_role = {
+			character = JAP_sanae_takaichi
+			country_leader = { 
+				ideology = right_wing_conservative 
+				desc = POLITICS_sanae_takaichi_DESC
+				traits = { jiminto_non_faction }
+			}
+			promote_leader = yes
+		}
+
+		hidden_effect = {
+			news_event = { id = japan_news.24 hours = 0 random_hours = 8 }
+		}
+	}
+	
+	option = {
+		name = japan_LDP_election.7.f #Shinjiro Koizumi
+		trigger = {
+			date > 2019.12.31
+			NOT = { has_country_leader = { character = JAP_shinjiro_koizumi ruling_only = yes } }
+		}
+		
+		add_country_leader_role = {
+			character = JAP_shinjiro_koizumi
+			country_leader = { 
+				ideology = constitutionalist
+				desc = POLITICS_shinjiro_koizumi_DESC
+				traits = { jiminto_non_faction ldp_trickster ldp_conservationist }
+			}
+			promote_leader = yes
+		}
+
+		hidden_effect = {
+			news_event = { id = japan_news.24 hours = 0 random_hours = 8 }
+		}
+	}
+	
+	option = {
+		name = japan_LDP_election.7.g #Yoshihide Suga
+		trigger = {
+			date > 2019.12.31
+			NOT = { has_country_leader = { character = JAP_yoshihide_suga ruling_only = yes } }
+		}
+		
+		add_country_leader_role = {
+			character = JAP_yoshihide_suga
+			country_leader = { 
+				ideology = fiscal_conservative 
+				desc = POLITICS_yoshihide_suga_DESC
+				traits = { jiminto_non_faction ldp_quiet_bureaucrat }
+			}
+			promote_leader = yes
+		}
+
+		hidden_effect = {
+			news_event = { id = japan_news.24 hours = 0 random_hours = 8 }
+		}
+	}
+	
+	
 }
