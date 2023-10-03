@@ -3329,396 +3329,6 @@ JAP_comecon_dec_cat = {
 
 JAP_habatsu_system = {
 
-	JAP_prime_minister_s_visit_to_yasukuni_shrine = {
-		icon = GFX_decision_eng_propaganda_campaigns
-
-		visible = {
-			OR = {
-				has_government = conservative 
-				has_government = reactionary 
-				has_government = market_liberal 
-			}
-		}
-
-		available = {
-			NOT = { has_completed_focus = JAP_closed_yasukuni }
-		}
-
-		cost = 15
-		days_remove = 56
-
-		complete_effect = {
-			JAP_bop_medium_decrease_effect = yes
-		}
-
-		ai_will_do = {
-			base = 0.1
-			modifier = {
-				factor = 9
-				power_balance_value = {
-					id = JAP_power_balance
-					value > 0.1
-				}
-			}
-			modifier = {
-				factor = 9
-				power_balance_value = {
-					id = JAP_power_balance
-					value > 0.5
-				}
-			}
-			modifier = {
-				factor = 9
-				power_balance_value = {
-					id = JAP_power_balance
-					value > 0.8
-				}
-			}
-		}
-	}
-	
-	JAP_funding_from_unification_church = {
-		icon = GFX_decision_generic_fundraising
-
-		visible = {
-			OR = {
-				has_government = conservative 
-				has_government = reactionary 
-				has_government = market_liberal 
-			}
-		}
-
-		available = {
-			has_completed_focus = JAP_connection_with_unification_church
-		}
-
-		cost = 25
-		days_remove = 120
-
-		complete_effect = {
-			JAP_bop_high_decrease_effect = yes
-		}
-
-		ai_will_do = {
-			base = 0.1
-			modifier = {
-				factor = 7
-				power_balance_value = {
-					id = JAP_power_balance
-					value > 0.1
-				}
-			}
-			modifier = {
-				factor = 7
-				power_balance_value = {
-					id = JAP_power_balance
-					value > 0.5
-				}
-			}
-			modifier = {
-				factor = 7
-				power_balance_value = {
-					id = JAP_power_balance
-					value > 0.8
-				}
-			}
-		}
-	}
-	
-	JAP_new_study_by_seiwa_seisaku_kenkyukai = {
-		icon = GFX_decision_generic_military
-
-		visible = {
-			OR = {
-				has_government = conservative 
-				has_government = reactionary 
-				has_government = market_liberal 
-			}
-		}
-
-		ai_hint_pp_cost = 25
-		
-		custom_cost_trigger = {
-			command_power > 24
-		}
-		
-		custom_cost_text = decision_cost_CP_25
-		
-		days_remove = 60
-		
-		available = {
-		}
-		
-		complete_effect = {
-			JAP_bop_low_decrease_effect = yes
-			hidden_effect = {
-				add_command_power = -25
-			}
-		}
-
-		ai_will_do = {
-			base = 0.1
-			modifier = {
-				factor = 7
-				power_balance_value = {
-					id = JAP_power_balance
-					value > 0.1
-				}
-			}
-			modifier = {
-				factor = 7
-				power_balance_value = {
-					id = JAP_power_balance
-					value > 0.5
-				}
-			}
-			modifier = {
-				factor = 7
-				power_balance_value = {
-					id = JAP_power_balance
-					value > 0.8
-				}
-			}
-		}
-	}
-	
-	JAP_war_is_not_our_way = {
-		icon = GFX_decision_generic_speech
-
-		visible = {
-			#OR = {
-			#	has_government = conservative 
-			#	has_government = reactionary 
-			#	has_government = market_liberal 
-			#}
-		}
-
-		available = {
-		}
-
-		cost = 15
-		days_remove = 56
-
-		complete_effect = {
-			JAP_bop_medium_increase_effect = yes
-		}
-
-		ai_will_do = {
-			base = 0.1
-			modifier = {
-				factor = 9
-				power_balance_value = {
-					id = JAP_power_balance
-					value < -0.1
-				}
-			}
-			modifier = {
-				factor = 9
-				power_balance_value = {
-					id = JAP_power_balance
-					value < -0.5
-				}
-			}
-			modifier = {
-				factor = 9
-				power_balance_value = {
-					id = JAP_power_balance
-					value < -0.8
-				}
-			}
-		}
-	}
-	
-	JAP_kochikai_s_new_policy = {
-		icon = GFX_decision_generic_political_discourse
-
-		visible = {
-			OR = {
-				has_government = conservative 
-				has_government = reactionary 
-				has_government = market_liberal 
-			}
-		}
-
-		available = {
-		}
-
-		cost = 25
-		days_remove = 120
-
-		complete_effect = {
-			JAP_bop_high_increase_effect = yes
-		}
-
-		ai_will_do = {
-			base = 0.1
-			modifier = {
-				factor = 7
-				power_balance_value = {
-					id = JAP_power_balance
-					value < -0.1
-				}
-			}
-			modifier = {
-				factor = 7
-				power_balance_value = {
-					id = JAP_power_balance
-					value < -0.5
-				}
-			}
-			modifier = {
-				factor = 7
-				power_balance_value = {
-					id = JAP_power_balance
-					value < -0.8
-				}
-			}
-		}
-	}
-	
-	JAP_emphasis_on_liberal_conservatism = {
-		icon = GFX_decision_generic_political_discourse
-
-		visible = {
-			OR = {
-				has_government = conservative 
-				has_government = reactionary 
-				has_government = market_liberal 
-			}
-		}
-
-		available = {
-		}
-
-
-		cost = 5
-		
-		days_remove = 60
-
-
-		complete_effect = {
-			JAP_bop_low_increase_effect = yes
-		}
-
-		ai_will_do = {
-			base = 0.1
-			modifier = {
-				factor = 7
-				power_balance_value = {
-					id = JAP_power_balance
-					value < -0.1
-				}
-			}
-			modifier = {
-				factor = 7
-				power_balance_value = {
-					id = JAP_power_balance
-					value < -0.5
-				}
-			}
-			modifier = {
-				factor = 7
-				power_balance_value = {
-					id = JAP_power_balance
-					value < -0.8
-				}
-			}
-		}
-	}
-	
-	JAP_funding_from_soka_gakkai = {
-		icon = GFX_decision_generic_fundraising
-
-		visible = {
-			OR = {
-				has_government = conservative 
-				has_government = reactionary 
-				has_government = market_liberal 
-			}
-		}
-
-		available = {
-			has_completed_focus = JAP_connection_with_soka_gakkai
-		}
-
-		cost = 25
-		days_remove = 120
-
-		complete_effect = {
-			JAP_bop_high_increase_effect = yes
-		}
-
-		ai_will_do = {
-			base = 0.1
-			modifier = {
-				factor = 7
-				power_balance_value = {
-					id = JAP_power_balance
-					value < -0.1
-				}
-			}
-			modifier = {
-				factor = 7
-				power_balance_value = {
-					id = JAP_power_balance
-					value < -0.5
-				}
-			}
-			modifier = {
-				factor = 7
-				power_balance_value = {
-					id = JAP_power_balance
-					value < -0.8
-				}
-			}
-		}
-	}
-	
-	JAP_new_history_textbook = {
-		icon = GFX_decision_eng_ally_imperialist_coup
-
-		visible = {
-			OR = {
-				has_government = conservative 
-				has_government = reactionary 
-				has_government = market_liberal 
-			}
-		}
-
-		available = {
-			has_completed_focus = JAP_bushido
-		}
-
-		fire_only_once = yes
-		
-		cost = 25
-
-		complete_effect = {
-			JAP_bop_medium_decrease_effect = yes
-			add_popularity = {
-				ideology = nationalist
-				popularity = 0.03
-			}
-			
-			hidden_effect = {
-				JAP = { country_event = { id = japan.47 days = 7 random = 14 } }
-				if = {
-					limit = { NOT = { has_government = islamist } } #Republic of Japan
-					KOR = { country_event = { id = japan.47 days = 7 random = 14 } }
-				}
-				PRK = { country_event = { id = japan.47 days = 7 random = 14 } }
-				PRC = { country_event = { id = japan.47 days = 7 random = 14 } }
-				CHI = { country_event = { id = japan.47 days = 7 random = 14 } }
-				HKN = { country_event = { id = japan.47 days = 7 random = 14 } }
-				MCU = { country_event = { id = japan.47 days = 7 random = 14 } }
-			}
-		}
-
-		ai_will_do = {
-			base = 10
-		}
-	}
-	
 	### Left
 	
 	JAP_strengthening_conservative = {
@@ -3827,11 +3437,11 @@ JAP_habatsu_system = {
 		}
 
 		cost = 25
-		days_remove = 120
+		days_remove = 365
 
 		complete_effect = {
 			add_country_leader_trait = confidence_and_supply_JCP
-			JAP_bop_high_decrease_effect = yes
+			JAP_bop_high_increase_effect = yes
 		}
 
 		ai_will_do = {
@@ -3871,16 +3481,22 @@ JAP_habatsu_system = {
 
 		available = {
 			NOT = { has_country_leader_with_trait = coalition_government_JCP }
-			NOT = { has_country_leader_with_trait = confidence_and_supply_JCP }
+			#NOT = { has_country_leader_with_trait = confidence_and_supply_JCP }
 			democratic_socialist > 0
 		}
 
 		cost = 25
-		days_remove = 120
+		days_remove = 365
 
 		complete_effect = {
 			add_country_leader_trait = coalition_government_JCP
-			JAP_bop_high_decrease_effect = yes
+			
+			if = {
+				limit = { has_country_leader_with_trait = confidence_and_supply_JCP }
+				remove_country_leader_trait = confidence_and_supply_JCP
+			}
+			
+			JAP_bop_high_increase_effect = yes
 		}
 
 		ai_will_do = {
@@ -3906,6 +3522,38 @@ JAP_habatsu_system = {
 					value < -0.8
 				}
 			}
+		}
+	}
+	
+	JAP_end_JCP_coalition_government = {
+		icon = GFX_decision_generic_political_discourse
+
+		visible = {
+			OR = {
+				has_country_leader_with_trait = coalition_government_JCP 
+				has_country_leader_with_trait = confidence_and_supply_JCP
+			}
+		}
+
+		available = {
+			OR = {
+				has_country_leader_with_trait = coalition_government_JCP 
+				has_country_leader_with_trait = confidence_and_supply_JCP
+			}
+		}
+
+		cost = 100
+		days_remove = 365
+
+		complete_effect = {
+			add_stability = -0.02
+			
+			remove_country_leader_trait = coalition_government_JCP
+			remove_country_leader_trait = confidence_and_supply_JCP
+		}
+
+		ai_will_do = {
+			base = 0
 		}
 	}
 }
@@ -4497,4 +4145,1135 @@ JAP_world_revolution_projcet = {
 			base = 25
 		}
 	}
+}
+
+##############################################
+###
+### JAP_special_investigation 
+###
+##############################################
+
+#JAP_special_investigation = {
+#
+#	JAP_the_second_hand_of_a_clock = {
+#
+#		allowed = { tag = JAP }
+#
+#		icon = SOV_the_anti_soviet_trotskyist_center
+#
+#		available = {
+#			hidden_trigger = { always = no }
+#		}
+#
+#		days_mission_timeout = 180
+#		is_good = no
+#		fire_only_once = yes
+#
+#		cancel_trigger = {
+#			has_country_flag = crush_chukaku_ha
+#		}
+#		
+#		activation = {
+#			always = no
+#		}
+#
+#		visible = {
+#			NOT = { has_country_flag = crush_chukaku_ha }
+#		}
+#		
+#		cancel_effect = {
+#		
+#		}
+#
+#		timeout_effect = {
+#			hidden_effect = {
+#				country_event = poland.24
+#			}
+#		}
+#
+#		ai_will_do = {
+#			factor = 200
+#		}
+#	}
+#
+#	JAP_search_for_chukakuha = {
+#	
+# 	icon = generic_arrest
+#
+#		allowed = { 
+#			original_tag = JAP
+#		}
+#		
+#		fire_only_once = yes
+#		
+#		visible = {
+#			NOT = { 
+#				has_country_flag = crush_chukaku_ha
+#			}
+#		}
+#		
+#		available = {
+#		}
+#
+#		cost = 0
+#		days_remove = 35
+#
+#		ai_will_do = {
+#			factor = 5
+#		}
+#		
+#		ai_hint_pp_cost = 25
+#		
+#		custom_cost_trigger = {
+#			command_power > 24
+#		}
+#		
+#		custom_cost_text = decision_cost_CP_25
+#		
+#		days_remove = 60
+#		
+#		available = {
+#		}
+#		
+#		complete_effect = {
+#			hidden_effect = {
+#				add_command_power = -25
+#			}
+#		}
+#
+#	}
+#}
+
+JAP_LDP_factions_projcet = {
+
+	LDP_presidential_election = {
+
+		priority = 99
+
+		icon = GFX_decision_SWI_dismiss_council
+
+		available = {
+			hidden_trigger = { always = no }
+		}
+		
+		cancel_trigger = {
+			NOT = { has_government = conservative }
+		}
+
+		days_mission_timeout = LDP_election_days
+
+		fire_only_once = no
+
+		activation = {
+			AND = {
+				NOT = { has_country_flag = jap_ldp_collapse }
+				has_government = conservative
+				has_completed_focus = JAP_triumph_of_democracy
+			}
+		}
+
+		visible = {
+			original_tag = JAP
+		}
+
+		cancel_if_not_visible = yes
+
+		is_good = yes
+
+		timeout_effect = {
+			#custom_effect_tooltip = LDP_presidential_election_tt
+			country_event = japan_LDP_election.1
+		}
+	}
+
+	LDP_extend_leadership_three_years = {
+	
+		icon = GFX_decision_eng_propaganda_campaigns
+
+		allowed = { 
+			original_tag = JAP
+		}
+		
+		fire_only_once = yes
+		
+		visible = {
+			NOT = { has_country_flag = LDP_party_election_3_years }
+		}
+		
+		available = {
+		}
+
+		cost = 100
+
+		ai_will_do = {
+			factor = 5
+		}
+		
+		available = {
+		}
+		
+		complete_effect = {
+			custom_effect_tooltip = LDP_extend_leadership_three_years_tt
+			set_country_flag = LDP_party_election_3_years
+			set_variable =  { LDP_election_days = 1095 }
+		}
+
+	}
+
+	LDP_allowing_leadership_third_term = {
+	
+		icon = GFX_decision_eng_propaganda_campaigns
+
+		allowed = { 
+			original_tag = JAP
+		}
+		
+		fire_only_once = yes
+		
+		visible = {
+			NOT = { has_country_flag = LDP_party_Reelection_3 }
+		}
+		
+		available = {
+		}
+
+		cost = 100
+
+		ai_will_do = {
+			factor = 5
+		}
+		
+		available = {
+		}
+		
+		complete_effect = {
+			custom_effect_tooltip = LDP_allowing_leadership_third_term_tt
+			set_country_flag = LDP_party_Reelection_3
+		}
+
+	}
+	
+	LDP_resign_of_the_prime_minister = {
+	
+		icon = GFX_decision_eng_propaganda_campaigns
+
+		allowed = { 
+			original_tag = JAP
+		}
+		
+		fire_only_once = no
+		
+		visible = {
+			has_active_mission = LDP_presidential_election
+		}
+		
+		available = {
+		}
+
+		cost = 15
+		
+		days_re_enable = 365
+
+		ai_will_do = {
+			factor = 0
+		}
+		
+		available = {
+			#NOT = {
+			#	has_country_leader = { ruling_only = yes character = JAP_Junichiro_Koizumi }
+			#}
+		}
+		
+		complete_effect = {
+			set_country_flag = jap_resign_of_the_prime_minister
+			country_event = japan_LDP_election.1
+			
+			add_days_mission_timeout  = {
+				mission = LDP_presidential_election
+				days = 30
+			}
+			set_variable = { Jiminto_Sosai_Re_election = 0 }
+		}
+
+	}
+	
+	JAP_prime_minister_s_visit_to_yasukuni_shrine = {
+		icon = GFX_decision_eng_propaganda_campaigns
+
+		visible = {
+		}
+
+		available = {
+			NOT = { has_completed_focus = JAP_closed_yasukuni }
+		}
+
+		cost = 15
+		days_remove = 180
+
+		complete_effect = {
+			JAP_LDP_add_Hoshu_Boryu_5_effect = yes
+		}
+
+		ai_will_do = {
+			base = 0.7
+			modifier = {
+				factor = 0.1
+				has_country_leader_with_trait = jiminto_main
+			}
+			modifier = {
+				factor = 2
+				has_country_leader_with_trait = jiminto_minor
+			}
+		}
+	}
+	
+	JAP_funding_from_unification_church = {
+		icon = GFX_decision_generic_fundraising
+
+		visible = {
+		}
+
+		available = {
+			has_completed_focus = JAP_connection_with_unification_church
+		}
+
+		cost = 25
+		days_remove = 120
+
+		complete_effect = {
+			random_list = {
+				5 = { add_political_power = 25 }
+				5 = { JAP_LDP_add_Hoshu_Boryu_1_effect = yes } 
+				20 = { JAP_LDP_add_Hoshu_Boryu_3_effect = yes } 
+				10 = { JAP_LDP_add_Hoshu_Boryu_5_effect = yes } 
+			}
+		}
+
+		ai_will_do = {
+			base = 1
+			modifier = {
+				factor = 0.5
+				has_country_leader_with_trait = jiminto_main
+			}
+			modifier = {
+				factor = 1.5
+				has_country_leader_with_trait = jiminto_minor
+			}
+		}
+	}
+	
+	JAP_new_study_by_seiwa_seisaku_kenkyukai = {
+		icon = GFX_decision_generic_military
+
+		visible = {
+		}
+
+		ai_hint_pp_cost = 25
+		
+		custom_cost_trigger = {
+			command_power > 24
+		}
+		
+		custom_cost_text = decision_cost_CP_25
+		
+		days_remove = 60
+		
+		available = {
+		}
+		
+		complete_effect = {
+			random_list = {
+				10 = { JAP_LDP_add_Hoshu_Boryu_1_effect = yes } 
+				5 = { JAP_LDP_add_Hoshu_Boryu_3_effect = yes } 
+				2 = { JAP_LDP_add_Hoshu_Boryu_5_effect = yes } 
+			}
+			
+			hidden_effect = {
+				add_command_power = -25
+			}
+		}
+
+		ai_will_do = {
+			base = 1
+			modifier = {
+				factor = 0.5
+				has_country_leader_with_trait = jiminto_main
+			}
+			modifier = {
+				factor = 1.5
+				has_country_leader_with_trait = jiminto_minor
+			}
+		}
+	}
+	
+	JAP_war_is_not_our_way = {
+		icon = GFX_decision_generic_speech
+
+		visible = {
+		}
+
+		available = {
+		}
+
+		cost = 15
+		days_remove = 56
+
+		complete_effect = {
+			random_list = {
+				10 = { JAP_LDP_add_Hoshu_Honryu_1_effect = yes } 
+				5 = { JAP_LDP_add_Hoshu_Honryu_3_effect = yes } 
+				2 = { JAP_LDP_add_Hoshu_Honryu_5_effect = yes } 
+			}
+		}
+
+		ai_will_do = {
+			base = 0.1
+			modifier = {
+				factor = 9
+				has_country_leader_with_trait = jiminto_main
+			}
+			modifier = {
+				factor = 0
+				has_country_leader_with_trait = jiminto_minor
+			}
+		}
+	}
+	
+	JAP_kochikai_s_new_policy = {
+		icon = GFX_decision_generic_political_discourse
+
+		visible = {
+			OR = {
+				has_government = conservative 
+				has_government = reactionary 
+				has_government = market_liberal 
+			}
+		}
+
+		available = {
+		}
+
+		cost = 25
+		days_remove = 120
+
+		complete_effect = {
+			random_list = {
+				2 = { JAP_LDP_add_Hoshu_Honryu_1_effect = yes } 
+				20 = { JAP_LDP_add_Hoshu_Honryu_3_effect = yes } 
+				10 = { JAP_LDP_add_Hoshu_Honryu_5_effect = yes } 
+			}
+		}
+
+		ai_will_do = {
+			base = 1
+			modifier = {
+				factor = 3
+				has_country_leader_with_trait = jiminto_main
+			}
+			modifier = {
+				factor = 0.5
+				has_country_leader_with_trait = jiminto_minor
+			}
+		}
+	}
+	
+	JAP_emphasis_on_liberal_conservatism = {
+		icon = GFX_decision_generic_political_discourse
+
+		visible = {
+		}
+
+		available = {
+		}
+
+
+		cost = 5
+		
+		days_remove = 60
+
+
+		complete_effect = {
+			random_list = {
+				5 = { add_political_power = 15 }
+				5 = { JAP_LDP_add_Hoshu_Boryu_1_effect = yes } 
+				20 = { JAP_LDP_add_Hoshu_Boryu_3_effect = yes } 
+				10 = { JAP_LDP_add_Hoshu_Boryu_5_effect = yes } 
+			}
+		}
+
+		ai_will_do = {
+			base = 0.1
+		}
+	}
+	
+	JAP_funding_from_soka_gakkai = {
+		icon = GFX_decision_generic_fundraising
+
+		visible = {
+		}
+
+		available = {
+			has_completed_focus = JAP_connection_with_soka_gakkai
+		}
+
+		cost = 25
+		days_remove = 120
+
+		complete_effect = {
+			random_list = {
+				3 = { add_political_power = 25 } 
+				1 = { JAP_LDP_add_Hoshu_Honryu_1_effect = yes } 
+				10 = { JAP_LDP_add_Hoshu_Honryu_3_effect = yes } 
+				10 = { JAP_LDP_add_Hoshu_Honryu_5_effect = yes } 
+			}
+		}
+
+		ai_will_do = {
+			base = 3
+			modifier = {
+				factor = 3
+				has_country_leader_with_trait = jiminto_main
+			}
+			modifier = {
+				factor = 0.5
+				has_country_leader_with_trait = jiminto_minor
+			}
+		}
+	}
+	
+	JAP_new_history_textbook = {
+		icon = GFX_decision_eng_ally_imperialist_coup
+
+		visible = {
+		}
+
+		available = {
+			has_completed_focus = JAP_bushido
+		}
+
+		fire_only_once = yes
+		
+		cost = 25
+
+		complete_effect = {
+			JAP_LDP_add_Hoshu_Boryu_7_effect = yes
+		
+			add_popularity = {
+				ideology = nationalist
+				popularity = 0.03
+			}
+			
+			hidden_effect = {
+				JAP = { country_event = { id = japan.47 days = 7 random = 14 } }
+				if = {
+					limit = { NOT = { has_government = islamist } } #Republic of Japan
+					KOR = { country_event = { id = japan.47 days = 7 random = 14 } }
+				}
+				PRK = { country_event = { id = japan.47 days = 7 random = 14 } }
+				PRC = { country_event = { id = japan.47 days = 7 random = 14 } }
+				CHI = { country_event = { id = japan.47 days = 7 random = 14 } }
+				HKN = { country_event = { id = japan.47 days = 7 random = 14 } }
+				MCU = { country_event = { id = japan.47 days = 7 random = 14 } }
+			}
+		}
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				factor = 0.1
+				has_country_leader_with_trait = jiminto_main
+			}
+			modifier = {
+				factor = 0.5
+				has_country_leader_with_trait = jiminto_minor
+			}
+		}
+	}
+
+	LDP_debug_add_10 = {
+	
+		icon = GFX_decision_eng_propaganda_campaigns
+
+		allowed = { 
+			original_tag = JAP
+		}
+		
+		fire_only_once = no
+		
+		visible = {
+			is_debug = yes
+		}
+		
+		available = {
+		}
+
+		cost = 0
+
+		ai_will_do = {
+			factor = 0
+		}
+		
+		available = {
+		}
+		
+		complete_effect = {
+			add_to_variable = { LDP_faction_var = 10 }
+			JAP_reset_LDP_effect = yes
+		}
+
+	}
+	
+	LDP_debug_minus_10 = {
+	
+		icon = GFX_decision_eng_propaganda_campaigns
+
+		allowed = { 
+			original_tag = JAP
+		}
+		
+		fire_only_once = no
+		
+		visible = {
+			is_debug = yes
+		}
+		
+		available = {
+		}
+
+		cost = 0
+
+		ai_will_do = {
+			factor = 0
+		}
+		
+		available = {
+		}
+		
+		complete_effect = {
+			add_to_variable = { LDP_faction_var = -10 }
+			JAP_reset_LDP_effect = yes
+		}
+
+	}
+
+	LDP_debug_people_add_10 = {
+	
+		icon = GFX_decision_eng_propaganda_campaigns
+
+		allowed = { 
+			original_tag = JAP
+		}
+		
+		fire_only_once = no
+		
+		visible = {
+			is_debug = yes
+		}
+		
+		available = {
+		}
+
+		cost = 0
+
+		ai_will_do = {
+			factor = 0
+		}
+		
+		available = {
+		}
+		
+		complete_effect = {
+			add_to_variable = { LDP_people_var = 10 }
+			JAP_reset_LDP_effect = yes
+		}
+
+	}
+	
+	LDP_debug_people_minus_10 = {
+	
+		icon = GFX_decision_eng_propaganda_campaigns
+
+		allowed = { 
+			original_tag = JAP
+		}
+		
+		fire_only_once = no
+		
+		visible = {
+			is_debug = yes
+		}
+		
+		available = {
+		}
+
+		cost = 0
+
+		ai_will_do = {
+			factor = 0
+		}
+		
+		available = {
+		}
+		
+		complete_effect = {
+			add_to_variable = { LDP_people_var = -10 }
+			JAP_reset_LDP_effect = yes
+		}
+
+	}
+	
+	LDP_debug_election_now = {
+	
+		icon = GFX_decision_eng_propaganda_campaigns
+
+		allowed = { 
+			original_tag = JAP
+		}
+		
+		fire_only_once = no
+		
+		visible = {
+			is_debug = yes
+		}
+		
+		available = {
+		}
+
+		cost = 0
+
+		ai_will_do = {
+			factor = 0
+		}
+		
+		available = {
+		}
+		
+		complete_effect = {
+			add_days_mission_timeout  = {
+				mission = LDP_presidential_election
+				days = -365
+			}
+		}
+
+	}
+	
+}
+
+JAP_economic_problem_category = {
+
+	JAP_quantitative_easing_plan = {
+	
+		icon = GFX_decision_ger_mefo_bills
+
+		allowed = { 
+			original_tag = JAP
+		}
+		
+		fire_only_once = no
+		
+		visible = {
+		}
+		
+		available = {
+			NOT = { has_idea = economy_depression }
+		}
+		
+		cost = 10
+		
+		days_remove = 14
+		days_re_enable = 14
+
+		ai_will_do = {
+			factor = 5
+		}
+		
+		remove_effect = {
+			random_list = {
+				50 = {
+				}
+				20 = {
+					JAP_Getdebt_add_3_effect = yes
+				}
+				15 = {
+					JAP_Getdebt_add_5_effect = yes
+				}
+				5 = {
+					JAP_Getdebt_add_7_effect = yes
+				}
+			}
+			random_list = {
+				2 = {
+					JAP_Getdeflation_subtract_1_effect = yes
+				}
+				35 = {
+					JAP_Getdeflation_subtract_3_effect = yes
+				}
+				55 = {
+					JAP_Getdeflation_subtract_5_effect = yes
+				}
+				8 = {
+					JAP_Getdeflation_subtract_7_effect = yes
+				}
+			}
+		}
+		
+		complete_effect = {
+		}
+
+	}
+
+	JAP_public_expenditure_plan = {
+	
+		icon = GFX_decision_generic_construction
+
+		allowed = { 
+			original_tag = JAP
+		}
+		
+		fire_only_once = no
+		
+		visible = {
+		}
+		
+		available = {
+			NOT = { has_idea = economy_depression }
+			num_of_civilian_factories_available_for_projects > 2
+		}
+
+		cost = 20
+
+		ai_will_do = {
+			factor = 5
+		}
+		
+		days_remove = 35
+		days_re_enable = 14
+		
+		modifier = {
+			civilian_factory_use = 3
+		}
+		
+		remove_effect = {
+			random_list = {
+				95 = {
+				}
+				5 = {
+					JAP_Getdebt_add_3_effect = yes
+				}
+			}
+			random_list = {
+				5 = {
+					JAP_Getdeflation_subtract_1_effect = yes
+				}
+				70 = {
+					JAP_Getdeflation_subtract_3_effect = yes
+				}
+				10 = {
+					JAP_Getdeflation_subtract_5_effect = yes
+				}
+				15 = {
+					JAP_Getdeflation_subtract_7_effect = yes
+				}
+			}
+		}
+		
+		complete_effect = {
+		}
+
+	}
+
+	JAP_debt_repayment_plan = {
+	
+		icon = GFX_decision_eng_propaganda_campaigns
+
+		allowed = { 
+			original_tag = JAP
+		}
+		
+		fire_only_once = no
+		
+		visible = {
+		}
+		
+		available = {
+			NOT = { has_idea = economy_depression }
+		}
+
+		custom_cost_trigger = {
+			check_variable = { [?ROOT.NVX_ECO_health] > -90 }
+		}
+		
+		custom_cost_text = economic_health_2
+		
+		cost = 0
+
+		ai_will_do = {
+			factor = 3
+			modifier = {
+				factor = 0
+				check_variable = { [?ROOT.NVX_ECO_health] < -45 }
+			}
+			modifier = {
+				factor = 2
+				check_variable = { [?ROOT.NVX_ECO_health] > -15 }
+			}
+			modifier = {
+				factor = 10
+				check_variable = { [?ROOT.NVX_ECO_health] > 0 }
+			}
+		}
+		
+		available = {
+		}
+		
+		days_remove = 21
+		days_re_enable = 14
+		
+		remove_effect = {
+			random_list = {
+				10 = {
+					JAP_Getdebt_subtract_1_effect = yes
+				}
+				60 = {
+					JAP_Getdebt_subtract_3_effect = yes
+				}
+				20 = {
+					JAP_Getdebt_subtract_5_effect = yes
+				}
+				10 = {
+					JAP_Getdebt_subtract_7_effect = yes
+				}
+			}
+		}
+		
+		complete_effect = {
+			ROOT = { add_to_variable = { NVX_ECO_health = -2 } }
+		}
+
+	}
+
+	JAP_shift_defense_to_economic_plan = {
+	
+		icon = GFX_decision_generic_political_rally
+
+		allowed = { 
+			original_tag = JAP
+		}
+		
+		fire_only_once = no
+		
+		visible = {
+		}
+		
+		available = {
+			OR = {
+				has_war = no
+				NOT = { has_idea = economy_depression }
+			}
+		}
+		
+		custom_cost_trigger = {
+			command_power > 9
+		}
+		
+		modifier = {
+		}
+		
+		days_remove = 70
+		days_re_enable = 14
+		
+		custom_cost_text = decision_cost_CP_10
+		
+		remove_effect = {
+			random_list = {
+				10 = {
+					JAP_Getdebt_subtract_1_effect = yes
+				}
+				60 = {
+					JAP_Getdebt_subtract_3_effect = yes
+				}
+				20 = {
+					JAP_Getdebt_subtract_5_effect = yes
+				}
+				10 = {
+					JAP_Getdebt_subtract_7_effect = yes
+				}
+			}
+			remove_ideas = JAP_reduction_in_defense_budget
+		}
+		
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -10
+			}
+			add_ideas = JAP_reduction_in_defense_budget
+		}
+
+		cost = 0
+
+		ai_will_do = {
+			factor = 2
+		}
+	}
+
+	JAP_emergency_relief_bank_plan = {
+	
+		icon = GFX_decision_generic_fundraising
+
+		allowed = { 
+			original_tag = JAP
+		}
+		
+		fire_only_once = yes
+		
+		visible = {
+		}
+		
+		visible = {
+			NOT = { has_country_flag = JAP_bank_of_ishikawa_bankruptcy_flag }
+		}
+		
+		available = {
+			NOT = { has_idea = economy_depression }
+		}
+
+		custom_cost_trigger = {
+			check_variable = { [?ROOT.NVX_ECO_health] > -90 }
+		}
+
+		custom_cost_text = economic_health_3
+		
+		cost = 0
+
+		ai_will_do = {
+			factor = 3
+			modifier = {
+				factor = 0
+				check_variable = { [?ROOT.NVX_ECO_health] < -45 }
+			}
+			modifier = {
+				factor = 2
+				check_variable = { [?ROOT.NVX_ECO_health] > -15 }
+			}
+			modifier = {
+				factor = 10
+				check_variable = { [?ROOT.NVX_ECO_health] > 0 }
+			}
+		}
+		
+		complete_effect = {
+			ROOT = { add_to_variable = { NVX_ECO_health = -3 } }
+			set_country_flag = JAP_emergency_relief_bank_plan_flag_1
+			custom_effect_tooltip = JAP_emergency_relief_bank_plan_tt
+		}
+
+	}
+
+	JAP_declaration_of_increase_consumption_tax_plan = {
+	
+		icon = GFX_decision_generic_factory
+
+		allowed = { 
+			original_tag = JAP
+		}
+		
+		fire_only_once = no
+		
+		available = {
+			NOT = { has_idea = economy_depression }
+		}
+
+		custom_cost_trigger = {
+			check_variable = { [?ROOT.NVX_ECO_health] > -90 }
+		}
+		
+		custom_cost_text = economic_health_1
+		
+		cost = 0
+		
+		days_re_enable = 365
+
+		ai_will_do = {
+			factor = 3
+			modifier = {
+				factor = 0
+				check_variable = { [?ROOT.NVX_ECO_health] < -45 }
+			}
+			modifier = {
+				factor = 2
+				check_variable = { [?ROOT.NVX_ECO_health] > -15 }
+			}
+			modifier = {
+				factor = 10
+				check_variable = { [?ROOT.NVX_ECO_health] > 0 }
+			}
+		}
+		
+		remove_effect = {
+			random_list = {
+				2 = {
+					JAP_Getdebt_subtract_1_effect = yes
+				}
+				60 = {
+					JAP_Getdebt_subtract_3_effect = yes
+				}
+				28 = {
+					JAP_Getdebt_subtract_5_effect = yes
+				}
+				10 = {
+					JAP_Getdebt_subtract_7_effect = yes
+				}
+			}
+		}
+		
+		complete_effect = {
+			ROOT = { add_to_variable = { NVX_ECO_health = -1 } }
+		}
+
+	}
+
+	JAP_bank_of_ishikawa_bankruptcy = {
+	
+		icon = GFX_decision_SOV_behead_the_snake
+
+		allowed = { 
+			original_tag = JAP
+		}
+		
+		available = {
+			hidden_trigger = { always = no }
+		}
+		
+		activation = {
+			has_start_date < 2001.01.01
+		}
+		
+		days_mission_timeout = 240
+		
+		fire_only_once = yes
+
+		visible = {
+			original_tag = JAP
+		}
+
+		cancel_if_not_visible = yes
+
+		is_good = no
+
+		timeout_effect = {
+			set_country_flag = JAP_bank_of_ishikawa_bankruptcy_flag
+			custom_effect_tooltip = minous_economic_health_5
+			ROOT = { add_to_variable = { NVX_ECO_health = -5 } }
+			
+			JAP_Getdeflation_add_3_effect = yes
+		}
+		
+		cancel_trigger = {
+			hidden_trigger = {
+				has_country_flag = JAP_emergency_relief_bank_plan_flag_1
+			}
+		}
+
+	}
+	
 }

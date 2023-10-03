@@ -109,7 +109,7 @@ focus_tree = {
 	
 	shared_focus = {
 		id = JAP_Heisei_Fukyo_focus
-		icon = JAP_economic_train
+		icon = JAP_heisei_fukyo_focus
 		cost = 5
 		x = 28
 		y = 0
@@ -121,493 +121,210 @@ focus_tree = {
 					ruling_only = yes
 				}
 			}
+			JAP_need_debt_70 = yes 
+			JAP_need_deflation_70 = yes 
 		}
 		
 		search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_INTERNAL_AFFAIRS }
 	
 		completion_reward = {
-			add_ideas = JAP_economy_of_japan_base
+			#add_ideas = JAP_economy_of_japan_base
+
+			JAP_Getdeflation_subtract_7_effect = yes
+			JAP_Getdebt_subtract_7_effect = yes
 		}
 		
 		ai_will_do = {
 			factor = 20
 		}
 	}
-	
-	shared_focus = {
-		id = JAP_socialist_economy
-		icon = jap_moderate_reform #production
-		cost = 5.00
 
-		available = {
-			has_completed_focus = JAP_accomplishment_of_the_revolution
-		}
+	shared_focus = {
+		id = JAP_stabilizing_economy
+		icon = JAP_stabilizing_economy
+		cost = 8
 
 		prerequisite = { 
 			focus = JAP_Heisei_Fukyo_focus
 		}
 
-		mutually_exclusive = {
-			focus = JAP_market_economy
-		}
-
+		#mutually_exclusive = {
+		#	shared_focus = JAP_cool_japan
+		#}
+		
 		relative_position_id = JAP_Heisei_Fukyo_focus
-
-		x = -3
-		y = 1
-		
-		search_filters = { FOCUS_FILTER_INDUSTRY }
-	
-
-		completion_reward = {
-			add_timed_idea = { idea = JAP_socialist_economic_policy days = 365 }
-		}
-		
-		ai_will_do = {
-			factor = 1
-		}
-	}
-
-	shared_focus = {
-		id = JAP_focus_on_maoism
-		icon = JAP_mao_economy
-		cost = 5.00
-
-		available = {
-			has_completed_focus = JAP_jwcp_win
-		}
-
-		prerequisite = { 
-			focus = JAP_socialist_economy
-		}
-
-		mutually_exclusive = {
-			focus = JAP_orthodox_marxist_economics
-		}
-
-		relative_position_id = JAP_Heisei_Fukyo_focus
-
-		x = -4
-		y = 2
-		
-		search_filters = { FOCUS_FILTER_INDUSTRY }
-	
-
-		completion_reward = {
-			JAP_mao_economic_plan_effect = yes
-		}
-		
-		ai_will_do = {
-			factor = 1
-		}
-	}
-
-	shared_focus = {
-		id = JAP_ruralism
-		icon = production
-		cost = 5.00
-
-		prerequisite = { 
-			focus = JAP_focus_on_maoism
-		}
-
-		relative_position_id = JAP_focus_on_maoism
 
 		x = -2
 		y = 1
 		
 		search_filters = { FOCUS_FILTER_INDUSTRY }
-	
+
+		available = {
+			JAP_need_debt_50 = yes 
+		}
 
 		completion_reward = {
 			JAP_heisei_fukyo_down_effect = yes
+
+			JAP_Getdebt_add_20_effect = yes
 		}
 		
 		ai_will_do = {
-			factor = 1
+			factor = 100
 		}
 	}
 
 	shared_focus = {
-		id = JAP_decentralized_industry
-		icon = JAP_organize_wreckers
-		cost = 5.00
+		id = JAP_bureaucratic_overhaul
+		icon = JAP_bureaucratic_overhaul
+		cost = 8
 
 		prerequisite = { 
-			focus = JAP_focus_on_maoism
+			focus = JAP_Heisei_Fukyo_focus
 		}
 
-		relative_position_id = JAP_focus_on_maoism
+		#mutually_exclusive = {
+		#	shared_focus = JAP_cool_japan
+		#}
+		
+		relative_position_id = JAP_Heisei_Fukyo_focus
 
 		x = 0
 		y = 1
 		
 		search_filters = { FOCUS_FILTER_INDUSTRY }
 	
-
-		completion_reward = {
-			JAP_heisei_fukyo_down_effect = yes
-			JAP_mao_economic_plan_effect = yes
-		}
-		
-		ai_will_do = {
-			factor = 1
-		}
-	}
-
-	shared_focus = {
-		id = JAP_regional_development
-		icon = infrastructure
-		cost = 5.00
-
-		prerequisite = { 
-			focus = JAP_focus_on_maoism
-		}
-
-		relative_position_id = JAP_focus_on_maoism
-
-		x = -3
-		y = 2
-		
-		search_filters = { FOCUS_FILTER_INDUSTRY }
-	
-
-		completion_reward = {
-			JAP_heisei_fukyo_down_effect = yes
-			JAP_mao_economic_plan_effect = yes
-		}
-		
-		ai_will_do = {
-			factor = 1
-		}
-	}
-
-	shared_focus = {
-		id = JAP_agricultural_protection_policy
-		icon = agriculture
-		cost = 5.00
-
-		prerequisite = { 
-			focus = JAP_focus_on_maoism
-		}
-
-		relative_position_id = JAP_focus_on_maoism
-
-		x = -1
-		y = 2
-		
-		search_filters = { FOCUS_FILTER_INDUSTRY }
-	
-
-		completion_reward = {
-			JAP_heisei_fukyo_down_effect = yes
-			JAP_mao_economic_plan_effect = yes
-		}
-		
-		ai_will_do = {
-			factor = 1
-		}
-	}
-
-	#shared_focus = {
-	#	id = JAP_crushing_of_foreign_capital_imperialism
-	#	icon = jap_moderate_reform #production
-	#	cost = 5.00
-#
-#		prerequisite = { 
-#			focus = JAP_orthodox_marxist_economics
-#			focus = JAP_focus_on_maoism
-#		}
-#
-#		relative_position_id = JAP_focus_on_maoism
-#
-#		x = 2
-#		y = 1
-#		
-#		search_filters = { FOCUS_FILTER_INDUSTRY }
-#	
-#
-#		completion_reward = {
-#		}
-#		
-#		ai_will_do = {
-#			factor = 1
-#		}
-#	}
-
-#	shared_focus = {
-#		id = JAP_nationalization_of_JR
-#		icon = jap_moderate_reform #production
-#		cost = 5.00
-#
-#		prerequisite = { 
-#			focus = JAP_crushing_of_foreign_capital_imperialism
-#		}
-#
-#		relative_position_id = JAP_focus_on_maoism
-#
-#		x = 1
-#		y = 2
-#		
-#		search_filters = { FOCUS_FILTER_INDUSTRY }
-#	
-#
-#		completion_reward = {
-#		}
-#		
-#		ai_will_do = {
-#			factor = 1
-#		}
-#	}
-
-#	shared_focus = {
-#		id = JAP_aliance_with_trade_unions
-#		icon = jap_moderate_reform #production
-#		cost = 5.00
-#
-#		prerequisite = { 
-#			focus = JAP_crushing_of_foreign_capital_imperialism
-#		}
-#
-#		relative_position_id = JAP_focus_on_maoism
-#
-#		x = 3
-#		y = 2
-#		
-#		search_filters = { FOCUS_FILTER_INDUSTRY }
-#	
-#
-#		completion_reward = {
-#		}
-#		
-#		ai_will_do = {
-#			factor = 1
-#		}
-#	}
-
-	shared_focus = {
-		id = JAP_orthodox_marxist_economics
-		icon = JAP_lenin_economy
-		cost = 5.00
-
 		available = {
-			has_completed_focus = JAP_chugakuha_win
+			JAP_need_debt_70 = yes 
+			JAP_need_deflation_70 = yes 
 		}
+
+		completion_reward = {
+			JAP_heisei_fukyo_down_effect = yes
+
+			JAP_Getdeflation_subtract_7_effect = yes
+			JAP_Getdebt_subtract_7_effect = yes
+		}
+		
+		ai_will_do = {
+			factor = 100
+		}
+	}
+
+	shared_focus = {
+		id = JAP_stabilizing_deflation
+		icon = JAP_stabilizing_deflation
+		cost = 8
 
 		prerequisite = { 
-			focus = JAP_socialist_economy
+			focus = JAP_Heisei_Fukyo_focus
 		}
 
-		mutually_exclusive = {
-			focus = JAP_focus_on_maoism
-		}
-
+		#mutually_exclusive = {
+		#	shared_focus = JAP_cool_japan
+		#}
+		
 		relative_position_id = JAP_Heisei_Fukyo_focus
-
-		x = -2
-		y = 2
-		
-		search_filters = { FOCUS_FILTER_INDUSTRY }
-	
-
-		completion_reward = {
-			JAP_tro_economic_plan_effect = yes
-		}
-		
-		ai_will_do = {
-			factor = 1
-		}
-	}
-
-	shared_focus = {
-		id = JAP_break_chain_of_neoliberalism
-		icon = JAP_break_chain_gold #production
-		cost = 5.00
-
-		prerequisite = { 
-			focus = JAP_orthodox_marxist_economics
-		}
-
-		relative_position_id = JAP_orthodox_marxist_economics
-
-		x = 0
-		y = 1
-
-		search_filters = { FOCUS_FILTER_INDUSTRY }
-	
-
-		completion_reward = {
-			JAP_heisei_fukyo_down_effect = yes
-			JAP_tro_economic_plan_effect = yes
-		}
-		
-		ai_will_do = {
-			factor = 1
-		}
-	}
-
-	shared_focus = {
-		id = JAP_worker_welfare_first
-		#JAP_CMU_will_join_us 
-		#https://ja.wikipedia.org/wiki/%E5%9B%BD%E9%89%84%E5%8D%83%E8%91%89%E5%8B%95%E5%8A%9B%E8%BB%8A%E5%8A%B4%E5%83%8D%E7%B5%84%E5%90%88
-		icon = kor_revolution_mass
-		cost = 5.00
-
-		prerequisite = { 
-			focus = JAP_orthodox_marxist_economics
-		}
-
-		relative_position_id = JAP_orthodox_marxist_economics
-
-		x = 1
-		y = 2
-		
-		search_filters = { FOCUS_FILTER_INDUSTRY }
-	
-
-		completion_reward = {
-			JAP_heisei_fukyo_down_effect = yes
-		}
-		
-		ai_will_do = {
-			factor = 1
-		}
-	}
-
-	shared_focus = {
-		id = JAP_dissolution_of_bureaucracy
-		icon = production2
-		cost = 5.00
-
-		prerequisite = { 
-			focus = JAP_orthodox_marxist_economics
-		}
-
-		relative_position_id = JAP_orthodox_marxist_economics
 
 		x = 2
 		y = 1
 		
 		search_filters = { FOCUS_FILTER_INDUSTRY }
 	
-
-		completion_reward = {
-			JAP_heisei_fukyo_down_effect = yes
-			JAP_tro_economic_plan_effect = yes
-		}
-		
-		ai_will_do = {
-			factor = 1
-		}
-	}
-
-	shared_focus = {
-		id = JAP_heavy_industries_first
-		icon = JAP_merge_plants
-		cost = 5.00
-
-		prerequisite = { 
-			focus = JAP_orthodox_marxist_economics
-		}
-
-		relative_position_id = JAP_orthodox_marxist_economics
-
-		x = 3
-		y = 2
-		
-		search_filters = { FOCUS_FILTER_INDUSTRY }
-	
-
-		completion_reward = {
-			JAP_heisei_fukyo_down_effect = yes
-			JAP_tro_economic_plan_effect = yes
-		}
-		
-		ai_will_do = {
-			factor = 1
-		}
-	}
-
-	# Historical Economy
-
-	shared_focus = {
-		id = JAP_market_economy
-		icon = jap_economic_developement
-		cost = 5.00
-
 		available = {
-			NOT = { has_completed_focus = JAP_accomplishment_of_the_revolution }
+			JAP_need_deflation_50 = yes 
+		}
+
+		completion_reward = {
+			JAP_heisei_fukyo_down_effect = yes
+
+			JAP_Getdeflation_add_20_effect = yes
+		}
+		
+		ai_will_do = {
+			factor = 100
+		}
+	}
+
+	shared_focus = {
+		id = JAP_incomplete_progress
+		icon = JAP_japanese_cloud_ship
+		cost = 8
+
+		prerequisite = { 
+			focus = JAP_bureaucratic_overhaul
 		}
 
 		prerequisite = { 
-			focus = JAP_Heisei_Fukyo_focus
+			focus = JAP_stabilizing_deflation
+		}
+
+		prerequisite = { 
+			focus = JAP_stabilizing_economy
 		}
 
 		mutually_exclusive = {
-			focus = JAP_socialist_economy
+			focus = JAP_two_arrows
 		}
 
+		available = {
+			AND = {
+				NOT = { has_government = communist }
+				NOT = { has_government = democratic_socialist }
+			}
+		}
+		
 		relative_position_id = JAP_Heisei_Fukyo_focus
 
-		x = 6
-		y = 1
+		x = 1
+		y = 2
 		
 		search_filters = { FOCUS_FILTER_INDUSTRY }
 	
 
 		completion_reward = {
-			add_timed_idea = { idea = JAP_market_economic_policy days = 365 }
+			add_political_power = -50
+			JAP_Getdeflation_subtract_7_effect = yes
 		}
 		
 		ai_will_do = {
-			factor = 1
+			factor = 100
 		}
 	}
 
 	shared_focus = {
-		id = JAP_efficient_budget_use
-		icon = JAP_flower_hand
-		cost = 5.00
+		id = JAP_two_arrows
+		icon = JAP_two_arrows
+		cost = 8
 
 		prerequisite = { 
-			focus = JAP_market_economy
-		}
-
-		mutually_exclusive = {
 			focus = JAP_bureaucratic_overhaul
 		}
 
-		available = {
-			JAP_need_kakushin_government = yes
+		prerequisite = { 
+			focus = JAP_stabilizing_deflation
 		}
-
-		relative_position_id = JAP_market_economy
-
-		x = -2
-		y = 1
-		
-		search_filters = { FOCUS_FILTER_INDUSTRY }
-	
-
-		completion_reward = {
-			JAP_left_economic_plan_effect = yes
-		}
-		
-		ai_will_do = {
-			factor = 1
-		}
-	}
-
-	shared_focus = {
-		id = JAP_spend_money_on_citizens
-		icon = improve_relations
-		cost = 5.00
 
 		prerequisite = { 
-			focus = JAP_kasumigaseki_maizokin
+			focus = JAP_stabilizing_economy
 		}
 
-		relative_position_id = JAP_efficient_budget_use
+		mutually_exclusive = {
+			focus = JAP_incomplete_progress
+		}
+
+		available = {
+			OR = {
+				has_government = communist
+				has_government = democratic_socialist
+				has_government = social_democrat
+				has_government = progressive
+				has_country_leader_with_trait = coalition_government_JCP
+				has_country_leader_with_trait = confidence_and_supply_JCP
+			}
+		}
+		
+		relative_position_id = JAP_Heisei_Fukyo_focus
 
 		x = -1
 		y = 2
@@ -616,243 +333,54 @@ focus_tree = {
 	
 
 		completion_reward = {
-			JAP_heisei_fukyo_down_effect = yes
-			JAP_left_economic_plan_effect = yes
+			add_political_power = -50
+			JAP_Getdebt_subtract_7_effect = yes
 		}
 		
 		ai_will_do = {
-			factor = 1
+			factor = 100
 		}
 	}
 
 	shared_focus = {
-		id = JAP_kasumigaseki_maizokin
-		icon = JAP_gold_bar
-		cost = 5.00
+		id = JAP_resolution_of_the_recession
+		icon = JAP_resolution_of_the_recession
+		cost = 8
 
 		prerequisite = { 
-			focus = JAP_efficient_budget_use
+			focus = JAP_incomplete_progress
+			focus = JAP_two_arrows
 		}
 
-		relative_position_id = JAP_efficient_budget_use
-
-		x = -1
-		y = 1
+		#mutually_exclusive = {
+		#	shared_focus = JAP_cool_japan
+		#}
 		
-		search_filters = { FOCUS_FILTER_INDUSTRY }
-	
-
-		completion_reward = {
-			JAP_heisei_fukyo_down_effect = yes
-		}
-		
-		ai_will_do = {
-			factor = 1
-		}
-	}
-
-	shared_focus = {
-		id = JAP_support_for_small_businesses
-		icon = industry_civilian
-		cost = 5.00
-
-		prerequisite = { 
-			focus = JAP_efficient_budget_use
-		}
-
-		relative_position_id = JAP_efficient_budget_use
-
-		x = 1
-		y = 1
-		
-		search_filters = { FOCUS_FILTER_INDUSTRY }
-	
-
-		completion_reward = {
-			JAP_heisei_fukyo_down_effect = yes
-			JAP_left_economic_plan_effect = yes
-		}
-		
-		ai_will_do = {
-			factor = 1
-		}
-	}
-
-	shared_focus = {
-		id = JAP_make_bureaucracy_shut_up
-		icon = kor_break_unite
-		cost = 5.00
-
-		prerequisite = { 
-			focus = JAP_efficient_budget_use
-		}
-
-		relative_position_id = JAP_efficient_budget_use
-
-		x = 3
-		y = 1
-		
-		search_filters = { FOCUS_FILTER_INDUSTRY }
-	
-
-		completion_reward = {
-			JAP_heisei_fukyo_down_effect = yes
-			JAP_left_economic_plan_effect = yes
-		}
-		
-		ai_will_do = {
-			factor = 1
-		}
-	}
-
-	shared_focus = {
-		id = JAP_bureaucratic_overhaul
-		icon = JAP_election_compromise
-		cost = 5.00
-
-		prerequisite = { 
-			focus = JAP_market_economy
-		}
-
-		mutually_exclusive = {
-			focus = JAP_efficient_budget_use
-		}
-
-		available = {
-			JAP_need_hoshu_government = yes
-		}
-
-		relative_position_id = JAP_market_economy
-
-		x = 4
-		y = 1
-		
-		search_filters = { FOCUS_FILTER_INDUSTRY }
-	
-
-		completion_reward = {
-			JAP_right_economic_plan_effect = yes
-		}
-		
-		ai_will_do = {
-			factor = 1
-		}
-	}
-
-	shared_focus = {
-		id = JAP_deregulation_for_large_enterprises
-		icon = JAP_develop_polish_shipbuilding
-		cost = 5.00
-
-		prerequisite = { 
-			focus = JAP_bureaucratic_overhaul
-		}
-
-		relative_position_id = JAP_bureaucratic_overhaul
-
-		x = -1
-		y = 1
-		
-		search_filters = { FOCUS_FILTER_INDUSTRY }
-	
-
-		completion_reward = {
-			JAP_heisei_fukyo_down_effect = yes
-			JAP_right_economic_plan_effect = yes
-		}
-		
-		ai_will_do = {
-			factor = 1
-		}
-	}
-
-	shared_focus = {
-		id = JAP_national_resilience #ナショナル・レジリエンス
-		#https://www.cas.go.jp/jp/seisaku/kokudo_kyoujinka/index.html
-		icon = money
-		cost = 5.00
-
-		prerequisite = { 
-			focus = JAP_bureaucratic_overhaul
-		}
-
-		relative_position_id = JAP_bureaucratic_overhaul
-
-		x = 1
-		y = 1
-		
-		search_filters = { FOCUS_FILTER_INDUSTRY }
-	
-
-		completion_reward = {
-			JAP_heisei_fukyo_down_effect = yes
-			JAP_right_economic_plan_effect = yes
-		}
-		
-		ai_will_do = {
-			factor = 1
-		}
-	}
-
-	shared_focus = {
-		id = JAP_quantitative_easing
-		icon = dangerous_laws
-		cost = 5.00
-
-		prerequisite = { 
-			focus = JAP_national_resilience
-		}
-
-		prerequisite = { 
-			focus = JAP_deregulation_for_large_enterprises
-		}
-
-		relative_position_id = JAP_bureaucratic_overhaul
+		relative_position_id = JAP_Heisei_Fukyo_focus
 
 		x = 0
-		y = 2
+		y = 3
 		
 		search_filters = { FOCUS_FILTER_INDUSTRY }
 	
+		available = {
+			JAP_need_debt_20 = yes 
+			JAP_need_deflation_20 = yes 
+		}
 
 		completion_reward = {
 			JAP_heisei_fukyo_down_effect = yes
-			JAP_right_economic_plan_effect = yes
+			set_global_flag = end_heisei_fukyo
 		}
 		
 		ai_will_do = {
-			factor = 1
+			factor = 100
 		}
 	}
 
-	shared_focus = {
-		id = JAP_infinite_debt
-		icon = dangerous_deal
-		cost = 5.00
 
-		prerequisite = { 
-			focus = JAP_bureaucratic_overhaul
-		}
 
-		relative_position_id = JAP_bureaucratic_overhaul
 
-		x = 3
-		y = 1
-		
-		search_filters = { FOCUS_FILTER_INDUSTRY }
-	
-
-		completion_reward = {
-			JAP_heisei_fukyo_down_effect = yes
-
-			custom_effect_tooltip = available_political_advisor
-			show_ideas_tooltip = advisor_JAP_taro_aso
-		}
-		
-		ai_will_do = {
-			factor = 1
-		}
-	}
 #quantitative easing
 
 	#### Japanese Culture ####
@@ -1179,6 +707,10 @@ focus_tree = {
 		#mutually_exclusive = {
 		#	shared_focus = JAP_cool_japan
 		#}
+
+		available = {
+			has_tech = improved_computing_machine
+		}
 		
 		relative_position_id = JAP_cool_japan
 
@@ -1524,39 +1056,39 @@ focus_tree = {
 		cost = 5
 
 		available = {
-			custom_trigger_tooltip = { 
-				tooltip = JAP_end_heisei_fukyo_tt 
-				AND = {  
-					NOT = { has_idea = JAP_heisei_fukyo_4 }
-					NOT = { has_idea = JAP_heisei_fukyo_3 }
-					NOT = { has_idea = JAP_heisei_fukyo_2 }
-					NOT = { has_idea = JAP_heisei_fukyo_1 }
-				}
-			}
-			hidden_trigger = {  
-				NOT = { has_idea = JAP_heisei_fukyo_4 }
-				NOT = { has_idea = JAP_heisei_fukyo_3 }
-				NOT = { has_idea = JAP_heisei_fukyo_2 }
-				NOT = { has_idea = JAP_heisei_fukyo_1 }
-			}
+			#custom_trigger_tooltip = { 
+			#	tooltip = JAP_end_heisei_fukyo_tt 
+			#	AND = {  
+			#		NOT = { has_idea = JAP_heisei_fukyo_4 }
+			#		NOT = { has_idea = JAP_heisei_fukyo_3 }
+			#		NOT = { has_idea = JAP_heisei_fukyo_2 }
+			#		NOT = { has_idea = JAP_heisei_fukyo_1 }
+			#	}
+			#}
+			#hidden_trigger = {  
+			#	NOT = { has_idea = JAP_heisei_fukyo_4 }
+			#	NOT = { has_idea = JAP_heisei_fukyo_3 }
+			#	NOT = { has_idea = JAP_heisei_fukyo_2 }
+			#	NOT = { has_idea = JAP_heisei_fukyo_1 }
+			#}
 		}
 
 		bypass = {
-			custom_trigger_tooltip = { 
-				tooltip = JAP_end_heisei_fukyo_tt 
-				AND = {  
-					NOT = { has_idea = JAP_heisei_fukyo_4 }
-					NOT = { has_idea = JAP_heisei_fukyo_3 }
-					NOT = { has_idea = JAP_heisei_fukyo_2 }
-					NOT = { has_idea = JAP_heisei_fukyo_1 }
-				}
-			}
-			hidden_trigger = {  
-				NOT = { has_idea = JAP_heisei_fukyo_4 }
-				NOT = { has_idea = JAP_heisei_fukyo_3 }
-				NOT = { has_idea = JAP_heisei_fukyo_2 }
-				NOT = { has_idea = JAP_heisei_fukyo_1 }
-			}
+			#custom_trigger_tooltip = { 
+			#	tooltip = JAP_end_heisei_fukyo_tt 
+			#	AND = {  
+			#		NOT = { has_idea = JAP_heisei_fukyo_4 }
+			#		NOT = { has_idea = JAP_heisei_fukyo_3 }
+			#		NOT = { has_idea = JAP_heisei_fukyo_2 }
+			#		NOT = { has_idea = JAP_heisei_fukyo_1 }
+			#	}
+			#}
+			#hidden_trigger = {  
+			#	NOT = { has_idea = JAP_heisei_fukyo_4 }
+			#	NOT = { has_idea = JAP_heisei_fukyo_3 }
+			#	NOT = { has_idea = JAP_heisei_fukyo_2 }
+			#	NOT = { has_idea = JAP_heisei_fukyo_1 }
+			#}
 		}
 
 		x = 15
@@ -1565,10 +1097,32 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_INDUSTRY }
 
 		completion_reward = {
+			random_state = {
+				limit = { 
+					OR = {
+						state = 529
+						state = 532
+						state = 531
+						state = 530
+					}
+				}
+				add_extra_state_shared_building_slots = 2
+			}
+			random_state = {
+				limit = { 
+					OR = {
+						state = 528
+						state = 955
+						state = 533
+						state = 536
+					}
+				}
+				add_extra_state_shared_building_slots = 2
+			}
 		}
 		
 		ai_will_do = {
-			factor = 1
+			factor = 1.2
 		}
 	}
 
@@ -4631,7 +4185,7 @@ focus_tree = {
 		id = JAP_after_kato
 		icon = JAP_sakura_hinomaru
 		cost = 5
-		x = 46
+		x = 36
 		y = 0
 		
 		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_INTERNAL_AFFAIRS }
@@ -4811,15 +4365,20 @@ focus_tree = {
 			custom_effect_tooltip = JAP_successful_democracy_route_tt
 
 			hidden_effect = {
+				JAP_reset_LDP_effect = yes
 				news_event = { id = japan_news.5 hours = 6 }
-				retire_country_leader = yes
-				create_country_leader = {
-				name = JAP_Junichiro_Koizumi
-				picture = "Junichiro_Koizumi.dds"
-				desc = "POLITICS_Junichiro_Koizumi_DESC"
-				ideology = constitutionalist
-				}
+				retire_character = JAP_Yoshiro_Mori
 				load_focus_tree = japan_focus_democratic
+			}
+
+			add_country_leader_role = {
+				character = JAP_Junichiro_Koizumi
+				country_leader = { 
+					ideology = constitutionalist 
+					desc = POLITICS_Junichiro_Koizumi_DESC
+					traits = { jiminto_minor jiminto_seiwakai }
+				}
+				promote_leader = yes
 			}
 		}
 		

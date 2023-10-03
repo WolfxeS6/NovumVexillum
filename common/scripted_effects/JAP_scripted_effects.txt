@@ -845,3 +845,288 @@ JAP_right_economic_plan_effect = {
 		effect_tooltip = { add_ideas = JAP_economy_of_japan_right_1 }
 	}
 }
+
+JAP_reset_LDP_effect = {
+	hidden_effect = {
+		JAP_reset_LDP_faction_icon_effect = yes
+		JAP_reset_LDP_faction_background_effect = yes
+		JAP_reset_LDP_minmax_effect = yes
+	}
+}
+
+JAP_reset_LDP_faction_icon_effect = {
+	hidden_effect = {
+		# No use "old poster"
+		if = {
+			limit = {
+				has_country_leader_with_trait = jiminto_main
+			}
+			set_temp_variable = { LDP_frame_temp = 2 }
+			set_variable = { JAP_factions_icon_frame = LDP_frame_temp }
+		}
+		else = {
+			set_temp_variable = { LDP_frame_temp = 1 }
+			set_variable = { JAP_factions_icon_frame = LDP_frame_temp }
+		}
+	}
+}
+
+JAP_reset_LDP_minmax_effect = {
+	clamp_variable = {
+		var = LDP_faction_var
+		min = 0
+		max = 100
+	}
+	clamp_variable = {
+		var = LDP_people_var
+		min = 0
+		max = 100
+	}
+}
+
+JAP_reset_LDP_faction_background_effect = {
+	hidden_effect = {
+		# No use "old poster"
+		if = {
+			limit = {
+				check_variable = { LDP_faction_var < 10 }
+			}
+			set_temp_variable = { LDP_bgframe_temp = 1 }
+			set_variable = { JAP_factions_background_frame = LDP_bgframe_temp }
+		}
+		else_if = {
+			limit = {
+				check_variable = { LDP_faction_var < 20 }
+			}
+			set_temp_variable = { LDP_bgframe_temp = 2 }
+			set_variable = { JAP_factions_background_frame = LDP_bgframe_temp }
+		}
+		else_if = {
+			limit = {
+				check_variable = { LDP_faction_var < 30 }
+			}
+			set_temp_variable = { LDP_bgframe_temp = 3 }
+			set_variable = { JAP_factions_background_frame = LDP_bgframe_temp }
+		}
+		else_if = {
+			limit = {
+				check_variable = { LDP_faction_var < 40 }
+			}
+			set_temp_variable = { LDP_bgframe_temp = 4 }
+			set_variable = { JAP_factions_background_frame = LDP_bgframe_temp }
+		}
+		else_if = {
+			limit = {
+				check_variable = { LDP_faction_var < 50 }
+			}
+			set_temp_variable = { LDP_bgframe_temp = 5 }
+			set_variable = { JAP_factions_background_frame = LDP_bgframe_temp }
+		}
+		else_if = {
+			limit = {
+				check_variable = { LDP_faction_var < 60 }
+			}
+			set_temp_variable = { LDP_bgframe_temp = 6 }
+			set_variable = { JAP_factions_background_frame = LDP_bgframe_temp }
+		}
+		else_if = {
+			limit = {
+				check_variable = { LDP_faction_var < 70 }
+			}
+			set_temp_variable = { LDP_bgframe_temp = 7 }
+			set_variable = { JAP_factions_background_frame = LDP_bgframe_temp }
+		}
+		else_if = {
+			limit = {
+				check_variable = { LDP_faction_var < 80 }
+			}
+			set_temp_variable = { LDP_bgframe_temp = 8 }
+			set_variable = { JAP_factions_background_frame = LDP_bgframe_temp }
+		}
+		else_if = {
+			limit = {
+				check_variable = { LDP_faction_var < 90 }
+			}
+			set_temp_variable = { LDP_bgframe_temp = 9 }
+			set_variable = { JAP_factions_background_frame = LDP_bgframe_temp }
+		}
+		else = {
+			set_temp_variable = { LDP_bgframe_temp = 10 }
+			set_variable = { JAP_factions_background_frame = LDP_bgframe_temp }
+		}
+	}
+}
+
+JAP_Getdebt_minmax_effect = {
+	clamp_variable = {
+		var = JAP_debt_var
+		min = 0
+		max = 100
+	}
+}
+
+JAP_Getdebt_subtract_1_effect = {
+	add_to_variable = { var = JAP_debt_var value = -1 }
+	custom_effect_tooltip = JAP_debt_clear_1_tt
+	JAP_Getdebt_minmax_effect = yes
+}
+
+JAP_Getdebt_subtract_3_effect = {
+	add_to_variable = { var = JAP_debt_var value = -3 }
+	custom_effect_tooltip = JAP_debt_clear_1_tt
+	JAP_Getdebt_minmax_effect = yes
+}
+
+JAP_Getdebt_subtract_5_effect = {
+	add_to_variable = { var = JAP_debt_var value = -5 }
+	custom_effect_tooltip = JAP_debt_clear_2_tt
+	JAP_Getdebt_minmax_effect = yes
+}
+
+JAP_Getdebt_subtract_7_effect = {
+	add_to_variable = { var = JAP_debt_var value = -7 }
+	custom_effect_tooltip = JAP_debt_clear_3_tt
+	JAP_Getdebt_minmax_effect = yes
+}
+
+JAP_Getdebt_add_3_effect = {
+	add_to_variable = { var = JAP_debt_var value = 3 }
+	custom_effect_tooltip = JAP_debt_worse_1_tt
+	JAP_Getdebt_minmax_effect = yes
+}
+
+JAP_Getdebt_add_5_effect = {
+	add_to_variable = { var = JAP_debt_var value = 5 }
+	custom_effect_tooltip = JAP_debt_worse_2_tt
+	JAP_Getdebt_minmax_effect = yes
+}
+
+JAP_Getdebt_add_7_effect = {
+	add_to_variable = { var = JAP_debt_var value = 7 }
+	custom_effect_tooltip = JAP_debt_worse_3_tt
+	JAP_Getdebt_minmax_effect = yes
+}
+
+JAP_Getdebt_add_20_effect = {
+	add_to_variable = { var = JAP_debt_var value = 20 }
+	custom_effect_tooltip = JAP_debt_worse_4_tt
+	JAP_Getdebt_minmax_effect = yes
+}
+
+JAP_Getdeflation_minmax_effect = {
+	clamp_variable = {
+		var = JAP_deflation_var
+		min = 0
+		max = 100
+	}
+}
+
+JAP_Getdeflation_subtract_1_effect = {
+	add_to_variable = { var = JAP_deflation_var value = -1 }
+	custom_effect_tooltip = JAP_deflation_clear_1_tt
+	JAP_Getdeflation_minmax_effect = yes
+}
+
+JAP_Getdeflation_subtract_3_effect = {
+	add_to_variable = { var = JAP_deflation_var value = -3 }
+	custom_effect_tooltip = JAP_deflation_clear_1_tt
+	JAP_Getdeflation_minmax_effect = yes
+}
+
+JAP_Getdeflation_subtract_5_effect = {
+	add_to_variable = { var = JAP_deflation_var value = -5 }
+	custom_effect_tooltip = JAP_deflation_clear_2_tt
+	JAP_Getdeflation_minmax_effect = yes
+}
+
+JAP_Getdeflation_subtract_7_effect = {
+	add_to_variable = { var = JAP_deflation_var value = -7 }
+	custom_effect_tooltip = JAP_deflation_clear_3_tt
+	JAP_Getdeflation_minmax_effect = yes
+}
+
+JAP_Getdeflation_add_3_effect = {
+	add_to_variable = { var = JAP_deflation_var value = 3 }
+	custom_effect_tooltip = JAP_deflation_worse_1_tt
+	JAP_Getdeflation_minmax_effect = yes
+}
+
+JAP_Getdeflation_add_5_effect = {
+	add_to_variable = { var = JAP_deflation_var value = 5 }
+	custom_effect_tooltip = JAP_deflation_worse_2_tt
+	JAP_Getdeflation_minmax_effect = yes
+}
+
+JAP_Getdeflation_add_7_effect = {
+	add_to_variable = { var = JAP_deflation_var value = 7 }
+	custom_effect_tooltip = JAP_deflation_worse_3_tt
+	JAP_Getdeflation_minmax_effect = yes
+}
+
+JAP_Getdeflation_add_20_effect = {
+	add_to_variable = { var = JAP_deflation_var value = 20 }
+	custom_effect_tooltip = JAP_deflation_worse_4_tt
+	JAP_Getdebt_minmax_effect = yes
+}
+
+##### LDP
+
+JAP_LDP_add_Hoshu_Honryu_1_effect = {
+	add_to_variable = { var = LDP_faction_var value = 1 }
+	custom_effect_tooltip = JAP_Hoshu_Honryu_1_tt
+	JAP_reset_LDP_effect = yes
+}
+
+JAP_LDP_add_Hoshu_Honryu_3_effect = {
+	add_to_variable = { var = LDP_faction_var value = 3 }
+	custom_effect_tooltip = JAP_Hoshu_Honryu_3_tt
+	JAP_reset_LDP_effect = yes
+}
+
+JAP_LDP_add_Hoshu_Honryu_5_effect = {
+	add_to_variable = { var = LDP_faction_var value = 5 }
+	custom_effect_tooltip = JAP_Hoshu_Honryu_5_tt
+	JAP_reset_LDP_effect = yes
+}
+
+JAP_LDP_add_Hoshu_Honryu_7_effect = {
+	add_to_variable = { var = LDP_faction_var value = 7 }
+	custom_effect_tooltip = JAP_Hoshu_Honryu_7_tt
+	JAP_reset_LDP_effect = yes
+}
+
+JAP_LDP_add_Hoshu_Honryu_10_effect = {
+	add_to_variable = { var = LDP_faction_var value = 10 }
+	custom_effect_tooltip = JAP_Hoshu_Honryu_10_tt
+	JAP_reset_LDP_effect = yes
+}
+
+JAP_LDP_add_Hoshu_Boryu_1_effect = {
+	add_to_variable = { var = LDP_faction_var value = -1 }
+	custom_effect_tooltip = JAP_Hoshu_Boryu_1_tt
+	JAP_reset_LDP_effect = yes
+}
+
+JAP_LDP_add_Hoshu_Boryu_3_effect = {
+	add_to_variable = { var = LDP_faction_var value = -3 }
+	custom_effect_tooltip = JAP_Hoshu_Boryu_3_tt
+	JAP_reset_LDP_effect = yes
+}
+
+JAP_LDP_add_Hoshu_Boryu_5_effect = {
+	add_to_variable = { var = LDP_faction_var value = -5 }
+	custom_effect_tooltip = JAP_Hoshu_Boryu_5_tt
+	JAP_reset_LDP_effect = yes
+}
+
+JAP_LDP_add_Hoshu_Boryu_7_effect = {
+	add_to_variable = { var = LDP_faction_var value = -7 }
+	custom_effect_tooltip = JAP_Hoshu_Boryu_7_tt
+	JAP_reset_LDP_effect = yes
+}
+
+JAP_LDP_add_Hoshu_Boryu_10_effect = {
+	add_to_variable = { var = LDP_faction_var value = -10 }
+	custom_effect_tooltip = JAP_Hoshu_Boryu_10_tt
+	JAP_reset_LDP_effect = yes
+}

@@ -3,6 +3,7 @@ JAP_habatsu_system = {
 	allowed = {
 		original_tag = JAP
 	}
+	
 }
 
 JAP_kato_mori = {
@@ -24,25 +25,14 @@ JAP_kato_mori = {
 	
 }
 
-JAP_the_culture_project_decisions = {
-	visible = {
-		has_country_flag = JAP_aso_cultural_fund
-	}
-	
-	allowed = {
-		original_tag = JAP
-	}
-}
-
 third_sino_japanese_decisions = {
 	icon = military_plan
 	
 	visible = {
-		#JAP = { has_completed_focus = JAP_again_1937 }
+		JAP = { has_completed_focus = JAP_again_1937 }
 	}
 	
 	allowed = {
-		always = no
 	}
 }
 
@@ -240,3 +230,53 @@ JAP_world_revolution_projcet = {
 		has_completed_focus = JAP_world_revolution
 	}
 }
+
+JAP_LDP_factions_projcet = {
+	priority = 100
+
+	allowed = {
+		original_tag = JAP
+	}
+	
+	scripted_gui = JAP_LDP_factions_ui
+	
+	visible_when_empty = yes
+
+	visible = {
+		has_government = conservative
+		NOT = { has_country_flag = jap_ldp_collapse }
+		has_completed_focus = JAP_triumph_of_democracy
+	}
+}
+
+JAP_special_investigation = {
+	visible = {
+		always = no #NEVER
+	}
+	
+	allowed = {
+		original_tag = JAP
+	}
+}
+
+JAP_economic_problem_category = {
+	picture = GFX_decision_cat_picture_economic
+
+	visible = {
+		OR = {
+			has_idea = JAP_heisei_fukyo_4
+			has_idea = JAP_heisei_fukyo_3
+			has_idea = JAP_heisei_fukyo_2
+			has_idea = JAP_heisei_fukyo_1
+			NOT = { has_global_flag = end_heisei_fukyo }
+		}
+	}
+	
+	allowed = {
+		original_tag = JAP
+	}
+	
+	visible_when_empty = yes
+	priority = 99
+}
+
