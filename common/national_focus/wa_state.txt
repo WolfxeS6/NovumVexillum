@@ -175,20 +175,22 @@ focus_tree = {
 
 		completion_reward = {
 			capital_scope = {
-				limit = {
-					is_core_of = ROOT
-					free_building_slots = {
-						building = industrial_complex
-						size > 0
-						include_locked = yes
+				if = {
+					limit = {
+						is_core_of = ROOT
+						free_building_slots = {
+							building = industrial_complex
+							size > 0
+							include_locked = yes
+						}
 					}
-				}
-				add_extra_state_shared_building_slots = 2
+					add_extra_state_shared_building_slots = 2
 					add_building_construction = {
 						type = arms_factory
 						level = 2
 						instant_build = yes
 					}
+				}
 			}
 		}
 		
@@ -469,7 +471,7 @@ focus_tree = {
 
 			division_template = { 
 				name = "Red Brigade" 
-				division_names_group = PRC_INF_01 #TODO_Manu
+				#division_names_group = PRC_INF_01 #TODO_Manu
 
 				regiments = { 
 					infantry = { x = 0 y = 0 }
@@ -523,19 +525,21 @@ focus_tree = {
 		completion_reward = {
 
 			capital_scope = {
-				limit = {
-					is_core_of = ROOT
-					free_building_slots = {
-						building = industrial_complex
-						size > 0
-						include_locked = yes
+				if = {
+					limit = {
+						is_core_of = ROOT
+						free_building_slots = {
+							building = industrial_complex
+							size > 0
+							include_locked = yes
+						}
 					}
-				}
-				add_extra_state_shared_building_slots = 1
-				add_building_construction = {
-					type = industrial_complex
-					level = 1
-					instant_build = yes
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
 				}
 			}
 		}
@@ -1344,7 +1348,7 @@ focus_tree = {
 				set_politics = { 
 					ruling_party = democratic_socialist 
 					elections_allowed = yes
-					last_election = "[CURRENT_DATE]"
+					last_election = "[?global.date.GetDateStringNoHour]"
 					election_frequency = 48
 				}
 
@@ -1935,7 +1939,7 @@ focus_tree = {
 
 		mutually_exclusive = {
 			focus = WAS_xunzheng
-			focus = WAS_path_for_us
+			focus = WAS_kept_our_ideals
 		}
 		
 		relative_position_id = WAS_myanmar_unification_conference

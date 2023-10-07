@@ -480,6 +480,59 @@ WAS_wa_state_diplomacy = {
 			#activate_targeted_decision = { target = FROM decision = WTT_escalate_incident_to_border_conflict }
 		}
 	}
+	WTT_border_conflict_time_until_cancelled = {
+
+		icon = border_war
+
+		allowed = { always = no } #Activated from effect
+
+		available = {
+			var:FROM.defender_state_vs_@ROOT = { has_border_war = no }
+			var:FROM.attacker_state_vs_@ROOT = { has_border_war = no }
+		}
+		
+		highlight_states = {
+ highlight_state_targets = {
+			state = var:defender_state_temp
+			state = var:FROM.defender_state_vs_@ROOT
+		} 
+}
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				
+			}
+		}
+
+		days_mission_timeout = @border_conflict_time_until_cancelled
+		is_good = no
+
+		fire_only_once = yes #Reactivation handled in effect
+
+		complete_effect = {
+
+		}
+
+		timeout_effect = {
+			if = {
+				limit = { is_border_conflict_defender_vs_FROM = yes }
+				cancel_border_war = {
+					defender = var:defender_state_vs_@FROM
+					attacker = var:attacker_state_vs_@FROM
+				}
+			}
+			else = {
+				cancel_border_war = {
+					defender = var:FROM.defender_state_vs_@ROOT
+					attacker = var:FROM.attacker_state_vs_@ROOT
+				}
+			}
+			hidden_effect = {
+				remove_targeted_decision = { target = FROM decision = WTT_border_conflict_escalate_conflict }
+			}
+		}
+	}
 	
 	WAS_liberation_war = {
 
@@ -627,7 +680,7 @@ WAS_power_balance_decision_category = {
 		ai_hint_pp_cost = 10
 		
 		custom_cost_trigger = {
-			army_experience > 10
+			has_army_experience > 10
 		}
 		
 		fire_only_once = no
