@@ -259,6 +259,18 @@
 
 		completion_reward = {
 			add_war_support = 0.05
+			
+			mio:PRC_CSSC_organization ={
+				add_mio_funds = 500
+			}
+			
+			mio:PRC_CSIC_organization  ={
+				add_mio_funds = 500
+			}
+			
+			mio:PRC_Jiangnan_Shipyard_organization  ={
+				add_mio_funds = 500
+			}
 		}
 		
 		ai_will_do = {
@@ -287,7 +299,7 @@
 		continue_if_invalid = no
 		available_if_capitulated = no
 		
-		search_filters = { }
+		search_filters = { FOCUS_FILTER_HISTORICAL }
 
 		completion_reward = {
 			every_owned_state = {
@@ -446,7 +458,7 @@
 		continue_if_invalid = no
 		available_if_capitulated = no
 		
-		search_filters = { }
+		search_filters = { FOCUS_FILTER_HISTORICAL }
 
 		completion_reward = {
 			every_owned_state = {
@@ -1235,6 +1247,10 @@
 		
 		ai_will_do = {
 			base = 1
+			modifier = {
+				factor = 3
+				date > 2000.9.1
+			}
 		}
 	}
 
@@ -1942,6 +1958,10 @@
 		
 		ai_will_do = {
 			base = 1
+			modifier = {
+				factor = 1.5
+				date > 2001.6.1
+			}
 		}
 	}
 
@@ -1976,6 +1996,10 @@
 		
 		ai_will_do = {
 			base = 1
+			modifier = {
+				factor = 1.5
+				date > 2001.6.1
+			}
 		}
 	}
 
@@ -2007,6 +2031,10 @@
 		
 		ai_will_do = {
 			base = 1
+			modifier = {
+				factor = 1.5
+				date > 2001.6.1
+			}
 		}
 	}
 
@@ -2068,6 +2096,10 @@
 		
 		ai_will_do = {
 			base = 1
+			modifier = {
+				factor = 1.5
+				date > 2001.6.1
+			}
 		}
 	}
 
@@ -2095,6 +2127,10 @@
 
 		completion_reward = {
 			army_experience = 50
+			
+			mio:PRC_Norinco_organization ={
+				add_mio_funds = 1000
+			}
 		}
 		
 		ai_will_do = {
@@ -2460,7 +2496,7 @@
 		}
 		
 		ai_will_do = {
-			base = 1
+			base = 3
 		}
 	}
 
@@ -3345,7 +3381,7 @@
 		continue_if_invalid = no
 		available_if_capitulated = no
 		
-		search_filters = { FOCUS_FILTER_INDUSTRY }
+		search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_HISTORICAL }
 
 		completion_reward = {
 			custom_effect_tooltip = PRC_getting_rich_first_tt
@@ -4423,6 +4459,7 @@
 		available_if_capitulated = no
 
 		completion_reward = {			
+			mark_focus_tree_layout_dirty = yes
 			add_political_power = 100
 		}
 
@@ -4476,9 +4513,10 @@
 
 		completion_reward = {		
 			country_event = pr_china.4
+			mark_focus_tree_layout_dirty = yes
 		}
 
-		search_filters = { FOCUS_FILTER_POLITICAL }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_HISTORICAL }
 		
 		ai_will_do = {
 			base = 1000
@@ -4698,7 +4736,7 @@
 		continue_if_invalid = no
 		available_if_capitulated = no
 		
-		search_filters = { }
+		search_filters = { FOCUS_FILTER_HISTORICAL }
 
 		completion_reward = {
 			custom_effect_tooltip = PRC_end_of_democracy_in_the_party_tt
@@ -5256,6 +5294,7 @@
 
 		completion_reward = {			
 			country_event = pr_china.6
+			mark_focus_tree_layout_dirty = yes
 		}
 
 		search_filters = { FOCUS_FILTER_POLITICAL }
@@ -5965,6 +6004,7 @@
 
 		completion_reward = {		
 			country_event = pr_china.7
+			mark_focus_tree_layout_dirty = yes
 		}
 
 		search_filters = { FOCUS_FILTER_POLITICAL }
@@ -6886,7 +6926,7 @@
 		continue_if_invalid = no
 		available_if_capitulated = no
 		
-		search_filters = { FOCUS_FILTER_INDUSTRY }
+		search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_HISTORICAL }
 
 		completion_reward = {
 			add_ideas = PRC_mingong_s_labor_idea
@@ -8484,6 +8524,7 @@
 
 		completion_reward = {			
 			custom_effect_tooltip = PRC_darkness_sympathizer_tt
+			mark_focus_tree_layout_dirty = yes
 		}
 
 		search_filters = { FOCUS_FILTER_POLITICAL }
@@ -8608,8 +8649,8 @@
 	shared_focus = {
 		id = PRC_anti_taiwanese_propaganda
 		icon = propaganda
-		x = -1
-		y = 2
+		x = -3
+		y = 1
 		cost = 5
 
 		relative_position_id = PRC_taiwan_liberation_war
@@ -8641,8 +8682,8 @@
 	shared_focus = {
 		id = PRC_with_more_overwhelming_power
 		icon = PRC_with_more_overwhelming_power
-		x = 1
-		y = 2
+		x = 3
+		y = 1
 		cost = 5
 
 		relative_position_id = PRC_taiwan_liberation_war
