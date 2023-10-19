@@ -7178,3 +7178,153 @@ KOR_100_days_race_cat = {
 	}
 	
 }
+
+kor_national_security_law_cat = {
+
+	kor_pro_juche_press_repression = {
+
+		priority = 99
+
+		icon = FIN_promote_ideology_rallies_cost
+
+		available = {
+			hidden_trigger = { always = no }
+		}
+
+		days_mission_timeout = 30
+
+		fire_only_once = no
+
+		activation = {
+			has_fascist_fourth_estate = yes
+			NOT = { has_country_flag = parliament_legislation_abolishing_national_security_law_flag }
+			is_puppet = no
+		}
+
+		visible = {
+			original_tag = KOR
+		}
+
+		cancel_if_not_visible = yes
+
+		is_good = yes
+
+		timeout_effect = {
+			fourth_estate_fascist_decrease = yes
+			add_political_power = -25
+		}
+	}
+
+	kor_pro_jucheists_repression = {
+
+		priority = 99
+
+		icon = GFX_decision_eng_propaganda_campaigns
+
+		available = {
+			hidden_trigger = { always = no }
+		}
+
+		days_mission_timeout = 30
+
+		fire_only_once = no
+
+		activation = {
+			fascist > 0.05
+			NOT = { has_country_flag = parliament_legislation_abolishing_national_security_law_flag }
+			is_puppet = no
+		}
+
+		visible = {
+			original_tag = KOR
+		}
+
+		cancel_if_not_visible = yes
+
+		is_good = yes
+
+		timeout_effect = {
+			add_popularity = { ideology = fascist popularity = -0.05 }
+			add_political_power = -25
+		}
+	}
+
+	kor_pro_jucheists_repression_2 = {
+		name = kor_pro_jucheists_repression
+
+		priority = 99
+
+		icon = GFX_decision_eng_propaganda_campaigns
+
+		available = {
+			hidden_trigger = { always = no }
+		}
+
+		days_mission_timeout = 30
+
+		fire_only_once = no
+
+		activation = {
+			nationalist > 0.15
+			NOT = { has_country_flag = parliament_legislation_abolishing_national_security_law_flag }
+			is_puppet = no
+		}
+
+		visible = {
+			original_tag = KOR
+		}
+
+		cancel_if_not_visible = yes
+
+		is_good = yes
+
+		timeout_effect = {
+			add_popularity = { ideology = nationalist popularity = -0.03 }
+			add_political_power = -50
+		}
+	}
+}
+
+kor_easter_egg_roj_cat = {
+	
+	kor_easter_egg_roj = {
+
+		icon = generic_form_nation
+
+		allowed = {
+			original_tag = KOR
+		}
+
+		fire_only_once = yes
+		
+		available = {
+			AND = {
+				has_completed_focus = kor_victory_democracy
+				has_completed_focus = kor_by_army_only
+				has_country_flag = kor_lose_culture_war_flag
+				#check_variable = { korea_easter_egg_roj > 2 }
+				OR = {
+					has_idea = economy_recession
+					has_idea = economy_depression
+				}
+				has_country_leader = {
+					character = kor_lee_myung_bak
+					ruling_only = yes
+				}
+			}
+		}
+
+		visible = {
+			original_tag = KOR
+		}
+
+		complete_effect = {
+			country_event = { id = south_korea.302 }
+			set_country_flag = country_language_japanese
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+	}
+}

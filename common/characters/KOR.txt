@@ -42,7 +42,10 @@ characters={
 		country_leader={
 			ideology = liberalist
 			desc = "POLITICS_ROH_MOO_HYUN_DESC"
-			traits = { KOR_symbol_of_korean_liberalism }
+			traits = { 
+				KOR_symbol_of_korean_liberalism 
+				KOR_enemy_of_the_elite
+			}
 			expire="2009.5.23.1"
 			id=1202
 		}
@@ -78,7 +81,10 @@ characters={
 		country_leader={
 			ideology = market_liberal_ideology
 			desc = "POLITICS_LEE_HOI_CHANG_DESC"
-			traits = { KOR_bamboo_politician }
+			traits = { 
+				KOR_bamboo_politician 
+				KOR_enemy_of_the_army
+			}
 			expire="2099.1.1.1"
 			id=1203
 		}
@@ -184,6 +190,7 @@ characters={
 				large="gfx/leaders/KOR/park_geun_hye.dds"
 			}
 		}
+		gender = female
 		
 		country_leader={
 			ideology = counter_progressive_democrat
@@ -201,11 +208,12 @@ characters={
 				large="gfx/leaders/KOR/Sim_Sang_Jung.dds"
 			}
 		}
+		gender = female
 		
 		country_leader={
 			ideology = social_democrat_ideology
 			desc = "POLITICS_SIM_SANG_JUNG_DESC"
-			traits = {  }
+			traits = { KOR_mother_of_korean_social_democracy }
 			id=1206
 		}
 	}
@@ -259,13 +267,6 @@ characters={
 			army = {
 				small = "gfx/interface/ideas/KOR/adviser/kor_lee_nak_yon.dds"
 			}
-		}
-		
-		country_leader={
-			ideology = liberalist
-			desc = "POLITICS_LEE_NAK_YON_DESC"
-			traits = { }
-			id=-1
 		}
 		
 		#advisor = {
@@ -342,13 +343,6 @@ characters={
 				large="gfx/leaders/KOR/Ayane_Sakura.dds"
 			}
 		}
-		
-		#country_leader={
-		#	ideology = national_democrat
-		#	desc = "POLITICS_AYANE_SAKURA_DESC"
-		#	traits = { }
-		#	id=-1
-		#}
 	}
 		
 	kor_vladimir_tikhonov={
@@ -359,12 +353,6 @@ characters={
 			}
 		}
 
-		#country_leader={
-		#	ideology = anarcho_syndycalist
-		#	desc = "POLITICS_VLADIMIR_TIKHONOV_DESC"
-		#	traits = { KOR_anarcho_socialist KOR_symbol_of_korean_post_nationalism }
-		#	id=1210
-		#}
 	}
 	
 	kor_bakufu={
@@ -374,13 +362,6 @@ characters={
 				large="gfx/leaders/KOR/blue_house.dds"
 			}
 		}
-
-		#country_leader={
-		#	ideology = national_democrat
-		#	desc = "POLITICS_BAKUFU_DESC"
-		#	traits = {  }
-		#	id=1211
-		#}
 	}
 	
 	kor_lee_myung_bak ={
@@ -393,13 +374,6 @@ characters={
 				small="gfx/interface/ideas/KOR/adviser/kor_lee_hoi_chang.dds"
 			}
 		}
-		
-		#country_leader={
-		#	ideology = national_democrat
-		#	desc = "POLITICS_AYANE_SAKURA_DESC"
-		#	traits = { }
-		#	id=-1
-		#}
 		
 		advisor = {
 			slot = political_advisor
@@ -429,13 +403,6 @@ characters={
 				#small = "gfx/interface/ideas/idea_POL_wladyslaw_sikorski.dds"
 			}
 		}
-		
-		#country_leader={
-		#	ideology = national_democrat
-		#	desc = "POLITICS_AYANE_SAKURA_DESC"
-		#	traits = { }
-		#	id=-1
-		#}
 	}
 	
 	kor_yoon_seo_in={
@@ -444,6 +411,22 @@ characters={
 			civilian={
 				large="gfx/leaders/KOR/Yoon_Seo_in.dds"
 			}
+		}
+	}
+	
+	kor_yi_ku ={
+		name=kor_yi_ku
+		portraits={
+			civilian={
+				large="gfx/leaders/KOR/yi_ku.dds"
+			}
+		}
+		
+		country_leader={
+			ideology = absolute_monarchist
+			desc = "POLITICS_YI_KU_DESC"
+			traits = { KOR_very_low_popularity }
+			id=-1
 		}
 	}
 	
@@ -458,7 +441,7 @@ characters={
 		country_leader={
 			ideology = absolute_monarchist
 			desc = "POLITICS_YI_WON_DESC"
-			traits = { KOR_very_low_popularity }
+			traits = {  }
 			id=-1
 		}
 	}
@@ -477,15 +460,6 @@ characters={
 			desc = "POLITICS_AINDF_DESC"
 			traits = {  }
 			id=-1
-		}
-	}
-
-	kor_choi_soon_sil={
-		name=kor_choi_soon_sil
-		portraits={
-			civilian={
-				large="gfx/leaders/KOR/choi_soon_sil.dds"
-			}
 		}
 	}
 	
@@ -746,11 +720,14 @@ characters={
 	
 	kor_na_kyung_won = {
 		name = kor_na_kyung_won
+		
 		portraits = {
 			army = {
 				small = "gfx/interface/ideas/KOR/adviser/kor_na_kyung_won.dds"
 			}
 		}
+		
+		gender = female
 
 		#advisor = {
 		#	slot = political_advisor
@@ -1642,6 +1619,200 @@ characters={
 			cost = 100
 			ai_will_do = {
 				factor = 1.000
+			}
+		}
+	}
+	
+	####### Leaders
+	
+	kor_choi_soon_sil={
+		name=kor_choi_soon_sil
+		portraits={
+			civilian={
+				large="gfx/leaders/KOR/choi_soon_sil.dds"
+			}
+		}
+	}
+	
+	kor_han_hwa_kap ={
+		name=kor_han_hwa_kap
+		portraits={
+			civilian={
+				large="gfx/leaders/KOR/han_hwa_kap.dds"
+			}
+		}
+	}
+	
+	kor_hong_sa_duk ={
+		name=kor_hong_sa_duk
+		portraits={
+			civilian={
+				large="gfx/leaders/KOR/hong_sa_duk.dds"
+			}
+		}
+	}
+	
+	kor_kim_ki_hong ={
+		name=kor_kim_ki_hong
+		portraits={
+			civilian={
+				large="gfx/leaders/KOR/kim_ki_hong.dds"
+			}
+		}
+		gender = female
+	}
+	
+	kor_kwon_young_ghil ={
+		name=kor_kwon_young_ghil
+		portraits={
+			civilian={
+				large="gfx/leaders/KOR/kwon_young_ghil.dds"
+			}
+		}
+	}
+	
+	kor_rhyu_si_min ={
+		name=kor_rhyu_si_min
+		portraits={
+			civilian={
+				large="gfx/leaders/KOR/rhyu_si_min.dds"
+			}
+		}
+	}
+	
+	kor_park_jie_won ={
+		name=kor_park_jie_won
+		portraits={
+			civilian={
+				large="gfx/leaders/KOR/park_jie_won.dds"
+			}
+		}
+	}
+	
+	kor_choi_il_bung ={
+		name=kor_choi_il_bung
+		portraits={
+			civilian={
+				large="gfx/leaders/KOR/choi_il_bung.dds"
+			}
+		}
+		
+		country_leader={
+			ideology = trotskyist
+			desc = "POLITICS_CHOI_IL_BUNG_DESC"
+			traits = { }
+			expire="2099.1.1.1"
+			id=-1
+		}
+	}
+	
+	kor_kimio_ouchi ={
+		name=kor_kimio_ouchi
+		portraits={
+			civilian={
+				large="gfx/leaders/KOR/kimio_ouchi.dds"
+			}
+		}
+		
+	}
+	
+	kor_roh_hoe_chan ={
+		name=kor_roh_hoe_chan
+		portraits={
+			civilian={
+				large="gfx/leaders/KOR/roh_hoe_chan.dds"
+			}
+		}
+		
+	}
+	
+	kor_han_myeong_sook ={
+		name=kor_han_myeong_sook
+		portraits={
+			civilian={
+				large="gfx/leaders/KOR/Han_Myeong_sook.dds"
+			}
+		}
+		gender = female
+	}
+	
+	kor_chung_dong_young ={
+		name=kor_chung_dong_young
+		portraits={
+			civilian={
+				large="gfx/leaders/KOR/chung_dong_young.dds"
+			}
+		}
+	}
+	
+	kor_interim_government_2004 ={
+		name=kor_interim_government
+		portraits={
+			civilian={
+				large="gfx/leaders/KOR/blue_house.dds"
+			}
+		}
+	}
+	
+	kor_goh_kun ={
+		name=kor_goh_kun
+		portraits={
+			civilian={
+				large="gfx/leaders/KOR/Goh_Kun.dds"
+			}
+		}
+	}
+	
+	KOR_kim_jong_pil ={
+		name=KOR_kim_jong_pil
+		portraits={
+			civilian={
+				large="gfx/leaders/KOR/kim_jong_pil.dds"
+			}
+		}
+	}
+	
+	KOR_kim_moo_sung ={
+		name=KOR_kim_moo_sung
+		portraits={
+			civilian={
+				large="gfx/leaders/KOR/kim_moo_sung.dds"
+			}
+		}
+	}
+	
+	KOR_yoo_seong_min ={
+		name=KOR_yoo_seong_min
+		portraits={
+			civilian={
+				large="gfx/leaders/KOR/Yoo_Seong_min.dds"
+			}
+		}
+	}
+	
+	KOR_Hong_Joon_pyo ={
+		name=KOR_Hong_Joon_pyo
+		portraits={
+			civilian={
+				large="gfx/leaders/KOR/Hong_Joon_pyo.dds"
+			}
+		}
+	}
+	
+	KOR_andy_lee ={
+		name=KOR_andy_lee
+		portraits={
+			civilian={
+				large="gfx/leaders/KOR/andy_lee.dds"
+			}
+		}
+	}
+	
+	KOR_Yoon_Suk_yeol ={
+		name=KOR_Yoon_Suk_yeol
+		portraits={
+			civilian={
+				large="gfx/leaders/KOR/Yoon_Suk_yeol.dds"
 			}
 		}
 	}

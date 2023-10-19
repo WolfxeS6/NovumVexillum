@@ -60,7 +60,7 @@ KOR_kim_dae_jung_gov = {
 }
 
 KOR_influence_korea = {
-	icon = usa_congress
+	icon = GFX_decision_category_generic_trade
 
 	allowed = { 
 		OR = {
@@ -115,7 +115,7 @@ KOR_bulgom_project = {
 }
 
 SOV_bulgom_project = {
-	icon = generic_industry
+	icon = GFX_decision_category_NOR_fascist_deploy_prep
 
 	visible = {
 		KOR = { has_completed_focus  = kor_bulgom_project }
@@ -136,7 +136,7 @@ KOR_korean_ss = {
 }
 
 KOR_our_madagascar = {
-	icon = GFX_decision_category_border_conflicts
+	icon = GFX_decision_category_generic_foreign_policy
 
 	visible = {
 		has_global_flag = madagascar_kor_project
@@ -149,11 +149,12 @@ kor_roj_roll = {
 	icon = generic_industry
 
 	visible = {
-		has_completed_focus  = kor_moon_chang_geuk_government
-		not = { has_country_flag = korr_post_nationalist_coup_flag }
+		always  = no
+		#has_completed_focus  = kor_moon_chang_geuk_government
+		#not = { has_country_flag = korr_post_nationalist_coup_flag }
 	}
 
-	allowed = { original_tag = KOR }
+	#allowed = { original_tag = KOR }
 }
 
 kor_dprk_rule = {
@@ -183,7 +184,7 @@ kor_ayaneru_rule = {
 KOR_japan_korea_undersea_tunnel_plan = {
 	picture = GFX_decision_cat_picture_tunnel
 
-	icon = power_struggle#
+	icon = GFX_decision_category_generic_foreign_policy
 
 	visible = {
 		NOT = { has_global_flag = build_japan_korea_undersea_tunnel }
@@ -200,7 +201,7 @@ KOR_japan_korea_undersea_tunnel_plan = {
 KOR_japan_korea_undersea_tunnel_build = {
 	priority = 33
 
-	icon = power_struggle#
+	icon = GFX_decision_category_generic_foreign_policy
 
 	#picture = GFX_decision_cat_picture_faction_management_bulgaria#
 
@@ -270,4 +271,48 @@ KOR_100_days_race_cat = {
 	
 	visible_when_empty = yes
 	priority = 100
+}
+
+kor_easter_egg_roj_cat = {
+	icon = generic_formable_nations
+	
+	picture = GFX_decision_cat_kor_easter_egg_roj_cat
+
+	allowed = { original_tag = KOR }
+	
+	visible = {
+		AND = {
+			has_completed_focus = kor_victory_democracy
+			has_completed_focus = kor_by_army_only
+			has_country_flag = kor_lose_culture_war_flag
+			has_government = market_liberal
+			has_country_flag = korea_easter_egg_start
+			check_variable = { korea_easter_egg_roj > 1 }
+			date < 2012.12.31
+		}
+	}
+	
+	priority = 75
+	
+}
+
+kor_national_security_law_cat = {
+	#icon = generic_formable_nations
+	
+	picture = GFX_decision_cat_long_picture_kor_national_security_law_cat
+
+	allowed = { original_tag = KOR }
+	
+	visible = {
+		AND = {
+			has_completed_focus = kor_victory_democracy
+			NOT = { has_country_flag = parliament_legislation_abolishing_national_security_law_flag }
+			NOT = { has_government = fascist }
+			NOT = { has_government = nationalist }
+			is_subject = no
+		}
+	}
+	
+	priority = 25
+	
 }

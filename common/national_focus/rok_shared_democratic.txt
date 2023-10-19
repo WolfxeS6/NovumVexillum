@@ -960,7 +960,11 @@
 		icon = kor_park_geun_hye_out #
 		x = -4
 		y = 7
-		cost = 3
+		cost = 10
+
+		select_effect = {
+			country_event = { id = south_korea.148 days = 14 }
+		}
 		
 		available = {
 			custom_trigger_tooltip = {
@@ -982,7 +986,6 @@
 		completion_reward = {
 			ROOT = { add_to_variable = { var = KORRegimeStability value = -10 } }
 			custom_effect_tooltip = kor_subtract_regime_stability_10_tt
-			set_country_flag = ban_park_geun_hye
 		}
 		
 		ai_will_do = {
@@ -1889,6 +1892,8 @@
 		continue_if_invalid = no
 		available_if_capitulated = no
 
+		search_filters = { FOCUS_FILTER_HISTORICAL }
+
 		completion_reward = {
 			add_ideas = idea_focus_army_officer_school
 		}
@@ -2230,20 +2235,17 @@
 					instant_build = yes
 				}
 			}
-			random_owned_state = {
-				limit = {
-					free_building_slots = {
-						building = dockyard
-						size > 0
-						include_locked = yes
-					}
-				}
-				add_extra_state_shared_building_slots = 1
-				add_building_construction = {
-					type = dockyard
-					level = 1
-					instant_build = yes
-				}
+
+			mio:KOR_samsung_heavy_industries_organization ={
+				add_mio_funds = 1000
+			}
+			
+			mio:KOR_dsme_organization  ={
+				add_mio_funds = 1000
+			}
+			
+			mio:KOR_hyundai_heavy_industries_naval_organization  ={
+				add_mio_funds = 1000
 			}
 		}
 		ai_will_do = {
@@ -2402,7 +2404,7 @@
 		
 		completion_reward = {
 			add_tech_bonus = {
-				#name = ca_bonus
+				name = kor_our_iowa
 				bonus = 3.0
 				uses = 1
 				category = bb_tech
@@ -2539,6 +2541,10 @@
 
 		completion_reward = {
 			air_experience = 40
+
+			mio:KOR_korean_air_organization ={
+				add_mio_funds = 1000
+			}
 		}
 		
 		ai_will_do = {
@@ -3127,6 +3133,10 @@
 				uses = 2
 				category = armor
 			}
+
+			mio:KOR_hyundai_rotem_organization ={
+				add_mio_funds = 1000
+			}
 		}
 		
 		ai_will_do = {
@@ -3282,6 +3292,8 @@
 				}
 			}
 		}
+
+		search_filters = { FOCUS_FILTER_HISTORICAL }
 
 		relative_position_id = kor_ROKA
 
@@ -3458,6 +3470,8 @@
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_HISTORICAL }
 
 		completion_reward = {
 			add_war_support = 0.05
@@ -4156,6 +4170,7 @@
 		available_if_capitulated = no
 		
 		completion_reward = {
+			custom_effect_tooltip = kor_lost_culture_war_tt
 		}
 		
 		ai_will_do = {
@@ -4436,6 +4451,8 @@
 		prerequisite = { 
 			focus = kor_free_japanese_culture
 		}
+
+		search_filters = { FOCUS_FILTER_HISTORICAL }
 		
 		relative_position_id = 	kor_free_japanese_culture
 	
@@ -4444,6 +4461,7 @@
 		available_if_capitulated = no
 		
 		completion_reward = {
+			custom_effect_tooltip = kor_victory_culture_war_tt
 		}
 		
 		ai_will_do = {
@@ -5178,6 +5196,10 @@
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		
 		completion_reward = {
+			if = {
+				limit = { country_exists = PRK }
+				custom_effect_tooltip = kor_reunification_korean_peninsula_tt
+			}
 		}
 		
 		ai_will_do = {
@@ -5205,6 +5227,12 @@
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		
 		completion_reward = {
+
+			if = {
+				limit = { country_exists = PRK }
+				custom_effect_tooltip = kor_reunification_korean_peninsula_tt
+			}
+
 			872 = {
 				if = {
 					limit = { is_controlled_by = ROOT }
@@ -5288,6 +5316,10 @@
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		
 		completion_reward = {
+			if = {
+				limit = { country_exists = PRK }
+				custom_effect_tooltip = kor_reunification_korean_peninsula_tt
+			}
 			add_political_power = -25
 
 			872 = {
@@ -5430,6 +5462,10 @@
 		
 		completion_reward = {
 			add_political_power = -25
+			if = {
+				limit = { country_exists = PRK }
+				custom_effect_tooltip = kor_reunification_korean_peninsula_tt
+			}
 
 			872 = {
 				if = {
@@ -5540,6 +5576,10 @@
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		
 		completion_reward = {
+			if = {
+				limit = { country_exists = PRK }
+				custom_effect_tooltip = kor_reunification_korean_peninsula_tt
+			}
 			872 = {
 				if = {
 					limit = { is_controlled_by = ROOT }
@@ -5616,6 +5656,10 @@
 		
 		completion_reward = {
 			add_political_power = -50
+			if = {
+				limit = { country_exists = PRK }
+				custom_effect_tooltip = kor_reunification_korean_peninsula_tt
+			}
 			872 = {
 				if = {
 					limit = { is_controlled_by = ROOT }
@@ -5703,6 +5747,10 @@
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		
 		completion_reward = {
+			if = {
+				limit = { country_exists = PRK }
+				custom_effect_tooltip = kor_reunification_korean_peninsula_tt
+			}
 		}
 		
 		ai_will_do = {
@@ -5730,6 +5778,10 @@
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		
 		completion_reward = {
+			if = {
+				limit = { country_exists = PRK }
+				custom_effect_tooltip = kor_reunification_korean_peninsula_tt
+			}
 			872 = {
 				if = {
 					limit = { is_controlled_by = ROOT }
@@ -5813,6 +5865,10 @@
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		
 		completion_reward = {
+			if = {
+				limit = { country_exists = PRK }
+				custom_effect_tooltip = kor_reunification_korean_peninsula_tt
+			}
 			872 = {
 				if = {
 					limit = { is_controlled_by = ROOT }
@@ -5924,6 +5980,10 @@
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		
 		completion_reward = {
+			if = {
+				limit = { country_exists = PRK }
+				custom_effect_tooltip = kor_reunification_korean_peninsula_tt
+			}
 			872 = {
 				if = {
 					limit = { is_controlled_by = ROOT }
@@ -6067,6 +6127,10 @@
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		
 		completion_reward = {
+			if = {
+				limit = { country_exists = PRK }
+				custom_effect_tooltip = kor_reunification_korean_peninsula_tt
+			}
 			872 = {
 				if = {
 					limit = { is_controlled_by = ROOT }
@@ -6142,6 +6206,10 @@
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		
 		completion_reward = {
+			if = {
+				limit = { country_exists = PRK }
+				custom_effect_tooltip = kor_reunification_korean_peninsula_tt
+			}
 			872 = {
 				if = {
 					limit = { is_controlled_by = ROOT }
@@ -6225,6 +6293,10 @@
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		
 		completion_reward = {
+			if = {
+				limit = { country_exists = PRK }
+				custom_effect_tooltip = kor_reunification_korean_peninsula_tt
+			}
 				872 = {
 					if = {
 						limit = { is_controlled_by = ROOT }
@@ -6332,6 +6404,10 @@
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		
 		completion_reward = {
+			if = {
+				limit = { country_exists = PRK }
+				custom_effect_tooltip = kor_reunification_korean_peninsula_tt
+			}
 			947 = {
 				if = {
 					limit = { 
@@ -6385,6 +6461,10 @@
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		
 		completion_reward = {
+			if = {
+				limit = { country_exists = PRK }
+				custom_effect_tooltip = kor_reunification_korean_peninsula_tt
+			}
 			948 = {
 				if = {
 					limit = { 
@@ -6745,7 +6825,7 @@
 		continue_if_invalid = no
 		available_if_capitulated = no
 
-		search_filters = { FOCUS_FILTER_POLITICAL }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_HISTORICAL }
 		
 		completion_reward = {
 			945 = {
@@ -7623,6 +7703,19 @@
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		
 		completion_reward = {
+
+			mio:KOR_hyundai_heavy_industries_naval_organization ={
+				add_mio_funds = 500
+			}
+
+			mio:KOR_hanwha_aerospace_organization ={
+				add_mio_funds = 500
+			}
+
+			mio:KOR_daewoo_precision_industries_organization ={
+				add_mio_funds = 500
+			}
+
 			KOR_right_economic_system_effect = yes
 		}
 		
@@ -7785,6 +7878,19 @@
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		
 		completion_reward = {
+
+			mio:KOR_korean_air_organization ={
+				add_mio_funds = 500
+			}
+
+			mio:KOR_hyundai_wia_organization ={
+				add_mio_funds = 500
+			}
+
+			mio:KOR_samsung_heavy_industries_organization ={
+				add_mio_funds = 500
+			}
+
 			add_popularity = { ideology = market_liberal popularity = 0.02 }
 			custom_effect_tooltip = kor_more_influence_right_con_1_5_tt
 			set_variable = { KOR_move_support = 0 }
@@ -7933,7 +8039,7 @@
 		continue_if_invalid = no
 		available_if_capitulated = no
 
-		search_filters = { FOCUS_FILTER_POLITICAL }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_HISTORICAL }
 		
 		completion_reward = {
 			random_owned_controlled_state = {
@@ -8876,7 +8982,7 @@
 		continue_if_invalid = no
 		available_if_capitulated = no
 
-		search_filters = { FOCUS_FILTER_POLITICAL }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_HISTORICAL }
 		
 		completion_reward = {
 			fourth_estate_conservative_increase = yes
@@ -9629,7 +9735,7 @@
 		}
 		
 		ai_will_do = {
-			base = 5
+			base = 6
 		}
 	}
 
@@ -9673,7 +9779,7 @@
 		}
 		
 		ai_will_do = {
-			base = 5
+			base = 9
 		}
 	}
 
@@ -9976,7 +10082,7 @@
 		}
 		
 		ai_will_do = {
-			base = 5
+			base = 6
 		}
 	}
 
@@ -10305,6 +10411,1732 @@
 			create_wargoal = {
 				target = PRK
 				type = annex_everything
+			}
+		}
+		
+		ai_will_do = {
+			base = 5
+			
+		}
+	}
+
+ ##############
+ ###
+ ### 2002
+ ###
+ ##############
+
+	shared_focus = {
+		id = kor_2002_presidential_election
+		icon = kor_2002_election
+		x = 10
+		y = 0
+		cost = 0
+
+		allow_branch = {
+			has_country_flag = kor_2002_government
+		}
+
+		bypass = {
+			always = yes
+		}
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			custom_effect_tooltip = kor_2002_presidential_election_tt
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = kor_2002_lee
+		icon = kor_2002_lee
+		x = -6
+		y = 1
+		cost = 1.5
+
+		available = {
+			has_country_leader = {
+				character = kor_lee_hoi_chang
+				ruling_only = yes
+			}
+		}
+
+		bypass = {
+		}
+
+		prerequisite = { 
+			focus = kor_2002_presidential_election
+		}
+
+		select_effect = {
+		}
+
+		mutually_exclusive = {
+			focus = kor_2002_roh
+			focus = kor_2002_han
+		}
+
+		relative_position_id = kor_2002_presidential_election
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { }
+		
+		completion_reward = {
+			fourth_estate_market_liberal_increase = yes
+			custom_effect_tooltip = kor_more_influence_right_con_1_10_tt
+			set_variable = { KOR_move_support = 0 }
+			randomize_variable = {
+				var = KOR_move_support
+				distribution = binomial
+				min = 1
+				max = 10
+			}
+			round_variable = KOR_move_support
+			KOR_add_neocon_support_effect = yes
+		}
+		
+		ai_will_do = {
+			base = 5
+			
+		}
+	}
+
+	shared_focus = {
+		id = kor_2002_rightist_history
+		icon = kor_right_history
+		x = -4
+		y = 1
+		cost = 8
+
+		available = {
+		}
+
+		bypass = {
+		}
+
+		prerequisite = { 
+			focus = kor_2002_lee
+		}
+
+		select_effect = {
+		}
+
+		relative_position_id = kor_2002_lee
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { }
+		
+		completion_reward = {
+			add_popularity = { ideology = reactionary popularity = 0.03 }
+			fourth_estate_reactionary_increase = yes
+		}
+		
+		ai_will_do = {
+			base = 5
+			
+		}
+	}
+
+	shared_focus = {
+		id = kor_2002_search_for_fake_independence_activists
+		icon = JAP_korean_flag_down
+		x = -5
+		y = 2
+		cost = 8
+
+		available = {
+		}
+
+		bypass = {
+		}
+
+		prerequisite = { 
+			focus = kor_2002_rightist_history
+		}
+
+		mutually_exclusive = {
+			focus = kor_2002_moderate_post_nationalist_education
+		}
+
+		select_effect = {
+		}
+
+		relative_position_id = kor_2002_lee
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { }
+		
+		completion_reward = {
+
+			if = {
+				limit = { has_idea = mobilization_service_time_pure_race_only }
+				swap_ideas = {
+					remove_idea = mobilization_service_time_pure_race_only
+					add_idea = extensive_conscription
+				}
+				add_political_power = -75
+			}
+
+			add_popularity = { ideology = reactionary popularity = 0.05 }
+			add_ideas = KOR_post_nationalist_education
+			
+			custom_effect_tooltip = kor_more_influence_pro_park_1_10_tt
+			set_variable = { KOR_move_support = 0 }
+			randomize_variable = {
+				var = KOR_move_support
+				distribution = binomial
+				min = 1
+				max = 10
+			}
+			round_variable = KOR_move_support
+			KOR_add_reactionists_support_effect = yes
+		}
+		
+		ai_will_do = {
+			base = 5
+			
+		}
+	}
+
+	shared_focus = {
+		id = kor_2002_moderate_post_nationalist_education
+		icon = kor_samurai
+		x = -3
+		y = 2
+		cost = 8
+
+		available = {
+		}
+
+		bypass = {
+		}
+
+		prerequisite = { 
+			focus = kor_2002_rightist_history
+		}
+
+		mutually_exclusive = {
+			focus = kor_2002_search_for_fake_independence_activists
+		}
+
+		select_effect = {
+		}
+
+		relative_position_id = kor_2002_lee
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { }
+		
+		completion_reward = {
+			add_political_power = -25
+			add_timed_idea = {
+				idea = KOR_expenditure_on_education
+				days = 720
+			}
+		}
+		
+		ai_will_do = {
+			base = 5
+			
+		}
+	}
+
+	shared_focus = {
+		id = kor_2002_reassuring_the_rok_army
+		icon = kor_graduated_from_the_19th_century_army
+		x = -1
+		y = 1
+		cost = 5
+
+		available = {
+		}
+
+		bypass = {
+		}
+
+		prerequisite = { 
+			focus = kor_2002_lee
+		}
+
+		select_effect = {
+		}
+
+		relative_position_id = kor_2002_lee
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { }
+		
+		completion_reward = {
+			fourth_estate_reactionary_decrease = yes
+			add_war_support = 0.03
+		}
+		
+		ai_will_do = {
+			base = 5
+			
+		}
+	}
+
+	shared_focus = {
+		id = kor_2002_send_a_thank_to_the_company
+		icon = JAP_gold_bar
+		x = -1
+		y = 2
+		cost = 5
+
+		available = {
+		}
+
+		bypass = {
+		}
+
+		prerequisite = { 
+			focus = kor_2002_reassuring_the_rok_army
+		}
+
+		select_effect = {
+		}
+
+		relative_position_id = kor_2002_lee
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { }
+		
+		completion_reward = {
+			random_owned_state = {
+				limit = {
+					free_building_slots = {
+						building = arms_factory
+						size > 1
+						include_locked = yes 
+					}
+					state_population_k > 500
+				}
+				prioritize = { 525 } #optional: to pick those states first if they fulfill the limit
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+			add_timed_idea = { idea = KOR_marke_liberal_values days = 365 }
+		}
+		
+		ai_will_do = {
+			base = 5
+			
+		}
+	}
+
+	shared_focus = {
+		id = kor_2002_alliance_with_the_press
+		icon = AIN_thoughtcrime
+		x = 1
+		y = 2
+		cost = 5
+
+		available = {
+		}
+
+		bypass = {
+		}
+
+		prerequisite = { 
+			focus = kor_2002_reassuring_the_liberals
+		}
+
+		select_effect = {
+		}
+
+		relative_position_id = kor_2002_lee
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { }
+		
+		completion_reward = {
+			add_political_power = 50
+			fourth_estate_market_liberal_increase = yes
+			fourth_estate_social_liberal_decrease = yes
+			fourth_estate_conservative_decrease = yes
+		}
+		
+		ai_will_do = {
+			base = 5
+			
+		}
+	}
+
+	shared_focus = {
+		id = kor_2002_reassuring_the_liberals
+		icon = kor_pro_progressive_crush
+		x = 1
+		y = 1
+		cost = 5
+
+		available = {
+		}
+
+		bypass = {
+		}
+
+		prerequisite = { 
+			focus = kor_2002_lee
+		}
+
+		select_effect = {
+		}
+
+		relative_position_id = kor_2002_lee
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { }
+		
+		completion_reward = {
+			add_stability = 0.01
+			add_popularity = { ideology = social_liberal popularity = -0.02 }
+		}
+		
+		ai_will_do = {
+			base = 5
+			
+		}
+	}
+
+	shared_focus = {
+		id = kor_2002_roh
+		icon = kor_2002_roh
+		x = 0
+		y = 1
+		cost = 1.5
+
+		available = {
+			has_country_leader = {
+				character = kor_roh_moo_hyun
+				ruling_only = yes
+			}
+		}
+
+		bypass = {
+		}
+
+		prerequisite = { 
+			focus = kor_2002_presidential_election
+		}
+
+		select_effect = {
+		}
+
+		mutually_exclusive = {
+			focus = kor_2002_lee
+			focus = kor_2002_han
+		}
+
+		relative_position_id = kor_2002_presidential_election
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_HISTORICAL }
+		
+		completion_reward = {
+			fourth_estate_social_liberal_increase = yes
+			custom_effect_tooltip = kor_more_influence_pro_roh_1_10_tt
+			set_temp_variable = { KOR_move_support = 0 }
+			randomize_temp_variable = {
+				var = KOR_move_support
+				distribution = binomial
+				min = 1
+				max = 10
+			}
+			KOR_add_social_liberalism_support_effect = yes
+		}
+		
+		ai_will_do = {
+			base = 5
+			
+		}
+	}
+
+	shared_focus = {
+		id = kor_2002_fight_against_the_press
+		icon = kor_dual_korean_democracy_flag
+		x = -1
+		y = 1
+		cost = 5
+
+		available = {
+		}
+
+		bypass = {
+		}
+
+		prerequisite = { 
+			focus = kor_2002_roh
+		}
+
+		select_effect = {
+		}
+
+		relative_position_id = kor_2002_roh
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = {  }
+		
+		completion_reward = {
+			add_stability = 0.01
+
+			fourth_estate_social_liberal_increase = yes
+			fourth_estate_market_liberal_decrease = yes
+		}
+		
+		ai_will_do = {
+			base = 5
+			modifier = {
+				factor = 2
+				date > 2003.06.01
+			}
+		}
+	}
+
+	shared_focus = {
+		id = kor_2002_apology_for_the_past
+		icon = kor_revolution_mass
+		x = -1
+		y = 2
+		cost = 5
+
+		available = {
+		}
+
+		bypass = {
+		}
+
+		prerequisite = { 
+			focus = kor_2002_fight_against_the_press
+		}
+
+		select_effect = {
+		}
+
+		relative_position_id = kor_2002_roh
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = {  }
+		
+		completion_reward = {
+			fourth_estate_reactionary_decrease = yes
+			add_timed_idea = { idea = KOR_liberal_values days = 365 }
+		}
+		
+		ai_will_do = {
+			base = 5
+			
+		}
+	}
+
+	shared_focus = {
+		id = kor_2002_fight_against_the_authoritarianism
+		icon = kor_revolution
+		x = 1
+		y = 1
+		cost = 5
+
+		available = {
+		}
+
+		bypass = {
+		}
+
+		prerequisite = { 
+			focus = kor_2002_roh
+		}
+
+		select_effect = {
+		}
+
+		relative_position_id = kor_2002_roh
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = {  }
+		
+		completion_reward = {
+			fourth_estate_conservative_decrease = yes
+		}
+		
+		ai_will_do = {
+			base = 5
+			modifier = {
+				factor = 2
+				date > 2003.06.01
+			}
+		}
+	}
+
+	shared_focus = {
+		id = kor_2002_education_for_freedom
+		icon = research
+		x = 1
+		y = 2
+		cost = 5
+
+		available = {
+		}
+
+		bypass = {
+		}
+
+		prerequisite = { 
+			focus = kor_2002_fight_against_the_authoritarianism
+		}
+
+		select_effect = {
+		}
+
+		relative_position_id = kor_2002_roh
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = {  }
+		
+		completion_reward = {
+			add_popularity = { ideology = social_liberal popularity = 0.02 }
+			custom_effect_tooltip = kor_more_influence_pro_roh_1_5_tt
+			set_temp_variable = { KOR_move_support = 0 }
+			randomize_temp_variable = {
+				var = KOR_move_support
+				distribution = binomial
+				min = 1
+				max = 5
+			}
+			KOR_add_social_liberalism_support_effect = yes
+		}
+		
+		ai_will_do = {
+			base = 5
+			
+		}
+	}
+	
+	shared_focus = {
+		id = kor_2002_leftist_history
+		icon = kor_left_history
+		x = 3
+		y = 1
+		cost = 8
+
+		available = {
+		}
+
+		bypass = {
+		}
+
+		prerequisite = { 
+			focus = kor_2002_roh
+			focus = kor_2002_han
+		}
+
+		select_effect = {
+		}
+
+		relative_position_id = kor_2002_roh
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = {  }
+		
+		completion_reward = {
+			add_popularity = { ideology = nationalist popularity = 0.03 }
+			fourth_estate_nationlist_increase = yes
+		}
+		
+		ai_will_do = {
+			base = 5
+			
+		}
+	}
+	
+	shared_focus = {
+		id = kor_2002_korean_race_education
+		icon = kor_keep_dangun
+		x = 3
+		y = 2
+		cost = 8
+
+		available = {
+			has_country_flag = kor_victory_culture_war_flag
+		}
+
+		bypass = {
+		}
+
+		prerequisite = { 
+			focus = kor_2002_leftist_history
+		}
+
+		select_effect = {
+		}
+
+		mutually_exclusive = {
+			focus = kor_2002_proper_compromise
+		}
+
+		relative_position_id = kor_2002_roh
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { }
+		
+		completion_reward = {
+			add_popularity = { ideology = nationalist popularity = 0.05 }
+			add_ideas = KOR_the_hwan_empire_democrat
+			custom_effect_tooltip = kor_more_influence_nl_1_10_tt
+			set_variable = { KOR_move_support = 0 }
+			randomize_variable = {
+				var = KOR_move_support
+				distribution = binomial
+				min = 1
+				max = 10
+			}
+			round_variable = KOR_move_support
+			KOR_add_NL_support_effect = yes
+		}
+		
+		ai_will_do = {
+			base = 5
+			
+		}
+	}
+
+	shared_focus = {
+		id = kor_2002_proper_compromise
+		icon = kor_kill_dangun
+		x = 5
+		y = 2
+		cost = 8
+
+		available = {
+		}
+
+		bypass = {
+		}
+
+		prerequisite = { 
+			focus = kor_2002_leftist_history
+		}
+
+		select_effect = {
+		}
+
+		mutually_exclusive = {
+			focus = kor_2002_korean_race_education
+		}
+
+		relative_position_id = kor_2002_roh
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_HISTORICAL }
+		
+		completion_reward = {
+		
+			add_timed_idea = {
+				idea = KOR_expenditure_on_education
+				days = 720
+			}
+
+			add_popularity = { ideology = nationalist popularity = 0.02 }
+			custom_effect_tooltip = kor_more_influence_nl_1_5_tt
+			set_variable = { KOR_move_support = 0 }
+			randomize_variable = {
+				var = KOR_move_support
+				distribution = binomial
+				min = 1
+				max = 5
+			}
+			round_variable = KOR_move_support
+			KOR_add_NL_support_effect = yes
+
+		}
+		
+		ai_will_do = {
+			base = 5
+			
+		}
+	}
+
+	shared_focus = {
+		id = kor_2002_attack_donggyodong_faction
+		icon = AIN_purge
+		x = -3
+		y = 1
+		cost = 5
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = kor_2002_attack_donggyodong_faction_tt
+				always = no
+			}
+		}
+
+		bypass = {
+		}
+
+		prerequisite = { 
+			focus = kor_2002_roh
+			focus = kor_2002_lee
+		}
+
+		select_effect = {
+		}
+
+		relative_position_id = kor_2002_roh
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_HISTORICAL }
+		
+		completion_reward = {
+			fourth_estate_conservative_decrease = yes
+		}
+		
+		ai_will_do = {
+			base = 5
+			modifier = {
+				factor = 2
+				date > 2003.06.01
+			}
+		}
+	}
+
+	shared_focus = {
+		id = kor_history_is_history
+		icon = JAP_no_kim_dae_jung
+		x = -3
+		y = 2
+		cost = 5
+
+		available = {
+		}
+
+		bypass = {
+		}
+
+		prerequisite = { 
+			focus = kor_2002_attack_donggyodong_faction
+		}
+
+		select_effect = {
+		}
+
+		relative_position_id = kor_2002_roh
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_HISTORICAL }
+		
+		completion_reward = {
+			add_political_power = 75
+
+			if = {
+				limit = { has_country_flag = kor_roh_moo_hyun_gov }
+				custom_effect_tooltip = kor_more_influence_pro_roh_1_10_tt
+				set_variable = { KOR_move_support = 0 }
+				randomize_variable = {
+					var = KOR_move_support
+					distribution = binomial
+					min = 1
+					max = 10
+				}
+				round_variable = KOR_move_support
+				KOR_add_social_liberalism_support_effect = yes
+			}
+			else = {
+				custom_effect_tooltip = kor_more_influence_right_con_1_10_tt
+				set_variable = { KOR_move_support = 0 }
+				randomize_variable = {
+					var = KOR_move_support
+					distribution = binomial
+					min = 1
+					max = 10
+				}
+				round_variable = KOR_move_support
+				KOR_add_neocon_support_effect = yes
+			}
+		}
+		
+		ai_will_do = {
+			base = 5
+			
+		}
+	}
+
+	shared_focus = {
+		id = kor_2002_han
+		icon = kor_2002_han
+		x = 8
+		y = 1
+		cost = 1.5
+
+		available = {
+			has_country_leader = {
+				character = kor_han_hwa_kap
+				ruling_only = yes
+			}
+		}
+
+		bypass = {
+		}
+
+		prerequisite = { 
+			focus = kor_2002_presidential_election
+		}
+
+		select_effect = {
+		}
+
+		mutually_exclusive = {
+			focus = kor_2002_lee
+			focus = kor_2002_roh
+		}
+
+		relative_position_id = kor_2002_presidential_election
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { }
+		
+		completion_reward = {
+			fourth_estate_conservative_increase = yes
+			custom_effect_tooltip = kor_more_influence_left_con_1_10_tt
+			set_variable = { KOR_move_support = 0 }
+			randomize_variable = {
+				var = KOR_move_support
+				distribution = binomial
+				min = 1
+				max = 10
+			}
+			round_variable = KOR_move_support
+			KOR_add_conservatism_support_effect = yes
+		}
+		
+		ai_will_do = {
+			base = 5
+			
+		}
+	}
+
+	shared_focus = {
+		id = kor_2002_reformist_oppression
+		icon = kor_pro_progressive_crush
+		x = -1
+		y = 1
+		cost = 5
+
+		available = {
+		}
+
+		bypass = {
+		}
+
+		prerequisite = { 
+			focus = kor_2002_han
+		}
+
+		select_effect = {
+		}
+
+		relative_position_id = kor_2002_han
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { }
+		
+		completion_reward = {
+			add_popularity = {
+				ideology = social_liberal
+				popularity = -0.03
+			}
+		}
+		
+		ai_will_do = {
+			base = 5
+			
+		}
+	}
+
+	shared_focus = {
+		id = kor_2002_compromise_with_the_press
+		icon = kor_money_grab
+		x = -1
+		y = 2
+		cost = 5
+
+		available = {
+		}
+
+		bypass = {
+		}
+
+		prerequisite = { 
+			focus = kor_2002_reformist_oppression
+		}
+
+		select_effect = {
+		}
+
+		relative_position_id = kor_2002_han
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { }
+		
+		completion_reward = {
+			fourth_estate_conservative_increase = yes
+		}
+		
+		ai_will_do = {
+			base = 5
+			
+		}
+	}
+
+	shared_focus = {
+		id = kor_2002_for_the_future_of_donggyodong_faction
+		icon = kor_kim_dae_jung_cabinet
+		x = 1
+		y = 1
+		cost = 5
+
+		available = {
+		}
+
+		bypass = {
+		}
+
+		prerequisite = { 
+			focus = kor_2002_han
+		}
+
+		select_effect = {
+		}
+
+		relative_position_id = kor_2002_han
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { }
+		
+		completion_reward = {
+			custom_effect_tooltip = kor_more_influence_left_con_1_5_tt
+			set_variable = { KOR_move_support = 0 }
+			randomize_variable = {
+				var = KOR_move_support
+				distribution = binomial
+				min = 1
+				max = 5
+			}
+			round_variable = KOR_move_support
+			KOR_add_conservatism_support_effect = yes
+		}
+		
+		ai_will_do = {
+			base = 5
+			
+		}
+	}
+
+	shared_focus = {
+		id = kor_2002_no_reform_but_also_no_regression
+		icon = kor_dual_korean_democracy_flag_blue 
+		x = 1
+		y = 2
+		cost = 5
+
+		available = {
+		}
+
+		bypass = {
+		}
+
+		prerequisite = { 
+			focus = kor_2002_for_the_future_of_donggyodong_faction
+		}
+
+		select_effect = {
+		}
+
+		relative_position_id = kor_2002_han
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { }
+		
+		completion_reward = {
+			fourth_estate_social_liberal_decrease = yes
+			add_timed_idea = { idea = KOR_conservative_values days = 365 }
+		}
+		
+		ai_will_do = {
+			base = 5
+			
+		}
+	}
+
+	shared_focus = {
+		id = kor_2002_overcoming_the_2004_Crisis
+		icon = kor_2002_overcoming_the_2004_Crisis
+		x = 0
+		y = 4
+		cost = 10
+
+		relative_position_id = kor_2002_presidential_election
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = kor_2002_overcoming_the_2004_Crisis_tt
+				always = no
+			}
+		}
+
+		prerequisite = { 
+			focus = kor_2002_apology_for_the_past
+			focus = kor_2002_education_for_freedom
+			focus = kor_2002_send_a_thank_to_the_company
+			focus = kor_2002_alliance_with_the_press
+			focus = kor_2002_compromise_with_the_press
+			focus = kor_2002_no_reform_but_also_no_regression
+		}
+
+		search_filters = { FOCUS_FILTER_HISTORICAL }
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			if = {
+				limit = { 
+					has_country_leader = {
+						character = kor_han_hwa_kap
+						ruling_only = yes
+					} 
+				}
+				remove_country_leader_trait = KOR_enemy_of_the_reformers
+			}
+			else_if = {
+				limit = { 
+					has_country_leader = {
+						character = kor_roh_moo_hyun
+						ruling_only = yes
+					} 
+				}
+				remove_country_leader_trait = KOR_enemy_of_the_elite
+			}
+			else_if = {
+				limit = { 
+					has_country_leader = {
+						character = kor_lee_hoi_chang
+						ruling_only = yes
+					} 
+				}
+				remove_country_leader_trait = KOR_enemy_of_the_army
+			}
+		}
+		
+		ai_will_do = {
+			base = 100
+		}
+	}
+
+ ##############
+ ###
+ ### Easter Egg
+ ###
+ ##############
+
+	shared_focus = {
+		id = kor_easter_egg_start
+		icon = kor_easter_egg_start
+		x = 68
+		y = 10
+		cost = 3
+
+		allow_branch = {
+			has_country_flag = kor_easter_egg_path
+		}
+
+		bypass = {
+		}
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_political_power = 75
+			add_popularity = {
+				ideology = nationalist
+				popularity = -0.10
+			}
+			add_popularity = {
+				ideology = fascist
+				popularity = -0.05
+			}
+
+			add_ideas = kor_adaptation_to_new_society_1
+		}
+		
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	shared_focus = {
+		id = kor_easter_egg_left
+		icon = kor_pro_progressive_crush 
+		x = -1
+		y = 1
+		cost = 5
+
+		available = {
+		}
+
+		bypass = {
+		}
+
+		prerequisite = { 
+			focus = kor_easter_egg_start
+		}
+
+		select_effect = {
+		}
+
+		relative_position_id = kor_easter_egg_start
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { }
+		
+		completion_reward = {
+			add_political_power = 50
+			add_stability = 0.02
+
+			add_popularity = {
+				ideology = social_democrat
+				popularity = 0.02
+			}
+		}
+		
+		ai_will_do = {
+			base = 10
+			
+		}
+	}
+
+	shared_focus = {
+		id = kor_easter_egg_right
+		icon = JAP_peaceful 
+		x = 1
+		y = 1
+		cost = 5
+
+		available = {
+		}
+
+		bypass = {
+		}
+
+		prerequisite = { 
+			focus = kor_easter_egg_start
+		}
+
+		select_effect = {
+		}
+
+		relative_position_id = kor_easter_egg_start
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { }
+		
+		completion_reward = {
+			add_political_power = 50
+			add_stability = 0.03
+
+			add_popularity = {
+				ideology = social_liberal
+				popularity = 0.02
+			}
+			add_popularity = {
+				ideology = conservative
+				popularity = 0.02
+			}
+			add_popularity = {
+				ideology = democratic_socialist
+				popularity = 0.02
+			}
+		}
+		
+		ai_will_do = {
+			base = 10
+			
+		}
+	}
+
+	shared_focus = {
+		id = kor_easter_egg_centre
+		icon = JAP_japanese_ship 
+		x = 0
+		y = 2
+		cost = 10
+
+		available = {
+		}
+
+		bypass = {
+		}
+
+		prerequisite = { 
+			focus = kor_easter_egg_start
+		}
+
+		prerequisite = { 
+			focus = kor_easter_egg_left
+		}
+
+		prerequisite = { 
+			focus = kor_easter_egg_right
+		}
+
+		select_effect = {
+		}
+
+		relative_position_id = kor_easter_egg_start
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { }
+		
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = kor_adaptation_to_new_society_1
+				add_idea = kor_adaptation_to_new_society_2
+			}
+		}
+		
+		ai_will_do = {
+			base = 10
+			
+		}
+	}
+
+	shared_focus = {
+		id = kor_easter_egg_research
+		icon = kor_easter_egg_research  
+		x = 2
+		y = 3
+		cost = 10
+
+		available = {
+		}
+
+		bypass = {
+		}
+
+		prerequisite = { 
+			focus = kor_easter_egg_centre
+		}
+
+		select_effect = {
+		}
+
+		relative_position_id = kor_easter_egg_start
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { }
+		
+		completion_reward = {
+			add_stability = 0.05
+			custom_effect_tooltip = kor_easter_egg_name_change_tt
+
+			hidden_effect = {
+				#State Names
+				525 = { set_state_name = "Keiki" }
+				869 = { set_state_name = "Zenra" }
+				870 = { set_state_name = "Keishonan" }
+				1108 = { set_state_name = "Keishohoku" }
+				945 = { set_state_name = "Chusei" }
+				946 = { set_state_name = "Saishu" }
+
+				947 = { set_state_name = "Kokai" } #Hwanghae
+				948 = { set_state_name = "Heian" } #Pyongyang
+				949 = { set_state_name = "Ryoko" } #Ryanggang
+				950 = { set_state_name = "Rasen" } #Rason
+				
+				871 = { set_state_name = "Minami-Kogen" }
+				872 = { set_state_name = "Kita-Kogen" }
+				873 = { set_state_name = "Kankyonan" }
+				874 = { set_state_name = "Kankyohoku" }
+				875 = { set_state_name = "Jiko" }
+						
+				#Province Names
+				set_province_name = { id = 7125 name = "Keijō" } #Seoul
+				set_province_name = { id = 7021 name = "Kōryō" } #Gangneung
+				set_province_name = { id = 13262 name = "Jinsen" } #Incheon
+				set_province_name = { id = 11977 name = "Taiden" } #Daejeon
+				set_province_name = { id = 14118 name = "Kōjū" } #Gwangju
+				set_province_name = { id = 4056 name = "Fuzan" } #Busan
+				set_province_name = { id = 14123 name = "Taikyū" } #Daegu
+				set_province_name = { id = 1177 name = "Saishu" } #Jeju
+				
+				set_province_name = { id = 12085 name = "Reisui" } #Yeosu
+				set_province_name = { id = 14125 name = "Zenshū" } #Jeonju
+				set_province_name = { id = 4126 name = "Gunzan" } #Gunsan
+				set_province_name = { id = 11992 name = "Mizuyama" } #Seosan
+				set_province_name = { id = 7204 name = "Amayasu" } #Cheonan
+				set_province_name = { id = 14131 name = "Seishū" } #Cheongju
+				set_province_name = { id = 14134 name = "Genshū" } #Wonju
+				set_province_name = { id = 14133 name = "Ryūjin" } #Yongin
+				set_province_name = { id = 7221 name = "Suigen" } #Suwon
+				set_province_name = { id = 14136 name = "Nanyoshū" } #Namyangju
+				set_province_name = { id = 4103 name = "Andō" } #Andong
+				set_province_name = { id = 14127 name = "Hokō" } #Pohang
+				set_province_name = { id = 14124 name = "Urusan" } #Ulsan (Isan)
+				set_province_name = { id = 12060 name = "Shōgen" } #Changwon
+				
+				set_province_name = { id = 14141 name = "Heijō" } #Pyongyang
+				set_province_name = { id = 11835 name = "Shingichū" } #Sinŭiju
+				set_province_name = { id = 1003 name = "Kaijō" } #Kaesŏng
+				set_province_name = { id = 10083 name = "Genzan" } #Wonsan
+				set_province_name = { id = 3981 name = "Kankō" } #Hamhung
+				set_province_name = { id = 6822 name = "Seishin" } #Chongjin
+				
+				set_province_name = { id = 14139 name = "Kaishū" } #Haeju
+				set_province_name = { id = 14140 name = "Shariin" } #Sariwon
+				set_province_name = { id = 4052 name = "Chinnanho" } #Nampo (Jinnampo, Old Name)
+				set_province_name = { id = 9790 name = "Junsen" } #Kaech'on, It was part of Sunchon during the Japanese colonial period.
+				set_province_name = { id = 11896 name = "Kisen" } #Huich'on
+				set_province_name = { id = 11828 name = "Kōkai" } #Kanggye
+				set_province_name = { id = 14143 name = "Keizan" } #Hyesan
+				set_province_name = { id = 6922 name = "Tasen" } #Tanch'on
+			}	
+		}
+		
+		ai_will_do = {
+			base = 10
+			
+		}
+	}
+
+	shared_focus = {
+		id = kor_easter_egg_culture
+		icon = kor_easter_egg_culture
+		x = 4
+		y = 3
+		cost = 10
+
+		available = {
+		}
+
+		bypass = {
+		}
+
+		prerequisite = { 
+			focus = kor_easter_egg_centre
+		}
+
+		select_effect = {
+		}
+
+		relative_position_id = kor_easter_egg_start
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { }
+		
+		completion_reward = {
+			add_ideas = KOR_bushido_idea
+		}
+		
+		ai_will_do = {
+			base = 10
+			
+		}
+	}
+
+	shared_focus = {
+		id = kor_easter_egg_interval
+		icon = kor_sakura 
+		x = -1
+		y = 3
+		cost = 7
+
+		available = {
+			date > 2013.01.01
+			is_subject = no
+		}
+
+		bypass = {
+		}
+
+		prerequisite = { 
+			focus = kor_easter_egg_centre
+		}
+
+		select_effect = {
+		}
+
+		relative_position_id = kor_easter_egg_start
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { }
+		
+		completion_reward = {
+			add_ideas = kor_our_afterglow_idea
+		}
+		
+		ai_will_do = {
+			base = 10
+			
+		}
+	}
+
+	shared_focus = {
+		id = kor_easter_egg_interval_left
+		icon = kor_easter_egg_interval_left 
+		x = -2
+		y = 4
+		cost = 5
+
+		available = {
+			KOR_left_wing_government = yes
+		}
+
+		bypass = {
+		}
+
+		prerequisite = { 
+			focus = kor_easter_egg_interval
+		}
+
+		mutually_exclusive = {
+			focus = kor_easter_egg_interval_right
+		}
+
+		select_effect = {
+		}
+
+		relative_position_id = kor_easter_egg_start
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { }
+		
+		completion_reward = {
+			show_ideas_tooltip = kor_vladimir_tikhonov_roj
+		}
+		
+		ai_will_do = {
+			base = 5
+			
+		}
+	}
+
+	shared_focus = {
+		id = kor_easter_egg_interval_right
+		icon = kor_easter_egg_interval_right
+		x = 0
+		y = 4
+		cost = 5
+
+		available = {
+			KOR_right_wing_government = yes
+		}
+
+		bypass = {
+		}
+
+		prerequisite = { 
+			focus = kor_easter_egg_interval
+		}
+		
+		mutually_exclusive = {
+			focus = kor_easter_egg_interval_left
+		}
+
+		select_effect = {
+		}
+
+		relative_position_id = kor_easter_egg_start
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { }
+		
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 1
+						include_locked = yes
+					}
+					state_population_k > 20000
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+			add_tech_bonus = {
+				name = kor_easter_egg_interval_right
+				bonus = 1.0
+				uses = 1
+				category = industry
+			}
+		}
+		
+		ai_will_do = {
+			base = 5
+			
+		}
+	}
+
+	shared_focus = {
+		id = kor_easter_egg_epilogue
+		icon = JAP_korean_flag_down
+		x = -1
+		y = 5
+		cost = 8
+
+		available = {
+		}
+
+		bypass = {
+		}
+
+		prerequisite = { 
+			focus = kor_easter_egg_interval_left
+			focus = kor_easter_egg_interval_right
+		}
+
+		select_effect = {
+		}
+
+		relative_position_id = kor_easter_egg_start
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { }
+		
+		completion_reward = {
+			custom_effect_tooltip = kor_easter_egg_epilogue_tt
+
+			hidden_effect = {
+				if = {
+					limit = { }
+					swap_ideas = {
+						remove_idea = kor_adaptation_to_new_society_2
+						add_idea = kor_adaptation_to_new_society_left
+					}
+				}
+				else = {
+					swap_ideas = {
+						remove_idea = kor_adaptation_to_new_society_2
+						add_idea = kor_adaptation_to_new_society_right
+					}
+				}
+				
+				every_state = { 
+					limit = { is_core_of = JAP }
+					add_core_of = ROOT
+				}
 			}
 		}
 		
