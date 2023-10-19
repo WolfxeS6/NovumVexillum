@@ -79,8 +79,7 @@ news_event = {
 	
 	immediate = {
 		set_global_flag = kor_republic_of_japan_sp
-		activate_superevent_music = yes
-		activate_superevent_music = yes
+		hidden_effect = { activate_superevent_music = yes }
 	}
 	
 	option = {
@@ -108,7 +107,7 @@ news_event = {
 
 	immediate = {
 		set_global_flag = kor_anarchism_rev_sp
-		activate_superevent_music = yes
+		hidden_effect = { activate_superevent_music = yes }
 	}
 	
 	major = yes
@@ -139,7 +138,7 @@ news_event = {
 
 	immediate = {
 		set_global_flag = kor_minjok_rev_sp
-		activate_superevent_music = yes
+		hidden_effect = { activate_superevent_music = yes }
 	}
 	
 	major = yes
@@ -519,7 +518,7 @@ news_event = {
 
 	immediate = {
 		set_global_flag = KOR_super_event_anarchy_korea_reunification_sp
-		activate_superevent_music = yes
+		hidden_effect = { activate_superevent_music = yes }
 		
 		hidden_effect = {
 			country_event = { id = korea_reunification_events.1 days = 5 }
@@ -553,7 +552,7 @@ news_event = {
 
 	immediate = {
 		set_global_flag = KOR_super_event_roj_korea_reunification_sp
-		activate_superevent_music = yes
+		hidden_effect = { activate_superevent_music = yes }
 		
 		hidden_effect = {
 			country_event = { id = korea_reunification_events.1 days = 5 }
@@ -733,7 +732,8 @@ news_event = {
 		}
 	}
 }
-#Establishment of Anarchist Community in Korea
+
+#Korean Civil War
 news_event = {
 	id = rok_news.26
 	title = rok_news.26.t
@@ -764,6 +764,83 @@ news_event = {
 	}
 }
 
+#Impeachment of the President Roh Moo-hyun
+news_event = {
+	id = rok_news.27
+	title = rok_news.27.t
+	desc = rok_news.27.desc
+	
+	picture = GFX_news_event_impeachment_of_the_president_1
+	
+	major = yes
+	is_triggered_only = yes
+	
+	option = {
+		name = rok_news.27.a
+		trigger = {
+			original_tag = KOR
+		}
+	}
+	
+	option = {
+		name = rok_news.27.b
+		trigger = {
+			NOT = { original_tag = KOR }
+		}
+	}
+}
+
+#Impeachment of the President Lee Hoi-chang
+news_event = {
+	id = rok_news.28
+	title = rok_news.28.t
+	desc = rok_news.28.desc
+	
+	picture = GFX_news_event_impeachment_of_the_president_3
+	
+	major = yes
+	is_triggered_only = yes
+	
+	option = {
+		name = rok_news.28.a
+		trigger = {
+			original_tag = KOR
+		}
+	}
+	
+	option = {
+		name = rok_news.28.b
+		trigger = {
+			NOT = { original_tag = KOR }
+		}
+	}
+}
+
+#Impeachment of the President Han Hwa-kap
+news_event = {
+	id = rok_news.29
+	title = rok_news.29.t
+	desc = rok_news.29.desc
+	
+	picture = GFX_news_event_impeachment_of_the_president_2
+	
+	major = yes
+	is_triggered_only = yes
+	
+	option = {
+		name = rok_news.29.a
+		trigger = {
+			original_tag = KOR
+		}
+	}
+	
+	option = {
+		name = rok_news.29.b
+		trigger = {
+			NOT = { original_tag = KOR }
+		}
+	}
+}
 
 
 
@@ -1111,6 +1188,7 @@ country_event = {
 	option = {
 		name = south_korea.21.b
 		clr_country_flag = KOR_social_democracy_coalition
+		clr_country_flag = kor_2000_pd_coalition
 	}
 }
 
@@ -1163,6 +1241,11 @@ country_event = {
 	immediate = {
 		hidden_effect = {
 			set_country_flag = { flag = kor_parliamentary_election_flag value = 1 days = 1460 } #4 Years
+			
+			if = {
+				limit = { NOT = { has_completed_focus = kor_2000_year } }
+				country_event = { id = south_korea.300 hours = 6 }
+			}
 		}
 	}
 	
@@ -1439,8 +1522,9 @@ country_event = {
 		ai_chance = {
 			factor = 0
 		}
-			KOR_RegimeStability_subtract_10_effect = yes
-			clr_country_flag = KOR_social_democracy_coalition
+		KOR_RegimeStability_subtract_10_effect = yes
+		clr_country_flag = KOR_social_democracy_coalition
+		clr_country_flag = kor_2000_pd_coalition
 	}
 }
 
@@ -4356,6 +4440,40 @@ country_event = {
 	}
 }
 
+#Punishment of Dictators Descendants Act
+country_event = {
+	id = south_korea.148
+	title = south_korea.148.t
+	desc = south_korea.148.desc
+	picture = GFX_report_event_KOR_new_law
+
+	is_triggered_only = yes
+	
+	option = {
+		name = south_korea.148.a
+		add_political_power = -75
+		
+		custom_effect_tooltip = kor_more_influence_pro_park_1_10_tt
+		set_variable = { KOR_move_support = 0 }
+		randomize_variable = {
+			var = KOR_move_support
+			distribution = binomial
+			min = 1
+			max = 10
+		}
+		round_variable = KOR_move_support
+		KOR_add_reactionists_support_effect = yes
+		
+		add_popularity = {
+			ideology = reactionary
+			popularity = 0.07
+		}
+		
+		set_country_flag = kor_angry_park_geun_hye
+		complete_national_focus = kor_punishment_of_dictators_descendants_act
+	}
+}
+
 
 #The Old Royal Family who visited [ROOT.GetName]
 country_event = {
@@ -4388,7 +4506,7 @@ country_event = {
 	picture = GFX_report_event_KOR_death_yi_ku
 
 	mean_time_to_happen = {
-		days = 780
+		days = 1
 	}
 	
 	fire_only_once = yes
@@ -4396,10 +4514,25 @@ country_event = {
 	trigger = {
 		original_tag = KOR
 		has_completed_focus = kor_victory_democracy
+		date > 2005.06.01
+		date < 2006.06.01
 	}
 	
 	option = {
 		name = south_korea.150.a
+		
+		retire_character = kor_yi_ku
+		kor_yi_won = {
+			add_country_leader_role = {
+				country_leader = {
+					desc = POLITICS_YI_WON_DESC
+					ideology = absolute_monarchist
+					traits = { 
+					}
+				}
+				promote_leader = yes
+			}
+		}
 		
 		hidden_effect = {
 			country_event = { id = south_korea.400 days = 100 random = 100 }
@@ -4597,7 +4730,7 @@ country_event = {
 			}
 			promote_leader = yes
 		}
-
+		
 		hidden_effect = {
 			add_ideas = government_system_one_party
 			
@@ -4645,7 +4778,7 @@ country_event = {
 	is_triggered_only = yes
 	
 	option = {
-		name = south_korea.161.a
+		name = south_korea.162.a
 		country_event = { id = south_korea.163 days = 7 }
 		
 		add_manpower = -280000
@@ -4653,15 +4786,15 @@ country_event = {
 		add_war_support = -0.5
 		
 		#load_focus_tree = KOR_focus_game_over
-
-		add_country_leader_role = {
-			character = "kor_choi_soon_sil"
-			country_leader = {
-				ideology = counter_progressive_democrat
-				desc = "POLITICS_CHOI_SOON_SIL_GAME_OVER_DESC"
-				traits = {
-					KOR_diplomatic_isolation KOR_non_legitimacy_adviser
-				}
+		
+		create_country_leader = {
+			name = kor_choi_soon_sil
+			desc = "POLITICS_CHOI_SOON_SIL_GAME_OVER_DESC"
+			picture = "choi_soon_sil.dds"
+			expire = "2099.12.1"
+			ideology = counter_progressive_democrat
+			traits = {
+				KOR_diplomatic_isolation KOR_non_legitimacy_adviser
 			}
 			promote_leader = yes
 		}
@@ -4672,28 +4805,6 @@ country_event = {
 		}
 		
 		hidden_effect = {
-			
-			if = {
-				limit = {  has_idea = civil_liberties_free  }
-				swap_ideas = {
-					remove_idea = civil_liberties_free
-					add_idea = civil_liberties_totalitarian
-				}
-			}
-			else_if = {
-				limit = {  has_idea = civil_liberties_limited  }
-				swap_ideas = {
-					remove_idea = civil_liberties_limited
-					add_idea = civil_liberties_totalitarian
-				}
-			}
-			else_if = {
-				limit = {  has_idea = civil_liberties_restricted  }
-				swap_ideas = {
-					remove_idea = civil_liberties_restricted
-					add_idea = civil_liberties_totalitarian
-				}
-			}
 
 			remove_ideas = {
 				kor_descendant_of_the_Imperial_army_1
@@ -4782,6 +4893,1405 @@ country_event = {
 			}
 			
 			ZZK = { load_focus_tree = KOR_focus_game_over }
+		}
+	}
+}
+
+####################
+#
+# After 2002
+#
+####################
+
+#[ROOT.GetLeader] Visits Military Base
+country_event = {
+	id = south_korea.164
+	title = south_korea.164.t
+	desc = south_korea.164.desc
+	picture = GFX_report_event_coup_auth_purge
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = south_korea.164.a
+		add_popularity = {
+			ideology = market_liberal
+			popularity = -0.01
+		}
+	}
+}
+
+#Meeting between [ROOT.GetLeader] and the Prosecutors
+country_event = {
+	id = south_korea.165
+	title = south_korea.165.t
+	desc = south_korea.165.desc
+	picture = GFX_report_event_coup_auth_purge
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = south_korea.165.a
+		add_popularity = {
+			ideology = social_liberal
+			popularity = -0.01
+		}
+	}
+}
+
+#Division within the Party
+country_event = {
+	id = south_korea.166
+	title = south_korea.166.t
+	desc = south_korea.166.desc
+	picture = GFX_report_event_coup_auth_purge
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = south_korea.166.a
+		add_popularity = {
+			ideology = conservative
+			popularity = -0.01
+		}
+	}
+}
+
+#[PRK.GetName]'s Money Issues
+country_event = {
+	id = south_korea.167
+	title = south_korea.167.t
+	desc = south_korea.167.desc
+	picture = GFX_report_event_coup_auth_purge
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = south_korea.167.a
+		add_popularity = {
+			ideology = conservative
+			popularity = -0.04
+		}
+		
+		hidden_effect = {
+			country_event = { id = south_korea.168 days = 30 }
+		}
+	}
+}
+
+#Politically-hit Donggyo-dong Faction
+country_event = {
+	id = south_korea.168
+	title = south_korea.168.t
+	desc = south_korea.168.desc
+	picture = GFX_report_event_coup_auth_purge
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = south_korea.168.a
+		add_popularity = {
+			ideology = conservative
+			popularity = -0.07
+		}
+		
+	}
+}
+
+#Large-scale Unrest in Buan County
+country_event = {
+	id = south_korea.169
+	title = south_korea.169.t
+	desc = south_korea.169.desc
+	picture = GFX_report_event_KOR_nationalist_angry_1
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = south_korea.169.a
+	}
+	
+	option = {
+		name = south_korea.169.b
+	}
+	
+	option = {
+		name = south_korea.169.c
+	}
+}
+
+#Residents denouncing the government's hard-line policies
+country_event = {
+	id = south_korea.170
+	title = south_korea.170.t
+	desc = south_korea.170.desc
+	picture = GFX_report_event_KOR_national_assembly_3
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = south_korea.170.a
+	}
+}
+
+#Buan County Restored Order
+country_event = {
+	id = south_korea.171
+	title = south_korea.171.t
+	desc = south_korea.171.desc
+	picture = GFX_report_event_KOR_national_flag_1
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = south_korea.171.a
+	}
+}
+
+####################
+#
+# After 2002 Events
+#
+####################
+
+# Reform or Power Struggle?
+country_event = {
+	id = south_korea.200
+	title = south_korea.200.t
+	desc = south_korea.200.desc
+	picture = GFX_report_event_kor_MDP
+
+	is_triggered_only = yes
+	
+	option = {
+		name = south_korea.200.a
+		ai_chance = { factor = 100 }
+		
+		add_popularity = { ideology = social_liberal popularity = 0.02 }
+		add_popularity = { ideology = conservative popularity = 0.02 }
+		
+		fourth_estate_conservative_increase = yes
+		fourth_estate_market_liberal_increase = yes
+		
+		hidden_effect = {
+			custom_effect_tooltip = kor_more_influence_pro_roh_1_5_tt
+			set_temp_variable = { KOR_move_support = 0 }
+			randomize_temp_variable = {
+				var = KOR_move_support
+				distribution = binomial
+				min = 5
+				max = 10
+			}
+			KOR_add_social_liberalism_support_effect = yes
+		}
+	}
+}
+
+# Han Hwa-kap Claims 'Political Union' of Two Parties
+country_event = {
+	id = south_korea.201
+	title = south_korea.201.t
+	desc = south_korea.201.desc
+	picture = GFX_report_event_kor_han_hwa_kap_3
+
+	is_triggered_only = yes
+	
+	option = {
+		name = south_korea.201.a
+		ai_chance = { factor = 100 }
+		
+		add_popularity = { ideology = market_liberal popularity = 0.03 }
+		
+		hidden_effect = {
+			custom_effect_tooltip = kor_more_influence_pro_roh_1_5_tt
+			set_temp_variable = { KOR_move_support = 0 }
+			randomize_temp_variable = {
+				var = KOR_move_support
+				distribution = binomial
+				min = 5
+				max = 10
+			}
+			KOR_add_social_liberalism_support_effect = yes
+		}
+	}
+}
+
+# One party, Two factions
+country_event = {
+	id = south_korea.202
+	title = south_korea.202.t
+	desc = south_korea.202.desc
+	picture = GFX_report_event_kor_roh_moo_hyun_2
+
+	is_triggered_only = yes
+	
+	option = {
+		name = south_korea.202.a
+		ai_chance = { factor = 100 }
+		hidden_effect = {
+			custom_effect_tooltip = kor_more_influence_pro_roh_1_5_tt
+			set_temp_variable = { KOR_move_support = 0 }
+			randomize_temp_variable = {
+				var = KOR_move_support
+				distribution = binomial
+				min = 5
+				max = 10
+			}
+			KOR_add_social_liberalism_support_effect = yes
+		}
+	}
+}
+
+# Special Investigation on Transfer of Funds to North Korea
+country_event = {
+	id = south_korea.203
+	title = south_korea.203.t
+	desc = south_korea.203.desc
+	picture = GFX_report_event_KOR_korean_court
+
+	is_triggered_only = yes
+	
+	option = {
+		name = south_korea.203.a
+		ai_chance = { factor = 100 }
+		
+		add_political_power = 50
+		country_event = { id = south_korea.204 days = 14 }
+		
+		add_popularity = {
+			ideology = conservative
+			popularity = -0.02
+		}
+		
+		if = {
+			limit = { has_country_flag = kor_roh_moo_hyun_gov }
+			hidden_effect = {
+				custom_effect_tooltip = kor_more_influence_pro_roh_1_5_tt
+				set_temp_variable = { KOR_move_support = 0 }
+				randomize_temp_variable = {
+					var = KOR_move_support
+					distribution = binomial
+					min = 10
+					max = 20
+				}
+				KOR_add_social_liberalism_support_effect = yes
+			}
+		}
+		else_if = {
+			limit = { has_country_flag = kor_lee_hoi_chang_gov }
+			hidden_effect = {
+				custom_effect_tooltip = kor_more_influence_right_con_1_5_tt
+				set_temp_variable = { KOR_move_support = 0 }
+				randomize_temp_variable = {
+					var = KOR_move_support
+					distribution = binomial
+					min = 10
+					max = 20
+				}
+				KOR_add_neocon_support_effect = yes
+			}
+		}
+	}
+	
+	option = {
+		name = south_korea.203.b
+		ai_chance = { factor = 0 }
+		
+		add_political_power = -50
+		add_popularity = {
+			ideology = conservative
+			popularity = 0.04
+		}
+	}
+}
+
+# Politicians of the Kim Dae-jung Government under Investigation
+country_event = {
+	id = south_korea.204
+	title = south_korea.204.t
+	desc = south_korea.204.desc
+	picture = GFX_report_event_KOR_korean_court_2
+
+	is_triggered_only = yes
+	
+	option = {
+		name = south_korea.204.a
+		ai_chance = { factor = 100 }
+		
+		add_popularity = {
+			ideology = conservative
+			popularity = -0.03
+		}
+		
+		complete_national_focus = kor_2002_attack_donggyodong_faction
+		
+		hidden_effect = { country_event = { id = south_korea.205 days = 14 random_days = 10 } }
+	}
+}
+
+# Businessman's Suicide Case
+country_event = {
+	id = south_korea.205
+	title = south_korea.205.t
+	desc = south_korea.205.desc
+	picture = GFX_report_event_computer
+
+	is_triggered_only = yes
+	
+	option = {
+		name = south_korea.205.a
+		ai_chance = { factor = 100 }
+		
+		add_political_power = -25
+		add_manpower = -1
+	}
+}
+
+# Allegations of Corruption by the Former Presidential Secretary
+country_event = {
+	id = south_korea.206
+	title = south_korea.206.t
+	desc = south_korea.206.desc
+	picture = GFX_report_event_KOR_national_assembly_3
+
+	is_triggered_only = yes
+	
+	option = {
+		name = south_korea.206.a
+		ai_chance = { factor = 100 }
+		add_popularity = {
+			ideology = social_liberal
+			popularity = -0.02
+		}
+		
+		add_political_power = -100
+		add_stability = -0.03
+	}
+}
+
+# Divided Ruling Party
+country_event = {
+	id = south_korea.207
+	title = south_korea.207.t
+	desc = south_korea.207.desc
+	picture = GFX_report_event_KOR_national_assembly_4
+
+	is_triggered_only = yes
+	
+	option = {
+		name = south_korea.207.a
+		ai_chance = { factor = 100 }
+		clr_country_flag = KOR_conservatism_coalition
+		
+		add_timed_idea = {
+			idea = KOR_political_violence_II
+			days = 210
+		}
+	}
+}
+
+# \"Failed 1 Year\" Report
+country_event = {
+	id = south_korea.208
+	title = south_korea.208.t
+	desc = south_korea.208.desc
+	picture = GFX_report_event_KOR_national_flag_1
+
+	is_triggered_only = yes
+	
+	option = {
+		name = south_korea.208.a
+		ai_chance = { factor = 100 }
+		add_popularity = {
+			ideology = social_liberal
+			popularity = -0.02
+		}
+	}
+}
+
+# [ROOT.GetLeader] Government Impeachment Crisis
+country_event = {
+	id = south_korea.209
+	title = south_korea.209.t
+	desc = south_korea.209.desc
+	picture = GFX_report_event_KOR_national_assembly_1
+
+	is_triggered_only = yes
+	
+	immediate = {
+		hidden_effect = { country_event = { id = south_korea.210 days = 21 } }
+	}
+	
+	option = {
+		name = south_korea.209.a
+		ai_chance = { factor = 50 }
+		hidden_effect = { 
+			country_event = { id = south_korea.212 hours = 8 random_hours = 8 } #Rejected Request for Reconcile
+		}
+	}
+	
+	option = {
+		name = south_korea.209.b
+		ai_chance = { factor = 50 }
+		hidden_effect = { 
+			country_event = { id = south_korea.213 hours = 8 random_hours = 8 } #Citizens in Support of [ROOT.GetLeader]
+		}
+	}
+}
+
+# Impeachment of the President
+country_event = {
+	id = south_korea.210
+	title = south_korea.210.t
+	desc = south_korea.210.desc
+	picture = "[GetKorea2004ImpeachmentGFX]"
+
+	is_triggered_only = yes
+	
+	option = {
+		name = south_korea.210.a
+		ai_chance = { factor = 100 }
+		
+		if = {
+			limit = { has_country_flag = kor_roh_moo_hyun_gov }
+			kor_interim_government_2004 = {
+				add_country_leader_role = {
+					country_leader = {
+						desc = POLITICS_INTERIM_GOVERNMENT_2004_DESC
+						ideology = centrist
+						traits = { vacancy }
+					}
+					promote_leader = yes
+				}
+			}
+		}
+		else_if = {
+			limit = { has_country_flag = kor_han_hwa_kap_gov }
+			kor_interim_government_2004 = {
+				add_country_leader_role = {
+					country_leader = {
+						desc = POLITICS_INTERIM_GOVERNMENT_2004_DESC
+						ideology = constitutionalist 
+						traits = { vacancy }
+					}
+					promote_leader = yes
+				}
+			}
+		}
+		else = {
+			kor_interim_government_2004 = {
+				add_country_leader_role = {
+					country_leader = {
+						desc = POLITICS_INTERIM_GOVERNMENT_2004_DESC
+						ideology = big_tent
+						traits = { vacancy }
+					}
+					promote_leader = yes
+				}
+			}
+		}
+		
+		hidden_effect = { 
+			country_event = { id = south_korea.211 hours = 8 random_hours = 8 } #The People angry at the News of Impeachment
+			country_event = { id = south_korea.214 days = 21 } #Ongoing Impeachment Trial
+			country_event = { id = south_korea.222 days = 1 random_days = 3 } #We need to find Lawyer
+		}
+	}
+}
+
+# The People angry at the News of Impeachment
+country_event = {
+	id = south_korea.211
+	title = south_korea.211.t
+	picture = GFX_report_event_KOR_candle_revolution_1
+	
+	desc = {
+		text = south_korea.211.desc_1
+		trigger = {
+			has_country_flag = kor_lee_hoi_chang_gov
+		}
+	}
+	
+	desc = {
+		text = south_korea.211.desc_2
+		trigger = {
+			has_country_flag = kor_roh_moo_hyun_gov
+		}
+	}
+	
+	desc = {
+		text = south_korea.211.desc_3
+		trigger = {
+			has_country_flag = kor_han_hwa_kap_gov
+		}
+	}
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = south_korea.211.a
+		ai_chance = { factor = 100 }
+		
+		if = {
+			limit = { has_country_flag = kor_roh_moo_hyun_gov }
+			hidden_effect = {
+				set_temp_variable = { KOR_move_support = 0 }
+				randomize_temp_variable = {
+					var = KOR_move_support
+					distribution = binomial
+					min = 40
+					max = 60
+				}
+				KOR_add_social_liberalism_support_effect = yes
+			}
+		}
+		else_if = {
+			limit = { has_country_flag = kor_lee_hoi_chang_gov }
+			hidden_effect = {
+				set_temp_variable = { KOR_move_support = 0 }
+				randomize_temp_variable = {
+					var = KOR_move_support
+					distribution = binomial
+					min = 40
+					max = 60
+				}
+				KOR_add_neocon_support_effect = yes
+			}
+		}
+		else_if = {
+			limit = { has_country_flag = kor_han_hwa_kap_gov }
+			hidden_effect = {
+				set_temp_variable = { KOR_move_support = 0 }
+				randomize_temp_variable = {
+					var = KOR_move_support
+					distribution = binomial
+					min = 40
+					max = 60
+				}
+				KOR_add_conservatism_support_effect = yes
+			}
+		}
+		
+		add_political_power = 100
+		add_stability = -0.02
+	}
+}
+
+# Rejected Request for Reconcile
+country_event = {
+	id = south_korea.212
+	title = south_korea.212.t
+	desc = south_korea.212.desc
+	picture = GFX_report_event_political_deal
+
+	is_triggered_only = yes
+	
+	option = {
+		name = south_korea.212.a
+		ai_chance = { factor = 100 }
+		
+		add_political_power = -35
+	}
+}
+
+# Citizens in Support of [ROOT.GetLeader]
+country_event = {
+	id = south_korea.213
+	title = south_korea.213.t
+	desc = south_korea.213.desc
+	picture = GFX_report_event_KOR_candle_revolution_1
+
+	is_triggered_only = yes
+	
+	option = {
+		name = south_korea.213.a
+		ai_chance = { factor = 100 }
+		
+		add_political_power = 35
+	}
+}
+
+# Ongoing Impeachment Trial
+country_event = {
+	id = south_korea.214
+	title = south_korea.214.t
+	desc = south_korea.214.desc
+	picture = GFX_report_event_KOR_korean_court
+
+	is_triggered_only = yes
+	
+	option = {
+		name = south_korea.214.a
+		ai_chance = { factor = 100 }
+		
+		country_event = { id = south_korea.230 days = 30 } #The Judgment Day
+	}
+}
+
+###
+
+# Eavesdropping Scandal?
+country_event = {
+	id = south_korea.215
+	title = south_korea.215.t
+	desc = south_korea.215.desc
+	picture = GFX_report_event_kor_han_hwa_kap_1
+
+	is_triggered_only = yes
+	
+	option = {
+		name = south_korea.215.a
+		ai_chance = { factor = 100 }
+		
+		add_stability = -0.03
+		add_war_support = -0.02
+		
+		fourth_estate_conservative_decrease = yes
+		
+		hidden_effect = {
+			country_event = { id = south_korea.216 days = 14 random_days = 10 } #Han Hwa-kap's Press Conference
+		}
+	}
+}
+
+# Han Hwa-kap's Press Conference
+country_event = {
+	id = south_korea.216
+	title = south_korea.216.t
+	desc = south_korea.216.desc
+	picture = GFX_report_event_kor_han_hwa_kap_2
+
+	is_triggered_only = yes
+	
+	option = {
+		name = south_korea.216.a
+		ai_chance = { factor = 100 }
+		
+		add_political_power = -50
+		add_popularity = {
+			ideology = conservative
+			popularity = -0.02
+		}
+		
+		hidden_effect = {
+			custom_effect_tooltip = kor_more_influence_left_con_1_10_tt
+			set_temp_variable = { KOR_move_support = 0 }
+			randomize_temp_variable = {
+				var = KOR_move_support
+				distribution = binomial
+				min = 1
+				max = 5
+			}
+			KOR_add_conservatism_support_effect = yes
+		}
+	}
+}
+
+# \"Failed 1 Year\" Report
+country_event = {
+	id = south_korea.217
+	title = south_korea.217.t
+	desc = south_korea.217.desc
+	picture = GFX_report_event_KOR_national_flag_1
+
+	is_triggered_only = yes
+	
+	option = {
+		name = south_korea.217.a
+		ai_chance = { factor = 100 }
+		add_popularity = {
+			ideology = conservative
+			popularity = -0.02
+		}
+	}
+}
+
+# Demand for a Special Investigation into the Alleged Wiretapping
+country_event = {
+	id = south_korea.218
+	title = south_korea.218.t
+	desc = south_korea.218.desc
+	picture = GFX_report_event_KOR_national_assembly_1
+
+	is_triggered_only = yes
+	
+	option = {
+		name = south_korea.218.a
+		ai_chance = { factor = 50 }
+		
+		add_popularity = {
+			ideology = social_liberal
+			popularity = -0.03
+		}
+		
+	}
+	
+	option = {
+		name = south_korea.218.b
+		ai_chance = { factor = 50 }
+		
+		add_popularity = {
+			ideology = market_liberal
+			popularity = -0.03
+		}
+	}
+}
+
+# [GetKORBosudang_desc] to demand dissolution of NIS
+country_event = {
+	id = south_korea.219
+	title = south_korea.219.t
+	desc = south_korea.219.desc
+	picture = GFX_report_event_KOR_national_flag_1
+
+	is_triggered_only = yes
+	
+	option = {
+		name = south_korea.219.a
+		ai_chance = { factor = 100 }
+		
+		add_timed_idea = {
+			idea = KOR_politically_attacked_NIS
+			days = 365
+		}
+		
+		add_political_power = -75
+		
+		hidden_effect = {
+			custom_effect_tooltip = kor_more_influence_left_con_1_10_tt
+			set_temp_variable = { KOR_move_support = 0 }
+			randomize_temp_variable = {
+				var = KOR_move_support
+				distribution = binomial
+				min = 1
+				max = 5
+			}
+			KOR_add_conservatism_support_effect = yes
+		}
+	}
+}
+
+# Divided Ruling Party
+country_event = {
+	id = south_korea.220
+	title = south_korea.220.t
+	desc = south_korea.220.desc
+	picture = GFX_report_event_KOR_national_assembly_4
+
+	is_triggered_only = yes
+	
+	option = {
+		name = south_korea.220.a
+		ai_chance = { factor = 100 }
+		clr_country_flag = KOR_social_liberalism_coalition
+		
+		add_timed_idea = {
+			idea = KOR_political_violence_II
+			days = 210
+		}
+	}
+}
+
+# [ROOT.GetLeader] Government Impeachment Crisis
+country_event = {
+	id = south_korea.221
+	title = south_korea.221.t
+	desc = south_korea.209.desc
+	picture = GFX_report_event_KOR_national_assembly_1
+
+	is_triggered_only = yes
+	
+	immediate = {
+		hidden_effect = { country_event = { id = south_korea.210 days = 21 } }
+	}
+	
+	option = {
+		name = south_korea.221.a
+		ai_chance = { factor = 50 }
+		hidden_effect = { 
+			country_event = { id = south_korea.212 hours = 8 random_hours = 8 } #Rejected Request for Reconcile
+		}
+	}
+	
+	option = {
+		name = south_korea.221.b
+		ai_chance = { factor = 50 }
+		hidden_effect = { 
+			country_event = { id = south_korea.213 hours = 8 random_hours = 8 } #Citizens in Support of [ROOT.GetLeader]
+		}
+	}
+}
+
+# We need to find Lawyer
+country_event = {
+	id = south_korea.222
+	title = south_korea.222.t
+	picture = GFX_report_event_KOR_KOR_korean_court
+	
+	desc = {
+		text = south_korea.222.desc_1
+		trigger = {
+			has_country_flag = kor_roh_moo_hyun_gov
+		}
+	}
+	
+	desc = {
+		text = south_korea.222.desc_2
+		trigger = {
+			has_country_flag = kor_han_hwa_kap_gov
+		}
+	}
+	
+	desc = {
+		text = south_korea.222.desc_3
+		trigger = {
+			has_country_flag = kor_lee_hoi_chang_gov
+		}
+	}
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = south_korea.222.a
+		ai_chance = { factor = 100 }
+	}
+}
+
+###
+
+# 2002 The Chattegi Scandal
+country_event = {
+	id = south_korea.223
+	title = south_korea.223.t
+	desc = south_korea.223.desc
+	picture = GFX_report_event_kor_bribery_scandal
+
+	is_triggered_only = yes
+	
+	option = {
+		name = south_korea.223.a
+		ai_chance = { factor = 100 }
+		
+		add_stability = -0.02
+		add_political_power = -35
+		fourth_estate_conservative_increase = yes
+		fourth_estate_social_liberal_increase = yes
+		
+		hidden_effect = {
+			country_event = { id = south_korea.224 days = 14 random_days = 10 } #Park Geun-hye on the TV show
+		}
+	}
+}
+
+# Park Geun-hye on the TV show
+country_event = {
+	id = south_korea.224
+	title = south_korea.224.t
+	desc = south_korea.224.desc
+	picture = GFX_report_event_kor_park_geun_hye_1
+
+	is_triggered_only = yes
+	
+	option = {
+		name = south_korea.224.a
+		ai_chance = { factor = 100 }
+		fourth_estate_reactionary_increase = yes
+		
+		hidden_effect = {
+			custom_effect_tooltip = kor_more_influence_right_con_1_5_tt
+			set_temp_variable = { KOR_move_support = 0 }
+			randomize_temp_variable = {
+				var = KOR_move_support
+				distribution = binomial
+				min = 1
+				max = 5
+			}
+			KOR_add_neocon_support_effect = yes
+		}
+	}
+}
+
+# \"Failed 1 Year\" Report
+country_event = {
+	id = south_korea.225
+	title = south_korea.225.t
+	desc = south_korea.225.desc
+	picture = GFX_report_event_KOR_national_flag_1
+
+	is_triggered_only = yes
+	
+	option = {
+		name = south_korea.225.a
+		ai_chance = { factor = 100 }
+		add_popularity = {
+			ideology = market_liberal
+			popularity = -0.02
+		}
+	}
+}
+
+# Divided Ruling Party
+country_event = {
+	id = south_korea.226
+	title = south_korea.226.t
+	desc = south_korea.226.desc
+	picture = GFX_report_event_KOR_national_assembly_4
+
+	is_triggered_only = yes
+	
+	option = {
+		name = south_korea.226.a
+		ai_chance = { factor = 100 }
+		clr_country_flag = KOR_reactionists_coalition
+		
+		hidden_effect = {
+			custom_effect_tooltip = kor_more_influence_right_con_1_5_tt
+			set_temp_variable = { KOR_move_support = 0 }
+			randomize_temp_variable = {
+				var = KOR_move_support
+				distribution = binomial
+				min = 5
+				max = 10
+			}
+			KOR_add_neocon_support_effect = yes
+		}
+	}
+}
+
+# Pro-Park Factions moved to Tents
+country_event = {
+	id = south_korea.227
+	title = south_korea.227.t
+	desc = south_korea.227.desc
+	picture = GFX_report_event_kor_park_geun_hye_1
+
+	is_triggered_only = yes
+	
+	option = {
+		name = south_korea.227.a
+		ai_chance = { factor = 100 }
+		
+		hidden_effect = {
+			custom_effect_tooltip = kor_more_influence_right_con_1_5_tt
+			set_temp_variable = { KOR_move_support = 0 }
+			randomize_temp_variable = {
+				var = KOR_move_support
+				distribution = binomial
+				min = 5
+				max = 10
+			}
+			KOR_add_neocon_support_effect = yes
+		}
+	}
+}
+
+# Demand for a Special Investigation into the Bribery Scandal
+country_event = {
+	id = south_korea.228
+	title = south_korea.228.t
+	desc = south_korea.228.desc
+	picture = GFX_report_event_kor_park_geun_hye_2
+
+	is_triggered_only = yes
+	
+	option = {
+		name = south_korea.228.a
+		ai_chance = { factor = 50 }
+		add_popularity = {
+			ideology = social_liberal
+			popularity = -0.03
+		}
+	}
+	
+	option = {
+		name = south_korea.228.b
+		ai_chance = { factor = 50 }
+		add_popularity = {
+			ideology = reactionary
+			popularity = -0.03
+		}
+	}
+}
+
+# [ROOT.GetLeader] Government Impeachment Crisis
+country_event = {
+	id = south_korea.229
+	title = south_korea.229.t
+	desc = south_korea.229.desc
+	picture = GFX_report_event_KOR_national_assembly_1
+
+	is_triggered_only = yes
+	
+	immediate = {
+		hidden_effect = { country_event = { id = south_korea.210 days = 21 } }
+	}
+	
+	option = {
+		name = south_korea.229.a
+		ai_chance = { factor = 50 }
+		hidden_effect = { 
+			country_event = { id = south_korea.212 hours = 8 random_hours = 8 } #Rejected Request for Reconcile
+		}
+	}
+	
+	option = {
+		name = south_korea.229.b
+		ai_chance = { factor = 50 }
+		hidden_effect = { 
+			country_event = { id = south_korea.213 hours = 8 random_hours = 8 } #Citizens in Support of [ROOT.GetLeader]
+		}
+	}
+}
+
+###
+
+
+# The Judgment Day
+country_event = {
+	id = south_korea.230
+	title = south_korea.230.t
+	desc = south_korea.230.desc
+	picture = GFX_report_event_KOR_korean_court_2
+
+	is_triggered_only = yes
+	
+	option = {
+		name = south_korea.230.a
+		ai_chance = { factor = 50 }
+		
+		if = {
+			limit = { has_country_flag = kor_roh_moo_hyun_gov }
+			set_country_flag = KOR_conservatism_coalition
+		}
+		else_if = {
+			limit = { has_country_flag = kor_han_hwa_kap_gov }
+			set_country_flag = KOR_social_liberalism_coalition
+		}
+		else_if = {
+			limit = { has_country_flag = kor_lee_hoi_chang_gov }
+			set_country_flag = KOR_reactionists_coalition
+		}
+		
+		retire_character = kor_interim_government_2004
+		complete_national_focus = kor_2002_overcoming_the_2004_Crisis
+	}
+	
+	option = {
+		name = south_korea.230.b
+		ai_chance = { 
+			factor = 50 
+			modifier = {
+				factor = 0
+				OR = {
+					AND = {
+						has_game_rule = {
+							rule = KOR_AI_BEHAVIOR
+							option = DEMOCRATIC_HISTORICAL_KOR
+						}
+						has_country_flag = kor_roh_moo_hyun_gov
+					}
+					AND = {
+						is_historical_focus_on = yes
+						has_game_rule = {
+							rule = KOR_AI_BEHAVIOR
+							option = DEFAULT
+						}
+						has_country_flag = kor_roh_moo_hyun_gov
+					}
+				}	
+			}
+		}
+		
+		
+		country_event = { id = south_korea.231 hours = 8 }
+	}
+}
+
+# Leave the Presidential Palace
+country_event = {
+	id = south_korea.231
+	title = south_korea.231.t
+	picture = "[GetKorea2004ImpeachmentGuiltyGFX]"
+	
+	immediate = {
+		clr_country_flag = kor_2002_government
+		set_country_flag = kor_2004_government
+		
+		hidden_effect = {
+			country_event = { id = korea_election.10 days = 21 }
+		}
+	}
+	
+	desc = {
+		text = south_korea.231.desc_1
+		trigger = {
+			has_country_flag = kor_roh_moo_hyun_gov
+		}
+	}
+	
+	desc = {
+		text = south_korea.231.desc_2
+		trigger = {
+			has_country_flag = kor_han_hwa_kap_gov
+		}
+	}
+	
+	desc = {
+		text = south_korea.231.desc_3
+		trigger = {
+			has_country_flag = kor_lee_hoi_chang_gov
+		}
+	}
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = south_korea.231.a
+		trigger = {
+			has_country_flag = kor_roh_moo_hyun_gov
+		}
+		ai_chance = { factor = 100 }
+		mark_focus_tree_layout_dirty = yes
+		retire_character = kor_roh_moo_hyun
+		fourth_estate_social_liberal_increase = yes
+		
+		hidden_effect = {
+			custom_effect_tooltip = kor_more_influence_pro_roh_1_5_tt
+			set_temp_variable = { KOR_move_support = 0 }
+			randomize_temp_variable = {
+				var = KOR_move_support
+				distribution = binomial
+				min = 1
+				max = 5
+			}
+			KOR_add_social_liberalism_support_effect = yes
+		}
+		hidden_effect = {
+			set_politics = {
+				ruling_party = social_liberal
+				elections_allowed = no
+			}
+		}
+	}
+	
+	option = {
+		name = south_korea.232.b
+		trigger = {
+			has_country_flag = kor_han_hwa_kap_gov
+		}
+		ai_chance = { factor = 100 }
+		retire_character = kor_han_hwa_kap
+		fourth_estate_conservative_increase = yes
+		mark_focus_tree_layout_dirty = yes
+		
+		hidden_effect = {
+			custom_effect_tooltip = kor_more_influence_left_con_1_10_tt
+			set_temp_variable = { KOR_move_support = 0 }
+			randomize_temp_variable = {
+				var = KOR_move_support
+				distribution = binomial
+				min = 1
+				max = 5
+			}
+			KOR_add_conservatism_support_effect = yes
+		}
+		hidden_effect = {
+			set_politics = {
+				ruling_party = conservative
+				elections_allowed = no
+			}
+		}
+	}
+	
+	option = {
+		name = south_korea.233.c
+		trigger = {
+			has_country_flag = kor_lee_hoi_chang_gov
+		}
+		ai_chance = { factor = 100 }
+		retire_character = kor_lee_hoi_chang
+		fourth_estate_market_liberal_increase = yes
+		mark_focus_tree_layout_dirty = yes
+		
+		hidden_effect = {
+			custom_effect_tooltip = kor_more_influence_right_con_1_5_tt
+			set_temp_variable = { KOR_move_support = 0 }
+			randomize_temp_variable = {
+				var = KOR_move_support
+				distribution = binomial
+				min = 1
+				max = 5
+			}
+			KOR_add_neocon_support_effect = yes
+		}
+		hidden_effect = {
+			set_politics = {
+				ruling_party = market_liberal
+				elections_allowed = no
+			}
+		}
+	}
+}
+
+####################
+#
+# Easter Egg Prologue
+#
+####################
+
+#Unprepared Election
+country_event = {
+	id = south_korea.300
+	title = south_korea.300.t
+	desc = south_korea.300.desc
+	picture = GFX_report_event_KOR_gyeongbok_palace
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = south_korea.300.a
+		clr_country_flag = KOR_centrist_coalition
+		custom_effect_tooltip = KOR_centrist_coalition_end_tt
+		
+		hidden_effect = {
+			set_party_name = { 
+				ideology = conservative
+				long_name = KOR_conservative_2000_party_long 
+				name = KOR_conservative_2000_party
+			}
+			set_party_name = { 
+				ideology = social_liberal
+				long_name = KOR_social_liberal_2000_party_long 
+				name = KOR_social_liberal_2000_party
+			}
+			set_party_name = { 
+				ideology = democratic_socialist
+				long_name = KOR_democratic_socialist_2000_party_long 
+				name = KOR_democratic_socialist_2000_party
+			}
+		}
+		
+		add_to_variable = { var = korea_easter_egg_roj value = 1 }
+		set_country_flag = korea_easter_egg_start
+	}
+}
+
+
+#Post-nationalism as an Alternative
+country_event = {
+	id = south_korea.301
+	title = south_korea.301.t
+	desc = south_korea.301.desc
+	picture = GFX_report_event_KOR_gyeongbok_palace
+
+	mean_time_to_happen = {
+		days = 1
+	}
+	
+	fire_only_once = yes
+	
+	trigger = {
+		date > 2003.1.1
+		date < 2003.3.31
+		AND = {
+			has_completed_focus = kor_victory_democracy
+			has_government = market_liberal
+			has_country_flag = korea_easter_egg_start
+			check_variable = { korea_easter_egg_roj > 1 }
+		}
+	}
+	
+	option = {
+		name = south_korea.301.a
+		add_stability = -0.03
+		
+		add_to_variable = { var = korea_easter_egg_roj value = 1 }
+		add_timed_idea = {
+			idea = kor_hard_line_anti_nationalism
+			days = 1000
+		}
+	}
+}
+
+# Declaration of the Republic of Japan
+country_event = {
+	id = south_korea.302
+	title = south_korea.302.t
+	desc = south_korea.302.desc
+	picture = GFX_report_event_samurai
+
+	is_triggered_only = yes
+	
+	immediate = {
+		set_country_flag = kor_easter_egg_path
+	}
+	
+	option = {
+		name = south_korea.302.a
+		ai_chance = { factor = 100 }
+		
+		set_cosmetic_tag = KOR_JAPANESE
+		
+		add_stability = -0.2
+		mark_focus_tree_layout_dirty = yes
+		
+		hidden_effect = { 
+			country_event = { id = south_korea.303 days = 14 random = 21 }
+			country_event = { id = south_korea.304 days = 1 random = 4 }
+			news_event = { id = rok_news.3 hours = 8 }
+		}
+	}
+}
+
+# The Letter of Kimio Ouchi, Prince of Baekje
+country_event = {
+	id = south_korea.303
+	title = south_korea.303.t
+	desc = south_korea.303.desc
+	picture = GFX_report_event_KOR_KOR_baekje
+
+	is_triggered_only = yes
+	
+	trigger = {
+		NOT = { has_war_with = JAP }
+	}
+	
+	option = {
+		name = south_korea.303.a
+		ai_chance = { factor = 100 }
+		add_political_power = -1
+	}
+}
+
+# A Sleepless Night
+country_event = {
+	id = south_korea.304
+	title = south_korea.304.t
+	desc = south_korea.304.desc
+	picture = GFX_report_event_tokyo_night
+
+	is_triggered_only = yes
+	
+	trigger = {
+		has_country_leader = {
+			character = kor_lee_myung_bak
+			ruling_only = yes
+		}
+	}
+	
+	option = {
+		name = south_korea.304.a
+		ai_chance = { factor = 100 }
+		
+		kor_lee_myung_bak = {
+			set_character_name = kor_akihiro_tsukiyama_name
+			set_character_flag = is_easter_egg
+		}
+		set_country_leader_description = { desc = POLITICS_AKIHIRO_TSUKIYAMA_DESC }
+		
+		swap_ruler_traits = {
+			remove = kor_akihiro_tsukiyama
+			add = KOR_roj_easter_egg_trait
 		}
 	}
 }
@@ -5207,6 +6717,55 @@ country_event = {
 		}
 	}
 
+}
+
+#The Beginning of the Korean New Right Movement
+country_event = {
+	id = korea_flavor_events.5
+	title = korea_flavor_events.5.t
+	desc = korea_flavor_events.5.desc
+	picture = GFX_report_event_computer
+	
+	mean_time_to_happen = {
+		days = 190
+	}
+	
+	fire_only_once = yes
+	
+	trigger = {
+		original_tag = KOR
+		date > 2001.10.1
+	}
+	
+	option = {
+		name = korea_flavor_events.5.a
+		add_political_power = 35
+	}
+	
+	option = {
+		name = korea_flavor_events.5.b
+		add_popularity = {
+			ideology = market_liberal
+			popularity = 0.04
+		}
+	}
+	
+	option = {
+		name = korea_flavor_events.5.c
+		trigger = { has_country_flag = kor_lose_culture_war_flag }
+		
+		ai_chance = {
+			base = 0
+		}
+		
+		add_to_variable = { var = korea_easter_egg_roj value = 1 }
+		add_political_power = -75
+		add_stability = -0.01
+		add_popularity = {
+			ideology = market_liberal
+			popularity = 0.03
+		}
+	}
 }
 
 #The Death of a Christian Anarchist
@@ -5642,6 +7201,208 @@ country_event = {
 	
 }
 
+#Ahn Hee-jung's sexual assault trial
+country_event = {
+	id = korea_flavor_events.12
+	title = korea_flavor_events.12.t
+	desc = korea_flavor_events.12.desc
+	picture = GFX_report_event_KOR_national_flag_1
+	
+	trigger = {
+		has_completed_focus = kor_victory_democracy
+	}
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = korea_flavor_events.12.a
+		add_stability = 0.01
+		set_country_flag = KOR_ahn_hee_jung_sexual_assault
+	}
+	
+	option = {
+		name = korea_flavor_events.12.b
+		add_political_power = -25
+	}
+}
+
+#The Death of Paik Sun-yup
+country_event = {
+	id = korea_flavor_events.13
+	title = korea_flavor_events.13.t
+	desc = korea_flavor_events.13.desc
+	picture = GFX_report_event_KOR_national_flag_1
+	
+	is_triggered_only = yes
+	
+	option = {
+		trigger = { 
+			NOT = { has_completed_focus = kor_lee_seok_ki_government }
+		}
+		name = korea_flavor_events.13.a
+		
+		add_popularity = {
+			ideology = reactionary
+			popularity = 0.02
+		}
+	}
+	
+	option = {
+		name = korea_flavor_events.13.b
+		
+		add_popularity = {
+			ideology = nationalist
+			popularity = 0.02
+		}
+	}
+}
+
+#The Establishment of the Our Open Party
+country_event = {
+	id = korea_flavor_events.14
+	title = korea_flavor_events.14.t
+	desc = korea_flavor_events.14.desc
+	picture = GFX_report_event_KOR_roh_moo_hyun
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = korea_flavor_events.14.a
+		
+		hidden_effect = {
+			#set_party_name = { 
+			#	ideology = conservative
+			#	long_name = KOR_conservative_uri_party_long 
+			#	name = KOR_conservative_uri_party
+			#}
+			set_party_name = { 
+				ideology = social_liberal
+				long_name = KOR_social_liberal_uri_party_long 
+				name = KOR_social_liberal_uri_party
+			}
+			set_party_name = { 
+				ideology = democratic_socialist
+				long_name = KOR_democratic_socialist_uri_party_long
+				name = KOR_democratic_socialist_uri_party
+			}
+		}
+		
+		add_timed_idea = {
+			idea = KOR_MDP_OOP
+			days = 180
+		}
+		
+		set_country_flag = kor_uriparty
+	}
+}
+
+#The Death of Kim Dae-jung
+country_event = {
+	id = korea_flavor_events.15
+	title = korea_flavor_events.15.t
+	desc = korea_flavor_events.15.desc
+	picture = GFX_report_event_KOR_national_flag_1
+	
+	trigger = {
+		has_completed_focus = kor_victory_democracy
+	}
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = korea_flavor_events.15.a
+	}
+}
+
+#Should Korean be replaced by English?
+country_event = {
+	id = korea_flavor_events.16
+	title = korea_flavor_events.16.t
+	desc = korea_flavor_events.16.desc
+	picture = GFX_report_event_kor_korea_and_america
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = korea_flavor_events.16.a
+		add_popularity = {
+			ideology = market_liberal
+			popularity = 0.01
+		}
+	}
+}
+
+#Psychics who declared himself to challenge Politics
+country_event = {
+	id = korea_flavor_events.17
+	title = korea_flavor_events.17.t
+	desc = korea_flavor_events.17.desc
+	picture = GFX_report_event_KOR_national_flag_1
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = korea_flavor_events.17.a
+		add_stability = -0.01
+	}
+	
+	option = {
+		name = korea_flavor_events.17.b
+		add_political_power = -50
+	}
+}
+
+#Winter Sonata
+country_event = {
+	id = korea_flavor_events.18
+	title = korea_flavor_events.18.t
+	desc = korea_flavor_events.18.desc
+	picture = GFX_report_event_kor_winter_sonata
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = korea_flavor_events.18.a
+		add_political_power = 50
+	}
+}
+
+#The Death of a Christian Missionary
+country_event = {
+	id = korea_flavor_events.19
+	title = korea_flavor_events.19.t
+	desc = korea_flavor_events.19.desc
+	picture = GFX_report_event_KOR_national_assembly_1
+	
+	trigger = {
+		has_global_flag = iraqi_surrender
+		IRQ = { has_war = no }
+		country_exists = IRQ
+	}
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = korea_flavor_events.19.a
+		add_political_power = -25
+	}
+}
+
+#The Namdaemun fire
+country_event = {
+	id = korea_flavor_events.20
+	title = korea_flavor_events.20.t
+	desc = korea_flavor_events.20.desc
+	picture = GFX_report_event_kor_namdaemun_fire
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = korea_flavor_events.20.a
+		add_political_power = -25
+	}
+}
+
 #####################################################
 #
 #      Republic of Korea
@@ -5730,28 +7491,60 @@ country_event = {
 		date < 2003.6.1
 	}
 	
+	immediate = {
+		set_country_flag = kor_2002_presidential_election
+		
+		hidden_effect = {
+			country_event = { id = korea_election.12 days = 1600 } #2007 [GetKORMinjudang_desc] Presidential Primary
+			country_event = { id = korea_election.13 days = 1630 } #2007 [GetKORBosudang_desc] Presidential Primary
+			country_event = { id = korea_election.14 days = 1670 } #2007 Korean Democratic Labor Party Presidential Primary
+		}
+	}
+	
 	option = {
 		name = korea_election.1.a
 		hidden_effect = {
-			#retire_ideology_leader = conservative
 			retire_character = kor_kim_dae_jung
-			set_party_name = { 
-				ideology = conservative
-				long_name = KOR_conservative_2000_moon_party_long 
-				name = KOR_conservative_2000_moon_party
-			}
+			
+			#set_party_name = { 
+			#	ideology = conservative
+			#	long_name = KOR_conservative_2000_moon_party_long 
+			#	name = KOR_conservative_2000_moon_party
+			#}
+			
 			add_popularity = {
 				ideology = social_liberal
 				popularity = 0.2
 			}
+			
 			add_popularity = {
 				ideology = conservative
 				popularity = -0.2
 			}
+			
 			set_country_flag = kor_roh_moo_hyun_gov
-			set_country_flag = kor_end_donggyo_dong
+			set_country_flag = kor_2002_government
+			
 			news_event = { id = rok_news.2 hours = 8 }
+			
+			country_event = { id = south_korea.165 days = 62 random_days = 14 } #Meeting between [ROOT.GetLeader] and the Prosecutors
+			country_event = { id = south_korea.200 days = 100 random_days = 19 } #Reform or Power Struggle?
+			
+			country_event = { id = south_korea.203 days = 140 random_days = 21 } #Special Investigation on Transfer of Funds to North Korea
+			
+			country_event = { id = south_korea.201 days = 200 random_days = 21 } #One party, Two factions
+			
+			country_event = { id = south_korea.202 days = 250 random_days = 21 } #Han Hwa-kap Claims 'Political Union' of Two Parties
+			
+			country_event = { id = south_korea.206 days = 300 random_days = 21 } #Allegations of Corruption by the Former Presidential Secretary
+			
+			country_event = { id = korea_flavor_events.14 days = 330 random_days = 7 } #The Establishment of the Our Open Party
+			
+			country_event = { id = south_korea.208 days = 400 } #\"Failed 1 Year\" Report
+			
+			country_event = { id = south_korea.209 days = 480 random_days = 30 } #[ROOT.GetLeader] Government Impeachment Crisis
 		}
+		
 		load_focus_tree = KOR_focus_tree_democracy
 		KOR_co_op_end_election_effect = yes
 		KOR_win_left_wing_co_op_effect = yes
@@ -5762,18 +7555,22 @@ country_event = {
 			elections_allowed = yes
 		}
 		
-		create_country_leader = {
-			name = "Moon Jae-in"
-			desc = "POLITICS_MOON_JAE_IN_DESC"
-			picture = "Moon_Jae_in.dds"
-			expire = "2099.12.1"
-			ideology = christian_democrat
-			traits = { KOR_undaunted_nationalist }
+		add_country_leader_role = {
+			character = "kor_han_hwa_kap"
+			country_leader = {
+				ideology = constitutionalist
+				desc = "POLITICS_HAN_HWA_KAP_DESC"
+				traits = {
+					KOR_secretary_of_kim_dae_jung
+					KOR_enemy_of_the_reformers
+				}
+			}
+			promote_leader = yes
 		}
 	}
 }
 
-#2002 Korean Election ( Win Park Jie-won )
+#2002 Korean Election ( Win Han Hwa-kap )
 country_event = {
 	id = korea_election.2
 	title = korea_election.2.t
@@ -5789,34 +7586,61 @@ country_event = {
 		date < 2003.6.1
 	}
 	
+	immediate = {
+		set_country_flag = kor_2002_presidential_election
+		
+		hidden_effect = {
+			country_event = { id = korea_election.12 days = 1600 } #2007 [GetKORMinjudang_desc] Presidential Primary
+			country_event = { id = korea_election.13 days = 1630 } #2007 [GetKORBosudang_desc] Presidential Primary
+			country_event = { id = korea_election.14 days = 1670 } #2007 Korean Democratic Labor Party Presidential Primary
+		}
+	}
+	
 	option = {
 		name = korea_election.2.a
 		hidden_effect = {
 			#retire_ideology_leader = conservative
 			retire_character = kor_kim_dae_jung
 			news_event = { id = rok_news.2 hours = 8 }
+			
+			country_event = { id = south_korea.215 days = 100 random_days = 19 } #Eavesdropping Scandal?
+
+			country_event = { id = south_korea.218 days = 210 random_days = 21 } #Allegations of Corruption by the Former Presidential Secretary
+			
+			country_event = { id = south_korea.219 days = 250 random_days = 21 } #[GetKORBosudang_desc] to demand dissolution of NIS
+			
+			country_event = { id = south_korea.220 days = 300 random_days = 7 } #Divided Ruling Party
+			
+			country_event = { id = south_korea.217 days = 400 } #\"Failed 1 Year\" Report
+			
+			country_event = { id = south_korea.221 days = 480 random_days = 30 } #[ROOT.GetLeader] Government Impeachment Crisis
 		}
+		
 		load_focus_tree = KOR_focus_tree_democracy
 		
 		set_politics = {
 			ruling_party = conservative
 			elections_allowed = yes
 		}
+			
+		set_country_flag = kor_han_hwa_kap_gov
+		set_country_flag = kor_2002_government
+		
 		KOR_co_op_end_election_effect = yes
 		KOR_win_left_wing_co_op_effect = yes
 		KOR_parties_support_setting_effect = yes
 		
-		create_country_leader = {
-			name = "Park Jie-won"
-			desc = "POLITICS_PARK_JIE_WON_DESC"
-			picture = "Park_Jie_won.dds"
-			expire = "2099.12.1"
-			ideology = constitutionalist
-			traits = {
-				KOR_former_far_right
-				KOR_anti_fascist_fighter
-				KOR_9th_level_politician
+		add_country_leader_role = {
+			character = "kor_han_hwa_kap"
+			country_leader = {
+				ideology = constitutionalist
+				desc = "POLITICS_HAN_HWA_KAP_DESC"
+				traits = {
+					KOR_secretary_of_kim_dae_jung
+					KOR_enemy_of_the_reformers
+				}
 			}
+			promote_leader = yes
 		}
 	}
 }
@@ -5837,6 +7661,16 @@ country_event = {
 		date < 2003.6.1
 	}
 	
+	immediate = {
+		set_country_flag = kor_2002_presidential_election
+		
+		hidden_effect = {
+			country_event = { id = korea_election.12 days = 1600 } #2007 [GetKORMinjudang_desc] Presidential Primary
+			country_event = { id = korea_election.13 days = 1630 } #2007 [GetKORBosudang_desc] Presidential Primary
+			country_event = { id = korea_election.14 days = 1670 } #2007 Korean Democratic Labor Party Presidential Primary
+		}
+	}
+	
 	option = {
 		name = korea_election.3.a
 		set_power_balance = {
@@ -5846,11 +7680,28 @@ country_event = {
 			#set_default = yes # whether or not to reset the power balance to the initial value, default = no
 			set_value = 0.1
 		}
+			
+		set_country_flag = kor_lee_hoi_chang_gov
+		set_country_flag = kor_2002_government
 		
 		hidden_effect = {
 			#retire_ideology_leader = conservative
 			retire_character = kor_kim_dae_jung
 			news_event = { id = rok_news.2 hours = 8 }
+			
+			country_event = { id = south_korea.223 days = 100 random_days = 19 } #2002 The Chattegi Scandal
+
+			country_event = { id = south_korea.203 days = 140 random_days = 21 } #Special Investigation on Transfer of Funds to North Korea
+			
+			country_event = { id = south_korea.227 days = 180 random_days = 21 } #Pro-Park Factions moved to Tents
+			
+			country_event = { id = south_korea.228 days = 230 random_days = 21 } #Demand for a Special Investigation into the Bribery Scandal
+			
+			country_event = { id = south_korea.226 days = 300 random_days = 7 } #Divided Ruling Party
+			
+			country_event = { id = south_korea.225 days = 400 } #\\"Failed 1 Year\" Report
+			
+			country_event = { id = south_korea.229 days = 480 random_days = 30 } #[ROOT.GetLeader] Government Impeachment Crisis
 		}
 		
 		load_focus_tree = KOR_focus_tree_democracy
@@ -5863,18 +7714,31 @@ country_event = {
 		KOR_win_right_wing_co_op_effect = yes
 		KOR_parties_support_setting_effect = yes
 		
-		create_country_leader = {
-			name = "Park Jie-won"
-			desc = "POLITICS_PARK_JIE_WON_DESC"
-			picture = "Park_Jie_won.dds"
-			expire = "2099.12.1"
-			ideology = constitutionalist
-			traits = {
-				KOR_former_far_right
-				KOR_anti_fascist_fighter
-				KOR_9th_level_politician
+		add_country_leader_role = {
+			character = "kor_han_hwa_kap"
+			country_leader = {
+				ideology = constitutionalist
+				desc = "POLITICS_HAN_HWA_KAP_DESC"
+				traits = {
+					KOR_secretary_of_kim_dae_jung
+					KOR_enemy_of_the_reformers
+				}
 			}
+			promote_leader = yes
 		}
+		
+		#create_country_leader = {
+		#	name = "Park Jie-won"
+		#	desc = "POLITICS_PARK_JIE_WON_DESC"
+		#	picture = "Park_Jie_won.dds"
+		#	expire = "2099.12.1"
+		#	ideology = constitutionalist
+		#	traits = {
+		#		KOR_former_far_right
+		#		KOR_anti_fascist_fighter
+		#		KOR_9th_level_politician
+		#	}
+		#}
 	}
 }
 
@@ -5957,16 +7821,18 @@ country_event = {
 			elections_allowed = no
 		}
 		
-		create_country_leader = {
-			name = KOR_Park_Jie_won
-			desc = "POLITICS_PARK_JIE_WON_DESC"
-			picture = "Park_Jie_won.dds"
-			expire = "2099.12.1"
-			ideology = constitutionalist
-			traits = {
-				KOR_former_far_right
-				KOR_anti_fascist_fighter
-				KOR_9th_level_politician
+		kor_park_jie_won = {
+			add_country_leader_role = {
+				country_leader = {
+					desc = POLITICS_PARK_JIE_WON_DESC
+					ideology = constitutionalist
+					traits = { 
+						KOR_former_far_right
+						KOR_anti_fascist_fighter
+						KOR_9th_level_politician
+					}
+				}
+				promote_leader = yes
 			}
 		}
 		
@@ -6029,16 +7895,18 @@ country_event = {
 			}
 		}
 		
-		create_country_leader = {
-			name = "Park Jie-won"
-			desc = "POLITICS_PARK_JIE_WON_DESC"
-			picture = "Park_Jie_won.dds"
-			expire = "2099.12.1"
-			ideology = constitutionalist
-			traits = {
-				KOR_former_far_right
-				KOR_anti_fascist_fighter
-				KOR_9th_level_politician
+		kor_park_jie_won = {
+			add_country_leader_role = {
+				country_leader = {
+					desc = POLITICS_PARK_JIE_WON_DESC
+					ideology = constitutionalist
+					traits = { 
+						KOR_former_far_right
+						KOR_anti_fascist_fighter
+						KOR_9th_level_politician
+					}
+				}
+				promote_leader = yes
 			}
 		}
 		
@@ -6160,18 +8028,22 @@ country_event = {
 				conservative = 20
 			}
 		}
-		create_country_leader = {
-			name = "Park Jie-won"
-			desc = "POLITICS_PARK_JIE_WON_DESC"
-			picture = "Park_Jie_won.dds"
-			expire = "2099.12.1"
-			ideology = constitutionalist
-			traits = {
-				KOR_former_far_right
-				KOR_anti_fascist_fighter
-				KOR_9th_level_politician
+		
+		kor_park_jie_won = {
+			add_country_leader_role = {
+				country_leader = {
+					desc = POLITICS_PARK_JIE_WON_DESC
+					ideology = constitutionalist
+					traits = { 
+						KOR_former_far_right
+						KOR_anti_fascist_fighter
+						KOR_9th_level_politician
+					}
+				}
+				promote_leader = yes
 			}
 		}
+		
 		KOR_co_op_end_election_effect = yes
 		
 		add_ideas = KOR_furious_army
@@ -6269,16 +8141,18 @@ country_event = {
 			}
 		}
 		
-		create_country_leader = {
-			name = "Park Jie-won"
-			desc = "POLITICS_PARK_JIE_WON_DESC"
-			picture = "Park_Jie_won.dds"
-			expire = "2099.12.1"
-			ideology = constitutionalist
-			traits = {
-				KOR_former_far_right
-				KOR_anti_fascist_fighter
-				KOR_9th_level_politician
+		kor_park_jie_won = {
+			add_country_leader_role = {
+				country_leader = {
+					desc = POLITICS_PARK_JIE_WON_DESC
+					ideology = constitutionalist
+					traits = { 
+						KOR_former_far_right
+						KOR_anti_fascist_fighter
+						KOR_9th_level_politician
+					}
+				}
+				promote_leader = yes
 			}
 		}
 		
@@ -6334,7 +8208,7 @@ country_event = {
 		trigger = {
 			NOT = { 
 				has_country_leader = {
-					character = "Ahn Hee-jung" #KOR_Ahn_hee_jung
+					character = kor_ahn_hee_jung
 					ruling_only = yes
 				}
 			}
@@ -6344,13 +8218,17 @@ country_event = {
 		name = korea_election.7.a
 		custom_effect_tooltip = KOR_leader_ahn_hee_jung_tt
 		# Ahn_Hee_jung (Liberal)
-		create_country_leader = {
-			name = "Ahn Hee-jung" #KOR_Ahn_hee_jung
-			desc = "POLITICS_Ahn_Hee_jung_DESC"
-			picture = "gfx/leaders/KOR/Ahn_Hee_jung.dds"
-			ideology = liberalist
-			traits = { KOR_former_socialist_revolutionary }
+		
+		add_country_leader_role = {
+			character = kor_ahn_hee_jung
+			country_leader = {
+				ideology = liberalist
+				desc = "POLITICS_Ahn_Hee_jung_DESC"
+				traits = { KOR_former_socialist_revolutionary }
+			}
+			promote_leader = yes
 		}
+		
 		set_country_flag = KOR_leader_ahn_hee_jung
 		
 		ai_chance = {
@@ -6365,7 +8243,7 @@ country_event = {
 			date < "2013.1.1"
 			NOT = { 
 				has_country_leader = {
-					character = "Goh Kun" #KOR_Goh_Kun
+					character = kor_goh_kun
 					ruling_only = yes
 				}
 			}
@@ -6373,13 +8251,17 @@ country_event = {
 		}
 		custom_effect_tooltip = KOR_leader_Goh_Kun_tt
 		# Ahn_Hee_jung (Liberal)
-		create_country_leader = {
-			name = "Goh Kun" #KKOR_Goh_Kun
-			desc = "POLITICS_Goh_Kun_DESC"
-			picture = "gfx/leaders/KOR/Goh_Kun.dds"
-			ideology = centrist
-			traits = { }
+		
+		add_country_leader_role = {
+			character = kor_goh_kun
+			country_leader = {
+				ideology = centrist
+				desc = "POLITICS_Goh_Kun_DESC"
+				traits = {  }
+			}
+			promote_leader = yes
 		}
+		
 		set_country_flag = KOR_leader_Goh_Kun
 		
 		ai_chance = {
@@ -6394,20 +8276,25 @@ country_event = {
 			date < "2013.1.1"
 			NOT = { 
 				has_country_leader = {
-					character = "Han Myeong-sook" #KOR_Han_Myeong_sook
+					character = kor_han_myeong_sook
 					ruling_only = yes
 				}
 			}
 			#NOT = { has_country_flag = KOR_leader_Han_Myeong_sook }
 		}
+		
 		custom_effect_tooltip = KOR_leader_Han_Myeong_sook_tt
-		create_country_leader = {
-			name = "Han Myeong-sook" #KOR_Han_Myeong_sook
-			desc = "POLITICS_Han_Myeong_sook_DESC"
-			picture = "gfx/leaders/KOR/Han_Myeong_sook.dds"
-			ideology = liberalist
-			traits = { KOR_famous_feminist }
+		
+		add_country_leader_role = {
+			character = "kor_han_myeong_sook"
+			country_leader = {
+				ideology = liberalist
+				desc = "POLITICS_Han_Myeong_sook_DESC"
+				traits = {KOR_famous_feminist  }
+			}
+			promote_leader = yes
 		}
+		
 		set_country_flag = KOR_leader_Han_Myeong_sook
 		
 		ai_chance = {
@@ -6421,21 +8308,24 @@ country_event = {
 		trigger = {
 			NOT = { 
 				has_country_leader = {
-					character = "Chung Dong-young" #KOR_Chung_Dong_young
+					character = KOR_Chung_Dong_young
 					ruling_only = yes
 				}
 			}
 			#NOT = { has_country_flag = KOR_leader_Chung_Dong_young }
 		}
 		custom_effect_tooltip = KOR_leader_Chung_Dong_young_tt
-		# Ahn_Hee_jung (Liberal)
-		create_country_leader = {
-			name = "Chung Dong-young" #KOR_Chung_Dong_young
-			desc = "POLITICS_Chung_Dong_young_DESC"
-			picture = "gfx/leaders/KOR/Chung_Dong_young.dds"
-			ideology = moderate
-			traits = { KOR_popular_reporter }
+		
+		add_country_leader_role = {
+			character = "KOR_Chung_Dong_young"
+			country_leader = {
+				ideology = moderate
+				desc = "POLITICS_CHUNG_DONG_YOUNG_DESC"
+				traits = { KOR_famous_broadcaster }
+			}
+			promote_leader = yes
 		}
+		
 		set_country_flag = KOR_leader_Chung_Dong_young
 		
 		ai_chance = {
@@ -6461,21 +8351,24 @@ country_event = {
 			date > "2013.1.1"
 			NOT = { 
 				has_country_leader = {
-					character = "Park Won-soon" #KOR_park_won_soon
+					character = KOR_park_won_soon
 					ruling_only = yes
 				}
 			}
 			#NOT = { has_country_flag = KOR_leader_park_won_soon }
 		}
 		custom_effect_tooltip = KOR_leader_park_won_soon_tt
-		# Ahn_Hee_jung (Liberal)
-		create_country_leader = {
-			name = "Park Won-soon" #KOR_park_won_soon
-			desc = "POLITICS_park_won_soon_DESC"
-			picture = "gfx/leaders/KOR/park_won_soon.dds"
-			ideology = liberalist
-			traits = { KOR_human_rights_lawyer }
+		
+		add_country_leader_role = {
+			character = "KOR_park_won_soon"
+			country_leader = {
+				ideology = moderate
+				desc = "POLITICS_park_won_soon_DESC"
+				traits = { KOR_human_rights_lawyer }
+			}
+			promote_leader = yes
 		}
+		
 		set_country_flag = KOR_leader_park_won_soon
 		
 		ai_chance = {
@@ -6490,20 +8383,24 @@ country_event = {
 			date > "2013.1.1"
 			NOT = { 
 				has_country_leader = {
-					character = "Lee Nak-yon" #KOR_Lee_Nak_yon
+					character = kor_lee_nak_yon
 					ruling_only = yes
 				}
 			}
 			#NOT = { has_country_flag = KOR_leader_Lee_Nak_yon }
 		}
 		custom_effect_tooltip = KOR_leader_Lee_Nak_yon_tt
-		create_country_leader = {
-			name = "Lee Nak-yon" #KOR_Lee_Nak_yon
-			desc = "POLITICS_Lee_Nak_yon_DESC"
-			picture = "gfx/leaders/KOR/Lee_Nak_yon.dds"
-			ideology = moderate
-			traits = { }
+		
+		add_country_leader_role = {
+			character = "kor_lee_nak_yon"
+			country_leader = {
+				ideology = moderate
+				desc = "POLITICS_Lee_Nak_yon_DESC"
+				traits = {  }
+			}
+			promote_leader = yes
 		}
+		
 		set_country_flag = KOR_leader_Lee_Nak_yon
 		
 		ai_chance = {
@@ -6512,45 +8409,45 @@ country_event = {
 		
 	}
 	
-	option = {
-		trigger = {
-			NOT = { 
-				has_country_leader = {
-					character = "Roh Moo-hyun" #KOR_roh_moo_hyun
-					ruling_only = yes
-				}
-			}
-			#NOT = { has_country_flag = KOR_leader_ahn_hee_jung }
-			NOT = { has_country_flag = kor_roh_moo_hyun_gov }
-			NOT = { has_country_flag = kor_roh_moo_hyun_dead }
-		}
-		name = korea_election.7.g
-		custom_effect_tooltip = KOR_leader_roh_moo_hyun_tt
-		# Ahn_Hee_jung (Liberal)
-		create_country_leader = {
-			name = "Roh Moo-hyun" #KOR_roh_moo_hyun
-			desc = "POLITICS_roh_moo_hyun_DESC"
-			picture = "gfx/leaders/KOR/Ahn_Hee_jung.dds"
-			ideology = liberalist
-			traits = { KOR_former_socialist_revolutionary }
-		}
-		set_country_flag = kor_roh_moo_hyun_gov
-		
-		ai_chance = {
-			factor = 1
-		}
-	}
+	#option = {
+	#	trigger = {
+	#		NOT = { 
+	#			has_country_leader = {
+	#				character = "Roh Moo-hyun" #KOR_roh_moo_hyun
+	#				ruling_only = yes
+	#			}
+	#		}
+	#		#NOT = { has_country_flag = KOR_leader_ahn_hee_jung }
+	#		NOT = { has_country_flag = kor_roh_moo_hyun_gov }
+	#		NOT = { has_country_flag = kor_roh_moo_hyun_dead }
+	#	}
+	#	name = korea_election.7.g
+	#	custom_effect_tooltip = KOR_leader_roh_moo_hyun_tt
+	#	# Ahn_Hee_jung (Liberal)
+	#	create_country_leader = {
+	#		name = "Roh Moo-hyun" #KOR_roh_moo_hyun
+	#		desc = "POLITICS_roh_moo_hyun_DESC"
+	#		picture = "gfx/leaders/KOR/Ahn_Hee_jung.dds"
+	#		ideology = liberalist
+	#		traits = { KOR_former_socialist_revolutionary }
+	#	}
+	#	set_country_flag = kor_roh_moo_hyun_gov
+	#	
+	#	ai_chance = {
+	#		factor = 1
+	#	}
+	#}
 	
-	option = {
-		name = korea_election.keep
-		ai_chance = {
-			factor = 0
-		}
-		
-		# Keep Going
-		add_political_power = -15
-		
-	}
+	#option = {
+	#	name = korea_election.keep
+	#	ai_chance = {
+	#		factor = 0
+	#	}
+	#	
+	#	# Keep Going
+	#	add_political_power = -15
+	#	
+	#}
 }
 
 #Korean Democratic Party (Con)
@@ -6562,34 +8459,34 @@ country_event = {
 	
 	is_triggered_only = yes
 	
-	option = {
-		name = korea_election.8.a
-		# Chung_Mong_Joon (Con)
-		trigger = {
-			date < "2013.1.1"
-			NOT = { 
-				has_country_leader = {
-					character = "Chung Mong-joon"
-					ruling_only = yes
-				}
-			}
-			#NOT = { has_country_flag = KOR_leader_Chung_Mong_Joon }
-		}
-		custom_effect_tooltip = KOR_leader_Chung_Mong_Joon_tt
-		create_country_leader = {
-			name = "Chung Mong-joon" #KOR_Chung_Mong_Joon
-			desc = "POLITICS_Chung_Mong_Joon_DESC"
-			picture = "gfx/leaders/KOR/Chung_Mong_Joon.dds"
-			ideology = constitutionalist
-			traits = { KOR_chaebol_capitalist }
-		}
-		set_country_flag = KOR_leader_Chung_Mong_Joon
-		
-		ai_chance = {
-			factor = 1
-		}
-		
-	}
+	#option = {
+	#	name = korea_election.8.a
+	#	# Chung_Mong_Joon (Con)
+	#	trigger = {
+	#		date < "2013.1.1"
+	#		NOT = { 
+	#			has_country_leader = {
+	#				character = "Chung Mong-joon"
+	#				ruling_only = yes
+	#			}
+	#		}
+	#		#NOT = { has_country_flag = KOR_leader_Chung_Mong_Joon }
+	#	}
+	#	custom_effect_tooltip = KOR_leader_Chung_Mong_Joon_tt
+	#	create_country_leader = {
+	#		name = "Chung Mong-joon" #KOR_Chung_Mong_Joon
+	#		desc = "POLITICS_Chung_Mong_Joon_DESC"
+	#		picture = "gfx/leaders/KOR/Chung_Mong_Joon.dds"
+	#		ideology = constitutionalist
+	#		traits = { KOR_chaebol_capitalist }
+	#	}
+	#	set_country_flag = KOR_leader_Chung_Mong_Joon
+	#	
+	#	ai_chance = {
+	#		factor = 1
+	#	}
+	#	
+	#}
 	
 	option = {
 		name = korea_election.8.b
@@ -6597,20 +8494,25 @@ country_event = {
 		trigger = {
 			NOT = { 
 				has_country_leader = {
-					character = "Moon Jae-in"
+					character = kor_moon_jae_in
 					ruling_only = yes
 				}
 			}
 			#NOT = { has_country_flag = KOR_leader_Moon_Jae_in }
 		}
 		custom_effect_tooltip = KOR_leader_Moon_Jae_in_tt
-		create_country_leader = {
-			name = "Moon Jae-in"
-			desc = "POLITICS_Moon_Jae_in_DESC"
-			picture = "gfx/leaders/KOR/Moon_Jae_in.dds"
-			ideology = christian_democrat
-			traits = { KOR_undaunted_nationalist }
+		
+		kor_moon_jae_in = {
+			add_country_leader_role = {
+				country_leader = {
+					desc = POLITICS_Moon_Jae_in_DESC
+					ideology = christian_democrat
+					traits = { KOR_undaunted_nationalist }
+				}
+				promote_leader = yes
+			}
 		}
+		
 		set_country_flag = KOR_leader_Moon_Jae_in
 		
 		
@@ -6638,20 +8540,25 @@ country_event = {
 			date < "2013.1.1"
 			NOT = { 
 				has_country_leader = {
-					character = "Kim Jong-pil" #KOR_Kim_Jong_Pil
+					character = KOR_kim_jong_pil
 					ruling_only = yes
 				}
 			}
 			#NOT = { has_country_flag = KOR_leader_Kim_Jong_Pil }
 		}
 		custom_effect_tooltip = KOR_leader_Kim_Jong_Pil_tt
-		create_country_leader = {
-			name = "Kim Jong-pil" #KOR_Kim_Jong_Pil
-			desc = "POLITICS_Kim_Jong_Pil_DESC"
-			picture = "gfx/leaders/KOR/Kim_Jong_Pil.dds"
-			ideology = constitutionalist
-			traits = { KOR_retired_general KOR_memory_of_the_coup }
+		
+		KOR_kim_jong_pil = {
+			add_country_leader_role = {
+				country_leader = {
+					desc = POLITICS_Kim_Jong_Pil_DESC
+					ideology = constitutionalist
+					traits = { KOR_retired_general KOR_memory_of_the_coup }
+				}
+				promote_leader = yes
+			}
 		}
+		
 		set_country_flag = KOR_leader_Kim_Jong_Pil
 		
 		ai_chance = {
@@ -6666,24 +8573,28 @@ country_event = {
 		trigger = {
 			NOT = { 
 				has_country_leader = {
-					character = "Park Jie-won" #KOR_Park_Jie_won
+					character = kor_park_jie_won
 					ruling_only = yes
 				}
 			}
 			#NOT = { has_country_flag = KOR_leader_Park_Jie_won }
 		}
 		custom_effect_tooltip = KOR_leader_Park_Jie_won_tt
-		create_country_leader = {
-			name = "Park Jie-won" #KOR_Park_Jie_won
-			desc = "POLITICS_PARK_JIE_WON_DESC"
-			picture = "gfx/leaders/KOR/Park_Jie_won.dds"
-			ideology = constitutionalist
-			traits = {
-				KOR_former_far_right
-				KOR_anti_fascist_fighter
-				KOR_9th_level_politician
+		kor_park_jie_won = {
+			add_country_leader_role = {
+				country_leader = {
+					desc = POLITICS_PARK_JIE_WON_DESC
+					ideology = constitutionalist
+					traits = { 
+						KOR_former_far_right
+						KOR_anti_fascist_fighter
+						KOR_9th_level_politician
+					}
+				}
+				promote_leader = yes
 			}
 		}
+		
 		set_country_flag = KOR_leader_Park_Jie_won
 		
 		ai_chance = {
@@ -6692,16 +8603,16 @@ country_event = {
 		
 	}
 	
-	option = {
-		name = korea_election.keep
-		# Keep Going
-		ai_chance = {
-			factor = 0
-		}
-		
-		add_political_power = -15
-		
-	}
+	#option = {
+	#	name = korea_election.keep
+	#	# Keep Going
+	#	ai_chance = {
+	#		factor = 0
+	#	}
+	#	
+	#	add_political_power = -15
+	#	
+	#}
 }
 
 #~2020 Korean Hannara
@@ -6719,20 +8630,27 @@ country_event = {
 		trigger = {
 			NOT = { 
 				has_country_leader = {
-					character = "Kim Moo-sung" #KOR_kim_moo_sung
+					character = KOR_kim_moo_sung
 					ruling_only = yes
 				}
 			}
 			#NOT = { has_country_flag = KOR_leader_kim_moo_sung }
 		}
 		custom_effect_tooltip = KOR_leader_kim_moo_sung_tt
-		create_country_leader = {
-			name = "Kim Moo-sung" #KOR_kim_moo_sung
-			desc = "POLITICS_kim_moo_sung_DESC"
-			picture = "gfx/leaders/KOR/kim_moo_sung.dds"
-			ideology = market_liberal_ideology
-			traits = { KOR_the_king KOR_authoritarian }
+		
+		KOR_kim_moo_sung = {
+			add_country_leader_role = {
+				country_leader = {
+					desc = POLITICS_kim_moo_sung_DESC
+					ideology = market_liberal_ideology
+					traits = { 
+						KOR_the_king KOR_authoritarian
+					}
+				}
+				promote_leader = yes
+			}
 		}
+		
 		set_country_flag = KOR_leader_kim_moo_sung
 		
 		ai_chance = {
@@ -6747,20 +8665,27 @@ country_event = {
 		trigger = {
 			NOT = { 
 				has_country_leader = {
-					character = "Yoo Seong-min" #KOR_Yoo_Seong_min
+					character = KOR_Yoo_Seong_min
 					ruling_only = yes
 				}
 			}
 			#NOT = { has_country_flag = KOR_leader_Yoo_Seong_min }
 		}
 		custom_effect_tooltip = KOR_leader_Yoo_Seong_min_tt
-		create_country_leader = {
-			name = "Yoo Seong-min" #KOR_Yoo_Seong_min
-			desc = "POLITICS_Yoo_Seong_min_DESC"
-			picture = "gfx/leaders/KOR/Yoo_Seong_min.dds"
-			ideology = market_liberal_ideology
-			traits = { KOR_economics_professor }
+		
+		KOR_Yoo_Seong_min = {
+			add_country_leader_role = {
+				country_leader = {
+					desc = POLITICS_Yoo_Seong_min_DESC
+					ideology = market_liberal_ideology
+					traits = { 
+						KOR_economics_professor
+					}
+				}
+				promote_leader = yes
+			}
 		}
+		
 		set_country_flag = KOR_leader_Yoo_Seong_min
 		
 		ai_chance = {
@@ -6775,20 +8700,27 @@ country_event = {
 		trigger = {
 			NOT = { 
 				has_country_leader = {
-					character = "Hong Joon-pyo" #KOR_Hong_Joon_pyo
+					character = KOR_Hong_Joon_pyo
 					ruling_only = yes
 				}
 			}
 			#NOT = { has_country_flag = KOR_leader_Hong_Joon_pyo }
 		}
 		custom_effect_tooltip = KOR_leader_Hong_Joon_pyo_tt
-		create_country_leader = {
-			name = "Hong Joon-pyo" #KOR_Hong_Joon_pyo
-			desc = "POLITICS_Hong_Joon_pyo_DESC"
-			picture = "gfx/leaders/KOR/Hong_Joon_pyo.dds"
-			ideology = market_liberal_ideology
-			traits = { KOR_hong_ca KOR_authoritarian }
+		
+		KOR_Hong_Joon_pyo = {
+			add_country_leader_role = {
+				country_leader = {
+					desc = POLITICS_Hong_Joon_pyo_DESC
+					ideology = market_liberal_ideology
+					traits = { 
+						KOR_hong_ca KOR_authoritarian
+					}
+				}
+				promote_leader = yes
+			}
 		}
+		
 		set_country_flag = KOR_leader_Hong_Joon_pyo
 		
 		ai_chance = {
@@ -6815,20 +8747,27 @@ country_event = {
 		trigger = {
 			NOT = { 
 				has_country_leader = {
-					character = "Na kyung-won" #KOR_na_kyung_won
+					character = KOR_na_kyung_won
 					ruling_only = yes
 				}
 			}
 			#NOT = { has_country_flag = KOR_leader_na_kyung_won }
 		}
 		custom_effect_tooltip = KOR_leader_na_kyung_won_tt
-		create_country_leader = {
-			name = "Na kyung-won" #KOR_na_kyung_won
-			desc = "POLITICS_na_kyung_won_DESC"
-			picture = "gfx/leaders/KOR/na_kyung_won.dds"
-			ideology = market_liberal_ideology
-			traits = { KOR_disabled_human_rights_activist }
+		
+		KOR_na_kyung_won = {
+			add_country_leader_role = {
+				country_leader = {
+					desc = POLITICS_na_kyung_won_DESC
+					ideology = market_liberal_ideology
+					traits = { 
+						KOR_disabled_human_rights_activist
+					}
+				}
+				promote_leader = yes
+			}
 		}
+		
 		set_country_flag = KOR_leader_na_kyung_won
 		
 		ai_chance = {
@@ -6844,20 +8783,27 @@ country_event = {
 			date > "2020.1.1"
 			NOT = { 
 				has_country_leader = {
-					character = "Andy Lee" #KOR_andy_lee
+					character = KOR_andy_lee
 					ruling_only = yes
 				}
 			}
 			#NOT = { has_country_flag = KOR_leader_andy_lee }
 		}
 		custom_effect_tooltip = KOR_leader_andy_lee_tt
-		create_country_leader = {
-			name = "Andy Lee" #KOR_andy_lee
-			desc = "POLITICS_andy_lee_DESC"
-			picture = "gfx/leaders/KOR/andy_lee.dds"
-			ideology = market_liberal_ideology
-			traits = { KOR_meritocracy KOR_young_reformer KOR_park_geun_hye_kids }
+		
+		KOR_andy_lee = {
+			add_country_leader_role = {
+				country_leader = {
+					desc = POLITICS_andy_lee_DESC
+					ideology = market_liberal_ideology
+					traits = { 
+						KOR_meritocracy KOR_young_reformer KOR_park_geun_hye_kids
+					}
+				}
+				promote_leader = yes
+			}
 		}
+		
 		set_country_flag = KOR_leader_andy_lee
 		
 		ai_chance = {
@@ -6873,20 +8819,27 @@ country_event = {
 			date > "2020.1.1"
 			NOT = { 
 				has_country_leader = {
-					character = "Yoon Suk-yeol" #KOR_Yoon_Suk_yeol
+					character = KOR_Yoon_Suk_yeol
 					ruling_only = yes
 				}
 			}
 			#NOT = { has_country_flag = KOR_leader_Yoon_Suk_yeol }
 		}
 		custom_effect_tooltip = KOR_leader_Yoon_Suk_yeol_tt
-		create_country_leader = {
-			name = "Yoon Suk-yeol" #KOR_Yoon_Suk_yeol
-			desc = "POLITICS_Yoon_Suk_yeol_DESC"
-			picture = "gfx/leaders/KOR/Yoon_Suk_yeol.dds"
-			ideology = market_liberal_ideology
-			traits = { KOR_work_120_hours_a_week KOR_popular_prosecutor } #KOR_suspicion_of_alcoholism
+		
+		KOR_Yoon_Suk_yeol = {
+			add_country_leader_role = {
+				country_leader = {
+					desc = POLITICS_Yoon_Suk_yeol_DESC
+					ideology = market_liberal_ideology
+					traits = { 
+						KOR_work_120_hours_a_week KOR_popular_prosecutor
+					}
+				}
+				promote_leader = yes
+			}
 		}
+		
 		set_country_flag = KOR_leader_Yoon_Suk_yeol
 		
 		ai_chance = {
@@ -6909,51 +8862,957 @@ country_event = {
 		name = korea_election.9.g
 		# Lee Myung-bak
 		trigger = {
-			date < "2020.1.1"
+			date < "2013.1.1"
 			NOT = { 
 				has_country_leader = {
-					character = KOR_LEE_MYUNG_BAK
+					character = kor_lee_myung_bak
 					ruling_only = yes
 				}
 			}
 			#NOT = { has_country_flag = KOR_leader_LEE_MYUNG_BAK }
 		}
 		custom_effect_tooltip = KOR_leader_LEE_MYUNG_BAK_tt
-		create_country_leader = {
-			name = kor_lee_myung_bak
-			desc = "POLITICS_LEE_MYUNG_BAK_DESC"
-			picture = "gfx/leaders/KOR/lee_myung_bak.dds"
-			ideology = market_liberal_ideology
-			traits = { KOR_bulldozer kor_akihiro_tsukiyama }
+		
+		add_country_leader_role = {
+			character = "kor_lee_myung_bak"
+			country_leader = {
+				ideology = market_liberal_ideology
+				desc = "POLITICS_LEE_MYUNG_BAK_DESC"
+				traits = { KOR_bulldozer kor_akihiro_tsukiyama }
+			}
+			promote_leader = yes
 		}
+		
 		set_country_flag = KOR_leader_LEE_MYUNG_BAK
 		
 		ai_chance = {
 			factor = 1
-			modifier = {
-				factor = 100 #historical presidential candidate
-				AND = {
-					is_historical_focus_on = yes
-					has_game_rule = {
-						rule = KOR_AI_BEHAVIOR
-						option = DEFAULT
-					}
-					NOT = { has_country_flag = KOR_leader_LEE_MYUNG_BAK }
-				}
-			}
 		}
 		
 	}
 	
+	#option = {
+	#	name = korea_election.keep
+	#	ai_chance = {
+	#		factor = 0
+	#	}
+	#	
+	#	# Keep Going
+	#	add_political_power = -15
+	#	
+	#}
+}
+
+#2004 Korean Election
+country_event = {
+	id = korea_election.10
+	title = korea_election.10.t
+	
+	desc = {
+		text = korea_election.10.desc_1
+		trigger = {
+			AND = {
+				has_country_flag = kor_roh_moo_hyun_gov
+				NOT = { has_country_flag = kor_2000_pd_coalition }
+			}
+		}
+	}
+	
+	desc = {
+		text = korea_election.10.desc_2
+		trigger = {
+			AND = {
+				has_country_flag = kor_roh_moo_hyun_gov
+				has_country_flag = kor_2000_pd_coalition
+			}
+		}
+	}
+	
+	desc = {
+		text = korea_election.10.desc_3
+		trigger = {
+			AND = {
+				has_country_flag = kor_han_hwa_kap_gov
+				NOT = { has_country_flag = kor_2000_pd_coalition }
+			}
+		}
+	}
+	
+	desc = {
+		text = korea_election.10.desc_4
+		trigger = {
+			AND = {
+				has_country_flag = kor_han_hwa_kap_gov
+				has_country_flag = kor_2000_pd_coalition
+			}
+		}
+	}
+	
+	desc = {
+		text = korea_election.10.desc_5
+		trigger = {
+			has_country_flag = kor_lee_hoi_chang_gov
+		}
+	}
+	
+	immediate = {
+	}
+	
+	picture = GFX_report_event_kor_korean_election_1
+	
+	is_triggered_only = yes
+	
 	option = {
-		name = korea_election.keep
-		ai_chance = {
-			factor = 0
+		name = korea_election.10.a
+		trigger = { has_country_flag = kor_roh_moo_hyun_gov }
+		retire_character = kor_interim_government_2004
+		clr_country_flag = kor_roh_moo_hyun_gov
+		
+		hidden_effect = {
+			add_timed_idea = {
+				idea = skip_election_event
+				days = 7
+			}
 		}
 		
-		# Keep Going
-		add_political_power = -15
+		KOR_co_op_end_election_effect = yes
+		KOR_win_left_wing_co_op_effect = yes #KDLP-OOP Coalition
+		KOR_parties_support_setting_effect = yes
 		
+		if = {
+			limit = { social_liberal < 0.25 }
+			add_popularity = {
+				ideology = social_liberal
+				popularity = 0.2
+			}
+		}
+		else = {
+			add_popularity = {
+				ideology = social_liberal
+				popularity = 0.1
+			}
+		}
+		
+		meta_effect = {
+			text = {
+				set_politics = {
+					ruling_party = social_liberal
+					last_election = "[CURRENT_DATE]"
+					election_frequency = 60
+					elections_allowed = yes
+				}
+			}
+			CURRENT_DATE = "[?global.date.GetDateStringNoHour]"
+		}
+		
+		hidden_effect = {
+			set_party_name = { 
+				ideology = conservative
+				long_name = KOR_conservative_uri_party_long 
+				name = KOR_conservative_uri_party
+			}
+		}
+		
+		kor_rhyu_si_min = {
+			add_country_leader_role = {
+				country_leader = {
+					desc = POLITICS_RHYU_SI_MIN_2004_DESC
+					ideology = liberalist
+					traits = {  }
+				}
+				promote_leader = yes
+			}
+		}
+	}
+	
+	option = {
+		name = korea_election.10.b
+		trigger = { has_country_flag = kor_han_hwa_kap_gov }
+		retire_character = kor_interim_government_2004
+		clr_country_flag = kor_han_hwa_kap_gov
+		
+		if = {
+			limit = { conservative < 0.25 }
+			add_popularity = {
+				ideology = conservative
+				popularity = 0.2
+			}
+		}
+		else = {
+			add_popularity = {
+				ideology = conservative
+				popularity = 0.1
+			}
+		}
+		
+		hidden_effect = {
+			add_timed_idea = {
+				idea = skip_election_event
+				days = 7
+			}
+		}
+		
+		KOR_co_op_end_election_effect = yes
+		KOR_win_left_wing_co_op_effect = yes #KDLP-OOP Coalition
+		KOR_parties_support_setting_effect = yes
+		
+		meta_effect = {
+			text = {
+				set_politics = {
+					ruling_party = conservative
+					last_election = "[CURRENT_DATE]"
+					election_frequency = 60
+					elections_allowed = yes
+				}
+			}
+			CURRENT_DATE = "[?global.date.GetDateStringNoHour]"
+		}
+		
+		kor_park_jie_won = {
+			add_country_leader_role = {
+				country_leader = {
+					desc = POLITICS_PARK_JIE_WON_2004_DESC
+					ideology = constitutionalist
+					traits = { 
+						KOR_former_far_right
+						KOR_anti_fascist_fighter
+						KOR_9th_level_politician 
+					}
+				}
+				promote_leader = yes
+			}
+		}
+	}
+	
+	option = {
+		name = korea_election.10.c
+		trigger = { has_country_flag = kor_lee_hoi_chang_gov }
+		retire_character = kor_interim_government_2004
+		clr_country_flag = kor_lee_hoi_chang_gov
+		
+		if = {
+			limit = { market_liberal < 0.25 }
+			add_popularity = {
+				ideology = market_liberal
+				popularity = 0.2
+			}
+		}
+		else = {
+			add_popularity = {
+				ideology = market_liberal
+				popularity = 0.1
+			}
+		}
+		
+		kor_hong_sa_duk = {
+			add_country_leader_role = {
+				country_leader = {
+					desc = POLITICS_HONG_SA_DUK_2004_DESC
+					ideology = market_liberal_ideology
+					traits = {  }
+				}
+				promote_leader = yes
+			}
+		}
+
+		meta_effect = {
+			text = {
+				set_politics = {
+					ruling_party = market_liberal
+					last_election = "[CURRENT_DATE]"
+					election_frequency = 60
+					elections_allowed = yes
+				}
+			}
+			CURRENT_DATE = "[?global.date.GetDateStringNoHour]"
+		}
+	}
+	
+	option = {
+		name = korea_election.10.d
+		trigger = { 
+			AND = {
+				OR = {
+					has_country_flag = kor_han_hwa_kap_gov
+					has_country_flag = kor_roh_moo_hyun_gov 
+				}
+				has_country_flag = kor_2000_pd_coalition
+			}
+		}
+		clr_country_flag = kor_han_hwa_kap_gov
+		clr_country_flag = kor_roh_moo_hyun_gov
+		retire_character = kor_interim_government_2004
+		
+		if = {
+			limit = { social_democrat < 0.25 }
+			add_popularity = {
+				ideology = social_democrat
+				popularity = 0.2
+			}
+		}
+		else = {
+			add_popularity = {
+				ideology = social_democrat
+				popularity = 0.1
+			}
+		}
+		
+		KOR_co_op_end_election_effect = yes
+		KOR_win_right_wing_co_op_effect = yes
+		KOR_parties_support_setting_effect = yes
+		
+		hidden_effect = {
+			add_timed_idea = {
+				idea = skip_election_event
+				days = 7
+			}
+		}
+		
+		meta_effect = {
+			text = {
+				set_politics = {
+					ruling_party = social_democrat
+					last_election = "[CURRENT_DATE]"
+					election_frequency = 60
+					elections_allowed = yes
+				}
+			}
+			CURRENT_DATE = "[?global.date.GetDateStringNoHour]"
+		}
+		
+		kor_kwon_young_ghil = {
+			add_country_leader_role = {
+				country_leader = {
+					desc = POLITICS_KWON_YOUNG_GHIL_DESC
+					ideology = social_democrat_ideology
+					traits = {  }
+				}
+				promote_leader = yes
+			}
+		}
+	}
+}
+
+#2007 Korean Election
+country_event = {
+	id = korea_election.11
+	title = korea_election.11.t
+	desc = korea_election.11.desc
+	
+	picture = GFX_report_event_kor_korean_election_2
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		tag = KOR
+		has_country_flag = kor_2002_government
+		date < 2008.6.1
+	}
+	
+	immediate = { 
+		set_country_flag = kor_2007_government
+	}
+	
+	option = {
+		name = korea_election.11.a
+		trigger = { has_country_flag = kor_roh_moo_hyun_primary }
+		clr_country_flag = kor_2002_government
+		clr_country_flag = kor_roh_moo_hyun_primary
+		
+		KOR_co_op_end_election_effect = yes
+		KOR_win_left_wing_co_op_effect = yes
+		KOR_parties_support_setting_effect = yes
+		
+		set_politics = {
+			ruling_party = social_liberal
+			elections_allowed = yes
+		}
+		
+		KOR_roh_moo_hyun = {
+			add_country_leader_role = {
+				country_leader = {
+					desc = POLITICS_ROH_MOO_HYUN_2007_DESC
+					ideology = liberalist
+					traits = { KOR_symbol_of_korean_liberalism }
+				}
+				promote_leader = yes
+			}
+			set_portraits = {
+				civilian = { large = "gfx/leaders/KOR/roh_moo_hyun_2.dds" }
+			}
+		}
+	}
+	
+	option = {
+		name = korea_election.11.b
+		trigger = { has_country_flag = kor_chung_dong_young_primary }
+		clr_country_flag = kor_2002_government
+		clr_country_flag = kor_chung_dong_young_primary
+		
+		KOR_co_op_end_election_effect = yes
+		KOR_win_left_wing_co_op_effect = yes
+		KOR_parties_support_setting_effect = yes
+		
+		set_politics = {
+			ruling_party = social_liberal
+			elections_allowed = yes
+		}
+		
+		add_country_leader_role = {
+			character = "kor_chung_dong_young"
+			country_leader = {
+				ideology = moderate
+				desc = "POLITICS_CHUNG_DONG_YOUNG_DESC"
+				traits = { KOR_famous_broadcaster }
+			}
+			promote_leader = yes
+		}
+	}
+	
+	option = {
+		name = korea_election.11.c
+		trigger = { has_country_flag = kor_lee_myung_bak_primary }
+		clr_country_flag = kor_2002_government
+		clr_country_flag = kor_lee_myung_bak_primary
+		
+		KOR_co_op_end_election_effect = yes
+		KOR_win_right_wing_co_op_effect = yes
+		KOR_parties_support_setting_effect = yes
+		
+		set_politics = {
+			ruling_party = market_liberal
+			elections_allowed = yes
+		}
+		
+		kor_lee_myung_bak = {
+			add_country_leader_role = {
+				country_leader = {
+					desc = POLITICS_LEE_MYUNG_BAK_DESC
+					ideology = market_liberal_ideology
+					traits = { KOR_bulldozer kor_akihiro_tsukiyama }
+				}
+				promote_leader = yes
+			}
+		}
+	}
+	
+	option = {
+		name = korea_election.11.d
+		trigger = { has_country_flag = kor_kwon_young_ghil_primary }
+		clr_country_flag = kor_2002_government
+		clr_country_flag = kor_kwon_young_ghil_primary
+		
+		KOR_co_op_end_election_effect = yes
+		KOR_parties_support_setting_effect = yes
+		
+		if = {
+			limit = { social_democrat < 0.25 }
+			add_popularity = {
+				ideology = social_democrat
+				popularity = 0.2
+			}
+		}
+		else = {
+			add_popularity = {
+				ideology = social_democrat
+				popularity = 0.1
+			}
+		}
+		
+		set_politics = {
+			ruling_party = social_democrat
+			elections_allowed = yes
+		}
+		
+		kor_kwon_young_ghil = {
+			add_country_leader_role = {
+				country_leader = {
+					desc = POLITICS_KWON_YOUNG_GHIL_DESC
+					ideology = social_democrat_ideology
+					traits = {  }
+				}
+				promote_leader = yes
+			}
+		}
+	}
+	
+	option = {
+		name = korea_election.11.e
+		trigger = { has_country_flag = kor_sim_sang_jung_primary }
+		clr_country_flag = kor_2002_government
+		clr_country_flag = kor_sim_sang_jung_primary
+		
+		KOR_co_op_end_election_effect = yes
+		KOR_parties_support_setting_effect = yes
+		
+		if = {
+			limit = { social_democrat < 0.25 }
+			add_popularity = {
+				ideology = social_democrat
+				popularity = 0.2
+			}
+		}
+		else = {
+			add_popularity = {
+				ideology = social_democrat
+				popularity = 0.1
+			}
+		}
+		
+		set_politics = {
+			ruling_party = social_democrat
+			elections_allowed = yes
+		}
+		
+		kor_sim_sang_jung = {
+			add_country_leader_role = {
+				country_leader = {
+					desc = POLITICS_SIM_SANG_JUNG_DESC
+					ideology = social_democrat_ideology
+					traits = { KOR_mother_of_korean_social_democracy }
+				}
+				promote_leader = yes
+			}
+		}
+	}
+	
+	option = {
+		name = korea_election.11.f
+		trigger = { has_country_flag = kor_park_jie_won_primary }
+		clr_country_flag = kor_2002_government
+		clr_country_flag = kor_park_jie_won_primary
+		
+		KOR_co_op_end_election_effect = yes
+		KOR_win_left_wing_co_op_effect = yes #KDLP-OOP Coalition
+		KOR_parties_support_setting_effect = yes
+		
+		set_politics = {
+			ruling_party = conservative
+			elections_allowed = yes
+		}
+		
+		kor_park_jie_won = {
+			add_country_leader_role = {
+				country_leader = {
+					desc = POLITICS_PARK_JIE_WON_DESC
+					ideology = constitutionalist
+					traits = { 
+						KOR_former_far_right
+						KOR_anti_fascist_fighter
+						KOR_9th_level_politician
+					}
+				}
+				promote_leader = yes
+			}
+		}
+	}
+	
+	option = {
+		name = korea_election.11.g
+		trigger = { has_country_flag = kor_lee_jae_myung_primary }
+		clr_country_flag = kor_2002_government
+		clr_country_flag = kor_lee_jae_myung_primary
+		
+		KOR_co_op_end_election_effect = yes
+		KOR_win_left_wing_co_op_effect = yes #KDLP-OOP Coalition
+		KOR_parties_support_setting_effect = yes
+		
+		if = {
+			limit = { democratic_socialist < 0.25 }
+			add_popularity = {
+				ideology = democratic_socialist
+				popularity = 0.2
+			}
+		}
+		else = {
+			add_popularity = {
+				ideology = democratic_socialist
+				popularity = 0.1
+			}
+		}
+		
+		set_politics = {
+			ruling_party = democratic_socialist
+			elections_allowed = yes
+		}
+		
+		kor_lee_jae_myung = {
+			add_country_leader_role = {
+				country_leader = {
+					desc = POLITICS_LEE_JAE_MYUNG_DESC
+					ideology = democratic_socialist_ideology
+					traits = { 
+						KOR_trump_of_korea
+						KOR_sanders_of_korea
+					}
+				}
+				promote_leader = yes
+			}
+		}
+	}
+	
+	option = {
+		name = korea_election.11.h
+		trigger = { has_country_flag = kor_park_geun_hye_primary }
+		clr_country_flag = kor_2002_government
+		clr_country_flag = kor_park_geun_hye_primary
+		
+		KOR_co_op_end_election_effect = yes
+		KOR_win_right_wing_co_op_effect = yes
+		KOR_parties_support_setting_effect = yes
+		
+		if = {
+			limit = { reactionary < 0.25 }
+			add_popularity = {
+				ideology = reactionary
+				popularity = 0.2
+			}
+		}
+		else = {
+			add_popularity = {
+				ideology = reactionary
+				popularity = 0.1
+			}
+		}
+		
+		set_politics = {
+			ruling_party = reactionary
+			elections_allowed = yes
+		}
+		
+		kor_park_geun_hye = {
+			add_country_leader_role = {
+				country_leader = {
+					desc = POLITICS_PARK_GEUN_HYE_DESC
+					ideology = counter_progressive_democrat
+					traits = { 
+						KOR_shamanism_worship
+					}
+				}
+				promote_leader = yes
+			}
+		}
+	}
+}
+
+#2007 [GetKORMinjudang_desc] Presidential Primary
+country_event = {
+	id = korea_election.12
+	title = korea_election.12.t
+	
+	trigger = {
+		#is_puppet = no
+		has_country_flag = kor_2002_government
+	}
+	
+	is_triggered_only = yes
+	
+	desc = {
+		text = korea_election.12.desc_1
+		trigger = {
+			AND = {
+				has_country_flag = kor_han_hwa_kap_gov
+				has_country_flag = kor_2002_government
+			}
+		}
+	}
+	
+	desc = {
+		text = korea_election.12.desc_2
+		trigger = {
+			AND = {
+				has_country_flag = kor_roh_moo_hyun
+				has_country_flag = kor_2002_government
+			}
+		}
+	}
+	
+	desc = {
+		text = korea_election.12.desc_3
+		trigger = {
+			AND = {
+				NOT = { has_country_flag = kor_han_hwa_kap_gov }
+				NOT = { has_country_flag = kor_roh_moo_hyun }
+				democratic_socialist < 0.2
+			}
+		}
+	}
+	
+	desc = {
+		text = korea_election.12.desc_4
+		trigger = {
+			AND = {
+				NOT = { has_country_flag = kor_han_hwa_kap_gov }
+				NOT = { has_country_flag = kor_roh_moo_hyun }
+				democratic_socialist > 0.19
+			}
+		}
+	}
+	
+	picture = GFX_report_event_kor_korean_election_1
+	
+	option = {
+		name = korea_election.12.a #Park Jie-won
+		trigger = {
+			AND = {
+				has_country_flag = kor_han_hwa_kap_gov
+				has_country_flag = kor_2002_government
+			}
+		}
+		set_country_flag = kor_park_jie_won_primary
+		
+		add_popularity = {
+			ideology = conservative
+			popularity = 0.02
+		}
+	}
+	
+	option = {
+		name = korea_election.12.b #Roh Moo-hyun
+		trigger = {
+			NOT = { has_country_flag = kor_roh_moo_hyun_gov }
+		}
+		set_country_flag = kor_roh_moo_hyun_primary
+		
+		add_popularity = {
+			ideology = social_liberal
+			popularity = 0.02
+		}
+	}
+	
+	option = {
+		name = korea_election.12.c #Chung Dong-young
+		trigger = {
+			has_country_flag = kor_roh_moo_hyun_gov
+		}
+		set_country_flag = kor_chung_dong_young_primary
+		
+		add_popularity = {
+			ideology = social_liberal
+			popularity = 0.02
+		}
+	}
+	
+	option = {
+		name = korea_election.12.d #Lee Jae-myung
+		trigger = {
+			AND = {
+				NOT = { has_country_flag = kor_han_hwa_kap_gov }
+				NOT = { has_country_flag = kor_roh_moo_hyun }
+				democratic_socialist > 0.19
+			}
+		}
+		set_country_flag = kor_lee_jae_myung_primary
+		
+		add_popularity = {
+			ideology = democratic_socialist
+			popularity = 0.02
+		}
+	}
+}
+
+#2007 [GetKORBosudang_desc] Presidential Primary
+country_event = {
+	id = korea_election.13
+	title = korea_election.13.t
+	
+	trigger = {
+		#is_puppet = no
+		has_country_flag = kor_2002_government
+	}
+	
+	picture = GFX_report_event_kor_korean_election_1
+	
+	is_triggered_only = yes
+	
+	desc = {
+		text = korea_election.13.desc_1
+		trigger = {
+			AND = {
+				has_country_flag = kor_lee_hoi_chang_gov
+				has_country_flag = kor_2002_government
+			}
+		}
+	}
+	
+	desc = {
+		text = korea_election.13.desc_2
+		trigger = {
+			AND = {
+				NOT = { has_country_flag = kor_lee_hoi_chang_gov } 
+				has_country_flag = kor_2002_government
+			}
+		}
+	}
+	
+	desc = {
+		text = korea_election.13.desc_3
+		trigger = {
+			AND = {
+				NOT = { has_country_flag = kor_lee_hoi_chang_gov } 
+				has_country_flag = kor_2002_government
+				has_country_flag = kor_angry_park_geun_hye
+			}
+		}
+	}
+	
+	option = {
+		name = korea_election.13.a #Lee Myung-bak
+		set_country_flag = kor_lee_myung_bak_primary
+		
+		add_popularity = {
+			ideology = market_liberal
+			popularity = 0.02
+		}
+	}
+	
+	option = {
+		name = korea_election.13.b #Park Geun-hye
+		trigger = {
+			AND = {
+				NOT = { has_country_flag = kor_lee_hoi_chang_gov } 
+				has_country_flag = kor_2002_government
+				has_country_flag = kor_angry_park_geun_hye
+			}
+		}
+		set_country_flag = kor_park_geun_hye_primary
+		
+		add_popularity = {
+			ideology = reactionary
+			popularity = 0.02
+		}
+	}
+}
+
+#2007 [GetKORBosudang_desc] Presidential Primary
+country_event = {
+	id = korea_election.14
+	title = korea_election.14.t
+	
+	trigger = {
+		#is_puppet = no
+		has_country_flag = kor_2002_government
+	}
+	
+	is_triggered_only = yes
+	
+	desc = {
+		text = korea_election.14.desc_1
+		trigger = {
+			AND = {
+				OR = {
+					NOT = { has_country_flag = KOR_social_democracy_coalition }
+					social_democrat < 0.2
+				}
+				OR = {
+					NOT = { has_country_flag = KOR_feminism_coalition }
+					progressive < 0.2
+				}
+			}
+		}
+	}
+	
+	desc = {
+		text = korea_election.14.desc_2
+		trigger = {
+			AND = {
+				OR = {
+					has_country_flag = KOR_social_democracy_coalition
+					social_democrat > 0.19
+				}
+				OR = {
+					NOT = { has_country_flag = KOR_feminism_coalition }
+					progressive < 0.2
+				}
+			}
+		}
+	}
+	
+	desc = {
+		text = korea_election.14.desc_3
+		trigger = {
+			AND = {
+				OR = {
+					NOT = { has_country_flag = KOR_social_democracy_coalition }
+					social_democrat < 0.2
+				}
+				OR = {
+					has_country_flag = KOR_feminism_coalition
+					progressive > 0.19
+				}
+			}
+		}
+	}
+	
+	desc = {
+		text = korea_election.14.desc_4
+		trigger = {
+		}
+	}
+	
+	picture = GFX_report_event_kor_korean_election_1
+	
+	option = {
+		name = korea_election.14.a #Kwon Yong-ghil
+		trigger = { 
+			OR = {
+				has_country_flag = KOR_social_democracy_coalition
+				social_democrat > 0.19
+			}
+		}
+		set_country_flag = kor_kwon_young_ghil_primary
+		
+		add_popularity = {
+			ideology = social_democrat
+			popularity = 0.02
+		}
+	}
+	
+	option = {
+		name = korea_election.14.b #Sim Sang-jung
+		trigger = { 
+			OR = {
+				has_country_flag = KOR_feminism_coalition
+				progressive > 0.19
+			}
+		}
+		set_country_flag = kor_sim_sang_jung_primary
+		
+		add_popularity = {
+			ideology = social_democrat
+			popularity = 0.02
+		}
+		
+		add_popularity = {
+			ideology = progressive
+			popularity = 0.02
+		}
+	}
+	
+	option = {
+		name = korea_election.14.c #They will have a bad result in this election
+		trigger = { 
+			AND = {
+				OR = {
+					NOT = { has_country_flag = KOR_social_democracy_coalition }
+					social_democrat < 0.2
+				}
+				OR = {
+					NOT = { has_country_flag = KOR_feminism_coalition }
+					progressive < 0.2
+				}
+			}
+		}
+		
+		add_popularity = {
+			ideology = social_democrat
+			popularity = 0.01
+		}
+		
+		add_popularity = {
+			ideology = progressive
+			popularity = 0.01
+		}
 	}
 }
 
@@ -7637,6 +10496,13 @@ country_event = {
 			custom_effect_tooltip = kor_jpn_culture_war_win_tt
 			set_country_flag = kor_victory_culture_war_flag
 			JAP = { country_event = { id = japan.57 hours = 6 } }
+		}
+		
+		if = {
+			limit = { 
+				check_variable = { jpn_culture_kor_power_var = 5 compare = greater_than_or_equals }
+				has_country_flag = korea_easter_egg_start
+			}
 		}
 		
 	}
@@ -9296,13 +12162,18 @@ country_event = {
 		name = south_korea.133.a
 		load_focus_tree = KOR_focus_tree_park
 		
-		create_country_leader = {
-			name = "Choi Soon-sil" #KOR_Han_Myeong_sook
-			desc = "POLITICS_CHOI_SOON_SIL_ALT_DESC"
-			picture = "gfx/leaders/KOR/choi_soon_sil.dds"
-			ideology = counter_progressive_democrat
-			traits = { KOR_diplomatic_isolation KOR_plot_of_the_socialists KOR_non_legitimacy_adviser }
+		add_country_leader_role = {
+			character = "kor_choi_soon_sil"
+			country_leader = {
+				ideology = counter_progressive_democrat
+				desc = "POLITICS_CHOI_SOON_SIL_ALT_DESC"
+				traits = {
+					KOR_diplomatic_isolation KOR_plot_of_the_socialists KOR_non_legitimacy_adviser
+				}
+			}
+			promote_leader = yes
 		}
+
 		set_cosmetic_tag = KOR_MAGIC
 	}
 }
@@ -9326,3 +12197,55 @@ country_event = {
 	}
 }
 
+#Debug6
+country_event = {
+	id = korean_war.110
+	title = korean_war.99.t
+	desc = korean_war.99.desc
+	picture = GFX_report_event_asian_generic_national_assembly
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = south_korea.133.a
+		create_country_leader = {
+			name = kor_sim_sang_jung
+			desc = "POLITICS_SIM_SANG_JUNG_DESC"
+			picture = "sim_sang_jung.dds"
+			expire = "2099.12.1"
+			ideology = social_democrat_ideology
+			traits = {
+				KOR_mother_of_korean_social_democracy
+			}
+			promote_leader = yes
+		}
+	}
+	
+	option = {
+		name = south_korea.133.a
+		create_country_leader = {
+			name = KOR_Chung_Dong_young
+			desc = "POLITICS_CHUNG_DONG_YOUNG_DESC"
+			picture = "chung_dong_young.dds"
+			expire = "2099.12.1"
+			ideology = moderate
+			traits = {
+				KOR_famous_broadcaster
+			}
+			promote_leader = yes
+		}
+	}
+	
+	option = {
+		name = south_korea.133.a
+		create_country_leader = {
+			name = kor_lee_myung_bak
+			desc = "POLITICS_LEE_MYUNG_BAK_DESC"
+			picture = "lee_myung_bak.dds"
+			expire = "2099.12.1"
+			ideology = market_liberal_ideology
+			traits = { KOR_bulldozer kor_akihiro_tsukiyama }
+			promote_leader = yes
+		}
+	}
+}
