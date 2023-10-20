@@ -2620,7 +2620,7 @@ country_event = {
 	id = south_korea.77
 	title = south_korea.77.t
 	desc = south_korea.77.desc
-	picture = GFX_report_event_soviet_tanks_snow
+	picture = GFX_report_event_russian_flag
 	
 	is_triggered_only = yes
 
@@ -2637,15 +2637,25 @@ country_event = {
 	id = south_korea.78
 	title = south_korea.78.t
 	desc = south_korea.78.desc
-	picture = GFX_report_event_soviet_tanks_snow
+	picture = GFX_report_event_russian_flag
 	
 	is_triggered_only = yes
 
 	option = {
 		name = south_korea.78.a
-		add_equipment_to_stockpile = {
-			type = modern_tank_equipment
-			amount = -50
+		if = {
+			limit = {
+				NOT = {
+					has_dlc = "No Step Back"
+				}
+			}
+			add_equipment_to_stockpile = {
+				type = modern_tank_equipment
+				amount = -50
+			}
+		}
+		else = {
+			add_equipment_to_stockpile = { type = main_battle_tank_chassis amount = -50 } 
 		}
 	}
 }
@@ -2654,7 +2664,7 @@ country_event = {
 	id = south_korea.79
 	title = south_korea.79.t
 	desc = south_korea.79.desc
-	picture = GFX_report_event_soviet_tanks_snow
+	picture = GFX_report_event_russian_flag
 	
 	is_triggered_only = yes
 
@@ -2671,7 +2681,7 @@ country_event = {
 	id = south_korea.80
 	title = south_korea.80.t
 	desc = south_korea.80.desc
-	picture = GFX_report_event_soviet_tanks_snow
+	picture = GFX_report_event_russian_flag
 	
 	is_triggered_only = yes
 
@@ -2690,17 +2700,27 @@ country_event = {
 	id = south_korea.81
 	title = south_korea.81.t
 	desc = south_korea.81.desc
-	picture = GFX_report_event_soviet_tanks_snow
+	picture = GFX_report_event_russian_flag
 	
 	is_triggered_only = yes
 
 	option = {
 		name = south_korea.81.a
+		if = {
+			limit = {
+				NOT = {
+					has_dlc = "No Step Back"
+				}
+			}
 			add_equipment_to_stockpile = {
 				type = modern_tank_equipment
 				amount = 50
 				producer = SOV
 			}
+		}
+		else = {
+			add_equipment_to_stockpile = { type = main_battle_tank_chassis_00s amount = 50 producer = SOV } 
+		}
 		custom_effect_tooltip = kor_bulgom_15_tt
 	}
 }
@@ -2709,7 +2729,7 @@ country_event = {
 	id = south_korea.82
 	title = south_korea.82.t
 	desc = south_korea.82.desc
-	picture = GFX_report_event_soviet_tanks_snow
+	picture = GFX_report_event_russian_flag
 	
 	is_triggered_only = yes
 
@@ -4926,7 +4946,7 @@ country_event = {
 	id = south_korea.165
 	title = south_korea.165.t
 	desc = south_korea.165.desc
-	picture = GFX_report_event_coup_auth_purge
+	picture = GFX_report_event_political_gathering
 	
 	is_triggered_only = yes
 	
@@ -4944,7 +4964,7 @@ country_event = {
 	id = south_korea.166
 	title = south_korea.166.t
 	desc = south_korea.166.desc
-	picture = GFX_report_event_coup_auth_purge
+	picture = GFX_report_event_political_gathering
 	
 	is_triggered_only = yes
 	
@@ -4962,7 +4982,7 @@ country_event = {
 	id = south_korea.167
 	title = south_korea.167.t
 	desc = south_korea.167.desc
-	picture = GFX_report_event_coup_auth_purge
+	picture = GFX_report_event_political_gathering
 	
 	is_triggered_only = yes
 	
@@ -4984,7 +5004,7 @@ country_event = {
 	id = south_korea.168
 	title = south_korea.168.t
 	desc = south_korea.168.desc
-	picture = GFX_report_event_coup_auth_purge
+	picture = GFX_report_event_political_gathering
 	
 	is_triggered_only = yes
 	
@@ -7524,6 +7544,11 @@ country_event = {
 			
 			set_country_flag = kor_roh_moo_hyun_gov
 			set_country_flag = kor_2002_government
+			
+			if = {
+				limit = { has_country_flag = korea_easter_egg_start }
+				clr_country_flag = korea_easter_egg_start
+			}
 			
 			news_event = { id = rok_news.2 hours = 8 }
 			
@@ -10503,6 +10528,7 @@ country_event = {
 				check_variable = { jpn_culture_kor_power_var = 5 compare = greater_than_or_equals }
 				has_country_flag = korea_easter_egg_start
 			}
+			add_to_variable = { var = korea_easter_egg_roj value = 1 }
 		}
 		
 	}
