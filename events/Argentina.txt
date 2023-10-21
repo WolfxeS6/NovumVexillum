@@ -1,0 +1,237 @@
+﻿add_namespace = argentina
+
+#Corralito
+country_event = {
+	id = argentina.1
+	title = argentina.1.t
+	desc = argentina.1.d
+	picture = GFX_report_event_corralito
+
+	is_triggered_only = yes
+	
+	option = {
+		name = argentina.1.a
+		add_to_variable = { NVX_ECO_health = 5 }
+		add_political_power = 100
+		custom_effect_tooltip = TT_ARG_CORRALITO
+		custom_effect_tooltip = TT_NVX_ECOLITE_g5
+
+		hidden_effect = {
+			country_event = {
+				id = argentina.2
+				days = 20
+			}
+		}
+		
+		ai_chance = {
+			factor = 75
+			modifier = {
+				add = 10
+				is_historical_focus_on = no
+			}
+		}
+	}
+	
+	option = {
+		name = argentina.1.b
+		add_political_power = 10
+		add_stability = 0.01
+		
+		ai_chance = {
+			factor = 25
+			modifier = {
+				add = 0
+				is_historical_focus_on = no
+			}
+		}
+	}
+}
+
+#Argentinazo
+country_event = {
+	id = argentina.2
+	title = argentina.2.t
+	desc = argentina.2.d
+	picture = GFX_report_event_argentinazo
+
+	is_triggered_only = yes
+	
+	option = {
+		name = argentina.2.a
+		add_political_power = 50
+		add_stability = -0.05
+
+		hidden_effect = {
+			country_event = {
+				id = argentina.3
+				days = 2
+			}
+		}
+		
+		ai_chance = {
+			factor = 75
+			modifier = {
+				add = 10
+				is_historical_focus_on = no
+			}
+		}
+	}
+	
+	option = {
+		name = argentina.2.b
+		add_political_power = -150
+		add_stability = -0.1
+		add_war_support = 0.1
+		add_popularity = {
+			ideology = social_democrat
+			popularity = -0.5
+		}
+		
+		ai_chance = {
+			factor = 25
+			modifier = {
+				add = 0
+				is_historical_focus_on = no
+			}
+		}
+	}
+}
+
+#Fernando de la Rua flees in a helicopter
+country_event = {
+	id = argentina.3
+	title = argentina.3.t
+	desc = argentina.3.d
+	picture = GFX_report_event_president_resigns
+
+	is_triggered_only = yes
+	
+	option = {
+		name = argentina.3.a
+		add_stability = -0.2
+		
+		retire_character = ARG_fernando_de_la_rua
+		promote_character = ARG_federico_ramon_puerta
+
+		set_politics = {
+			ruling_party = conservative
+			elections_allowed = yes
+			long_name = ARG_partido_justicialista_long
+			name = ARG_partido_justicialista
+		}
+		hidden_effect = {
+			set_popularities = {
+				nationalist = 4
+				reactionary = 6
+				conservative = 40
+				social_liberal = 1
+				social_democrat = 8
+				progressive = 1
+				democratic_socialist = 37
+				communist = 3
+			}
+			remove_ideas = fourth_estate_social_democrat4
+			remove_ideas = fourth_estate_social_democrat3
+			remove_ideas = fourth_estate_social_democrat2
+			remove_ideas = fourth_estate_social_democrat1
+			remove_ideas = fourth_estate_conservative2
+			add_ideas = fourth_estate_democratic_socialist4
+			add_ideas = fourth_estate_conservative4
+			country_event = {
+				id = argentina.4
+				days = 2
+			}
+		}	
+	}
+}
+
+#Sáa elected president by parliament
+country_event = {
+	id = argentina.4
+	title = argentina.4.t
+	desc = argentina.4.d
+	picture = GFX_report_event_president_saa
+
+	is_triggered_only = yes
+	
+	option = {
+		name = argentina.4.a
+		add_stability = 0.05
+		
+		retire_character = ARG_federico_ramon_puerta
+		promote_character = ARG_adolfo_rodriguez_saa
+
+		hidden_effect = {
+			country_event = {
+				id = argentina.5
+				days = 7
+			}
+		}
+	}
+}
+
+#Sáa resigns
+country_event = {
+	id = argentina.5
+	title = argentina.5.t
+	desc = argentina.5.d
+	picture = GFX_report_event_saa_resigns
+
+	is_triggered_only = yes
+	
+	option = {
+		name = argentina.5.a
+		add_stability = -0.1
+		
+		retire_character = ARG_adolfo_rodriguez_saa
+		promote_character = ARG_eduardo_camano
+
+		hidden_effect = {
+			country_event = {
+				id = argentina.6
+				days = 2
+			}
+		}
+	}
+}
+
+#Eduardo Duhalde assumes presidency
+country_event = {
+	id = argentina.6
+	title = argentina.6.t
+	desc = argentina.6.d
+	picture = GFX_report_event_president_duhalde
+
+	is_triggered_only = yes
+	
+	option = {
+		name = argentina.6.a
+		add_stability = 0.025
+		add_political_power = 10
+		
+		retire_character = ARG_eduardo_camano
+		promote_character = ARG_eduardo_duhalde
+	}
+}
+
+#Menem as conservative leader
+country_event = {
+	id = argentina.7
+	title = argentina.7.t
+	desc = argentina.7.d
+	picture = GFX_report_event_corralito
+
+	is_triggered_only = yes
+	hidden = yes
+	
+	option = {
+		name = argentina.6.a	
+		retire_character = ARG_eduardo_duhalde
+		promote_character = ARG_carlos_menem
+		set_party_name = {
+			ideology = conservative
+			long_name = ARG_conservative_party_long
+			name = ARG_conservative_party
+		}
+	}
+}
