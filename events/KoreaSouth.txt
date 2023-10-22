@@ -7,6 +7,7 @@ add_namespace = korean_war
 add_namespace = kor_jpn_culture_war
 add_namespace = korea_flavor_events
 add_namespace = korea_reunification_events
+add_namespace = south_korea_endgame
 
 #################
 #
@@ -218,6 +219,19 @@ news_event = {
 	desc = rok_news.8.desc
 	
 	picture = GFX_news_event_liancourt_rocks_2
+	
+	immediate = {
+		hidden_effect = {
+			1082 = { remove_dynamic_modifier = { modifier = dynamic_takeshima_token_1 } }
+			1082 = { remove_dynamic_modifier = { modifier = dynamic_takeshima_token_2 } }
+			1082 = { remove_dynamic_modifier = { modifier = dynamic_takeshima_token_3 } }
+			1082 = { remove_dynamic_modifier = { modifier = dynamic_takeshima_token_4 } }
+			1082 = { remove_dynamic_modifier = { modifier = dynamic_dokdo_token_1 } }
+			1082 = { remove_dynamic_modifier = { modifier = dynamic_dokdo_token_2 } }
+			1082 = { remove_dynamic_modifier = { modifier = dynamic_dokdo_token_3 } }
+			1082 = { remove_dynamic_modifier = { modifier = dynamic_dokdo_token_4 } }
+		}
+	}
 
 	major = yes
 	is_triggered_only = yes
@@ -3385,11 +3399,11 @@ country_event = {
 		}
 		hidden_effect = {
 			country_event = { id = south_korea.99 days = 35 }
-			#remove_ideas = kor_postnationalist_rivalry_win_2
-			#remove_ideas = kor_postnationalist_rivalry_win_1
-			#remove_ideas = kor_postnationalist_christian_rivalry_balanced
-			#remove_ideas = kor_christian_rivalry_win_1
-			#remove_ideas = kor_christian_rivalry_win_2
+			remove_ideas = kor_postnationalist_rivalry_win_2
+			remove_ideas = kor_postnationalist_rivalry_win_1
+			remove_ideas = kor_postnationalist_christian_rivalry_balanced
+			remove_ideas = kor_christian_rivalry_win_1
+			remove_ideas = kor_christian_rivalry_win_2
 			
 			#Christian Government ideas
 			remove_ideas = KOR_ban_lgbt
@@ -6316,6 +6330,62 @@ country_event = {
 	}
 }
 
+# After the Nightmare
+country_event = {
+	id = south_korea.305
+	title = south_korea.305.t
+	desc = south_korea.305.desc
+	picture = GFX_report_event_KOR_gyeongbok_palace
+
+	is_triggered_only = yes
+	
+	option = {
+		name = south_korea.305.a
+	}
+}
+
+# Desperate Meeting
+country_event = {
+	id = south_korea.306
+	title = south_korea.306.t
+	desc = south_korea.306.desc
+	picture = GFX_report_event_KOR_national_assembly_2
+
+	is_triggered_only = yes
+	
+	option = {
+		name = south_korea.306.a
+	}
+}
+
+# Meeting at the National Assembly
+country_event = {
+	id = south_korea.307
+	title = south_korea.307.t
+	desc = south_korea.307.desc
+	picture = GFX_report_event_KOR_national_assembly_1
+
+	is_triggered_only = yes
+	
+	option = {
+		name = south_korea.307.a
+	}
+}
+
+# No matter what the cause is...
+country_event = {
+	id = south_korea.308
+	title = south_korea.308.t
+	desc = south_korea.308.desc
+	picture = GFX_report_event_KOR_new_law
+
+	is_triggered_only = yes
+	
+	option = {
+		name = south_korea.308.a
+	}
+}
+
 ####################
 #
 # Korean Monarchy Events
@@ -7420,6 +7490,44 @@ country_event = {
 	option = {
 		name = korea_flavor_events.20.a
 		add_political_power = -25
+	}
+}
+
+#####################################################
+#
+#      Republic of Korea
+#
+#                                        Endgame Events
+#
+#  - Ran Mitake
+#
+#####################################################
+
+#The Only Source of Knowledge is Experience
+country_event = {
+	id = south_korea_endgame.1
+	title = south_korea_endgame.1.t
+	desc = south_korea_endgame.1.desc
+	picture = GFX_report_event_KOR_gyeongbok_palace
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = south_korea_endgame.1.a
+	}
+}
+
+#The Only Source of Knowledge is Experience
+country_event = {
+	id = south_korea_endgame.2
+	title = south_korea_endgame.2.t
+	desc = south_korea_endgame.2.desc
+	picture = GFX_report_event_KOR_gyeongbok_palace
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = south_korea_endgame.2.a
 	}
 }
 
