@@ -409,13 +409,17 @@ country_event = {
 		hidden_effect = { 
 			country_event = { id = japan.21 days = 4 } 
 			news_event = { id = japan_news.2 }
-			create_country_leader = {
-				name = "Mikio Aoki"
-				ideology = fiscal_conservative
-				picture = "mikio_aoki.dds"
-				
-				traits = { vacancy jiminto_main jiminto_heisei_kenkyukai }
+			
+			add_country_leader_role = {
+				character = JAP_mikio_aoki
+				country_leader = { 
+					ideology = fiscal_conservative 
+					desc = POLITICS_mikio_aoki_DESC
+					traits = { vacancy jiminto_main jiminto_heisei_kenkyukai }
+				}
+				promote_leader = yes
 			}
+			
 			set_party_name = { 
 				ideology = conservative
 				name = JAP_conservative_jikorenritsu
@@ -587,6 +591,8 @@ country_event = {
 		hidden_effect = { country_event = { id = japan.26 days = 21 } } 
 		hidden_effect = { country_event = { id = japan.28 days = 7 } }
 		load_focus_tree = japan_focus_general
+		
+		retire_character = JAP_mikio_aoki
 		
 		add_country_leader_role = {
 			character = JAP_Yoshiro_Mori
@@ -4536,9 +4542,18 @@ news_event = {
 	is_triggered_only = yes
 	
 	immediate = {
-		hidden_effect = { JAP = { transfer_state = 1082 }
-		set_global_flag = dokdo_and_takeshima_global_flag
-		1082 = { remove_core_of = KOR }
+		hidden_effect = { 
+			JAP = { transfer_state = 1082 }
+			set_global_flag = dokdo_and_takeshima_global_flag
+			1082 = { remove_core_of = KOR }
+			1082 = { remove_dynamic_modifier = { modifier = dynamic_takeshima_token_1 } }
+			1082 = { remove_dynamic_modifier = { modifier = dynamic_takeshima_token_2 } }
+			1082 = { remove_dynamic_modifier = { modifier = dynamic_takeshima_token_3 } }
+			1082 = { remove_dynamic_modifier = { modifier = dynamic_takeshima_token_4 } }
+			1082 = { remove_dynamic_modifier = { modifier = dynamic_dokdo_token_1 } }
+			1082 = { remove_dynamic_modifier = { modifier = dynamic_dokdo_token_2 } }
+			1082 = { remove_dynamic_modifier = { modifier = dynamic_dokdo_token_3 } }
+			1082 = { remove_dynamic_modifier = { modifier = dynamic_dokdo_token_4 } }
 		}
 	}
 	
@@ -4547,6 +4562,8 @@ news_event = {
 		trigger = {
 			original_tag = JAP
 		}
+			add_political_power = 150
+			add_stability = 0.1
 	}
 	
 	option = {
@@ -4579,7 +4596,17 @@ news_event = {
 	
 	immediate = {
 		set_global_flag = dokdo_and_takeshima_global_flag
-		hidden_effect = { 1082 = { remove_core_of = JAP } }
+		hidden_effect = { 
+			1082 = { remove_core_of = JAP } 
+			1082 = { remove_dynamic_modifier = { modifier = dynamic_takeshima_token_1 } }
+			1082 = { remove_dynamic_modifier = { modifier = dynamic_takeshima_token_2 } }
+			1082 = { remove_dynamic_modifier = { modifier = dynamic_takeshima_token_3 } }
+			1082 = { remove_dynamic_modifier = { modifier = dynamic_takeshima_token_4 } }
+			1082 = { remove_dynamic_modifier = { modifier = dynamic_dokdo_token_1 } }
+			1082 = { remove_dynamic_modifier = { modifier = dynamic_dokdo_token_2 } }
+			1082 = { remove_dynamic_modifier = { modifier = dynamic_dokdo_token_3 } }
+			1082 = { remove_dynamic_modifier = { modifier = dynamic_dokdo_token_4 } }
+		}
 	}
 	
 	option = {
@@ -4587,6 +4614,8 @@ news_event = {
 		trigger = {
 			original_tag = KOR
 		}
+			add_political_power = 150
+			add_stability = 0.1
 	}
 	
 	option = {
@@ -4618,7 +4647,17 @@ news_event = {
 	is_triggered_only = yes
 	
 	immediate = {
-		hidden_effect = { JAP = { transfer_state = 1082 } }
+		hidden_effect = { 
+			JAP = { transfer_state = 1082 } 
+			1082 = { remove_dynamic_modifier = { modifier = dynamic_takeshima_token_1 } }
+			1082 = { remove_dynamic_modifier = { modifier = dynamic_takeshima_token_2 } }
+			1082 = { remove_dynamic_modifier = { modifier = dynamic_takeshima_token_3 } }
+			1082 = { remove_dynamic_modifier = { modifier = dynamic_takeshima_token_4 } }
+			1082 = { remove_dynamic_modifier = { modifier = dynamic_dokdo_token_1 } }
+			1082 = { remove_dynamic_modifier = { modifier = dynamic_dokdo_token_2 } }
+			1082 = { remove_dynamic_modifier = { modifier = dynamic_dokdo_token_3 } }
+			1082 = { remove_dynamic_modifier = { modifier = dynamic_dokdo_token_4 } }
+		}
 		set_global_flag = dokdo_and_takeshima_global_flag
 	}
 	
@@ -4636,6 +4675,8 @@ news_event = {
 		trigger = {
 			original_tag = JAP
 		}
+			add_political_power = 150
+			add_stability = 0.1
 	}
 	
 	option = {
@@ -5037,6 +5078,21 @@ news_event = {
 		}
 	}
 	
+}
+
+#Japanese Declaration of the Republic
+news_event = {
+	id = japan_news.25
+	title = japan_news.25.t
+	desc = japan_news.25.desc
+	picture = GFX_news_event_japanese_imperial_palace
+	
+	is_triggered_only = yes
+	major = yes
+	
+	option = {
+		name = japan_news.25.a
+	}
 }
 
 ########################################
@@ -7478,6 +7534,156 @@ country_event = {
 	}
 }
 
+# Japanese Monarchy Discussions
+country_event = {
+	id = japan_foreign_politics_events.34
+	title = japan_foreign_politics_events.34.t
+	desc = japan_foreign_politics_events.34.desc
+	picture = GFX_report_event_tokyo_night
+
+	is_triggered_only = yes
+
+	option = { #Japan will become a republic
+		name = japan_foreign_politics_events.34.a
+		ai_chance = { 
+			factor = 50 
+			modifier = {
+				factor = 0
+				has_government = monarchist
+			}
+			modifier = {
+				factor = 0.1
+				has_government = fascist
+				NOT = { original_tag = PRK }
+			}
+			modifier = {
+				factor = 0.1
+				has_government = nationalist
+				NOT = { original_tag = PRK }
+			}
+			modifier = {
+				factor = 0.5
+				has_government = conservative
+			}
+			modifier = {
+				factor = 0.9
+				has_government = market_liberal
+			}
+			modifier = {
+				factor = 0.3
+				has_government = reactionary
+			}
+			modifier = {
+				factor = 3
+				has_government = communist
+			}
+			modifier = {
+				factor = 100
+				AND = {
+					original_tag = KOR
+					NOT = { has_country_flag = kor_lose_culture_war_flag }
+				}
+			}
+			modifier = {
+				factor = 100
+				OR = {
+					original_tag = PRC
+					original_tag = PRK 
+				}
+			}
+			modifier = {
+				factor = 0
+				AND = {
+					original_tag = USA #Historically, they protected the Japanese imperial family in After World War II as well.
+					NOT = { has_government = communist }
+					NOT = { has_country_leader_ideology = christian_theocracy }
+				}
+			}
+			modifier = {
+				factor = 0
+				AND = {
+					original_tag = CHI #Taiwan has a friendly feeling towards Japan.
+					NOT = { has_government = communist }
+				}
+			}
+		}
+		
+		FROM = {
+			country_event = {
+				id = japan_foreign_politics_events.35
+				hours = 1
+			}
+		}
+	}
+
+	option = { #No, Japan will remain a monarchy
+		name = japan_foreign_politics_events.34.b
+		ai_chance = { 
+			factor = 50 
+			modifier = {
+				factor = 0
+				has_government = communist
+			}
+			modifier = {
+				factor = 0.5
+				has_government = democratic_socialist
+			}
+			modifier = {
+				factor = 0.3
+				has_government = progressive
+			}
+			modifier = {
+				factor = 0.8
+				has_government = social_democrat
+			}
+		}
+		
+		FROM = {
+			country_event = {
+				id = japan_foreign_politics_events.36
+				hours = 1
+			}
+		}
+	}
+}
+
+#Decision to Abolish the Monarchy
+country_event = {
+	id = japan_foreign_politics_events.35
+	title = japan_foreign_politics_events.35.t
+	desc = japan_foreign_politics_events.35.desc
+	picture = GFX_report_event_tokyo_night
+
+	is_triggered_only = yes
+	
+	option = {
+		name = japan_foreign_politics_events.35.a
+		
+		add_timed_idea = { idea = JAP_abolition_of_the_monarchy days = 720 }
+		add_stability = -0.1
+		
+		hidden_effect = {
+			news_event = { id = japan_news.25 hours = 6 }
+			remove_ideas = { idea_JAP_emperor_akihito }
+			remove_ideas = { JAP_emperor_naruhito }
+		}
+	}
+}
+
+#Decision to Maintain the Monarchy
+country_event = {
+	id = japan_foreign_politics_events.36
+	title = japan_foreign_politics_events.36.t
+	desc = japan_foreign_politics_events.36.desc
+	picture = GFX_report_event_tokyo_night
+
+	is_triggered_only = yes
+	
+	option = {
+		name = japan_foreign_politics_events.36.a
+	}
+}
+
 #####################################################################
 #####################################################################
 #####################################################################
@@ -8200,6 +8406,8 @@ country_event = {
 			NOT = { has_country_leader = { character = JAP_taro_aso ruling_only = yes } }
 		}
 		
+		#retire_country_leader = yes
+		
 		add_country_leader_role = {
 			character = JAP_taro_aso
 			country_leader = { 
@@ -8208,6 +8416,10 @@ country_event = {
 				traits = { jiminto_main jiminto_kouchikai rosen_aso }
 			}
 			promote_leader = yes
+		}
+		
+		JAP_taro_aso = {
+			promote_character = yes
 		}
 
 		hidden_effect = {
@@ -8222,6 +8434,8 @@ country_event = {
 			NOT = { has_country_leader = { character = JAP_sadakazu_tanigaki ruling_only = yes } }
 		}
 		
+		#retire_country_leader = yes
+		
 		add_country_leader_role = {
 			character = JAP_sadakazu_tanigaki
 			country_leader = { 
@@ -8230,6 +8444,10 @@ country_event = {
 				traits = { jiminto_main jiminto_kouchikai }
 			}
 			promote_leader = yes
+		}
+		
+		JAP_sadakazu_tanigaki = {
+			promote_character = yes
 		}
 
 		hidden_effect = {
@@ -8244,6 +8462,8 @@ country_event = {
 			NOT = { has_country_leader = { character = JAP_taro_kono ruling_only = yes } }
 		}
 		
+		#retire_country_leader = yes
+		
 		add_country_leader_role = {
 			character = JAP_taro_kono
 			country_leader = { 
@@ -8252,6 +8472,10 @@ country_event = {
 				traits = { jiminto_main jiminto_kouchikai }
 			}
 			promote_leader = yes
+		}
+		
+		JAP_taro_kono = {
+			promote_character = yes
 		}
 
 		hidden_effect = {
@@ -8267,6 +8491,8 @@ country_event = {
 			NOT = { has_country_leader = { character = JAP_fumio_kishida ruling_only = yes } }
 		}
 		
+		#retire_country_leader = yes
+		
 		add_country_leader_role = {
 			character = JAP_fumio_kishida
 			country_leader = { 
@@ -8275,6 +8501,10 @@ country_event = {
 				traits = { jiminto_main jiminto_kouchikai }
 			}
 			promote_leader = yes
+		}
+		
+		JAP_fumio_kishida = {
+			promote_character = yes
 		}
 
 		hidden_effect = {
@@ -8290,6 +8520,8 @@ country_event = {
 			NOT = { has_country_leader = { character = JAP_yoshimasa_hayashi ruling_only = yes } }
 		}
 		
+		#retire_country_leader = yes
+		
 		add_country_leader_role = {
 			character = JAP_yoshimasa_hayashi
 			country_leader = { 
@@ -8298,6 +8530,10 @@ country_event = {
 				traits = { jiminto_main jiminto_kouchikai }
 			}
 			promote_leader = yes
+		}
+		
+		JAP_yoshimasa_hayashi = {
+			promote_character = yes
 		}
 
 		hidden_effect = {
@@ -8318,6 +8554,8 @@ country_event = {
 			NOT = { has_country_leader = { character = JAP_fukushiro_nukaga ruling_only = yes } }
 		}
 		
+		#retire_country_leader = yes
+		
 		add_country_leader_role = {
 			character = JAP_fukushiro_nukaga
 			country_leader = { 
@@ -8326,6 +8564,10 @@ country_event = {
 				traits = { jiminto_main jiminto_heisei_kenkyukai }
 			}
 			promote_leader = yes
+		}
+		
+		JAP_fukushiro_nukaga = {
+			promote_character = yes
 		}
 
 		hidden_effect = {
@@ -8340,6 +8582,8 @@ country_event = {
 			NOT = { has_country_leader = { character = JAP_yuji_tsushima ruling_only = yes } }
 		}
 		
+		#retire_country_leader = yes
+		
 		add_country_leader_role = {
 			character = JAP_yuji_tsushima
 			country_leader = { 
@@ -8348,6 +8592,10 @@ country_event = {
 				traits = { jiminto_main jiminto_heisei_kenkyukai }
 			}
 			promote_leader = yes
+		}
+		
+		JAP_yuji_tsushima = {
+			promote_character = yes
 		}
 
 		hidden_effect = {
@@ -8362,6 +8610,8 @@ country_event = {
 			NOT = { has_country_leader = { character = JAP_toshimitsu_motegi ruling_only = yes } }
 		}
 		
+		#retire_country_leader = yes
+		
 		add_country_leader_role = {
 			character = JAP_toshimitsu_motegi
 			country_leader = { 
@@ -8370,6 +8620,10 @@ country_event = {
 				traits = { jiminto_main jiminto_heisei_kenkyukai }
 			}
 			promote_leader = yes
+		}
+		
+		JAP_toshimitsu_motegi = {
+			promote_character = yes
 		}
 
 		hidden_effect = {
@@ -8384,6 +8638,8 @@ country_event = {
 			NOT = { has_country_leader = { character = JAP_hajime_funada ruling_only = yes } }
 		}
 		
+		#retire_country_leader = yes
+		
 		add_country_leader_role = {
 			character = JAP_hajime_funada
 			country_leader = { 
@@ -8392,6 +8648,10 @@ country_event = {
 				traits = { jiminto_main jiminto_heisei_kenkyukai }
 			}
 			promote_leader = yes
+		}
+		
+		JAP_hajime_funada = {
+			promote_character = yes
 		}
 
 		hidden_effect = {
@@ -8512,6 +8772,8 @@ country_event = {
 			NOT = { has_country_leader = { character = JAP_yasuo_fukuda ruling_only = yes } }
 		}
 		
+		#retire_country_leader = yes
+		
 		add_country_leader_role = {
 			character = JAP_yasuo_fukuda
 			country_leader = { 
@@ -8520,6 +8782,10 @@ country_event = {
 				traits = { jiminto_minor jiminto_seiwakai }
 			}
 			promote_leader = yes
+		}
+		
+		JAP_yasuo_fukuda = {
+			promote_character = yes
 		}
 
 		hidden_effect = {
@@ -8533,6 +8799,9 @@ country_event = {
 			NOT = { has_country_flag = dead_shinzo_abe }
 			NOT = { has_country_leader = { character = JAP_shinzo_abe ruling_only = yes } }
 		}
+		
+		#retire_country_leader = yes
+		
 		if = {
 			limit = { date < 2010.01.01 }
 			add_country_leader_role = {
@@ -8578,6 +8847,10 @@ country_event = {
 				}
 			}
 		}
+		
+		JAP_shinzo_abe = {
+			promote_character = yes
+		}
 
 		hidden_effect = {
 			news_event = { id = japan_news.24 hours = 0 random_hours = 8 }
@@ -8592,6 +8865,8 @@ country_event = {
 			date > 2009.12.31
 		}
 		
+		#retire_country_leader = yes
+		
 		add_country_leader_role = {
 			character = JAP_nobutaka_machimura
 			country_leader = { 
@@ -8600,6 +8875,10 @@ country_event = {
 				traits = { jiminto_minor jiminto_seiwakai }
 			}
 			promote_leader = yes
+		}
+		
+		JAP_nobutaka_machimura = {
+			promote_character = yes
 		}
 
 		hidden_effect = {
@@ -8616,6 +8895,8 @@ country_event = {
 			NOT = { has_country_leader = { character = JAP_nobuteru_ishihara ruling_only = yes } }
 		}
 		
+		#retire_country_leader = yes
+		
 		add_country_leader_role = {
 			character = JAP_nobuteru_ishihara
 			country_leader = { 
@@ -8624,6 +8905,10 @@ country_event = {
 				traits = { jiminto_minor jiminto_seiwakai }
 			}
 			promote_leader = yes
+		}
+		
+		JAP_nobuteru_ishihara = {
+			promote_character = yes
 		}
 
 		hidden_effect = {
@@ -8638,6 +8923,8 @@ country_event = {
 			NOT = { has_country_leader = { character = JAP_ryu_shionoya ruling_only = yes } }
 		}
 		
+		#retire_country_leader = yes
+		
 		add_country_leader_role = {
 			character = JAP_ryu_shionoya
 			country_leader = { 
@@ -8646,6 +8933,10 @@ country_event = {
 				traits = { jiminto_minor jiminto_seiwakai }
 			}
 			promote_leader = yes
+		}
+		
+		JAP_ryu_shionoya = {
+			promote_character = yes
 		}
 
 		hidden_effect = {
@@ -8661,6 +8952,8 @@ country_event = {
 			NOT = { has_country_leader = { character = JAP_yoshiro_mori_after_2020 ruling_only = yes } }
 		}
 		
+		#retire_country_leader = yes
+		
 		add_country_leader_role = {
 			character = JAP_yoshiro_mori_after_2020
 			country_leader = { 
@@ -8669,6 +8962,10 @@ country_event = {
 				traits = { jiminto_minor jiminto_seiwakai ldp_unpredictable_speech }
 			}
 			promote_leader = yes
+		}
+		
+		JAP_yoshiro_mori_after_2020 = {
+			promote_character = yes
 		}
 
 		hidden_effect = {
@@ -8689,6 +8986,8 @@ country_event = {
 			NOT = { has_country_leader = { character = JAP_takeo_kawamura ruling_only = yes } }
 		}
 		
+		#retire_country_leader = yes
+		
 		add_country_leader_role = {
 			character = JAP_takeo_kawamura
 			country_leader = { 
@@ -8697,6 +8996,10 @@ country_event = {
 				traits = { jiminto_minor jiminto_shisuikai }
 			}
 			promote_leader = yes
+		}
+		
+		JAP_takeo_kawamura = {
+			promote_character = yes
 		}
 
 		hidden_effect = {
@@ -8711,6 +9014,8 @@ country_event = {
 			NOT = { has_country_leader = { character = JAP_bunmei_ibuki ruling_only = yes } }
 		}
 		
+		#retire_country_leader = yes
+		
 		add_country_leader_role = {
 			character = JAP_bunmei_ibuki
 			country_leader = { 
@@ -8719,6 +9024,10 @@ country_event = {
 				traits = { jiminto_minor jiminto_shisuikai }
 			}
 			promote_leader = yes
+		}
+		
+		JAP_bunmei_ibuki = {
+			promote_character = yes
 		}
 
 		hidden_effect = {
@@ -8733,6 +9042,8 @@ country_event = {
 			NOT = { has_country_leader = { character = JAP_toshihiro_nikai ruling_only = yes } }
 		}
 		
+		#retire_country_leader = yes
+		
 		add_country_leader_role = {
 			character = JAP_toshihiro_nikai
 			country_leader = { 
@@ -8741,6 +9052,10 @@ country_event = {
 				traits = { jiminto_minor jiminto_shisuikai }
 			}
 			promote_leader = yes
+		}
+		
+		JAP_toshihiro_nikai = {
+			promote_character = yes
 		}
 
 		hidden_effect = {
@@ -8755,6 +9070,8 @@ country_event = {
 			NOT = { has_country_leader = { character = JAP_goshi_hosono ruling_only = yes } }
 		}
 		
+		#retire_country_leader = yes
+		
 		add_country_leader_role = {
 			character = JAP_goshi_hosono
 			country_leader = { 
@@ -8763,6 +9080,10 @@ country_event = {
 				traits = { jiminto_minor jiminto_shisuikai }
 			}
 			promote_leader = yes
+		}
+		
+		JAP_goshi_hosono = {
+			promote_character = yes
 		}
 
 		hidden_effect = {
@@ -8851,6 +9172,8 @@ country_event = {
 			NOT = { has_country_leader = { character = JAP_kaoru_yosano ruling_only = yes } }
 		}
 		
+		#retire_country_leader = yes
+		
 		add_country_leader_role = {
 			character = JAP_kaoru_yosano
 			country_leader = { 
@@ -8859,6 +9182,10 @@ country_event = {
 				traits = { jiminto_non_faction }
 			}
 			promote_leader = yes
+		}
+		
+		JAP_kaoru_yosano = {
+			promote_character = yes
 		}
 
 		hidden_effect = {
@@ -8873,6 +9200,8 @@ country_event = {
 			NOT = { has_country_leader = { character = JAP_taro_nakayama ruling_only = yes } }
 		}
 		
+		#retire_country_leader = yes
+		
 		add_country_leader_role = {
 			character = JAP_taro_nakayama
 			country_leader = { 
@@ -8881,6 +9210,10 @@ country_event = {
 				traits = { jiminto_non_faction ldp_wise_old_man }
 			}
 			promote_leader = yes
+		}
+		
+		JAP_taro_nakayama = {
+			promote_character = yes
 		}
 
 		hidden_effect = {
@@ -8895,6 +9228,8 @@ country_event = {
 			NOT = { has_country_leader = { character = JAP_shigeru_ishiba ruling_only = yes } }
 		}
 		
+		#retire_country_leader = yes
+		
 		add_country_leader_role = {
 			character = JAP_shigeru_ishiba
 			country_leader = { 
@@ -8903,6 +9238,10 @@ country_event = {
 				traits = { jiminto_non_faction }
 			}
 			promote_leader = yes
+		}
+		
+		JAP_shigeru_ishiba = {
+			promote_character = yes
 		}
 
 		hidden_effect = {
@@ -8917,6 +9256,8 @@ country_event = {
 			NOT = { has_country_leader = { character = JAP_seiko_noda ruling_only = yes } }
 		}
 		
+		#retire_country_leader = yes
+		
 		add_country_leader_role = {
 			character = JAP_seiko_noda
 			country_leader = { 
@@ -8925,6 +9266,10 @@ country_event = {
 				traits = { jiminto_non_faction }
 			}
 			promote_leader = yes
+		}
+		
+		JAP_seiko_noda = {
+			promote_character = yes
 		}
 
 		hidden_effect = {
@@ -8939,6 +9284,8 @@ country_event = {
 			NOT = { has_country_leader = { character = JAP_sanae_takaichi ruling_only = yes } }
 		}
 		
+		#retire_country_leader = yes
+		
 		add_country_leader_role = {
 			character = JAP_sanae_takaichi
 			country_leader = { 
@@ -8947,6 +9294,10 @@ country_event = {
 				traits = { jiminto_non_faction }
 			}
 			promote_leader = yes
+		}
+		
+		JAP_sanae_takaichi = {
+			promote_character = yes
 		}
 
 		hidden_effect = {
@@ -8961,6 +9312,8 @@ country_event = {
 			NOT = { has_country_leader = { character = JAP_shinjiro_koizumi ruling_only = yes } }
 		}
 		
+		#retire_country_leader = yes
+		
 		add_country_leader_role = {
 			character = JAP_shinjiro_koizumi
 			country_leader = { 
@@ -8969,6 +9322,10 @@ country_event = {
 				traits = { jiminto_non_faction ldp_trickster ldp_conservationist }
 			}
 			promote_leader = yes
+		}
+		
+		JAP_shinjiro_koizumi = {
+			promote_character = yes
 		}
 
 		hidden_effect = {
@@ -8983,6 +9340,8 @@ country_event = {
 			NOT = { has_country_leader = { character = JAP_yoshihide_suga ruling_only = yes } }
 		}
 		
+		#retire_country_leader = yes
+		
 		add_country_leader_role = {
 			character = JAP_yoshihide_suga
 			country_leader = { 
@@ -8991,6 +9350,10 @@ country_event = {
 				traits = { jiminto_non_faction ldp_quiet_bureaucrat }
 			}
 			promote_leader = yes
+		}
+		
+		JAP_yoshihide_suga = {
+			promote_character = yes
 		}
 
 		hidden_effect = {
