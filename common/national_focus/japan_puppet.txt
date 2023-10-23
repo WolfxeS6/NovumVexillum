@@ -1,0 +1,2345 @@
+
+
+	focus_tree = {
+		id = japan_puppet
+		country = {
+			factor = 0
+		}
+		
+		continuous_focus_position = { x = 1250 y = 120 }
+
+	#######################
+	###  Politic Tree  ###
+	#######################
+
+	focus = {
+		id = JAP_establishment_of_defeated_government
+		icon = GFX_focus_POL_complete_april_constitution
+		cost = 0
+		x = 7
+		y = 1
+		
+		search_filters = {  }
+	
+		completion_reward = {
+			add_ideas = disarmed_nation
+			add_ideas = government_system_autocracy #interim government
+			add_stability = -0.2
+			add_war_support = -0.2
+		}
+		
+		ai_will_do = {
+			factor = 1000
+		}
+	}
+
+	focus = {
+		id = JAP_another_GHQ
+		icon = GFX_focus_generic_diplomatic_treaty
+		cost = 5
+
+		relative_position_id = JAP_establishment_of_defeated_government
+		x = 0
+		y = 1
+
+		prerequisite = { focus = JAP_establishment_of_defeated_government }
+
+		ai_will_do = { base = 200 }
+
+		completion_reward = {
+			fourth_estate_fascist_decrease = yes
+		}
+	}
+
+	focus = {
+		id = JAP_dismantling_of_the_military_industry
+		icon = GFX_focus_SOV_organize_wreckers
+		cost = 5
+
+		relative_position_id = JAP_establishment_of_defeated_government
+		x = -2
+		y = 2
+
+		prerequisite = { focus = JAP_another_GHQ }
+
+		ai_will_do = { base = 200 }
+
+		completion_reward = {
+			fourth_estate_fascist_decrease = yes
+			fourth_estate_nationalist_decrease = yes
+
+			if = {
+				limit = { JAP = { num_of_military_factories > 20 } }
+				every_owned_state = {
+					remove_building = {
+						type = arms_factory
+						level = 1
+					}
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = JAP_implementation_of_rationing_system
+		icon = GFX_focus_generic_workers
+		cost = 5
+
+		relative_position_id = JAP_establishment_of_defeated_government
+		x = 0
+		y = 2
+
+		prerequisite = { focus = JAP_another_GHQ }
+
+		ai_will_do = { base = 200 }
+
+		completion_reward = {
+			add_timed_idea = {
+				idea = JAP_implementation_of_rationing_system_idea
+				days = 365
+			}
+		}
+	}
+
+	focus = {
+		id = JAP_the_question_of_the_monarchy
+		icon = JAP_no_need_tenno
+		cost = 5
+
+		relative_position_id = JAP_establishment_of_defeated_government
+		x = 2
+		y = 2
+
+		prerequisite = { focus = JAP_another_GHQ }
+
+		bypass = {
+			AND = {
+				NOT = { has_idea = idea_JAP_emperor_akihito }
+				NOT = { has_idea = JAP_emperor_naruhito }
+			}
+		}
+
+		ai_will_do = { base = 200 }
+
+		completion_reward = {
+			OVERLORD = {
+				country_event = {
+					id = japan_foreign_politics_events.35
+					hours = 1
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = JAP_talks_with_the_JCP
+		icon = GFX_focus_prc_agrarian_socialism
+		cost = 2
+
+		available = { 
+			if = {
+				AND = {
+					NOT = { OVERLORD = { has_government = fascist } }
+					NOT = { OVERLORD = { has_government = islamist } }
+					NOT = { OVERLORD = { has_government = nationalist } }
+					NOT = { OVERLORD = { has_government = communist } }
+					NOT = { OVERLORD = { has_government = monarchist } }
+				}
+			} 
+		}
+
+
+
+		relative_position_id = JAP_establishment_of_defeated_government
+		x = 1
+		y = 3
+
+		mutually_exclusive = { focus = JAP_democracy_is_dangerous }
+
+		prerequisite = { focus = JAP_dismantling_of_the_military_industry }
+		prerequisite = { focus = JAP_implementation_of_rationing_system }
+		prerequisite = { focus = JAP_the_question_of_the_monarchy }
+
+		ai_will_do = { base = 200 }
+
+		completion_reward = {
+			custom_effect_tooltip = JAP_talks_with_the_JCP_tt
+			add_stability = 0.05
+		}
+	}
+
+	focus = {
+		id = JAP_democracy_is_dangerous
+		icon = GFX_focus_generic_support_the_left_right
+		cost = 2
+
+		mutually_exclusive = { focus = JAP_talks_with_the_JCP }
+
+		available = { 
+			if = {
+				OR = {
+					OVERLORD = { has_government = fascist }
+					OVERLORD = { has_government = islamist }
+					OVERLORD = { has_government = nationalist }
+					OVERLORD = { has_government = communist }
+					OVERLORD = { has_government = monarchist }
+				}
+			}
+		 }
+
+		relative_position_id = JAP_establishment_of_defeated_government
+		x = -1
+		y = 3
+
+		prerequisite = { focus = JAP_dismantling_of_the_military_industry }
+		prerequisite = { focus = JAP_implementation_of_rationing_system }
+		prerequisite = { focus = JAP_the_question_of_the_monarchy }
+
+		ai_will_do = { base = 200 }
+
+		completion_reward = {
+			custom_effect_tooltip = JAP_democracy_is_dangerous_tt
+			add_stability = -0.05
+		}
+	}
+
+	focus = {
+		id = JAP_establishment_of_new_puppet_government
+		icon = GFX_goal_generic_military_deal
+		cost = 2
+
+		relative_position_id = JAP_establishment_of_defeated_government
+		x = 0
+		y = 4
+
+		prerequisite = { 
+			focus = JAP_democracy_is_dangerous 
+			focus = JAP_talks_with_the_JCP 
+		}
+
+		ai_will_do = { base = 200 }
+
+		completion_reward = {
+			if = {
+				limit = { has_completed_focus = JAP_talks_with_the_JCP }
+				set_popularities = {
+					democratic_socialist = 85
+					progressive = 7
+					social_democrat = 3
+					nationalist = 5
+				}
+				set_politics = {
+					ruling_party = democratic_socialist
+					elections_allowed = no
+				}
+				set_party_name = { 
+					ideology = nationalist
+					long_name = JAP_nationalist_party_long
+					name = JAP_nationalist_party
+				}
+			}
+			else = {
+				add_stability = -0.1
+			}
+		}
+	}
+
+	focus = {
+		id = JAP_anti_war_cultural_industry
+		icon = JAP_promote_rural_with_animation 
+		cost = 10
+
+		relative_position_id = JAP_establishment_of_defeated_government
+		x = 0
+		y = 6
+
+		available = {
+			has_democratic_form_of_government = yes
+		}
+
+		prerequisite = { 
+			focus = JAP_establishment_of_new_puppet_government 
+		}
+
+		ai_will_do = { base = 200 }
+
+		completion_reward = {
+			fourth_estate_fascist_decrease = yes
+			add_ideas = { JAP_anti_war_campaign_1 }
+		}
+	}
+
+	focus = {
+		id = JAP_dissolution_of_nationalist_group
+		icon = JAP_history_stop
+		cost = 10
+
+		relative_position_id = JAP_establishment_of_defeated_government
+		x = -1
+		y = 7
+
+		available = {
+			has_democratic_form_of_government = yes
+		}
+
+		prerequisite = { 
+			focus = JAP_anti_war_cultural_industry 
+		}
+
+		ai_will_do = { base = 200 }
+
+		completion_reward = {
+			fourth_estate_fascist_decrease = yes
+		}
+	}
+
+	focus = {
+		id = JAP_pacifist_reeducation
+		icon = JAP_peaceful
+		cost = 10
+
+		relative_position_id = JAP_establishment_of_defeated_government
+		x = 1
+		y = 7
+
+		available = {
+			has_democratic_form_of_government = yes
+		}
+
+		prerequisite = { 
+			focus = JAP_anti_war_cultural_industry 
+		}
+
+		ai_will_do = { base = 200 }
+
+		completion_reward = {
+			fourth_estate_fascist_decrease = yes
+			add_war_support = -0.1
+			swap_ideas = {
+				remove_idea = JAP_anti_war_campaign_1
+				add_idea = JAP_anti_war_campaign_2
+			}
+		}
+	}
+
+	focus = {
+		id = JAP_end_of_japanese_independence
+		icon = kor_military_discipline 
+		cost = 1.5
+
+		relative_position_id = JAP_establishment_of_defeated_government
+		x = -4
+		y = 5
+
+		available = {
+			has_completed_focus = JAP_democracy_is_dangerous
+		}
+
+		mutually_exclusive = { focus = JAP_for_reconstruction }
+
+		prerequisite = { 
+			focus = JAP_establishment_of_new_puppet_government 
+		}
+
+		ai_will_do = { base = 500 }
+
+		completion_reward = {
+			add_stability = 0.05
+			custom_effect_tooltip = JAP_end_of_japanese_independence_tt
+			
+			hidden_effect = {
+				
+				if = {
+					limit = { 
+						OVERLORD = { 
+							OR = {
+								has_country_leader_ideology = christian_theocracy
+								has_country_leader_ideology = pope
+							}
+							
+						}
+					}
+					
+					set_popularities = {
+						islamist = 85
+						nationalist = 15
+					}
+
+					set_politics = {
+						ruling_party = islamist #christian theocracy
+						elections_allowed = no
+					}
+					set_party_name = { 
+						ideology = nationalist
+						long_name = JAP_nationalist_party_long
+						name = JAP_nationalist_party
+					}
+				}
+				else_if = {
+					limit = { 
+						OVERLORD = { 
+							has_country_leader_ideology = national_democrat
+						}
+					}
+
+					JAP_japanese_national_diet = {
+						add_country_leader_role = {
+							country_leader = {
+								ideology = national_democrat
+								desc = "POLITICS_japanese_national_diet_defeated_DESC"
+								traits = {  }
+							}
+							promote_leader = yes
+						}
+					}
+					set_party_name = { 
+						ideology = nationalist
+						long_name = JAP_nationalist_long_defeated_II
+						name = JAP_nationalist_defeated_II
+					}
+				}
+				else_if = {
+					limit = { 
+						OVERLORD = { 
+							OR = {
+								has_country_leader_ideology = juche_rok
+								has_country_leader_ideology = juche
+							}
+						}
+					}
+
+					JAP_juche_shiso_kenkyukai = {
+						add_country_leader_role = {
+							country_leader = {
+								ideology = autocrat
+								desc = "POLITICS_juche_shiso_kenkyukai_defeated_DESC"
+								traits = {  }
+							}
+							promote_leader = yes
+						}
+					}
+					set_party_name = { 
+						ideology = nationalist
+						long_name = JAP_nationalist_long_defeated_II
+						name = JAP_nationalist_defeated_II
+					}
+				}
+				else_if = {
+					limit = { 
+						OVERLORD = { 
+							original_tag = PRC						
+						}
+					}
+
+					JAP_japanese_national_diet = {
+						add_country_leader_role = {
+							country_leader = {
+								ideology = national_democrat
+								desc = "POLITICS_japanese_national_diet_pr_china_defeated_DESC"
+								traits = {  }
+							}
+							promote_leader = yes
+						}
+					}
+					set_party_name = { 
+						ideology = nationalist
+						long_name = JAP_nationalist_long_defeated_II
+						name = JAP_nationalist_defeated_II
+					}
+				}
+				else = {
+					JAP_shintaro_ishihara = {
+						add_country_leader_role = {
+							country_leader = {
+								ideology = autocrat
+								desc = "POLITICS_shintaro_ishihara_defeated_DESC"
+								traits = {  }
+							}
+							promote_leader = yes
+						}
+					}
+					set_party_name = { 
+						ideology = nationalist
+						long_name = JAP_nationalist_long_defeated_II
+						name = JAP_nationalist_defeated_II
+					}
+				}
+				
+				retire_character = JAP_shigeto_nagano
+				retire_character = JAP_interim_government
+				retire_character = JAP_shinkun_haku
+
+				add_ideas = government_system_one_party
+				
+				if = {
+					limit = {  has_idea = civil_liberties_free  }
+					swap_ideas = {
+						remove_idea = civil_liberties_free
+						add_idea = civil_liberties_totalitarian
+					}
+				}
+				else_if = {
+					limit = {  has_idea = civil_liberties_limited  }
+					swap_ideas = {
+						remove_idea = civil_liberties_limited
+						add_idea = civil_liberties_totalitarian
+					}
+				}
+				else_if = {
+					limit = {  has_idea = civil_liberties_restricted  }
+					swap_ideas = {
+						remove_idea = civil_liberties_restricted
+						add_idea = civil_liberties_totalitarian
+					}
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = JAP_crackdown_on_civilian_life
+		icon = GFX_focus_eng_move_to_secure_the_dominions
+
+		prerequisite = { focus = JAP_end_of_japanese_independence }
+
+		x = 1
+		y = 1
+
+		relative_position_id = JAP_end_of_japanese_independence
+		cost = 10
+
+		available = {
+		}
+
+		search_filters = {  }
+
+		completion_reward = {
+			random_owned_state = {
+				limit = {
+					is_controlled_by = ROOT 
+					free_building_slots = {
+						building = arms_factory
+						size > 1
+					}
+				}
+				add_extra_state_shared_building_slots = 2 
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = JAP_secret_police_focus
+		icon = GFX_focus_generic_national_security
+
+		prerequisite = { focus = JAP_end_of_japanese_independence }
+
+		x = -1
+		y = 1
+
+		relative_position_id = JAP_end_of_japanese_independence
+		cost = 10
+
+		available = {
+		}
+
+		search_filters = {  }
+
+		completion_reward = {
+			if = {
+				limit = {
+					has_dlc = "La Resistance"
+				}
+				if = {
+					limit = {
+						has_intelligence_agency = no
+					}
+					create_intelligence_agency = {
+						name = "Kempeitai"
+					}
+				}
+			}
+			else = {
+				add_tech_bonus = {
+					name = JAP_secret_police_focus
+					bonus = 0.25
+					uses = 2
+					category = encryption_tech
+					category = decryption_tech
+				}
+			}
+			add_stability = 0.1
+			add_popularity = {
+				ideology = fascist
+				popularity = 0.15
+			}
+		}
+	}
+
+	focus = {
+		id = JAP_self_reflection_of_100_million_people
+		icon = JAP_dai_toa_kyoeiken
+
+		prerequisite = { focus = JAP_secret_police_focus }
+		prerequisite = { focus = JAP_crackdown_on_civilian_life }
+
+		x = 0
+		y = 2
+
+		relative_position_id = JAP_end_of_japanese_independence
+		cost = 10
+
+		available = {
+		}
+
+		search_filters = {  }
+
+		completion_reward = {
+			random_owned_state = {
+				limit = {
+					is_controlled_by = ROOT 
+					free_building_slots = {
+						building = arms_factory
+						size > 1
+					}
+				}
+				add_extra_state_shared_building_slots = 2 
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+			add_war_support = 0.15
+		}
+	}
+
+	focus = {
+		id = JAP_freedom_of_the_market_no_freedom_of_the_people
+		icon = JAP_merge_plants
+
+		prerequisite = { focus = JAP_self_reflection_of_100_million_people }
+
+		x = 0
+		y = 3
+
+		relative_position_id = JAP_end_of_japanese_independence
+		cost = 10
+
+		available = {
+		}
+
+		search_filters = {  }
+
+		completion_reward = {
+			add_ideas = free_trade
+
+			add_timed_idea = {
+				idea = JAP_red_purge
+				days = 180
+			}
+		}
+	}
+
+	focus = {
+		id = JAP_reconstruction_complete
+		icon = JAP_resolution_of_the_recession
+
+		prerequisite = { focus = JAP_freedom_of_the_market_no_freedom_of_the_people }
+
+		x = 0
+		y = 4
+
+		relative_position_id = JAP_end_of_japanese_independence
+		cost = 10
+
+		available = {
+		}
+
+		search_filters = {  }
+
+		completion_reward = {
+			add_ideas = JAP_japan_reconstruction_end_right
+		}
+	}
+
+	focus = {
+		id = JAP_ban_on_the_opposition_parties
+		icon = JAP_Ministry_of_Defense
+
+		prerequisite = { focus = JAP_secret_police_focus }
+		prerequisite = { focus = JAP_crackdown_on_civilian_life }
+
+		x = -2
+		y = 2
+
+		relative_position_id = JAP_end_of_japanese_independence
+		cost = 10
+
+		available = {
+		}
+
+		search_filters = {  }
+
+		completion_reward = {
+			fourth_estate_social_liberal_decrease = yes
+			fourth_estate_communist_decrease = yes
+			fourth_estate_progressive_decrease = yes
+			fourth_estate_social_democrat_decrease = yes
+			fourth_estate_democratic_socialist_decrease = yes
+		}
+	}
+
+	focus = {
+		id = JAP_for_reconstruction
+		icon = JAP_election 
+		cost = 1.5
+
+		relative_position_id = JAP_establishment_of_defeated_government
+		x = 4
+		y = 5
+
+		available = {
+			has_completed_focus = JAP_talks_with_the_JCP
+		}
+
+		mutually_exclusive = { focus = JAP_end_of_japanese_independence }
+
+		prerequisite = { 
+			focus = JAP_establishment_of_new_puppet_government 
+		}
+
+		ai_will_do = { base = 500 }
+
+		completion_reward = {
+			add_stability = 0.05
+			
+			hidden_effect = {
+				retire_character = JAP_shigeto_nagano
+				retire_character = JAP_interim_government
+				retire_character = JAP_shinkun_haku
+
+				fourth_estate_nationalist_decrease = yes
+				fourth_estate_islamist_decrease = yes
+				fourth_estate_conservative_decrease = yes
+				fourth_estate_market_liberal_decrease = yes
+				fourth_estate_reactionary_decrease = yes
+			
+				if = {
+					limit = { 
+						OR = {
+							has_idea = JAP_emperor_naruhito
+							has_idea = idea_JAP_emperor_akihito
+						}
+					}
+					add_ideas = government_system_constitutional_monarchy
+				}
+				else = {
+					add_ideas = government_system_parliamentary_republic
+				}
+				
+				if = {
+					limit = {  has_idea = civil_liberties_totalitarian  }
+					swap_ideas = {
+						remove_idea = civil_liberties_totalitarian
+						add_idea = civil_liberties_free 
+					}
+				}
+				else_if = {
+					limit = {  has_idea = civil_liberties_limited  }
+					swap_ideas = {
+						remove_idea = civil_liberties_limited
+						add_idea = civil_liberties_free
+					}
+				}
+				else_if = {
+					limit = {  has_idea = civil_liberties_restricted  }
+					swap_ideas = {
+						remove_idea = civil_liberties_restricted
+						add_idea = civil_liberties_free
+					}
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = JAP_reorganization_of_national_diet
+		icon = JAP_hinomaru
+
+		prerequisite = { focus = JAP_for_reconstruction }
+
+		x = -1
+		y = 1
+
+		relative_position_id = JAP_for_reconstruction
+		cost = 10
+
+		available = {
+		}
+
+		ai_will_do = { base = 200 }
+
+		search_filters = {  }
+
+		completion_reward = {
+			meta_effect = {
+				text = {
+					set_politics = {
+						ruling_party = democratic_socialist
+						last_election = "[CURRENT_DATE]"
+						election_frequency = 36
+						elections_allowed = yes
+					}
+				}
+				CURRENT_DATE = "[?global.date.GetDateStringNoHour]"
+			}
+		}
+	}
+
+	focus = {
+		id = JAP_outlawing_militaristic_political_parties
+		icon = JAP_communist_unite_2
+
+		prerequisite = { focus = JAP_reorganization_of_national_diet }
+
+		x = -1
+		y = 2
+
+		relative_position_id = JAP_for_reconstruction
+		cost = 10
+
+		available = {
+		}
+
+		ai_will_do = { base = 200 }
+
+		search_filters = {  }
+
+		completion_reward = {
+			fourth_estate_nationalist_decrease = yes
+			fourth_estate_islamist_decrease = yes
+			fourth_estate_conservative_decrease = yes
+			fourth_estate_market_liberal_decrease = yes
+			fourth_estate_reactionary_decrease = yes
+
+			add_timed_idea = {
+				idea = JAP_power_gaining_communist
+				days = 180
+			}
+		}
+	}
+
+	focus = {
+		id = JAP_reassure_the_public
+		icon = GFX_focus_generic_home_defense
+
+		prerequisite = { focus = JAP_for_reconstruction }
+
+		x = 1
+		y = 1
+
+		relative_position_id = JAP_for_reconstruction
+		cost = 10
+
+		available = {
+		}
+
+		ai_will_do = { base = 200 }
+
+		search_filters = {  }
+
+		completion_reward = {
+			add_ideas = JAP_japan_reconstruction_plan
+		}
+	}
+
+	focus = {
+		id = JAP_former_soldiers_re_employment
+		icon = GFX_focus_generic_manpower
+
+		prerequisite = { focus = JAP_reassure_the_public }
+
+		x = 1
+		y = 2
+
+		relative_position_id = JAP_for_reconstruction
+		cost = 10
+
+		available = {
+		}
+
+		ai_will_do = { base = 200 }
+
+		search_filters = {  }
+
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 1
+						include_locked = yes
+					}
+					state_population_k > 500
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 1
+						include_locked = yes
+					}
+					state_population_k > 500
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = JAP_japan_tourism_resumes
+		icon = JAP_anime_tv
+
+		prerequisite = { focus = JAP_reassure_the_public }
+
+		x = 3
+		y = 2
+
+		relative_position_id = JAP_for_reconstruction
+		cost = 10
+
+		available = {
+		}
+
+		ai_will_do = { base = 200 }
+
+		search_filters = {  }
+
+		completion_reward = {
+			add_offsite_building = { type = industrial_complex level = 2 }
+		}
+	}
+
+	focus = {
+		id = JAP_new_cool_japan
+		icon = prk_anime2
+
+		prerequisite = { focus = JAP_japan_tourism_resumes }
+
+		x = 3
+		y = 3
+
+		relative_position_id = JAP_for_reconstruction
+		cost = 10
+
+		available = {
+		}
+
+		ai_will_do = { base = 200 }
+
+		search_filters = {  }
+
+		completion_reward = {
+			add_to_variable = { JAP_softpower_non_core_manpower_dynamic_modifier = 0.02 }
+			add_to_variable = { JAP_softpower_civilian_intel_factor_dynamic_modifier = 0.05 }
+
+			custom_effect_tooltip = JAP_accept_korean_artists_tt
+		}
+	}
+
+	focus = {
+		id = JAP_JCP_to_protect_japan
+		icon = JAP_japanese_government
+
+		prerequisite = { focus = JAP_outlawing_militaristic_political_parties }
+		prerequisite = { focus = JAP_former_soldiers_re_employment }
+
+		x = 0
+		y = 3
+
+		relative_position_id = JAP_for_reconstruction
+		cost = 10
+
+		available = {
+		}
+
+		ai_will_do = { base = 200 }
+
+		search_filters = {  }
+
+		completion_reward = {
+			add_ideas = JAP_japan_reconstruction_end_left
+		}
+	}
+	
+	#######################
+	###  Navy Tree  ###
+	#######################
+
+   ### Puppet Navy focus
+	focus = {
+		id = JAP_requisition_of_private_merchant_ship
+		icon = GFX_focus_generic_merchant_fleet
+		cost = 5
+		x = 20
+		y = 4
+
+		available = { has_completed_focus = JAP_establishment_of_new_puppet_government }
+		
+		search_filters = {  }
+	
+		completion_reward = {
+			navy_experience = 35
+			add_equipment_to_stockpile = { 
+				type = convoy 
+				amount = 200 
+				producer = ROOT
+			}
+		}
+		
+		ai_will_do = {
+			factor = 100
+			modifier = {
+				has_war = yes
+				factor = 100
+			}
+		}
+	}
+
+	focus = {
+		id = JAP_discussion_of_naval_reconstruction
+		icon = GFX_goal_generic_build_navy
+		cost = 5
+		x = 0
+		y = 1
+		
+		prerequisite = { focus = JAP_requisition_of_private_merchant_ship }
+
+		relative_position_id = JAP_requisition_of_private_merchant_ship
+
+		search_filters = {  }
+	
+		completion_reward = {
+			navy_experience = 50
+
+			mio:JAP_ihi_organization ={
+				add_mio_funds = 1000
+			}
+
+			mio:JAP_sumitomo_naval_organization = {
+				add_mio_funds = 1000
+			}
+
+			mio:JAP_Mitsubishi_naval_organization = {
+				add_mio_funds = 1000
+			}
+		}
+		
+		ai_will_do = {
+			factor = 100
+			modifier = {
+				has_war = yes
+				factor = 100
+			}
+		}
+	}
+
+	focus = {
+		id = JAP_naval_reconstruction
+		icon = GFX_goal_generic_naval_destroyer2
+		cost = 5
+		x = -2
+		y = 2
+		
+		prerequisite = { focus = JAP_discussion_of_naval_reconstruction }
+		
+		relative_position_id = JAP_requisition_of_private_merchant_ship
+
+		mutually_exclusive = { focus = JAP_police_level_navy }
+
+		available = {
+			has_completed_focus = JAP_end_of_japanese_independence
+		}
+
+		search_filters = {  }
+	
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					is_coastal = yes
+					is_valid_state_for_development = yes
+					free_building_slots = { building = industrial_complex size > 0 include_locked = yes }
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_coastal = yes
+					is_valid_state_for_development = yes
+					free_building_slots = { building = industrial_complex size > 0 include_locked = yes }
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+		
+		ai_will_do = {
+			factor = 100
+			modifier = {
+				has_war = yes
+				factor = 100
+			}
+		}
+	}
+
+	focus = {
+		id = JAP_warships_being_built
+		icon = GFX_goal_generic_construct_naval_dockyard
+		cost = 10
+		x = -3
+		y = 3
+		
+		prerequisite = { focus = JAP_naval_reconstruction }
+		
+		relative_position_id = JAP_requisition_of_private_merchant_ship
+
+		search_filters = {  }
+	
+		completion_reward = {
+			if = {
+				limit = { has_dlc = "Man the Guns" }
+				## Corvettes ##
+				create_equipment_variant = { #Corvette 1
+					name = "Tachibana class"
+					type = ship_hull_light_1
+					parent_version = 0
+					modules = {
+						fixed_ship_battery_slot = ship_light_battery_1
+						fixed_ship_anti_air_slot = ship_anti_air_1
+						fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+						fixed_ship_radar_slot = empty
+						fixed_ship_engine_slot = light_ship_engine_1
+						fixed_ship_torpedo_slot = ship_torpedo_1
+						mid_1_custom_slot = ship_torpedo_1
+						rear_1_custom_slot = ship_depth_charge_1
+					}
+					obsolete = no
+				}
+				hidden_effect = {
+					add_equipment_production = {
+						equipment = {
+							type = ship_hull_light_1
+							creator = "JAP" 
+							version_name = "Tachibana class"
+						}
+						#name = "Dai Ni-go"
+						requested_factories = 1
+						progress = 0.9
+						amount = 2
+					}
+					add_equipment_production = {
+						equipment = {
+							type = ship_hull_light_1
+							creator = "JAP" 
+							version_name = "Tachibana class"
+						}
+						#name = "Dai Yon-go"
+						requested_factories = 1
+						progress = 0.8
+						amount = 2
+					}
+					add_equipment_production = {
+						equipment = {
+							type = ship_hull_light_1
+							creator = "JAP" 
+							version_name = "Tachibana class"
+						}
+						#name = "Dai Roku-go"
+						requested_factories = 1
+						progress = 0.7
+						amount = 1
+					}
+				}
+			}
+			else = {
+				add_tech_bonus = {
+					name = destroyer_bonus
+					bonus = 2.0
+					uses = 1
+					category = ca_tech
+				}
+			}
+		}
+		
+		ai_will_do = {
+			factor = 100
+			modifier = {
+				has_war = yes
+				factor = 100
+			}
+		}
+	}
+
+	focus = {
+		id = JAP_coastal_submarine_plan
+		icon = GFX_goal_generic_navy_submarine
+		cost = 10
+		x = -1
+		y = 3
+		
+		prerequisite = { focus = JAP_naval_reconstruction }
+		
+		relative_position_id = JAP_requisition_of_private_merchant_ship
+
+		search_filters = {  }
+	
+		completion_reward = {
+			add_tech_bonus = {
+				name = sub_bonus
+				bonus = 1.0
+				uses = 1
+				category = ss_tech
+			}
+		}
+		
+		ai_will_do = {
+			factor = 100
+			modifier = {
+				has_war = yes
+				factor = 100
+			}
+		}
+	}
+
+	focus = {
+		id = JAP_post_war_naval_doctrine
+		icon = GFX_goal_generic_navy_battleship
+		cost = 10
+		x = -2
+		y = 4
+		
+		prerequisite = { focus = JAP_coastal_submarine_plan }
+		prerequisite = { focus = JAP_warships_being_built }
+		
+		relative_position_id = JAP_requisition_of_private_merchant_ship
+
+		search_filters = {  }
+	
+		completion_reward = {
+			add_doctrine_cost_reduction = {
+				cost_reduction = 0.5
+				uses = 2
+				category = naval_doctrine
+			}
+		}
+		
+		ai_will_do = {
+			factor = 100
+			modifier = {
+				has_war = yes
+				factor = 100
+			}
+		}
+	}
+
+	focus = {
+		id = JAP_special_budget_for_naval_restoration
+		icon = JAP_navy_dockyard_2
+		cost = 10
+		x = -2
+		y = 5
+		
+		prerequisite = { focus = JAP_post_war_naval_doctrine }
+		
+		relative_position_id = JAP_requisition_of_private_merchant_ship
+
+		search_filters = {  }
+	
+		completion_reward = {
+			if = {
+				limit = { has_dlc = "Man the Guns" }
+				create_equipment_variant = { #Destroyer 1
+					name = "Kamikaze class"
+					type = ship_hull_cruiser_1
+					parent_version = 0
+					modules = {
+						fixed_ship_battery_slot = ship_medium_battery_1
+						fixed_ship_anti_air_slot = ship_anti_air_1
+						fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+						fixed_ship_radar_slot = ship_radar_1
+						fixed_ship_engine_slot = cruiser_ship_engine_1
+						fixed_ship_armor_slot = ship_armor_cruiser_1
+						mid_1_custom_slot = empty
+						mid_2_custom_slot = ship_anti_air_1
+						rear_1_custom_slot = ship_medium_battery_1
+					}
+					obsolete = yes
+				}
+				hidden_effect = {
+					add_equipment_production = {
+						equipment = {
+							type = ship_hull_cruiser_1
+							creator = "JAP" 
+							version_name = "Kamikaze class"
+						}
+						name = "JDS Kiyokaze"
+						requested_factories = 1
+						progress = 0.9
+						amount = 1
+					}
+					add_equipment_production = {
+						equipment = {
+							type = ship_hull_cruiser_1
+							creator = "JAP" 
+							version_name = "Kamikaze class"
+						}
+						name = "JDS Harukaze"
+						requested_factories = 1
+						progress = 0.8
+						amount = 1
+					}
+					add_equipment_production = {
+						equipment = {
+							type = ship_hull_cruiser_1
+							creator = "JAP" 
+							version_name = "Kamikaze class"
+						}
+						name = "JDS Asanagi"
+						requested_factories = 1
+						progress = 0.4
+						amount = 1
+					}
+					add_equipment_production = {
+						equipment = {
+							type = ship_hull_cruiser_1
+							creator = "JAP" 
+							version_name = "Kamikaze class"
+						}
+						name = "JDS Yunagi"
+						requested_factories = 1
+						progress = 0.1
+						amount = 1
+					}
+				}
+			}
+			else = {
+				random_owned_controlled_state = {
+					limit = {
+						is_coastal = yes
+						is_valid_state_for_development = yes
+						free_building_slots = { building = industrial_complex size > 0 include_locked = yes }
+					}
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = dockyard
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+		}
+		
+		ai_will_do = {
+			factor = 100
+			modifier = {
+				has_war = yes
+				factor = 100
+			}
+		}
+	}
+
+	focus = {
+		id = JAP_police_level_navy
+		icon = GFX_goal_generic_small_arms
+		cost = 5
+		x = 2
+		y = 2
+		
+		prerequisite = { focus = JAP_discussion_of_naval_reconstruction }
+		
+		relative_position_id = JAP_requisition_of_private_merchant_ship
+
+		mutually_exclusive = { focus = JAP_naval_reconstruction }
+
+		search_filters = {  }
+
+		available = {
+			has_completed_focus = JAP_for_reconstruction
+		}
+	
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					is_coastal = yes
+					is_valid_state_for_development = yes
+					free_building_slots = { building = industrial_complex size > 0 include_locked = yes }
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = dockyard
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		
+		ai_will_do = {
+			factor = 100
+			modifier = {
+				has_war = yes
+				factor = 100
+			}
+		}
+	}
+
+	focus = {
+		id = JAP_building_more_convoys
+		icon = JAP_navy_dockyard_1
+		cost = 10
+		x = -1
+		y = 1
+		
+		prerequisite = { focus = JAP_police_level_navy }
+		
+		relative_position_id = JAP_police_level_navy
+
+		search_filters = {  }
+	
+		completion_reward = {
+			add_tech_bonus = {
+				name = JAP_building_more_convoys
+				bonus = 1
+				uses = 1
+				category = tp_tech
+			}
+			add_equipment_to_stockpile = {
+				type = convoy
+				amount = 50
+			}
+		}
+		
+		ai_will_do = {
+			factor = 100
+			modifier = {
+				has_war = yes
+				factor = 100
+			}
+		}
+	}
+
+	focus = {
+		id = JAP_minimal_coastal_navy
+		icon = GFX_focus_generic_mine_warfare
+		cost = 10
+		x = 1
+		y = 1
+		
+		prerequisite = { focus = JAP_police_level_navy }
+		
+		relative_position_id = JAP_police_level_navy
+
+		search_filters = {  }
+	
+		completion_reward = {
+			IF = {
+				limit = {
+					has_dlc = "Man the Guns"
+				}
+				add_tech_bonus = {
+					name = JAP_minimal_coastal_navy
+					bonus = 0.25
+					uses = 2
+					category = naval_mines
+				}
+				navy_experience = 25
+			}
+			ELSE = {
+				navy_experience = 50
+			}
+		}
+		
+		ai_will_do = {
+			factor = 100
+			modifier = {
+				has_war = yes
+				factor = 100
+			}
+		}
+	}
+
+	focus = {
+		id = JAP_additional_shipyard_construction
+		icon = GFX_goal_generic_construct_naval_dockyard
+		cost = 10
+		x = 0
+		y = 2
+		
+		prerequisite = { focus = JAP_minimal_coastal_navy }
+		prerequisite = { focus = JAP_building_more_convoys }
+		
+		relative_position_id = JAP_police_level_navy
+
+		search_filters = {  }
+	
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					is_coastal = yes
+					is_valid_state_for_development = yes
+					free_building_slots = { building = industrial_complex size > 0 include_locked = yes }
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+		
+		ai_will_do = {
+			factor = 100
+			modifier = {
+				has_war = yes
+				factor = 100
+			}
+		}
+	}
+
+	focus = {
+		id = JAP_small_fleet_plan
+		icon = JAP_japanese_ship
+		cost = 10
+		x = 0
+		y = 3
+		
+		prerequisite = { focus = JAP_additional_shipyard_construction }
+		
+		relative_position_id = JAP_police_level_navy
+
+		search_filters = {  }
+	
+		completion_reward = {
+			if = {
+				limit = { has_dlc = "Man the Guns" }
+				## Corvettes ##
+				create_equipment_variant = { #Corvette 1
+					name = "Tachibana class"
+					type = ship_hull_light_1
+					parent_version = 0
+					modules = {
+						fixed_ship_battery_slot = ship_light_battery_1
+						fixed_ship_anti_air_slot = ship_anti_air_1
+						fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+						fixed_ship_radar_slot = empty
+						fixed_ship_engine_slot = light_ship_engine_1
+						fixed_ship_torpedo_slot = ship_torpedo_1
+						mid_1_custom_slot = ship_torpedo_1
+						rear_1_custom_slot = ship_depth_charge_1
+					}
+					obsolete = no
+				}
+				hidden_effect = {
+					add_equipment_production = {
+						equipment = {
+							type = ship_hull_light_1
+							creator = "JAP" 
+							version_name = "Tachibana class"
+						}
+						name = "Dai Ni-go"
+						requested_factories = 1
+						progress = 0.3
+						amount = 1
+					}
+					add_equipment_production = {
+						equipment = {
+							type = ship_hull_light_1
+							creator = "JAP" 
+							version_name = "Tachibana class"
+						}
+						name = "Dai Yon-go"
+						requested_factories = 1
+						progress = 0.2
+						amount = 1
+					}
+				}
+			}
+			else = {
+				add_tech_bonus = {
+					name = destroyer_bonus
+					bonus = 1.0
+					uses = 1
+					category = ca_tech
+				}
+			}
+		}
+		
+		ai_will_do = {
+			factor = 100
+			modifier = {
+				has_war = yes
+				factor = 100
+			}
+		}
+	}
+
+	#######################
+	###  Army Tree  ###
+	#######################
+
+   ### Puppet Army focus
+
+	focus = {
+		id = JAP_full_mobilization_of_the_police
+		icon = JAP_jieitai
+		cost = 5
+		x = 27
+		y = 4
+
+		available = { has_completed_focus = JAP_establishment_of_new_puppet_government }
+		
+		search_filters = { FOCUS_FILTER_ARMY_BONUS }
+	
+		completion_reward = {
+			army_experience = 25
+			add_manpowers = 10000
+
+			hidden_effect = {
+				if = {
+					# no cheat
+					limit = { has_template = "Keisatsu Yobitai" }
+					delete_unit_template_and_units = { division_template = "Keisatsu Yobitai" disband = yes }
+				}
+			}
+
+			division_template = { 
+				name = "Keisatsu Yobitai" 
+				#division_names_group = PRC_INF_01 #TODO_Manu
+
+				regiments = { 
+					infantry = { x = 0 y = 0 }
+					infantry = { x = 0 y = 1 }
+					infantry = { x = 0 y = 2 }
+					infantry = { x = 1 y = 0 }
+					infantry = { x = 1 y = 1 }
+					infantry = { x = 1 y = 2 }
+				}
+				support = {
+					artillery = { x = 0 y = 0 }
+				}
+			}
+
+			capital_scope = {
+				create_unit = {
+					division = "division_template = \"Keisatsu Yobitai\" start_experience_factor = 0.5 start_equipment_factor = 1.0"
+					owner = ROOT
+					count = 3
+				}
+
+				create_unit = {
+					division = "division_template = \"Keisatsu Yobitai\" start_experience_factor = 0.5 start_equipment_factor = 1.0"
+					owner = ROOT
+					count = 3
+				}
+
+				create_unit = {
+					division = "division_template = \"Keisatsu Yobitai\" start_experience_factor = 0.5 start_equipment_factor = 1.0"
+					owner = ROOT
+					count = 3
+				}
+
+				create_unit = {
+					division = "division_template = \"Keisatsu Yobitai\" start_experience_factor = 0.5 start_equipment_factor = 1.0"
+					owner = ROOT
+					count = 3
+				}
+
+				create_unit = {
+					division = "division_template = \"Keisatsu Yobitai\" start_experience_factor = 0.5 start_equipment_factor = 1.0"
+					owner = ROOT
+					count = 3
+				}
+				
+				create_unit = {
+					division = "division_template = \"Keisatsu Yobitai\" start_experience_factor = 0.5 start_equipment_factor = 1.0"
+					owner = ROOT
+					count = 3
+				}
+			}
+		}
+		
+		ai_will_do = {
+			factor = 100
+			modifier = {
+				has_war = yes
+				factor = 100
+			}
+		}
+	}
+
+	focus = {
+		id = JAP_security_guard_for_japan
+		icon = GFX_goal_generic_fortify_city
+		cost = 10
+		x = -1
+		y = 1
+		
+		prerequisite = { focus = JAP_full_mobilization_of_the_police }
+		mutually_exclusive = { focus = JAP_creation_of_the_national_defense_force }
+		
+		relative_position_id = JAP_full_mobilization_of_the_police
+		
+		search_filters = {  }
+	
+		available = {
+			has_completed_focus = JAP_for_reconstruction
+		}
+
+		completion_reward = {
+			IF = {
+				limit = {
+					has_idea = disarmed_nation
+				}
+				swap_ideas = {
+					remove_idea = disarmed_nation
+					add_idea = volunteer_only
+				}
+			}
+
+			add_tech_bonus = {
+				name = JAP_security_guard_for_japan
+				bonus = 0.2
+				uses = 2
+				category = support_tech
+			}
+
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = arms_factory
+						size > 0
+						include_locked = yes 
+					}
+				}
+
+				prioritize = { 282 } 
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		
+		ai_will_do = {
+			factor = 100
+			modifier = {
+				has_war = yes
+				factor = 100
+			}
+		}
+	}
+
+	focus = {
+		id = JAP_minimal_armament
+		icon = GFX_goal_generic_small_arms
+		cost = 10
+		x = -1
+		y = 1
+		
+		prerequisite = { focus = JAP_security_guard_for_japan }
+		
+		relative_position_id = JAP_security_guard_for_japan
+		
+		search_filters = {  }
+
+		bypass = { 
+			NOT = { has_idea = JAP_focus_on_domestic_weapons } 
+		}
+	
+		completion_reward = {
+			remove_ideas = JAP_focus_on_domestic_weapons
+		}
+		
+		ai_will_do = {
+			factor = 100
+			modifier = {
+				has_war = yes
+				factor = 100
+			}
+		}
+	}
+
+	focus = {
+		id = JAP_officer_centered_army
+		icon = GFX_focus_generic_military_academy
+		cost = 10
+		x = -1
+		y = 2
+		
+		prerequisite = { focus = JAP_minimal_armament }
+		
+		relative_position_id = JAP_security_guard_for_japan
+		
+		search_filters = {  }
+	
+		completion_reward = {
+			add_command_power = 50
+			add_doctrine_cost_reduction = {
+				name = JAP_officer_centered_army
+				cost_reduction = 0.25
+				uses = 2
+				category = special_forces_doctrine
+			}
+
+			random_army_leader = {			
+				limit = {
+					NOT = {	
+						has_trait = scavenger
+					}
+				}
+				add_trait = {trait = scavenger }
+			}
+			
+			random_army_leader = {			
+				limit = {
+					NOT = {	
+						has_trait = scavenger
+					}
+				}
+				add_trait = {trait = scavenger }
+			}
+		}
+		
+		ai_will_do = {
+			factor = 100
+			modifier = {
+				has_war = yes
+				factor = 100
+			}
+		}
+	}
+
+	focus = {
+		id = JAP_creation_of_cap_on_the_defense_budget
+		icon = GFX_goal_generic_production2
+		cost = 10
+		x = 1
+		y = 1
+		
+		prerequisite = { focus = JAP_security_guard_for_japan }
+		
+		relative_position_id = JAP_security_guard_for_japan
+		
+		search_filters = {  }
+	
+		completion_reward = {
+			fourth_estate_fascist_decrease = yes
+			fourth_estate_nationalist_decrease = yes
+			add_political_power = 150
+
+			if = {
+				limit = { JAP = { num_of_military_factories > 5 } }
+				every_owned_state = {
+					remove_building = {
+						type = arms_factory
+						level = 1
+					}
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+		}
+		
+		ai_will_do = {
+			factor = 100
+			modifier = {
+				has_war = yes
+				factor = 100
+			}
+		}
+	}
+
+	focus = {
+		id = JAP_experience_of_defeat
+		icon = GFX_focus_research2
+		cost = 10
+		x = 3
+		y = 1
+		
+		prerequisite = { focus = JAP_security_guard_for_japan
+		focus = JAP_creation_of_the_national_defense_force }
+		
+		relative_position_id = JAP_security_guard_for_japan
+		
+		search_filters = {  }
+	
+		completion_reward = {
+			add_doctrine_cost_reduction = {
+				name = JAP_experience_of_defeat
+				cost_reduction = 0.5
+				uses = 2
+				category = land_doctrine
+			}
+			add_tech_bonus = {
+				name = JAP_experience_of_defeat
+				bonus = 0.2
+				uses = 1
+				category = infantry_weapons
+			}
+		}
+		
+		ai_will_do = {
+			factor = 100
+			modifier = {
+				has_war = yes
+				factor = 100
+			}
+		}
+	}
+
+	focus = {
+		id = JAP_recruitment_project
+		icon = kor_sakura
+		cost = 10
+		x = 3
+		y = 2
+		
+		prerequisite = { focus = JAP_experience_of_defeat }
+		
+		relative_position_id = JAP_security_guard_for_japan
+		
+		search_filters = {  }
+
+		bypass = { NOT = { has_idea = JAP_full_employment }}
+	
+		completion_reward = {
+			remove_ideas = JAP_full_employment
+		}
+		
+		ai_will_do = {
+			factor = 100
+			modifier = {
+				has_war = yes
+				factor = 100
+			}
+		}
+	}
+
+	focus = {
+		id = JAP_creation_of_the_national_defense_force
+		icon = GFX_goal_generic_allies_build_infantry
+		cost = 10
+		x = 3
+		y = 1
+		
+		prerequisite = { focus = JAP_full_mobilization_of_the_police }
+		mutually_exclusive = { focus = JAP_security_guard_for_japan }
+		
+		relative_position_id = JAP_full_mobilization_of_the_police
+		
+		available = {
+			has_completed_focus = JAP_end_of_japanese_independence
+		}
+
+		search_filters = {  }
+	
+		completion_reward = {
+			IF = {
+				limit = {
+					has_idea = disarmed_nation
+				}
+				swap_ideas = {
+					remove_idea = disarmed_nation
+					add_idea = extensive_conscription
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = volunteer_only
+				}
+				swap_ideas = {
+					remove_idea = volunteer_only
+					add_idea = extensive_conscription
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = limited_conscription
+				}
+				swap_ideas = {
+					remove_idea = limited_conscription
+					add_idea = extensive_conscription
+				}
+			}
+			else = {
+				add_war_support = 0.15
+			}
+			
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = arms_factory
+						size > 0
+						include_locked = yes 
+					}
+				}
+
+				prioritize = { 282 } 
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+
+			division_template = { 
+				name = "Hoantai Ryodan" #National Safety Forces
+				#division_names_group = PRC_INF_01 #TODO_Manu
+
+				regiments = { 
+					motorized = { x = 0 y = 0 }
+					motorized = { x = 0 y = 1 }
+					motorized = { x = 0 y = 2 }
+					motorized = { x = 1 y = 0 }
+					modern_armor = { x = 1 y = 1 }
+					modern_armor = { x = 1 y = 2 }
+				}
+				support = {
+					artillery = { x = 0 y = 0 }
+					engineer = { x = 0 y = 1 }
+				}
+			}
+			
+			hidden_effect = {
+				if = {
+					# no cheat
+					limit = { has_template = "Hoantai Ryodan" }
+					delete_unit_template_and_units = { division_template = "Hoantai Ryodan" disband = yes }
+				}
+			}
+
+			capital_scope = {
+				create_unit = {
+					division = "division_template = \"Hoantai Ryodan\" start_experience_factor = 0.7 start_equipment_factor = 1.0"
+					owner = ROOT
+					count = 3
+				}
+
+				create_unit = {
+					division = "division_template = \"Hoantai Ryodan\" start_experience_factor = 0.7 start_equipment_factor = 1.0"
+					owner = ROOT
+					count = 2
+				}
+
+				create_unit = {
+					division = "division_template = \"Hoantai Ryodan\" start_experience_factor = 0.7 start_equipment_factor = 1.0"
+					owner = ROOT
+					count = 2
+				}
+			}
+		}
+		
+		ai_will_do = {
+			factor = 100
+			modifier = {
+				has_war = yes
+				factor = 100
+			}
+		}
+	}
+
+	focus = {
+		id = JAP_reopening_of_the_military_industry
+		icon = GFX_goal_generic_construct_mil_factory
+		cost = 10
+		x = 1
+		y = 1
+		
+		prerequisite = { focus = JAP_creation_of_the_national_defense_force }
+		
+		relative_position_id = JAP_creation_of_the_national_defense_force
+		
+		search_filters = {  }
+	
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = arms_factory
+						size > 0
+						include_locked = yes 
+					}
+				}
+
+				prioritize = { 282 } 
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = arms_factory
+						size > 0
+						include_locked = yes 
+					}
+				}
+
+				prioritize = { 282 } 
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+		
+		ai_will_do = {
+			factor = 100
+			modifier = {
+				has_war = yes
+				factor = 100
+			}
+		}
+	}
+
+	focus = {
+		id = JAP_new_japanese_air_force
+		icon = fighter
+		cost = 10
+		x = 1
+		y = 2
+		
+		prerequisite = { focus = JAP_reopening_of_the_military_industry }
+		
+		relative_position_id = JAP_creation_of_the_national_defense_force
+		
+		search_filters = {  }
+	
+		completion_reward = {
+			air_experience = 25
+			add_tech_bonus = {
+				name = JAP_new_japanese_air_force
+				bonus = 1
+				uses = 1
+				category = light_fighter
+				category = cat_heavy_fighter
+			}
+			add_tech_bonus = {
+				name = JAP_new_japanese_air_force
+				bonus = 1
+				uses = 1
+				category = tactical_bomber
+				category = cat_strategic_bomber
+			}
+		}
+		
+		ai_will_do = {
+			factor = 100
+			modifier = {
+				has_war = yes
+				factor = 100
+			}
+		}
+	}
+
+	focus = {
+		id = JAP_experience_for_the_air_force
+		icon = GFX_focus_generic_air_bases
+		cost = 10
+		x = 1
+		y = 3
+		
+		prerequisite = { focus = JAP_new_japanese_air_force }
+		
+		relative_position_id = JAP_creation_of_the_national_defense_force
+		
+		search_filters = {  }
+	
+		completion_reward = {
+			add_doctrine_cost_reduction = {
+				cost_reduction = 0.5
+				uses = 1
+				category = air_doctrine
+			}
+			add_tech_bonus = {
+				name = fighter_bonus
+				bonus = 0.5
+				uses = 1
+				category = light_fighter
+			}
+		}
+		
+		ai_will_do = {
+			factor = 100
+			modifier = {
+				has_war = yes
+				factor = 100
+			}
+		}
+	}
+
+	focus = {
+		id = JAP_resolving_the_domestic_weapon_problem
+		icon = GFX_goal_generic_construct_mil_factory
+		cost = 10
+		x = 3
+		y = 1
+		
+		prerequisite = { focus = JAP_creation_of_the_national_defense_force }
+		
+		relative_position_id = JAP_creation_of_the_national_defense_force
+		
+		search_filters = {  }
+
+		bypass = { 
+			NOT = { has_idea = JAP_focus_on_domestic_weapons } 
+		}
+	
+		completion_reward = {
+			remove_ideas = JAP_focus_on_domestic_weapons
+		}
+		
+		ai_will_do = {
+			factor = 100
+			modifier = {
+				has_war = yes
+				factor = 100
+			}
+		}
+	}
+
+	focus = {
+		id = JAP_tank_study_plan
+		icon = kor_graduated_from_the_19th_century_army
+		cost = 10
+		x = 3
+		y = 2
+		
+		prerequisite = { focus = JAP_resolving_the_domestic_weapon_problem }
+		prerequisite = { focus = JAP_advanced_radar_technology_research }
+		
+		relative_position_id = JAP_creation_of_the_national_defense_force
+		
+		search_filters = {  }
+	
+		completion_reward = {
+			add_tech_bonus = {
+				name = JAP_tank_study_plan
+				bonus = 1.0
+				uses = 1
+				category = artillery
+			}
+			add_tech_bonus = {
+				name = JAP_tank_study_plan
+				bonus = 1.0
+				uses = 1
+				category = armor
+			}
+		}
+		
+		ai_will_do = {
+			factor = 100
+			modifier = {
+				has_war = yes
+				factor = 100
+			}
+		}
+	}
+
+	focus = {
+		id = JAP_advanced_radar_technology_research
+		icon = GFX_focus_research
+		cost = 10
+		x = 5
+		y = 1
+		
+		prerequisite = { focus = JAP_creation_of_the_national_defense_force }
+		
+		relative_position_id = JAP_creation_of_the_national_defense_force
+		
+		search_filters = {  }
+	
+		completion_reward = {
+			add_tech_bonus = {
+				name = JAP_advanced_radar_technology_research
+				bonus = 1
+				uses = 1
+				category = radar_tech
+			}
+			random_owned_controlled_state = {
+				prioritize = { 282 } #Tokyo
+				limit = {
+					is_in_home_area = yes
+					radar_station < 5
+				}
+				add_building_construction = {
+					type = radar_station
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				prioritize = { 956 } #Tsushima
+				limit = {
+					is_in_home_area = yes
+					radar_station < 5
+				}
+				add_building_construction = {
+					type = radar_station
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		
+		ai_will_do = {
+			factor = 100
+			modifier = {
+				has_war = yes
+				factor = 100
+			}
+		}
+	}
+}
