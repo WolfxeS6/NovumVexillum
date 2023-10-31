@@ -2,6 +2,22 @@
 
 oob = "MRT_2000"
 
+if = {
+	limit = { has_dlc = "Man the Guns" }
+		set_naval_oob = "MRT_2000_naval_mtg"
+	else = {
+		set_naval_oob = "MRT_2000_naval_legacy"
+	}
+}
+
+if = {
+	limit = { has_dlc = "By Blood Alone" }
+		set_air_oob = "MRT_2000_air_bba"
+	else = {
+		set_air_oob = "MRT_2000_air_legacy"
+	}
+}
+
 set_research_slots = 2
 set_convoys = 120
 set_stability = 0.4
@@ -296,6 +312,22 @@ set_technology = {
 	fuel_refining = 1
 }
 
+if = {
+	limit = { not = { has_dlc = "Man the Guns" } }
+	set_technology = {
+		early_patrol_boat = 1
+		basic_patrol_boat = 1
+	}
+}
+if = {
+	limit = { has_dlc = "Man the Guns" }
+	set_technology = {
+		early_ship_hull_patrol_boat = 1
+		basic_ship_hull_patrol_boat = 1
+		basic_battery = 1
+	}
+}
+
 set_country_flag = dominant_religion_islam
 set_country_flag = sunni_islam
 
@@ -308,48 +340,63 @@ add_ideas = {
 }
 
 set_politics = {	
-	ruling_party = social_liberal
-	last_election = "1997.1.1"
-	election_frequency = 48
+	ruling_party = conservative
+	last_election = "1998.11.7"
+	election_frequency = 60
 	elections_allowed = yes
 }
 
 set_popularities = {
-    social_liberal = 40
+    conservative = 40
     islamist = 18
-    reactionary = 5
-    conservative = 30
-    democratic_socialist = 1
-    communist = 6
+    social_democrat = 5
+    market_liberal = 25
+    social_liberal = 6
+    democratic_socialist = 6
 }
 
+recruit_character = MRT_hamadi_ould_sidi_mokhtar
+recruit_character = MRT_messaoud_ould_boulkheir
 recruit_character = MRT_maaouya_ould_sidahmed_taya
-recruit_character = MRT_mohamed_ould_abdel_aziz
-recruit_character = MRT_messaoud_abba
-recruit_character = MRT_birama_timbo
-recruit_character = MRT_cheikh_dit_mbare
-recruit_character = MRT_thiam_fall
-recruit_character = MRT_saleh_ould_maaouya
-recruit_character = MRT_messaoud_ould_sidahmed_taya
-recruit_character = MRT_ibrahima_dit_mbare
-recruit_character = MRT_adama_timbo
-recruit_character = MRT_yahya_ould_maaouya
-recruit_character = MRT_sghair_ould_teguedi
+recruit_character = MRT_mohamed_uld_abdelaziz
+recruit_character = MRT_naha_mint_mouknass
+recruit_character = MRT_ahmed_ould_daddah
+recruit_character = MRT_mohamed_ould_maouloud
+recruit_character = MRT_mohamed_cheikh_mohamed_lemine
+recruit_character = MRT_ely_ould_mohamed_vall
+recruit_character = MRT_mohamed_ould_ghazouani
+recruit_character = MRT_isselkou_ould_cheikh_el_wely
 
 2015.1.1 = {
 	set_politics = {		
-		ruling_party = reactionary
-		last_election = "2013.1.1"
-		election_frequency = 48
+		ruling_party = market_liberal
+		last_election = "2014.5.25"
+		election_frequency = 60
 		elections_allowed = yes
-}
+	}
 
     set_popularities = {
         social_liberal = 30
-        islamist = 18
-        reactionary = 15
-        conservative = 30
-        democratic_socialist = 1
-        communist = 6
+        islamist = 23
+        market_liberal = 40
+        conservative = 1
+        democratic_socialist = 6
     }
 }
+
+if = {
+	limit = { has_dlc = "Man the Guns" }
+	create_equipment_variant = {
+		name = "Limam El Hadrami Class"
+		type = ship_hull_patrol_boat_2
+		modules = {
+			fixed_ship_battery_slot = ship_light_battery_1
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_fire_control_system_slot = empty
+			fixed_ship_engine_slot = light_patrol_ship_engine_2
+			fixed_ship_torpedo_slot = empty
+			mid_1_custom_slot = empty
+		}
+	}
+}
+
