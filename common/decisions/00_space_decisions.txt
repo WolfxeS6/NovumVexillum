@@ -1,0 +1,705 @@
+
+global_space_decision_category = {
+
+	debug_add_roket_icon_1 = { # Decision to prepare the state
+	
+		icon = {
+			key = GFX_decision_space_rocket_0
+			trigger = {
+				FROM = {
+					NOT = {
+						has_variable = space_spy_satellite_preparation
+					}  
+				}
+			}
+		}		
+		icon = {
+			key = GFX_decision_space_rocket_1
+			trigger = {
+				FROM ={
+					check_variable = { space_spy_satellite_preparation = 1 }
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_space_rocket_2
+			trigger = {
+				FROM = {
+					check_variable = { space_spy_satellite_preparation = 2 }
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_space_rocket_3
+			trigger = {
+				FROM = {
+					check_variable = { space_spy_satellite_preparation = 3 }
+				}
+			}
+		}
+
+		visible = {
+			is_debug = yes
+		}
+
+		available = {
+			FROM = {
+				check_variable = { space_spy_satellite_preparation < 3 } 
+			}
+		}
+
+		cost = 0
+		
+		days_remove = 1
+	 
+		complete_effect = {
+		}
+
+		remove_effect = {
+			FROM = { 
+				if = {
+					limit = {
+						NOT = {
+							has_variable = space_spy_satellite_preparation
+						} 
+					}
+					space_spy_satellite_level_1 = yes
+				}
+				else_if = {
+					limit = { 
+						check_variable = { space_spy_satellite_preparation = 1 }
+					}
+					space_spy_satellite_level_2 = yes
+				}
+				else = {
+					space_spy_satellite_level_3 = yes
+				}
+				add_to_variable = { space_spy_satellite_preparation = 1 } 
+			}
+		}
+	}
+
+	debug_minus_roket_icon_1 = { # Decision to prepare the state
+	
+		icon = {
+			key = GFX_decision_space_rocket_0
+			trigger = {
+				FROM = {
+					NOT = {
+						has_variable = space_spy_satellite_preparation
+					}  
+				}
+			}
+		}		
+		icon = {
+			key = GFX_decision_space_rocket_1
+			trigger = {
+				FROM ={
+					check_variable = { space_spy_satellite_preparation = 1 }
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_space_rocket_2
+			trigger = {
+				FROM = {
+					check_variable = { space_spy_satellite_preparation = 2 }
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_space_rocket_3
+			trigger = {
+				FROM = {
+					check_variable = { space_spy_satellite_preparation = 3 }
+				}
+			}
+		}
+
+		visible = {
+			is_debug = yes
+		}
+
+		available = {
+			FROM = {
+				has_variable = space_spy_satellite_preparation
+			}
+		}
+
+		cost = 0
+		
+		days_remove = 1
+	 
+		complete_effect = {
+			FROM = { 
+				if = {
+					limit = {
+						check_variable = { space_spy_satellite_preparation = 3 }
+					}
+					space_spy_satellite_level_2 = yes
+				}
+				else_if = {
+					limit = { 
+						check_variable = { space_spy_satellite_preparation = 2 }
+					}
+					space_spy_satellite_level_1 = yes
+				}
+				else = {
+					space_spy_satellite_level_0 = yes
+				}
+				add_to_variable = { space_spy_satellite_preparation = -1 } 
+			}
+		}
+
+		remove_effect = {
+		}
+	}
+	
+	debug_space_agency_maintenance_costs  = {
+		
+		icon = GFX_decision_generic_fundraising
+	
+		visible = {
+			is_debug = yes
+		}
+
+		available = {
+			has_variable = space_spy_satellite_preparation
+		}
+
+		cost = 0
+		
+		days_remove = 1
+	 
+		complete_effect = {
+			ROOT = { add_to_variable = { NVX_ECO_health = space_spy_satellite_dm_economic_health tooltip = decline_in_economic_health_tt } }
+		}
+	}
+	
+	space_space_agency_maintenance_costs = {
+
+		priority = 99
+		
+		icon = GFX_decision_generic_fundraising
+
+		available = {
+			hidden_trigger = { always = no }
+		}
+
+		days_mission_timeout = 365
+		is_good = no
+		fire_only_once = no
+
+		cancel_trigger = {
+			NOT = { has_variable = space_spy_satellite_preparation }
+		}
+		
+		activation = {
+			has_variable = space_spy_satellite_preparation
+		}
+
+		visible = {
+			has_variable = space_spy_satellite_preparation
+		}
+		
+		cancel_effect = {
+		
+		}
+
+		timeout_effect = {
+			ROOT = { add_to_variable = { NVX_ECO_health = space_spy_satellite_dm_economic_health tooltip = decline_in_economic_health_tt } }
+		}
+
+		ai_will_do = {
+			factor = 200
+		}
+	}
+	
+	space_add_spy_satellite_preparation = {
+	
+		icon = {
+			key = GFX_decision_space_rocket_0
+			trigger = {
+				FROM = {
+					NOT = {
+						has_variable = space_spy_satellite_preparation
+					}  
+				}
+			}
+		}		
+		icon = {
+			key = GFX_decision_space_rocket_1
+			trigger = {
+				FROM ={
+					check_variable = { space_spy_satellite_preparation = 1 }
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_space_rocket_2
+			trigger = {
+				FROM = {
+					check_variable = { space_spy_satellite_preparation = 2 }
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_space_rocket_3
+			trigger = {
+				FROM = {
+					check_variable = { space_spy_satellite_preparation = 3 }
+				}
+			}
+		}
+
+		visible = {
+		}
+
+		available = {
+			num_of_civilian_factories_available_for_projects > 4
+			if = {
+				limit = { has_idea = national_development_developed }
+				FROM = {
+					check_variable = { space_spy_satellite_preparation < 3 } 
+				}
+			}
+			else = {
+				FROM = {
+					check_variable = { space_spy_satellite_preparation < 1 } 
+				}
+			}
+		}
+
+		ai_hint_pp_cost = 25
+		
+		custom_cost_trigger = {
+			command_power > 24
+		}
+		
+		custom_cost_text = decision_cost_CP_25
+		
+		cost = 0
+		
+		modifier = {
+			civilian_factory_use = 5
+		}
+		
+		days_remove = 180
+		days_re_enable = 180
+	 
+		complete_effect = {
+			if = {
+				limit = { original_tag = USA }
+				#hidden_effect = { country_event = { id = space_events.1 } }
+			}
+		}
+
+		remove_effect = {
+			ROOT = { add_to_variable = { NVX_ECO_health = -2 } }
+			FROM = { 
+				if = {
+					limit = {
+						NOT = {
+							has_variable = space_spy_satellite_preparation
+						} 
+					}
+					space_spy_satellite_level_1 = yes
+				}
+				else_if = {
+					limit = { 
+						check_variable = { space_spy_satellite_preparation = 1 }
+					}
+					space_spy_satellite_level_2 = yes
+				}
+				else = {
+					space_spy_satellite_level_3 = yes
+				}
+				add_to_variable = { space_spy_satellite_preparation = 1 } 
+			}
+		}
+	}
+	
+	space_decrease_spy_satellite_preparation = {
+	
+		icon = {
+			key = GFX_decision_space_rocket_0
+			trigger = {
+				FROM = {
+					NOT = {
+						has_variable = space_spy_satellite_preparation
+					}  
+				}
+			}
+		}		
+		icon = {
+			key = GFX_decision_space_rocket_1
+			trigger = {
+				FROM ={
+					check_variable = { space_spy_satellite_preparation = 1 }
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_space_rocket_2
+			trigger = {
+				FROM = {
+					check_variable = { space_spy_satellite_preparation = 2 }
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_space_rocket_3
+			trigger = {
+				FROM = {
+					check_variable = { space_spy_satellite_preparation = 3 }
+				}
+			}
+		}
+
+		visible = {
+		}
+
+		available = {
+			has_variable = space_spy_satellite_preparation
+		}
+
+		ai_hint_pp_cost = 25
+		
+		custom_cost_trigger = {
+			command_power > 24
+		}
+		
+		custom_cost_text = decision_cost_CP_25
+		
+		cost = 0
+		
+		days_remove = 70
+		days_re_enable = 180
+	 
+		complete_effect = {
+			if = {
+				limit = { original_tag = USA }
+				#hidden_effect = { country_event = { id = space_events.2 } }
+			}
+		}
+
+		remove_effect = {
+			FROM = { 
+				if = {
+					limit = {
+						check_variable = { space_spy_satellite_preparation = 3 }
+					}
+					space_spy_satellite_level_2 = yes
+				}
+				else_if = {
+					limit = { 
+						check_variable = { space_spy_satellite_preparation = 2 }
+					}
+					space_spy_satellite_level_1 = yes
+				}
+				else = {
+					space_spy_satellite_level_0 = yes
+				}
+				add_to_variable = { space_spy_satellite_preparation = -1 } 
+			}
+		}
+	}
+	
+	space_add_gnss_network_extension = {
+	
+		icon = {
+			key = GFX_decision_space_network_0_3
+			trigger = {
+				FROM = {
+					AND = {
+						NOT = { has_idea = space_add_gnss_network_extension_1 }
+						NOT = { has_idea = space_add_gnss_network_extension_2 }
+						NOT = { has_idea = space_add_gnss_network_extension_3 }
+					}
+				}
+			}
+		}		
+		icon = {
+			key = GFX_decision_space_network_1_3
+			trigger = {
+				FROM ={
+					has_idea = space_add_gnss_network_extension_1
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_space_network_2_3
+			trigger = {
+				FROM = {
+					has_idea = space_add_gnss_network_extension_2
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_space_network_3_3
+			trigger = {
+				FROM = {
+					has_idea = space_add_gnss_network_extension_3
+				}
+			}
+		}
+
+		visible = {
+		}
+
+		available = {
+			num_of_civilian_factories_available_for_projects > 9
+			has_idea = national_development_developed
+			is_major = yes
+			NOT = { has_idea = space_add_gnss_network_extension_3 }
+		}
+		
+		#custom_cost_text = decision_cost_CP_25
+		
+		cost = 70
+		
+		modifier = {
+			civilian_factory_use = 10
+		}
+		
+		days_remove = 365
+		days_re_enable = 365
+	 
+		complete_effect = {
+			if = {
+				limit = { original_tag = USA }
+				#hidden_effect = { country_event = { id = space_events.3 } }
+			}
+		}
+
+		remove_effect = {
+			ROOT = { add_to_variable = { NVX_ECO_health = -2 } }
+			FROM = { 
+				#add_to_variable = { space_gnss_network_extension = 1 } 
+				if = {
+					limit = {
+						AND = {
+							NOT = { has_idea = space_add_gnss_network_extension_1 }
+							NOT = { has_idea = space_add_gnss_network_extension_2 }
+							NOT = { has_idea = space_add_gnss_network_extension_3 }
+						}
+					}
+					add_ideas = space_add_gnss_network_extension_1
+				}
+				else_if = {
+					limit = {
+						has_idea = space_add_gnss_network_extension_1
+					}
+					swap_ideas = {
+						remove_idea = space_add_gnss_network_extension_1
+						add_idea = space_add_gnss_network_extension_2
+					}
+				}
+				else_if = {
+					limit = {
+						has_idea = space_add_gnss_network_extension_2
+					}
+					swap_ideas = {
+						remove_idea = space_add_gnss_network_extension_2
+						add_idea = space_add_gnss_network_extension_3
+					}
+				}
+				else = {
+					custom_effect_tooltip = space_meteorological_satellite_network_extension_full_tt
+				}
+				
+				if = {
+					limit = { 
+						has_idea = idea_eu_member
+						has_idea = space_add_gnss_network_extension_1
+					}
+					set_variable = { EU_space_variable = 1 }
+					every_other_country = {
+						limit = { 
+							has_idea = idea_eu_member
+							AND = { 
+								NOT = { has_idea = space_add_gnss_network_extension_2 }
+								NOT = { has_idea = space_add_gnss_network_extension_3 }
+							}
+						}
+						add_ideas = space_add_gnss_network_extension_1
+						set_variable = { EU_space_variable = 1 }
+					}
+				}
+				
+				if = {
+					limit = { 
+						has_idea = idea_eu_member
+						has_idea = space_add_gnss_network_extension_2
+					}
+					set_variable = { EU_space_variable = 1 }
+					every_other_country = {
+						limit = { 
+							has_idea = idea_eu_member
+							has_idea = space_add_gnss_network_extension_1
+						}
+						swap_ideas = {
+							remove_idea = space_add_gnss_network_extension_1
+							add_idea = space_add_gnss_network_extension_2
+						}
+						set_variable = { EU_space_variable = 1 }
+					}
+				}
+				
+				if = {
+					limit = { 
+						has_idea = idea_eu_member
+						has_idea = space_add_gnss_network_extension_3
+					}
+					set_variable = { EU_space_variable = 1 }
+					every_other_country = {
+						limit = { 
+							has_idea = idea_eu_member
+							OR = {
+								AND = {
+									NOT = { has_idea = space_add_gnss_network_extension_1 }
+									NOT = { has_idea = space_add_gnss_network_extension_2 }
+									NOT = { has_idea = space_add_gnss_network_extension_3 }
+								}
+								has_idea = space_add_gnss_network_extension_1
+								has_idea = space_add_gnss_network_extension_2
+							}
+						}
+						remove_ideas = space_add_gnss_network_extension_1
+						remove_ideas = space_add_gnss_network_extension_2
+						add_ideas = space_add_gnss_network_extension_3
+						set_variable = { EU_space_variable = 1 }
+					}
+				}
+			}
+		}
+	}
+	
+	space_add_meteorological_satellite_network_extension = {
+	
+		icon = {
+			key = GFX_decision_space_network_0_2
+			trigger = {
+				FROM = {
+					AND = {
+						NOT = { has_idea = space_meteorological_satellite_network_extension_1 }
+						NOT = { has_idea = space_meteorological_satellite_network_extension_2 }
+					}  
+				}
+			}
+		}		
+		icon = {
+			key = GFX_decision_space_network_1_2
+			trigger = {
+				FROM ={
+					has_idea = space_meteorological_satellite_network_extension_1
+				}
+			}
+		}
+		icon = {
+			key = GFX_decision_space_network_2_2
+			trigger = {
+				FROM = {
+					has_idea = space_meteorological_satellite_network_extension_2
+				}
+			}
+		}
+
+		visible = {
+		}
+
+		available = {
+			num_of_civilian_factories_available_for_projects > 4
+			has_idea = national_development_developed
+			NOT = { has_idea = space_meteorological_satellite_network_extension_2 }
+		}
+		
+		#custom_cost_text = decision_cost_CP_25
+		
+		cost = 70
+		
+		modifier = {
+			civilian_factory_use = 5
+		}
+		
+		days_remove = 365
+		days_re_enable = 365
+	 
+		complete_effect = {
+			if = {
+				limit = { original_tag = USA }
+				#hidden_effect = { country_event = { id = space_events.4 } }
+			}
+		}
+
+		remove_effect = {
+			ROOT = { add_to_variable = { NVX_ECO_health = -2 } }
+			FROM = { 
+				#add_to_variable = { space_meteorological_satellite_network_extension = 1 } 
+				if = { 
+					limit = {
+						AND = {
+							NOT = { has_idea = space_meteorological_satellite_network_extension_1 }
+							NOT = { has_idea = space_meteorological_satellite_network_extension_2 }
+						}
+					}
+					add_ideas = space_meteorological_satellite_network_extension_1
+				}
+				else_if = {
+					limit = {
+						has_idea = space_meteorological_satellite_network_extension_1
+					}
+					swap_ideas = {
+						remove_idea = space_meteorological_satellite_network_extension_1
+						add_idea = space_meteorological_satellite_network_extension_2
+					}
+				}
+				else = {
+					custom_effect_tooltip = space_meteorological_satellite_network_extension_full_tt
+				}
+				
+				if = {
+					limit = { 
+						has_idea = idea_eu_member
+						has_idea = space_meteorological_satellite_network_extension_1
+					}
+					set_variable = { EU_space_variable = 1 }
+					every_other_country = {
+						limit = { 
+							has_idea = idea_eu_member
+							AND = { 
+								NOT = { has_idea = space_meteorological_satellite_network_extension_1 }
+								NOT = { has_idea = space_meteorological_satellite_network_extension_2 }
+							}
+						}
+						add_ideas = space_meteorological_satellite_network_extension_1
+						set_variable = { EU_space_variable = 1 }
+					}
+				}
+				
+				if = {
+					limit = { 
+						has_idea = idea_eu_member
+						has_idea = space_meteorological_satellite_network_extension_2
+					}
+					set_variable = { EU_space_variable = 1 }
+					every_other_country = {
+						limit = { 
+							has_idea = idea_eu_member
+							OR = {
+								AND = {
+									NOT = { has_idea = space_meteorological_satellite_network_extension_1 }
+									NOT = { has_idea = space_meteorological_satellite_network_extension_2 }
+								}
+								has_idea = space_meteorological_satellite_network_extension_1
+							}
+						}
+						remove_ideas = space_meteorological_satellite_network_extension_1
+						add_ideas = space_meteorological_satellite_network_extension_2
+						set_variable = { EU_space_variable = 1 }
+					}
+				}
+			}
+		}
+	}
+}

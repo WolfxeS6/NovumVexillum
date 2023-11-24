@@ -1,0 +1,133 @@
+# Allows you to create your own dynamic keys
+# to be called in localization.
+# defined_text -> this is it, we're defining the text
+# text -> a discrete entry that can be picked to display in loc.
+# trigger -> determines if a text entry will be picked or not.
+# (The triggers need to be valid for the scope the key is called in
+# (eg Root or From.From).)
+# localization_key -> points to the localization key
+# that'll be used if trigger passes
+
+defined_text = { # Country
+	name = GetSpaceAgenciesName
+	text = {
+		trigger = {
+			original_tag = USA
+		}
+		localization_key = SpaceAgenciesName_NASA
+	}
+	text = {
+		trigger = {
+			original_tag = JAP
+		}
+		localization_key = SpaceAgenciesName_JAXA
+	}
+	text = {
+		trigger = {
+			original_tag = PRC
+		}
+		localization_key = SpaceAgenciesName_CASC
+	}
+	text = {
+		trigger = {
+			has_idea = idea_eu_member
+		}
+		localization_key = SpaceAgenciesName_EUSPA
+	}
+	text = {
+		trigger = {
+			AND = {
+				original_tag = ENG
+				NOT = { has_idea = idea_eu_member }
+			}
+		}
+		localization_key = SpaceAgenciesName_UKSA
+	}
+	text = {
+		trigger = {
+			original_tag = SOV
+		}
+		localization_key = SpaceAgenciesName_CASC
+	}
+	text = {
+		trigger = {
+			original_tag = KOR
+		}
+		localization_key = SpaceAgenciesName_KARI
+	}
+	text = {
+		localization_key = SpaceAgenciesName_generic
+	}
+}
+
+defined_text = { # Country
+	name = GetGlobal_space_decision_category_desc
+	text = {
+		localization_key = Global_space_decision_category_key
+	}
+}
+
+defined_text = { # Country
+	name = GetSpaceAgenciesDesc
+	text = {
+		trigger = {
+			original_tag = USA
+		}
+		localization_key = SpaceAgenciesDesc_NASA
+	}
+	text = {
+		trigger = {
+			original_tag = JAP
+		}
+		localization_key = SpaceAgenciesDesc_JAXA
+	}
+	text = {
+		trigger = {
+			original_tag = PRC
+		}
+		localization_key = SpaceAgenciesDesc_CASC
+	}
+	text = {
+		trigger = {
+			has_idea = idea_eu_member
+		}
+		localization_key = SpaceAgenciesDesc_EUSPA
+	}
+	text = {
+		trigger = {
+			AND = {
+				original_tag = ENG
+				NOT = { has_idea = idea_eu_member }
+			}
+		}
+		localization_key = SpaceAgenciesDesc_UKSA
+	}
+	text = {
+		trigger = {
+			original_tag = KOR
+		}
+		localization_key = SpaceAgenciesDesc_KARI
+	}
+	text = {
+		localization_key = SpaceAgenciesDesc_generic
+	}
+}
+
+defined_text = { # Country
+	name = GetSpaceAgenciesTradition
+	text = {
+		trigger = {
+			original_tag = USA
+		}
+		localization_key = SpaceAgenciesTradition_NASA
+	}
+	text = {
+		trigger = {
+			has_idea = idea_eu_member
+		}
+		localization_key = SpaceAgenciesDesc_EUSPA
+	}
+	text = {
+		localization_key = SpaceAgenciesTradition_generic
+	}
+}

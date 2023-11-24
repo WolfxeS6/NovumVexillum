@@ -1,0 +1,170 @@
+﻿add_namespace = space_events
+add_namespace = space_news
+
+country_event = {
+	id = space_events.1
+	title = space_events.1.t
+	desc = space_events.1.desc
+	
+	hidden = yes
+	is_triggered_only = yes
+	
+	option = {
+		name = space_events.1.a
+		add_days_mission_timeout  = {
+			mission = space_add_spy_satellite_preparation
+			days = 180
+		}
+	}
+}
+
+country_event = {
+	id = space_events.2
+	title = space_events.2.t
+	desc = space_events.2.desc
+	
+	hidden = yes
+	is_triggered_only = yes
+	
+	option = {
+		name = space_events.2.a
+		add_days_mission_timeout  = {
+			mission = space_decrease_spy_satellite_preparation
+			days = 70
+		}
+	}
+}
+
+country_event = {
+	id = space_events.3
+	title = space_events.3.t
+	desc = space_events.3.desc
+	
+	hidden = yes
+	is_triggered_only = yes
+	
+	option = {
+		name = space_events.2.a
+		add_days_mission_timeout  = {
+			mission = space_add_gnss_network_extension
+			days = 365
+		}
+	}
+}
+
+country_event = {
+	id = space_events.4
+	title = space_events.4.t
+	desc = space_events.4.desc
+	
+	hidden = yes
+	is_triggered_only = yes
+	
+	option = {
+		name = space_events.4.a
+		add_days_mission_timeout  = {
+			mission = space_add_meteorological_satellite_network_extension
+			days = 365
+		}
+	}
+}
+
+#Be Kicked Out of the EUSPA
+country_event = {
+	id = space_events.5
+	title = space_events.5.t
+	desc = space_events.5.desc
+	picture = GFX_report_event_european_union
+	
+	trigger = {
+		AND = { 
+			check_variable = { EU_space_variable > 0 }
+			NOT = { has_idea = idea_eu_member }
+		}
+	}
+	
+	immediate = {
+		hidden_effect = { set_variable = { EU_space_variable = 0 } }
+	}
+	
+	option = {
+		name = space_events.5.a
+		custom_effect_tooltip = space_events_goodbye_EU_tt
+		
+		hidden_effect = {
+			remove_ideas = space_add_gnss_network_extension_1
+			remove_ideas = space_add_gnss_network_extension_2
+			remove_ideas = space_add_gnss_network_extension_3
+			remove_ideas = space_meteorological_satellite_network_extension_1
+			remove_ideas = space_meteorological_satellite_network_extension_2
+		}
+	}
+}
+
+#Join the EUSPA
+country_event = {
+	id = space_events.6
+	title = space_events.6.t
+	desc = space_events.6.desc
+	picture = GFX_report_event_european_union
+	
+	trigger = {
+		AND = { 
+			NOT = { has_variable = space_spy_satellite_preparation	}  
+			has_idea = idea_eu_member
+		}
+	}
+	
+	immediate = {
+		hidden_effect = { set_variable = { EU_space_variable = 1 } }
+	}
+	
+	option = {
+		name = space_events.5.a
+		#custom_effect_tooltip = space_events_hello_EU_tt
+		
+		random_other_country = {
+			if = {
+				limit = {
+					has_idea = idea_eu_member
+					check_variable = { EU_space_variable > 0 }
+					has_idea = space_add_gnss_network_extension_1
+				}
+				FROM = { add_ideas = space_add_gnss_network_extension_1 }
+			}
+			else_if = { 
+				limit = {
+					has_idea = idea_eu_member
+					check_variable = { EU_space_variable > 0 }
+					has_idea = space_add_gnss_network_extension_2
+				}
+				FROM = { add_ideas = space_add_gnss_network_extension_2 }
+			}
+			else_if = { 
+				limit = {
+					has_idea = idea_eu_member
+					check_variable = { EU_space_variable > 0 }
+					has_idea = space_add_gnss_network_extension_3
+				}
+				FROM = { add_ideas = space_add_gnss_network_extension_3 }
+			}
+			
+			if = {
+				limit = {
+					has_idea = idea_eu_member
+					check_variable = { EU_space_variable > 0 }
+					has_idea = space_meteorological_satellite_network_extension_1
+				}
+				FROM = { add_ideas = space_meteorological_satellite_network_extension_1 }
+			}
+			else_if = { 
+				limit = {
+					has_idea = idea_eu_member
+					check_variable = { EU_space_variable > 0 }
+					has_idea = space_meteorological_satellite_network_extension_2
+				}
+				FROM = { add_ideas = space_meteorological_satellite_network_extension_2 }
+			}
+		}
+	}
+}
