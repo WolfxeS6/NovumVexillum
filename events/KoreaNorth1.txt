@@ -779,8 +779,14 @@ country_event = {	#Death of Kim Jong-Il
 			}
 			promote_leader = yes
 		}
+		
 		hidden_effect = {
 			news_event = { id = north_korea_news.7 }
+			
+			if = {
+				limit = { NOT = { has_completed_focus = prk_attack_south_korea } }
+				add_country_leader_trait = dprk_cautious_person
+			}
 		}
 	}
 }
@@ -2177,6 +2183,34 @@ country_event = {
 	
 	option = {
 		name = north_korea.64.a
+	}
+}
+
+#
+country_event = {
+	id = north_korea.101
+	title = north_korea.101.t
+	desc = north_korea.101.desc
+	picture = GFX_report_event_JAP_2000_JCP
+
+	trigger = {
+		tag = PRK
+		has_country_leader_with_trait = dprk_cautious_person
+		OR = {
+			NOT = { country_exists = KOR }
+			has_war_with = KOR
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	hidden = yes
+	
+	option = {
+		name = north_korea.52.a
+		remove_country_leader_trait = dprk_cautious_person
 	}
 }
 

@@ -3537,6 +3537,8 @@ shared_focus = {
 	available_if_capitulated = no
 
 	completion_reward = {
+		remove_country_leader_trait = dprk_cautious_person
+
 		create_wargoal = {
 			type = puppet_wargoal_focus
 			target = KOR
@@ -4036,6 +4038,13 @@ shared_focus = {
 
 	prerequisite = {
 		focus = prk_go_east
+	}
+
+	bypass = {
+		OR = {
+			JAP = { NOT = { has_full_control_of_state = 954 }}
+			954 = { NOT = { has_dynamic_modifier = { modifier = dynamic_zainichi_problem } } }
+		}
 	}
 
 	search_filters = {FOCUS_FILTER_POLITICAL}
