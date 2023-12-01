@@ -45,3 +45,121 @@ korean_rivalry_south = {
 	}
 
 }
+
+chinapakistan_india = {
+
+	enable = {
+		OR = {
+			tag = PAK
+			tag = PRC
+		}
+	}
+	
+	abort = {
+		always = no
+	}
+	
+	ai_strategy = {
+		type = antagonize
+		id = RAJ
+		value = 25
+	}
+	
+	ai_strategy = {
+		type = conquer
+		id = RAJ
+		value = -50
+	}
+}
+
+inda_pakistan = {
+
+	enable = {
+		tag = RAJ
+	}
+	
+	abort = {
+		always = no
+	}
+	
+	ai_strategy = {
+		type = antagonize
+		id = PAK
+		value = 25
+	}
+	
+	ai_strategy = {
+		type = conquer
+		id = PAK
+		value = -50
+	}
+}
+inda_china = {
+
+	enable = {
+		tag = RAJ
+	}
+	
+	abort = {
+		always = no
+	}
+	
+	ai_strategy = {
+		type = antagonize
+		id = PRC
+		value = 25
+	}
+	
+	ai_strategy = {
+		type = conquer
+		id = PRC
+		value = -50
+	}
+}
+ai_strategy_avoid_ww3 = {
+	
+	enable = {
+		threat < 0.6
+		OR = {
+			tag = AFG
+			tag = IRQ
+		}
+		
+	}
+	
+	abort = {
+		threat > 0.6
+	}
+	
+	ai_strategy = {
+		type = alliance
+		id = "SOV"
+		value = -1000
+	}
+	ai_strategy = {
+		type = ignore
+		id = "SOV"
+		value = 1000
+	}
+	ai_strategy = {
+		type = alliance
+		id = "PER"
+		value = -1000
+	}
+	ai_strategy = {
+		type = ignore
+		id = "PER"
+		value = 1000
+	}
+	ai_strategy = {
+		type = alliance
+		id = "PRC"
+		value = -1000
+	}
+	ai_strategy = {
+		type = ignore
+		id = "PRC"
+		value = 1000
+	}
+
+}
