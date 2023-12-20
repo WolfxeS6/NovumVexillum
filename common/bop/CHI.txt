@@ -1,0 +1,388 @@
+CHI_power_balance = {
+	initial_value = 0.1
+	left_side = CHI_pan_blue
+	right_side = CHI_pan_green
+	decision_category = CHI_balance_of_power_category
+
+	range = {
+		id = CHI_competing_green_and_blue
+		min = -0.10
+		max = 0.10
+		modifier = {
+		}
+		on_activate = { #TODO_Manu: Scripted effect checking for leader and swapping to appropriate GFX
+			set_power_balance_gfx = {
+				id = CHI_power_balance
+				side = CHI_pan_blue
+				gfx = GFX_bop_CHI_pan_blue_win
+			}
+			set_power_balance_gfx = {
+				id = CHI_power_balance
+				side = CHI_pan_green
+				gfx = GFX_bop_CHI_pan_green_win
+			}
+
+			# MANAGE SISU NS - Doing in this way to prevent issues when bypassing an entire range for whatever reason
+			if = {
+				limit = {
+					has_idea = CHI_formosa_lily_1
+				}
+				swap_ideas = {
+					remove_idea = CHI_formosa_lily_1
+					add_idea = CHI_formosa_lily_3
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = CHI_formosa_lily_2
+				}
+				swap_ideas = {
+					remove_idea = CHI_formosa_lily_2
+					add_idea = CHI_formosa_lily_3
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = CHI_formosa_lily_4
+				}
+				swap_ideas = {
+					remove_idea = CHI_formosa_lily_4
+					add_idea = CHI_formosa_lily_3
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = CHI_formosa_lily_5
+				}
+				swap_ideas = {
+					remove_idea = CHI_formosa_lily_5
+					add_idea = CHI_formosa_lily_3
+				}
+			}
+			else = {
+				effect_tooltip = {
+					add_ideas = CHI_formosa_lily_3
+				}
+			}
+			set_variable = { CHI_declaration_of_independence_cost = 150 tooltip = CHI_declaration_of_independence_cost_medium_range_tt }
+		}
+		on_deactivate = {
+			if = {
+				limit = {
+					is_power_balance_side_active = {
+						id = CHI_power_balance
+						side = CHI_pan_green
+					}
+				}
+				set_power_balance_gfx = {
+					id = CHI_power_balance
+					side = CHI_pan_blue
+					gfx = GFX_bop_CHI_pan_green_lost
+				}
+			}
+			else = {
+				set_power_balance_gfx = {
+					id = CHI_power_balance
+					side = CHI_pan_green
+					gfx = GFX_bop_CHI_pan_blue_lost
+				}
+			}
+		}
+	}
+
+	### Pan_blue
+	side = {
+		id = CHI_pan_blue	
+		icon = "GFX_bop_FIN_[GetLeaderBopIcon]_bad_side"
+
+		range = {
+			id = CHI_pan_blue_superiority
+			min = -0.9
+			max = -0.1
+			modifier = {
+				stability_factor = -0.05
+				war_support_factor = -0.05
+				political_power_factor = -0.1
+			}
+			on_activate = { #TODO_Manu: Scripted effect checking for leader and swapping to appropriate GFX
+				set_power_balance_gfx = {
+					id = CHI_power_balance
+					side = CHI_pan_blue
+					gfx = GFX_bop_CHI_pan_blue_win
+				}
+				set_power_balance_gfx = {
+					id = CHI_power_balance
+					side = CHI_pan_green
+					gfx = GFX_bop_CHI_pan_green_lost
+				}
+
+				# MANAGE SISU NS
+				if = {
+					limit = {
+						has_idea = CHI_formosa_lily_1
+					}
+					swap_ideas = {
+						remove_idea = CHI_formosa_lily_1
+						add_idea = CHI_formosa_lily_2
+					}
+				}
+				else_if = {
+					limit = {
+						has_idea = CHI_formosa_lily_3
+					}
+					swap_ideas = {
+						remove_idea = CHI_formosa_lily_3
+						add_idea = CHI_formosa_lily_2
+					}
+				}
+				else_if = {
+					limit = {
+						has_idea = CHI_formosa_lily_4
+					}
+					swap_ideas = {
+						remove_idea = CHI_formosa_lily_4
+						add_idea = CHI_formosa_lily_2
+					}
+				}
+				else_if = {
+					limit = {
+						has_idea = CHI_formosa_lily_5
+					}
+					swap_ideas = {
+						remove_idea = CHI_formosa_lily_5
+						add_idea = CHI_formosa_lily_2
+					}
+				}
+				else = {
+					effect_tooltip = {
+						add_ideas = CHI_formosa_lily_2
+					}
+				}
+				set_variable = { CHI_declaration_of_independence_cost = 250 tooltip = CHI_declaration_of_independence_cost_bad_range_tt }
+			}
+			on_deactivate = {
+			
+			}
+		}
+
+		range = {
+			id = CHI_pan_blue_victory
+			min = -1
+			max = -0.9
+			modifier = {
+				stability_factor = -0.1
+				war_support_factor = -0.1
+				political_power_factor = -0.2
+			}
+			on_activate = {
+				set_power_balance_gfx = {
+					id = CHI_power_balance
+					side = CHI_pan_blue
+					gfx = GFX_bop_CHI_pan_blue_win
+				}
+				set_power_balance_gfx = {
+					id = CHI_power_balance
+					side = CHI_pan_green
+					gfx = GFX_bop_FIN_bad_rubble_side
+				}
+
+				# MANAGE SISU NS
+				if = {
+					limit = {
+						has_idea = CHI_formosa_lily_2
+					}
+					swap_ideas = {
+						remove_idea = CHI_formosa_lily_2
+						add_idea = CHI_formosa_lily_1
+					}
+				}
+				else_if = {
+					limit = {
+						has_idea = CHI_formosa_lily_3
+					}
+					swap_ideas = {
+						remove_idea = CHI_formosa_lily_3
+						add_idea = CHI_formosa_lily_1
+					}
+				}
+				else_if = {
+					limit = {
+						has_idea = CHI_formosa_lily_4
+					}
+					swap_ideas = {
+						remove_idea = CHI_formosa_lily_4
+						add_idea = CHI_formosa_lily_1
+					}
+				}
+				else_if = {
+					limit = {
+						has_idea = CHI_formosa_lily_5
+					}
+					swap_ideas = {
+						remove_idea = CHI_formosa_lily_5
+						add_idea = CHI_formosa_lily_1
+					}
+				}
+				else = {
+					effect_tooltip = {
+						add_ideas = CHI_formosa_lily_1
+					}
+				}
+				custom_effect_tooltip = CHI_declaration_of_independence_cost_unavailable_tt
+			}
+			on_deactivate = {
+				
+			}
+		}
+	}
+
+	### Good Side
+	side = {
+		id = CHI_pan_green	
+		icon = "GFX_bop_FIN_[GetLeaderBopIcon]_good_side"
+
+		range = {
+			id = CHI_pan_green_superiority
+			min = 0.1
+			max = 0.9
+			modifier = {
+				stability_factor = 0.05
+				war_support_factor = 0.05
+				conscription_factor = 0.05
+			}
+			on_activate = { #TODO_Manu: Scripted effect checking for leader and swapping to appropriate GFX
+				set_power_balance_gfx = {
+					id = CHI_power_balance
+					side = CHI_pan_green
+					gfx = GFX_bop_CHI_pan_green_win
+				}
+				set_power_balance_gfx = {
+					id = CHI_power_balance
+					side = CHI_pan_blue
+					gfx = GFX_bop_CHI_pan_blue_lost
+				}
+
+				# MANAGE SISU NS
+				if = {
+					limit = {
+						has_idea = CHI_formosa_lily_1
+					}
+					swap_ideas = {
+						remove_idea = CHI_formosa_lily_1
+						add_idea = CHI_formosa_lily_4
+					}
+				}
+				else_if = {
+					limit = {
+						has_idea = CHI_formosa_lily_2
+					}
+					swap_ideas = {
+						remove_idea = CHI_formosa_lily_2
+						add_idea = CHI_formosa_lily_4
+					}
+				}
+				else_if = {
+					limit = {
+						has_idea = CHI_formosa_lily_3
+					}
+					swap_ideas = {
+						remove_idea = CHI_formosa_lily_3
+						add_idea = CHI_formosa_lily_4
+					}
+				}
+				else_if = {
+					limit = {
+						has_idea = CHI_formosa_lily_5
+					}
+					swap_ideas = {
+						remove_idea = CHI_formosa_lily_5
+						add_idea = CHI_formosa_lily_4
+					}
+				}
+				else = {
+					effect_tooltip = {
+						add_ideas = CHI_formosa_lily_4
+					}
+				}
+
+				#MOTION OF NO CONFIDENCE COST
+				set_variable = { CHI_declaration_of_independence_cost = 100 tooltip = CHI_declaration_of_independence_cost_good_range_tt }
+			}
+			on_deactivate = {
+				
+			}
+		}
+
+		range = {
+			id = CHI_pan_green_victory
+			min = 0.9
+			max = 1
+			modifier = {
+				stability_factor = 0.1
+				war_support_factor = 0.1
+				conscription_factor = 0.1
+			}
+			on_activate = {
+				set_power_balance_gfx = {
+					id = CHI_power_balance
+					side = CHI_pan_green
+					gfx = GFX_bop_CHI_pan_green_win
+				}
+				set_power_balance_gfx = {
+					id = CHI_power_balance
+					side = CHI_pan_blue
+					gfx = GFX_bop_FIN_bad_rubble_side
+				}
+
+				# MANAGE SISU NS
+				if = {
+					limit = {
+						has_idea = CHI_formosa_lily_1
+					}
+					swap_ideas = {
+						remove_idea = CHI_formosa_lily_1
+						add_idea = CHI_formosa_lily_5
+					}
+				}
+				else_if = {
+					limit = {
+						has_idea = CHI_formosa_lily_2
+					}
+					swap_ideas = {
+						remove_idea = CHI_formosa_lily_2
+						add_idea = CHI_formosa_lily_5
+					}
+				}
+				else_if = {
+					limit = {
+						has_idea = CHI_formosa_lily_3
+					}
+					swap_ideas = {
+						remove_idea = CHI_formosa_lily_3
+						add_idea = CHI_formosa_lily_5
+					}
+				}
+				else_if = {
+					limit = {
+						has_idea = CHI_formosa_lily_4
+					}
+					swap_ideas = {
+						remove_idea = CHI_formosa_lily_4
+						add_idea = CHI_formosa_lily_5
+					}
+				}
+				else = {
+					effect_tooltip = {
+						add_ideas = CHI_formosa_lily_5
+					}
+				}
+
+				#MOTION OF NO CONFIDENCE COST
+				set_variable = { CHI_declaration_of_independence_cost = 50 tooltip = CHI_declaration_of_independence_cost_very_good_range_tt }
+			}
+			on_deactivate = {
+				
+			}
+		}
+	}
+}

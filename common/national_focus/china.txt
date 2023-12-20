@@ -21,6 +21,10 @@
    shared_focus = PRC_successor_to_marx_Lenin
    shared_focus = PRC_taiwan_liberation_war
    shared_focus = PRC_darkness_sympathizer
+
+   shared_focus = CHINESE_the_end_of_the_1999_crisis
+
+	continuous_focus_position = { x = 200 y = 2000 }
  }
 
 	shared_focus = {
@@ -681,9 +685,9 @@
 				PTW = {
 					every_state = {
 						limit = {
-							is_owned_by = NDF
+							is_owned_by = PTW
 						}
-						add_core_of = NDF
+						add_core_of = PTW
 					}
 
 					set_politics = {
@@ -758,7 +762,7 @@
 
 	shared_focus = {
 		id = PRC_clear_past_history
-		icon = PRC_Education
+		icon = PRC_clear_past_history
 		x = 6
 		y = 3
 		cost = 5
@@ -921,7 +925,7 @@
 
 		completion_reward = {
 			custom_effect_tooltip = PRC_prosperous_southern_china_tt
-			add_to_variable = { PRC_successor_to_the_NEP_consumer_goods_expected_value = -0.03 }
+			add_to_variable = { PRC_successor_to_the_NEP_consumer_goods_factor = -0.03 }
 
 			activate_targeted_decision = { target = 728 decision = PRC_develop_dockyard_decision }
 			activate_targeted_decision = { target = 595 decision = PRC_develop_dockyard_decision }
@@ -3316,7 +3320,7 @@
 		completion_reward = {
 			custom_effect_tooltip = PRC_no_one_should_be_poor_tt
 
-			add_to_variable = { PRC_successor_to_the_NEP_consumer_goods_expected_value = -0.03 }
+			add_to_variable = { PRC_successor_to_the_NEP_consumer_goods_factor = -0.03 }
 
 
 			while_loop_effect = {
@@ -3469,7 +3473,7 @@
 			custom_effect_tooltip = PRC_robot_technology_tt
 
 			add_to_variable = { PRC_successor_to_the_NEP_industrial_capacity_factory_initial = 0.02 }
-			add_to_variable = { PRC_successor_to_the_NEP_consumer_goods_expected_value = -0.01 }
+			add_to_variable = { PRC_successor_to_the_NEP_consumer_goods_factor = -0.01 }
 
 		}
 		
@@ -5599,7 +5603,7 @@
 		completion_reward = {			
 			custom_effect_tooltip = PRC_more_worker_friendly_NEP_tt
 
-			add_to_variable = { consumer_goods_expected_value = -0.02 }
+			add_to_variable = { consumer_goods_factor = -0.02 }
 			add_to_variable = { conversion_cost_civ_to_mil_factor = -0.05 }
 		}
 
@@ -6516,7 +6520,7 @@
 		completion_reward = {			
 			custom_effect_tooltip = PRC_NEP_weakening_tt
 
-			add_to_variable = { consumer_goods_expected_value = -0.02 }
+			add_to_variable = { consumer_goods_factor = -0.02 }
 			add_to_variable = { production_lack_of_resource_penalty_factor = -0.03 }
 		}
 
@@ -8549,8 +8553,8 @@
 
 	shared_focus = {
 		id = PRC_taiwan_liberation_war
-		icon = PRC_taiwanese_attack
-		x = 21
+		icon = PRC_taiwan_liberation_war
+		x = 24
 		y = 7
 		cost = 3
 
@@ -8575,8 +8579,8 @@
 
 	shared_focus = {
 		id = PRC_blitzkrieg
-		icon = PRC_red_army
-		x = 1
+		icon = PRC_clear_past_history
+		x = -1
 		y = 1
 		cost = 5
 
@@ -8606,16 +8610,16 @@
 	}
 
 	shared_focus = {
-		id = PRC_inside_collaborator
-		icon = PRC_taiwanese_co_op
-		x = -1
-		y = 1
+		id = PRC_confiscation_of_private_merchant_ships
+		icon = PRC_confiscation_of_private_merchant_ships
+		x = -2
+		y = 2
 		cost = 5
 
 		relative_position_id = PRC_taiwan_liberation_war
 
 		prerequisite = { 
-			focus = PRC_taiwan_liberation_war
+			focus = PRC_blitzkrieg
 		}
 
 		available = {
@@ -8627,6 +8631,102 @@
 		available_if_capitulated = no
 
 		completion_reward = {		
+			add_equipment_to_stockpile = { 
+				type = convoy_1
+				amount = 100
+				producer = ROOT
+			}
+			add_political_power = -25
+		}
+
+		search_filters = {  }
+		
+		ai_will_do = {
+			base = 4
+		}
+	}
+
+	shared_focus = {
+		id = PRC_operation_blockade_off_taiwan
+		icon = PRC_operation_blockade_off_taiwan
+		x = -2
+		y = 4
+		cost = 5
+
+		relative_position_id = PRC_taiwan_liberation_war
+
+		prerequisite = { 
+			focus = PRC_confiscation_of_private_merchant_ships
+		}
+
+		available = {
+			has_war_with = CHI
+			OR = {
+				controls_state = 596
+				controls_state = 595
+				controls_state = 728
+				controls_state = 592
+				controls_state = 1081
+				controls_state = 922
+			}
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {		
+			add_mines = { region = 76 amount = 400 } #East China
+			add_mines = { region = 75 amount = 400 } #South China
+
+			effect_tooltip = {
+				PRC = { add_named_threat = { threat = 3 name = pr_china_news.17.t } }
+			}
+
+			hidden_effect = {
+				news_event = {
+					id = pr_china_news.17
+				}
+			}
+		}
+
+		search_filters = {  }
+		
+		ai_will_do = {
+			base = 4
+		}
+	}
+
+	shared_focus = {
+		id = PRC_inside_collaborator
+		icon = PRC_taiwanese_co_op
+		x = 0
+		y = 2
+		cost = 5
+
+		relative_position_id = PRC_taiwan_liberation_war
+
+		prerequisite = { 
+			focus = PRC_blitzkrieg
+			focus = PRC_with_more_overwhelming_power
+		}
+
+		available = {
+			has_war_with = CHI
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {		
+			add_collaboration = {
+				target = CHI
+				value = 0.1
+			}
+
+			CHI = { country_event = { id = ro_china.independence_events.112 } }
+
 			add_intel = {
 				target = CHI
 				civilian_intel = 15
@@ -8653,16 +8753,24 @@
 	}
 
 	shared_focus = {
-		id = PRC_anti_taiwanese_propaganda
-		icon = propaganda
-		x = -3
-		y = 1
+		id = PRC_our_last_warning
+		icon = PRC_desperate_soldiers
+		x = 0
+		y = 4
 		cost = 5
 
 		relative_position_id = PRC_taiwan_liberation_war
 
 		prerequisite = { 
-			focus = PRC_taiwan_liberation_war
+			focus = PRC_inside_collaborator
+		}
+
+		prerequisite = { 
+			focus = PRC_hold_your_sword_high
+		}
+
+		prerequisite = { 
+			focus = PRC_propaganda_of_TDSGL
 		}
 
 		available = {
@@ -8674,8 +8782,117 @@
 		available_if_capitulated = no
 
 		completion_reward = {		
-			add_manpower = 10000
+			custom_effect_tooltip = PRC_unlock_penal_infantry_effect_tt
+			#hidden_effect = { set_technology = { penal_infantry = 1 } } 
+			
+			division_template = {
+				name = "Chěngjiè Bùduì"
+				#division_names_group = SOV_PEN_01
+				is_locked = yes
+				regiments = {
+					penal_battalion = { x = 0 y = 0 }
+					penal_battalion = { x = 0 y = 1 }
+					penal_battalion = { x = 0 y = 2 }
+					penal_battalion = { x = 1 y = 0 }
+					penal_battalion = { x = 1 y = 1 }
+					penal_battalion = { x = 1 y = 2 }
+					penal_battalion = { x = 2 y = 0 }
+					penal_battalion = { x = 2 y = 1 }
+					penal_battalion = { x = 2 y = 2 }
+				}
+				support = {
+					artillery = { x = 0 y = 0 }
+				}
+			}
+
+			hidden_effect = {
+				capital_scope = {
+					create_unit = {
+						division = "division_template = \"Chěngjiè Bùduì\" start_experience_factor = 0.5 start_equipment_factor = 1.0"
+						owner = ROOT
+						count = 4
+					}
+				}
+			}
+		}
+
+		search_filters = {  }
+		
+		ai_will_do = {
+			base = 4
+		}
+	}
+
+	shared_focus = {
+		id = PRC_hold_your_sword_high
+		icon = PRC_the_need_for_policy_changes_grey
+		x = -1
+		y = 3
+		cost = 5
+
+		relative_position_id = PRC_taiwan_liberation_war
+
+		prerequisite = { 
+			focus = PRC_inside_collaborator
+		}
+
+		available = {
+			has_war_with = CHI
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {		
 			add_war_support = 0.05
+			add_stability = -0.04
+		}
+
+		search_filters = {  }
+		
+		ai_will_do = {
+			base = 4
+		}
+	}
+
+	shared_focus = {
+		id = PRC_propaganda_of_TDSGL
+		icon = WAS_establishment_of_the_commune_parliament
+		x = 1
+		y = 3
+		cost = 5
+
+		relative_position_id = PRC_taiwan_liberation_war
+
+		prerequisite = { 
+			focus = PRC_inside_collaborator
+		}
+
+		available = {
+			has_war_with = CHI
+			if = {
+				limit = { has_dlc = "La Resistance" }
+				compare_intel_with = { target = CHI civilian_intel > 0.2 }
+			}
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			effect_tooltip = {
+				CHI = {					
+					set_temp_variable = { KMT_temp = party_popularity@conservative }
+					multiply_temp_variable = { KMT_temp = -0.25 }
+					add_stability = KMT_temp
+				}
+			}
+
+			hidden_effect = {
+				CHI = { country_event = { id = ro_china.independence_events.110 } }
+			}
 		}
 
 		search_filters = {  }
@@ -8688,7 +8905,7 @@
 	shared_focus = {
 		id = PRC_with_more_overwhelming_power
 		icon = PRC_with_more_overwhelming_power
-		x = 3
+		x = 1
 		y = 1
 		cost = 5
 
@@ -8714,5 +8931,2781 @@
 		
 		ai_will_do = {
 			base = 4
+		}
+	}
+
+	shared_focus = {
+		id = PRC_incitement_of_pro_china_riots
+		icon = PRC_incitement_of_pro_china_riots
+		x = 2
+		y = 2
+		cost = 5
+
+		relative_position_id = PRC_taiwan_liberation_war
+
+		prerequisite = { 
+			focus = PRC_with_more_overwhelming_power
+		}
+
+		available = {
+			has_war_with = CHI
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_collaboration = {
+				target = CHI
+				value = 0.1
+			}
+
+			CHI = { country_event = { id = ro_china.independence_events.111 } }
+
+			custom_effect_tooltip = PRC_incitement_of_pro_china_riots_tt
+
+			hidden_effect = {
+				if = {
+					limit = {
+						NOT = { has_template = "Laodongdang Gemingjun" } #Labor Party Revolutionary Army
+					}
+					division_template = { 
+						name = "Laodongdang Gemingjun" 
+						#division_names_group = PRC_COL_01
+						#override_model = ITA_infantry_alt_1_entity
+						template_counter = 67
+						is_locked = yes
+						#obsolete = yes
+
+						# Represents lesser-equipped colonial units
+						regiments = { 
+							infantry = { x = 0 y = 0 }
+							infantry = { x = 0 y = 1 }
+							infantry = { x = 0 y = 2 }
+							infantry = { x = 1 y = 0 }
+							infantry = { x = 1 y = 1 }
+							infantry = { x = 1 y = 2 }
+						}
+						support = {
+						}
+
+						priority = 0 
+					}
+				}
+
+				1076 = { #Tingzhang
+					create_unit = {
+						division = "division_template = \"Laodongdang Gemingjun\" start_experience_factor = 0.1"
+						prioritize_location = 12084
+						owner = PRC
+					}
+				}
+				1076 = { #Tingzhang
+					create_unit = {
+						division = "division_template = \"Laodongdang Gemingjun\" start_experience_factor = 0.1"
+						prioritize_location = 12084
+						owner = PRC
+					}
+				}
+				1076 = { #Tingzhang
+					create_unit = {
+						division = "division_template = \"Laodongdang Gemingjun\" start_experience_factor = 0.1"
+						prioritize_location = 12084
+						owner = PRC
+					}
+				}
+				1076 = { #Tingzhang
+					create_unit = {
+						division = "division_template = \"Laodongdang Gemingjun\" start_experience_factor = 0.1"
+						prioritize_location = 12084
+						owner = PRC
+					}
+				}
+			}
+		}
+
+		search_filters = {  }
+		
+		ai_will_do = {
+			base = 4
+		}
+	}
+
+	shared_focus = {
+		id = PRC_kinmen_devastation
+		icon = PRC_kinmen_devastation
+		x = 2
+		y = 4
+		cost = 5
+
+		relative_position_id = PRC_taiwan_liberation_war
+
+		prerequisite = { 
+			focus = PRC_incitement_of_pro_china_riots
+		}
+
+		available = {
+			has_war_with = CHI
+			controls_state = 922
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {	
+			922 = {
+				set_building_level = {
+					type = bunker
+					level = 0
+					province = {
+						all_provinces = yes
+						limit_to_border = no
+						level > 2
+					}
+				}
+			}
+			add_command_power = 30
+			add_equipment_to_stockpile = {
+				type = infantry_equipment_0
+				amount = 500
+				producer = CHI
+			}
+			add_war_support = 0.02
+		}
+
+		search_filters = {  }
+		
+		ai_will_do = {
+			base = 4
+		}
+	}
+	
+	shared_focus = {
+		id = PRC_deleted_taiwan_island
+		icon = PRC_cancer_of_china
+		x = 0
+		y = 5
+		cost = 5
+
+		relative_position_id = PRC_taiwan_liberation_war
+
+		prerequisite = { 
+			focus = PRC_operation_blockade_off_taiwan
+		}
+		prerequisite = { 
+			focus = PRC_our_last_warning
+		}
+		prerequisite = { 
+			focus = PRC_kinmen_devastation
+		}
+
+		available = {
+			has_war_with = CHI
+			OR = {
+				controls_state = 596
+				controls_state = 595
+				controls_state = 728
+				controls_state = 592
+				controls_state = 1081
+				controls_state = 922
+			}
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			effect_tooltip = {
+				CHI = {
+					every_controlled_state = {
+						limit = {
+							is_core_of = CHI
+						}
+						add_dynamic_modifier = {
+							modifier = dynamic_chi_bombing_of_the_city
+							days = 210
+						}
+					}
+				}
+				PRC = { add_named_threat = { threat = 5 name = dynamic_chi_bombing_of_the_city } }
+			}
+			hidden_effect = {
+				news_event = {
+					id = ro_china.news.11
+				}
+			}
+		}
+
+		search_filters = {  }
+		
+		ai_will_do = {
+			base = 4
+		}
+	}
+
+	##############################
+
+	shared_focus = {
+		id = CHINESE_the_end_of_the_1999_crisis
+		
+		dynamic = yes 
+		
+		icon = {
+			trigger = {
+				original_tag = CHI
+			}
+			value = CHINESE_the_end_of_the_1999_crisis_taiwan
+		}
+		icon = {
+			trigger = {
+				original_tag = PRC
+			}
+			value = CHINESE_the_end_of_the_1999_crisis_taiwan
+		}
+
+		x = 8
+		y = 7
+
+		offset = {
+			x = -10
+			y = 0
+			trigger = {
+				has_focus_tree = republic_of_china_focus
+			}
+		}
+
+		cost = 10
+
+		text_icon = NORDIC_focus_style
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = CHINESE_the_end_of_the_1999_crisis_tt
+				always = no
+			}
+		}
+
+		bypass = {
+			NOT = { has_global_flag = GC_is_on }
+			has_global_flag = prc_end_1999_crisis
+			AND = {
+				country_exists = PRC
+				country_exists = CHI
+				NOT = { PRC = { has_war_with = CHI } }
+			}
+		}
+
+		ai_will_do = {
+			base = 1
+		}
+
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_HISTORICAL }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: completion_reward CHINESE_the_end_of_the_1999_crisis"
+			if = {
+				limit = { NOT = { has_global_flag = GC_is_on } }
+				custom_effect_tooltip = CHINESE_the_end_of_the_1999_crisis_tt
+			}
+			else = {
+				custom_effect_tooltip = CHINESE_the_end_of_the_1999_crisis_NOT_GC_tt
+			}
+		}
+	}
+
+	joint_focus = {
+		id = CHINESE_economic_exchange
+		icon = CHINESE_economic_exchange
+		prerequisite = { focus = CHINESE_the_end_of_the_1999_crisis }
+
+		x = 0
+		y = 1
+
+		relative_position_id = CHINESE_the_end_of_the_1999_crisis
+
+		cost = 3
+
+		text_icon = NORDIC_focus_style
+
+		available = {
+			NOT = { has_global_flag = GC_is_on }
+			has_global_flag = prc_end_1999_crisis
+			AND = {
+				country_exists = PRC
+				country_exists = CHI
+				NOT = { PRC = { has_war_with = CHI } }
+			}
+		}
+
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		joint_trigger = {
+			OR = {
+				original_tag = PRC
+				original_tag = CHI
+			}
+		}
+
+		ai_will_do = {
+			base = 1
+			modifier = {
+				factor = 4
+				AND = {
+					original_tag = PRC
+					NOT = { has_idea = PRC_rural_poverty_strike }
+					NOT = { has_idea = PRC_rural_poverty_strike_danger }
+				}	
+			}
+			modifier = {
+				factor = 4
+				AND = {
+					original_tag = CHI
+					date > 2002.01.01
+				}	
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: completion_reward CHINESE_economic_exchange"
+			if = {
+				limit = { original_tag = CHI }
+				country_event = { id = ro_china.joint_events.3 }
+				remove_opinion_modifier = { target = PRC modifier = chinese_1999_crisis }
+				CHI_increase_economic_subordination_effect = yes
+			}
+
+			if = {
+				limit = { original_tag = PRC }
+				country_event = { id = ro_china.joint_events.4 }
+				remove_opinion_modifier = { target = CHI modifier = chinese_1999_crisis }
+			}
+		}
+
+		completion_reward_joint_originator = {
+			
+			random_owned_controlled_state = {
+				limit = {
+					has_resources_amount = {
+						resource = steel
+						amount > 0
+					}
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+				add_resource = {
+					type = steel
+					amount = 5
+				}
+			}
+
+		}
+
+		completion_reward_joint_member = {
+			random_owned_controlled_state = {
+				limit = {
+					has_resources_amount = {
+						resource = steel
+						amount > 0
+					}
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_resource = {
+					type = steel
+					amount = 3
+				}
+			}
+		}
+	}
+
+	joint_focus = {
+		id = CHINESE_cooperation_among_IT_companies
+		icon = GFX_goal_generic_positive_trade_relations
+		prerequisite = { focus = CHINESE_economic_exchange }
+
+		x = 1
+		y = 2
+
+		relative_position_id = CHINESE_the_end_of_the_1999_crisis
+
+		cost = 5
+
+		text_icon = NORDIC_focus_style
+
+		available = {
+			NOT = { has_global_flag = GC_is_on }
+			has_global_flag = prc_end_1999_crisis
+			AND = {
+				country_exists = PRC
+				country_exists = CHI
+				NOT = { PRC = { has_war_with = CHI } }
+			}
+		}
+
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		joint_trigger = {
+			OR = {
+				original_tag = PRC
+				original_tag = CHI
+			}
+		}
+
+		ai_will_do = {
+			base = 1
+			modifier = {
+				factor = 0.5
+				AND = {
+					original_tag = CHI
+					OR = {
+						has_idea = CHINESE_economic_subordination_to_china_3
+						has_idea = CHINESE_economic_subordination_to_china_4
+					}
+				}	
+			}
+			modifier = {
+				factor = 0
+				AND = {
+					original_tag = CHI
+					OR = {
+						has_idea = CHINESE_economic_subordination_to_china_5
+						has_idea = CHINESE_economic_subordination_to_china_6
+					}
+				}	
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: completion_reward CHINESE_cooperation_among_IT_companies"
+
+			if = {
+				limit = { original_tag = CHI }
+				CHI_increase_economic_subordination_effect = yes 
+			}
+		}
+
+		completion_reward_joint_originator = {
+			add_cic = 500
+			add_tech_bonus = {
+				bonus = 3.0
+				uses = 1
+				category = electronics
+			}
+		}
+
+		completion_reward_joint_member = {
+			add_cic = 300
+			add_tech_bonus = {
+				bonus = 1.0
+				uses = 1
+				category = electronics
+			}
+		}
+	}
+
+	joint_focus = {
+		id = CHINESE_taiwan_food_import_from_mainland_china
+		icon = GFX_focus_generic_truck
+		prerequisite = { focus = CHINESE_economic_exchange }
+
+		x = -1
+		y = 2
+
+		relative_position_id = CHINESE_the_end_of_the_1999_crisis
+
+		cost = 5
+
+		text_icon = NORDIC_focus_style
+
+		available = {
+			NOT = { has_global_flag = GC_is_on }
+			has_global_flag = prc_end_1999_crisis
+			AND = {
+				country_exists = PRC
+				country_exists = CHI
+				NOT = { PRC = { has_war_with = CHI } }
+			}
+		}
+
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		ai_will_do = {
+			base = 1
+			modifier = {
+				factor = 0.5
+				AND = {
+					original_tag = CHI
+					OR = {
+						has_idea = CHINESE_economic_subordination_to_china_3
+						has_idea = CHINESE_economic_subordination_to_china_4
+					}
+				}	
+			}
+			modifier = {
+				factor = 0
+				AND = {
+					original_tag = CHI
+					OR = {
+						has_idea = CHINESE_economic_subordination_to_china_5
+						has_idea = CHINESE_economic_subordination_to_china_6
+					}
+				}	
+			}
+		}
+
+		joint_trigger = {
+			OR = {
+				original_tag = PRC
+				original_tag = CHI
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: completion_reward CHINESE_taiwan_food_import_from_mainland_china"
+		
+			if = {
+				limit = { original_tag = CHI }
+				CHI_increase_economic_subordination_effect = yes 
+			}
+		}
+
+		completion_reward_joint_originator = {
+			
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 1
+						include_locked = yes
+					}
+					state_population_k > 500
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 1
+						include_locked = yes
+					}
+					state_population_k > 500
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+
+		}
+
+		completion_reward_joint_member = {
+
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 1
+						include_locked = yes
+					}
+					state_population_k > 500
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 1
+						include_locked = yes
+					}
+					state_population_k > 500
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			
+		}
+	}
+
+	joint_focus = {
+		id = CHINESE_suspension_of_agricultural_exports
+		icon = agriculture
+		prerequisite = { focus = CHINESE_taiwan_food_import_from_mainland_china }
+
+		x = -1
+		y = 4
+
+		relative_position_id = CHINESE_the_end_of_the_1999_crisis
+
+		cost = 5
+
+		text_icon = NORDIC_focus_style
+
+		available = {
+			NOT = { has_global_flag = GC_is_on }
+			has_global_flag = prc_end_1999_crisis
+			AND = {
+				country_exists = PRC
+				country_exists = CHI
+				NOT = { PRC = { has_war_with = CHI } }
+				CHI = { conservative < 0.35 }
+			}
+		}
+
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		joint_trigger = {
+			OR = {
+				original_tag = PRC
+				original_tag = CHI
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: completion_reward CHINESE_suspension_of_agricultural_exports"
+			
+			if = {
+				limit = { original_tag = CHI }
+				CHI_decrease_economic_subordination_effect = yes 
+			}
+		}
+
+		completion_reward_joint_originator = {
+			ROOT = { add_to_variable = { NVX_ECO_health = -1 tooltip = minous_economic_health_1 } }
+		}
+
+		completion_reward_joint_member = {
+			ROOT = { add_to_variable = { NVX_ECO_health = -3 tooltip = minous_economic_health_3 } }
+		}
+	}
+
+	joint_focus = {
+		id = CHINESE_mutual_study_abroad
+		icon = GFX_focus_research2
+		prerequisite = { focus = CHINESE_economic_exchange }
+
+		x = 0
+		y = 3
+
+		relative_position_id = CHINESE_the_end_of_the_1999_crisis
+
+		cost = 5
+
+		text_icon = NORDIC_focus_style
+
+		available = {
+			NOT = { has_global_flag = GC_is_on }
+			has_global_flag = prc_end_1999_crisis
+			AND = {
+				country_exists = PRC
+				country_exists = CHI
+				NOT = { PRC = { has_war_with = CHI } }
+			}
+		}
+
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		joint_trigger = {
+			OR = {
+				original_tag = PRC
+				original_tag = CHI
+			}
+		}
+		
+		ai_will_do = {
+			base = 1
+			modifier = {
+				factor = 2
+				OR = {
+					has_idea = economy_growth
+					has_idea = economy_boom
+				}	
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: completion_reward CHINESE_mutual_study_abroad"
+		}
+
+		completion_reward_joint_originator = {
+			add_cic = 800
+		}
+
+		completion_reward_joint_member = {
+			add_cic = 500
+		}
+	}
+
+	joint_focus = {
+		id = CHINESE_academic_exchanges_between_universities_on_both_sides_of_strait
+		icon = GFX_focus_SWI_issue_war_bonds
+		prerequisite = { focus = CHINESE_mutual_study_abroad }
+
+		x = 1
+		y = 4
+
+		relative_position_id = CHINESE_the_end_of_the_1999_crisis
+
+		cost = 3
+
+		text_icon = NORDIC_focus_style
+
+		available = {
+			NOT = { has_global_flag = GC_is_on }
+			has_global_flag = prc_end_1999_crisis
+			AND = {
+				country_exists = PRC
+				country_exists = CHI
+				NOT = { PRC = { has_war_with = CHI } }
+			}
+		}
+		
+		ai_will_do = {
+			base = 1.5
+			modifier = {
+				factor = 1.5
+				date > 2003.1.1
+			}
+		}
+
+		search_filters = { FOCUS_FILTER_HISTORICAL }
+
+		joint_trigger = {
+			OR = {
+				original_tag = PRC
+				original_tag = CHI
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: completion_reward CHINESE_academic_exchanges_between_universities_on_both_sides_of_strait"
+		}
+
+		completion_reward_joint_originator = {
+			add_to_tech_sharing_group = chinese_academic_exchanges
+		}
+
+		completion_reward_joint_member = {
+			add_to_tech_sharing_group = chinese_academic_exchanges
+		}
+	}
+
+	joint_focus = {
+		id = CHINESE_ECFA
+		icon = GFX_focus_usa_reestablish_the_gold_standard
+		prerequisite = { focus = CHINESE_mutual_study_abroad }
+
+		x = 0
+		y = 5
+
+		relative_position_id = CHINESE_the_end_of_the_1999_crisis
+
+		cost = 5
+
+		text_icon = NORDIC_focus_style
+
+		available = {
+			NOT = { has_global_flag = GC_is_on }
+			has_global_flag = prc_end_1999_crisis
+			AND = {
+				country_exists = PRC
+				country_exists = CHI
+				NOT = { PRC = { has_war_with = CHI } }
+			}
+			has_stability > 0.55
+			num_of_civilian_factories > 17	
+		}
+
+		search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_HISTORICAL }
+
+		joint_trigger = {
+			OR = {
+				original_tag = PRC
+				original_tag = CHI
+			}
+		}
+		
+		ai_will_do = {
+			base = 1
+			modifier = {
+				factor = 3
+				date > 2006.1.1
+				original_tag = PRC
+			}
+			modifier = {
+				factor = 0.5
+				original_tag = CHI
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: completion_reward GFX_focus_usa_reestablish_the_gold_standard"
+			if = {
+				limit = { original_tag = CHI }
+				country_event = { id = ro_china.joint_events.5 }
+				hidden_effect = { add_ideas = chinese_ECFA_taiwan }
+			}
+
+			if = {
+				limit = { original_tag = PRC }
+				country_event = { id = ro_china.joint_events.6 }
+				hidden_effect = { add_ideas = chinese_ECFA_mainland }
+			}
+
+			if = {
+				limit = { original_tag = CHI }
+				CHI_increase_economic_subordination_effect = yes 
+			}
+		}
+
+		completion_reward_joint_originator = {
+			
+			random_owned_controlled_state = {
+				limit = {
+					has_resources_amount = {
+						resource = steel
+						amount > 0
+					}
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+				add_resource = {
+					type = steel
+					amount = 5
+				}
+			}
+
+		}
+
+		completion_reward_joint_member = {
+
+			random_owned_controlled_state = {
+				limit = {
+					has_resources_amount = {
+						resource = steel
+						amount > 0
+					}
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_resource = {
+					type = steel
+					amount = 3
+				}
+			}
+			
+		}
+	}
+
+	joint_focus = {
+		id = CHINESE_common_economic_prosperity
+		icon = GFX_focus_NORDIC_com_institution_2
+		prerequisite = { focus = CHINESE_ECFA }
+
+		x = 0
+		y = 6
+
+		relative_position_id = CHINESE_the_end_of_the_1999_crisis
+
+		cost = 5
+
+		text_icon = NORDIC_focus_style
+
+		available = {
+			NOT = { has_global_flag = GC_is_on }
+			has_global_flag = prc_end_1999_crisis
+			AND = {
+				country_exists = PRC
+				country_exists = CHI
+				NOT = { PRC = { has_war_with = CHI } }
+			}
+		}
+
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		joint_trigger = {
+			OR = {
+				original_tag = PRC
+				original_tag = CHI
+			}
+		}
+
+		ai_will_do = {
+			base = 1
+			modifier = {
+				factor = 0
+				original_tag = CHI
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: completion_reward CHINESE_common_economic_prosperity"
+			
+			if = {
+				limit = { original_tag = CHI }
+				CHI_increase_economic_subordination_effect = yes 
+			}
+		}
+
+		completion_reward_joint_originator = {
+			
+			random_owned_controlled_state = {
+				limit = {
+					has_resources_amount = {
+						resource = steel
+						amount > 0
+					}
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+				add_resource = {
+					type = steel
+					amount = 5
+				}
+			}
+
+		}
+
+		completion_reward_joint_member = {
+
+			random_owned_controlled_state = {
+				limit = {
+					has_resources_amount = {
+						resource = steel
+						amount > 0
+					}
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_resource = {
+					type = steel
+					amount = 3
+				}
+			}
+			
+		}
+	}
+	
+	### Taiwan
+
+	joint_focus = {
+		id = CHINESE_pan_green
+		icon = CHINESE_pan_green
+		prerequisite = { focus = CHINESE_the_end_of_the_1999_crisis }
+
+		x = 5
+		y = 1
+
+		relative_position_id = CHINESE_the_end_of_the_1999_crisis
+
+		cost = 3
+
+		text_icon = NORDIC_focus_style
+
+		available = {
+			NOT = { has_global_flag = GC_is_on }
+			has_global_flag = prc_end_1999_crisis
+			AND = {
+				country_exists = PRC
+				country_exists = CHI
+				NOT = { PRC = { has_war_with = CHI } }
+			}
+			original_tag = CHI
+		}
+
+		ai_will_do = {
+			base = 1
+			modifier = {
+				factor = 1.5
+				date > 2001.1.1
+			}
+		}
+
+		search_filters = {  }
+
+		joint_trigger = {
+			OR = {
+				original_tag = PRC
+				original_tag = CHI
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: completion_reward CHINESE_pan_green"
+			if = {
+				limit = { original_tag = CHI }
+				CHI_bop_very_low_increase_effect = yes
+			}
+		}
+
+		completion_reward_joint_originator = {
+			
+		}
+
+		completion_reward_joint_member = {
+
+		}
+	}
+
+	joint_focus = {
+		id = CHINESE_true_name_movement
+		icon = CHINESE_true_name_movement
+		prerequisite = { focus = CHINESE_pan_green }
+
+		x = 0
+		y = 1
+
+		relative_position_id = CHINESE_pan_green
+
+		cost = 5
+
+		text_icon = NORDIC_focus_style
+
+		available = {
+			NOT = { has_global_flag = GC_is_on }
+			has_global_flag = prc_end_1999_crisis
+			AND = {
+				country_exists = PRC
+				country_exists = CHI
+				NOT = { PRC = { has_war_with = CHI } }
+			}
+			original_tag = CHI
+		}
+
+		ai_will_do = {
+			base = 1
+			modifier = {
+				factor = 2
+				date > 2002.1.1
+			}
+		}
+
+		search_filters = { FOCUS_FILTER_HISTORICAL }
+
+		joint_trigger = {
+			OR = {
+				original_tag = PRC
+				original_tag = CHI
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: completion_reward CHINESE_true_name_movement"
+			if = {
+				limit = { original_tag = CHI }
+				CHI_bop_very_low_increase_effect = yes
+			}
+		}
+
+		completion_reward_joint_originator = {
+			country_event = { id = ro_china.joint_events.1 }
+			add_popularity = { ideology = nationalist popularity = 0.02 }
+			add_war_support = 0.03
+		}
+
+		completion_reward_joint_member = {
+		}
+	}
+
+	joint_focus = {
+		id = CHINESE_taiwanese_hokkien_language_education
+		icon = GFX_goal_generic_positive_trade_relations
+		prerequisite = { focus = CHINESE_true_name_movement }
+
+		x = -1
+		y = 2
+
+		relative_position_id = CHINESE_pan_green
+
+		cost = 5
+
+		text_icon = NORDIC_focus_style
+
+		available = {
+			NOT = { has_global_flag = GC_is_on }
+			has_global_flag = prc_end_1999_crisis
+			AND = {
+				country_exists = PRC
+				country_exists = CHI
+				NOT = { PRC = { has_war_with = CHI } }
+			}
+			original_tag = CHI
+		}
+
+		ai_will_do = {
+			base = 1
+		}
+
+		search_filters = {  }
+
+		joint_trigger = {
+			OR = {
+				original_tag = PRC
+				original_tag = CHI
+			}
+		}
+
+		completion_reward = {
+
+			log = "[GetDateText]: [Root.GetName]: completion_reward CHINESE_taiwanese_hokkien_language_education"
+		}
+
+		completion_reward_joint_originator = {
+			add_stability = 0.04
+			add_political_power = 100
+			CHI = { CHI_bop_medium_increase_effect = yes }
+		}
+
+		completion_reward_joint_member = {
+
+		}
+	}
+
+	joint_focus = {
+		id = CHINESE_criticism_of_chiang_kai_shek
+		icon = CHINESE_criticism_of_chiang_kai_shek
+		prerequisite = { focus = CHINESE_true_name_movement }
+
+		x = 1
+		y = 2
+
+		relative_position_id = CHINESE_pan_green
+
+		cost = 5
+
+		text_icon = NORDIC_focus_style
+
+		available = {
+			NOT = { has_global_flag = GC_is_on }
+			has_global_flag = prc_end_1999_crisis
+			AND = {
+				country_exists = PRC
+				country_exists = CHI
+				NOT = { PRC = { has_war_with = CHI } }
+			}
+			original_tag = CHI
+		}
+
+		ai_will_do = {
+			base = 1
+		}
+
+		search_filters = { FOCUS_FILTER_HISTORICAL }
+
+		joint_trigger = {
+			OR = {
+				original_tag = PRC
+				original_tag = CHI
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: completion_reward CHINESE_criticism_of_chiang_kai_shek"
+		}
+
+		completion_reward_joint_originator = {
+			fourth_estate_conservative_decrease = yes
+			CHI = { CHI_bop_low_increase_effect = yes }
+		}
+
+		completion_reward_joint_member = {
+
+		}
+	}
+
+	joint_focus = {
+		id = CHINESE_aboriginal_history
+		icon = CHINESE_aboriginal_history
+		prerequisite = { focus = CHINESE_taiwanese_hokkien_language_education }
+
+		x = -2
+		y = 3
+
+		relative_position_id = CHINESE_pan_green
+
+		cost = 5
+
+		text_icon = NORDIC_focus_style
+
+		available = {
+			NOT = { has_global_flag = GC_is_on }
+			has_global_flag = prc_end_1999_crisis
+			AND = {
+				country_exists = PRC
+				country_exists = CHI
+				NOT = { PRC = { has_war_with = CHI } }
+			}
+			original_tag = CHI
+		}
+
+		ai_will_do = {
+			base = 1
+		}
+
+		search_filters = {  }
+
+		joint_trigger = {
+			OR = {
+				original_tag = PRC
+				original_tag = CHI
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: completion_reward CHINESE_aboriginal_history"
+		}
+
+		completion_reward_joint_originator = {
+			add_ideas = CHINESE_aboriginal_history_idea
+		}
+
+		completion_reward_joint_member = {
+
+		}
+	}
+
+	joint_focus = {
+		id = CHINESE_history_of_taiwan_s_democracy
+		icon = WAS_preparation_for_new_constitution_red
+		prerequisite = { focus = CHINESE_taiwanese_hokkien_language_education }
+		prerequisite = { focus = CHINESE_criticism_of_chiang_kai_shek }
+
+		x = 0
+		y = 3
+
+		relative_position_id = CHINESE_pan_green
+
+		cost = 5
+
+		text_icon = NORDIC_focus_style
+
+		available = {
+			NOT = { has_global_flag = GC_is_on }
+			has_global_flag = prc_end_1999_crisis
+			AND = {
+				country_exists = PRC
+				country_exists = CHI
+				NOT = { PRC = { has_war_with = CHI } }
+			}
+			original_tag = CHI
+		}
+
+		ai_will_do = {
+			base = 1
+		}
+
+		search_filters = {  }
+
+		joint_trigger = {
+			OR = {
+				original_tag = PRC
+				original_tag = CHI
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: completion_reward CHINESE_history_of_taiwan_s_democracy"
+		}
+
+		completion_reward_joint_originator = {
+			add_popularity = { ideology = social_liberal popularity = 0.04 }
+			CHI = { CHI_bop_low_increase_effect = yes }
+			fourth_estate_social_liberal_increase = yes
+			#fourth_estate_conservative_decrease = yes
+		}
+
+		completion_reward_joint_member = {
+
+		}
+	}
+
+	joint_focus = {
+		id = CHINESE_taiwan_soft_power
+		icon = align_to_taiwan
+		prerequisite = { focus = CHINESE_true_name_movement }
+
+		x = 3
+		y = 2
+
+		relative_position_id = CHINESE_pan_green
+
+		cost = 5
+
+		text_icon = NORDIC_focus_style
+
+		available = {
+			has_completed_focus = CHINESE_economic_exchange
+
+			NOT = { has_global_flag = GC_is_on }
+			has_global_flag = prc_end_1999_crisis
+			AND = {
+				country_exists = PRC
+				country_exists = CHI
+				NOT = { PRC = { has_war_with = CHI } }
+			}
+			original_tag = CHI
+		}
+
+		ai_will_do = {
+			base = 1
+		}
+
+		search_filters = {  }
+
+		joint_trigger = {
+			OR = {
+				original_tag = PRC
+				original_tag = CHI
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: completion_reward CHINESE_taiwan_soft_power"
+
+			if = {
+				limit = { original_tag = CHI }
+				CHI_decrease_economic_subordination_effect = yes 
+			}
+		}
+
+		completion_reward_joint_originator = {
+			country_event = { id = ro_china.joint_events.2 }
+			CHI = { CHI_bop_medium_increase_effect = yes }
+		}
+
+		completion_reward_joint_member = {
+
+		}
+	}
+
+	joint_focus = {
+		id = CHINESE_complete_acceptance_of_japanese_culture
+		icon = JAP_cool_japan
+		prerequisite = { focus = CHINESE_taiwan_soft_power }
+
+		x = 2
+		y = 3
+
+		relative_position_id = CHINESE_pan_green
+
+		cost = 5
+
+		text_icon = NORDIC_focus_style
+
+		available = {
+			NOT = { has_global_flag = GC_is_on }
+			has_global_flag = prc_end_1999_crisis
+			AND = {
+				country_exists = PRC
+				country_exists = CHI
+				NOT = { PRC = { has_war_with = CHI } }
+			}
+			original_tag = CHI
+		}
+
+		ai_will_do = {
+			base = 2
+		}
+
+		mutually_exclusive = {
+			focus = CHINESE_acceptance_of_pan_east_asia_soft_power
+		}
+
+		search_filters = { FOCUS_FILTER_HISTORICAL }
+
+		joint_trigger = {
+			OR = {
+				original_tag = PRC
+				original_tag = CHI
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: completion_reward CHINESE_complete_acceptance_of_japanese_culture"
+		}
+
+		completion_reward_joint_originator = {
+			add_ideas = CHINESE_co_op_japanese_idea_1
+		}
+
+		completion_reward_joint_member = {
+
+		}
+	}
+
+	joint_focus = {
+		id = CHINESE_study_of_the_colonial_period
+		icon = align_to_japan
+		prerequisite = { focus = CHINESE_complete_acceptance_of_japanese_culture }
+
+		x = 1
+		y = 4
+
+		relative_position_id = CHINESE_pan_green
+
+		cost = 5
+
+		text_icon = NORDIC_focus_style
+
+		available = {
+			NOT = { has_global_flag = GC_is_on }
+			has_global_flag = prc_end_1999_crisis
+			AND = {
+				country_exists = PRC
+				country_exists = CHI
+				NOT = { PRC = { has_war_with = CHI } }
+			}
+			original_tag = CHI
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		joint_trigger = {
+			OR = {
+				original_tag = PRC
+				original_tag = CHI
+			}
+		}
+
+		ai_will_do = {
+			base = 1
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: completion_reward CHINESE_study_of_the_colonial_period"
+		}
+
+		completion_reward_joint_originator = {
+			CHI = { CHI_bop_very_high_increase_effect = yes }
+		}
+
+		completion_reward_joint_member = {
+
+		}
+	}
+
+	joint_focus = {
+		id = CHINESE_taiwanese_anime
+		icon = JAP_anime_tv
+		prerequisite = { focus = CHINESE_complete_acceptance_of_japanese_culture }
+
+		x = 2
+		y = 5
+
+		relative_position_id = CHINESE_pan_green
+
+		cost = 5
+
+		text_icon = NORDIC_focus_style
+
+		available = {
+			NOT = { has_global_flag = GC_is_on }
+			has_global_flag = prc_end_1999_crisis
+			AND = {
+				country_exists = PRC
+				country_exists = CHI
+				NOT = { PRC = { has_war_with = CHI } }
+			}
+			original_tag = CHI
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		joint_trigger = {
+			OR = {
+				original_tag = PRC
+				original_tag = CHI
+			}
+		}
+
+		ai_will_do = {
+			base = 1
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: completion_reward CHINESE_taiwanese_anime"
+		}
+
+		completion_reward_joint_originator = {
+			swap_ideas = {
+				remove_idea = CHINESE_co_op_japanese_idea_1
+				add_idea = CHINESE_co_op_japanese_idea_2
+			}
+		}
+
+		completion_reward_joint_member = {
+
+		}
+	}
+
+	joint_focus = {
+		id = CHINESE_acceptance_of_pan_east_asia_soft_power
+		icon = align_to_south_korea
+		prerequisite = { focus = CHINESE_taiwan_soft_power }
+
+		x = 4
+		y = 3
+
+		relative_position_id = CHINESE_pan_green
+
+		cost = 5
+
+		text_icon = NORDIC_focus_style
+
+		available = {
+			NOT = { has_global_flag = GC_is_on }
+			has_global_flag = prc_end_1999_crisis
+			AND = {
+				country_exists = PRC
+				country_exists = CHI
+				NOT = { PRC = { has_war_with = CHI } }
+			}
+			KOR = { has_country_flag = kor_victory_culture_war_flag }
+			original_tag = CHI
+		}
+
+		mutually_exclusive = {
+			focus = CHINESE_complete_acceptance_of_japanese_culture
+		}
+
+		ai_will_do = {
+			base = 0.5
+		}
+
+		search_filters = {  }
+
+		joint_trigger = {
+			OR = {
+				original_tag = PRC
+				original_tag = CHI
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: completion_reward CHINESE_acceptance_of_pan_east_asia_soft_power"
+		}
+
+		completion_reward_joint_originator = {
+			add_ideas = CHINESE_co_op_korean_idea_1
+		}
+
+		completion_reward_joint_member = {
+
+		}
+	}
+
+	joint_focus = {
+		id = CHINESE_convergence_with_korean_culture
+		icon = kor_dual_korean_democracy_flag_blue
+		prerequisite = { focus = CHINESE_acceptance_of_pan_east_asia_soft_power }
+
+		x = 3
+		y = 4
+
+		relative_position_id = CHINESE_pan_green
+
+		cost = 5
+
+		text_icon = NORDIC_focus_style
+
+		available = {
+			NOT = { has_global_flag = GC_is_on }
+			has_global_flag = prc_end_1999_crisis
+			AND = {
+				country_exists = PRC
+				country_exists = CHI
+				NOT = { PRC = { has_war_with = CHI } }
+			}
+			KOR = { has_country_flag = kor_victory_culture_war_flag }
+			original_tag = CHI
+		}
+
+		ai_will_do = {
+			base = 1
+		}
+
+		search_filters = {  }
+
+		joint_trigger = {
+			OR = {
+				original_tag = PRC
+				original_tag = CHI
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: completion_reward CHINESE_convergence_with_korean_culture"
+		}
+
+		completion_reward_joint_originator = {
+			swap_ideas = {
+				remove_idea = CHINESE_co_op_korean_idea_1
+				add_idea = CHINESE_co_op_korean_idea_2
+			}
+		}
+
+		completion_reward_joint_member = {
+
+		}
+	}
+
+	joint_focus = {
+		id = CHINESE_reducing_china_s_influence
+		icon = WAS_monetary_reform
+		prerequisite = { focus = CHINESE_true_name_movement }
+
+		x = 5
+		y = 2
+
+		relative_position_id = CHINESE_pan_green
+
+		cost = 5
+
+		text_icon = NORDIC_focus_style
+
+		available = {
+			has_completed_focus = CHINESE_mutual_study_abroad
+
+			NOT = { has_global_flag = GC_is_on }
+			has_global_flag = prc_end_1999_crisis
+			AND = {
+				country_exists = PRC
+				country_exists = CHI
+				NOT = { PRC = { has_war_with = CHI } }
+			}
+			original_tag = CHI
+		}
+
+		ai_will_do = {
+			base = 0.2
+			modifier = {
+				add = 2
+				taiwan_non_economic_subordination = no
+			}
+		}
+
+		search_filters = {  }
+
+		joint_trigger = {
+			OR = {
+				original_tag = PRC
+				original_tag = CHI
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: completion_reward CHINESE_reducing_china_s_influence"
+
+			if = {
+				limit = { original_tag = CHI }
+				CHI_decrease_economic_subordination_effect = yes 
+			}
+		}
+
+		completion_reward_joint_originator = {
+			add_to_variable = { NVX_ECO_health = 2 tooltip = additional_economic_health_2 }
+			#CHI = { CHI_bop_high_increase_effect = yes }
+
+			capital_scope = {
+				add_extra_state_shared_building_slots = 1
+			}
+		}
+
+		completion_reward_joint_member = {
+
+		}
+	}
+
+	joint_focus = {
+		id = CHINESE_economic_independence
+		icon = GFX_goal_generic_construct_infrastructure
+		prerequisite = { focus = CHINESE_reducing_china_s_influence }
+
+		x = 5
+		y = 4
+
+		relative_position_id = CHINESE_pan_green
+
+		cost = 5
+
+		text_icon = NORDIC_focus_style
+
+		available = {
+			NOT = { has_global_flag = GC_is_on }
+			has_global_flag = prc_end_1999_crisis
+			AND = {
+				country_exists = PRC
+				country_exists = CHI
+				NOT = { PRC = { has_war_with = CHI } }
+			}
+			original_tag = CHI
+		}
+
+		search_filters = {  }
+
+		joint_trigger = {
+			OR = {
+				original_tag = PRC
+				original_tag = CHI
+			}
+		}
+
+		ai_will_do = {
+			base = 0.2
+			modifier = {
+				add = 2
+				taiwan_non_economic_subordination = no
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: completion_reward CHINESE_economic_independence"
+			
+			if = {
+				limit = { original_tag = CHI }
+				CHI_decrease_economic_subordination_effect = yes 
+			}
+		}
+
+		completion_reward_joint_originator = {
+			add_to_variable = { NVX_ECO_health = 2 tooltip = additional_economic_health_2 }
+			#CHI = { CHI_bop_medium_increase_effect = yes }
+			add_stability = 0.01
+
+			capital_scope = {
+				add_extra_state_shared_building_slots = 2
+			}
+		}
+
+		completion_reward_joint_member = {
+
+		}
+	}
+
+	joint_focus = {
+		id = CHINESE_bank_of_taiwan
+		icon = kor_creative_economy
+		prerequisite = { focus = CHINESE_economic_independence }
+
+		x = 4
+		y = 5
+
+		relative_position_id = CHINESE_pan_green
+
+		cost = 5
+
+		text_icon = NORDIC_focus_style
+
+		available = {
+			NOT = { has_global_flag = GC_is_on }
+			has_global_flag = prc_end_1999_crisis
+			AND = {
+				country_exists = PRC
+				country_exists = CHI
+				NOT = { PRC = { has_war_with = CHI } }
+			}
+			original_tag = CHI
+		}
+
+		search_filters = {  }
+
+		joint_trigger = {
+			OR = {
+				original_tag = PRC
+				original_tag = CHI
+			}
+		}
+
+		ai_will_do = {
+			base = 1
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: completion_reward CHINESE_bank_of_taiwan"
+			
+			if = {
+				limit = { original_tag = CHI }
+				CHI_decrease_economic_subordination_effect = yes 
+			}
+		}
+
+		completion_reward_joint_originator = {
+			add_ideas = CHINESE_taiwan_banking_corporation
+			add_to_variable = { NVX_ECO_health = 1 tooltip = additional_economic_health_1 }
+		}
+
+		completion_reward_joint_member = {
+
+		}
+	}
+
+	joint_focus = {
+		id = CHINESE_invest_more_in_taiwan
+		icon = GFX_focus_generic_land_reclamation
+		prerequisite = { focus = CHINESE_economic_independence }
+
+		x = 6
+		y = 5
+
+		relative_position_id = CHINESE_pan_green
+
+		cost = 5
+
+		text_icon = NORDIC_focus_style
+
+		available = {
+			NOT = { has_global_flag = GC_is_on }
+			has_global_flag = prc_end_1999_crisis
+			AND = {
+				country_exists = PRC
+				country_exists = CHI
+				NOT = { PRC = { has_war_with = CHI } }
+			}
+			original_tag = CHI
+		}
+
+		search_filters = {  }
+
+		joint_trigger = {
+			OR = {
+				original_tag = PRC
+				original_tag = CHI
+			}
+		}
+
+		ai_will_do = {
+			base = 1
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: completion_reward CHINESE_invest_more_in_taiwan"
+		}
+
+		completion_reward_joint_originator = {
+			add_cic = 1000
+
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 1
+						include_locked = yes
+					}
+					state_population_k > 20000
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+			
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 1
+						include_locked = yes
+					}
+					state_population_k > 20000
+				}
+				add_extra_state_shared_building_slots = 1
+			}
+			
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 1
+						include_locked = yes
+					}
+					state_population_k > 20000
+				}
+				add_extra_state_shared_building_slots = 1
+			}
+		}
+
+		completion_reward_joint_member = {
+
+		}
+	}
+
+	joint_focus = {
+		id = CHINESE_international_trade
+		icon = GFX_focus_generic_merchant_fleet
+		prerequisite = { focus = CHINESE_economic_independence }
+
+		x = 8
+		y = 5
+
+		relative_position_id = CHINESE_pan_green
+
+		cost = 5
+
+		text_icon = NORDIC_focus_style
+
+		available = {
+			NOT = { has_global_flag = GC_is_on }
+			has_global_flag = prc_end_1999_crisis
+			AND = {
+				country_exists = PRC
+				country_exists = CHI
+				NOT = { PRC = { has_war_with = CHI } }
+			}
+			original_tag = CHI
+		}
+
+		search_filters = {  }
+
+		joint_trigger = {
+			OR = {
+				original_tag = PRC
+				original_tag = CHI
+			}
+		}
+
+		ai_will_do = {
+			base = 1
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: completion_reward CHINESE_international_trade"
+			
+			if = {
+				limit = { original_tag = CHI }
+				CHI_decrease_economic_subordination_effect = yes 
+			}
+		}
+
+		completion_reward_joint_originator = {
+			every_core_state = {
+				random_select_amount = 5
+				limit = {
+					is_fully_controlled_by = ROOT
+					infrastructure > 2
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+
+		completion_reward_joint_member = {
+
+		}
+	}
+
+	### PR China
+	
+	joint_focus = {
+		id = CHINESE_pan_blue
+		icon = CHINESE_pan_blue
+		prerequisite = { focus = CHINESE_the_end_of_the_1999_crisis }
+
+		x = -5
+		y = 1
+
+		relative_position_id = CHINESE_the_end_of_the_1999_crisis
+
+		cost = 3
+
+		text_icon = NORDIC_focus_style
+
+		available = {
+			NOT = { has_global_flag = GC_is_on }
+			has_global_flag = prc_end_1999_crisis
+			AND = {
+				country_exists = PRC
+				country_exists = CHI
+				NOT = { PRC = { has_war_with = CHI } }
+			}
+			original_tag = PRC
+		}
+
+		search_filters = {  }
+
+		joint_trigger = {
+			OR = {
+				original_tag = PRC
+				original_tag = CHI
+			}
+		}
+
+		ai_will_do = {
+			base = 1
+			modifier = {
+				factor = 1.5
+				date > 2001.1.1
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: completion_reward CHINESE_pan_blue"
+			CHI = { CHI_bop_very_low_decrease_effect = yes }
+
+		}
+
+		completion_reward_joint_originator = {
+			
+		}
+
+		completion_reward_joint_member = {
+
+		}
+	}
+	
+	joint_focus = {
+		id = CHINESE_support_KMT
+		icon = align_to_taiwan
+		prerequisite = { focus = CHINESE_pan_blue }
+
+		x = 0
+		y = 1
+
+		relative_position_id = CHINESE_pan_blue
+
+		cost = 5
+
+		text_icon = NORDIC_focus_style
+
+		available = {
+			NOT = { has_global_flag = GC_is_on }
+			has_global_flag = prc_end_1999_crisis
+			AND = {
+				country_exists = PRC
+				country_exists = CHI
+				NOT = { PRC = { has_war_with = CHI } }
+			}
+			original_tag = PRC
+		}
+
+		search_filters = {  }
+
+		joint_trigger = {
+			OR = {
+				original_tag = PRC
+				original_tag = CHI
+			}
+		}
+
+		ai_will_do = {
+			base = 1
+			modifier = {
+				factor = 1.5
+				date > 2002.1.1
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: completion_reward CHINESE_support_KMT"
+			CHI = { 
+				CHI_bop_low_decrease_effect = yes 
+				add_popularity = { ideology = conservative popularity = 0.03 }
+			}
+
+			if = {
+				limit = { original_tag = CHI }
+				country_event = { id = ro_china.joint_events.7 }
+			}
+
+			if = {
+				limit = { original_tag = PRC }
+				country_event = { id = ro_china.joint_events.8 }
+			}
+		}
+
+		completion_reward_joint_originator = {
+			
+		}
+
+		completion_reward_joint_member = {
+
+		}
+	}
+	
+	joint_focus = {
+		id = CHINESE_military_threat
+		icon = CHINESE_military_threat
+		prerequisite = { focus = CHINESE_support_KMT }
+
+		x = -2
+		y = 2
+
+		relative_position_id = CHINESE_pan_blue
+
+		cost = 5
+
+		text_icon = NORDIC_focus_style
+
+		available = {
+			NOT = { has_global_flag = GC_is_on }
+			has_global_flag = prc_end_1999_crisis
+			AND = {
+				country_exists = PRC
+				country_exists = CHI
+				NOT = { PRC = { has_war_with = CHI } }
+			}
+			original_tag = PRC
+		}
+
+		ai_will_do = {
+			base = 1
+		}
+
+		search_filters = {  }
+
+		joint_trigger = {
+			OR = {
+				original_tag = PRC
+				original_tag = CHI
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: completion_reward CHINESE_military_threat"
+		}
+
+		completion_reward_joint_originator = {
+			CHI = { CHI_bop_low_decrease_effect = yes }
+
+			add_tech_bonus = {
+				name = CHINESE_military_threat
+				bonus = 0.75
+				uses = 1
+				category = infantry_weapons
+				category = support_tech
+				category = artillery
+				category = motorized_equipment
+			}
+		}
+
+		completion_reward_joint_member = {
+			add_war_support = -0.03
+		}
+	}
+	
+	joint_focus = {
+		id = CHINESE_show_of_naval_power
+		icon = PRC_confiscation_of_private_merchant_ships
+		prerequisite = { focus = CHINESE_military_threat }
+
+		x = -2
+		y = 3
+
+		relative_position_id = CHINESE_pan_blue
+
+		cost = 5
+
+		text_icon = NORDIC_focus_style
+
+		available = {
+			NOT = { has_global_flag = GC_is_on }
+			has_global_flag = prc_end_1999_crisis
+			AND = {
+				country_exists = PRC
+				country_exists = CHI
+				NOT = { PRC = { has_war_with = CHI } }
+			}
+		}
+
+		ai_will_do = {
+			base = 1
+		}
+
+		search_filters = {  }
+
+		joint_trigger = {
+			OR = {
+				original_tag = PRC
+				original_tag = CHI
+			}
+		}
+
+		completion_reward = {
+
+		}
+
+		completion_reward_joint_originator = {
+			army_experience = 15
+			navy_experience = 15
+		}
+
+		completion_reward_joint_member = {
+
+		}
+	}
+	
+	joint_focus = {
+		id = CHINESE_air_force_military_training_off_taiwan
+		icon = GFX_goal_generic_air_naval_bomber
+		prerequisite = { focus = CHINESE_show_of_naval_power }
+
+		x = -3
+		y = 4
+
+		relative_position_id = CHINESE_pan_blue
+
+		cost = 5
+
+		text_icon = NORDIC_focus_style
+
+		available = {
+			NOT = { has_global_flag = GC_is_on }
+			has_global_flag = prc_end_1999_crisis
+			AND = {
+				country_exists = PRC
+				country_exists = CHI
+				NOT = { PRC = { has_war_with = CHI } }
+			}
+			original_tag = PRC
+		}
+
+		ai_will_do = {
+			base = 1
+		}
+
+		search_filters = { FOCUS_FILTER_HISTORICAL }
+
+		joint_trigger = {
+			OR = {
+				original_tag = PRC
+				original_tag = CHI
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: completion_reward CHINESE_air_force_military_training_off_taiwan"
+		}
+
+		completion_reward_joint_originator = {
+			air_experience = 15
+		}
+
+		completion_reward_joint_member = {
+
+		}
+	}
+	
+	joint_focus = {
+		id = CHINESE_rocket_launch_training_off_taiwan
+		icon = GFX_focus_rocketry
+		prerequisite = { focus = CHINESE_show_of_naval_power }
+
+		x = -1
+		y = 4
+
+		relative_position_id = CHINESE_pan_blue
+
+		cost = 5
+
+		text_icon = NORDIC_focus_style
+
+		available = {
+			NOT = { has_global_flag = GC_is_on }
+			has_global_flag = prc_end_1999_crisis
+			AND = {
+				country_exists = PRC
+				country_exists = CHI
+				NOT = { PRC = { has_war_with = CHI } }
+			}
+			original_tag = PRC
+		}
+
+		search_filters = { FOCUS_FILTER_HISTORICAL }
+
+		joint_trigger = {
+			OR = {
+				original_tag = PRC
+				original_tag = CHI
+			}
+		}
+
+		ai_will_do = {
+			base = 1
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: completion_reward CHINESE_rocket_launch_training_off_taiwan"
+		}
+
+		completion_reward_joint_originator = {
+			air_experience = 15
+		}
+
+		completion_reward_joint_member = {
+
+		}
+	}
+	
+	joint_focus = {
+		id = CHINESE_economic_threat
+		icon = GFX_focus_SWI_issue_war_bonds
+		prerequisite = { focus = CHINESE_support_KMT }
+
+		x = 0
+		y = 2
+
+		relative_position_id = CHINESE_pan_blue
+
+		cost = 5
+
+		text_icon = NORDIC_focus_style
+
+		available = {
+			NOT = { has_global_flag = GC_is_on }
+			has_global_flag = prc_end_1999_crisis
+			AND = {
+				country_exists = PRC
+				country_exists = CHI
+				NOT = { PRC = { has_war_with = CHI } }
+			}
+			original_tag = PRC
+		}
+
+		search_filters = {  }
+
+		joint_trigger = {
+			OR = {
+				original_tag = PRC
+				original_tag = CHI
+			}
+		}
+
+		ai_will_do = {
+			base = 1
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: completion_reward CHINESE_economic_threat"
+			
+			if = {
+				limit = { original_tag = CHI }
+				CHI_increase_economic_subordination_effect = yes 
+			}
+		}
+
+		completion_reward_joint_originator = {
+			CHI = { CHI_bop_low_decrease_effect = yes }
+			
+		}
+
+		completion_reward_joint_member = {
+			add_to_variable = { NVX_ECO_health = -2 tooltip = minous_economic_health_2 }
+
+		}
+	}
+	
+	joint_focus = {
+		id = CHINESE_taiwan_trade_restrictions
+		icon = GFX_focus_NORDIC_com_institution_1
+		prerequisite = { focus = CHINESE_economic_threat }
+
+		x = 0
+		y = 3
+
+		relative_position_id = CHINESE_pan_blue
+
+		cost = 5
+
+		text_icon = NORDIC_focus_style
+
+		available = {
+			NOT = { has_global_flag = GC_is_on }
+			has_global_flag = prc_end_1999_crisis
+			AND = {
+				country_exists = PRC
+				country_exists = CHI
+				NOT = { PRC = { has_war_with = CHI } }
+			}
+			original_tag = PRC
+		}
+
+		search_filters = {  }
+
+		joint_trigger = {
+			OR = {
+				original_tag = PRC
+				original_tag = CHI
+			}
+		}
+
+		ai_will_do = {
+			base = 1
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: completion_reward CHINESE_taiwan_trade_restrictions"
+			
+			if = {
+				limit = { original_tag = CHI }
+				CHI_increase_economic_subordination_effect = yes 
+			}
+		}
+
+		completion_reward_joint_originator = {
+			
+		}
+
+		completion_reward_joint_member = {
+			add_to_variable = { NVX_ECO_health = -5 tooltip = minous_economic_health_5 }
+		}
+	}
+	
+	joint_focus = {
+		id = CHINESE_politic_threat
+		icon = AIN_thoughtcrime
+		prerequisite = { focus = CHINESE_support_KMT }
+
+		x = 2
+		y = 2
+
+		relative_position_id = CHINESE_pan_blue
+
+		cost = 5
+
+		text_icon = NORDIC_focus_style
+
+		available = {
+			NOT = { has_global_flag = GC_is_on }
+			has_global_flag = prc_end_1999_crisis
+			AND = {
+				country_exists = PRC
+				country_exists = CHI
+				NOT = { PRC = { has_war_with = CHI } }
+			}
+			original_tag = PRC
+		}
+
+		search_filters = {  }
+
+		joint_trigger = {
+			OR = {
+				original_tag = PRC
+				original_tag = CHI
+			}
+		}
+
+		ai_will_do = {
+			base = 1
+			modifier = {
+				factor = 1.5
+				date > 2002.1.1
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: completion_reward CHINESE_politic_threat"
+		}
+
+		completion_reward_joint_originator = {
+			CHI = { CHI_bop_high_decrease_effect = yes }
+		}
+
+		completion_reward_joint_member = {
+			add_stability = -0.03
+			fourth_estate_conservative_increase = yes
+
+		}
+	}
+	
+	joint_focus = {
+		id = CHINESE_anti_secession_law
+		icon = kor_break_unite
+		prerequisite = { focus = CHINESE_politic_threat }
+
+		x = 2
+		y = 3
+
+		relative_position_id = CHINESE_pan_blue
+
+		cost = 5
+
+		text_icon = NORDIC_focus_style
+
+		available = {
+			NOT = { has_global_flag = GC_is_on }
+			has_global_flag = prc_end_1999_crisis
+			AND = {
+				country_exists = PRC
+				country_exists = CHI
+				NOT = { PRC = { has_war_with = CHI } }
+			}
+			original_tag = PRC
+		}
+
+		search_filters = {  }
+
+		joint_trigger = {
+			OR = {
+				original_tag = PRC
+				original_tag = CHI
+			}
+		}
+
+		ai_will_do = {
+			base = 1
+			modifier = {
+				factor = 1.5
+				date > 2004.1.1
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: completion_reward CHINESE_anti_secession_law"
+			CHI = { 
+				CHI_bop_low_decrease_effect = yes 
+			}
+		}
+
+		completion_reward_joint_originator = {
+			add_war_support = 0.03
+		}
+
+		completion_reward_joint_member = {
+			add_war_support = -0.05
+		}
+	}
+
+	joint_focus = {
+		id = CHINESE_deal_with_moderates
+		icon = kor_pro_progressive_crush
+		prerequisite = { focus = CHINESE_anti_secession_law }
+		prerequisite = { focus = CHINESE_taiwan_trade_restrictions }
+
+		x = 1
+		y = 4
+
+		relative_position_id = CHINESE_pan_blue
+
+		cost = 5
+
+		text_icon = NORDIC_focus_style
+
+		available = {
+			NOT = { has_global_flag = GC_is_on }
+			has_global_flag = prc_end_1999_crisis
+			AND = {
+				country_exists = PRC
+				country_exists = CHI
+				NOT = { PRC = { has_war_with = CHI } }
+			}
+			original_tag = PRC
+		}
+
+		search_filters = {  }
+
+		joint_trigger = {
+			OR = {
+				original_tag = PRC
+				original_tag = CHI
+			}
+		}
+
+		ai_will_do = {
+			base = 1
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: completion_reward CHINESE_deal_with_moderates"
+			CHI = { 
+				CHI_bop_low_decrease_effect = yes 
+			}
+		}
+
+		completion_reward_joint_originator = {
+			
+		}
+
+		completion_reward_joint_member = {
+			add_popularity = { ideology = conservative popularity = 0.04 }
+			add_stability = -0.02
+		}
+	}
+
+	joint_focus = {
+		id = CHINESE_attempt_at_diplomatic_isolation
+		icon = PRC_purge_of_opposition
+		prerequisite = { focus = CHINESE_anti_secession_law }
+		prerequisite = { focus = CHINESE_taiwan_trade_restrictions }
+
+		x = 3
+		y = 4
+
+		relative_position_id = CHINESE_pan_blue
+
+		cost = 5
+
+		text_icon = NORDIC_focus_style
+
+		available = {
+			NOT = { has_global_flag = GC_is_on }
+			has_global_flag = prc_end_1999_crisis
+			AND = {
+				country_exists = PRC
+				country_exists = CHI
+				NOT = { PRC = { has_war_with = CHI } }
+			}
+			original_tag = PRC
+		}
+
+		ai_will_do = {
+			base = 1
+		}
+
+		search_filters = {  }
+
+		joint_trigger = {
+			OR = {
+				original_tag = PRC
+				original_tag = CHI
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: completion_reward CHINESE_attempt_at_diplomatic_isolation"
+		}
+
+		completion_reward_joint_originator = {
+			
+		}
+
+		completion_reward_joint_member = {
+			add_to_variable = { NVX_ECO_health = -3 tooltip = minous_economic_health_3 }
+			add_popularity = { ideology = conservative popularity = 0.02 }
+			add_stability = -0.01
+		}
+	}
+
+	joint_focus = {
+		id = CHINESE_path_to_integration
+		icon = PRC_our_traditions
+		prerequisite = { focus = CHINESE_deal_with_moderates focus = CHINESE_attempt_at_diplomatic_isolation }
+
+		x = 2
+		y = 5
+
+		relative_position_id = CHINESE_pan_blue
+
+		cost = 5
+
+		text_icon = NORDIC_focus_style
+
+		available = {
+			NOT = { has_global_flag = GC_is_on }
+			has_global_flag = prc_end_1999_crisis
+			AND = {
+				country_exists = PRC
+				country_exists = CHI
+				NOT = { PRC = { has_war_with = CHI } }
+			}
+			original_tag = PRC
+		}
+
+		ai_will_do = {
+			base = 1
+		}
+
+		search_filters = {  }
+
+		joint_trigger = {
+			OR = {
+				original_tag = PRC
+				original_tag = CHI
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: completion_reward CHINESE_path_to_integration"
+			
+			if = {
+				limit = { original_tag = CHI }
+				CHI_increase_economic_subordination_effect = yes 
+			}
+		}
+
+		completion_reward_joint_originator = {
+			add_political_power = 100
+		}
+
+		completion_reward_joint_member = {
+			fourth_estate_conservative_increase = yes
 		}
 	}

@@ -1,0 +1,614 @@
+on_actions = {
+	
+	on_new_term_election = {
+		random_events = {
+			100 = ro_china.introgame.19
+			100 = ro_china.mid_events.1
+		}
+	}
+	
+	on_state_control_changed = {
+	#	effect = {
+	#		if = {
+	#			limit = { tag = CHI }
+	#			if = {
+	#				limit = {
+	#					FROM = { original_tag = PRC }
+	#					FROM.FROM = { state = 922 }
+	#				}
+	#				country_event = { id = ro_china.independence_events.106 } #The $STATE_922$ Falls
+	#			}
+	#		}
+	#		if = {
+	#			limit = { tag = CHI }
+	#			if = {
+	#				limit = {
+	#					FROM = { original_tag = PRC }
+	#					FROM.FROM = { state = 1081 }
+	#				}
+	#				country_event = { id = ro_china.independence_events.107 } #The $STATE_1081$ Falls
+	#			}
+	#		}
+	#		if = {
+	#			limit = { tag = CHI }
+	#			if = {
+	#				limit = {
+	#					FROM = { original_tag = PRC }
+	#					FROM.FROM = { state = 524 }
+	#				}
+	#				country_event = { id = ro_china.independence_events.108 } #The $STATE_524$ Falls
+	#			}
+	#		}
+	#	}
+	}
+	
+	on_weekly_CHI = {
+		#FINLAND BOP
+		effect = {
+			##################
+			### Lee Teng-hui   ###
+			##################
+			if = {
+				limit = {
+					has_country_leader = {
+						ruling_only = yes
+						character = CHI_lee_tenghui
+					}
+				}
+				
+				if = {
+					limit = {
+						OR = {
+							has_war = no
+						}
+					}
+					#Add modifier (only once)
+					if = {
+						limit = {
+							NOT = {
+								has_power_balance_modifier = {
+									id = CHI_power_balance
+									modifier = CHI_bop_modifier_taiwanese_separatist
+								}
+							}
+						}
+						add_power_balance_modifier = {
+							id = CHI_power_balance
+							modifier = CHI_bop_modifier_taiwanese_separatist
+						}
+					}
+				}
+				else = {
+					if = {
+						limit = {
+							has_power_balance_modifier = {
+								id = CHI_power_balance
+								modifier = CHI_bop_modifier_taiwanese_separatist
+							}
+						}
+						remove_power_balance_modifier = {
+							id = CHI_power_balance
+							modifier = CHI_bop_modifier_taiwanese_separatist
+						}
+					}
+				}
+				
+				if = {
+					limit = {
+						power_balance_value = {
+							id = CHI_power_balance
+							value > 0.25
+						}
+					}
+					#Add modifier (only once)
+					if = {
+						limit = {
+							NOT = {
+								has_power_balance_modifier = {
+									id = CHI_power_balance
+									modifier = CHI_bop_modifier_moderate_separatist
+								}
+							}
+						}
+						add_power_balance_modifier = {
+							id = CHI_power_balance
+							modifier = CHI_bop_modifier_moderate_separatist
+						}
+					}
+				}
+				else = {
+					if = {
+						limit = {
+							has_power_balance_modifier = {
+								id = CHI_power_balance
+								modifier = CHI_bop_modifier_moderate_separatist
+							}
+						}
+						remove_power_balance_modifier = {
+							id = CHI_power_balance
+							modifier = CHI_bop_modifier_moderate_separatist
+						}
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					has_country_leader = {
+						ruling_only = yes
+						character = CHI_chen_shuibian
+					}
+				}
+				
+				if = {
+					limit = {
+						check_variable = {
+							var = NVX_ECO_health
+							value = 45
+							compare = greater_than_or_equals
+						}
+					}
+					#Add modifier (only once)
+					if = {
+						limit = {
+							NOT = {
+								has_power_balance_modifier = {
+									id = CHI_power_balance
+									modifier = CHI_bop_modifier_promising_reformer
+								}
+							}
+						}
+						add_power_balance_modifier = {
+							id = CHI_power_balance
+							modifier = CHI_bop_modifier_promising_reformer
+						}
+					}
+				}
+				else = {
+					if = {
+						limit = {
+							has_power_balance_modifier = {
+								id = CHI_power_balance
+								modifier = CHI_bop_modifier_promising_reformer
+							}
+						}
+						remove_power_balance_modifier = {
+							id = CHI_power_balance
+							modifier = CHI_bop_modifier_promising_reformer
+						}
+					}
+				}
+				
+				if = {
+					limit = {
+						check_variable = {
+							var = NVX_ECO_health
+							value = 30
+							compare = less_than
+						}
+					}
+					#Add modifier (only once)
+					if = {
+						limit = {
+							NOT = {
+								has_power_balance_modifier = {
+									id = CHI_power_balance
+									modifier = CHI_bop_modifier_broken_reform
+								}
+							}
+						}
+						add_power_balance_modifier = {
+							id = CHI_power_balance
+							modifier = CHI_bop_modifier_broken_reform
+						}
+					}
+				}
+				else = {
+					if = {
+						limit = {
+							has_power_balance_modifier = {
+								id = CHI_power_balance
+								modifier = CHI_bop_modifier_broken_reform
+							}
+						}
+						remove_power_balance_modifier = {
+							id = CHI_power_balance
+							modifier = CHI_bop_modifier_broken_reform
+						}
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					has_country_leader = {
+						ruling_only = yes
+						character = CHI_wu_shu_chen
+					}
+				}
+				
+				if = {
+					limit = {
+						check_variable = {
+							var = NVX_ECO_health
+							value = 45
+							compare = greater_than_or_equals
+						}
+					}
+					#Add modifier (only once)
+					if = {
+						limit = {
+							NOT = {
+								has_power_balance_modifier = {
+									id = CHI_power_balance
+									modifier = CHI_bop_modifier_heir_to_chen_shui_bian
+								}
+							}
+						}
+						add_power_balance_modifier = {
+							id = CHI_power_balance
+							modifier = CHI_bop_modifier_heir_to_chen_shui_bian
+						}
+					}
+				}
+				else = {
+					if = {
+						limit = {
+							has_power_balance_modifier = {
+								id = CHI_power_balance
+								modifier = CHI_bop_modifier_heir_to_chen_shui_bian
+							}
+						}
+						remove_power_balance_modifier = {
+							id = CHI_power_balance
+							modifier = CHI_bop_modifier_heir_to_chen_shui_bian
+						}
+					}
+				}
+				
+				if = {
+					limit = {
+						check_variable = {
+							var = NVX_ECO_health
+							value = 30
+							compare = less_than
+						}
+					}
+					#Add modifier (only once)
+					if = {
+						limit = {
+							NOT = {
+								has_power_balance_modifier = {
+									id = CHI_power_balance
+									modifier = CHI_bop_modifier_traitor_of_chen_shui_bian
+								}
+							}
+						}
+						add_power_balance_modifier = {
+							id = CHI_power_balance
+							modifier = CHI_bop_modifier_traitor_of_chen_shui_bian
+						}
+					}
+				}
+				else = {
+					if = {
+						limit = {
+							has_power_balance_modifier = {
+								id = CHI_power_balance
+								modifier = CHI_bop_modifier_traitor_of_chen_shui_bian
+							}
+						}
+						remove_power_balance_modifier = {
+							id = CHI_power_balance
+							modifier = CHI_bop_modifier_traitor_of_chen_shui_bian
+						}
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					has_country_leader = {
+						ruling_only = yes
+						character = CHI_frank_hsieh
+					}
+				}
+				
+				if = {
+					limit = {
+						has_stability > 0.95
+					}
+					#Add modifier (only once)
+					if = {
+						limit = {
+							NOT = {
+								has_power_balance_modifier = {
+									id = CHI_power_balance
+									modifier = CHI_bop_modifier_symbol_of_democracy
+								}
+							}
+						}
+						add_power_balance_modifier = {
+							id = CHI_power_balance
+							modifier = CHI_bop_modifier_symbol_of_democracy
+						}
+					}
+				}
+				else = {
+					if = {
+						limit = {
+							has_power_balance_modifier = {
+								id = CHI_power_balance
+								modifier = CHI_bop_modifier_symbol_of_democracy
+							}
+						}
+						remove_power_balance_modifier = {
+							id = CHI_power_balance
+							modifier = CHI_bop_modifier_symbol_of_democracy
+						}
+					}
+				}
+				
+				if = {
+					limit = {
+						has_stability < 0.6
+					}
+					#Add modifier (only once)
+					if = {
+						limit = {
+							NOT = {
+								has_power_balance_modifier = {
+									id = CHI_power_balance
+									modifier = CHI_bop_modifier_falling_democracy
+								}
+							}
+						}
+						add_power_balance_modifier = {
+							id = CHI_power_balance
+							modifier = CHI_bop_modifier_falling_democracy
+						}
+					}
+				}
+				else = {
+					if = {
+						limit = {
+							has_power_balance_modifier = {
+								id = CHI_power_balance
+								modifier = CHI_bop_modifier_falling_democracy
+							}
+						}
+						remove_power_balance_modifier = {
+							id = CHI_power_balance
+							modifier = CHI_bop_modifier_falling_democracy
+						}
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					has_country_leader = {
+						ruling_only = yes
+						character = CHI_tsai_ing_wen
+					}
+				}
+				
+				#if = {
+				#	limit = {
+				#		progressive > 0.01
+				#	}
+				#	#Add modifier (only once)
+				#	if = {
+				#		limit = {
+				#			NOT = {
+				#				has_power_balance_modifier = {
+				#					id = CHI_power_balance
+				#					modifier = CHI_bop_modifier_taiwan_for_minorities
+				#				}
+				#			}
+				#		}
+				#		add_power_balance_modifier = {
+				#			id = CHI_power_balance
+				#			modifier = CHI_bop_modifier_taiwan_for_minorities
+				#		}
+				#	}
+				#}
+				#else = {
+				#	if = {
+				#		limit = {
+				#			has_power_balance_modifier = {
+				#				id = CHI_power_balance
+				#				modifier = CHI_bop_modifier_taiwan_for_minorities
+				#			}
+				#		}
+				#		remove_power_balance_modifier = {
+				#			id = CHI_power_balance
+				#			modifier = CHI_bop_modifier_taiwan_for_minorities
+				#		}
+				#	}
+				#}
+				
+				if = {
+					limit = {
+						has_opinion	= {
+							target = JAP
+							value > 50
+						}
+					}
+					#Add modifier (only once)
+					if = {
+						limit = {
+							NOT = {
+								has_power_balance_modifier = {
+									id = CHI_power_balance
+									modifier = CHI_bop_modifier_kirishima_xiao_ing
+								}
+							}
+						}
+						add_power_balance_modifier = {
+							id = CHI_power_balance
+							modifier = CHI_bop_modifier_kirishima_xiao_ing
+						}
+					}
+				}
+				else = {
+					if = {
+						limit = {
+							has_power_balance_modifier = {
+								id = CHI_power_balance
+								modifier = CHI_bop_modifier_kirishima_xiao_ing
+							}
+						}
+						remove_power_balance_modifier = {
+							id = CHI_power_balance
+							modifier = CHI_bop_modifier_kirishima_xiao_ing
+						}
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					has_country_leader = {
+						ruling_only = yes
+						character = CHI_annette_lu
+					}
+				}
+				
+				if = {
+					limit = {
+						social_liberal > 0.5
+					}
+					#Add modifier (only once)
+					if = {
+						limit = {
+							NOT = {
+								has_power_balance_modifier = {
+									id = CHI_power_balance
+									modifier = CHI_bop_modifier_stabilized_DPP
+								}
+							}
+						}
+						add_power_balance_modifier = {
+							id = CHI_power_balance
+							modifier = CHI_bop_modifier_stabilized_DPP
+						}
+					}
+				}
+				else = {
+					if = {
+						limit = {
+							has_power_balance_modifier = {
+								id = CHI_power_balance
+								modifier = CHI_bop_modifier_stabilized_DPP
+							}
+						}
+						remove_power_balance_modifier = {
+							id = CHI_power_balance
+							modifier = CHI_bop_modifier_stabilized_DPP
+						}
+					}
+				}
+				
+				if = {
+					limit = {
+						check_variable = {
+							var = NVX_ECO_health
+							value = 30
+							compare = less_than
+						}
+					}
+					#Add modifier (only once)
+					if = {
+						limit = {
+							NOT = {
+								has_power_balance_modifier = {
+									id = CHI_power_balance
+									modifier = CHI_bop_modifier_economic_crisis
+								}
+							}
+						}
+						add_power_balance_modifier = {
+							id = CHI_power_balance
+							modifier = CHI_bop_modifier_economic_crisis
+						}
+					}
+				}
+				else = {
+					if = {
+						limit = {
+							has_power_balance_modifier = {
+								id = CHI_power_balance
+								modifier = CHI_bop_modifier_economic_crisis
+							}
+						}
+						remove_power_balance_modifier = {
+							id = CHI_power_balance
+							modifier = CHI_bop_modifier_economic_crisis
+						}
+					}
+				}
+			}
+			
+			if = {
+				limit = {
+					OR = {
+						has_country_leader = {
+							ruling_only = yes
+							character = CHI_chen_shuibian
+						}
+						has_country_leader = {
+							ruling_only = yes
+							character = CHI_wu_shu_chen
+						}
+						has_country_leader = {
+							ruling_only = yes
+							character = CHI_frank_hsieh
+						}
+					}
+				}
+				
+				if = {
+					limit = {
+						OR = {
+							nationalist > 0.04
+							communist > 0.04
+						}
+					}
+					#Add modifier (only once)
+					if = {
+						limit = {
+							NOT = {
+								has_power_balance_modifier = {
+									id = CHI_power_balance
+									modifier = CHI_bop_modifier_threat_of_pro_china_factions
+								}
+							}
+						}
+						add_power_balance_modifier = {
+							id = CHI_power_balance
+							modifier = CHI_bop_modifier_threat_of_pro_china_factions
+						}
+					}
+				}
+				else_if = {
+					limit = {
+						AND = {
+							nationalist < 0.04
+							communist < 0.04
+						}
+					}
+					if = {
+						limit = {
+							has_power_balance_modifier = {
+								id = CHI_power_balance
+								modifier = CHI_bop_modifier_threat_of_pro_china_factions
+							}
+						}
+						remove_power_balance_modifier = {
+							id = CHI_power_balance
+							modifier = CHI_bop_modifier_threat_of_pro_china_factions
+						}
+					}
+				}
+			}
+			
+			CHI_clean_all_obsolete_bop_modifiers_effect = yes
+		}
+	}
+}

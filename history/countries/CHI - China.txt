@@ -11,11 +11,89 @@ if = {
 	}
 }
 
-set_research_slots = 5
+set_research_slots = 3
 set_convoys = 700
-set_stability = 0.8
+set_stability = 0.5
 
 set_country_flag = country_language_chinese
+set_country_flag = unique_political_advisor_nomal
+set_country_flag = unique_industrial_concern
+
+### BOP ###
+set_variable = { CHI_bop_decision_cost_multiplier = 2 } #BoP decisions with dynamic costs will double their cost every time they are taken
+set_variable = { CHI_appeal_to_the_taiwanese_spirit_dec_cost = 75 }
+set_variable = { CHI_organize_the_pan_green_dec_cost = 25 }
+set_variable = { CHI_organize_the_pan_blue_dec_cost = 25 }
+
+### Events ###
+
+country_event = {
+	id = ro_china.introgame.1 #The Year of the Dragon
+	days = 3
+}
+
+country_event = {
+	id = ro_china.introgame.3 #The Divided KMT
+	days = 14
+}
+
+country_event = {
+	id = ro_china.introgame.6 #James Soong's Controversy over Corruption
+	days = 21
+}
+
+country_event = {
+	id = ro_china.introgame.8 #James Soong to Rally his Approval Ratings Again
+	days = 35
+}
+
+country_event = {
+	id = ro_china.introgame.12 #Lien Chen Earning Approval Ratings
+	days = 48
+}
+
+country_event = {
+	id = ro_china.introgame.14 #Chen Shui-bian's Speak
+	days = 55
+}
+
+country_event = {
+	id = ro_china.introgame.17 #Yuan T. Lee's Declaration of Support for the DPP
+	days = 63
+}
+
+country_event = {
+	id = ro_china.early_events.5 #The Loss of Weapons at a Military Base in Taoyuan
+	days = 89
+}
+
+country_event = {
+	id = ro_china.early_events.6 #Suspected Taoyuan Weapon Thief Caught in Botched Investigation
+	days = 112
+}
+
+country_event = {
+	id = ro_china.early_events.7 #[CHI.GetAdjective] Officer Fleeing Overseas
+	days = 225
+}
+
+country_event = {
+	id = ro_china.early_events.9 #Lee Teng-hui Found Taiwan Solidarity Union
+	days = 420
+}
+
+if = {
+	limit = {
+		NOT = { has_global_flag = GC_is_on }
+	}
+	set_power_balance = {
+		id = CHI_power_balance
+		left_side = CHI_pan_blue
+		right_side = CHI_pan_green
+		set_value = -0.45
+	}
+	add_ideas = CHI_formosa_lily_2
+}
 
 if = {
 	limit = {
@@ -342,8 +420,8 @@ add_opinion_modifier = {
 }
 
 set_politics = {
-	ruling_party = conservative
-	last_election = "1996.5.20"
+	ruling_party = market_liberal
+	last_election = "1996.3.28"
 	election_frequency = 48
 	elections_allowed = yes
 }
@@ -351,11 +429,9 @@ set_politics = {
 set_popularities = {
     nationalist = 2
     conservative = 45
-    market_liberal = 10
-    social_liberal = 30
-    social_democrat = 5
-    progressive = 5
-    democratic_socialist = 3
+    social_liberal = 48
+    social_democrat = 2
+    market_liberal = 3
 }
 
 add_ideas = {
@@ -365,6 +441,7 @@ add_ideas = {
 	population_growth_stagnation
 	partially_recognized_state
 	limited_conscription
+	CHI_the_lone_wolf
 }
 recruit_character = CHI_kung_techeng
 recruit_character = CHI_lee_tenghui
@@ -387,7 +464,16 @@ recruit_character = CHI_pan_ma
 recruit_character = CHI_tan_qiu
 recruit_character = CHI_ma_wei
 
-
+recruit_character = CHI_annette_lu
+recruit_character = CHI_wu_shu_chen
+recruit_character = CHI_frank_hsieh
+recruit_character = CHI_tsai_ing_wen
+recruit_character = CHI_lien_chan
+recruit_character = CHI_yu_shyi_kun
+recruit_character = CHI_ma_ying_jeou
+recruit_character = CHI_hau_pei_tsun
+recruit_character = CHI_chen_tien_fu
+recruit_character = CHI_james_soong
 
 2016.1.16 = {
 	set_politics = {

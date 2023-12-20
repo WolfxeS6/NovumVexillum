@@ -537,7 +537,70 @@ news_event = {
 	}
 }
 
+#indiscriminate mine operation
+news_event = {
+	id = pr_china_news.17
+	title = pr_china_news.17.t
+	desc = pr_china_news.17.desc
+	picture = GFX_news_event_united_states_navy
+	
+	major = yes
+	is_triggered_only = yes
+	
+	option = {
+		name = pr_china_news.17.a
+		trigger = {
+			original_tag = CHI
+		}
+		add_ideas = CHI_blockade_of_the_sea
+	}
+	
+	option = {
+		name = pr_china_news.17.b
+		trigger = {
+			original_tag = PRC
+		}
+		add_named_threat = { threat = 3 name = pr_china_news.17.t }
+	}
+	
+	option = {
+		name = pr_china_news.17.c
+		trigger = { 
+			NOT = { original_tag = CHI }
+			NOT = { original_tag = PRC }
+		}
+	}
+}
 
+#[From.GetName] joins the Chinese Alliance
+news_event = {
+	id = pr_china_news.18
+	title = pr_china_news.18.t
+	desc = pr_china_news.18.desc
+	picture = GFX_news_event_chinese_soldiers
+	
+	major = yes
+	is_triggered_only = yes
+	
+	option = {
+		name = pr_china_news.18.a
+		trigger = { original_tag = PRC }
+	}
+	
+	option = {
+		name = pr_china_news.18.b
+		trigger = { original_tag = USA }
+	}
+	
+	
+	option = {
+		name = pr_china_news.18.c
+		trigger = { 
+			NOT = { original_tag = PRC }
+			NOT = { original_tag = USA }
+		}
+	}
+}
 country_event = {
 	id = pr_china.1
 	title = pr_china.1.t
@@ -4337,5 +4400,549 @@ country_event = {
 	option = {
 		name = moh_south_prchina.9.a
 		#add_political_power = -50
+	}
+}
+
+#############################################################
+
+add_namespace = cross_strait_war
+
+# Finnish demands available - event for FIN (after completing mission and taking the decision to send demands)
+country_event = {
+	id = cross_strait_war.1
+	title = cross_strait_war.1.t
+	desc = cross_strait_war.1.desc
+	picture = GFX_report_event_taiwan_army_3
+	
+	is_triggered_only = yes
+
+	#OK
+	option = {
+		name = cross_strait_war.1.a
+		unlock_decision_tooltip = CHI_demand_peace_negotiations
+	}
+}
+
+# FIN demands white peace after turning the tables in Winter War - Event for SOV (after FIN occupies either Leningrad)
+country_event = {
+	id = cross_strait_war.2
+	title = cross_strait_war.2.t
+	desc = cross_strait_war.2.desc
+	picture = GFX_report_event_taiwan_government
+	
+	fire_only_once = yes
+
+	is_triggered_only = yes
+
+	#Accept
+	option = {
+		name = cross_strait_war.2.a
+		
+		ai_chance = {
+			base = 1 #Soviets should always surrender territory otherwise Finnish player can get screwed
+		}
+
+		effect_tooltip = {
+			white_peace = FROM
+			if = {
+				limit = {
+					FROM = {
+						is_faction_leader = yes
+					}
+				}
+				every_enemy_country = {
+					limit = {
+						is_in_faction_with = FROM
+					}
+					ROOT = { white_peace = PREV }
+				}
+			}
+			FROM = {
+				every_owned_state = {
+					limit = {
+						is_claimed_by = ROOT
+					}
+					remove_claim_by = ROOT
+				}
+			}
+		}
+		hidden_effect = {
+			FROM = { country_event = { id = cross_strait_war.3 hours = 1 } }
+		}
+	}
+
+	#Reject
+	option = {
+		name = cross_strait_war.3.b
+
+		ai_chance = {
+			base = 0
+		}
+
+		add_stability = -0.1
+		add_war_support = -0.1
+		add_timed_idea = {
+			idea = CHI_public_opposition_to_the_war
+			days = 730
+		}
+
+		hidden_effect = {
+			FROM = { country_event = { id = cross_strait_war.4 hours = 1 } }
+		}
+	}
+}
+
+# Soviets accept white peace - event for FIN
+country_event = {
+	id = cross_strait_war.3
+	title = cross_strait_war.3.t
+	desc = cross_strait_war.3.desc
+	picture = GFX_report_event_PRC_CCP_3
+	
+	fire_only_once = yes
+
+	is_triggered_only = yes
+
+	option = {
+		name = cross_strait_war.3.a
+		hidden_effect = {
+			news_event = { id = ro_china.news.8 hours = 8 }
+		}
+		
+		white_peace = FROM
+		
+		if = {
+			limit = {
+				is_faction_leader = yes
+			}
+			every_other_country = {
+				limit = {
+					is_in_faction_with = ROOT
+				}
+				white_peace = FROM
+			}
+		}
+		every_owned_state = {
+			limit = {
+				is_claimed_by = FROM
+			}
+			remove_claim_by = FROM
+		}
+		
+		every_owned_state = {
+			remove_dynamic_modifier = { modifier = dynamic_prc_strong_de_jure }
+		}
+		
+		remove_ideas = partially_recognized_state
+		
+		hidden_effect = { #Prevent Soviet AI from insta-justify on Finland after peacing out.
+			FROM = {
+				add_ai_strategy = { 
+					type = antagonize 
+					id = ROOT
+					value = -200
+				}
+			}
+		}
+	}
+}
+
+# Soviets reject white peace - event for FIN
+country_event = {
+	id = cross_strait_war.4
+	title = cross_strait_war.4.t
+	desc = cross_strait_war.4.desc
+	picture = GFX_report_event_taiwan_government
+	
+	fire_only_once = yes
+
+	is_triggered_only = yes
+
+	option = {
+		name = cross_strait_war.4.a
+		
+		effect_tooltip = {
+			FROM = {
+				add_stability = -0.1
+				add_war_support = -0.1
+				add_timed_idea = {
+					idea = CHI_public_opposition_to_the_war
+					days = 730
+				}
+			}
+		}	
+	}
+}
+
+# FIN demands peace and territorial concessions after turning the tables in Winter War - Event for SOV (after FIN occupies either Leningrad)
+country_event = {
+	id = cross_strait_war.5
+	title = cross_strait_war.5.t
+	desc = cross_strait_war.5.desc
+	picture = GFX_report_event_taiwan_government
+	
+	fire_only_once = yes
+
+	is_triggered_only = yes
+
+	#Accept
+	option = {
+		name = cross_strait_war.5.a
+		
+		ai_chance = {
+			base = 1 #Soviets should always surrender territory otherwise Finnish player can get screwed
+		}
+
+		effect_tooltip = {
+			white_peace = FROM
+			if = {
+				limit = {
+					FROM = {
+						is_faction_leader = yes
+					}
+				}
+				every_enemy_country = {
+					limit = {
+						is_in_faction_with = FROM
+					}
+					ROOT = { white_peace = PREV }
+				}
+			}
+
+			FROM = {
+				every_owned_state = {
+					limit = {
+						is_claimed_by = ROOT
+					}
+					remove_claim_by = ROOT
+				}
+			}
+
+			#Shanghai
+			if = {
+				limit = {
+					613 = { has_state_flag = CHI_demanded_by_taiwan_in_cross_strait_war_flag }
+				}
+				FROM = { transfer_state = 613 }
+			}
+			#Peral River Delta
+			if = {
+				limit = {
+					592 = { has_state_flag = CHI_demanded_by_taiwan_in_cross_strait_war_flag }
+				}
+				FROM = { transfer_state = 592 }
+			}
+			#Hainan
+			if = {
+				limit = {
+					591 = { has_state_flag = CHI_demanded_by_taiwan_in_cross_strait_war_flag }
+				}
+				FROM = { transfer_state = 591 }
+			}
+		}
+		hidden_effect = {
+			FROM = { country_event = { id = cross_strait_war.6 hours = 1 } }
+		}
+	}
+
+	#Reject
+	option = {
+		name = cross_strait_war.5.b
+
+		ai_chance = {
+			base = 0
+		}
+
+		add_stability = -0.1
+		add_war_support = -0.1
+		add_timed_idea = {
+			idea = CHI_public_opposition_to_the_war
+			days = 730
+		}
+
+		hidden_effect = {
+			FROM = { country_event = { id = cross_strait_war.7 hours = 6 random_hours = 4 } }
+		}
+	}
+}
+
+# Soviets accept peace demands - event for FIN
+country_event = {
+	id = cross_strait_war.6
+	title = cross_strait_war.3.t #intentional
+	desc = cross_strait_war.6.desc
+	picture = GFX_report_event_taiwan_government
+	
+	fire_only_once = yes
+
+	is_triggered_only = yes
+
+	option = {
+		name = cross_strait_war.6.a
+		hidden_effect = {
+			news_event = { id = ro_china.news.8 hours = 8 }
+		}
+		
+		white_peace = FROM
+		if = {
+			limit = {
+				is_faction_leader = yes
+			}
+			every_other_country = {
+				limit = {
+					is_in_faction_with = ROOT
+				}
+				white_peace = FROM
+			}
+		}
+
+		every_owned_state = {
+			limit = {
+				is_claimed_by = FROM
+			}
+			remove_claim_by = FROM
+		}
+
+		hidden_effect = { #Prevent Soviet AI from insta-justify on Finland after peacing out.
+			FROM = {
+				add_ai_strategy = { 
+					type = antagonize 
+					id = ROOT
+					value = -200
+				}
+			}
+		}
+
+		#Shanghai
+		if = {
+			limit = {
+				613 = { has_state_flag = CHI_demanded_by_taiwan_in_cross_strait_war_flag }
+			}
+			transfer_state = 613
+		}
+		#Peral River Delta
+		if = {
+			limit = {
+				592 = { has_state_flag = CHI_demanded_by_taiwan_in_cross_strait_war_flag }
+			}
+			transfer_state = 592
+		}
+		#Hainan
+		if = {
+			limit = {
+				591 = { has_state_flag = CHI_demanded_by_taiwan_in_cross_strait_war_flag }
+			}
+			transfer_state = 591
+		}
+	}
+}
+
+# Soviets reject peace demands - event for FIN
+country_event = {
+	id = cross_strait_war.7
+	title = cross_strait_war.4.t #intentional
+	desc = cross_strait_war.7.desc
+	picture = GFX_report_event_taiwan_government
+	
+	fire_only_once = yes
+
+	is_triggered_only = yes
+
+	option = {
+		name = cross_strait_war.7.a
+		
+		effect_tooltip = {
+			FROM = {
+				add_stability = -0.1
+				add_war_support = -0.1
+				add_timed_idea = {
+					idea = CHI_public_opposition_to_the_war
+					days = 730
+				}
+			}
+		}
+	}
+}
+
+#The Surrender of Taiwan \"Government\"
+country_event = {
+	id = cross_strait_war.8
+	title = cross_strait_war.8.t
+	desc = cross_strait_war.8.desc
+	picture = GFX_report_event_taiwan_government
+	
+	fire_only_once = yes
+
+	is_triggered_only = yes
+
+	option = {
+		name = cross_strait_war.8.a
+		add_stability = 0.1
+		add_war_support = 0.1
+		
+		white_peace = FROM
+		
+		annex_country = { target = CHI transfer_troops = yes }
+	}
+}
+
+# [PRC.GetAdjective] Occupies Kinmen!
+country_event = {
+	id = cross_strait_war.9
+	title = cross_strait_war.9.t
+	desc = cross_strait_war.9.desc
+	picture = GFX_report_event_taiwan_government
+	
+	fire_only_once = yes
+
+	is_triggered_only = yes
+
+	option = {
+		name = cross_strait_war.9.a
+		effect_tooltip = {
+			add_war_support = 0.05
+		}
+		
+		hidden_effect = {
+			CHI = { country_event = { id = cross_strait_war.10 hours = 6 random_hours = 4 } }
+		}
+	}
+}
+
+# [PRC.GetAdjective] Occupies Kinmen!
+country_event = {
+	id = cross_strait_war.10
+	title = cross_strait_war.9.t
+	desc = cross_strait_war.10.desc
+	picture = GFX_report_event_PRC_night_army_1
+	
+	fire_only_once = yes
+
+	is_triggered_only = yes
+
+	option = {
+		name = cross_strait_war.10.a
+		
+		add_war_support = -0.05
+		
+		effect_tooltip = {
+			PRC = { add_war_support = 0.05 }
+		}
+	}
+}
+
+# [PRC.GetAdjective] Occupies Lienchiang!
+country_event = {
+	id = cross_strait_war.11
+	title = cross_strait_war.11.t
+	desc = cross_strait_war.11.desc
+	picture = GFX_report_event_PRC_night_army_1
+	
+	fire_only_once = yes
+
+	is_triggered_only = yes
+
+	option = {
+		name = cross_strait_war.11.a
+		effect_tooltip = {
+			add_war_support = 0.05
+		}
+		
+		hidden_effect = {
+			CHI = { country_event = { id = cross_strait_war.12 hours = 6 random_hours = 4 } }
+		}
+	}
+}
+
+# [PRC.GetAdjective] Occupies Lienchiang!
+country_event = {
+	id = cross_strait_war.12
+	title = cross_strait_war.11.t
+	desc = cross_strait_war.12.desc
+	picture = GFX_report_event_PRC_night_army_1
+	
+	fire_only_once = yes
+
+	is_triggered_only = yes
+
+	option = {
+		name = cross_strait_war.12.a
+		
+		add_war_support = -0.05
+		
+		effect_tooltip = {
+			PRC = { add_war_support = 0.05 }
+		}
+	}
+}
+
+#[PRC.GetAdjective] Successfully land on Taiwan Island!
+country_event = {
+	id = cross_strait_war.13
+	title = cross_strait_war.13.t
+	desc = cross_strait_war.13.desc
+	picture = GFX_report_event_PRC_night_army_1
+	
+	fire_only_once = yes
+
+	is_triggered_only = yes
+
+	option = {
+		name = cross_strait_war.13.a
+		effect_tooltip = {
+			add_war_support = 0.05
+			add_political_power = 100
+		}
+		
+		hidden_effect = {
+			CHI = { country_event = { id = cross_strait_war.14 hours = 6 random_hours = 4 } }
+		}
+	}
+}
+
+# [PRC.GetAdjective] Successfully land on Taiwan Island!
+country_event = {
+	id = cross_strait_war.14
+	title = cross_strait_war.13.t
+	desc = cross_strait_war.14.desc
+	picture = GFX_report_event_PRC_night_army_1
+	
+	fire_only_once = yes
+
+	is_triggered_only = yes
+
+	option = {
+		name = cross_strait_war.14.a
+		
+		add_war_support = -0.1
+		add_political_power = -100
+		
+		effect_tooltip = {
+			PRC = { 
+				add_war_support = 0.05
+				add_political_power = 100
+			}
+		}
+	}
+}
+
+#Debug
+country_event = {
+	id = cross_strait_war.999
+	title = cross_strait_war.999.t
+	desc = cross_strait_war.999.desc
+	picture = GFX_report_event_soviet_finnish_pact
+	
+	is_triggered_only = yes
+
+	option = {
+		name = cross_strait_war.8.a
+		
+		PRC = {
+			declare_war_on = {
+				target = CHI
+				type = annex_everything
+			}
+		}
 	}
 }

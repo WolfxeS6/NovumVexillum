@@ -1,0 +1,525 @@
+
+CHI_bop_absurdly_high_increase_effect = {
+	add_power_balance_value = {
+		id = CHI_power_balance
+		value = 1
+	}
+}
+
+CHI_bop_very_high_increase_effect = {
+	add_power_balance_value = {
+		id = CHI_power_balance
+		value = 0.25
+	}
+}
+
+CHI_bop_high_increase_effect = {
+	add_power_balance_value = {
+		id = CHI_power_balance
+		value = 0.2
+	}
+}
+
+CHI_bop_medium_increase_effect = {
+	add_power_balance_value = {
+		id = CHI_power_balance
+		value = 0.15
+	}
+}
+
+CHI_bop_low_increase_effect = {
+	add_power_balance_value = {
+		id = CHI_power_balance
+		value = 0.1
+	}
+}
+
+CHI_bop_very_low_increase_effect = {
+	add_power_balance_value = {
+		id = CHI_power_balance
+		value = 0.05
+	}
+}
+
+CHI_bop_absurdly_high_decrease_effect = {
+	add_power_balance_value = {
+		id = CHI_power_balance
+		value = -1
+	}
+}
+
+CHI_bop_very_high_decrease_effect = {
+	add_power_balance_value = {
+		id = CHI_power_balance
+		value = -0.25
+	}
+}
+
+CHI_bop_high_decrease_effect = {
+	add_power_balance_value = {
+		id = CHI_power_balance
+		value = -0.2
+	}
+}
+
+CHI_bop_medium_decrease_effect = {
+	add_power_balance_value = {
+		id = CHI_power_balance
+		value = -0.15
+	}
+}
+
+CHI_bop_low_decrease_effect = {
+	add_power_balance_value = {
+		id = CHI_power_balance
+		value = -0.1
+	}
+}
+
+CHI_bop_very_low_decrease_effect = {
+	add_power_balance_value = {
+		id = CHI_power_balance
+		value = -0.05
+	}
+}
+
+CHI_increase_economic_subordination_effect = {
+#custom_effect_tooltip = PRK_national_bankruptcy_down_tt
+	if = {
+		limit = { taiwan_non_economic_subordination = yes }
+		add_ideas = CHINESE_economic_subordination_to_china_1
+	}
+	else_if = {
+		limit = { has_idea = CHINESE_economic_subordination_to_china_1 }
+		swap_ideas = {
+			remove_idea = CHINESE_economic_subordination_to_china_1
+			add_idea = CHINESE_economic_subordination_to_china_2
+		}
+	}
+	else_if = {
+		limit = { has_idea = CHINESE_economic_subordination_to_china_2 }
+		swap_ideas = {
+			remove_idea = CHINESE_economic_subordination_to_china_2
+			add_idea = CHINESE_economic_subordination_to_china_3
+		}
+	}
+	else_if = {
+		limit = { has_idea = CHINESE_economic_subordination_to_china_3 }
+		swap_ideas = {
+			remove_idea = CHINESE_economic_subordination_to_china_3
+			add_idea = CHINESE_economic_subordination_to_china_4
+		}
+	}
+	else_if = {
+		limit = { has_idea = CHINESE_economic_subordination_to_china_4 }
+		swap_ideas = {
+			remove_idea = CHINESE_economic_subordination_to_china_4
+			add_idea = CHINESE_economic_subordination_to_china_5
+		}
+	}
+	else_if = {
+		limit = { has_idea = CHINESE_economic_subordination_to_china_5 }
+		swap_ideas = {
+			remove_idea = CHINESE_economic_subordination_to_china_5
+			add_idea = CHINESE_economic_subordination_to_china_6
+		}
+	}
+	else = {
+		CHI_bop_high_decrease_effect = yes
+	}
+}
+
+CHI_decrease_economic_subordination_effect = {
+#custom_effect_tooltip = PRK_national_bankruptcy_down_tt
+	if = {
+		limit = { taiwan_non_economic_subordination = yes }
+		CHI_bop_high_increase_effect = yes
+	}
+	else_if = {
+		limit = { has_idea = CHINESE_economic_subordination_to_china_1 }
+		remove_ideas = CHINESE_economic_subordination_to_china_1
+	}
+	else_if = {
+		limit = { has_idea = CHINESE_economic_subordination_to_china_2 }
+		swap_ideas = {
+			remove_idea = CHINESE_economic_subordination_to_china_2
+			add_idea = CHINESE_economic_subordination_to_china_1
+		}
+	}
+	else_if = {
+		limit = { has_idea = CHINESE_economic_subordination_to_china_3 }
+		swap_ideas = {
+			remove_idea = CHINESE_economic_subordination_to_china_3
+			add_idea = CHINESE_economic_subordination_to_china_2
+		}
+	}
+	else_if = {
+		limit = { has_idea = CHINESE_economic_subordination_to_china_4 }
+		swap_ideas = {
+			remove_idea = CHINESE_economic_subordination_to_china_4
+			add_idea = CHINESE_economic_subordination_to_china_3
+		}
+	}
+	else_if = {
+		limit = { has_idea = CHINESE_economic_subordination_to_china_5 }
+		swap_ideas = {
+			remove_idea = CHINESE_economic_subordination_to_china_5
+			add_idea = CHINESE_economic_subordination_to_china_4
+		}
+	}
+	else = {
+		swap_ideas = {
+			remove_idea = CHINESE_economic_subordination_to_china_6
+			add_idea = CHINESE_economic_subordination_to_china_5
+		}
+	}
+}
+
+CHI_clean_all_obsolete_bop_modifiers_effect = {
+	if = {
+		limit = {
+			has_power_balance_modifier = {
+				id = CHI_power_balance
+				modifier = CHI_bop_modifier_taiwanese_separatist
+			}
+			NOT = {
+				has_country_leader = {
+					ruling_only = yes
+					character = CHI_lee_tenghui
+				}
+			}
+		}
+		remove_power_balance_modifier = {
+			id = CHI_power_balance
+			modifier = CHI_bop_modifier_taiwanese_separatist
+		}
+	}
+	if = {
+		limit = {
+			has_power_balance_modifier = {
+				id = CHI_power_balance
+				modifier = CHI_bop_modifier_moderate_separatist
+			}
+			NOT = {
+				has_country_leader = {
+					ruling_only = yes
+					character = CHI_lee_tenghui
+				}
+			}
+		}
+		remove_power_balance_modifier = {
+			id = CHI_power_balance
+			modifier = CHI_bop_modifier_moderate_separatist
+		}
+	}
+	if = {
+		limit = {
+			has_power_balance_modifier = {
+				id = CHI_power_balance
+				modifier = CHI_bop_modifier_promising_reformer
+			}
+			NOT = {
+				has_country_leader = {
+					ruling_only = yes
+					character = CHI_chen_shuibian
+				}
+			}
+		}
+		remove_power_balance_modifier = {
+			id = CHI_power_balance
+			modifier = CHI_bop_modifier_promising_reformer
+		}
+	}
+	if = {
+		limit = {
+			has_power_balance_modifier = {
+				id = CHI_power_balance
+				modifier = CHI_bop_modifier_broken_reform
+			}
+			NOT = {
+				has_country_leader = {
+					ruling_only = yes
+					character = CHI_chen_shuibian
+				}
+			}
+		}
+		remove_power_balance_modifier = {
+			id = CHI_power_balance
+			modifier = CHI_bop_modifier_broken_reform
+		}
+	}
+	if = {
+		limit = {
+			has_power_balance_modifier = {
+				id = CHI_power_balance
+				modifier = CHI_bop_modifier_heir_to_chen_shui_bian
+			}
+			NOT = {
+				has_country_leader = {
+					ruling_only = yes
+					character = CHI_wu_shu_chen
+				}
+			}
+		}
+		remove_power_balance_modifier = {
+			id = CHI_power_balance
+			modifier = CHI_bop_modifier_heir_to_chen_shui_bian
+		}
+	}
+	if = {
+		limit = {
+			has_power_balance_modifier = {
+				id = CHI_power_balance
+				modifier = CHI_bop_modifier_traitor_of_chen_shui_bian
+			}
+			NOT = {
+				has_country_leader = {
+					ruling_only = yes
+					character = CHI_wu_shu_chen
+				}
+			}
+		}
+		remove_power_balance_modifier = {
+			id = CHI_power_balance
+			modifier = CHI_bop_modifier_traitor_of_chen_shui_bian
+		}
+	}
+	if = {
+		limit = {
+			has_power_balance_modifier = {
+				id = CHI_power_balance
+				modifier = CHI_bop_modifier_symbol_of_democracy
+			}
+			NOT = {
+				has_country_leader = {
+					ruling_only = yes
+					character = CHI_frank_hsieh
+				}
+			}
+		}
+		remove_power_balance_modifier = {
+			id = CHI_power_balance
+			modifier = CHI_bop_modifier_symbol_of_democracy
+		}
+	}
+	if = {
+		limit = {
+			has_power_balance_modifier = {
+				id = CHI_power_balance
+				modifier = CHI_bop_modifier_falling_democracy
+			}
+			NOT = {
+				has_country_leader = {
+					ruling_only = yes
+					character = CHI_frank_hsieh
+				}
+			}
+		}
+		remove_power_balance_modifier = {
+			id = CHI_power_balance
+			modifier = CHI_bop_modifier_falling_democracy
+		}
+	}
+	if = {
+		limit = {
+			has_power_balance_modifier = {
+				id = CHI_power_balance
+				modifier = CHI_bop_modifier_taiwan_for_minorities
+			}
+			NOT = {
+				has_country_leader = {
+					ruling_only = yes
+					character = CHI_tsai_ing_wen
+				}
+			}
+		}
+		remove_power_balance_modifier = {
+			id = CHI_power_balance
+			modifier = CHI_bop_modifier_taiwan_for_minorities
+		}
+	}
+	if = {
+		limit = {
+			has_power_balance_modifier = {
+				id = CHI_power_balance
+				modifier = CHI_bop_modifier_kirishima_xiao_ing
+			}
+			NOT = {
+				has_country_leader = {
+					ruling_only = yes
+					character = CHI_tsai_ing_wen
+				}
+			}
+		}
+		remove_power_balance_modifier = {
+			id = CHI_power_balance
+			modifier = CHI_bop_modifier_kirishima_xiao_ing
+		}
+	}
+	if = {
+		limit = {
+			has_power_balance_modifier = {
+				id = CHI_power_balance
+				modifier = CHI_bop_modifier_stabilized_DPP
+			}
+			NOT = {
+				has_country_leader = {
+					ruling_only = yes
+					character = CHI_annette_lu
+				}
+			}
+		}
+		remove_power_balance_modifier = {
+			id = CHI_power_balance
+			modifier = CHI_bop_modifier_stabilized_DPP
+		}
+	}
+	if = {
+		limit = {
+			has_power_balance_modifier = {
+				id = CHI_power_balance
+				modifier = CHI_bop_modifier_economic_crisis
+			}
+			NOT = {
+				has_country_leader = {
+					ruling_only = yes
+					character = CHI_annette_lu
+				}
+			}
+		}
+		remove_power_balance_modifier = {
+			id = CHI_power_balance
+			modifier = CHI_bop_modifier_economic_crisis
+		}
+	}
+	if = {
+		limit = {
+			has_power_balance_modifier = {
+				id = CHI_power_balance
+				modifier = CHI_bop_modifier_threat_of_pro_china_factions
+			}
+			NOT = {
+				has_country_leader = {
+					ruling_only = yes
+					character = CHI_chen_shui_bian
+				}
+			}
+			NOT = {
+				has_country_leader = {
+					ruling_only = yes
+					character = CHI_wu_shu_chen
+				}
+			}
+			NOT = {
+				has_country_leader = {
+					ruling_only = yes
+					character = CHI_frank_hsieh
+				}
+			}
+		}
+		remove_power_balance_modifier = {
+			id = CHI_power_balance
+			modifier = CHI_bop_modifier_threat_of_pro_china_factions
+		}
+	}
+}
+
+CHI_increase_DPP_popular_support_effect = {
+#custom_effect_tooltip = PRK_national_bankruptcy_down_tt
+	if = {
+		limit = { has_idea = CHI_DPP_popular_support_1 }
+		swap_ideas = {
+			remove_idea = CHI_DPP_popular_support_1
+			add_idea = CHI_DPP_popular_support_2
+		}
+	}
+	else_if = {
+		limit = { has_idea = CHI_DPP_popular_support_2 }
+		swap_ideas = {
+			remove_idea = CHI_DPP_popular_support_2
+			add_idea = CHI_DPP_popular_support_3
+		}
+	}
+	else_if = {
+		limit = { has_idea = CHI_DPP_popular_support_3 }
+		swap_ideas = {
+			remove_idea = CHI_DPP_popular_support_3
+			add_idea = CHI_DPP_popular_support_4
+		}
+	}
+	else_if = {
+		limit = { has_idea = CHI_DPP_popular_support_4 }
+		swap_ideas = {
+			remove_idea = CHI_DPP_popular_support_4
+			add_idea = CHI_DPP_popular_support_5
+		}
+	}
+	else = {
+		CHI_bop_high_increase_effect = yes
+	}
+}
+
+CHI_add_basic_MBT_templates = {
+	#CM-12 Tank
+	create_equipment_variant = {
+		name = "CM-12"
+		type = modern_tank_chassis_2
+		parent_version = 0
+		modules = {
+			main_armament_slot = tank_small_cannon
+			suspension_type_slot = tank_bogie_suspension
+			armor_type_slot = tank_cast_armor
+			engine_type_slot = tank_gas_turbine_engine
+			optics_slot = tank_optics_1
+			#special_type_slot_2 = auto_loader
+		}
+		upgrades = {
+			tank_nsb_engine_upgrade = 4
+			tank_nsb_armor_upgrade = 1
+		}
+		icon = "GFX_PRC_main_battle_tank2_medium"
+	}
+}
+
+CHI_add_advance_MBT_templates = {
+	#M1 Abrams Tank
+	create_equipment_variant = {
+		name = "M1 Abrams"
+		type = modern_tank_chassis_2
+		parent_version = 0
+		modules = {
+			main_armament_slot = tank_medium_cannon
+			special_type_slot_1 = ergo_old
+			suspension_type_slot = tank_torsion_bar_suspension
+			armor_type_slot = tank_cast_armor
+			engine_type_slot = tank_gas_turbine_engine
+			#special_type_slot_1 = tank_radio_1
+			optics_slot = tank_optics_1
+		}
+		upgrades = {
+			tank_nsb_armor_upgrade = 2
+			tank_nsb_engine_upgrade = 5
+		}
+		icon = "GFX_USA_main_battle_tank3_medium"
+	}
+}
+
+CHI_decrease_martial_law_effect = {
+	if = {
+		limit = { has_idea = CHI_martial_law_1 }
+		swap_ideas = {
+			remove_idea = CHI_martial_law_1
+			add_idea = CHI_martial_law_2
+		}
+	}
+	else_if = {
+		limit = { has_idea = CHI_martial_law_2 }
+		swap_ideas = {
+			remove_idea = CHI_martial_law_2
+			add_idea = CHI_martial_law_3
+		}
+	}
+	else = {
+		remove_ideas = CHI_martial_law_3
+	}
+}

@@ -1,0 +1,861 @@
+
+CHI_national_defense_category = {
+	CHI_surrender_to_the_pr_china = {
+		priority = 20
+
+		icon = GFX_decision_generic_form_nation
+
+		ai_will_do = {
+			base = 10
+		}
+
+		allowed = {
+			original_tag = CHI
+		}
+
+		available = {
+			has_war_with = PRC
+			surrender_progress > 0.40
+			has_civil_war = no
+			OR = {
+				is_in_faction = no
+				is_faction_leader = yes
+			}
+			NOT = { has_country_flag = CHI_reached_out_to_china_to_surrender_flag } #Tooltip purposes
+		}
+
+		visible = {
+			has_war_with = PRC
+			has_civil_war = no
+			OR = {
+				is_in_faction = no
+				is_faction_leader = yes
+			}
+			NOT = { has_country_flag = CHI_reached_out_to_china_to_surrender_flag }
+			#has_country_flag = CHI_available_decision_to_surrender_to_china_flag
+		}
+
+		cost = 0
+
+		complete_effect = {
+			#clr_country_flag = CHI_available_decision_to_surrender_to_china_flag
+			set_country_flag = CHI_reached_out_to_china_to_surrender_flag
+
+			PRC = {
+				country_event = { id = cross_strait_war.8 hours = 1 }
+			}
+
+			custom_effect_tooltip = GAME_OVER_TT
+			#event_option_tooltip = finland.7.a
+		}
+	}
+
+	CHI_demand_peace_negotiations = {
+		priority = 21
+
+		icon = GFX_decision_eng_trade_unions_support
+
+		ai_will_do = {
+			base = 0.5
+			modifier = {
+				factor = 10
+				#TODO_MANU: country flag days
+			}
+		}
+
+		fire_only_once = yes
+
+		allowed = {
+			original_tag = CHI
+		}
+
+		available = {
+			has_war_with = PRC
+			OR = {
+				controls_state = 592 #Peral River Delta
+				controls_state = 595 #Fujian
+				controls_state = 613 #Shanghai
+			}
+			has_country_flag = CHI_can_demand_peace_negotiations_flag
+			#has_country_flag = CHI_cross_strait_war_ongoing_flag
+			has_civil_war = no
+			OR = {
+				is_in_faction = no
+				is_faction_leader = yes
+			}
+		}
+
+		visible = {
+			has_war_with = PRC
+			has_civil_war = no
+			OR = {
+				is_in_faction = no
+				is_faction_leader = yes
+			}
+			#has_country_flag = CHI_cross_strait_war_ongoing_flag
+			NOT = { has_country_flag = CHI_cross_strait_war_peace_demanded_flag }
+		}
+
+		complete_effect = {
+			if = {
+				limit = {
+					OR = {
+						613 = { #Shanghai
+							is_owned_by = PRC
+							is_controlled_by = CHI
+						}
+						592 = { #Peral River Delta
+							is_owned_by = PRC
+							is_controlled_by = CHI
+						}
+						591 = { #Hainan
+							is_owned_by = PRC
+							is_controlled_by = CHI
+						}
+					}
+				}
+				#Apply state flags to keep track of the states that should be included (any state control hange after activating the decision will not count)
+				#Done like this for tooltip purposes, otherwise it's problematic (adding flags and checking for them in the same decision)
+				#Shanghai
+				if = {
+					limit = {
+						613 = {
+							is_owned_by = PRC
+							is_controlled_by = CHI
+						}
+					}
+					613 = { set_state_flag = CHI_demanded_by_taiwan_in_cross_strait_war_flag }
+				}
+				#Peral River Delta
+				if = {
+					limit = {
+						592 = {
+							is_owned_by = PRC
+							is_controlled_by = CHI
+						}
+					}
+					592 = { set_state_flag = CHI_demanded_by_taiwan_in_cross_strait_war_flag }
+				}
+				#Hainan
+				if = {
+					limit = {
+						591 = {
+							is_owned_by = PRC
+							is_controlled_by = CHI
+						}
+					}
+					591 = { set_state_flag = CHI_demanded_by_taiwan_in_cross_strait_war_flag }
+				}
+
+				PRC = {
+					country_event = { id = cross_strait_war.5 hours = 1 } #Territorial demands event
+				}
+				custom_effect_tooltip = if_they_accept_tt
+				event_option_tooltip = cross_strait_war.5.a
+			}
+			else = {
+				PRC = {
+					country_event = { id = cross_strait_war.2 hours = 1 } #White peace event
+				}
+				custom_effect_tooltip = if_they_accept_tt
+				event_option_tooltip = cross_strait_war.2.a
+
+				custom_effect_tooltip = CHI_can_demand_territory_if_occupying_tt
+			}
+
+			#Manage flags
+			clr_country_flag = CHI_can_demand_peace_negotiations_flag
+			set_country_flag = CHI_cross_strait_war_peace_demanded_flag
+		}
+	}
+
+	CHI_hold_shanghai_mission = { #MISSION FOR CHI
+		priority = 30
+		icon = GFX_decision_hol_draw_up_staff_plans
+		allowed = {
+			tag = CHI
+		}
+
+		available = { #FAIL
+			NOT = { controls_state = 613 }
+		}
+
+		activation = {
+			#has_country_flag = CHI_cross_strait_war_ongoing_flag
+			has_war_with = PRC
+			controls_state = 613
+			613 = { is_owned_by = PRC }
+			NOT = { has_country_flag = CHI_cross_strait_war_peace_demanded_flag }
+			NOT = { has_country_flag = CHI_can_demand_peace_negotiations_flag }
+			OR = {
+				is_in_faction = no
+				is_faction_leader = yes
+			}
+		}
+
+		#cancel_if_not_visible = yes
+		is_good = yes
+		fire_only_once = no
+		selectable_mission = no
+		days_mission_timeout = 30
+
+		cancel_trigger = {
+			hidden_trigger = {
+				OR = {
+					#NOT = { has_country_flag = CHI_cross_strait_war_ongoing_flag }
+					NOT = { has_war_with = PRC }
+					has_capitulated = yes
+				}
+			}
+		}
+
+		cancel_effect = {
+
+		}
+
+		timeout_effect = { #MISSION SUCCEEDED
+			set_country_flag = CHI_can_demand_peace_negotiations_flag
+			country_event = cross_strait_war.1
+		}
+
+		complete_effect = { #MISSION FAILED
+			
+		}
+	}
+
+	CHI_hold_peral_river_delta_mission = { #MISSION FOR CHI
+		priority = 30
+		icon = GFX_decision_hol_draw_up_staff_plans
+		allowed = {
+			tag = CHI
+		}
+
+		available = { #FAIL
+			NOT = { controls_state = 592 }
+		}
+
+		activation = {
+			#has_country_flag = CHI_cross_strait_war_ongoing_flag
+			has_war_with = PRC
+			controls_state = 592
+			592 = { is_owned_by = PRC }
+			NOT = { has_country_flag = CHI_cross_strait_war_peace_demanded_flag }
+			NOT = { has_country_flag = CHI_can_demand_peace_negotiations_flag }
+			OR = {
+				is_in_faction = no
+				is_faction_leader = yes
+			}
+		}
+
+		#cancel_if_not_visible = yes
+		is_good = yes
+		fire_only_once = no
+		selectable_mission = no
+		days_mission_timeout = 30
+
+		cancel_trigger = {
+			hidden_trigger = {
+				OR = {
+					#NOT = { has_country_flag = CHI_cross_strait_war_ongoing_flag }
+					NOT = { has_war_with = PRC }
+					has_capitulated = yes
+				}
+			}
+		}
+
+		cancel_effect = {
+
+		}
+
+		timeout_effect = { #MISSION SUCCEEDED
+			set_country_flag = CHI_can_demand_peace_negotiations_flag
+			country_event = cross_strait_war.1
+		}
+
+		complete_effect = { #MISSION FAILED
+			
+		}
+	}
+
+	CHI_hold_fujian_mission = { #MISSION FOR CHI
+		priority = 30
+		icon = GFX_decision_hol_draw_up_staff_plans
+		allowed = {
+			tag = CHI
+		}
+
+		available = { #FAIL
+			NOT = { controls_state = 595 }
+		}
+
+		activation = {
+			#has_country_flag = CHI_cross_strait_war_ongoing_flag
+			has_war_with = PRC
+			controls_state = 595
+			595 = { is_owned_by = PRC }
+			NOT = { has_country_flag = CHI_cross_strait_war_peace_demanded_flag }
+			NOT = { has_country_flag = CHI_can_demand_peace_negotiations_flag }
+			OR = {
+				is_in_faction = no
+				is_faction_leader = yes
+			}
+		}
+
+		#cancel_if_not_visible = yes
+		is_good = yes
+		fire_only_once = no
+		selectable_mission = no
+		days_mission_timeout = 30
+
+		cancel_trigger = {
+			hidden_trigger = {
+				OR = {
+					#NOT = { has_country_flag = CHI_cross_strait_war_ongoing_flag }
+					NOT = { has_war_with = PRC }
+					has_capitulated = yes
+				}
+			}
+		}
+
+		cancel_effect = {
+
+		}
+
+		timeout_effect = { #MISSION SUCCEEDED
+			set_country_flag = CHI_can_demand_peace_negotiations_flag
+			country_event = cross_strait_war.1
+		}
+
+		complete_effect = { #MISSION FAILED
+			
+		}
+	}
+	
+	CHI_coastal_garrisons = {
+		priority = 6
+
+		icon = GFX_decision_generic_military
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 1
+				has_war_with = PRC
+			}
+		}
+
+		allowed = {
+			original_tag = CHI
+		}
+
+		visible = {
+			OR = {
+				has_full_control_of_state = 922 #Hokkien
+				has_full_control_of_state = 1081 #Lianjiang
+				has_full_control_of_state = 921 #Tainan
+				has_full_control_of_state = 1078 #Zhanghua
+				has_full_control_of_state = 1075 #Taizhong
+				has_full_control_of_state = 1077 #Taoyuan Shi
+			}
+		}
+
+		available = {
+			NOT = { has_idea = economy_depression }
+			OR = {
+				has_full_control_of_state = 922 #Hokkien
+				has_full_control_of_state = 1081 #Lianjiang
+				has_full_control_of_state = 921 #Tainan
+				has_full_control_of_state = 1078 #Zhanghua
+				has_full_control_of_state = 1075 #Taizhong
+				has_full_control_of_state = 1077 #Taoyuan Shi
+			}
+		}
+		
+		custom_cost_trigger = {
+			check_variable = { [?ROOT.NVX_ECO_health] > -90 }
+		}
+		
+		custom_cost_text = economic_health_3
+		
+		days_remove = 35
+
+		fire_only_once = yes
+
+		complete_effect = {
+			ROOT = { add_to_variable = { NVX_ECO_health = -3 } }
+		}
+
+		remove_effect = {
+			custom_effect_tooltip = CHI_coastal_garrisons_tt
+		
+			division_template = {
+				name = "haiànfángwèibùduì"
+				is_locked = yes
+				priority = 0
+				template_counter = 6
+				regiments = {
+					infantry = { x = 0 y = 0 }
+					infantry = { x = 0 y = 1 }
+					infantry = { x = 0 y = 2 }					
+				}
+				support = {
+					engineer = { x = 0 y = 0 }
+					artillery = { x = 0 y = 1 }
+				}
+			}
+			if = { #Hokkien
+				limit = {
+					922 = {
+						is_fully_controlled_by = ROOT
+						naval_base > 0
+					}
+				}
+				922 = {
+					create_unit = {
+						division = "name = \"Hokkien haiànfángwèibùduì\" division_template = \"haiànfángwèibùduì\" start_experience_factor = 0.3 start_equipment_factor = 1.0 start_manpower_factor = 1.0"
+						owner = ROOT
+						prioritize_location = 13260
+						allow_spawning_on_enemy_provs = no  
+						count = 1 
+					}
+				}
+			}
+			if = { #Lianjiang
+				limit = {
+					1081 = {
+						is_fully_controlled_by = ROOT
+						naval_base > 0
+					}
+				}
+				1081 = {
+					create_unit = {
+						division = "name = \"Lianjiang haiànfángwèibùduì\" division_template = \"haiànfángwèibùduì\" start_experience_factor = 0.3 start_equipment_factor = 1.0 start_manpower_factor = 1.0"
+						owner = ROOT
+						prioritize_location = 13261
+						allow_spawning_on_enemy_provs = no  
+						count = 1 
+					}
+				}
+			}
+			if = { #Tainan
+				limit = {
+					921 = {
+						is_fully_controlled_by = ROOT
+						naval_base > 0
+					}
+				}
+				921 = {
+					create_unit = {
+						division = "name = \"Tainan haiànfángwèibùduì\" division_template = \"haiànfángwèibùduì\" start_experience_factor = 0.3 start_equipment_factor = 1.0 start_manpower_factor = 1.0"
+						owner = ROOT
+						prioritize_location = 13540
+						allow_spawning_on_enemy_provs = no  
+						count = 1 
+					}
+				}
+			}
+			if = { #Zhanghua
+				limit = {
+					1078 = {
+						is_fully_controlled_by = ROOT
+						naval_base > 0
+					}
+				}
+				1078 = {
+					create_unit = {
+						division = "name = \"Zhanghua haiànfángwèibùduì\" division_template = \"haiànfángwèibùduì\" start_experience_factor = 0.3 start_equipment_factor = 1.0 start_manpower_factor = 1.0"
+						owner = ROOT
+						prioritize_location = 11959
+						allow_spawning_on_enemy_provs = no  
+						count = 1 
+					}
+				}
+			}
+			if = { #Zhanghua
+				limit = {
+					1078 = {
+						is_fully_controlled_by = ROOT
+						naval_base > 0
+					}
+				}
+				1078 = {
+					create_unit = {
+						division = "name = \"Zhanghua haiànfángwèibùduì\" division_template = \"haiànfángwèibùduì\" start_experience_factor = 0.3 start_equipment_factor = 1.0 start_manpower_factor = 1.0"
+						owner = ROOT
+						prioritize_location = 11959
+						allow_spawning_on_enemy_provs = no  
+						count = 1 
+					}
+				}
+			}
+			if = { #Taizhong
+				limit = {
+					1075 = {
+						is_fully_controlled_by = ROOT
+						naval_base > 0
+					}
+				}
+				1075 = {
+					create_unit = {
+						division = "name = \"Taizhong haiànfángwèibùduì\" division_template = \"haiànfángwèibùduì\" start_experience_factor = 0.3 start_equipment_factor = 1.0 start_manpower_factor = 1.0"
+						owner = ROOT
+						prioritize_location = 13543
+						allow_spawning_on_enemy_provs = no  
+						count = 1 
+					}
+				}
+			}
+			if = { #Taoyuan Shi
+				limit = {
+					1077 = {
+						is_fully_controlled_by = ROOT
+						naval_base > 0
+					}
+				}
+				1077 = {
+					create_unit = {
+						division = "name = \"Taoyuan haiànfángwèibùduì\" division_template = \"haiànfángwèibùduì\" start_experience_factor = 0.3 start_equipment_factor = 1.0 start_manpower_factor = 1.0"
+						owner = ROOT
+						prioritize_location = 7214
+						allow_spawning_on_enemy_provs = no  
+						count = 1 
+					}
+				}
+			}
+		}
+	}
+	
+	CHI_nuclear_project = {
+		priority = 6
+
+		icon = GFX_decision_generic_military
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 1
+				has_war_with = PRC
+			}
+		}
+
+		allowed = {
+			original_tag = CHI
+		}
+
+		visible = {
+			always = yes
+		}
+
+		available = {
+			NOT = { has_idea = economy_depression }
+			has_war_with = PRC
+		}
+		
+		custom_cost_trigger = {
+			check_variable = { [?ROOT.NVX_ECO_health] > -90 }
+		}
+		
+		custom_cost_text = economic_health_5
+		
+		days_remove = 365
+
+		fire_only_once = yes
+
+		complete_effect = {
+			ROOT = { add_to_variable = { NVX_ECO_health = -5 } }
+		}
+
+		remove_effect = {
+			if = {
+				limit = {
+					NOT = { has_tech = atomic_research }
+				}
+				add_tech_bonus = {
+					name = CHI_nuclear_project
+					bonus = 4.0
+					ahead_reduction = 25
+					technology = atomic_research
+				}
+			}
+			if = {
+				limit = {
+					NOT = { has_tech = nuclear_reactor }
+				}
+				add_tech_bonus = {
+					name = CHI_nuclear_project
+					bonus = 4.0
+					ahead_reduction = 25
+					technology = nuclear_reactor
+				}
+				add_tech_bonus = {
+					name = CHI_nuclear_project
+					bonus = 4.0
+					ahead_reduction = 25
+					technology = nukes
+				}
+			}
+			if = {
+				limit = {
+					has_tech = nuclear_reactor
+				}
+				add_tech_bonus = {
+					name = CHI_nuclear_project
+					bonus = 4.0
+					ahead_reduction = 25
+					technology = nukes
+				}
+				524 = { #Taipei
+					add_building_construction = {
+						type = nuclear_reactor
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+		}
+	}
+}
+
+PRC_cross_strait_war_category = {
+
+	PRC_conquer_hokkien_mission = {
+		priority = 30
+		icon = GFX_decision_hol_draw_up_staff_plans
+		allowed = {
+			tag = PRC
+		}
+
+		available = { #FAIL
+			controls_state = 922
+		}
+
+		activation = {
+			has_war_with = CHI
+			NOT = { controls_state = 922 }
+			922 = { is_owned_by = CHI }
+		}
+
+		is_good = no
+		
+		fire_only_once = yes
+		selectable_mission = no
+		
+		days_mission_timeout = 180
+
+		cancel_trigger = {
+			hidden_trigger = {
+				OR = {
+					NOT = { has_war_with = CHI }
+					has_capitulated = yes
+				}
+			}
+		}
+
+		cancel_effect = {
+		}
+
+		timeout_effect = {
+			add_war_support = -0.05
+		}
+
+		complete_effect = { #MISSION FAILED
+			add_war_support = 0.05
+			country_event = { id = cross_strait_war.9 }
+		}
+	}
+
+	PRC_conquer_lienchiang_mission = {
+		priority = 30
+		icon = GFX_decision_hol_draw_up_staff_plans
+		allowed = {
+			tag = PRC
+		}
+
+		available = { #FAIL
+			controls_state = 1081
+		}
+
+		activation = {
+			has_war_with = CHI
+			NOT = { controls_state = 1081 }
+			1081 = { is_owned_by = CHI }
+		}
+
+		is_good = no
+		
+		fire_only_once = yes
+		selectable_mission = no
+		
+		days_mission_timeout = 180
+
+		cancel_trigger = {
+			hidden_trigger = {
+				OR = {
+					NOT = { has_war_with = CHI }
+					has_capitulated = yes
+				}
+			}
+		}
+
+		cancel_effect = {
+
+		}
+
+		timeout_effect = {
+			add_war_support = -0.05
+		}
+
+		complete_effect = { #MISSION FAILED
+			add_war_support = 0.05
+			country_event = { id = cross_strait_war.11 }
+		}
+	}
+
+	PRC_conquer_mainland_taiwan_mission = {
+		priority = 30
+		icon = GFX_decision_hol_draw_up_staff_plans
+		allowed = {
+			tag = PRC
+		}
+
+		available = {
+			OR = {
+				controls_state = 524 #Taipei
+				controls_state = 1077 #Taoyuan
+				controls_state = 1075 #Taizhong
+				controls_state = 1078 #Zhanghua
+				controls_state = 921 #Tainan
+				controls_state = 1076 #Gaoxiong
+				controls_state = 920 #Hualien
+				controls_state = 1079 #Yilan
+			}
+		}
+
+		activation = {
+			has_war_with = CHI
+			NOT = { controls_state = 524 }
+			NOT = { controls_state = 1077 }
+			NOT = { controls_state = 1075 }
+			NOT = { controls_state = 1078 }
+			NOT = { controls_state = 921 }
+			NOT = { controls_state = 1076 }
+			NOT = { controls_state = 920 }
+			NOT = { controls_state = 1079 }
+			524 = { is_owned_by = CHI }
+			1077 = { is_owned_by = CHI }
+			1075 = { is_owned_by = CHI }
+			1078 = { is_owned_by = CHI }
+			1076 = { is_owned_by = CHI }
+			920 = { is_owned_by = CHI }
+			1079 = { is_owned_by = CHI }
+		}
+
+		is_good = no
+		
+		fire_only_once = yes
+		selectable_mission = no
+		
+		days_mission_timeout = 720
+
+		cancel_trigger = {
+			hidden_trigger = {
+				OR = {
+					NOT = { has_war_with = CHI }
+					has_capitulated = yes
+				}
+			}
+		}
+
+		cancel_effect = {
+
+		}
+
+		timeout_effect = {
+			add_war_support = -0.1
+			add_political_power = -100
+		}
+
+		complete_effect = { #MISSION FAILED
+			add_war_support = 0.05
+			add_political_power = 100
+			country_event = { id = cross_strait_war.13 }
+		}
+	}
+
+
+}
+
+CHI_problem_of_hunger = {
+
+	CHI_resolving_the_sea_blockade = {
+
+		icon = GFX_decision_generic_nationalism
+
+		ai_will_do = {
+			base = 1000
+		}
+
+		allowed = {
+			original_tag = CHI
+		}
+
+		available = {
+			has_mines = {
+				region  = 75
+				amount < 50
+			}
+			has_mines = {
+				region  = 76
+				amount < 50
+			}
+		}
+		
+		cost = 0
+		
+		complete_effect = {
+			remove_ideas = CHI_blockade_of_the_sea
+			remove_ideas = CHI_blockade_of_the_sea_weak
+		}
+	}
+	
+	CHI_solving_the_hunger_problem = {
+
+		icon = GFX_decision_generic_nationalism
+
+		ai_will_do = {
+			base = 1000
+		}
+
+		allowed = {
+			original_tag = CHI
+		}
+
+		available = {
+			has_equipment = { support_equipment > 249 }
+		}
+
+		visible = {
+			has_idea = CHI_blockade_of_the_sea
+		}
+		
+		days_remove = 180
+		
+		cost = 25
+
+		remove_effect = {
+			swap_ideas = {
+				remove_idea = CHI_blockade_of_the_sea
+				add_idea = CHI_blockade_of_the_sea_weak
+			}
+		}
+		
+		complete_effect = {
+			add_equipment_to_stockpile = {
+				type = support_equipment
+				amount = -250
+				producer = ROOT
+			}
+		}
+	}
+
+}

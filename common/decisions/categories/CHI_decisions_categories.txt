@@ -1,0 +1,88 @@
+
+CHI_national_defense_category = {
+	icon = GFX_decision_category_generic_crisis
+
+	picture = GFX_decision_cat_picture_national_defense
+	
+	allowed = {
+		original_tag = CHI
+	}
+	
+	priority = 88
+	
+	visible = {
+		NOT { has_completed_focus = CHI_taiwan_the_formosa }
+	}
+
+	on_map_area = {
+		target_array = core_states
+		target_trigger = {
+			FROM = {
+				is_controlled_by = ROOT
+			}
+		}
+		name = CHI_national_defense_category
+		zoom = 300
+		state = 524
+	}
+	
+	visible_when_empty = yes
+}
+
+CHI_balance_of_power_category = {
+	icon = GFX_decision_category_power_struggle
+	
+	allowed = {
+		original_tag = CHI
+	}
+	
+	priority = 90
+	
+	visible = {
+		
+	}
+}
+
+taiwanese_minority_rights_cat = {
+	icon = GFX_decision_category_generic_crisis
+
+	picture = GFX_decision_cat_picture_taiwanese_minority_rights
+	
+	allowed = {
+		original_tag = CHI
+	}
+	
+	priority = 45
+	
+	visible = {
+		has_idea = CHI_DPP_popular_support_4
+	}
+}
+
+CHI_PRC_battle_contents = {
+	icon = GFX_decision_category_power_struggle
+	
+	scripted_gui = CHI_blue_and_green_decision_ui
+	
+	allowed = {
+		OR = {
+			original_tag = CHI
+			original_tag = PRC
+		}
+	}
+	
+	priority = 45
+	
+	visible = {
+		AND = {
+			country_exists = PRC
+			country_exists = CHI
+			NOT = { CHI = { has_war_with = PRC } }
+			PRC = { is_puppet = no }
+			CHI = { is_puppet = no }
+			taiwan_independence = no
+		}
+	}
+	
+	visible_when_empty = yes
+}

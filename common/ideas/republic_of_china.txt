@@ -1,0 +1,1362 @@
+ideas = {
+
+	country = {
+		CHI_the_lone_wolf = {
+			picture = FIN_lone_wolf
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = no
+			}
+
+			removal_cost = -1
+
+			available = {
+				is_subject = no
+				is_in_faction = no
+				has_idea = partially_recognized_state
+			}
+			
+			rule = { 
+				desc = CHI_the_lone_wolf
+				can_create_factions = no
+				can_join_factions = no
+				can_access_market = no
+				can_send_volunteers = yes
+			}
+				
+			on_remove = {
+				set_rule = { 
+					#desc = CHI_the_lone_wolf
+					can_create_factions = yes
+					can_join_factions = yes
+					can_access_market = yes
+					can_send_volunteers = yes
+				}
+			}
+				
+			modifier = {
+				conscription_factor = 0.05
+				defensive_war_stability_factor = 0.35
+				improve_relations_maintain_cost_factor = -0.5
+				weekly_casualties_war_support = 0.005
+				weekly_bombing_war_support = 0.005
+				custom_modifier_tooltip = CHI_the_lone_wolf_tt
+			}
+		}
+		
+		CHI_formosa_lily_1 = { # AAT version
+			on_add = { log = "[GetDateText]: [Root.GetName]: add idea CHI_formosa_lily_1" }
+			name = CHI_formosa_lily
+
+			picture = CHI_formosa_lily
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_power_balance = {
+					id = CHI_power_balance
+				}
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				#army_morale_factor = 0
+				#attrition = 0
+				#army_core_attack_factor = 0
+				army_core_defence_factor = 0.05
+			}
+		}
+
+		CHI_formosa_lily_2 = { # AAT version
+			on_add = { log = "[GetDateText]: [Root.GetName]: add idea CHI_formosa_lily_2" }
+			name = CHI_formosa_lily
+
+			picture = CHI_formosa_lily
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_power_balance = {
+					id = CHI_power_balance
+				}
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				army_morale_factor = 0.05
+				#attrition = 0
+				#army_core_attack_factor = 0
+				army_core_defence_factor = 0.1
+			}
+		}
+
+		CHI_formosa_lily_3 = { # AAT version
+			on_add = { log = "[GetDateText]: [Root.GetName]: add idea CHI_formosa_lily_3" }
+			name = CHI_formosa_lily
+
+			picture = CHI_formosa_lily
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_power_balance = {
+					id = CHI_power_balance
+				}
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				army_morale_factor = 0.15
+				attrition = -0.05
+				army_core_attack_factor = 0.05
+				army_core_defence_factor = 0.15
+			}
+		}
+
+		CHI_formosa_lily_4 = { # AAT version
+			on_add = { log = "[GetDateText]: [Root.GetName]: add idea CHI_formosa_lily_4" }
+			name = CHI_formosa_lily
+
+			picture = CHI_formosa_lily
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_power_balance = {
+					id = CHI_power_balance
+				}
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				army_morale_factor = 0.25
+				attrition = -0.1
+				army_core_attack_factor = 0.15
+				army_core_defence_factor = 0.2
+			}
+		}
+
+		CHI_formosa_lily_5 = { # AAT version
+			on_add = { log = "[GetDateText]: [Root.GetName]: add idea CHI_formosa_lily_5" }
+			name = CHI_formosa_lily
+
+			picture = CHI_formosa_lily
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_power_balance = {
+					id = CHI_power_balance
+				}
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				army_morale_factor = 0.3
+				attrition = -0.15
+				army_core_attack_factor = 0.25
+				army_core_defence_factor = 0.25
+			}
+		}
+		
+		CHI_marine_corps = {
+			on_add = { log = "[GetDateText]: [Root.GetName]: add idea CHI_marine_corps" }
+			picture = generic_reserve_divisions
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			available = {
+				
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				special_forces_min = 24
+				special_forces_out_of_supply_factor = -0.25
+				modifier_army_sub_unit_marines_attack_factor = 0.05
+			}
+		}
+		
+		CHI_civil_defence_organization = {
+			on_add = { log = "[GetDateText]: [Root.GetName]: add idea CHI_civil_defence_organization" }
+			picture = YUG_federal_defense_council
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			available = {
+				
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				tech_air_damage_factor = -0.02
+				conscription = 0.025
+				industry_repair_factor = 0.15
+			}
+		}
+		
+		CHI_toward_independence_idea = {
+			on_add = { log = "[GetDateText]: [Root.GetName]: add idea CHI_toward_independence_idea" }
+			picture = generic_the_london_naval_treaty
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			available = {
+				
+			}
+
+			removal_cost = -1
+
+			equipment_bonus = {
+	            convoy = {
+	                build_cost_ic = -0.2
+					instant = yes
+	            }
+			}
+
+			modifier = {
+				transport_capacity = -0.1
+			}
+		}
+		
+		CHI_unprepared_army_1 = {
+			on_add = { log = "[GetDateText]: [Root.GetName]: add idea CHI_unprepared_army_1" }
+			name = CHI_unprepared_army
+			picture = NOR_broken_gun_ns
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				production_factory_max_efficiency_factor = -0.25
+				training_time_factor = -0.05
+				supply_consumption_factor = -0.05
+				planning_speed = -0.2
+				max_planning_factor = -0.2
+				political_power_gain = -0.1
+			}
+		}
+		
+		CHI_unprepared_army_2 = {
+			on_add = { log = "[GetDateText]: [Root.GetName]: add idea CHI_unprepared_army_2" }
+			name = CHI_unprepared_army
+			picture = NOR_broken_gun_ns
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				production_factory_max_efficiency_factor = -0.1
+				training_time_factor = -0.05
+				supply_consumption_factor = -0.05
+				planning_speed = -0.1
+				max_planning_factor = -0.1
+				political_power_gain = -0.05
+			}
+		}
+		
+		CHI_DPP_popular_support_1 = {
+			on_add = { log = "[GetDateText]: [Root.GetName]: add idea CHI_DPP_popular_support_1" }
+			picture = CHI_DPP_popular_support
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				stability_factor = -0.2
+				war_support_factor = -0.2
+				political_power_factor = -0.1
+				compliance_gain = -0.01
+			}
+		}
+		
+		CHI_DPP_popular_support_2 = {
+			on_add = { log = "[GetDateText]: [Root.GetName]: add idea CHI_DPP_popular_support_2" }
+			picture = CHI_DPP_popular_support
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				stability_factor = -0.18
+				war_support_factor = -0.18
+				political_power_factor = -0.075
+				compliance_gain = -0.01
+			}
+		}
+		
+		CHI_DPP_popular_support_3 = {
+			on_add = { log = "[GetDateText]: [Root.GetName]: add idea CHI_DPP_popular_support_2" }
+			picture = CHI_DPP_popular_support
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				stability_factor = -0.15
+				war_support_factor = -0.15
+				political_power_factor = -0.05
+			}
+		}
+		
+		CHI_DPP_popular_support_4 = {
+			on_add = { log = "[GetDateText]: [Root.GetName]: add idea CHI_DPP_popular_support_4" }
+			picture = CHI_DPP_popular_support
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				stability_factor = -0.1
+				war_support_factor = -0.1
+			}
+		}
+		
+		CHI_DPP_popular_support_5 = {
+			on_add = { log = "[GetDateText]: [Root.GetName]: add idea CHI_DPP_popular_support_5" }
+			picture = CHI_DPP_popular_support
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				stability_factor = 0.1
+				war_support_factor = 0.05
+				compliance_gain = 0.01
+			}
+		}
+		
+		CHI_act_of_gender_equality_in_employment = {
+			on_add = { log = "[GetDateText]: [Root.GetName]: add idea CHI_act_of_gender_equality_in_employment" }
+			picture = SOV_third_five_year_plan
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				resistance_growth = -0.1
+				political_advisor_cost_factor = -0.1
+			}
+		}
+		
+		CHI_human_rights_protection_act = {
+			on_add = { log = "[GetDateText]: [Root.GetName]: add idea CHI_act_of_gender_equality_in_employment" }
+			picture = generic_political_support
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				trade_laws_cost_factor = 0.3
+				production_factory_efficiency_gain_factor = 0.2
+				production_speed_buildings_factor = 0.15
+			}
+		}
+		
+		CHI_hakka_affairs_council = {
+			on_add = { log = "[GetDateText]: [Root.GetName]: add idea CHI_hakka_affairs_council" }
+			picture = generic_supply_line
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				supply_combat_penalties_on_core_factor = -0.1
+				drift_defence_factor = 0.15
+			}
+		}
+		
+		#################
+		#    2004                  #
+		#################
+		
+		CHI_martial_law_1 = {
+			on_add = { log = "[GetDateText]: [Root.GetName]: add idea CHI_martial_law_1" }
+			name = CHI_martial_law
+			picture = eng_imperial_conscription
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				consumer_goods_factor = 0.2
+				political_power_factor = -0.3
+			}
+		}
+		
+		CHI_martial_law_2 = {
+			on_add = { log = "[GetDateText]: [Root.GetName]: add idea CHI_martial_law_2" }
+			name = CHI_martial_law
+			picture = eng_imperial_conscription
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				consumer_goods_factor = 0.1
+				political_power_factor = -0.15
+			}
+		}
+		
+		CHI_martial_law_3 = {
+			on_add = { log = "[GetDateText]: [Root.GetName]: add idea CHI_martial_law_3" }
+			name = CHI_martial_law
+			picture = eng_imperial_conscription
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				political_power_factor = -0.05
+			}
+		}
+		
+		CHI_black_box = {
+			on_add = { log = "[GetDateText]: [Root.GetName]: add idea CHI_black_box" }
+			picture = generic_intel_bonus
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				defensive_war_stability_factor = 0.1
+				political_power_factor = 0.1
+			}
+		}
+		
+		KMT_protests = {
+			on_add = { log = "[GetDateText]: [Root.GetName]: add idea KMT_protests" }
+			picture = EST_democratic_opposition
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				war_support_weekly = -0.01
+				political_power_factor = -0.15
+			}
+		}
+		
+		CHI_financial_reform_of_taiwan = {
+			on_add = { log = "[GetDateText]: [Root.GetName]: add idea CHI_financial_reform_of_taiwan" }
+			picture = NOR_printing_money
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			modifier = {
+			 	consumer_goods_factor = -0.20
+				production_speed_industrial_complex_factor = 0.2
+			}
+		}
+		
+		CHI_pan_green_coalition = {
+			on_add = { log = "[GetDateText]: [Root.GetName]: add idea CHI_financial_reform_of_taiwan" }
+			picture = generic_political_support
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				social_democrat_drift = 0.01
+				democratic_socialist_drift = 0.01
+				market_liberal_drift = 0.01
+				weekly_manpower = 200
+			}
+		}
+		
+		CHI_same_sex_marriage = {
+
+			picture = generic_agrarian_reform
+
+			allowed = {
+				original_tag = CHI
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			modifier = {
+				war_support_weekly = 0.005
+				MONTHLY_POPULATION = -0.03
+				research_speed_factor = 0.1
+				conscription_factor = 0.02
+			}
+		}
+		
+		CHI_female_rights_1 = {
+			name = CHI_female_rights
+
+			picture = generic_women_in_the_army
+
+			allowed = {
+				original_tag = CHI
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			modifier = {
+				weekly_manpower = 150
+				industrial_capacity_factory = 0.1
+			}
+		}
+		
+		CHI_female_rights_2 = {
+			name = CHI_female_rights
+
+			picture = generic_women_in_the_army
+
+			allowed = {
+				original_tag = CHI
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			modifier = {
+				weekly_manpower = 300
+				industrial_capacity_factory = 0.1
+				industry_repair_factor = 0.1
+			}
+		}
+		
+		CHI_educational_reform_idea = {
+
+			picture = generic_war_preparation
+
+			allowed = {
+				original_tag = CHI
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			modifier = {
+				command_power_gain_mult = 0.1
+				mobilization_speed = 0.15
+				experience_gain_army_factor = 0.1
+			}
+		}
+		
+		CHI_investment_in_disabled_facilities = {
+
+			picture = generic_supply_line
+
+			allowed = {
+				original_tag = CHI
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			modifier = {
+				production_speed_infrastructure_factor = 0.1
+				production_speed_rail_way_factor = 0.1
+				production_speed_supply_node_factor = 0.1
+			}
+		}
+		
+		CHI_succession_of_taiwan_s_dream_idea = {
+
+			picture = man_five_year_plan_industry
+
+			allowed = {
+				original_tag = CHI
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			modifier = {
+				production_speed_industrial_complex_factor = 0.2
+				consumer_goods_factor = -0.15
+			}
+		}
+		
+		CHI_succession_of_chen_s_dream_idea = {
+
+			picture = generic_supply_depot
+
+			allowed = {
+				original_tag = CHI
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			modifier = {
+				supply_consumption_factor = -0.1
+				out_of_supply_factor = -0.1
+			}
+		}
+		
+		CHI_dream_of_safe_society_idea = {
+
+			picture = FIN_finnish_federation_of_trade_unions
+
+			allowed = {
+				original_tag = CHI
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			modifier = {
+				local_resources_factor = 0.2
+				production_factory_start_efficiency_factor = 0.1
+				consumer_goods_factor = -0.05
+			}
+		}
+		
+		CHI_great_evil_awaits_idea = {
+
+			picture = generic_sea_focused_navy
+
+			allowed = {
+				original_tag = CHI
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			modifier = {
+				convoy_raiding_efficiency_factor = 0.1
+				convoy_escort_efficiency = 0.15
+				naval_coordination = 0.1
+				industrial_capacity_dockyard = 0.25
+			}
+		}
+		
+		CHI_think_about_the_future_idea = {
+
+			picture = generic_build_infrastructure
+
+			allowed = {
+				original_tag = CHI
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			modifier = {
+				production_speed_infrastructure_factor = 0.1
+			}
+			
+			research_bonus = { 
+				electronics = 0.1 
+				industry = 0.1 
+			}
+		}
+		
+		CHI_gradual_change_idea = {
+
+			picture = generic_reserve_divisions
+
+			allowed = {
+				original_tag = CHI
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			modifier = {
+				training_time_factor = -0.15
+				pocket_penalty = -0.1
+				army_org_regain = 0.05
+				army_speed_factor = 0.05
+			}
+		}
+		
+		CHI_repress_the_pan_nationalists_idea = {
+			picture = generic_prisoner
+
+			allowed = {
+				original_tag = CHI
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			modifier = {
+				political_power_factor = 0.15
+				war_support_factor = 0.1
+			}
+		}
+		
+		CHI_offensive_plan_idea = {
+			picture = ETH_christmas_offensive_idea
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+			
+			targeted_modifier = {
+				tag = PRC 
+				attack_bonus_against = 0.10
+			}
+			
+			modifier = {
+				breakthrough_factor = 0.1
+			}
+		}
+		
+		CHI_new_whampoa_military_academy = {
+
+			picture = chi_whampoa_military_academy		
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+			
+			modifier = {
+				army_leader_cost_factor = -0.3
+				army_leader_start_planning_level = 1
+			}
+		}
+		
+		CHI_war_of_independence = {
+
+			picture = FRA_scw_intervention_nationalists_focus		
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+			
+			targeted_modifier = {
+				tag = PRC
+				attack_bonus_against = 0.1
+				defense_bonus_against = 0.1
+			}
+		}
+		
+		CHI_landing_operation = {
+			
+			allowed = {
+				original_tag = CHI
+			}
+			
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			picture = eng_imperial_conscription
+			
+			modifier = {
+				unit_marine_design_cost_factor = -1
+				unit_paratrooper_design_cost_factor = -1
+				naval_invasion_capacity = 10
+				extra_paratrooper_supply_grace = 24
+				extra_marine_supply_grace = 24
+				naval_invasion_planning_bonus_speed = 0.1
+			}
+		}
+		
+		CHI_public_opposition_to_the_war = { 
+			picture = FIN_opposition_to_winter_war
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = no
+			}
+
+			removal_cost = -1
+
+			available = {
+				has_war_with = CHI
+			}
+
+			modifier = {
+				army_speed_factor = -0.05
+				army_morale_factor = -0.1
+				army_org_regain = -0.05
+				pocket_penalty = 0.2
+				political_power_factor = -0.1
+			}
+		}
+	}
+	
+	political_advisor = {
+	
+		CHI_annette_lu = {
+			on_add = { log = "[GetDateText]: [Root.GetName]: add idea CHI_annette_lu" }
+			allowed = { original_tag = CHI }
+			
+			traits = { taiwanese_feminist_adviser }
+			
+			cost = 150
+			removal_cost = 0
+			
+			visible = {
+			}
+			
+			available = {
+				NOT = { has_country_flag = CHI_lu_dead }
+				NOT = { has_country_leader = { character = CHI_annette_lu ruling_only = yes} }
+			}
+			
+			ai_will_do = {
+				factor = 1
+			}
+		}
+		
+		CHI_frank_hsieh = {
+			on_add = { log = "[GetDateText]: [Root.GetName]: add idea CHI_frank_hsieh" }
+			allowed = { original_tag = CHI }
+			
+			traits = { musketeer_of_tangwai_adviser }
+			
+			cost = 150
+			removal_cost = 0
+			
+			visible = {
+			}
+			
+			available = {
+				NOT = { has_country_leader = { character = CHI_frank_hsieh ruling_only = yes} }
+			}
+			
+			ai_will_do = {
+				factor = 1
+			}
+		}
+		
+		CHI_lee_teng_hui = {
+			on_add = { log = "[GetDateText]: [Root.GetName]: add idea CHI_lee_teng_hui" }
+			allowed = { original_tag = CHI }
+			
+			traits = { CHI_mr_democracy }
+			
+			cost = 150
+			removal_cost = 0
+			
+			visible = {
+			}
+			
+			available = {
+				NOT = { has_country_leader = { character = CHI_lee_teng_hui ruling_only = yes} }
+				has_completed_focus = CHI_coalition_with_lee_teng_hui
+			}
+			
+			ai_will_do = {
+				factor = 1
+			}
+		}
+		
+		CHI_tsai_ing_wen = {
+			on_add = { log = "[GetDateText]: [Root.GetName]: add idea CHI_tsai_ing_wen" }
+			allowed = { original_tag = CHI }
+			
+			traits = { taiwan_progressive_reformist_adviser }
+			
+			cost = 150
+			removal_cost = 0
+			
+			visible = {
+			}
+			
+			available = {
+				NOT = { has_country_leader = { character = CHI_tsai_ing_wen ruling_only = yes} }
+			}
+			
+			ai_will_do = {
+				factor = 1
+			}
+		}
+		
+		CHI_wu_shu_chen = {
+			on_add = { log = "[GetDateText]: [Root.GetName]: add idea CHI_wu_shu_chen" }
+			allowed = { original_tag = CHI }
+			
+			traits = { woman_of_steel }
+			
+			cost = 150
+			removal_cost = 0
+			
+			visible = {
+			}
+			
+			available = {
+				NOT = { has_country_leader = { character = CHI_wu_shu_chen ruling_only = yes} }
+			}
+			
+			ai_will_do = {
+				factor = 1
+			}
+		}
+		
+		CHI_su_tseng_chang = {
+			on_add = { log = "[GetDateText]: [Root.GetName]: add idea CHI_su_tseng_chang" }
+			allowed = { original_tag = CHI }
+			
+			traits = { experienced_politician }
+			
+			cost = 150
+			removal_cost = 0
+			
+			visible = {
+			}
+			
+			available = {
+			}
+			
+			ai_will_do = {
+				factor = 1
+			}
+		}
+		
+		CHI_shih_ming_teh = {
+			on_add = { log = "[GetDateText]: [Root.GetName]: add idea CHI_shih_ming_teh" }
+			allowed = { original_tag = CHI }
+			
+			traits = { taiwan_s_mandela }
+			
+			cost = 150
+			removal_cost = 0
+			
+			visible = {
+			}
+			
+			available = {
+			}
+			
+			ai_will_do = {
+				factor = 1
+			}
+		}
+		
+		CHI_yu_shyi_kun = {
+			on_add = { log = "[GetDateText]: [Root.GetName]: add idea CHI_yu_shyi_kun" }
+			allowed = { original_tag = CHI }
+			
+			traits = { hardline_independence_activist }
+			
+			cost = 150
+			removal_cost = 0
+			
+			visible = {
+			}
+			
+			available = {
+			}
+			
+			ai_will_do = {
+				factor = 1
+			}
+		}
+		
+		CHI_chen_bi_e = {
+			on_add = { log = "[GetDateText]: [Root.GetName]: add idea CHI_chen_bi_e" }
+			allowed = { original_tag = CHI }
+			
+			traits = { mother_huang }
+			
+			cost = 150
+			removal_cost = 0
+			
+			visible = {
+			}
+			
+			available = {
+			}
+			
+			ai_will_do = {
+				factor = 1
+			}
+		}
+		
+		CHI_lisa_su = {
+			on_add = { log = "[GetDateText]: [Root.GetName]: add idea CHI_lisa_su" }
+			allowed = { original_tag = CHI }
+			
+			traits = { computer_engineering_entrepreneur }
+			
+			cost = 150
+			removal_cost = 0
+			
+			visible = {
+			}
+			
+			available = {
+			}
+			
+			ai_will_do = {
+				factor = 1
+			}
+		}
+		
+		CHI_chang_chun_hsiung = {
+			on_add = { log = "[GetDateText]: [Root.GetName]: add idea CHI_chang_chun_hsiung" }
+			allowed = { original_tag = CHI }
+			
+			traits = { KOR_human_rights_lawyer }
+			
+			cost = 150
+			removal_cost = 0
+			
+			visible = {
+			}
+			
+			available = {
+			}
+			
+			ai_will_do = {
+				factor = 1
+			}
+		}
+		
+		CHI_chi_chia_wei = {
+			on_add = { log = "[GetDateText]: [Root.GetName]: add idea CHI_chi_chia_wei" }
+			allowed = { original_tag = CHI }
+			
+			traits = { gay_rights_activist }
+			
+			cost = 150
+			removal_cost = 0
+			
+			visible = {
+			}
+			
+			available = {
+			}
+			
+			ai_will_do = {
+				factor = 1
+			}
+		}
+		
+		CHI_audrey_tang = {
+			on_add = { log = "[GetDateText]: [Root.GetName]: add idea CHI_audrey_tang" }
+			allowed = { original_tag = CHI }
+			
+			traits = { genius_programmer }
+			
+			cost = 150
+			removal_cost = 0
+			
+			visible = {
+			}
+			
+			available = {
+				has_completed_focus = CHI_recruiting_talents
+			}
+			
+			ai_will_do = {
+				factor = 1
+			}
+		}
+		
+		CHI_wang_ginn_wang = {
+			on_add = { log = "[GetDateText]: [Root.GetName]: add idea CHI_wang_ginn_wang" }
+			allowed = { original_tag = CHI }
+			
+			traits = { head_of_intelligence }
+			
+			cost = 150
+			removal_cost = 0
+			
+			visible = {
+			}
+			
+			available = {
+			}
+			
+			ai_will_do = {
+				factor = 1
+			}
+		}
+	}
+	
+	industrial_concern = {
+	
+		CHI_yuanta_securities = {
+			on_add = { log = "[GetDateText]: [Root.GetName]: add idea CHI_yuanta_securities" }
+			picture = CHI_yuanta_securities
+			
+			allowed = {
+				original_tag = CHI
+			}
+			
+			available = {
+				has_completed_focus = CHI_beyond_manufacturing
+			}
+			
+			cost = 75
+			removal_cost = 10
+			
+			research_bonus = {
+				industry = 0.05
+			}
+			
+			modifier = {
+				consumer_goods_factor = -0.15
+			}
+			
+			traits = { industrial_concern }
+		}
+	
+		CHI_gigabyte_technology = {
+			on_add = { log = "[GetDateText]: [Root.GetName]: add idea CHI_gigabyte_technology" }
+			picture = CHI_gigabyte_technology
+			
+			allowed = {
+				original_tag = CHI
+			}
+			
+			available = {
+			}
+			
+			cost = 150
+			removal_cost = 10
+			
+			research_bonus = {
+				electronics = 0.1
+				industry = 0.1
+			}
+			
+			modifier = {
+				production_speed_radar_station_factor = 0.05
+			}
+			
+			traits = { electronics_concern }
+		}
+	
+		CHI_CPC_corporation = {
+			on_add = { log = "[GetDateText]: [Root.GetName]: add idea CHI_CPC_corporation" }
+			picture = CHI_CPC_corporation
+			
+			allowed = {
+				original_tag = CHI
+			}
+			
+			available = {
+			}
+			
+			cost = 150
+			removal_cost = 10
+			
+			research_bonus = {
+				synth_resources = 0.1
+				industry = 0.1
+			}
+			
+			modifier = {
+				production_speed_synthetic_refinery_factor = 0.1
+			}
+			
+			traits = { chemical_producer }
+		}
+	
+		CHI_TSMC = {
+			on_add = { log = "[GetDateText]: [Root.GetName]: add idea CHI_TSMC" }
+			picture = CHI_TSMC
+			
+			allowed = {
+				original_tag = CHI
+			}
+			
+			available = {
+				has_completed_focus = CHI_overcoming_dot_com_bubble
+			}
+			
+			cost = 250
+			removal_cost = 10
+			
+			research_bonus = {
+				electronics = 0.15
+			}
+			
+			modifier = {
+				production_speed_industrial_complex_factor = 0.1
+				production_speed_infrastructure_factor = 0.1
+				production_speed_radar_station_factor = 0.15
+			}
+			
+			traits = { electric_company }
+		}
+	
+	}
+	
+}

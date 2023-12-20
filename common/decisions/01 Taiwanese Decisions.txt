@@ -1,0 +1,1483 @@
+
+CHI_balance_of_power_category = {
+
+	DEBUG_CHI_bop_absurdly_high_increase_value = {
+		priority = 20
+		visible = {
+			is_debug = yes
+		}
+		complete_effect = {
+			CHI_bop_absurdly_high_increase_effect = yes
+			log = "[GetDateText]: [Root.GetName]: decison complete_effect DEBUG_CHI_bop_absurdly_high_increase_value"
+		}
+	}
+
+	DEBUG_CHI_bop_high_increase_value = {
+		priority = 19
+		visible = {
+			is_debug = yes
+		}
+		complete_effect = {
+			CHI_bop_high_increase_effect = yes
+			log = "[GetDateText]: [Root.GetName]: decison complete_effect DEBUG_CHI_bop_high_increase_value"
+		}
+	}
+
+	DEBUG_CHI_bop_medium_increase_value = {
+		priority = 18
+		visible = {
+			is_debug = yes
+		}
+		complete_effect = {
+			CHI_bop_medium_increase_effect = yes
+			log = "[GetDateText]: [Root.GetName]: decison complete_effect DEBUG_CHI_bop_medium_increase_value"
+		}
+	}
+
+	DEBUG_CHI_bop_low_increase_value = {
+		priority = 17
+		visible = {
+			is_debug = yes
+		}
+		complete_effect = {
+			CHI_bop_low_increase_effect = yes
+			log = "[GetDateText]: [Root.GetName]: decison complete_effect DEBUG_CHI_bop_low_increase_value"
+		}
+	}
+
+	DEBUG_CHI_bop_very_low_increase_value = {
+		priority = 16
+		visible = {
+			is_debug = yes
+		}
+		complete_effect = {
+			CHI_bop_very_low_increase_effect = yes
+			log = "[GetDateText]: [Root.GetName]: decison complete_effect DEBUG_CHI_bop_very_low_increase_value"
+		}
+	}
+
+	DEBUG_CHI_bop_absurdly_high_decrease_value = {
+		priority = 15
+		visible = {
+			is_debug = yes
+		}
+		complete_effect = {
+			CHI_bop_absurdly_high_decrease_effect = yes
+			log = "[GetDateText]: [Root.GetName]: decison complete_effect DEBUG_CHI_bop_absurdly_high_decrease_value"
+		}
+	}
+
+	DEBUG_CHI_bop_high_decrease_value = {
+		priority = 14
+		visible = {
+			is_debug = yes
+		}
+		complete_effect = {
+			CHI_bop_high_decrease_effect = yes
+			log = "[GetDateText]: [Root.GetName]: decison complete_effect DEBUG_CHI_bop_high_decrease_value"
+		}
+	}
+
+	DEBUG_CHI_bop_medium_decrease_value = {
+		priority = 13
+		visible = {
+			is_debug = yes
+		}
+		complete_effect = {
+			CHI_bop_medium_decrease_effect = yes
+			log = "[GetDateText]: [Root.GetName]: decison complete_effect DEBUG_CHI_bop_medium_decrease_value"
+		}
+	}
+
+	DEBUG_CHI_bop_low_decrease_value = {
+		priority = 12
+		visible = {
+			is_debug = yes
+		}
+		complete_effect = {
+			CHI_bop_low_decrease_effect = yes
+			log = "[GetDateText]: [Root.GetName]: decison complete_effect DEBUG_CHI_bop_low_decrease_value"
+		}
+	}
+
+	DEBUG_CHI_bop_very_low_decrease_value = {
+		priority = 11
+		visible = {
+			is_debug = yes
+		}
+		complete_effect = {
+			CHI_bop_very_low_decrease_effect = yes
+			log = "[GetDateText]: [Root.GetName]: decison complete_effect DEBUG_CHI_bop_very_low_decrease_value"
+		}
+	}
+
+	CHI_appeal_to_the_taiwanese_spirit = {
+		priority = 39
+
+		icon = GFX_decision_generic_civil_support
+
+		ai_will_do = {
+			base = 0.5
+			modifier = {
+				factor = 10
+				OR = {
+					has_stability < 0.2
+					power_balance_value = {
+						id = CHI_power_balance
+						value < -0.5
+					}
+				}
+			}
+			modifier = {
+				factor = 0
+				check_variable = { CHI_appeal_to_the_taiwanese_spirit_dec_cost > 200 }
+				has_political_power < 400
+			}
+		}
+
+		allowed = {
+			original_tag = CHI
+		}
+
+		available = {
+			has_war = yes
+		}
+
+		visible = {
+
+		}
+
+		days_re_enable = 360
+
+		days_remove = 180
+
+		cost = CHI_appeal_to_the_taiwanese_spirit_dec_cost
+
+		modifier = {
+			mobilization_speed = 0.35
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decison complete_effect CHI_appeal_to_the_taiwanese_spirit"
+			CHI_bop_very_high_increase_effect = yes
+
+			#Increase cost
+			multiply_variable = { CHI_appeal_to_the_taiwanese_spirit_dec_cost = CHI_bop_decision_cost_multiplier }
+			custom_effect_tooltip = CHI_appeal_to_the_finnish_spirit_cost_increase_tt
+		}
+	}
+	
+	CHI_organize_the_pan_blue = {
+		priority = 30
+
+		icon = GFX_decision_generic_political_discourse
+
+		ai_will_do = {
+			base = 0
+		}
+
+		allowed = {
+			original_tag = CHI
+		}
+
+		available = {
+			has_war = no
+		}
+
+		visible = {
+
+		}
+
+		days_re_enable = 360
+
+		cost = CHI_organize_the_pan_blue_dec_cost
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decison complete_effect CHI_organize_the_pan_blue"
+			CHI_bop_high_decrease_effect = yes
+
+			#Increase cost
+			multiply_variable = { CHI_organize_the_pan_blue_dec_cost = CHI_bop_decision_cost_multiplier }
+			custom_effect_tooltip = CHI_organize_the_pan_blue_cost_increase_tt
+		}
+	}
+	
+	CHI_organize_the_pan_green = {
+		priority = 30
+
+		icon = GFX_decision_generic_political_discourse
+
+		ai_will_do = {
+			base = 0
+		}
+
+		allowed = {
+			original_tag = CHI
+		}
+
+		available = {
+			has_war = no
+		}
+
+		visible = {
+
+		}
+
+		days_re_enable = 360
+
+		cost = CHI_organize_the_pan_green_dec_cost
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: decison complete_effect CHI_organize_the_pan_green"
+			CHI_bop_high_increase_effect = yes
+
+			#Increase cost
+			multiply_variable = { CHI_organize_the_pan_green_dec_cost = CHI_bop_decision_cost_multiplier }
+			custom_effect_tooltip = CHI_organize_the_pan_green_cost_increase_tt
+		}
+	}
+	
+	CHI_reducing_china_s_influence = {
+		priority = 29
+
+		icon = GFX_decision_ger_mefo_bills
+
+		ai_will_do = {
+			base = 3
+			modifier = {
+				factor = 2
+				check_variable = { [?ROOT.NVX_ECO_health] > 30 }
+			}
+			modifier = {
+				factor = 10
+				check_variable = { [?ROOT.NVX_ECO_health] > 45 }
+			}
+			modifier = {
+				factor = 10
+				check_variable = { [?ROOT.NVX_ECO_health] > 60 }
+			}
+			modifier = {
+				factor = 0
+				check_variable = { [?ROOT.NVX_ECO_health] < 10 }
+			}
+		}
+
+		allowed = {
+			original_tag = CHI
+		}
+
+		available = {
+			NOT = { has_idea = economy_depression }
+			NOT = { has_idea = economy_recession }
+			NOT = { has_idea = economy_stagnation }
+			taiwan_non_economic_subordination = no
+		}
+
+		#custom_cost_trigger = {
+		#	check_variable = { [?ROOT.NVX_ECO_health] > 0 }
+		#}
+		
+		#visible = {
+		#	taiwan_non_economic_subordination = no
+		#}
+
+		days_re_enable = 180
+		
+		custom_cost_text = economic_health_5
+		
+		cost = 0 
+
+		complete_effect = {
+			ROOT = { add_to_variable = { NVX_ECO_health = -5 tooltip = minous_economic_health_5 } }
+			CHI_decrease_economic_subordination_effect = yes
+			add_stability = -0.02
+		}
+	}
+	
+	CHI_declaration_of_independence = {
+		priority = 45
+
+		icon = generic_form_nation
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 1
+				is_historical_focus_on = no
+			}
+			modifier = {
+				add = 1
+				PRC = { has_war = yes }
+			}
+			modifier = {
+				add = 10
+				PRC = { has_war_with_major = yes }
+			}
+			modifier = {
+				add = 10
+				PRC = { has_war_with = USA }
+			}
+			modifier = {
+				add = 10
+				PRC = { has_war_with = JAP }
+			}
+			modifier = {
+				add = 10
+				PRC = { has_war_with = SOV }
+			}
+			modifier = {
+				add = 5
+				PRC = { surrender_progress > 0.1 }
+			}
+			modifier = {
+				add = 1000
+				has_war_with = PRC
+			}
+		}
+
+		allowed = {
+			original_tag = CHI
+		}
+
+		fire_only_once = yes
+		
+		available = {
+			OR = {
+				has_completed_focus = CHI_wait_for_the_chance
+				has_completed_focus = CHI_wait_for_the_time
+				has_completed_focus = CHI_preparation_for_freedom
+			}
+			is_puppet = no
+			NOT = { has_government = conservative }
+			NOT = { has_government = nationalist }
+			NOT = { has_government = communist }
+			NOT = { 
+				is_power_balance_in_range = {
+					id = CHI_power_balance
+					range = CHI_pan_blue_victory
+				}
+			}
+		}
+
+		visible = {
+			NOT = { 
+				has_cosmetic_tag = independence_taiwan
+				has_cosmetic_tag = independence_taiwan_blue
+			}
+		}
+		
+		cost = CHI_declaration_of_independence_cost
+
+		complete_effect = {
+			country_event = { id = ro_china.independence_events.1 }
+		}
+	}
+}
+
+taiwanese_minority_rights_cat = {
+
+	taiwanese_minority_rights_victory = {
+		icon = GFX_decision_generic_civil_support 
+		
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = taiwanese_minority_rights_victory_a_tt
+				check_variable = { BenshengrensDiscontentVar < 20 }
+			}
+			custom_trigger_tooltip = {
+				tooltip = taiwanese_minority_rights_victory_b_tt
+				check_variable = { YuanzhuminsSatisfactionVar > 95 }
+			}
+			NOT = { has_government = conservative }
+			NOT = { has_government = nationalist }
+			NOT = { has_government = communist }
+		}
+
+		visible = {
+		}
+
+		fire_only_once = yes
+
+		priority = 100
+		
+		complete_effect = {
+			CHI_increase_DPP_popular_support_effect = yes
+		}
+
+		ai_will_do = {
+			factor = 1000
+		}
+	}
+
+	yuanzhumins_land_compensation = {
+		icon = GFX_decision_generic_construction
+		
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = BenshengrensDiscontentVar_less_95_tt
+				check_variable = { BenshengrensDiscontentVar < 95 }
+			}
+			NOT = { has_government = conservative }
+			NOT = { has_government = nationalist }
+			NOT = { has_government = communist }
+		}
+
+		visible = {
+		}
+
+		cost = 0
+		
+		days_remove = 35
+		days_re_enable = 100
+		
+		custom_cost_trigger = {
+			always = yes
+		}
+		
+		custom_cost_text = BenshengrensDiscontent_8
+
+		fire_only_once = no
+
+		remove_effect = {
+			random_list = {
+				60 = { add_to_variable = { YuanzhuminsSatisfactionVar = 10 tooltip = additional_YuanzhuminsSatisfactionVar_10_tt } }
+				20 = { add_to_variable = { YuanzhuminsSatisfactionVar = 9 tooltip = additional_YuanzhuminsSatisfactionVar_9_tt } }
+				20 = { add_to_variable = { YuanzhuminsSatisfactionVar = 8 tooltip = additional_YuanzhuminsSatisfactionVar_8_tt } }
+			}
+			clamp_variable = { var = YuanzhuminsSatisfactionVar max = 100 min = 0 }
+		}
+
+		complete_effect = {
+			add_to_variable = { BenshengrensDiscontentVar = 8 }
+			clamp_variable = { var = BenshengrensDiscontentVar max = 100 min = 0 }
+		}
+
+		ai_will_do = {
+			factor = 4
+		}
+	}
+
+	study_of_yuanzhumin_history = {
+		icon = generic_political_discourse
+		
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = BenshengrensDiscontentVar_less_95_tt
+				check_variable = { BenshengrensDiscontentVar < 95 }
+			}
+			NOT = { has_government = conservative }
+			NOT = { has_government = nationalist }
+			NOT = { has_government = communist }
+		}
+
+		cost = 0
+
+		custom_cost_text = BenshengrensDiscontent_3
+
+		custom_cost_trigger = {
+			always = yes
+		}
+		
+		visible = {
+		}
+		
+		days_remove = 30
+		days_re_enable = 21
+
+		fire_only_once = no
+		
+		remove_effect = {
+			random_list = {
+				60 = { add_to_variable = { YuanzhuminsSatisfactionVar = 4 tooltip = additional_YuanzhuminsSatisfactionVar_4_tt } }
+				20 = { add_to_variable = { YuanzhuminsSatisfactionVar = 3 tooltip = additional_YuanzhuminsSatisfactionVar_3_tt } }
+				20 = { add_to_variable = { YuanzhuminsSatisfactionVar = 2 tooltip = additional_YuanzhuminsSatisfactionVar_2_tt } }
+			}
+			clamp_variable = { var = YuanzhuminsSatisfactionVar max = 100 min = 0 }
+		}
+		
+		complete_effect = {
+			add_to_variable = { BenshengrensDiscontentVar = 3 }
+			clamp_variable = { var = BenshengrensDiscontentVar max = 100 min = 0 }
+		}
+
+		ai_will_do = {
+			factor = 3
+		}
+	}
+
+	support_for_yuanzhumin_jobs = {
+		icon = GFX_decision_generic_factory
+		
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = BenshengrensDiscontentVar_less_95_tt
+				check_variable = { BenshengrensDiscontentVar < 95 }
+			}
+			NOT = { has_government = conservative }
+			NOT = { has_government = nationalist }
+			NOT = { has_government = communist }
+		}
+
+		visible = {
+		}
+		
+		days_remove = 28
+		days_re_enable = 30
+
+		custom_cost_trigger = {
+			always = yes
+		}
+		
+		cost = 0
+		
+		custom_cost_text = BenshengrensDiscontent_5
+		
+		fire_only_once = no
+		
+		remove_effect = {
+			random_list = {
+				60 = { add_to_variable = { YuanzhuminsSatisfactionVar = 6 tooltip = additional_YuanzhuminsSatisfactionVar_6_tt } }
+				20 = { add_to_variable = { YuanzhuminsSatisfactionVar = 5 tooltip = additional_YuanzhuminsSatisfactionVar_5_tt } }
+				20 = { add_to_variable = { YuanzhuminsSatisfactionVar = 4 tooltip = additional_YuanzhuminsSatisfactionVar_4_tt } }
+			}
+			clamp_variable = { var = YuanzhuminsSatisfactionVar max = 100 min = 0 }
+		}
+
+		complete_effect = {
+			add_to_variable = { BenshengrensDiscontentVar = 5 }
+			clamp_variable = { var = BenshengrensDiscontentVar max = 100 min = 0 }
+		}
+
+		ai_will_do = {
+			factor = 3
+		}
+	}
+
+	to_reassure_benshengren = {
+		icon = GFX_decision_eng_propaganda_campaigns
+		
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = BenshengrensDiscontentVar_over_1_tt
+				check_variable = { BenshengrensDiscontentVar > 0 }
+			}
+			NOT = { has_government = conservative }
+			NOT = { has_government = nationalist }
+			NOT = { has_government = communist }
+		}
+
+		visible = {
+		}
+		
+		days_remove = 14
+		days_re_enable = 21
+		
+		cost = 10
+
+		fire_only_once = no
+		
+		remove_effect = {
+			random_list = {
+				60 = { add_to_variable = { BenshengrensDiscontentVar = -3 tooltip = minous_BenshengrensDiscontentVar_3_tt } }
+				20 = { add_to_variable = { BenshengrensDiscontentVar = -4 tooltip = minous_BenshengrensDiscontentVar_4_tt } }
+				20 = { add_to_variable = { BenshengrensDiscontentVar = -5 tooltip = minous_BenshengrensDiscontentVar_5_tt } }
+			}
+			clamp_variable = { var = BenshengrensDiscontentVar max = 100 min = 0 }
+		}
+		
+		complete_effect = {
+		}
+
+		ai_will_do = {
+			factor = 3
+			modifier = {
+				factor = 0
+				check_variable = { BenshengrensDiscontentVar < 15 }
+			}
+			modifier = {
+				factor = 10
+				check_variable = { BenshengrensDiscontentVar > 30 }
+			}
+		}
+	}
+
+	economic_policy_for_benshengren = {
+		icon = GFX_decision_generic_fundraising
+		
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = BenshengrensDiscontentVar_over_1_tt
+				check_variable = { BenshengrensDiscontentVar > 0 }
+			}
+			NOT = { has_government = conservative }
+			NOT = { has_government = nationalist }
+			NOT = { has_government = communist }
+		}
+
+		visible = {
+		}
+		
+		days_remove = 35
+		days_re_enable = 100
+		
+		cost = 25
+
+		fire_only_once = no
+		
+		remove_effect = {
+			random_list = {
+				60 = { add_to_variable = { BenshengrensDiscontentVar = -6 tooltip = minous_BenshengrensDiscontentVar_6_tt } }
+				20 = { add_to_variable = { BenshengrensDiscontentVar = -5 tooltip = minous_BenshengrensDiscontentVar_5_tt } }
+				20 = { add_to_variable = { BenshengrensDiscontentVar = -4 tooltip = minous_BenshengrensDiscontentVar_4_tt } }
+			}
+			clamp_variable = { var = BenshengrensDiscontentVar max = 100 min = 0 }
+		}
+		
+		complete_effect = {
+		}
+
+		ai_will_do = {
+			factor = 3
+			modifier = {
+				factor = 0
+				check_variable = { BenshengrensDiscontentVar < 15 }
+			}
+			modifier = {
+				factor = 10
+				check_variable = { BenshengrensDiscontentVar > 30 }
+			}
+		}
+	}
+}
+
+CHI_PRC_battle_contents = {
+
+	CHI_PRC_battle_help = {
+		priority = 98
+
+		icon = GFX_decision_generic_political_discourse
+
+		ai_will_do = {
+			base = 0
+		}
+
+		allowed = {
+			
+		}
+
+		available = {
+		}
+
+		visible = {
+
+		}
+		
+		cost = 0
+
+		complete_effect = {
+			country_event = { id = ro_china.events.300 }
+		}
+	}
+
+	PRC_duel_start = {
+		priority = 99
+
+		icon = GFX_decision_SWI_no_elected_president
+
+		ai_will_do = {
+			base = 100
+			modifier = {
+				factor = 0
+				date < 2000.6.1
+			}
+			modifier = {
+				factor = 0
+				AND = {
+					is_historical_focus_on = yes
+					CHI = { is_ai = yes }
+					CHI = {
+						power_balance_value = {
+							id = CHI_power_balance
+							value < 0
+						}
+					}
+				}
+			}
+		}
+
+		allowed = {
+			original_tag = PRC
+		}
+
+		available = {
+			has_completed_focus = CHINESE_the_end_of_the_1999_crisis
+			CHI = { has_power_balance = { id = CHI_power_balance } }
+			AND = {
+				country_exists = CHI
+				NOT = { CHI = { has_war_with = PRC } }
+				PRC = { is_puppet = no }
+				CHI = { is_puppet = no }
+				taiwan_independence = no
+			}
+		}
+
+		visible = {
+			NOT = { has_globlal_flag = blue_and_green_battle_flag }
+		}
+		
+		days_re_enable = 180
+		
+		cost = 0
+
+		complete_effect = {
+			custom_effect_tooltip = PRC_duel_start_tt
+			set_global_flag = blue_and_green_battle_flag
+		
+			set_variable = { global.KMT_blue_and_green_var = 0 }
+			set_variable = { global.DPP_blue_and_green_var = 0 }
+			set_variable = { global.CHI_blue_and_green_decision_frame = 2 }
+			
+			hidden_effect = {
+				country_event = { id = ro_china.events.301 }
+				CHI = { 
+					country_event = { id = ro_china.events.301 }
+				}
+			}
+		}
+	}
+
+	CHI_PRC_duel_time = {
+		priority = 99
+
+		icon = GFX_decision_SWI_no_elected_president
+
+		
+		allowed = {
+			OR = {
+				original_tag = PRC
+				original_tag = CHI
+			}
+		}
+		
+		activation = {
+			has_global_flag = blue_and_green_battle_flag
+		}
+		
+		available = { 
+			always = no 
+		}
+
+		visible = {
+			has_global_flag = blue_and_green_battle_flag
+		}
+		
+		cancel_trigger = {
+		}
+		
+		cancel_if_not_visible = yes
+		is_good = yes
+		fire_only_once = no
+		selectable_mission = no
+		days_mission_timeout = 42
+
+		cancel_effect = {
+			set_variable = { global.CHI_blue_and_green_decision_frame = 1 }
+			clr_global_flag  = blue_and_green_battle_flag
+		}
+		
+		timeout_effect = {
+			set_variable = { global.CHI_blue_and_green_decision_frame = 1 }
+			clr_global_flag  = blue_and_green_battle_flag
+			custom_effect_tooltip = CHI_PRC_duel_time_tt
+			
+			hidden_effect = {
+				PRC = { country_event = { id = ro_china.events.302 } }
+				CHI = { country_event = { id = ro_china.events.302 } }
+			}
+			
+			effect_tooltip = {
+				if = {
+					limit = { 
+						OR = {
+							check_variable = { global.KMT_blue_and_green_var = global.DPP_blue_and_green_var } #DRAW
+							AND = {
+								check_variable = { global.KMT_blue_and_green_var > 21 }
+								check_variable = { global.DPP_blue_and_green_var > 21 }
+							}
+						}
+					}
+					custom_effect_tooltip = CHI_PRC_duel_time_DRAW_tt
+					CHI = { CHI_bop_medium_decrease_effect = yes }
+					
+					if  = { 
+						limit = { 
+							check_variable = { global.KMT_blue_and_green_var = 21 } #21!!
+						}
+						CHI = { CHI_bop_low_decrease_effect = yes }
+					}
+					if  = { 
+						limit = { 
+							check_variable = { global.DPP_blue_and_green_var = 21 } #21!!
+						}
+						CHI = { CHI_bop_low_increase_effect = yes }
+					}
+				}
+				else_if = {
+					limit = { 
+						check_variable = { global.KMT_blue_and_green_var > 21 }
+						check_variable = { global.DPP_blue_and_green_var < 22 }
+					}
+					custom_effect_tooltip = CHI_PRC_duel_time_KMT_over_DPP_victory_tt
+					
+					CHI = { CHI_bop_low_decrease_effect = yes }
+					
+					if  = { 
+						limit = { 
+							check_variable = { global.KMT_blue_and_green_var = 21 } #21!!
+						}
+						CHI = { CHI_bop_low_decrease_effect = yes }
+					}
+					
+					if  = { 
+						limit = { 
+							check_variable = { global.DPP_blue_and_green_var = 21 } #21!!
+						}
+						CHI = { CHI_bop_low_increase_effect = yes }
+					}
+				}
+				else_if = {
+					limit = { 
+						check_variable = { global.DPP_blue_and_green_var > 21 }
+						check_variable = { global.KMT_blue_and_green_var < 22 }
+					}
+					custom_effect_tooltip = CHI_PRC_duel_time_DPP_over_KMT_victory_tt
+					CHI = { CHI_bop_medium_decrease_effect = yes }
+					
+					if  = { 
+						limit = { 
+							check_variable = { global.KMT_blue_and_green_var = 21 } #21!!
+						}
+						CHI = { CHI_bop_low_decrease_effect = yes }
+					}
+					if  = { 
+						limit = { 
+							check_variable = { global.DPP_blue_and_green_var = 21 } #21!!
+						}
+						CHI = { CHI_bop_low_increase_effect = yes }
+					}
+				}
+				else_if = {
+					limit = { 
+						check_variable = { global.DPP_blue_and_green_var > global.KMT_blue_and_green_var }
+					}
+					custom_effect_tooltip = CHI_PRC_duel_time_DPP_victory_tt
+					CHI = { CHI_bop_low_decrease_effect = yes }
+					
+					if  = { 
+						limit = { 
+							check_variable = { global.KMT_blue_and_green_var = 21 } #21!!
+						}
+						CHI = { CHI_bop_low_decrease_effect = yes }
+					}
+					if  = { 
+						limit = { 
+							check_variable = { global.DPP_blue_and_green_var = 21 } #21!!
+						}
+						CHI = { CHI_bop_low_increase_effect = yes }
+					}
+				}
+				else = {
+					custom_effect_tooltip = CHI_PRC_duel_time_KMT_victory_tt
+					CHI = { CHI_bop_medium_decrease_effect = yes }
+					
+					if  = { 
+						limit = { 
+							check_variable = { global.KMT_blue_and_green_var = 21 } #21!!
+						}
+						CHI = { CHI_bop_low_decrease_effect = yes }
+					}
+					if  = { 
+						limit = { 
+							check_variable = { global.DPP_blue_and_green_var = 21 } #21!!
+						}
+						CHI = { CHI_bop_low_increase_effect = yes }
+					}
+				}
+			}
+		}
+	}
+	
+	CHI_DEBUG_add_KMT_1 = {
+
+		icon = GFX_decision_generic_political_discourse
+
+		ai_will_do = {
+			base = 0
+		}
+
+		allowed = {
+			
+		}
+
+		available = {
+		}
+
+		visible = {
+			is_debug = yes
+		}
+		
+		cost = 0
+
+		complete_effect = {
+			add_to_variable = { global.KMT_blue_and_green_var = 1 }
+		}
+	}
+	
+	CHI_DEBUG_add_DPP_1 = {
+
+		icon = GFX_decision_generic_political_discourse
+
+		ai_will_do = {
+			base = 0
+		}
+
+		allowed = {
+			
+		}
+
+		available = {
+		}
+
+		visible = {
+			is_debug = yes
+		}
+		
+		cost = 0
+
+		complete_effect = {
+			add_to_variable = { global.DPP_blue_and_green_var = 1 }
+		}
+	}
+	
+	#### PRC Dual Cards
+	
+	PRC_conduct_fake_news_towards_DPP = {
+
+		icon = GFX_decision_generic_operation
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 100
+				check_variable = { global.KMT_blue_and_green_var < 18 }
+			}
+			modifier = {
+				factor = 0
+				check_variable = { global.DPP_blue_and_green_var > 21 } #DPP Lose
+			}
+		}
+
+		allowed = {
+			original_tag = PRC
+		}
+
+		available = {
+			NOT = { has_country_flag = blue_and_green_battle_card_playing }
+			check_variable = { global.KMT_blue_and_green_var < 22 }
+		}
+
+		visible = {
+			has_global_flag = blue_and_green_battle_flag
+		}
+		
+		days_remove = 7
+		
+		cost = 10
+
+		remove_effect = {
+			random_list = {
+				33= { add_to_variable = { global.KMT_blue_and_green_var = 3 tooltip = add_KMT_blue_and_green_var_3_tt } }
+				33 = { add_to_variable = { global.KMT_blue_and_green_var = 4 tooltip = add_KMT_blue_and_green_var_5_tt } }
+				33 = { add_to_variable = { global.KMT_blue_and_green_var = 7 tooltip = add_KMT_blue_and_green_var_7_tt } }
+			}
+		}
+		
+		complete_effect = {
+			set_country_flag = { flag = blue_and_green_battle_card_playing value = 1 days = 7 }
+		}
+	}
+	
+	PRC_illegal_fund_to_KMT_politicians = {
+
+		icon = GFX_decision_generic_nationalism
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 100
+				check_variable = { global.KMT_blue_and_green_var < 16 }
+			}
+			modifier = {
+				factor = 0
+				check_variable = { global.DPP_blue_and_green_var > 21 } #DPP Lose
+			}
+		}
+
+		allowed = {
+			original_tag = PRC
+		}
+
+		available = {
+			NOT = { has_country_flag = blue_and_green_battle_card_playing }
+			has_completed_focus = CHINESE_support_KMT
+			check_variable = { global.KMT_blue_and_green_var < 22 }
+		}
+
+		visible = {
+			has_global_flag = blue_and_green_battle_flag
+		}
+		
+		days_remove = 7
+		
+		cost = 15
+
+		remove_effect = {
+			random_list = {
+				33= { add_to_variable = { global.KMT_blue_and_green_var = 4 tooltip = add_KMT_blue_and_green_var_4_tt } }
+				33 = { add_to_variable = { global.KMT_blue_and_green_var = 1 tooltip = add_KMT_blue_and_green_var_1_tt } }
+				33 = { add_to_variable = { global.KMT_blue_and_green_var = 8 tooltip = add_KMT_blue_and_green_var_8_tt } }
+			}
+			random_list = {
+				20 = { CHI = {  add_popularity = { ideology = conservative popularity = 0.02 } } }
+				80 = {  }
+			}
+		}
+		
+		complete_effect = {
+			set_country_flag = { flag = blue_and_green_battle_card_playing value = 1 days = 7 }
+		}
+	}
+	
+	PRC_illegal_fund_to_LP_politicians = {
+
+		icon = GFX_decision_generic_fundraising
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 100
+				check_variable = { global.KMT_blue_and_green_var < 18 }
+			}
+			modifier = {
+				factor = 0
+				check_variable = { global.DPP_blue_and_green_var > 21 } #DPP Lose
+			}
+		}
+
+		allowed = {
+			original_tag = PRC
+		}
+
+		available = {
+			NOT = { has_country_flag = blue_and_green_battle_card_playing }
+			check_variable = { global.KMT_blue_and_green_var < 22 }
+		}
+
+		visible = {
+			has_global_flag = blue_and_green_battle_flag
+		}
+		
+		days_remove = 7
+		
+		cost = 5
+
+		remove_effect = {
+			random_list = {
+				33= { add_to_variable = { global.KMT_blue_and_green_var = 1 tooltip = add_KMT_blue_and_green_var_1_tt } }
+				33 = { add_to_variable = { global.KMT_blue_and_green_var = 2 tooltip = add_KMT_blue_and_green_var_2_tt } }
+				33 = { add_to_variable = { global.KMT_blue_and_green_var = 5 tooltip = add_KMT_blue_and_green_var_5_tt } }
+			}
+			random_list = {
+				20 = { CHI = {  add_popularity = { ideology = nationalist popularity = 0.02 } } }
+				80 = {  }
+			}
+		}
+		
+		complete_effect = {
+			set_country_flag = { flag = blue_and_green_battle_card_playing value = 1 days = 7 }
+		}
+	}
+	
+	PRC_military_threat_to_taiwan = {
+
+		icon = GFX_decision_generic_military
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 1000
+				check_variable = { global.KMT_blue_and_green_var < 10 }
+			}
+			modifier = {
+				factor = 0
+				check_variable = { global.KMT_blue_and_green_var > 15 }
+			}
+			modifier = {
+				factor = 0
+				check_variable = { global.DPP_blue_and_green_var > 21 } #DPP Lose
+			}
+		}
+
+		allowed = {
+			original_tag = PRC
+		}
+
+		available = {
+			NOT = { has_country_flag = blue_and_green_battle_card_playing }
+			has_completed_focus = CHINESE_military_threat
+			command_power > 14
+			check_variable = { global.KMT_blue_and_green_var < 22 }
+		}
+
+		visible = {
+			has_global_flag = blue_and_green_battle_flag
+		}
+		
+		days_remove = 7
+		
+		custom_cost_trigger = {
+			command_power > 14
+		}
+		
+		custom_cost_text = CP_15
+		
+		cost = 0
+
+		remove_effect = {
+			random_list = {
+				33= { add_to_variable = { global.KMT_blue_and_green_var = 12 tooltip = add_KMT_blue_and_green_var_12_tt } }
+				33 = { add_to_variable = { global.KMT_blue_and_green_var = 4 tooltip = add_KMT_blue_and_green_var_4_tt } }
+				33 = { add_to_variable = { global.KMT_blue_and_green_var = 1 tooltip = add_KMT_blue_and_green_var_1_tt } }
+			}
+		}
+		
+		complete_effect = {
+			add_command_power = -15
+			set_country_flag = { flag = blue_and_green_battle_card_playing value = 1 days = 7 }
+		}
+	}
+	
+	PRC_threatens_neighboring_countries = {
+
+		icon = GFX_decision_border_war
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 100
+				check_variable = { global.KMT_blue_and_green_var < 18 }
+			}
+			modifier = {
+				factor = 0
+				check_variable = { global.DPP_blue_and_green_var > 21 } #DPP Lose
+			}
+		}
+
+		allowed = {
+			original_tag = PRC
+		}
+
+		available = {
+			NOT = { has_country_flag = blue_and_green_battle_card_playing }
+			has_completed_focus = CHINESE_economic_threat
+			has_army_experience > 4
+			
+			check_variable = { global.KMT_blue_and_green_var < 22 }
+		}
+
+		custom_cost_trigger = {
+			has_army_experience > 4
+		}
+		
+		visible = {
+			has_global_flag = blue_and_green_battle_flag
+		}
+		
+		days_remove = 7
+		
+		custom_cost_text = army_xp_5
+		
+		cost = 0
+
+		remove_effect = {
+			random_list = {
+				33= { add_to_variable = { global.KMT_blue_and_green_var = 2 tooltip = add_KMT_blue_and_green_var_2_tt } }
+				33 = { add_to_variable = { global.KMT_blue_and_green_var = 4 tooltip = add_KMT_blue_and_green_var_4_tt } }
+				33 = { add_to_variable = { global.KMT_blue_and_green_var = 6 tooltip = add_KMT_blue_and_green_var_6_tt } }
+			}
+		}
+		
+		complete_effect = {
+			army_experience = -5
+			set_country_flag = { flag = blue_and_green_battle_card_playing value = 1 days = 7 }
+		}
+	}
+	
+	#### DPP Dual Cards
+	
+	CHI_conduct_fake_news_towards_KMT = {
+
+		icon = GFX_decision_generic_operation
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 100
+				check_variable = { global.DPP_blue_and_green_var < 18 }
+			}
+			modifier = {
+				factor = 0
+				check_variable = { global.KMT_blue_and_green_var > 21 } #KMT Lose
+			}
+		}
+
+		allowed = {
+			original_tag = CHI
+		}
+
+		available = {
+			NOT = { has_country_flag = blue_and_green_battle_card_playing }
+			check_variable = { global.DPP_blue_and_green_var < 22 }
+		}
+
+		visible = {
+			has_global_flag = blue_and_green_battle_flag
+		}
+		
+		days_remove = 7
+		
+		cost = 10
+
+		remove_effect = {
+			random_list = {
+				33= { add_to_variable = { global.DPP_blue_and_green_var = 3 tooltip = add_DPP_blue_and_green_var_3_tt } }
+				33 = { add_to_variable = { global.DPP_blue_and_green_var = 4 tooltip = add_DPP_blue_and_green_var_4_tt } }
+				33 = { add_to_variable = { global.DPP_blue_and_green_var = 7 tooltip = add_DPP_blue_and_green_var_7_tt } }
+			}
+		}
+		
+		complete_effect = {
+			set_country_flag = { flag = blue_and_green_battle_card_playing value = 1 days = 7 }
+		}
+	}
+	
+	CHI_pro_china_spying_investigation = {
+
+		icon = GFX_decision_generic_police_action
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 100
+				check_variable = { global.DPP_blue_and_green_var < 18 }
+			}
+			modifier = {
+				factor = 0
+				check_variable = { global.KMT_blue_and_green_var > 21 } #KMT Lose
+			}
+		}
+
+		allowed = {
+			original_tag = CHI
+		}
+
+		available = {
+			NOT = { has_country_flag = blue_and_green_battle_card_playing }
+			command_power > 4
+			check_variable = { global.DPP_blue_and_green_var < 22 }
+		}
+		
+		visible = {
+			has_global_flag = blue_and_green_battle_flag
+		}
+		
+		days_remove = 7
+		
+		cost = 0
+		
+		custom_cost_text = CP_5
+
+		custom_cost_trigger = {
+			command_power > 4
+		}
+		
+		remove_effect = {
+			random_list = {
+				33= { add_to_variable = { global.DPP_blue_and_green_var = 2 tooltip = add_DPP_blue_and_green_var_2_tt } }
+				33 = { add_to_variable = { global.DPP_blue_and_green_var = 9 tooltip = add_DPP_blue_and_green_var_9_tt } }
+				33 = { add_to_variable = { global.DPP_blue_and_green_var = 4 tooltip = add_DPP_blue_and_green_var_4_tt } }
+			}
+		}
+		
+		complete_effect = {
+			army_experience = -5
+			set_country_flag = { flag = blue_and_green_battle_card_playing value = 1 days = 7 }
+		}
+	}
+	
+	CHI_spread_of_foreign_popular_culture = {
+
+		icon = GFX_decision_eng_propaganda_campaigns
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 100
+				check_variable = { global.DPP_blue_and_green_var < 18 }
+			}
+			modifier = {
+				factor = 0
+				check_variable = { global.KMT_blue_and_green_var > 21 } #KMT Lose
+			}
+		}
+
+		allowed = {
+			original_tag = CHI
+		}
+
+		available = {
+			NOT = { has_country_flag = blue_and_green_battle_card_playing }
+			OR = {
+				has_completed_focus = CHINESE_complete_acceptance_of_japanese_culture
+				has_completed_focus = CHINESE_acceptance_of_pan_east_asia_soft_power
+			}
+			check_variable = { global.DPP_blue_and_green_var < 22 }
+		}
+		
+		visible = {
+			has_global_flag = blue_and_green_battle_flag
+		}
+		
+		days_remove = 7
+		
+		cost = 15
+		
+		remove_effect = {
+			random_list = {
+				33= { add_to_variable = { global.DPP_blue_and_green_var = 4 tooltip = add_DPP_blue_and_green_var_4_tt } }
+				33 = { add_to_variable = { global.DPP_blue_and_green_var = 5 tooltip = add_DPP_blue_and_green_var_5_tt } }
+				33 = { add_to_variable = { global.DPP_blue_and_green_var = 6 tooltip = add_DPP_blue_and_green_var_6_tt } }
+			}
+		}
+		
+		complete_effect = {
+			set_country_flag = { flag = blue_and_green_battle_card_playing value = 1 days = 7 }
+		}
+	}
+	
+	CHI_destruction_of_the_statue_of_chiang_kai_shek = {
+
+		icon = GFX_decision_oppression
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 100
+				check_variable = { global.DPP_blue_and_green_var < 15 }
+			}
+			modifier = {
+				factor = 0
+				check_variable = { global.KMT_blue_and_green_var > 21 } #KMT Lose
+			}
+		}
+
+		allowed = {
+			original_tag = CHI
+		}
+
+		available = {
+			NOT = { has_country_flag = blue_and_green_battle_card_playing }
+			has_completed_focus = CHINESE_criticism_of_chiang_kai_shek
+			command_power > 14
+			check_variable = { global.DPP_blue_and_green_var < 22 }
+		}
+		
+		visible = {
+			has_global_flag = blue_and_green_battle_flag
+		}
+		
+		days_remove = 7
+		
+		cost = 0
+
+		custom_cost_trigger = {
+			command_power > 14
+		}
+		
+		custom_cost_text = CP_15
+		
+		remove_effect = {
+			random_list = {
+				33= { add_to_variable = { global.DPP_blue_and_green_var = 11 tooltip = add_DPP_blue_and_green_var_11_tt } }
+				33 = { add_to_variable = { global.DPP_blue_and_green_var = 1 tooltip = add_DPP_blue_and_green_var_1_tt } }
+				33 = { add_to_variable = { global.DPP_blue_and_green_var = 4 tooltip = add_DPP_blue_and_green_var_4_tt } }
+			}
+		}
+		
+		complete_effect = {
+			command_power = -15
+			set_country_flag = { flag = blue_and_green_battle_card_playing value = 1 days = 7 }
+		}
+	}
+	
+	CHI_educating_the_atrocities_of_the_KMT_junta = {
+
+		icon = GFX_decision_generic_nationalism
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 1000
+				check_variable = { global.DPP_blue_and_green_var < 15 }
+			}
+			modifier = {
+				factor = 0
+				check_variable = { global.KMT_blue_and_green_var > 21 } #KMT Lose
+			}
+		}
+
+		allowed = {
+			original_tag = CHI
+		}
+
+		available = {
+			NOT = { has_country_flag = blue_and_green_battle_card_playing }
+			check_variable = { global.DPP_blue_and_green_var < 22 }
+			has_completed_focus = CHINESE_history_of_taiwan_s_democracy
+		}
+
+		visible = {
+			has_global_flag = blue_and_green_battle_flag
+		}
+		
+		days_remove = 7
+		
+		cost = 5
+
+		remove_effect = {
+			random_list = {
+				33= { add_to_variable = { global.DPP_blue_and_green_var = 8 tooltip = add_DPP_blue_and_green_var_8_tt } }
+				33 = { add_to_variable = { global.DPP_blue_and_green_var = 2 tooltip = add_DPP_blue_and_green_var_2_tt } }
+				33 = { add_to_variable = { global.DPP_blue_and_green_var = 3 tooltip = add_DPP_blue_and_green_var_3_tt } }
+			}
+			random_list = {
+				10 = { add_popularity = { ideology = social_liberal popularity = 0.02 } }
+				90 = {  }
+			}
+		}
+		
+		complete_effect = {
+			set_country_flag = { flag = blue_and_green_battle_card_playing value = 1 days = 7 }
+		}
+	}
+}
