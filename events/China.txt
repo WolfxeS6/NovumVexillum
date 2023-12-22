@@ -4509,6 +4509,18 @@ country_event = {
 			news_event = { id = ro_china.news.8 hours = 8 }
 		}
 		
+		if = {
+			limit = {
+				AND = {
+					NOT  = { has_cosmetic_tag = independence_taiwan }
+					NOT  = { has_cosmetic_tag = independence_taiwan_blue }
+					has_power_balance = { id = CHI_power_balance }
+				}
+			}
+			set_cosmetic_tag = independence_taiwan
+			mark_focus_tree_layout_dirty = yes
+		}
+		
 		white_peace = FROM
 		
 		if = {
@@ -4684,6 +4696,19 @@ country_event = {
 		}
 		
 		white_peace = FROM
+		
+		if = {
+			limit = {
+				AND = {
+					NOT  = { has_cosmetic_tag = independence_taiwan }
+					NOT  = { has_cosmetic_tag = independence_taiwan_blue }
+					has_power_balance = { id = CHI_power_balance }
+				}
+			}
+			set_cosmetic_tag = independence_taiwan
+			mark_focus_tree_layout_dirty = yes
+		}
+		
 		if = {
 			limit = {
 				is_faction_leader = yes
