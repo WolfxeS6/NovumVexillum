@@ -336,7 +336,7 @@ country_event = {
 	
 	option = {
 		name = hong_kong_uk_prc.7.a
-		ai_chance = {
+		ai_will_do = {
 			factor = 10	
 		}	
 		
@@ -355,7 +355,7 @@ country_event = {
 	
 	option = {
 		name = hong_kong_uk_prc.7.b
-		ai_chance = {
+		ai_will_do = {
 			factor = 5
 			modifier = {
 				factor = 0
@@ -457,27 +457,8 @@ country_event = {
 	
 	option = {
 		name = hong_kong_uk_prc.12.a
-		ai_chance = {
+		ai_will_do = {
 			factor = 10	
-		}	
-		
-		FROM = { country_event = hong_kong_uk_prc.13 }
-		
-		if = {
-			limit = {
-				original_tag = ENG
-			}
-			ENG_influence_minus_5 = yes
-		}
-		else = {
-			PRC_influence_minus_5 = yes
-		}
-	}
-	
-	option = {
-		name = hong_kong_uk_prc.12.b
-		ai_chance = {
-			factor = 5
 			modifier = {
 				factor = 0
 				if = {
@@ -499,8 +480,27 @@ country_event = {
 					}
 				}
 			}
-		}
+		}	
 		custom_effect_tooltip = hong_kong_embargo_tt
+		
+		FROM = { country_event = hong_kong_uk_prc.13 }
+	}
+	
+	option = {
+		name = hong_kong_uk_prc.12.b
+		ai_will_do = {
+			factor = 5
+		}
+		
+		if = {
+			limit = {
+				original_tag = ENG
+			}
+			ENG_influence_minus_5 = yes
+		}
+		else = {
+			PRC_influence_minus_5 = yes
+		}
 		
 		FROM = { country_event = hong_kong_uk_prc.14	}
 	}
@@ -516,16 +516,7 @@ country_event = {
 	
 	option = {
 		name = hong_kong_uk_prc.13.a
-		
-		if = {
-			limit = {
-				FROM = { original_tag = ENG }
-			}
-			custom_effect_tooltip = ENG_influence_minus_5_tt
-		}
-		else = {
-			custom_effect_tooltip = PRC_influence_minus_5_tt
-		}
+		send_embargo = FROM
 	}
 }
 
@@ -539,7 +530,16 @@ country_event = {
 	
 	option = {
 		name = hong_kong_uk_prc.14.a
-		send_embargo = FROM
+		
+		if = {
+			limit = {
+				FROM = { original_tag = ENG }
+			}
+			custom_effect_tooltip = ENG_influence_minus_5_tt
+		}
+		else = {
+			custom_effect_tooltip = PRC_influence_minus_5_tt
+		}
 	}
 }
 
@@ -609,7 +609,7 @@ country_event = {
 	
 	option = {
 		name = hong_kong_uk_prc.17.c
-		ai_chance = {
+		ai_will_do = {
 			factor = 0
 		}	
 		add_stability = -0.2
