@@ -204,7 +204,46 @@ on_actions = {
 					}
 				}
 				FROM.FROM = { 
-					remove_dynamic_modifier = { modifier = dynamic_zainichi_problem } 
+					remove_dynamic_modifier = { modifier = dynamic_zainichi_problem }
+				}
+			}
+		}
+		effect = {
+			if = {
+				limit = {
+					ROOT = { NOT = { tag = JAP } }
+					FROM.FROM = { 
+						has_dynamic_modifier = { modifier = dynamic_mindan }
+					}
+				}
+				FROM.FROM = { 
+					remove_dynamic_modifier = { modifier = dynamic_mindan }
+				}
+			}
+		}
+		effect = {
+			if = {
+				limit = {
+					ROOT = { NOT = { tag = JAP } }
+					FROM.FROM = { 
+						has_dynamic_modifier = { modifier = dynamic_chosen_soren }
+					}
+				}
+				FROM.FROM = { 
+					remove_dynamic_modifier = { modifier = dynamic_chosen_soren }
+				}
+			}
+		}
+		effect = {
+			if = {
+				limit = {
+					ROOT = { NOT = { tag = JAP } }
+					FROM.FROM = { 
+						has_dynamic_modifier = { modifier = dynamic_zainichi_harmony }
+					}
+				}
+				FROM.FROM = { 
+					remove_dynamic_modifier = { modifier = dynamic_zainichi_harmony }
 				}
 			}
 		}
@@ -221,6 +260,48 @@ on_actions = {
 				}
 				FROM.FROM = { 
 					add_dynamic_modifier = { modifier = dynamic_zainichi_problem } 
+				}
+			}
+			if = {
+				limit = {
+					FROM.FROM = { 
+						AND = { 
+							has_state_flag = JAP_mindan_state
+							NOT = { has_dynamic_modifier = { modifier = dynamic_mindan } }
+							is_owned_and_controlled_by = JAP
+						}
+					}
+				}
+				FROM.FROM = { 
+					add_dynamic_modifier = { modifier = dynamic_mindan } 
+				}
+			}
+			if = {
+				limit = {
+					FROM.FROM = { 
+						AND = { 
+							has_state_flag = JAP_chosen_soren_state
+							NOT = { has_dynamic_modifier = { modifier = dynamic_chosen_soren } }
+							is_owned_and_controlled_by = JAP
+						}
+					}
+				}
+				FROM.FROM = { 
+					add_dynamic_modifier = { modifier = dynamic_chosen_soren } 
+				}
+			}
+			if = {
+				limit = {
+					FROM.FROM = { 
+						AND = { 
+							has_state_flag = JAP_zainichi_harmony_state
+							NOT = { has_dynamic_modifier = { modifier = dynamic_zainichi_harmony } }
+							is_owned_and_controlled_by = JAP
+						}
+					}
+				}
+				FROM.FROM = { 
+					add_dynamic_modifier = { modifier = dynamic_zainichi_harmony } 
 				}
 			}
 		}

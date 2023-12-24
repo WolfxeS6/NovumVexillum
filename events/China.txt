@@ -601,6 +601,54 @@ news_event = {
 		}
 	}
 }
+
+#The Great Downfall of the China
+news_event = {
+	id = pr_china_news.19
+	title = pr_china_news.19.t
+	desc = pr_china_news.19.desc
+	picture = GFX_news_event_chinese_government_2
+	
+	major = yes
+	is_triggered_only = yes
+
+	option = {
+		name = pr_china_news.19.a
+		trigger = {
+			OR = {
+				any_allied_country = {
+					has_war_with = ROOT
+				}
+				has_war_with = ROOT
+			}
+		}
+		add_timed_idea = {
+			idea = PRC_the_great_downfall
+			days = 1460
+		}
+	}
+	option = {
+		name = pr_china_news.19.b
+		trigger = {
+			OR = {
+				tag = ROOT
+				has_war_together_with = ROOT
+				is_in_faction_with = ROOT
+			}
+		}
+	}
+	option = {
+		name = pr_china_news.19.c
+		trigger = {
+			NOT = { has_war_together_with = ROOT }
+			NOT = { is_in_faction_with = ROOT }
+			NOT = { any_allied_country = { has_war_with = ROOT } }
+			NOT = { has_war_with = ROOT }
+			NOT = { tag = ROOT }
+		}
+	}
+}
+
 country_event = {
 	id = pr_china.1
 	title = pr_china.1.t
@@ -4311,7 +4359,7 @@ country_event = {
 			value = 200
 		}
 		FROM = { country_event = { id = moh_south_prchina.8 } }
-		FROM = { news_event = { id = china_news.29 } }
+		news_event = { id = pr_china_news.18 }
 		add_opinion_modifier = { target = FROM modifier = declaration_of_friendship }
 	}
 }
