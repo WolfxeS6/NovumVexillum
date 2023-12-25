@@ -1065,3 +1065,27 @@ store_core_states_on_game_start = { #Should be called from history file
 		}
 	}
 }
+
+add_temp_unit_leader_role = {
+	hidden_effect = {
+		if = {
+			limit = { is_unit_leader = no }
+			add_corps_commander_role = {
+				skill = 1
+				traits = { just_visiting }
+				visible = { always = no }
+			}
+			set_character_flag = temp_unit_leader
+		}
+	}
+}
+
+remove_temp_unit_leader_role = {
+	hidden_effect = {
+		if = {
+			limit = { has_character_flag = temp_unit_leader }
+			remove_unit_leader_role = yes
+			clr_character_flag = temp_unit_leader
+		}
+	}
+}
