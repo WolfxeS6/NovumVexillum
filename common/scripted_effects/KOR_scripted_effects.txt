@@ -35,56 +35,105 @@ KOR_loyalty_setting_effect = {
 KOR_parties_support_setting_effect = {
 
 	clear_variable = KOR_all_ruling_party_status
-	
-	clamp_variable = {
-		var = KOR_parliament_seat_support_array^0
-		min = 0
-		max = KOR_all_seats_status
+	if = {
+		limit = {
+			has_variable = KOR_parliament_seat_support_array^0
+		}
+		clamp_variable = {
+			var = KOR_parliament_seat_support_array^0
+			min = 0
+			max = 300
+		}
 	}
-	clamp_variable = {
-		var = KOR_parliament_seat_support_array^1
-		min = 0
-		max = KOR_all_seats_status
+	if = {
+		limit = {
+			has_variable = KOR_parliament_seat_support_array^1
+		}
+		clamp_variable = {
+			var = KOR_parliament_seat_support_array^1
+			min = 0
+			max = 300
+		}
 	}
-	clamp_variable = {
-		var = KOR_parliament_seat_support_array^2
-		min = 0
-		max = KOR_all_seats_status
+	if = {
+		limit = {
+			has_variable = KOR_parliament_seat_support_array^2
+		}
+		clamp_variable = {
+			var = KOR_parliament_seat_support_array^2
+			min = 0
+			max = 300
+		}
 	}
-	clamp_variable = {
-		var = KOR_parliament_seat_support_array^3
-		min = 0
-		max = KOR_all_seats_status
+	if = {
+		limit = {
+			has_variable = KOR_parliament_seat_support_array^3
+		}
+		clamp_variable = {
+			var = KOR_parliament_seat_support_array^3
+			min = 0
+			max = 300
+		}
 	}
-	clamp_variable = {
-		var = KOR_parliament_seat_support_array^4
-		min = 0
-		max = KOR_all_seats_status
+	if = {
+		limit = {
+			has_variable = KOR_parliament_seat_support_array^4
+		}
+		clamp_variable = {
+			var = KOR_parliament_seat_support_array^4
+			min = 0
+			max = 300
+		}
 	}
-	clamp_variable = {
-		var = KOR_parliament_seat_support_array^5
-		min = 0
-		max = KOR_all_seats_status
+	if = {
+		limit = {
+			has_variable = KOR_parliament_seat_support_array^5
+		}
+		clamp_variable = {
+			var = KOR_parliament_seat_support_array^5
+			min = 0
+			max = 300
+		}
 	}
-	clamp_variable = {
-		var = KOR_parliament_seat_support_array^9
-		min = 0
-		max = KOR_all_seats_status
+	if = {
+		limit = {
+			has_variable = KOR_parliament_seat_support_array^9
+		}
+		clamp_variable = {
+			var = KOR_parliament_seat_support_array^9
+			min = 0
+			max = 300
+		}
 	}
-	clamp_variable = {
-		var = KOR_parliament_seat_support_array^6
-		min = 0
-		max = KOR_all_seats_status
+	if = {
+		limit = {
+			has_variable = KOR_parliament_seat_support_array^6
+		}
+		clamp_variable = {
+			var = KOR_parliament_seat_support_array^6
+			min = 0
+			max = 300
+		}
 	}
-	clamp_variable = {
-		var = KOR_parliament_seat_support_array^7
-		min = 0
-		max = KOR_all_seats_status
+	if = {
+		limit = {
+			has_variable = KOR_parliament_seat_support_array^7
+		}
+		clamp_variable = {
+			var = KOR_parliament_seat_support_array^7
+			min = 0
+			max = 300
+		}
 	}
-	clamp_variable = {
-		var = KOR_parliament_seat_support_array^8
-		min = 0
-		max = KOR_all_seats_status
+	if = {
+		limit = {
+			has_variable = KOR_parliament_seat_support_array^8
+		}
+		clamp_variable = {
+			var = KOR_parliament_seat_support_array^8
+			min = 0
+			max = 300
+		}
 	}
 	
 	add_to_variable = { var = KOR_all_support_status_base  value = KOR_parliament_seat_support_array^0 }
@@ -262,7 +311,7 @@ korean_overflow_and_minor_check = {
 korean_init_parliament = {
 
 	# check to see if result overflows
-	set_temp_variable = { temp = KOR_all_seats_status }
+	set_temp_variable = { temp = 300 }
 	
 	if = {
 		limit = {
@@ -1233,74 +1282,74 @@ KOR_seats_general_election_effect = {
 
 KOR_bop_high_decrease_effect = {
 #custom_effect_tooltip = PRK_national_bankruptcy_down_tt
-	if = {
-		limit = { has_idea = kor_postnationalist_rivalry_win_2 }
-		swap_ideas = {
-			remove_idea = kor_postnationalist_rivalry_win_2
-			add_idea = kor_postnationalist_rivalry_win_1
-		}
-	}
-	else_if = {
-		limit = { has_idea = kor_postnationalist_rivalry_win_1 }
-		swap_ideas = {
-			remove_idea = kor_postnationalist_rivalry_win_1
-			add_idea = kor_postnationalist_christian_rivalry_balanced
-		}
-	}
-	else_if = {
-		limit = { has_idea = kor_postnationalist_christian_rivalry_balanced }
-		swap_ideas = {
-			remove_idea = kor_postnationalist_christian_rivalry_balanced
-			add_idea = kor_christian_rivalry_win_1
-		}
-	}
-	else_if = {
-		limit = { has_idea = kor_christian_rivalry_win_1 }
-		swap_ideas = {
-			remove_idea = kor_christian_rivalry_win_1
-			add_idea = kor_christian_rivalry_win_2
-		}
-	}
-	else_if = {
-		limit = { has_idea = kor_christian_rivalry_win_2 }
-		custom_effect_tooltip = KOR_moon_chang_geuk_government_collapse_tt
-	}
+	# if = {
+	# 	limit = { has_idea = kor_postnationalist_rivalry_win_2 }
+	# 	swap_ideas = {
+	# 		remove_idea = kor_postnationalist_rivalry_win_2
+	# 		add_idea = kor_postnationalist_rivalry_win_1
+	# 	}
+	# }
+	# else_if = {
+	# 	limit = { has_idea = kor_postnationalist_rivalry_win_1 }
+	# 	swap_ideas = {
+	# 		remove_idea = kor_postnationalist_rivalry_win_1
+	# 		add_idea = kor_postnationalist_christian_rivalry_balanced
+	# 	}
+	# }
+	# else_if = {
+	# 	limit = { has_idea = kor_postnationalist_christian_rivalry_balanced }
+	# 	swap_ideas = {
+	# 		remove_idea = kor_postnationalist_christian_rivalry_balanced
+	# 		add_idea = kor_christian_rivalry_win_1
+	# 	}
+	# }
+	# else_if = {
+	# 	limit = { has_idea = kor_christian_rivalry_win_1 }
+	# 	swap_ideas = {
+	# 		remove_idea = kor_christian_rivalry_win_1
+	# 		add_idea = kor_christian_rivalry_win_2
+	# 	}
+	# }
+	# else_if = {
+	# 	limit = { has_idea = kor_christian_rivalry_win_2 }
+	# 	custom_effect_tooltip = KOR_moon_chang_geuk_government_collapse_tt
+	# }
 }
 
 KOR_postnationalist_to_gain_strength = {
 #custom_effect_tooltip = PRK_national_bankruptcy_down_tt
-	if = {
-		limit = { has_idea = kor_christian_rivalry_win_2 }
-		swap_ideas = {
-			remove_idea = kor_christian_rivalry_win_2
-			add_idea = kor_christian_rivalry_win_1
-		}
-	}
-	else_if = {
-		limit = { has_idea = kor_christian_rivalry_win_1 }
-		swap_ideas = {
-			remove_idea = kor_christian_rivalry_win_1
-			add_idea = kor_postnationalist_christian_rivalry_balanced
-		}
-	}
-	else_if = {
-		limit = { has_idea = kor_postnationalist_christian_rivalry_balanced }
-		swap_ideas = {
-			remove_idea = kor_postnationalist_christian_rivalry_balanced
-			add_idea = kor_postnationalist_rivalry_win_1
-		}
-	}
-	else_if = {
-		limit = { has_idea = kor_postnationalist_rivalry_win_1 }
-		swap_ideas = {
-			remove_idea = kor_postnationalist_rivalry_win_1
-			add_idea = kor_postnationalist_rivalry_win_2
-		}
-	}
-	else_if = {
-		limit = { has_idea = kor_postnationalist_rivalry_win_2 }
-		custom_effect_tooltip = KOR_moon_chang_geuk_government_collapse_tt
-	}
+	# if = {
+	# 	limit = { has_idea = kor_christian_rivalry_win_2 }
+	# 	swap_ideas = {
+	# 		remove_idea = kor_christian_rivalry_win_2
+	# 		add_idea = kor_christian_rivalry_win_1
+	# 	}
+	# }
+	# else_if = {
+	# 	limit = { has_idea = kor_christian_rivalry_win_1 }
+	# 	swap_ideas = {
+	# 		remove_idea = kor_christian_rivalry_win_1
+	# 		add_idea = kor_postnationalist_christian_rivalry_balanced
+	# 	}
+	# }
+	# else_if = {
+	# 	limit = { has_idea = kor_postnationalist_christian_rivalry_balanced }
+	# 	swap_ideas = {
+	# 		remove_idea = kor_postnationalist_christian_rivalry_balanced
+	# 		add_idea = kor_postnationalist_rivalry_win_1
+	# 	}
+	# }
+	# else_if = {
+	# 	limit = { has_idea = kor_postnationalist_rivalry_win_1 }
+	# 	swap_ideas = {
+	# 		remove_idea = kor_postnationalist_rivalry_win_1
+	# 		add_idea = kor_postnationalist_rivalry_win_2
+	# 	}
+	# }
+	# else_if = {
+	# 	limit = { has_idea = kor_postnationalist_rivalry_win_2 }
+	# 	custom_effect_tooltip = KOR_moon_chang_geuk_government_collapse_tt
+	# }
 }
 
 KOR_army_reform = {
@@ -1503,21 +1552,21 @@ KOR_RegimeStability_minmax_effect = {
 KOR_busan_tunnel_effect = {
 	if = {
 		limit = { has_tech = construction9 } #2032
-		add_to_variable = { var = busan_tsushima_var value = 40 }
+		add_to_variable = { var = global.busan_tsushima_var value = 40 }
 		custom_effect_tooltip = busan_tsushima_var_40_tt
 	}
 	else_if = {
 		limit = { has_tech = construction7 } #2024
-		add_to_variable = { var = busan_tsushima_var value = 30 }
+		add_to_variable = { var = global.busan_tsushima_var value = 30 }
 		custom_effect_tooltip = busan_tsushima_var_30_tt
 	}
 	else_if = {
 		limit = { has_tech = construction4 } #2012
-		add_to_variable = { var = busan_tsushima_var value = 25 }
+		add_to_variable = { var = global.busan_tsushima_var value = 25 }
 		custom_effect_tooltip = busan_tsushima_var_25_tt
 	}
 	else = {
-		add_to_variable = { var = busan_tsushima_var value = 20 }
+		add_to_variable = { var = global.busan_tsushima_var value = 20 }
 		custom_effect_tooltip = busan_tsushima_var_20_tt
 	}
 	KOR_tunnel_minmax_effect = yes
@@ -1526,21 +1575,21 @@ KOR_busan_tunnel_effect = {
 KOR_saga_tunnel_effect = {
 	if = {
 		limit = { has_tech = construction9 } #2032
-		add_to_variable = { var = saga_tsushima_var value = 40 }
+		add_to_variable = { var = global.saga_tsushima_var value = 40 }
 		custom_effect_tooltip = saga_tsushima_var_40_tt
 	}
 	else_if = {
 		limit = { has_tech = construction7 } #2024
-		add_to_variable = { var = saga_tsushima_var value = 30 }
+		add_to_variable = { var = global.saga_tsushima_var value = 30 }
 		custom_effect_tooltip = saga_tsushima_var_30_tt
 	}
 	else_if = {
 		limit = { has_tech = construction4 } #2012
-		add_to_variable = { var = saga_tsushima_var value = 25 }
+		add_to_variable = { var = global.saga_tsushima_var value = 25 }
 		custom_effect_tooltip = saga_tsushima_var_25_tt
 	}
 	else = {
-		add_to_variable = { var = saga_tsushima_var value = 20 }
+		add_to_variable = { var = global.saga_tsushima_var value = 20 }
 		custom_effect_tooltip = saga_tsushima_var_20_tt
 	}
 	KOR_tunnel_minmax_effect = yes
@@ -1548,40 +1597,40 @@ KOR_saga_tunnel_effect = {
 
 KOR_tunnel_minmax_effect = {
 	clamp_variable = {
-		var = saga_tsushima_var
+		var = global.saga_tsushima_var
 		min = 0
 		max = 100
 	}
 	clamp_variable = {
-		var = busan_tsushima_var
+		var = global.saga_tsushima_var
 		min = 0
 		max = 100
 	}
-	set_variable = { busan_saga_var = 0 }
-	add_to_variable = { var = busan_saga_var value = saga_tsushima_var }
-	add_to_variable = { var = busan_saga_var value = busan_tsushima_var }
+	set_variable = { global.busan_saga_var = 0 }
+	add_to_variable = { var = global.busan_saga_var value = global.saga_tsushima_var }
+	add_to_variable = { var = global.busan_saga_var value = global.busan_tsushima_var }
 	KOR_tunnel_bar_effect = yes
 }
 
 KOR_tunnel_bar_effect = {
 	if = {
-		limit = { check_variable = { busan_saga_var < 1 } } #0
+		limit = { check_variable = { global.busan_saga_var < 1 } } #0
 		set_variable = { KOR_nikkan_tonneru_bar_icon_frame = 1 }
 	}
 	else_if = {
-		limit = { check_variable = { busan_saga_var = 40 compare = less_than_or_equals }  } #20%
+		limit = { check_variable = { global.busan_saga_var = 40 compare = less_than_or_equals }  } #20%
 		set_variable = { KOR_nikkan_tonneru_bar_icon_frame = 2 }
 	}
 	else_if = {
-		limit = { check_variable = { busan_saga_var = 80 compare = less_than_or_equals }  } #40%
+		limit = { check_variable = { global.busan_saga_var = 80 compare = less_than_or_equals }  } #40%
 		set_variable = { KOR_nikkan_tonneru_bar_icon_frame = 3 }
 	}
 	else_if = {
-		limit = { check_variable = { busan_saga_var = 120 compare = less_than_or_equals }  } #60%
+		limit = { check_variable = { global.busan_saga_var = 120 compare = less_than_or_equals }  } #60%
 		set_variable = { KOR_nikkan_tonneru_bar_icon_frame = 4 }
 	}
 	else_if = {
-		limit = { check_variable = { busan_saga_var = 199.9 compare = less_than_or_equals }  } #80%
+		limit = { check_variable = { global.busan_saga_var = 199.9 compare = less_than_or_equals }  } #80%
 		set_variable = { KOR_nikkan_tonneru_bar_icon_frame = 5 }
 	}
 	else = {
