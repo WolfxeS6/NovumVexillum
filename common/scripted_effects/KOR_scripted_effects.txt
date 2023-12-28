@@ -35,105 +35,56 @@ KOR_loyalty_setting_effect = {
 KOR_parties_support_setting_effect = {
 
 	clear_variable = KOR_all_ruling_party_status
-	if = {
-		limit = {
-			has_variable = KOR_parliament_seat_support_array^0
-		}
-		clamp_variable = {
-			var = KOR_parliament_seat_support_array^0
-			min = 0
-			max = 300
-		}
+	
+	clamp_variable = {
+		var = KOR_parliament_seat_support_array^0
+		min = 0
+		max = KOR_all_seats_status
 	}
-	if = {
-		limit = {
-			has_variable = KOR_parliament_seat_support_array^1
-		}
-		clamp_variable = {
-			var = KOR_parliament_seat_support_array^1
-			min = 0
-			max = 300
-		}
+	clamp_variable = {
+		var = KOR_parliament_seat_support_array^1
+		min = 0
+		max = KOR_all_seats_status
 	}
-	if = {
-		limit = {
-			has_variable = KOR_parliament_seat_support_array^2
-		}
-		clamp_variable = {
-			var = KOR_parliament_seat_support_array^2
-			min = 0
-			max = 300
-		}
+	clamp_variable = {
+		var = KOR_parliament_seat_support_array^2
+		min = 0
+		max = KOR_all_seats_status
 	}
-	if = {
-		limit = {
-			has_variable = KOR_parliament_seat_support_array^3
-		}
-		clamp_variable = {
-			var = KOR_parliament_seat_support_array^3
-			min = 0
-			max = 300
-		}
+	clamp_variable = {
+		var = KOR_parliament_seat_support_array^3
+		min = 0
+		max = KOR_all_seats_status
 	}
-	if = {
-		limit = {
-			has_variable = KOR_parliament_seat_support_array^4
-		}
-		clamp_variable = {
-			var = KOR_parliament_seat_support_array^4
-			min = 0
-			max = 300
-		}
+	clamp_variable = {
+		var = KOR_parliament_seat_support_array^4
+		min = 0
+		max = KOR_all_seats_status
 	}
-	if = {
-		limit = {
-			has_variable = KOR_parliament_seat_support_array^5
-		}
-		clamp_variable = {
-			var = KOR_parliament_seat_support_array^5
-			min = 0
-			max = 300
-		}
+	clamp_variable = {
+		var = KOR_parliament_seat_support_array^5
+		min = 0
+		max = KOR_all_seats_status
 	}
-	if = {
-		limit = {
-			has_variable = KOR_parliament_seat_support_array^9
-		}
-		clamp_variable = {
-			var = KOR_parliament_seat_support_array^9
-			min = 0
-			max = 300
-		}
+	clamp_variable = {
+		var = KOR_parliament_seat_support_array^9
+		min = 0
+		max = KOR_all_seats_status
 	}
-	if = {
-		limit = {
-			has_variable = KOR_parliament_seat_support_array^6
-		}
-		clamp_variable = {
-			var = KOR_parliament_seat_support_array^6
-			min = 0
-			max = 300
-		}
+	clamp_variable = {
+		var = KOR_parliament_seat_support_array^6
+		min = 0
+		max = KOR_all_seats_status
 	}
-	if = {
-		limit = {
-			has_variable = KOR_parliament_seat_support_array^7
-		}
-		clamp_variable = {
-			var = KOR_parliament_seat_support_array^7
-			min = 0
-			max = 300
-		}
+	clamp_variable = {
+		var = KOR_parliament_seat_support_array^7
+		min = 0
+		max = KOR_all_seats_status
 	}
-	if = {
-		limit = {
-			has_variable = KOR_parliament_seat_support_array^8
-		}
-		clamp_variable = {
-			var = KOR_parliament_seat_support_array^8
-			min = 0
-			max = 300
-		}
+	clamp_variable = {
+		var = KOR_parliament_seat_support_array^8
+		min = 0
+		max = KOR_all_seats_status
 	}
 	
 	add_to_variable = { var = KOR_all_support_status_base  value = KOR_parliament_seat_support_array^0 }
@@ -311,7 +262,7 @@ korean_overflow_and_minor_check = {
 korean_init_parliament = {
 
 	# check to see if result overflows
-	set_temp_variable = { temp = 300 }
+	set_temp_variable = { temp = KOR_all_seats_status }
 	
 	if = {
 		limit = {
@@ -1031,7 +982,7 @@ korean_init_parliament = {
 }
 
 KOR_modify_parliament_support = {
-	
+	round_variable = KOR_move_support
 	
 	ROOT = {
 		if = {
@@ -1282,74 +1233,74 @@ KOR_seats_general_election_effect = {
 
 KOR_bop_high_decrease_effect = {
 #custom_effect_tooltip = PRK_national_bankruptcy_down_tt
-	# if = {
-	# 	limit = { has_idea = kor_postnationalist_rivalry_win_2 }
-	# 	swap_ideas = {
-	# 		remove_idea = kor_postnationalist_rivalry_win_2
-	# 		add_idea = kor_postnationalist_rivalry_win_1
-	# 	}
-	# }
-	# else_if = {
-	# 	limit = { has_idea = kor_postnationalist_rivalry_win_1 }
-	# 	swap_ideas = {
-	# 		remove_idea = kor_postnationalist_rivalry_win_1
-	# 		add_idea = kor_postnationalist_christian_rivalry_balanced
-	# 	}
-	# }
-	# else_if = {
-	# 	limit = { has_idea = kor_postnationalist_christian_rivalry_balanced }
-	# 	swap_ideas = {
-	# 		remove_idea = kor_postnationalist_christian_rivalry_balanced
-	# 		add_idea = kor_christian_rivalry_win_1
-	# 	}
-	# }
-	# else_if = {
-	# 	limit = { has_idea = kor_christian_rivalry_win_1 }
-	# 	swap_ideas = {
-	# 		remove_idea = kor_christian_rivalry_win_1
-	# 		add_idea = kor_christian_rivalry_win_2
-	# 	}
-	# }
-	# else_if = {
-	# 	limit = { has_idea = kor_christian_rivalry_win_2 }
-	# 	custom_effect_tooltip = KOR_moon_chang_geuk_government_collapse_tt
-	# }
+	if = {
+		limit = { has_idea = kor_postnationalist_rivalry_win_2 }
+		swap_ideas = {
+			remove_idea = kor_postnationalist_rivalry_win_2
+			add_idea = kor_postnationalist_rivalry_win_1
+		}
+	}
+	else_if = {
+		limit = { has_idea = kor_postnationalist_rivalry_win_1 }
+		swap_ideas = {
+			remove_idea = kor_postnationalist_rivalry_win_1
+			add_idea = kor_postnationalist_christian_rivalry_balanced
+		}
+	}
+	else_if = {
+		limit = { has_idea = kor_postnationalist_christian_rivalry_balanced }
+		swap_ideas = {
+			remove_idea = kor_postnationalist_christian_rivalry_balanced
+			add_idea = kor_christian_rivalry_win_1
+		}
+	}
+	else_if = {
+		limit = { has_idea = kor_christian_rivalry_win_1 }
+		swap_ideas = {
+			remove_idea = kor_christian_rivalry_win_1
+			add_idea = kor_christian_rivalry_win_2
+		}
+	}
+	else_if = {
+		limit = { has_idea = kor_christian_rivalry_win_2 }
+		custom_effect_tooltip = KOR_moon_chang_geuk_government_collapse_tt
+	}
 }
 
 KOR_postnationalist_to_gain_strength = {
 #custom_effect_tooltip = PRK_national_bankruptcy_down_tt
-	# if = {
-	# 	limit = { has_idea = kor_christian_rivalry_win_2 }
-	# 	swap_ideas = {
-	# 		remove_idea = kor_christian_rivalry_win_2
-	# 		add_idea = kor_christian_rivalry_win_1
-	# 	}
-	# }
-	# else_if = {
-	# 	limit = { has_idea = kor_christian_rivalry_win_1 }
-	# 	swap_ideas = {
-	# 		remove_idea = kor_christian_rivalry_win_1
-	# 		add_idea = kor_postnationalist_christian_rivalry_balanced
-	# 	}
-	# }
-	# else_if = {
-	# 	limit = { has_idea = kor_postnationalist_christian_rivalry_balanced }
-	# 	swap_ideas = {
-	# 		remove_idea = kor_postnationalist_christian_rivalry_balanced
-	# 		add_idea = kor_postnationalist_rivalry_win_1
-	# 	}
-	# }
-	# else_if = {
-	# 	limit = { has_idea = kor_postnationalist_rivalry_win_1 }
-	# 	swap_ideas = {
-	# 		remove_idea = kor_postnationalist_rivalry_win_1
-	# 		add_idea = kor_postnationalist_rivalry_win_2
-	# 	}
-	# }
-	# else_if = {
-	# 	limit = { has_idea = kor_postnationalist_rivalry_win_2 }
-	# 	custom_effect_tooltip = KOR_moon_chang_geuk_government_collapse_tt
-	# }
+	if = {
+		limit = { has_idea = kor_christian_rivalry_win_2 }
+		swap_ideas = {
+			remove_idea = kor_christian_rivalry_win_2
+			add_idea = kor_christian_rivalry_win_1
+		}
+	}
+	else_if = {
+		limit = { has_idea = kor_christian_rivalry_win_1 }
+		swap_ideas = {
+			remove_idea = kor_christian_rivalry_win_1
+			add_idea = kor_postnationalist_christian_rivalry_balanced
+		}
+	}
+	else_if = {
+		limit = { has_idea = kor_postnationalist_christian_rivalry_balanced }
+		swap_ideas = {
+			remove_idea = kor_postnationalist_christian_rivalry_balanced
+			add_idea = kor_postnationalist_rivalry_win_1
+		}
+	}
+	else_if = {
+		limit = { has_idea = kor_postnationalist_rivalry_win_1 }
+		swap_ideas = {
+			remove_idea = kor_postnationalist_rivalry_win_1
+			add_idea = kor_postnationalist_rivalry_win_2
+		}
+	}
+	else_if = {
+		limit = { has_idea = kor_postnationalist_rivalry_win_2 }
+		custom_effect_tooltip = KOR_moon_chang_geuk_government_collapse_tt
+	}
 }
 
 KOR_army_reform = {
