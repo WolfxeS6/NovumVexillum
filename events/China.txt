@@ -639,6 +639,7 @@ news_event = {
 				idea = PRC_the_great_downfall
 				days = 1460
 			}
+			leave_faction = yes
 		}
 	}
 	option = {
@@ -649,6 +650,43 @@ news_event = {
 			NOT = { any_allied_country = { has_war_with = ROOT } }
 			NOT = { has_war_with = ROOT }
 			NOT = { tag = ROOT }
+		}
+	}
+}
+
+#The End of Hong Kong
+news_event = {
+	id = pr_china_news.20
+	title = pr_china_news.20.t
+	desc = pr_china_news.20.desc
+	picture = GFX_news_event_annexation_of_hong_kong
+	
+	is_triggered_only = yes
+	major = yes
+	
+	option = {
+		name = pr_china_news.20.a
+		trigger = {
+			OR = {
+				original_tag = PRC
+				original_tag = HKN
+			}
+		}
+	}
+	
+	option = {
+		name = pr_china_news.20.b
+		trigger = {
+			original_tag = ENG
+		}
+	}
+	
+	option = {
+		name = pr_china_news.20.c
+		trigger = {
+			NOT = { original_tag = PRC }
+			NOT = { original_tag = HKN }
+			NOT = { original_tag = ENG }
 		}
 	}
 }
@@ -4185,6 +4223,70 @@ country_event = {
 
 	option = {
 		name = pr_china_diplomacy.23.a
+	}
+}
+
+#The Nullification of the Sino-British Joint Declaration
+country_event = {
+	id = pr_china_diplomacy.27
+	title = pr_china_diplomacy.27.t
+	desc = pr_china_diplomacy.27.desc
+	picture = GFX_report_event_PRC_black_hong_kong
+
+	trigger = {
+		original_tag = PRC
+		HKN = { is_puppet_of = PRC }
+		NOT = { has_global_flag = end_hong_kong_conflict }
+		has_war_with = ENG
+	}
+	
+	mean_time_to_happen = {
+		days = 14
+	}
+	
+	fire_only_once = yes
+
+	option = {
+		name = pr_china_diplomacy.27.a
+		
+		hidden_effect = {			
+			random_other_country = {
+				limit = {
+					original_tag = HKN
+				}
+					
+				drop_cosmetic_tag = yes
+			}
+		}
+			
+		annex_country = { target = HKN transfer_troops = yes }
+		set_global_flag = end_hong_kong_conflict
+		
+		hidden_effect = {
+			ENG = { country_event = { id = pr_china_diplomacy.28 } }
+		}
+	}
+}
+
+#The Nullification of the Sino-British Joint Declaration
+country_event = {
+	id = pr_china_diplomacy.28
+	title = pr_china_diplomacy.28.t
+	desc = pr_china_diplomacy.28.desc
+	picture = GFX_report_event_PRC_black_hong_kong
+
+	is_triggered_only = yes
+
+	option = {
+		name = pr_china_diplomacy.28.a
+		
+		effect_tooltip = {
+			PRC = { annex_country = { target = HKN transfer_troops = yes } }
+		}
+		
+		hidden_effect = {
+			news_event = pr_china_news.20
+		}
 	}
 }
 
