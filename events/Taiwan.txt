@@ -249,7 +249,7 @@ news_event = {
 	desc = {
 		text = ro_china.news.7.desc_1
 		trigger = {
-			country_event = PRC
+			tag = PRC
 			PRC = { is_puppet = no }
 		}
 	}
@@ -258,7 +258,7 @@ news_event = {
 		text = ro_china.news.7.desc_2
 		trigger = {
 			OR = {
-				NOT = { country_event = PRC }
+				NOT = { tag = PRC }
 				PRC = { is_puppet = yes }
 			}
 		}
@@ -2151,9 +2151,9 @@ country_event = { #Taiwan Republic Declaration
 			news_event = { id = ro_china.news.7 hours = 3 }
 			
 			every_state = {
-				remove_dynamic_modifier = dynamic_chi_weak_mainland_de_jure
-				remove_dynamic_modifier = dynamic_chi_weak_mongolia_de_jure
-				remove_dynamic_modifier = dynamic_chi_strong_mainland_de_jure
+				remove_dynamic_modifier = { modifier = dynamic_chi_weak_mainland_de_jure} 
+				remove_dynamic_modifier = { modifier = dynamic_chi_weak_mongolia_de_jure}
+				remove_dynamic_modifier = { modifier = dynamic_chi_strong_mainland_de_jure}
 			}
 		}
 		mark_focus_tree_layout_dirty = yes
