@@ -249,7 +249,7 @@ news_event = {
 	desc = {
 		text = ro_china.news.7.desc_1
 		trigger = {
-			tag = PRC
+			country_event = PRC
 			PRC = { is_puppet = no }
 		}
 	}
@@ -258,7 +258,7 @@ news_event = {
 		text = ro_china.news.7.desc_2
 		trigger = {
 			OR = {
-				NOT = { tag = PRC }
+				NOT = { country_event = PRC }
 				PRC = { is_puppet = yes }
 			}
 		}
@@ -2151,9 +2151,9 @@ country_event = { #Taiwan Republic Declaration
 			news_event = { id = ro_china.news.7 hours = 3 }
 			
 			every_state = {
-				remove_dynamic_modifier = { modifier = dynamic_chi_weak_mainland_de_jure} 
-				remove_dynamic_modifier = { modifier = dynamic_chi_weak_mongolia_de_jure}
-				remove_dynamic_modifier = { modifier = dynamic_chi_strong_mainland_de_jure}
+				remove_dynamic_modifier = dynamic_chi_weak_mainland_de_jure
+				remove_dynamic_modifier = dynamic_chi_weak_mongolia_de_jure
+				remove_dynamic_modifier = dynamic_chi_strong_mainland_de_jure
 			}
 		}
 		mark_focus_tree_layout_dirty = yes
@@ -2244,6 +2244,8 @@ country_event = { #Evacuation of Islanders
 		name = ro_china.independence_events.100.a
 		ai_chance = { base = 60 }
 		
+		1081 = { add_manpower = -2500 }
+		524 = { add_manpower = 2500 }
 		
 		add_equipment_to_stockpile = { 
 			type = convoy 
@@ -2264,7 +2266,7 @@ country_event = { #Evacuation of Islanders
 		name = ro_china.independence_events.100.c
 		ai_chance = { base = 60 }
 		trigger = { taiwan_wu_shu_chen_dystopia = yes }
-		add_manpower = 1000
+		add_manpower = 2500
 		
 		CHI_bop_low_decrease_effect = yes
 	}
@@ -2866,6 +2868,118 @@ country_event = { #[FROM.GetName] Refused to Support us
 	option = {
 		log = "[GetLogInfo]: event ro_china.events.5 option ro_china.events.5.a"
 		name = ro_china.events.5.a
+	}
+}
+
+country_event = { #Labor Party that Won Power
+	id = ro_china.events.6
+	title = ro_china.events.6.t
+	desc = ro_china.events.6.desc
+	picture = GFX_report_event_PRC_CCP_2
+
+	fire_only_once = yes
+	
+	mean_time_to_happen = { 
+		days = 49
+	}
+	
+	trigger = {
+		tag = CHI
+		taiwan_independence = no
+		is_puppet = no
+		country_exists = PRC
+		PRC = { is_puppet = no }
+		OR = {
+			has_government = nationalist
+			has_government = communist
+		}
+		has_war = no
+	}
+	
+	option = {
+		log = "[GetLogInfo]: event ro_china.events.6 option ro_china.events.6.a"
+		ai_chance = { base = 100 }
+		name = ro_china.events.6.a
+		
+		custom_effect_tooltip = GAME_OVER_TT
+		
+		hidden_effect = {
+			PRC = { country_event = { id = ro_china.events.7 } }
+		}
+	}
+	
+	option = {
+		log = "[GetLogInfo]: event ro_china.events.6 option ro_china.events.6.b"
+		ai_chance = { base = 0 }
+		name = ro_china.events.6.b
+		
+		add_stability = -0.2
+		add_war_support = -0.2
+	}
+}
+
+country_event = { #Labor Party that Won Power
+	id = ro_china.events.7
+	title = ro_china.events.7.t
+	desc = ro_china.events.7.desc
+	picture = GFX_report_event_PRC_CCP_2
+
+	is_triggered_only = yes
+	
+	option = {
+		log = "[GetLogInfo]: event ro_china.events.7 option ro_china.events.7.a"
+		name = ro_china.events.7.a
+		annex_country = { target = CHI transfer_troops = yes }
+		add_political_power = 100
+	}
+}
+
+
+country_event = { #Communist Party of China's Internal Coup d'etat
+	id = ro_china.events.8
+	title = ro_china.events.8.t
+	
+	desc = {
+		text = ro_china.events.8.desc_1
+		trigger = {
+			PRC = {
+				has_completed_focus = PRC_right_coup_d_etat
+			}
+		}
+	}
+	
+	desc = {
+		text = ro_china.events.8.desc_2
+		trigger = {
+			PRC = {
+				has_completed_focus = PRC_the_longest_night_in_beijing
+			}
+		}
+	}
+	
+	picture = GFX_report_event_PRC_CCP_1
+
+	mean_time_to_happen = { 
+		days = 21
+	}
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = CHI
+		OR = {
+			PRC = {
+				has_completed_focus = PRC_right_coup_d_etat
+				has_completed_focus = PRC_the_longest_night_in_beijing
+			}
+		}
+	}
+	
+	option = {
+		log = "[GetLogInfo]: event ro_china.events.8 option ro_china.events.8.a"
+		ai_chance = { base = 100 }
+		name = ro_china.events.8.a
+		CHI_bop_low_increase_effect = yes
 	}
 }
 
