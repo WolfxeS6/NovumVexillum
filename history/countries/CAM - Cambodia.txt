@@ -4,11 +4,18 @@ oob = "CAM_2000"
 
 set_research_slots = 3
 set_convoys = 50
-set_stability = 0.4
+set_stability = 0.1
+set_war_support = 0.15
 
 set_country_flag = country_language_khmer
 set_country_flag = country_behavior_dispersed
 set_country_flag = country_behavior_indolent
+
+country_event = {
+	id = cambodia_skeleton.1
+	days = 1200
+}
+
 
 if = {
 	limit = {
@@ -280,6 +287,8 @@ add_ideas = {
 	civil_liberties_totalitarian
 	population_growth_steady
 	CAM_king_norodom_sihanouk
+	CAM_country_without_intellectuals
+	CAM_eliminating_khmer_rouge
 }
 
 set_politics = {	
@@ -304,24 +313,25 @@ recruit_character = CAM_kem_sokha
 recruit_character = CAM_tea_banh
 recruit_character = CAM_ke_kim_yanh
 recruit_character = CAM_tea_vinh
-# recruit_character = CAM_sokha_chim
-# recruit_character = CAM_acharya_cheng
-# recruit_character = CAM_dara_chon
-# recruit_character = CAM_phirun_seng
-# recruit_character = CAM_sokun_yan
-# recruit_character = CAM_acharya_chin
+recruit_character = CAM_sokha_chim
+recruit_character = CAM_acharya_cheng
+recruit_character = CAM_dara_chon
+recruit_character = CAM_phirun_seng
+recruit_character = CAM_sokun_yan
+recruit_character = CAM_acharya_chin
+recruit_character = CAM_norodom_sihanouk
 
 2006.10.1 = { add_ideas = { limited_conscription } }
 
 2013.7.28 = {
 	set_politics = {
-		ruling_party = reactionary
+		ruling_party = nationalist
 		last_election = "2013.7.28"
 		election_frequency = 48
-		elections_allowed = yes
+		elections_allowed = no
 	}
 	set_popularities = {
-		reactionary = 82
+		nationalist = 82
 		conservative = 5
 		monarchist = 3
 		communist = 10
