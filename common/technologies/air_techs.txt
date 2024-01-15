@@ -2176,6 +2176,92 @@ technologies = {
 			}
 		}
 	}
+	heli1 = {
+		
+		enable_equipments = {
+			heli_equipment_1
+		}
+		path = {
+			leads_to_tech = heli2
+			research_cost_coeff = 1
+		}
+		
+		research_cost = 2
+		start_year = 1960
+		folder = {
+			name = air_techs_folder
+			position = { x = 0 y = @1960 }
+		}
+		
+		categories = {
+			light_air
+			cas_bomber
+			air_equipment
+		}
+		
+		ai_will_do = {
+			factor = 1
+			
+			modifier = {
+				factor = 2
+				is_major = yes
+			}
+			modifier = {
+				factor = 2
+				has_offensive_war = yes
+			}
+		}
+	}
+	
+	heli2 = {
+		
+		enable_equipments = {
+			heli_equipment_2
+		}
+	
+		
+		# path = {
+		# 	leads_to_tech = heli3
+		# 	research_cost_coeff = 1
+		# }
+		
+		research_cost = 2
+		start_year = 2000
+		folder = {
+			name = air_techs_folder
+			position = { x = 0 y = @2000 }
+		}
+		
+		categories = {
+			light_air
+			cas_bomber
+			air_equipment
+		}
+		
+		ai_will_do = {
+			factor = 1
+			
+			modifier = {
+				factor = 2
+				is_major = yes
+			}
+			modifier = {
+				factor = 2
+				has_offensive_war = yes
+			}
+			modifier = {
+				factor = 3
+				original_tag = USA
+			}
+			modifier = {
+				factor = 3
+				has_deployed_air_force_size = {
+					size > 200
+					type = heli
+				}
+			}
+		}
+	}
 	
 	# scout_plane1 = {
 
