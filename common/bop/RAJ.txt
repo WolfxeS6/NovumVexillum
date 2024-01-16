@@ -1,0 +1,97 @@
+RAJ_power_balance = {
+	initial_value = 0.1
+	left_side = RAJ_INS_side
+	right_side = RAJ_BJP_side
+	decision_category = RAJ_balance_of_power_category
+
+	range = {
+		id = RAJ_competing_INS_and_BJP
+		min = -0.20
+		max = 0.20
+		modifier = {
+			stability_factor = -0.05
+		}
+		on_activate = { #TODO_Manu: Scripted effect checking for leader and swapping to appropriate GFX
+			RAJ_lok_sabha = {
+				promote_character = yes
+			}
+			set_party_name = { 
+				ideology = reactionary
+				long_name = RAJ_reactionary_party_long
+				name = RAJ_reactionary_party
+			}
+		}
+		on_deactivate = {
+		
+		}
+	}
+
+	side = {
+		id = RAJ_INS_side
+		icon = GFX_bop_ETH_communist_side
+
+		range = {
+			id = RAJ_INS_superiority
+			min = -1
+			max = -0.2
+			modifier = {
+				political_power_factor = 0.1
+				consumer_goods_factor = -0.1
+				production_speed_arms_factory_factor = -0.2
+				production_speed_industrial_complex_factor = 0.2
+				production_speed_infrastructure_factor = 0.2
+			}
+			on_activate = {
+				RAJ_sonia_gandhi = {
+					promote_character = yes
+				}
+				log = "India INS activated"
+				set_party_name = { 
+					ideology = reactionary
+					long_name = RAJ_reactionary_party_left_long
+					name = RAJ_reactionary_party_left
+				}
+			}
+			on_deactivate = {
+			
+			}
+		}
+	}
+	
+	side = {
+		id = RAJ_BJP_side	
+		icon = GFX_bop_SWI_centralization_council_side
+
+		range = {
+			id = RAJ_BJP_side_superiority
+			min = 0.2
+			max = 1.0
+			modifier = {
+				stability_factor = 0.05
+				war_support_factor = 0.05
+				conscription_factor = 0.05
+				
+				economy_cost_factor = 0.1
+				trade_laws_cost_factor = 0.1
+				production_speed_infrastructure_factor = -0.1
+				production_speed_rail_way_factor = -0.1
+				production_speed_industrial_complex_factor = -0.1
+			}
+			on_activate = { 
+				RAJ_atal_b_vajpayee = {
+					promote_character = yes
+				}
+				set_party_name = { 
+					ideology = reactionary
+					long_name = RAJ_reactionary_party_right_long
+					name = RAJ_reactionary_party_right
+				}
+				log = "India BJP activated"
+			}
+			on_deactivate = {
+				
+			}
+		}
+
+	}
+}

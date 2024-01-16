@@ -1,28 +1,39 @@
 ﻿capital = 439
 
-oob = "RAJ_2000"
-if = {
-	limit = { has_dlc = "Man the Guns" }
-		set_naval_oob = "RAJ_2000_naval_mtg"
-	else = {
-		set_naval_oob = "RAJ_2000_naval_legacy"
+RAJ = {
+	if = {
+		limit = {
+			has_dlc = "Together for Victory"
+		}
+		set_autonomy = {
+			target = NAX
+			autonomous_state = autonomy_indian_local_warlord_government
+		}
+		else = {
+			puppet = NAX
+		}
 	}
 }
 
-set_research_slots = 3
-set_convoys = 700
-set_stability = 0.2
+oob = "NAX_2000"
+if = {
+	limit = { has_dlc = "Man the Guns" }
+		set_naval_oob = "NAX_2000_naval_mtg"
+	else = {
+		set_naval_oob = "NAX_2000_naval_legacy"
+	}
+}
+
+set_research_slots = 2
+set_convoys = 100
+set_stability = 0.15
+set_war_support = 0.7
 
 set_country_flag = country_language_english
 set_country_flag = country_language_hindi
 set_country_flag = unique_tank_manufacturer
 set_country_flag = unique_naval_manufacturer
 set_country_flag = unique_aircraft_manufacturer
-
-add_dynamic_modifier = { modifier = RAJ_agrarian_society_dynamic }
-
-set_variable = { RAJ_agrarian_society_increment = 0.05 }
-set_variable = { RAJ_agrarian_society_value = -0.70 }
 
 if = {
 	limit = {
@@ -123,13 +134,8 @@ if = {
 	}
 	set_technology = {
 	main_battle_tank1 = 1
-	main_battle_tank2 = 1
-	#main_battle_tank3 = 1
 	light_tank1 = 1
 	mechanised_infantry1 = 1
-	light_mechanized_infantry1 = 1
-	light_mechanized_infantry2 = 1
-	#mechanised_infantry2 = 1
 	}
 }
 if = {
@@ -138,35 +144,7 @@ if = {
 	}
 	set_technology = {
 		IFV_chassis_80s = 1
-		IFV_chassis = 1
-		light_mechanized_infantry1 = 1
-		light_mechanized_infantry2 = 1
-		IFV_chassis_00s = 1
 		main_battle_tank_chassis = 1
-		main_battle_tank_chassis_80s = 1
-		#main_battle_tank_chassis_00s = 1
-	}
-	create_equipment_variant = {
-		name = "T-72 Ajeya"
-		type = modern_tank_chassis_2
-		parent_version = 0
-		modules = {
-			main_armament_slot = tank_small_cannon
-			special_type_slot_1 = ergo_small
-			suspension_type_slot = tank_torsion_bar_suspension
-			armor_type_slot = tank_welded_armor
-			engine_type_slot = tank_diesel_engine
-			#special_type_slot_1 = tank_radio_1
-			optics_slot = tank_optics_1
-			special_type_slot_3 = auto_loader
-			
-			#atgm_slot = empty
-		}
-		upgrades = {
-			tank_nsb_armor_upgrade = 0
-			tank_nsb_engine_upgrade = 0
-		}
-		icon = "GFX_SOV_main_battle_tank2_medium"
 	}
 	create_equipment_variant = {
 		name = "BMP-2"
@@ -299,9 +277,6 @@ set_technology = {
 	## Engineering ##
 	electronic_mechanical_engineering = 1
 	radio = 1
-	atomic_research = 1
-	nuclear_reactor = 1
-	nukes = 1	
 	## Air ##
 	# CAS1 = 1
 	# CAS2 = 1
@@ -319,8 +294,6 @@ set_technology = {
 	# #scout_plane1 = 1
 	
 	## Industry ##
-	fuel_silos = 1
-	fuel_refining = 1
 }
 if = {
 	limit = { not = { has_dlc = "Man the Guns" } }
@@ -367,125 +340,33 @@ if = {
 	}
 }
 
-give_guarantee = MLD
-give_guarantee = SRL
-give_guarantee = BHU
-give_guarantee = NEP
-
 add_ideas = {
 	centralization_federal
-	government_system_parliamentary_republic
+	national_development_undeveloped
+	government_system_autocracy
 	economy_tax_high
+	civil_liberties_restricted
 	population_growth_rapid
-	idea_RAJ_south_asian_tiger
-	commonwealth_of_nations_member
-	mobilization_service_time_corrupt
-	RAJ_pale_southern_tiger
-	RAJ_marginalized_muslim_community
+	partially_recognized_state
 }
+
+recruit_character = NAX_naxalite_junta
 
 set_politics = {	
-	ruling_party = reactionary
-	last_election = "1999.9.5"
+	ruling_party = communist
+	last_election = "1999.10.3"
 	election_frequency = 60
-	elections_allowed = yes
-}
-
-1999.9.5 = {
-	set_party_name = { 
-		ideology = reactionary
-		long_name = RAJ_reactionary_party_right_long
-		name = RAJ_reactionary_party_right
-	}
-	RAJ_atal_b_vajpayee = {
-		promote_character = yes
-	}
-	set_power_balance = {
-		id = RAJ_power_balance
-		left_side = RAJ_INS_side
-		right_side = RAJ_BJP_side
-		set_value = 0.3
-	}
+	elections_allowed = no
 }
 
 set_popularities = {
-    islamist = 3
-    reactionary = 91
-    communist = 6
+    communist = 100
 }
 
 add_opinion_modifier = {
-	target = PAK
+	target = RAJ
 	modifier = rival
 }
-add_opinion_modifier = {
-	target = PRC
-	modifier = rival
-}
-add_opinion_modifier = {
-	target = NAX
-	modifier = rival
-}
-
-recruit_character = RAJ_sonia_gandhi
-recruit_character = RAJ_atal_b_vajpayee
-recruit_character = RAJ_prem_singh
-recruit_character = RAJ_princely_council
-recruit_character = RAJ_bipin_rawat
-recruit_character = RAJ_balwant_singh_negi
-recruit_character = RAJ_praveen_bakshi
-recruit_character = RAJ_devraj_anbu
-recruit_character = RAJ_pm_hariz
-recruit_character = RAJ_abhay_krishna
-recruit_character = RAJ_surinder_singh
-recruit_character = RAJ_sarath_chand
-recruit_character = RAJ_dr_soni
-recruit_character = RAJ_pk_srivastava
-recruit_character = RAJ_ak_sahgal
-recruit_character = RAJ_nks_ghei
-recruit_character = RAJ_rr_nimborkar
-recruit_character = RAJ_shakti_gurung
-recruit_character = RAJ_sk_saini
-recruit_character = RAJ_bobby_mathews
-recruit_character = RAJ_satish_dua
-recruit_character = RAJ_dalbir_singh_suhag
-recruit_character = RAJ_balbir_singh_sandhu
-recruit_character = RAJ_birender_singh_dhanoa
-recruit_character = RAJ_shirish_baban_deo
-recruit_character = RAJ_sunil_lanba
-recruit_character = RAJ_karambir_singh
-recruit_character = RAJ_ashok_kumar
-recruit_character = RAJ_ak_chawla
-recruit_character = RAJ_gs_pabby
-recruit_character = RAJ_satish_namdeo_ghormade
-recruit_character = RAJ_sr_sarma
-recruit_character = RAJ_vennam_srinivas
-recruit_character = RAJ_girish_lutra
-recruit_character = RAJ_hcs_bisht
-recruit_character = RAJ_ar_karve
-recruit_character = RAJ_lok_sabha
-
-2012.11.17 = {
-
-}
-
-2014.5.1 = {
-
-
-	set_politics = {
-		last_election = "2014.5.7"
-		ruling_party = reactionary
-		elections_allowed = yes
-		election_frequency = 60
-}
-
-    set_popularities = {
-		islamist = 3
-		reactionary = 91
-		communist = 6
-    }
-}
-
 
 ### VARIANTS ###
 # 2000 Start #
@@ -641,97 +522,3 @@ if = {
 	}
 }
 
-if = {
-	limit = {
-		NOT = {has_dlc = "By Blood Alone"}
-	}
-		add_equipment_to_stockpile = {
-			type = cv_CAS_equipment_2
-			amount = 23
-			producer = SOV
-		}
-		add_equipment_to_stockpile = {
-			type = cv_fighter_equipment_2
-			amount = 20
-			producer = SOV
-		}
-		add_equipment_to_stockpile = {
-			type = fighter_equipment_3
-			amount = 40
-			producer = FRA
-		}
-		add_equipment_to_stockpile = {
-			type = fighter_equipment_3
-			amount = 64
-			producer = SOV
-		}
-		add_equipment_to_stockpile = {
-			type = fighter_equipment_2
-			amount = 73
-			producer = SOV
-		}
-		add_equipment_to_stockpile = {
-			type = fighter_equipment_2
-			amount = 73
-			producer = SOV
-		}
-		add_equipment_to_stockpile = {
-			type = fighter_equipment_1
-			amount = 291
-			producer = SOV
-		}
-		add_equipment_to_stockpile = {
-			type = CAS_equipment_2
-			amount = 132
-			producer = SOV
-		}
-		add_equipment_to_stockpile = {
-			type = CAS_equipment_2
-			amount = 132
-			producer = SOV
-		}
-		add_equipment_to_stockpile = {
-			type = CAS_equipment_2
-			amount = 88
-			producer = ENG
-		}
-		add_equipment_to_stockpile = {
-			type = transport_plane_equipment_1
-			amount = 130
-			producer = USA
-		}
-		add_equipment_to_stockpile = {
-			type = nav_bomber_equipment_1
-			amount = 45
-			producer = SOV
-		}
-}
-if = {
-	limit = {
-		has_dlc = "By Blood Alone"
-	}
-	add_equipment_to_stockpile = {
-		type = medium_plane_airframe_0
-		amount = 640 #including mig-27 and all 23s and 21s
-		producer = RAJ
-		variant_name = "MiG-23"
-	}
-	add_equipment_to_stockpile = {
-		type = medium_plane_airframe_1
-		amount = 65
-		producer = RAJ
-		variant_name = "MiG-29"
-	}
-	add_equipment_to_stockpile = {
-		type = medium_plane_airframe_1
-		amount = 44
-		producer = RAJ
-		variant_name = "Mirage 2000"
-	}
-	add_equipment_to_stockpile = {
-		type = small_plane_airframe_1
-		amount = 130
-		producer = RAJ
-		variant_name = "Jaguar"
-	}
-}
