@@ -27,4 +27,38 @@ on_actions = {
 			
 		}
 	}
+	
+	on_ruling_party_change = {
+		effect = {
+			if = {
+				limit = {
+					original_tag = RAJ
+					NOT = { has_government = reactionary	}
+					has_power_balance = {
+						id = RAJ_power_balance
+					}
+				}
+				remove_power_balance = {
+					id = RAJ_power_balance
+				}
+			}
+		}
+		effect = {
+			if = {
+				limit = {
+					original_tag = RAJ
+					has_government = reactionary
+					NOT = { has_power_balance = {
+						id = RAJ_power_balance
+					} }
+				}
+				set_power_balance = {
+					id = RAJ_power_balance
+					left_side = RAJ_INS_side
+					right_side = RAJ_BJP_side
+				}
+			}
+		}
+	}
+	
 }
