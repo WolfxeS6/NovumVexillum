@@ -846,16 +846,19 @@ leader_traits = {
 		trait_type = assignable_terrain_trait
 		gui_row = 3
 				
-		any_parent = {desert_fox }
-		any_parent = {swamp_fox }
-		any_parent = {trait_mountaineer }
-		any_parent = {hill_fighter }
-		any_parent = {jungle_rat }
-		any_parent = {ranger }
-		any_parent = {urban_assault_specialist }
-		any_parent = {winter_specialist }
-		
-		num_parents_needed = 2
+		parent = {
+			traits = {
+				desert_fox
+				swamp_fox
+				trait_mountaineer
+				hill_fighter
+				jungle_rat
+				ranger
+				urban_assault_specialist
+				winter_specialist
+			}
+			num_parents_needed = 2
+		} 
 	}
 
 	winter_expert = { 
@@ -1170,30 +1173,29 @@ leader_traits = {
 		}
 		cost = 500
 		modifier = {
-			motorized_defence_factor = 0.05
+			motorized_defence_factor = 0.15
 			mechanized_defence_factor = 0.15
 		}
 		
 		custom_effect_tooltip = INCREASED_BLITZ_AND_ENCIRCLEMENT_CHANCE
+		
+		slot = high_command
+		specialist_advisor_trait = army_CombinedArms_1
+		expert_advisor_trait = army_CombinedArms_2
+		genius_advisor_trait = army_CombinedArms_3
 		
 		ai_will_do = {
 			factor = 1
 		}
 		
 		trait_type = assignable_trait
-		any_parent = {cavalry_leader }
-		any_parent = {panzer_leader }
+		any_parent = { cavalry_leader panzer_leader }
 		
 		mutually_exclusive = panzer_expert
 		mutually_exclusive = cavalry_expert
 		
-		num_parents_needed = 1
+		
 		gui_row = 2
-
-		slot = high_command
-		specialist_advisor_trait = army_CombinedArms_1
-		expert_advisor_trait = army_CombinedArms_2
-		genius_advisor_trait = army_CombinedArms_3
 	}
 	
 	cavalry_expert = { 
@@ -1206,7 +1208,7 @@ leader_traits = {
 			#cavalry_attack_factor = 0.10
 			#cavalry_defence_factor = 0.10
 			motorized_defence_factor = 0.15
-			mechanized_speed_factor = 0.05
+			light_mechanized_defence_factor = 0.05
 		}
 		
 		ai_will_do = {
@@ -1729,10 +1731,7 @@ leader_traits = {
 		}
 		
 		trait_type = assignable_trait
-		any_parent = {seawolf }
-		any_parent = {fleet_protector }
-
-		num_parents_needed = 1
+		any_parent = { seawolf fleet_protector }
 		
 		mutually_exclusive = silent_hunter
 		
@@ -1778,10 +1777,11 @@ leader_traits = {
 		}
 		
 		trait_type = assignable_trait
-		num_parents_needed = 1
-		any_parent = {silent_hunter}
-		any_parent = {lancer}
-		any_parent = {destroyer_leader}
+		any_parent = {
+			silent_hunter
+			lancer
+			destroyer_leader
+		}
 		
 		gui_row = 2
 		gui_column = 2
@@ -1874,19 +1874,20 @@ leader_traits = {
 			factor = 0
 		}
 		
-		trait_type = assignable_trait
-		any_parent = {superior_tactician}
-		any_parent = {spotter}
-		any_parent = {blockade_runner}
-		num_parents_needed = 1
-		mutually_exclusive = lone_wolf
-		gui_row = 6
-		gui_column = 1
-
 		slot = navy_chief
 		specialist_advisor_trait = navy_chief_commerce_raiding_1
 		expert_advisor_trait = navy_chief_commerce_raiding_2
 		genius_advisor_trait = navy_chief_commerce_raiding_3
+		
+		trait_type = assignable_trait
+		any_parent = {
+			superior_tactician
+			spotter
+			blockade_runner
+		}
+		mutually_exclusive = lone_wolf
+		gui_row = 6
+		gui_column = 1
 	}
 	mine_sweeper = { 
 		type = navy
@@ -1900,9 +1901,10 @@ leader_traits = {
 		}
 		
 		trait_type = assignable_trait
-		any_parent = {spotter}
-		any_parent = {blockade_runner}
-		num_parents_needed = 1
+		any_parent = {
+			spotter
+			blockade_runner
+		}
 		mutually_exclusive = mine_layer
 		gui_row = 7
 		gui_column = 1
@@ -1918,9 +1920,10 @@ leader_traits = {
 		}
 		
 		trait_type = assignable_trait
-		any_parent = {spotter}
-		any_parent = {blockade_runner}
-		num_parents_needed = 1
+		any_parent = {
+			spotter
+			blockade_runner
+		}
 		mutually_exclusive = mine_sweeper
 		gui_row = 8
 		gui_column = 1
@@ -1937,9 +1940,10 @@ leader_traits = {
 		}
 		
 		trait_type = assignable_trait
-		any_parent = {lone_wolf}
-		any_parent = {concealment_expert}
-		num_parents_needed = 1
+		any_parent = {
+		 	lone_wolf
+			concealment_expert
+		}
 		gui_row = 5
 		gui_column = 2
 	}
