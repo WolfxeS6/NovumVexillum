@@ -4256,6 +4256,100 @@ country_event = {
 				}
 					
 				drop_cosmetic_tag = yes
+				remove_ideas = HKN_trampled_election_reform
+				remove_ideas = HKN_sino_british_joint_declaration
+				remove_ideas = HKN_british_influence
+				remove_ideas = HKN_chinese_influence
+				kill_country_leader = yes
+				
+						add_country_leader_role = { #
+							character = HKN_Legislative_Council
+							country_leader = {
+								ideology = constitutionalist 
+								desc="POLITICS_Legislative_Council_DESC"
+								traits={HKN_liberate_hong_kong}
+								expire="1.1.1.1"
+								id=-1
+							}
+							promote_leader = yes
+						}
+						
+						add_country_leader_role = { #
+							character = HKN_Legislative_Council
+							country_leader = {
+								ideology = market_liberal_ideology 
+								desc="POLITICS_Legislative_Council_DESC"
+								traits={HKN_liberate_hong_kong}
+								expire="1.1.1.1"
+								id=-1
+							}
+							promote_leader = yes
+						}
+						
+						add_country_leader_role = { #
+							character = HKN_Legislative_Council
+							country_leader = {
+								ideology = liberalist 
+								desc="POLITICS_Legislative_Council_DESC"
+								traits={HKN_liberate_hong_kong}
+								expire="1.1.1.1"
+								id=-1
+							}
+							promote_leader = yes
+						}
+						
+						add_country_leader_role = { #
+							character = HKN_Legislative_Council
+							country_leader = {
+								ideology = social_democrat_ideology 
+								desc="POLITICS_Legislative_Council_DESC"
+								traits={HKN_liberate_hong_kong}
+								expire="1.1.1.1"
+								id=-1
+							}
+							promote_leader = yes
+						}
+						
+						add_country_leader_role = { #
+							character = HKN_Legislative_Council
+							country_leader = {
+								ideology = progressive_ideology 
+								desc="POLITICS_Legislative_Council_DESC"
+								traits={HKN_liberate_hong_kong}
+								expire="1.1.1.1"
+								id=-1
+							}
+							promote_leader = yes
+						}
+						
+						add_country_leader_role = { #
+							character = HKN_Legislative_Council
+							country_leader = {
+								ideology = democratic_socialist_ideology 
+								desc="POLITICS_Legislative_Council_DESC"
+								traits={HKN_liberate_hong_kong}
+								expire="1.1.1.1"
+								id=-1
+							}
+							promote_leader = yes
+						}
+				
+					meta_effect = {
+						text = {
+							set_politics = {
+								ruling_party = social_liberal
+								last_election = "[CURRENT_DATE]"
+								election_frequency = 48
+								elections_allowed = yes
+							}
+						}
+						CURRENT_DATE = "[?global.date.GetDateStringNoHour]"
+					}
+					set_popularities = {
+						communist = 10
+						nationalist = 2
+						social_liberal = 88
+					}
 			}
 		}
 			
