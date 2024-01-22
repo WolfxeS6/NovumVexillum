@@ -13,9 +13,7 @@
 	icon = GFX_idea_general_dynamics_land_systems
 
 	allowed = {	
-		OR = {
-			tag = USA
-		}
+		tag = USA
 	}
 }
 #####################
@@ -123,6 +121,16 @@ USA_am_general_organization = {
 	allowed = {	
 		OR = {
 			tag = USA
+			tag = GUA
 		}
 	}
+
+	available = {
+		if = {
+			limit = {
+				FROM = { NOT = { original_tag = USA } }
+			}
+			FROM = { NOT = { has_war_with = USA } }
+		}
+	}	
 }

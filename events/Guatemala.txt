@@ -1,0 +1,91 @@
+ add_namespace = guatemala
+ add_namespace = election_GUA
+
+country_event = {  
+	id = guatemala.1
+	title = guatemala.1.t
+	desc = guatemala.1.d
+	picture = GFX_report_event_guatemala_portillo
+	
+	trigger = {
+	    tag = GUA
+	    date > 2000.1.1
+		date < 2000.2.1
+		has_democratic_form_of_government = yes
+	}
+
+	fire_only_once = yes
+	
+	option = {   
+		name = guatemala.1.a
+		ai_chance = { factor = 100 }
+		set_politics = {
+			ruling_party = reactionary
+			elections_allowed = yes
+		}
+		hidden_effect = {
+			retire_character = GUA_alvaro_arzu
+			recruit_character = GUA_oscar_berger
+		}
+	}
+}
+
+country_event = {  #2003 election
+	id = election_GUA.1
+	title = election_GUA.1.t
+	desc = election_GUA.1.d
+	picture = GFX_report_event_guatemala_elections
+	
+	trigger = {
+	    tag = GUA
+	    date > 2003.11.1
+		date < 2003.11.30
+        has_democratic_form_of_government = yes
+		is_subject = no
+		not = { has_country_flag = gua_election_2003 }
+	}
+	
+	immediate = {
+		set_country_flag = gua_election_2003
+		clr_country_flag = gc_elections
+	}
+
+	is_triggered_only = yes
+	
+	option = {    #Berger
+		name = election_GUA.1.a
+        ai_chance = { factor = 75 }
+		set_politics = {
+			ruling_party = conservative
+			elections_allowed = yes
+		}
+		add_popularity = { 
+			ideology = conservative 
+			popularity = 0.15
+		}
+	}
+	option = {    #Colom
+		name = election_GUA.1.b
+		ai_chance = { factor = 25 }
+		set_politics = {
+			ruling_party = social_democrat
+			elections_allowed = yes
+		}
+		add_popularity = { 
+			ideology = social_democrat 
+			popularity = 0.15
+		}
+	}
+	option = {    #Montt
+		name = election_GUA.1.c
+		set_politics = {
+			ruling_party = fascist
+			elections_allowed = no
+		}
+		add_popularity = { 
+			ideology = fascist 
+			popularity = 0.15
+		}
+	}
+}
+
