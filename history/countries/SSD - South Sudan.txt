@@ -1,6 +1,6 @@
 ﻿capital = 543
 
-oob = "SSD_2016"
+oob = "SSD_2000"
 
 set_research_slots = 2
 set_convoys = 10
@@ -9,6 +9,8 @@ set_stability = 0.25
 set_country_flag = country_language_english
 set_country_flag = country_behavior_dispersed
 set_country_flag = country_behavior_indolent
+
+set_cosmetic_tag = SSD_SPLA
 
 if = {
 	limit = {
@@ -246,34 +248,53 @@ set_technology = {
 	## Industry ##
 }
 
+declare_war_on = {
+	target = SUD
+	type = civil_war
+}
+
 add_ideas = {
 	centralization_federal
 	national_development_undeveloped
 	civil_liberties_totalitarian
 	population_growth_explosion
-	african_union_member
+	partially_recognized_state
 	extensive_conscription
+	SPLM_Nasir_insurgency
+	mobilization_service_time_corrupt
 }
 
 set_politics = {	
-	ruling_party = reactionary
+	ruling_party = social_democrat
 	last_election = "1997.1.1"
 	election_frequency = 48
 	elections_allowed = yes
 }
 
 set_popularities = {
-    nationalist = 2
-    reactionary = 94
-    social_liberal = 2
-    social_democrat = 2
+    nationalist = 22
+    progressive = 8
+    reactionary = 5
+    democratic_socialist = 10
+    communist = 8
+    Market_liberal = 5
+    social_democrat = 42
 }
 
-recruit_character = SSD_salva_kiir_mayardit
+recruit_character = SSD_john_garang
 recruit_character = SSD_lam_akol
 recruit_character = SSD_federico_awi_vuni
+recruit_character = SSD_joseph_modesto
 recruit_character = SSD_toby_maduot
-recruit_character = SSD_joseph_wol_modesto
-recruit_character = SSD_simon_achien_majur
-recruit_character = SSD_paul_malong
+recruit_character = SSD_simon_majur
+recruit_character = SSD_riek_machar
+recruit_character = SSD_salva_kiir
 recruit_character = SSD_dom_deng
+recruit_character = SSD_paul_malong
+
+2005.1.1 = {
+	drop_cosmetic_tag = yes
+	promote_character = SSD_salva_kiir
+	diplomatic_relation = { country = SUD relation = war_relation active = no }
+	remove_ideas = SPLM_Nasir_insurgency
+}
