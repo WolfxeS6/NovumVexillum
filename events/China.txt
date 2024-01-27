@@ -3815,8 +3815,55 @@ country_event = {
 				is_in_faction = yes
 			}
 			modifier = {
-				factor = 0.1
-				original_tag = CHI #Taiwan is Never give up
+				factor = 0.5
+				AND = {
+					original_tag = CHI #Taiwan is Never give up
+					power_balance_value = {
+						id = CHI_power_balance
+						value > 0
+					}
+				}
+			}
+			modifier = {
+				factor = 0
+				AND = {
+					original_tag = CHI #Pan Green Taiwan is Never give up
+					OR = {
+						has_country_leader = { character = CHI_lee_tenghui ruling_only = yes }
+						has_country_leader = { character = CHI_chen_shuibian ruling_only = yes }
+						has_country_leader = { character = CHI_annette_lu ruling_only = yes }
+						has_country_leader = { character = CHI_wu_shu_chen ruling_only = yes }
+						has_country_leader = { character = CHI_frank_hsieh ruling_only = yes }
+						has_country_leader = { character = CHI_yu_shyi_kun ruling_only = yes }
+						has_country_leader = { character = CHI_tsai_ing_wen ruling_only = yes }
+					}
+				}
+			}
+			modifier = {
+				factor = 2
+				AND = {
+					original_tag = CHI #Pan-blue
+					OR = {
+						has_country_leader = { character = CHI_lien_chan ruling_only = yes }
+						has_country_leader = { character = CHI_ma_ying_jeou ruling_only = yes }
+						has_country_leader = { character = CHI_chen_tien_fu ruling_only = yes }
+					}
+				}
+			}
+			modifier = {
+				factor = 4
+				AND = {
+					original_tag = CHI #Pan-blue
+					OR = {
+						has_country_leader = { character = CHI_lien_chan ruling_only = yes }
+						has_country_leader = { character = CHI_ma_ying_jeou ruling_only = yes }
+						has_country_leader = { character = CHI_chen_tien_fu ruling_only = yes }
+					}
+					power_balance_value = {
+						id = CHI_power_balance
+						value < 0
+					}
+				}
 			}
 			modifier = {
 				factor = 0.8
