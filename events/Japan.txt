@@ -1756,7 +1756,7 @@ country_event = {
 			category = naval_doctrine
 		}
 		ai_chance = {
-			factor = 30
+			base = 30
 			modifier = {
 				has_opinion = {
 					target = KOR
@@ -1771,7 +1771,14 @@ country_event = {
 		name = japan.61.b
 		JAP = { country_event = { id = japan.63 days = 7 } }
 		ai_chance = {
-			factor = 70
+			base = 70
+			modifier = {
+				OR = {
+					is_subject_of = JAP
+					is_in_faction_with = JAP
+				}
+				factor = 0
+			}
 		}
 	}
 }
