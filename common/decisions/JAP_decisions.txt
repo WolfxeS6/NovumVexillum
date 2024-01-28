@@ -3157,6 +3157,7 @@ JAP_comecon_dec_cat = {
 		visible = {
 			has_completed_focus = JAP_economic_cooperation
 			FROM = { is_puppet_of = ROOT }
+			NOT = { FROM = { original_tag = JAP } }
 		}
 
 		cost = 100
@@ -3252,6 +3253,7 @@ JAP_comecon_dec_cat = {
 		visible = {
 			has_completed_focus = JAP_economic_cooperation
 			num_subjects > 0
+			NOT = { FROM = { original_tag = JAP } }
 		}
 
 		cost = 100
@@ -3788,6 +3790,38 @@ JAP_find_alliance = {
 
 		complete_effect = {
 			VIC = { country_event = { id = japan.52 hours = 6 } }
+		}
+
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	JAP_alliance_offer_to_taiwan = {
+		icon = GFX_decision_eng_ally_imperialist_coup
+
+		visible = {
+			is_faction_leader = yes
+			is_subject = CHI
+			country_exists = KOR
+			NOT = { JAP = { is_in_faction_with = CHI } }
+		}
+
+		available = {
+			CHI = { is_subject = no }
+			NOT = { has_war_with = CHI }
+			CHI = { is_in_faction = no }
+			CHI = { taiwan_independence = yes }
+			CHI = { NOT = { has_idea = CHI_the_lone_wolf } }
+			CHI = { has_completed_focus = CHI_access_to_japan }
+		}
+
+		fire_only_once = yes
+		
+		cost = 25
+
+		complete_effect = {
+			CHI = { country_event = { id = japan.52 hours = 6 } }
 		}
 
 		ai_will_do = {

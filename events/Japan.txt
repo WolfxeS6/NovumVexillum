@@ -1129,7 +1129,7 @@ country_event = {
 		name = japan.42.a
 		# Launch The Civil War
 		hidden_effect = {
-			country_event = { id = japan.58 days = 19 random = 14 } 
+			#country_event = { id = japan.58 days = 19 random = 14 } 
 			country_event = { id = japan_communist_civil_war.3 days = 9 random = 32 } 
 			add_ideas = government_system_one_party
 		}
@@ -1685,28 +1685,28 @@ country_event = {
 }
 
 #The Red Queen and Wonderland
-country_event = {
-	id = japan.58
-	title = japan.58.t
-	desc = japan.58.desc
-	picture = GFX_report_event_red_guards
-
-	is_triggered_only = yes
-	
-	option = {
-		name = japan.58.a
-		create_corps_commander = {
-			traits = { JAP_communist_sympathizer trait_mountaineer urban_assault_specialist trickster }
-			name = "Fusako Shigenobu"
-			portrait_path = "gfx/leaders/JAP/generals/fusako_shigenobu.dds"
-			attack_skill = 4
-			defense_skill = 1
-			planning_skill = 3
-			logistics_skill = 4
-			skill = 3
-		}
-	}
-}
+#country_event = {
+#	id = japan.58
+#	title = japan.58.t
+#	desc = japan.58.desc
+#	picture = GFX_report_event_red_guards
+#
+#	is_triggered_only = yes
+#	
+#	option = {
+#		name = japan.58.a
+#		create_corps_commander = {
+#			traits = { JAP_communist_sympathizer trait_mountaineer urban_assault_specialist trickster }
+#			name = "Fusako Shigenobu"
+#			portrait_path = "gfx/leaders/JAP/generals/fusako_shigenobu.dds"
+#			attack_skill = 4
+#			defense_skill = 1
+#			planning_skill = 3
+#			logistics_skill = 4
+#			skill = 3
+#		}
+#	}
+#}
   
 # The collapse of Korean Democracy
 country_event = {
@@ -1719,7 +1719,7 @@ country_event = {
 		trigger = { 
 			OR = { 
 				KOR = { has_government = communist } 
-				KOR = { has_government = fascist } 
+				KOR = { has_government = nationalist } 
 			}
 		}
 	}
@@ -1756,7 +1756,7 @@ country_event = {
 			category = naval_doctrine
 		}
 		ai_chance = {
-			factor = 30
+			base = 30
 			modifier = {
 				has_opinion = {
 					target = KOR
@@ -1771,7 +1771,14 @@ country_event = {
 		name = japan.61.b
 		JAP = { country_event = { id = japan.63 days = 7 } }
 		ai_chance = {
-			factor = 70
+			base = 70
+			modifier = {
+				OR = {
+					is_subject_of = JAP
+					is_in_faction_with = JAP
+				}
+				factor = 0
+			}
 		}
 	}
 }
@@ -3039,6 +3046,103 @@ country_event = {
 		}
 		
 		
+	}
+}
+
+# Start Privatizing Post Services
+country_event = {
+	id = japan.94
+	title = japan.94.t
+	desc = japan.94.desc
+	picture = GFX_report_event_japanese_flag
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	option = {
+		name = japan.94.a
+	}
+}
+
+# Postal Service Privatization bill rejected by National Diet
+country_event = {
+	id = japan.95
+	title = japan.95.t
+	desc = japan.95.desc
+	picture = GFX_report_event_JAP_National_Assembly
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	option = {
+		name = japan.95.a
+	}
+}
+
+# Postal Service Privatization bill rejected by National Diet
+unit_leader_event = {
+	id = japan.96
+	title = japan.96.t
+	desc = japan.96.desc
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	timeout_days = 7
+	
+	option = {
+		name = japan.96.a
+		ai_chance = {
+			factor = 1.5
+		}
+		hidden_effect = {
+			remove_temp_unit_leader_role = yes
+		}
+		complete_national_focus = JAP_postal_service_gambling
+		complete_national_focus = JAP_privatization_of_postal_services
+	}
+	
+	option = {
+		name = japan.96.b
+		ai_chance = {
+			factor = 1
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+				has_game_rule = {
+					rule = JAP_AI_BEHAVIOR
+					option = DEFAULT
+				}
+			}
+		}
+		hidden_effect = {
+			remove_temp_unit_leader_role = yes
+		}
+		complete_national_focus = JAP_postal_service_gambling
+		complete_national_focus = JAP_internal_opposition_to_privatization
+		
+	}
+}
+
+# 
+country_event = {
+	id = japan.97
+	title = japan.97.t
+	desc = japan.97.desc
+	picture = GFX_report_event_JAP_National_Assembly
+	
+	hidden = yes
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	option = {
+		name = japan.97.a
+		
+		JAP_shizuka_kamei = {
+			add_temp_unit_leader_role = yes
+			unit_leader_event = { id = japan.96 } 
+		}
 	}
 }
 
@@ -5203,7 +5307,7 @@ country_event = {
 	}
 	
 	option = {
-		name = NV_JPN_flavor_events.4.a
+		name = japan_flavor_events.4.a
 		add_political_power = -5
 		set_country_flag = dead_hiroshi_nagata
 	}
@@ -6798,23 +6902,54 @@ country_event = {
 	picture = GFX_report_event_generic_conference
 
 	is_triggered_only = yes
-	
-	is_triggered_only = yes
 
-	immediate = {
-		hidden_effect = {
-			add_opinion_modifier = {
-				target = FROM
-				modifier = JAP_pressured_our_government
-			}
-		}
-	}
+	#immediate = {
+	#	hidden_effect = {
+	#		add_opinion_modifier = {
+	#			target = FROM
+	#			modifier = JAP_pressured_our_government
+	#		}
+	#	}
+	#}
 			
 	option = { #Accept
 		name = japan_foreign_politics_events.12.a
 		
 		ai_chance = {
 			base = 1
+			modifier = {
+				factor = 30
+				OR = {
+					has_country_leader = { character = CHI_lee_tenghui ruling_only = yes }
+					has_country_leader = { character = CHI_chen_shuibian ruling_only = yes }
+					has_country_leader = { character = CHI_annette_lu ruling_only = yes }
+					has_country_leader = { character = CHI_wu_shu_chen ruling_only = yes }
+					has_country_leader = { character = CHI_frank_hsieh ruling_only = yes }
+					has_country_leader = { character = CHI_yu_shyi_kun ruling_only = yes }
+					has_country_leader = { character = CHI_tsai_ing_wen ruling_only = yes }
+				}
+			}
+			modifier = {
+				factor = 2
+				power_balance_value = {
+					id = CHI_power_balance
+					value > 0.1
+				}
+			}
+			modifier = {
+				factor = 3
+				power_balance_value = {
+					id = CHI_power_balance
+					value > 0.4
+				}
+			}
+			modifier = {
+				factor = 4
+				power_balance_value = {
+					id = CHI_power_balance
+					value > 0.6
+				}
+			}
 			modifier = {
 				factor = 10
 				NOT = { is_in_faction_with = FROM }
