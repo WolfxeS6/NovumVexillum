@@ -2173,6 +2173,8 @@ country_event = {
 			id = JAP_power_balance
 		}
 		
+		remove_dynamic_modifier = { modifier = JAP_DPJ_national_reform_dynamic_modifier }
+		
 		add_popularity = {
 			ideology = nationalist
 			popularity = 0.3
@@ -7633,19 +7635,13 @@ country_event = {
 	
 	option = {
 		name = japan_foreign_politics_events.32.a
-		ai_chance = { factor = 80 }
+		ai_chance = { factor = 0 }
 		JAP = { puppet = ROOT }
 	}
 	
 	option = {
 		name = japan_foreign_politics_events.32.b
-		ai_chance = { factor = 20 }
-		
-		start_civil_war = {
-			ideology = communist
-			ruling_party = ROOT
-			size = 0.5
-		}
+		ai_chance = { factor = 100 }
 		
 		random_country = {
 			limit = {
@@ -7653,6 +7649,26 @@ country_event = {
 				has_government = communist
 			}
 			JAP = { puppet = ROOT }
+		}
+		
+		start_civil_war = {
+			ideology = communist
+			ruling_party = ROOT
+			size = 0.5
+		}
+		
+		FROM = {
+			declare_war_on = {
+				target = PREV
+				type = civil_war
+			}
+		}
+		JAP = {
+			add_to_war = {
+				targeted_alliance = PREV
+				enemy = FROM
+				hostility_reason = asked_to_join
+			}
 		}
 	}
 }
