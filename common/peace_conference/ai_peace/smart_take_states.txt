@@ -1,0 +1,339 @@
+# Scripted AI desire for peace actions.
+# See documentation.info file for more detailed scripting information.
+
+peace_ai_desires = {
+	
+	#enclave_should_not_exist = {
+    #   peace_action_type = { take_states }
+    #   enable = {
+    #        ROOT = { 
+	#			tag = ROOT.FROM 
+	#			ROOT.FROM.FROM.FROM = { 
+	#				AND = {
+	#					is_coastal = no
+	#					any_neighbor_state = {
+	#						NOT = { { is_owned_by = ROOT.FROM } }
+	#					}
+	#					NOT = { is_core_of = ROOT.FROM }
+	#					NOT = { is_claimed_by = ROOT.FROM }
+	#				}
+	#			}
+	#		}
+     #   }
+      #  ai_desire = -90
+    #}
+
+	democratic_does_not_war_of_aggression = {
+        peace_action_type = { take_states }
+        enable = {
+            ROOT = { 
+				tag = ROOT.FROM 
+				ROOT.FROM.FROM.FROM = { 
+					NOT = { is_claimed_by = ROOT.FROM }
+					NOT = { is_core_of = ROOT.FROM }
+					NOT = { has_variable = ambition_area_@ROOT.FROM }
+					OR = {
+						ROOT.FROM = { has_government = conservative }
+						ROOT.FROM = { has_government = market_liberal }
+						ROOT.FROM = { has_government = social_liberal }
+						ROOT.FROM = { has_government = social_democrat }
+						ROOT.FROM = { has_government = progressive }
+						ROOT.FROM = { has_government = democratic_socialist }
+					}
+				}
+			}
+        }
+        ai_desire = -1000
+    }
+
+	spread_of_modern_democracy = {
+		peace_action_type = puppet
+		enable = {
+			ROOT.FROM = {
+				OR = {
+					has_government = conservative
+					has_government = market_liberal
+					has_government = social_liberal
+					has_government = social_democrat
+					has_government = progressive
+					has_government = democratic_socialist
+				}
+			}
+			ROOT.FROM.FROM.FROM = {
+				NOT = { is_core_of = ROOT.FROM }
+				NOT = { is_claimed_by  = ROOT.FROM }
+				OR = {
+					has_democratic_form_of_government = no
+					has_government = reactionary
+				}
+			}
+		}
+		ai_desire = 1000
+	}
+
+	return_puppet_claims = { #This simply has to be the highest priority.
+		peace_action_type = take_states
+		enable = {
+			ROOT.FROM = {
+				OR = {
+					is_subject_of = ROOT
+				}
+			}
+			ROOT.FROM.FROM.FROM = {
+				is_claimed_by = ROOT.FROM
+				NOT = { is_core_of = ROOT }
+			}
+		}
+		ai_desire = 450 #Acceptable values
+	}
+
+	dont_take_ally_ambitions = {
+		peace_action_type = take_states
+		enable = {
+			ROOT = {
+				tag = ROOT.FROM
+				is_in_faction = yes
+				ROOT.FROM.FROM.FROM = {
+					NOT = { is_claimed_by = ROOT.FROM }
+					NOT = { is_core_of = ROOT.FROM }
+					NOT = { has_variable = ambition_area_@ROOT.FROM }
+				}
+				any_allied_country = {
+					pc_is_winner = yes
+					if = {
+						limit = { is_subject = yes }
+						ROOT.FROM.FROM.FROM = {
+							OR = {
+								is_claimed_by = PREV
+								is_core_of = PREV
+							}
+						}
+					}
+					else = {
+						ROOT.FROM.FROM.FROM = {
+							OR = {
+								is_claimed_by = PREV
+								is_core_of = PREV
+								has_variable = ambition_area_@PREV
+							}
+						}
+					}
+				}
+			}
+		}
+		ai_desire = -400
+	}
+
+	dont_take_puppet_cores_or_claims = {
+		peace_action_type = take_states
+		enable = {
+			ROOT = {
+				tag = ROOT.FROM
+				num_subjects > 0
+				ROOT.FROM.FROM.FROM = {
+					pc_is_state_claimed = no
+					NOT = { is_claimed_by = ROOT }
+					NOT = { is_core_of = ROOT }
+					NOT = { has_variable = ambition_area_@ROOT }
+				}
+				any_subject_country = {
+					pc_is_winner = yes
+					ROOT.FROM.FROM.FROM = {
+						OR = {
+							is_claimed_by = PREV
+							is_core_of = PREV
+						}
+					}
+				}
+			}
+		}
+		ai_desire = -400
+	}
+
+	puppets_give_lands_to_overlord = {
+		peace_action_type = take_states
+		enable = {
+			pc_turn > 4
+			ROOT = {
+				is_subject = yes
+				overlord = { tag = ROOT.FROM }
+				ROOT.FROM.FROM.FROM = {
+					pc_is_state_claimed = no
+					NOT = { is_claimed_by = ROOT }
+					NOT = { is_core_of = ROOT }
+				}
+				NOT = {
+					any_allied_country = {
+						NOT = { tag = ROOT.FROM }
+						ROOT.FROM.FROM.FROM = {
+							OR = {
+								is_core_of = PREV
+								is_claimed_by = PREV
+								has_variable = ambition_area_@PREV
+							}
+						}
+					}
+				}
+			}
+		}
+		ai_desire = 350 #offsets do_not_grant_states_randomly
+	}
+
+	faction_members_give_lands_to_leader = {
+		peace_action_type = take_states
+		enable = {
+			pc_turn > 4
+			ROOT = {
+				is_subject = no
+				is_in_faction = yes
+				is_faction_leader = no
+				faction_leader = { tag = ROOT.FROM }
+				ROOT.FROM.FROM.FROM = {
+					pc_is_state_claimed = no
+					NOT = { is_claimed_by = ROOT }
+					NOT = { is_core_of = ROOT }
+					NOT = { has_variable = ambition_area_@ROOT }
+				}
+				NOT = {
+					any_allied_country = {
+						pc_is_winner = yes
+						ROOT.FROM.FROM.FROM = {
+							OR = {
+								is_core_of = PREV
+								is_claimed_by = PREV
+								has_variable = ambition_area_@PREV
+							}
+						}
+					}
+				}
+			}
+		}
+		ai_desire = 370 #offsets do_not_grant_states_randomly
+	}
+
+	faction_members_give_cores_to_ally = {
+		peace_action_type = take_states
+		enable = {
+			pc_turn > 4
+			ROOT = {
+				is_in_faction = yes
+				is_subject = no
+			}
+			ROOT.FROM = {
+				NOT = { tag = ROOT }
+				is_in_faction_with = ROOT
+				is_subject = no
+			}
+			ROOT.FROM.FROM.FROM = {
+				pc_is_state_claimed = no
+				is_core_of = ROOT.FROM
+				NOT = { is_core_of = ROOT }
+				NOT = { is_claimed_by = ROOT }
+				NOT = { has_variable = ambition_area_@ROOT }
+			}
+		}
+		ai_desire = 400 #offsets do_not_grant_states_randomly
+	}
+
+	faction_members_give_claims_to_ally = {
+		peace_action_type = take_states
+		enable = {
+			pc_turn > 4
+			ROOT = {
+				is_in_faction = yes
+				is_subject = no
+			}
+			ROOT.FROM = {
+				NOT = { tag = ROOT }
+				is_in_faction_with = ROOT
+				is_subject = no
+			}
+			ROOT.FROM.FROM.FROM = {
+				pc_is_state_claimed = no
+				is_claimed_by = ROOT.FROM
+				NOT = { is_core_of = ROOT }
+				NOT = { is_claimed_by = ROOT }
+				NOT = { has_variable = ambition_area_@ROOT }
+			}
+		}
+		ai_desire = 390 #offsets do_not_grant_states_randomly
+	}
+
+	faction_members_give_ambitions_to_ally = {
+		peace_action_type = take_states
+		enable = {
+			pc_turn > 4
+			ROOT = {
+				is_in_faction = yes
+				is_subject = no
+			}
+			ROOT.FROM = {
+				NOT = { tag = ROOT }
+				is_in_faction_with = ROOT
+				is_subject = no
+			}
+			ROOT.FROM.FROM.FROM = {
+				pc_is_state_claimed = no
+				has_variable = ambition_area_@ROOT.FROM
+				NOT = { is_core_of = ROOT }
+				NOT = { is_claimed_by = ROOT }
+				NOT = { has_variable = ambition_area_@ROOT }
+			}
+		}
+		ai_desire = 380 #offsets do_not_grant_states_randomly
+	}
+
+	majors_give_cores_to_allied_puppets = {
+		peace_action_type = take_states
+		enable = {
+			pc_turn > 4
+			ROOT = {
+				is_major = yes
+				OR = {
+					is_in_faction = yes
+					num_subjects > 0
+				}
+				NOT = { tag = ROOT.FROM }
+			}
+			ROOT.FROM = {
+				is_subject = yes
+				is_ally_with = ROOT
+			}
+			ROOT.FROM.FROM.FROM = {
+				pc_is_state_claimed = no
+				is_core_of = ROOT.FROM
+				NOT = { is_claimed_by = ROOT }
+				NOT = { is_core_of = ROOT }
+				NOT = { has_variable = ambition_area_@ROOT }
+			}
+		}
+		ai_desire = 400 #offsets do_not_grant_states_randomly
+	}
+
+	majors_give_claims_to_allied_puppets = {
+		peace_action_type = take_states
+		enable = {
+			pc_turn > 4
+			ROOT = {
+				is_major = yes
+				OR = {
+					is_in_faction = yes
+					num_subjects > 0
+				}
+				NOT = { tag = ROOT.FROM }
+			}
+			ROOT.FROM = {
+				is_subject = yes
+				is_ally_with = ROOT
+			}
+			ROOT.FROM.FROM.FROM = {
+				pc_is_state_claimed = no
+				is_claimed_by = ROOT.FROM
+				NOT = { is_core_of = ROOT }
+				NOT = { is_claimed_by = ROOT }
+				NOT = { has_variable = ambition_area_@ROOT }
+			}
+		}
+		ai_desire = 390 #offsets do_not_grant_states_randomly
+	}
+}

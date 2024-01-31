@@ -1224,6 +1224,21 @@
 				any_subject_country = { owns_state = 526 }
 			}
 		}
+		bypass = {
+			JAP_need_kakushin_government = yes
+			OR = {
+				owns_state = 526
+				any_subject_country = { owns_state = 526 }
+			}
+			NOT = {
+				free_building_slots = {
+					building = industrial_complex
+					size > 1
+					include_locked = yes
+				}
+				state_population_k > 500
+			}
+		}
 		
 		prerequisite = { 
 			focus = JAP_the_colonial_reparations_organization
@@ -1235,14 +1250,16 @@
 	
 		completion_reward = {
 			526 = {
-				limit = {
-					is_fully_controlled_by = ROOT
-					free_building_slots = {
-						building = industrial_complex
-						size > 1
-						include_locked = yes
+				if = {
+					limit = {
+						is_fully_controlled_by = ROOT
+						free_building_slots = {
+							building = industrial_complex
+							size > 1
+							include_locked = yes
+						}
+						state_population_k > 500
 					}
-					state_population_k > 500
 				}
 				add_extra_state_shared_building_slots = 3
 			}

@@ -1,0 +1,26 @@
+# Scripted AI desire for peace actions.
+# See documentation.info file for more detailed scripting information.
+
+peace_ai_desires = {
+
+	balkanization_of_china = {
+		peace_action_type = { liberate puppet }
+		enable = {
+            FROM.FROM = {
+                original_tag = PRC
+            }
+			FROM.FROM.FROM = {
+				OR = {
+					is_core_of = TIB #Tibet
+					is_core_of = SIK #Uyghur
+					#is_core_of = MEN #Inner Mongolia
+					is_core_of = CHI #Taiwan (if annexed)
+					is_core_of = SHA #Shanghai
+					is_core_of = HKN #Hong Kong
+					#is_core_of = GXC #Cantonia
+				}
+			}
+		}
+		ai_desire = 1000
+	}
+}
