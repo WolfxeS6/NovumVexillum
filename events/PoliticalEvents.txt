@@ -1,6 +1,7 @@
 ﻿# Written by E. Wolfe #
 
 add_namespace = political
+add_namespace = generic_political_news
 
 # Establish Fourth and Fifth Estates #
 country_event = {
@@ -579,3 +580,216 @@ country_event = {
 }
 
 # Written by E. Wolfe #
+
+# After Peace Conference, suggest unification
+country_event = {
+	id = political.100
+	title = political.100.t
+	desc = political.100.desc
+
+	picture = GFX_report_event_political_gathering
+	is_triggered_only = yes 
+	trigger = {
+		is_subject = no
+		NOT = { has_country_flag = yes_to_unification_flag }
+		NOT = { has_country_flag = no_to_unification_flag }
+		any_country_with_original_tag = {
+			original_tag_to_check = ROOT
+			NOT = { tag = ROOT }
+			is_subject = no
+			has_similar_form_of_government = yes
+			has_war = no
+		}
+	}
+	
+	immediate = {
+		# LOG = "[ROOT.GetLeader]'s [ROOT.GetName] got event" #TODO_TA Remove logging
+		IF = {
+			limit = {
+				has_global_flag = global_unification_request_sent_flag
+			}
+			clr_global_flag = global_unification_request_sent_flag
+		}
+	}
+
+	option = {
+		name = political.100.a
+		set_country_flag = yes_to_unification_flag
+		clr_country_flag = unification_request_sent_flag 
+	}
+	option = {
+		name = political.100.b
+		ai_chance = {
+			base = 0
+		}
+		set_country_flag = no_to_unification_flag 
+		clr_country_flag = unification_request_sent_flag
+	}
+}
+
+# Unification event
+country_event = {
+	id = political.101
+	title = political.101.t
+	desc = political.101.desc
+
+	picture = GFX_report_event_political_gathering
+
+	trigger = {
+		is_subject = no
+		has_country_flag = yes_to_unification_flag
+		any_other_country = {
+			NOT = { tag = ROOT }
+			original_tag = ROOT
+			has_country_flag = yes_to_unification_flag
+			is_subject = no
+			has_similar_form_of_government = yes
+			has_war = no
+		}
+		NOT = {
+			any_other_country = {
+				original_tag = ROOT
+				has_similar_form_of_government = yes
+				has_country_flag = unification_request_sent_flag
+			}
+		}
+	}
+	mean_time_to_happen = {
+		days = 2
+	}
+	immediate = {
+		# LOG = "[ROOT.GetLeader]'s [ROOT.GetName] to unify countries" #TODO_TA Remove logging
+
+	}
+
+	option = {
+		name = political.101.a
+		trigger = {
+			ROOT = { is_ai = no }
+		}
+		clr_country_flag = yes_to_unification_flag 
+		clr_country_flag = unification_request_sent_flag
+		#log = "Player ROOT [ROOT.GetName] to annex"
+		every_other_country = {
+			limit = {
+				original_tag = ROOT
+				has_country_flag = yes_to_unification_flag
+				is_subject = no
+				has_similar_form_of_government = yes
+				has_war = no
+			}
+			clr_country_flag = yes_to_unification_flag
+			ROOT = { annex_country = { target = PREV transfer_troops = yes } }
+		}
+		news_event = {
+			id = generic_political_news.1
+			hours = 8 
+			random_hours = 8 
+		}
+	}
+	option = {
+		name = political.101.b
+		trigger = {
+			ROOT = { is_ai = yes }
+		}
+		IF = {
+			limit = {
+				any_other_country = {
+					NOT = { tag = ROOT }
+					original_tag = ROOT
+					has_country_flag = yes_to_unification_flag
+					is_subject = no
+					has_similar_form_of_government = yes
+					has_war = no
+					is_ai = no 
+				}
+			}
+			log = "ai ROOT - Human player [ROOT.GetName] to annex"
+			random_other_country = {
+				limit = { 
+					NOT = { tag = ROOT }
+					original_tag = ROOT
+					has_country_flag = yes_to_unification_flag
+					is_subject = no
+					has_similar_form_of_government = yes
+					has_war = no
+					is_ai = no 
+				}
+				clr_country_flag = yes_to_unification_flag 
+				clr_country_flag = unification_request_sent_flag
+				every_other_country = {
+					limit = { 
+						original_tag = ROOT
+						has_country_flag = yes_to_unification_flag
+						is_subject = no
+						has_similar_form_of_government = yes
+						has_war = no
+					}
+					clr_country_flag = yes_to_unification_flag
+					PREV = { annex_country = { target = PREV transfer_troops = yes } }
+				}
+				news_event = {
+					id = generic_political_news.1
+					hours = 8 
+					random_hours = 8 
+				}
+			}
+		}
+		ELSE = {
+			#log = "AI ROOT [ROOT.GetName] to annex"
+			clr_country_flag = yes_to_unification_flag 
+			clr_country_flag = unification_request_sent_flag
+			every_other_country = {
+				limit = {
+					original_tag = ROOT
+					has_country_flag = yes_to_unification_flag
+					is_subject = no
+					has_similar_form_of_government = yes
+					has_war = no
+				}
+				clr_country_flag = yes_to_unification_flag
+				ROOT = { annex_country = { target = PREV transfer_troops = yes } }
+			}
+			news_event = {
+				id = generic_political_news.1
+				hours = 8 
+				random_hours = 8 
+			}
+		}
+	}
+}
+
+### Country reunited
+news_event = {
+	id = generic_political_news.1
+	title = generic_political_news.1.t
+	desc = generic_political_news.1.desc
+	picture = GFX_news_event_political_assembly
+	
+	major = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = generic_political_news.1.a
+		trigger = {
+			original_tag = ROOT
+			NOT = { has_government = ROOT }
+		}
+	}
+	option = {
+		name = generic_political_news.1.b
+		trigger = {
+			original_tag = ROOT
+			has_government = ROOT
+		}
+	}
+	option = {
+		name = generic_political_news.1.c
+		trigger = {
+			NOT = {
+				original_tag = ROOT
+			}
+		}
+	}
+}
