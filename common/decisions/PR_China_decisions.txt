@@ -87,18 +87,16 @@ PRC_peasant_strike_category = {
 						TIB = {
 							is_puppet_of = ROOT
 						}
-						
+						release_puppet = TIB
 					}
-					release_puppet = TIB
 				}
 				if = {
 					limit = {
 						SIK = {
 							is_puppet_of = ROOT
 						}
-						
+						release_puppet = SIK
 					}
-					release_puppet = SIK
 				}
 			}
 			
@@ -1818,7 +1816,7 @@ PRC_expansionism_plan = {
 			#}
 			
 			modifier = {
-				add = 100
+				add = 10
 				threat > 0.30
 			}
 			
@@ -2327,6 +2325,10 @@ PRC_expansionism_plan = {
 			factor = 100
 			modifier = {
 				factor = 0
+				NOT = { has_global_flag = PRC_world_plan }
+			}
+			modifier = {
+				factor = 0
 				OR = {
 					has_war = yes
 				}
@@ -2486,6 +2488,10 @@ PRC_expansionism_plan = {
 					has_war = yes
 				}
 			}
+			modifier = {
+				NOT = { has_global_flag = PRC_world_plan }
+				factor = 0
+			}
 		}
 
 		cancel_effect = {
@@ -2542,6 +2548,10 @@ PRC_expansionism_plan = {
 				OR = {
 					has_war = yes
 				}
+			}
+			modifier = {
+				NOT = { has_global_flag = PRC_world_plan }
+				factor = 0
 			}
 		}
 
@@ -2600,6 +2610,10 @@ PRC_expansionism_plan = {
 					has_war = yes
 				}
 			}
+			modifier = {
+				NOT = { has_global_flag = PRC_world_plan }
+				factor = 0
+			}
 		}
 
 		cancel_effect = {
@@ -2623,7 +2637,7 @@ PRC_expansionism_plan = {
 			is_subject = no
 			country_exists = CHI
 			NOT = { is_in_faction_with = CHI }
-			has_completed_focus = PRC_north_korea_abandonment
+			has_completed_focus = PRC_warning_to_taiwan
 		}
 
 		visible = {
@@ -2688,6 +2702,10 @@ PRC_expansionism_plan = {
 			}
 			modifier = {
 				has_war_with = JAP
+				factor = 0
+			}
+			modifier = {
+				NOT = { has_global_flag = PRC_world_plan }
 				factor = 0
 			}
 		}
@@ -2833,6 +2851,8 @@ PRC_outer_china_occupation_category = {
 			}
 		}
 		
+		fire_only_once = yes
+		
 		cost = 100
 
 		complete_effect = {
@@ -2880,6 +2900,8 @@ PRC_outer_china_occupation_category = {
 				788 = { compliance > 75 }
 			}
 		}
+		
+		fire_only_once = yes
 		
 		cost = 100
 
