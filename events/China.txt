@@ -3011,6 +3011,100 @@ country_event = { #2008 Melamine Scandal
 	}
 }
 
+country_event = { #The SARS outbreak
+	id = pr_china_flavor.9
+	title = pr_china_flavor.9.t
+	desc = pr_china_flavor.9.d
+	picture = GFX_report_event_city
+	
+	is_triggered_only = yes
+	
+	option = {	
+		name = pr_china_flavor.9.a
+		
+		add_political_power = -25
+		add_stability = -0.02
+		
+		hidden_effect  = {
+			country_event = { id = pr_china_flavor.10 days = 30 random_days = 20 }
+			country_event = { id = pr_china_flavor.11 days = 48 random_days = 14 }
+			country_event = { id = pr_china_flavor.12 days = 60 random_days = 14 }
+			country_event = { id = pr_china_flavor.13 days = 140 random_days = 42 }
+		}
+	}
+}
+
+country_event = { #SARS to Expand to Hong Kong
+	id = pr_china_flavor.10
+	title = pr_china_flavor.10.t
+	desc = pr_china_flavor.10.d
+	picture = GFX_report_event_PRC_Legislative_Council_of_Hong_Kong
+	
+	is_triggered_only = yes
+	
+	trigger = { 
+		country_exists = HKN
+		HKN = { is_puppet_of = ROOT }
+	}
+	
+	option = {	
+		name = pr_china_flavor.10.a
+		
+		HKN = { 
+			add_to_variable = { NVX_ECO_health = -2 tooltip = minous_economic_health_2 }
+			add_political_power = -100
+		}
+	}
+}
+
+country_event = { #Women's World Cup Cancelled in China
+	id = pr_china_flavor.11
+	title = pr_china_flavor.11.t
+	desc = pr_china_flavor.11.d
+	picture = GFX_report_event_computer
+	
+	is_triggered_only = yes
+	
+	option = {	
+		name = pr_china_flavor.11.a
+		
+		add_political_power = -25
+	}
+}
+
+country_event = { #SARS to Spread to Taiwan
+	id = pr_china_flavor.12
+	title = pr_china_flavor.12.t
+	desc = pr_china_flavor.12.d
+	picture = GFX_report_event_taiwan_government
+	
+	is_triggered_only = yes
+	
+	trigger = { 
+		country_exists = CHI
+		NOT = { CHI = { is_puppet_of = ROOT } }
+	}
+	
+	option = {
+		name = pr_china_flavor.12.a
+		CHI = { country_event = { id = ro_china.early_events.25 } }
+	}
+}
+
+country_event = { #End of SARS Pandemic
+	id = pr_china_flavor.13
+	title = pr_china_flavor.13.t
+	desc = pr_china_flavor.13.d
+	picture = GFX_report_event_city
+	
+	is_triggered_only = yes
+	
+	option = {	
+		name = pr_china_flavor.13.a
+		add_stability = 0.01
+	}
+}
+
 #####################################################################
 #####################################################################
 #####################################################################

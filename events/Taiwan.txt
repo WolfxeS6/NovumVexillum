@@ -1830,6 +1830,183 @@ country_event = { #DEBUG
 	}
 }
 
+country_event = { #Opportunity to join the WTO
+	id = ro_china.early_events.21
+	title = ro_china.early_events.21.t
+	desc = ro_china.early_events.21.desc
+	picture = GFX_report_event_JAP_japanese_economic
+
+	is_triggered_only = yes
+
+	option = {
+		log = "[GetLogInfo]: event ro_china.early_events.21 option ro_china.early_events.21.a"
+		name = ro_china.early_events.21.a
+		ai_chance = { 
+			base = 100
+		}
+		
+		if = {
+			limit = { NOT = { has_idea = free_trade } }
+			add_ideas = free_trade
+		}
+		else = {
+			add_political_power = 150
+		}
+		
+		hidden_effect = {
+			country_event = { id = ro_china.early_events.22 hours = 8 }
+		}
+	}
+
+	option = {
+		log = "[GetLogInfo]: event ro_china.early_events.21 option ro_china.early_events.21.a"
+		name = ro_china.early_events.21.b
+		ai_chance = { 
+			base = 0
+		}
+		
+		CHI_bop_medium_increase_effect = yes
+		
+		hidden_effect = {
+			country_event = { id = ro_china.early_events.23 hours = 8 }
+		}
+	}
+}
+
+country_event = { #Successful Accession to the WTO
+	id = ro_china.early_events.22
+	title = ro_china.early_events.22.t
+	desc = ro_china.early_events.22.desc
+	picture = GFX_report_event_trade_policy
+
+	is_triggered_only = yes
+
+	option = {
+		log = "[GetLogInfo]: event ro_china.early_events.22 option ro_china.early_events.22.a"
+		name = ro_china.early_events.22.a
+		
+		CHI_bop_low_increase_effect = yes
+	}
+}
+
+country_event = { #The Mockery of the Pan-blue
+	id = ro_china.early_events.23
+	title = ro_china.early_events.23.t
+	desc = ro_china.early_events.23.desc
+	picture = GFX_report_event_kuomintang_flag_1
+
+	is_triggered_only = yes
+
+	option = {
+		log = "[GetLogInfo]: event ro_china.early_events.23 option ro_china.early_events.23.a"
+		name = ro_china.early_events.23.a
+		
+		add_political_power = -75
+	}
+}
+
+country_event = { #World's Tallest Building!
+	id = ro_china.early_events.24
+	title = ro_china.early_events.24.t
+	desc = ro_china.early_events.24.desc
+	picture = GFX_report_event_tokyo_night
+
+	is_triggered_only = yes
+
+	option = {
+		log = "[GetLogInfo]: event ro_china.early_events.24 option ro_china.early_events.24.a"
+		name = ro_china.early_events.24.a
+		
+		524 = {
+			add_extra_state_shared_building_slots = 1
+		}
+	}
+}
+
+country_event = { #SARS to Spread to Taiwan
+	id = ro_china.early_events.25
+	title = ro_china.early_events.25.t
+	desc = ro_china.early_events.25.desc
+	picture = GFX_report_event_city
+
+	is_triggered_only = yes
+
+	option = {
+		log = "[GetLogInfo]: event ro_china.early_events.25 option ro_china.early_events.25.a"
+		name = ro_china.early_events.25.a
+		add_stability = -0.02
+		
+		hidden_effect  = {
+			country_event = { id = ro_china.early_events.26 days = 14 random_days = 20 }
+			country_event = { id = ro_china.early_events.27 days = 40 random_days = 14 }
+			country_event = { id = ro_china.early_events.28 days = 80 random_days = 14 }
+		}
+	}
+}
+
+country_event = { #Should National Taiwan University Hospital be locked down?
+	id = ro_china.early_events.26
+	title = ro_china.early_events.26.t
+	desc = ro_china.early_events.26.desc
+	picture = GFX_report_event_hospital
+
+	is_triggered_only = yes
+
+	option = {
+		log = "[GetLogInfo]: event ro_china.early_events.26 option ro_china.early_events.26.a"
+		ai_chance = { 
+			base = 89
+		}
+		name = ro_china.early_events.26.a
+		add_popularity = { ideology = conservative popularity = 0.03 }
+		CHI_bop_very_low_decrease_effect = yes
+	}
+
+	option = {
+		log = "[GetLogInfo]: event ro_china.early_events.26 option ro_china.early_events.26.b"
+		ai_chance = { 
+			base = 11
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes 
+			}
+		}
+		name = ro_china.early_events.26.b
+		add_stability = -0.02
+		add_to_variable = { NVX_ECO_health = -1 tooltip = minous_economic_health_1 }
+	}
+}
+
+country_event = { #Economic Hits from the Expansion of SARS
+	id = ro_china.early_events.27
+	title = ro_china.early_events.27.t
+	desc = ro_china.early_events.27.desc
+	picture = GFX_report_event_economy_status
+
+	is_triggered_only = yes
+
+	option = {
+		log = "[GetLogInfo]: event ro_china.early_events.27 option ro_china.early_events.27.a"
+		name = ro_china.early_events.27.a
+		add_to_variable = { NVX_ECO_health = -2 tooltip = minous_economic_health_2 }
+	}
+}
+
+country_event = { #End of SARS Pandemic
+	id = ro_china.early_events.28
+	title = ro_china.early_events.28.t
+	desc = ro_china.early_events.28.desc
+	picture = GFX_report_event_city
+
+	is_triggered_only = yes
+
+	option = {
+		log = "[GetLogInfo]: event ro_china.early_events.28 option ro_china.early_events.28.a"
+		name = ro_china.early_events.28.a
+		add_stability = 0.01
+	}
+}
+
 ########################################
 ####      2004 Presidential Election Events      #####
 ########################################
@@ -3205,7 +3382,6 @@ country_event = { #Labor Party that Won Power
 	}
 }
 
-
 country_event = { #Communist Party of China's Internal Coup d'etat
 	id = ro_china.events.8
 	title = ro_china.events.8.t
@@ -3388,6 +3564,21 @@ country_event = { #The 2008 Taiwanese Presidential Election
 			}
 		}
 		
+		if = {
+			limit = {
+				has_country_leader = {
+					character = CHI_chen_shuibian
+					ruling_only = yes
+				}
+			}
+			CHI_chen_shuibian = { 
+				retire = yes
+			}
+			CHI_frank_hsieh = { 
+				promote_character = yes
+			}
+		}
+		
 		set_politics = {
 			ruling_party = conservative
 			elections_allowed = yes
@@ -3419,7 +3610,7 @@ country_event = { #Labor Party that Won Power
 		}
 		add_popularity = {
 			ideology = social_democrat
-			popularity = 0.25
+			popularity = 0.3
 		}
 	}
 }
