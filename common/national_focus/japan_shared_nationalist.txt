@@ -72,7 +72,12 @@
 			country_exists = KOR
 			NOT = { has_war_with = KOR }
 			NOT = { JAP = { is_in_faction_with = KOR } }
-			KOR = { has_government = fascist }
+			KOR = { 
+				OR = {
+					has_government = fascist 
+					has_government = nationalist 
+				}
+			}
 		}
 
 		search_filters = { FOCUS_FILTER_ANNEXATION }

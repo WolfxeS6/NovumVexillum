@@ -385,7 +385,7 @@
 
 		relative_position_id = JAP_world_revolution
 
-		x = -6
+		x = -5
 		y = 1
 		
 		search_filters = {  }
@@ -517,6 +517,7 @@
 					}
 					NOT = { has_war_with = ROOT }
 					is_in_faction = no
+					is_puppet = no
 				}
 			}
 		}
@@ -540,6 +541,7 @@
 						}
 						NOT = { has_war_with = ROOT }
 						is_in_faction = no
+						is_puppet = no
 					}
 				}
 				custom_effect_tooltip = generic_current_effects
@@ -552,6 +554,7 @@
 						}
 						NOT = { has_war_with = ROOT }
 						is_in_faction = no
+						is_puppet = no
 					}
 					country_event = { id = japan.52 hours = 4 random_hours = 2 }
 				}
@@ -1069,7 +1072,7 @@
 	shared_focus = {
 		id = JAP_korean_q_communist
 		icon = communism2
-		cost = 5.00
+		cost = 2.00
 
 		prerequisite = { 
 			focus = JAP_world_revolution
@@ -1077,13 +1080,14 @@
 
 		relative_position_id = JAP_world_revolution
 
-		x = -8
+		x = -7
 		y = 1
 		
 		search_filters = {  }
 	
 
 		completion_reward = {
+			add_political_power = 40
 		}
 		
 		ai_will_do = {
@@ -1139,7 +1143,12 @@
 		}
 
 		available = {
-			KOR = { has_government = fascist }
+			KOR = { 
+				OR = {
+					has_government = fascist 
+					has_government = nationalist 
+				}
+			}
 			country_exists = KOR
 			NOT = { is_in_faction_with = KOR }
 			is_subject = no
