@@ -9517,6 +9517,23 @@ country_event = {
 			}
 			promote_character = yes
 		}
+		
+		if = {
+			limit = {
+				NOT = { 
+					has_power_balance = {
+						id = KOR_power_balance
+					}
+				}
+			}			
+			set_power_balance = {
+				id = KOR_power_balance
+				left_side = KOR_orthodox_conservative_power # will keep the last set side if not specified
+				right_side = KOR_young_conservative_power # will keep the last set side if not specified
+				#set_default = yes # whether or not to reset the power balance to the initial value, default = no
+				set_value = 0.1
+			}
+		}
 	}
 	
 	option = {
