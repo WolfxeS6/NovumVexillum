@@ -15,7 +15,164 @@
    	shared_focus = CHINESE_the_end_of_the_1999_crisis
 
 	continuous_focus_position = { x = 200 y = 2000 }
-	
+	########################################
+	####2004 Chen  DEAD  Moved for relative_pos #####
+	########################################
+
+	focus = {
+		id = CHI_black_bullet
+		icon = CHI_black_bullet
+		x = 19
+		y = 0
+
+		cost = 1.5
+
+		ai_will_do = {
+			base = 1000
+		}
+
+		available = {
+		}
+
+		allow_branch = {
+			has_country_flag = CHI_2004_election_flag
+			has_country_flag = CHI_chen_2004_dead
+		}
+
+		bypass = {
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		search_filters = {  }
+
+		completion_reward = {
+			country_event = { id = ro_china.mid_events.5 }
+		}
+	}
+
+	focus = {
+		id = CHI_keep_order
+		icon = CHI_keep_order
+		x = 0
+		y = 1
+
+		cost = 1.5
+
+		relative_position_id = CHI_black_bullet
+
+		ai_will_do = {
+			base = 1		
+		}
+
+		prerequisite = { focus = CHI_black_bullet }
+
+		bypass = {
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		search_filters = {  }
+
+		completion_reward = {
+			add_political_power = -75
+		}
+	}
+
+	focus = {
+		id = CHI_the_successor
+		icon = CHI_the_successor
+		x = -2
+		y = 1
+
+		cost = 1.5
+
+		relative_position_id = CHI_black_bullet
+
+		ai_will_do = {
+			base = 1000
+		}
+
+		prerequisite = { focus = CHI_black_bullet }
+
+		bypass = {
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		search_filters = {  }
+
+		completion_reward = {
+			add_to_variable = { NVX_ECO_health = -2 tooltip = minous_economic_health_2 }
+		}
+	}
+
+	focus = {
+		id = CHI_the_martyr
+		icon = CHI_the_martyr
+		x = 2
+		y = 1
+
+		cost = 1.5
+
+		relative_position_id = CHI_black_bullet
+
+		ai_will_do = {
+			base = 1000
+		}
+
+		prerequisite = { focus = CHI_black_bullet }
+
+		bypass = {
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		search_filters = {  }
+
+		completion_reward = {
+			add_war_support = -0.05
+		}
+	}
+
+	focus = {
+		id = CHI_national_regeneration
+		icon = CHI_national_regeneration
+		x = 0
+		y = 2
+
+		cost = 3
+
+		relative_position_id = CHI_black_bullet
+
+		ai_will_do = {
+			base = 1000
+		}
+
+		prerequisite = { focus = CHI_keep_order }
+		prerequisite = { focus = CHI_the_successor }
+		prerequisite = { focus = CHI_the_martyr }
+
+		bypass = {
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		search_filters = {  }
+
+		completion_reward = {
+			CHI_decrease_martial_law_effect = yes
+			add_research_slot = 1
+		}
+	}
+	########################################
+	####NOT related to 2004 Chen  DEAD#####
+	########################################
 	focus = {
 		id = CHI_year_of_the_dragon
 		icon = CHI_year_of_the_dragon
@@ -2008,7 +2165,7 @@
 				name = Jun-yi
 				surname = Chen
 				callsign = Chen
-				gender = female
+				is_female = yes
 				type = fighter_good
 			}
 		}
@@ -3494,161 +3651,6 @@
 		}
 	}
 
-########################################
-####      2004 Chen  DEAD          #####
-########################################
-
-	focus = {
-		id = CHI_black_bullet
-		icon = CHI_black_bullet
-		x = 19
-		y = 0
-
-		cost = 1.5
-
-		ai_will_do = {
-			base = 1000
-		}
-
-		available = {
-		}
-
-		allow_branch = {
-			has_country_flag = CHI_2004_election_flag
-			has_country_flag = CHI_chen_2004_dead
-		}
-
-		bypass = {
-		}
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = no
-		search_filters = {  }
-
-		completion_reward = {
-			country_event = { id = ro_china.mid_events.5 }
-		}
-	}
-
-	focus = {
-		id = CHI_keep_order
-		icon = CHI_keep_order
-		x = 0
-		y = 1
-
-		cost = 1.5
-
-		relative_position_id = CHI_black_bullet
-
-		ai_will_do = {
-			base = 1		
-		}
-
-		prerequisite = { focus = CHI_black_bullet }
-
-		bypass = {
-		}
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = no
-		search_filters = {  }
-
-		completion_reward = {
-			add_political_power = -75
-		}
-	}
-
-	focus = {
-		id = CHI_the_successor
-		icon = CHI_the_successor
-		x = -2
-		y = 1
-
-		cost = 1.5
-
-		relative_position_id = CHI_black_bullet
-
-		ai_will_do = {
-			base = 1000
-		}
-
-		prerequisite = { focus = CHI_black_bullet }
-
-		bypass = {
-		}
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = no
-		search_filters = {  }
-
-		completion_reward = {
-			add_to_variable = { NVX_ECO_health = -2 tooltip = minous_economic_health_2 }
-		}
-	}
-
-	focus = {
-		id = CHI_the_martyr
-		icon = CHI_the_martyr
-		x = 2
-		y = 1
-
-		cost = 1.5
-
-		relative_position_id = CHI_black_bullet
-
-		ai_will_do = {
-			base = 1000
-		}
-
-		prerequisite = { focus = CHI_black_bullet }
-
-		bypass = {
-		}
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = no
-		search_filters = {  }
-
-		completion_reward = {
-			add_war_support = -0.05
-		}
-	}
-
-	focus = {
-		id = CHI_national_regeneration
-		icon = CHI_national_regeneration
-		x = 0
-		y = 2
-
-		cost = 3
-
-		relative_position_id = CHI_black_bullet
-
-		ai_will_do = {
-			base = 1000
-		}
-
-		prerequisite = { focus = CHI_keep_order }
-		prerequisite = { focus = CHI_the_successor }
-		prerequisite = { focus = CHI_the_martyr }
-
-		bypass = {
-		}
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = no
-		search_filters = {  }
-
-		completion_reward = {
-			CHI_decrease_martial_law_effect = yes
-			add_research_slot = 1
-		}
-	}
 
 ########################################
 ####      2004 Wu Shu-chen         #####
