@@ -1802,11 +1802,11 @@ PRC_expansionism_plan = {
 			has_civil_war = no
 		}
 		
-		cost = 0
+		cost = 15
 		fire_only_once = yes
 
 		ai_will_do = {
-			base = 0
+			base = -10
 			
 			#modifier = {
 			#	add = 100
@@ -1814,10 +1814,27 @@ PRC_expansionism_plan = {
 			#		has_added_tension_amount > 10
 			#	}
 			#}
+			modifier = {
+				add = -10
+				is_historical_focus_on = yes
+			}
 			
 			modifier = {
 				add = 10
 				threat > 0.30
+			}
+
+			modifier = {
+				add = 10
+				threat > 0.45
+			}
+
+			modifier = {
+				add = 1
+				any_of_scopes = {
+					array = global.majors
+					has_war_with_major = yes
+				}
 			}
 			
 			modifier = {
