@@ -4348,63 +4348,6 @@
 	#
 	##############################
 
-	shared_focus = {
-		id = PRC_MSS
-		icon = PRC_MSS
-		x = 20
-		y = 0
-		cost = 8
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = no
-		
-		search_filters = { }
-
-		completion_reward = {			
-			if = {
-				limit = { has_dlc = "La Resistance" }
-				if = {
-					limit = { has_intelligence_agency = no }
-					create_intelligence_agency = yes
-				}
-				else_if = {
-					limit = {
-						NOT = { has_done_agency_upgrade = upgrade_army_department }
-					}
-					upgrade_intelligence_agency = upgrade_army_department
-				}
-				else = {
-					add_political_power = 75
-				}
-				add_ideas = PRC_MSS_lar
-			}
-			else = {
-				add_ideas = PRC_MSS_no_lar
-			}
-		}
-		
-		ai_will_do = {
-			base = 1
-			modifier = {
-				factor = 5
-				has_war = yes
-			}
-			modifier = {
-				factor = 1.5
-				date > 2001.1.1
-			}
-			modifier = {
-				factor = 1.5
-				date > 2003.1.1
-			}
-			modifier = {
-				factor = 2
-				date > 2006.1.1
-			}
-		}
-	}
-
 	##############################
 	#
 	# Potilic
