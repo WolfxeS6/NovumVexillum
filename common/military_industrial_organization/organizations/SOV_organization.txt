@@ -52,19 +52,39 @@ SOV_sukhoi_organization = {
 	include = generic_multi_role_aircraft_organization
 	icon = GFX_idea_SOV_Sukhoi
 
-	allowed = {	
-		OR = {
+	allowed = {
+		or = {
 			tag = SOV
-		}
+			tag = HUN
+		}	
 	}
+
+	available = {
+		if = {
+			limit = {
+				FROM = { NOT = { original_tag = USA } }
+			}
+			FROM = { is_in_faction_with = SOV }
+		}
+	}	
 }
 SOV_mig_organization = {
 	include = generic_general_aircraft_organization
 	icon = GFX_idea_SOV_MiG
 
-	allowed = {	
-		OR = {
+	allowed = {
+		or = {
 			tag = SOV
+			tag = HUN
+		}	
+	}
+
+	available = {
+		if = {
+			limit = {
+				FROM = { NOT = { original_tag = USA } }
+			}
+			FROM = { is_in_faction_with = SOV }
 		}
 	}
 }
