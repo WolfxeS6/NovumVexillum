@@ -1,6 +1,7 @@
 ﻿capital = 317
 
 oob = "NIC_2000"
+set_air_oob = "NIC_2000_air"
 
 set_research_slots = 2
 set_convoys = 65
@@ -10,89 +11,6 @@ set_country_flag = country_language_spanish
 set_country_flag = country_behavior_dispersed
 set_country_flag = country_behavior_indolent
 
-if = {
-	limit = {
-		NOT = {has_dlc = "By Blood Alone"}
-	}
-	set_technology = {
-		CAS1 = 1
-		CAS2 = 1
-		cv_CAS1 = 1
-		cv_CAS2 = 1
-		fighter1 = 1
-		fighter2 = 1
-		cv_fighter1 = 1
-		cv_fighter2 = 1
-		naval_bomber1 = 1
-		naval_bomber2 = 1
-		naval_bomber3 = 1
-		cv_naval_bomber1 = 1
-		cv_naval_bomber2 = 1
-		cv_naval_bomber3 = 1
-		strategic_bomber1 = 1
-		strategic_bomber2 = 1
-		#scout_plane1 = 1
-	}
-}
-if = {
-	limit = {
-		has_dlc = "By Blood Alone"
-	}
-	#tech
-	set_technology = {
-		iw_small_airframe = 1
-		basic_small_airframe = 1
-		iw_medium_airframe = 1
-		basic_medium_airframe = 1
-		iw_heli_airframe = 1
-		iw_naval_airframe = 1
-		basic_naval_airframe = 1
-		iw_large_airframe = 1
-		basic_large_airframe = 1
-		aa_lmg = 1
-		Cold_war_cas = 1
-		engines_1 = 1
-		air_misc = 1
-		#scout_plane1 = 1
-	}
-	#varients
-	#CAS
-	create_equipment_variant = {
-		name = "Su-25" 
-		type = small_plane_airframe_1
-		modules = {
-			fixed_main_weapon_slot = heavy_mg_2x
-			fixed_auxiliary_weapon_slot_1 = medium_bomb_bay
-			fixed_auxiliary_weapon_slot_2 = tank_buster_1
-			engine_type_slot = engine_1_2x
-			special_type_slot_1 = empty
-			special_type_slot_3 = armor_plate_medium
-		}
-	}
-	#Multirole
-	create_equipment_variant = {
-		name = "MiG-23" 
-		type = medium_plane_airframe_0
-		modules = {
-			fixed_main_weapon_slot = light_mg_2x
-			fixed_auxiliary_weapon_slot_1 = aircraft_cannon_short_1
-			engine_type_slot = engine_1_2x
-			special_type_slot_1 = empty
-		}
-		obsolete = yes
-	}
-	create_equipment_variant = {
-		name = "MiG-29" 
-		type = medium_plane_airframe_1
-		modules = {
-			fixed_main_weapon_slot = light_mg_2x
-			fixed_auxiliary_weapon_slot_1 = aircraft_cannon_short_1
-			fixed_auxiliary_weapon_slot_2 = aircraft_cannon_medium_1
-			engine_type_slot = engine_1_2x
-			special_type_slot_1 = empty
-		}
-	}
-}
 if = {
 	limit = {
 		NOT = { has_dlc = "No Step Back" }
@@ -113,14 +31,10 @@ if = {
 		has_dlc = "No Step Back"
 	}
 	set_technology = {
-		IFV_chassis_80s = 1
 		IFV_chassis = 1
 		light_mechanized_infantry1 = 1
-		light_mechanized_infantry2 = 1
-		IFV_chassis_00s = 1
 		main_battle_tank_chassis = 1
 		main_battle_tank_chassis_80s = 1
-		#main_battle_tank_chassis_00s = 1
 	}
 	create_equipment_variant = {
 		name = "T-72M"
@@ -145,29 +59,7 @@ if = {
 		icon = "GFX_SOV_main_battle_tank2_medium"
 	}
 	create_equipment_variant = {
-		name = "BMP-2"
-		type = light_tank_chassis_1
-		parent_version = 0
-		modules = {
-			main_armament_slot = tank_auto_cannon
-			special_type_slot_1 = ergo_ifv_old
-			#turret_type_slot = tank_light_one_man_tank_turret
-			suspension_type_slot = tank_torsion_bar_suspension
-			armor_type_slot = tank_riveted_armor
-			engine_type_slot = tank_diesel_engine
-			#special_type_slot_1 = tank_radio_1
-			optics_slot = tank_optics_1
-			special_type_slot_4 = crew_compartment
-			atgm_slot = tank_atgm_1
-		}
-		upgrades = {
-			tank_nsb_armor_upgrade = 2
-			tank_nsb_engine_upgrade = 2
-		}
-		icon = "GFX_SOV_mechanised_infantry2_medium"
-	}
-	create_equipment_variant = {
-		name = "T-62"
+		name = "T-55"
 		type = modern_tank_chassis_1
 		parent_version = 0
 		modules = {
@@ -185,11 +77,10 @@ if = {
 			tank_nsb_armor_upgrade = 0
 			tank_nsb_engine_upgrade = 0
 		}
-		obsolete = yes
 		icon = "GFX_SOV_main_battle_tank1_medium"
 	}
 	create_equipment_variant = {
-		name = "MT-LB"
+		name = "BMP-1"
 		type = light_tank_chassis_0
 		parent_version = 0
 		modules = {
@@ -208,12 +99,11 @@ if = {
 			tank_nsb_armor_upgrade = 0
 			tank_nsb_engine_upgrade = 0
 		}
-		obsolete = yes
 		icon = "GFX_SOV_mechanised_infantry1_medium"
 	}
 	create_equipment_variant = {
 		name = "PT-76"
-		type = light_tank_destroyer_chassis_1
+		type = light_tank_destroyer_chassis_0
 		parent_version = 0
 		modules = {
 			main_armament_slot = tank_auto_cannon
@@ -231,7 +121,6 @@ if = {
 			tank_nsb_armor_upgrade = 1
 			tank_nsb_engine_upgrade = 1
 		}
-		obsolete = no
 		icon = "GFX_SOV_mechanised_infantry1_medium"
 	}
 }
@@ -295,60 +184,61 @@ set_technology = {
 }
 
 add_ideas = {
-	civil_liberties_totalitarian
+	civil_liberties_restricted
 	population_growth_rapid
 	limited_conscription
 }
 
 set_politics = {	
-	ruling_party = reactionary
-	last_election = "1997.1.1"
-	election_frequency = 48
+	ruling_party = conservative
+	last_election = "1996.10.20"
+	election_frequency = 60
 	elections_allowed = yes
 }
 
 set_popularities = {
-    islamist = 1
-    nationalist = 1
-    reactionary = 38
-    conservative = 25
-    market_liberal = 5
-    social_liberal = 10
-    social_democrat = 10
-    progressive = 10
+    conservative = 52
+	democratic_socialist = 38
+	islamist = 4
+	social_democrat = 2
+	social_liberal = 1
+	communist = 1
+	market_liberal = 1
+	progressive = 1
 }
 
+recruit_character = NIC_guillermo_osorno_molina
+recruit_character = NIC_josephenie_hendy_clarence_robertson
 recruit_character = NIC_arnoldo_aleman
-recruit_character = NIC_daniel_ortega
+recruit_character = NIC_virgilio_godoy_reyes
 recruit_character = NIC_fabio_gadea_mantilla
-recruit_character = NIC_bernardo_chavez
-recruit_character = NIC_lisandro_chavez
-recruit_character = NIC_pedro_ubico
-recruit_character = NIC_justo_ubico
-recruit_character = NIC_diego_machado
-recruit_character = NIC_fermin_chamorro
-recruit_character = NIC_carlos_chamorro
-recruit_character = NIC_pedro_chavez
-recruit_character = NIC_eugenio_araujo
+recruit_character = NIC_kitty_monterrey
+recruit_character = NIC_sergio_ramirez
+recruit_character = NIC_edward_martin_salazar_cruz
+recruit_character = NIC_daniel_ortega
+recruit_character = NIC_bonifacio_miranda
+recruit_character = NIC_julio_cesar_aviles_castillo
+recruit_character = NIC_bayardo_ramon_rodriguez_ruiz
+recruit_character = NIC_adolfo_jose_zepeda_martinez
+recruit_character = NIC_spiro_jose_bassi_aguilar
+recruit_character = NIC_angel_eugenio_fonseca_donaire
 
 
 2011.11.7 = {
-set_politics = {	
-	ruling_party = democratic_socialist
-	last_election = "2011.11.6"
-	election_frequency = 48
-	elections_allowed = yes
-}
+	set_politics = {	
+		ruling_party = democratic_socialist
+		last_election = "2011.11.6"
+		election_frequency = 48
+		elections_allowed = yes
+	}
 
-set_popularities = {
-    islamist = 1
-    nationalist = 1
-    reactionary = 6
-    conservative = 25
-    market_liberal = 5
-    social_liberal = 10
-    social_democrat = 30
-    progressive = 10
-	democratic_socialist = 12
-}
+	retire_character = NIC_virgilio_godoy_reyes
+	promote_character = NIC_fabio_gadea_mantilla
+
+	set_popularities = {
+		democratic_socialist = 62
+		market_liberal = 31
+		conservatism = 6
+		social_liberal = 1
+	}
 }
