@@ -1,0 +1,365 @@
+
+on_actions = {
+
+	#ROOT is new controller
+	#FROM is old controller
+	#FROM.FROM is state ID
+
+	on_state_control_changed = {
+		effect = {
+			if = {
+				limit = {
+					has_war_with = FROM
+					FROM.FROM = {
+						is_owned_by = FROM
+						NOT = { has_state_flag = city_has_fallen_once }
+					}
+				}
+				FROM.FROM = { save_event_target_as = fallen_state }
+				
+				###########################
+				# Europa
+				###########################
+				
+				# London
+				if = {
+					limit = {
+						FROM.FROM = { state = 126 }
+						ROOT = { controls_province = 6103 }
+					}
+					news_event = city_capture_news.1
+				}
+				# Paris
+				else_if = {
+					limit = {
+						FROM.FROM = { state = 16 }
+						ROOT = { controls_province = 11506 }
+					}
+					news_event = city_capture_news.2
+				}
+				# Brussels
+				else_if = {
+					limit = {
+						FROM.FROM = { state = 6 }
+						ROOT = { controls_province = 516 }
+					}
+					news_event = city_capture_news.3
+				}
+				# Amsterdam
+				else_if = {
+					limit = {
+						FROM.FROM = { state = 7 }
+						ROOT = { controls_province = 391 }
+					}
+					news_event = city_capture_news.4
+				}
+				# Berlin
+				else_if = {
+					limit = {
+						FROM.FROM = { state = 64 }
+						ROOT = { controls_province = 6521 }
+					}
+					news_event = city_capture_news.5
+				}
+				# Rome
+				else_if = {
+					limit = {
+						FROM.FROM = { state = 2 }
+						ROOT = { controls_province = 9904 }
+					}
+					news_event = city_capture_news.6
+				}
+				# Istanbul
+				else_if = {
+					limit = {
+						FROM.FROM = { state = 341 }
+						ROOT = { controls_province = 9833 }
+					}
+					news_event = city_capture_news.7
+				}
+				# Kharkiv
+				else_if = {
+					limit = {
+						FROM.FROM = { state = 221 }
+						ROOT = { controls_province = 418 }
+					}
+					news_event = city_capture_news.8
+				}
+				# Donetsk
+				else_if = {
+					limit = {
+						FROM.FROM = { state = 227 }
+						ROOT = { controls_province = 6474 }
+					}
+					news_event = city_capture_news.9
+				}
+				# Kiev
+				else_if = {
+					limit = {
+						FROM.FROM = { state = 202 }
+						ROOT = { controls_province = 525 }
+					}
+					news_event = city_capture_news.10
+				}
+				# Moscow
+				else_if = {
+					limit = {
+						FROM.FROM = { state = 219 }
+						ROOT = { controls_province = 6380 }
+					}
+					news_event = city_capture_news.11
+				}
+				# Saint Petersburg
+				else_if = {
+					limit = {
+						FROM.FROM = { state = 195 }
+						ROOT = { controls_province = 3151 }
+					}
+					news_event = city_capture_news.12
+				}
+				
+				###########################
+				# Middle East
+				###########################
+				
+				# Jerusalem
+				else_if = {
+					limit = {
+						FROM.FROM = { state = 914 }
+						ROOT = { controls_province = 13248 }
+					}
+					news_event = city_capture_news.13
+				}
+				# Cairo
+				else_if = {
+					limit = {
+						FROM.FROM = { state = 446 }
+						ROOT = { controls_province = 12004 }
+					}
+					news_event = city_capture_news.14
+				}
+				## Tehran
+				#else_if = {
+				#	limit = {
+				#		FROM.FROM = { state = 266 }
+				#		ROOT = { controls_province = 10837 }
+				#	}
+				#	news_event = city_capture_news.14
+				#}
+				
+				###########################
+				# South Asia
+				###########################
+				
+				# Islamabad
+				else_if = {
+					limit = {
+						FROM.FROM = { state = 440 }
+						ROOT = { controls_province = 4979 }
+					}
+					news_event = city_capture_news.15
+				}
+				# Dehli
+				else_if = {
+					limit = {
+						FROM.FROM = { state = 439 }
+						ROOT = { controls_province = 2086 }
+					}
+					news_event = city_capture_news.16
+				}
+				# Hanoi
+				else_if = {
+					limit = {
+						FROM.FROM = { state = 671 }
+						ROOT = { controls_province = 4075 }
+					}
+					news_event = city_capture_news.17
+				}
+				# Ho-chi-minh city
+				else_if = {
+					limit = {
+						FROM.FROM = { state = 783 }
+						ROOT = { controls_province = 4401 }
+					}
+					news_event = city_capture_news.18
+				}
+				
+				###########################
+				# East Asia
+				###########################
+				
+				# Kinmen
+				else_if = {
+					limit = {
+						FROM.FROM = { state = 922 }
+						ROOT = { controls_province = 13260 }
+					}
+					news_event = city_capture_news.19
+				}
+				# Taipei
+				else_if = {
+					limit = {
+						FROM.FROM = { state = 524 }
+						ROOT = { controls_province = 7186 }
+					}
+					news_event = city_capture_news.20
+				}
+				# Shanghai
+				else_if = {
+					limit = {
+						FROM.FROM = { state = 613 }
+						ROOT = { controls_province = 7014 }
+					}
+					news_event = city_capture_news.21
+				}
+				# Nanjing
+				else_if = {
+					limit = {
+						FROM.FROM = { state = 62 }
+						ROOT = { controls_province = 11913 }
+					}
+					news_event = city_capture_news.22
+				}
+				# Chongqing
+				else_if = {
+					limit = {
+						FROM.FROM = { state = 1242 }
+						ROOT = { controls_province = 6999 }
+					}
+					news_event = city_capture_news.23
+				}
+				# Beijing
+				else_if = {
+					limit = {
+						FROM.FROM = { state = 608 }
+						ROOT = { controls_province = 9843 }
+					}
+					news_event = city_capture_news.24
+				}
+				# Pyongyang
+				else_if = {
+					limit = {
+						FROM.FROM = { state = 948 }
+						ROOT = { controls_province = 14141 }
+					}
+					news_event = city_capture_news.25
+				}
+				# Seoul
+				else_if = {
+					limit = {
+						FROM.FROM = { state = 525 }
+						ROOT = { controls_province = 7125 }
+					}
+					news_event = city_capture_news.26
+				}
+				# Busan
+				else_if = {
+					limit = {
+						FROM.FROM = { state = 870 }
+						ROOT = { controls_province = 4056 }
+					}
+					news_event = city_capture_news.27
+				}
+				# Vladivostok
+				else_if = {
+					limit = {
+						FROM.FROM = { state = 408 }
+						ROOT = { controls_province = 957 }
+					}
+					news_event = city_capture_news.28
+				}
+				# Hiroshima
+				else_if = {
+					limit = {
+						FROM.FROM = { state = 529 }
+						ROOT = { controls_province = 1092 }
+					}
+					news_event = city_capture_news.29
+				}
+				# Kyoto
+				else_if = {
+					limit = {
+						FROM.FROM = { state = 531 }
+						ROOT = { controls_province = 11960 }
+					}
+					news_event = city_capture_news.30
+				}
+				# Tokyo
+				else_if = {
+					limit = {
+						FROM.FROM = { state = 282 }
+						ROOT = { controls_province = 1182 }
+					}
+					news_event = city_capture_news.31
+				}
+				# Sapporo
+				else_if = {
+					limit = {
+						FROM.FROM = { state = 536 }
+						ROOT = { controls_province = 10444 }
+					}
+					news_event = city_capture_news.32
+				}
+				# Naha
+				else_if = {
+					limit = {
+						FROM.FROM = { state = 526 }
+						ROOT = { controls_province = 11932 }
+					}
+					news_event = city_capture_news.33
+				}
+				
+				###########################
+				# Pacific Ocean
+				###########################
+				
+				# Honolulu
+				else_if = {
+					limit = {
+						FROM.FROM = { state = 629 }
+						ROOT = { controls_province = 4180 }
+					}
+					news_event = city_capture_news.34
+				}
+				
+				###########################
+				# America
+				###########################
+				
+				# Los Angeles
+				else_if = {
+					limit = {
+						FROM.FROM = { state = 1092 }
+						ROOT = { controls_province = 13670 }
+					}
+					news_event = city_capture_news.35
+				}
+				# San Francisco
+				else_if = {
+					limit = {
+						FROM.FROM = { state = 1093 }
+						ROOT = { controls_province = 9671 }
+					}
+					news_event = city_capture_news.37
+				}
+				# New York
+				else_if = {
+					limit = {
+						FROM.FROM = { state = 358 }
+						ROOT = { controls_province = 3878 }
+					}
+					news_event = city_capture_news.38
+				}
+				# Washington, D.C.
+				else_if = {
+					limit = {
+						FROM.FROM = { state = 361 }
+						ROOT = { controls_province = 3957 }
+					}
+					news_event = city_capture_news.39
+				}
+				
+			}
+		}
+	}
+}
