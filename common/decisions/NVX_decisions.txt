@@ -1531,7 +1531,32 @@ political_actions = {
 			}
 			has_elections = yes
 			NOT = { has_idea = economy_depression }
-			
+			NOT = { has_idea = idea_USA_political_establishment }
+			NOT = { has_idea = skip_election_event }
+				#NOT = { tag = USA }
+			if = {
+				limit = {
+					original_tag = KOR
+				}
+				date > 2003.6.1
+			}
+			if = {
+				limit = {
+					original_tag = CHI
+				}
+				date > 2009.12.31
+				NOT = { has_global_flag = GC_is_on }
+			}
+			NOT = { 
+				AND = {
+					has_country_flag = kor_2002_government 
+					date < 2009.12.31
+				}
+			}
+			NOT = { has_country_flag = russia_election_2000 }
+			NOT = { has_country_flag = british_elections_enabled }
+			NOT = { has_country_flag = gc_elections }
+			NOT = { has_idea = government_system_provisional }
 		}
 		available= {
 			is_ai = no
