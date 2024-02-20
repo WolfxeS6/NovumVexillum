@@ -1848,3 +1848,93 @@ news_event = {
 		}
 	}
 }
+
+# The Fall of Basrah
+news_event = {
+	id = city_capture_news.40
+	title = city_capture_news.40.t
+	desc = city_capture_news.40.d
+	picture = GFX_news_event_Abrams_Fallujah
+	immediate = { log = "[GetLogInfo]: event city_capture_news.40" }
+	major = yes
+	is_triggered_only = yes
+	
+	trigger = {
+#		OR = {
+#			1002 = { is_controlled_by = USA }
+#			1002 = { is_controlled_by = ENG }
+#		}
+#		1002 = { is_owned_by = IRQ }
+#		USA = { 
+#			has_war_with = IRQ 
+#			NOT = { has_global_flag = fall_of_Basrah }
+#		}
+	}
+	
+	immediate = {
+		set_global_flag = fall_of_Basrah
+	}
+	
+	option = {
+		name = city_capture_news.40.a
+		trigger = {
+			NOT = {
+				TAG = USA
+				TAG = IRQ
+			}
+		}
+	}
+	option = {
+		name = city_capture_news.40.b
+		trigger = { TAG = USA }
+	}
+	option = {
+		name = city_capture_news.40.c
+		trigger = { TAG = IRQ }
+	}
+}
+
+# The Fall of Baghdad
+news_event = {
+	id = city_capture_news.41
+	title = city_capture_news.41.t
+	desc = city_capture_news.41.d
+	picture = GFX_news_event_US_tanks_baghdad
+	immediate = { log = "[GetLogInfo]: event city_capture_news.41" }
+	major = yes
+	is_triggered_only = yes
+	
+	trigger = {
+#		OR = {
+#			291 = { is_controlled_by = USA }
+#			291 = { is_controlled_by = ENG }
+#		}
+#		291 = { is_owned_by = IRQ }
+#		USA = { 
+#			has_war_with = IRQ 
+#			NOT = { has_global_flag = fall_of_Baghdad }
+#		}
+	}
+	
+	immediate = {
+		set_global_flag = fall_of_Baghdad
+	}
+	
+	option = {
+		name = city_capture_news.41.a
+		trigger = {
+			NOT = {
+				TAG = USA
+				TAG = IRQ
+			}
+		}
+	}
+	option = {
+		name = city_capture_news.41.b
+		trigger = { TAG = USA }
+	}
+	option = {
+		name = city_capture_news.41.c
+		trigger = { TAG = IRQ }
+	}
+}
