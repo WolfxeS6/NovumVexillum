@@ -1,0 +1,46 @@
+﻿add_namespace = mercosur
+
+#A country applies for mercosur membership
+country_event = {
+	id = mercosur.1
+	title = mercosur.1.t
+	desc = mercosur.1.d
+	picture = GFX_report_event_mercosur
+	
+	is_triggered_only = yes
+	
+	option = {	#Okay
+		name = mercosur.1.o1
+		
+		ai_chance = {
+			factor = 100
+		}
+	}
+	
+	option = {	#Veto!
+		name = mercosur.1.o2
+		
+		FROM = { country_event = { id = mercosur.2 } }
+		FROM = { add_opinion_modifier = { target = ROOT modifier = recent_actions_negative } }
+		
+		ai_chance = {
+			factor = 0
+		}
+	}
+}
+
+#We have been vetoed!
+country_event = {
+	id = mercosur.2
+	title = mercosur.2.t
+	desc = mercosur.2.d
+	picture = GFX_report_event_mercosur
+	
+	is_triggered_only = yes
+	
+	option = {	#It was worth a try.
+		name = mercosur.2.o1
+		mercosur_membership_termination = yes
+		add_political_power = -25
+	}
+}

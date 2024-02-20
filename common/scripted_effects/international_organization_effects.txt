@@ -30,3 +30,26 @@ EU_membership_termination = {
 	remove_ideas = idea_eu_member
 	add_stability = -0.05
 }
+
+mercosur_membership_application = {
+	hidden_effect = { add_ideas = idea_mercosur_member }
+	every_country = {
+		limit = {
+			NOT = { tag = ROOT }
+			has_idea = idea_mercosur_member
+		}
+		country_event = { id = mercosur.1 }
+	}
+}
+
+mercosur_membership_termination = {
+	#hidden_effect = { news_event = news.4 }
+	hidden_effect = {
+	}
+	every_country = {
+		limit = { has_idea = idea_mercosur_member }
+		add_opinion_modifier = { target = ROOT modifier = left_the_mercosur }
+	}
+	remove_ideas = idea_mercosur_member
+	add_stability = -0.05
+}
