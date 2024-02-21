@@ -34,8 +34,8 @@ characters={
 			civilian={
 				large="gfx/leaders/KOR/Roh_Moo_hyun.dds"
 			}
-			army = {
-				small = "gfx/interface/ideas/KOR/adviser/kor_roh_moo_hyun.dds"
+			army={
+				small="GFX_idea_kor_roh_moo_hyun"
 			}
 		}
 		
@@ -50,20 +50,29 @@ characters={
 			id=1202
 		}
 		
-		advisor = {
+		advisor={
 			slot = political_advisor
 			idea_token = kor_roh_moo_hyun
-			allowed = {
-				original_tag = KOR
-			}
-			
-			available = {
-				KOR_prime_minster_common_left_wing = yes
-			}
-			
-			traits = {
-				popular_figurehead 
-			}
+				traits  = {
+					KOR_human_rights_lawyer 
+				}
+				visible  = {
+					KOR_prime_minster_common_left_wing = yes 
+				}
+				available  = {
+					not  = {
+						has_country_leader  = {
+							character  = kor_roh_moo_hyun 
+							ruling_only  = yes 
+						}
+					}
+					KOR_prime_minster_common_left_wing = yes 
+				}
+				cost  = 150.000
+				removal_cost  = 0.000
+				ai_will_do  = {
+					factor  = 1.000
+				}
 		}
 	}
 
@@ -89,20 +98,32 @@ characters={
 			id=1203
 		}
 		
-		advisor = {
+		advisor={
 			slot = political_advisor
 			idea_token = kor_lee_hoi_chang
-			allowed = {
-				original_tag = KOR
-			}
-			
-			available = {
-				KOR_prime_minster_common_right_wing = yes
-			}
-			
-			traits = {
-				popular_figurehead 
-			}
+				visible  = {
+					KOR_prime_minster_common_right_wing = yes 
+				}
+				available  = {
+					not  = {
+						has_country_flag  = kor_chongpung_guilty 
+					}
+					not  = {
+						has_country_leader  = {
+							character  = kor_lee_hoi_chang 
+							ruling_only  = yes 
+						}
+					}
+					KOR_prime_minster_common_right_wing = yes 
+				}
+				traits  = {
+					old_figurehead 
+				}
+				cost  = 150.000
+				removal_cost  = 0.000
+				ai_will_do  = {
+					factor  = 1.000
+				}
 		}
 	}
 		
@@ -155,7 +176,7 @@ characters={
 							has_idea = prime_minister_han_myeong_sook 
 							has_idea = prime_minister_hwang_kyo_ahn 
 							has_idea = prime_minister_hyun_soong_jong 
-							has_idea = prime_minister_kim_jong_pil 
+							has_idea = prime_minister_kim_jong_pil
 							has_idea = prime_minister_lee_nak_yon
 							has_idea = prime_minister_rhyu_si_min 
 							has_idea = prime_minister_yoon_seo_in 
@@ -235,6 +256,27 @@ characters={
 			desc = "POLITICS_LEE_SEOK_KI_DESC"
 			traits = { juche_korea KOR_eternal_president }
 			id=1207
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = kor_lee_seok_ki
+				traits  = {
+					head_of_intelligence 
+				}
+				cost  = 150.000
+				removal_cost  = 0.000
+				visible  = {
+					KOR_prime_minster_jucheist = yes 
+				}
+				available  = {
+					KOR_prime_minster_jucheist = yes 
+					not  = {
+						has_country_flag  = korr_post_nationalist_coup_flag 
+					}
+				}
+				ai_will_do  = {
+					factor  = 1.000
+				}
 		}
 	}
 
@@ -326,6 +368,9 @@ characters={
 			civilian={
 				large="gfx/leaders/KOR/Lee_Jung_Hee.dds"
 			}
+			army={
+				small="GFX_idea_kor_lee_jung_hee"
+			}
 		}
 		
 		country_leader={
@@ -333,6 +378,30 @@ characters={
 			desc = "POLITICS_LEE_JUNG_HEE_DESC"
 			traits = { }
 			id=-1
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = kor_lee_jung_hee
+				traits  = {
+					KOR_human_rights_lawyer 
+				}
+				cost  = 150.000
+				removal_cost  = 0.000
+				visible  = {
+					or  = {
+						KOR_prime_minster_jucheist = yes 
+						KOR_prime_minster_social_democrat = yes 
+					}
+				}
+				available  = {
+					or  = {
+						KOR_prime_minster_jucheist = yes 
+						KOR_prime_minster_social_democrat = yes 
+					}
+				}
+				ai_will_do  = {
+					factor  = 1.000
+				}
 		}
 	}
 	
@@ -375,20 +444,31 @@ characters={
 			}
 		}
 		
-		advisor = {
+		advisor={
 			slot = political_advisor
 			idea_token = kor_lee_myung_bak
-			allowed = {
-				original_tag = KOR
-			}
-			
-			available = {
-				KOR_prime_minster_common_right_wing = yes
-			}
-			
-			traits = {
-				popular_figurehead 
-			}
+				traits  = {
+					captain_of_industry 
+				}
+				available  = {
+					not  = {
+						has_country_leader  = {
+							character  = kor_lee_myung_bak 
+							ruling_only  = yes 
+						}
+					}
+				}
+				cost  = 150.000
+				removal_cost  = 0.000
+				visible  = {
+					KOR_prime_minster_common_right_wing = yes 
+				}
+				available  = {
+					KOR_prime_minster_common_right_wing = yes 
+				}
+				ai_will_do  = {
+					factor  = 1.000
+				}
 		}
 	}
 	
@@ -465,105 +545,6 @@ characters={
 	
 	### Advisor
 	
-	kor_chang_ha_joon = {
-		name = kor_chang_ha_joon
-		portraits = {
-			army = {
-				small = "gfx/interface/ideas/KOR/adviser/kor_chang_ha_joon.dds"
-			}
-		}
-
-		#advisor = {
-		#	slot = political_advisor
-		#	idea_token = kor_chang_ha_joon
-		#	allowed = {
-		#		original_tag = KOR
-		#	}
-		#	
-		#	available = {
-		#		KOR_prime_minster_common_left_wing = yes
-		#	}
-		#
-		#	traits = {
-		#		popular_figurehead 
-		#	}
-		#}
-	}
-	
-	kor_choo_mi_ae = {
-		name = kor_choo_mi_ae
-		portraits = {
-			army = {
-				small = "gfx/interface/ideas/KOR/adviser/kor_choo_mi_ae.dds"
-			}
-		}
-
-		#advisor = {
-		#	slot = political_advisor
-		#	idea_token = kor_choo_mi_ae
-		#	allowed = {
-		#		original_tag = KOR
-		#	}
-			
-		#	available = {
-		#		KOR_prime_minster_common_left_wing = yes
-		#	}
-			
-		#	traits = {
-		#		popular_figurehead 
-		#	}
-		#}
-	}
-	
-	kor_eun_soo_mi = {
-		name = kor_eun_soo_mi
-		portraits = {
-			army = {
-				small = "gfx/interface/ideas/KOR/adviser/kor_eun_soo_mi.dds"
-			}
-		}
-
-		#advisor = {
-		#	slot = political_advisor
-		#	idea_token = kor_eun_soo_mi
-		#	allowed = {
-		#		original_tag = KOR
-		#	}
-		#	
-		#	available = {
-		#		KOR_prime_minster_common_left_wing = yes
-		#	}
-		#	
-		#	traits = {
-		#		popular_figurehead 
-		#	}
-		#}
-	}
-	
-	kor_park_won_soon = {
-		name = kor_park_won_soon
-		portraits = {
-			army = {
-				small = "gfx/interface/ideas/KOR/adviser/kor_park_won_soon.dds"
-			}
-		}
-		
-		#advisor = {
-		#	slot = political_advisor
-		#	idea_token = kor_park_won_soon
-		#	allowed = {
-		#		original_tag = KOR
-		#	}
-			
-		#	available = {
-		#		KOR_prime_minster_common_left_wing = yes
-		#	}
-			
-		#	traits = {
-		#		generic_road_builder 
-		#	}
-		#}
-	}
 	
 	kor_pyo_chang_won = {
 		name = kor_pyo_chang_won
@@ -571,48 +552,29 @@ characters={
 			army = {
 				small = "gfx/interface/ideas/KOR/adviser/kor_pyo_chang_won.dds"
 			}
-		}
-
-		#advisor = {
-		#	slot = political_advisor
-		#	idea_token = kor_pyo_chang_won
-		#	allowed = {
-		#		original_tag = KOR
-		#	}
-		#	
-		#	available = {
-		#	KOR_prime_minster_common_left_wing = yes
-		#	}
-			
-		#	traits = {
-		#		popular_figurehead 
-		#	}
-		#}
-	}
-	
-	kor_cho_kuk = {
-		name = kor_cho_kuk
-		portraits = {
-			army = {
-				small = "gfx/interface/ideas/KOR/adviser/kor_cho_kuk.dds"
+			army={
+				small="GFX_idea_kor_pyo_chang_won"
 			}
 		}
 
-		#advisor = {
-		#	slot = political_advisor
-		#	idea_token = kor_cho_kuk
-		#	allowed = {
-		#		original_tag = KOR
-		#	}
-			
-		#	available = {
-		#		KOR_prime_minster_common_left_wing = yes
-		#	}
-			
-		#	traits = {
-		#		popular_figurehead 
-		#	}
-		#}
+		advisor={
+			slot = political_advisor
+			idea_token = kor_pyo_chang_won
+			traits  = {
+				prince_of_terror 
+			}
+			cost  = 150.000
+			removal_cost  = 0.000
+			visible  = {
+				KOR_prime_minster_common_left_wing = yes 
+			}
+			available  = {
+				KOR_prime_minster_common_left_wing = yes 
+			}
+			ai_will_do  = {
+				factor  = 1.000
+			}
+		}
 	}
 	
 	kor_park_jie_won = {
@@ -625,22 +587,27 @@ characters={
 				small = "gfx/interface/ideas/KOR/adviser/kor_park_jie_won.dds"
 			}
 		}
-
-		#advisor = {
-		#	slot = political_advisor
-		#	idea_token = kor_park_jie_won
-		#	allowed = {
-		#		original_tag = KOR
-		#	}
-			
-		#	available = {
-		#		KOR_prime_minster_common_left_wing = yes
-		#	}
-			
-		#	traits = {
-		#		head_of_intelligence 
-		#	}
-		#}
+		advisor={
+			slot = political_advisor
+			idea_token = kor_park_jie_won
+			allowed  = {
+					original_tag  = KOR
+				}
+				traits  = {
+					head_of_intelligence 
+				}
+				cost  = 150.000
+				removal_cost  = 0.000
+				visible  = {
+					KOR_prime_minster_common_left_wing = yes 
+				}
+				available  = {
+					KOR_prime_minster_common_left_wing = yes 
+				}
+				ai_will_do  = {
+					factor  = 1.000
+				}
+		}
 	}
 	
 	kor_kim_han_gil = {
@@ -650,175 +617,24 @@ characters={
 				small = "gfx/interface/ideas/KOR/adviser/kor_kim_han_gil.dds"
 			}
 		}
-
-		#advisor = {
-		#	slot = political_advisor
-		#	idea_token = kor_kim_han_gil
-		#	allowed = {
-		#		original_tag = KOR
-		#	}
-			
-		#	available = {
-		#		KOR_prime_minster_common_left_wing = yes
-		#	}
-			
-		#	traits = {
-		#		popular_figurehead 
-		#	}
-		#}
-	}
-	
-	kor_ahn_hee_jung = {
-		name = kor_ahn_hee_jung
-		portraits = {
-			army = {
-				small = "gfx/interface/ideas/KOR/adviser/kor_ahn_hee_jung.dds"
-			}
+		advisor={
+			slot = political_advisor
+			idea_token = kor_kim_han_gil
+				traits  = {
+					compassionate_gentleman 
+				}
+				cost  = 150.000
+				removal_cost  = 0.000
+				visible  = {
+					KOR_prime_minster_common_left_wing = yes 
+				}
+				available  = {
+					KOR_prime_minster_common_left_wing = yes 
+				}
+				ai_will_do  = {
+					factor  = 1.000
+				}
 		}
-		
-		#advisor = {
-		#	slot = political_advisor
-		#	idea_token = kor_ahn_hee_jung
-		#	allowed = {
-		##		original_tag = KOR
-		#	}
-			
-		#	available = {
-		#		KOR_prime_minster_common_left_wing = yes
-		#	}
-			
-		#	traits = {
-		#		popular_figurehead 
-		#	}
-		#}
-	}
-	
-	kor_yoo_seung_min = {
-		name = kor_yoo_seung_min
-		portraits = {
-			army = {
-				small = "gfx/interface/ideas/KOR/adviser/kor_yoo_seung_min.dds"
-			}
-		}
-
-		#advisor = {
-		#	slot = political_advisor
-		#	idea_token = kor_yoo_seung_min
-		#	allowed = {
-		#		original_tag = KOR
-		#	}
-			
-		#	available = {
-		#		KOR_prime_minster_common_right_wing = yes
-		#	}
-			
-		#	traits = {
-		#		popular_figurehead 
-		#	}
-		#}
-	}
-	
-	kor_na_kyung_won = {
-		name = kor_na_kyung_won
-		
-		portraits = {
-			army = {
-				small = "gfx/interface/ideas/KOR/adviser/kor_na_kyung_won.dds"
-			}
-		}
-		
-		gender = female
-
-		#advisor = {
-		#	slot = political_advisor
-		#	idea_token = kor_na_kyung_won
-		#	allowed = {
-		#		original_tag = KOR
-		#	}
-			
-		#	available = {
-		#		KOR_prime_minster_common_right_wing = yes
-		#	}
-		#	
-		#	traits = {
-		#		popular_figurehead 
-		#	}
-		#}
-	}
-	
-	kor_chang_je_won = {
-		name = kor_chang_je_won
-		portraits = {
-			army = {
-				small = "gfx/interface/ideas/KOR/adviser/kor_chang_je_won.dds"
-			}
-		}
-
-		#advisor = {
-		#	slot = political_advisor
-		#	idea_token = kor_chang_je_won
-		#	allowed = {
-		#		original_tag = KOR
-		#	}
-			
-		#	available = {
-		#		KOR_prime_minster_common_right_wing = yes
-		#	}
-			
-		#	traits = {
-		##		popular_figurehead 
-		#	}
-		#}
-	}
-	
-	kor_joo_ho_young = {
-		name = kor_joo_ho_young
-		portraits = {
-			army = {
-				small = "gfx/interface/ideas/KOR/adviser/kor_joo_ho_young.dds"
-			}
-		}
-
-		#advisor = {
-		#	slot = political_advisor
-		#	idea_token = kor_joo_ho_young
-		#	allowed = {
-		#		original_tag = KOR
-		#	}
-		#	
-		#	available = {
-		#		KOR_prime_minster_common_right_wing = yes
-		#	}
-		#	
-		#	traits = {
-		#		popular_figurehead 
-		#	}
-		#}
-	}
-	
-	kor_lee_jae_oh = {
-		name = kor_lee_jae_oh
-		portraits = {
-			army = {
-				small = "gfx/interface/ideas/KOR/adviser/kor_lee_jae_oh.dds"
-			}
-		}
-
-		#advisor = {
-		#	slot = political_advisor
-		#	idea_token = kor_lee_jae_oh
-		#	allowed = {
-		#		original_tag = KOR
-		#	}
-			
-		#	available = {
-		#		KOR_prime_minster_common_right_wing = yes
-		#	}
-			
-		#	traits = {
-		#		popular_figurehead 
-		#	}
-		#}
 	}
 	
 	kor_kim_chong_in = {
@@ -828,23 +644,24 @@ characters={
 				small = "gfx/interface/ideas/KOR/adviser/kor_kim_chong_in.dds"
 			}
 		}
-
-		#advisor = {
-		#	slot = political_advisor
-		#	idea_token = kor_kim_chong_in
-		#	allowed = {
-		#		original_tag = KOR
-		#	}
-			
-		#	available = {
-		#		KOR_prime_minster_common_left_wing = yes
-		#		KOR_prime_minster_common_right_wing = yes
-		#	}
-		#	
-		##	traits = {
-		#		silent_workhorse 
-		#	}
-		#}
+		advisor={
+			slot = political_advisor
+			idea_token = kor_kim_chong_in
+				traits  = {
+					KOR_ordoliberalist_economist 
+				}
+				cost  = 150.000
+				removal_cost  = 0.000
+				visible  = {
+					KOR_prime_minster_jucheist = no 
+				}
+				available  = {
+					KOR_prime_minster_jucheist = no 
+				}
+				ai_will_do  = {
+					factor  = 1.000
+				}
+		}
 	}
 	
 	### General ###
@@ -1713,8 +1530,28 @@ characters={
 			civilian={
 				large="gfx/leaders/KOR/roh_hoe_chan.dds"
 			}
+			army={
+				small="GFX_idea_kor_roh_hoe_chan"
+			}
 		}
-		
+		advisor={
+			slot = political_advisor
+			idea_token = kor_roh_hoe_chan
+				traits  = {
+					connected_citizen 
+				}
+				cost  = 150.000
+				removal_cost  = 0.000
+				visible  = {
+					KOR_prime_minster_social_democrat = yes 
+				}
+				available  = {
+					KOR_prime_minster_social_democrat = yes 
+				}
+				ai_will_do  = {
+					factor  = 1.000
+				}
+		}
 	}
 	
 	kor_han_myeong_sook ={
@@ -1796,6 +1633,35 @@ characters={
 			civilian={
 				large="gfx/leaders/KOR/andy_lee.dds"
 			}
+			army={
+				small="GFX_idea_kor_andy_lee"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = kor_andy_lee
+			name  = KOR_andy_lee 
+				allowed  = {
+					original_tag  = KOR
+				}
+				available  = {
+					date > 2010.08.1
+					not  = {
+						has_country_leader  = {
+							ruling_only  = yes 
+							character  = KOR_andy_lee 
+						}
+					}
+					has_completed_focus  = kor_idaenam 
+				}
+				traits  = {
+					KOR_meritocracy 
+				}
+				cost  = 75.000
+				removal_cost  = 0.000
+				ai_will_do  = {
+					factor  = 1.000
+				}
 		}
 	}
 	
@@ -1804,6 +1670,1781 @@ characters={
 		portraits={
 			civilian={
 				large="gfx/leaders/KOR/Yoon_Suk_yeol.dds"
+			}
+		}
+	}
+	KOR_prime_minister_han_duck_soo={
+		advisor={
+			slot = political_advisor
+			idea_token = prime_minister_han_duck_soo
+			allowed  = {
+					original_tag  = KOR
+				}
+				traits  = {
+					KOR_Prime_Minister 
+				}
+				cost  = 75.000
+				removal_cost  = 0.000
+				available  = {
+					custom_trigger_tooltip  = {
+						tooltip  = KOR_can_only_have_one_prime_minister_tt
+						not  = {
+							or  = {
+								has_idea  = prime_minister_chung_hong_won 
+								has_idea  = prime_minister_goh_kun 
+								has_idea  = prime_minister_han_myeong_sook 
+								has_idea  = prime_minister_hwang_kyo_ahn 
+								has_idea  = prime_minister_hyun_soong_jong 
+								has_idea = prime_minister_kim_jong_pil
+								has_idea  = prime_minister_lee_nak_yon 
+								has_idea  = prime_minister_rhyu_si_min 
+								has_idea  = prime_minister_jeon_kwang_hoon 
+								has_idea  = prime_minister_kwon_young_ghil 
+								has_idea  = prime_minister_lee_jae_myung
+								has_idea  = prime_minister_paek_ki_wan 
+								has_idea  = prime_minister_lee_jae_myung
+								has_idea  = prime_minister_ahn_cheol_soo 
+								has_idea  = prime_minister_park_geun_hye 
+								has_idea  = prime_minister_park_geun_hye_enhanced 
+							}
+						}
+					}
+				}
+				modifier  = {
+					production_speed_rail_way_factor  = 0.200
+					production_speed_supply_node_factor  = 0.200
+					modifier_army_sub_unit_military_police_defence_factor  = 0.100
+					modifier_army_sub_unit_military_police_max_org_factor  = 0.100
+				}
+				ai_will_do  = {
+					factor  = 5.000
+				}
+		}
+		name="prime_minister_han_duck_soo"
+		portraits={
+			army={
+				small="GFX_idea_prime_minister_han_duck_soo"
+			}
+		}
+	}
+	KOR_prime_minister_ahn_cheol_soo={
+		advisor={
+			slot = political_advisor
+			idea_token = prime_minister_ahn_cheol_soo
+			allowed  = {
+					original_tag  = KOR
+				}
+				traits  = {
+					KOR_Prime_Minister 
+				}
+				cost  = 75.000
+				removal_cost  = 0.000
+				available  = {
+					custom_trigger_tooltip  = {
+						tooltip  = KOR_can_only_have_one_prime_minister_tt
+						not  = {
+							or  = {
+								has_idea  = prime_minister_chung_hong_won 
+								has_idea  = prime_minister_goh_kun 
+								has_idea  = prime_minister_han_myeong_sook 
+								has_idea  = prime_minister_hwang_kyo_ahn 
+								has_idea  = prime_minister_hyun_soong_jong 
+								has_idea = prime_minister_kim_jong_pil
+								has_idea  = prime_minister_lee_nak_yon 
+								has_idea  = prime_minister_rhyu_si_min 
+								has_idea  = prime_minister_jeon_kwang_hoon 
+								has_idea  = prime_minister_kwon_young_ghil 
+								has_idea  = prime_minister_lee_jae_myung
+								has_idea  = prime_minister_paek_ki_wan 
+								has_idea  = prime_minister_lee_jae_myung
+								has_idea  = prime_minister_han_duck_soo 
+								has_idea  = prime_minister_park_geun_hye 
+								has_idea  = prime_minister_park_geun_hye_enhanced 
+							}
+						}
+					}
+				}
+				modifier  = {
+					supply_consumption_factor  = -0.100
+					equipment_capture  = 0.030
+					equipment_capture_factor  = 0.250
+					equipment_conversion_speed  = 0.250
+					refit_speed  = 0.150
+				}
+				ai_will_do  = {
+					factor  = 5.000
+				}
+		}
+		name="prime_minister_ahn_cheol_soo"
+		portraits={
+			army={
+				small="GFX_idea_prime_minister_ahn_cheol_soo"
+			}
+		}
+	}
+	KOR_prime_minister_goh_kun={
+		advisor={
+			slot = political_advisor
+			idea_token = prime_minister_goh_kun
+			allowed  = {
+					original_tag  = KOR
+				}
+				traits  = {
+					KOR_Prime_Minister 
+				}
+				cost  = 75.000
+				removal_cost  = 0.000
+				available  = {
+					KOR_prime_minster_common_left_wing = yes 
+					custom_trigger_tooltip  = {
+						tooltip  = KOR_can_only_have_one_prime_minister_tt
+						not  = {
+							or  = {
+								has_idea  = prime_minister_chung_hong_won 
+								has_idea  = prime_minister_han_myeong_sook 
+								has_idea  = prime_minister_hwang_kyo_ahn 
+								has_idea  = prime_minister_hyun_soong_jong 
+								has_idea = prime_minister_kim_jong_pil
+								has_idea  = prime_minister_lee_nak_yon 
+								has_idea  = prime_minister_rhyu_si_min 
+								has_idea  = prime_minister_jeon_kwang_hoon 
+								has_idea  = prime_minister_paek_ki_wan 
+								has_idea  = prime_minister_kwon_young_ghil 
+								has_idea  = prime_minister_lee_jae_myung
+								has_idea  = prime_minister_ahn_cheol_soo 
+								has_idea  = prime_minister_han_duck_soo 
+								has_idea  = prime_minister_park_geun_hye 
+								has_idea  = prime_minister_park_geun_hye_enhanced 
+							}
+						}
+					}
+				}
+				modifier  = {
+					war_support_factor  = 0.100
+					local_resources_factor  = 0.100
+				}
+				ai_will_do  = {
+					factor  = 5.000
+				}
+		}
+		name="prime_minister_goh_kun"
+		portraits={
+			army={
+				small="GFX_idea_prime_minister_goh_kun"
+			}
+		}
+	}
+	KOR_won_sei_hoon={
+		advisor={
+			slot = political_advisor
+			idea_token = kor_won_sei_hoon
+			allowed  = {
+					original_tag  = KOR
+				}
+				traits  = {
+					head_of_intelligence 
+				}
+				cost  = 150.000
+				removal_cost  = 0.000
+				visible  = {
+					KOR_prime_minster_common_right_wing = yes 
+				}
+				available  = {
+					KOR_prime_minster_common_right_wing = yes 
+				}
+				ai_will_do  = {
+					factor  = 1.000
+				}
+		}
+		name="kor_won_sei_hoon"
+		portraits={
+			army={
+				small="GFX_idea_kor_won_sei_hoon"
+			}
+		}
+	}
+	KOR_prime_minister_jeon_kwang_hoon={
+		advisor={
+			slot = political_advisor
+			idea_token = prime_minister_jeon_kwang_hoon
+			allowed  = {
+					original_tag  = KOR
+				}
+				traits  = {
+					KOR_Prime_Minister 
+				}
+				cost  = 75.000
+				removal_cost  = 0.000
+				available  = {
+					KOR_prime_minster_fundamentalist = yes 
+					custom_trigger_tooltip  = {
+						tooltip  = KOR_can_only_have_one_prime_minister_tt
+						not  = {
+							or  = {
+								has_idea  = prime_minister_chung_hong_won 
+								has_idea  = prime_minister_goh_kun 
+								has_idea  = prime_minister_han_myeong_sook 
+								has_idea  = prime_minister_hwang_kyo_ahn 
+								has_idea  = prime_minister_hyun_soong_jong 
+								has_idea = prime_minister_kim_jong_pil
+								has_idea  = prime_minister_lee_nak_yon 
+								has_idea  = prime_minister_rhyu_si_min 
+								has_idea  = prime_minister_paek_ki_wan 
+								has_idea  = prime_minister_kwon_young_ghil 
+								has_idea  = prime_minister_lee_jae_myung
+								has_idea  = prime_minister_ahn_cheol_soo 
+								has_idea  = prime_minister_han_duck_soo 
+								has_idea  = prime_minister_park_geun_hye 
+								has_idea  = prime_minister_park_geun_hye_enhanced 
+							}
+						}
+					}
+				}
+				modifier  = {
+					max_command_power  = 25.000
+					army_leader_start_level  = 1.000
+					army_speed_factor_for_controller  = 0.100
+				}
+				ai_will_do  = {
+					factor  = 5.000
+				}
+		}
+		name="prime_minister_jeon_kwang_hoon"
+		portraits={
+			army={
+				small="GFX_idea_prime_minister_jeon_kwang_hoon"
+			}
+		}
+	}
+	KOR_prime_minister_kim_jong_pil={
+		name=prime_minister_kim_jong_pil
+		portraits={
+			army={
+				small="GFX_idea_prime_minister_kim_jong_pil"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = prime_minister_kim_jong_pil
+				traits  = {
+					KOR_Prime_Minister 
+				}
+				cost  = 75.000
+				removal_cost  = 0.000
+				available  = {
+					KOR_prime_minster_common_left_wing = yes 
+					custom_trigger_tooltip  = {
+						tooltip  = KOR_can_only_have_one_prime_minister_tt
+						not  = {
+							or  = {
+								has_idea  = prime_minister_chung_hong_won 
+								has_idea  = prime_minister_goh_kun 
+								has_idea  = prime_minister_han_myeong_sook 
+								has_idea  = prime_minister_hwang_kyo_ahn 
+								has_idea  = prime_minister_hyun_soong_jong 
+								has_idea  = prime_minister_lee_nak_yon 
+								has_idea  = prime_minister_rhyu_si_min 
+								has_idea  = prime_minister_jeon_kwang_hoon 
+								has_idea  = prime_minister_paek_ki_wan 
+								has_idea  = prime_minister_kwon_young_ghil 
+								has_idea  = prime_minister_lee_jae_myung
+								has_idea  = prime_minister_ahn_cheol_soo 
+								has_idea  = prime_minister_han_duck_soo 
+								has_idea  = prime_minister_park_geun_hye 
+								has_idea  = prime_minister_park_geun_hye_enhanced 
+							}
+						}
+					}
+				}
+				visible  = {
+					has_country_flag  = KOR_centrist_coalition 
+				}
+				modifier  = {
+					trade_opinion_factor  = 0.350
+					enemy_operative_capture_chance_factor  = 0.100
+					intelligence_agency_defense  = 0.250
+					civilian_intel_factor  = 0.050
+					army_intel_factor  = 0.050
+					navy_intel_factor  = 0.050
+					airforce_intel_factor  = 0.050
+				}
+				ai_will_do  = {
+					factor  = 5.000
+				}
+		}
+	}
+	KOR_kim_moon_soo={
+		advisor={
+			slot = political_advisor
+			idea_token = kor_kim_moon_soo
+			allowed  = {
+					original_tag  = KOR
+				}
+				traits  = {
+					KOR_former_socialist_revolutionary_right 
+				}
+				cost  = 150.000
+				removal_cost  = 0.000
+				visible  = {
+					KOR_prime_minster_common_right_wing = yes 
+				}
+				available  = {
+					KOR_prime_minster_common_right_wing = yes 
+				}
+				ai_will_do  = {
+					factor  = 1.000
+				}
+		}
+		name=kor_kim_moon_soo
+		portraits={
+			army={
+				small="GFX_idea_kor_kim_moon_soo"
+			}
+		}
+	}
+	KOR_prime_minister_kwon_young_ghil={
+		advisor={
+			slot = political_advisor
+			idea_token = prime_minister_kwon_young_ghil
+			allowed  = {
+					original_tag  = KOR
+				}
+				traits  = {
+					KOR_Prime_Minister 
+				}
+				cost  = 75.000
+				removal_cost  = 0.000
+				available  = {
+					KOR_prime_minster_social_democrat = yes 
+					custom_trigger_tooltip  = {
+						tooltip  = KOR_can_only_have_one_prime_minister_tt
+						not  = {
+							or  = {
+								has_idea  = prime_minister_chung_hong_won 
+								has_idea  = prime_minister_goh_kun 
+								has_idea  = prime_minister_han_myeong_sook 
+								has_idea  = prime_minister_hwang_kyo_ahn 
+								has_idea  = prime_minister_hyun_soong_jong 
+								has_idea = prime_minister_kim_jong_pil
+								has_idea  = prime_minister_lee_nak_yon 
+								has_idea  = prime_minister_rhyu_si_min 
+								has_idea  = prime_minister_jeon_kwang_hoon 
+								has_idea  = prime_minister_paek_ki_wan 
+								has_idea  = prime_minister_lee_jae_myung
+								has_idea  = prime_minister_ahn_cheol_soo 
+								has_idea  = prime_minister_han_duck_soo 
+								has_idea  = prime_minister_park_geun_hye 
+								has_idea  = prime_minister_park_geun_hye_enhanced 
+							}
+						}
+					}
+				}
+				modifier  = {
+					political_power_gain  = 0.050
+					production_speed_arms_factory_factor  = 0.050
+					production_speed_industrial_complex_factor  = 0.100
+				}
+				ai_will_do  = {
+					factor  = 5.000
+				}
+		}
+		name="prime_minister_kwon_young_ghil"
+		portraits={
+			army={
+				small="GFX_idea_prime_minister_kwon_young_ghil"
+			}
+		}
+	}
+	KOR_lee_jasmine={
+		advisor={
+			slot = political_advisor
+			idea_token = kor_lee_jasmine
+			allowed  = {
+					original_tag  = KOR
+				}
+				traits  = {
+					KOR_multiculturalist 
+				}
+				cost  = 150.000
+				removal_cost  = 0.000
+				visible  = {
+					KOR_prime_minster_jucheist = no 
+				}
+				available  = {
+					KOR_prime_minster_jucheist = no 
+				}
+				ai_will_do  = {
+					factor  = 1.000
+				}
+		}
+		name="kor_lee_jasmine"
+		portraits={
+			army={
+				small="GFX_idea_kor_lee_jasmine"
+			}
+		}
+	}
+	KOR_ahn_hee_jung={
+		advisor={
+			slot = political_advisor
+			idea_token = kor_ahn_hee_jung
+				traits  = {
+					popular_figurehead 
+				}
+				cost  = 150.000
+				removal_cost  = 0.000
+				visible  = {
+					KOR_prime_minster_common_left_wing = yes 
+				}
+				available  = {
+					KOR_prime_minster_common_left_wing = yes 
+					not  = {
+						has_country_flag  = KOR_ahn_hee_jung_sexual_assault 
+					}
+				}
+				ai_will_do  = {
+					factor  = 1.000
+				}
+		}
+		name=kor_ahn_hee_jung
+		portraits={
+			army={
+				small="GFX_idea_kor_ahn_hee_jung"
+			}
+		}
+	}
+	KOR_FKI={
+		advisor={
+			slot = political_advisor
+			idea_token = KOR_FKI
+			name  = KOR_FKI 
+				allowed  = {
+					original_tag  = KOR
+				}
+				available  = {
+					not  = {
+						has_completed_focus  = kor_dissolution_of_the_FKI 
+					}
+					not  = {
+						has_country_flag  = kor_remove_chaebol 
+					}
+					KOR_prime_minster_common_right_wing = yes 
+				}
+				traits  = {
+					KOR_laissez_faire 
+				}
+				cost  = 150.000
+				removal_cost  = 0.000
+				ai_will_do  = {
+					factor  = 1.000
+				}
+		}
+		name="KOR_FKI"
+		portraits={
+			army={
+				small="GFX_idea_kor_generic_adviser_group"
+			}
+		}
+	}
+	KOR_vladimir_tikhonov_roj={
+		advisor={
+			slot = political_advisor
+			idea_token = kor_vladimir_tikhonov_roj
+			name  = kor_vladimir_tikhonov 
+				allowed  = {
+					original_tag  = KOR
+				}
+				traits  = {
+					KOR_symbol_of_korean_post_nationalism 
+				}
+				cost  = 50.000
+				removal_cost  = 0.000
+				visible  = {
+					has_completed_focus  = kor_easter_egg_interval_left 
+				}
+				available  = {
+					not  = {
+						has_country_leader  = {
+							character  = kor_vladimir_tikhonov 
+							ruling_only  = yes 
+						}
+					}
+				}
+				ai_will_do  = {
+					factor  = 10.000
+				}
+		}
+		name="kor_vladimir_tikhonov_roj"
+		portraits={
+			army={
+				small="GFX_idea_kor_vladimir_tikhonov_adviser"
+			}
+		}
+	}
+	KOR_lee_jeong_mi={
+		advisor={
+			slot = political_advisor
+			idea_token = kor_lee_jeong_mi
+			allowed  = {
+					original_tag  = KOR
+				}
+				traits  = {
+					KOR_trade_unionist 
+				}
+				cost  = 150.000
+				removal_cost  = 0.000
+				visible  = {
+					KOR_prime_minster_social_democrat = yes 
+				}
+				available  = {
+					KOR_prime_minster_social_democrat = yes 
+				}
+				ai_will_do  = {
+					factor  = 1.000
+				}
+		}
+		name="kor_lee_jeong_mi"
+		portraits={
+			army={
+				small="GFX_idea_kor_lee_jeong_mi"
+			}
+		}
+	}
+	KOR_yoon_min_ho={
+		advisor={
+			slot = political_advisor
+			idea_token = kor_yoon_min_ho
+			allowed  = {
+					original_tag  = KOR
+				}
+				traits  = {
+					technocrat 
+				}
+				cost  = 150.000
+				removal_cost  = 0.000
+				visible  = {
+					KOR_prime_minster_jucheist = yes 
+				}
+				available  = {
+					KOR_prime_minster_jucheist = yes 
+					not  = {
+						has_country_flag  = korr_post_nationalist_coup_flag 
+					}
+				}
+				ai_will_do  = {
+					factor  = 1.000
+				}
+		}
+		name="kor_yoon_min_ho"
+		portraits={
+			army={
+				small="GFX_idea_kor_yoon_min_ho"
+			}
+		}
+	}
+	KOR_na_kyung_won={
+		advisor={
+			slot = political_advisor
+			idea_token = kor_na_kyung_won
+				traits  = {
+					popular_figurehead 
+				}
+				cost  = 150.000
+				removal_cost  = 0.000
+				visible  = {
+					KOR_prime_minster_common_right_wing = yes 
+				}
+				available  = {
+					KOR_prime_minster_common_right_wing = yes 
+				}
+				ai_will_do  = {
+					factor  = 1.000
+				}
+		}
+		gender = female
+		name=kor_na_kyung_won
+		portraits={
+			army={
+				small="GFX_idea_kor_na_kyung_won"
+			}
+		}
+	}
+	KOR_anarchist_solidarity={
+		advisor={
+			slot = political_advisor
+			idea_token = kor_anarchist_solidarity
+			allowed  = {
+					original_tag  = KOR
+				}
+				traits  = {
+					KOR_multiculturalist 
+				}
+				cost  = 150.000
+				removal_cost  = 0.000
+				visible  = {
+					has_completed_focus  = kor_no_government 
+				}
+				available  = {
+					has_completed_focus  = kor_no_government 
+				}
+				ai_will_do  = {
+					factor  = 1.000
+				}
+		}
+		name="kor_anarchist_solidarity"
+		portraits={
+			army={
+				small="GFX_idea_kor_generic_adviser_group"
+			}
+		}
+	}
+	KOR_yi_won_republic={
+		advisor={
+			slot = political_advisor
+			idea_token = kor_yi_won_republic
+			name  = kor_yi_won 
+				allowed  = {
+					original_tag  = KOR
+				}
+				traits  = {
+					KOR_emperor_of_republic 
+				}
+				cost  = 75.000
+				removal_cost  = 0.000
+				visible  = {
+					has_country_flag  = monarchist_korea_flag 
+				}
+				available  = {
+					not  = {
+						has_country_leader  = {
+							character  = kor_yi_won 
+							ruling_only  = yes 
+						}
+					}
+				}
+				ai_will_do  = {
+					factor  = 1.000
+				}
+		}
+		name="kor_yi_won_republic"
+		portraits={
+			army={
+				small="GFX_idea_kor_yi_won"
+			}
+		}
+	}
+	KOR_prime_minister_hyun_soong_jong={
+		advisor={
+			slot = political_advisor
+			idea_token = prime_minister_hyun_soong_jong
+			allowed  = {
+					original_tag  = KOR
+				}
+				traits  = {
+					KOR_Prime_Minister 
+				}
+				cost  = 75.000
+				removal_cost  = 0.000
+				available  = {
+					KOR_prime_minster_common_right_wing = yes 
+					custom_trigger_tooltip  = {
+						tooltip  = KOR_can_only_have_one_prime_minister_tt
+						not  = {
+							or  = {
+								has_idea  = prime_minister_chung_hong_won 
+								has_idea  = prime_minister_goh_kun 
+								has_idea  = prime_minister_han_myeong_sook 
+								has_idea  = prime_minister_hwang_kyo_ahn 
+								has_idea = prime_minister_kim_jong_pil
+								has_idea  = prime_minister_lee_nak_yon 
+								has_idea  = prime_minister_rhyu_si_min 
+								has_idea  = prime_minister_jeon_kwang_hoon 
+								has_idea  = prime_minister_paek_ki_wan 
+								has_idea  = prime_minister_kwon_young_ghil 
+								has_idea  = prime_minister_lee_jae_myung
+								has_idea  = prime_minister_ahn_cheol_soo 
+								has_idea  = prime_minister_han_duck_soo 
+								has_idea  = prime_minister_park_geun_hye 
+								has_idea  = prime_minister_park_geun_hye_enhanced 
+							}
+						}
+					}
+				}
+				modifier  = {
+					political_power_gain  = 0.150
+				}
+				ai_will_do  = {
+					factor  = 5.000
+				}
+		}
+		name="prime_minister_hyun_soong_jong"
+		portraits={
+			army={
+				small="GFX_idea_prime_minister_hyun_soong_jong"
+			}
+		}
+	}
+	KOR_oh_serabi={
+		advisor={
+			slot = political_advisor
+			idea_token = kor_oh_serabi
+			allowed  = {
+					original_tag  = KOR
+				}
+				traits  = {
+					KOR_famous_anti_feminist 
+				}
+				cost  = 150.000
+				removal_cost  = 0.000
+				visible  = {
+					KOR_prime_minster_common_right_wing = yes 
+				}
+				available  = {
+					KOR_prime_minster_common_right_wing = yes 
+				}
+				ai_will_do  = {
+					factor  = 1.000
+				}
+		}
+		name="kor_oh_serabi"
+		portraits={
+			army={
+				small="GFX_idea_kor_oh_serabi"
+			}
+		}
+	}
+	KOR_kang_gi_gap={
+		advisor={
+			slot = political_advisor
+			idea_token = kor_kang_gi_gap
+			allowed  = {
+					original_tag  = KOR
+				}
+				traits  = {
+					KOR_representative_of_farmers 
+				}
+				cost  = 150.000
+				removal_cost  = 0.000
+				visible  = {
+					KOR_prime_minster_social_democrat = yes 
+				}
+				available  = {
+					KOR_prime_minster_social_democrat = yes 
+				}
+				ai_will_do  = {
+					factor  = 1.000
+				}
+		}
+		name="kor_kang_gi_gap"
+		portraits={
+			army={
+				small="GFX_idea_kor_kang_gi_gap"
+			}
+		}
+	}
+	KOR_joo_ho_young={
+		advisor={
+			slot = political_advisor
+			idea_token = kor_joo_ho_young
+				traits  = {
+					experienced_attorney 
+				}
+				cost  = 150.000
+				removal_cost  = 0.000
+				visible  = {
+					KOR_prime_minster_common_right_wing = yes 
+				}
+				available  = {
+					KOR_prime_minster_common_right_wing = yes 
+				}
+				ai_will_do  = {
+					factor  = 1.000
+				}
+		}
+		name=kor_joo_ho_young
+		portraits={
+			army={
+				small="GFX_idea_kor_joo_ho_young"
+			}
+		}
+	}
+	KOR_cho_kuk={
+		advisor={
+			slot = political_advisor
+			idea_token = kor_cho_kuk
+				traits  = {
+					technocrat 
+				}
+				cost  = 150.000
+				removal_cost  = 0.000
+				visible  = {
+					KOR_prime_minster_common_left_wing = yes 
+				}
+				available  = {
+					KOR_prime_minster_common_left_wing = yes 
+				}
+				ai_will_do  = {
+					factor  = 1.000
+				}
+		}
+		name=kor_cho_kuk
+		portraits={
+			army={
+				small="GFX_idea_kor_cho_kuk"
+			}
+		}
+	}
+	KOR_kim_jong_dae={
+		advisor={
+			slot = political_advisor
+			idea_token = kor_kim_jong_dae
+			allowed  = {
+					original_tag  = KOR
+				}
+				traits  = {
+					war_industrialist 
+				}
+				cost  = 150.000
+				removal_cost  = 0.000
+				visible  = {
+					KOR_prime_minster_social_democrat = yes 
+				}
+				available  = {
+					KOR_prime_minster_social_democrat = yes 
+				}
+				ai_will_do  = {
+					factor  = 1.000
+				}
+		}
+		name="kor_kim_jong_dae"
+		portraits={
+			army={
+				small="GFX_idea_kor_kim_jong_dae"
+			}
+		}
+	}
+	KOR_lee_jae_oh={
+		advisor={
+			slot = political_advisor
+			idea_token = kor_lee_jae_oh
+				traits  = {
+					KOR_pro_democracy_activist 
+				}
+				cost  = 150.000
+				removal_cost  = 0.000
+				visible  = {
+					KOR_prime_minster_common_right_wing = yes 
+				}
+				available  = {
+					KOR_prime_minster_common_right_wing = yes 
+				}
+				ai_will_do  = {
+					factor  = 1.000
+				}
+		}
+		name=kor_lee_jae_oh
+		portraits={
+			army={
+				small="GFX_idea_kor_lee_jae_oh"
+			}
+		}
+	}
+	KOR_kwon_jeong_saeng={
+		advisor={
+			slot = political_advisor
+			idea_token = kor_kwon_jeong_saeng
+			allowed  = {
+					original_tag  = KOR
+				}
+				available  = {
+					not  = {
+						has_country_flag  = kwon_jeong_saeng_dead 
+					}
+					has_completed_focus  = kor_no_government 
+				}
+				visible  = {
+					has_completed_focus  = kor_no_government 
+				}
+				traits  = {
+					KOR_christian_anarchist 
+				}
+				cost  = 150.000
+				removal_cost  = 0.000
+				ai_will_do  = {
+					factor  = 3.000
+				}
+		}
+		name="kor_kwon_jeong_saeng"
+		portraits={
+			army={
+				small="GFX_idea_kor_kwon_jeong_saeng"
+			}
+		}
+	}
+	KOR_ha_seung_soo={
+		advisor={
+			slot = political_advisor
+			idea_token = kor_ha_seung_soo
+			allowed  = {
+					original_tag  = KOR
+				}
+				traits  = {
+					environmentalist 
+				}
+				cost  = 150.000
+				removal_cost  = 0.000
+				visible  = {
+					KOR_prime_minster_social_democrat = yes 
+				}
+				available  = {
+					KOR_prime_minster_social_democrat = yes 
+				}
+				ai_will_do  = {
+					factor  = 1.000
+				}
+		}
+		name="kor_ha_seung_soo"
+		portraits={
+			army={
+				small="GFX_idea_kor_ha_seung_soo"
+			}
+		}
+	}
+	KOR_prime_minister_hwang_kyo_ahn={
+		advisor={
+			slot = political_advisor
+			idea_token = prime_minister_hwang_kyo_ahn
+			allowed  = {
+					original_tag  = KOR
+				}
+				traits  = {
+					KOR_Prime_Minister 
+				}
+				cost  = 75.000
+				removal_cost  = 0.000
+				available  = {
+					KOR_prime_minster_common_right_wing = yes 
+					custom_trigger_tooltip  = {
+						tooltip  = KOR_can_only_have_one_prime_minister_tt
+						not  = {
+							or  = {
+								has_idea  = prime_minister_chung_hong_won 
+								has_idea  = prime_minister_goh_kun 
+								has_idea  = prime_minister_han_myeong_sook 
+								has_idea  = prime_minister_hyun_soong_jong 
+								has_idea = prime_minister_kim_jong_pil
+								has_idea  = prime_minister_lee_nak_yon 
+								has_idea  = prime_minister_rhyu_si_min 
+								has_idea  = prime_minister_jeon_kwang_hoon 
+								has_idea  = prime_minister_paek_ki_wan 
+								has_idea  = prime_minister_kwon_young_ghil 
+								has_idea  = prime_minister_lee_jae_myung
+								has_idea  = prime_minister_ahn_cheol_soo 
+								has_idea  = prime_minister_han_duck_soo 
+								has_idea  = prime_minister_park_geun_hye 
+								has_idea  = prime_minister_park_geun_hye_enhanced 
+							}
+						}
+					}
+				}
+				modifier  = {
+					political_advisor_cost_factor  = -0.250
+					drift_defence_factor  = 0.150
+				}
+				ai_will_do  = {
+					factor  = 5.000
+				}
+		}
+		name="prime_minister_hwang_kyo_ahn"
+		portraits={
+			army={
+				small="GFX_idea_prime_minister_hwang_kyo_ahn"
+			}
+		}
+	}
+	KOR_prime_minister_rhyu_si_min={
+		advisor={
+			slot = political_advisor
+			idea_token = prime_minister_rhyu_si_min
+			allowed  = {
+					original_tag  = KOR
+				}
+				traits  = {
+					KOR_Prime_Minister 
+				}
+				cost  = 75.000
+				removal_cost  = 0.000
+				available  = {
+					KOR_prime_minster_social_democrat = yes 
+					custom_trigger_tooltip  = {
+						tooltip  = KOR_can_only_have_one_prime_minister_tt
+						not  = {
+							or  = {
+								has_idea  = prime_minister_chung_hong_won 
+								has_idea  = prime_minister_goh_kun 
+								has_idea  = prime_minister_han_myeong_sook 
+								has_idea  = prime_minister_hwang_kyo_ahn 
+								has_idea  = prime_minister_hyun_soong_jong 
+								has_idea = prime_minister_kim_jong_pil
+								has_idea  = prime_minister_lee_nak_yon 
+								has_idea  = prime_minister_jeon_kwang_hoon 
+								has_idea  = prime_minister_paek_ki_wan 
+								has_idea  = prime_minister_kwon_young_ghil 
+								has_idea  = prime_minister_lee_jae_myung
+								has_idea  = prime_minister_ahn_cheol_soo 
+								has_idea  = prime_minister_han_duck_soo 
+								has_idea  = prime_minister_park_geun_hye 
+								has_idea  = prime_minister_park_geun_hye_enhanced 
+							}
+						}
+					}
+				}
+				modifier  = {
+					consumer_goods_expected_value  = -0.020
+					political_power_gain  = 0.100
+				}
+				ai_will_do  = {
+					factor  = 5.000
+				}
+		}
+		name="prime_minister_rhyu_si_min"
+		portraits={
+			army={
+				small="GFX_idea_prime_minister_rhyu_si_min"
+			}
+		}
+	}
+	KOR_prime_minister_chung_hong_won={
+		advisor={
+			slot = political_advisor
+			idea_token = prime_minister_chung_hong_won
+			allowed  = {
+					original_tag  = KOR
+				}
+				traits  = {
+					KOR_Prime_Minister 
+				}
+				cost  = 75.000
+				removal_cost  = 0.000
+				available  = {
+					KOR_prime_minster_common_right_wing = yes 
+					custom_trigger_tooltip  = {
+						tooltip  = KOR_can_only_have_one_prime_minister_tt
+						not  = {
+							or  = {
+								has_idea  = prime_minister_goh_kun 
+								has_idea  = prime_minister_han_myeong_sook 
+								has_idea  = prime_minister_hwang_kyo_ahn 
+								has_idea  = prime_minister_hyun_soong_jong 
+								has_idea = prime_minister_kim_jong_pil
+								has_idea  = prime_minister_lee_nak_yon 
+								has_idea  = prime_minister_rhyu_si_min 
+								has_idea  = prime_minister_jeon_kwang_hoon 
+								has_idea  = prime_minister_paek_ki_wan 
+								has_idea  = prime_minister_kwon_young_ghil 
+								has_idea  = prime_minister_lee_jae_myung
+								has_idea  = prime_minister_ahn_cheol_soo 
+								has_idea  = prime_minister_han_duck_soo 
+								has_idea  = prime_minister_park_geun_hye 
+								has_idea  = prime_minister_park_geun_hye_enhanced 
+							}
+						}
+					}
+				}
+				modifier  = {
+					stability_weekly  = 0.001
+					stability_factor  = 0.150
+				}
+				ai_will_do  = {
+					factor  = 5.000
+				}
+		}
+		name="prime_minister_chung_hong_won"
+		portraits={
+			army={
+				small="GFX_idea_prime_minister_chung_hong_won"
+			}
+		}
+	}
+	KOR_prime_minister_lee_nak_yon={
+		advisor={
+			slot = political_advisor
+			idea_token = prime_minister_lee_nak_yon
+			allowed  = {
+					original_tag  = KOR
+				}
+				traits  = {
+					KOR_Prime_Minister 
+				}
+				cost  = 75.000
+				removal_cost  = 0.000
+				available  = {
+					KOR_prime_minster_common_left_wing = yes 
+					custom_trigger_tooltip  = {
+						tooltip  = KOR_can_only_have_one_prime_minister_tt
+						not  = {
+							or  = {
+								has_idea  = prime_minister_chung_hong_won 
+								has_idea  = prime_minister_goh_kun 
+								has_idea  = prime_minister_han_myeong_sook 
+								has_idea  = prime_minister_hwang_kyo_ahn 
+								has_idea  = prime_minister_hyun_soong_jong 
+								has_idea = prime_minister_kim_jong_pil
+								has_idea  = prime_minister_rhyu_si_min 
+								has_idea  = prime_minister_jeon_kwang_hoon 
+								has_idea  = prime_minister_paek_ki_wan 
+								has_idea  = prime_minister_kwon_young_ghil 
+								has_idea  = prime_minister_lee_jae_myung
+								has_idea  = prime_minister_ahn_cheol_soo 
+								has_idea  = prime_minister_han_duck_soo 
+								has_idea  = prime_minister_park_geun_hye 
+								has_idea  = prime_minister_park_geun_hye_enhanced 
+							}
+						}
+					}
+				}
+				modifier  = {
+					consumer_goods_expected_value  = -0.050
+				}
+				ai_will_do  = {
+					factor  = 5.000
+				}
+		}
+		name="prime_minister_lee_nak_yon"
+		portraits={
+			army={
+				small="GFX_idea_prime_minister_lee_nak_yon"
+			}
+		}
+	}
+	KOR_kim_seon_dong={
+		advisor={
+			slot = political_advisor
+			idea_token = kor_kim_seon_dong
+			allowed  = {
+					original_tag  = KOR
+				}
+				traits  = {
+					war_industrialist 
+				}
+				cost  = 150.000
+				removal_cost  = 0.000
+				visible  = {
+					KOR_prime_minster_jucheist = yes 
+				}
+				available  = {
+					KOR_prime_minster_jucheist = yes 
+					not  = {
+						has_country_flag  = korr_post_nationalist_coup_flag 
+					}
+				}
+				ai_will_do  = {
+					factor  = 1.000
+				}
+		}
+		name="kor_kim_seon_dong"
+		portraits={
+			army={
+				small="GFX_idea_kor_kim_seon_dong"
+			}
+		}
+	}
+	KOR_eun_soo_mi={
+		advisor={
+			slot = political_advisor
+			idea_token = kor_eun_soo_mi
+				traits  = {
+					KOR_former_socialist_revolutionary 
+				}
+				cost  = 150.000
+				removal_cost  = 0.000
+				visible  = {
+					KOR_prime_minster_common_left_wing = yes 
+				}
+				available  = {
+					KOR_prime_minster_common_left_wing = yes 
+				}
+				ai_will_do  = {
+					factor  = 1.000
+				}
+		}
+		name=kor_eun_soo_mi
+		portraits={
+			army={
+				small="GFX_idea_kor_eun_soo_mi"
+			}
+		}
+	}
+	KOR_choo_mi_ae={
+		advisor={
+			slot = political_advisor
+			idea_token = kor_choo_mi_ae
+				traits  = {
+					silent_workhorse 
+				}
+				cost  = 150.000
+				removal_cost  = 0.000
+				visible  = {
+					KOR_prime_minster_common_left_wing = yes 
+				}
+				available  = {
+					KOR_prime_minster_common_left_wing = yes 
+				}
+				ai_will_do  = {
+					factor  = 1.000
+				}
+		}
+		name=kor_choo_mi_ae
+		portraits={
+			army={
+				small="GFX_idea_kor_choo_mi_ae"
+			}
+		}
+	}
+	KOR_prime_minister_paek_ki_wan={
+		advisor={
+			slot = political_advisor
+			idea_token = prime_minister_paek_ki_wan
+			allowed  = {
+					original_tag  = KOR
+				}
+				traits  = {
+					KOR_Prime_Minister 
+				}
+				cost  = 75.000
+				removal_cost  = 0.000
+				available  = {
+					KOR_prime_minster_jucheist = yes 
+					custom_trigger_tooltip  = {
+						tooltip  = KOR_no_post_nationalist_tt
+						not  = {
+							has_country_flag  = korr_post_nationalist_coup_flag 
+						}
+					}
+					custom_trigger_tooltip  = {
+						tooltip  = KOR_can_only_have_one_prime_minister_tt
+						not  = {
+							or  = {
+								has_idea  = prime_minister_chung_hong_won 
+								has_idea  = prime_minister_goh_kun 
+								has_idea  = prime_minister_han_myeong_sook 
+								has_idea  = prime_minister_hwang_kyo_ahn 
+								has_idea  = prime_minister_hyun_soong_jong 
+								has_idea = prime_minister_kim_jong_pil
+								has_idea  = prime_minister_lee_nak_yon 
+								has_idea  = prime_minister_rhyu_si_min 
+								has_idea  = prime_minister_jeon_kwang_hoon 
+								has_idea  = prime_minister_kwon_young_ghil 
+								has_idea  = prime_minister_lee_jae_myung
+								has_idea  = prime_minister_ahn_cheol_soo 
+								has_idea  = prime_minister_han_duck_soo 
+								has_idea  = prime_minister_park_geun_hye 
+								has_idea  = prime_minister_park_geun_hye_enhanced 
+							}
+						}
+					}
+				}
+				modifier  = {
+					surrender_limit  = 0.100
+					attrition  = -0.080
+					army_morale_factor  = 0.050
+				}
+				ai_will_do  = {
+					factor  = 5.000
+				}
+		}
+		name="prime_minister_paek_ki_wan"
+		portraits={
+			army={
+				small="GFX_idea_prime_minister_paek_ki_wan"
+			}
+		}
+	}
+	KOR_hong_se_hwa={
+		advisor={
+			slot = political_advisor
+			idea_token = kor_hong_se_hwa
+			allowed  = {
+					original_tag  = KOR
+				}
+				traits  = {
+					KOR_former_refugee_socialist 
+				}
+				cost  = 150.000
+				removal_cost  = 0.000
+				visible  = {
+					KOR_prime_minster_social_democrat = yes 
+				}
+				available  = {
+					KOR_prime_minster_social_democrat = yes 
+				}
+				ai_will_do  = {
+					factor  = 1.000
+				}
+		}
+		name="kor_hong_se_hwa"
+		portraits={
+			army={
+				small="GFX_idea_kor_hong_se_hwa"
+			}
+		}
+	}
+	KOR_kim_jae_yeon={
+		advisor={
+			slot = political_advisor
+			idea_token = kor_kim_jae_yeon
+			allowed  = {
+					original_tag  = KOR
+				}
+				traits  = {
+					ideological_crusader 
+				}
+				cost  = 150.000
+				removal_cost  = 0.000
+				visible  = {
+					KOR_prime_minster_jucheist = yes 
+				}
+				available  = {
+					KOR_prime_minster_jucheist = yes 
+					not  = {
+						has_country_flag  = korr_post_nationalist_coup_flag 
+					}
+				}
+				ai_will_do  = {
+					factor  = 1.000
+				}
+		}
+		name="kor_kim_jae_yeon"
+		portraits={
+			army={
+				small="GFX_idea_kor_kim_jae_yeon"
+			}
+		}
+	}
+	KOR_djuna={
+		advisor={
+			slot = political_advisor
+			idea_token = kor_djuna
+			allowed  = {
+					original_tag  = KOR
+				}
+				traits  = {
+					KOR_feminist_novelist 
+				}
+				cost  = 150.000
+				removal_cost  = 0.000
+				visible  = {
+					KOR_prime_minster_social_democrat = yes 
+				}
+				available  = {
+					KOR_prime_minster_social_democrat = yes 
+				}
+				ai_will_do  = {
+					factor  = 1.000
+				}
+		}
+		name="kor_djuna"
+		portraits={
+			army={
+				small="GFX_idea_kor_djuna"
+			}
+		}
+	}
+	KOR_cho_seung_soo={
+		advisor={
+			slot = political_advisor
+			idea_token = kor_cho_seung_soo
+			allowed  = {
+					original_tag  = KOR
+				}
+				traits  = {
+					smooth_talking_charmer 
+				}
+				cost  = 150.000
+				removal_cost  = 0.000
+				visible  = {
+					KOR_prime_minster_social_democrat = yes 
+				}
+				available  = {
+					KOR_prime_minster_social_democrat = yes 
+				}
+				ai_will_do  = {
+					factor  = 1.000
+				}
+		}
+		name="kor_cho_seung_soo"
+		portraits={
+			army={
+				small="GFX_idea_kor_cho_seung_soo"
+			}
+		}
+	}
+	KOR_kim_jong_hoon={
+		advisor={
+			slot = political_advisor
+			idea_token = kor_kim_jong_hoon
+			allowed  = {
+					original_tag  = KOR
+				}
+				traits  = {
+					KOR_trade_unionist 
+				}
+				cost  = 150.000
+				removal_cost  = 0.000
+				visible  = {
+					KOR_prime_minster_jucheist = yes 
+				}
+				available  = {
+					KOR_prime_minster_jucheist = yes 
+					not  = {
+						has_country_flag  = korr_post_nationalist_coup_flag 
+					}
+				}
+				ai_will_do  = {
+					factor  = 1.000
+				}
+		}
+		name="kor_kim_jong_hoon"
+		portraits={
+			army={
+				small="GFX_idea_kor_kim_jong_hoon"
+			}
+		}
+	}
+	KOR_chang_je_won={
+		advisor={
+			slot = political_advisor
+			idea_token = kor_chang_je_won
+				traits  = {
+					KOR_conservative_reformer 
+				}
+				cost  = 150.000
+				removal_cost  = 0.000
+				visible  = {
+					KOR_prime_minster_common_right_wing = yes 
+				}
+				available  = {
+					KOR_prime_minster_common_right_wing = yes 
+				}
+				ai_will_do  = {
+					factor  = 1.000
+				}
+		}
+		name=kor_chang_je_won
+		portraits={
+			army={
+				small="GFX_idea_kor_chang_je_won"
+			}
+		}
+	}
+	KOR_yuji_hosaka={
+		advisor={
+			slot = political_advisor
+			idea_token = kor_yuji_hosaka
+			allowed  = {
+					original_tag  = KOR
+				}
+				traits  = {
+					KOR_tough_anti_japanese 
+				}
+				targeted_modifier  = {
+					tag  = JAP
+					attack_bonus_against  = 0.100
+					defense_bonus_against  = 0.100
+				}
+				cost  = 150.000
+				removal_cost  = 0.000
+				available  = {
+					not  = {
+						is_puppet_of  = JAP
+					}
+				}
+				ai_will_do  = {
+					factor  = 0.200
+				}
+		}
+		name="kor_yuji_hosaka"
+		portraits={
+			army={
+				small="GFX_idea_kor_yuji_hosaka"
+			}
+		}
+	}
+	KOR_chin_jung_kwon={
+		advisor={
+			slot = political_advisor
+			idea_token = kor_chin_jung_kwon
+			allowed  = {
+					original_tag  = KOR
+				}
+				traits  = {
+					KOR_famous_art_theorist 
+				}
+				cost  = 150.000
+				removal_cost  = 0.000
+				visible  = {
+					KOR_prime_minster_social_democrat = yes 
+				}
+				available  = {
+					KOR_prime_minster_social_democrat = yes 
+				}
+				ai_will_do  = {
+					factor  = 1.000
+				}
+		}
+		name="kor_chin_jung_kwon"
+		portraits={
+			army={
+				small="GFX_idea_kor_chin_jung_kwon"
+			}
+		}
+	}
+	KOR_lim_tae_hoon={
+		advisor={
+			slot = political_advisor
+			idea_token = kor_lim_tae_hoon
+			allowed  = {
+					original_tag  = KOR
+				}
+				traits  = {
+					kor_lim_tae_hoon_traits 
+				}
+				cost  = 75.000
+				removal_cost  = 0.000
+				available  = {
+					has_completed_focus  = kor_CMHRK 
+				}
+				ai_will_do  = {
+					factor  = 5.000
+				}
+		}
+		name="kor_lim_tae_hoon"
+		portraits={
+			army={
+				small="GFX_idea_kor_lim_tae_hoon"
+			}
+		}
+	}
+	KOR_cho_gab_je={
+		advisor={
+			slot = political_advisor
+			idea_token = kor_cho_gab_je
+			allowed  = {
+					original_tag  = KOR
+				}
+				traits  = {
+					KOR_anti_communist_journalist 
+				}
+				cost  = 150.000
+				removal_cost  = 0.000
+				visible  = {
+					KOR_prime_minster_common_right_wing = yes 
+				}
+				available  = {
+					KOR_prime_minster_common_right_wing = yes 
+				}
+				ai_will_do  = {
+					factor  = 1.000
+				}
+		}
+		name="kor_cho_gab_je"
+		portraits={
+			army={
+				small="GFX_idea_kor_cho_gab_je"
+			}
+		}
+	}
+	KOR_seo_jeong_gap={
+		advisor={
+			slot = political_advisor
+			idea_token = kor_seo_jeong_gap
+			allowed  = {
+					original_tag  = KOR
+				}
+				traits  = {
+					kor_seo_jeong_gap_traits 
+				}
+				cost  = 75.000
+				removal_cost  = 0.000
+				available  = {
+					has_completed_focus  = kor_reward_for_patriots 
+				}
+				ai_will_do  = {
+					factor  = 5.000
+				}
+		}
+		name="kor_seo_jeong_gap"
+		portraits={
+			army={
+				small="GFX_idea_kor_seo_jeong_gap"
+			}
+		}
+	}
+	KOR_chang_ha_joon={
+		advisor={
+			slot = political_advisor
+			idea_token = kor_chang_ha_joon
+			allowed  = {
+					original_tag  = KOR
+				}
+				traits  = {
+					KOR_heterodox_economist 
+				}
+				cost  = 150.000
+				removal_cost  = 0.000
+				visible  = {
+					KOR_prime_minster_common_left_wing = yes 
+				}
+				available  = {
+					KOR_prime_minster_common_left_wing = yes 
+				}
+				ai_will_do  = {
+					factor  = 1.000
+				}
+		}
+		name="kor_chang_ha_joon"
+		portraits={
+			army={
+				small="GFX_idea_kor_chang_ha_joon"
+			}
+		}
+	}
+	KOR_malangkism={
+		advisor={
+			slot = political_advisor
+			idea_token = kor_malangkism
+			allowed  = {
+					original_tag  = KOR
+				}
+				traits  = {
+					KOR_trade_unionist 
+				}
+				cost  = 150.000
+				removal_cost  = 0.000
+				visible  = {
+					has_completed_focus  = kor_no_government 
+				}
+				available  = {
+					has_completed_focus  = kor_no_government 
+				}
+				ai_will_do  = {
+					factor  = 1.000
+				}
+		}
+		name="kor_malangkism"
+		portraits={
+			army={
+				small="GFX_idea_kor_generic_adviser_group"
+			}
+		}
+	}
+	KOR_yoo_seung_min={
+		advisor={
+			slot = political_advisor
+			idea_token = kor_yoo_seung_min
+			allowed  = {
+					original_tag  = KOR
+				}
+				traits  = {
+					KOR_conservative_economist 
+				}
+				cost  = 150.000
+				removal_cost  = 0.000
+				visible  = {
+					KOR_prime_minster_common_right_wing = yes 
+				}
+				available  = {
+					KOR_prime_minster_common_right_wing = yes 
+				}
+				ai_will_do  = {
+					factor  = 1.000
+				}
+		}
+		name="kor_yoo_seung_min"
+		portraits={
+			army={
+				small="GFX_idea_kor_yoo_seung_min"
+			}
+		}
+	}
+	KOR_prime_minister_han_myeong_sook={
+		advisor={
+			slot = political_advisor
+			idea_token = prime_minister_han_myeong_sook
+			allowed  = {
+					original_tag  = KOR
+				}
+				traits  = {
+					KOR_Prime_Minister 
+				}
+				cost  = 75.000
+				removal_cost  = 0.000
+				available  = {
+					KOR_prime_minster_common_left_wing = yes 
+					custom_trigger_tooltip  = {
+						tooltip  = KOR_can_only_have_one_prime_minister_tt
+						not  = {
+							or  = {
+								has_idea  = prime_minister_chung_hong_won 
+								has_idea  = prime_minister_goh_kun 
+								has_idea  = prime_minister_hwang_kyo_ahn 
+								has_idea  = prime_minister_hyun_soong_jong 
+								has_idea = prime_minister_kim_jong_pil
+								has_idea  = prime_minister_lee_nak_yon 
+								has_idea  = prime_minister_rhyu_si_min 
+								has_idea  = prime_minister_jeon_kwang_hoon 
+								has_idea  = prime_minister_paek_ki_wan 
+								has_idea  = prime_minister_kwon_young_ghil 
+								has_idea  = prime_minister_lee_jae_myung
+								has_idea  = prime_minister_ahn_cheol_soo 
+								has_idea  = prime_minister_han_duck_soo 
+								has_idea  = prime_minister_park_geun_hye 
+								has_idea  = prime_minister_park_geun_hye_enhanced 
+							}
+						}
+					}
+				}
+				modifier  = {
+					stability_weekly  = 0.001
+					stability_factor  = 0.150
+				}
+				ai_will_do  = {
+					factor  = 5.000
+				}
+		}
+		name="prime_minister_han_myeong_sook"
+		portraits={
+			army={
+				small="GFX_idea_prime_minister_han_myeong_sook"
+			}
+		}
+	}
+	KOR_park_won_soon={
+		advisor={
+			slot = political_advisor
+			idea_token = kor_park_won_soon
+			allowed  = {
+					original_tag  = KOR
+				}
+				traits  = {
+					road_builder 
+				}
+				cost  = 150.000
+				removal_cost  = 0.000
+				visible  = {
+					KOR_prime_minster_common_left_wing = yes 
+				}
+				available  = {
+					KOR_prime_minster_common_left_wing = yes 
+				}
+				ai_will_do  = {
+					factor  = 1.000
+				}
+		}
+		name="kor_park_won_soon"
+		portraits={
+			army={
+				small="GFX_idea_kor_park_won_soon"
 			}
 		}
 	}

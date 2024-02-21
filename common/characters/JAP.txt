@@ -1173,15 +1173,6 @@ characters={
 	#
 	#########################
 	
-	JAP_taro_aso={
-		name=JAP_taro_aso
-		portraits={
-			civilian={
-				large="gfx/leaders/JAP/taro_aso.dds"
-			}
-		}
-	}
-	
 	JAP_sadakazu_tanigaki={
 		name=JAP_sadakazu_tanigaki
 		portraits={
@@ -1206,6 +1197,41 @@ characters={
 			civilian={
 				large="gfx/leaders/JAP/fumio_kishida.dds"
 			}
+			army={
+				small="GFX_idea_JAP_fumio_kishida"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = jap_fumio_kishida_idea
+			name  = JAP_fumio_kishida 
+				traits  = {
+					under_consideration 
+				}
+				available  = {
+					not  = {
+						has_country_leader  = {
+							ruling_only  = yes 
+							character  = JAP_fumio_kishida 
+						}
+					}
+					not  = {
+						has_country_flag  = dead_fumio_kishida 
+					}
+				}
+				on_add  = {
+					JAP_LDP_add_Hoshu_Honryu_5_effect = yes 
+				}
+				on_remove  = {
+					JAP_LDP_add_Hoshu_Boryu_5_effect = yes 
+				}
+				cost  = 70.000
+				visible  = {
+					JAP_need_hoshu_government = yes 
+				}
+				ai_will_do  = {
+					factor  = 1.000
+				}
 		}
 	}
 	
@@ -1215,6 +1241,34 @@ characters={
 			civilian={
 				large="gfx/leaders/JAP/yoshimasa_hayashi.dds"
 			}
+			army={
+				small="GFX_idea_GFX_idea_JAP_yoshimasa_hayashi"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = JAP_yoshimasa_hayashi
+			allowed  = {
+					original_tag  = JAP
+				}
+				traits  = {
+					scientific_policy_expert 
+				}
+				available  = {
+				}
+				on_add  = {
+					JAP_LDP_add_Hoshu_Honryu_5_effect = yes 
+				}
+				on_remove  = {
+					JAP_LDP_add_Hoshu_Boryu_5_effect = yes 
+				}
+				cost  = 70.000
+				visible  = {
+					JAP_need_hoshu_government = yes 
+				}
+				ai_will_do  = {
+					factor  = 1.000
+				}
 		}
 	}
 	
@@ -1248,6 +1302,34 @@ characters={
 			civilian={
 				large="gfx/leaders/JAP/toshimitsu_motegi.dds"
 			}
+			army={
+				small="GFX_idea_JAP_toshimitsu_motegi"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = JAP_toshimitsu_motegi
+			allowed  = {
+					original_tag  = JAP
+				}
+				traits  = {
+					experienced_politician 
+				}
+				available  = {
+				}
+				on_add  = {
+					JAP_LDP_add_Hoshu_Honryu_5_effect = yes 
+				}
+				on_remove  = {
+					JAP_LDP_add_Hoshu_Boryu_5_effect = yes 
+				}
+				cost  = 70.000
+				visible  = {
+					JAP_need_hoshu_government = yes 
+				}
+				ai_will_do  = {
+					factor  = 1.000
+				}
 		}
 	}
 	
@@ -1274,16 +1356,6 @@ characters={
 			}
 		}
 	}
-	
-	JAP_shinzo_abe={
-		name=JAP_shinzo_abe
-		portraits={
-			civilian={
-				large="gfx/leaders/JAP/shinzo_abe.dds"
-			}
-		}
-	}
-	
 	JAP_nobutaka_machimura={
 		name=JAP_nobutaka_machimura
 		portraits={
@@ -1350,6 +1422,31 @@ characters={
 			civilian={
 				large="gfx/leaders/JAP/toshiihiro_nikai.dds"
 			}
+			army={
+				small="GFX_idea_JAP_toshihiro_nikai"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = JAP_toshihiro_nikai
+				traits  = {
+					fortification_engineer 
+				}
+				available  = {
+				}
+				on_add  = {
+					JAP_LDP_add_Hoshu_Boryu_5_effect = yes 
+				}
+				on_remove  = {
+					JAP_LDP_add_Hoshu_Honryu_5_effect = yes 
+				}
+				cost  = 70.000
+				visible  = {
+					JAP_need_hoshu_government = yes 
+				}
+				ai_will_do  = {
+					factor  = 1.000
+				}
 		}
 	}
 	
@@ -1401,16 +1498,6 @@ characters={
 		portraits={
 			civilian={
 				large="gfx/leaders/JAP/seiko_noda.dds"
-			}
-		}
-		gender = female
-	}
-	
-	JAP_sanae_takaichi={
-		name=JAP_sanae_takaichi
-		portraits={
-			civilian={
-				large="gfx/leaders/JAP/sanae_takaichi.dds"
 			}
 		}
 		gender = female
@@ -1502,6 +1589,51 @@ characters={
 				large="gfx/leaders/JAP/sumire_uesaka.dds"
 			}
 		}
+		portraits={
+			army={
+				small="GFX_idea_JAP_Sumire_Uesaka"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = advisor_JAP_Sumire_Uesaka
+			allowed  = {
+					original_tag  = JAP
+				}
+				visible  = {
+					or  = {
+						has_government  = democratic_socialist 
+						has_government  = communist 
+						is_in_faction_with  = SOV
+					}
+					date > 2014.8.01
+				}
+				available  = {
+					or  = {
+						has_government  = democratic_socialist 
+						has_government  = communist 
+						is_in_faction_with  = SOV
+					}
+					date > 2014.8.01
+					not  = {
+						has_country_leader  = {
+							ruling_only  = yes 
+							name  = JAP_sumire_uesaka
+						}
+					}
+				}
+				visible  = {
+					not  = {
+						has_completed_focus  = JAP_nationalist_government 
+					}
+				}
+				traits  = {
+					pro_communist_voice_actor 
+				}
+				ai_will_do  = {
+					factor  = 1.000
+				}
+		}
 	}
 	
 	JAP_Junichiro_Koizumi={
@@ -1575,5 +1707,2184 @@ characters={
 			}
 		}
 	}
-	
+	JAP_adviser_JAP_nobukatsu_fujioka={
+		advisor={
+			slot = political_advisor
+			idea_token = adviser_JAP_nobukatsu_fujioka
+			allowed  = {
+					original_tag  = JAP
+				}
+				traits  = {
+					nationalist_politician 
+				}
+				available  = {
+				}
+				visible  = {
+					not  = {
+						has_completed_focus  = JAP_the_time_for_revolution 
+					}
+				}
+				ai_will_do  = {
+					factor  = 0.000
+				}
+		}
+		name="adviser_JAP_nobukatsu_fujioka"
+		portraits={
+			army={
+				small="GFX_idea_adviser_JAP_nobukatsu_fujioka"
+			}
+		}
+	}
+	JAP_Zenshinsha={
+		advisor={
+			slot = political_advisor
+			idea_token = advisor_JAP_Zenshinsha
+			allowed  = {
+					original_tag  = JAP
+				}
+				visible  = {
+					has_government  = communist 
+				}
+				available  = {
+					has_government  = communist 
+				}
+				visible  = {
+					not  = {
+						has_completed_focus  = JAP_nationalist_government 
+					}
+				}
+				traits  = {
+					red_revolutionary_publisher 
+				}
+				ai_will_do  = {
+					factor  = 1.000
+				}
+		}
+		name="advisor_JAP_Zenshinsha"
+		portraits={
+			army={
+				small="GFX_idea_JAP_Zenshinsha"
+			}
+		}
+	}
+	JAP_adviser_JAP_shintaro_ishihara={
+		advisor={
+			slot = political_advisor
+			idea_token = adviser_JAP_shintaro_ishihara
+			allowed  = {
+					original_tag  = JAP
+				}
+				traits  = {
+					reactionary_politician 
+				}
+				visible  = {
+					not  = {
+						has_completed_focus  = JAP_the_time_for_revolution 
+					}
+				}
+				ai_will_do  = {
+					factor  = 0.000
+				}
+		}
+		name="adviser_JAP_shintaro_ishihara"
+		portraits={
+			army={
+				small="GFX_idea_adviser_JAP_shintaro_ishihara"
+			}
+		}
+	}
+	JAP_tadateru_konoe={
+		advisor={
+			slot = political_advisor
+			idea_token = advisor_JAP_tadateru_konoe
+			allowed  = {
+					original_tag  = JAP
+				}
+				traits  = {
+					japanese_red_cross_leader 
+				}
+		}
+		name="advisor_JAP_tadateru_konoe"
+		portraits={
+			army={
+				small="GFX_idea_advisor_JAP_tadateru_konoe"
+			}
+		}
+	}
+	JAP_kazuhiro_sugita={
+		advisor={
+			slot = political_advisor
+			idea_token = advisor_JAP_kazuhiro_sugita
+			available  = {
+					has_intelligence_agency  = yes 
+				}
+				allowed  = {
+					original_tag  = JAP
+					has_dlc = "La Resistance"
+				}
+				traits  = {
+					head_of_intelligence 
+				}
+		}
+		name="advisor_JAP_kazuhiro_sugita"
+		portraits={
+			army={
+				small="GFX_idea_advisor_JAP_kazuhiro_sugita"
+			}
+		}
+	}
+	JAP_masayoshi_son={
+		advisor={
+			slot = political_advisor
+			idea_token = advisor_JAP_masayoshi_son
+			allowed  = {
+					original_tag  = JAP
+				}
+				traits  = {
+					captain_of_industry 
+				}
+		}
+		name="advisor_JAP_masayoshi_son"
+		portraits={
+			army={
+				small="GFX_idea_advisor_JAP_masayoshi_son"
+			}
+		}
+	}
+	JAP_katsunobu_kato={
+		advisor={
+			slot = political_advisor
+			idea_token = JAP_katsunobu_kato
+			allowed  = {
+					original_tag  = JAP
+				}
+				traits  = {
+					chief_cabinet_secretary 
+				}
+				available  = {
+					not  = {
+						has_idea  = JAP_hirokazu_matsuno 
+					}
+				}
+				on_add  = {
+					JAP_LDP_add_Hoshu_Honryu_10_effect = yes 
+				}
+				on_remove  = {
+					JAP_LDP_add_Hoshu_Boryu_10_effect = yes 
+				}
+				cost  = 70.000
+				visible  = {
+					JAP_need_hoshu_government = yes 
+				}
+				ai_will_do  = {
+					factor  = 1.000
+				}
+		}
+		name="JAP_katsunobu_kato"
+		portraits={
+			army={
+				small="GFX_idea_JAP_katsunobu_kato"
+			}
+		}
+	}
+	JAP_hirokazu_matsuno={
+		advisor={
+			slot = political_advisor
+			idea_token = JAP_hirokazu_matsuno
+			allowed  = {
+					original_tag  = JAP
+				}
+				traits  = {
+					chief_cabinet_secretary 
+				}
+				available  = {
+					not  = {
+						has_idea  = JAP_katsunobu_kato 
+					}
+				}
+				on_add  = {
+					JAP_LDP_add_Hoshu_Boryu_10_effect = yes 
+				}
+				on_remove  = {
+					JAP_LDP_add_Hoshu_Honryu_10_effect = yes 
+				}
+				cost  = 70.000
+				visible  = {
+					JAP_need_hoshu_government = yes 
+				}
+				ai_will_do  = {
+					factor  = 1.000
+				}
+		}
+		name="JAP_hirokazu_matsuno"
+		portraits={
+			army={
+				small="GFX_idea_JAP_hirokazu_matsuno"
+			}
+		}
+	}
+	JAP_Noppo_Takami={
+		advisor={
+			slot = political_advisor
+			idea_token = advisor_JAP_Noppo_Takami
+			allowed  = {
+					original_tag  = JAP
+				}
+				available  = {
+					or  = {
+						has_government  = communist 
+						has_government  = democratic_socialist 
+					}
+				}
+				visible  = {
+					not  = {
+						has_completed_focus  = JAP_nationalist_government 
+					}
+					or  = {
+						has_government  = communist 
+						has_government  = democratic_socialist 
+					}
+				}
+				traits  = {
+					communist_entertainer 
+				}
+				ai_will_do  = {
+					factor  = 1.000
+				}
+		}
+		name="advisor_JAP_Noppo_Takami"
+		portraits={
+			army={
+				small="GFX_idea_JAP_Noppo_Takami"
+			}
+		}
+	}
+	JAP_yoshiko_kira={
+		advisor={
+			slot = political_advisor
+			idea_token = advisor_JAP_yoshiko_kira
+			allowed  = {
+					original_tag  = JAP
+				}
+				visible  = {
+					or  = {
+						has_government  = communist 
+						has_government  = democratic_socialist 
+					}
+				}
+				available  = {
+					or  = {
+						has_government  = communist 
+						has_government  = democratic_socialist 
+					}
+				}
+				visible  = {
+					not  = {
+						has_completed_focus  = JAP_nationalist_government 
+					}
+				}
+				traits  = {
+					worker_friendly_politician 
+				}
+				ai_will_do  = {
+					factor  = 1.000
+				}
+		}
+		name="advisor_JAP_yoshiko_kira"
+		portraits={
+			army={
+				small="GFX_idea_JAP_yoshiko_kira"
+			}
+		}
+	}
+	JAP_adviser_JAP_renho_murata={
+		advisor={
+			slot = political_advisor
+			idea_token = adviser_JAP_renho_murata
+			allowed  = {
+					original_tag  = JAP
+				}
+				traits  = {
+					popular_figurehead 
+				}
+				available  = {
+				}
+				visible  = {
+					JAP_need_kakushin_government = yes 
+				}
+				ai_will_do  = {
+					factor  = 3.000
+				}
+		}
+		name="adviser_JAP_renho_murata"
+		portraits={
+			army={
+				small="GFX_idea_adviser_JAP_renho_murata"
+			}
+		}
+	}
+	JAP_yasushi_kaneko={
+		advisor={
+			slot = political_advisor
+			idea_token = JAP_yasushi_kaneko
+			allowed  = {
+					original_tag  = JAP
+				}
+				traits  = {
+					stubborn_conservative 
+				}
+				available  = {
+				}
+				on_add  = {
+					JAP_LDP_add_Hoshu_Honryu_5_effect = yes 
+				}
+				on_remove  = {
+					JAP_LDP_add_Hoshu_Boryu_5_effect = yes 
+				}
+				cost  = 70.000
+				visible  = {
+					JAP_need_hoshu_government = yes 
+				}
+				ai_will_do  = {
+					factor  = 1.000
+				}
+		}
+		name="JAP_yasushi_kaneko"
+		portraits={
+			army={
+				small="GFX_idea_JAP_yasushi_kaneko"
+			}
+		}
+	}
+	JAP_adviser_JAP_yohei_kono={
+		advisor={
+			slot = political_advisor
+			idea_token = adviser_JAP_yohei_kono
+			allowed  = {
+					original_tag  = JAP
+				}
+				traits  = {
+					conservative_politician 
+				}
+				visible  = {
+					not  = {
+						has_completed_focus  = JAP_the_time_for_revolution 
+					}
+				}
+				ai_will_do  = {
+					factor  = 0.000
+				}
+		}
+		name="adviser_JAP_yohei_kono"
+		portraits={
+			army={
+				small="GFX_idea_adviser_JAP_yohei_kono"
+			}
+		}
+	}
+	JAP_makiko_tanaka={
+		advisor={
+			slot = political_advisor
+			idea_token = advisor_JAP_makiko_tanaka
+			allowed  = {
+					original_tag  = JAP
+				}
+				traits  = {
+					smooth_talking_charmer 
+				}
+		}
+		name="advisor_JAP_makiko_tanaka"
+		portraits={
+			army={
+				small="GFX_idea_advisor_JAP_makiko_tanaka"
+			}
+		}
+	}
+	JAP_hiroshi_hiraguchi={
+		advisor={
+			slot = political_advisor
+			idea_token = JAP_hiroshi_hiraguchi
+			allowed  = {
+					original_tag  = JAP
+				}
+				traits  = {
+					railroad_enthusiast 
+				}
+				available  = {
+				}
+				on_add  = {
+					JAP_LDP_add_Hoshu_Honryu_5_effect = yes 
+				}
+				on_remove  = {
+					JAP_LDP_add_Hoshu_Boryu_5_effect = yes 
+				}
+				cost  = 70.000
+				visible  = {
+					JAP_need_hoshu_government = yes 
+				}
+				ai_will_do  = {
+					factor  = 1.000
+				}
+		}
+		name="JAP_hiroshi_hiraguchi"
+		portraits={
+			army={
+				small="GFX_idea_JAP_hiroshi_hiraguchi"
+			}
+		}
+	}
+	JAP_Alberto_Fujimori={
+		advisor={
+			slot = political_advisor
+			idea_token = advisor_JAP_Alberto_Fujimori
+			allowed  = {
+					original_tag  = JAP
+				}
+				traits  = {
+					peruvian_exiles 
+				}
+				available  = {
+					has_country_flag  = JAP_fujimori_exile_flag 
+				}
+				visible  = {
+				}
+				ai_will_do  = {
+					factor  = 0.300
+				}
+		}
+		name="advisor_JAP_Alberto_Fujimori"
+		portraits={
+			army={
+				small="GFX_idea_JAP_Alberto_Fujimori"
+			}
+		}
+	}
+	JAP_hidenori_hasegawa={
+		advisor={
+			slot = political_advisor
+			idea_token = advisor_JAP_hidenori_hasegawa
+			allowed  = {
+					original_tag  = JAP
+				}
+				available  = {
+					has_government  = communist 
+				}
+				visible  = {
+					has_government  = communist 
+				}
+				traits  = {
+					Chukaku_ha_politician 
+				}
+				ai_will_do  = {
+					factor  = 1.000
+				}
+		}
+		name="advisor_JAP_hidenori_hasegawa"
+		portraits={
+			army={
+				small="GFX_idea_JAP_hidenori_hasegawa"
+			}
+		}
+	}
+	JAP_adviser_JAP_taro_kono={
+		advisor={
+			slot = political_advisor
+			idea_token = adviser_JAP_taro_kono
+			allowed  = {
+					original_tag  = JAP
+				}
+				traits  = {
+					war_industrialist conservative_party_membership 
+				}
+				available  = {
+					not  = {
+						has_country_leader  = {
+							ruling_only  = yes 
+							character  = JAP_taro_kono 
+						}
+					}
+				}
+				visible  = {
+					JAP_need_hoshu_government = yes 
+				}
+				ai_will_do  = {
+					factor  = 3.000
+				}
+		}
+		name="adviser_JAP_taro_kono"
+		portraits={
+			army={
+				small="GFX_idea_adviser_JAP_taro_kono"
+			}
+		}
+	}
+	JAP_adviser_JAP_katsuyuki_kawai={
+		advisor={
+			slot = political_advisor
+			idea_token = adviser_JAP_katsuyuki_kawai
+			allowed  = {
+					original_tag  = JAP
+				}
+				traits  = {
+					prince_of_terror 
+				}
+				available  = {
+				}
+				visible  = {
+					JAP_need_hoshu_government = yes 
+				}
+				ai_will_do  = {
+					factor  = 0.300
+				}
+		}
+		name="adviser_JAP_katsuyuki_kawai"
+		portraits={
+			army={
+				small="GFX_idea_adviser_JAP_katsuyuki_kawai"
+			}
+		}
+	}
+	JAP_Satsuki_Eda={
+		advisor={
+			slot = political_advisor
+			idea_token = JAP_Satsuki_Eda
+			allowed  = {
+					original_tag  = JAP
+				}
+				traits  = {
+					guardian_of_the_law 
+				}
+				available  = {
+				}
+				visible  = {
+					JAP_need_kakushin_government = yes 
+				}
+				ai_will_do  = {
+					factor  = 1.000
+				}
+		}
+		name="JAP_Satsuki_Eda"
+		portraits={
+			army={
+				small="GFX_idea_JAP_Satsuki_Eda"
+			}
+		}
+	}
+	JAP_minoru_terada={
+		advisor={
+			slot = political_advisor
+			idea_token = JAP_minoru_terada
+			allowed  = {
+					original_tag  = JAP
+				}
+				traits  = {
+					technocrat 
+				}
+				available  = {
+				}
+				on_add  = {
+					JAP_LDP_add_Hoshu_Honryu_5_effect = yes 
+				}
+				on_remove  = {
+					JAP_LDP_add_Hoshu_Boryu_5_effect = yes 
+				}
+				cost  = 70.000
+				visible  = {
+					JAP_need_hoshu_government = yes 
+				}
+				ai_will_do  = {
+					factor  = 1.000
+				}
+		}
+		name="JAP_minoru_terada"
+		portraits={
+			army={
+				small="GFX_idea_JAP_minoru_terada"
+			}
+		}
+	}
+	JAP_adviser_JAP_seiji_maehara={
+		advisor={
+			slot = political_advisor
+			idea_token = adviser_JAP_seiji_maehara
+			allowed  = {
+					original_tag  = JAP
+				}
+				traits  = {
+					social_liberal_politician 
+				}
+				visible  = {
+					not  = {
+						has_completed_focus  = JAP_the_time_for_revolution 
+					}
+				}
+				ai_will_do  = {
+					factor  = 0.000
+				}
+		}
+		name="adviser_JAP_seiji_maehara"
+		portraits={
+			army={
+				small="GFX_idea_adviser_JAP_seiji_maehara"
+			}
+		}
+	}
+	JAP_air_chief_saburo_sakai={
+		advisor={
+			slot = air_chief
+			idea_token = JAP_air_chief_saburo_sakai
+			allowed  = {
+					original_tag  = JAP
+				}
+				available  = {
+					not  = {
+						has_country_flag  = dead_saburo_sakai 
+					}
+				}
+				traits  = {
+					air_chief_reform_3 
+				}
+		}
+		name="JAP_air_chief_saburo_sakai"
+		portraits={
+			army={
+				small="GFX_idea_JAP_air_chief_saburo_sakai"
+			}
+		}
+	}
+	JAP_Keiko_Higuchi={
+		advisor={
+			slot = political_advisor
+			idea_token = JAP_Keiko_Higuchi
+			allowed  = {
+					original_tag  = JAP
+				}
+				traits  = {
+					senior_welfare_activist 
+				}
+				available  = {
+				}
+				visible  = {
+					JAP_need_kakushin_government = yes 
+				}
+				ai_will_do  = {
+					factor  = 1.000
+				}
+		}
+		name="JAP_Keiko_Higuchi"
+		portraits={
+			army={
+				small="GFX_idea_JAP_Keiko_Higuchi"
+			}
+		}
+	}
+	JAP_Mieko_Kamimoto={
+		advisor={
+			slot = political_advisor
+			idea_token = JAP_Mieko_Kamimoto
+			allowed  = {
+					original_tag  = JAP
+				}
+				traits  = {
+					japanese_educational_expert 
+				}
+				available  = {
+				}
+				visible  = {
+					JAP_need_kakushin_government = yes 
+				}
+				ai_will_do  = {
+					factor  = 1.000
+				}
+		}
+		name="JAP_Mieko_Kamimoto"
+		portraits={
+			army={
+				small="GFX_idea_JAP_Mieko_Kamimoto"
+			}
+		}
+	}
+	JAP_sanae_takaichi={
+		name=JAP_sanae_takaichi
+		portraits={
+			civilian={
+				large="gfx/leaders/JAP/sanae_takaichi.dds"
+			}
+			army={
+				small="GFX_idea_JAP_sanae_takaichi"
+			}
+		}
+		gender = female
+		advisor={
+			slot = political_advisor
+			idea_token = advisor_JAP_sanae_takaichi
+			allowed  = {
+					original_tag  = JAP
+				}
+				cost  = 75.000
+				available  = {
+					or  = {
+						has_completed_focus  = JAP_support_far_right 
+						has_completed_focus  = JAP_nippon_kaigi 
+					}
+					JAP_need_hoshu_government = yes 
+				}
+				visible  = {
+					not  = {
+						has_completed_focus  = JAP_the_time_for_revolution 
+					}
+					JAP_need_hoshu_government = yes 
+				}
+				traits  = {
+					nippon_kaigi_traits_a 
+				}
+				ai_will_do  = {
+					factor  = 1.000
+				}
+		}
+	}
+	JAP_adviser_JAP_taro_yamamoto={
+		advisor={
+			slot = political_advisor
+			idea_token = adviser_JAP_taro_yamamoto
+			allowed  = {
+					original_tag  = JAP
+				}
+				traits  = {
+					progressive_politician 
+				}
+				visible  = {
+					not  = {
+						has_completed_focus  = JAP_the_time_for_revolution 
+					}
+				}
+				ai_will_do  = {
+					factor  = 0.000
+				}
+		}
+		name="adviser_JAP_taro_yamamoto"
+		portraits={
+			army={
+				small="GFX_idea_adviser_JAP_taro_yamamoto"
+			}
+		}
+	}
+	JAP_Chizuko_Ueno={
+		advisor={
+			slot = political_advisor
+			idea_token = JAP_Chizuko_Ueno
+			allowed  = {
+					original_tag  = JAP
+				}
+				traits  = {
+					japanese_feminist_activist 
+				}
+				available  = {
+				}
+				visible  = {
+					JAP_need_kakushin_government = yes 
+				}
+				ai_will_do  = {
+					factor  = 1.000
+				}
+		}
+		name="JAP_Chizuko_Ueno"
+		portraits={
+			army={
+				small="GFX_idea_JAP_Chizuko_Ueno"
+			}
+		}
+	}
+	JAP_army_chief_tomomi_inada={
+		advisor={
+			slot = army_chief
+			idea_token = JAP_army_chief_tomomi_inada
+			allowed  = {
+					original_tag  = JAP
+				}
+				traits  = {
+					army_chief_reform_1 
+				}
+		}
+		name="JAP_army_chief_tomomi_inada"
+		portraits={
+			army={
+				small="GFX_idea_JAP_army_chief_tomomi_inada"
+			}
+		}
+	}
+	JAP_adviser_JAP_banri_kaieda={
+		advisor={
+			slot = political_advisor
+			idea_token = adviser_JAP_banri_kaieda
+			allowed  = {
+					original_tag  = JAP
+				}
+				traits  = {
+					road_builder 
+				}
+				available  = {
+				}
+				visible  = {
+					JAP_need_kakushin_government = yes 
+				}
+				ai_will_do  = {
+					factor  = 3.000
+				}
+		}
+		name="adviser_JAP_banri_kaieda"
+		portraits={
+			army={
+				small="GFX_idea_adviser_JAP_banri_kaieda"
+			}
+		}
+	}
+	JAP_yoshimi_watanabe={
+		advisor={
+			slot = political_advisor
+			idea_token = advisor_JAP_yoshimi_watanabe
+			allowed  = {
+					original_tag  = JAP
+				}
+				cost  = 75.000
+				available  = {
+					or  = {
+						has_completed_focus  = JAP_support_far_right 
+						has_completed_focus  = JAP_nippon_kaigi 
+					}
+					JAP_need_hoshu_government = yes 
+				}
+				visible  = {
+					not  = {
+						has_completed_focus  = JAP_the_time_for_revolution 
+					}
+					JAP_need_hoshu_government = yes 
+				}
+				traits  = {
+					nippon_kaigi_traits_b 
+				}
+				ai_will_do  = {
+					factor  = 1.000
+				}
+		}
+		name="advisor_JAP_yoshimi_watanabe"
+		portraits={
+			army={
+				small="GFX_idea_JAP_yoshimi_watanabe"
+			}
+		}
+	}
+	JAP_sotetsu_ri={
+		advisor={
+			slot = political_advisor
+			idea_token = advisor_JAP_sotetsu_ri
+			allowed  = {
+					original_tag  = JAP
+				}
+				available  = {
+					or  = {
+						has_government  = fascist 
+						has_government  = nationalist 
+					}
+				}
+				visible  = {
+					not  = {
+						has_completed_focus  = JAP_the_time_for_revolution 
+					}
+					or  = {
+						has_government  = fascist 
+						has_government  = nationalist 
+					}
+				}
+				traits  = {
+					korean_hate_scholar 
+				}
+				ai_will_do  = {
+					factor  = 1.000
+				}
+		}
+		name="advisor_JAP_sotetsu_ri"
+		portraits={
+			army={
+				small="GFX_idea_JAP_sotetsu_ri"
+			}
+		}
+	}
+	JAP_tsuneyasu_takeda={
+		advisor={
+			slot = political_advisor
+			idea_token = advisor_JAP_tsuneyasu_takeda
+			allowed  = {
+					original_tag  = JAP
+				}
+				available  = {
+					or  = {
+						has_government  = fascist 
+						has_government  = nationalist 
+						has_government  = reactionary 
+						has_government  = monarchist 
+					}
+				}
+				visible  = {
+					not  = {
+						has_completed_focus  = JAP_the_time_for_revolution 
+					}
+					or  = {
+						has_government  = fascist 
+						has_government  = nationalist 
+						has_government  = reactionary 
+						has_government  = monarchist 
+					}
+				}
+				traits  = {
+					jingoist_former_imperial_family 
+				}
+				ai_will_do  = {
+					factor  = 1.000
+				}
+		}
+		name="advisor_JAP_tsuneyasu_takeda"
+		portraits={
+			army={
+				small="GFX_idea_JAP_tsuneyasu_takeda"
+			}
+		}
+	}
+	JAP_adviser_JAP_seiken_akamine={
+		advisor={
+			slot = political_advisor
+			idea_token = adviser_JAP_seiken_akamine
+			allowed  = {
+					original_tag  = JAP
+				}
+				traits  = {
+					compassionate_gentleman democratic_socialist_party_membership 
+				}
+				available  = {
+				}
+				visible  = {
+					JAP_need_kakushin_government = yes 
+				}
+				ai_will_do  = {
+					factor  = 3.000
+				}
+		}
+		name="adviser_JAP_seiken_akamine"
+		portraits={
+			army={
+				small="GFX_idea_adviser_JAP_seiken_akamine"
+			}
+		}
+	}
+	JAP_tatsuo_suzuki={
+		advisor={
+			slot = political_advisor
+			idea_token = advisor_JAP_tatsuo_suzuki
+			allowed  = {
+					original_tag  = JAP
+				}
+				available  = {
+					has_government  = communist 
+				}
+				visible  = {
+					has_government  = communist 
+				}
+				traits  = {
+					labor_agitator 
+				}
+				ai_will_do  = {
+					factor  = 1.000
+				}
+		}
+		name="advisor_JAP_tatsuo_suzuki"
+		portraits={
+			army={
+				small="GFX_idea_JAP_tatsuo_suzuki"
+			}
+		}
+	}
+	JAP_adviser_JAP_yasuo_ichikawa={
+		advisor={
+			slot = political_advisor
+			idea_token = adviser_JAP_yasuo_ichikawa
+			allowed  = {
+					original_tag  = JAP
+				}
+				traits  = {
+					war_industrialist 
+				}
+				available  = {
+				}
+				visible  = {
+					JAP_need_kakushin_government = yes 
+				}
+				ai_will_do  = {
+					factor  = 3.000
+				}
+		}
+		name="adviser_JAP_yasuo_ichikawa"
+		portraits={
+			army={
+				small="GFX_idea_adviser_JAP_yasuo_ichikawa"
+			}
+		}
+	}
+	JAP_air_chief_shoji_takegochi={
+		advisor={
+			slot = air_chief
+			idea_token = JAP_air_chief_shoji_takegochi
+			allowed  = {
+					original_tag  = JAP
+				}
+				traits  = {
+					air_chief_all_weather_1 
+				}
+		}
+		name="JAP_air_chief_shoji_takegochi"
+		portraits={
+			army={
+				small="GFX_idea_JAP_air_chief_shoji_takegochi"
+			}
+		}
+	}
+	JAP_adviser_JAP_wataru_takeshita={
+		advisor={
+			slot = political_advisor
+			idea_token = adviser_JAP_wataru_takeshita
+			allowed  = {
+					original_tag  = JAP
+				}
+				traits  = {
+					captain_of_industry 
+				}
+				available  = {
+				}
+				visible  = {
+					JAP_need_hoshu_government = yes 
+				}
+				ai_will_do  = {
+					factor  = 3.000
+				}
+		}
+		name="adviser_JAP_wataru_takeshita"
+		portraits={
+			army={
+				small="GFX_idea_adviser_JAP_wataru_takeshita"
+			}
+		}
+	}
+	JAP_adviser_JAP_hideaki_kase={
+		advisor={
+			slot = political_advisor
+			idea_token = adviser_JAP_hideaki_kase
+			allowed  = {
+					original_tag  = JAP
+				}
+				traits  = {
+					fascist_politician 
+				}
+				available  = {
+				}
+				visible  = {
+					not  = {
+						has_completed_focus  = JAP_the_time_for_revolution 
+					}
+				}
+				ai_will_do  = {
+					factor  = 0.000
+				}
+		}
+		name="adviser_JAP_hideaki_kase"
+		portraits={
+			army={
+				small="GFX_idea_adviser_JAP_hideaki_kase"
+			}
+		}
+	}
+	JAP_adviser_JAP_akira_koike={
+		advisor={
+			slot = political_advisor
+			idea_token = adviser_JAP_akira_koike
+			allowed  = {
+					original_tag  = JAP
+				}
+				traits  = {
+					democratic_socialist_politician 
+				}
+				visible  = {
+					not  = {
+						has_completed_focus  = JAP_the_time_for_revolution 
+					}
+				}
+				ai_will_do  = {
+					factor  = 0.000
+				}
+		}
+		name="adviser_JAP_akira_koike"
+		portraits={
+			army={
+				small="GFX_idea_adviser_JAP_akira_koike"
+			}
+		}
+	}
+	JAP_Kent_Gilbert={
+		advisor={
+			slot = political_advisor
+			idea_token = advisor_JAP_Kent_Gilbert
+			allowed  = {
+					original_tag  = JAP
+				}
+				available  = {
+					or  = {
+						has_government  = fascist 
+						has_government  = nationalist 
+						has_government  = reactionary 
+						has_government  = monarchist 
+					}
+				}
+				visible  = {
+					not  = {
+						has_completed_focus  = JAP_the_time_for_revolution 
+					}
+					or  = {
+						has_government  = fascist 
+						has_government  = nationalist 
+						has_government  = reactionary 
+						has_government  = monarchist 
+					}
+				}
+				traits  = {
+					conservative_writer 
+				}
+				ai_will_do  = {
+					factor  = 1.000
+				}
+		}
+		name="advisor_JAP_Kent_Gilbert"
+		portraits={
+			army={
+				small="GFX_idea_JAP_Kent_Gilbert"
+			}
+		}
+	}
+	JAP_masayoshi_yoshino={
+		advisor={
+			slot = political_advisor
+			idea_token = JAP_masayoshi_yoshino
+			allowed  = {
+					original_tag  = JAP
+				}
+				traits  = {
+					agricultural_promoter 
+				}
+				available  = {
+				}
+				on_add  = {
+					JAP_LDP_add_Hoshu_Boryu_5_effect = yes 
+				}
+				on_remove  = {
+					JAP_LDP_add_Hoshu_Honryu_5_effect = yes 
+				}
+				cost  = 70.000
+				visible  = {
+					JAP_need_hoshu_government = yes 
+				}
+				ai_will_do  = {
+					factor  = 1.000
+				}
+		}
+		name="JAP_masayoshi_yoshino"
+		portraits={
+			army={
+				small="GFX_idea_JAP_masayoshi_yoshino"
+			}
+		}
+	}
+	JAP_seiko_hashimoto={
+		advisor={
+			slot = political_advisor
+			idea_token = JAP_seiko_hashimoto
+			allowed  = {
+					original_tag  = JAP
+				}
+				traits  = {
+					heaven_sent_child_of_olympic 
+				}
+				available  = {
+				}
+				on_add  = {
+					JAP_LDP_add_Hoshu_Boryu_5_effect = yes 
+				}
+				on_remove  = {
+					JAP_LDP_add_Hoshu_Honryu_5_effect = yes 
+				}
+				cost  = 70.000
+				visible  = {
+					JAP_need_hoshu_government = yes 
+				}
+				ai_will_do  = {
+					factor  = 1.000
+				}
+		}
+		name="JAP_seiko_hashimoto"
+		portraits={
+			army={
+				small="GFX_idea_JAP_seiko_hashimoto"
+			}
+		}
+	}
+	JAP_adviser_JAP_yoshihide_suga={
+		advisor={
+			slot = political_advisor
+			idea_token = adviser_JAP_yoshihide_suga
+			allowed  = {
+					original_tag  = JAP
+				}
+				traits  = {
+					backroom_backstabber 
+				}
+				available  = {
+					not  = {
+						has_country_leader  = {
+							ruling_only  = yes 
+							character  = JAP_yoshihide_suga 
+						}
+					}
+				}
+				visible  = {
+					JAP_need_hoshu_government = yes 
+				}
+				ai_will_do  = {
+					factor  = 3.000
+				}
+		}
+		name="adviser_JAP_yoshihide_suga"
+		portraits={
+			army={
+				small="GFX_idea_adviser_JAP_yoshihide_suga"
+			}
+		}
+	}
+	JAP_yoshitaka_sakurada={
+		advisor={
+			slot = political_advisor
+			idea_token = JAP_yoshitaka_sakurada
+			allowed  = {
+					original_tag  = JAP
+				}
+				traits  = {
+					industrial_promoter 
+				}
+				available  = {
+				}
+				on_add  = {
+					JAP_LDP_add_Hoshu_Boryu_5_effect = yes 
+				}
+				on_remove  = {
+					JAP_LDP_add_Hoshu_Honryu_5_effect = yes 
+				}
+				cost  = 70.000
+				visible  = {
+					JAP_need_hoshu_government = yes 
+				}
+				ai_will_do  = {
+					factor  = 1.000
+				}
+		}
+		name="JAP_yoshitaka_sakurada"
+		portraits={
+			army={
+				small="GFX_idea_JAP_yoshitaka_sakurada"
+			}
+		}
+	}
+	JAP_hiroshi_furuta={
+		advisor={
+			slot = political_advisor
+			idea_token = advisor_JAP_hiroshi_furuta
+			allowed  = {
+					original_tag  = JAP
+				}
+				available  = {
+					or  = {
+						has_government  = fascist 
+						has_government  = nationalist 
+						has_government  = reactionary 
+						has_government  = monarchist 
+					}
+				}
+				visible  = {
+					not  = {
+						has_completed_focus  = JAP_the_time_for_revolution 
+					}
+					or  = {
+						has_government  = fascist 
+						has_government  = nationalist 
+						has_government  = reactionary 
+						has_government  = monarchist 
+					}
+				}
+				traits  = {
+					nationalist_historian 
+				}
+				ai_will_do  = {
+					factor  = 1.000
+				}
+		}
+		name="advisor_JAP_hiroshi_furuta"
+		portraits={
+			army={
+				small="GFX_idea_JAP_hiroshi_furuta"
+			}
+		}
+	}
+	JAP_navy_chief_keiji_akahoshi={
+		advisor={
+			slot = navy_chief
+			idea_token = JAP_navy_chief_keiji_akahoshi
+			allowed  = {
+					original_tag  = JAP
+				}
+				traits  = {
+					navy_chief_naval_aviation_3 
+				}
+		}
+		name="JAP_navy_chief_keiji_akahoshi"
+		portraits={
+			army={
+				small="GFX_idea_JAP_navy_chief_keiji_akahoshi"
+			}
+		}
+	}
+	JAP_Yoshiki_Yamashita={
+		advisor={
+			slot = political_advisor
+			idea_token = advisor_JAP_Yoshiki_Yamashita
+			allowed  = {
+					original_tag  = JAP
+				}
+				visible  = {
+					or  = {
+						has_government  = communist 
+						has_government  = democratic_socialist 
+					}
+				}
+				available  = {
+					or  = {
+						has_government  = communist 
+						has_government  = democratic_socialist 
+					}
+				}
+				visible  = {
+					not  = {
+						has_completed_focus  = JAP_nationalist_government 
+					}
+				}
+				traits  = {
+					experienced_communist 
+				}
+				ai_will_do  = {
+					factor  = 1.000
+				}
+		}
+		name="advisor_JAP_Yoshiki_Yamashita"
+		portraits={
+			army={
+				small="GFX_idea_JAP_Yoshiki_Yamashita"
+			}
+		}
+	}
+	JAP_marutei_tsurunen={
+		advisor={
+			slot = political_advisor
+			idea_token = advisor_JAP_marutei_tsurunen
+			allowed  = {
+					original_tag  = JAP
+				}
+				traits  = {
+					fomer_lutheran_missionary 
+				}
+				visible  = {
+					JAP_need_kakushin_government = yes 
+				}
+		}
+		name="advisor_JAP_marutei_tsurunen"
+		portraits={
+			army={
+				small="GFX_idea_advisor_JAP_marutei_tsurunen"
+			}
+		}
+	}
+	JAP_mizuho_fukushima={
+		advisor={
+			slot = political_advisor
+			idea_token = adviser_JAP_mizuho_fukushima
+			allowed  = {
+					original_tag  = JAP
+				}
+				traits  = {
+					social_democrat_politician 
+				}
+				visible  = {
+					not  = {
+						has_completed_focus  = JAP_the_time_for_revolution 
+					}
+				}
+				ai_will_do  = {
+					factor  = 0.000
+				}
+		}
+		name="adviser_JAP_mizuho_fukushima"
+		portraits={
+			army={
+				small="GFX_idea_adviser_JAP_mizuho_fukushima"
+			}
+		}
+	}
+	JAP_midori_matsushima={
+		advisor={
+			slot = political_advisor
+			idea_token = JAP_midori_matsushima
+			allowed  = {
+					original_tag  = JAP
+				}
+				traits  = {
+					former_journalist 
+				}
+				available  = {
+				}
+				on_add  = {
+					JAP_LDP_add_Hoshu_Boryu_5_effect = yes 
+				}
+				on_remove  = {
+					JAP_LDP_add_Hoshu_Honryu_5_effect = yes 
+				}
+				cost  = 70.000
+				visible  = {
+					JAP_need_hoshu_government = yes 
+				}
+				ai_will_do  = {
+					factor  = 1.000
+				}
+		}
+		name="JAP_midori_matsushima"
+		portraits={
+			army={
+				small="GFX_idea_JAP_midori_matsushima"
+			}
+		}
+	}
+	JAP_takumi_nemoto={
+		advisor={
+			slot = political_advisor
+			idea_token = JAP_takumi_nemoto
+			allowed  = {
+					original_tag  = JAP
+				}
+				traits  = {
+					expert_economic_reconstruction 
+				}
+				available  = {
+				}
+				on_add  = {
+					JAP_LDP_add_Hoshu_Honryu_5_effect = yes 
+				}
+				on_remove  = {
+					JAP_LDP_add_Hoshu_Boryu_5_effect = yes 
+				}
+				cost  = 70.000
+				visible  = {
+					JAP_need_hoshu_government = yes 
+				}
+				ai_will_do  = {
+					factor  = 1.000
+				}
+		}
+		name="JAP_takumi_nemoto"
+		portraits={
+			army={
+				small="GFX_idea_JAP_takumi_nemoto"
+			}
+		}
+	}
+	JAP_kim_young_sam={
+		advisor={
+			slot = political_advisor
+			idea_token = advisor_JAP_kim_young_sam
+			allowed  = {
+					original_tag  = JAP
+				}
+				traits  = {
+					korean_exiles 
+				}
+				available  = {
+					not  = {
+						has_government  = communist 
+					}
+				}
+				visible  = {
+					has_country_flag  = JAP_kim_young_sam_flag 
+				}
+				ai_will_do  = {
+					factor  = 1.000
+				}
+		}
+		name="advisor_JAP_kim_young_sam"
+		portraits={
+			army={
+				small="GFX_idea_JAP_Kim_Young_Sam"
+			}
+		}
+	}
+	JAP_adviser_JAP_heizo_takenaka={
+		advisor={
+			slot = political_advisor
+			idea_token = adviser_JAP_heizo_takenaka
+			allowed  = {
+					original_tag  = JAP
+				}
+				traits  = {
+					market_liberal_politician 
+				}
+				visible  = {
+					not  = {
+						has_completed_focus  = JAP_the_time_for_revolution 
+					}
+				}
+				ai_will_do  = {
+					factor  = 0.000
+				}
+		}
+		name="adviser_JAP_heizo_takenaka"
+		portraits={
+			army={
+				small="GFX_idea_adviser_JAP_heizo_takenaka"
+			}
+		}
+	}
+	JAP_air_chief_tadashi_yoshida={
+		advisor={
+			slot = air_chief
+			idea_token = JAP_air_chief_tadashi_yoshida
+			allowed  = {
+					original_tag  = JAP
+				}
+				traits  = {
+					air_chief_safety_1 
+				}
+		}
+		name="JAP_air_chief_tadashi_yoshida"
+		portraits={
+			army={
+				small="GFX_idea_JAP_air_chief_tadashi_yoshida"
+			}
+		}
+	}
+	JAP_muhammad_hussain_inoki={
+		advisor={
+			slot = political_advisor
+			idea_token = advisor_JAP_muhammad_hussain_inoki
+			allowed  = {
+					original_tag  = JAP
+				}
+				traits  = {
+					fomer_wrestler_politician 
+				}
+				visible  = {
+					JAP_need_hoshu_government = yes 
+				}
+		}
+		name="advisor_JAP_muhammad_hussain_inoki"
+		portraits={
+			army={
+				small="GFX_idea_advisor_JAP_muhammad_hussain_inoki"
+			}
+		}
+	}
+	JAP_air_chief_shigeru_iwasaki={
+		advisor={
+			slot = air_chief
+			idea_token = JAP_air_chief_shigeru_iwasaki
+			allowed  = {
+					original_tag  = JAP
+				}
+				traits  = {
+					air_chief_reform_1 
+				}
+		}
+		name="JAP_air_chief_shigeru_iwasaki"
+		portraits={
+			army={
+				small="GFX_idea_JAP_air_chief_shigeru_iwasaki"
+			}
+		}
+	}
+	JAP_Hirotaka_Akamatsu={
+		advisor={
+			slot = political_advisor
+			idea_token = JAP_Hirotaka_Akamatsu
+			allowed  = {
+					original_tag  = JAP
+				}
+				traits  = {
+					japanese_experienced_leftist_politician 
+				}
+				available  = {
+				}
+				visible  = {
+					JAP_need_kakushin_government = yes 
+				}
+				ai_will_do  = {
+					factor  = 1.000
+				}
+		}
+		name="JAP_Hirotaka_Akamatsu"
+		portraits={
+			army={
+				small="GFX_idea_JAP_Hirotaka_Akamatsu"
+			}
+		}
+	}
+	JAP_Satoshi_katsurada={
+		advisor={
+			slot = political_advisor
+			idea_token = advisor_JAP_Satoshi_katsurada
+			allowed  = {
+					original_tag  = JAP
+				}
+				available  = {
+					or  = {
+						has_government  = fascist 
+						has_government  = nationalist 
+					}
+				}
+				visible  = {
+					not  = {
+						has_completed_focus  = JAP_the_time_for_revolution 
+					}
+					or  = {
+						has_government  = fascist 
+						has_government  = nationalist 
+					}
+				}
+				traits  = {
+					hardliner_jingoist 
+				}
+				ai_will_do  = {
+					factor  = 1.000
+				}
+		}
+		name="advisor_JAP_Satoshi_katsurada"
+		portraits={
+			army={
+				small="GFX_idea_JAP_Satoshi_katsurada"
+			}
+		}
+	}
+	JAP_yuko_obuchi={
+		advisor={
+			slot = political_advisor
+			idea_token = JAP_yuko_obuchi
+			allowed  = {
+					original_tag  = JAP
+				}
+				traits  = {
+					daughter_of_keizo_obuchi 
+				}
+				available  = {
+				}
+				on_add  = {
+					JAP_LDP_add_Hoshu_Honryu_5_effect = yes 
+				}
+				on_remove  = {
+					JAP_LDP_add_Hoshu_Boryu_5_effect = yes 
+				}
+				cost  = 70.000
+				visible  = {
+					JAP_need_hoshu_government = yes 
+				}
+				ai_will_do  = {
+					factor  = 1.000
+				}
+		}
+		name="JAP_yuko_obuchi"
+		portraits={
+			army={
+				small="GFX_idea_JAP_yuko_obuchi"
+			}
+		}
+	}
+	JAP_army_chief_kiyofumi_iwata={
+		advisor={
+			slot = army_chief
+			idea_token = JAP_army_chief_kiyofumi_iwata
+			allowed  = {
+					original_tag  = JAP
+				}
+				traits  = {
+					army_chief_morale_3 
+				}
+		}
+		name="JAP_army_chief_kiyofumi_iwata"
+		portraits={
+			army={
+				small="GFX_idea_JAP_army_chief_kiyofumi_iwata"
+			}
+		}
+	}
+	JAP_han_hak_ja={
+		advisor={
+			slot = political_advisor
+			idea_token = advisor_JAP_han_hak_ja
+			allowed  = {
+					original_tag  = JAP
+				}
+				traits  = {
+					true_mother_of_all_humankind 
+				}
+				available  = {
+					or  = {
+						has_completed_focus  = JAP_cooperation_with_unification_church 
+						has_completed_focus  = JAP_connection_with_unification_church 
+					}
+					not  = {
+						has_country_leader  = {
+							ruling_only  = yes 
+							character  = JAP_hak_ja_han 
+						}
+					}
+				}
+				visible  = {
+					not  = {
+						has_completed_focus  = JAP_the_time_for_revolution 
+					}
+				}
+				on_add  = {
+					owner  = {
+						hidden_effect  = {
+							JAP_bop_medium_decrease_effect = yes 
+						}
+					}
+				}
+				on_remove  = {
+					owner  = {
+						hidden_effect  = {
+							JAP_bop_medium_increase_effect = yes 
+						}
+					}
+				}
+				ai_will_do  = {
+					factor  = 0.700
+				}
+		}
+		name="advisor_JAP_han_hak_ja"
+		portraits={
+			army={
+				small="GFX_idea_JAP_han_hak_ja"
+			}
+		}
+	}
+	JAP_army_chief_tsuneo_isojima={
+		advisor={
+			slot = army_chief
+			idea_token = JAP_army_chief_tsuneo_isojima
+			allowed  = {
+					original_tag  = JAP
+				}
+				traits  = {
+					army_chief_drill_1 
+				}
+		}
+		name="JAP_army_chief_tsuneo_isojima"
+		portraits={
+			army={
+				small="GFX_idea_JAP_army_chief_tsuneo_isojima"
+			}
+		}
+	}
+	JAP_shinzo_abe={
+		name=JAP_shinzo_abe
+		portraits={
+			civilian={
+				large="gfx/leaders/JAP/shinzo_abe.dds"
+			}
+			army={
+				small="GFX_idea_JAP_shinzo_abe"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = advisor_JAP_shinzo_abe
+			allowed  = {
+					original_tag  = JAP
+				}
+				traits  = {
+					determination_of_japan 
+				}
+				available  = {
+					not  = {
+						has_country_leader  = {
+							ruling_only  = yes 
+							character  = JAP_shinzo_abe 
+						}
+					}
+					not  = {
+						has_country_flag  = jap_dead_shinzo_abe 
+					}
+				}
+				visible  = {
+					not  = {
+						has_completed_focus  = JAP_the_time_for_revolution 
+					}
+					JAP_need_hoshu_government = yes 
+				}
+				ai_will_do  = {
+					factor  = 1.000
+				}
+		}
+	}
+	JAP_navy_chief_masahiko_sugimoto={
+		advisor={
+			slot = navy_chief
+			idea_token = JAP_navy_chief_masahiko_sugimoto
+			allowed  = {
+					original_tag  = JAP
+				}
+				traits  = {
+					navy_anti_submarine_1 
+				}
+		}
+		name="JAP_navy_chief_masahiko_sugimoto"
+		portraits={
+			army={
+				small="GFX_idea_navy_advisor1"
+			}
+		}
+	}
+	JAP_Katsuya_Okada={
+		advisor={
+			slot = political_advisor
+			idea_token = JAP_Katsuya_Okada
+			allowed  = {
+					original_tag  = JAP
+				}
+				traits  = {
+					stubborn_reformist 
+				}
+				available  = {
+				}
+				visible  = {
+					JAP_need_kakushin_government = yes 
+				}
+				ai_will_do  = {
+					factor  = 1.000
+				}
+		}
+		name="JAP_Katsuya_Okada"
+		portraits={
+			army={
+				small="GFX_idea_JAP_Katsuya_Okada"
+			}
+		}
+	}
+	JAP_air_chief_toshio_tamogami={
+		advisor={
+			slot = air_chief
+			idea_token = JAP_air_chief_toshio_tamogami
+			allowed  = {
+					original_tag  = JAP
+				}
+				available  = {
+					not  = {
+						has_government  = communist 
+					}
+				}
+				traits  = {
+					air_chief_night_operations_2 
+				}
+		}
+		name="JAP_air_chief_toshio_tamogami"
+		portraits={
+			army={
+				small="GFX_idea_JAP_air_chief_toshio_tamogami"
+			}
+		}
+	}
+	JAP_adviser_JAP_fusako_shigenobu={
+		advisor={
+			slot = political_advisor
+			idea_token = adviser_JAP_fusako_shigenobu
+			allowed  = {
+					original_tag  = JAP
+				}
+				traits  = {
+					communist_politician 
+				}
+				available  = {
+					has_completed_focus  = JAP_the_time_for_revolution 
+				}
+				ai_will_do  = {
+					factor  = 0.000
+				}
+		}
+		name="adviser_JAP_fusako_shigenobu"
+		portraits={
+			army={
+				small="GFX_idea_adviser_JAP_fusako_shigenobu"
+			}
+		}
+	}
+	JAP_adviser_JAP_yoshihiko_noda={
+		advisor={
+			slot = political_advisor
+			idea_token = adviser_JAP_yoshihiko_noda
+			allowed  = {
+					original_tag  = JAP
+				}
+				traits  = {
+					compassionate_gentleman 
+				}
+				available  = {
+				}
+				visible  = {
+					JAP_need_kakushin_government = yes 
+				}
+				ai_will_do  = {
+					factor  = 3.000
+				}
+		}
+		name="adviser_JAP_yoshihiko_noda"
+		portraits={
+			army={
+				small="GFX_idea_adviser_JAP_yoshihiko_noda"
+			}
+		}
+	}
+	JAP_taro_aso={
+		name=JAP_taro_aso
+		portraits={
+			civilian={
+				large="gfx/leaders/JAP/taro_aso.dds"
+			}
+			army={
+				small="GFX_idea_JAP_taro_aso"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = advisor_JAP_taro_aso
+			allowed  = {
+					original_tag  = JAP
+				}
+				traits  = {
+					rosen_aso 
+				}
+				available  = {
+					JAP_need_hoshu_government = yes 
+					not  = {
+						has_country_leader  = {
+							ruling_only  = yes 
+							character  = JAP_taro_aso 
+						}
+					}
+				}
+				visible  = {
+					not  = {
+						has_completed_focus  = JAP_the_time_for_revolution 
+					}
+					JAP_need_hoshu_government = yes 
+				}
+				ai_will_do  = {
+					factor  = 1.000
+				}
+		}
+	}
+	JAP_navy_chief_koichi_furusho={
+		advisor={
+			slot = navy_chief
+			idea_token = JAP_navy_chief_koichi_furusho
+			allowed  = {
+					original_tag  = JAP
+				}
+				traits  = {
+					navy_chief_decisive_battle_2 
+				}
+		}
+		name="JAP_navy_chief_koichi_furusho"
+		portraits={
+			army={
+				small="GFX_idea_navy_advisor1"
+			}
+		}
+	}
+	JAP_hiroshi_nakano={
+		advisor={
+			slot = political_advisor
+			idea_token = advisor_JAP_hiroshi_nakano
+			allowed  = {
+					original_tag  = JAP
+				}
+				available  = {
+					has_government  = communist 
+					date < 2010.081
+				}
+				visible  = {
+					has_government  = communist 
+				}
+				traits  = {
+					railroad_trade_union_leader 
+				}
+				ai_will_do  = {
+					factor  = 1.000
+				}
+		}
+		name="advisor_JAP_hiroshi_nakano"
+		portraits={
+			army={
+				small="GFX_idea_JAP_hiroshi_nakano"
+			}
+		}
+	}
+	JAP_adviser_JAP_jun_azumi={
+		advisor={
+			slot = political_advisor
+			idea_token = adviser_JAP_jun_azumi
+			allowed  = {
+					original_tag  = JAP
+				}
+				traits  = {
+					staunch_constitutionalist 
+				}
+				available  = {
+				}
+				visible  = {
+					JAP_need_kakushin_government = yes 
+				}
+				ai_will_do  = {
+					factor  = 3.000
+				}
+		}
+		name="adviser_JAP_jun_azumi"
+		portraits={
+			army={
+				small="GFX_idea_adviser_JAP_jun_azumi"
+			}
+		}
+	}
+	JAP_adviser_JAP_yoichi_masuzoe={
+		advisor={
+			slot = political_advisor
+			idea_token = adviser_JAP_yoichi_masuzoe
+			allowed  = {
+					original_tag  = JAP
+				}
+				available  = {
+					and  = {
+						not  = {
+							has_government  = social_liberal 
+						}
+						not  = {
+							has_government  = social_democrat 
+						}
+						not  = {
+							has_government  = democratic_socialist 
+						}
+						not  = {
+							has_government  = progressive 
+						}
+						not  = {
+							has_government  = communist 
+						}
+					}
+				}
+				visible  = {
+					not  = {
+						has_completed_focus  = JAP_the_time_for_revolution 
+					}
+					and  = {
+						not  = {
+							has_government  = social_liberal 
+						}
+						not  = {
+							has_government  = social_democrat 
+						}
+						not  = {
+							has_government  = democratic_socialist 
+						}
+						not  = {
+							has_government  = progressive 
+						}
+						not  = {
+							has_government  = communist 
+						}
+					}
+				}
+				traits  = {
+					compassionate_gentleman 
+				}
+				ai_will_do  = {
+					factor  = 2.000
+				}
+		}
+		name="adviser_JAP_yoichi_masuzoe"
+		portraits={
+			army={
+				small="GFX_idea_adviser_JAP_yoichi_masuzoe"
+			}
+		}
+	}
+	JAP_tatsuya_ito={
+		advisor={
+			slot = political_advisor
+			idea_token = JAP_tatsuya_ito
+			allowed  = {
+					original_tag  = JAP
+				}
+				traits  = {
+					KOR_economics_professor 
+				}
+				available  = {
+				}
+				on_add  = {
+					JAP_LDP_add_Hoshu_Honryu_5_effect = yes 
+				}
+				on_remove  = {
+					JAP_LDP_add_Hoshu_Boryu_5_effect = yes 
+				}
+				cost  = 70.000
+				visible  = {
+					JAP_need_hoshu_government = yes 
+				}
+				ai_will_do  = {
+					factor  = 1.000
+				}
+		}
+		name="JAP_tatsuya_ito"
+		portraits={
+			army={
+				small="GFX_idea_JAP_tatsuya_ito"
+			}
+		}
+	}
+	JAP_army_chief_taizo_terashima={
+		advisor={
+			slot = army_chief
+			idea_token = JAP_army_chief_taizo_terashima
+			allowed  = {
+					original_tag  = JAP
+				}
+				visible  = {
+					original_tag  = JAP
+				}
+				traits  = {
+					army_chief_organizational_2 
+				}
+		}
+		name="JAP_army_chief_taizo_terashima"
+		portraits={
+			army={
+				small="GFX_idea_JAP_army_chief_taizo_terashima"
+			}
+		}
+	}
 }

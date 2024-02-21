@@ -60,6 +60,34 @@ characters={
 				military_theorist
 			}
 		}
+		advisor={
+			slot = political_advisor
+			idea_token = adviser_PRK_kim_jong_il
+			traits  = {
+				psychopathic_dictator 
+			}
+			available = {
+				AND = {
+					NOT = {
+						has_country_leader = {
+							name = "Kim Jong-il"
+							ruling_only = yes
+						}
+					}
+					NOT = { has_country_flag = prk_death_of_kim_jong_il }
+				}
+			}
+
+			visible = {
+				NOT = { has_country_flag = prk_death_of_kim_jong_il }
+			}
+			cost  = 150.000
+			removal_cost = -1
+			
+			ai_will_do  = {
+				factor  = 1
+			}
+		}
 	}
 
 	prk_hwang_jang_yop ={
@@ -86,12 +114,38 @@ characters={
 			civilian={
 				large="gfx/leaders/PRK/Joo_Seong_ha.dds"
 			}
+			army = {
+				small = "GFX_idea_adviser_PRK_joo_seong_ha"
+			}
 		}
 
 		country_leader = {
 			ideology = liberalist
 			desc = "POLITICS_JOO_SEONG_HA_DESC"
 			traits = {  }
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = adviser_PRK_joo_seong_ha
+			traits  = {
+				social_liberal_politician 
+			}
+			available = {
+				has_completed_focus = prk_lyuh_woon_hyung_s_unfulfilled_dream
+				AND = {
+					NOT = { has_government = fascist }
+					NOT = { has_government = nationalist }
+					NOT = { has_government = communist }
+				}
+			}
+
+			visible  = {
+			}
+			cost  = 150.000
+			
+			ai_will_do  = {
+				factor  = 0
+			}
 		}
 	}
 
@@ -123,6 +177,24 @@ characters={
 			defense_skill = 2
 			planning_skill = 3
 			logistics_skill = 2
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = adviser_PRK_hyon_yong_chol
+			traits  = {
+				communist_politician
+				backroom_backstabber
+			}
+			available = {
+				has_completed_focus = prk_ryongchon_gamble
+			}
+			visible  = {
+			}
+			cost  = 150.000
+			
+			ai_will_do  = {
+				factor  = 4
+			}
 		}
 	}
 
@@ -838,6 +910,563 @@ characters={
 			}
 		}
 	}
-
-
+	PRK_ri_chun_hi={
+		name=PRK_ri_chun_hi
+		portraits={
+			army={
+				small="GFX_idea_PRK_ri_chun_hi"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = PRK_ri_chun_hi
+			traits  = {
+				goebbels_of_dpr_korea 
+			}
+			available = {
+				NOT = { has_country_flag = jucheist_ban_flag }
+				NOT = { country_exists = CMK }
+			}
+			cost  = 150.000
+			visible  = {
+			}
+			ai_will_do  = {
+				factor  = 5
+			}
+		}
+	}
+	PRK_kim_jung_chul={
+		name=PRK_kim_jung_chul
+		portraits={
+			army={
+				small="GFX_idea_PRK_kim_jung_chul"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = PRK_kim_jung_chul
+			traits  = {
+				progressive_politician 
+			}
+			available = {
+				has_completed_focus = prk_lyuh_woon_hyung_s_unfulfilled_dream
+				AND = {
+					NOT = { has_government = fascist }
+					NOT = { has_government = nationalist }
+					NOT = { has_government = communist }
+				}
+			}
+			visible  = {
+			}
+			cost  = 150.000
+			
+			ai_will_do  = {
+				factor  = 0
+			}
+		}
+	}
+	PRK_maeng_kyung_il={
+		name=PRK_maeng_kyung_il
+		portraits={
+			army={
+				small="GFX_idea_PRK_maeng_kyung_il"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = PRK_maeng_kyung_il
+			traits  = {
+				prince_of_terror 
+			}
+			available = {
+			}
+			visible  = {
+			}
+			cost  = 150.000
+			
+			ai_will_do  = {
+				factor  = 2
+			}
+		}
+	}
+	PRK_ma_won_chun={
+		name=PRK_ma_won_chun
+		portraits={
+			army={
+				small="GFX_idea_PRK_ma_won_chun"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = PRK_ma_won_chun
+			traits  = {
+				captain_of_industry 
+			}
+			available = {
+				NOT = { has_country_flag = jucheist_ban_flag }
+				NOT = { country_exists = CMK }
+			}
+			visible  = {
+			}
+			cost  = 150.000
+			
+			ai_will_do  = {
+				factor  = 3
+			}
+		}
+	}
+	PRK_oh_kuk_ryol={
+		name=PRK_oh_kuk_ryol
+		portraits={
+			army={
+				small="GFX_idea_PRK_oh_kuk_ryol"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = PRK_oh_kuk_ryol
+			traits  = {
+				war_industrialist 
+			}
+			available = {
+				OR = {
+					has_government = fascist
+					has_government = nationalist
+					has_government = communist
+				}
+			}
+			visible  = {
+			}
+			cost  = 150.000
+			
+			ai_will_do  = {
+				factor  = 5
+			}
+		}
+	}
+	PRK_choe_yong_rim={
+		name=PRK_choe_yong_rim
+		portraits={
+			army={
+				small="GFX_idea_PRK_choe_yong_rim"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = PRK_choe_yong_rim
+			traits  = {
+				famous_businessman 
+			}
+			available = {
+				NOT = { has_country_flag = jucheist_ban_flag }
+				NOT = { country_exists = CMK }
+			}
+			visible  = {
+			}
+			cost  = 150.000
+			
+			ai_will_do  = {
+				factor  = 5
+			}
+		}
+	}
+	PRK_kim_yong_il={
+		name=PRK_kim_yong_il
+		portraits={
+			army={
+				small="GFX_idea_PRK_kim_yong_il"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = PRK_kim_yong_il
+			traits  = {
+				naval_industrialist 
+			}
+			available = {
+				NOT = { has_country_flag = jucheist_ban_flag }
+				NOT = { country_exists = CMK }
+			}
+			visible  = {
+			}
+			cost  = 150.000
+			
+			ai_will_do  = {
+				factor  = 5
+			}
+		}
+	}
+	PRK_thae_jong_su={
+		name=PRK_thae_jong_su
+		portraits={
+			army={
+				small="GFX_idea_PRK_thae_jong_su"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = PRK_thae_jong_su
+			traits  = {
+				silent_workhorse 
+			}
+			available = {
+				NOT = { has_country_flag = jucheist_ban_flag }
+				NOT = { country_exists = CMK }
+			}
+			visible  = {
+			}
+			cost  = 150.000
+			
+			ai_will_do  = {
+				factor  = 3
+			}
+		}
+	}
+	PRK_james_dresnok={
+		name=PRK_james_dresnok
+		portraits={
+			army={
+				small="GFX_idea_PRK_james_dresnok"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = PRK_james_dresnok
+			traits  = {
+				popular_movie_star 
+			}
+			available = {
+				NOT = { has_country_flag = jucheist_ban_flag }
+				NOT = { has_country_flag = dead_james_dresnok }
+				NOT = { country_exists = CMK }
+			}
+			visible  = {
+			}
+			cost  = 150.000
+			
+			ai_will_do  = {
+				factor  = 5
+			}
+		}
+	}
+	PRK_alejandro_cao_de_benos={
+		name=PRK_alejandro_cao_de_benos
+		portraits={
+			army={
+				small="GFX_idea_PRK_alejandro_cao_de_benos"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = PRK_alejandro_cao_de_benos
+			traits  = {
+				spanish_jucheist 
+			}
+			available = {
+				has_completed_focus = prk_foreign_jucheists
+			}
+			visible  = {
+			}
+			cost  = 150.000
+			
+			ai_will_do  = {
+				factor  = 2
+			}
+		}
+	}
+	PRK_dermot_hudson={
+		name=PRK_dermot_hudson
+		portraits={
+			army={
+				small="GFX_idea_PRK_dermot_hudson"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = PRK_dermot_hudson
+			traits  = {
+				british_jucheist 
+			}
+			available = {
+				has_completed_focus = prk_foreign_jucheists
+			}
+			visible  = {
+			}
+			cost  = 150.000
+			
+			ai_will_do  = {
+				factor  = 2
+			}
+		}
+	}
+	PRK_bandi={
+		name=PRK_bandi
+		portraits={
+			army={
+				small="GFX_idea_PRK_bandi"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = PRK_bandi
+			traits  = {
+				dissident_writer 
+			}
+			available = {
+				has_completed_focus = prk_lyuh_woon_hyung_s_unfulfilled_dream
+				AND = {
+					NOT = { has_government = fascist }
+					NOT = { has_government = nationalist }
+					NOT = { has_government = communist }
+				}
+			}
+			visible  = {
+			}
+			cost  = 150.000
+			
+			ai_will_do  = {
+				factor  = 0
+			}
+		}
+	}
+	PRK_kang_myung_do={
+		name=PRK_kang_myung_do
+		portraits={
+			army={
+				small="GFX_idea_PRK_kang_myung_do"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = PRK_kang_myung_do
+			traits  = {
+				staunch_constitutionalist 
+			}
+			available = {
+				has_completed_focus = prk_lyuh_woon_hyung_s_unfulfilled_dream
+				AND = {
+					NOT = { has_government = fascist }
+					NOT = { has_government = nationalist }
+					NOT = { has_government = communist }
+				}
+			}
+			visible  = {
+			}
+			cost  = 150.000
+			
+			ai_will_do  = {
+				factor  = 3
+			}
+		}
+	}
+	PRK_ko_yong_hwan={
+		name=PRK_ko_yong_hwan
+		portraits={
+			army={
+				small="GFX_idea_PRK_ko_yong_hwan"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = PRK_ko_yong_hwan
+			traits  = {
+				compassionate_gentleman 
+			}
+			available = {
+				has_completed_focus = prk_lyuh_woon_hyung_s_unfulfilled_dream
+				AND = {
+					NOT = { has_government = fascist }
+					NOT = { has_government = nationalist }
+					NOT = { has_government = communist }
+				}
+			}
+			visible  = {
+			}
+			cost  = 150.000
+			
+			ai_will_do  = {
+				factor  = 3
+			}
+		}
+	}
+	PRK_kim_kil_sun={
+		name=PRK_kim_kil_sun
+		portraits={
+			army={
+				small="GFX_idea_PRK_kim_kil_sun"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = PRK_kim_kil_sun
+			traits  = {
+				captain_of_industry 
+			}
+			available = {
+				has_completed_focus = prk_lyuh_woon_hyung_s_unfulfilled_dream
+				AND = {
+					NOT = { has_government = fascist }
+					NOT = { has_government = nationalist }
+					NOT = { has_government = communist }
+				}
+			}
+			visible  = {
+			}
+			cost  = 150.000
+			
+			ai_will_do  = {
+				factor  = 3
+			}
+		}
+	}
+	PRK_park_sang_hak={
+		name=PRK_park_sang_hak
+		portraits={
+			army={
+				small="GFX_idea_PRK_park_sang_hak"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = PRK_park_sang_hak
+			traits  = {
+				ideological_crusader 
+			}
+			available = {
+				has_completed_focus = prk_lyuh_woon_hyung_s_unfulfilled_dream
+				AND = {
+					NOT = { has_government = fascist }
+					NOT = { has_government = nationalist }
+					NOT = { has_government = communist }
+				}
+			}
+			visible  = {
+			}
+			cost  = 150.000
+			
+			ai_will_do  = {
+				factor  = 3
+			}
+		}
+	}
+	PRK_lee_ae_ran={
+		name=PRK_lee_ae_ran
+		portraits={
+			army={
+				small="GFX_idea_PRK_lee_ae_ran"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = PRK_lee_ae_ran
+			traits  = {
+				public_moderator 
+			}
+			available = {
+				has_completed_focus = prk_lyuh_woon_hyung_s_unfulfilled_dream
+				AND = {
+					NOT = { has_government = fascist }
+					NOT = { has_government = nationalist }
+					NOT = { has_government = communist }
+				}
+			}
+			visible  = {
+			}
+			cost  = 150.000
+			
+			ai_will_do  = {
+				factor  = 3
+			}
+		}
+	}
+	PRK_jung_sung_san={
+		name=PRK_jung_sung_san
+		portraits={
+			army={
+				small="GFX_idea_PRK_jung_sung_san"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = PRK_jung_sung_san
+			traits  = {
+				qanon_movie_director 
+			}
+			available = {
+				has_completed_focus = prk_lyuh_woon_hyung_s_unfulfilled_dream
+				AND = {
+					NOT = { has_government = fascist }
+					NOT = { has_government = nationalist }
+					NOT = { has_government = communist }
+				}
+			}
+			visible  = {
+			}
+			cost  = 150.000
+			
+			ai_will_do  = {
+				factor  = 3
+			}
+		}
+	}
+	PRK_ji_seong_ho={
+		name=PRK_ji_seong_ho
+		portraits={
+			army={
+				small="GFX_idea_PRK_ji_seong_ho"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = PRK_ji_seong_ho
+			traits  = {
+				famous_businessman 
+			}
+			available = {
+				has_completed_focus = prk_lyuh_woon_hyung_s_unfulfilled_dream
+				AND = {
+					NOT = { has_government = fascist }
+					NOT = { has_government = nationalist }
+					NOT = { has_government = communist }
+				}
+			}
+			visible  = {
+			}
+			cost  = 150.000
+			
+			ai_will_do  = {
+				factor  = 3
+			}
+		}
+	}
+	PRK_thae_yong_ho={
+		name=PRK_thae_yong_ho
+		portraits={
+			army={
+				small="GFX_idea_PRK_thae_yong_ho"
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = PRK_thae_yong_ho
+			traits  = {
+				smooth_talking_charmer 
+			}
+			available = {
+				has_completed_focus = prk_lyuh_woon_hyung_s_unfulfilled_dream
+				AND = {
+					NOT = { has_government = fascist }
+					NOT = { has_government = nationalist }
+					NOT = { has_government = communist }
+				}
+			}
+			visible  = {
+			}
+			cost  = 150.000
+			
+			ai_will_do  = {
+				factor  = 3
+			}
+		}
+	}
 }
