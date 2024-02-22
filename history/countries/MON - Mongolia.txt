@@ -12,9 +12,33 @@ if = {
 
 set_research_slots = 3
 set_convoys = 10
-set_stability = 0.5
+set_stability = 0.4
 
 set_country_flag = country_language_mongolian
+set_country_flag = unique_political_advisor_nomal
+set_country_flag = unique_industrial_concern
+
+### Events ###
+
+country_event = {
+	id = mongolia.introgame.1 #CE 2000, The Mongolia
+	days = 3
+}
+
+country_event = {
+	id = mongolia.early_events.1 #Impact of Zud Problems
+	days = 7
+}
+
+country_event = {
+	id = mongolia.early_events.2 #Establishment of Civil Will Party
+	days = 70
+}
+
+country_event = {
+	id = mongolia.early_events.3 #Dissolution of Democratic Union Coalition
+	days = 300
+}
 
 if = {
 	limit = {
@@ -108,7 +132,6 @@ if = {
 		has_dlc = "No Step Back"
 	}
 	set_technology = {
-		IFV_chassis_80s = 1
 		IFV_chassis = 1
 		light_mechanized_infantry1 = 1
 		light_mechanized_infantry2 = 1
@@ -123,15 +146,15 @@ if = {
 		parent_version = 0
 		modules = {
 			main_armament_slot = tank_small_cannon
-			special_type_slot_1 = ergo_small
-			suspension_type_slot = tank_torsion_bar_suspension
+			turret_type_slot = tank_modern_tank_turret
+			suspension_type_slot = tank_bogie_suspension
 			armor_type_slot = tank_welded_armor
-			engine_type_slot = tank_diesel_engine
-			#special_type_slot_1 = tank_radio_1
+			engine_type_slot = tank_gasoline_engine
+			special_type_slot_1 = tank_radio_1
 			optics_slot = tank_optics_1
-			special_type_slot_3 = auto_loader
+			special_type_slot_2 = auto_loader
 			
-			#atgm_slot = empty
+			atgm_slot = empty
 		}
 		upgrades = {
 			tank_nsb_armor_upgrade = 0
@@ -141,23 +164,22 @@ if = {
 	}
 	create_equipment_variant = {
 		name = "BMP-2"
-		type = light_tank_chassis_1
+		type = light_tank_chassis_2
 		parent_version = 0
 		modules = {
 			main_armament_slot = tank_auto_cannon
-			special_type_slot_1 = ergo_ifv_old
-			#turret_type_slot = tank_light_one_man_tank_turret
-			suspension_type_slot = tank_torsion_bar_suspension
+			turret_type_slot = tank_light_one_man_tank_turret
+			suspension_type_slot = tank_bogie_suspension
 			armor_type_slot = tank_riveted_armor
-			engine_type_slot = tank_diesel_engine
-			#special_type_slot_1 = tank_radio_1
+			engine_type_slot = tank_gasoline_engine
+			special_type_slot_1 = tank_radio_1
 			optics_slot = tank_optics_1
 			special_type_slot_4 = crew_compartment
-			atgm_slot = tank_atgm_1
+			atgm_slot = empty
 		}
 		upgrades = {
 			tank_nsb_armor_upgrade = 2
-			tank_nsb_engine_upgrade = 2
+			tank_nsb_engine_upgrade = 5
 		}
 		icon = "GFX_SOV_mechanised_infantry2_medium"
 	}
@@ -167,14 +189,14 @@ if = {
 		parent_version = 0
 		modules = {
 			main_armament_slot = tank_small_cannon
-			special_type_slot_1 = ergo_old
-			suspension_type_slot = tank_torsion_bar_suspension
+			turret_type_slot = tank_modern_tank_turret
+			suspension_type_slot = tank_bogie_suspension
 			armor_type_slot = tank_welded_armor
-			engine_type_slot = tank_diesel_engine
-			#special_type_slot_1 = tank_radio_1
+			engine_type_slot = tank_gasoline_engine
+			special_type_slot_1 = tank_radio_1
 			optics_slot = tank_optics_1
 			
-			#atgm_slot = empty
+			atgm_slot = empty
 		}
 		upgrades = {
 			tank_nsb_armor_upgrade = 0
@@ -185,19 +207,18 @@ if = {
 	}
 	create_equipment_variant = {
 		name = "MT-LB"
-		type = light_tank_chassis_0
+		type = light_tank_chassis_1
 		parent_version = 0
 		modules = {
 			main_armament_slot = tank_heavy_machine_gun
-			special_type_slot_1 = ergo_ifv_old
-			#turret_type_slot = tank_light_one_man_tank_turret
-			suspension_type_slot = tank_torsion_bar_suspension
+			turret_type_slot = tank_light_one_man_tank_turret
+			suspension_type_slot = tank_bogie_suspension
 			armor_type_slot = tank_riveted_armor
-			engine_type_slot = tank_diesel_engine
-			#special_type_slot_1 = tank_radio_1
+			engine_type_slot = tank_gasoline_engine
+			special_type_slot_1 = tank_radio_1
 			optics_slot = tank_optics_1
 			special_type_slot_4 = crew_compartment
-			#atgm_slot = empty
+			atgm_slot = empty
 		}
 		upgrades = {
 			tank_nsb_armor_upgrade = 0
@@ -212,15 +233,14 @@ if = {
 		parent_version = 0
 		modules = {
 			main_armament_slot = tank_auto_cannon
-			special_type_slot_1 = ergo_ifv_old
-			#turret_type_slot = tank_light_one_man_tank_turret
-			suspension_type_slot = tank_torsion_bar_suspension
+			turret_type_slot = tank_light_one_man_tank_turret
+			suspension_type_slot = tank_bogie_suspension
 			armor_type_slot = tank_riveted_armor
-			engine_type_slot = tank_diesel_engine
-			#special_type_slot_1 = tank_radio_1
+			engine_type_slot = tank_gasoline_engine
+			special_type_slot_1 = tank_radio_1
 			optics_slot = tank_optics_1
 			special_type_slot_4 = main_ammo_bay
-			#atgm_slot = empty
+			atgm_slot = empty
 		}
 		upgrades = {
 			tank_nsb_armor_upgrade = 1
@@ -289,51 +309,69 @@ set_technology = {
 	fuel_refining = 1
 }
 
+#1999.1.1 = {
+#}
+
+add_dynamic_modifier = { modifier = MON_state_great_khural }
+
 add_ideas = {
 	economy_tax_low
 	population_growth_rapid
 	MON_economic_dependence_russia
 	MON_economic_dependence_china
-	MON_president_of_mongolia
+	#MON_president_of_mongolia
 	government_system_parliamentary_republic
+	MON_who_killed_zorig
+	MON_1999_zud_1
 }
 
 set_politics = {
-	ruling_party = conservative
+	ruling_party = market_liberal
 	last_election = "1996.6.30"
 	election_frequency = 48
 	elections_allowed = yes
 }
 
 set_popularities = {
-	conservative = 15 #Democratic Party
-	social_democrat = 25 #Mongolian Social Democratic Party
-	progressive = 5 #Mongolian Green Party
+    market_liberal = 2 #Democratic Party
+    conservative = 13 #Democratic Party
+    social_liberal = 10 #Zorig
+    social_democrat = 15 #Mongolian Social Democratic Party
+    progressive = 5 #Mongolian Green Party
 	democratic_socialist = 50 #Mongolian People's Party
-	communist = 5 #Mongolian People's Party
+    communist = 5 #Mongolian People's Party
 }
 recruit_character = MON_rinchinnyamyn_amarjargal
 recruit_character = MON_tserendejidiin_byambajav
-recruit_character = MON_dulamsurengiin_davaa
-recruit_character = MON_radnaabazaryn_sukhbat
+recruit_character = MON_dulamsürengiin_davaa
+recruit_character = MON_radnaabazaryn_sükhbat
 recruit_character = MON_daribishiin_oyuunbold
 recruit_character = MON_b_amgalanbaatar
 recruit_character = MON_b_ganbaatar
 recruit_character = MON_Nambaryn_Enkhbayar
 recruit_character = MON_9th_Jebtsundamba_Khutughtu
+recruit_character = MON_sanjaasuren_oyun
+recruit_character = MON_Khaltmaagiin_Battulga
+recruit_character = MON_Mend_Ooyo_Gombojav
+recruit_character = MON_Punsalmaagiin_Ochirbat
+recruit_character = MON_Tsakhiagiin_Elbegdorj
+recruit_character = MON_Tsendiin_Nyamdorj
+recruit_character = MON_zorig_foundation
+
 
 2016.1.1 = {
-	create_country_leader = {
-		name = "Tsachiagiin Elbegdordsch"
-		picture = "Tsachiagiin_Elbegdordsch.dds"
-		ideology = constitutionalist
-	}
+	#create_country_leader = {
+	#	name = "Tsachiagiin Elbegdordsch"
+	#	picture = "Tsachiagiin_Elbegdordsch.dds"
+	#	ideology = conservative
+	#}
+	
 	set_politics = {
 		ruling_party = conservative
-		last_election = "2012.6.28"
+		last_election = "2009.6.18"
 		election_frequency = 48
 		elections_allowed = yes
-	}
+}
 
     set_popularities = {
         nationalist = 3

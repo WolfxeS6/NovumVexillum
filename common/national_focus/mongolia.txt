@@ -1,0 +1,2394 @@
+ focus_tree = {
+	
+	id = mongolia_focus
+	
+	country = {
+		factor = 0
+		
+		modifier = {
+			add = 20
+			tag = MON
+		}
+	}
+
+	continuous_focus_position = { x = 200 y = 1000 }
+	
+########################################
+####          historical           #####
+########################################
+
+	focus = {
+		id = MON_the_triumph_of_socialism
+		icon = MON_the_triumph_of_socialism
+		x = 0
+		y = 0
+
+		cost = 0
+
+		ai_will_do = {
+			base = 1		
+		}
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = MON_the_triumph_of_socialism_tt
+				always = no
+			}
+		}
+
+		mutually_exclusive = { focus = MON_victory_dedicated_to_zorig }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		search_filters = { FOCUS_FILTER_HISTORICAL }
+
+		completion_reward = {
+			custom_effect_tooltip = MON_state_great_khural_tt
+			add_to_variable = { MON_state_great_khural_war_support_factor = 0.05 tooltip = MON_the_triumph_of_socialism_1_tt }
+		}
+	}
+
+	focus = {
+		id = MON_solidarity_of_the_socialist_states
+		icon = GFX_focus_prc_agrarian_socialism
+		x = -1
+		y = 1
+
+		relative_position_id = MON_the_triumph_of_socialism 
+
+		prerequisite = { focus = MON_the_triumph_of_socialism }
+
+		cost = 8
+
+		ai_will_do = {
+			base = 1		
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+			
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { }
+
+		completion_reward = {
+			remove_ideas = { MON_who_killed_zorig }
+			custom_effect_tooltip = MON_state_great_khural_tt
+			add_to_variable = { MON_state_great_khural_war_support_factor = 0.05 tooltip = MON_solidarity_of_the_socialist_states_1_tt }
+			add_to_variable = { MON_state_great_khural_monthly_population = 0.04 tooltip = MON_solidarity_of_the_socialist_states_2_tt }
+		}
+	}
+
+	focus = {
+		id = MON_join_socialist_international
+		icon = GFX_focus_generic_join_comintern
+		x = -2
+		y = 2
+
+		relative_position_id = MON_the_triumph_of_socialism 
+
+		prerequisite = { focus = MON_solidarity_of_the_socialist_states }
+
+		cost = 8
+
+		ai_will_do = {
+			base = 1		
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+			
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { }
+
+		completion_reward = {
+			add_ideas = { MON_socialist_international_idea }
+		}
+	}
+
+	focus = {
+		id = MON_state_led_industrialization
+		icon = GFX_focus_generic_industry_3
+		x = -3
+		y = 3
+
+		relative_position_id = MON_the_triumph_of_socialism 
+
+		prerequisite = { focus = MON_join_socialist_international }
+
+		cost = 8
+
+		ai_will_do = {
+			base = 1		
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+			
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { }
+
+		completion_reward = {
+			add_tech_bonus = {
+				name = MON_state_led_industrialization
+				bonus = 1
+				uses = 2
+				category = industry
+			}
+			every_state = {
+				limit = {
+					OR = {
+						state = 330
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = MON_attracting_chinese_corporate_investment
+		icon = GFX_goal_generic_positive_trade_relations
+		x = -1
+		y = 3
+
+		relative_position_id = MON_the_triumph_of_socialism 
+
+		prerequisite = { focus = MON_join_socialist_international }
+
+		cost = 8
+
+		ai_will_do = {
+			base = 1		
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+			
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { }
+
+		completion_reward = {
+			every_state = {
+				limit = {
+					OR = {
+						state = 330
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			add_to_variable = { NVX_ECO_health = 2 tooltip = additional_economic_health_2 }
+			add_stability = 0.05
+		}
+	}
+
+	focus = {
+		id = MON_economic_growth_through_child_labor
+		icon = GFX_goal_generic_propaganda
+		x = 0
+		y = 2
+
+		relative_position_id = MON_the_triumph_of_socialism 
+
+		prerequisite = { focus = MON_the_triumph_of_socialism }
+
+		cost = 8
+
+		ai_will_do = {
+			base = 1		
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+			
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { }
+
+		completion_reward = {
+			custom_effect_tooltip = MON_state_great_khural_tt
+			add_to_variable = { MON_state_great_khural_production_factory_max_efficiency_factor = 0.05 tooltip = MON_economic_growth_through_child_labor_1_tt }
+			add_to_variable = { MON_state_great_khural_consumer_goods_factor = -0.15 tooltip = MON_economic_growth_through_child_labor_2_tt }
+		}
+	}
+
+	focus = {
+		id = MON_state_controlled_police_force
+		icon = CHI_manhunt_for_assassin
+		x = 0
+		y = 4
+
+		relative_position_id = MON_the_triumph_of_socialism 
+
+		prerequisite = { focus = MON_economic_growth_through_child_labor }
+
+		cost = 8
+
+		ai_will_do = {
+			base = 1		
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+			
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { }
+
+		completion_reward = {
+			law_change_increase_state_security = yes
+		}
+	}
+
+	focus = {
+		id = MON_economic_exchange_with_china
+		icon = GFX_focus_SOV_organization_centralization_discipline
+		x = 1
+		y = 1
+
+		relative_position_id = MON_the_triumph_of_socialism 
+
+		prerequisite = { focus = MON_the_triumph_of_socialism }
+
+		cost = 8
+
+		ai_will_do = {
+			base = 1		
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+			
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { }
+
+		completion_reward = {
+			custom_effect_tooltip = MON_state_great_khural_tt
+			add_to_variable = { production_factory_max_efficiency_factor = 0.05 tooltip = MON_economic_exchange_with_china_1_tt }
+		}
+	}
+
+	focus = {
+		id = MON_research_cooperation_with_china
+		icon = research
+		x = 1
+		y = 3
+
+		relative_position_id = MON_the_triumph_of_socialism 
+
+		prerequisite = { focus = MON_economic_exchange_with_china }
+
+		cost = 8
+
+		ai_will_do = {
+			base = 1		
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+			
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_RESEARCH }
+ 
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus MON_research_cooperation_with_china"
+			add_research_slot = 1
+		}
+	}
+
+	focus = {
+		id = MON_toward_the_china
+		icon = PRC_old_posters
+		x = 3
+		y = 1
+
+		relative_position_id = MON_the_triumph_of_socialism 
+
+		prerequisite = { focus = MON_the_triumph_of_socialism }
+
+		cost = 8
+
+		ai_will_do = {
+			base = 1		
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+			NOT = { has_idea = MON_economic_dependence_russia }
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus MON_toward_the_china"
+			remove_ideas = { MON_economic_dependence_russia }
+		}
+	}
+
+	focus = {
+		id = MON_restrictions_on_use_of_russian_by_scholars
+		icon = GFX_goal_generic_intelligence_exchange
+		x = 3
+		y = 3
+
+		relative_position_id = MON_the_triumph_of_socialism 
+
+		prerequisite = { focus = MON_toward_the_china }
+
+		cost = 8
+
+		ai_will_do = {
+			base = 1		
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+			
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_RESEARCH }
+ 
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus MON_restrictions_on_use_of_russian_by_scholars"
+			add_research_slot = 1
+		}
+	}
+
+	focus = {
+		id = MON_join_to_the_shanghai_pact
+		icon = align_to_china
+		x = 2
+		y = 2
+
+		relative_position_id = MON_the_triumph_of_socialism 
+
+		prerequisite = { focus = MON_economic_exchange_with_china }
+		prerequisite = { focus = MON_toward_the_china }
+
+		cost = 8
+
+		ai_will_do = {
+			base = 1		
+			modifier = {
+		    	factor = 0
+				is_historical_focus_on = yes
+		    }
+		}
+
+		available = {
+			PRC = {
+				exists = yes 
+				has_capitulated = no 
+				is_faction_leader = yes 
+				NOT = { has_war_with = ROOT }
+			}
+		}
+
+		bypass = {
+			
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus MON_join_to_the_shanghai_pact"
+			PRC = { country_event = { id = mongolia.events.3 } }
+		}
+	}
+
+	focus = {
+		id = MON_stop_the_collapse_of_herding_community
+		icon = GFX_focus_SWE_urbanization
+		x = 5
+		y = 1
+
+		relative_position_id = MON_the_triumph_of_socialism 
+
+		prerequisite = { 
+			focus = MON_the_triumph_of_socialism 
+			focus = MON_victory_dedicated_to_zorig
+		}
+
+		cost = 5
+
+		ai_will_do = {
+			base = 2
+		}
+
+		available = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_HISTORICAL }
+
+		completion_reward = {
+			custom_effect_tooltip = MON_stop_the_collapse_of_herding_community_tt
+
+			hidden_effect = {
+				remove_ideas = { MON_1999_zud_1 }
+				add_timed_idea = {
+					idea = MON_1999_zud_2
+					days = 365
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = MON_stop_desertification
+		icon = GFX_goal_generic_construct_infrastructure
+		x = -1
+		y = 1
+
+		relative_position_id = MON_stop_the_collapse_of_herding_community 
+
+		prerequisite = { focus = MON_stop_the_collapse_of_herding_community }
+
+		cost = 8
+
+		ai_will_do = {
+			base = 1.2
+		}
+
+		available = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { }
+
+		completion_reward = {
+			every_state = {
+				limit = {
+					OR = {
+						state = 942
+						state = 941
+						state = 940
+						state = 919
+						state = 938
+					}
+				}
+				set_state_category = state_level_1
+			}
+		}
+	}
+
+	focus = {
+		id = MON_support_dairy_farming
+		icon = GFX_focus_generic_land_reclamation
+		x = -1
+		y = 3
+
+		relative_position_id = MON_stop_the_collapse_of_herding_community 
+
+		prerequisite = { focus = MON_stop_desertification }
+
+		cost = 8
+
+		ai_will_do = {
+			base = 1.2
+		}
+
+		available = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { }
+
+		completion_reward = {
+			every_state = {
+				limit = {
+					OR = {
+						state = 330
+					}
+				}
+				set_state_category = state_level_4
+			}
+			every_state = {
+				limit = {
+					OR = {
+						state = 943
+					}
+				}
+				set_state_category = state_level_3
+			}
+		}
+	}
+
+	focus = {
+		id = MON_ongi_river_movement
+		icon = GFX_focus_generic_hydroelectric_energy
+		x = -1
+		y = 4
+
+		relative_position_id = MON_stop_the_collapse_of_herding_community 
+
+		prerequisite = { focus = MON_support_dairy_farming }
+
+		cost = 8
+
+		ai_will_do = {
+			base = 1.2
+		}
+
+		available = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { }
+
+		completion_reward = {
+			every_owned_state = {
+				limit = { is_controlled_by = ROOT }
+				random_select_amount = 2
+				add_extra_state_shared_building_slots = 3
+			}
+		}
+	}
+
+	focus = {
+		id = MON_support_mining
+		icon = GFX_focus_generic_steel
+		x = 1
+		y = 1
+
+		relative_position_id = MON_stop_the_collapse_of_herding_community 
+
+		prerequisite = { focus = MON_stop_the_collapse_of_herding_community }
+
+		cost = 8
+
+		ai_will_do = {
+			base = 1.2
+		}
+
+		available = {
+			330 = {
+				is_owned_and_controlled_by = ROOT
+			}
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { }
+
+		completion_reward = {
+			random_state = {
+				limit = {
+					is_owned_and_controlled_by = ROOT
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+
+			330 = {
+				add_resource = {
+				    type = steel
+				    amount = 4
+				}
+                random_list = {
+                    30 = {
+                        add_resource = {
+                            type = steel
+                            amount = 6
+                        }
+                    }
+                    30 = {
+                        add_resource = {
+                            type = aluminium
+                            amount = 6
+                        }
+                    }
+                    30 = {
+                    	add_resource = {
+                    	    type = tungsten
+                    	    amount = 6
+                    	}
+                    }
+                    10 = {
+                    	add_resource = {
+                    	    type = chromium
+                    	    amount = 6
+                    	}
+                    }
+                }
+			}
+		}
+	}
+
+	focus = {
+		id = MON_coal_and_copper
+		icon = GFX_focus_generic_rubber
+		x = 1
+		y = 3
+
+		relative_position_id = MON_stop_the_collapse_of_herding_community 
+
+		prerequisite = { focus = MON_support_mining }
+
+		cost = 8
+
+		ai_will_do = {
+			base = 1.2
+		}
+
+		available = {
+			330 = {
+				is_owned_and_controlled_by = ROOT
+			}
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { }
+
+		completion_reward = {
+			
+			add_stability = 0.05
+
+			every_owned_state = {
+				limit = { is_controlled_by = ROOT }
+				random_select_amount = 2
+				add_extra_state_shared_building_slots = 3
+			}
+
+			330 = {
+				add_resource = {
+				    type = chromium
+				    amount = 2
+				}
+                random_list = {
+                    30 = {
+                        add_resource = {
+                            type = steel
+                            amount = 6
+                        }
+                    }
+                    30 = {
+                        add_resource = {
+                            type = aluminium
+                            amount = 6
+                        }
+                    }
+                    30 = {
+                    	add_resource = {
+                    	    type = tungsten
+                    	    amount = 6
+                    	}
+                    }
+                    10 = {
+                    	add_resource = {
+                    	    type = chromium
+                    	    amount = 6
+                    	}
+                    }
+                }
+			}
+		}
+	}
+
+	focus = {
+		id = MON_industrial_development
+		icon = GFX_goal_generic_construction
+		x = 1
+		y = 4
+
+		relative_position_id = MON_stop_the_collapse_of_herding_community 
+
+		prerequisite = { focus = MON_coal_and_copper }
+
+		cost = 8
+
+		ai_will_do = {
+			base = 1.2
+		}
+
+		available = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { }
+
+		completion_reward = {
+			every_state = {
+				limit = {
+					OR = {
+						state = 330
+						state = 943
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = MON_the_wolf_economy
+		icon = MON_the_wolf_economy
+		x = 0
+		y = 5
+
+		relative_position_id = MON_stop_the_collapse_of_herding_community 
+
+		prerequisite = { focus = MON_ongi_river_movement }
+		prerequisite = { focus = MON_industrial_development }
+
+		cost = 8
+
+		ai_will_do = {
+			base = 1.2
+		}
+
+		available = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { }
+
+		completion_reward = {
+			add_to_variable = { NVX_ECO_health = 2 tooltip = additional_economic_health_2 }
+			add_cic = 1500
+			add_ideas = { MON_the_wolf_economy_idea }
+		}
+	}
+
+	focus = {
+		id = MON_the_financial_services
+		icon = kor_easter_egg_interval_right
+		x = 2
+		y = 5
+
+		relative_position_id = MON_stop_the_collapse_of_herding_community 
+
+		prerequisite = { focus = MON_ongi_river_movement }
+		prerequisite = { focus = MON_industrial_development }
+
+		cost = 8
+
+		ai_will_do = {
+			base = 1.1
+		}
+
+		available = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { }
+
+		completion_reward = {
+			every_state = {
+				limit = {
+					OR = {
+						state = 330
+					}
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+			add_cic = 3000
+		}
+	}
+
+	focus = {
+		id = MON_naadam
+		icon = GFX_focus_generic_limited_social_mobilization
+		x = 7
+		y = 1
+
+		relative_position_id = MON_the_triumph_of_socialism 
+
+		prerequisite = { 
+			focus = MON_the_triumph_of_socialism
+			focus = MON_victory_dedicated_to_zorig
+		}
+
+		cost = 5
+
+		ai_will_do = {
+			base = 1.3
+		}
+
+		available = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = {  }
+
+		completion_reward = {
+			add_war_support = 0.15
+		}
+	}
+
+	focus = {
+		id = MON_transportation_system_in_mongolia
+		icon = GFX_goal_reichsautobahn
+		x = 1
+		y = 1
+
+		relative_position_id = MON_naadam 
+
+		prerequisite = { focus = MON_naadam }
+
+		cost = 8
+
+		ai_will_do = {
+			base = 1.1
+		}
+
+		available = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = {  }
+
+		completion_reward = {
+			every_state = {
+				limit = {
+					OR = {
+						state = 943
+						state = 942
+						state = 941
+						state = 940
+						state = 939
+						state = 938
+						state = 330
+					}
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	
+########################################
+####      Alt-historical           #####
+########################################
+	
+	focus = {
+		id = MON_victory_dedicated_to_zorig
+		icon = MON_victory_dedicated_to_zorig
+		x = 13
+		y = 0
+
+		cost = 0
+
+		ai_will_do = {
+			base = 1		
+		}
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = MON_the_triumph_of_socialism_tt
+				always = no
+			}
+		}
+
+		mutually_exclusive = { focus = MON_the_triumph_of_socialism }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		search_filters = {  }
+
+		completion_reward = {
+			remove_ideas = { MON_who_killed_zorig }
+			custom_effect_tooltip = MON_state_great_khural_tt
+			add_to_variable = { MON_state_great_khural_party_popularity_stability_factor = 0.05 tooltip = MON_victory_dedicated_to_zorig_1_tt }
+		}
+	}
+	
+	focus = {
+		id = MON_de_communization
+		icon = GFX_focus_ICE_state_corporatism
+		x = -1
+		y = 1
+
+		relative_position_id = MON_victory_dedicated_to_zorig 
+
+		prerequisite = { focus = MON_victory_dedicated_to_zorig }
+
+		cost = 8
+
+		ai_will_do = {
+			base = 1		
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+			
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { }
+
+		completion_reward = {
+			set_province_name = {
+				id = 4801
+				name = VICTORY_POINTS_4801_alt
+			}
+
+			add_timed_idea = {
+				idea = MON_de_communization_idea
+				days = 730
+			}
+
+		}
+	}
+	
+	focus = {
+		id = MON_spirit_of_zorig
+		icon = MON_spirit_of_zorig
+		x = 0
+		y = 1
+
+		relative_position_id = MON_de_communization 
+
+		prerequisite = { focus = MON_de_communization }
+
+		cost = 8
+
+		ai_will_do = {
+			base = 1		
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+			
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { }
+
+		completion_reward = {
+			custom_effect_tooltip = MON_state_great_khural_tt
+			add_to_variable = { MON_state_great_khural_war_support_factor = 0.05 tooltip = MON_spirit_of_zorig_1_tt }
+		}
+	}
+	
+	focus = {
+		id = MON_judicial_reform
+		icon = GFX_goal_generic_national_unity
+		x = -1
+		y = 2
+
+		relative_position_id = MON_de_communization 
+
+		prerequisite = { focus = MON_spirit_of_zorig }
+
+		cost = 8
+
+		ai_will_do = {
+			base = 1		
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+			
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { }
+
+		completion_reward = {
+			add_stability = 0.15
+		}
+	}
+
+	focus = {
+		id = MON_connecting_with_the_trans_siberian_railway
+		icon = GFX_focus_generic_railroad
+		x = -4
+		y = 3
+
+		relative_position_id = MON_de_communization 
+
+		prerequisite = { focus = MON_china_s_influence_declines }
+		prerequisite = { focus = MON_transportation_system_in_mongolia }
+
+		cost = 8
+
+		ai_will_do = {
+			base = 1		
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+			
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { }
+
+		completion_reward = {
+			build_railway = {
+				path = { 4801 16336 16332 15977 10554 4766 16417 7816 }
+			}
+			
+			330 = {
+				add_building_construction = {
+					type = supply_node
+					level = 1
+					province = 10554
+					instant_build = yes
+				}
+			}
+		}
+	}
+	
+	focus = {
+		id = MON_china_s_influence_declines
+		icon = attack_china
+		x = -2
+		y = 1
+
+		relative_position_id = MON_de_communization 
+
+		prerequisite = { focus = MON_de_communization }
+
+		cost = 8
+
+		ai_will_do = {
+			base = 1		
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+			NOT = { has_idea = MON_economic_dependence_china }
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus MON_china_s_influence_declines"
+			remove_ideas = { MON_economic_dependence_china }
+		}
+	}
+	
+	focus = {
+		id = MON_barrier_of_sand
+		icon = GFX_goal_generic_fortify_city
+		x = -2
+		y = 3
+
+		relative_position_id = MON_de_communization 
+
+		prerequisite = { focus = MON_china_s_influence_declines }
+
+		cost = 8
+
+		ai_will_do = {
+			base = 1		
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+			
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { }
+
+		completion_reward = {
+			942 = {
+				add_building_construction = { type = bunker province = 4751 level = 1 instant_build = yes }
+				add_building_construction = { type = bunker province = 16362 level = 1 instant_build = yes }
+				add_building_construction = { type = bunker province = 10539 level = 1 instant_build = yes }
+				add_building_construction = { type = bunker province = 16363 level = 1 instant_build = yes }
+				add_building_construction = { type = bunker province = 7870 level = 1 instant_build = yes }
+				add_building_construction = { type = bunker province = 7808 level = 1 instant_build = yes }
+			}
+			941 = {
+				add_building_construction = { type = bunker province = 1855 level = 1 instant_build = yes }
+			}
+			940 = {
+				add_building_construction = { type = bunker province = 4786 level = 1 instant_build = yes }
+				add_building_construction = { type = bunker province = 1853 level = 1 instant_build = yes }
+			}
+			939 = {
+				add_building_construction = { type = bunker province = 4655 level = 1 instant_build = yes }
+			}
+			938 = {
+				add_building_construction = { type = bunker province = 16313 level = 1 instant_build = yes }
+				add_building_construction = { type = bunker province = 4873 level = 1 instant_build = yes }
+				add_building_construction = { type = bunker province = 15976 level = 1 instant_build = yes }
+				add_building_construction = { type = bunker province = 12629 level = 1 instant_build = yes }
+				add_building_construction = { type = bunker province = 1743 level = 1 instant_build = yes }
+				add_building_construction = { type = bunker province = 12557 level = 1 instant_build = yes }
+				add_building_construction = { type = bunker province = 10578 level = 1 instant_build = yes }
+				add_building_construction = { type = bunker province = 4792 level = 1 instant_build = yes }
+			}
+		}
+	}
+	
+	focus = {
+		id = MON_join_CSTO
+		icon = align_to_russia
+		x = -1
+		y = 4
+
+		relative_position_id = MON_de_communization 
+
+		prerequisite = { focus = MON_barrier_of_sand }
+		prerequisite = { focus = MON_judicial_reform }
+
+		cost = 8
+
+		ai_will_do = {
+			base = 1.4
+		}
+
+		available = {
+			SOV = {
+				exists = yes 
+				has_capitulated = no 
+				is_faction_leader = yes 
+				NOT = { has_war_with = ROOT }
+			}
+		}
+
+		bypass = {
+			
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus MON_join_CSTO"
+			SOV = { country_event = { id = mongolia.events.3 } }
+		}
+	}
+	
+	focus = {
+		id = MON_expanding_role_of_the_zorig_foundation
+		icon = MON_expanding_role_of_the_zorig_foundation
+		x = 2
+		y = 1
+
+		relative_position_id = MON_victory_dedicated_to_zorig 
+
+		prerequisite = { focus = MON_victory_dedicated_to_zorig }
+
+		cost = 8
+
+		ai_will_do = {
+			base = 1
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+			
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { }
+
+		completion_reward = {
+			add_stability = 0.05
+			custom_effect_tooltip = available_political_advisor
+			show_ideas_tooltip = MON_zorig_foundation
+		}
+	}
+	
+	focus = {
+		id = MON_prohibition_of_child_labor
+		icon = kor_masters_of_our_own_fate
+		x = -1
+		y = 1
+
+		relative_position_id = MON_expanding_role_of_the_zorig_foundation 
+
+		prerequisite = { focus = MON_expanding_role_of_the_zorig_foundation }
+
+		cost = 8
+
+		ai_will_do = {
+			base = 1
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+			
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { }
+
+		completion_reward = {
+			custom_effect_tooltip = MON_state_great_khural_tt
+			add_to_variable = { MON_state_great_khural_research_speed_factor = 0.03 tooltip = MON_prohibition_of_child_labor_1_tt }
+		}
+	}
+	
+	focus = {
+		id = MON_mongolia_for_women
+		icon = CHI_women_s_rights
+		x = 1
+		y = 1
+
+		relative_position_id = MON_expanding_role_of_the_zorig_foundation 
+
+		prerequisite = { focus = MON_expanding_role_of_the_zorig_foundation }
+
+		cost = 8
+
+		ai_will_do = {
+			base = 1
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+			
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { }
+
+		completion_reward = {
+			add_popularity = {
+				ideology = social_liberal 
+				popularity = 0.15
+			}
+			add_stability = 0.1
+		}
+	}
+	
+	focus = {
+		id = MON_let_s_solve_poverty
+		icon = GFX_focus_SWI_issue_war_bonds
+		x = 2
+		y = 2
+
+		relative_position_id = MON_expanding_role_of_the_zorig_foundation 
+
+		prerequisite = { focus = MON_mongolia_for_women }
+		prerequisite = { focus = MON_prohibition_of_child_labor }
+
+		cost = 8
+
+		ai_will_do = {
+			base = 1
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+			
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { }
+
+		completion_reward = {
+			law_change_increase_welfare = yes
+			custom_effect_tooltip = MON_state_great_khural_tt
+			add_to_variable = { MON_state_great_khural_consumer_goods_factor = -0.1 tooltip = MON_let_s_solve_poverty_1_tt }
+		}
+	}
+	
+	focus = {
+		id = MON_tolerance_for_immigrants
+		icon = GFX_goal_generic_intelligence_exchange
+		x = 1
+		y = 3
+
+		relative_position_id = MON_expanding_role_of_the_zorig_foundation 
+
+		prerequisite = { focus = MON_let_s_solve_poverty }
+
+		cost = 8
+
+		ai_will_do = {
+			base = 1
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+			
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { }
+
+		completion_reward = {
+			law_change_decrease_immigration_restrictions = yes
+		}
+	}
+	
+	focus = {
+		id = MON_supporting_feminist_civic_organizations
+		icon = GFX_focus_generic_diplomatic_treaty
+		x = 3
+		y = 3
+
+		relative_position_id = MON_expanding_role_of_the_zorig_foundation 
+
+		prerequisite = { focus = MON_let_s_solve_poverty }
+
+		cost = 8
+
+		ai_will_do = {
+			base = 1
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+			
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { }
+
+		completion_reward = {
+			add_ideas = { MON_supporting_feminist_civic_organizations_idea }
+		}
+	}
+	
+	focus = {
+		id = MON_counter_trafficking_projects
+		icon = GFX_focus_secret_rearmament
+		x = 2
+		y = 4
+
+		relative_position_id = MON_expanding_role_of_the_zorig_foundation 
+
+		prerequisite = { 
+			focus = MON_tolerance_for_immigrants
+			focus = MON_supporting_feminist_civic_organizations 
+		}
+
+		cost = 8
+
+		ai_will_do = {
+			base = 1
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+			
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { }
+
+		completion_reward = {
+			add_stability = 0.15
+		}
+	}
+	
+	focus = {
+		id = MON_legalization_of_same_sex_marriage
+		icon = generic_LGBT_flag
+		x = 1
+		y = 5
+
+		relative_position_id = MON_expanding_role_of_the_zorig_foundation 
+
+		prerequisite = { focus = MON_tolerance_for_immigrants }
+		prerequisite = { focus = MON_supporting_feminist_civic_organizations }
+
+		cost = 8
+
+		ai_will_do = {
+			base = 1
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+			
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { }
+
+		completion_reward = {
+			add_ideas = { generic_same_sex_marriage }
+		}
+	}
+	
+	focus = {
+		id = MON_investment_in_children_s_education
+		icon = GFX_focus_generic_concessions
+		x = 0
+		y = 2
+
+		relative_position_id = MON_expanding_role_of_the_zorig_foundation 
+
+		prerequisite = { focus = MON_mongolia_for_women }
+		prerequisite = { focus = MON_prohibition_of_child_labor }
+
+		cost = 8
+
+		ai_will_do = {
+			base = 1
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+			
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { }
+
+		completion_reward = {
+			custom_effect_tooltip = MON_state_great_khural_tt
+			add_to_variable = { MON_state_great_khural_research_speed_factor = 0.04 tooltip = MON_investment_in_children_s_education_1_tt }
+			add_to_variable = { MON_state_great_khural_political_power_factor = 0.05 tooltip = MON_investment_in_children_s_education_2_tt }
+		}
+	}
+	
+	focus = {
+		id = MON_university_investment
+		icon = research
+		x = 0
+		y = 4
+
+		relative_position_id = MON_expanding_role_of_the_zorig_foundation 
+
+		prerequisite = { focus = MON_investment_in_children_s_education }
+
+		cost = 8
+
+		ai_will_do = {
+			base = 1
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+			
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_RESEARCH }
+ 
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus MON_university_investment"
+			add_research_slot = 1
+		}
+	}
+	
+	focus = {
+		id = MON_dismissal_of_corrupt_officials
+		icon = GFX_focus_generic_support_the_left_right
+		x = -2
+		y = 2
+
+		relative_position_id = MON_expanding_role_of_the_zorig_foundation 
+
+		prerequisite = { focus = MON_mongolia_for_women }
+		prerequisite = { focus = MON_prohibition_of_child_labor }
+
+		cost = 8
+
+		ai_will_do = {
+			base = 1
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+			
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { }
+
+		completion_reward = {
+			add_to_variable = { NVX_ECO_health = 1 tooltip = additional_economic_health_1 }
+			custom_effect_tooltip = MON_state_great_khural_tt
+			add_to_variable = { MON_state_great_khural_industry_repair_factor = 0.1 tooltip = MON_dismissal_of_corrupt_officials_1_tt }
+		}
+	}
+	
+	focus = {
+		id = MON_prohibition_of_socialism
+		icon = GFX_focus_usa_voter_registration_act
+		x = -3
+		y = 3
+
+		relative_position_id = MON_expanding_role_of_the_zorig_foundation 
+
+		prerequisite = { focus = MON_dismissal_of_corrupt_officials }
+
+		mutually_exclusive = { focus = MON_freedom_must_be_guaranteed }
+
+		cost = 4
+
+		ai_will_do = {
+			base = 1
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+			
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { }
+
+		completion_reward = {
+			add_popularity = {
+				ideology = democratic_socialist 
+				popularity = -0.4
+			}
+			add_popularity = {
+				ideology = communist 
+				popularity = -0.4
+			}
+
+			add_war_support = 0.1
+		}
+	}
+	
+	focus = {
+		id = MON_freedom_must_be_guaranteed
+		icon = democracy
+		x = -1
+		y = 3
+
+		relative_position_id = MON_expanding_role_of_the_zorig_foundation 
+
+		prerequisite = { focus = MON_dismissal_of_corrupt_officials }
+
+		mutually_exclusive = { focus = MON_prohibition_of_socialism }
+
+		cost = 4
+
+		ai_will_do = {
+			base = 1
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+			
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { }
+
+		completion_reward = {
+			law_change_increase_civil_liberties = yes
+
+			add_stability = 0.05
+		}
+	}
+	
+	focus = {
+		id = MON_new_mongolia
+		icon = MON_new_mongolia
+		x = -2
+		y = 4
+
+		relative_position_id = MON_expanding_role_of_the_zorig_foundation 
+
+		prerequisite = { 
+			focus = MON_prohibition_of_socialism 
+			focus = MON_freedom_must_be_guaranteed 
+		}
+
+		cost = 6
+
+		ai_will_do = {
+			base = 1.5
+		}
+
+		available = {
+
+		}
+
+		bypass = {
+			
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_RESEARCH }
+ 
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus MON_new_mongolia"
+			add_research_slot = 1
+		}
+	}
+
+########################################
+####              Army             #####
+########################################
+
+	focus = {
+		id = MON_the_mogolian_armed_forces
+		icon = MON_the_mogolian_armed_forces
+
+		relative_position_id = MON_victory_dedicated_to_zorig 
+
+		x = 9
+		y = 0
+		cost = 5
+
+		available = {
+		}
+
+		ai_will_do = {
+			base = 1.5
+		}
+
+		search_filters = {}
+
+		completion_reward = {
+			add_equipment_to_stockpile = { 
+				type = infantry_equipment
+				amount = 2000 
+				producer = MON
+			}
+			army_experience = 25
+			add_command_power = 40
+		}
+	}
+
+	focus = {
+		id = MON_the_end_of_the_1997_reforms
+		icon = GFX_focus_NOR_broken_gun_policies
+		prerequisite = { focus = MON_the_mogolian_armed_forces }
+
+		x = 0
+		y = 1
+		relative_position_id = MON_the_mogolian_armed_forces
+
+		cost = 8
+
+		available = {
+		}
+
+		ai_will_do = {
+			base = 1
+		}
+
+		search_filters = {}
+
+		completion_reward = {
+			division_template = {
+				name = "General Authority for Border Protection"
+				is_locked = yes
+				regiments = {
+					infantry = { x = 0 y = 0 }
+					infantry = { x = 0 y = 1 }
+					infantry = { x = 0 y = 2 }
+					infantry = { x = 1 y = 0 }
+					infantry = { x = 1 y = 1 }
+					infantry = { x = 1 y = 2 }	
+				}
+			}
+			capital_scope = {
+				create_unit = {
+					division = "name = \"The Border Troops\" division_template = \"General Authority for Border Protection\" start_experience_factor = 0.05 start_equipment_factor = 1 start_manpower_factor = 1"
+					owner = ROOT
+					count = 3
+				}
+			}
+		}
+	}
+	focus = {
+		id = MON_strengthening_border_defence
+		icon = GFX_focus_NOR_drobak_coastal_fort
+		prerequisite = { focus = MON_the_end_of_the_1997_reforms }
+		mutually_exclusive = { focus = MON_desert_is_our_shield }
+		x = -1
+		y = 1
+		relative_position_id = MON_the_end_of_the_1997_reforms
+		cost = 8
+		available = {
+		}
+
+		ai_will_do = {
+			base = 1
+		}
+
+		search_filters = {}
+
+		completion_reward = {
+			add_units_to_division_template = {
+				template_name = "General Authority for Border Protection" 
+				regiments = {
+					infantry = 0 
+					infantry = 1 
+				}
+			}
+			add_ideas = MON_strengthening_border_defence_idea
+		}
+	}
+
+	focus = {
+		id = MON_desert_is_our_shield
+		icon = GFX_goal_generic_fortify_city
+		prerequisite = { focus = MON_the_end_of_the_1997_reforms }
+		mutually_exclusive = { focus = MON_strengthening_border_defence }
+		x = 1
+		y = 1
+		relative_position_id = MON_the_end_of_the_1997_reforms
+		cost = 8
+		available = {
+		}
+
+		ai_will_do = {
+			base = 1
+		}
+
+		search_filters = {}
+
+		completion_reward = {
+			add_ideas = MON_desert_is_our_shield_idea
+		}
+	}
+
+	focus = {
+		id = MON_air_force_resurrection
+		icon = GFX_goal_expand_the_luftwaffe
+		prerequisite = { focus = MON_strengthening_border_defence }
+
+		x = -1
+		y = 1
+		relative_position_id = MON_strengthening_border_defence
+		cost = 8
+		available = {
+		}
+
+		ai_will_do = {
+			base = 1
+		}
+
+		search_filters = {}
+
+		completion_reward = {
+			air_experience = 25
+			add_ideas = MON_air_force_resurrection_idea
+		}
+	}
+	focus = {
+		id = MON_mongolian_navy
+		icon = GFX_focus_POL_develop_polish_shipbuilding
+		prerequisite = { focus = MON_strengthening_border_defence focus = MON_desert_is_our_shield }
+
+		x = 1
+		y = 1
+		relative_position_id = MON_strengthening_border_defence
+		cost = 8
+		available = {
+		}
+
+		ai_will_do = {
+			base = 1
+		}
+
+		search_filters = {}
+
+		completion_reward = {
+			add_ideas = { MON_mongolian_navy_idea }
+		}
+	}
+	focus = {
+		id = MON_reform_the_conscription
+		icon = GFX_focus_generic_military_academy
+		prerequisite = { focus = MON_desert_is_our_shield }
+
+		x = 1
+		y = 1
+		relative_position_id = MON_desert_is_our_shield
+		cost = 8
+		available = {
+		}
+
+		ai_will_do = {
+			base = 1
+		}
+
+		search_filters = {}
+
+		completion_reward = {
+			add_war_support = 0.1
+			IF = {
+				limit = { 
+					NOT = { has_idea = extensive_conscription }
+					NOT = { has_idea = service_by_requirement }
+					NOT = { has_idea = all_adults_serve }
+					NOT = { has_idea = scraping_the_barrel }
+				}
+				add_ideas = extensive_conscription
+			}
+
+		}
+	}
+	focus = {
+		id = MON_modern_military_exercises
+		icon = GFX_goal_generic_army_doctrines
+		prerequisite = { focus = MON_mongolian_navy }
+
+		x = -1
+		y = 1
+		relative_position_id = MON_mongolian_navy
+		cost = 8
+		available = {
+		}
+
+		ai_will_do = {
+			base = 1
+		}
+
+		search_filters = {}
+
+		completion_reward = {
+			add_doctrine_cost_reduction = {
+				name = MON_modern_military_exercises
+				cost_reduction = 0.25
+				uses = 1
+				category = land_doctrine
+			}
+			add_doctrine_cost_reduction = {
+				name = MON_modern_military_exercises
+				cost_reduction = 0.25
+				uses = 1
+				category = air_doctrine
+			}
+			add_doctrine_cost_reduction = {
+				name = MON_modern_military_exercises
+				cost_reduction = 0.25
+				uses = 1
+				category = naval_doctrine
+			}
+		}
+	}
+	focus = {
+		id = MON_encourage_local_arms_production
+		icon = GFX_goal_generic_construct_mil_factory
+		prerequisite = { focus = MON_mongolian_navy }
+
+		x = 1
+		y = 1
+		relative_position_id = MON_mongolian_navy
+		cost = 8
+		available = {
+		}
+
+		ai_will_do = {
+			base = 1
+		}
+
+		search_filters = {}
+
+		completion_reward = {
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+		id = MON_modern_cavalry
+		icon = GFX_focus_generic_little_entente
+		prerequisite = { focus = MON_modern_military_exercises }
+		mutually_exclusive = { focus = MON_focus_on_lack_of_firepower focus = MON_everyone_should_be_patriots }
+		x = -1
+		y = 1
+		relative_position_id = MON_modern_military_exercises
+		cost = 8
+		available = {
+		}
+
+		ai_will_do = {
+			base = 1
+		}
+
+		search_filters = {}
+
+		completion_reward = {
+			add_tech_bonus = {
+				name = MON_modern_cavalry
+				bonus = 0.5
+				uses = 2
+				category = armor 
+			}
+		}
+	}
+	focus = {
+		id = MON_focus_on_lack_of_firepower
+		icon = GFX_goal_generic_army_artillery2
+		prerequisite = { focus = MON_modern_military_exercises focus = MON_encourage_local_arms_production }
+		mutually_exclusive = { focus = MON_modern_cavalry focus = MON_everyone_should_be_patriots }
+		x = 1
+		y = 1
+		relative_position_id = MON_modern_military_exercises
+		cost = 8
+		available = {
+		}
+
+		ai_will_do = {
+			base = 1
+		}
+
+		search_filters = {}
+
+		completion_reward = {
+			add_tech_bonus = {
+				name = MON_focus_on_lack_of_firepower
+				bonus = 0.5
+				uses = 2
+				category = artillery 
+				category = cat_anti_tank 
+			}
+		}
+	}
+	focus = {
+		id = MON_everyone_should_be_patriots
+		icon = GFX_focus_mex_soldaderas
+		prerequisite = { focus = MON_encourage_local_arms_production }
+		mutually_exclusive = { focus = MON_modern_cavalry focus = MON_focus_on_lack_of_firepower }
+		x = 1
+		y = 1
+		relative_position_id = MON_encourage_local_arms_production
+		cost = 8
+
+		available = {
+			has_completed_focus = MON_economic_growth_through_child_labor
+		}
+
+		ai_will_do = {
+			base = 1
+			modifier = {
+		    	factor = 0
+				is_historical_focus_on = yes
+		    }
+		}
+
+		search_filters = {}
+
+		completion_reward = {
+			add_ideas = { MON_everyone_should_be_patriots_idea }
+		}
+	}
+
+	focus = {
+		id = MON_the_steel_horse
+		icon = GFX_focus_generic_tankette
+		prerequisite = { focus = MON_modern_cavalry }
+
+		x = 0
+		y = 1
+		relative_position_id = MON_modern_cavalry
+		cost = 8
+		available = {
+		}
+
+		ai_will_do = {
+			base = 1.3
+		}
+
+		search_filters = {}
+
+		completion_reward = {
+			IF = {
+				limit = {
+					has_dlc = "No Step Back"
+					NOT = { has_tech = main_battle_tank_chassis_00s }
+				}
+				set_technology = { 
+					main_battle_tank_chassis_00s  = 1
+					popup = no
+				}
+
+			}
+			ELSE_IF = {
+				limit = {
+					NOT = { has_dlc = "No Step Back" }
+					NOT = { has_tech = light_tank2 }
+				}
+				set_technology = { 
+					light_tank2 = 1
+					popup = no
+				}
+				
+			}
+			division_template = {
+				name = "Steel Horses"
+				is_locked = no
+				regiments = {
+					modern_armor = { x = 0 y = 0 }
+					modern_armor = { x = 0 y = 1 }
+					modern_armor = { x = 0 y = 2 }
+				}
+			}
+			capital_scope = {
+				create_unit = {
+					division = "name = \"Steel Horses Brigade\" division_template = \"Steel Horses\" start_experience_factor = 0.05 start_equipment_factor = 1 start_manpower_factor = 1"
+					owner = ROOT
+					count = 1
+				}
+			}
+		}
+	}
+	focus = {
+		id = MON_artillery_led_war
+		icon = GFX_goal_generic_occupy_start_war
+		prerequisite = { focus = MON_focus_on_lack_of_firepower }
+
+		x = 0
+		y = 1
+		relative_position_id = MON_focus_on_lack_of_firepower
+		cost = 8
+		available = {
+		}
+
+		ai_will_do = {
+			base = 1.3
+		}
+
+		search_filters = {}
+
+		completion_reward = {
+			add_units_to_division_template = {
+				template_name = "General Authority for Border Protection" 
+				support = {
+					artillery = 0 
+				}
+				regiments = {
+					mot_artillery_brigade = 2 
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = MON_weapons_for_children
+		icon = GFX_focus_generic_population_growth
+		prerequisite = { focus = MON_everyone_should_be_patriots }
+
+		x = 0
+		y = 1
+		relative_position_id = MON_everyone_should_be_patriots
+		cost = 8
+		available = {
+		}
+
+		ai_will_do = {
+			base = 1.3
+		}
+
+		search_filters = {}
+
+		completion_reward = {
+			set_technology = { 
+				child_soldier_infantry = 1
+			}
+			
+			hidden_effect = {
+				if = {
+					# no cheat
+					limit = { has_template = "Children Infantry" }
+					delete_unit_template_and_units = { division_template = "Children Infantry" disband = yes }
+				}
+			}
+
+			division_template = {
+				name = "Children Infantry"
+				is_locked = no
+				regiments = {
+					child_soldier = { x = 0 y = 0 }
+					child_soldier = { x = 0 y = 1 }
+					child_soldier = { x = 0 y = 2 }
+					child_soldier = { x = 0 y = 3 }
+					child_soldier = { x = 1 y = 0 }
+					child_soldier = { x = 1 y = 1 }
+					child_soldier = { x = 1 y = 2 }
+					child_soldier = { x = 1 y = 3 }
+				}
+			}
+
+			capital_scope = {
+				create_unit = {
+					division = "name = \"Children Infantry\" division_template = \"Children Infantry\" start_experience_factor = 0.1 start_equipment_factor = 1 start_manpower_factor = 1"
+					owner = ROOT
+					count = 2
+				}
+			}
+		}
+	} 
+
+ }

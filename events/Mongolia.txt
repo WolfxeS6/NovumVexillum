@@ -1,0 +1,805 @@
+﻿add_namespace = mongolia.introgame
+add_namespace = mongolia.early_events
+add_namespace = mongolia.events
+add_namespace = mongolia.news
+
+########################################
+####             mongolia news events               #####
+########################################
+
+#The 2000 [MON.GetAdjective] General Election
+news_event = {
+	id = mongolia.news.1
+	title = mongolia.news.1.t
+	
+	desc = {
+		text = mongolia.news.1.desc_1
+		trigger = {
+			NOT = { has_country_leader = {
+				character = MON_sanjaasuren_oyun
+				ruling_only = yes
+			} }
+		}
+	}
+	
+	desc = {
+		text = mongolia.news.1.desc_2
+		trigger = {
+			has_country_leader = {
+				character = MON_sanjaasuren_oyun
+				ruling_only = yes
+			}
+		}
+	}
+	
+	picture = GFX_news_event_mongolian_election
+	
+	is_triggered_only = yes
+	major = yes
+	
+	option = {
+		name = mongolia.news.1.a
+		trigger = {
+			original_tag = MON
+		}
+	}
+	
+	option = {
+		name = mongolia.news.1.b
+		trigger = {
+			NOT = { original_tag = MON }
+		}
+	}
+}
+
+########################################
+#####       mongolia introgame events           #####
+########################################
+
+#CE 2000, The Mongolia
+country_event = {
+	id = mongolia.introgame.1
+	title = mongolia.introgame.1.t
+	desc = mongolia.introgame.1.desc
+	picture = GFX_report_event_mongolian_government_1
+	
+	trigger = { original_tag = MON }
+
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	option = {
+		log = "[GetLogInfo]: event mongolia.introgame.1 option mongolia.introgame.1.a"
+		name = mongolia.introgame.1.a
+		ai_chance = { base = 100 }
+	}
+
+	option = {
+		log = "[GetLogInfo]: event mongolia.introgame.1 option mongolia.introgame.1.b"
+		name = mongolia.introgame.1.b
+		ai_chance = { base = 0 }
+		country_event = { id = mongolia.introgame.2 }
+	}
+
+	option = {
+		log = "[GetLogInfo]: event mongolia.introgame.1 option mongolia.introgame.1.c"
+		name = mongolia.introgame.1.c
+		ai_chance = { base = 0 }
+		country_event = { id = mongolia.introgame.3 }
+	}
+
+	option = {
+		log = "[GetLogInfo]: event mongolia.introgame.1 option mongolia.introgame.1.d"
+		name = mongolia.introgame.1.d
+		ai_chance = { base = 0 }
+		country_event = { id = mongolia.introgame.4 }
+	}
+}
+
+#MPRP or DUC
+country_event = {
+	id = mongolia.introgame.2
+	title = mongolia.introgame.2.t
+	desc = mongolia.introgame.2.desc
+	picture = GFX_report_event_mongolian_revolution
+	
+	trigger = { original_tag = MON }
+
+	is_triggered_only = yes
+	
+	option = {
+		log = "[GetLogInfo]: event mongolia.introgame.2 option mongolia.introgame.2.a"
+		name = mongolia.introgame.2.a
+		ai_chance = { base = 100 }
+	}
+
+	option = {
+		log = "[GetLogInfo]: event mongolia.introgame.2 option mongolia.introgame.2.b" #Please let me know their diplomatic situation
+		name = mongolia.introgame.2.b
+		ai_chance = { base = 0 }
+		country_event = { id = mongolia.introgame.3 }
+	}
+
+	option = {
+		log = "[GetLogInfo]: event mongolia.introgame.2 option mongolia.introgame.2.c" #Please tell me how to enter Mongolian paths! (Spoiler)
+		name = mongolia.introgame.2.c
+		ai_chance = { base = 0 }
+		country_event = { id = mongolia.introgame.4 }
+	}
+}
+
+#Isolated Mongolia
+country_event = {
+	id = mongolia.introgame.3
+	title = mongolia.introgame.3.t
+	desc = mongolia.introgame.3.desc
+	picture = GFX_report_event_mongolian_government_2
+	
+	trigger = { original_tag = MON }
+
+	is_triggered_only = yes
+	
+	option = {
+		log = "[GetLogInfo]: event mongolia.introgame.3 option mongolia.introgame.3.a"
+		name = mongolia.introgame.3.a
+		ai_chance = { base = 100 }
+	}
+
+	option = {
+		log = "[GetLogInfo]: event mongolia.introgame.3 option mongolia.introgame.3.b" #Please tell me about Mongolian political history
+		name = mongolia.introgame.3.b
+		ai_chance = { base = 0 }
+		country_event = { id = mongolia.introgame.2 }
+	}
+
+	option = {
+		log = "[GetLogInfo]: event mongolia.introgame.3 option mongolia.introgame.3.c" #Please tell me how to enter Mongolian paths! (Spoiler)
+		name = mongolia.introgame.3.c
+		ai_chance = { base = 0 }
+		country_event = { id = mongolia.introgame.4 }
+	}
+}
+
+#Mongolian Path Spoiler
+country_event = {
+	id = mongolia.introgame.4
+	title = mongolia.introgame.4.t
+	desc = mongolia.introgame.4.desc
+	picture = GFX_report_event_zorig
+	
+	trigger = { original_tag = MON }
+
+	is_triggered_only = yes
+	
+	option = {
+		log = "[GetLogInfo]: event mongolia.introgame.4 option mongolia.introgame.4.a"
+		name = mongolia.introgame.4.a
+		ai_chance = { base = 100 }
+	}
+
+	option = {
+		log = "[GetLogInfo]: event mongolia.introgame.4 option mongolia.introgame.4.b" #Please tell me about Mongolian political history
+		name = mongolia.introgame.4.b
+		ai_chance = { base = 0 }
+		country_event = { id = mongolia.introgame.2 }
+	}
+
+	option = {
+		log = "[GetLogInfo]: event mongolia.introgame.4 option mongolia.introgame.4.c" #Please let me know their diplomatic situation
+		name = mongolia.introgame.4.c
+		ai_chance = { base = 0 }
+		country_event = { id = mongolia.introgame.3 }
+	}
+}
+
+########################################
+#####              mongolia early events             #####
+########################################
+
+#Impact of Zud Problems
+country_event = {
+	id = mongolia.early_events.1
+	title = mongolia.early_events.1.t
+	desc = mongolia.early_events.1.desc
+	picture = GFX_report_event_trade_policy
+	
+	trigger = { original_tag = MON }
+
+	is_triggered_only = yes
+	
+	option = {
+		log = "[GetLogInfo]: event mongolia.early_events.1 option mongolia.early_events.1.a"
+		name = mongolia.early_events.1.a
+		ai_chance = { base = 100 }
+		add_to_variable = { NVX_ECO_health = -4 tooltip = minous_economic_health_4 }
+	}
+}
+
+#Establishment of Civil Will Party
+country_event = {
+	id = mongolia.early_events.2
+	title = mongolia.early_events.2.t
+	desc = mongolia.early_events.2.desc
+	picture = GFX_report_event_mongolian_government_2
+	
+	trigger = { original_tag = MON }
+
+	is_triggered_only = yes
+	
+	option = {
+		log = "[GetLogInfo]: event mongolia.early_events.2 option mongolia.early_events.2.a"
+		name = mongolia.early_events.2.a
+		ai_chance = { base = 100 }
+		
+		set_party_name = { 
+			ideology = social_liberal
+			long_name = MON_social_liberal_party_2000_long
+			name = MON_social_liberal_party_2000
+		}
+		
+	}
+}
+
+#Dissolution of Democratic Union Coalition
+country_event = {
+	id = mongolia.early_events.3
+	title = mongolia.early_events.3.t
+	desc = mongolia.early_events.3.desc
+	picture = GFX_report_event_mongolian_government_2
+	
+	trigger = { original_tag = MON }
+
+	is_triggered_only = yes
+	
+	option = {
+		log = "[GetLogInfo]: event mongolia.early_events.3 option mongolia.early_events.3.a"
+		name = mongolia.early_events.3.a
+		ai_chance = { base = 100 }
+		
+		set_party_name = { 
+			ideology = market_liberal
+			long_name = MON_market_liberal_party_2000_long
+			name = MON_market_liberal_party_2000
+		}
+		set_party_name = { 
+			ideology = social_democrat
+			long_name = MON_social_democrat_party_2000_long
+			name = MON_social_democrat_party_2000
+		}
+		set_party_name = { 
+			ideology = conservative
+			long_name = MON_conservative_party_2000_long
+			name = MON_conservative_party_2000
+		}
+	}
+}
+
+#Should We Re-investigate Zorig's assassination?
+country_event = {
+	id = mongolia.early_events.4
+	title = mongolia.early_events.4.t
+	desc = mongolia.early_events.4.desc
+	picture = GFX_report_event_zorig
+	
+	trigger = { original_tag = MON }
+
+	is_triggered_only = yes
+	
+	timeout_days = 7
+	
+	immediate = {
+		hidden_effect = {
+			set_country_flag = MON_2000_election_flag
+		}
+	}
+	
+	option = {
+		log = "[GetLogInfo]: event mongolia.early_events.4 option mongolia.early_events.4.a"
+		name = mongolia.early_events.4.a
+		ai_chance = { base = 100 }
+		
+		hidden_effect = {
+			country_event = { id = mongolia.early_events.6 days = 3 }
+			country_event = { id = mongolia.early_events.7 days = 14 }
+		}
+	}
+}
+
+#Should We Re-investigate Zorig's assassination?
+country_event = {
+	id = mongolia.early_events.5
+	title = mongolia.early_events.5.t
+	desc = mongolia.early_events.5.desc
+	picture = GFX_report_event_zorig
+	
+	trigger = { original_tag = MON }
+
+	is_triggered_only = yes
+	
+	timeout_days = 7
+	
+	option = {
+		log = "[GetLogInfo]: event mongolia.early_events.5 option mongolia.early_events.5.a"
+		name = mongolia.early_events.5.a
+		ai_chance = { base = 100 }
+		
+		hidden_effect = {
+			set_country_flag = MON_2000_election_flag
+			country_event = { id = mongolia.early_events.6 days = 3 }
+			country_event = { id = mongolia.early_events.7 days = 14 }
+		}
+	}
+	
+	option = {
+		log = "[GetLogInfo]: event mongolia.early_events.5 option mongolia.early_events.5.a"
+		name = mongolia.early_events.5.b
+		ai_chance = { base = 0 }
+	}
+}
+
+#Zorig Assassination Re-investigation
+country_event = {
+	id = mongolia.early_events.6
+	title = mongolia.early_events.6.t
+	desc = mongolia.early_events.6.desc
+	picture = GFX_report_event_zorig
+	
+	trigger = { original_tag = MON }
+
+	is_triggered_only = yes
+	
+	option = {
+		log = "[GetLogInfo]: event mongolia.early_events.6 option mongolia.early_events.6.a"
+		name = mongolia.early_events.6.a
+		ai_chance = { base = 100 }
+		
+		add_popularity = { ideology = social_liberal popularity = 0.08 }
+		
+		fourth_estate_social_liberal_increase = yes
+		fourth_estate_democratic_socialist_decrease = yes
+	}
+}
+
+#Large March on the Capital
+country_event = {
+	id = mongolia.early_events.7
+	title = mongolia.early_events.7.t
+	desc = mongolia.early_events.7.desc
+	picture = GFX_report_event_protests
+	
+	trigger = { original_tag = MON }
+
+	is_triggered_only = yes
+	
+	option = {
+		log = "[GetLogInfo]: event mongolia.early_events.7 option mongolia.early_events.7.a"
+		name = mongolia.early_events.7.a
+		ai_chance = { base = 100 }
+		
+		add_popularity = { ideology = social_liberal popularity = 0.07 }
+		
+		fourth_estate_social_liberal_increase = yes
+		fourth_estate_democratic_socialist_decrease = yes
+	}
+}
+
+#The 2000 Mongolian General Election
+country_event = {
+	id = mongolia.early_events.8
+	title = mongolia.early_events.8.t
+	
+	desc = {
+		text = mongolia.early_events.8.desc_1
+		trigger = {
+			NOT = { 
+				has_country_flag = MON_2000_election_flag
+			}
+		}
+	}
+	
+	desc = {
+		text = mongolia.early_events.8.desc_2
+		trigger = {
+			has_country_flag = MON_2000_election_flag
+		}
+	}
+	
+	picture = GFX_report_event_mongolian_election
+	
+	trigger = { 
+		original_tag = MON 
+		date < 2001.01.01
+	}
+
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	option = {
+		log = "[GetLogInfo]: event mongolia.early_events.8 option mongolia.early_events.8.a"
+		name = mongolia.early_events.8.a
+		trigger = {
+			NOT = { 
+				has_country_flag = MON_2000_election_flag
+			}
+		}
+		ai_chance = { base = 100 }
+		
+		set_politics = {
+			ruling_party = democratic_socialist
+			elections_allowed = yes
+		}
+		
+		add_popularity = { ideology = democratic_socialist popularity = 0.05 }
+		
+		complete_national_focus = MON_the_triumph_of_socialism
+		
+		hidden_effect = {
+			news_event = { id = mongolia.news.1 hours = 8 }
+		}
+		
+		MON_rinchinnyamyn_amarjargal = {
+			retire_ideology_leader = market_liberal
+		}
+	}
+	
+	option = {
+		log = "[GetLogInfo]: event mongolia.early_events.8 option mongolia.early_events.8.b"
+		name = mongolia.early_events.8.b
+		trigger = {
+			has_country_flag = MON_2000_election_flag
+		}
+		
+		ai_chance = { base = 100 }
+		
+		set_politics = {
+			ruling_party = social_liberal
+			elections_allowed = yes
+		}
+		
+		MON_sanjaasuren_oyun = { 
+			promote_character = yes
+		}
+		
+		add_popularity = { ideology = social_liberal popularity = 0.25 }
+		
+		fourth_estate_social_liberal_increase = yes
+		fourth_estate_democratic_socialist_decrease = yes
+		
+		complete_national_focus = MON_victory_dedicated_to_zorig
+		
+		hidden_effect = {
+			news_event = { id = mongolia.news.1 hours = 8 }
+			country_event = { id = mongolia.events.6 days = 21 }
+			country_event = { id = mongolia.events.9 days = 42 }
+		}
+		
+		MON_rinchinnyamyn_amarjargal = {
+			retire_ideology_leader = market_liberal
+		}
+	}
+}
+
+ ########################################
+ #####                    mongolia events                   #####
+ ########################################
+ 
+#[FROM.GetLeader] Accepting Our Information
+country_event = {
+	id = mongolia.events.1
+	title = mongolia.events.1.t
+	desc = mongolia.events.1.desc
+	picture = GFX_report_event_trade_policy
+
+	is_triggered_only = yes
+	
+	option = {
+		log = "[GetLogInfo]: event mongolia.events.1 option mongolia.events.1.a"
+		name = mongolia.events.1.a
+		ai_chance = { base = 100 }
+	}
+}
+ 
+#Our Rejected Offer
+country_event = {
+	id = mongolia.events.2
+	title = mongolia.events.2.t
+	desc = mongolia.events.2.desc
+	picture = GFX_report_event_trade_policy
+
+	is_triggered_only = yes
+	
+	option = {
+		log = "[GetLogInfo]: event mongolia.events.2 option mongolia.events.2.a"
+		name = mongolia.events.2.a
+		ai_chance = { base = 100 }
+	}
+}
+ 
+#[FROM.GetNameDef]'s Proposal for Alliance
+country_event = {
+	id = mongolia.events.3
+	title = mongolia.events.3.t
+	desc = mongolia.events.3.desc
+	picture = GFX_report_event_system_of_governance
+
+	is_triggered_only = yes
+	
+	option = {
+		log = "[GetLogInfo]: event mongolia.events.3 option mongolia.events.3.a"
+		name = mongolia.events.3.a
+		ai_chance = { base = 100 }
+		add_to_faction = FROM
+		
+		FROM = {
+			add_ai_strategy = {
+				type = befriend
+				id = ROOT
+				value = 100
+			}
+			add_ai_strategy = {
+				type = send_volunteers_desire
+				id = ROOT
+				value = 100
+			}
+			add_ai_strategy = {
+				type = alliance
+				id = ROOT
+				value = 200
+			}
+		}
+		
+		ROOT = {
+			add_ai_strategy = {
+				type = befriend
+				id = FROM
+				value = 100
+			}
+			add_ai_strategy = {
+				type = send_volunteers_desire
+				id = FROM
+				value = 100
+			}
+			add_ai_strategy = {
+				type = alliance
+				id = FROM
+				value = 200
+			}
+		}
+		
+		hidden_effect = {
+			FROM = { country_event = { id = mongolia.events.4  } }
+		}
+	}
+	
+	option = {
+		log = "[GetLogInfo]: event mongolia.events.3 option mongolia.events.3.b"
+		name = mongolia.events.3.b
+		ai_chance = { base = 0 }
+		
+		hidden_effect = {
+			FROM = { country_event = { id = mongolia.events.5  } }
+		}
+	}
+}
+ 
+#The Success of the Alliance
+country_event = {
+	id = mongolia.events.4
+	title = mongolia.events.4.t
+	desc = mongolia.events.4.desc
+	picture = GFX_report_event_system_of_governance
+
+	is_triggered_only = yes
+	
+	option = {
+		log = "[GetLogInfo]: event mongolia.events.4 option mongolia.events.4.a"
+		name = mongolia.events.4.a
+		ai_chance = { base = 100 }
+	}
+}
+ 
+#The Rejected Alliance
+country_event = {
+	id = mongolia.events.5
+	title = mongolia.events.5.t
+	desc = mongolia.events.5.desc
+	picture = GFX_report_event_system_of_governance
+
+	is_triggered_only = yes
+	
+	option = {
+		log = "[GetLogInfo]: event mongolia.events.5 option mongolia.events.5.a"
+		name = mongolia.events.4.a
+		ai_chance = { base = 100 }
+	}
+}
+ 
+#The Meeting of [MON.GetLeader] and [CHI.GetLeader]
+country_event = {
+	id = mongolia.events.6
+	title = mongolia.events.6.t
+	desc = mongolia.events.6.desc
+	picture = GFX_report_event_taiwan_government
+
+	is_triggered_only = yes
+	
+	immediate = {
+		hidden_effect = {
+			add_opinion_modifier = {
+				target = CHI
+				modifier = diplomatic_proximity
+			}
+			CHI = {
+				add_opinion_modifier = {
+					target = MON
+					modifier = diplomatic_proximity
+				}
+			}
+		}
+	}
+	
+	trigger = {
+		CHI = { 
+			has_completed_focus = CHI_year_of_the_dragon
+			exists = yes 
+			NOT = { has_war_with = ROOT }
+		}
+	}
+	
+	option = {
+		log = "[GetLogInfo]: event mongolia.events.6 option mongolia.events.6.a"
+		name = mongolia.events.6.a
+		ai_chance = { base = 100 }
+		
+		diplomatic_relation = {
+			country = CHI
+			relation = non_aggression_pact
+			active = yes
+		}
+		
+		random_owned_controlled_state = {
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = arms_factory
+				level = 1
+				instant_build = yes
+			}
+		}
+		
+		hidden_effect = {
+			CHI = { country_event = { id = mongolia.events.7  } }
+			PRC = { country_event = { id = mongolia.events.8  } }
+		}
+	}
+}
+ 
+#The Meeting of [MON.GetLeader] and [CHI.GetLeader]
+country_event = {
+	id = mongolia.events.7
+	title = mongolia.events.6.t
+	desc = mongolia.events.6.desc
+	picture = GFX_report_event_taiwan_government
+
+	is_triggered_only = yes
+	
+	option = {
+		log = "[GetLogInfo]: event mongolia.events.7 option mongolia.events.7.a"
+		name = mongolia.events.7.a
+		ai_chance = { base = 100 }
+		
+		effect_tooltip = {
+			diplomatic_relation = {
+				country = MON
+				relation = non_aggression_pact
+				active = yes
+			}
+		}
+		
+		random_owned_controlled_state = {
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = arms_factory
+				level = 1
+				instant_build = yes
+			}
+		}
+	}
+}
+ 
+#The Meeting of [MON.GetLeader] and [CHI.GetLeader]
+country_event = {
+	id = mongolia.events.8
+	title = mongolia.events.6.t
+	desc = mongolia.events.6.desc
+	picture = GFX_report_event_taiwan_government
+
+	is_triggered_only = yes
+	
+	option = {
+		log = "[GetLogInfo]: event mongolia.events.8 option mongolia.events.8.a"
+		name = mongolia.events.8.a
+		ai_chance = { base = 100 }
+	}
+}
+ 
+#CWP meeting with LDP
+country_event = {
+	id = mongolia.events.9
+	title = mongolia.events.9.t
+	desc = mongolia.events.9.desc
+	picture = GFX_report_event_JAP_tokyo
+
+	is_triggered_only = yes
+	
+	immediate = {
+		hidden_effect = {
+			add_opinion_modifier = {
+				target = JAP
+				modifier = diplomatic_proximity
+			}
+			JAP = {
+				add_opinion_modifier = {
+					target = MON
+					modifier = diplomatic_proximity
+				}
+			}
+		}
+	}
+	
+	trigger = {
+		JAP = { 
+			exists = yes 
+			NOT = { has_war_with = ROOT }
+		}
+	}
+	
+	option = {
+		log = "[GetLogInfo]: event mongolia.events.9 option mongolia.events.9.a"
+		name = mongolia.events.9.a
+		ai_chance = { base = 100 }
+		
+		add_cic = 2500
+		
+		hidden_effect = {
+			JAP = { country_event = { id = mongolia.events.10  } }
+			PRC = { country_event = { id = mongolia.events.11  } }
+		}
+	}
+}
+ 
+#CWP meeting with LDP
+country_event = {
+	id = mongolia.events.10
+	title = mongolia.events.9.t
+	desc = mongolia.events.9.desc
+	picture = GFX_report_event_JAP_tokyo
+
+	is_triggered_only = yes
+	
+	option = {
+		log = "[GetLogInfo]: event mongolia.events.10 option mongolia.events.10.a"
+		name = mongolia.events.10.a
+		ai_chance = { base = 100 }
+		
+		add_popularity = {
+			ideology = conservative 
+			popularity = 0.02
+		}
+	}
+}
+ 
+#CWP meeting with LDP
+country_event = {
+	id = mongolia.events.11
+	title = mongolia.events.9.t
+	desc = mongolia.events.9.desc
+	picture = GFX_report_event_JAP_tokyo
+
+	is_triggered_only = yes
+	
+	option = {
+		log = "[GetLogInfo]: event mongolia.events.11 option mongolia.events.11.a"
+		name = mongolia.events.11.a
+		ai_chance = { base = 100 }
+	}
+}
