@@ -1,20 +1,29 @@
 on_actions = {
 	# country 
 	on_new_term_election = {
-		random_events = {
-			100 = election_USA.1
-			100 = election_USA.2
-			100 = election_USA.3
-			100 = election_USA.4
-			100 = election_USA.5
-			100 = election_USA.6
+	        effect = {
+	            if = {
+	                limit = { tag = USA }
+	                country_event = election_USA.1
+	                country_event = election_USA.2
+	                country_event = election_USA.3
+	                country_event = election_USA.4
+	                country_event = election_USA.5
+	                country_event = election_USA.6
+	            }
+	        }
+		effect = {
+			if = {
+				limit = { tag = PRC }
+				country_event = china_election.1
+			}
 		}
-		random_events = {
-			100 = china_election.1
-		}
-		random_events = {
-			100 = election_SOV.1
-		}
+	        effect = {
+	            if = {
+	                limit = { tag = SOV }
+	                country_event = election_SOV.1
+	            }
+	        }
 		effect = {
 			ARG = {
 				if = {
