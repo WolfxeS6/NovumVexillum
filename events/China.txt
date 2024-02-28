@@ -2288,35 +2288,40 @@ country_event = {
 			}
 			clear_variable = PRC.catholic_rebel
 			
-			create_dynamic_country = {
-				original_tag = THIS
-				#save_event_target_as = china_social_democrat_rebel
-				set_variable = { PRC.social_democrat_rebel = THIS }
-				ROOT = {
-					every_controlled_state = {
-						limit = {
-							has_state_flag = PRC_social_democrat_state_flag
-						}
-						var:PRC.social_democrat_rebel = {
-							transfer_state = PREV
+			if = {
+				limit = { 
+					NOT = { has_completed_focus = PRC_the_right_opposition }
+				}
+				create_dynamic_country = {
+					original_tag = THIS
+					#save_event_target_as = china_social_democrat_rebel
+					set_variable = { PRC.social_democrat_rebel = THIS }
+					ROOT = {
+						every_controlled_state = {
+							limit = {
+								has_state_flag = PRC_social_democrat_state_flag
+							}
+							var:PRC.social_democrat_rebel = {
+								transfer_state = PREV
+							}
 						}
 					}
-				}
-				set_popularities = {
-					social_democrat = 80
-					communist = 20
-				}
-				set_politics = {
-					ruling_party = social_democrat
-					elections_allowed = no
-				}
-				
-				set_cosmetic_tag = REE
-				
-				set_rule = { 
-					can_join_factions = no 
-					can_create_factions = no
-					can_not_declare_war = yes
+					set_popularities = {
+						social_democrat = 80
+						communist = 20
+					}
+					set_politics = {
+						ruling_party = social_democrat
+						elections_allowed = no
+					}
+					
+					set_cosmetic_tag = REE
+					
+					set_rule = { 
+						can_join_factions = no 
+						can_create_factions = no
+						can_not_declare_war = yes
+					}
 				}
 			}
 			clear_variable = PRC.social_democrat_rebel	
@@ -2328,6 +2333,7 @@ country_event = {
 				}
 				save_event_target_as = china_social_democrat_rebel
 				set_country_flag = PRC_social_democrat_china_flag
+				load_focus_tree = generic_focus
 			}
 			
 			random_other_country = {
@@ -2337,6 +2343,7 @@ country_event = {
 				}
 				save_event_target_as = china_catholic_rebel
 				set_country_flag = PRC_catholic_china_flag
+				load_focus_tree = generic_focus
 			}
 		
 			if = {
@@ -2556,6 +2563,7 @@ country_event = {
 			}
 			save_event_target_as = china_nationalist_rebel
 			set_country_flag = PRC_nationalist_china_flag
+			load_focus_tree = generic_focus
 		}
 		
 		hidden_effect = {
