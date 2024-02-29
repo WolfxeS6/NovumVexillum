@@ -11,6 +11,18 @@ on_actions = {
 		}
 	}
 	
+	on_unit_leader_level_up = {
+		effect = {
+			if = {
+				limit = {
+					FROM = { tag = CHI }
+					ROOT = { has_trait = trait_chi_patriot_traits }
+				}
+				unit_leader_event = ro_china.mid_events.11
+			}
+		}
+	}
+	
 	on_state_control_changed = {
 	#	effect = {
 	#		if = {
@@ -56,7 +68,7 @@ on_actions = {
 				limit = {
 					has_country_leader = {
 						ruling_only = yes
-						character = CHI_lee_tenghui
+						character = CHI_lee_teng_hui
 					}
 				}
 				

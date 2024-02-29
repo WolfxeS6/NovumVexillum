@@ -15,164 +15,7 @@
    	shared_focus = CHINESE_the_end_of_the_1999_crisis
 
 	continuous_focus_position = { x = 200 y = 2000 }
-	########################################
-	####2004 Chen  DEAD  Moved for relative_pos #####
-	########################################
-
-	focus = {
-		id = CHI_black_bullet
-		icon = CHI_black_bullet
-		x = 19
-		y = 0
-
-		cost = 1.5
-
-		ai_will_do = {
-			base = 1000
-		}
-
-		available = {
-		}
-
-		allow_branch = {
-			has_country_flag = CHI_2004_election_flag
-			has_country_flag = CHI_chen_2004_dead
-		}
-
-		bypass = {
-		}
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = no
-		search_filters = {  }
-
-		completion_reward = {
-			country_event = { id = ro_china.mid_events.5 }
-		}
-	}
-
-	focus = {
-		id = CHI_keep_order
-		icon = CHI_keep_order
-		x = 0
-		y = 1
-
-		cost = 1.5
-
-		relative_position_id = CHI_black_bullet
-
-		ai_will_do = {
-			base = 1		
-		}
-
-		prerequisite = { focus = CHI_black_bullet }
-
-		bypass = {
-		}
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = no
-		search_filters = {  }
-
-		completion_reward = {
-			add_political_power = -75
-		}
-	}
-
-	focus = {
-		id = CHI_the_successor
-		icon = CHI_the_successor
-		x = -2
-		y = 1
-
-		cost = 1.5
-
-		relative_position_id = CHI_black_bullet
-
-		ai_will_do = {
-			base = 1000
-		}
-
-		prerequisite = { focus = CHI_black_bullet }
-
-		bypass = {
-		}
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = no
-		search_filters = {  }
-
-		completion_reward = {
-			add_to_variable = { NVX_ECO_health = -2 tooltip = minous_economic_health_2 }
-		}
-	}
-
-	focus = {
-		id = CHI_the_martyr
-		icon = CHI_the_martyr
-		x = 2
-		y = 1
-
-		cost = 1.5
-
-		relative_position_id = CHI_black_bullet
-
-		ai_will_do = {
-			base = 1000
-		}
-
-		prerequisite = { focus = CHI_black_bullet }
-
-		bypass = {
-		}
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = no
-		search_filters = {  }
-
-		completion_reward = {
-			add_war_support = -0.05
-		}
-	}
-
-	focus = {
-		id = CHI_national_regeneration
-		icon = CHI_national_regeneration
-		x = 0
-		y = 2
-
-		cost = 3
-
-		relative_position_id = CHI_black_bullet
-
-		ai_will_do = {
-			base = 1000
-		}
-
-		prerequisite = { focus = CHI_keep_order }
-		prerequisite = { focus = CHI_the_successor }
-		prerequisite = { focus = CHI_the_martyr }
-
-		bypass = {
-		}
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = no
-		search_filters = {  }
-
-		completion_reward = {
-			CHI_decrease_martial_law_effect = yes
-			add_research_slot = 1
-		}
-	}
-	########################################
-	####NOT related to 2004 Chen  DEAD#####
-	########################################
+	
 	focus = {
 		id = CHI_year_of_the_dragon
 		icon = CHI_year_of_the_dragon
@@ -906,14 +749,14 @@
 	focus = {
 		id = CHI_taiwan_defense_plan
 		icon = CHI_taiwan_defense_plan_II
-		x = -7
+		x = -8
 		y = 1
 
 		relative_position_id = CHI_year_of_the_dragon 
 
 		prerequisite = { focus = CHI_year_of_the_dragon }
 
-		cost = 10
+		cost = 8
 
 		ai_will_do = {
 			base = 1
@@ -957,7 +800,7 @@
 	focus = {
 		id = CHI_toward_independence
 		icon = GFX_goal_generic_position_armies
-		x = 3
+		x = 4
 		y = 1
 
 		relative_position_id = CHI_taiwan_defense_plan 
@@ -1143,6 +986,14 @@
 		search_filters = {  }
 
 		completion_reward = {
+			if = {
+				limit = {
+					check_variable = { CHI_republic_of_china_armed_forces_equipment_upgrade_xp_cost > 0 }
+				}
+				custom_effect_tooltip = CHI_republic_of_china_armed_forces_tt
+				add_to_variable = { CHI_republic_of_china_armed_forces_equipment_upgrade_xp_cost = -0.1 tooltip = CHI_modernization_of_the_army_1_tt }
+			}
+
 			army_experience = 25
 			add_command_power = 40
 			add_doctrine_cost_reduction = {
@@ -1191,6 +1042,14 @@
 		search_filters = {  }
 
 		completion_reward = {
+			if = {
+				limit = {
+					check_variable = { CHI_republic_of_china_armed_forces_equipment_upgrade_xp_cost > 0 }
+				}
+				custom_effect_tooltip = CHI_republic_of_china_armed_forces_tt
+				add_to_variable = { CHI_republic_of_china_armed_forces_equipment_upgrade_xp_cost = -0.1 tooltip = CHI_prepare_weapons_1_tt }
+			}
+
 			random_core_state = {
 				prioritize = { 524 } #Taipei
 				limit = {
@@ -1251,6 +1110,15 @@
 		search_filters = {  }
 
 		completion_reward = {
+
+			if = {
+				limit = {
+					check_variable = { CHI_republic_of_china_armed_forces_industrial_capacity_dockyard < 0 }
+				}
+				custom_effect_tooltip = CHI_republic_of_china_armed_forces_tt
+				add_to_variable = { CHI_republic_of_china_armed_forces_industrial_capacity_dockyard = 0.05 tooltip = CHI_military_enterprises_should_not_be_stopped_1_tt }
+			}
+
 			every_military_industrial_organization = {
 				tooltip = every_mio_tt
 				add_mio_funds = 200
@@ -1414,6 +1282,15 @@
 		search_filters = {  }
 
 		completion_reward = {
+
+			if = {
+				limit = {
+					check_variable = { CHI_republic_of_china_armed_forces_industrial_capacity_dockyard < 0 }
+				}
+				custom_effect_tooltip = CHI_republic_of_china_armed_forces_tt
+				add_to_variable = { CHI_republic_of_china_armed_forces_industrial_capacity_dockyard = 0.05 tooltip = CHI_for_the_abandoned_navy_1_tt }
+			}
+
 			add_doctrine_cost_reduction = {
 				cost_reduction = 0.5
 				uses = 1
@@ -1911,6 +1788,15 @@
 		search_filters = {  }
 
 		completion_reward = {
+
+			if = {
+				limit = {
+					check_variable = { CHI_republic_of_china_armed_forces_industrial_capacity_dockyard < 0 }
+				}
+				custom_effect_tooltip = CHI_republic_of_china_armed_forces_tt
+				add_to_variable = { CHI_republic_of_china_armed_forces_industrial_capacity_dockyard = 0.05 tooltip = CHI_taiwan_infrastructure_problems_1_tt }
+			}
+
 			add_command_power = 40
 			if = {
 				limit = { has_idea = CHI_unprepared_army_1 }
@@ -2016,6 +1902,105 @@
 	}
 
 	focus = {
+		id = CHI_expand_arsenals
+		icon = GFX_focus_generic_modernize_industry
+
+		prerequisite = { 
+			focus = CHI_safety_first_policy 
+			focus = CHI_toward_independence 
+		}
+
+		x = -1
+		y = 2
+		relative_position_id = CHI_taiwan_defense_plan
+		cost = 4
+		available = {
+		}
+
+		search_filters = {  }
+
+		completion_reward = { 
+			activate_targeted_decision = { target = 524 decision = CHI_expansion_200_arsenal_decision }
+			activate_targeted_decision = { target = 920 decision = CHI_expansion_202_arsenal_decision }
+			activate_targeted_decision = { target = 1076 decision = CHI_expansion_205_arsenal_decision }
+			activate_targeted_decision = { target = 1075 decision = CHI_expansion_208_arsenal_decision }
+			activate_targeted_decision = { target = 921 decision = CHI_expansion_210_arsenal_decision }
+		}
+	}
+
+	focus = {
+		id = CHI_focus_on_CSBC
+		icon = GFX_focus_generic_merchant_fleet
+		
+		prerequisite = { 
+			focus = CHI_expand_arsenals 
+		}
+
+		available = {
+			OR = {
+				has_completed_focus = CHI_additional_shipyard_construction
+				has_completed_focus = CHI_glory_of_taiwan_s_independence_army
+			}
+		}
+
+		x = -2
+		y = 3
+		relative_position_id = CHI_taiwan_defense_plan
+		cost = 4
+
+		available = {
+		}
+
+		search_filters = {  }
+
+		completion_reward = { 
+			custom_effect_tooltip = available_designer
+			show_mio_tooltip = CHI_CSBC_Corporation_organization
+
+			mio:CHI_CSBC_Corporation_organization = {
+				add_mio_funds = 1000
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_expansion_of_armour_production
+		icon = GFX_focus_generic_tank_production
+		
+		prerequisite = { 
+			focus = CHI_expand_arsenals 
+		}
+
+		available = {
+			OR = {
+				has_completed_focus = CHI_more_faster_army
+				has_completed_focus = CHI_preparing_for_the_longist_war
+			}
+		}
+
+		x = -1
+		y = 4
+		relative_position_id = CHI_taiwan_defense_plan
+		cost = 4
+
+		available = {
+		}
+
+		search_filters = {  }
+
+		completion_reward = { 
+			CHI_decrease_armor_production_effect = yes
+
+			add_tech_bonus = {
+				name = CHI_expansion_of_armour_production
+				bonus = 1
+				uses = 1
+				category = armor
+			}
+		}
+	}
+
+	focus = {
 		id = CHI_expand_air_bases
 		icon = GFX_focus_generic_air_bases
 		prerequisite = { 
@@ -2023,7 +2008,7 @@
 			focus = CHI_toward_independence 
 		}
 
-		x = 0
+		x = 1
 		y = 2
 		relative_position_id = CHI_taiwan_defense_plan
 		cost = 10
@@ -2165,7 +2150,7 @@
 				name = Jun-yi
 				surname = Chen
 				callsign = Chen
-				is_female = yes
+				gender = female
 				type = fighter_good
 			}
 		}
@@ -3203,6 +3188,10 @@
 
 		ai_will_do = {
 			base = 1		
+			modifier = {
+				add = 4
+				date > 2006.01.01
+			}
 		}
 
 		prerequisite = { focus = CHI_the_republic_s_only_salvation }
@@ -3217,6 +3206,7 @@
 
 		completion_reward = {
 			add_country_leader_trait = taiwanese_reformer
+			country_event = { id = ro_china.mid_events.13 }
 		}
 	}
 
@@ -3651,6 +3641,161 @@
 		}
 	}
 
+########################################
+####      2004 Chen  DEAD          #####
+########################################
+
+	focus = {
+		id = CHI_black_bullet
+		icon = CHI_black_bullet
+		x = 19
+		y = 0
+
+		cost = 1.5
+
+		ai_will_do = {
+			base = 1000
+		}
+
+		available = {
+		}
+
+		allow_branch = {
+			has_country_flag = CHI_2004_election_flag
+			has_country_flag = CHI_chen_2004_dead
+		}
+
+		bypass = {
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		search_filters = {  }
+
+		completion_reward = {
+			country_event = { id = ro_china.mid_events.5 }
+		}
+	}
+
+	focus = {
+		id = CHI_keep_order
+		icon = CHI_keep_order
+		x = 0
+		y = 1
+
+		cost = 1.5
+
+		relative_position_id = CHI_black_bullet
+
+		ai_will_do = {
+			base = 1		
+		}
+
+		prerequisite = { focus = CHI_black_bullet }
+
+		bypass = {
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		search_filters = {  }
+
+		completion_reward = {
+			add_political_power = -75
+		}
+	}
+
+	focus = {
+		id = CHI_the_successor
+		icon = CHI_the_successor
+		x = -2
+		y = 1
+
+		cost = 1.5
+
+		relative_position_id = CHI_black_bullet
+
+		ai_will_do = {
+			base = 1000
+		}
+
+		prerequisite = { focus = CHI_black_bullet }
+
+		bypass = {
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		search_filters = {  }
+
+		completion_reward = {
+			add_to_variable = { NVX_ECO_health = -2 tooltip = minous_economic_health_2 }
+		}
+	}
+
+	focus = {
+		id = CHI_the_martyr
+		icon = CHI_the_martyr
+		x = 2
+		y = 1
+
+		cost = 1.5
+
+		relative_position_id = CHI_black_bullet
+
+		ai_will_do = {
+			base = 1000
+		}
+
+		prerequisite = { focus = CHI_black_bullet }
+
+		bypass = {
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		search_filters = {  }
+
+		completion_reward = {
+			add_war_support = -0.05
+		}
+	}
+
+	focus = {
+		id = CHI_national_regeneration
+		icon = CHI_national_regeneration
+		x = 0
+		y = 2
+
+		cost = 3
+
+		relative_position_id = CHI_black_bullet
+
+		ai_will_do = {
+			base = 1000
+		}
+
+		prerequisite = { focus = CHI_keep_order }
+		prerequisite = { focus = CHI_the_successor }
+		prerequisite = { focus = CHI_the_martyr }
+
+		bypass = {
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		search_filters = {  }
+
+		completion_reward = {
+			CHI_decrease_martial_law_effect = yes
+			add_research_slot = 1
+		}
+	}
 
 ########################################
 ####      2004 Wu Shu-chen         #####
@@ -5135,6 +5280,14 @@
 
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus CHI_taiwan_navy_expansion"
+
+			if = {
+				limit = {
+					check_variable = { CHI_republic_of_china_armed_forces_industrial_capacity_dockyard < 0 }
+				}
+				custom_effect_tooltip = CHI_republic_of_china_armed_forces_tt
+				add_to_variable = { CHI_republic_of_china_armed_forces_industrial_capacity_dockyard = 0.1 tooltip = CHI_taiwan_navy_expansion_1_tt }
+			}
 
 			random_owned_state = {
 				limit = {

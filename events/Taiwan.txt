@@ -1013,6 +1013,13 @@ country_event = {
 		ai_chance = { base = 0 }
 		country_event = { id = ro_china.introgame.1003 }
 	}
+
+	option = {
+		log = "[GetLogInfo]: event ro_china.introgame.1000 option ro_china.introgame.1000.d"
+		name = ro_china.introgame.1000.d
+		ai_chance = { base = 0 }
+		country_event = { id = ro_china.introgame.1004 }
+	}
 }
 
 country_event = { #Pan Blue, and Pan Green (Part 1)
@@ -1051,6 +1058,13 @@ country_event = { #Pan Blue, and Pan Green (Part 2)
 		ai_chance = { base = 100 }
 		country_event = { id = ro_china.introgame.1003 }
 	}
+
+	option = {
+		log = "[GetLogInfo]: event ro_china.introgame.1002 option ro_china.introgame.1002.c"
+		name = ro_china.introgame.1002.c
+		ai_chance = { base = 0 }
+		country_event = { id = ro_china.introgame.1004 }
+	}
 }
 
 country_event = { #The Diplomatic Situation
@@ -1072,6 +1086,42 @@ country_event = { #The Diplomatic Situation
 		name = ro_china.introgame.1003.b
 		ai_chance = { base = 0 }
 		country_event = { id = ro_china.introgame.1001 }
+	}
+
+	option = {
+		log = "[GetLogInfo]: event ro_china.introgame.1003 option ro_china.introgame.1003.c"
+		name = ro_china.introgame.1003.c
+		ai_chance = { base = 0 }
+		country_event = { id = ro_china.introgame.1004 }
+	}
+}
+
+country_event = { #Taiwanese Path Spoiler
+	id = ro_china.introgame.1004
+	title = ro_china.introgame.1004.t
+	desc = ro_china.introgame.1004.desc
+	picture = GFX_report_event_taiwan_government
+
+	is_triggered_only = yes
+
+	option = {
+		log = "[GetLogInfo]: event ro_china.introgame.1004 option ro_china.introgame.1004.a"
+		name = ro_china.introgame.1004.a
+		ai_chance = { base = 100 }
+	}
+
+	option = {
+		log = "[GetLogInfo]: event ro_china.introgame.1004 option ro_china.introgame.1004.b"
+		name = ro_china.introgame.1004.b
+		ai_chance = { base = 0 }
+		country_event = { id = ro_china.introgame.1001 }
+	}
+
+	option = {
+		log = "[GetLogInfo]: event ro_china.introgame.1004 option ro_china.introgame.1004.c"
+		name = ro_china.introgame.1004.c
+		ai_chance = { base = 0 }
+		country_event = { id = ro_china.introgame.1003 }
 	}
 }
 
@@ -1359,10 +1409,10 @@ country_event = { #Last \"Republic of China\"
 	immediate = {
 		hidden_effect = {
 			add_opinion_modifier = {
-				target = HLS
+				target = HIS
 				modifier = diplomatic_proximity
 			}
-			HLS = {
+			HIS = {
 				add_opinion_modifier = {
 					target = CHI
 					modifier = diplomatic_proximity
@@ -1468,7 +1518,7 @@ country_event = { #Lee Teng-hui Found Taiwan Solidarity Union
 	desc = {
 		text = ro_china.early_events.9.desc_1
 		trigger = {
-			NOT = { has_completed_focus = CHI_coalition_with_lee_teng_hui }
+			NOT { has_completed_focus = CHI_coalition_with_lee_teng_hui }
 		}
 	}
 	
@@ -2112,6 +2162,13 @@ country_event = { #
 		if = {
 			limit = { NOT = { has_country_flag = CHI_chen_2004_dead } }
 			set_country_flag = CHI_chen_2004_victory
+			
+			CHI_chen_shuibian = {
+				set_portraits = {
+					civilian = { large = "gfx/leaders/CHI/Chen_Shui_Bian_2.dds" } #old
+				}
+			}
+			set_country_leader_description = { desc = POLITICS_CHEN_SHUI_BIAN_2004_DESC }
 		}
 		else_if = { 
 			limit = {
@@ -2380,6 +2437,46 @@ country_event = { #Operation to Arrest Sniper
 	}
 }
 
+#Action Now!
+unit_leader_event = {
+	id = ro_china.mid_events.11
+	title = ro_china.mid_events.11.t
+	
+	desc = {
+		text = ro_china.mid_events.11.desc.luo
+		trigger = { THIS = { is_character = CHI_luo_ben_li } }
+	}
+	
+	desc = {
+		text = ro_china.mid_events.11.desc.huo
+		trigger = { THIS = { is_character = CHI_huo_shou_ye } }
+	}
+	
+	desc = {
+		text = ro_china.mid_events.11.desc.tang
+		trigger = { THIS = { is_character = CHI_tang_yao_ming } }
+	}
+	
+	desc = {
+		text = ro_china.mid_events.11.desc.generic
+		trigger = { 
+			NOT = { THIS = { is_character = CHI_luo_ben_li } }
+			NOT = { THIS = { is_character = CHI_huo_shou_ye } }
+			NOT = { THIS = { is_character = CHI_tang_yao_ming } }
+		}
+	}
+
+	is_triggered_only = yes
+
+	option = {
+		log = "[GetLogInfo]: event ro_china.mid_events.11 option ro_china.mid_events.11.a"
+		name = ro_china.mid_events.11.a #Long live the [From.GetName]!
+		
+		CHI_bop_low_increase_effect = yes
+		add_political_power = 50
+	}
+}
+
 country_event = { #Kuomintang Refuses to Admit Defeat
 	id = ro_china.mid_events.12
 	title = ro_china.mid_events.12.t
@@ -2542,6 +2639,39 @@ country_event = {
 }
 
 country_event = { #DEBUG
+	id = ro_china.mid_events.998
+	title = ro_china.mid_events.998.t
+	desc = ro_china.mid_events.998.desc
+	picture = GFX_report_event_assassination
+
+	is_triggered_only = yes
+	
+	option = {
+		log = "[GetLogInfo]: event ro_china.mid_events.999 option ro_china.mid_events.999.a"
+		name = ro_china.mid_events.999.a
+		CHI_luo_ben_li ={
+			unit_leader_event = ro_china.mid_events.11
+		}
+	}
+	
+	option = {
+		log = "[GetLogInfo]: event ro_china.mid_events.999 option ro_china.mid_events.999.b"
+		name = ro_china.mid_events.999.b
+		CHI_huo_shou_ye ={
+			unit_leader_event = ro_china.mid_events.11
+		}
+	}
+	
+	option = {
+		log = "[GetLogInfo]: event ro_china.mid_events.999 option ro_china.mid_events.999.c"
+		name = ro_china.mid_events.999.c
+		CHI_tang_yao_ming ={
+			unit_leader_event = ro_china.mid_events.11
+		}
+	}
+}
+
+country_event = { #DEBUG
 	id = ro_china.mid_events.999
 	title = ro_china.mid_events.999.t
 	desc = ro_china.mid_events.999.desc
@@ -2671,6 +2801,27 @@ country_event = { #[FROM.GetAdjective] begins the War
 	}
 }
 
+country_event = { #[Traitors fleeing to China
+	id = ro_china.independence_events.5
+	title = ro_china.independence_events.5.t
+	desc = ro_china.independence_events.5.desc
+	picture = GFX_report_event_taiwan_army_1
+
+	is_triggered_only = yes
+	
+	option = {
+		log = "[GetLogInfo]: event ro_china.independence_events.5 option ro_china.independence_events.5.a"
+		name = ro_china.independence_events.5.a
+		
+		every_character = {
+			limit = {
+				has_trait = trait_chi_pan_nationalist_traits
+			}
+			set_nationality = PRC
+		}
+	}
+}
+
 country_event = { #Evacuation of Islanders
 	id = ro_china.independence_events.100
 	title = ro_china.independence_events.100.t
@@ -2768,6 +2919,10 @@ country_event = { #Hau Pei-tsun Wants to Return to the Army
 		ai_chance = { base = 95 }
 		trigger = { taiwan_wu_shu_chen_dystopia = yes }
 		add_manpower = 1
+		
+		CHI_hau_pei_tsun = {
+			set_character_flag = CHI_purged_generals
+		}
 	}
 }
 
@@ -3508,11 +3663,14 @@ country_event = { #The 2008 Taiwanese Presidential Election
 					ruling_only = yes
 				}
 			}
-			CHI_chen_shuibian = { 
-				retire = yes
-			}
 			CHI_frank_hsieh = { 
 				promote_character = yes
+			}
+			
+			CHI_chen_shuibian = {
+				set_portraits = {
+					civilian = { large = "gfx/leaders/CHI/Chen_Shui_Bian_3.dds" } #more old
+				}
 			}
 		}
 	}
@@ -3571,9 +3729,13 @@ country_event = { #The 2008 Taiwanese Presidential Election
 					ruling_only = yes
 				}
 			}
-			CHI_chen_shuibian = { 
-				retire = yes
+			
+			CHI_chen_shuibian = {
+				set_portraits = {
+					civilian = { large = "gfx/leaders/CHI/Chen_Shui_Bian_3.dds" } #more old
+				}
 			}
+			
 			CHI_frank_hsieh = { 
 				promote_character = yes
 			}
@@ -3932,7 +4094,7 @@ country_event = { #Kuomintang's Declaration of Dissolution
 				promote_leader = yes
 				country_leader = {
 					desc = "POLITICIAN_james_soong_DESC"
-					ideology = pan_blue_ideology
+					ideology = pan_blue
 					traits = {	}
 				}
 			}

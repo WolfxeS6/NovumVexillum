@@ -11,7 +11,7 @@ CHI_national_defense_category = {
 	priority = 88
 	
 	visible = {
-		NOT = { has_completed_focus = CHI_taiwan_the_formosa }
+		NOT { has_completed_focus = CHI_taiwan_the_formosa }
 	}
 
 	on_map_area = {
@@ -85,4 +85,34 @@ CHI_PRC_battle_contents = {
 	}
 	
 	visible_when_empty = yes
+}
+
+CHI_arsenal_expansion = {
+	icon = GFX_decision_category_power_struggle
+	
+	allowed = {
+		original_tag = CHI
+	}
+	
+	priority = 10
+	
+	visible = {
+		has_completed_focus = CHI_taiwan_defense_plan
+	}
+}
+
+CHI_military_modernisation = {
+	icon = GFX_decision_category_army_reform
+	
+	allowed = {
+		original_tag = CHI
+	}
+	
+	picture = GFX_decision_cat_picture_taiwanese_military_modernisation
+	
+	priority = 8
+	
+	visible = {
+		always = yes
+	}
 }

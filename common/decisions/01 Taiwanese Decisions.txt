@@ -1459,7 +1459,7 @@ CHI_PRC_battle_contents = {
 		}
 		
 		complete_effect = {
-			add_command_power = -15
+			command_power = -15
 			set_country_flag = { flag = blue_and_green_battle_card_playing value = 1 days = 7 }
 		}
 	}
@@ -1512,6 +1512,640 @@ CHI_PRC_battle_contents = {
 		
 		complete_effect = {
 			set_country_flag = { flag = blue_and_green_battle_card_playing value = 1 days = 7 }
+		}
+	}
+}
+
+CHI_arsenal_expansion = {
+
+	CHI_expansion_200_arsenal_decision = {
+		allowed = { always = no } #Targeted decision made on start up
+		icon = GFX_decision_ger_military_buildup
+		
+		visible = {
+			owns_state = FROM
+		}
+		
+		available = {
+			controls_state = FROM
+		}
+		
+		highlight_states = {
+			highlight_state_targets = { state = FROM }
+		}
+		
+		state_target = yes
+		cancel_trigger = { NOT = { controls_state = FROM } }
+		cancel_if_not_visible = yes
+
+		fire_only_once = yes
+		ai_will_do = { factor = 100 }
+		
+		cost = 50
+		days_remove = 200
+		
+		#modifier = {
+		#	political_power_cost = 0.5
+		#}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision complete CHI_expansion_major_arsenal_decision target: [From.GetName]"
+		}
+		
+		cancel_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision cancel CHI_expansion_major_arsenal_decision target: [From.GetName]"
+		}
+		
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove CHI_expansion_major_arsenal_decision target: [From.GetName]"
+			mio:CHI_armaments_bureau_organization = {
+				add_mio_funds = 500
+			}
+			mio:CHI_AVDC_organization = {
+				add_mio_funds = 500
+			}
+			mio:CHI_209th_organization = {
+				add_mio_funds = 500
+			}
+			
+			if = {
+				limit = {
+					check_variable = { CHI_republic_of_china_armed_forces_equipment_upgrade_xp_cost > 0 }
+				}
+				custom_effect_tooltip = CHI_republic_of_china_armed_forces_tt
+				add_to_variable = { CHI_republic_of_china_armed_forces_equipment_upgrade_xp_cost = -0.1 tooltip = CHI_expansion_arsenal_decision_tt }
+			}
+		}
+	}
+
+	CHI_expansion_202_arsenal_decision = {
+		allowed = { always = no } #Targeted decision made on start up
+		icon = GFX_decision_ger_military_buildup
+		
+		visible = {
+			owns_state = FROM
+		}
+		
+		available = {
+			controls_state = FROM
+		}
+		
+		highlight_states = {
+			highlight_state_targets = { state = FROM }
+		}
+		
+		state_target = yes
+		cancel_trigger = { NOT = { controls_state = FROM } }
+		cancel_if_not_visible = yes
+
+		fire_only_once = yes
+		ai_will_do = { factor = 100 }
+		
+		cost = 50
+		days_remove = 200
+		
+		#modifier = {
+		#	political_power_cost = 0.5
+		#}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision complete CHI_expansion_major_arsenal_decision target: [From.GetName]"
+		}
+		
+		cancel_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision cancel CHI_expansion_major_arsenal_decision target: [From.GetName]"
+		}
+		
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove CHI_expansion_major_arsenal_decision target: [From.GetName]"
+			mio:CHI_armaments_bureau_organization = {
+				add_mio_funds = 500
+			}
+			mio:CHI_AVDC_organization = {
+				add_mio_funds = 500
+			}
+			mio:CHI_209th_organization = {
+				add_mio_funds = 500
+			}
+			
+			if = {
+				limit = {
+					check_variable = { CHI_republic_of_china_armed_forces_equipment_upgrade_xp_cost > 0 }
+				}
+				custom_effect_tooltip = CHI_republic_of_china_armed_forces_tt
+				add_to_variable = { CHI_republic_of_china_armed_forces_equipment_upgrade_xp_cost = -0.1 tooltip = CHI_expansion_arsenal_decision_tt }
+			}
+		}
+	}
+	
+	CHI_expansion_205_arsenal_decision = {
+		allowed = { always = no } #Targeted decision made on start up
+		icon = GFX_decision_ger_military_buildup
+		
+		visible = {
+			owns_state = FROM
+		}
+		
+		available = {
+			controls_state = FROM
+		}
+		
+		highlight_states = {
+			highlight_state_targets = { state = FROM }
+		}
+		
+		state_target = yes
+		cancel_trigger = { NOT = { controls_state = FROM } }
+		cancel_if_not_visible = yes
+
+		fire_only_once = yes
+		ai_will_do = { factor = 100 }
+		
+		cost = 50
+		days_remove = 200
+		
+		#modifier = {
+		#	political_power_cost = 0.5
+		#}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision complete CHI_expansion_major_arsenal_decision target: [From.GetName]"
+		}
+		
+		cancel_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision cancel CHI_expansion_major_arsenal_decision target: [From.GetName]"
+		}
+		
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove CHI_expansion_major_arsenal_decision target: [From.GetName]"
+			mio:CHI_armaments_bureau_organization = {
+				add_mio_funds = 500
+			}
+			mio:CHI_AVDC_organization = {
+				add_mio_funds = 500
+			}
+			mio:CHI_209th_organization = {
+				add_mio_funds = 500
+			}
+			
+			if = {
+				limit = {
+					check_variable = { CHI_republic_of_china_armed_forces_equipment_upgrade_xp_cost > 0 }
+				}
+				custom_effect_tooltip = CHI_republic_of_china_armed_forces_tt
+				add_to_variable = { CHI_republic_of_china_armed_forces_equipment_upgrade_xp_cost = -0.1 tooltip = CHI_expansion_arsenal_decision_tt }
+			}
+			
+		}
+	}
+	
+	CHI_expansion_208_arsenal_decision = {
+		allowed = { always = no } #Targeted decision made on start up
+		icon = GFX_decision_ger_military_buildup
+		
+		visible = {
+			owns_state = FROM
+		}
+		
+		available = {
+			controls_state = FROM
+		}
+		
+		highlight_states = {
+			highlight_state_targets = { state = FROM }
+		}
+		
+		state_target = yes
+		cancel_trigger = { NOT = { controls_state = FROM } }
+		cancel_if_not_visible = yes
+
+		fire_only_once = yes
+		ai_will_do = { factor = 100 }
+		
+		cost = 50
+		days_remove = 200
+		
+		#modifier = {
+		#	political_power_cost = 0.5
+		#}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision complete CHI_expansion_major_arsenal_decision target: [From.GetName]"
+		}
+		
+		cancel_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision cancel CHI_expansion_major_arsenal_decision target: [From.GetName]"
+		}
+		
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove CHI_expansion_major_arsenal_decision target: [From.GetName]"
+			mio:CHI_armaments_bureau_organization = {
+				add_mio_funds = 500
+			}
+			mio:CHI_AVDC_organization = {
+				add_mio_funds = 500
+			}
+			mio:CHI_209th_organization = {
+				add_mio_funds = 500
+			}
+			
+			if = {
+				limit = {
+					check_variable = { CHI_republic_of_china_armed_forces_equipment_upgrade_xp_cost > 0 }
+				}
+				custom_effect_tooltip = CHI_republic_of_china_armed_forces_tt
+				add_to_variable = { CHI_republic_of_china_armed_forces_equipment_upgrade_xp_cost = -0.1 tooltip = CHI_expansion_arsenal_decision_tt }
+			}
+		}
+	}
+	
+	CHI_expansion_210_arsenal_decision = {
+		allowed = { always = no } #Targeted decision made on start up
+		icon = GFX_decision_ger_military_buildup
+		
+		visible = {
+			owns_state = FROM
+		}
+		
+		available = {
+			controls_state = FROM
+		}
+		
+		highlight_states = {
+			highlight_state_targets = { state = FROM }
+		}
+		
+		state_target = yes
+		cancel_trigger = { NOT = { controls_state = FROM } }
+		cancel_if_not_visible = yes
+
+		fire_only_once = yes
+		ai_will_do = { factor = 100 }
+		
+		cost = 50
+		days_remove = 200
+		
+		#modifier = {
+		#	political_power_cost = 0.5
+		#}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision complete CHI_expansion_major_arsenal_decision target: [From.GetName]"
+		}
+		
+		cancel_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision cancel CHI_expansion_major_arsenal_decision target: [From.GetName]"
+		}
+		
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove CHI_expansion_major_arsenal_decision target: [From.GetName]"
+			mio:CHI_armaments_bureau_organization = {
+				add_mio_funds = 500
+			}
+			mio:CHI_AVDC_organization = {
+				add_mio_funds = 500
+			}
+			mio:CHI_209th_organization = {
+				add_mio_funds = 500
+			}
+			
+			if = {
+				limit = {
+					check_variable = { CHI_republic_of_china_armed_forces_equipment_upgrade_xp_cost > 0 }
+				}
+				custom_effect_tooltip = CHI_republic_of_china_armed_forces_tt
+				add_to_variable = { CHI_republic_of_china_armed_forces_equipment_upgrade_xp_cost = -0.1 tooltip = CHI_expansion_arsenal_decision_tt }
+			}
+		}
+	}
+}
+
+CHI_military_modernisation = {
+
+	CHI_completion_of_military_modernisation = {
+		icon = GFX_decision_generic_research
+		
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = CHI_completion_of_air_equipment_modernisation_tt
+				NOT = { has_idea = CHI_hidden_air_equipment_research_1 }
+				NOT = { has_idea = CHI_hidden_air_equipment_research_2 }
+				NOT = { has_idea = CHI_hidden_air_equipment_research_3 }
+				NOT = { has_idea = CHI_hidden_air_equipment_research_4 }
+			}
+			custom_trigger_tooltip = {
+				tooltip = CHI_completion_of_armor_modernisation_tt
+				NOT = { has_idea = CHI_hidden_armor_research_1 }
+				NOT = { has_idea = CHI_hidden_armor_research_2 }
+				NOT = { has_idea = CHI_hidden_armor_research_3 }
+				NOT = { has_idea = CHI_hidden_armor_research_4 }
+				NOT = { has_idea = CHI_hidden_armor_production_1 }
+				NOT = { has_idea = CHI_hidden_armor_production_2 }
+				NOT = { has_idea = CHI_hidden_armor_production_3 }
+				NOT = { has_idea = CHI_hidden_armor_production_4 }
+			}
+			custom_trigger_tooltip = {
+				tooltip = CHI_completion_of_naval_equipment_modernisation_tt
+				NOT = { has_idea = CHI_hidden_naval_equipment_research_1 }
+				NOT = { has_idea = CHI_hidden_naval_equipment_research_2 }
+				NOT = { has_idea = CHI_hidden_naval_equipment_research_3 }
+				NOT = { has_idea = CHI_hidden_naval_equipment_research_4 }
+			}
+		}
+
+		fire_only_once = yes
+		
+		ai_will_do = { factor = 1000 }
+		
+		cost = 0
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision complete CHI_completion_of_military_modernisation target: [From.GetName]"
+			
+			remove_dynamic_modifier = { modifier = CHI_republic_of_china_armed_forces }
+			
+			add_war_support = 0.2
+			add_stability = 0.1
+		}
+	}
+	
+	CHI_building_flexible_military_improvement_technology_decision = {
+	
+		icon = GFX_decision_generic_human_torpedo
+		
+		visible = {
+			check_variable = { CHI_republic_of_china_armed_forces_equipment_upgrade_xp_cost > 0 }
+		}
+		
+		available = {
+			has_completed_focus = CHI_expansion_of_armour_production
+		}
+		
+		fire_only_once = no
+		ai_will_do = { factor = 100 }
+		
+		custom_cost_trigger = {
+			command_power > 14
+		}
+		
+		custom_cost_text = CP_15
+		
+		days_remove = 100
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision complete CHI_building_flexible_military_improvement_technology_decision target: [From.GetName]"
+			add_command_power = -15
+			custom_effect_tooltip = NVX_decision_returns_days_0
+		}
+		
+		cancel_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision cancel CHI_building_flexible_military_improvement_technology_decision target: [From.GetName]"
+		}
+		
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove CHI_building_flexible_military_improvement_technology_decision target: [From.GetName]"
+			
+			if = {
+				limit = {
+					check_variable = { CHI_republic_of_china_armed_forces_equipment_upgrade_xp_cost > 0 }
+				}
+				custom_effect_tooltip = CHI_republic_of_china_armed_forces_tt
+				add_to_variable = { CHI_republic_of_china_armed_forces_equipment_upgrade_xp_cost = -0.1 tooltip = CHI_building_flexible_military_improvement_technology_decision_tt }
+			}
+		}
+	}
+	
+	CHI_research_on_armour_technology_decision = {
+	
+		icon = GFX_decision_generic_tank
+		
+		visible = {
+			OR = {
+				has_idea = CHI_hidden_armor_research_1
+				has_idea = CHI_hidden_armor_research_2
+				has_idea = CHI_hidden_armor_research_3
+				has_idea = CHI_hidden_armor_research_4
+			}
+		}
+		
+		available = {
+			has_completed_focus = CHI_expansion_of_armour_production
+			custom_trigger_tooltip = {
+				tooltip = CHI_research_on_armour_technology_decision_tt
+				check_variable = { CHI_republic_of_china_armed_forces_equipment_upgrade_xp_cost < 0.5 }
+			}
+		}
+		
+		fire_only_once = no
+		
+		ai_will_do = { factor = 100 }
+		
+		custom_cost_trigger = {
+			command_power > 24
+		}
+		
+		custom_cost_text = CP_25
+		
+		days_remove = 100
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision complete CHI_research_on_armour_technology_decision target: [From.GetName]"
+			add_command_power = -25
+			custom_effect_tooltip = NVX_decision_returns_days_0
+		}
+		
+		cancel_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision cancel CHI_research_on_armour_technology_decision target: [From.GetName]"
+		}
+		
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove CHI_research_on_armour_technology_decision target: [From.GetName]"
+			
+			CHI_decrease_armor_research_effect = yes
+		}
+	}
+	
+	CHI_research_on_armour_macking_decision = {
+	
+		icon = GFX_decision_SWE_set_army_budget
+		
+		visible = {
+			OR = {
+				has_idea = CHI_hidden_armor_production_1
+				has_idea = CHI_hidden_armor_production_2
+				has_idea = CHI_hidden_armor_production_3
+				has_idea = CHI_hidden_armor_production_4
+			}
+		}
+		
+		available = {
+			has_completed_focus = CHI_expansion_of_armour_production
+			custom_trigger_tooltip = {
+				tooltip = CHI_research_on_armour_macking_decision_tt
+				check_variable = { CHI_republic_of_china_armed_forces_equipment_upgrade_xp_cost < 0.5 }
+			}
+		}
+		
+		fire_only_once = no
+		
+		ai_will_do = { factor = 100 }
+		
+		cost = 50
+		
+		days_remove = 100
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision complete CHI_research_on_armour_macking_decision target: [From.GetName]"
+			custom_effect_tooltip = NVX_decision_returns_days_0
+		}
+		
+		cancel_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision cancel CHI_research_on_armour_macking_decision target: [From.GetName]"
+		}
+		
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove CHI_research_on_armour_macking_decision target: [From.GetName]"
+			
+			CHI_decrease_armor_production_effect = yes
+		}
+	}
+	
+	CHI_revitalization_of_maritime_industry_decision = {
+	
+		icon = GFX_decision_FIN_weapon_caches
+		
+		visible = {
+			check_variable = { CHI_republic_of_china_armed_forces_industrial_capacity_dockyard < 0 }
+		}
+		
+		available = {
+			has_completed_focus = CHI_focus_on_CSBC
+			has_equipment = {
+				convoy > 799
+			}
+		}
+		
+		fire_only_once = no
+		ai_will_do = { factor = 100 }
+		
+		custom_cost_trigger = {
+			has_navy_experience > 9
+		}
+		
+		custom_cost_text = navy_xp_10
+		
+		days_remove = 100
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision complete CHI_building_flexible_military_improvement_technology_decision target: [From.GetName]"
+			navy_experience = -10
+			custom_effect_tooltip = NVX_decision_returns_days_0
+		}
+		
+		cancel_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision cancel CHI_building_flexible_military_improvement_technology_decision target: [From.GetName]"
+		}
+		
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove CHI_building_flexible_military_improvement_technology_decision target: [From.GetName]"
+			
+			if = {
+				limit = {
+					check_variable = { CHI_republic_of_china_armed_forces_industrial_capacity_dockyard < 0 }
+				}
+				custom_effect_tooltip = CHI_republic_of_china_armed_forces_tt
+				add_to_variable = { CHI_republic_of_china_armed_forces_industrial_capacity_dockyard = 0.05 tooltip = CHI_revitalization_of_maritime_industry_decision_tt }
+			}
+		}
+	}
+	
+	CHI_naval_technological_reform_decision = {
+	
+		icon = GFX_decision_SWE_set_navy_budget
+		
+		visible = {
+			OR = {
+				has_idea = CHI_hidden_naval_equipment_research_1
+				has_idea = CHI_hidden_naval_equipment_research_2
+				has_idea = CHI_hidden_naval_equipment_research_3
+				has_idea = CHI_hidden_naval_equipment_research_4
+			}
+		}
+		
+		available = {
+			has_completed_focus = CHI_taiwan_navy_expansion
+		}
+		
+		fire_only_once = no
+		ai_will_do = { factor = 100 }
+		
+		custom_cost_trigger = {
+			has_navy_experience > 29
+		}
+		
+		custom_cost_text = navy_xp_30
+		
+		days_remove = 100
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision complete CHI_building_flexible_military_improvement_technology_decision target: [From.GetName]"
+			navy_experience = -30
+			custom_effect_tooltip = NVX_decision_returns_days_0
+		}
+		
+		cancel_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision cancel CHI_building_flexible_military_improvement_technology_decision target: [From.GetName]"
+		}
+		
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove CHI_building_flexible_military_improvement_technology_decision target: [From.GetName]"
+			
+			CHI_decrease_naval_equipment_research_effect = yes
+		}
+	}
+	
+	CHI_air_equipment_technological_reform_decision = {
+	
+		icon = GFX_decision_SWE_set_air_budget
+		
+		visible = {
+			OR = {
+				has_idea = CHI_hidden_air_equipment_research_1
+				has_idea = CHI_hidden_air_equipment_research_2
+				has_idea = CHI_hidden_air_equipment_research_3
+				has_idea = CHI_hidden_air_equipment_research_4
+			}
+		}
+		
+		available = {
+			has_completed_focus = CHI_taiwan_military_reform
+		}
+		
+		fire_only_once = no
+		ai_will_do = { factor = 100 }
+		
+		custom_cost_trigger = {
+			has_air_experience > 29
+		}
+		
+		custom_cost_text = air_xp_30
+		
+		days_remove = 100
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision complete CHI_building_flexible_military_improvement_technology_decision target: [From.GetName]"
+			air_experience = -30
+			custom_effect_tooltip = NVX_decision_returns_days_0
+		}
+		
+		cancel_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision cancel CHI_building_flexible_military_improvement_technology_decision target: [From.GetName]"
+		}
+		
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove CHI_building_flexible_military_improvement_technology_decision target: [From.GetName]"
+			
+			CHI_decrease_air_equipment_research_effect = yes
 		}
 	}
 }
