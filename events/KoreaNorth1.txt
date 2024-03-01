@@ -968,6 +968,25 @@ country_event = {
 		}
 		FROM = { country_event = { id = north_korea.10 hours = 6 } }
 		add_political_power = 50
+		
+		if = {
+			limit = { ROOT = { tag = KOR } }
+			custom_effect_tooltip = kor_increasing_influence_tt
+			random_list = {
+				10 = { 
+					PRK = { add_to_variable = { var = RegimeInfluence value = 4 } } 
+					custom_effect_tooltip = kor_increasing_regimeInfluence_4_tt
+				}
+				40 = { 
+					PRK = { add_to_variable = { var = RegimeInfluence value = 3 } } 
+					custom_effect_tooltip = kor_increasing_regimeInfluence_3_tt
+				}
+				50 = { 
+					PRK = { add_to_variable = { var = RegimeInfluence value = 2 } } 
+					custom_effect_tooltip = kor_increasing_regimeInfluence_2_tt
+				}
+			}
+		}
 	}
 	
 	option = {
@@ -992,6 +1011,27 @@ country_event = {
 		name = north_korea.10.a
 		custom_effect_tooltip = getdprkdollars_1_tt
 		ROOT = { add_to_variable = { var = GetDPRKDollarPoint value = 1 } }
+		
+		if = {
+			limit = { FROM = { tag = KOR } }
+			effect_tooltip = { 
+				custom_effect_tooltip = kor_increasing_influence_tt
+				random_list = {
+					10 = { 
+						PRK = { add_to_variable = { var = RegimeInfluence value = 4 } } 
+						custom_effect_tooltip = kor_increasing_regimeInfluence_4_tt
+					}
+					40 = { 
+						PRK = { add_to_variable = { var = RegimeInfluence value = 3 } } 
+						custom_effect_tooltip = kor_increasing_regimeInfluence_3_tt
+					}
+					50 = { 
+						PRK = { add_to_variable = { var = RegimeInfluence value = 2 } } 
+						custom_effect_tooltip = kor_increasing_regimeInfluence_2_tt
+					}
+				}
+			}
+		}
 	}
 }
 
@@ -1073,6 +1113,7 @@ country_event = {
 		hidden_effect = {
 			clr_country_flag = prk_kim_and_hyon
 			clr_country_flag = PRK_follow_kim_jong_il
+			clr_country_flag = PRK_follow_hyon_yong_chol
 			remove_ideas = adviser_PRK_kim_jong_il
 			set_popularities = {
 				fascist = 75
@@ -1085,10 +1126,7 @@ country_event = {
 	option = {
 		name = north_korea.16.a
 		
-		effect_tooltip = {
-			unlock_national_focus = prk_we_will_follow_you_only
-		}
-
+		complete_national_focus = prk_we_will_follow_you_only
 		set_power_balance = {
 			id = PRK_power_balance
 			set_default = yes  # whether or not to reset the power balance to the initial value, default = no
@@ -1114,6 +1152,7 @@ country_event = {
 		hidden_effect = {
 			clr_country_flag = prk_kim_and_hyon
 			clr_country_flag = PRK_follow_kim_jong_il
+			clr_country_flag = PRK_follow_hyon_yong_chol
 			set_country_flag = prk_death_of_kim_jong_il
 			set_popularities = {
 				communist = 75
@@ -1128,9 +1167,8 @@ country_event = {
 	
 	option = {
 		name = north_korea.17.a
-		effect_tooltip = {
-			unlock_national_focus = prk_ryongchon_gamble
-		}
+		
+		complete_national_focus = prk_ryongchon_gamble
 		
 		set_global_flag = dpr_ryongchon_disaster_rev_sp
 			activate_superevent_music = yes
