@@ -1228,12 +1228,6 @@ PRK_power_struggle = {
 		}
 	}
 
-
-
-
-
-
-
 	PRK_capitalist_movie_screening = {
 		icon = generic_agreement
 
@@ -1302,7 +1296,6 @@ PRK_power_struggle = {
 
 		visible = {
 			has_country_flag = PRK_follow_hyon_yong_chol
-
 		}
 
 		cost = 25
@@ -1331,7 +1324,6 @@ PRK_power_struggle = {
 
 		visible = {
 			has_country_flag = PRK_follow_hyon_yong_chol
-
 		}
 
 		cost = 25
@@ -1362,7 +1354,14 @@ PRK_power_struggle = {
 		fire_only_once = no
 
 		activation = {
-			has_country_flag = PRK_follow_kim_jong_il
+			AND = {
+				has_country_flag = PRK_follow_kim_jong_il
+				has_country_flag = prk_kim_and_hyon
+				OR = {
+					NOT = { has_completed_focus = prk_ryongchon_gamble }
+					NOT = { has_completed_focus = prk_we_will_follow_you_only }
+				}
+			}
 		}
 
 		visible = {
@@ -1406,7 +1405,14 @@ PRK_power_struggle = {
 		fire_only_once = no
 
 		activation = {
-			has_country_flag = PRK_follow_hyon_yong_chol
+			AND = {
+				has_country_flag = PRK_follow_hyon_yong_chol
+				has_country_flag = prk_kim_and_hyon
+				OR = {
+					NOT = { has_completed_focus = prk_ryongchon_gamble }
+					NOT = { has_completed_focus = prk_we_will_follow_you_only }
+				}
+			}
 		}
 
 		visible = {
@@ -1454,6 +1460,10 @@ PRK_power_struggle = {
 			AND = {
 				has_country_flag = PRK_follow_kim_jong_il
 				check_variable = { GetPRKTechnocratsPoliticalChoice > -3 }
+				OR = {
+					NOT = { has_completed_focus = prk_ryongchon_gamble }
+					NOT = { has_completed_focus = prk_we_will_follow_you_only }
+				}
 			}
 		}
 
@@ -1502,6 +1512,10 @@ PRK_power_struggle = {
 			AND = {
 				has_country_flag = PRK_follow_hyon_yong_chol
 				check_variable = { GetPRKTechnocratsPoliticalChoice < 3 }
+				OR = {
+					NOT = { has_completed_focus = prk_ryongchon_gamble }
+					NOT = { has_completed_focus = prk_we_will_follow_you_only }
+				}
 			}
 		}
 
@@ -1541,6 +1555,10 @@ PRK_power_struggle = {
 
 		activation = {
 			has_country_flag = prk_kim_and_hyon
+			OR = {
+				NOT = { has_completed_focus = prk_ryongchon_gamble }
+				NOT = { has_completed_focus = prk_we_will_follow_you_only }
+			}
 		}
 
 		visible = {
