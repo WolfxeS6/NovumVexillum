@@ -1,9 +1,147 @@
 NVX_coalition_possible = {
-    always = yes
+    OR = {
+        NVX_right_coalition_possible = yes 
+        NVX_left_coalition_possible = yes
+    }
 }
 NVX_left_coalition_possible = {
-    always = yes
+    OR = {
+        AND = {
+            set_temp_variable = { coalition_strength = 0}
+			add_to_temp_variable = {
+				var = coalition_strength
+				value = party_popularity@social_democrat
+			}
+			add_to_temp_variable = {
+				var = coalition_strength
+				value = party_popularity@progressive
+			}
+			add_to_temp_variable = {
+				var = coalition_strength
+				value = party_popularity@social_liberal
+			}
+			add_to_temp_variable = {
+				var = coalition_strength
+				value = party_popularity@democratic_socialist
+			}
+			check_variable = {
+				var = coalition_strength
+				value = 0.3
+				compare = greater_than_or_equals
+			}
+        }
+        AND = {
+            set_temp_variable = { coalition_strength = 0}
+			add_to_temp_variable = {
+				var = coalition_strength
+				value = party_popularity@market_liberal
+			}
+			add_to_temp_variable = {
+				var = coalition_strength
+				value = party_popularity@social_liberal
+			}
+			check_variable = {
+				var = coalition_strength
+				value = 0.3
+				compare = greater_than_or_equals
+			}
+        }
+    }
+    OR = {
+        AND = {
+            democratic_socialist > 0.03
+			social_democrat > 0.03
+			social_liberal > 0.03
+        }
+        AND = {
+            progressive > 0.03
+			social_democrat > 0.03
+			social_liberal > 0.03
+        }
+        AND = {
+            democratic_socialist > 0.03
+			progressive > 0.03
+			social_liberal > 0.03
+        }
+        AND = {
+            democratic_socialist > 0.03
+			social_democrat > 0.03
+			progressive > 0.03
+        }
+        AND = {
+            democratic_socialist > 0.03
+			social_democrat > 0.03
+        }
+        AND = {
+            social_liberal > 0.03
+			social_democrat > 0.03
+        }
+        AND = {
+            progressive > 0.03
+			social_democrat > 0.03
+        }
+        AND = {
+            social_liberal > 0.03
+			market_liberal > 0.03
+        }
+    }
 }
 NVX_right_coalition_possible = {
-    always = yes
+    OR = {
+        AND = {
+            set_temp_variable = { coalition_strength = 0}
+			add_to_temp_variable = {
+				var = coalition_strength
+				value = party_popularity@conservative
+			}
+			add_to_temp_variable = {
+				var = coalition_strength
+				value = party_popularity@market_liberal
+			}
+			add_to_temp_variable = {
+				var = coalition_strength
+				value = party_popularity@reactionary
+			}
+			check_variable = {
+				var = coalition_strength
+				value = 0.3
+				compare = greater_than_or_equals
+			}
+        }
+        AND = {
+            set_temp_variable = { coalition_strength = 0}
+			add_to_temp_variable = {
+				var = coalition_strength
+				value = party_popularity@conservative
+			}
+			add_to_temp_variable = {
+				var = coalition_strength
+				value = party_popularity@social_liberal
+			}
+			check_variable = {
+				var = coalition_strength
+				value = 0.3
+				compare = greater_than_or_equals
+			}
+        }
+    }
+    OR = {
+        AND = {
+            reactionary > 0.03
+			conservative > 0.03
+			market_liberal > 0.03
+        }
+        AND = {
+            conservative > 0.03
+			market_liberal > 0.03
+        }
+        AND = {
+            reactionary > 0.03
+			conservative > 0.03
+        }
+        AND = {
+            social_liberal > 0.03
+			conservative > 0.03
+        }
+    }
 }

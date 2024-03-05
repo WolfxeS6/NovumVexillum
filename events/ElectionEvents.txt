@@ -49,7 +49,13 @@ country_event = {
 		NOT = { has_idea = government_system_provisional }
 	}
 	
-	immediate = { dynamic_leader_effect = yes remove_ideas = NVX_coalition_idea}
+	immediate = { 
+		dynamic_leader_effect = yes 
+		hidden_effect = {
+			remove_ideas = NVX_coalition_idea
+		}
+		clr_country_flag = NVX_coalition_type
+	}
 	
 	option = { # ruling party
 		name = election.1.o1
@@ -777,6 +783,13 @@ country_event = {
 				value = 0.3
 				compare = greater_than_or_equals
 			}
+			reactionary > 0.03
+			conservative > 0.03
+			market_liberal > 0.03
+		}
+		set_country_flag = {
+			flag = NVX_coalition_type
+			value = 1
 		}
 		NVX_election_system_from_auth = yes
 		add_ideas = NVX_coalition_idea
@@ -833,6 +846,12 @@ country_event = {
 				value = 0.3
 				compare = greater_than_or_equals
 			}
+			conservative > 0.03
+			market_liberal > 0.03
+		}
+		set_country_flag = {
+			flag = NVX_coalition_type
+			value = 2
 		}
 		NVX_election_system_from_auth = yes
 		add_ideas = NVX_coalition_idea
@@ -874,6 +893,12 @@ country_event = {
 				value = 0.3
 				compare = greater_than_or_equals
 			}
+			reactionary > 0.03
+			conservative > 0.03
+		}
+		set_country_flag = {
+			flag = NVX_coalition_type
+			value = 3
 		}
 		NVX_election_system_from_auth = yes
 		add_ideas = NVX_coalition_idea
@@ -910,11 +935,17 @@ country_event = {
 				var = coalition_strength
 				value = party_popularity@social_liberal
 			}
+			social_liberal > 0.03
+			conservative > 0.03
 			check_variable = {
 				var = coalition_strength
 				value = 0.3
 				compare = greater_than_or_equals
 			}
+		}
+		set_country_flag = {
+			flag = NVX_coalition_type
+			value = 4
 		}
 		NVX_election_system_from_auth = yes
 		add_ideas = NVX_coalition_idea
@@ -980,6 +1011,12 @@ country_event = {
 				value = 0.3
 				compare = greater_than_or_equals
 			}
+			social_liberal > 0.03
+			market_liberal > 0.03
+		}
+		set_country_flag = {
+			flag = NVX_coalition_type
+			value = 5
 		}
 		NVX_election_system_from_auth = yes
 		add_ideas = NVX_coalition_idea
@@ -1022,6 +1059,12 @@ country_event = {
 				value = 0.3
 				compare = greater_than_or_equals
 			}
+			social_liberal > 0.03
+			social_democrat > 0.03
+		}
+		set_country_flag = {
+			flag = NVX_coalition_type
+			value = 6
 		}
 		NVX_election_system_from_auth = yes
 		add_ideas = NVX_coalition_idea
@@ -1064,6 +1107,12 @@ country_event = {
 				value = 0.3
 				compare = greater_than_or_equals
 			}
+			progressive > 0.03
+			social_democrat > 0.03
+		}
+		set_country_flag = {
+			flag = NVX_coalition_type
+			value = 7
 		}
 		NVX_election_system_from_auth = yes
 		add_ideas = NVX_coalition_idea
@@ -1106,6 +1155,12 @@ country_event = {
 				value = 0.3
 				compare = greater_than_or_equals
 			}
+			democratic_socialist > 0.03
+			social_democrat > 0.03
+		}
+		set_country_flag = {
+			flag = NVX_coalition_type
+			value = 8
 		}
 		NVX_election_system_from_auth = yes
 		add_ideas = NVX_coalition_idea
@@ -1156,6 +1211,32 @@ country_event = {
 				value = 0.3
 				compare = greater_than_or_equals
 			}
+			OR = {
+				AND = {
+					democratic_socialist > 0.03
+					social_democrat > 0.03
+					social_liberal > 0.03
+				}
+				AND = {
+					progressive > 0.03
+					social_democrat > 0.03
+					social_liberal > 0.03
+				}
+				AND = {
+					democratic_socialist > 0.03
+					progressive > 0.03
+					social_liberal > 0.03
+				}
+				AND = {
+					democratic_socialist > 0.03
+					social_democrat > 0.03
+					progressive > 0.03
+				}
+			}
+		}
+		set_country_flag = {
+			flag = NVX_coalition_type
+			value = 9
 		}
 		NVX_election_system_from_auth = yes
 		add_ideas = NVX_coalition_idea
