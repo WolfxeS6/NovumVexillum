@@ -585,6 +585,13 @@ country_event = {
 		trigger = {
 			original_tag = PRC
 		}
+		ai_chance = {
+			base = 1
+			modifier = {
+				add = -1
+				has_war_with_major = yes
+			}
+		}
 		
 		declare_war_on = { 
 			target = HKN
@@ -601,6 +608,43 @@ country_event = {
 		trigger = {
 			original_tag = ENG
 		}
+		
+		ai_chance = {
+			base = 1
+			modifier = {
+				add = -1
+				has_war_with_major = yes
+			}
+			modifier = {
+				add = 1
+				AND = {
+					tag = ENG
+					has_government = social_democrat
+				}
+			}
+			modifier = {
+				add = 10
+				AND = {
+					tag = ENG
+					has_government = fascist
+				}
+			}
+			modifier = {
+				add = 10
+				AND = {
+					tag = ENG
+					has_government = nationalist
+				}
+			}
+			modifier = {
+				add = 5
+				AND = {
+					tag = ENG
+					has_government = communist
+				}
+			}
+		}
+		
 		declare_war_on = { 
 			target = PRC
 			type = annex_everything
@@ -609,10 +653,40 @@ country_event = {
 	
 	option = {
 		name = hong_kong_uk_prc.17.c
+		
 		ai_chance = {
-			factor = 0
-		}	
+			base = 0
+			modifier = {
+				add = -1
+				tag = PRC #China's diplomacy is aggressive.
+			}
+			modifier = {
+				add = 2
+				has_war_with_major = yes #They can't have a two-front war.
+			}
+			modifier = {
+				add = 10
+				is_puppet = yes
+			}
+			modifier = {
+				add = 1.5
+				is_in_faction = no
+			}
+			modifier = {
+				add = 2
+				AND = {
+					tag = ENG
+					has_government = conservative
+				}
+			}
+		}
+		
 		add_stability = -0.2
+		
+		if = {
+			limit = { has_war = no }
+			add_war_support = -0.2
+		}
 	}
 }
 
