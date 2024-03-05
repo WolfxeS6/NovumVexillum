@@ -49,7 +49,7 @@ country_event = {
 		NOT = { has_idea = government_system_provisional }
 	}
 	
-	immediate = { dynamic_leader_effect = yes }
+	immediate = { dynamic_leader_effect = yes remove_ideas = NVX_coalition_idea}
 	
 	option = { # ruling party
 		name = election.1.o1
@@ -671,6 +671,557 @@ country_event = {
 		
 		ai_chance = {
 			factor = 2
+		}
+	}
+	option = {
+		name = election.1.o14
+		trigger = {
+			NVX_coalition_possible = yes
+			OR = {
+				has_idea = government_system_parliamentary_republic
+				has_idea = government_system_constitutional_monarchy
+			}
+
+			NOT = {has_country_flag = attempted_coalition}
+			NOT = {
+				OR = {
+					original_tag = JAP 
+					original_tag = KOR
+				}
+			}
+		}
+		country_event = election.3
+		ai_chance = {
+			factor = 0
+		}
+	}
+}
+
+### Coalition Election 
+country_event = {
+	id = election.3
+	title = election.3.t
+	desc = election.3.d
+	picture = GFX_report_event_election
+	
+	is_triggered_only = yes
+	immediate = {
+		set_country_flag = {
+			flag = attempted_coalition
+			days = 40
+		}
+	}
+	option = {
+		name = election.3.o1
+		trigger = {
+			NOT = {has_country_flag = attempted_right_coalition}
+			NVX_right_coalition_possible = yes
+		}
+		country_event = election.4
+		ai_chance = {
+			factor = 2
+		}
+	}
+	option = {
+		name = election.3.o2
+		trigger = {
+			NOT = {has_country_flag = attempted_left_coalition}
+			NVX_left_coalition_possible = yes
+		}
+		country_event = election.5
+		ai_chance = {
+			factor = 2
+		}
+	}
+	option = {
+		name = election.3.o3
+		
+		country_event = election.2
+		ai_chance = {
+			factor = 2
+		}
+	}
+}
+### Coalition Right
+country_event = {
+	id = election.4
+	title = election.4.t
+	desc = election.4.d
+	picture = GFX_report_event_election
+	immediate = {
+		set_country_flag = {
+			flag = attempted_right_coalition
+			days = 40
+		}
+	}
+	
+	is_triggered_only = yes
+	option = { ### Broad right wing
+		name = election.4.o1
+		trigger = {
+			set_temp_variable = { coalition_strength = 0}
+			add_to_temp_variable = {
+				var = coalition_strength
+				value = party_popularity@conservative
+			}
+			add_to_temp_variable = {
+				var = coalition_strength
+				value = party_popularity@market_liberal
+			}
+			add_to_temp_variable = {
+				var = coalition_strength
+				value = party_popularity@reactionary
+			}
+			check_variable = {
+				var = coalition_strength
+				value = 0.3
+				compare = greater_than_or_equals
+			}
+		}
+		NVX_election_system_from_auth = yes
+		add_ideas = NVX_coalition_idea
+		if = {
+			limit = {
+				conservative > party_popularity@reactionary
+				conservative > party_popularity@market_liberal
+			}
+			set_politics = {
+				ruling_party = conservative
+				elections_allowed = yes
+			}
+			fourth_estate_market_liberal_increase = yes
+			fourth_estate_reactionary_increase = yes
+		}
+		else_if = {
+			limit = {
+				reactionary > party_popularity@conservative
+				reactionary > party_popularity@market_liberal
+			}
+			fourth_estate_market_liberal_increase = yes
+			fourth_estate_conservative_increase = yes
+			set_politics = {
+				ruling_party = reactionary
+				elections_allowed = yes
+			}
+		}
+		else = {
+			fourth_estate_reactionary_increase = yes
+			fourth_estate_conservative_increase = yes
+			set_politics = {
+				ruling_party = market_liberal
+				elections_allowed = yes
+			}
+		}
+		ai_chance = {
+			factor = 2
+		}
+	}
+	option = { ### Economic Right
+		name = election.4.o2
+		trigger = {
+			set_temp_variable = { coalition_strength = 0}
+			add_to_temp_variable = {
+				var = coalition_strength
+				value = party_popularity@conservative
+			}
+			add_to_temp_variable = {
+				var = coalition_strength
+				value = party_popularity@market_liberal
+			}
+			check_variable = {
+				var = coalition_strength
+				value = 0.3
+				compare = greater_than_or_equals
+			}
+		}
+		NVX_election_system_from_auth = yes
+		add_ideas = NVX_coalition_idea
+		if = {
+			limit = {
+				conservative > party_popularity@market_liberal
+			}
+			fourth_estate_market_liberal_increase = yes
+			set_politics = {
+				ruling_party = conservative
+				elections_allowed = yes
+			}
+		}
+		else = {
+			fourth_estate_conservative_increase = yes
+			set_politics = {
+				ruling_party = market_liberal
+				elections_allowed = yes
+			}
+		}
+		ai_chance = {
+			factor = 2
+		}
+	}
+	option = { ### Right Wing
+		name = election.4.o3
+		trigger = {
+			set_temp_variable = { coalition_strength = 0}
+			add_to_temp_variable = {
+				var = coalition_strength
+				value = party_popularity@conservative
+			}
+			add_to_temp_variable = {
+				var = coalition_strength
+				value = party_popularity@reactionary
+			}
+			check_variable = {
+				var = coalition_strength
+				value = 0.3
+				compare = greater_than_or_equals
+			}
+		}
+		NVX_election_system_from_auth = yes
+		add_ideas = NVX_coalition_idea
+		if = {
+			limit = {
+				conservative > party_popularity@reactionary
+			}
+			fourth_estate_reactionary_increase = yes
+			set_politics = {
+				ruling_party = conservative
+				elections_allowed = yes
+			}
+		}
+		else = {
+			fourth_estate_conservative_increase = yes
+			set_politics = {
+				ruling_party = reactionary
+				elections_allowed = yes
+			}
+		}
+		ai_chance = {
+			factor = 2
+		}
+	}
+	option = { ### Moderate Right
+		name = election.4.o4
+		trigger = {
+			set_temp_variable = { coalition_strength = 0}
+			add_to_temp_variable = {
+				var = coalition_strength
+				value = party_popularity@conservative
+			}
+			add_to_temp_variable = {
+				var = coalition_strength
+				value = party_popularity@social_liberal
+			}
+			check_variable = {
+				var = coalition_strength
+				value = 0.3
+				compare = greater_than_or_equals
+			}
+		}
+		NVX_election_system_from_auth = yes
+		add_ideas = NVX_coalition_idea
+		if = {
+			limit = {
+				conservative > party_popularity@social_liberal
+			}
+			fourth_estate_social_liberal_increase = yes
+			set_politics = {
+				ruling_party = conservative
+				elections_allowed = yes
+			}
+		}
+		else = {
+			fourth_estate_conservative_increase = yes
+			set_politics = {
+				ruling_party = social_liberal
+				elections_allowed = yes
+			}
+		}
+		ai_chance = {
+			factor = 2
+		}
+	}
+	option = { ### Coalition Failed
+		name = election.4.o5
+		
+		country_event = election.3
+
+		ai_chance = {
+			factor = 2
+		}
+	}
+}
+### Coalition Left
+country_event = {
+	id = election.5
+	title = election.5.t
+	desc = election.5.d
+	picture = GFX_report_event_election
+	immediate = {
+		set_country_flag = {
+			flag = attempted_left_coalition
+			days = 40
+		}
+	}
+	
+	is_triggered_only = yes
+	option = { ### Liberal Alliance
+		name = election.5.o1
+		trigger = {
+			set_temp_variable = { coalition_strength = 0}
+			add_to_temp_variable = {
+				var = coalition_strength
+				value = party_popularity@market_liberal
+			}
+			add_to_temp_variable = {
+				var = coalition_strength
+				value = party_popularity@social_liberal
+			}
+			check_variable = {
+				var = coalition_strength
+				value = 0.3
+				compare = greater_than_or_equals
+			}
+		}
+		NVX_election_system_from_auth = yes
+		add_ideas = NVX_coalition_idea
+		if = {
+			limit = {
+				social_liberal > party_popularity@market_liberal
+			}
+			fourth_estate_market_liberal_increase = yes
+			set_politics = {
+				ruling_party = social_liberal
+				elections_allowed = yes
+			}
+		}
+		else = {
+			fourth_estate_social_liberal_increase = yes
+			set_politics = {
+				ruling_party = market_liberal
+				elections_allowed = yes
+			}
+		}
+
+		ai_chance = {
+			factor = 2
+		}
+	}
+	option = { ### Moderate Left
+		name = election.5.o2
+		trigger = {
+			set_temp_variable = { coalition_strength = 0}
+			add_to_temp_variable = {
+				var = coalition_strength
+				value = party_popularity@social_democrat
+			}
+			add_to_temp_variable = {
+				var = coalition_strength
+				value = party_popularity@social_liberal
+			}
+			check_variable = {
+				var = coalition_strength
+				value = 0.3
+				compare = greater_than_or_equals
+			}
+		}
+		NVX_election_system_from_auth = yes
+		add_ideas = NVX_coalition_idea
+		if = {
+			limit = {
+				social_liberal > party_popularity@social_democrat
+			}
+			fourth_estate_social_democrat_increase = yes
+			set_politics = {
+				ruling_party = social_liberal
+				elections_allowed = yes
+			}
+		}
+		else = {
+			fourth_estate_social_liberal_increase = yes
+			set_politics = {
+				ruling_party = social_democrat
+				elections_allowed = yes
+			}
+		}
+
+		ai_chance = {
+			factor = 2
+		}
+	}
+	option = { ### Progressive Left
+		name = election.5.o3
+		trigger = {
+			set_temp_variable = { coalition_strength = 0}
+			add_to_temp_variable = {
+				var = coalition_strength
+				value = party_popularity@social_democrat
+			}
+			add_to_temp_variable = {
+				var = coalition_strength
+				value = party_popularity@progressive
+			}
+			check_variable = {
+				var = coalition_strength
+				value = 0.3
+				compare = greater_than_or_equals
+			}
+		}
+		NVX_election_system_from_auth = yes
+		add_ideas = NVX_coalition_idea
+		if = {
+			limit = {
+				progressive > party_popularity@social_democrat
+			}
+			fourth_estate_social_democrat_increase = yes
+			set_politics = {
+				ruling_party = progressive
+				elections_allowed = yes
+			}
+		}
+		else = {
+			fourth_estate_progressive_increase = yes
+			set_politics = {
+				ruling_party = social_democrat
+				elections_allowed = yes
+			}
+		}
+
+		ai_chance = {
+			factor = 2
+		}
+	}
+	option = { ### Unified Socialists
+		name = election.5.o4
+		trigger = {
+			set_temp_variable = { coalition_strength = 0}
+			add_to_temp_variable = {
+				var = coalition_strength
+				value = party_popularity@social_democrat
+			}
+			add_to_temp_variable = {
+				var = coalition_strength
+				value = party_popularity@democratic_socialist
+			}
+			check_variable = {
+				var = coalition_strength
+				value = 0.3
+				compare = greater_than_or_equals
+			}
+		}
+		NVX_election_system_from_auth = yes
+		add_ideas = NVX_coalition_idea
+		if = {
+			limit = {
+				democratic_socialist > party_popularity@social_democrat
+			}
+			fourth_estate_social_democrat_increase = yes
+			set_politics = {
+				ruling_party = democratic_socialist
+				elections_allowed = yes
+			}
+		}
+		else = {
+			fourth_estate_democratic_socialist_increase = yes
+			set_politics = {
+				ruling_party = social_democrat
+				elections_allowed = yes
+			}
+		}
+
+		ai_chance = {
+			factor = 2
+		}
+	}
+	option = { ### Broad left
+		name = election.5.o5
+		trigger = {
+			set_temp_variable = { coalition_strength = 0}
+			add_to_temp_variable = {
+				var = coalition_strength
+				value = party_popularity@social_democrat
+			}
+			add_to_temp_variable = {
+				var = coalition_strength
+				value = party_popularity@progressive
+			}
+			add_to_temp_variable = {
+				var = coalition_strength
+				value = party_popularity@social_liberal
+			}
+			add_to_temp_variable = {
+				var = coalition_strength
+				value = party_popularity@democratic_socialist
+			}
+			check_variable = {
+				var = coalition_strength
+				value = 0.3
+				compare = greater_than_or_equals
+			}
+		}
+		NVX_election_system_from_auth = yes
+		add_ideas = NVX_coalition_idea
+		if = {
+			limit = {
+				progressive > party_popularity@social_democrat
+				progressive > party_popularity@social_liberal
+				progressive > party_popularity@democratic_socialist
+			}
+			fourth_estate_democratic_socialist_increase = yes
+			fourth_estate_social_democrat_increase = yes
+			fourth_estate_social_liberal_increase = yes
+			set_politics = {
+				ruling_party = progressive
+				elections_allowed = yes
+			}
+		}
+		if = {
+			limit = {
+				social_liberal > party_popularity@social_democrat
+				social_liberal > party_popularity@progressive
+				social_liberal > party_popularity@democratic_socialist
+			}
+			fourth_estate_democratic_socialist_increase = yes
+			fourth_estate_social_democrat_increase = yes
+			fourth_estate_progressive_increase = yes
+			set_politics = {
+				ruling_party = social_liberal
+				elections_allowed = yes
+			}
+		}
+		if = {
+			limit = {
+				democratic_socialist > party_popularity@social_democrat
+				democratic_socialist > party_popularity@progressive
+				democratic_socialist > party_popularity@social_liberal
+			}
+			fourth_estate_social_liberal_increase = yes
+			fourth_estate_social_democrat_increase = yes
+			fourth_estate_progressive_increase = yes
+			set_politics = {
+				ruling_party = democratic_socialist
+				elections_allowed = yes
+			}
+		}
+		else = {
+			fourth_estate_social_liberal_increase = yes
+			fourth_estate_democratic_socialist_increase = yes
+			fourth_estate_progressive_increase = yes
+			set_politics = {
+				ruling_party = social_democrat
+				elections_allowed = yes
+			}
+		}
+
+		ai_chance = {
+			factor = 2
+		}
+	}
+	option = { ### Coalition Failed
+		name = election.4.o5
+		
+		country_event = election.3
+
+		ai_chance = {
+			factor = 0
 		}
 	}
 }
