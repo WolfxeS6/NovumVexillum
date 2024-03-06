@@ -64,9 +64,7 @@ KOR_kim_dae_jung_gov = {
 		cancel_if_not_visible = yes
 
 		is_good = no
-		complete_effect = {
-			custom_effect_tooltip = NVX_decision_returns_days_120
-		}
+
 		timeout_effect = {
 			if ={
 				limit = {
@@ -104,9 +102,7 @@ KOR_kim_dae_jung_gov = {
 			NOT = { has_country_flag = kor_end_clock }
 			date > 2000.3.1
 		}
-		complete_effect = {
-			custom_effect_tooltip = NVX_decision_returns_days_120
-		}
+
 		cancel_if_not_visible = yes
 
 		is_good = no
@@ -151,7 +147,6 @@ KOR_kim_dae_jung_gov = {
 		days_re_enable = 40
 				
 		complete_effect = {
-			custom_effect_tooltip = NVX_decision_returns_days_40
 		}
 		
 		remove_effect = {
@@ -211,9 +206,7 @@ KOR_kim_dae_jung_gov = {
 		
 		days_remove = 30
 		days_re_enable = 335 #+30, 365
-		complete_effect = {
-			custom_effect_tooltip = NVX_decision_returns_days_365
-		}		
+				
 		modifier = {
 			political_power_factor = -0.4
 		}
@@ -274,9 +267,7 @@ KOR_kim_dae_jung_gov = {
 		
 		days_remove = 30
 		days_re_enable = 21
-		complete_effect = {
-			custom_effect_tooltip = NVX_decision_returns_days_21
-		}		
+				
 		modifier = {
 			political_power_factor = -0.2
 		}
@@ -802,9 +793,7 @@ KOR_parliament_factions = {
 		
 		days_remove = 35
 		days_re_enable = 60
-		complete_effect = {
-			custom_effect_tooltip = NVX_decision_returns_days_60
-		}
+
 		remove_effect = {
 			random_list = {
 				40 = { country_event = { id = korea_parliamentary.3 } }
@@ -839,9 +828,7 @@ KOR_parliament_factions = {
 		
 		days_remove = 35
 		days_re_enable = 60
-		complete_effect = {
-			custom_effect_tooltip = NVX_decision_returns_days_60
-		}
+
 		remove_effect = {
 			random_list = {
 				40 = { country_event = { id = korea_parliamentary.6 } }
@@ -876,9 +863,7 @@ KOR_parliament_factions = {
 		
 		days_remove = 35
 		days_re_enable = 60
-		complete_effect = {
-			custom_effect_tooltip = NVX_decision_returns_days_60
-		}
+
 		remove_effect = {
 			random_list = {
 				40 = { country_event = { id = korea_parliamentary.9 } }
@@ -913,9 +898,7 @@ KOR_parliament_factions = {
 		
 		days_remove = 35
 		days_re_enable = 60
-		complete_effect = {
-			custom_effect_tooltip = NVX_decision_returns_days_60
-		}
+
 		remove_effect = {
 			random_list = {
 				40 = { country_event = { id = korea_parliamentary.12 } }
@@ -947,9 +930,7 @@ KOR_parliament_factions = {
 		
 		days_remove = 35
 		days_re_enable = 60
-		complete_effect = {
-			custom_effect_tooltip = NVX_decision_returns_days_60
-		}
+
 		remove_effect = {
 			random_list = {
 				80 = { country_event = { id = korea_parliamentary.16 } }
@@ -981,9 +962,7 @@ KOR_parliament_factions = {
 		
 		days_remove = 35
 		days_re_enable = 60
-		complete_effect = {
-			custom_effect_tooltip = NVX_decision_returns_days_60
-		}
+
 		remove_effect = {
 			random_list = {
 				80 = { country_event = { id = korea_parliamentary.19 } }
@@ -2081,9 +2060,7 @@ KOR_parliament_factions = {
 
 		days_remove = 365
 		days_re_enable = 180
-		complete_effect = {
-			custom_effect_tooltip = NVX_decision_returns_days_180
-		}			
+				
 		modifier = {
 			research_speed_factor = 0.05
 		}
@@ -2109,9 +2086,7 @@ KOR_parliament_factions = {
 
 		days_remove = 365
 		days_re_enable = 180
-		complete_effect = {
-			custom_effect_tooltip = NVX_decision_returns_days_180
-		}	
+				
 		modifier = {
 			production_speed_industrial_complex_factor = 0.05
 		}
@@ -2137,9 +2112,7 @@ KOR_parliament_factions = {
 
 		days_remove = 365
 		days_re_enable = 180
-		complete_effect = {
-			custom_effect_tooltip = NVX_decision_returns_days_180
-		}	
+				
 		modifier = {
 			political_power_factor = 0.05
 		}
@@ -2165,15 +2138,13 @@ KOR_parliament_factions = {
 
 		days_remove = 180
 		days_re_enable = 180
-		complete_effect = {
-			custom_effect_tooltip = NVX_decision_returns_days_180
-		}	
+				
 		modifier = {
-		custom_modifier_tooltip = TT_NVX_ECOLITE_growth_pos025
 		}
 
 		remove_effect = {
-		add_to_variable = { NVX_ECO_growth = 0.25 }
+			add_cic = 500
+			add_to_variable = { NVX_ECO_health = 2 tooltip = additional_economic_health_2 }
 		}
 	}
 	
@@ -3638,7 +3609,8 @@ KOR_influence_korea = {
 
 		cost = 40
 		fire_only_once = no
-		days_re_enable = 120		
+		days_re_enable = 120
+				
 		complete_effect = {
 			custom_effect_tooltip = prk_decreasing_influence_tt
 			random_list = {
@@ -3646,7 +3618,6 @@ KOR_influence_korea = {
 				50 = { PRK = { add_to_variable = { var = RegimeInfluence value = -3 } } }
 				30 = { PRK = { add_to_variable = { var = RegimeInfluence value = -2 } } }
 			}
-			custom_effect_tooltip = NVX_decision_returns_days_120
 		}
 
 		ai_will_do = {
@@ -3695,7 +3666,6 @@ KOR_influence_korea = {
 				40 = { PRK = { add_to_variable = { var = RegimeInfluence value = -3 } } }
 				50 = { PRK = { add_to_variable = { var = RegimeInfluence value = -2 } } }
 			}
-			custom_effect_tooltip = NVX_decision_returns_days_120
 		}
 
 		ai_will_do = {
@@ -3814,7 +3784,6 @@ KOR_influence_korea = {
 				
 		complete_effect = {
 			PRK = { country_event = { id = south_korea.60 } }
-			custom_effect_tooltip = NVX_decision_returns_days_90
 		}
 
 		ai_will_do = {
@@ -3905,7 +3874,6 @@ KOR_bulgom_project = {
 			}
 			KOR = { add_to_variable = { var = KORBulgomVar value = -10 } }
 			custom_effect_tooltip = kor_bulgom_10_tt
-			custom_effect_tooltip = NVX_decision_returns_days_90
 		}
 
 		ai_will_do = {
@@ -3940,7 +3908,6 @@ KOR_bulgom_project = {
 			}
 			KOR = { add_to_variable = { var = KORBulgomVar value = -15 } }
 			custom_effect_tooltip = kor_bulgom_15_tt
-			custom_effect_tooltip = NVX_decision_returns_days_90
 		}
 
 		ai_will_do = {
@@ -3975,7 +3942,6 @@ KOR_bulgom_project = {
 			}
 			KOR = { add_to_variable = { var = KORBulgomVar value = -10 } }
 			custom_effect_tooltip = kor_bulgom_10_tt
-			custom_effect_tooltip = NVX_decision_returns_days_90
 		}
 
 		ai_will_do = {
@@ -4040,7 +4006,6 @@ KOR_bulgom_project = {
 			}
 			KOR = { add_to_variable = { var = KORBulgomVar value = -15 } }
 			custom_effect_tooltip = kor_bulgom_15_tt
-			custom_effect_tooltip = NVX_decision_returns_days_90
 		}
 
 		ai_will_do = {
@@ -4078,7 +4043,6 @@ SOV_bulgom_project = {
 			}
 			KOR = { add_to_variable = { var = KORBulgomVar value = -10 } }
 			custom_effect_tooltip = kor_bulgom_10_tt
-			custom_effect_tooltip = NVX_decision_returns_days_90
 		}
 
 		ai_will_do = {
@@ -4112,7 +4076,6 @@ SOV_bulgom_project = {
 			}
 			KOR = { add_to_variable = { var = KORBulgomVar value = -10 } }
 			custom_effect_tooltip = kor_bulgom_10_tt
-			custom_effect_tooltip = NVX_decision_returns_days_90
 		}
 
 		ai_will_do = {
@@ -4147,7 +4110,6 @@ SOV_bulgom_project = {
 			}
 			KOR = { add_to_variable = { var = KORBulgomVar value = -15 } }
 			custom_effect_tooltip = kor_bulgom_15_tt
-			custom_effect_tooltip = NVX_decision_returns_days_90
 		}
 
 		ai_will_do = {
@@ -4176,7 +4138,6 @@ SOV_bulgom_project = {
 		complete_effect = {
 			KOR = { country_event = { id = south_korea.91 } }
 			KOR = { add_to_variable = { var = KORBulgomVar value = -999 } }
-			custom_effect_tooltip = NVX_decision_returns_days_90
 		}
 
 		ai_will_do = {
@@ -5713,7 +5674,6 @@ KOR_japan_korea_undersea_tunnel_plan = {
 			#528 = { #Kyushu
 			#	OWNER = { country_event = { id = south_korea.122 days = 1 } }
 			#}
-			custom_effect_tooltip = NVX_decision_returns_days_28
 		}
 		
 		ai_will_do = {
@@ -5762,7 +5722,6 @@ KOR_japan_korea_undersea_tunnel_plan = {
 			#870 = { #South Gyeongsang
 			#	OWNER = { country_event = { id = south_korea.122 days = 1 } }
 			#}
-			custom_effect_tooltip = NVX_decision_returns_days_28
 		}
 		
 		ai_will_do = {
