@@ -5,19 +5,23 @@ default_army_production_strategy = {
 	allowed = {
 		is_small_nation = no
 		NOT = {
-			original_tag = USA
-			original_tag = CHI
+			#original_tag = USA
+			tag = PRC
 		}
 	}
 	enable = { always = yes }
-	ai_strategy = { type = role_ratio id = infantry value = 1 }
-	ai_strategy = { type = role_ratio id = motorized value = 40 }
-	ai_strategy = { type = role_ratio id = garrison value = 1 }
+	ai_strategy = { type = role_ratio id = infantry value = 40 }
+	ai_strategy = { type = role_ratio id = motorized value = 0 }
+	ai_strategy = { type = role_ratio id = garrison value = 5 }
 	ai_strategy = { type = role_ratio id = light_mechanized value = 30 }
 	ai_strategy = { type = role_ratio id = mechanized value = 15 }
 	ai_strategy = { type = role_ratio id = armor value = 15 }
 	ai_strategy = { type = role_ratio id = marines value = 5 }
-	ai_strategy = { type = role_ratio id = mountaineers value = 4 }
+	ai_strategy = { type = role_ratio id = mountaineers value = 0 }
+	ai_strategy = {
+		type = force_build_armies
+		value = 10 #love of god have 10 
+	}
 
 	abort = { always = no }
 
@@ -57,6 +61,10 @@ default_AI_needs_to_live = {
 	abort = { surrender_progress < 0.50 }
 	ai_strategy = { type = role_ratio id = Infantry value = 150 }
 	ai_strategy = { type = build_army id = Infantry value = 150 }
+	ai_strategy = {
+		type = force_build_armies
+		value = 30
+	}
 }
 
 
@@ -126,19 +134,18 @@ default_air_unit_production = {
 		is_small_nation = no
 		# Custom AI
 		NOT = {
-			original_tag = USA #United States
-			original_tag = CHI
+			#original_tag = USA #United States
 		}
 	}
 	abort = { always = no }
 	enable = { always = yes }
 
-	ai_strategy = { type = unit_ratio id = fighter value = 100 }
-	ai_strategy = { type = unit_ratio id = cas value = 40 }
-	ai_strategy = { type = unit_ratio id = tactical_bomber value = 5 }
-	ai_strategy = { type = unit_ratio id = strategic_bomber value = 5 }
-	ai_strategy = { type = unit_ratio id = naval_bomber value = 25 }
-	ai_strategy = { type = unit_ratio id = scout_plane value = 4 }
+	ai_strategy = { type = unit_ratio id = fighter value = 50 }
+	ai_strategy = { type = unit_ratio id = cas value = 5 }
+	ai_strategy = { type = unit_ratio id = tactical_bomber value = 0 }
+	ai_strategy = { type = unit_ratio id = strategic_bomber value = 0 }
+	ai_strategy = { type = unit_ratio id = naval_bomber value = 5 }
+	ai_strategy = { type = unit_ratio id = scout_plane value = 0 }
 }
 
 default_garrison_strategy = {
@@ -177,6 +184,7 @@ ask_foreign_manpower_as_major = {
 	enable = {
 		is_major = yes
 		garrison_manpower_need > 200000
+		has_manpower < 400000 #Don't bother asking if it's not an issue
 	}
 	abort = {
 		garrison_manpower_need < 100000
@@ -186,5 +194,184 @@ ask_foreign_manpower_as_major = {
 		type = asking_foreign_garrison
 		value = 100
 		# id = ITA # id is optionnal. If it is filled, the value will just apply for this country. If not, the value will apply for all countries.
+	}
+}
+
+### Smaller nations gotta do cheap stuff
+Small_no_air_or_tanks = {
+	enable = {
+		num_of_available_military_factories < 5
+		num_divisions < 10
+	}
+	abort = {
+		num_of_available_military_factories > 4
+		num_divisions > 10
+	}
+	ai_strategy = { type = build_army id = fighter value = 0 }
+	ai_strategy = { type = build_army id = cas value = 0 }
+	ai_strategy = { type = build_army id = tactical_bomber value = 0 }
+	ai_strategy = { type = build_army id = strategic_bomber value = 0 }
+	ai_strategy = { type = build_army id = naval_bomber value = 0 }
+	ai_strategy = { type = build_army id = cavalry value = -3000}
+	ai_strategy = { type = build_army id = garrison value = -3000}
+	ai_strategy = { type = build_army id = suppression value = -3000}
+	ai_strategy = { type = build_army id = paratroopers value = -3000}
+	ai_strategy = { type = build_army id = mountaineers value = -3000}
+	ai_strategy = { type = build_army id = marines value = -3000}
+	ai_strategy = { type = build_army id = armor value = -3000}
+	ai_strategy = { type = build_army id = light_armor value = -3000}
+	ai_strategy = { type = build_army id = modern_armor value = -3000}
+	ai_strategy = { type = build_army id = motorized value = -3000}
+	ai_strategy = { type = build_army id = mechanized value = -3000}
+}
+
+China_must_grow_larger = {
+	enable = {
+		original_tag = PRC
+	}
+	abort = { always = no }
+
+	ai_strategy = {
+		type = equipment_production_min_factories
+		id = infantry
+		value = 2
+	}
+	ai_strategy = {
+		type = equipment_production_min_factories
+		id = artillery
+		value = 3
+	}
+	ai_strategy = {
+		type = equipment_production_min_factories
+		id = motorized
+		value = 5
+	}
+
+	ai_strategy = {
+		type = force_build_armies
+		value = 75 #you can't die with this many divisions
+	}
+
+	ai_strategy = { type = build_army id = fighter value = 20 }
+	ai_strategy = { type = build_army id = cas value = 5 }
+	ai_strategy = { type = build_army id = tactical_bomber value = 0 }
+	ai_strategy = { type = build_army id = strategic_bomber value = 0 }
+	ai_strategy = { type = build_army id = naval_bomber value = 30 }
+	ai_strategy = { type = build_army id = cavalry value = -3000}
+	ai_strategy = { type = build_army id = garrison value = 80}
+	ai_strategy = { type = build_army id = suppression value = -3000}
+	ai_strategy = { type = build_army id = paratroopers value = -3000}
+	ai_strategy = { type = build_army id = mountaineers value = -3000}
+	ai_strategy = { type = build_army id = marines value = -3000}
+	ai_strategy = { type = build_army id = armor value = 15}
+	ai_strategy = { type = build_army id = light_armor value = 15}
+	ai_strategy = { type = build_army id = modern_armor value = 10}
+	ai_strategy = { type = build_army id = motorized value = 0}
+	ai_strategy = { type = build_army id = mechanized value = 0}
+}
+
+we_ballin_lets_get_stronk = {
+	enable = {
+		num_divisions > 45
+		num_of_controlled_factories > 75
+		stockpile_ratio = {
+			archetype = infantry_equipment
+			ratio > 0.95
+		}
+		stockpile_ratio = {
+			archetype = motorized_equipment
+			ratio > 0.95
+		}
+		NOT = {
+			tag = PRC
+			tag = USA
+		}
+	}
+	ai_strategy = {
+		type = force_build_armies
+		value = 50 #it's minimum 45 so let's get it to 50 to not drop out
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = { type = build_army id = cavalry value = -3000}
+	ai_strategy = { type = build_army id = garrison value = -3000}
+	ai_strategy = { type = build_army id = suppression value = -3000}
+	ai_strategy = { type = build_army id = paratroopers value = -3000}
+	ai_strategy = { type = build_army id = mountaineers value = -3000}
+	ai_strategy = { type = build_army id = marines value = -3000}
+	ai_strategy = { type = build_army id = armor value = 30}
+	ai_strategy = { type = build_army id = light_armor value = -3000}
+	ai_strategy = { type = build_army id = modern_armor value = 20}
+	ai_strategy = { type = build_army id = motorized value = -3000}
+	ai_strategy = { type = build_army id = mechanized value = 50}
+
+}
+
+stop_making_artillery_equipment = {
+	enable = {
+		has_equipment = { artillery_equipment > 3000 }
+	}
+
+	abort = { has_equipment = { artillery_equipment < 1500 } }
+	ai_strategy = {
+		type = equipment_production_min_factories
+		id = artillery
+		value = -1
+	}
+	ai_strategy = {
+		type = equipment_variant_production_factor
+		id = artillery_equipment
+		value = -10000
+	}
+}
+stop_making_small_arms_equipment = {
+	enable = {
+		has_equipment = { infantry_equipment > 30000 }
+	}
+
+	abort = { has_equipment = { infantry_equipment < 7500 } }
+	ai_strategy = {
+		type = equipment_variant_production_factor
+		id = infantry_equipment
+		value = -10000
+	}
+	ai_strategy = {
+		type = equipment_production_min_factories
+		id = infantry
+		value = -2
+	}
+	
+}
+stop_making_motorised_equipment = {
+	enable = {
+		has_equipment = { motorized_equipment > 6500 }
+	}
+
+	abort = { has_equipment = { motorized_equipment < 1000 } }
+	ai_strategy = {
+		type = equipment_variant_production_factor
+		id = motorized_equipment
+		value = -10000
+	}
+	ai_strategy = {
+		type = equipment_production_min_factories
+		id = motorized
+		value = -2
+	}
+}
+why_do_you_make_rocket_arty = {
+	enable = {
+		has_equipment = { motorized_rocket_equipment > 500 }
+	}
+
+	abort = { has_equipment = { motorized_rocket_equipment < 50 } }
+	ai_strategy = {
+		type = equipment_variant_production_factor
+		id = motorized_rocket_equipment
+		value = -10000
+	}
+	ai_strategy = {
+		type = equipment_variant_production_factor
+		id = rocket_artillery_equipment
+		value = -10000
 	}
 }

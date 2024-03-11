@@ -59,7 +59,9 @@ PRC_civilian_factory_at_first = {
 		original_tag = PRC
 	}
 	enable = {
-		date < 2003.1.1
+		date < 2005.1.1
+		has_war = no
+		threat < 0.2 #we get a middle ground building if threat rises somewhat quickly
 	}
 	abort_when_not_enabled = yes
 
@@ -75,7 +77,11 @@ PRC_focus_on_mils_now = {
 		original_tag = PRC
 	}
 	enable = {
-		date > 2003.1.1
+		OR = {
+			date > 2005.1.1
+			has_war = yes 
+			threat > 0.35 #not at war but sh*t's hit the fan
+		}
 	}
 	abort_when_not_enabled = yes
 	ai_strategy = {
@@ -233,7 +239,7 @@ PRC_naval_role_ratios = {
 	ai_strategy = {
 		type = role_ratio
 		id = naval_submarine
-		value = 50
+		value = 15
 	}
 
 	ai_strategy = {
@@ -269,13 +275,13 @@ PRC_naval_role_ratios = {
 	ai_strategy = {
 		type = role_ratio
 		id = naval_mine_layer
-		value = 5
+		value = 0
 	}
 	# general building directives
 	ai_strategy = {
 		type = unit_ratio
 		id = capital_ship
-		value = 5
+		value = 0
 	}
 
 	ai_strategy = {
