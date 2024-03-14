@@ -729,7 +729,7 @@
 	
 	shared_focus = {
 		id = kor_ministry_of_gender_equality
-		icon = university #national_unity_red
+		icon = GFX_focus_generic_university_1 #national_unity_red
 		x = 2
 		y = 1
 		cost = 5
@@ -2029,12 +2029,10 @@
 		continue_if_invalid = no
 		available_if_capitulated = no
 		
-		completion_reward = {
-			add_doctrine_cost_reduction = {
-				cost_reduction = 0.5
-				uses = 2
-				category = naval_doctrine
-			}
+		add_doctrine_cost_reduction = {
+			cost_reduction = 0.5
+			uses = 2
+			category = naval_doctrine
 		}
 		
 		ai_will_do = {
@@ -3174,7 +3172,11 @@
 		}
 		
 		ai_will_do = {
-			base = 5
+			base = 3
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
 		}
 	}
 
@@ -4195,7 +4197,8 @@
 		available_if_capitulated = no
 		
 		completion_reward = {
-			add_offsite_building = { type = industrial_complex level = 2 }
+			add_cic = 2000
+			add_to_variable = { NVX_ECO_health = 3 tooltip = additional_economic_health_3 }
 		}
 		
 		ai_will_do = {
@@ -4523,7 +4526,7 @@
 
 	shared_focus = {
 		id = kor_cultural_glory
-		icon = National_industry
+		icon = GFX_focus_SWI_issue_war_bonds
 		x = -2
 		y = 2
 		cost = 8
@@ -4539,7 +4542,8 @@
 		available_if_capitulated = no
 		
 		completion_reward = {
-			add_offsite_building = { type = industrial_complex level = 2 }
+			add_cic = 2000
+			add_to_variable = { NVX_ECO_health = 3 tooltip = additional_economic_health_3 }
 		}
 		
 		ai_will_do = {
@@ -4672,17 +4676,21 @@
 	}
 
 	shared_focus = {
-		id = kor_semiconductor_factory_investment
-		icon = license_production
-		x = -2
-		y = 5
+		id = kor_development_of_the_seoul_metropolitan_area
+		icon = kor_development_of_the_seoul_metropolitan_area
+		x = -5
+		y = 1
 		cost = 6
 
 		prerequisite = { 
 			focus = kor_culture_and_industry
 		}
+
+		mutually_exclusive = {
+			focus = kor_development_of_the_decentralization
+		}
 		
-		relative_position_id = 	kor_free_japanese_culture
+		relative_position_id = 	kor_culture_and_industry
 	
 		cancel_if_invalid = yes
 		continue_if_invalid = no
@@ -4691,30 +4699,355 @@
 		search_filters = { FOCUS_FILTER_RESEARCH FOCUS_FILTER_INDUSTRY }
 		
 		completion_reward = {
-			add_tech_bonus = {
-				bonus = 1.0
-				uses = 2
-				category = industry
+			525 = {
+				add_manpower = 100000
+				add_extra_state_shared_building_slots = 4
+			}
+			869 = {
+				add_manpower = -30000
+			}
+			870 = {
+				add_manpower = -30000
+			}
+			1108 = {
+				add_manpower = -30000
+			}
+			871 = {
+				add_manpower = -10000
 			}
 		}
 		
 		ai_will_do = {
 			base = 5
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
+		}
+	}
+
+	shared_focus = {
+		id = kor_from_the_countryside_to_seoul
+		icon = GFX_focus_ARG_strengthening_the_concordancia
+		x = -7
+		y = 2
+		cost = 5
+
+		prerequisite = { 
+			focus = kor_development_of_the_seoul_metropolitan_area
+		}
+		
+		relative_position_id = 	kor_culture_and_industry
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		available = {
+			has_full_control_of_state = 525
+		}
+		
+		completion_reward = {
+			525 = {
+				add_manpower = 260000
+				add_extra_state_shared_building_slots = 2
+			}
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = kor_seoul_area_expansion
+		icon = GFX_focus_BRA_reach_out_to_military_dem
+		x = -8
+		y = 3
+		cost = 6
+
+		prerequisite = { 
+			focus = kor_from_the_countryside_to_seoul
+		}
+		
+		relative_position_id = 	kor_culture_and_industry
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		available = {
+			has_full_control_of_state = 525
+		}
+		
+		completion_reward = {
+			if = {
+				limit = { owns_state = 525 }
+				525 = {
+					add_resource = {
+						type = steel
+						amount = 42
+					}
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+					add_extra_state_shared_building_slots = 2
+				}
+			}
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = kor_wealth_flows_down
+		icon = GFX_focus_generic_improve_roads
+		x = -8
+		y = 5
+		cost = 6
+
+		prerequisite = { 
+			focus = kor_seoul_area_expansion
+		}
+		
+		relative_position_id = 	kor_culture_and_industry
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		available = {
+			has_full_control_of_state = 525
+			has_full_control_of_state = 945
+		}
+		
+		completion_reward = {
+			525 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+
+			945 = {
+				add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = kor_cyberpunk_seoul
+		icon = kor_cyberpunk_seoul
+		x = -9
+		y = 4
+		cost = 5
+
+		prerequisite = { 
+			focus = kor_seoul_area_expansion
+		}
+		
+		relative_position_id = 	kor_culture_and_industry
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		available = {
+			has_full_control_of_state = 525
+		}
+		
+		completion_reward = {
+			525 = {
+				add_dynamic_modifier = {
+					modifier = cyberpunk_korea_modifier
+				}
+			}
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = kor_incheon_port_expansion
+		icon = GFX_goal_generic_construct_naval_dockyard
+		x = -7
+		y = 4
+		cost = 6
+
+		prerequisite = { 
+			focus = kor_from_the_countryside_to_seoul
+		}
+		
+		relative_position_id = 	kor_culture_and_industry
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		available = {
+			has_full_control_of_state = 525
+		}
+		
+		completion_reward = {
+			525 = {
+				add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+					type = naval_base
+					level = 2
+					instant_build = yes
+					province = 13262
+				}
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+			}
+
+			mio:KOR_dsme_organization = {
+				add_mio_size = 1
+			}
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = kor_seoul_gyeonggi_connections
+		icon = GFX_goal_generic_construct_civilian
+		x = -5
+		y = 6
+		cost = 6
+
+		prerequisite = { 
+			focus = kor_development_of_the_seoul_metropolitan_area
+		}
+		
+		relative_position_id = 	kor_free_japanese_culture
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		available = {
+			has_full_control_of_state = 525
+		}
+		
+		completion_reward = {
+			525 = {
+				add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+
+			add_cic = 550
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = kor_development_of_the_decentralization
+		icon = kor_development_of_the_decentralization
+		x = 5
+		y = 1
+		cost = 6
+
+		prerequisite = { 
+			focus = kor_culture_and_industry
+		}
+
+		mutually_exclusive = {
+			focus = kor_development_of_the_seoul_metropolitan_area
+		}
+		
+		relative_position_id = 	kor_culture_and_industry
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		search_filters = { FOCUS_FILTER_HISTORICAL FOCUS_FILTER_INDUSTRY }
+		
+		completion_reward = {
+			525 = {
+				add_manpower = -100000
+			}
+			869 = {
+				add_manpower = 30000
+				add_extra_state_shared_building_slots = 1
+			}
+			870 = {
+				add_manpower = 30000
+				add_extra_state_shared_building_slots = 1
+			}
+			1108 = {
+				add_manpower = 30000
+				add_extra_state_shared_building_slots = 1
+			}
+			871 = {
+				add_manpower = 10000
+				add_extra_state_shared_building_slots = 1
+			}
+		}
+		
+		ai_will_do = {
+			base = 6.5
 		}
 	}
 
 	shared_focus = {
 		id = kor_our_made_smartphone
-		icon = license_production
-		x = -2
-		y = 6
+		icon = GFX_focus_generic_energy
+		x = -1
+		y = 2
 		cost = 6
 
 		prerequisite = { 
-			focus = kor_semiconductor_factory_investment
+			focus = kor_development_of_the_seoul_metropolitan_area
+			focus = kor_development_of_the_decentralization
 		}
 		
-		relative_position_id = 	kor_free_japanese_culture
+		relative_position_id = 	kor_culture_and_industry
 	
 		cancel_if_invalid = yes
 		continue_if_invalid = no
@@ -4726,36 +5059,6 @@
 			add_tech_bonus = {
 				bonus = 1.0
 				uses = 2
-				category = electronics
-			}
-		}
-		
-		ai_will_do = {
-			base = 5
-		}
-	}
-
-	shared_focus = {
-		id = kor_towards_the_moon
-		icon = technocracy_research
-		x = -2
-		y = 7
-		cost = 6
-
-		prerequisite = { 
-			focus = kor_our_made_smartphone
-		}
-		
-		relative_position_id = 	kor_free_japanese_culture
-	
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = no
-		
-		completion_reward = {
-			add_tech_bonus = {
-				bonus = 3.0
-				uses = 1
 				category = electronics
 			}
 		}
@@ -4768,15 +5071,15 @@
 	shared_focus = {
 		id = kor_gyeongbu_expressway
 		icon = infrastructure
-		x = 0
-		y = 5
+		x = 4
+		y = 3
 		cost = 6
 
 		prerequisite = { 
-			focus = kor_culture_and_industry
+			focus = kor_gasan_digital_complex
 		}
 		
-		relative_position_id = 	kor_free_japanese_culture
+		relative_position_id = 	kor_culture_and_industry
 	
 		cancel_if_invalid = yes
 		continue_if_invalid = no
@@ -4833,15 +5136,15 @@
 	shared_focus = {
 		id = kor_88_olympic_expressway
 		icon = infrastructure
-		x = 0
-		y = 6
+		x = -4
+		y = 3
 		cost = 6
 
 		prerequisite = { 
-			focus = kor_gyeongbu_expressway
+			focus = kor_yeosu_industrial_complex
 		}
 		
-		relative_position_id = 	kor_free_japanese_culture
+		relative_position_id = 	kor_culture_and_industry
 	
 		cancel_if_invalid = yes
 		continue_if_invalid = no
@@ -4872,71 +5175,18 @@
 	}
 
 	shared_focus = {
-		id = kor_improvement_of_underdeveloped_areas
-		icon = infrastructure
-		x = 0
-		y = 7
-		cost = 6
-
-		prerequisite = { 
-			focus = kor_88_olympic_expressway
-		}
-		
-		relative_position_id = 	kor_free_japanese_culture
-	
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = no
-		
-		search_filters = { FOCUS_FILTER_INDUSTRY }
-		
-		available = {
-			OR = {
-				has_full_control_of_state = 946
-				has_full_control_of_state = 871
-			}
-		}
-		
-		completion_reward = {
-				946 = {
-					if = {
-						limit = { is_controlled_by = ROOT }
-						add_building_construction = {
-							type = infrastructure
-							level = 2
-							instant_build = yes
-						}
-					}
-				}
-				871 = {
-					if = {
-						limit = { is_controlled_by = ROOT }
-						add_building_construction = {
-							type = infrastructure
-							level = 2
-							instant_build = yes
-						}
-					}
-				}
-		}
-		
-		ai_will_do = {
-			base = 5
-		}
-	}
-
-	shared_focus = {
 		id = kor_gasan_digital_complex
 		icon = construction
-		x = 2
-		y = 5
+		x = 3
+		y = 2
 		cost = 6
 
 		prerequisite = { 
-			focus = kor_culture_and_industry
+			focus = kor_development_of_the_seoul_metropolitan_area
+			focus = kor_development_of_the_decentralization
 		}
 		
-		relative_position_id = 	kor_free_japanese_culture
+		relative_position_id = 	kor_culture_and_industry
 	
 		cancel_if_invalid = yes
 		continue_if_invalid = no
@@ -4980,13 +5230,14 @@
 	
 	shared_focus = {
 		id = kor_pangyo_techno_valley
-		icon = construction2
-		x = 2
+		icon = GFX_goal_generic_scientific_exchange
+		x = 1
 		y = 6
 		cost = 6
 
 		prerequisite = { 
-			focus = kor_gasan_digital_complex
+			focus = kor_development_of_the_seoul_metropolitan_area
+			focus = kor_development_of_the_decentralization
 		}
 		
 		relative_position_id = 	kor_free_japanese_culture
@@ -5050,17 +5301,364 @@
 	}
 
 	shared_focus = {
-		id = kor_yeosu_industrial_complex
-		icon = industry_civilian
-		x = 2
+		id = kor_gangwon_coal_mine_industry
+		icon = GFX_focus_generic_mining_industry
+		x = 5
+		y = 6
+		cost = 6
+
+		prerequisite = { 
+			focus = kor_development_of_the_decentralization
+		}
+		
+		relative_position_id = 	kor_free_japanese_culture
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		available = {
+			OR = {
+				has_full_control_of_state = 871
+				has_full_control_of_state = 872
+			}
+		}
+		
+		completion_reward = {
+			if = {
+				limit = { owns_state = 871 }
+				871 = {
+					add_resource = {
+						type = steel
+						amount = 12
+					}
+					
+					add_resource = {
+						type = tungsten
+						amount = 10
+					}
+				}
+			}
+
+			if = {
+				limit = { owns_state = 872 }
+				872 = {
+					add_resource = {
+						type = steel
+						amount = 8
+					}
+					
+					add_resource = {
+						type = tungsten
+						amount = 14
+					}
+				}
+			}
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = kor_relocation_of_industrial_facilities_to_the_provinces
+		icon = GFX_focus_CHL_enlarge_the_textile_industries
+		x = 7
+		y = 6
+		cost = 5
+
+		prerequisite = { 
+			focus = kor_development_of_the_decentralization
+		}
+		
+		relative_position_id = 	kor_free_japanese_culture
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		available = {
+		}
+		
+		completion_reward = {
+			add_to_variable = { NVX_ECO_health = 2 tooltip = additional_economic_health_2 }
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = kor_honam_industrial_development
+		icon = GFX_focus_CHL_focus_on_cattle_and_wool
+		x = 6
 		y = 7
 		cost = 6
 
 		prerequisite = { 
-			focus = kor_pangyo_techno_valley
+			focus = kor_relocation_of_industrial_facilities_to_the_provinces
 		}
 		
 		relative_position_id = 	kor_free_japanese_culture
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		available = {
+			has_full_control_of_state = 869
+		}
+		
+		completion_reward = {
+			869 = {
+				add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+
+			add_cic = 300
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = kor_yeongnam_industrial_development
+		icon = GFX_focus_BRA_rubber_war
+		x = 8
+		y = 7
+		cost = 6
+
+		prerequisite = { 
+			focus = kor_relocation_of_industrial_facilities_to_the_provinces
+		}
+		
+		relative_position_id = 	kor_free_japanese_culture
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		available = {
+			OR = {	
+				has_full_control_of_state = 870
+				has_full_control_of_state = 1108
+			}
+		}
+		
+		completion_reward = {
+			if = {
+				limit = { owns_state = 870 }
+				870 = {
+					add_resource = {
+						type = steel
+						amount = 22
+					}
+					
+					add_extra_state_shared_building_slots = 3
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+
+			if = {
+				limit = { owns_state = 1108 }
+				1108 = {
+					add_resource = {
+						type = steel
+						amount = 19
+					}
+					
+					add_extra_state_shared_building_slots = 3
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = kor_gangwon_industrial_development
+		icon = GFX_focus_CHL_focus_on_cattle_and_wool
+		x = 8
+		y = 8
+		cost = 6
+
+		prerequisite = { 
+			focus = kor_yeongnam_industrial_development
+		}
+		
+		relative_position_id = 	kor_free_japanese_culture
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		available = {
+			OR = {
+				has_full_control_of_state = 871
+				has_full_control_of_state = 872
+			}
+		}
+		
+		completion_reward = {
+			if = {
+				limit = { owns_state = 871 }
+				871 = {
+					add_resource = {
+						type = tungsten
+						amount = 10
+					}
+					add_extra_state_shared_building_slots = 3
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+
+			if = {
+				limit = { owns_state = 872 }
+				872 = {
+					add_resource = {
+						type = tungsten
+						amount = 14
+					}
+					add_extra_state_shared_building_slots = 3
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = kor_jeju_industrial_development
+		icon = kor_jeju_flag
+		x = 6
+		y = 8
+		cost = 6
+
+		prerequisite = { 
+			focus = kor_honam_industrial_development
+		}
+		
+		relative_position_id = 	kor_free_japanese_culture
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		available = {
+			OR = {
+				AND = {
+					country_exists = JEJ
+					JEJ = { is_subject_of = KOR }
+				}
+				has_full_control_of_state = 946
+			}
+		}
+		
+		completion_reward = {
+			946 = {
+				add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			
+			add_cic = 1000
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = kor_balanced_development
+		icon = GFX_focus_generic_improve_roads
+		x = 7
+		y = 9
+		cost = 4
+
+		prerequisite = { 
+			focus = kor_jeju_industrial_development
+		}
+
+		prerequisite = { 
+			focus = kor_gangwon_industrial_development
+		}
+		
+		relative_position_id = 	kor_free_japanese_culture
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		available = {
+		}
+		
+		completion_reward = {
+			add_cic = 2000
+			add_to_variable = { NVX_ECO_health = 3 tooltip = additional_economic_health_3 }
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = kor_yeosu_industrial_complex
+		icon = industry_civilian
+		x = -3
+		y = 2
+		cost = 6
+
+		prerequisite = { 
+			focus = kor_development_of_the_seoul_metropolitan_area
+			focus = kor_development_of_the_decentralization
+		}
+		
+		relative_position_id = 	kor_culture_and_industry
 	
 		cancel_if_invalid = yes
 		continue_if_invalid = no
@@ -5080,17 +5678,6 @@
 					}
 				}
 			}
-			
-			modify_building_resources = {
-        	   building = synthetic_refinery
-        	   resource = rubber
-        	   amount = 1
-        	}
-			modify_building_resources = {
-        	   building = synthetic_refinery
-        	   resource = oil
-        	   amount = 2
-        	}
 			
 			random_owned_controlled_state = {
 				limit = {
@@ -5115,7 +5702,525 @@
 		}
 	}
 
+	shared_focus = {
+		id = kor_incheon_international_airport
+		icon = GFX_focus_generic_jet_planes
+		x = 0
+		y = 3
+		cost = 5
+
+		prerequisite = { 
+			focus = kor_development_of_the_seoul_metropolitan_area
+			focus = kor_development_of_the_decentralization
+		}
+		
+		relative_position_id = kor_culture_and_industry
 	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		
+		completion_reward = {
+			mio:KOR_korean_air_organization = {
+				add_mio_size = 1
+			}
+			add_cic = 2000
+			add_to_variable = { NVX_ECO_health = 3 tooltip = additional_economic_health_3 }
+		}
+		
+		ai_will_do = {
+			base = 8
+		}
+	}
+
+	shared_focus = {
+		id = kor_more_expansive_free_trade
+		icon = GFX_focus_CHL_silverworking
+		x = -2
+		y = 1
+		cost = 4
+
+		prerequisite = { 
+			focus = kor_incheon_international_airport
+		}
+		
+		relative_position_id = kor_incheon_international_airport
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		search_filters = {  }
+		
+		completion_reward = {
+			if = {
+				limit = { NOT = { has_idea = free_trade } }
+				add_ideas = free_trade
+			}
+			else = {
+				add_political_power = 150
+			}
+
+			add_to_variable = { NVX_ECO_health = 2 tooltip = additional_economic_health_2 }
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = kor_towards_china
+		icon = align_to_china
+		x = -1
+		y = 1
+		cost = 4
+
+		prerequisite = { 
+			focus = kor_more_expansive_free_trade
+		}
+
+		mutually_exclusive = {
+			focus = kor_towards_japan
+		}
+
+		available = {
+			NOT = { has_war_with = PRC }
+		}
+		
+		relative_position_id = kor_more_expansive_free_trade
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		search_filters = {  }
+		
+		completion_reward = {
+
+			add_ideas = kor_towards_china_idea
+		}
+		
+		ai_will_do = {
+			base = 5
+			modifier = {
+				add = 30
+				is_in_faction_with = PRC
+			}
+		}
+	}
+
+	shared_focus = {
+		id = kor_towards_japan
+		icon = align_to_japan
+		x = 1
+		y = 1
+		cost = 4
+
+		prerequisite = { 
+			focus = kor_more_expansive_free_trade
+		}
+
+		mutually_exclusive = {
+			focus = kor_towards_china
+		}
+
+		available = {
+			NOT = { has_war_with = JAP }
+		}
+
+		relative_position_id = kor_more_expansive_free_trade
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		search_filters = {  }
+		
+		completion_reward = {
+
+			add_ideas = kor_towards_japan_idea
+		}
+		
+		ai_will_do = {
+			base = 5
+			modifier = {
+				add = 30
+				is_in_faction_with = JAP
+			}
+		}
+	}
+
+	shared_focus = {
+		id = kor_shipbuilding_investment
+		icon = GFX_focus_POL_develop_polish_shipbuilding
+		x = -1
+		y = 2
+		cost = 4
+
+		prerequisite = { 
+			focus = kor_towards_china
+			focus = kor_towards_japan
+		}
+		
+		relative_position_id = kor_more_expansive_free_trade
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		search_filters = {  }
+		
+		completion_reward = {
+			mio:KOR_samsung_heavy_industries_organization ={
+				add_mio_funds = 1000
+			}
+			
+			mio:KOR_dsme_organization  ={
+				add_mio_funds = 1000
+			}
+			
+			mio:KOR_hyundai_heavy_industries_naval_organization  ={
+				add_mio_funds = 1000
+			}
+
+			random_owned_state = {
+				limit = {
+					free_building_slots = {
+						building = dockyard
+						size > 0
+						include_locked = yes
+					}
+					state_population_k > 500
+				}
+				add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = kor_car_to_the_global_market
+		icon = GFX_focus_CHL_domestic_production_of_the_willys_mb
+		x = 1
+		y = 2
+		cost = 4
+
+		prerequisite = { 
+			focus = kor_towards_china
+			focus = kor_towards_japan
+		}
+		
+		relative_position_id = kor_more_expansive_free_trade
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		search_filters = {  }
+		
+		completion_reward = {
+			add_timed_idea = {
+				idea = kor_vehicle_exports
+				days = 365
+			}
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = kor_trade_in_high_tech_equipment
+		icon = GFX_focus_BRA_ethical_internationalism
+		x = 0
+		y = 3
+		cost = 5
+
+		prerequisite = { 
+			focus = kor_car_to_the_global_market
+		}
+
+		prerequisite = { 
+			focus = kor_shipbuilding_investment
+		}
+		
+		relative_position_id = kor_more_expansive_free_trade
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		search_filters = {  }
+		
+		completion_reward = {
+			add_cic = 1000
+			
+			modify_building_resources = {
+        	   building = synthetic_refinery
+        	   resource = rubber
+        	   amount = 1
+        	}
+			modify_building_resources = {
+        	   building = synthetic_refinery
+        	   resource = oil
+        	   amount = 2
+        	}
+
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = kor_eradication_of_human_trafficking
+		icon = kor_eradication_of_human_trafficking
+		x = 3
+		y = 1
+		cost = 4
+
+		prerequisite = { 
+			focus = kor_incheon_international_airport
+		}
+		
+		relative_position_id = kor_incheon_international_airport
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		search_filters = {  }
+		
+		completion_reward = {
+
+			custom_effect_tooltip = kor_eradication_of_human_trafficking_tt
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = kor_semiconductor_factory_investment
+		icon = JAP_robot_arm
+		x = 5
+		y = 2
+		cost = 4
+
+		prerequisite = { 
+			focus = kor_eradication_of_human_trafficking
+		}
+		
+		relative_position_id = kor_incheon_international_airport
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		search_filters = {  }
+		
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 2.0
+				uses = 1
+				category = electronics
+			}
+			add_cic = 1000
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = kor_promote_it_companies
+		icon = kor_promote_it_companies
+		x = 5
+		y = 3
+		cost = 4
+
+		prerequisite = { 
+			focus = kor_semiconductor_factory_investment
+		}
+		
+		relative_position_id = kor_incheon_international_airport
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		search_filters = {  }
+		
+		completion_reward = {
+			custom_effect_tooltip = available_industrial_concern
+			show_ideas_tooltip = KOR_naver
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = kor_the_saemangeum_problem
+		icon = kor_the_saemangeum_problem
+		x = 3
+		y = 2
+		cost = 4
+
+		prerequisite = { 
+			focus = kor_eradication_of_human_trafficking
+		}
+		
+		relative_position_id = kor_incheon_international_airport
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		search_filters = {  }
+		
+		completion_reward = {
+			custom_effect_tooltip = kor_the_saemangeum_problem_tt
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = kor_environmental_protectionism
+		icon = GFX_focus_CHL_expand_the_forestry
+		x = 3
+		y = 3
+		cost = 4
+
+		prerequisite = { 
+			focus = kor_the_saemangeum_problem
+		}
+		
+		relative_position_id = kor_incheon_international_airport
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		search_filters = {  }
+		
+		completion_reward = {
+			add_political_power = 100
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = kor_stop_the_fall_of_agriculture
+		icon = GFX_focus_generic_land_reclamation
+		x = 1
+		y = 3
+		cost = 4
+
+		prerequisite = { 
+			focus = kor_eradication_of_human_trafficking
+		}
+		
+		relative_position_id = kor_incheon_international_airport
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		search_filters = {  }
+		
+		completion_reward = {
+			869 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+
+			if = {
+				limit = { owns_state = 871 }
+				871 = {
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+
+			if = {
+				limit = { owns_state = 872 }
+				872 = {
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
+	shared_focus = {
+		id = kor_the_problem_of_low_birth_rate
+		icon = GFX_focus_generic_population_growth
+		x = 1
+		y = 4
+		cost = 4
+
+		prerequisite = { 
+			focus = kor_stop_the_fall_of_agriculture
+		}
+		
+		relative_position_id = kor_incheon_international_airport
+	
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		search_filters = {  }
+		
+		completion_reward = {
+			law_change_decrease_immigration_restrictions = yes
+			add_stability = 0.01
+			add_political_power = 75
+		}
+		
+		ai_will_do = {
+			base = 5
+		}
+	}
+
  ##############
  ###
  ### reunification
@@ -10415,7 +11520,10 @@
 		
 		ai_will_do = {
 			base = 5
-			
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
 		}
 	}
 
@@ -10505,7 +11613,7 @@
 		}
 		
 		ai_will_do = {
-			base = 5
+			base = 10
 			
 		}
 	}
@@ -10694,6 +11802,10 @@
 		
 		ai_will_do = {
 			base = 5
+			modifier = {
+				factor = 2
+				date > 2003.06.01
+			}
 			
 		}
 	}
@@ -10749,6 +11861,10 @@
 		
 		ai_will_do = {
 			base = 5
+			modifier = {
+				factor = 2
+				date > 2003.06.01
+			}
 			
 		}
 	}
@@ -10790,6 +11906,10 @@
 		
 		ai_will_do = {
 			base = 5
+			modifier = {
+				factor = 2
+				date > 2003.06.01
+			}
 			
 		}
 	}
@@ -10829,6 +11949,10 @@
 		
 		ai_will_do = {
 			base = 5
+			modifier = {
+				factor = 2
+				date > 2003.06.01
+			}
 			
 		}
 	}
@@ -10884,7 +12008,7 @@
 		}
 		
 		ai_will_do = {
-			base = 5
+			base = 10
 			
 		}
 	}
@@ -10968,6 +12092,10 @@
 		
 		ai_will_do = {
 			base = 5
+			modifier = {
+				factor = 2
+				date > 2003.06.01
+			}
 			
 		}
 	}
@@ -11056,6 +12184,10 @@
 		
 		ai_will_do = {
 			base = 5
+			modifier = {
+				factor = 2
+				date > 2003.06.01
+			}
 			
 		}
 	}
@@ -11375,7 +12507,7 @@
 		}
 		
 		ai_will_do = {
-			base = 5
+			base = 10
 			
 		}
 	}
@@ -11417,6 +12549,10 @@
 		
 		ai_will_do = {
 			base = 5
+			modifier = {
+				factor = 2
+				date > 2003.06.01
+			}
 			
 		}
 	}
@@ -11455,6 +12591,10 @@
 		
 		ai_will_do = {
 			base = 5
+			modifier = {
+				factor = 2
+				date > 2003.06.01
+			}
 			
 		}
 	}
@@ -11502,6 +12642,10 @@
 		
 		ai_will_do = {
 			base = 5
+			modifier = {
+				factor = 2
+				date > 2003.06.01
+			}
 			
 		}
 	}
@@ -11541,6 +12685,10 @@
 		
 		ai_will_do = {
 			base = 5
+			modifier = {
+				factor = 2
+				date > 2003.06.01
+			}
 			
 		}
 	}

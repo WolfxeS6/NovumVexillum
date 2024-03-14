@@ -7405,3 +7405,236 @@ kor_easter_egg_roj_cat = {
 		}
 	}
 }
+
+kor_eradication_of_human_trafficking_cat = {
+
+	kor_eradication_of_human_trafficking_decision = {
+
+		icon = generic_construction
+		
+		state_target = yes
+		
+		visible = {
+			ROOT = { 
+				has_completed_focus = kor_the_saemangeum_problem
+			} 
+			FROM = {
+				has_dynamic_modifier = { modifier = korean_human_trafficking_state }
+			}
+		}
+		
+		available = {
+			FROM = { 
+				infrastructure > 8 #9~10 
+				has_dynamic_modifier = { modifier = korean_human_trafficking_state }
+			}
+			NOT = { has_idea = economy_depression }
+			NOT = { has_idea = economy_recession }
+		}
+		
+		target_trigger = {			
+			FROM = {
+				is_core_of = ROOT
+				is_owned_by = ROOT
+				is_controlled_by = ROOT
+			}
+		}
+		
+		cost = 0
+		
+		custom_cost_text = economic_health_1
+		
+		fire_only_once = no
+		days_remove = 365
+		
+		ai_will_do = {
+			base = 20
+			modifier = {
+				factor = 2
+				check_variable = { [?ROOT.NVX_ECO_health] > 30 }
+			}
+			modifier = {
+				factor = 10
+				check_variable = { [?ROOT.NVX_ECO_health] > 45 }
+			}
+			modifier = {
+				factor = 10
+				check_variable = { [?ROOT.NVX_ECO_health] > 60 }
+			}
+			modifier = {
+				factor = 0
+				check_variable = { [?ROOT.NVX_ECO_health] < 10 }
+			}
+		}
+		
+		complete_effect = {
+			ROOT = { add_to_variable = { NVX_ECO_health = -1 tooltip = minous_economic_health_1 } }
+		}
+		
+		remove_effect = {
+			FROM = {
+				remove_dynamic_modifier = { modifier = korean_human_trafficking_state }
+			}
+		}
+	}
+}
+
+kor_the_saemangeum_problem_cat = {
+
+	kor_saemangeum_construction_completed_decision = {
+
+		icon = GFX_decision_generic_industry
+		
+		state_target = yes
+		
+		visible = {
+			ROOT = { 
+				has_completed_focus = kor_the_saemangeum_problem
+			} 
+			FROM = {
+				has_dynamic_modifier = { modifier = unfinished_saemangeum_modifier }
+			}
+		}
+		
+		available = {
+			FROM = { 
+				has_dynamic_modifier = { modifier = unfinished_saemangeum_modifier }
+			}
+			NOT = { has_country_flag = kor_the_saemangeum_problem_flag }
+		}
+		
+		target_trigger = {			
+			FROM = {
+				is_core_of = ROOT
+				is_owned_by = ROOT
+				is_controlled_by = ROOT
+			}
+		}
+		
+		cost = 0
+		
+		custom_cost_text = economic_health_4
+		
+		fire_only_once = no
+		days_remove = 720
+		
+		ai_will_do = {
+			base = 6
+			modifier = {
+				factor = 2
+				check_variable = { [?ROOT.NVX_ECO_health] > 30 }
+			}
+			modifier = {
+				factor = 10
+				check_variable = { [?ROOT.NVX_ECO_health] > 45 }
+			}
+			modifier = {
+				factor = 10
+				check_variable = { [?ROOT.NVX_ECO_health] > 60 }
+			}
+			modifier = {
+				factor = 0
+				check_variable = { [?ROOT.NVX_ECO_health] < 10 }
+			}
+		}
+		
+		complete_effect = {
+			ROOT = { add_to_variable = { NVX_ECO_health = -4 tooltip = minous_economic_health_4 } }
+			set_country_flag = kor_the_saemangeum_problem_flag
+		}
+		
+		remove_effect = {
+			clr_country_flag = kor_the_saemangeum_problem_flag
+			FROM = {
+				remove_dynamic_modifier = { modifier = unfinished_saemangeum_modifier }
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+				add_resource = {
+					type = steel
+					amount = 18
+				}
+				add_extra_state_shared_building_slots = 1
+			}
+		}
+	}
+
+	kor_give_bomb_order_to_seawall_decision = {
+
+		icon = GFX_decision_generic_industry
+		
+		state_target = yes
+		
+		visible = {
+			ROOT = { 
+				has_completed_focus = kor_the_saemangeum_problem
+			} 
+			FROM = {
+				has_dynamic_modifier = { modifier = unfinished_saemangeum_modifier }
+			}
+		}
+		
+		available = {
+			FROM = { 
+				has_dynamic_modifier = { modifier = unfinished_saemangeum_modifier }
+			}
+			NOT = { has_country_flag = kor_the_saemangeum_problem_flag }
+		}
+		
+		target_trigger = {			
+			FROM = {
+				is_core_of = ROOT
+				is_owned_by = ROOT
+				is_controlled_by = ROOT
+			}
+		}
+		
+		cost = 0
+		
+		custom_cost_trigger = {
+			command_power > 24
+		}
+		
+		custom_cost_text = decision_cost_CP_25
+		
+		fire_only_once = no
+		days_remove = 28
+		
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 10
+				is_historical_focus_on = no
+			}
+			modifier = {
+				add = 30
+				OR = {
+					has_government = communist
+					has_government = social_democrat
+					has_government = democratic_socialist
+					has_government = progressive
+				}
+			}
+		}
+		
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -25
+			}
+			set_country_flag = kor_the_saemangeum_problem_flag
+		}
+		
+		remove_effect = {
+			clr_country_flag = kor_the_saemangeum_problem_flag
+			FROM = {
+				remove_dynamic_modifier = { modifier = unfinished_saemangeum_modifier }
+				damage_building = {
+					type = infrastructure
+					damage = 4
+				}
+			}
+		}
+	}
+}
