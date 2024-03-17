@@ -2149,3 +2149,57 @@ CHI_military_modernisation = {
 		}
 	}
 }
+
+CHI_hakka_assimilate_plan_cat = {
+
+	CHI_hakka_assimilate_plan_decision = {
+
+		icon = GFX_decision_eng_blackshirt_march
+		
+		state_target = yes
+		
+		visible = {
+			FROM = {
+				OR = {
+					state = 595
+					state = 728
+					state = 592
+					state = 593
+					state = 715
+					state = 599
+				}
+			}
+		}
+		
+		available = {
+		}
+		
+		target_trigger = {			
+			FROM = {
+				is_owned_by = ROOT
+			}
+		}
+		
+		cost = 75
+		
+		fire_only_once = yes
+		days_remove = 75
+		
+		ai_will_do = {
+			base = 25
+		}
+		
+		complete_effect = {
+		}
+		
+		remove_effect = {
+			FROM = {
+				add_core_of = ROOT
+				add_dynamic_modifier = { 
+					modifier = backlash_against_pan_taiwanese_nationalism 
+					days = 1460 #4 Years
+				}
+			}
+		}
+	}
+}

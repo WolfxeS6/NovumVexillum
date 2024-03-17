@@ -281,6 +281,35 @@ on_actions = {
 			}
 		}
 	}
+	
+	on_state_control_changed = {
+		effect = {
+			if = {
+				limit = {
+					ROOT = { NOT = { tag = KOR } }
+					FROM.FROM = { 
+						has_dynamic_modifier = { modifier = korean_human_trafficking_state }
+					}
+				}
+				FROM.FROM = { 
+					remove_dynamic_modifier = { modifier = korean_human_trafficking_state } 
+				}
+			}
+		}
+		effect = {
+			if = {
+				limit = {
+					ROOT = { NOT = { tag = KOR } }
+					FROM.FROM = { 
+						has_dynamic_modifier = { modifier = unfinished_saemangeum_modifier }
+					}
+				}
+				FROM.FROM = { 
+					remove_dynamic_modifier = { modifier = unfinished_saemangeum_modifier } 
+				}
+			}
+		}
+	}
 
 
 }

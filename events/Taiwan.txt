@@ -433,6 +433,105 @@ news_event = {
 	}
 }
 
+#[CHI.GetName]'s Chen Shui-bian Arrested
+news_event = {
+	id = ro_china.news.12
+	title = ro_china.news.12.t
+	desc = ro_china.news.12.desc
+	picture = GFX_news_event_chen_shui_bian_arrested
+	
+	is_triggered_only = yes
+	major = yes
+	
+	option = {
+		name = ro_china.news.12.a
+		trigger = {
+			original_tag = CHI
+		}
+	}
+	
+	option = {
+		name = ro_china.news.12.b
+		trigger = {
+			original_tag = PRC
+		}
+	}
+	
+	option = {
+		name = ro_china.news.12.c
+		trigger = {
+			NOT = { original_tag = CHI }
+			NOT = { original_tag = PRC }
+		}
+	}
+}
+
+#The [CHI.GetName] Postponed Elections
+news_event = {
+	id = ro_china.news.13
+	title = ro_china.news.13.t
+	desc = ro_china.news.13.desc
+	picture = GFX_news_event_republic_of_china_flag_3
+	
+	is_triggered_only = yes
+	major = yes
+	
+	option = {
+		name = ro_china.news.13.a
+		trigger = {
+			original_tag = CHI
+		}
+	}
+	
+	option = {
+		name = ro_china.news.13.b
+		trigger = {
+			original_tag = PRC
+		}
+	}
+	
+	option = {
+		name = ro_china.news.13.c
+		trigger = {
+			NOT = { original_tag = CHI }
+			NOT = { original_tag = PRC }
+		}
+	}
+}
+
+#Declaration of Hakka Liberation
+news_event = {
+	id = ro_china.news.14
+	title = ro_china.news.14.t
+	desc = ro_china.news.14.desc
+	picture = GFX_news_event_china_and_taiwan
+	
+	is_triggered_only = yes
+	major = yes
+	
+	option = {
+		name = ro_china.news.14.a
+		trigger = {
+			original_tag = CHI
+		}
+	}
+	
+	option = {
+		name = ro_china.news.14.b
+		trigger = {
+			original_tag = PRC
+		}
+	}
+	
+	option = {
+		name = ro_china.news.14.c
+		trigger = {
+			NOT = { original_tag = CHI }
+			NOT = { original_tag = PRC }
+		}
+	}
+}
+
 ########################################
 ####      2000 Intro - Presidential Election      #####
 ########################################
@@ -2362,6 +2461,8 @@ country_event = { #Goodbye, Kuomintang
 			CHI_frank_hsieh = {
 				promote_character = yes
 			}
+			
+			country_event = { id = ro_china.mid_events.14 days = 30 random_days = 30 }
 		}
 		
 		set_politics = {
@@ -2509,6 +2610,189 @@ country_event = { #Did A-Bian make the wrong choice?
 		name = ro_china.mid_events.13.a
 		
 		CHI_bop_medium_increase_effect = yes
+	}
+}
+
+country_event = {
+	id = ro_china.mid_events.14
+	title = ro_china.mid_events.14.t
+	desc = ro_china.mid_events.14.desc
+	picture = GFX_report_event_JAP_National_Assembly
+	
+	hidden = yes
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	option = {
+		name = ro_china.early_events.14.a
+		
+		CHI_wu_shu_chen = {
+			add_temp_unit_leader_role = yes
+			unit_leader_event = { id = ro_china.mid_events.15 } 
+		}
+	}
+}
+
+unit_leader_event = { #Pan Blue Citizens Protest Over KMT Investigation
+	id = ro_china.mid_events.15
+	title = ro_china.mid_events.15.t
+	desc = ro_china.mid_events.15.desc
+	picture = GFX_report_event_JAP_japanese_yen
+	
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		log = "[GetLogInfo]: event ro_china.mid_events.15 option ro_china.mid_events.15.a"
+		name = ro_china.mid_events.15.a
+		ai_chance = { 
+			base = 100
+		}
+		
+		hidden_effect = {
+			remove_temp_unit_leader_role = yes
+			
+			country_event = { id = ro_china.mid_events.19 days = 72 random_days = 30 }
+		}
+	}
+	
+	option = {
+		log = "[GetLogInfo]: event ro_china.mid_events.13 option ro_china.mid_events.18.b"
+		name = ro_china.mid_events.15.b
+		ai_chance = { 
+			base = 0
+		}
+		
+		hidden_effect = {
+			remove_temp_unit_leader_role = yes
+			
+			country_event = { id = ro_china.mid_events.16 days = 30 random_days = 30 }
+		}
+		
+		add_stability = -0.02
+	}
+}
+
+
+country_event = {
+	id = ro_china.mid_events.16
+	title = ro_china.mid_events.16.t
+	desc = ro_china.mid_events.16.desc
+	picture = GFX_report_event_JAP_National_Assembly
+	
+	hidden = yes
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	option = {
+		name = ro_china.early_events.16.a
+		
+		CHI_wu_shu_chen = {
+			add_temp_unit_leader_role = yes
+			unit_leader_event = { id = ro_china.mid_events.17 } 
+		}
+	}
+}
+
+unit_leader_event = { #Their Unacceptable Demands
+	id = ro_china.mid_events.17
+	title = ro_china.mid_events.17.t
+	desc = ro_china.mid_events.17.desc
+	picture = GFX_report_event_JAP_japanese_yen
+	
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		log = "[GetLogInfo]: event ro_china.mid_events.17 option ro_china.mid_events.17.a"
+		name = ro_china.mid_events.17.a
+		ai_chance = { 
+			base = 100
+		}
+		
+		hidden_effect = {
+			remove_temp_unit_leader_role = yes
+			country_event = { id = ro_china.mid_events.19 days = 72 random_days = 30 }
+		}
+	}
+	
+	option = {
+		log = "[GetLogInfo]: event ro_china.mid_events.17 option ro_china.mid_events.17.b"
+		name = ro_china.mid_events.17.b
+		ai_chance = { 
+			base = 0
+		}
+		
+		hidden_effect = {
+			remove_temp_unit_leader_role = yes
+			country_event = { id = ro_china.mid_events.18 days = 30 random_days = 30 }
+		}
+		
+		add_stability = -0.03
+	}
+}
+
+country_event = { #DPP's Internal Backlash
+	id = ro_china.mid_events.18
+	title = ro_china.mid_events.18.t
+	desc = ro_china.mid_events.18.desc
+	picture = GFX_report_event_taiwan_government
+
+	is_triggered_only = yes
+	
+	option = {
+		log = "[GetLogInfo]: event ro_china.mid_events.18 option ro_china.mid_events.18.a"
+		ai_chance = { 
+			base = 100
+		}
+		name = ro_china.mid_events.18.a
+		add_stability = 0.05
+		
+		hidden_effect = {
+			country_event = { id = ro_china.mid_events.19 days = 72 random_days = 30 }
+		}
+		
+	}
+	
+	option = {
+		log = "[GetLogInfo]: event ro_china.mid_events.18 option ro_china.mid_events.18.b"
+		name = ro_china.mid_events.18.b
+		ai_chance = { 
+			base = 0
+		}
+		
+		CHI_bop_high_decrease_effect = yes
+		add_stability = -0.2
+		
+		custom_effect_tooltip = CHI_wu_shu_chen_hidden_path_tt
+		
+		set_country_flag = CHI_wu_shu_chen_hidden_path
+		mark_focus_tree_layout_dirty = yes
+		
+		hidden_effect = {
+			news_event = { id = ro_china.news.13 hours = 8 }
+		}
+	}
+}
+
+country_event = { #KMT Supporters' Political Protest Ends
+	id = ro_china.mid_events.19
+	title = ro_china.mid_events.19.t
+	desc = ro_china.mid_events.19.desc
+	picture = GFX_report_event_taiwan_government
+
+	is_triggered_only = yes
+	
+	option = {
+		log = "[GetLogInfo]: event ro_china.mid_events.19 option ro_china.mid_events.19.a"
+		name = ro_china.mid_events.19.a
+		
+		CHI_bop_medium_increase_effect = yes
+		add_political_power = 75
 	}
 }
 
@@ -2729,15 +3013,8 @@ country_event = { #Taiwan Republic Declaration
 			news_event = { id = ro_china.news.7 hours = 3 }
 			
 			every_state = {
-				limit = {has_dynamic_modifier = dynamic_chi_weak_mainland_de_jure}
 				remove_dynamic_modifier = { modifier = dynamic_chi_weak_mainland_de_jure} 
-			}
-			every_state = {
-				limit = {has_dynamic_modifier = dynamic_chi_weak_mongolia_de_jure}
 				remove_dynamic_modifier = { modifier = dynamic_chi_weak_mongolia_de_jure}
-			}
-			every_state = {
-				limit = {has_dynamic_modifier = dynamic_chi_strong_mainland_de_jure}
 				remove_dynamic_modifier = { modifier = dynamic_chi_strong_mainland_de_jure}
 			}
 		}

@@ -2373,7 +2373,7 @@
 		cost = 1.5
 
 		ai_will_do = {
-			base = 1		
+			base = 1000
 		}
 
 		available = {
@@ -2408,7 +2408,7 @@
 		relative_position_id = CHI_unbowed
 
 		ai_will_do = {
-			base = 1		
+			base = 1000
 		}
 
 		prerequisite = { focus = CHI_unbowed }
@@ -2437,7 +2437,7 @@
 		relative_position_id = CHI_unbowed
 
 		ai_will_do = {
-			base = 1		
+			base = 1000
 		}
 
 		prerequisite = { focus = CHI_unbowed }
@@ -2466,7 +2466,7 @@
 		relative_position_id = CHI_unbowed
 
 		ai_will_do = {
-			base = 1		
+			base = 1000
 		}
 
 		prerequisite = { focus = CHI_unbowed }
@@ -2495,7 +2495,7 @@
 		relative_position_id = CHI_unbowed
 
 		ai_will_do = {
-			base = 1		
+			base = 1000
 		}
 
 		prerequisite = { focus = CHI_attempted_assassination_investigation }
@@ -6191,6 +6191,262 @@
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus CHI_for_taiwan_s_future"
 			country_event = { id = ro_china.endgame_events.8 }
+		}
+	}
+	
+########################################
+####      Taiwan Hidden Path       #####
+########################################
+
+	focus = {
+		id = CHI_pan_hakka_nationalism
+		icon = GFX_focus_generic_treaty
+		x = 12
+		y = 3
+
+		cost = 3
+
+		ai_will_do = {
+			base = 1000
+		}
+
+		available = {
+			has_government = reactionary
+		}
+
+		allow_branch = {
+			has_country_flag = CHI_wu_shu_chen_hidden_path
+		}
+
+		relative_position_id = CHI_black_bullet
+
+		bypass = {
+		}
+
+		prerequisite = { 
+			focus = CHI_national_regeneration
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		search_filters = {  }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_pan_hakka_nationalism"
+			595 = {
+				add_claim_by = ROOT
+			}
+			728 = {
+				add_claim_by = ROOT
+			}
+			592 = {
+				add_claim_by = ROOT
+			}
+			593 = {
+				add_claim_by = ROOT
+			}
+			715 = {
+				add_claim_by = ROOT
+			}
+			599 = {
+				add_claim_by = ROOT
+			}
+		}
+	}
+
+	focus = {
+		id = CHI_hakka_assimilate_plan
+		icon = GFX_focus_generic_university_2
+		x = -2
+		y = 1
+
+		cost = 5
+
+		ai_will_do = {
+			base = 1000
+		}
+
+		available = {
+			has_government = reactionary
+			OR = {
+				owns_state = 595
+				owns_state = 728
+				owns_state = 592
+				owns_state = 593
+				owns_state = 715
+				owns_state = 599
+			}
+		}
+
+		prerequisite = { 
+			focus = CHI_pan_hakka_nationalism
+		}
+
+		relative_position_id = CHI_pan_hakka_nationalism
+
+		bypass = {
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		search_filters = {  }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_hakka_assimilate_plan"
+			custom_effect_tooltip = CHI_hakka_assimilate_plan_tt
+		}
+	}
+
+	focus = {
+		id = CHI_persuading_the_DPP
+		icon = GFX_focus_ETH_re-convene_the_parliament
+		x = 0
+		y = 1
+
+		cost = 5
+
+		ai_will_do = {
+			base = 1000
+		}
+
+		available = {
+			has_government = reactionary
+		}
+
+
+		prerequisite = { 
+			focus = CHI_pan_hakka_nationalism
+		}
+
+		relative_position_id = CHI_pan_hakka_nationalism
+
+		bypass = {
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		search_filters = {  }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_persuading_the_DPP"
+			add_war_support = 0.1
+			add_stability = 0.1
+		}
+	}
+
+	focus = {
+		id = CHI_nationalism_with_taiwanese_characteristics
+		icon = GFX_focus_CHL_avenge_the_pacification_of_araucania
+		x = 2
+		y = 1
+
+		cost = 5
+
+		ai_will_do = {
+			base = 1000
+		}
+
+		available = {
+			has_government = reactionary
+		}
+
+		prerequisite = { 
+			focus = CHI_pan_hakka_nationalism
+		}
+
+		relative_position_id = CHI_pan_hakka_nationalism
+
+		bypass = {
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		search_filters = {  }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_nationalism_with_taiwanese_characteristics"
+			every_army_leader = {
+				add_attack = 1
+			}
+			CHI_bop_medium_increase_effect = yes
+		}
+	}
+
+	focus = {
+		id = CHI_hakka_liberation_war
+		icon = GFX_focus_ETH_re-convene_the_parliament
+		x = 0
+		y = 2
+
+		cost = 3
+
+		ai_will_do = {
+			base = 1000
+		}
+
+		available = {
+			has_government = reactionary
+			taiwan_independence = yes
+			has_completed_focus = CHI_taiwan_the_formosa
+			has_war = no
+		}
+
+		prerequisite = { 
+			focus = CHI_nationalism_with_taiwanese_characteristics
+		}
+
+		prerequisite = { 
+			focus = CHI_persuading_the_DPP
+		}
+
+		relative_position_id = CHI_pan_hakka_nationalism
+
+		bypass = {
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		search_filters = {  }
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_hakka_liberation_war"
+			add_war_support = 0.1
+
+			hidden_effect = {
+				news_event = { id = ro_china.news.14 }
+			}
+			
+			every_country = {
+				limit = {
+					OR = {
+						controls_state = 595
+						controls_state = 728
+						controls_state = 592
+						controls_state = 593
+						controls_state = 715
+						controls_state = 599
+					}
+					NOT = {
+						OR = {
+							original_tag = CHI
+							is_subject_of = ROOT
+							has_war_with = ROOT
+							is_in_faction_with = ROOT
+						}
+					}
+				}
+				ROOT = {
+					create_wargoal = {
+						type = take_claimed_state
+						target = PREV
+					}
+				}
+			}
 		}
 	}
  }
