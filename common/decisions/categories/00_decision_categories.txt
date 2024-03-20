@@ -3,6 +3,17 @@ debug_decisions = {
 	visible = {
 		is_debug = yes
 	}
+	allowed = {
+		is_ai = no
+	}
+}
+
+NVXGC_economic_decisions = { #very sussy decisions for economic stuff
+	icon = GFX_decision_category_generic_economy
+
+	allowed = {
+		is_ai = no
+	}
 }
 
 political_actions = {
@@ -19,12 +30,12 @@ lar_local_recruitment = {
 	visible = { has_done_agency_upgrade = upgrade_training_centers }
 
 	visibility_type = map_and_decisions_view
-	
+
 	on_map_area = {
 		state = 8
 		name = LAR_recruitment_europe
 		zoom = 650
-		
+
 		target_root_trigger = {
 			OR = {
 				has_country_flag = europe_recruitment_unlocked

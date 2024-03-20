@@ -10,18 +10,61 @@ focus_tree = {
 			original_tag = FIN
 		}
 	}
+	shared_focus = EURO_Shared_Focus
+	# Days cost in time
+	@Time_10_days = 1.5
+	@Time_15_days = 2.2
+	@Time_20_days = 2.9
+	@Time_25_days = 3.7
+	@Time_30_days = 4.4
+	@Time_35_days = 5
+	@Time_40_days = 5.8
+	@Time_45_days = 6.5
+	@Time_50_days = 7.2
+	@Time_55_days = 7.9
+	@Time_60_days = 8.6
+	@Time_65_days = 9.4
+	@Time_70_days = 10
+	@Time_75_days = 10.8
+	@Time_80_days = 11.5
+	@Time_85_days = 12.2
+	@Time_90_days = 12.9
+	@Time_95_days = 13.6
+	@Time_100_days = 14.4
+	@Time_110_days = 15.8
+	@Time_115_days = 16.5
+	@Time_120_days = 17.2
+	@Time_125_days = 17.9
+	@Time_130_days = 18.6
+	@Time_135_days = 19.3
+	@Time_140_days = 20
+	@Time_145_days = 20.8
+	@Time_150_days = 21.5
+	@Time_155_days = 22.2
+	@Time_160_days = 22.9
+	@Time_165_days = 23.6
+	@Time_170_days = 24.4
+	@Time_175_days = 25
+
+	initial_show_position = {
+		focus = FIN_expand_the_foreign_ministry
+	}
 	
-	continuous_focus_position = { x = 2000 y = 850 }
+	continuous_focus_position = { x = 2040 y = 3000 }
+	shared_focus = GEF_Expand_The_Airforce
+	shared_focus = GEF_Naval_Dockyard_Effort
+	shared_focus = GEF_Expand_The_Army_General_Staff
+	shared_focus = GEF_Begin_Industrial_Build-up
 	
 	#Government Expansion
 	focus = {
 		id = FIN_government_expansion
-		icon = demand_territory
+		icon = GFX_FIN_Government_Palace
 		
 		x = 10
 		y = 0
 		
-		cost = 10
+		cost = @Time_70_days
 
 		cancel_if_invalid = yes
 		continue_if_invalid = no
@@ -48,13 +91,13 @@ focus_tree = {
 	#Interior Ministry
 	focus = {
 		id = FIN_expand_the_interior_ministry
-		icon = self_management
+		icon = GFX_FIN_Ministry_of_Interior
 		
 		x = -9
 		y = 1
 		relative_position_id = FIN_government_expansion
 		
-		cost = 10
+		cost = @Time_35_days
 
 		cancel_if_invalid = yes
 		continue_if_invalid = no
@@ -71,7 +114,7 @@ focus_tree = {
 		bypass = {}
 		
 		completion_reward = {
-			add_stability = 0.02
+			add_stability = 0.05
 		}
 		
 		ai_will_do = {
@@ -81,13 +124,13 @@ focus_tree = {
 	
 	focus = {
 		id = FIN_conscription_reform
-		icon = entente
+		icon = GFX_goal_Military_Guard_1
 		
 		x = -1
 		y = 1
 		relative_position_id = FIN_expand_the_interior_ministry
 		
-		cost = 10
+		cost = @Time_70_days
 
 		cancel_if_invalid = yes
 		continue_if_invalid = no
@@ -114,13 +157,13 @@ focus_tree = {
 	
 	focus = {
 		id = FIN_northern_road_maintenance
-		icon = infrastructure
+		icon = GFX_goal_Road_Maintenance
 		
 		x = 1
 		y = 1
 		relative_position_id = FIN_expand_the_interior_ministry
 		
-		cost = 10
+		cost = @Time_50_days
 
 		cancel_if_invalid = yes
 		continue_if_invalid = no
@@ -142,7 +185,7 @@ focus_tree = {
 			148 = {	#Lappi
 				add_building_construction = {
 					type = infrastructure
-					level = 1
+					level = 2
 					instant_build = yes
 				}
 			}
@@ -155,13 +198,13 @@ focus_tree = {
 	
 	focus = {
 		id = FIN_industrial_expansion_policy
-		icon = industry_civilian
+		icon = GFX_goal_Finnish_Manufacturing
 		
 		x = 0
 		y = 2
 		relative_position_id = FIN_expand_the_interior_ministry
 		
-		cost = 10
+		cost = @Time_70_days
 
 		cancel_if_invalid = yes
 		continue_if_invalid = no
@@ -173,12 +216,34 @@ focus_tree = {
 		
 		mutually_exclusive = {}
 		
-		available = {}
+		available = {
+			has_full_control_of_state = 973 # Pohjanmaa
+			has_full_control_of_state = 111 # Uusimaa
+			has_full_control_of_state = 148 # Lappi
+			has_full_control_of_state = 149 # Turku
+			has_full_control_of_state = 150 # Savo
+		}
 		
 		bypass = {}
 		
 		completion_reward = {
 			add_ideas = civilian_industry_project
+
+			973 = {	# Pohjanmaa
+				add_extra_state_shared_building_slots = 1
+			}
+			111 = {	# Uusimaa
+				add_extra_state_shared_building_slots = 1
+			}
+			148 = {	# Lappi
+				add_extra_state_shared_building_slots = 1
+			}
+			149 = {	# Turku
+				add_extra_state_shared_building_slots = 1
+			}
+			150 = {	# Savo
+				add_extra_state_shared_building_slots = 1
+			}
 		}
 		
 		ai_will_do = {
@@ -188,13 +253,13 @@ focus_tree = {
 	
 	focus = {
 		id = FIN_timber_export_policy
-		icon = trade_deal
+		icon = GFX_goal_Timber
 		
 		x = 2
 		y = 2
 		relative_position_id = FIN_expand_the_interior_ministry
 		
-		cost = 10
+		cost = @Time_60_days
 
 		cancel_if_invalid = yes
 		continue_if_invalid = no
@@ -224,13 +289,13 @@ focus_tree = {
 	
 	focus = {
 		id = FIN_focus_on_civilian_industry
-		icon = industry_civilian
+		icon = GFX_goal_generic_construct_civ_factory
 		
 		x = -1
 		y = 3
 		relative_position_id = FIN_expand_the_interior_ministry
 		
-		cost = 10
+		cost = @Time_70_days
 
 		cancel_if_invalid = yes
 		continue_if_invalid = no
@@ -244,7 +309,9 @@ focus_tree = {
 			focus = FIN_focus_on_military_industry
 		}
 		
-		available = {}
+		available = {
+			has_full_control_of_state = 111 # Uusimaa
+		}
 		
 		bypass = {}
 		
@@ -252,6 +319,15 @@ focus_tree = {
 			swap_ideas = {
 				remove_idea = civilian_industry_project
 				add_idea = civilian_industry_project4
+			}
+
+			111 = {	# Uusimaa
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
 			}
 		}
 		
@@ -262,13 +338,13 @@ focus_tree = {
 	
 	focus = {
 		id = FIN_focus_on_military_industry
-		icon = industry_military
+		icon = GFX_goal_generic_construct_mil_factory
 		
 		x = 1
 		y = 3
 		relative_position_id = FIN_expand_the_interior_ministry
 		
-		cost = 10
+		cost = @Time_70_days
 
 		cancel_if_invalid = yes
 		continue_if_invalid = no
@@ -282,12 +358,23 @@ focus_tree = {
 			focus = FIN_focus_on_civilian_industry
 		}
 		
-		available = {}
+		available = {
+			has_full_control_of_state = 111 # Uusimaa
+		}
 		
 		bypass = {}
 		
 		completion_reward = {
 			add_ideas = military_industry_project2
+
+			111 = {	# Uusimaa
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
 		}
 		
 		ai_will_do = {
@@ -298,13 +385,13 @@ focus_tree = {
 	#Financial Ministry
 	focus = {
 		id = FIN_expand_the_financial_ministry
-		icon = industry_united_states
+		icon = GFX_FIN_Ministry_of_Finance
 		
 		x = -3
 		y = 1
 		relative_position_id = FIN_government_expansion
 		
-		cost = 10
+		cost = @Time_70_days
 
 		cancel_if_invalid = yes
 		continue_if_invalid = no
@@ -331,13 +418,13 @@ focus_tree = {
 	
 	focus = {
 		id = FIN_export_focus
-		icon = consumer_goods
+		icon = GFX_goal_Export_Economy
 		
 		x = -3
 		y = 1
 		relative_position_id = FIN_expand_the_financial_ministry
 		
-		cost = 10
+		cost = @Time_35_days
 
 		cancel_if_invalid = yes
 		continue_if_invalid = no
@@ -364,7 +451,7 @@ focus_tree = {
 	
 	focus = {
 		id = FIN_expand_valtatie_1
-		icon = infrastructure
+		icon = GFX_goal_Road_Construction
 		
 		x = -1
 		y = 1
@@ -406,7 +493,7 @@ focus_tree = {
 	
 	focus = {
 		id = FIN_adopt_an_economic_doctrine
-		icon = industry_democratic
+		icon = GFX_focus_generic_the_giant_wakes
 		
 		x = 1
 		y = 1
@@ -439,7 +526,7 @@ focus_tree = {
 	
 	focus = {
 		id = FIN_industrialize_turku
-		icon = industry_civilian
+		icon = GFX_FIN_Turku_Industry
 		
 		x = -2
 		y = 2
@@ -465,10 +552,10 @@ focus_tree = {
 		
 		completion_reward = {
 			149 = {	#Turku
-				add_extra_state_shared_building_slots = 1
+				add_extra_state_shared_building_slots = 2
 				add_building_construction = {
 					type = industrial_complex
-					level = 1
+					level = 2
 					instant_build = yes
 				}
 			}
@@ -481,7 +568,7 @@ focus_tree = {
 	
 	focus = {
 		id = FIN_industrialize_helsinki
-		icon = industry_civilian
+		icon = GFX_FIN_Helsinki_Industry
 		
 		x = 0
 		y = 2
@@ -507,10 +594,10 @@ focus_tree = {
 		
 		completion_reward = {
 			111 = {	#Uusimaa
-				add_extra_state_shared_building_slots = 1
+				add_extra_state_shared_building_slots = 2
 				add_building_construction = {
 					type = industrial_complex
-					level = 1
+					level = 2
 					instant_build = yes
 				}
 			}
@@ -524,7 +611,7 @@ focus_tree = {
 	#Foreign Ministry
 	focus = {
 		id = FIN_expand_the_foreign_ministry
-		icon = constitution
+		icon = GFX_FIN_Ministry_for_Foreign_Affairs
 		
 		x = 3
 		y = 1
@@ -557,7 +644,7 @@ focus_tree = {
 	
 	focus = {
 		id = FIN_adopt_a_foreign_policy_doctrine
-		icon = improve_relations_dark_green
+		icon = GFX_goal_generic_improve_relations_2
 		
 		x = -3
 		y = 1
@@ -590,7 +677,7 @@ focus_tree = {
 	
 	focus = {
 		id = FIN_secure_european_trade_deals
-		icon = trade_with_europe
+		icon = GFX_goal_Trade_Deals_with_EU
 		
 		x = -1
 		y = 1
@@ -635,7 +722,7 @@ focus_tree = {
 	
 	focus = {
 		id = FIN_trade_with_the_nordics
-		icon = nordic_council2
+		icon = GFX_goal_Nordic_Council_2
 		
 		x = 1
 		y = 1
@@ -683,7 +770,7 @@ focus_tree = {
 	
 	focus = {
 		id = FIN_trade_with_russia
-		icon = trade_with_russia
+		icon = GFX_goal_Trade_Deals_with_Russia
 		
 		x = -2
 		y = 2
@@ -725,7 +812,7 @@ focus_tree = {
 	
 	focus = {
 		id = FIN_trade_with_the_united_states
-		icon = trade_with_america
+		icon = GFX_goal_Trade_Deals_with_America
 		
 		x = 0
 		y = 2
@@ -767,7 +854,7 @@ focus_tree = {
 	
 	focus = {
 		id = FIN_trade_with_china
-		icon = trade_with_china
+		icon = GFX_goal_Trade_Deals_with_China
 		
 		x = -1
 		y = 3
@@ -810,7 +897,7 @@ focus_tree = {
 	##Proximity and Distance Focuses
 	focus = {
 		id = FIN_proximity_to_russia
-		icon = align_to_russia
+		icon = GFX_Align_to_Russia
 		
 		x = 3
 		y = 1
@@ -852,7 +939,7 @@ focus_tree = {
 	}
 	focus = {
 		id = FIN_distance_from_russia
-		icon = attack_russia
+		icon = GFX_Focus_Attack_Russia
 		
 		x = 2
 		y = 0
@@ -889,7 +976,7 @@ focus_tree = {
 	
 	focus = {
 		id = FIN_proximity_to_sweden
-		icon = align_to_sweden
+		icon = GFX_Align_to_Sweden
 		
 		x = 0
 		y = 1
@@ -934,7 +1021,7 @@ focus_tree = {
 	}
 	focus = {
 		id = FIN_distance_from_sweden
-		icon = attack_sweden
+		icon = GFX_Focus_Attack_Sweden
 		
 		x = 2
 		y = 1
@@ -974,7 +1061,7 @@ focus_tree = {
 	
 	focus = {
 		id = FIN_proximity_to_the_nordic_countries
-		icon = align_to_norway
+		icon = GFX_Align_to_Norway
 		
 		x = 0
 		y = 2
@@ -1057,7 +1144,7 @@ focus_tree = {
 	
 	focus = {
 		id = FIN_proximity_to_germany
-		icon = align_to_germany
+		icon = GFX_Align_to_Germany
 		
 		x = 0
 		y = 3
@@ -1096,7 +1183,7 @@ focus_tree = {
 	}
 	focus = {
 		id = FIN_distance_from_germany
-		icon = attack_germany
+		icon = GFX_Focus_Attack_Germany
 		
 		x = 2
 		y = 3
@@ -1138,7 +1225,7 @@ focus_tree = {
 	
 	focus = {
 		id = FIN_proximity_to_the_united_states
-		icon = align_to_america
+		icon = GFX_Align_to_America
 		
 		x = 0
 		y = 4
@@ -1177,7 +1264,7 @@ focus_tree = {
 	}
 	focus = {
 		id = FIN_distance_from_the_united_states
-		icon = attack_america
+		icon = GFX_Focus_Attack_America
 		
 		x = 2
 		y = 4
@@ -1219,7 +1306,7 @@ focus_tree = {
 	
 	focus = {
 		id = FIN_proximity_to_the_baltic_states
-		icon = align_to_baltic_states
+		icon = GFX_Ally_Baltic_States
 		
 		x = 0
 		y = 5
@@ -1261,7 +1348,7 @@ focus_tree = {
 	}
 	focus = {
 		id = FIN_distance_from_the_baltic_states
-		icon = attack_democracy4
+		icon = GFX_focus_generic_strike_at_democracy1
 		
 		x = 2
 		y = 5
@@ -1307,7 +1394,7 @@ focus_tree = {
 	
 	focus = {
 		id = FIN_proximity_to_poland
-		icon = align_to_poland
+		icon = GFX_Align_to_Poland
 		
 		x = 0
 		y = 6
@@ -1345,7 +1432,7 @@ focus_tree = {
 	}
 	focus = {
 		id = FIN_distance_from_poland
-		icon = attack_poland
+		icon = GFX_Focus_Attack_Poland
 		
 		x = 2
 		y = 6
@@ -1387,7 +1474,7 @@ focus_tree = {
 	
 	focus = {
 		id = FIN_proximity_to_china
-		icon = align_to_china
+		icon = GFX_Align_to_China
 		
 		x = 0
 		y = 7
@@ -1429,7 +1516,7 @@ focus_tree = {
 	}
 	focus = {
 		id = FIN_distance_from_china
-		icon = attack_china
+		icon = GFX_Focus_Attack_China
 		
 		x = 2
 		y = 7
@@ -1468,9 +1555,9 @@ focus_tree = {
 	#Defensive Ministry
 	focus = {
 		id = FIN_expand_the_ministry_of_defense
-		icon = army_logistics
+		icon = GFX_FIN_Minstry_of_Defence
 		
-		x = 11
+		x = 12
 		y = 1
 		relative_position_id = FIN_government_expansion
 		
@@ -1501,9 +1588,9 @@ focus_tree = {
 	
 	focus = {
 		id = FIN_military_import_programs
-		icon = artillery
+		icon = GFX_FIN_Gun_Icon_1
 		
-		x = -1
+		x = -2
 		y = 1
 		relative_position_id = FIN_expand_the_ministry_of_defense
 		
@@ -1534,9 +1621,9 @@ focus_tree = {
 	
 	focus = {
 		id = FIN_reform_the_armed_forces
-		icon = infantry_axis2
+		icon = GFX_FIN_Finnish_Defence_Forces
 		
-		x = 1
+		x = 0
 		y = 1
 		relative_position_id = FIN_expand_the_ministry_of_defense
 		
@@ -1569,9 +1656,9 @@ focus_tree = {
 	
 	focus = {
 		id = FIN_hire_fortification_experts
-		icon = city_fort
+		icon = GFX_goal_Bunker
 		
-		x = 3
+		x = 2
 		y = 1
 		relative_position_id = FIN_expand_the_ministry_of_defense
 		
@@ -1602,9 +1689,9 @@ focus_tree = {
 	
 	focus = {
 		id = FIN_military_production_in_helsinki
-		icon = industry_military
+		icon = GFX_goal_generic_construct_mil_factory
 		
-		x = -1
+		x = -2
 		y = 2
 		relative_position_id = FIN_expand_the_ministry_of_defense
 		
@@ -1644,9 +1731,9 @@ focus_tree = {
 	
 	focus = {
 		id = FIN_expand_upinniemi_naval_base
-		icon = naval_dockyards
+		icon = GFX_goal_generic_construct_naval_dockyard
 		
-		x = 1
+		x = 0
 		y = 2
 		relative_position_id = FIN_expand_the_ministry_of_defense
 		
@@ -1684,9 +1771,9 @@ focus_tree = {
 	
 	focus = {
 		id = FIN_expand_tampere_pirkkala_air_base
-		icon = airforce
+		icon = GFX_goal_generic_build_airforce
 		
-		x = 3
+		x = 2
 		y = 2
 		relative_position_id = FIN_expand_the_ministry_of_defense
 		
@@ -1723,9 +1810,9 @@ focus_tree = {
 	
 	focus = {
 		id = FIN_recruit_additional_coastal_jaegers
-		icon = amphibious_assault
+		icon = GFX_FIN_Coastal_Jaegers
 		
-		x = 0
+		x = -1
 		y = 3
 		relative_position_id = FIN_expand_the_ministry_of_defense
 		
@@ -1759,9 +1846,9 @@ focus_tree = {
 	
 	focus = {
 		id = FIN_additional_military_factories
-		icon = industry_military
+		icon = GFX_goal_generic_construct_mil_factory
 		
-		x = -1
+		x = -2
 		y = 4
 		relative_position_id = FIN_expand_the_ministry_of_defense
 		
@@ -1812,9 +1899,9 @@ focus_tree = {
 	
 	focus = {
 		id = FIN_focus_on_naval_production
-		icon = naval_dockyards
+		icon = GFX_goal_generic_construct_naval_dockyard
 		
-		x = 1
+		x = 0
 		y = 4
 		relative_position_id = FIN_expand_the_ministry_of_defense
 		
@@ -1860,7 +1947,7 @@ focus_tree = {
 	
 	focus = {
 		id = FIN_finlands_main_ally
-		icon = improve_relations_red
+		icon = GFX_goal_generic_improve_relations_3
 		
 		x = -4
 		y = 2
@@ -1903,7 +1990,7 @@ focus_tree = {
 	##Germany
 	focus = {
 		id = FIN_germany
-		icon = align_to_germany
+		icon = GFX_Align_to_Germany
 		
 		x = -4
 		y = 1
@@ -1951,53 +2038,8 @@ focus_tree = {
 	}
 	
 	focus = {
-		id = FIN_leopard_2a4_imports
-		icon = leopard_2a4
-		
-		x = -4
-		y = 1
-		relative_position_id = FIN_germany
-		
-		cost = 10
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = no
-		
-		prerequisite = {
-			focus = FIN_germany
-		}
-		
-		mutually_exclusive = {}
-		
-		available = {
-			has_completed_focus = FIN_military_import_programs
-			OR = {
-				is_in_faction = no
-				is_in_faction_with = GER
-			}
-			NOT = { has_war_with = GER }
-			GER = { has_tech = main_battle_tank3 }
-		}
-		
-		bypass = {}
-		
-		completion_reward = {
-			add_equipment_to_stockpile = {
-				type = modern_tank_equipment_3
-				amount = 200
-				producer = GER
-			}
-		}
-		
-		ai_will_do = {
-			factor = 10
-		}
-	}
-	
-	focus = {
 		id = FIN_finnish_german_trade
-		icon = trade_deal
+		icon = GFX_goal_generic_positive_trade_relations
 		
 		x = -1
 		y = 1
@@ -2032,7 +2074,7 @@ focus_tree = {
 	
 	focus = {
 		id = FIN_european_involvement
-		icon = align_to_europe
+		icon = GFX_goal_EU_Agreement
 		
 		x = 1
 		y = 1
@@ -2077,53 +2119,8 @@ focus_tree = {
 	}
 	
 	focus = {
-		id = FIN_leopard_2a6_imports
-		icon = leopard_2a6
-		
-		x = -5
-		y = 2
-		relative_position_id = FIN_germany
-		
-		cost = 10
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = no
-		
-		prerequisite = {
-			focus = FIN_leopard_2a4_imports
-		}
-		
-		mutually_exclusive = {}
-		
-		available = {
-			has_completed_focus = FIN_military_import_programs
-			OR = {
-				is_in_faction = no
-				is_in_faction_with = GER
-			}
-			NOT = { has_war_with = GER }
-			GER = { has_tech = main_battle_tank5 }
-		}
-		
-		bypass = {}
-		
-		completion_reward = {
-			add_equipment_to_stockpile = {
-				type = modern_tank_equipment_5
-				amount = 200
-				producer = GER
-			}
-		}
-		
-		ai_will_do = {
-			factor = 10
-		}
-	}
-	
-	focus = {
 		id = FIN_praise_the_kaiser
-		icon = german_monarchy
+		icon = GFX_GER_German_Monarchy
 		
 		x = -3
 		y = 2
@@ -2172,7 +2169,7 @@ focus_tree = {
 	
 	focus = {
 		id = FIN_join_nato
-		icon = align_to_nato
+		icon = GFX_Align_to_NATO
 		
 		x = 0
 		y = 2
@@ -2201,10 +2198,23 @@ focus_tree = {
 			is_subject = no
 		}
 		
-		bypass = {}
+		bypass = {
+			has_democratic_form_of_government = yes
+			is_in_faction = no
+			USA = { has_democratic_form_of_government = yes }
+			USA = { is_faction_leader = yes }
+			is_puppet = no
+			is_subject = no
+			NOT = {
+				OR = {
+					USA = { has_democratic_form_of_government = yes }
+					USA = { is_faction_leader = yes }
+				}
+			}
+		}
 		
 		completion_reward = {
-			USA = { country_event = nato.4 }
+			Join_Nato_effect = yes
 			swap_ideas = {
 				remove_idea = finnish_neutrality
 				add_idea = sisu
@@ -2227,7 +2237,7 @@ focus_tree = {
 	
 	focus = {
 		id = FIN_restore_the_kingdom_of_finland
-		icon = finnish_monarchy
+		icon = GFX_FIN_Finnish_Monarchy
 		
 		x = -3
 		y = 3
@@ -2260,7 +2270,7 @@ focus_tree = {
 	
 	focus = {
 		id = FIN_nato_drills_on_finnish_soil
-		icon = small_arms4
+		icon = GFX_FIN_Nato-Finnish_Alliance
 		
 		x = -1
 		y = 3
@@ -2300,7 +2310,7 @@ focus_tree = {
 	
 	focus = {
 		id = FIN_remilitarize_aland
-		icon = skull
+		icon = GFX_FIN_Remilitarize_Aland
 		
 		x = -3
 		y = 4
@@ -2339,7 +2349,7 @@ focus_tree = {
 	
 	focus = {
 		id = FIN_import_nato_equipment
-		icon = license_production
+		icon = GFX_FIN_Nato_Equipment
 		
 		x = -1
 		y = 4
@@ -2370,11 +2380,11 @@ focus_tree = {
 		completion_reward = {
 			if = {
 				limit = { is_in_faction_with = ENG }
-				add_equipment_to_stockpile = {
-					type = modern_tank_equipment_3
-					amount = 15
-					producer = ENG
-				}
+				# add_equipment_to_stockpile = {
+				# 	type = modern_tank_equipment_3
+				# 	amount = 15
+				# 	producer = ENG
+				# }
 				add_equipment_to_stockpile = {
 					type = infantry_equipment_3
 					amount = 250
@@ -2386,11 +2396,11 @@ focus_tree = {
 			}
 			if = {
 				limit = { is_in_faction_with = FRA }
-				add_equipment_to_stockpile = {
-					type = modern_tank_equipment_3
-					amount = 15
-					producer = FRA
-				}
+				# add_equipment_to_stockpile = {
+				# 	type = modern_tank_equipment_3
+				# 	amount = 15
+				# 	producer = FRA
+				# }
 				add_equipment_to_stockpile = {
 					type = infantry_equipment_3
 					amount = 250
@@ -2402,11 +2412,11 @@ focus_tree = {
 			}
 			if = {
 				limit = { is_in_faction_with = GER }
-				add_equipment_to_stockpile = {
-					type = modern_tank_equipment_3
-					amount = 15
-					producer = GER
-				}
+				# add_equipment_to_stockpile = {
+				# 	type = modern_tank_equipment_3
+				# 	amount = 15
+				# 	producer = GER
+				# }
 				add_equipment_to_stockpile = {
 					type = infantry_equipment_3
 					amount = 250
@@ -2418,11 +2428,11 @@ focus_tree = {
 			}
 			if = {
 				limit = { is_in_faction_with = USA }
-				add_equipment_to_stockpile = {
-					type = modern_tank_equipment_3
-					amount = 15
-					producer = USA
-				}
+				# add_equipment_to_stockpile = {
+				# 	type = modern_tank_equipment_3
+				# 	amount = 15
+				# 	producer = USA
+				# }
 				add_equipment_to_stockpile = {
 					type = infantry_equipment_3
 					amount = 250
@@ -2440,56 +2450,8 @@ focus_tree = {
 	}
 	
 	focus = {
-		id = FIN_finnish_panzertruppe
-		icon = military_mission
-		
-		x = -4
-		y = 5
-		relative_position_id = FIN_germany
-		
-		cost = 10
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = no
-		
-		prerequisite = {
-			focus = FIN_leopard_2a4_imports
-		}
-		prerequisite = {
-			focus = FIN_praise_the_kaiser
-		}
-		
-		mutually_exclusive = {}
-		
-		available = {
-			NOT = { has_war_with = GER }
-			OR = {
-				is_in_faction = no
-				is_in_faction_with = GER
-			}
-		}
-		
-		bypass = {}
-		
-		completion_reward = {
-			army_experience = 25
-			add_tech_bonus = {
-				name = tank_bonus
-				bonus = 0.4
-				uses = 2
-				category = armor
-			}
-		}
-		
-		ai_will_do = {
-			factor = 10
-		}
-	}
-	
-	focus = {
 		id = FIN_secret_preparations_of_war_against_russia
-		icon = attack_russia
+		icon = GFX_Focus_Attack_Russia
 		
 		x = -2
 		y = 5
@@ -2534,7 +2496,7 @@ focus_tree = {
 	
 	focus = {
 		id = FIN_proclamation_of_greater_finland
-		icon = greater_finland
+		icon = GFX_FIN_Proclamation_of_Greater_Finland
 		
 		x = -2
 		y = 6
@@ -2566,7 +2528,7 @@ focus_tree = {
 	##Sweden
 	focus = {
 		id = FIN_sweden
-		icon = align_to_sweden
+		icon = GFX_Align_to_Sweden
 		
 		x = -2
 		y = 1
@@ -2611,7 +2573,7 @@ focus_tree = {
 	
 	focus = {
 		id = FIN_secure_swedish_minority_rights
-		icon = military_sphere
+		icon = GFX_SWE_Swedish_Race
 		
 		x = 1
 		y = 1
@@ -2651,7 +2613,7 @@ focus_tree = {
 	
 	focus = {
 		id = FIN_ally_with_sweden
-		icon = align_to_sweden
+		icon = GFX_Align_to_Sweden
 		
 		x = 0
 		y = 2
@@ -2685,7 +2647,7 @@ focus_tree = {
 	
 	focus = {
 		id = FIN_create_jobs_for_the_swedish_minority
-		icon = industry_communist2
+		icon = GFX_goal_Migrant_Worker
 		
 		x = 2
 		y = 2
@@ -2727,7 +2689,7 @@ focus_tree = {
 	
 	focus = {
 		id = FIN_military_cooperation_with_sweden
-		icon = military_mission
+		icon = GFX_SWE_Swedish_Military_Officer
 		
 		x = -1
 		y = 3
@@ -2770,7 +2732,7 @@ focus_tree = {
 	
 	focus = {
 		id = FIN_joint_artillery_projects
-		icon = artillery2
+		icon = GFX_SWE_Archer_Artillery_System
 		
 		x = 1
 		y = 3
@@ -2816,7 +2778,7 @@ focus_tree = {
 	
 	focus = {
 		id = FIN_import_swedish_equipment
-		icon = license_production
+		icon = GFX_SWE_Stridsvagn_122
 		
 		x = -1
 		y = 4
@@ -2848,11 +2810,11 @@ focus_tree = {
 		bypass = {}
 		
 		completion_reward = {
-			add_equipment_to_stockpile = {
-				type = modern_tank_equipment_3
-				amount = 70
-				producer = SWE
-			}
+			# add_equipment_to_stockpile = {
+			# 	type = modern_tank_equipment_3
+			# 	amount = 70
+			# 	producer = SWE
+			# }
 			add_equipment_to_stockpile = {
 				type = infantry_equipment_3
 				amount = 800
@@ -2867,7 +2829,7 @@ focus_tree = {
 	
 	focus = {
 		id = FIN_joint_tank_projects
-		icon = tank
+		icon = GFX_SWE_Stridsvagn_122
 		
 		x = 1
 		y = 4
@@ -2905,7 +2867,7 @@ focus_tree = {
 	
 	focus = {
 		id = FIN_defensive_focus
-		icon = military_fort
+		icon = GFX_goal_generic_construct_military
 		
 		x = -1
 		y = 5
@@ -2942,7 +2904,7 @@ focus_tree = {
 	##Russia
 	focus = {
 		id = FIN_russia
-		icon = align_to_russia
+		icon = GFX_Align_to_Russia
 		
 		x = 1
 		y = 1
@@ -2991,7 +2953,7 @@ focus_tree = {
 	
 	focus = {
 		id = FIN_political_alliance_with_vladimir_putin
-		icon = putin
+		icon = GFX_goal_Putin
 		
 		x = 0
 		y = 1
@@ -3012,8 +2974,8 @@ focus_tree = {
 		available = {
 			SOV = { has_government = reactionary }
 			OR = {
-				SOV = { has_country_leader = { name = "Vladimir Putin" } }
-				SOV = { has_country_leader = { name = "Dimitry Medvedev" } }
+				SOV = { has_country_leader = { name = SOV_vladimir_putin } }
+				#SOV = { has_country_leader = { name = "Dimitry Medvedev" } }
 			}
 		}
 		
@@ -3082,7 +3044,7 @@ focus_tree = {
 	
 	focus = {
 		id = FIN_ease_the_border_tensions
-		icon = intelligence_exchange
+		icon = GFX_goal_generic_intelligence_exchange
 		
 		x = 4
 		y = 1
@@ -3126,7 +3088,7 @@ focus_tree = {
 	
 	focus = {
 		id = FIN_join_csto
-		icon = align_to_csto
+		icon = GFX_Align_to_CSTO
 		
 		x = 1
 		y = 2
@@ -3216,7 +3178,7 @@ focus_tree = {
 	
 	focus = {
 		id = FIN_csto_for_finnish_territories
-		icon = demand_sudetenland
+		icon = GFX_goal_demand_sudetenland
 		
 		x = 3
 		y = 2
@@ -3261,7 +3223,7 @@ focus_tree = {
 	
 	focus = {
 		id = FIN_befriend_belarus
-		icon = align_to_belarus
+		icon = GFX_Align_to_Belarus
 		
 		x = 0
 		y = 3
@@ -3301,7 +3263,7 @@ focus_tree = {
 	
 	focus = {
 		id = FIN_import_russian_equipment
-		icon = license_production
+		icon = GFX_SOV_T-90
 		
 		x = 2
 		y = 3
@@ -3349,7 +3311,7 @@ focus_tree = {
 	
 	focus = {
 		id = FIN_plan_b
-		icon = greater_finland
+		icon = GFX_FIN_Proclamation_of_Greater_Finland
 		
 		x = 4
 		y = 3
@@ -3386,7 +3348,7 @@ focus_tree = {
 	
 	focus = {
 		id = FIN_befriend_kazakhstan
-		icon = align_to_kazakhstan
+		icon = GFX_Align_to_Kazakhstan
 		
 		x = 0
 		y = 4
@@ -3426,7 +3388,7 @@ focus_tree = {
 	
 	focus = {
 		id = FIN_border_security
-		icon = military_sphere
+		icon = GFX_goal_generic_military_sphere
 		
 		x = 2
 		y = 4
@@ -3515,10 +3477,10 @@ focus_tree = {
 	#Greater Finland Tree
 	focus = {
 		id = FIN_greater_finland
-		icon = align_to_finland
+		icon = GFX_FIN_Greater_Finland
 		
-		x = 27
-		y = 0
+		x = 26
+		y = 2
 		
 		cost = 10
 
@@ -3547,7 +3509,7 @@ focus_tree = {
 	
 	focus = {
 		id = FIN_claim_the_borders_of_1938
-		icon = greater_finland
+		icon = GFX_FIN_Finnish_Borders_of_1938
 		
 		x = 0
 		y = 1
@@ -3588,7 +3550,7 @@ focus_tree = {
 	
 	focus = {
 		id = FIN_claim_kola
-		icon = political_pressure_blue
+		icon = GFX_goal_State_Murmansk
 		
 		x = -1
 		y = 2
@@ -3625,7 +3587,7 @@ focus_tree = {
 	
 	focus = {
 		id = FIN_claim_eastern_karelia
-		icon = political_pressure_dark_green
+		icon = GFX_goal_State_Karelia
 		
 		x = 1
 		y = 2
@@ -3663,7 +3625,7 @@ focus_tree = {
 	
 	focus = {
 		id = FIN_david_against_goliath
-		icon = territory_or_war
+		icon = GFX_goal_generic_territory_or_war
 		
 		x = 0
 		y = 3

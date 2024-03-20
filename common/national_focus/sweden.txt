@@ -10,9 +10,16 @@ focus_tree = {
 			original_tag = SWE
 		}
 	}
+	initial_show_position = {
+		focus = SWE_northern_nationalism
+	}
 	
-	continuous_focus_position = { x = 1570 y = 410 }
-	
+	continuous_focus_position = { x = 40 y = 1800 }
+	shared_focus = GEF_Expand_The_Airforce
+	shared_focus = GEF_Naval_Dockyard_Effort
+	shared_focus = GEF_Expand_The_Army_General_Staff
+	shared_focus = GEF_Begin_Industrial_Build-up
+	shared_focus = EURO_Shared_Focus
 	#Post-Crisis Fiscal Decisions
 	focus = {
 		id = SWE_post_crisis_fiscal_decisions
@@ -46,7 +53,7 @@ focus_tree = {
 	
 	focus = {
 		id = SWE_riksbank_policy
-		icon = self_management
+		icon = GFX_SWE_Sveriges_Riksbank
 		
 		x = 0
 		y = 1
@@ -79,7 +86,7 @@ focus_tree = {
 	
 	focus = {
 		id = SWE_currency_policy
-		icon = money
+		icon = GFX_SWE_Swedish_Krona
 		
 		x = 0
 		y = 2
@@ -113,110 +120,11 @@ focus_tree = {
 		}
 	}
 	
-	#Improve the 122
-	focus = {
-		id = SWE_improve_the_stridsvagn_122
-		icon = stridsvagn_122
-		
-		x = 1
-		y = 5
-		
-		cost = 10
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = no
-		
-		prerequisite = {}
-		
-		mutually_exclusive = {}
-		
-		available = {
-			NOT = { has_war_with = GER }
-		}
-		
-		bypass = {}
-		
-		completion_reward = {
-			if = {
-				#Get a new tank tech and some new tanks.
-				limit = { NOT = { has_tech = main_battle_tank3 } }
-				add_equipment_to_stockpile = {
-					type = modern_tank_equipment_3
-					amount = 20
-					producer = SWE
-				}
-				set_technology = { main_battle_tank3 = 1 }
-				
-				#If you already have the tech, you get some more tanks to still have a viable focus.
-				else = {
-					add_equipment_to_stockpile = {
-						type = modern_tank_equipment_4
-						amount = 40
-						producer = SWE
-					}
-				}
-				
-				GER = {
-					add_opinion_modifier = {
-						target = SWE
-						modifier = military_deals
-					}
-				}
-			}
-		}
-		
-		ai_will_do = {
-			factor = 10
-		}
-	}
-	
-	focus = {
-		id = SWE_contracts_for_german_armament_companies
-		icon = leopard_2a6
-		
-		x = 0
-		y = 1
-		relative_position_id = SWE_improve_the_stridsvagn_122
-		
-		cost = 10
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = no
-		
-		prerequisite = {
-			focus = SWE_improve_the_stridsvagn_122
-		}
-		
-		mutually_exclusive = {}
-		
-		available = {
-			NOT = { has_war_with = GER }
-		}
-		
-		bypass = {}
-		
-		completion_reward = {
-			GER = {
-				add_opinion_modifier = {
-					target = SWE
-					modifier = military_deals
-				}
-			}
-			#add_ideas = krauss_maffei_wegmann
-		}
-		
-		ai_will_do = {
-			factor = 10
-		}
-	}
-	
 	
 	#Öresund Bridge
 	focus = {
 		id = SWE_oresund_bridge
-		icon = infrastructure
+		icon = GFX_goal_Road_Construction
 		
 		x = 2
 		y = 0
@@ -267,7 +175,7 @@ focus_tree = {
 	
 	focus = {
 		id = SWE_expand_e20
-		icon = infrastructure
+		icon = GFX_goal_Road_Construction
 		
 		x = 0
 		y = 2
@@ -312,7 +220,7 @@ focus_tree = {
 	
 	focus = {
 		id = SWE_expand_malmo_harbor
-		icon = naval_dockyards
+		icon = GFX_focus_POL_develop_polish_shipbuilding
 		
 		x = -1
 		y = 3
@@ -364,7 +272,7 @@ focus_tree = {
 	
 	focus = {
 		id = SWE_expand_the_merchant_fleet
-		icon = cruisers
+		icon = GFX_goal_Trade_Ships
 		
 		x = -2
 		y = 4
@@ -400,7 +308,7 @@ focus_tree = {
 	
 	focus = {
 		id = SWE_expand_the_stockholm_docks
-		icon = naval_dockyards
+		icon = GFX_goal_generic_construct_naval_dockyard
 		
 		x = 0
 		y = 4
@@ -443,7 +351,7 @@ focus_tree = {
 	#Northern Friendship
 	focus = {
 		id = SWE_northern_friendship
-		icon = nordic_council2
+		icon = GFX_goal_Nordic_Council_2
 		
 		x = 6
 		y = 0
@@ -483,7 +391,7 @@ focus_tree = {
 	
 	focus = {
 		id = SWE_friendship_with_denmark
-		icon = align_to_denmark
+		icon = GFX_Align_to_Denmark
 		
 		x = -3
 		y = 1
@@ -526,7 +434,7 @@ focus_tree = {
 	
 	focus = {
 		id = SWE_friendship_with_norway
-		icon = align_to_norway
+		icon = GFX_Align_to_Norway
 		
 		x = -1
 		y = 1
@@ -566,7 +474,7 @@ focus_tree = {
 	
 	focus = {
 		id = SWE_friendship_with_the_baltic_states
-		icon = align_to_baltic_states
+		icon = GFX_goal_Nordic_Council_3
 		
 		x = 1
 		y = 1
@@ -628,7 +536,7 @@ focus_tree = {
 	
 	focus = {
 		id = SWE_swedish_norwegian_steel_production
-		icon = production
+		icon = GFX_goal_generic_production
 		
 		x = -2
 		y = 2
@@ -678,7 +586,7 @@ focus_tree = {
 	
 	focus = {
 		id = SWE_friendship_with_finland
-		icon = align_to_finland
+		icon = GFX_Align_to_Finland
 		
 		x = 0
 		y = 2
@@ -718,7 +626,7 @@ focus_tree = {
 	
 	focus = {
 		id = SWE_job_opportunities_in_scania
-		icon = industry_democratic3
+		icon = GFX_focus_generic_the_giant_wakes
 		
 		x = -3
 		y = 3
@@ -763,7 +671,7 @@ focus_tree = {
 	
 	focus = {
 		id = SWE_friendship_with_iceland
-		icon = align_to_iceland
+		icon = GFX_Align_to_Iceland
 		
 		x = 0
 		y = 3
@@ -803,7 +711,7 @@ focus_tree = {
 	
 	focus = {
 		id = SWE_expand_e6
-		icon = infrastructure
+		icon = GFX_goal_Road_Construction
 		
 		x = -2
 		y = 4
@@ -847,7 +755,7 @@ focus_tree = {
 	
 	focus = {
 		id = SWE_further_european_integration
-		icon = align_to_europe
+		icon = GFX_Align_to_EU
 		
 		x = -2
 		y = 5
@@ -889,7 +797,7 @@ focus_tree = {
 	
 	focus = {
 		id = SWE_reform_the_diplomatic_agenda
-		icon = race_relations2
+		icon = GFX_goal_generic_intelligence_exchange
 		
 		x = -3
 		y = 6
@@ -922,7 +830,7 @@ focus_tree = {
 	
 	focus = {
 		id = SWE_invite_european_experts
-		icon = research
+		icon = GFX_goal_EU_Research_1
 		
 		x = -1
 		y = 6
@@ -1007,7 +915,7 @@ focus_tree = {
 	
 	focus = {
 		id = SWE_befriend_germany
-		icon = align_to_germany
+		icon = GFX_Align_to_Germany
 		
 		x = -4
 		y = 7
@@ -1020,7 +928,6 @@ focus_tree = {
 		available_if_capitulated = no
 		
 		prerequisite = {
-			focus = SWE_contracts_for_german_armament_companies
 			focus = SWE_reform_the_diplomatic_agenda
 		}
 		
@@ -1049,7 +956,7 @@ focus_tree = {
 	
 	focus = {
 		id = SWE_education_reform
-		icon = research
+		icon = GFX_goal_tfv_generic_tech_sharing
 		
 		x = -2
 		y = 7
@@ -1082,7 +989,7 @@ focus_tree = {
 	
 	focus = {
 		id = SWE_european_military_contracts
-		icon = military_mission
+		icon = GFX_goal_EU_Army
 		
 		x = 0
 		y = 7
@@ -1118,7 +1025,7 @@ focus_tree = {
 	
 	focus = {
 		id = SWE_befriend_france
-		icon = align_to_france
+		icon = GFX_Align_to_France
 		
 		x = -3
 		y = 8
@@ -1159,7 +1066,7 @@ focus_tree = {
 	
 	focus = {
 		id = SWE_armored_initiative
-		icon = tank2
+		icon = GFX_SWE_Stridsvagn_122
 		
 		x = -1
 		y = 8
@@ -1196,7 +1103,7 @@ focus_tree = {
 	
 	focus = {
 		id = SWE_artillery_initiative
-		icon = artillery3
+		icon = GFX_SWE_Archer_Artillery_System
 		
 		x = 1
 		y = 8
@@ -1233,7 +1140,7 @@ focus_tree = {
 	
 	focus = {
 		id = SWE_infantry_weapons_initiative
-		icon = small_arms4
+		icon = GFX_SWE_Gun_Icon_1
 		
 		x = 3
 		y = 8
@@ -1270,7 +1177,7 @@ focus_tree = {
 	
 	focus = {
 		id = SWE_befriend_the_united_kingdom
-		icon = align_to_britain
+		icon = GFX_Align_to_Britain
 		
 		x = -4
 		y = 9
@@ -1308,7 +1215,7 @@ focus_tree = {
 	
 	focus = {
 		id = SWE_overhaul_the_university_system
-		icon = research
+		icon = GFX_focus_research2
 		
 		x = -2
 		y = 9
@@ -1344,7 +1251,7 @@ focus_tree = {
 	
 	focus = {
 		id = SWE_befriend_italy
-		icon = align_to_italy
+		icon = GFX_Align_to_Italy
 		
 		x = -4
 		y = 10
@@ -1382,7 +1289,7 @@ focus_tree = {
 	
 	focus = {
 		id = SWE_join_nato
-		icon = align_to_nato
+		icon = GFX_Align_to_NATO
 		
 		x = -5
 		y = 11
@@ -1407,11 +1314,13 @@ focus_tree = {
 			is_subject = no
 		}
 		
-		bypass = {}
+		bypass = {
+			Can_do_Nato_or_US_Focus = no
+		}
 		
 		completion_reward = {
+			Join_Nato_effect = yes
 			remove_ideas = neutrality_idea
-			USA = { country_event = nato.4 }
 			if = {
 				limit = { SOV = { is_in_faction = yes NOT = { is_in_faction_with = USA } } }
 				SOV = {
@@ -1434,7 +1343,7 @@ focus_tree = {
 	
 	focus = {
 		id = SWE_defensive_doctrines
-		icon = military_fort
+		icon = GFX_goal_fortify_the_westwall
 		
 		x = -3
 		y = 11
@@ -1470,7 +1379,7 @@ focus_tree = {
 	#Northern Ambition
 	focus = {
 		id = SWE_northern_ambition
-		icon = forceful_treaty
+		icon = GFX_goal_generic_forceful_treaty
 		
 		x = 11
 		y = 0
@@ -1501,7 +1410,7 @@ focus_tree = {
 		}
 		
 		ai_will_do = {
-			factor = 10
+			factor = 2
 			modifier = {
 				factor = 0
 				is_historical_focus_on = yes
@@ -1511,7 +1420,7 @@ focus_tree = {
 	
 	focus = {
 		id = SWE_northern_nationalism
-		icon = fascism
+		icon = GFX_goal_support_fascism
 		
 		x = -2
 		y = 1
@@ -1549,7 +1458,7 @@ focus_tree = {
 	
 	focus = {
 		id = SWE_justify_swedish_imperialism
-		icon = align_to_sweden
+		icon = GFX_Align_to_Sweden
 		
 		x = 2
 		y = 1
@@ -1587,7 +1496,7 @@ focus_tree = {
 	
 	focus = {
 		id = SWE_partnership_of_convenience
-		icon = align_to_russia
+		icon = GFX_Align_to_Russia
 		
 		x = 5
 		y = 1
@@ -1627,7 +1536,7 @@ focus_tree = {
 	
 	focus = {
 		id = SWE_join_csto
-		icon = align_to_csto
+		icon = GFX_Align_to_CSTO
 		
 		x = 5
 		y = 2
@@ -1681,7 +1590,7 @@ focus_tree = {
 	
 	focus = {
 		id = SWE_animosity_towards_russia
-		icon = war2
+		icon = GFX_goal_generic_occupy_states_ongoing_war
 		
 		x = 7
 		y = 1
@@ -1723,7 +1632,7 @@ focus_tree = {
 	
 	focus = {
 		id = SWE_glorify_protestantism
-		icon = demand_territory2
+		icon = GFX_focus_generic_support_the_left_right
 		
 		x = -3
 		y = 2
@@ -1756,7 +1665,7 @@ focus_tree = {
 	
 	focus = {
 		id = SWE_rediscover_racial_theories
-		icon = race_relations
+		icon = GFX_focus_spr_masters_of_our_own_fate
 		
 		x = -1
 		y = 2
@@ -1791,7 +1700,7 @@ focus_tree = {
 	
 	focus = {
 		id = SWE_glorify_the_royal_family
-		icon = monarchy3
+		icon = GFX_focus_rom_royal_dictatorship
 		
 		x = 1
 		y = 2
@@ -1825,7 +1734,7 @@ focus_tree = {
 	
 	focus = {
 		id = SWE_demand_equality_for_finland_swedes
-		icon = military_deal
+		icon = GFX_goal_generic_major_war
 		
 		x = 3
 		y = 2
@@ -1858,7 +1767,7 @@ focus_tree = {
 	
 	focus = {
 		id = SWE_glorify_the_viking_heritage
-		icon = demand_sudetenland
+		icon = GFX_SWE_Viking_Heritage
 		
 		x = -3
 		y = 3
@@ -1907,7 +1816,7 @@ focus_tree = {
 	
 	focus = {
 		id = SWE_declare_the_finns_honorary_northeners
-		icon = fascism5
+		icon = GFX_USA_White_Nationalists
 		
 		x = -1
 		y = 3
@@ -1950,7 +1859,7 @@ focus_tree = {
 	
 	focus = {
 		id = SWE_the_king_of_sweden
-		icon = swedish_monarchy
+		icon = GFX_SWE_Swedish_Monarchy
 		
 		x = 1
 		y = 3
@@ -1988,7 +1897,7 @@ focus_tree = {
 	
 	focus = {
 		id = SWE_anti_finnish_sentiment
-		icon = attack_democracy
+		icon = GFX_focus_generic_strike_at_democracy1
 		
 		x = 3
 		y = 3
@@ -2026,7 +1935,7 @@ focus_tree = {
 	
 	focus = {
 		id = SWE_embrace_the_northern_resistance_movement
-		icon = nordic_resistance_movement
+		icon = GFX_focus_generic_fascist_propaganda
 		
 		x = -5
 		y = 4
@@ -2065,7 +1974,7 @@ focus_tree = {
 	
 	focus = {
 		id = SWE_the_northern_alliance
-		icon = alliance_teal
+		icon = GFX_focus_generic_scandinavian_alliance
 		
 		x = -2
 		y = 4
@@ -2110,7 +2019,7 @@ focus_tree = {
 	
 	focus = {
 		id = SWE_utilize_the_church_of_sweden
-		icon = demand_territory2
+		icon = GFX_focus_generic_support_the_left_right
 		
 		x = 0
 		y = 4
@@ -2144,7 +2053,7 @@ focus_tree = {
 	
 	focus = {
 		id = SWE_the_emperor_of_sweden
-		icon = swedish_monarchy2
+		icon = GFX_SWE_Swedish_Monarchy_2
 		
 		x = 2
 		y = 4
@@ -2178,7 +2087,7 @@ focus_tree = {
 	
 	focus = {
 		id = SWE_northern_militias
-		icon = entente
+		icon = GFX_goal_Military_Guard_2
 		
 		x = -5
 		y = 5
@@ -2211,7 +2120,7 @@ focus_tree = {
 	
 	focus = {
 		id = SWE_baltic_colonization_plan
-		icon = war
+		icon = GFX_Ally_Baltic_States
 		
 		x = -3
 		y = 5
@@ -2244,7 +2153,7 @@ focus_tree = {
 	
 	focus = {
 		id = SWE_government_propaganda
-		icon = propaganda
+		icon = GFX_goal_generic_propaganda
 		
 		x = -1
 		y = 5
@@ -2279,7 +2188,7 @@ focus_tree = {
 	
 	focus = {
 		id = SWE_offer_province_status_to_estonia
-		icon = attack_estonia
+		icon = GFX_Focus_Attack_Estonia
 		
 		x = 1
 		y = 5
@@ -2312,7 +2221,7 @@ focus_tree = {
 	
 	focus = {
 		id = SWE_tillbaka_till_riket
-		icon = attack_finland
+		icon = GFX_Focus_Attack_Finland
 		
 		x = 3
 		y = 5
@@ -2357,7 +2266,7 @@ focus_tree = {
 	
 	focus = {
 		id = SWE_aryan_pact
-		icon = hitler
+		icon = GFX_goal_Hitler
 		
 		x = -3
 		y = 6
@@ -2404,7 +2313,7 @@ focus_tree = {
 	
 	focus = {
 		id = SWE_state_control_of_newspapers
-		icon = central_management
+		icon = GFX_focus_generic_fascist_propaganda
 		
 		x = -1
 		y = 6
@@ -2437,7 +2346,7 @@ focus_tree = {
 	
 	focus = {
 		id = SWE_censor_the_internet
-		icon = propaganda
+		icon = GFX_goal_generic_propaganda
 		
 		x = 1
 		y = 6
@@ -2477,7 +2386,7 @@ focus_tree = {
 	
 	focus = {
 		id = SWE_ally_the_kaiser
-		icon = german_monarchy
+		icon = GFX_GER_German_Monarchy
 		
 		x = 3
 		y = 6
@@ -2524,7 +2433,7 @@ focus_tree = {
 	
 	focus = {
 		id = SWE_the_swedish_imperial_army
-		icon = infantry_axis
+		icon = GFX_SWE_Swedish_Army
 		
 		x = 5
 		y = 6
@@ -2572,7 +2481,7 @@ focus_tree = {
 	
 	focus = {
 		id = SWE_the_swedish_imperial_air_force
-		icon = airforce
+		icon = GFX_SWE_Swedish_Air_Force
 		
 		x = 7
 		y = 6
@@ -2605,7 +2514,7 @@ focus_tree = {
 	
 	focus = {
 		id = SWE_the_swedish_imperial_navy
-		icon = navy2
+		icon = GFX_SWE_Swedish_Navy
 		
 		x = 9
 		y = 6
@@ -2653,7 +2562,7 @@ focus_tree = {
 	
 	focus = {
 		id = SWE_pro_swedish_video_games
-		icon = cryptologic_bomb
+		icon = GFX_goal_generic_radar
 		
 		x = 1
 		y = 7

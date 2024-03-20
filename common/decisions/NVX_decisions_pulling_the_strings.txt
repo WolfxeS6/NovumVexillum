@@ -1,286 +1,21 @@
 NVX_pulling_the_strings_cat = {
-
-
-	NVX_DPTS_load_generic_tree = {
-		
+	NVX_bring_back_PTS_panel = {
 		available = {
-			
+			NOT= {has_country_flag = open_pulling_the_strings_gui}
 		}
-		
-		visible = {
-			OR = {
-				date < 2000.1.2
-				AND = {
-					has_start_date > 2016.6.1
-					date < 2016.6.2
-				}
-			}
-			
-			has_game_rule = {
-				rule = PTS_LOAD_GENERIC_TREE
-				option = DEFAULT
-			}
-			is_ai = no
-		}
-		
-		icon = GFX_decision_tabula_rasa
-		fire_only_once = yes
-		
 		cost = 0
-		
+		fire_only_once = no
 		complete_effect = {
-		hidden_effect = {
-			load_focus_tree = generic_focus 
-			remove_ideas = {
-				SOV_corrupt_oligarchy
-				japanese_article_9
-				JAP_full_employment
-				JAP_focus_on_domestic_weapons
-				JAP_afterglow_of_sun
-				JAP_hereditary_politicians
-				JAP_heisei_fukyo_4
-				GER_bundeswehr_shortcomings
-				idea_GER_german_legacy
-				ITA_mafia
-				ITA_corruption
-				idea_USA_political_establishment
-				USA_first_amendment
-				USA_second_amendment
-				USA_congress_authority
-
-			}
-		}
-		
-		}
-		
-		ai_will_do = {
-			factor = 0
-		}
-	}
-	
-			
-	NVX_DPTS_load_generic_tree_everyone = {
-		
-		available = {
-			
-		}
-		
-		visible = {
-			OR = {
-				date < 2000.1.2
-				AND = {
-					has_start_date > 2016.6.1
-					date < 2016.6.2
-				}
-			}
-			is_ai = no
-			has_game_rule = {
-				rule = PTS_LOAD_GENERIC_TREE_EVERYONE
-				option = DEFAULT
-			}
-		}
-		
-		icon = GFX_decision_tabula_rasa
-		fire_only_once = yes
-		
-		cost = 0
-		
-		complete_effect = {
-		hidden_effect = {
-		every_country = {
-			load_focus_tree = generic_focus 
-			remove_ideas = {
-				SOV_corrupt_oligarchy
-				japanese_article_9
-				JAP_full_employment
-				JAP_focus_on_domestic_weapons
-				JAP_afterglow_of_sun
-				JAP_hereditary_politicians
-				JAP_heisei_fukyo_4
-				GER_bundeswehr_shortcomings
-				idea_GER_german_legacy
-				ITA_mafia
-				ITA_corruption
-				idea_USA_political_establishment
-				USA_first_amendment
-				USA_second_amendment
-				USA_congress_authority
-
-			}
-		}				
-		}				
-		}
-		
-		ai_will_do = {
-			factor = 0
+			set_country_flag = open_pulling_the_strings_gui
 		}
 	}
 
-
-
-	NVX_DPTS_faster_build = {
-		
-		available = {
-			
-		}
-		
-		visible = {
-			OR = {
-				date < 2000.1.2
-				AND = {
-					has_start_date > 2016.6.1
-					date < 2016.6.2
-				}
-				has_country_flag = NVX_Cheats_reshow_PTS
-			}
-			has_game_rule = {
-				rule = PTS_FASTER_BUILD
-				option = DEFAULT
-			}
-			is_ai = no
-		}
-		
-		icon = generic_construction
-		
-		fire_only_once = yes
-		
-		cost = 0
-		
-		complete_effect = {
-			hidden_effect = {
-				every_country = {
-					add_ideas = NVX_idea_economy_disabled_bonus_build_speed
-				}
-			set_global_flag = economy_disabled
-			}
-		}
-		
-		ai_will_do = {
-			factor = 0
-		}
-	}
-	
-	NVX_DPTS_faster_build_backup = { # in case of...
-		
-		available = {
-			
-		}
-		
-		visible = {
-			#is_ai = yes
-			has_global_flag = economy_disabled
-			NOT = { has_idea = NVX_idea_economy_disabled_bonus_build_speed }
-		}
-		
-		icon = generic_construction
-		
-		fire_only_once = yes
-		
-		cost = 0
-		
-		complete_effect = {
-				add_ideas = NVX_idea_economy_disabled_bonus_build_speed
-		}
-		
-		ai_will_do = {
-			factor = 200
-		}
-	}
-	
-	NVX_DPTS_disband_factions = {
-		
-		available = {
-			
-		}
-		
-		visible = {
-			OR = {
-				date < 2000.1.2
-				AND = {
-					has_start_date > 2016.6.1
-					date < 2016.6.2
-				}
-				has_country_flag = NVX_Cheats_reshow_PTS
-			}
-			has_game_rule = {
-				rule = PTS_DISBAND_FACTIONS
-				option = DEFAULT
-			}
-			is_ai = no
-		}
-		
-		icon = disband_factions
-		
-		fire_only_once = yes
-		
-		cost = 0
-		
-		complete_effect = {
-			hidden_effect = {
-				set_global_flag = DPTS_dismantle_factions
-				every_country = {
-					dismantle_faction = yes
-					clr_country_flag = in_NATO
-				}
-			}
-		}
-		
-		ai_will_do = {
-			factor = 0
-		}
-	}
-	
-	NVX_DPTS_disband_european_union = {
-		
-		available = {
-			
-		}
-		
-		visible = {
-			OR = {
-				date < 2000.1.2
-				AND = {
-					has_start_date > 2016.6.1
-					date < 2016.6.2
-				}
-				has_country_flag = NVX_Cheats_reshow_PTS
-			}
-			has_game_rule = {
-				rule = PTS_DISBAND_EUROPEAN_UNION
-				option = DEFAULT
-			}
-			is_ai = no
-		}
-		
-		icon = disband_european_union
-		
-		fire_only_once = yes
-		
-		cost = 0
-		
-		complete_effect = {
-			hidden_effect = {
-				every_country = {
-					remove_ideas = {
-						idea_eu_member
-						the_euro
-						idea_eu_sanctions
-					}
-				}
-			}
-		}
-		
-		ai_will_do = {
-			factor = 0
-		}
-	}
-	
 	NVX_DPTS_prevent_split_nato = {
-		
+
 		available = {
-			
+
 		}
-		
+
 		visible = {
 			OR = {
 				date < 2000.1.2
@@ -290,268 +25,38 @@ NVX_pulling_the_strings_cat = {
 				}
 				has_country_flag = NVX_Cheats_reshow_PTS
 			}
-#			has_game_rule = {
-#				rule = PTS_DISBAND_EUROPEAN_UNION
-#				option = DEFAULT
-#			}
+			#			has_game_rule = {
+				#				rule = PTS_DISBAND_EUROPEAN_UNION
+				#				option = DEFAULT
+				#			}
 			is_ai = no
 		}
-		
+
 		icon = prevent_split_nato
-		
+
 		fire_only_once = yes
-		
+
 		cost = 0
-		
+
 		complete_effect = {
 			hidden_effect = {
 				set_global_flag = sandbox_prevent_split_nato
 			}
 		}
-		
+
 		ai_will_do = {
 			factor = 0
 		}
 	}
-	
-	NVX_DPTS_remove_guarantees = {
-		
-		available = {
-			
-		}
-		
-		visible = {
-			OR = {
-				date < 2000.1.2
-				AND = {
-					has_start_date > 2016.6.1
-					date < 2016.6.2
-				}
-				has_country_flag = NVX_Cheats_reshow_PTS
-			}
-			has_game_rule = {
-				rule = PTS_REMOVE_GUARANTEES
-				option = DEFAULT
-			}
-			is_ai = no
-		}
-		
-		icon = remove_guarantees
-		
-		fire_only_once = yes
-		
-		cost = 0
-		
-		complete_effect = {
-			hidden_effect = {
-				ALG = {
-					diplomatic_relation = { country = WES relation = guarantee active = no }
-				}
-				ARM = {
-					diplomatic_relation = { country = NGK relation = guarantee active = no }
-				}
-				AST = {
-					diplomatic_relation = { country = ETI relation = guarantee active = no }
-					diplomatic_relation = { country = FIJ relation = guarantee active = no }
-					diplomatic_relation = { country = NZL relation = guarantee active = no }
-				}
-				ENG = {
-					diplomatic_relation = { country = BRU relation = guarantee active = no }
-					diplomatic_relation = { country = MLT relation = guarantee active = no }
-					diplomatic_relation = { country = CYP relation = guarantee active = no }
-					diplomatic_relation = { country = KUR relation = guarantee active = no }
-				}
-				FRA = {
-					diplomatic_relation = { country = DJI relation = guarantee active = no }
-					diplomatic_relation = { country = IVO relation = guarantee active = no }
-					diplomatic_relation = { country = MOC relation = guarantee active = no }
-					diplomatic_relation = { country = AND relation = guarantee active = no }
-					diplomatic_relation = { country = SEN relation = guarantee active = no }
-					diplomatic_relation = { country = GAB relation = guarantee active = no }
-				}
-				GRE = {
-					diplomatic_relation = { country = CYP relation = guarantee active = no }
-				}
-				ITA = {
-					diplomatic_relation = { country = HLS relation = guarantee active = no }
-					diplomatic_relation = { country = SAN relation = guarantee active = no }
-					diplomatic_relation = { country = MLT relation = guarantee active = no }
-				}
-				PRC = {
-					diplomatic_relation = { country = PRK relation = guarantee active = no }
-				}
-				RAJ = {
-					diplomatic_relation = { country = MLD relation = guarantee active = no }
-					diplomatic_relation = { country = SRL relation = guarantee active = no }
-					diplomatic_relation = { country = BHU relation = guarantee active = no }
-					diplomatic_relation = { country = NEP relation = guarantee active = no }
-				}
-				SOV = {
-					diplomatic_relation = { country = ABK relation = guarantee active = no }
-					diplomatic_relation = { country = SOS relation = guarantee active = no }
-					diplomatic_relation = { country = TRA relation = guarantee active = no }
-				}
-				SPR = {
-					diplomatic_relation = { country = AND relation = guarantee active = no }
-				}
-				SWI = {
-					diplomatic_relation = { country = LIC relation = guarantee active = no }
-				}
-				TUR = {
-					diplomatic_relation = { country = AZR relation = guarantee active = no }
-				}
-				USA = {
-					diplomatic_relation = { country = AST relation = guarantee active = no }
-					diplomatic_relation = { country = ISR relation = guarantee active = no }
-					diplomatic_relation = { country = JAP relation = guarantee active = no }
-					diplomatic_relation = { country = KOR relation = guarantee active = no }
-					diplomatic_relation = { country = KIR relation = guarantee active = no }
-					diplomatic_relation = { country = MAR relation = guarantee active = no }
-					diplomatic_relation = { country = FSM relation = guarantee active = no }
-					diplomatic_relation = { country = NZL relation = guarantee active = no }
-					diplomatic_relation = { country = PLU relation = guarantee active = no }
-					diplomatic_relation = { country = CHI relation = guarantee active = no }
-					diplomatic_relation = { country = KUR relation = guarantee active = no }
-				}
-			}
-		}
-		
-		ai_will_do = {
-			factor = 0
-		}
-	}
-	
-	NVX_DPTS_disable_natural_estate_drift = {
-		
-		available = {
-			
-		}
-		
-		visible = {
-			NOT = { has_global_flag = sandbox_disable_natural_estate_drift }
-			OR = {
-				date < 2000.1.2
-				AND = {
-					has_start_date > 2016.6.1
-					date < 2016.6.2
-				}
-				has_country_flag = NVX_Cheats_reshow_PTS
-			}
-			has_game_rule = {
-				rule = PTS_DISABLE_NATURAL_ESTATE_DRIFT
-				option = DEFAULT
-			}
-			is_ai = no
-		}
-		
-		icon = disable_natural_estate_drift
-		
-		fire_only_once = yes
-		
-		cost = 0
-		
-		complete_effect = {
-			hidden_effect = {
-				set_global_flag = sandbox_disable_natural_estate_drift
-			}
-		}
-		
-		ai_will_do = {
-			factor = 0
-		}
-	}
-	
-	NVX_DPTS_disable_aberrant_estate_drift = {
-		
-		available = {
-			
-		}
-		
-		visible = {
-			NOT = { has_global_flag = sandbox_disable_aberrant_estate_drift }
-			OR = {
-				date < 2000.1.2
-				AND = {
-					has_start_date > 2016.6.1
-					date < 2016.6.2
-				}
-				has_country_flag = NVX_Cheats_reshow_PTS
-			}
-			has_game_rule = {
-				rule = PTS_DISABLE_ABERRANT_ESTATE_DRIFT
-				option = DEFAULT
-			}
-			is_ai = no
-		}
-		
-		icon = disable_aberrant_estate_drift
-		
-		fire_only_once = yes
-		
-		cost = 0
-		
-		complete_effect = {
-			hidden_effect = {
-				set_global_flag = sandbox_disable_aberrant_estate_drift
-			}
-		}
-		
-		ai_will_do = {
-			factor = 0
-		}
-	}
-	
-	NVX_DPTS_disable_nukes = {
-		
-		available = {
-			
-		}
-		
-		visible = {
-			NOT = { has_global_flag = DPTS_disable_nukes }
-			OR = {
-				date < 2000.1.2
-				AND = {
-					has_start_date > 2016.6.1
-					date < 2016.6.2
-				}
-				has_country_flag = NVX_Cheats_reshow_PTS
-			}
-			has_game_rule = {
-				rule = PTS_DISABLE_NUKES
-				option = DEFAULT
-			}
-			is_ai = no
-		}
-		
-		icon = disable_nukes
-		
-		fire_only_once = yes
-		
-		cost = 0
-		
-		complete_effect = {
-			hidden_effect = {
-				every_country = {
-					set_technology = {
-						nukes = 0
-					}
-				}
-				set_global_flag = DPTS_disable_nukes
-			}
-		}
-		
-		ai_will_do = {
-			factor = 0
-		}
-	}
-	
+
+
+
 	NVX_DPTS_disable_nuke_threat = {
-		
+
 		available = {
-			
+
 		}
-		
+
 		visible = {
 			NOT = { has_global_flag = DPTS_disable_nuke_threat }
 			OR = {
@@ -568,30 +73,30 @@ NVX_pulling_the_strings_cat = {
 			}
 			is_ai = no
 		}
-		
+
 		icon = disable_nuke_threat
-		
+
 		fire_only_once = yes
-		
+
 		cost = 0
-		
+
 		complete_effect = {
 			hidden_effect = {
 				set_global_flag = DPTS_disable_nuke_threat
 			}
 		}
-		
+
 		ai_will_do = {
 			factor = 0
 		}
 	}
-	
+
 	NVX_DPTS_use_simple_country_names = {
-		
+
 		available = {
-			
+
 		}
-		
+
 		visible = {
 			NOT = { has_global_flag = DPTS_use_simple_country_names }
 			OR = {
@@ -608,31 +113,31 @@ NVX_pulling_the_strings_cat = {
 			}
 			is_ai = no
 		}
-		
+
 		icon = use_simple_country_names
-		
+
 		fire_only_once = yes
-		
+
 		cost = 0
-		
+
 		complete_effect = {
 			hidden_effect = {
 				NVX_simple_country_names = yes
 				set_global_flag = DPTS_use_simple_country_names
 			}
 		}
-		
+
 		ai_will_do = {
 			factor = 0
 		}
 	}
-	
+
 	NVX_DPTS_change_fisc_container = {
-		
+
 		available = {
-			
+
 		}
-		
+
 		visible = {
 			NOT = { has_country_flag = DPTS_change_fisc_container }
 			OR = {
@@ -645,30 +150,30 @@ NVX_pulling_the_strings_cat = {
 			}
 			is_ai = no
 		}
-		
+
 		icon = change_fisc_container
-		
+
 		fire_only_once = yes
-		
+
 		cost = 0
-		
+
 		complete_effect = {
 			hidden_effect = {
 				set_country_flag = DPTS_change_fisc_container
 			}
 		}
-		
+
 		ai_will_do = {
 			factor = 0
 		}
 	}
-	
+
 	NVX_DPTS_enable_division_limits = {
-		
+
 		available = {
-			
+
 		}
-		
+
 		visible = {
 			NOT = { has_global_flag = sandbox_enable_division_limits }
 			OR = {
@@ -685,30 +190,30 @@ NVX_pulling_the_strings_cat = {
 			}
 			is_ai = no
 		}
-		
+
 		icon = enable_division_limits
-		
+
 		fire_only_once = yes
-		
+
 		cost = 0
-		
+
 		complete_effect = {
 			hidden_effect = {
 				set_global_flag = sandbox_enable_division_limits
 			}
 		}
-		
+
 		ai_will_do = {
 			factor = 0
 		}
 	}
-	
+
 	NVX_DPTS_disable_dynamic_civil_wars = {
-		
+
 		available = {
-			
+
 		}
-		
+
 		visible = {
 			NOT = { has_global_flag = sandbox_disable_dynamic_civil_wars }
 			OR = {
@@ -719,37 +224,37 @@ NVX_pulling_the_strings_cat = {
 				}
 				has_country_flag = NVX_Cheats_reshow_PTS
 			}
-#			has_game_rule = {
-#				rule = PTS_DISABLE_DYNAMIC_CIVIL_WARS
-#				option = DEFAULT
-#			}
+			#			has_game_rule = {
+				#				rule = PTS_DISABLE_DYNAMIC_CIVIL_WARS
+				#				option = DEFAULT
+				#			}
 			is_ai = no
 			always = no
 		}
-		
+
 		icon = disable_dynamic_civil_wars
-		
+
 		fire_only_once = yes
-		
+
 		cost = 0
-		
+
 		complete_effect = {
 			hidden_effect = {
 				set_global_flag = sandbox_disable_dynamic_civil_wars
 			}
 		}
-		
+
 		ai_will_do = {
 			factor = 0
 		}
 	}
-	
+
 	NVX_DPTS_fracture_world = {
-		
+
 		available = {
-			
+
 		}
-		
+
 		visible = {
 			NOT = { has_global_flag = sandbox_fracture_world }
 			OR = {
@@ -766,13 +271,13 @@ NVX_pulling_the_strings_cat = {
 			}
 			is_ai = no
 		}
-		
+
 		icon = fracture_world
-		
+
 		fire_only_once = yes
-		
+
 		cost = 0
-		
+
 		complete_effect = {
 			hidden_effect = {
 				set_global_flag = sandbox_fracture_world
@@ -793,6 +298,7 @@ NVX_pulling_the_strings_cat = {
 					release = FLN
 					release = GDL
 					release = GXC
+					release = JEJ
 					release = KOS
 					release = KUR
 					release = LOM
@@ -828,7 +334,7 @@ NVX_pulling_the_strings_cat = {
 					transfer_state = 119
 				}
 				MOR = {
-					#transfer_state = 898
+					transfer_state = 898
 					transfer_state = 897
 				}
 				RAJ = {
@@ -893,18 +399,18 @@ NVX_pulling_the_strings_cat = {
 				}
 			}
 		}
-		
+
 		ai_will_do = {
 			factor = 0
 		}
 	}
-	
+
 	NVX_DPTS_battle_royale = {
-		
+
 		available = {
-			
+
 		}
-		
+
 		visible = {
 			NOT = { has_global_flag = sandbox_battle_royale }
 			OR = {
@@ -921,31 +427,31 @@ NVX_pulling_the_strings_cat = {
 			}
 			is_ai = no
 		}
-		
+
 		icon = battle_royale
-		
+
 		fire_only_once = yes
-		
+
 		cost = 0
-		
+
 		complete_effect = {
 			hidden_effect = {
 				set_global_flag = sandbox_battle_royale
 				country_event = { id = NVX_TABRAS.1 }
 			}
 		}
-		
+
 		ai_will_do = {
 			factor = 0
 		}
 	}
-	
+
 	NVX_DPTS_tabula_rasa = {
-		
+
 		available = {
-			
+
 		}
-		
+
 		visible = {
 			NOT = { has_global_flag = sandbox_tabula_rasa }
 			OR = {
@@ -962,13 +468,13 @@ NVX_pulling_the_strings_cat = {
 			}
 			is_ai = no
 		}
-		
+
 		icon = tabula_rasa
-		
+
 		fire_only_once = yes
-		
+
 		cost = 0
-		
+
 		complete_effect = {
 			hidden_effect = {
 				set_global_flag = sandbox_tabula_rasa
@@ -1024,268 +530,99 @@ NVX_pulling_the_strings_cat = {
 				country_event = { id = NVX_TABRAS.2 }
 			}
 		}
-		
+
 		ai_will_do = {
 			factor = 0
 		}
 	}
-	
-	NVX_DPTS_disable_warfaring = {
-		
-		available = {
-			
-		}
-		
-		visible = {
-			NOT = { has_global_flag = pts_disable_warfaring }
-			NOT = { has_global_flag = pts_reduce_warfaring }
-			NOT = { has_global_flag = pts_intensify_warfaring }
-			OR = {
-				date < 2000.1.2
-				AND = {
-					has_start_date > 2016.6.1
-					date < 2016.6.2
-				}
-				has_country_flag = NVX_Cheats_reshow_PTS
-			}
-			has_game_rule = {
-				rule = PTS_WARFARING_OPTIONS
-				option = DEFAULT
-			}
-			is_ai = no
-		}
-		
-		icon = disable_warfaring
-		
-		fire_only_once = yes
-		
-		cost = 0
-		
-		complete_effect = {
-			hidden_effect = {
-				set_global_flag = pts_disable_warfaring
-			}
-		}
-		
-		ai_will_do = {
-			factor = 0
-		}
-	}
-	
-	NVX_DPTS_reduce_warfaring = {
-		
-		available = {
-			
-		}
-		
-		visible = {
-			NOT = { has_global_flag = pts_disable_warfaring }
-			NOT = { has_global_flag = pts_reduce_warfaring }
-			NOT = { has_global_flag = pts_intensify_warfaring }
-			OR = {
-				date < 2000.1.2
-				AND = {
-					has_start_date > 2016.6.1
-					date < 2016.6.2
-				}
-				has_country_flag = NVX_Cheats_reshow_PTS
-			}
-			has_game_rule = {
-				rule = PTS_WARFARING_OPTIONS
-				option = DEFAULT
-			}
-			is_ai = no
-		}
-		
-		icon = reduce_warfaring
-		
-		fire_only_once = yes
-		
-		cost = 0
-		
-		complete_effect = {
-			hidden_effect = {
-				set_global_flag = pts_reduce_warfaring
-			}
-		}
-		
-		ai_will_do = {
-			factor = 0
-		}
-	}
-	
-	NVX_DPTS_intensify_warfaring = {
-		
-		available = {
-			
-		}
-		
-		visible = {
-			NOT = { has_global_flag = pts_disable_warfaring }
-			NOT = { has_global_flag = pts_reduce_warfaring }
-			NOT = { has_global_flag = pts_intensify_warfaring }
-			OR = {
-				date < 2000.1.2
-				AND = {
-					has_start_date > 2016.6.1
-					date < 2016.6.2
-				}
-				has_country_flag = NVX_Cheats_reshow_PTS
-			}
-			has_game_rule = {
-				rule = PTS_WARFARING_OPTIONS
-				option = DEFAULT
-			}
-			is_ai = no
-		}
-		
-		icon = intensify_warfaring
-		
-		fire_only_once = yes
-		
-		cost = 0
-		
-		complete_effect = {
-			hidden_effect = {
-				set_global_flag = pts_intensify_warfaring
-			}
-		}
-		
-		ai_will_do = {
-			factor = 0
-		}
-	}
-	
-	NVX_DPTS_chaotic_warfaring = {
-		
-		available = {
-			
-		}
-		
-		visible = {
-			NOT = { has_global_flag = pts_disable_warfaring }
-			NOT = { has_global_flag = pts_reduce_warfaring }
-			NOT = { has_global_flag = pts_intensify_warfaring }
-			OR = {
-				date < 2000.1.2
-				AND = {
-					has_start_date > 2016.6.1
-					date < 2016.6.2
-				}
-				has_country_flag = NVX_Cheats_reshow_PTS
-			}
-			has_game_rule = {
-				rule = PTS_WARFARING_OPTIONS
-				option = DEFAULT
-			}
-			is_ai = no
-		}
-		
-		icon = chaotic_warfaring
-		
-		fire_only_once = yes
-		
-		cost = 0
-		
-		complete_effect = {
-			hidden_effect = {
-				set_global_flag = pts_intensify_warfaring
-				set_global_flag = pts_chaotic_warfaring
-			}
-		}
-		
-		ai_will_do = {
-			factor = 0
-		}
-	}
-	
-#	NVX_DPTS_enable_chaos = {
-#		
-#		available = {
-#			
-#		}
-#		
-#		visible = {
-#			OR = {
-#				date < 2000.1.2
-#				AND = {
-#					has_start_date > 2016.6.1
-#					date < 2016.6.2
-#				}
-#			}
-#			is_ai = no
-#		}
-#		
-#		icon = enable_chaos
-#		
-#		fire_only_once = yes
-#		
-#		cost = 0
-#		
-#		complete_effect = {
-#			
-#		}
-#		
-#		ai_will_do = {
-#			factor = 0
-#		}
-#	}
-#	
-#	NVX_DPTS_disable_protests = {
-#		
-#		available = {
-#			
-#		}
-#		
-#		visible = {
-#			NOT = { has_global_flag = sandbox_disable_protests }
-#			OR = {
-#				date < 2000.1.2
-#				AND = {
-#					has_start_date > 2016.6.1
-#					date < 2016.6.2
-#				}
-#			}
-#			is_ai = no
-#		}
-#		
-#		fire_only_once = yes
-#		
-#		cost = 0
-#		
-#		complete_effect = {r
-#			hidden_effect = {
-#				set_global_flag = sandbox_disable_protests
-#			}
-#		}
-#		
-#		ai_will_do = {
-#			factor = 0
-#		}
-#	}
+
+	#	NVX_DPTS_enable_chaos = {
+		#
+		#		available = {
+			#
+			#		}
+		#
+		#		visible = {
+			#			OR = {
+				#				date < 2000.1.2
+				#				AND = {
+					#					has_start_date > 2016.6.1
+					#					date < 2016.6.2
+					#				}
+				#			}
+			#			is_ai = no
+			#		}
+		#
+		#		icon = enable_chaos
+		#
+		#		fire_only_once = yes
+		#
+		#		cost = 0
+		#
+		#		complete_effect = {
+			#
+			#		}
+		#
+		#		ai_will_do = {
+			#			factor = 0
+			#		}
+		#	}
+	#
+	#	NVX_DPTS_disable_protests = {
+		#
+		#		available = {
+			#
+			#		}
+		#
+		#		visible = {
+			#			NOT = { has_global_flag = sandbox_disable_protests }
+			#			OR = {
+				#				date < 2000.1.2
+				#				AND = {
+					#					has_start_date > 2016.6.1
+					#					date < 2016.6.2
+					#				}
+				#			}
+			#			is_ai = no
+			#		}
+		#
+		#		fire_only_once = yes
+		#
+		#		cost = 0
+		#
+		#		complete_effect = {r
+			#			hidden_effect = {
+				#				set_global_flag = sandbox_disable_protests
+				#			}
+			#		}
+		#
+		#		ai_will_do = {
+			#			factor = 0
+			#		}
+		#	}
 
 	# Keep at bottom
 	NVX_DPTS_hide_PTS = {
-		
+
 		available = {
-			
+
 		}
-		
+
 		visible = {
 			has_country_flag = NVX_Cheats_reshow_PTS
 			is_ai = no
 		}
-		
+
 		icon = change_fisc_container
-		
+
 		cost = 0
-		
+
 		complete_effect = {
 			hidden_effect = {
 				clr_country_flag = NVX_Cheats_reshow_PTS
 			}
 		}
-		
+
 		ai_will_do = {
 			factor = 0
 		}
