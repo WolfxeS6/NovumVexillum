@@ -37,7 +37,7 @@
 
 shared_focus = {
 	id = GEN_a_new_economy_for_a_new_millenium
-	icon = destroy_society
+	icon = GFX_goal_generic_construction
 	x = 6
 	y = 0
 	cost = 5
@@ -57,16 +57,16 @@ shared_focus = {
 }
 
 shared_focus = {
-	id = GEN_automoative_mines
-	icon = GFX_goal_continuous_non_factory_construct
-	x = 2
-	y = 2
+	id = GEN_attract_investment
+	text = GEF_Attract_Foreign_Investors
+	icon = GFX_focus_mex_privatisation
+	x = 14
+	y = 1
 	relative_position_id = GEN_a_new_economy_for_a_new_millenium
-	cost = 10
+	cost = 5
 
 	prerequisite = {
-		focus = GEN_centraly_planned_economy
-		focus = GEN_a_free_market_economy
+		focus = GEN_a_new_economy_for_a_new_millenium
 	}
 
 	available = {
@@ -74,14 +74,1069 @@ shared_focus = {
 	}
 
 	completion_reward = {
-		add_ideas = GEN_automative_mines_idea
+	}
+}
+#### American
+shared_focus = {
+	id = GEN_Invite_American_Investors
+	text = GEF_Invite_American_Investors
+	icon = GFX_Align_to_America
+	x = -6
+	y = 1
+	cost = @Time_40_days
+	available = {
+		USA = {has_opinion = { target = ROOT value > -1 }}
+		country_exists = USA
+	}
+	mutually_exclusive = {
+		focus = GEN_Invite_Japanese_Investors
+	}
+	mutually_exclusive = {
+		focus = GEN_Invite_European_Investors
+	}
+	mutually_exclusive = {
+		focus = GEN_Invite_Russian_Planners
+	}
+	mutually_exclusive = {
+		focus = GEN_Invite_Chinese_Planners
+	}
+
+	prerequisite = {
+		focus = GEN_attract_investment
+	}
+
+	relative_position_id  = GEN_attract_investment
+
+	completion_reward = {
+		add_offsite_building = {
+			type = industrial_complex
+			level = 1
+			instant_build = yes
+		}
+		USA = {
+			add_opinion_modifier = {
+				target = ROOT
+				modifier = declaration_of_friendship
+			}
+		}
+	}
+
+	ai_will_do = {
+		factor = 1
+		modifier = {
+				add = 10
+			FROM = {
+				has_opinion = { target = USA value > 61 }
+			}
+		}
+		modifier = {
+			factor = 0
+			FROM = {
+				has_opinion = { target = USA value < -20 }
+			}
+		}
+	}
+}
+
+shared_focus = {
+	id = GEN_Invite_US_Tech_Companies
+	text = GEF_Invite_US_Tech_Companies
+	icon = GFX_goal_generic_scientific_exchange
+	x = -1
+	y = 1
+	cost = @Time_45_days
+
+	prerequisite = {
+		focus = GEN_Invite_American_Investors
+	}
+
+	relative_position_id  = GEN_Invite_American_Investors
+
+	completion_reward = {
+		random_owned_state = {
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = industrial_complex
+				level = 1
+				instant_build = yes
+			}
+		}
+		add_tech_bonus = {
+			name = electronics_bonus
+			bonus = 1
+			uses = 2
+			category = electronics
+		}
+	}
+
+	ai_will_do = {
+		factor = 10
+	}
+}
+shared_focus = {
+	id = GEN_Invite_American_Industries
+	text = GEF_Invite_American_Industries
+	icon = GFX_goal_American_Manufacturing
+	x = 1
+	y = 1
+	cost = @Time_70_days
+
+	prerequisite = {
+		focus = GEN_Invite_US_Tech_Companies
+	}
+
+	relative_position_id  = GEN_Invite_US_Tech_Companies
+
+	completion_reward = {
+		random_owned_state = {
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = industrial_complex
+				level = 1
+				instant_build = yes
+			}
+		}
+		random_owned_state = {
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = industrial_complex
+				level = 1
+				instant_build = yes
+			}
+		}
 		add_tech_bonus = {
 			name = industry_bonus
-			bonus = 0.8
+			bonus = 0.75
+			uses = 2
+			category = industry
+		}
+	}
+
+	ai_will_do = {
+		factor = 10
+	}
+}
+shared_focus = {
+	id = GEN_American_Air_Industry_Expansion
+	text = GEF_American_Air_Industry_Expansion
+	icon = GFX_Raytheon_Technologies
+	x = 0
+	y = 2
+	cost = @Time_70_days
+
+	prerequisite = {
+		focus = GEN_Invite_US_Tech_Companies
+	}
+	prerequisite = {
+		focus = GEN_Invite_American_Industries
+	}
+
+	relative_position_id  = GEN_Invite_US_Tech_Companies
+
+	completion_reward = {
+		custom_effect_tooltip = available_designer
+		show_ideas_tooltip = USA_Raytheon_Technologies
+		air_experience = 15
+		random_owned_state = {
+			add_extra_state_shared_building_slots = 2
+			add_building_construction = {
+				type = arms_factory
+				level = 2
+				instant_build = yes
+			}
+		}
+	}
+
+	ai_will_do = {
+		factor = 10
+	}
+}
+
+### Japanese
+shared_focus = {
+	id = GEN_Invite_Japanese_Investors
+	text = GEF_Invite_Japanese_Investors
+	icon = GFX_Align_to_Japan
+	x = -3
+	y = 1
+	cost = @Time_40_days
+	available = {
+		JAP = {has_opinion = { target = ROOT value > -1 }}
+		country_exists = JAP
+	}
+	mutually_exclusive = {
+		focus = GEN_Invite_American_Investors
+	}
+	mutually_exclusive = {
+		focus = GEN_Invite_European_Investors
+	}
+	mutually_exclusive = {
+		focus = GEN_Invite_Russian_Planners
+	}
+	mutually_exclusive = {
+		focus = GEN_Invite_Chinese_Planners
+	}
+
+	prerequisite = {
+		focus = GEN_attract_investment
+	}
+
+	relative_position_id = GEN_attract_investment 
+
+	completion_reward = {
+		add_offsite_building = {
+			type = industrial_complex
+			level = 1
+			instant_build = yes
+		}
+		JAP = {
+			add_opinion_modifier = {
+				target = ROOT
+				modifier = declaration_of_friendship
+			}
+		}
+	}
+
+	ai_will_do = {
+		factor = 1
+		modifier = {
+				add = 10
+			FROM = {
+				has_opinion = { target = JAP value > 61 }
+			}
+		}
+		modifier = {
+			factor = 0
+			FROM = {
+				has_opinion = { target = JAP value < -20 }
+			}
+		}
+	}
+}
+
+shared_focus = {
+	id = GEN_Invite_Japanese_Tech_Companies
+	text = GEF_Invite_Japanese_Tech_Companies
+	icon = GFX_goal_generic_scientific_exchange
+	x = 0
+	y = 1
+	cost = @Time_45_days
+
+	prerequisite = {
+		focus = GEN_Invite_Japanese_Investors
+	}
+
+	relative_position_id  = GEN_Invite_Japanese_Investors
+
+	completion_reward = {
+		random_owned_state = {
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = industrial_complex
+				level = 1
+				instant_build = yes
+			}
+		}
+		add_tech_bonus = {
+			name = electronics_bonus
+			bonus = 1
+			uses = 2
+			category = electronics
+		}
+	}
+
+	ai_will_do = {
+		factor = 10
+	}
+}
+shared_focus = {
+	id = GEN_Invite_Japanese_Industries
+	text = GEF_Invite_Japanese_Industries
+	icon = GFX_goal_Japanese_Manufacturing
+	x = -1
+	y = 1
+	cost = @Time_70_days
+
+	prerequisite = {
+		focus = GEN_Invite_Japanese_Tech_Companies
+	}
+
+	relative_position_id  = GEN_Invite_Japanese_Tech_Companies
+
+	completion_reward = {
+		random_owned_state = {
+			add_extra_state_shared_building_slots = 3
+			add_building_construction = {
+				type = industrial_complex
+				level = 2
+				instant_build = yes
+			}
+		}
+		add_tech_bonus = {
+			name = industry_bonus
+			bonus = 1
+			uses = 1
+			category = industry
+		}
+	}
+
+	ai_will_do = {
+		factor = 10
+	}
+}
+shared_focus = {
+	id = GEN_Japanese_Heavy_Industries
+	text = GEF_Japanese_Heavy_Industries
+	icon = GFX_goal_Japan_Factory
+	x = 0
+	y = 2
+	cost = @Time_70_days
+
+	prerequisite = {
+		focus = GEN_Invite_Japanese_Tech_Companies
+	}
+	prerequisite = {
+		focus = GEN_Invite_Japanese_Industries
+	}
+
+	relative_position_id  = GEN_Invite_Japanese_Tech_Companies
+
+	completion_reward = {
+		random_owned_state = {
+			add_extra_state_shared_building_slots = 2
+			add_building_construction = {
+				type = industrial_complex
+				level = 2
+				instant_build = yes
+			}
+		}
+		random_owned_state = {
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = industrial_complex
+				level = 1
+				instant_build = yes
+			}
+		}
+	}
+
+	ai_will_do = {
+		factor = 10
+	}
+}
+
+#### European
+shared_focus = {
+	id = GEN_Invite_European_Investors
+	icon = GFX_goal_EU_Agreement
+	x = 0
+	y = 1
+	cost = @Time_40_days
+	available = {
+		OR = {
+			AND = {
+				GER = {has_opinion = { target = ROOT value > -1 }}
+				country_exists = GER
+			}
+			AND = {
+				ENG = {has_opinion = { target = ROOT value > -1 }}
+				country_exists = ENG
+			}
+			AND = {
+				FRA = {has_opinion = { target = ROOT value > -1 }}
+				country_exists = FRA
+			}
+			AND = {
+				ITA = {has_opinion = { target = ROOT value > -1 }}
+				country_exists = SPR
+			}
+		}
+	}
+	mutually_exclusive = {
+		focus = GEN_Invite_American_Investors
+	}
+	mutually_exclusive = {
+		focus = GEN_Invite_Japanese_Investors
+	}
+	mutually_exclusive = {
+		focus = GEN_Invite_Russian_Planners
+	}
+	mutually_exclusive = {
+		focus = GEN_Invite_Chinese_Planners
+	}
+
+	prerequisite = {
+		focus = GEN_attract_investment
+	}
+
+	relative_position_id  = GEN_attract_investment
+
+	completion_reward = {
+		add_political_power = 100
+	}
+
+	ai_will_do = {
+		factor = 4
+	}
+}
+
+shared_focus = {
+	id = GEN_Invite_european_banks
+	icon = GFX_goal_EU_Business_Deal
+	x = 1
+	y = 1
+	cost = @Time_45_days
+
+	prerequisite = {
+		focus = GEN_Invite_European_Investors
+	}
+
+	relative_position_id  = GEN_Invite_European_Investors
+
+	completion_reward = {
+		random_owned_state = {
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = industrial_complex
+				level = 1
+				instant_build = yes
+			}
+		}
+	}
+
+	ai_will_do = {
+		factor = 10
+	}
+}
+
+
+shared_focus = {
+	id = GEN_European_Technology_exchanges
+	icon = GFX_goal_generic_scientific_exchange
+	x = -1
+	y = 1
+	cost = @Time_45_days
+
+	prerequisite = {
+		focus = GEN_Invite_European_Investors
+	}
+
+	relative_position_id  = GEN_Invite_European_Investors
+
+	completion_reward = {
+		random_owned_state = {
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = industrial_complex
+				level = 1
+				instant_build = yes
+			}
+		}
+	}
+
+	ai_will_do = {
+		factor = 10
+	}
+}
+shared_focus = {
+	id = GEN_european_auto_industry
+	icon = GFX_GER_Volkswagen
+	x = 0
+	y = 1
+	cost = @Time_45_days
+
+	prerequisite = {
+		focus = GEN_European_Technology_exchanges
+	}
+	prerequisite = {
+		focus = GEN_Invite_european_banks
+	}
+
+	relative_position_id  = GEN_European_Technology_exchanges
+
+	completion_reward = {
+		random_owned_state = {
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = industrial_complex
+				level = 1
+				instant_build = yes
+			}
+		}
+	}
+
+	ai_will_do = {
+		factor = 10
+	}
+}
+shared_focus = {
+	id = GEN_european_administrators
+	icon = GFX_focus_generic_diplomatic_treaty
+	x = 0
+	y = 1
+	cost = @Time_45_days
+
+	prerequisite = {
+		focus = GEN_European_Technology_exchanges
+	}
+	prerequisite = {
+		focus = GEN_Invite_european_banks
+	}
+
+	relative_position_id  = GEN_Invite_european_banks
+
+	completion_reward = {
+
+	}
+
+	ai_will_do = {
+		factor = 10
+	}
+}
+shared_focus = {
+	id = GEN_european_high_speed_rail
+	icon = GFX_Renfe_AVE
+	x = 1
+	y = 1
+	cost = @Time_45_days
+
+	prerequisite = {
+		focus = GEN_european_auto_industry
+		focus = GEN_european_administrators
+	}
+
+	relative_position_id  = GEN_european_auto_industry
+
+	completion_reward = {
+		random_owned_state = {
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = industrial_complex
+				level = 1
+				instant_build = yes
+			}
+		}
+	}
+
+	ai_will_do = {
+		factor = 10
+	}
+}
+#### Russia
+shared_focus = {
+	id = GEN_Invite_Russian_Planners
+	text = GEF_Invite_Russian_Planners
+	icon = GFX_Align_to_Russia
+	x = 3
+	y = 1
+	cost = @Time_40_days
+	allow_branch = {
+		OR = {
+			#is_ex_soviet = yes
+			tag = RAJ
+			always = yes
+		}
+	}
+	available = {
+		SOV = {has_opinion = { target = ROOT value > -1 }}
+		country_exists = SOV
+	}
+	mutually_exclusive = {
+		focus = GEN_Invite_American_Investors
+	}
+	mutually_exclusive = {
+		focus = GEN_Invite_Japanese_Investors
+	}
+	mutually_exclusive = {
+		focus = GEN_Invite_European_Investors
+	}
+	mutually_exclusive = {
+		focus = GEN_Invite_Chinese_Planners
+	}
+
+	prerequisite = {
+		focus = GEN_attract_investment
+	}
+
+	relative_position_id   = GEN_attract_investment
+
+	completion_reward = {
+		add_offsite_building = {
+			type = industrial_complex
+			level = 1
+			instant_build = yes
+		}
+		SOV = {
+			add_opinion_modifier = {
+				target = ROOT
+				modifier = declaration_of_friendship
+			}
+		}
+	}
+
+	ai_will_do = {
+		factor = 1
+		modifier = {
+				add = 10
+			FROM = {
+				has_opinion = { target = SOV value > 61 }
+			}
+		}
+		modifier = {
+			factor = 0
+			FROM = {
+				has_opinion = { target = SOV value < -20 }
+			}
+		}
+	}
+}
+
+shared_focus = {
+	id = GEN_Invite_Russian_Oil_Industry
+	text = GEF_Invite_Russian_Oil_Industry
+	icon = GFX_goal_Oil_Excavation
+	x = 0
+	y = 1
+	cost = @Time_45_days
+
+	prerequisite = {
+		focus = GEN_Invite_Russian_Planners
+	}
+
+	relative_position_id  = GEN_Invite_Russian_Planners
+
+	completion_reward = {
+		random_owned_state = {
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = industrial_complex
+				level = 1
+				instant_build = yes
+			}
+		}
+		add_tech_bonus = {
+			name = industry_bonus
+			bonus = 1
+			uses = 2
+			category = synth_resources
+		}
+	}
+
+	ai_will_do = {
+		factor = 10
+	}
+}
+shared_focus = {
+	id = GEN_Invite_Russian_Aerospace_Company
+	text = GEF_Invite_Russian_Aerospace_Company
+	icon = GFX_focus_rocketry
+	x = 1
+	y = 1
+	cost = @Time_70_days
+
+	prerequisite = {
+		focus = GEN_Invite_Russian_Oil_Industry
+	}
+
+	relative_position_id  = GEN_Invite_Russian_Oil_Industry
+
+	completion_reward = {
+		random_owned_state = {
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = industrial_complex
+				level = 1
+				instant_build = yes
+			}
+		}
+		random_owned_state = {
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = industrial_complex
+				level = 1
+				instant_build = yes
+			}
+		}
+		add_tech_bonus = {
+			name = tech_bonus
+			bonus = 1.0
+			uses = 2
+			category = rocketry
+		}
+	}
+
+	ai_will_do = {
+		factor = 10
+	}
+}
+shared_focus = {
+	id = GEN_Russian_Heavy_Industry
+	text = GEF_Russian_Heavy_Industry
+	icon = GFX_goal_Russia_Factory
+	x = 0
+	y = 2
+	cost = @Time_70_days
+
+	prerequisite = {
+		focus = GEN_Invite_Russian_Oil_Industry
+	}
+	prerequisite = {
+		focus = GEN_Invite_Russian_Aerospace_Company
+	}
+
+	relative_position_id  = GEN_Invite_Russian_Oil_Industry
+
+	completion_reward = {
+		custom_effect_tooltip = available_designer
+		show_ideas_tooltip = SOV_Rosoboronexport
+		random_owned_state = {
+			add_extra_state_shared_building_slots = 2
+			add_building_construction = {
+				type = arms_factory
+				level = 2
+				instant_build = yes
+			}
+		}
+	}
+
+	ai_will_do = {
+		factor = 10
+	}
+}
+#### China
+shared_focus = {
+	id = GEN_Invite_Chinese_Planners
+	text = GEF_Invite_Chinese_Planners
+	icon = GFX_Align_to_China
+	x = 7
+	y = 1
+	cost = @Time_40_days
+	available = {
+		PRC = {has_opinion = { target = ROOT value > -1 }}
+		country_exists = PRC
+	}
+	allow_branch = {
+		#is_ex_soviet = yes
+		always = yes
+	}
+	offset = {
+		x = -4
+		y = 0
+		trigger = {
+			OR = {
+				#is_ex_soviet = no
+				#tag = RAJ
+				always = no
+			}
+		}
+	}
+	mutually_exclusive = {
+		focus = GEN_Invite_American_Investors
+	}
+	mutually_exclusive = {
+		focus = GEN_Invite_Japanese_Investors
+	}
+	mutually_exclusive = {
+		focus = GEN_Invite_European_Investors
+	}
+	mutually_exclusive = {
+		focus = GEN_Invite_Russian_Planners
+	}
+
+	prerequisite = {
+		focus = GEN_attract_investment
+	}
+
+	relative_position_id   = GEN_attract_investment  
+
+	completion_reward = {
+		add_offsite_building = {
+			type = industrial_complex
+			level = 1
+			instant_build = yes
+		}
+		PRC = {
+			add_opinion_modifier = {
+				target = ROOT
+				modifier = declaration_of_friendship
+			}
+		}
+	}
+
+	ai_will_do = {
+		factor = 1
+		modifier = {
+			add = 10
+			FROM = {
+				has_opinion = { target = PRC value > 61 }
+			}
+		}
+		modifier = {
+			factor = 0
+			FROM = {
+				has_opinion = { target = PRC value < -20 }
+			}
+		}
+	}
+}
+
+
+shared_focus = {
+	id = GEN_Invite_Chinese_Tech_Companies
+	text = GEF_Invite_Chinese_Tech_Companies
+	icon = GFX_goal_Coal_Mine
+	x = 0
+	y = 1
+	cost = @Time_45_days
+
+	prerequisite = {
+		focus = GEN_Invite_Chinese_Planners
+	}
+
+	relative_position_id  = GEN_Invite_Chinese_Planners
+
+	completion_reward = {
+		random_owned_state = {
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = industrial_complex
+				level = 1
+				instant_build = yes
+			}
+		}
+		add_tech_bonus = {
+			name = electronics_bonus
+			bonus = 0.75
 			uses = 2
 			category = excavation_tech
-
 		}
+	}
+
+	ai_will_do = {
+		factor = 10
+	}
+}
+shared_focus = {
+	id = GEN_Invite_Chinese_Industries
+	text = GEF_Invite_Chinese_Industries
+	icon = GFX_goal_Chinese_Manufacturing
+	x = -1
+	y = 1
+	cost = @Time_70_days
+
+	prerequisite = {
+		focus = GEN_Invite_Chinese_Tech_Companies
+	}
+
+	relative_position_id  = GEN_Invite_Chinese_Tech_Companies
+
+	completion_reward = {
+		random_owned_state = {
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = industrial_complex
+				level = 1
+				instant_build = yes
+			}
+		}
+		random_owned_state = {
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = industrial_complex
+				level = 1
+				instant_build = yes
+			}
+		}
+		random_owned_state = {
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = industrial_complex
+				level = 1
+				instant_build = yes
+			}
+		}
+		add_tech_bonus = {
+			name = industry_bonus
+			bonus = 1
+			uses = 1
+			category = industry
+		}
+	}
+
+	ai_will_do = {
+		factor = 10
+	}
+}
+shared_focus = {
+	id = GEN_Chinese_Heavy_Industry
+	text = GEF_Chinese_Heavy_Industry
+	icon = GFX_goal_PRC_Factory
+	x = 0
+	y = 2
+	cost = @Time_70_days
+
+	prerequisite = {
+		focus = GEN_Invite_Chinese_Tech_Companies
+	}
+	prerequisite = {
+		focus = GEN_Invite_Chinese_Industries
+	}
+
+	relative_position_id =  GEN_Invite_Chinese_Tech_Companies
+
+	completion_reward = {
+		random_owned_state = {
+			add_extra_state_shared_building_slots = 2
+			add_building_construction = {
+				type = industrial_complex
+				level = 2
+				instant_build = yes
+			}
+			add_building_construction = {
+				type = infrastructure
+				level = 2
+				instant_build = yes
+			}
+		}
+		random_owned_state = {
+			add_building_construction = {
+				type = infrastructure
+				level = 2
+				instant_build = yes
+			}
+		}
+	}
+
+	ai_will_do = {
+		factor = 10
+	}
+}
+
+shared_focus = {
+	id = GEN_Automobile_Industries
+	text = GEF_Automobile_Industries
+	icon = GFX_goal_generic_army_motorized
+	x = 1
+	y = 1
+	cost = 10
+
+	prerequisite = {
+		focus = GEN_Invite_American_Investors
+		focus = GEN_Invite_Japanese_Investors
+	}
+
+	relative_position_id  = GEN_Invite_American_Investors
+
+	completion_reward = {
+		random_owned_state = {
+			add_extra_state_shared_building_slots = 2
+			add_building_construction = {
+				type = industrial_complex
+				level = 2
+				instant_build = yes
+			}
+		}
+		add_equipment_to_stockpile = {
+			type = motorized_equipment
+			amount = 250
+		}
+	}
+
+	ai_will_do = {
+		factor = 10
+	}
+}
+shared_focus = {
+	id = GEN_Rare_Earth_Refining
+	text = GEF_Rare_Earth_Refining
+	icon = GFX_goal_generic_production2
+	x = 2
+	y = 1
+	cost = @Time_100_days
+
+	prerequisite = {
+		focus = GEN_Invite_Russian_Planners
+		focus = GEN_Invite_Chinese_Planners
+	}
+
+	relative_position_id  = GEN_Invite_Russian_Planners
+
+	completion_reward = {
+		random_owned_state = {
+			add_extra_state_shared_building_slots = 1
+			add_resource = {
+				type = tungsten
+				amount = 15
+			}
+			add_resource = {
+				type = chromium
+				amount = 10
+			}
+		}
+	}
+
+	ai_will_do = {
+		factor = 10
+	}
+}
+shared_focus = {
+	id = GEN_Purchase_Foreign_Licences
+	text = GEF_Purchase_Foreign_Licences
+	icon = GFX_focus_generic_license_production
+	x = 0
+	y = 1
+	cost = @Time_70_days
+
+	prerequisite = {
+		focus = GEN_American_Air_Industry_Expansion
+		focus = GEN_Japanese_Heavy_Industries
+		focus = GEN_european_high_speed_rail
+		focus = GEN_Russian_Heavy_Industry
+		focus = GEN_Chinese_Heavy_Industry
+	}
+
+	relative_position_id  = GEN_european_high_speed_rail
+
+	completion_reward = {
+		add_ideas = GEF_Purchase_Foreign_Licences
+	}
+
+	ai_will_do = {
+		factor = 10
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+#### Domestic ####
+
+shared_focus = {
+	id = GEN_domestic_industry
+	icon = GFX_focus_generic_population_growth
+	x = -2
+	y = 1
+	relative_position_id = GEN_a_new_economy_for_a_new_millenium
+	cost = 5
+
+	prerequisite = {
+		focus = GEN_a_new_economy_for_a_new_millenium
+	}
+
+	available = {
+
+	}
+
+	completion_reward = {
 	}
 }
 
@@ -89,13 +1144,12 @@ shared_focus = {
 	id = GEN_modern_construction_methods
 	icon = construction3
 	x = 0
-	y = 2
-	relative_position_id = GEN_a_new_economy_for_a_new_millenium
+	y = 1
+	relative_position_id = GEN_domestic_industry
 	cost = 10
 
 	prerequisite = {
-		focus = GEN_centraly_planned_economy
-		focus = GEN_a_free_market_economy
+		focus = GEN_domestic_industry
 	}
 
 	available = {
@@ -113,133 +1167,18 @@ shared_focus = {
 	}
 }
 
-shared_focus = {
-	id = GEN_develop_national_arms_industry
-	icon = industry_military
-	x = -3
-	y = 1
-	relative_position_id = GEN_automoative_mines
-	cost = 10
 
-	prerequisite = {
-		focus = GEN_automoative_mines
-		focus = GEN_modern_construction_methods
-	}
-
-	available = {
-
-	}
-
-	completion_reward = {
-		add_ideas = HUN_developed_arms_industry
-		random_owned_state = {
-			add_extra_state_shared_building_slots = 1
-			add_building_construction = {
-				type = arms_factory
-				level = 1
-				instant_build = yes
-			}
-		}
-	}
-}
-
-shared_focus = {
-	id = GEN_armement
-	icon = military_fort
-	x = 0
-	y = 1
-	relative_position_id = GEN_develop_national_arms_industry
-	cost = 10
-
-	prerequisite = {
-		focus = GEN_develop_national_arms_industry
-	}
-
-	available = {
-
-	}
-
-	completion_reward = {
-		random_owned_state = {
-			add_extra_state_shared_building_slots = 2
-			add_building_construction = {
-				type = arms_factory
-				level = 2
-				instant_build = yes
-			}
-		}
-	}
-}
-
-shared_focus = {
-	id = GEN_civilian_build_up
-	icon = industry_civilian
-	x = -1
-	y = 1
-	relative_position_id = GEN_automoative_mines
-	cost = 10
-
-	prerequisite = {
-		focus = GEN_automoative_mines
-		focus = GEN_modern_construction_methods
-	}
-
-	available = {
-
-	}
-
-	completion_reward = {
-		random_owned_state = {
-			add_extra_state_shared_building_slots = 2
-			add_building_construction = {
-				type = industrial_complex
-				level = 2
-				instant_build = yes
-			}
-		}
-	}
-}
-
-shared_focus = {
-	id = GEN_develop_consumer_goods_industry
-	icon = consumer_goods
-	x = 0
-	y = 1
-	relative_position_id = GEN_civilian_build_up
-	cost = 10
-
-	prerequisite = {
-		focus = GEN_civilian_build_up
-	}
-
-	available = {
-
-	}
-
-	completion_reward = {
-		add_ideas = HUN_expanded_consumer_goods_industry
-		random_owned_state = {
-			add_extra_state_shared_building_slots = 1
-			add_building_construction = {
-				type = industrial_complex
-				level = 1
-				instant_build = yes
-			}
-		}
-	}
-}
 
 shared_focus = {
 	id = GEN_fill_the_road_gaps
 	icon = infrastructure
-	x = 1
+	x = 5
 	y = 1
-	relative_position_id = GEN_automoative_mines
+	relative_position_id = GEN_domestic_industry
 	cost = 10
 
 	prerequisite = {
-		focus = GEN_automoative_mines
-		focus = GEN_modern_construction_methods
+		focus = GEN_domestic_industry
 	}
 
 	available = {
@@ -266,8 +1205,8 @@ shared_focus = {
 
 shared_focus = {
 	id = GEN_encourage_urbanization
-	icon = urbanization
-	x = 0
+	icon = GFX_focus_generic_full_employment
+	x = -1
 	y = 1
 	relative_position_id = GEN_fill_the_road_gaps
 	cost = 10
@@ -288,19 +1227,73 @@ shared_focus = {
 		}
 	}
 }
-
 shared_focus = {
-	id = GEN_root_steel_works
-	icon = industry_steel
-	x = 0
+	id = GEN_automoative_mines
+	icon = GFX_goal_continuous_non_factory_construct
+	x = 1
 	y = 1
-	relative_position_id = GEN_develop_consumer_goods_industry
+	relative_position_id = GEN_fill_the_road_gaps
 	cost = 10
 
 	prerequisite = {
-		focus = GEN_armement
-		focus = GEN_develop_consumer_goods_industry
+		focus = GEN_fill_the_road_gaps
+	}
+
+	available = {
+
+	}
+
+	completion_reward = {
+		add_ideas = GEN_automative_mines_idea
+		add_tech_bonus = {
+			name = industry_bonus
+			bonus = 0.8
+			uses = 2
+			category = excavation_tech
+
+		}
+	}
+}
+shared_focus = {
+	id = GEN_develop_consumer_goods_industry
+	icon = consumer_goods
+	x = -1
+	y = 1
+	relative_position_id = GEN_automoative_mines
+	cost = 10
+
+	prerequisite = {
 		focus = GEN_encourage_urbanization
+		focus = GEN_automoative_mines
+	}
+
+	available = {
+
+	}
+
+	completion_reward = {
+		add_ideas = HUN_expanded_consumer_goods_industry
+		random_owned_state = {
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = industrial_complex
+				level = 1
+				instant_build = yes
+			}
+		}
+	}
+}
+
+shared_focus = {
+	id = GEN_root_steel_works
+	icon = GFX_focus_generic_steel
+	x = 1
+	y = 1
+	relative_position_id = GEN_automoative_mines
+	cost = 10
+
+	prerequisite = {
+		focus = GEN_automoative_mines
 	}
 
 	available = {
@@ -316,81 +1309,15 @@ shared_focus = {
 }
 
 shared_focus = {
-	id = GEN_subside_our_farmers
-	icon = agriculture
-	x = 1
-	y = 1
-	relative_position_id = GEN_root_steel_works
-	cost = 10
-
-	prerequisite = {
-		focus = GEN_root_steel_works
-	}
-
-	available = {
-
-	}
-
-	completion_reward = {
-		add_ideas = agricultural_subsidies
-	}
-}
-
-shared_focus = {
-	id = GEN_agrarian_reform
-	text = ROM_agrarian_reform
-	icon = agrarian_reform
-	x = 0
-	y = 1
-	relative_position_id = GEN_subside_our_farmers
-	cost = 10
-
-	prerequisite = {
-		focus = GEN_subside_our_farmers
-	}
-
-	available = {
-
-	}
-
-	completion_reward = {
-		add_ideas = LAT_agarian_reform
-	}
-}
-
-shared_focus = {
-	id = GEN_an_industry_for_planes
-	icon = industry_aluminium
-	x = -1
-	y = 1
-	relative_position_id = GEN_root_steel_works
-	cost = 10
-
-	prerequisite = {
-		focus = GEN_root_steel_works
-	}
-
-	available = {
-
-	}
-
-	completion_reward = {
-		random_owned_state = {
-			add_resource = { type = aluminium amount = 10 }
-		}
-	}
-}
-
-shared_focus = {
 	id = GEN_housing_program
 	icon = GFX_focus_usa_guarantee_the_american_dream
-	x = 0
+	x = -1
 	y = 1
-	relative_position_id = GEN_an_industry_for_planes
+	relative_position_id = GEN_develop_consumer_goods_industry
 	cost = 10
 
 	prerequisite = {
-		focus = GEN_an_industry_for_planes
+		focus = GEN_develop_consumer_goods_industry
 	}
 
 	available = {
@@ -415,27 +1342,20 @@ shared_focus = {
 
 shared_focus = {
 	id = GEN_expand_university
-	icon = research
+	icon = GFX_focus_generic_university_1
 	x = 1
 	y = 1
-	relative_position_id = GEN_housing_program
+	relative_position_id = GEN_develop_consumer_goods_industry
 	cost = 10
 
-	available = {
-		amount_research_slots < 5
-	}
-
 	prerequisite = {
-		focus = GEN_housing_program
+		focus = GEN_develop_consumer_goods_industry
 	}
 
-	prerequisite = {
-		focus = GEN_agrarian_reform
+	bypass = {
+		amount_research_slots > 4
 	}
 
-	available = {
-
-	}
 
 	completion_reward = {
 		add_research_slot = 1
@@ -444,11 +1364,156 @@ shared_focus = {
 }
 
 shared_focus = {
+	id = GEN_Economic_Boom
+	text = GEF_Economic_Boom
+	icon = GFX_goal_generic_industrial_boom
+	x = -1
+	y = 1
+	relative_position_id = GEN_expand_university
+	cost = 10
+
+	prerequisite = {
+		focus = GEN_expand_university
+	}
+	prerequisite = {
+		focus = GEN_housing_program
+	}
+
+	available = {
+		num_of_factories > 35
+	}
+
+	completion_reward = {
+		add_political_power = 150
+		add_stability = 0.05
+		add_timed_idea = {
+			idea = GEF_Economic_Boom
+			days = 365
+		}
+	}
+}
+shared_focus = {
+	id = GEN_Nationwide_Industrial_Development
+	text = GEF_Nationwide_Industrial_Development
+	icon = GFX_goal_Civil_Industry
+	x = 0
+	y = 1
+	cost = 10
+
+	prerequisite = {
+		focus = GEN_Economic_Boom
+	}
+
+	relative_position_id  = GEN_Economic_Boom
+
+	completion_reward = {
+		random_owned_state = {
+			add_extra_state_shared_building_slots = 2
+			add_building_construction = {
+				type = industrial_complex
+				level = 2
+				instant_build = yes
+			}
+		}
+		random_owned_state = {
+			add_extra_state_shared_building_slots = 2
+			add_building_construction = {
+				type = industrial_complex
+				level = 2
+				instant_build = yes
+			}
+		}
+
+	}
+
+	ai_will_do = {
+		factor = 10
+	}
+}
+shared_focus = {
+	id = GEN_Modernize_the_Railway_System
+	text = GEF_Modernize_the_Railway_System
+	icon = GFX_goal_generic_construct_infrastructure
+	x = 2
+	y = 1
+	cost = 10
+
+	prerequisite = {
+		focus = GEN_Economic_Boom
+	}
+
+	relative_position_id  =GEN_Economic_Boom
+
+	completion_reward = {
+		random_owned_state = {
+			add_building_construction = {
+				type = infrastructure
+				level = 2
+				instant_build = yes
+			}
+		}
+		random_owned_state = {
+			add_building_construction = {
+				type = infrastructure
+				level = 2
+				instant_build = yes
+			}
+		}
+		random_owned_state = {
+			add_building_construction = {
+				type = infrastructure
+				level = 2
+				instant_build = yes
+			}
+		}
+		random_owned_state = {
+			add_building_construction = {
+				type = infrastructure
+				level = 2
+				instant_build = yes
+			}
+		}
+	}
+
+	ai_will_do = {
+		factor = 10
+	}
+}
+shared_focus = {
+	id = GEN_export_arms_industry
+	icon = industry_military
+	x = 4
+	y = 1
+	cost = 10
+
+	prerequisite = {
+		focus = GEN_Economic_Boom
+	}
+
+	relative_position_id  = GEN_Economic_Boom
+
+	completion_reward = {
+		random_owned_state = {
+			add_extra_state_shared_building_slots = 2
+			add_building_construction = {
+				type = arms_factory
+				level = 2
+				instant_build = yes
+			}
+		}
+
+	}
+
+	ai_will_do = {
+		factor = 10
+	}
+}
+shared_focus = {
 	id = GEN_centraly_planned_economy
 	icon = industry_communist
-	x = -5
+	x = -3
 	y = 1
-	relative_position_id = GEN_a_new_economy_for_a_new_millenium
+	relative_position_id = GEN_modern_construction_methods
 	cost = 10
 
 	mutually_exclusive = {
@@ -456,7 +1521,7 @@ shared_focus = {
 	}
 
 	prerequisite = {
-		focus = GEN_a_new_economy_for_a_new_millenium
+		focus = GEN_modern_construction_methods
 	}
 
 	available = {
@@ -493,29 +1558,8 @@ shared_focus = {
 }
 
 shared_focus = {
-	id = GEN_support_goverments_business
-	icon = consumer_goods
-	x = 0
-	y = 1
-	relative_position_id = GEN_fund_public_schools
-	cost = 10
-
-	prerequisite = {
-		focus = GEN_fund_public_schools
-	}
-
-	available = {
-
-	}
-
-	completion_reward = {
-		add_offsite_building = { type = industrial_complex level = 2 }
-	}
-}
-
-shared_focus = {
 	id = GEN_increase_investments_over_industry
-	icon = money_communism
+	icon = GFX_focus_DEN_heavy_regulations
 	x = 1
 	y = 1
 	relative_position_id = GEN_centraly_planned_economy
@@ -542,8 +1586,8 @@ shared_focus = {
 }
 
 shared_focus = {
-	id = GEN_state_owned_armories
-	icon = industry_military
+	id = GEN_subside_our_farmers
+	icon = agriculture
 	x = 0
 	y = 1
 	relative_position_id = GEN_increase_investments_over_industry
@@ -551,6 +1595,31 @@ shared_focus = {
 
 	prerequisite = {
 		focus = GEN_increase_investments_over_industry
+		focus = GEN_free_trade
+	}
+	mutually_exclusive = {
+		focus = GEN_agrarian_reform
+	}
+
+	available = {
+
+	}
+
+	completion_reward = {
+		add_ideas = agricultural_subsidies
+	}
+}
+
+shared_focus = {
+	id = GEN_state_owned_armories
+	icon = industry_military
+	x = 0
+	y = 1
+	relative_position_id = GEN_fund_public_schools
+	cost = 10
+
+	prerequisite = {
+		focus = GEN_fund_public_schools
 	}
 
 	available = {
@@ -569,104 +1638,19 @@ shared_focus = {
 	}
 }
 
-shared_focus = {
-	id = GEN_take_their_land
-	icon = seize_property
-	x = 0
-	y = 1
-	relative_position_id = GEN_state_owned_armories
-	cost = 10
-
-	prerequisite = {
-		focus = GEN_support_goverments_business
-	}
-
-	prerequisite = {
-		focus = GEN_state_owned_armories
-	}
-
-	available = {
-
-	}
-
-	completion_reward = {
-		every_owned_state = {
-			limit = {
-				is_controlled_by = ROOT
-			}
-			add_extra_state_shared_building_slots = 3
-		}
-	}
-}
-
-shared_focus = {
-	id = GEN_learn_from_china
-	icon = maoism
-	x = 1
-	y = 1
-	relative_position_id = GEN_take_their_land
-	cost = 10
-
-	mutually_exclusive = {
-		focus = GEN_perfect_as_it_is
-	}
-
-	prerequisite = {
-		focus = GEN_take_their_land
-	}
-
-	available = {
-
-	}
-
-	completion_reward = {
-		swap_ideas = {
-			remove_idea = GEN_economy_central_planned
-			add_idea = GEN_socialist_market_economy
-		}
-	}
-}
-
-shared_focus = {
-	id = GEN_perfect_as_it_is
-	icon = construction4
-	x = -1
-	y = 1
-	relative_position_id = GEN_take_their_land
-	cost = 10
-
-	mutually_exclusive = {
-		focus = GEN_learn_from_china
-	}
-
-	prerequisite = {
-		focus = GEN_take_their_land
-	}
-
-	available = {
-
-	}
-
-	completion_reward = {
-		swap_ideas = {
-			remove_idea = GEN_economy_central_planned
-			add_idea = GEN_economy_central_planned_2
-		}
-	}
-}
 
 shared_focus = {
 	id = GEN_a_free_market_economy
 	icon = industry_democratic2
-	x = 7
+	x = 1
 	y = 1
-	relative_position_id = GEN_a_new_economy_for_a_new_millenium
+	relative_position_id = GEN_modern_construction_methods
 	cost = 10
 	mutually_exclusive = {
 		focus = GEN_centraly_planned_economy
 	}
 	prerequisite = {
-		focus = GEN_a_new_economy_for_a_new_millenium
+		focus = GEN_modern_construction_methods
 	}
 
 	available = {
@@ -683,7 +1667,7 @@ shared_focus = {
 shared_focus = {
 	id = GEN_free_trade
 	icon = trade_deal
-	x = -1
+	x = 0
 	y = 1
 	relative_position_id = GEN_a_free_market_economy
 	cost = 10
@@ -697,17 +1681,15 @@ shared_focus = {
 	}
 
 	completion_reward = {
-		add_political_power = 70
-		add_stability = 0.05
-		add_offsite_building = { type = industrial_complex level = 1 }
+		add_stability = -0.05
 		add_ideas = free_trade
 	}
 }
 
 shared_focus = {
 	id = GEN_anti_monopoly_laws
-	icon = renounce_treaty
-	x = 0
+	icon = GFX_focus_generic_treaty
+	x = 1
 	y = 1
 	relative_position_id = GEN_free_trade
 	cost = 10
@@ -730,15 +1712,19 @@ shared_focus = {
 }
 
 shared_focus = {
-	id = GEN_invite_foreign_investors
-	icon = concessions
-	x = 1
+	id = GEN_agrarian_reform
+	text = ROM_agrarian_reform
+	icon = GFX_focus_generic_farmland
+	x = -1
 	y = 1
-	relative_position_id = GEN_a_free_market_economy
+	relative_position_id = GEN_free_trade
 	cost = 10
 
 	prerequisite = {
-		focus = GEN_a_free_market_economy
+		focus = GEN_free_trade
+	}
+	mutually_exclusive = {
+		focus = GEN_subside_our_farmers
 	}
 
 	available = {
@@ -746,49 +1732,14 @@ shared_focus = {
 	}
 
 	completion_reward = {
-		random_owned_state = {
-			add_extra_state_shared_building_slots = 2
-			add_building_construction = {
-				type = industrial_complex
-				level = 2
-				instant_build = yes
-			}
-		}
-	}
-}
-
-shared_focus = {
-	id = GEN_foreign_arms_manufacturers
-	icon = industry_military
-	x = 0
-	y = 1
-	relative_position_id = GEN_invite_foreign_investors
-	cost = 10
-
-	prerequisite = {
-		focus = GEN_invite_foreign_investors
-	}
-
-	available = {
-
-	}
-
-	completion_reward = {
-		random_owned_state = {
-			add_extra_state_shared_building_slots = 2
-			add_building_construction = {
-				type = arms_factory
-				level = 2
-				instant_build = yes
-			}
-		}
+		add_ideas = LAT_agarian_reform
 	}
 }
 
 shared_focus = {
 	id = GEN_sell_goverment_shares_in_companies
 	icon = money
-	x = 1
+	x = 0
 	y = 1
 	relative_position_id = GEN_anti_monopoly_laws
 	cost = 10
@@ -797,9 +1748,6 @@ shared_focus = {
 		focus = GEN_anti_monopoly_laws
 	}
 
-	prerequisite = {
-		focus = GEN_foreign_arms_manufacturers
-	}
 
 	available = {
 
@@ -880,6 +1828,7 @@ shared_focus = {
 		x = -12
 		y = 0
 		trigger = {
+			has_global_flag = GC_is_on
 			OR = {
 				tag = ICE
 				tag = ARM
@@ -891,6 +1840,7 @@ shared_focus = {
 		x = -5
 		y = 0
 		trigger = {
+			has_global_flag = GC_is_on
 			OR = {
 				tag = FRA
 			}
@@ -901,6 +1851,7 @@ shared_focus = {
 		x = -16
 		y = 0
 		trigger = {
+			has_global_flag = GC_is_on
 			OR = {
 				tag = ITA
 			}
@@ -911,6 +1862,7 @@ shared_focus = {
 		x = 5
 		y = 0
 		trigger = {
+			has_global_flag = GC_is_on
 			OR = {
 				tag = ARM
 			}
@@ -933,6 +1885,7 @@ shared_focus = {
 		x = -50
 		y = 10
 		trigger = {
+			has_global_flag = GC_is_on
 			OR = {
 				tag = BOS
 			}
@@ -947,7 +1900,7 @@ shared_focus = {
 		}
 	}
 	offset = {
-		x = 4
+		x = 16
 		y = 0
 		trigger = {
 			has_focus_tree = generic_focus
@@ -1660,7 +2613,7 @@ shared_focus = {
 	cost = 5
 
 	offset = {
-		x = 3
+		x = 15
 		y = 0
 		trigger = {
 			has_focus_tree = generic_focus
@@ -1671,6 +2624,7 @@ shared_focus = {
 		x = -14
 		y = 0
 		trigger = {
+			has_global_flag = GC_is_on
 			OR = {
 				tag = ICE
 			}
@@ -1680,6 +2634,7 @@ shared_focus = {
 		x = -60
 		y = 7
 		trigger = {
+			has_global_flag = GC_is_on
 			OR = {
 				tag = BOS
 			}
@@ -1689,6 +2644,7 @@ shared_focus = {
 		x = -5
 		y = 0
 		trigger = {
+			has_global_flag = GC_is_on
 			OR = {
 				tag = FRA
 			}
@@ -1710,6 +2666,7 @@ shared_focus = {
 		x = -18
 		y = 0
 		trigger = {
+			has_global_flag = GC_is_on
 			OR = {
 				tag = ITA
 			}	
@@ -1728,6 +2685,7 @@ shared_focus = {
 		x = -32
 		y = 0
 		trigger = {
+			has_global_flag = GC_is_on
 			tag = SIA
 		}
 	}
@@ -2344,7 +3302,7 @@ shared_focus = {
 	cost = 5
 
 	offset = {
-		x = 3
+		x = 15
 		y = 0
 		trigger = {
 			has_focus_tree = generic_focus
@@ -2355,6 +3313,7 @@ shared_focus = {
 		x = -10
 		y = 0
 		trigger = {
+			has_global_flag = GC_is_on
 			OR = {
 				tag = ICE
 				tag = ARM
@@ -2365,6 +3324,7 @@ shared_focus = {
 		x = -30
 		y = 0
 		trigger = {
+			has_global_flag = GC_is_on
 			OR = {
 				tag = BOS
 			}
@@ -2374,6 +3334,7 @@ shared_focus = {
 		x = -5
 		y = 0
 		trigger = {
+			has_global_flag = GC_is_on
 			OR = {
 				tag = FRA
 			}
@@ -2395,6 +3356,7 @@ shared_focus = {
 		x = -18
 		y = 0
 		trigger = {
+			has_global_flag = GC_is_on
 			OR = {
 				tag = ITA
 			}
@@ -2413,6 +3375,7 @@ shared_focus = {
 		x = -32
 		y = 0
 		trigger = {
+			has_global_flag = GC_is_on
 			tag = SIA
 		}
 	}
@@ -3118,7 +4081,7 @@ shared_focus = {
 		}
 	}
 	offset = {
-		x = -8
+		x = 5
 		y = -7
 		trigger = {
 			has_focus_tree = generic_focus
