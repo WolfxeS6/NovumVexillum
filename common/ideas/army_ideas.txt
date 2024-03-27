@@ -387,6 +387,41 @@ ideas = {
 			}
 		}
 
+		GEN_merchant_fleet = {
+			picture = generic_sea_focused_navy
+
+			allowed = { always = no }
+
+			removal_cost = -1
+
+			modifier = {
+				consumer_goods_expected_value = -0.03
+			}
+			equipment_bonus = {
+				convoy = {
+					build_cost_ic = -0.1
+					instant = yes
+				}
+			}
+		}
+
+		GEN_attack_and_run_tactics = {
+			picture = generic_navy_bonus
+
+			allowed = { always = no }
+			removal_cost = -1
+			equipment_bonus = {
+				submarine = {
+					surface_detection = 0.05
+					convoy_raiding_coordination = 0.05
+				}
+			}
+			modifier = {
+				naval_torpedo_reveal_chance_factor = -0.05
+				naval_retreat_speed = 0.2
+			}
+		}
+
 		GEN_fleet_logistics = {
 			picture = generic_coastal_defense_ships
 			allowed_civil_war = {
@@ -460,6 +495,56 @@ ideas = {
 			modifier = {
 				air_strategic_bomber_bombing_factor = 0.05
 				air_bombing_targetting = 0.10
+			}
+		}
+
+		GEN_increased_weapons_production = {
+			picture = generic_infantry_bonus
+
+			allowed = { always = no }
+			removal_cost = -1
+
+			equipment_bonus = {
+				support_equipment = {
+					build_cost_ic = -0.1
+					instant = yes
+				}
+				artillery = {
+					build_cost_ic = -0.1
+					instant = yes
+				}
+				infantry_equipment = {
+					build_cost_ic = -0.1
+					instant = yes
+				}
+			}
+		}
+
+		GEN_agarian_reform = {
+
+			name = ROM_agrarian_reform
+
+			picture = generic_agrarian_society
+
+			allowed = { always = yes }
+			removal_cost = -1
+
+			modifier = {
+				conscription_factor = 0.05
+				monthly_population = 0.08
+				consumer_goods_expected_value = -0.02
+			}
+		}
+
+		GEN_expanded_consumer_goods_industry = {
+			allowed = { always = no }
+
+			picture = generic_goods_red_bonus
+			removal_cost = -1
+
+			modifier = {
+				trade_opinion_factor = 0.15
+				consumer_goods_expected_value = -0.03
 			}
 		}
 

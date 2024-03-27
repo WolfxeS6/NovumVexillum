@@ -1,0 +1,434 @@
+#NVX# Tag for changes
+#
+# List of options showing in the Game Rules screen
+#
+# format is:
+# rule_token = {
+#	name = "TEXT_KEY_FOR_NAME"
+#	required_dlc = "Name of the Required DLC"
+#	desc = "TEXT_KEY_FOR_LONG_DESC"
+#	group = "TEXT_KEY_FOR_GROUP"					# Used for filtering. A single rule can be in multiple groups 
+#	icon = gfx_option_token							# Optional icon
+#	option = {										# Unless other specified, the first option is the default option
+#		name = option_token
+#		text = "TEXT_KEY_FOR_OPTION_NAME"
+#		allow_achievements = no						# Achievements cannot be earned if one or more game rules are set to an option that has this property set to no.
+#													# If not specified, this is set to yes for default options and no for all other options.
+#	}
+#	default = {										# Specify an option with the "default" token to override the behavior of treating the first option as the default.
+#		name = option_token
+#		text = "TEXT_KEY_FOR_OPTION_NAME"
+#		...
+#	}
+# }
+RULE_Performance = {
+	name = "RULE_Performance"
+	group = "RULE_GROUP_Performance"
+	icon = "GFX_military_access_docking_rights"
+	default = {
+		name = "On"
+		text = RULE_OPTION_On
+		desc = "RULE_OPTION_On_DESC"
+	}
+	option = {
+		name = "Off"
+		text = RULE_OPTION_Off
+		desc = "RULE_Off_DESC"
+	}
+}
+RULE_ANNEX_CRAP = {
+	name = "RULE_ANNEX_CRAP"
+	group = "RULE_GROUP_Performance"
+	icon = "GFX_military_access_docking_rights"
+	default = {
+		name = "Off"
+		text = RULE_CRAP_OPTION_Off
+		desc = "RULE_Off_DESC"
+	}
+	option = {
+		name = "On"
+		text = RULE_CRAP_OPTION_On
+		desc = "RULE_OPTION_Crap_On_DESC"
+	}
+}
+Random_ideology = {
+	name = "Random_ideology"
+	group = "RULE_GROUP_Woflxe_shite"
+	icon = "GFX_military_access_docking_rights"
+	default = {
+		name = "Off"
+		text = RULE_Random_ideology_OPTION_Off
+		desc = "RULE_Random_ideology_DESC"
+	}
+	option = {
+		name = "On"
+		text = RULE_Random_ideology_OPTION_On
+		desc = "RULE_OPTION_Random_ideology_On_DESC"
+	}
+}
+fast_multiplayer_mode = {
+	name = "fast_multiplayer_mode"
+	group = "RULE_GROUP_Woflxe_shite"
+	icon = "GFX_military_access_docking_rights"
+	default = {
+		name = "Off"
+		text = RULE_fast_multiplayer_mode_OPTION_Off
+		desc = "RULE_fast_multiplayer_mode_DESC"
+	}
+	option = {
+		name = "On"
+		text = RULE_fast_multiplayer_mode_OPTION_On
+		desc = "RULE_OPTION_fast_multiplayer_mode_On_DESC"
+	}
+}
+
+ ##   ##  #   # ###      ## ### ### #  # ###  
+#    #  # ## ## #       #   #    #  #  # #  # 
+# ## #### # # # ##       #  ##   #  #  # ###  
+#  # #  # #   # #         # #    #  #  # #    
+ ##  #  # #   # ###     ##  ###  #   ##  #    
+#NVX# Replacement - Replace game setup with PTS
+PTS_control_panel = {
+	name = "PTS_control_panel"
+	group = "RULE_GROUP_PULLING_THE_STRINGS"
+	icon = "GFX_decision_disable_nuke_threat"
+	default = {
+		name = DEFAULT
+		text = "Enabled"
+	}
+	option = {
+		name = Disabled
+		text = "Disabled"
+		desc = "RULE_OPTION_Removed_DESC"
+		allow_achievements = yes
+	}
+}
+
+
+
+PTS_load_generic_tree = {
+	name = "PTS_LOAD_GENERIC_TREE"
+	group = "RULE_GROUP_PULLING_THE_STRINGS"
+	icon = "GFX_decision_tabula_rasa"
+	default = {
+		name = DEFAULT
+		text = "RULE_OPTION_DEFAULT"
+	}
+	option = {
+		name = LOCKED
+		text = "RULE_OPTION_LOCKED"
+		desc = "RULE_OPTION_LOCKED_DESC"
+		allow_achievements = yes
+	}
+}
+
+PTS_load_generic_tree_everyone = {
+	name = "PTS_LOAD_GENERIC_TREE_EVERYONE"
+	group = "RULE_GROUP_PULLING_THE_STRINGS"
+	icon = "GFX_decision_tabula_rasa"
+	default = {
+		name = DEFAULT
+		text = "RULE_OPTION_DEFAULT"
+	}
+	option = {
+		name = LOCKED
+		text = "RULE_OPTION_LOCKED"
+		desc = "RULE_OPTION_LOCKED_DESC"
+		allow_achievements = yes
+	}
+}
+
+
+
+PTS_faster_build = {
+	name = "PTS_FASTER_BUILD"
+	group = "RULE_GROUP_PULLING_THE_STRINGS"
+	icon = "GFX_decision_disable_advanced_economy"
+	default = {
+		name = DEFAULT
+		text = "RULE_OPTION_DEFAULT"
+	}
+	option = {
+		name = LOCKED
+		text = "RULE_OPTION_LOCKED"
+		desc = "RULE_OPTION_LOCKED_DESC"
+		allow_achievements = yes
+	}
+}
+
+PTS_disband_factions = {
+	name = "PTS_DISBAND_FACTIONS"
+	group = "RULE_GROUP_PULLING_THE_STRINGS"
+	icon = "GFX_decision_disband_factions"
+	default = {
+		name = DEFAULT
+		text = "RULE_OPTION_DEFAULT"
+	}
+	option = {
+		name = LOCKED
+		text = "RULE_OPTION_LOCKED"
+		desc = "RULE_OPTION_LOCKED_DESC"
+		allow_achievements = yes
+	}
+}
+
+PTS_disband_european_union = {
+	name = "PTS_DISBAND_EUROPEAN_UNION"
+	group = "RULE_GROUP_PULLING_THE_STRINGS"
+	icon = "GFX_decision_disband_european_union"
+	default = {
+		name = DEFAULT
+		text = "RULE_OPTION_DEFAULT"
+	}
+	option = {
+		name = LOCKED
+		text = "RULE_OPTION_LOCKED"
+		desc = "RULE_OPTION_LOCKED_DESC"
+		allow_achievements = yes
+	}
+}
+
+PTS_remove_guarantees = {
+	name = "PTS_REMOVE_GUARANTEES"
+	group = "RULE_GROUP_PULLING_THE_STRINGS"
+	icon = "GFX_decision_remove_guarantees"
+	default = {
+		name = DEFAULT
+		text = "RULE_OPTION_DEFAULT"
+	}
+	option = {
+		name = ENABLED
+		text = "RULE_OPTION_ENABLED"
+	}
+	option = {
+		name = LOCKED
+		text = "RULE_OPTION_LOCKED"
+		desc = "RULE_OPTION_LOCKED_DESC"
+		allow_achievements = yes
+	}
+}
+
+PTS_disable_natural_estate_drift = {
+	name = "PTS_DISABLE_NATURAL_ESTATE_DRIFT"
+	group = "RULE_GROUP_PULLING_THE_STRINGS"
+	icon = "GFX_decision_disable_natural_estate_drift"
+	default = {
+		name = DEFAULT
+		text = "RULE_OPTION_DEFAULT"
+	}
+	option = {
+		name = ENABLED
+		text = "RULE_OPTION_ENABLED"
+	}
+	option = {
+		name = LOCKED
+		text = "RULE_OPTION_LOCKED"
+		desc = "RULE_OPTION_LOCKED_DESC"
+		allow_achievements = yes
+	}
+}
+
+PTS_disable_aberrant_estate_drift = {
+	name = "PTS_DISABLE_ABERRANT_ESTATE_DRIFT"
+	group = "RULE_GROUP_PULLING_THE_STRINGS"
+	icon = "GFX_decision_disable_aberrant_estate_drift"
+	default = {
+		name = DEFAULT
+		text = "RULE_OPTION_DEFAULT"
+	}
+	option = {
+		name = ENABLED
+		text = "RULE_OPTION_ENABLED"
+	}
+	option = {
+		name = LOCKED
+		text = "RULE_OPTION_LOCKED"
+		desc = "RULE_OPTION_LOCKED_DESC"
+		allow_achievements = yes
+	}
+}
+
+PTS_disable_advanced_economy = {
+	name = "PTS_DISABLE_ADVANCED_ECONOMY"
+	group = "RULE_GROUP_PULLING_THE_STRINGS"
+	icon = "GFX_decision_disable_advanced_economy"
+	default = {
+		name = DEFAULT
+		text = "RULE_OPTION_DEFAULT"
+	}
+	option = {
+		name = ENABLED
+		text = "RULE_OPTION_ENABLED"
+	}
+	option = {
+		name = LOCKED
+		text = "RULE_OPTION_LOCKED"
+		desc = "RULE_OPTION_LOCKED_DESC"
+		allow_achievements = yes
+	}
+}
+
+PTS_disable_nukes = {
+	name = "PTS_DISABLE_NUKES"
+	group = "RULE_GROUP_PULLING_THE_STRINGS"
+	icon = "GFX_decision_disable_nukes"
+	default = {
+		name = DEFAULT
+		text = "RULE_OPTION_DEFAULT"
+	}
+	option = {
+		name = ENABLED
+		text = "RULE_OPTION_ENABLED"
+	}
+	option = {
+		name = LOCKED
+		text = "RULE_OPTION_LOCKED"
+		desc = "RULE_OPTION_LOCKED_DESC"
+		allow_achievements = yes
+	}
+}
+
+PTS_disable_nuke_threat = {
+	name = "PTS_DISABLE_NUKE_THREAT"
+	group = "RULE_GROUP_PULLING_THE_STRINGS"
+	icon = "GFX_decision_disable_nuke_threat"
+	default = {
+		name = DEFAULT
+		text = "RULE_OPTION_DEFAULT"
+	}
+	option = {
+		name = ENABLED
+		text = "RULE_OPTION_ENABLED"
+	}
+	option = {
+		name = LOCKED
+		text = "RULE_OPTION_LOCKED"
+		desc = "RULE_OPTION_LOCKED_DESC"
+		allow_achievements = yes
+	}
+}
+
+PTS_use_simple_country_names = {
+	name = "PTS_USE_SIMPLE_COUNTRY_NAMES"
+	group = "RULE_GROUP_PULLING_THE_STRINGS"
+	icon = "GFX_decision_use_simple_country_names"
+	default = {
+		name = DEFAULT
+		text = "RULE_OPTION_DEFAULT"
+	}
+	option = {
+		name = ENABLED
+		text = "RULE_OPTION_ENABLED"
+	}
+	option = {
+		name = LOCKED
+		text = "RULE_OPTION_LOCKED"
+		desc = "RULE_OPTION_LOCKED_DESC"
+		allow_achievements = yes
+	}
+}
+
+#PTS_disable_dynamic_civil_wars = {
+#	name = "PTS_DISABLE_DYNAMIC_CIVIL_WARS"
+#	group = "RULE_GROUP_PULLING_THE_STRINGS"
+#	icon = "GFX_decision_disable_dynamic_civil_wars"
+#	default = {
+#		name = DEFAULT
+#		text = "RULE_OPTION_DEFAULT"
+#	}
+#	option = {
+#		name = LOCKED
+#		text = "RULE_OPTION_LOCKED"
+#		desc = "RULE_OPTION_LOCKED_DESC"
+#		allow_achievements = yes
+#	}
+#}
+
+PTS_fracture_world = {
+	name = "PTS_FRACTURE_WORLD"
+	group = "RULE_GROUP_PULLING_THE_STRINGS"
+	icon = "GFX_decision_fracture_world"
+	default = {
+		name = DEFAULT
+		text = "RULE_OPTION_DEFAULT"
+	}
+	option = {
+		name = ENABLED
+		text = "RULE_OPTION_ENABLED"
+	}
+	option = {
+		name = LOCKED
+		text = "RULE_OPTION_LOCKED"
+		desc = "RULE_OPTION_LOCKED_DESC"
+		allow_achievements = yes
+	}
+}
+
+PTS_battle_royale = {
+	name = "PTS_BATTLE_ROYALE"
+	group = "RULE_GROUP_PULLING_THE_STRINGS"
+	icon = "GFX_decision_battle_royale"
+	default = {
+		name = DEFAULT
+		text = "RULE_OPTION_DEFAULT"
+	}
+	option = {
+		name = ENABLED
+		text = "RULE_OPTION_ENABLED"
+	}
+	option = {
+		name = LOCKED
+		text = "RULE_OPTION_LOCKED"
+		desc = "RULE_OPTION_LOCKED_DESC"
+		allow_achievements = yes
+	}
+}
+
+PTS_tabula_rasa = {
+	name = "PTS_TABULA_RASA"
+	group = "RULE_GROUP_PULLING_THE_STRINGS"
+	icon = "GFX_decision_tabula_rasa"
+	default = {
+		name = DEFAULT
+		text = "RULE_OPTION_DEFAULT"
+	}
+	option = {
+		name = ENABLED
+		text = "RULE_OPTION_ENABLED"
+	}
+	option = {
+		name = LOCKED
+		text = "RULE_OPTION_LOCKED"
+		desc = "RULE_OPTION_LOCKED_DESC"
+		allow_achievements = yes
+	}
+}
+
+PTS_warfaring_options = {
+	name = "PTS_WARFARING_OPTIONS"
+	group = "RULE_GROUP_PULLING_THE_STRINGS"
+	icon = "GFX_decision_explain_warfaring"
+	default = {
+		name = DEFAULT
+		text = "RULE_OPTION_DEFAULT"
+	}
+	option = {
+		name = LOCKED
+		text = "RULE_OPTION_LOCKED"
+		desc = "RULE_OPTION_LOCKED_DESC"
+		allow_achievements = yes
+	}
+	option = {
+		name = DISABLED
+		text = "RULE_OPTION_DISABLED"
+		desc = "RULE_OPTION_DISABLED_DESC"
+		allow_achievements = yes
+	}
+	option = {
+		name = INTENSIFY
+		text = "RULE_OPTION_INTENSIFY"
+		desc = "RULE_OPTION_INTENSIFY_DESC"
+		allow_achievements = yes
+	}
+}
+#/NVX#

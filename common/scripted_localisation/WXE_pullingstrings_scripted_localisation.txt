@@ -52,6 +52,23 @@ defined_text = {
 	}
 }
 defined_text = {
+	name = GC_super_events_check
+	text = {
+		trigger = {
+			NOT = {
+				has_global_flag =  GC_is_on
+			}
+		}
+		localization_key = "NVX_no_GC_PTS_disable_super_events"
+	}
+	text = {
+		trigger = {
+			has_global_flag =  GC_is_on
+		}
+		localization_key = "NVX_GC_PTS_disable_super_events"
+	}
+}
+defined_text = {
 	name = WXE_Getbackground_mover_red
 	text = {
 		trigger = {
@@ -140,6 +157,7 @@ defined_text = {
 	text = {
 		trigger = {
 			has_global_flag =  NVX_Super_Events_off
+			has_global_flag = GC_is_on
 		}
 		localization_key = "GFX_large_button_background"
 	}
@@ -251,14 +269,14 @@ defined_text = {
 	text = {
 		trigger = {
 			NOT = {
-				has_global_flag =  sandbox_enable_division_limits
+				has_global_flag =  DPTS_use_simple_country_names
 			}
 		}
 		localization_key = "GFX_cw_button_background_empty"
 	}
 	text = {
 		trigger = {
-			has_global_flag =  sandbox_enable_division_limits
+			has_global_flag =  DPTS_use_simple_country_names
 		}
 		localization_key = "GFX_large_button_background"
 	}
