@@ -1,0 +1,108 @@
+
+### Economic Spheres ###
+defined_text = {
+	name = GetEconomicSphereName
+	text = {
+		trigger = {
+			check_variable = { ROOT.economic_sphere_leader = PRC }
+		}
+		localization_key = PRC_OGAS
+	}
+	text = {
+		localization_key = "[?economic_sphere_leader.GetAdjective] Economic Sphere"
+	}
+}
+defined_text = {
+	name = GetEconomicSphereIcon
+	text = {
+		trigger = {
+			check_variable = { ROOT.economic_sphere_leader = PRC }
+		}
+		localization_key = "GFX_OGAS_spheres"
+	}
+	text = {
+		localization_key = "GFX_goal_generic_positive_trade_relations_gold"
+	}
+}
+
+defined_text = {
+	name = GetOGASSystemEffectDesc
+	text = {
+		trigger = {
+			has_country_flag = PRC_OGAS_system_leader
+			has_idea = PRC_OGAS_system_partner_member_improved
+		}
+		localization_key = "PRC_OGAS_system_leader_improved_effect"
+	}
+	text = {
+		trigger = {
+			has_country_flag = PRC_OGAS_system_leader
+			NOT = { has_idea = PRC_OGAS_system_partner_member_improved }
+		}
+		localization_key = "PRC_OGAS_system_leader_effect"
+	}
+	text = {
+		trigger = {
+			has_country_flag = PRC_OGAS_system_member
+			has_idea = PRC_OGAS_system_partner_member_improved
+		}
+		localization_key = "PRC_OGAS_system_puppet_member_improved_effect"
+	}
+	text = {
+		trigger = {
+			has_country_flag = PRC_OGAS_system_member
+			has_idea = PRC_OGAS_system_puppet_member
+		}
+		localization_key = "PRC_OGAS_system_puppet_member_effect"
+	}
+	text = {
+		trigger = {
+			has_country_flag = PRC_OGAS_system_member
+			has_idea = PRC_OGAS_system_partner_member
+		}
+		localization_key = "PRC_OGAS_system_partner_member_effect"
+	}
+	text = {
+		trigger = {
+			has_country_flag = PRC_OGAS_system_member
+			has_idea = PRC_OGAS_system_partner_member_improved
+		}
+		localization_key = "PRC_OGAS_system_partner_member_improved_effect"
+	}
+	text = {
+		localization_key = "PRC_OGAS_system_bug_effect"
+	}
+}
+
+defined_text = {
+	name = GetOGASSystemLevelDesc
+	text = {
+		trigger = {
+			has_country_flag = PRC_OGAS_system_leader
+		}
+		localization_key = "PRC_OGAS_system_leader"
+	}
+	text = {
+		trigger = {
+			has_country_flag = PRC_OGAS_system_member
+			OR = {
+				has_idea = PRC_OGAS_system_partner_member_improved
+				has_idea = PRC_OGAS_system_partner_member
+			}
+		}
+		localization_key = "PRC_OGAS_system_partner_member"
+	}
+	text = {
+		trigger = {
+			has_country_flag = PRC_OGAS_system_member
+			OR = {
+				has_idea = PRC_OGAS_system_puppet_member_improved
+				has_idea = PRC_OGAS_system_puppet_member
+			}
+		}
+		localization_key = "PRC_OGAS_system_puppet_member"
+	}
+	text = {
+		localization_key = "PRC_OGAS_system_bug_effect"
+	}
+}
