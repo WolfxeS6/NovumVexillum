@@ -10,7 +10,8 @@ focus_tree = {
 			original_tag = FRA
 		}
 	}
-	
+	shared_focus = GEN_modernize_the_airforce
+	shared_focus = GEN_modernize_the_navy
 	@economic_tree_very_far_left = 0
 	@economic_tree_far_left = 1
 	@economic_tree_left = 2
@@ -130,45 +131,7 @@ focus_tree = {
 			factor = 10
 		}
 	}
-	
-	focus = {
-		id = FRA_renew_the_naval_presence
-		icon = navy2
-		x = @navy_tree_center
-		y = 0
-		cost = 5
-		
-		completion_reward = {
-			add_political_power = -15
-			navy_experience = 15
-		}
-		
-		ai_will_do = {
-			factor = 10
-		}
-	}
-	
-	focus = {
-		id = FRA_new_fighter_programs
-		icon = fighter2
-		x = @air_force_tree_center
-		y = 0
-		cost = 5
-		
-		completion_reward = {
-			add_tech_bonus = {
-				name = fighter_bonus
-				bonus = 0.35
-				uses = 2
-				category = light_fighter
-			}
-		}
-		
-		ai_will_do = {
-			factor = 10
-		}
-	}
-	
+
 	focus = {
 		id = FRA_naval_industry_1
 		icon = naval_dockyards
@@ -504,72 +467,7 @@ focus_tree = {
 			factor = 10
 		}
 	}
-	
-	focus = {
-		id = FRA_naval_maneuvre_1
-		icon = french_navy
-		x = @navy_tree_center
-		y = 1
-		cost = 5
-		
-		prerequisite = {
-			focus = FRA_renew_the_naval_presence
-		}
-		
-		completion_reward = {
-			navy_experience = 20
-		}
-		
-		ai_will_do = {
-			factor = 10
-		}
-	}
-	
-	focus = {
-		id = FRA_new_bomber_programs
-		icon = bomber
-		x = @air_force_tree_left
-		y = 1
-		cost = 10
-		
-		prerequisite = {
-			focus = FRA_new_fighter_programs
-		}
-		
-		completion_reward = {
-			add_tech_bonus = {
-				name = bomber_bonus
-				bonus = 0.35
-				uses = 2
-				category = heavy_air
-			}
-		}
-		
-		ai_will_do = {
-			factor = 10
-		}
-	}
-	
-	focus = {
-		id = FRA_air_force_officer_school
-		icon = french_air_force
-		x = @air_force_tree_right
-		y = 1
-		cost = 10
-		
-		prerequisite = {
-			focus = FRA_new_fighter_programs
-		}
-		
-		completion_reward = {
-			add_ideas = FRA_air_force_officer_school
-			air_experience = 15
-		}
-		
-		ai_will_do = {
-			factor = 10
-		}
-	}
+
 	
 	focus = {
 		id = FRA_armament_industry
@@ -979,79 +877,7 @@ focus_tree = {
 			factor = 10
 		}
 	}
-	
-	focus = {
-		id = FRA_brest_arsenal
-		icon = amphibious_assault
-		x = @navy_tree_left
-		y = 2
-		cost = 10
-		
-		prerequisite = {
-			focus = FRA_naval_maneuvre_1
-		}
-		
-		completion_reward = {
-			14 = {
-				add_building_construction = {
-					type = naval_base
-					province = 3552
-					level = 3
-					instant_build = yes
-				}
-			}
-		}
-		
-		ai_will_do = {
-			factor = 10
-		}
-	}
-	
-	focus = {
-		id = FRA_french_destroyers
-		icon = anti_submarine
-		x = @navy_tree_right
-		y = 2
-		cost = 10
-		
-		prerequisite = {
-			focus = FRA_naval_maneuvre_1
-		}
-		
-		completion_reward = {
-			add_tech_bonus = {
-				name = destroyer_bonus
-				bonus = 0.2
-				uses = 3
-				category = dd_tech
-			}
-		}
-		
-		ai_will_do = {
-			factor = 10
-		}
-	}
-	
-	focus = {
-		id = FRA_restructure_the_air_force
-		icon = french_air_force
-		x = @air_force_tree_center
-		y = 2
-		cost = 10
-		
-		prerequisite = {
-			focus = FRA_new_bomber_programs
-		}
-		
-		completion_reward = {
-			add_political_power = -25
-			air_experience = 50
-		}
-		
-		ai_will_do = {
-			factor = 10
-		}
-	}
+
 	
 	focus = {
 		id = FRA_naval_industry_2
@@ -1657,121 +1483,7 @@ focus_tree = {
 			factor = 10
 		}
 	}
-	
-	focus = {
-		id = FRA_strengthen_toulon
-		icon = naval_dockyards
-		x = @navy_tree_left
-		y = 3
-		cost = 10
-		
-		prerequisite = {
-			focus = FRA_brest_arsenal
-		}
-		
-		completion_reward = {
-			navy_experience = 10
-			21 = {
-				add_building_construction = {
-					type = dockyard
-					level = 2
-					instant_build = yes
-				}
-				add_building_construction = {
-					type = coastal_bunker
-					province = 911
-					level = 5
-					instant_build = yes
-				}
-			}
-		}
-		
-		ai_will_do = {
-			factor = 10
-		}
-	}
-	
-	focus = {
-		id = FRA_french_heavy_ships
-		icon = cruisers
-		x = @navy_tree_right
-		y = 3
-		cost = 10
-		
-		prerequisite = {
-			focus = FRA_brest_arsenal
-		}
-		
-		completion_reward = {
-			add_tech_bonus = {
-				name = cruiser_bonus
-				bonus = 0.3
-				uses = 2
-				category = ca_tech
-			}
-		}
-		
-		ai_will_do = {
-			factor = 10
-		}
-	}
-	
-	focus = {
-		id = FRA_northern_air_bases
-		icon = air_production
-		x = @air_force_tree_left
-		y = 3
-		cost = 10
-		
-		prerequisite = {
-			focus = FRA_restructure_the_air_force
-		}
-		
-		completion_reward = {
-			every_owned_state = {
-				limit = {
-					OR = {
-						region = 19
-						region = 271
-					}
-				}
-				add_building_construction = {
-					type = air_base
-					level = 1
-					instant_build = yes
-				}
-			}
-		}
-		
-		ai_will_do = {
-			factor = 10
-		}
-	}
-	
-	focus = {
-		id = FRA_air_doctrines
-		icon = air_doctrine
-		x = @air_force_tree_right
-		y = 3
-		cost = 10
-		
-		prerequisite = {
-			focus = FRA_restructure_the_air_force
-		}
-		
-		completion_reward = {
-			add_doctrine_cost_reduction = {
-				name = air_doc_bonus
-				cost_reduction = 0.2
-				uses = 2
-				category = air_doctrine
-			}
-		}
-		
-		ai_will_do = {
-			factor = 10
-		}
-	}
+
 	
 	focus = {
 		id = FRA_military_industry_3
@@ -2270,152 +1982,7 @@ focus_tree = {
 			factor = 10
 		}
 	}
-	
-	focus = {
-		id = FRA_colonial_bases
-		icon = amphibious_assault
-		x = @navy_tree_left
-		y = 4
-		cost = 10
-		
-		prerequisite = {
-			focus = FRA_strengthen_toulon
-		}
-		
-		completion_reward = {
-			random_owned_state = {
-				limit = {
-					NOT = { region = 19 }
-					NOT = { region = 20 }
-					NOT = { state = 1 }
-				}
-				add_building_construction = {
-					type = naval_base
-					level = 1
-					instant_build = yes
-				}
-			}
-			random_owned_state = {
-				limit = {
-					NOT = { region = 19 }
-					NOT = { region = 20 }								
-					NOT = { state = 1 }
-				}
-				add_building_construction = {
-					type = naval_base
-					level = 1
-					instant_build = yes
-				}
-			}
-		}
-		
-		ai_will_do = {
-			factor = 10
-		}
-	}
-	
-	focus = {
-		id = FRA_french_aircraft_carriers
-		icon = carriers
-		x = @navy_tree_right
-		y = 4
-		cost = 10
-		
-		prerequisite = {
-			focus = FRA_french_heavy_ships
-		}
-		
-		completion_reward = {
-			add_tech_bonus = {
-				name = carrier_bonus
-				bonus = 0.25
-				uses = 3
-				category = cv_tech
-			}
-		}
-		
-		ai_will_do = {
-			factor = 10
-		}
-	}
-	
-	focus = {
-		id = FRA_southern_air_bases
-		icon = airforce
-		x = @air_force_tree_left
-		y = 4
-		cost = 10
-		
-		prerequisite = {
-			focus = FRA_northern_air_bases
-		}
-		
-		completion_reward = {
-			every_owned_state = {
-				limit = {
-					OR = {
-						region = 20
-						region = 224
-					}
-				}
-				add_building_construction = {
-					type = air_base
-					level = 1
-					instant_build = yes
-				}
-			}
-		}
-		
-		ai_will_do = {
-			factor = 10
-		}
-	}
-	
-	focus = {
-		id = FRA_colonial_air_bases
-		icon = paratroopers
-		x = @air_force_tree_right
-		y = 4
-		cost = 10
-		
-		prerequisite = {
-			focus = FRA_northern_air_bases
-		}
-		
-		completion_reward = {
-			random_owned_state = {
-				limit = {
-					NOT = { region = 19 }
-					NOT = { region = 20 }
-					NOT = { region = 224 }
-					NOT = { region = 271 }
-				}
-				add_building_construction = {
-					type = air_base
-					level = 2
-					instant_build = yes
-				}
-			}
-			random_owned_state = {
-				limit = {
-					NOT = { region = 19 }
-					NOT = { region = 20 }
-					NOT = { region = 224 }
-					NOT = { region = 271 }
-				}
-				add_building_construction = {
-					type = air_base
-					level = 2
-					instant_build = yes
-				}
-			}
-		}
-		
-		ai_will_do = {
-			factor = 10
-		}
-	}
-	
+
 	focus = {
 		id = FRA_naval_industry_3
 		icon = naval_dockyards
@@ -2880,52 +2447,6 @@ focus_tree = {
 				cost_reduction = 0.4
 				uses = 1
 				category = land_doctrine
-			}
-		}
-		
-		ai_will_do = {
-			factor = 10
-		}
-	}
-	
-	focus = {
-		id = FRA_coastal_fort_construction
-		icon = defence
-		x = @navy_tree_left
-		y = 5
-		cost = 10
-		
-		prerequisite = {
-			focus = FRA_colonial_bases
-		}
-		
-		completion_reward = {
-			add_ideas = FRA_coastal_fort_idea
-		}
-		
-		ai_will_do = {
-			factor = 10
-		}
-	}
-	
-	focus = {
-		id = FRA_naval_doctrine
-		icon = naval_doctrine
-		x = @navy_tree_right
-		y = 5
-		cost = 10
-		
-		prerequisite = {
-			focus = FRA_french_aircraft_carriers
-		}
-		
-		completion_reward = {
-			navy_experience = 10
-			add_doctrine_cost_reduction = {
-				name = naval_doc_bonus
-				cost_reduction = 0.35
-				uses = 1
-				category = naval_doctrine
 			}
 		}
 		
