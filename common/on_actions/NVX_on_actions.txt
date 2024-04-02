@@ -13,6 +13,50 @@ on_actions = {
 			ROOT = { country_event = { id = political.0	} }
 		}
 	}
+	on_capitulation_immediate = {
+		effect = {
+			if = {
+				limit = {
+					ROOT = {tag = IRQ}
+					IRQ = {has_war_with = USA}
+				}
+				if = {
+					limit = {
+						815 = {
+							is_owned_by = IRQ
+						}
+						815 = {
+							transfer_state_to = KUR
+						}
+					}
+				}
+				every_country = {
+					limit = {
+						is_in_faction_with = USA
+						has_war_with = IRQ
+					}
+					white_peace = IRQ
+				}
+				if = {
+					limit = {
+						OR = {
+							AND = {
+								1002 = {is_owned_by = USA}
+							}
+							FROM = {tag = USA}
+						}
+					}
+					USA = {
+						puppet = {
+							target = IRQ
+							end_wars = yes
+						}
+					}
+				}
+			}
+
+		}
+	}
 	
 	on_startup = {
 		effect = {
