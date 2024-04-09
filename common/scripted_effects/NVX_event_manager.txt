@@ -2349,121 +2349,140 @@ NVX_Aberrant_Estate_manager_monthly = {
     }
 }
 NVX_capricious_wars_check = {
-    # if = {
-    #     limit = {
-    #         has_global_flag = pts_reduce_warfaring
-    #     }
-    #     every_country = {
-    #         limit = {
-    #             NVX_warfaring_attacker_trigger = yes
-    #         }
-    #         random_list = {
-    #             1 = {
-    #                 modifier = { factor = 1.1 threat > 0.20 }
-    #                 modifier = { factor = 1.1 threat > 0.40 }
-    #                 modifier = { factor = 1.1 threat > 0.60 }
-    #                 modifier = { factor = 0.1 has_idea = national_development_advanced }
-    #                 modifier = { factor = 0.25 has_idea = national_development_developed }
-    #                 modifier = { factor = 0.8 has_idea = national_development_developing }
-    #                 modifier = { factor = 10 has_democratic_form_of_government = no}
-    #                 modifier = { factor = 1.9 has_government = reactionary }
-    #                 country_event = {
-    #                     id = NVX_Warfaring.100 # let's go to war
-    #                     days = 20
-    #                     random_days = 10
-    #                 }
-    #             }
-    #             4000000 = {
+     if = {
+        limit = {
+            NVX_warfaring_attacker_trigger = yes
+        }
+        random_list = {
+            40 = {
+                #NVX_caprircious_war_go_deeper = yes
+                NVX_caprircious_war_go_deeper2 = yes
+                log = "[Root.GetName]: level1 passed"
+            }
+            300 = {
 
-    #             }
-    #         }
-    #     }
-    # }
-    # else_if = {
-    #     limit = {
-    #         has_global_flag = pts_chaotic_warfaring
-    #     }
-    #     every_country = {
-    #         limit = {
-    #             NVX_warfaring_attacker_trigger = yes
-    #         }
-    #         random_list = {
-    #             1 = {
-    #                 modifier = { factor = 1.1 threat > 0.20 }
-    #                 modifier = { factor = 1.1 threat > 0.40 }
-    #                 modifier = { factor = 1.1 threat > 0.60 }
-    #                 modifier = { factor = 0.1 has_idea = national_development_advanced }
-    #                 modifier = { factor = 0.25 has_idea = national_development_developed }
-    #                 modifier = { factor = 0.8 has_idea = national_development_developing }
-    #                 modifier = { factor = 10 has_democratic_form_of_government = no}
-    #                 modifier = { factor = 1.9 has_government = reactionary }
-    #                 country_event = {
-    #                     id = NVX_Warfaring.100 # let's go to war
-    #                     days = 20
-    #                     random_days = 10
-    #                 }
-    #             }
-    #             300000 = {
-
-    #             }
-    #         }
-    #     }
-    # }
-    # else_if = {
-    #     limit = {
-    #         has_global_flag = pts_intensify_warfaring
-    #     }
-    #     every_country = {
-    #         limit = {
-    #             NVX_warfaring_attacker_trigger = yes
-    #         }
-    #         random_list = {
-    #             1 = {
-    #                 modifier = { factor = 1.1 threat > 0.20 }
-    #                 modifier = { factor = 1.1 threat > 0.40 }
-    #                 modifier = { factor = 1.1 threat > 0.60 }
-    #                 modifier = { factor = 0.1 has_idea = national_development_advanced }
-    #                 modifier = { factor = 0.25 has_idea = national_development_developed }
-    #                 modifier = { factor = 0.8 has_idea = national_development_developing }
-    #                 modifier = { factor = 10 has_democratic_form_of_government = no}
-    #                 modifier = { factor = 1.9 has_government = reactionary }
-    #                 country_event = {
-    #                     id = NVX_Warfaring.100 # let's go to war
-    #                     days = 20
-    #                     random_days = 10
-    #                 }
-    #             }
-    #             2200000 = {
-
-    #             }
-    #         }
-    #     }
-    # }
-    # else = {
-    #     every_country = {
-    #         limit = {
-    #             NVX_warfaring_attacker_trigger = yes
-    #         }
-    #         random_list = {
-    #             1 = {
-    #                 modifier = { factor = 1.1 threat > 0.20 }
-    #                 modifier = { factor = 1.1 threat > 0.40 }
-    #                 modifier = { factor = 1.1 threat > 0.60 }
-    #                 modifier = { factor = 0.1 has_idea = national_development_advanced }
-    #                 modifier = { factor = 0.25 has_idea = national_development_developed }
-    #                 modifier = { factor = 0.8 has_idea = national_development_developing }
-    #                 modifier = { factor = 10 has_democratic_form_of_government = no}
-    #                 modifier = { factor = 1.9 has_government = reactionary }
-    #                 country_event = {
-    #                     id = NVX_Warfaring.100 # let's go to war
-    #                     days = 20
-    #                     random_days = 10
-    #                 }
-    #             }
-    #             3000000 = {
-
-    #             }
-    #         }
-    #     }
-    # }
+            }
+        }
+    }
 }
+NVX_caprircious_war_go_deeper = {
+    random_list = {
+        10 = {
+            NVX_caprircious_war_go_deeper2 = yes
+            log = "[Root.GetName]: level2 passed"
+        }
+        300 = {
+
+        }
+    }
+}
+NVX_caprircious_war_go_deeper2 = {
+    random_list = {
+        45 = {
+            modifier = { factor = 30 has_global_flag =  pts_chaotic_warfaring}
+            modifier = { factor = 10 has_global_flag = pts_intensify_warfaring }
+            modifier = { factor = 0.5 has_global_flag =  pts_reduce_warfaring}
+            NVX_caprircious_development_check = yes
+            log = "[Root.GetName]: capricious type passed"
+        }
+        300 = {
+
+        }
+    }
+}
+NVX_caprircious_development_check = {
+    random_list = {
+        10 = {
+            modifier = { factor = 5 has_idea = national_development_developed }
+            modifier = { factor = 25 has_idea = national_development_developing }
+            modifier = { factor = 50 has_idea = national_development_undeveloped }
+            log = "[Root.GetName]: development check done"
+            NVX_caprircious_ideology_check = yes
+        }
+        300 = {
+
+        }
+    }
+}
+NVX_caprircious_ideology_check = {
+    random_list = {
+        10 = {
+            modifier = { factor = 10 has_government = conservative }
+            modifier = { factor = 60 has_government = reactionary }
+            modifier = { factor = 80 has_democratic_form_of_government = no }
+            country_event = {
+                id = NVX_Warfaring.100 # let's go to war
+                days = 20
+                random_days = 10
+            }
+            log = "[Root.GetName]: capricious war initiated"
+            if = {
+                limit = {
+                    any_neighbor_country = {
+                        NVX_warfaring_target_abstention = no
+                    }
+                }
+            }
+            else = {
+                log = "[Root.GetName]: NVX_warfaring_target_abstention"
+            }
+            if = {
+                limit = {
+                    any_neighbor_country = {
+                        has_defensive_war = no
+                    }
+                }
+            }
+            else = {
+                log = "[Root.GetName]: defensive war"
+            }
+            if = {
+                limit = {
+                    any_neighbor_country = {
+                        is_major = no
+                    }
+                }
+                
+            }
+            else = {
+                log = "[Root.GetName]: major trouble"
+            }
+            if = {
+                limit = {
+                    any_neighbor_country = {
+                        NOT = {is_in_faction_with = PREV}
+                    }
+                }
+                
+            }
+            else = {
+                log = "[Root.GetName]: only allies for days!"
+            }
+            if = {
+                limit = {
+                    any_neighbor_country = {
+                        strength_ratio = { tag = PREV ratio < 1.3 }
+                    }
+                }
+                
+            }
+            else = {
+                log = "[Root.GetName]: scary neighbourhood"
+            }
+            if = {
+                limit = {
+                    any_neighbor_country = {
+                        PREV = { has_opinion = { target = ROOT value < 30 } }
+                    }
+                }
+                
+            }
+            else = {
+                log = "[Root.GetName]: ain't killing my bud"
+            }
+        }
+        300 = {
+        }
+    }
+}
+

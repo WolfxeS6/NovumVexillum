@@ -9,27 +9,9 @@ country_event = {
 		NOT = { has_global_flag = pts_disable_warfaring }
 		NVX_warfaring_attacker_trigger = yes
 	}
+	is_triggered_only = yes
 	
-	mean_time_to_happen = {
-		days = 15000
-		modifier = { factor = 5 has_idea = national_development_advanced }
-		modifier = { factor = 3.5 has_idea = national_development_developed }
-		modifier = { factor = 2 has_idea = national_development_developing }
-		modifier = { factor = 0.6 has_government = islamist }
-		modifier = { factor = 0.5 has_government = fascist }
-		modifier = { factor = 0.7 has_government = nationalist }
-		modifier = { factor = 0.9 has_government = reactionary }
-		modifier = { factor = 1.5 has_government = market_liberal }
-		modifier = { factor = 0.9 has_government = democratic_socialist }
-		modifier = { factor = 0.7 has_government = communist }
-		modifier = { factor = 0.8 threat > 0.20 }
-		modifier = { factor = 0.8 threat > 0.40 }
-		modifier = { factor = 0.7 threat > 0.60 }
-		modifier = { factor = 0.7 threat > 0.80 }
-		modifier = { factor = 2 has_global_flag = pts_reduce_warfaring }
-		modifier = { factor = 0.5 has_global_flag = pts_intensify_warfaring }
-		modifier = { factor = 0.05 has_global_flag = pts_chaotic_warfaring }
-	}
+	
 	
 	# option = { # Take claimed states
 	# 	name = NVX_Warfaring.0.o1
@@ -320,9 +302,10 @@ country_event = {
 	is_triggered_only = yes
 	option = { # False Alarm
 		name = NVX_Warfaring.100.o5
+		log = "[Root.GetName]: pussied out"
 		
 		ai_chance = {
-			factor = 5
+			factor = 1
 			
 			modifier = {
 				factor = 500
@@ -340,13 +323,14 @@ country_event = {
 	
 	option = { # Puppet
 		name = NVX_Warfaring.100.o2
+		log = "[Root.GetName]: is doing puppet war out"
 		random_neighbor_country = {
 			limit = { NVX_warfaring_target_trigger = yes }
 			country_event = { id = NVX_Warfaring.2 }
 		}
 		
 		ai_chance = {
-			factor = 30
+			factor = 300
 			
 			modifier = {
 				factor = 0.9
@@ -369,6 +353,7 @@ country_event = {
 	
 	option = { # Flip government
 		name = NVX_Warfaring.100.o3
+		log = "[Root.GetName]: Flipping a gov"
 		random_neighbor_country = {
 			limit = {
 				NVX_warfaring_target_trigger = yes
@@ -382,7 +367,7 @@ country_event = {
 			NOT = { has_idea = national_development_undeveloped }
 		}
 		ai_chance = {
-			factor = 20
+			factor = 200
 			
 			modifier = {
 				factor = 0.3
@@ -401,8 +386,9 @@ country_event = {
 			limit = { NVX_warfaring_target_trigger = yes }
 			country_event = { id = NVX_Warfaring.4 }
 		}
+		log = "[Root.GetName]: total conquest"
 		ai_chance = {
-			factor = 30
+			factor = 300
 			
 			modifier = {
 				factor = 0.4
