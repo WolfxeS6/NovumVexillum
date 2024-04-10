@@ -1,6 +1,7 @@
 NVX_ECO_calc = {
 	# TAXES #
 	set_variable = {NVX_ECO_Policy_Tooltip = 0}
+	set_variable ={NVX_ECO_decision_Tooltip = 0}
 	if = {
 		limit = { has_idea = economy_tax_extreme }
 		set_variable = { NVX_ECO_growth = NVX_ECO_tax_extreme }
@@ -102,5 +103,31 @@ NVX_ECO_calc = {
 		limit = { has_decision = NVX_policies_S_cut_science_funding }
 		add_to_variable = { NVX_ECO_growth = 0.125 }
 		add_to_variable = { NVX_ECO_Policy_Tooltip = 0.125 }
+	}
+	# NVXGC economic policies
+	if = {
+		limit = { has_country_flag = NVXGC_listen_to_the_economists }
+		add_to_variable = { NVX_ECO_growth = 0.25 }
+		add_to_variable = { NVX_ECO_decision_Tooltip = 0.25 }
+	}
+	if = {
+		limit = { has_country_flag = NVXGC_ausertity_mesures }
+		add_to_variable = { NVX_ECO_growth = 0.30 }
+		add_to_variable = { NVX_ECO_decision_Tooltip = 0.30 }
+	}
+	if = {
+		limit = { has_country_flag = NVXGC_encourage_economic_growth }
+		add_to_variable = { NVX_ECO_growth = 0.25 }
+		add_to_variable = { NVX_ECO_decision_Tooltip = 0.25 }
+	}
+	if = {
+		limit = { has_country_flag = NVXGC_fund_arms_industry }
+		add_to_variable = { NVX_ECO_growth = -0.1 }
+		add_to_variable = { NVX_ECO_decision_Tooltip = -0.1 }
+	}
+	if = {
+		limit = { has_country_flag = NVXGC_subsidise_the_economy }
+		add_to_variable = { NVX_ECO_growth = -0.15 }
+		add_to_variable = { NVX_ECO_decision_Tooltip = -0.15 }
 	}
 }
