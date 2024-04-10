@@ -4,7 +4,7 @@ equipment_modules = {
 	}
 	### Engines
 
-	engine_1_1x = {
+	heli_engine_1_1x = {
 		abbreviation = "e11"
 		category = plane_engine_type
 		sfx = sfx_ui_sd_module_engine
@@ -15,8 +15,18 @@ equipment_modules = {
 			build_cost_ic = 12
 			fuel_consumption = 0.16
 		}
+	}
+	heli_engine_1_2x = {
+		abbreviation = "e11"
+		category = plane_engine_type
+		sfx = sfx_ui_sd_module_engine
 
-		
+		add_stats = {
+			maximum_speed = 350
+			thrust = 30
+			build_cost_ic = 12
+			fuel_consumption = 0.16
+		}
 	}
 
 	engine_1_2x = {
@@ -70,11 +80,11 @@ equipment_modules = {
 		}
 	}
 
-	engine_2_1x = {
+	heli_engine_2_1x = {
 		abbreviation = "e21"
 		category = plane_engine_type
 		sfx = sfx_ui_sd_module_engine
-		parent = engine_1_1x
+		parent = heli_engine_1_1x
 
 		add_stats = {
 			maximum_speed = 480
@@ -84,7 +94,25 @@ equipment_modules = {
 		}
 
 		can_convert_from = {
-			module = engine_1_1x
+			module = heli_engine_1_1x
+			convert_cost_ic = 1.5
+		}
+	}
+	heli_engine_2_2x = {
+		abbreviation = "e21"
+		category = plane_engine_type
+		sfx = sfx_ui_sd_module_engine
+		parent = heli_engine_1_2x
+
+		add_stats = {
+			maximum_speed = 480
+			thrust = 16
+			build_cost_ic = 14
+			fuel_consumption = 0.16
+		}
+
+		can_convert_from = {
+			module = heli_engine_1_2x
 			convert_cost_ic = 1.5
 		}
 	}
@@ -164,11 +192,11 @@ equipment_modules = {
 		}
 	}
 
-	engine_3_1x = {
+	heli_engine_3_1x = {
 		abbreviation = "e31"
 		category = plane_engine_type
 		sfx = sfx_ui_sd_module_engine
-		parent = engine_2_1x
+		parent = heli_engine_2_1x
 
 		add_stats = {
 			maximum_speed = 550
@@ -178,7 +206,26 @@ equipment_modules = {
 		}
 
 		can_convert_from = {
-			module = engine_2_1x
+			module = heli_engine_2_1x
+			convert_cost_ic = 2.5
+		}
+	}
+
+	heli_engine_3_2x = {
+		abbreviation = "e31"
+		category = plane_engine_type
+		sfx = sfx_ui_sd_module_engine
+		parent = heli_engine_2_2x
+
+		add_stats = {
+			maximum_speed = 550
+			thrust = 30
+			build_cost_ic = 16
+			fuel_consumption = 0.16
+		}
+
+		can_convert_from = {
+			module = heli_engine_2_2x
 			convert_cost_ic = 2.5
 		}
 	}
@@ -258,11 +305,11 @@ equipment_modules = {
 		}
 	}
 
-	engine_4_1x = {
+	heli_engine_4_1x = {
 		abbreviation = "e41"
 		category = plane_engine_type
 		sfx = sfx_ui_sd_module_engine
-		parent = engine_3_1x
+		parent = heli_engine_3_1x
 
 		add_stats = {
 			maximum_speed = 750
@@ -273,6 +320,25 @@ equipment_modules = {
 
 		can_convert_from = {
 			module = engine_3_1x
+			convert_cost_ic = 3
+		}
+	}
+
+	heli_engine_4_2x = {
+		abbreviation = "e41"
+		category = plane_engine_type
+		sfx = sfx_ui_sd_module_engine
+		parent = heli_engine_3_2x
+
+		add_stats = {
+			maximum_speed = 750
+			thrust = 36
+			build_cost_ic = 18
+			fuel_consumption = 0.16
+		}
+
+		can_convert_from = {
+			module = engine_3_2x
 			convert_cost_ic = 3
 		}
 	}
@@ -309,6 +375,43 @@ equipment_modules = {
 		can_convert_from = {
 			module = engine_4_2x
 			convert_cost_ic = 50
+		}
+	}
+	heli_engine_5_1x = {
+		abbreviation = "e41"
+		category = plane_engine_type
+		sfx = sfx_ui_sd_module_engine
+		parent = heli_engine_4_1x
+
+		add_stats = {
+			maximum_speed = 750
+			thrust = 56
+			build_cost_ic = 25
+			fuel_consumption = 0.19
+		}
+
+		can_convert_from = {
+			module = engine_4_1x
+			convert_cost_ic = 3
+		}
+	}
+
+	heli_engine_5_2x = {
+		abbreviation = "e41"
+		category = plane_engine_type
+		sfx = sfx_ui_sd_module_engine
+		parent = heli_engine_4_2x
+
+		add_stats = {
+			maximum_speed = 750
+			thrust = 56
+			build_cost_ic = 25
+			fuel_consumption = 0.19
+		}
+
+		can_convert_from = {
+			module = engine_4_2x
+			convert_cost_ic = 3
 		}
 	}
 
