@@ -1139,6 +1139,201 @@ political_actions = {
 }
 
 economic_policy = {
+	NVXGC_listen_to_the_economists = {
+
+		icon = GFX_decision_eng_trade_unions_support
+
+		available = {
+			NOT = { has_country_flag = NVXGC_doing_economic_action_flag }
+		}
+
+		visible = {
+			NOT = { has_country_flag = NVXGC_cringe_economic_decisions_blocked }
+		}
+
+		fire_only_once = no
+
+		cost = 75
+		days_remove = 100
+
+		complete_effect = {
+			set_country_flag = NVXGC_doing_economic_action_flag
+			set_country_flag = NVXGC_listen_to_the_economists
+			#add_to_variable = { NVX_ECO_growth = 0.25 }
+		}
+
+		modifier = {
+			custom_modifier_tooltip = TT_NVX_ECOLITE_growth_pos025
+			political_power_factor = -0.2
+			consumer_goods_expected_value = -0.05
+			production_speed_buildings_factor = 0.05
+		}
+
+		remove_effect = {
+			clr_country_flag = NVXGC_doing_economic_action_flag
+			clr_country_flag = NVXGC_listen_to_the_economists
+			#add_to_variable = { NVX_ECO_growth = 0.25 }
+		}
+	}
+
+	NVXGC_ausertity_mesures = {
+
+		icon = GFX_decision_eng_trade_unions_demand
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = NVXGC_less_then_19_economic_health
+				check_variable = { NVX_ECO_health < -19 }
+			}
+			NOT = { has_country_flag = NVXGC_doing_economic_action_flag }
+		}
+
+		visible = {
+			NOT = { has_country_flag = NVXGC_cringe_economic_decisions_blocked }
+		}
+
+		fire_only_once = no
+
+		cost = 50
+		days_remove = 150
+
+		complete_effect = {
+			set_country_flag = NVXGC_doing_economic_action_flag
+			set_country_flag = NVXGC_ausertity_mesures
+			#add_to_variable = { NVX_ECO_growth = 0.30 }
+		}
+
+		modifier = {
+			custom_modifier_tooltip = TT_NVX_ECOLITE_growth_pos030
+			political_power_factor = -0.1
+			consumer_goods_expected_value = 0.02
+			industrial_capacity_factory = -0.1
+			production_speed_buildings_factor = -0.05
+			stability_factor = -0.1
+		}
+
+		remove_effect = {
+			clr_country_flag = NVXGC_doing_economic_action_flag
+			clr_country_flag = NVXGC_ausertity_mesures
+			#add_to_variable = { NVX_ECO_growth = -0.30 }
+		}
+	}
+
+	NVXGC_encourage_economic_growth = {
+
+		icon = GFX_decision_gre_paying_ifc_debt
+
+
+		available = {
+			NOT = { has_country_flag = NVXGC_doing_economic_action_flag }
+		}
+
+		visible = {
+			NOT = { has_country_flag = NVXGC_cringe_economic_decisions_blocked }
+		}
+
+		fire_only_once = no
+
+		cost = 50
+		days_remove = 150
+
+		complete_effect = {
+			set_country_flag = NVXGC_doing_economic_action_flag
+			set_country_flag = NVXGC_encourage_economic_growth
+			#add_to_variable = { NVX_ECO_growth = 0.25 }
+		}
+
+		modifier = {
+			custom_modifier_tooltip = TT_NVX_ECOLITE_growth_pos025
+			political_power_factor = -0.2
+			stability_factor = -0.05
+
+		}
+
+		remove_effect = {
+			clr_country_flag = NVXGC_doing_economic_action_flag
+			clr_country_flag =  NVXGC_encourage_economic_growth
+			#add_to_variable = { NVX_ECO_growth = -0.25 }
+		}
+	}
+
+	NVXGC_fund_arms_industry = {
+
+		icon = GFX_decision_generic_industry
+
+
+		available = {
+			NOT = { has_country_flag = NVXGC_doing_economic_action_flag }
+		}
+
+		visible = {
+			NOT = { has_country_flag = NVXGC_cringe_economic_decisions_blocked }
+		}
+
+		fire_only_once = no
+
+		cost = 50
+		days_remove = 150
+
+		complete_effect = {
+			set_country_flag = NVXGC_doing_economic_action_flag
+			set_country_flag = NVXGC_fund_arms_industry
+			#add_to_variable = { NVX_ECO_growth = -0.1 }
+		}
+
+		modifier = {
+			custom_modifier_tooltip = TT_NVX_ECOLITE_growth_neg010
+			industrial_capacity_factory = 0.1
+			production_speed_arms_factory_factor = 0.1
+			conversion_cost_civ_to_mil_factor = -0.1
+			consumer_goods_expected_value = -0.02
+		}
+
+		remove_effect = {
+			clr_country_flag = NVXGC_doing_economic_action_flag
+			clr_country_flag = NVXGC_fund_arms_industry
+			#add_to_variable = { NVX_ECO_growth = 0.1 }
+		}
+	}
+
+	NVXGC_subsidise_the_economy = {
+
+		icon = GFX_decision_hol_attract_foreign_investors
+
+
+		available = {
+			NOT = { has_country_flag = NVXGC_doing_economic_action_flag }
+		}
+
+		visible = {
+			NOT = { has_country_flag = NVXGC_cringe_economic_decisions_blocked }
+		}
+
+		fire_only_once = no
+
+		cost = 100
+		days_remove = 150
+
+		complete_effect = {
+			set_country_flag = NVXGC_doing_economic_action_flag
+			set_country_flag = NVXGC_subsidise_the_economy
+			#add_to_variable = { NVX_ECO_growth = 0.15 }
+		}
+
+		modifier = {
+			custom_modifier_tooltip = TT_NVX_ECOLITE_growth_pos015
+			consumer_goods_expected_value = -0.02
+			production_speed_buildings_factor = 0.05
+			stability_factor = 0.1
+			political_power_factor = -0.1
+		}
+
+		remove_effect = {
+			clr_country_flag = NVXGC_doing_economic_action_flag
+			#add_to_variable = { NVX_ECO_growth = -0.15 }
+			clr_country_flag = NVXGC_subsidise_the_economy
+		}
+	}
 	
 	improved_worker_conditions = {
 		icon = generic_industry
@@ -1239,95 +1434,33 @@ economic_policy = {
 		}
 	}
 
-	MCX_MDS_outsourced_workshops = {
-		icon = generic_construction
 
-		available= {
-			is_ai = no
-		}
-
-		fire_only_once = yes
-
-		cost = 150
-
-		complete_effect = {
-			add_offsite_building = {
-				type = industrial_complex
-				level = 2
-			}
-		}
-
-		ai_will_do = {
-			factor = 0
-		}
-	}
-
-	MCX_MDS_lease_military_factories = {
-		icon = ger_military_buildup
+	MCX_MDS_employ_civilian_workshops = {
+		icon = generic_industry
 
 		visible = {
-			has_war = no
 		}
-		available= {
-			is_ai = no
+	
+		modifier = {
+			industrial_capacity_factory = 0.1
+			stability_weekly = -0.002
+			conversion_cost_civ_to_mil_factor = -0.2
 		}
-
+	
+		days_remove = 80
+		days_re_enable = 200
+		cost = 75
 		complete_effect = {
-			add_offsite_building = { type = arms_factory level = 2 }
 			custom_effect_tooltip = NVX_decision_returns_days_200
 		}
-
-		remove_effect = {
-			add_offsite_building = { type = arms_factory level = -2 }
-		}
-		
-		modifier = {
-			consumer_goods_expected_value = 0.05
-		}
-
-		days_remove = 200
-		days_re_enable = 200
-		cost = 150
 	
 		ai_will_do = {
-			factor = 0
+			factor = 1
 		}
 	}
+}
 
-	MCX_MDS_lease_dockyards = {
-		icon = generic_construction
-		available= {
-			is_ai = no
-		}
-		visible = {
-			has_war = no
-			any_state = {
-				is_controlled_by = ROOT
-				is_coastal = yes
-			}
-		}
-	
-		complete_effect = {
-			add_offsite_building = { type = dockyard level = 5 }
-			custom_effect_tooltip = NVX_decision_returns_days_200
-		}
-		
-		remove_effect = {
-			add_offsite_building = { type = dockyard level = -5 }
-		}
-		
-		modifier = {
-			consumer_goods_expected_value = 0.1
-		}
-	
-		days_remove = 200
-		days_re_enable = 200
-		cost = 150
-	
-		ai_will_do = {
-			factor = 0
-		}
-	}
+political_actions = {
 
 	MCX_MDS_Social_Programs = {
 		available = {
@@ -1358,29 +1491,6 @@ economic_policy = {
 		}
 	}
 
-	MCX_MDS_employ_civilian_workshops = {
-		icon = generic_industry
-
-		visible = {
-		}
-	
-		modifier = {
-			industrial_capacity_factory = 0.1
-			stability_weekly = -0.002
-		}
-	
-		days_remove = 80
-		days_re_enable = 200
-		cost = 75
-		complete_effect = {
-			custom_effect_tooltip = NVX_decision_returns_days_200
-		}
-	
-		ai_will_do = {
-			factor = 1
-		}
-	}
-
 	MCX_MDS_finance_public_news_offices = {
 		icon = ger_mefo_bills
 
@@ -1404,9 +1514,6 @@ economic_policy = {
 			factor = 1
 		}
 	}
-}
-
-political_actions = {
 	
 	promises_of_peace = {
 
