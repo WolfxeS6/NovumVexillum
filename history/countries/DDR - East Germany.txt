@@ -56,16 +56,15 @@ if = {
 	#varients
 	#CAS
 	create_equipment_variant = {
-		name = "Su-25" 
-		type = small_plane_airframe_1
+		name = "Fiat G.91" 
+		type = small_plane_airframe_0
 		modules = {
-			fixed_main_weapon_slot = heavy_mg_2x
-			fixed_auxiliary_weapon_slot_1 = medium_bomb_bay
-			fixed_auxiliary_weapon_slot_2 = tank_buster_1
+			fixed_main_weapon_slot = light_mg_2x
+			fixed_auxiliary_weapon_slot_1 = rocket_pod
 			engine_type_slot = engine_1_2x
 			special_type_slot_1 = empty
-			special_type_slot_3 = armor_plate_medium
 		}
+		obsolete = yes
 	}
 	#Multirole
 	create_equipment_variant = {
@@ -80,6 +79,19 @@ if = {
 		obsolete = yes
 	}
 	create_equipment_variant = {
+		name = "F-4 Phantom II"
+		type = medium_plane_airframe_0
+		modules = {
+			fixed_main_weapon_slot = heavy_mg_2x
+			fixed_auxiliary_weapon_slot_1 = aircraft_cannon_short_1
+			fixed_auxiliary_weapon_slot_2 = small_bomb_bay
+			engine_type_slot = engine_1_2x
+			special_type_slot_1 = empty
+		}
+		obsolete = yes
+		icon = "GFX_USA_fighter2_medium"
+	}
+	create_equipment_variant = {
 		name = "MiG-29" 
 		type = medium_plane_airframe_1
 		modules = {
@@ -89,6 +101,19 @@ if = {
 			engine_type_slot = engine_1_2x
 			special_type_slot_1 = empty
 		}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "Tornado" 
+		type = medium_plane_airframe_1
+		modules = {
+			fixed_main_weapon_slot = light_mg_2x
+			fixed_auxiliary_weapon_slot_1 = aircraft_cannon_short_1
+			fixed_auxiliary_weapon_slot_2 = medium_bomb_bay
+			engine_type_slot = engine_1_2x
+			special_type_slot_1 = empty
+		}
+		icon = "GFX_GER_fighter3_medium"
 	}
 }
 if = {
@@ -103,7 +128,7 @@ if = {
 	mechanised_infantry1 = 1
 	light_mechanized_infantry1 = 1
 	light_mechanized_infantry2 = 1
-	#mechanised_infantry2 = 1
+	mechanised_infantry2 = 1
 	}
 }
 if = {
@@ -117,32 +142,52 @@ if = {
 		light_mechanized_infantry2 = 1
 		main_battle_tank_chassis = 1
 		main_battle_tank_chassis_80s = 1
-		#main_battle_tank_chassis_00s = 1
+		main_battle_tank_chassis_00s = 1
 	}
 	create_equipment_variant = {
-		name = "T-72M"
-		type = modern_tank_chassis_2
+		name = "Leopard 2A4"
+		type = modern_tank_chassis_3
 		parent_version = 0
 		modules = {
-			main_armament_slot = tank_small_cannon
-			special_type_slot_1 = ergo_small
+			main_armament_slot = tank_small_cannon_2
+			#turret_type_slot = tank_modern_tank_turret
 			suspension_type_slot = tank_torsion_bar_suspension
 			armor_type_slot = tank_welded_armor
 			engine_type_slot = tank_diesel_engine
 			#special_type_slot_1 = tank_radio_1
 			optics_slot = tank_optics_1
-			special_type_slot_3 = auto_loader
 			
 			#atgm_slot = empty
 		}
 		upgrades = {
-			tank_nsb_armor_upgrade = 0
-			tank_nsb_engine_upgrade = 0
+			tank_nsb_armor_upgrade = 4
+			tank_nsb_engine_upgrade = 3
 		}
-		icon = "GFX_SOV_main_battle_tank2_medium"
+		icon = "GFX_GER_main_battle_tank3_medium"
 	}
 	create_equipment_variant = {
-		name = "BMP-2"
+		name = "Leopard 2"
+		type = modern_tank_chassis_2
+		parent_version = 0
+		modules = {
+			main_armament_slot = tank_small_cannon_2
+			#turret_type_slot = tank_modern_tank_turret
+			suspension_type_slot = tank_torsion_bar_suspension
+			armor_type_slot = tank_welded_armor
+			engine_type_slot = tank_diesel_engine
+			special_type_slot_1 = ergo_old
+			optics_slot = tank_optics_1
+			
+			#atgm_slot = empty
+		}
+		upgrades = {
+			tank_nsb_armor_upgrade = 2
+			tank_nsb_engine_upgrade = 1
+		}
+		icon = "GFX_GER_main_battle_tank2_medium"
+	}
+	create_equipment_variant = {
+		name = "Marder 1A3"
 		type = light_tank_chassis_1
 		parent_version = 0
 		modules = {
@@ -155,42 +200,20 @@ if = {
 			#special_type_slot_1 = tank_radio_1
 			optics_slot = tank_optics_1
 			special_type_slot_4 = crew_compartment
-			atgm_slot = tank_atgm_1
-		}
-		upgrades = {
-			tank_nsb_armor_upgrade = 2
-			tank_nsb_engine_upgrade = 2
-		}
-		icon = "GFX_SOV_mechanised_infantry2_medium"
-	}
-	create_equipment_variant = {
-		name = "T-62"
-		type = modern_tank_chassis_1
-		parent_version = 0
-		modules = {
-			main_armament_slot = tank_small_cannon
-			special_type_slot_1 = ergo_old
-			suspension_type_slot = tank_torsion_bar_suspension
-			armor_type_slot = tank_welded_armor
-			engine_type_slot = tank_diesel_engine
-			#special_type_slot_1 = tank_radio_1
-			optics_slot = tank_optics_1
-			
 			#atgm_slot = empty
 		}
 		upgrades = {
-			tank_nsb_armor_upgrade = 0
-			tank_nsb_engine_upgrade = 0
+			tank_nsb_armor_upgrade = 2
+			tank_nsb_engine_upgrade = 5
 		}
-		obsolete = yes
-		icon = "GFX_SOV_main_battle_tank1_medium"
+		icon = "GFX_GER_mechanised_infantry3_medium"
 	}
 	create_equipment_variant = {
-		name = "MT-LB"
+		name = "SHS-30"
 		type = light_tank_chassis_0
 		parent_version = 0
 		modules = {
-			main_armament_slot = tank_heavy_machine_gun
+			main_armament_slot = tank_auto_cannon
 			special_type_slot_1 = ergo_ifv_old
 			#turret_type_slot = tank_light_one_man_tank_turret
 			suspension_type_slot = tank_torsion_bar_suspension
@@ -202,14 +225,59 @@ if = {
 			#atgm_slot = empty
 		}
 		upgrades = {
-			tank_nsb_armor_upgrade = 0
-			tank_nsb_engine_upgrade = 0
+			tank_nsb_armor_upgrade = 1
+			tank_nsb_engine_upgrade = 1
 		}
 		obsolete = yes
-		icon = "GFX_SOV_mechanised_infantry1_medium"
+		icon = "GFX_GER_mechanised_infantry2_medium"
 	}
 	create_equipment_variant = {
-		name = "PT-76"
+		name = "Leopard 1"
+		type = modern_tank_chassis_1
+		parent_version = 0
+		modules = {
+			main_armament_slot = tank_small_cannon
+			#turret_type_slot = tank_modern_tank_turret
+			suspension_type_slot = tank_torsion_bar_suspension
+			armor_type_slot = tank_welded_armor
+			engine_type_slot = tank_diesel_engine
+			special_type_slot_1 = ergo_old
+			optics_slot = tank_optics_1
+			
+			#atgm_slot = empty
+		}
+		upgrades = {
+			tank_nsb_armor_upgrade = 1
+			tank_nsb_engine_upgrade = 1
+		}
+		obsolete = yes
+		icon = "GFX_GER_main_battle_tank1_medium"
+	}
+	create_equipment_variant = {
+		name = "Marder 1"
+		type = light_tank_chassis_0
+		parent_version = 0
+		modules = {
+			main_armament_slot = tank_auto_cannon
+			special_type_slot_1 = ergo_ifv_old
+			#turret_type_slot = tank_light_one_man_tank_turret
+			suspension_type_slot = tank_torsion_bar_suspension
+			armor_type_slot = tank_riveted_armor
+			engine_type_slot = tank_diesel_engine
+			#special_type_slot_1 = tank_radio_1
+			optics_slot = tank_optics_1
+			special_type_slot_4 = crew_compartment
+			#atgm_slot = empty
+		}
+		upgrades = {
+			tank_nsb_armor_upgrade = 1
+			tank_nsb_engine_upgrade = 1
+		}
+		obsolete = yes
+		icon = "GFX_GER_mechanised_infantry3_medium"
+	}
+	create_equipment_variant = {
+		name = "Wiesel 1 TOW-2" #RENAME!!!
 		type = light_tank_destroyer_chassis_1
 		parent_version = 0
 		modules = {
@@ -222,14 +290,14 @@ if = {
 			#special_type_slot_1 = tank_radio_1
 			optics_slot = tank_optics_1
 			special_type_slot_4 = main_ammo_bay
-			#atgm_slot = empty
+			atgm_slot = tank_atgm_1
 		}
 		upgrades = {
 			tank_nsb_armor_upgrade = 1
 			tank_nsb_engine_upgrade = 1
 		}
 		obsolete = no
-		icon = "GFX_SOV_mechanised_infantry1_medium"
+		icon = "GFX_GER_light_tank1_medium"
 	}
 }
 set_technology = {
@@ -252,44 +320,56 @@ set_technology = {
 	basic_train = 1
 	tech_engineers = 1
 	tech_recon = 1
-	tech_military_police = 1
-	tech_maintenance_company = 1
 	tech_field_hospital = 1
 	tech_logistics_company = 1
+	tech_military_police = 1
 	tech_signal_company = 1
+	tech_maintenance_company = 1
 	
 	## Armor ##
 	#main_battle_tank1 = 1
 	#main_battle_tank2 = 1
 	#main_battle_tank3 = 1
 	#light_tank1 = 1
-	#light_tank2 = 1
 	#mechanised_infantry1 = 1
 	#mechanised_infantry2 = 1
 	#light_mechanized_infantry1 = 1
 	#light_mechanized_infantry2 = 1
+	amphibious_mechanized_infantry1 = 1
 	
 	## Artillery ##
 	coldwar_artillery = 1
 	gw_artillery = 1
-	
 	interwar_antiair = 1
+ 	rocket_artillery = 1
+	sp_antiair0 = 1 
 	coldwar_antiair = 1
 	coldwar_antitank = 1
+	 
+	 
+	sp_artillery1 = 1
 	
-	## Air ##
+	# ## Air ##
 	# CAS1 = 1
 	# CAS2 = 1
+	# cv_CAS1 = 1
+	# cv_CAS2 = 1
 	# fighter1 = 1
 	# fighter2 = 1
 	# fighter3 = 1
+	# cv_fighter1 = 1
+	# cv_fighter2 = 1
+	# cv_fighter3 = 1
 	# naval_bomber1 = 1
 	# naval_bomber2 = 1
 	# naval_bomber3 = 1
+	# cv_naval_bomber1 = 1
+	# cv_naval_bomber2 = 1
+	# cv_naval_bomber3 = 1
 	# strategic_bomber1 = 1
 	# strategic_bomber2 = 1
-	# strategic_bomber3 = 1
 	# tactical_bomber1 = 1
+	# #scout_plane1 = 1
 	
 	## Engineering ##
 	electronic_mechanical_engineering = 1
@@ -299,9 +379,46 @@ set_technology = {
 	basic_machine_tools = 1
 	fuel_silos = 1
 	fuel_refining = 1
-	
-	## Doctrines ##
-	
+	synth_oil_experiments = 1
+}
+
+if = {
+	limit = { not = { has_dlc = "Man the Guns" } }
+	set_technology = {
+		early_destroyer = 1
+		basic_destroyer = 1
+		early_light_cruiser = 1
+		basic_light_cruiser = 1
+		early_heavy_cruiser = 1
+		basic_heavy_cruiser = 1
+		early_submarine = 1
+		basic_submarine = 1
+		transport = 1
+	}
+}
+if = {
+	limit = { has_dlc = "Man the Guns" }
+	set_technology = {
+		early_ship_hull_light = 1
+		basic_ship_hull_light = 1
+		early_ship_hull_cruiser = 1
+		basic_ship_hull_cruiser = 1
+		early_ship_hull_submarine = 1
+		basic_ship_hull_submarine = 1
+		smoke_generator = 1
+		sonar = 1
+		basic_depth_charges = 1
+		improved_airplane_launcher = 1
+		basic_cruiser_armor_scheme = 1
+		basic_torpedo = 1
+		basic_battery = 1
+		basic_light_battery = 1
+		basic_medium_battery = 1
+		basic_secondary_battery = 1
+		mtg_transport = 1
+		basic_naval_mines = 1
+		submarine_mine_laying = 1
+	}
 }
 
 add_ideas = {
