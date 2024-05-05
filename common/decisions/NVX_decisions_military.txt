@@ -457,6 +457,44 @@ army_decisions = {
 			base = 0
 		}
 	}
+	MCX_MDS_investigate_technicals = {
+		icon = generic_tank
+
+		available = {
+			has_army_experience > 5
+			has_equipment = { motorized_equipment > 9 }
+		}
+		custom_cost_trigger = {
+			has_army_experience > 4
+		}
+
+		visible = {
+			NOT = {has_tech = technicality_tech}
+		}
+		
+		fire_only_once = yes
+
+		
+		remove_effect = {
+			set_technology = {
+				technicality_tech = 1
+			}
+		}
+
+		days_remove = 50
+
+		cost = 75
+		complete_effect = {
+			army_experience = -5
+			add_equipment_to_stockpile = {
+				type = motorized_equipment
+				amount = -10
+			}
+		}
+		ai_will_do = {
+			base = 0
+		}
+	}
 }
 
 navy_decisions = {
