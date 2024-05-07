@@ -9,8 +9,8 @@
 @2024 = 12
 @2030 = 14
 
-@main_tank_line = -4
-@light_tank_line = -8
+@main_tank_line = -2
+@light_tank_line = -6
 @amphibious = -8
 @ifv_line = 0
 @apc_line = 4
@@ -25,6 +25,14 @@ technologies = {
 
 		path = {
 			leads_to_tech = motorised_infantry1
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = technicality_tech
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = nonsnb_technicality_tech
 			research_cost_coeff = 1
 		}
 
@@ -558,6 +566,137 @@ technologies = {
 				factor = 0
 				behavior_indolent_trigger = yes
 			}
+		}
+	}
+	nonsnb_technicality_tech = {
+		allow_branch = {
+			NOT = {has_dlc = "No Step Back"}
+		}
+		
+		research_cost = 2
+		start_year = 1980
+		folder = {
+			name = motorised_folder
+			position = { x = @light_tank_line y = @1980}
+		}
+		enable_equipments = {
+			medium_tank_equipment_1
+		}
+		enable_subunits = {
+			motorized_technicals
+		}
+		
+
+		path = {
+			leads_to_tech = nonnsb_technicality_tech2
+			research_cost_coeff = 1
+		}
+		
+		categories = {
+			motorized_equipment
+			infantry_tech
+		}
+		
+		ai_will_do = {
+			factor = 1
+			
+		}
+	}
+	nonnsb_technicality_tech2 = {
+		
+		research_cost = 2
+		start_year = 2000
+		folder = {
+			name = motorised_folder
+			position = { x = @light_tank_line y = @2000}
+		}
+		enable_equipments = {
+			medium_tank_equipment_2
+		}
+		enable_equipment_modules = {
+		}
+		
+		
+		categories = {
+			motorized_equipment
+			infantry_tech
+		}
+		
+		ai_will_do = {
+			factor = 1
+			
+		}
+	}
+	technicality_tech = {
+		allow_branch = {
+			has_dlc = "No Step Back"
+		}
+		
+		research_cost = 2
+		start_year = 1980
+		folder = {
+			name = motorised_folder
+			position = { x = @light_tank_line y = @1980}
+		}
+		enable_equipments = {
+			medium_tank_chassis_0
+		}
+		enable_equipment_modules = {
+			tank_med_machine_gun
+			tank_med_aa_gun
+			tank_med_atgm_gun
+			tank_med_recoilless_gun
+			tank_med_mlrs_gun
+			tank_med_additional_welded_armour
+			tank_reinforced_panels_armour
+			med_extra_ammo_storage
+			med_extra_crew_space
+			med_smoke_launchers
+			med_additional_machine_guns
+		}
+		enable_subunits = {
+			motorized_technicals
+		}
+		
+
+		path = {
+			leads_to_tech = technicality_tech2
+			research_cost_coeff = 1
+		}
+		
+		categories = {
+			motorized_equipment
+			infantry_tech
+		}
+		
+		ai_will_do = {
+			factor = 1
+			
+		}
+	}
+	technicality_tech2 = {
+		
+		research_cost = 2
+		start_year = 2000
+		folder = {
+			name = motorised_folder
+			position = { x = @light_tank_line y = @2000}
+		}
+		enable_equipments = {
+			medium_tank_chassis_1
+		}
+		enable_equipment_modules = {
+		}
+		
+		
+		categories = {
+			motorized_equipment
+			infantry_tech
+		}
+		
+		ai_will_do = {
+			factor = 1
+			
 		}
 	}
 }
