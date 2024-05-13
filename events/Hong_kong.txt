@@ -656,6 +656,10 @@ country_event = {
 					has_government = communist
 				}
 			}
+			modifier = {
+				add = -100
+				is_historical_focus_on = yes
+			}
 		}
 		
 		declare_war_on = { 
@@ -693,12 +697,21 @@ country_event = {
 				}
 			}
 		}
-		
-		add_stability = -0.2
-		
 		if = {
-			limit = { has_war = no }
-			add_war_support = -0.2
+			limit = {tag = ENG}
+			add_stability = -0.02
+			add_political_power = -20
+			if = {
+				limit = { has_war = no }
+				add_war_support = 0.02
+			}
+		}
+		else = {
+			add_stability = -0.2
+			if = {
+				limit = { has_war = no }
+				add_war_support = -0.2
+			}
 		}
 	}
 }
