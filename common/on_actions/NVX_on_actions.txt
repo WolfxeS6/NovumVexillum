@@ -299,11 +299,11 @@ on_actions = {
 				set_variable = { NVX_nofisc_division_capacity = num_of_factories }
 				if = {
 					limit = { check_variable = { NVX_nofisc_division_capacity < 24 } }
-					set_variable = { NVX_nofisc_division_capacity = 24 }
+					set_variable = { NVX_nofisc_division_capacity = 8 }
 				}
 				if = {
-					limit = { is_major = yes }
-					multiply_variable = { NVX_nofisc_division_capacity = 2 }
+					limit = { is_major = no }
+					divide_variable = { NVX_nofisc_division_capacity = 2 }
 				}
 				NVX_ECO_monthly = yes
 				NVX_ECO_pax_monthly = yes
@@ -316,6 +316,9 @@ on_actions = {
 					}
 					NVX_Aberrant_Estate_manager_monthly = yes
 				}
+			}
+			else = {
+				set_variable = { NVX_nofisc_division_capacity = 0 }
 			}
 		}
 	}

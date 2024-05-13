@@ -247,11 +247,6 @@ China_must_grow_larger = {
 		value = 5
 	}
 
-	ai_strategy = {
-		type = force_build_armies
-		value = 75 #you can't die with this many divisions
-	}
-
 	ai_strategy = { type = build_army id = fighter value = 20 }
 	ai_strategy = { type = build_army id = cas value = 5 }
 	ai_strategy = { type = build_army id = tactical_bomber value = 0 }
@@ -269,10 +264,21 @@ China_must_grow_larger = {
 	ai_strategy = { type = build_army id = motorized value = 0}
 	ai_strategy = { type = build_army id = mechanized value = 0}
 }
+China_size_control = {
+	enable = {
+		original_tag = PRC
+		num_divisions < 150
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = force_build_armies
+		value = 50
+	}
+}
 
 we_ballin_lets_get_stronk = {
 	enable = {
-		num_divisions > 45
+		num_divisions > 35
 		num_of_controlled_factories > 75
 		stockpile_ratio = {
 			archetype = infantry_equipment
@@ -283,8 +289,11 @@ we_ballin_lets_get_stronk = {
 			ratio > 0.95
 		}
 		NOT = {
-			tag = PRC
-			tag = USA
+			OR = {
+				tag = PRC
+				#tag = USA
+			}
+			num_divisions > 150
 		}
 	}
 	ai_strategy = {
@@ -343,7 +352,7 @@ stop_making_small_arms_equipment = {
 }
 stop_making_motorised_equipment = {
 	enable = {
-		has_equipment = { motorized_equipment > 6500 }
+		has_equipment = { motorized_equipment > 5500 }
 	}
 
 	abort = { has_equipment = { motorized_equipment < 1000 } }
@@ -360,10 +369,10 @@ stop_making_motorised_equipment = {
 }
 why_do_you_make_rocket_arty = {
 	enable = {
-		has_equipment = { motorized_rocket_equipment > 500 }
+		has_equipment = { motorized_rocket_equipment > 50 }
 	}
 
-	abort = { has_equipment = { motorized_rocket_equipment < 50 } }
+	abort = { has_equipment = { motorized_rocket_equipment < 10 } }
 	ai_strategy = {
 		type = equipment_variant_production_factor
 		id = motorized_rocket_equipment
@@ -372,6 +381,11 @@ why_do_you_make_rocket_arty = {
 	ai_strategy = {
 		type = equipment_variant_production_factor
 		id = rocket_artillery_equipment
+		value = -10000
+	}
+	ai_strategy = {
+		type = equipment_production_factor
+		id = rocket
 		value = -10000
 	}
 }

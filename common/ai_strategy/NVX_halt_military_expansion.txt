@@ -2,8 +2,19 @@ NVX_AI_halt_military_expansion_no_economy = { # Army only
 	enable = {
 		#has_global_flag = sandbox_enable_division_limits
 		check_variable = { num_divisions > NVX_nofisc_division_capacity }
+		NOT = {
+			OR = { #they need all the help they can get
+				tag = PRC 
+				tag = SOV 
+			}
+		}
 	}
 	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = force_build_armies
+		value = -50
+	}
 
 	ai_strategy = {
 		type = build_army
