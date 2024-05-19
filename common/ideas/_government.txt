@@ -504,10 +504,20 @@ ideas = {
 				}
 				NOT = { has_idea = economy_recession }
 				NOT = { has_idea = economy_depression }
-				has_tech = improved_computing_machine
-				has_tech = factory_output_upgrade3
-				has_tech = decimetric_radar
-				industrial_complex > 14
+				NOT = { has_idea = mobilization_service_time_corrupt}
+				OR = {
+					AND = {
+						has_tech = improved_computing_machine
+						has_tech = factory_output_upgrade2
+						industrial_complex > 14
+					}
+					AND = {
+						is_eu_member = yes
+						has_tech = computing_machine
+						has_tech = factory_output_upgrade2
+						industrial_complex > 6
+					}
+				}
 			}
 			
 			on_add = {

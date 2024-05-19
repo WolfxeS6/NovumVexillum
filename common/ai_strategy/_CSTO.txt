@@ -104,3 +104,24 @@ Armenia_Azeris_left_alone = {
 		target_country = ARM
 	}
 }
+
+Generic_ignore_csto = {
+	enable = {
+		NOT = { tag = SOV }
+		SOV = { is_in_faction = yes }
+		SOV = {is_ai = no}
+		NOT = {
+			is_in_faction_with = SOV
+			OR = {
+				capital_scope = { is_on_continent = europe }
+				capital_scope = { is_on_continent = asia }
+			}
+		}
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = alliance
+		id = "SOV"
+		value = -500
+	}
+}

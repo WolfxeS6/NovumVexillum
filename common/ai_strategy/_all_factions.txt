@@ -55,3 +55,22 @@ dont_leave_china = {
 		value = 50
 	}
 }
+Generic_ignore_china = {
+	enable = {
+		NOT = { tag = PRC }
+		PRC = { is_in_faction = yes }
+		PRC = {is_ai = no}
+		NOT = {
+			is_in_faction_with = PRC
+			OR = {
+				capital_scope = { is_on_continent = asia }
+			}
+		}
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = alliance
+		id = "PRC"
+		value = -500
+	}
+}

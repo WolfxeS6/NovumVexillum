@@ -70,3 +70,25 @@ seek_NATO_membership = {
 		value = 125
 	}
 }
+
+Generic_ignore_nato = {
+	enable = {
+		NOT = { tag = USA }
+		NOT = { tag = CAN }
+		USA = { is_in_faction = yes }
+		USA = {is_ai = no}
+		NOT = {
+			is_in_faction_with = USA
+			OR = {
+				capital_scope = { is_on_continent = europe }
+				has_idea = national_development_developed
+			}
+		}
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = alliance
+		id = "USA"
+		value = -500
+	}
+}
