@@ -1248,3 +1248,592 @@ country_event = {
 	    remove_country_leader_trait = friend_of_russia
 	}
 }
+
+# 2001 Elections - Right Wing Coalition leader
+country_event = {
+	id = italy.34
+	title = italy.34.t
+	desc = italy.34.d
+	picture = GFX_report_event_ITA_house_of_freedom_internal
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = { #Silvio Berlusconi
+	    name = italy.34.a
+
+		add_popularity = {
+			ideology = conservative
+			popularity = 0.05
+		}
+		set_country_flag = ITA_2001_RW_Berlusconi
+	}
+	option = { #Gianfranco Fini
+	    name = italy.34.b
+
+		add_popularity = {
+			ideology = nationalist
+			popularity = 0.05
+		}
+		set_country_flag = ITA_2001_RW_Fini
+	}
+	option = { #Umberto Bossi
+	    name = italy.34.c
+
+		add_popularity = {
+			ideology = reactionary
+			popularity = 0.05
+		}
+		set_country_flag = ITA_2001_RW_Bossi
+	}
+	option = { #No agreement, compromise candidate
+	    name = italy.34.d
+
+		add_stability = -0.025
+		hidden_effect = {
+			ITA = { 
+				country_event = italy.35
+				days = 7
+			}
+		}
+	}
+}
+
+# 2001 Elections - Right Wing Coalition Compromise leader
+country_event = {
+	id = italy.35
+	title = italy.35.t
+	desc = italy.35.d
+	picture = GFX_report_event_ITA_house_of_freedom_internal_compromise
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = { #Pier Ferdinando Casini
+	    name = italy.35.a
+
+		add_popularity = {
+			ideology = conservative
+			popularity = 0.05
+		}
+		set_country_flag = ITA_2001_RW_Casini
+	}
+	option = { #Giorgio La Malfa
+	    name = italy.35.b
+
+		add_popularity = {
+			ideology = market_liberal
+			popularity = 0.05
+		}
+		set_country_flag = ITA_2001_RW_Malfa
+	}
+	option = { #Gianni De Michelis
+	    name = italy.35.c
+
+		add_popularity = {
+			ideology = social_democrat
+			popularity = 0.05
+		}
+		set_country_flag = ITA_2001_RW_Michelis
+	}
+	option = { #FT Joins, somehow wins candidacy - Pino Rauti
+	    name = italy.35.d
+
+		add_stability = -0.05
+		add_popularity = {
+			ideology = fascist
+			popularity = 0.05
+		}
+		set_country_flag = ITA_2001_RW_Rauti
+	}
+}
+
+# 2001 Elections - Left Wing Coalition leader
+country_event = {
+	id = italy.36
+	title = italy.36.t
+	desc = italy.36.d
+	picture = GFX_report_event_ITA_olive_tree_internal
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = { #Francesco Rutelli
+	    name = italy.36.a
+
+		add_popularity = {
+			ideology = social_liberal
+			popularity = 0.05
+		}
+		set_country_flag = ITA_2001_LW_Rutelli
+	}
+	option = { #Massimo D'Alema
+	    name = italy.36.b
+
+		add_popularity = {
+			ideology = social_democrat
+			popularity = 0.05
+		}
+		set_country_flag = ITA_2001_LW_Dalema
+	}
+	option = { #Enrico Boselli
+	    name = italy.36.c
+
+		add_popularity = {
+			ideology = democratic_socialist
+			popularity = 0.05
+		}
+		set_country_flag = ITA_2001_LW_Boselli
+	}
+	option = { #No agreement, compromise candidate
+	    name = italy.36.d
+
+		add_stability = -0.025
+		hidden_effect = {
+			ITA = { 
+				country_event = italy.37
+				days = 7
+			}
+		}
+	}
+}
+
+# 2001 Elections - Left Wing Coalition compromise leader
+country_event = {
+	id = italy.37
+	title = italy.37.t
+	desc = italy.37.d
+	picture = GFX_report_event_ITA_olive_tree_internal_compromise
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = { #Grazia Francescato
+	    name = italy.37.a
+
+		add_popularity = {
+			ideology = progressive
+			popularity = 0.05
+		}
+		set_country_flag = ITA_2001_LW_Francescato
+	}
+	option = { #Luis Durnwalder...somehow
+	    name = italy.37.b
+
+		add_stability = -0.025
+		add_popularity = {
+			ideology = conservative
+			popularity = 0.05
+		}
+		set_country_flag = ITA_2001_LW_Durnwalder
+	}
+	option = { #Fausto Bertinotti
+	    name = italy.37.b
+
+		add_stability = -0.05
+		add_popularity = {
+			ideology = communist
+			popularity = 0.05
+		}
+		set_country_flag = ITA_2001_LW_Bertinotti
+	}
+}
+
+# 2001 Elections - Left Wing Coalition compromise leader
+country_event = {
+	id = italy.38
+	title = italy.38.t
+	desc = italy.38.d
+	picture = GFX_report_event_ita_2001_elections
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = { #Right wing wins
+	    name = italy.38.a
+
+		if = {
+			limit = {
+				has_country_flag = ITA_2001_RW_Berlusconi
+			}
+			set_politics = {
+				ruling_party = conservative
+				elections_allowed = yes
+			}
+			add_popularity = {
+				ideology = conservative
+				popularity = 0.1
+			}
+			add_popularity = {
+				ideology = market_liberal
+				popularity = 0.05
+			}
+			add_popularity = {
+				ideology = reactionary
+				popularity = 0.05
+			}
+			add_popularity = {
+				ideology = nationalist
+				popularity = 0.05
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = ITA_2001_RW_Fini
+			}
+			set_politics = {
+				ruling_party = nationalist
+				elections_allowed = yes
+			}
+			add_popularity = {
+				ideology = conservative
+				popularity = 0.05
+			}
+			add_popularity = {
+				ideology = market_liberal
+				popularity = 0.05
+			}
+			add_popularity = {
+				ideology = reactionary
+				popularity = 0.05
+			}
+			add_popularity = {
+				ideology = nationalist
+				popularity = 0.1
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = ITA_2001_RW_Bossi
+			}
+			set_politics = {
+				ruling_party = reactionary
+				elections_allowed = yes
+			}
+			add_popularity = {
+				ideology = conservative
+				popularity = 0.05
+			}
+			add_popularity = {
+				ideology = market_liberal
+				popularity = 0.05
+			}
+			add_popularity = {
+				ideology = reactionary
+				popularity = 0.1
+			}
+			add_popularity = {
+				ideology = nationalist
+				popularity = 0.05
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = ITA_2001_RW_Casini
+			}
+			set_politics = {
+				ruling_party = conservative
+				elections_allowed = yes
+				long_name = ITA_conservative_casini_party_long
+    			name = ITA_conservative_casini_party
+			}
+			promote_character = ITA_pier_ferdinando_casini
+			add_popularity = {
+				ideology = conservative
+				popularity = 0.1
+			}
+			add_popularity = {
+				ideology = market_liberal
+				popularity = 0.05
+			}
+			add_popularity = {
+				ideology = reactionary
+				popularity = 0.05
+			}
+			add_popularity = {
+				ideology = nationalist
+				popularity = 0.05
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = ITA_2001_RW_Malfa
+			}
+			set_politics = {
+				ruling_party = market_liberal
+				elections_allowed = yes
+				long_name = ITA_market_liberal_malfa_party_long
+    			name = ITA_market_liberal_malfa_party
+			}
+			promote_character = ITA_giorgio_la_malfa
+			add_popularity = {
+				ideology = conservative
+				popularity = 0.05
+			}
+			add_popularity = {
+				ideology = market_liberal
+				popularity = 0.1
+			}
+			add_popularity = {
+				ideology = reactionary
+				popularity = 0.05
+			}
+			add_popularity = {
+				ideology = nationalist
+				popularity = 0.05
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = ITA_2001_RW_Michelis
+			}
+			set_politics = {
+				ruling_party = social_democrat
+				elections_allowed = yes
+				long_name = ITA_social_democrat_michelis_party_long
+    			name = ITA_social_democrat_michelis_party
+			}
+			promote_character = ITA_gianni_de_michelis
+			add_popularity = {
+				ideology = conservative
+				popularity = 0.05
+			}
+			add_popularity = {
+				ideology = social_democrat
+				popularity = 0.1
+			}
+			add_popularity = {
+				ideology = market_liberal
+				popularity = 0.05
+			}
+			add_popularity = {
+				ideology = reactionary
+				popularity = 0.05
+			}
+			add_popularity = {
+				ideology = nationalist
+				popularity = 0.05
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = ITA_2001_RW_Rauti
+			}
+			set_politics = {
+				ruling_party = fascist
+				elections_allowed = yes
+			}
+			add_popularity = {
+				ideology = fascist
+				popularity = 0.1
+			}
+			add_popularity = {
+				ideology = conservative
+				popularity = 0.05
+			}
+			add_popularity = {
+				ideology = market_liberal
+				popularity = 0.05
+			}
+			add_popularity = {
+				ideology = reactionary
+				popularity = 0.05
+			}
+			add_popularity = {
+				ideology = nationalist
+				popularity = 0.05
+			}
+		}
+	}
+	option = { #Left wing wins
+	    name = italy.38.a
+
+		if = {
+			limit = {
+				has_country_flag = ITA_2001_LW_Rutelli
+			}
+			set_politics = {
+				ruling_party = social_liberal
+				elections_allowed = yes
+			}
+			add_popularity = {
+				ideology = social_liberal
+				popularity = 0.1
+			}
+			add_popularity = {
+				ideology = social_democrat
+				popularity = 0.05
+			}
+			add_popularity = {
+				ideology = progressive
+				popularity = 0.05
+			}
+			add_popularity = {
+				ideology = democratic_socialist
+				popularity = 0.05
+			}
+			add_popularity = {
+				ideology = communist
+				popularity = 0.05
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = ITA_2001_LW_Dalema
+			}
+			set_politics = {
+				ruling_party = social_democrat
+				elections_allowed = yes
+			}
+			add_popularity = {
+				ideology = social_liberal
+				popularity = 0.05
+			}
+			add_popularity = {
+				ideology = social_democrat
+				popularity = 0.1
+			}
+			add_popularity = {
+				ideology = progressive
+				popularity = 0.05
+			}
+			add_popularity = {
+				ideology = democratic_socialist
+				popularity = 0.05
+			}
+			add_popularity = {
+				ideology = communist
+				popularity = 0.05
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = ITA_2001_LW_Boselli
+			}
+			set_politics = {
+				ruling_party = democratic_socialist
+				elections_allowed = yes
+				long_name = ITA_democratic_socialist_boselli_party_long
+    			name = ITA_democratic_socialist_boselli_party
+			}
+			promote_character = ITA_enrico_boselli
+			add_popularity = {
+				ideology = social_liberal
+				popularity = 0.05
+			}
+			add_popularity = {
+				ideology = social_democrat
+				popularity = 0.05
+			}
+			add_popularity = {
+				ideology = progressive
+				popularity = 0.05
+			}
+			add_popularity = {
+				ideology = democratic_socialist
+				popularity = 0.1
+			}
+			add_popularity = {
+				ideology = communist
+				popularity = 0.05
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = ITA_2001_LW_Francescato
+			}
+			set_politics = {
+				ruling_party = progressive
+				elections_allowed = yes
+			}
+			add_popularity = {
+				ideology = social_liberal
+				popularity = 0.05
+			}
+			add_popularity = {
+				ideology = social_democrat
+				popularity = 0.05
+			}
+			add_popularity = {
+				ideology = progressive
+				popularity = 0.1
+			}
+			add_popularity = {
+				ideology = democratic_socialist
+				popularity = 0.05
+			}
+			add_popularity = {
+				ideology = communist
+				popularity = 0.05
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = ITA_2001_LW_Durnwalder
+			}
+			set_politics = {
+				ruling_party = conservative
+				elections_allowed = yes
+				long_name = ITA_conservative_durnwalder_party_long
+    			name = ITA_conservative_durnwalder_party
+			}
+			promote_character ITA_luis_durnwalder
+			add_popularity = {
+				ideology = social_liberal
+				popularity = 0.05
+			}
+			add_popularity = {
+				ideology = social_democrat
+				popularity = 0.05
+			}
+			add_popularity = {
+				ideology = progressive
+				popularity = 0.05
+			}
+			add_popularity = {
+				ideology = conservative
+				popularity = 0.1
+			}
+			add_popularity = {
+				ideology = democratic_socialist
+				popularity = 0.05
+			}
+			add_popularity = {
+				ideology = communist
+				popularity = 0.05
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = ITA_2001_LW_Diliberto
+			}
+			set_politics = {
+				ruling_party = communist
+				elections_allowed = yes
+				long_name = ITA_communist_diliberto_party_long
+    			name = ITA_communist_diliberto_party
+			}
+			promote_character = ITA_oliviero_diliberto
+			add_popularity = {
+				ideology = social_liberal
+				popularity = 0.05
+			}
+			add_popularity = {
+				ideology = social_democrat
+				popularity = 0.05
+			}
+			add_popularity = {
+				ideology = progressive
+				popularity = 0.05
+			}
+			add_popularity = {
+				ideology = democratic_socialist
+				popularity = 0.05
+			}
+			add_popularity = {
+				ideology = communist
+				popularity = 0.1
+			}
+		}
+	}
+}
