@@ -1,6 +1,6 @@
 on_actions = {
 	on_startup = {
-			effect = {
+		effect = {
 				if = {
 					limit = {
            				has_game_rule = { rule = fast_multiplayer_mode option = On }
@@ -280,15 +280,57 @@ on_actions = {
 						}
 						add_ideas = Small_nation set_research_slots = 0 load_focus_tree = performance_tree
 					}
-				#CUB
-				#GAU
-			}
+					#CUB
+					#GAU
+				}
 			every_country = {
 				limit = {
 					is_ai = no
 				}
 				set_country_flag = open_pulling_the_strings_gui
 				set_country_flag = open_pulling_the_strings_actions_gui
+			}
+			if = {
+				limit = {
+					date > 2010.01.01
+				}
+				every_country = {
+					limit = {
+						NOT = {
+							OR = {
+								has_focus_tree = generic_european_focus_tree
+								has_focus_tree = generic_african_focus_tree
+								has_focus_tree = generic_asia_focus_tree
+								has_focus_tree = generic_focus
+							}
+							has_global_flag = focus_tree_2016
+						}
+					}
+					if = {
+						limit = {
+							capital_scope = { is_on_continent = africa }
+						}
+						load_focus_tree = generic_african_focus_tree
+					}
+					else_if = {
+						limit = {
+							capital_scope = { is_on_continent = europe }
+						}
+						load_focus_tree = generic_european_focus_tree
+					}
+					else_if = {
+						limit = {
+							capital_scope = { is_on_continent = asia }
+							NOT = {
+								tag = PRC
+							}
+						}
+						load_focus_tree = generic_asia_focus_tree
+					}
+					else = {
+						load_focus_tree = generic_focus
+					}
+				}
 			}
 		}
 	}
