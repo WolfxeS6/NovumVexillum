@@ -14,6 +14,7 @@ NDefines.NDiplomacy.TENSION_ANNEX_CLAIM = 0.25;
 NDefines.NDiplomacy.TENSION_PUPPET = 0.25;
 NDefines.NDiplomacy.TENSION_FORCE_GOVERNMENT = 0.15;
 NDefines.NDiplomacy.TENSION_JOIN_ATTACKER = 0.1;
+NDefines.NDiplomacy.NUM_DAYS_TO_ENABLE_KICKING_NEW_MEMBERS_OF_FACTION = 360;
 -- Warfaring
 NDefines.NAI.GENERATE_WARGOAL_THREAT_BASELINE = 0.7;	    -- The baseline for what the AI considers the world is getting dangerous and we want to generate wargoals with no antagonize value	
 NDefines.NAI.FORCE_FACTOR_AGAINST_EXTRA_MINOR = 0.3;			-- AI considers generating wargoals against minors below this % of force compared to themselves to get at a bigger enemy.
@@ -36,6 +37,7 @@ NDefines.NDiplomacy.VOLUNTEERS_DIVISIONS_REQUIRED = 20
 NDefines.NAI.DIPLOMACY_FACTION_SAME_IDEOLOGY_MAJOR = 25
 NDefines.NAI.CALL_ALLY_BASE_DESIRE = 15
 NDefines.NAI.JOIN_ALLY_BASE_DESIRE = 15
+NDefines.NAI.DIPLOMATIC_ACTION_BREAK_SCORE = -25
 NDefines.NTrade.DISTANCE_TRADE_FACTOR = -0.01 -- -0.02 
 NDefines.NGraphics.VICTORY_POINT_MAP_ICON_AFTER = {0, 20, 40};
 NDefines.NGraphics.VICTORY_POINT_MAP_ICON_TEXT_CUTOFF = { 70, 120, 400 };

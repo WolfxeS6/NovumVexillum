@@ -737,6 +737,31 @@ DIPLOMACY_KICK_FROM_FACTION_ENABLE_TRIGGER = {
 			always = no
 		}
 	}
+	if = {
+		limit = {
+			has_game_rule = {
+				rule = allow_kick_faction
+				option = ALLOWED
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_KICK_SAME_IDEOLOGY_IF_AI_TT
+			OR = {
+				is_ai = no
+				NOT = {
+					OR = {
+						has_government = FROM
+						AND = {
+							has_democratic_form_of_government = yes
+							FROM = {
+								has_democratic_form_of_government = yes
+							}
+						}
+					}
+				}
+			}
+		}
+	}
 }
 DIPLOMACY_SEND_VOLUNTEERS_ENABLE_TRIGGER = {
 	if = {
