@@ -2183,24 +2183,71 @@ country_event = { #Taiwan's Longest Day
 		hidden_effect = {
 			if = {
 				limit = {
-					power_balance_value = {
-						id = CHI_power_balance
-						value > 0
+					is_ai = yes
+				}
+				if = {
+					limit = {
+						has_game_rule = {
+							rule = CHI_AI_BEHAVIOR
+							option = DEFAULT_TAIWAN
+						}
+					}
+					country_event = { id = ro_china.mid_events.2 hours = 8 }
+				}
+				else_if = {
+					limit = {
+						OR = {
+							has_game_rule = {
+								rule = CHI_AI_BEHAVIOR
+								option = TAIWAN_CONQUEST
+							}
+							has_game_rule = {
+								rule = CHI_AI_BEHAVIOR
+								option = TAIWAN_MILITARY
+							}
+						}
+					}
+					country_event = { id = ro_china.mid_events.4 hours = 8 }
+				}
+				else_if = {
+					limit = {
+						has_game_rule = {
+							rule = CHI_AI_BEHAVIOR
+							option = TAIWAN_PRC
+						}
+					}
+					country_event = { id = ro_china.mid_events.3 hours = 8 }
+				}
+				else = {
+					random_list = {
+						60 = { country_event = { id = ro_china.mid_events.2 hours = 8 } }
+						20 = { country_event = { id = ro_china.mid_events.4 hours = 8 } }
+						20 = { country_event = { id = ro_china.mid_events.3 hours = 8 } }
 					}
 				}
-				country_event = { id = ro_china.mid_events.2 hours = 8 }
-			}
-			else_if = {
-				limit = {
-					power_balance_value = {
-						id = CHI_power_balance
-						value > -0.4
-					}
-				}
-				country_event = { id = ro_china.mid_events.3 hours = 8 }
 			}
 			else = {
-				country_event = { id = ro_china.mid_events.4 hours = 8 }
+				if = {
+					limit = {
+						power_balance_value = {
+							id = CHI_power_balance
+							value > 0
+						}
+					}
+					country_event = { id = ro_china.mid_events.2 hours = 8 }
+				}
+				else_if = {
+					limit = {
+						power_balance_value = {
+							id = CHI_power_balance
+							value > -0.4
+						}
+					}
+					country_event = { id = ro_china.mid_events.3 hours = 8 }
+				}
+				else = {
+					country_event = { id = ro_china.mid_events.4 hours = 8 }
+				}
 			}
 		}
 	}
@@ -2310,6 +2357,15 @@ country_event = { #
 		log = "[GetLogInfo]: event ro_china.mid_events.3 option ro_china.mid_events.3.a"
 		name = ro_china.mid_events.3.a
 		ai_chance = { factor = 10 }
+		trigger = {
+			NOT = {
+				ai = yes 
+				has_game_rule = {
+					rule = CHI_AI_BEHAVIOR
+					option = TAIWAN_PRC
+				}
+			}
+		}
 		
 		country_event = { id = ro_china.mid_events.2 hours = 8 }
 	}
@@ -2321,6 +2377,14 @@ country_event = { #
 			factor = 90 
 			modifier = {
 				factor = 0 #Historical, Chen don't die
+				NOT = {
+					OR = {
+						has_game_rule = {
+							rule = CHI_AI_BEHAVIOR
+							option = TAIWAN_PRC
+						}
+					}
+				}
 				is_historical_focus_on = yes 
 				PRC = { is_ai = no }
 			}
@@ -2648,7 +2712,16 @@ unit_leader_event = { #Pan Blue Citizens Protest Over KMT Investigation
 		log = "[GetLogInfo]: event ro_china.mid_events.15 option ro_china.mid_events.15.a"
 		name = ro_china.mid_events.15.a
 		ai_chance = { 
-			base = 100
+			base = 100 
+		}
+		trigger = {
+			NOT = {
+				is_ai = yes
+				has_game_rule = {
+					rule = CHI_AI_BEHAVIOR
+					option = TAIWAN_CONQUEST
+				}
+			}
 		}
 		
 		hidden_effect = {
@@ -2663,6 +2736,13 @@ unit_leader_event = { #Pan Blue Citizens Protest Over KMT Investigation
 		name = ro_china.mid_events.15.b
 		ai_chance = { 
 			base = 0
+			modifier = {
+				add = 1000
+				has_game_rule = {
+					rule = CHI_AI_BEHAVIOR
+					option = TAIWAN_CONQUEST
+				}
+			}
 		}
 		
 		hidden_effect = {
@@ -2749,6 +2829,15 @@ country_event = { #DPP's Internal Backlash
 		ai_chance = { 
 			base = 100
 		}
+		trigger = {
+			NOT = {
+				is_ai = yes
+				has_game_rule = {
+					rule = CHI_AI_BEHAVIOR
+					option = TAIWAN_CONQUEST
+				}
+			}
+		}
 		name = ro_china.mid_events.18.a
 		add_stability = 0.05
 		
@@ -2763,6 +2852,13 @@ country_event = { #DPP's Internal Backlash
 		name = ro_china.mid_events.18.b
 		ai_chance = { 
 			base = 0
+			modifier = {
+				add = 1000
+				has_game_rule = {
+					rule = CHI_AI_BEHAVIOR
+					option = TAIWAN_CONQUEST
+				}
+			}
 		}
 		
 		CHI_bop_high_decrease_effect = yes
