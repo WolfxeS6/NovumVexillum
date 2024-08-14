@@ -20,6 +20,8 @@ NDefines.NAI.GENERATE_WARGOAL_THREAT_BASELINE = 0.7;	    -- The baseline for wha
 NDefines.NAI.FORCE_FACTOR_AGAINST_EXTRA_MINOR = 0.3;			-- AI considers generating wargoals against minors below this % of force compared to themselves to get at a bigger enemy.
 NDefines.NAI.DECLARE_WAR_RELATIVE_FORCE_FACTOR = 0.4;	-- Weight of relative force between nations that consider going to war
 NDefines.NAI.DECLARE_WAR_NOT_NEIGHBOR_FACTOR = 0.8;		-- Multiplier applied before force factor if country is not neighbor with the one it is considering going to war
+NDefines.NAI.production_equipment_surplus_factor = 0.1;
+NDefines.NAI.PRODUCTION_EQUIPMENT_SURPLUS_FACTOR_GARRISON = 0.1;
 -- AWACS
 NDefines.NIntel.RECON_PLANE_INTEL_BASE = 0.2;
 -- More unit levels - shoutout to More Unit Levels - Vanilla Range
