@@ -1,6 +1,6 @@
-## Version: X1.08
+## Version: X1.09
 ### HOI4 Compatible: 1.14.*
-### Compatible Global Conflict version: 1.10.2
+### Compatible Global Conflict version: 1.11.0
 ### Workshop Link
 https://steamcommunity.com/sharedfiles/filedetails/?id=1827273767
 ### Credits:
