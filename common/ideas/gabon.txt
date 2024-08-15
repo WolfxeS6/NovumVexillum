@@ -1,0 +1,108 @@
+ideas = {
+	country = {	
+		GAB_bongos_long_rule = {
+			picture = fascism8
+		
+			allowed = { 
+				has_government = fascist
+				has_government = nationalist
+			}
+			
+			removal_cost = -1
+			
+			modifier = {
+				stability_factor = -0.1
+				fascist_drift = -0.025
+				nationalist_drift = -0.025
+			}
+		}
+        GAB_oil_dependency = {
+			picture = oil_profits
+			
+			removal_cost = -1
+			
+			modifier = {
+				local_resources_factor = 0.3
+                trade_opinion_factor = 0.1
+                min_export = 0.2
+                industrial_capacity_factory = -0.2
+                base_fuel_gain_factor = 0.1
+			}
+		}
+        GAB_weak_industrial_sector = {
+			picture = POL_disjointed_industry
+			
+			removal_cost = -1
+
+            allowed = {
+                num_of_factories < 10        
+            }
+			
+			modifier = {
+                industrial_capacity_factory = -0.1
+                production_factory_efficiency_gain_factor = -0.1
+                production_factory_max_efficiency_factor = -0.1
+			}
+		}
+    }
+	industrial_concern = {
+		GAB_BGFIBank_group = {
+			picture = GAB_BGFIBank_group
+			
+			
+			allowed = {
+				original_tag = GAB
+			}
+			
+			
+			research_bonus = {
+				industry = 0.1
+			}
+			
+			traits = { industrial_concern }
+			
+			modifier = {
+				consumer_goods_expected_value = -0.05
+				political_power_factor = -0.1
+			}
+		}
+		
+		GAB_gabon_telecom = {
+			picture = GAB_gabon_telecom
+			
+			
+			allowed = {
+				original_tag = GAB
+			}
+			
+			
+			research_bonus = {
+				electronics = 0.15
+			}
+			
+			traits = { electronics_concern }
+			
+			modifier = {
+			}
+		}
+
+		GAB_gabon_oil_company = {
+			picture = GAB_gabon_oil_company
+			
+			allowed = {
+				original_tag = GAB
+			}
+			
+			
+			research_bonus = {
+				industry = 0.05
+				synth_resources = 0.15
+			}
+			
+			traits = { refinery_concern }
+			
+			modifier = {
+			}
+		}
+	}
+} 

@@ -2,12 +2,21 @@
 
 oob = "GAB_2000"
 
+if = {
+	limit = { has_dlc = "Man the Guns" }
+		set_naval_oob = "GAB_2000_naval_mtg"
+	else = {
+		set_naval_oob = "GAB_2000_naval_legacy"
+	}
+}
+
 set_research_slots = 2
 set_convoys = 100
 set_stability = 0.25
 
 set_country_flag = country_language_french
 set_country_flag = country_behavior_indolent
+set_country_flag = unique_industrial_concern
 
 if = {
 	limit = {
@@ -264,47 +273,58 @@ add_ideas = {
 	immigration_policy_loose_regulations
 	civil_liberties_totalitarian
 	population_growth_explosion
+	mobilization_service_time_corrupt
 	african_union_member
 	limited_conscription
 	CFA_franc_member
+	GAB_bongos_long_rule
+	GAB_oil_dependency
+	GAB_weak_industrial_sector
 }
 
 set_politics = {
-	ruling_party = social_liberal
-	last_election = "1997.1.1"
-	election_frequency = 48
+	ruling_party = nationalist
+	last_election = "1998.12.6"
+	election_frequency = 84
 	elections_allowed = yes
 }
 
 set_popularities = {
-    nationalist = 2
-    democratic_socialist = 3
-    progressive = 40
-    social_liberal = 45
-    conservative = 9
-    reactionary = 1
+    nationalist = 68
+	social_democrat = 20
+	democratic_socialist = 12
 }
 
+recruit_character = GAB_basile_mve_engine
 recruit_character = GAB_omar_bongo
-recruit_character = GAB_pierre_louembe
-recruit_character = GAB_gabriel_coniquet
-recruit_character = GAB_levy_adze
-recruit_character = GAB_stephane_mezui
-recruit_character = GAB_anselme_madinda
-recruit_character = GAB_pierreandre_delicat
-recruit_character = GAB_stephane_aubameyang
-recruit_character = GAB_emile_meye
-recruit_character = GAB_jeanboniface_louembe
-recruit_character = GAB_victor_ekomie
-recruit_character = GAB_emile_berre
+recruit_character = GAB_mbongo_ntchounga
+recruit_character = GAB_ali_bongo_ondimba
+recruit_character = GAB_jean_fracois_ntoutoume_emane
+recruit_character = GAB_paul_toungui
+recruit_character = GAB_casimir_oye_mba
+recruit_character = GAB_pierre_mamboundou
+recruit_character = GAB_marc_ona_essangui
+recruit_character = GAB_paul_mba_abessole
+recruit_character = GAB_guy_nang_bekale
+
+recruit_character = GAB_jean_claude_ella_ekogha
+recruit_character = GAB_jean_martin_ossima_ndong
+recruit_character = GAB_auguste_bibaye_itandas
 
 2009.6.8 = {
-	oob = "GAB_2016"
-	create_country_leader = {
-		name = "Ali Bongo Ondimba"
-		picture = "Ali_B_Ondimba.dds"
-		ideology = liberalist
+	set_politics = {
+		ruling_party = reactionary
+		last_election = "2009.8.30"
+		election_frequency = 84
+		elections_allowed = yes
 	}
+
+	set_popularities = {
+		reactionary = 68
+		social_democrat = 20
+		democratic_socialist = 12
+	}
+	retire_character = GAB_omar_bongo
 }
 if = {
 	limit = {
@@ -327,7 +347,7 @@ if = {
 	}
 	add_equipment_to_stockpile = {
 		type = medium_plane_airframe_0
-		amount = 487
+		amount = 7
 		producer = GAB
 		variant_name = "Mirage F1"
 	}
@@ -338,3 +358,33 @@ if = {
 		variant_name = "Mirage 5"
 	}
 }
+
+if = {
+	limit = { has_dlc = "Man the Guns" }
+
+	set_technology = {
+		early_ship_hull_patrol_boat = 1
+		basic_battery = 1
+	}	
+
+	create_equipment_variant = {
+		name = "Général d'Armée Ba Oumar Class"
+		type = ship_hull_patrol_boat_1
+		name_group = GENERIC_PB_NAMES
+		modules = {
+			fixed_ship_battery_slot = ship_light_battery_1
+			fixed_ship_anti_air_slot = empty
+			fixed_ship_fire_control_system_slot = empty
+			fixed_ship_engine_slot = light_patrol_ship_engine_1
+			fixed_ship_torpedo_slot = empty
+			mid_1_custom_slot = ship_depth_charge_1
+		}
+	}
+}
+
+if = {
+	limit = { not = { has_dlc = "Man the Guns" } }
+	set_technology = {
+		early_patrol_boat = 1
+	}
+}		
