@@ -10,103 +10,16 @@ set_country_flag = country_language_french
 set_country_flag = country_behavior_dispersed
 set_country_flag = country_behavior_indolent
 
-if = {
-	limit = {
-		NOT = {has_dlc = "By Blood Alone"}
-	}
-	set_technology = {
-		CAS1 = 1
-		CAS2 = 1
-		cv_CAS1 = 1
-		cv_CAS2 = 1
-		fighter1 = 1
-		fighter2 = 1
-		cv_fighter1 = 1
-		cv_fighter2 = 1
-		naval_bomber1 = 1
-		naval_bomber2 = 1
-		naval_bomber3 = 1
-		cv_naval_bomber1 = 1
-		cv_naval_bomber2 = 1
-		cv_naval_bomber3 = 1
-		strategic_bomber1 = 1
-		strategic_bomber2 = 1
-		#scout_plane1 = 1
-	}
-}
-if = {
-	limit = {
-		has_dlc = "By Blood Alone"
-	}
-	#tech
-	set_technology = {
-		iw_small_airframe = 1
-		basic_small_airframe = 1
-		iw_medium_airframe = 1
-		basic_medium_airframe = 1
-		iw_heli_airframe = 1
-		iw_naval_airframe = 1
-		basic_naval_airframe = 1
-		iw_large_airframe = 1
-		basic_large_airframe = 1
-		aa_lmg = 1
-		Cold_war_cas = 1
-		engines_1 = 1
-		air_misc = 1
-		#scout_plane1 = 1
-	}
-	#varients
-	#CAS
-	create_equipment_variant = {
-		name = "Su-25" 
-		type = small_plane_airframe_1
-		modules = {
-			fixed_main_weapon_slot = heavy_mg_2x
-			fixed_auxiliary_weapon_slot_1 = medium_bomb_bay
-			fixed_auxiliary_weapon_slot_2 = tank_buster_1
-			engine_type_slot = engine_1_2x
-			special_type_slot_1 = empty
-			special_type_slot_3 = armor_plate_medium
-		}
-	}
-	#Multirole
-	create_equipment_variant = {
-		name = "MiG-23" 
-		type = medium_plane_airframe_0
-		modules = {
-			fixed_main_weapon_slot = light_mg_2x
-			fixed_auxiliary_weapon_slot_1 = aircraft_cannon_short_1
-			engine_type_slot = engine_1_2x
-			special_type_slot_1 = empty
-		}
-		obsolete = yes
-	}
-	create_equipment_variant = {
-		name = "MiG-29" 
-		type = medium_plane_airframe_1
-		modules = {
-			fixed_main_weapon_slot = light_mg_2x
-			fixed_auxiliary_weapon_slot_1 = aircraft_cannon_short_1
-			fixed_auxiliary_weapon_slot_2 = aircraft_cannon_medium_1
-			engine_type_slot = engine_1_2x
-			special_type_slot_1 = empty
-		}
-	}
-}
+#No attack aircraft
+
 if = {
 	limit = {
 		NOT = { has_dlc = "No Step Back" }
 	}
 	set_technology = {
-	main_battle_tank1 = 1
-	main_battle_tank2 = 1
-	#main_battle_tank3 = 1
 	light_tank1 = 1
-	mechanised_infantry1 = 1
 	nonsnb_technicality_tech = 1
 	light_mechanized_infantry1 = 1
-	light_mechanized_infantry2 = 1
-	#mechanised_infantry2 = 1
 	}
 }
 if = {
@@ -114,82 +27,9 @@ if = {
 		has_dlc = "No Step Back"
 	}
 	set_technology = {
-		IFV_chassis_80s = 1
 		IFV_chassis = 1
 		technicality_tech = 1
 		light_mechanized_infantry1 = 1
-		light_mechanized_infantry2 = 1
-		main_battle_tank_chassis = 1
-		main_battle_tank_chassis_80s = 1
-		#main_battle_tank_chassis_00s = 1
-	}
-	create_equipment_variant = {
-		name = "T-72M"
-		type = modern_tank_chassis_2
-		parent_version = 0
-		modules = {
-			main_armament_slot = tank_small_cannon
-			special_type_slot_1 = ergo_small
-			suspension_type_slot = tank_torsion_bar_suspension
-			armor_type_slot = tank_welded_armor
-			engine_type_slot = tank_diesel_engine
-			#special_type_slot_1 = tank_radio_1
-			optics_slot = tank_optics_1
-			special_type_slot_3 = auto_loader
-			
-			#atgm_slot = empty
-		}
-		upgrades = {
-			tank_nsb_armor_upgrade = 0
-			tank_nsb_engine_upgrade = 0
-		}
-		icon = "GFX_SOV_main_battle_tank2_medium"
-	}
-	
-	create_equipment_variant = {
-		name = "T-62"
-		type = modern_tank_chassis_1
-		parent_version = 0
-		modules = {
-			main_armament_slot = tank_small_cannon
-			special_type_slot_1 = ergo_old
-			suspension_type_slot = tank_torsion_bar_suspension
-			armor_type_slot = tank_welded_armor
-			engine_type_slot = tank_diesel_engine
-			#special_type_slot_1 = tank_radio_1
-			optics_slot = tank_optics_1
-			
-			#atgm_slot = empty
-		}
-		upgrades = {
-			tank_nsb_armor_upgrade = 0
-			tank_nsb_engine_upgrade = 0
-		}
-		obsolete = yes
-		icon = "GFX_SOV_main_battle_tank1_medium"
-	}
-	create_equipment_variant = {
-		name = "MT-LB"
-		type = light_tank_chassis_0
-		parent_version = 0
-		modules = {
-			main_armament_slot = tank_heavy_machine_gun
-			special_type_slot_1 = ergo_ifv_old
-			#turret_type_slot = tank_light_one_man_tank_turret
-			suspension_type_slot = tank_torsion_bar_suspension
-			armor_type_slot = tank_riveted_armor
-			engine_type_slot = tank_diesel_engine
-			#special_type_slot_1 = tank_radio_1
-			optics_slot = tank_optics_1
-			special_type_slot_4 = crew_compartment
-			#atgm_slot = empty
-		}
-		upgrades = {
-			tank_nsb_armor_upgrade = 0
-			tank_nsb_engine_upgrade = 0
-		}
-		obsolete = yes
-		icon = "GFX_SOV_mechanised_infantry1_medium"
 	}
 	create_equipment_variant = {
 		name = "PT-76"
@@ -280,43 +120,78 @@ add_ideas = {
 }
 
 set_politics = {	
-	ruling_party = social_liberal
-	last_election = "1990.1.1"
-	election_frequency = 48
+	ruling_party = democratic_socialist
+	last_election = "1996.3.3"
+	election_frequency = 60
 	elections_allowed = yes
 }
 
 set_popularities = {
-    reactionary = 10
-    social_liberal = 80
-    communist = 10
+    democratic_socialist = 35
+	market_liberal = 30
+	progressive = 20
+	social_democrat = 10
+	social_liberal = 4
+	communist = 1
 }
 
+recruit_character = DAH_marcel_honorat_leon_agboton
+recruit_character = DAH_fernand_amoussou
+recruit_character = DAH_agoli_agbo_dedjalagni
+recruit_character = DAH_janvier_yahouedeou
+recruit_character = DAH_thomas_boni_yayi
+recruit_character = DAH_patrice_talon
+recruit_character = DAH_nicephore_soglo
+recruit_character = DAH_adrien_houngbedji
 recruit_character = DAH_mathieu_kerekou
-recruit_character = DAH_lionel_kerekou
-recruit_character = DAH_sourou_dansou
-recruit_character = DAH_wilfried_wantchekon
-recruit_character = DAH_tahirou_dakpogan
-recruit_character = DAH_benoit_tevoedjre
-recruit_character = DAH_daniel_koussihouede
-recruit_character = DAH_benoit_gnimagon
-recruit_character = DAH_benoit_badaru
-recruit_character = DAH_lionel_gnanligo
-recruit_character = DAH_lionel_apithy
-recruit_character = DAH_jose_osho
+recruit_character = DAH_bruno_amoussou
+recruit_character = DAH_pascal_fantodji
 
-2006.4.6 = {
-	create_country_leader = {
-		name = "Thomas Boni Yayi"
-		picture = "Thomas_Boni_Yayi.dds"
-		ideology = liberalist
-	}
-}
+recruit_character = DAH_aristide_gonsallo
+recruit_character = DAH_sebastien_ajavon
+recruit_character = DAH_lionel_zinsou
+recruit_character = DAH_eric_houndete
+recruit_character = DAH_noel_koumba_koussey
+
+recruit_character = DAH_laurent_amoussou
+recruit_character = DAH_mathieu_amoussa_chabi_boni
+recruit_character = DAH_soumanou_oke
+recruit_character = DAH_awal_djibril_bouko_nagnimi
+recruit_character = DAH_denis_hounsou_gbessemehlan
+recruit_character = DAH_patrick_jean_baptiste_aho
+
 	
-2016.1.1 = {
-	create_country_leader = {
-		name = "Patrice Talon"
-		picture = "Thomas_Patrice_Talon.dds"
-		ideology = liberalist
+2016.4.4 = {
+	retire_character = DAH_marcel_honorat_leon_agboton
+	retire_character = DAH_nicephore_soglo
+	retire_character = DAH_thomas_boni_yayi
+	retire_character = DAH_mathieu_kerekou
+	retire_character = DAH_pascal_fantodji
+
+	set_party_name = {
+		ideology = market_liberal
+		long_name = DAH_market_liberal_party_2016
+		name = DAH_market_liberal_party_2016
+	}
+
+	set_party_name = {
+		ideology = democratic_socialist
+		long_name = DAH_democratic_socialist_party_2016_long
+		name = DAH_democratic_socialist_party_2016
+	}
+
+
+	set_politics = {	
+		ruling_party = conservative
+		last_election = "2016.3.3"
+		election_frequency = 60
+		elections_allowed = yes
+	}
+
+	set_popularities = {
+		social_liberal = 30
+		conservative = 35
+		market_liberal = 25
+		democratic_socialist = 10
 	}
 }
