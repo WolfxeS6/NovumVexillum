@@ -1,0 +1,213 @@
+remove_tank_1 = {
+    if = {
+        limit = {check_variable = {tank_stocks_1 < 200}}
+        if = {
+            limit = {
+                has_dlc = "No Step Back"
+            }
+            add_equipment_to_stockpile = {
+				type = modern_tank_chassis_1
+				amount = tank_stocks_1
+			}
+        }
+        else = {
+            add_equipment_to_stockpile = {
+				type = modern_tank_equipment_1
+				amount = tank_stocks_1
+			}
+        }
+        set_variable = {var = tank_stocks_1 value = 0}
+    }
+    else = {
+        if = {
+            limit = {
+                has_dlc = "No Step Back"
+            }
+            add_equipment_to_stockpile = {
+				type = modern_tank_chassis_1
+				amount = 200
+			}
+        }
+        else = {
+            add_equipment_to_stockpile = {
+				type = modern_tank_equipment_1
+				amount = 200
+			}
+        }
+        subtract_from_variable = {var = tank_stocks_1 value = 200}
+    }
+}
+remove_tank_2 = {
+    if = {
+        limit = {check_variable = {tank_stocks_2 < 200}}
+        if = {
+            limit = {
+                has_dlc = "No Step Back"
+            }
+            add_equipment_to_stockpile = {
+				type = modern_tank_chassis_2
+				amount = tank_stocks_2
+			}
+        }
+        else = {
+            add_equipment_to_stockpile = {
+				type = modern_tank_equipment_2
+				amount = tank_stocks_2
+			}
+        }
+        set_variable = {var = tank_stocks_2 value = 0}
+    }
+    else = {
+        if = {
+            limit = {
+                has_dlc = "No Step Back"
+            }
+            add_equipment_to_stockpile = {
+				type = modern_tank_chassis_2
+				amount = 200
+			}
+        }
+        else = {
+            add_equipment_to_stockpile = {
+				type = modern_tank_equipment_2
+				amount = 200
+			}
+        }
+        subtract_from_variable = {var = tank_stocks_2 value = 200}
+    }
+}
+remove_AFV_1 = {
+    if = {
+        limit = {check_variable = {AFV_stocks_1 < 200}}
+        if = {
+            limit = {
+                has_dlc = "No Step Back"
+            }
+            add_equipment_to_stockpile = {
+				type = light_tank_chassis_1
+				amount = AFV_stocks_1
+			}
+        }
+        else = {
+            add_equipment_to_stockpile = {
+				type = mechanized_equipment_1
+				amount = AFV_stocks_1
+			}
+        }
+        set_variable = {var = AFV_stocks_1 value = 0}
+    }
+    else = {
+        if = {
+            limit = {
+                has_dlc = "No Step Back"
+            }
+            add_equipment_to_stockpile = {
+				type = light_tank_chassis_1
+				amount = 200
+			}
+        }
+        else = {
+            add_equipment_to_stockpile = {
+				type = mechanized_equipment_1
+				amount = 200
+			}
+        }
+        subtract_from_variable = {var = AFV_stocks_1 value = 200}
+    }
+}
+remove_AFV_2 = {
+    if = {
+        limit = {check_variable = {AFV_stocks_2 < 200}}
+        if = {
+            limit = {
+                has_dlc = "No Step Back"
+            }
+            add_equipment_to_stockpile = {
+				type = light_tank_chassis_2
+				amount = AFV_stocks_2
+			}
+        }
+        else = {
+            add_equipment_to_stockpile = {
+				type = mechanized_equipment_2
+				amount = AFV_stocks_2
+			}
+        }
+        set_variable = {var = AFV_stocks_2 value = 0}
+    }
+    else = {
+        if = {
+            limit = {
+                has_dlc = "No Step Back"
+            }
+            add_equipment_to_stockpile = {
+				type = light_tank_chassis_2
+				amount = 200
+			}
+        }
+        else = {
+            add_equipment_to_stockpile = {
+				type = mechanized_equipment_2
+				amount = 200
+			}
+        }
+        subtract_from_variable = {var = AFV_stocks_2 value = 200}
+    }
+}
+remove_APC_1 = {
+    if = {
+        limit = {check_variable = {APC_stocks_1 < 200}}
+
+        add_equipment_to_stockpile = {
+			type = light_mechanized_equipment_1
+			amount = APC_stocks_1
+		}
+        set_variable = {var = APC_stocks_1 value = 0}
+    }
+    else = {
+        add_equipment_to_stockpile = {
+			type = light_mechanized_equipment_1
+			amount = 200
+		}
+        subtract_from_variable = {var = APC_stocks_1 value = 200}
+    }
+}
+remove_recon_1 = {
+    if = {
+        limit = {check_variable = {recon_stocks_1 < 200}}
+        if = {
+            limit = {
+                has_dlc = "No Step Back"
+            }
+            add_equipment_to_stockpile = {
+				type = light_tank_destroyer_chassis_0
+				amount = recon_stocks_1
+			}
+        }
+        else = {
+            add_equipment_to_stockpile = {
+				type = light_tank_equipment_1
+				amount = recon_stocks_1
+			}
+        }
+        set_variable = {var = recon_stocks_1 value = 0}
+    }
+    else = {
+        if = {
+            limit = {
+                has_dlc = "No Step Back"
+            }
+            add_equipment_to_stockpile = {
+				type = light_tank_destroyer_chassis_0
+				amount = 200
+			}
+        }
+        else = {
+            add_equipment_to_stockpile = {
+				type = GER_light_tank_equipment_1
+				amount = 200
+			}
+        }
+        subtract_from_variable = {var = recon_stocks_1 value = 200}
+    }
+}
