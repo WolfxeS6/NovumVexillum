@@ -215,14 +215,20 @@ NVX_Event_manager_monthly = {
             }
         }
         2= { #Shariah Patrols (Islamist countries)
-            modifier = { factor = 0 NOT = {
-                OR = {
-                    has_government = islamist
-                    islamist > 0.25
+            modifier = { factor = 0 
+                NOT = {
+                    OR = {
+                        OR = {
+                            has_government = islamist
+                            islamist > 0.25
+                        }
+                        AND = {
+                            has_stability  < 0.75
+                            islamist > 0.05
+                        }
+                    }
                 }
-                has_stability  < 0.80
             }
-        }
             modifier = { factor = 1.5 has_stability  < 0.60 }
             modifier = { factor = 1.5 has_stability  < 0.40 }
             country_event = {
