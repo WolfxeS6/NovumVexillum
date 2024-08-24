@@ -289,25 +289,31 @@ on_actions = {
 				}
 				if = {
 					limit = {
-						NOT = { has_global_flag = pts_disable_warfaring }
-						has_army_manpower = {
-							size > 1000
-						}
+						is_ai = yes
 					}
-					NVX_capricious_wars_check = yes
+					set_variable = { NVX_nofisc_division_capacity = num_of_factories }
+					if = {
+						limit = { check_variable = { NVX_nofisc_division_capacity < 24 } }
+						set_variable = { NVX_nofisc_division_capacity = 8 }
+					}
+					if = {
+						limit = { is_major = no }
+						divide_variable = { NVX_nofisc_division_capacity = 2 }
+					}
 				}
-				set_variable = { NVX_nofisc_division_capacity = num_of_factories }
-				if = {
-					limit = { check_variable = { NVX_nofisc_division_capacity < 24 } }
-					set_variable = { NVX_nofisc_division_capacity = 8 }
-				}
-				if = {
-					limit = { is_major = no }
-					divide_variable = { NVX_nofisc_division_capacity = 2 }
+				else = {
+					if = {
+						limit = { check_variable = { NVX_ECO_tax_extreme = 0 } } #check if it's broken
+						NVX_LPA_calc_slots = yes
+						NVX_ECO_start = yes
+						NVX_national_preferences_set = yes
+						NVX_COUP_data_set = yes
+					}
+					NVX_ECO_calc = yes
+					NVX_ECO_pax_monthly = yes
+					NVX_LPA_focus_future_monthly = yes
 				}
 				NVX_ECO_monthly = yes
-				NVX_ECO_pax_monthly = yes
-				NVX_LPA_focus_future_monthly = yes
 				NVX_Estate_manager_monthly = yes
 				NVX_Event_manager_monthly = yes
 				if = {
@@ -348,4 +354,29 @@ on_actions = {
             }
         }
     }
+	on_yearly = {
+		effect = {
+			if = {
+				limit = {
+					#country_exists = ROOT
+					NOT = {has_idea = Small_nation}
+				}
+				if = {
+					limit = {
+						NOT = { has_global_flag = pts_disable_warfaring }
+						has_army_manpower = {
+							size > 1000
+						}
+					}
+					NVX_capricious_wars_check = yes
+				}
+				if = {
+					limit = {
+						is_ai = yes
+					}
+					NVX_ECO_calc = yes
+				}
+			}
+		}
+	}
 }
