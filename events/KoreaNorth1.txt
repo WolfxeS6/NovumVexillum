@@ -312,30 +312,32 @@ news_event = {
 	title = north_korea_news.10.t
 	
 	immediate = {
-		if = {
-			limit = {
-				PRK = { 
-					OR = {
-						has_government = fascist
-						has_government = nationalist
+		hidden_effect = {
+			if = {
+				limit = {
+					PRK = { 
+						OR = {
+							has_government = fascist
+							has_government = nationalist
+						}
 					}
 				}
+				set_global_flag = dpr_fascist_DPR_korea_reunification_sp
+				activate_superevent_music = yes
 			}
-			set_global_flag = dpr_fascist_DPR_korea_reunification_sp
-			activate_superevent_music = yes
-		}
-		else_if = {
-			limit = {
-				PRK = { 
-					has_government = communist
+			else_if = {
+				limit = {
+					PRK = { 
+						has_government = communist
+					}
 				}
+				set_global_flag = dpr_communist_DPR_korea_reunification_sp
+				activate_superevent_music = yes
 			}
-			set_global_flag = dpr_communist_DPR_korea_reunification_sp
-			activate_superevent_music = yes
-		}
-		else = {
-			set_global_flag = dpr_democratic_DPR_korea_reunification_sp
-			activate_superevent_music = yes
+			else = {
+				set_global_flag = dpr_democratic_DPR_korea_reunification_sp
+				activate_superevent_music = yes
+			}
 		}
 	}
 	
