@@ -24,22 +24,6 @@ default_army_production_strategy = {
 	}
 
 	abort = { always = no }
-
-	ai_strategy = {
-		type = equipment_production_min_factories
-		id = infantry_equipment
-		value = 2
-	}
-	ai_strategy = {
-		type = equipment_production_min_factories
-		id = artillery_equipment
-		value = 1
-	}
-	ai_strategy = {
-		type = equipment_production_min_factories
-		id = motorized_equipment
-		value = 2
-	}
 }
 
 default_area_priority = {
@@ -231,22 +215,6 @@ China_must_grow_larger = {
 	}
 	abort = { always = no }
 
-	ai_strategy = {
-		type = equipment_production_min_factories
-		id = infantry_equipment
-		value = 2
-	}
-	ai_strategy = {
-		type = equipment_production_min_factories
-		id = artillery_equipment
-		value = 3
-	}
-	ai_strategy = {
-		type = equipment_production_min_factories
-		id = motorized_equipment
-		value = 5
-	}
-
 	ai_strategy = { type = build_army id = fighter value = 20 }
 	ai_strategy = { type = build_army id = cas value = 5 }
 	ai_strategy = { type = build_army id = tactical_bomber value = 0 }
@@ -322,11 +290,6 @@ stop_making_artillery_equipment = {
 
 	abort = { has_equipment = { artillery_equipment < 1500 } }
 	ai_strategy = {
-		type = equipment_production_min_factories
-		id = artillery
-		value = -1
-	}
-	ai_strategy = {
 		type = equipment_variant_production_factor
 		id = artillery_equipment
 		value = -1000
@@ -348,11 +311,6 @@ stop_making_small_arms_equipment = {
 		id = infantry_equipment
 		value = -10000
 	}
-	ai_strategy = {
-		type = equipment_production_min_factories
-		id = infantry
-		value = -2
-	}
 	
 }
 stop_making_motorised_equipment = {
@@ -365,11 +323,6 @@ stop_making_motorised_equipment = {
 		type = equipment_variant_production_factor
 		id = motorized_equipment
 		value = -10000
-	}
-	ai_strategy = {
-		type = equipment_production_min_factories
-		id = motorized_equipment
-		value = -2
 	}
 }
 why_do_you_make_rocket_arty = {
