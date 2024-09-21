@@ -1073,721 +1073,6 @@ PRC_coup_plan_decision_category = {
 	}
 }
 
-PRC_alliance_decisions = {
-	
-	PRC_Invite_pakistan = {
-		name = PRC_Invite_Country
-		icon = generic_agreement
-		
-		visible = {
-			country_exists = PAK
-		}
-
-		available = {
-			NOT = { has_war_with = PAK }
-			OR = {
-				has_global_flag = PRC_world_plan
-				threat > 0.1
-			}
-			FROM = { 
-				is_subject = no
-				OR = {
-					is_in_faction = no
-					is_faction_leader = yes
-				}
-			}
-		}
-
-		targets = { PAK }
-		
-		target_root_trigger = {
-			has_completed_focus = PRC_socialist_foreign_policy
-		}
-		
-		target_trigger = {
-			is_faction_leader = yes
-			FROM = {
-				NOT = { has_war_with = ROOT }
-				is_subject = no
-				OR = {
-					is_in_faction = no
-					is_faction_leader = yes
-				}
-			}
-		}
-
-		cost = 0
-		fire_only_once = yes
-
-		ai_will_do = {
-			factor = 1000
-			modifier = {
-				factor = 0
-				FROM = {
-					any_owned_state = { 
-						OR = {
-							is_claimed_by = ROOT
-							is_core_of = ROOT
-						} 
-					}
-				}
-			}
-			modifier = {
-				factor = 0
-				FROM = {
-					any_owned_state = { 
-						OR = {
-							is_claimed_by = ROOT
-							is_core_of = ROOT
-						} 
-					}
-				}
-			}
-		}
-
-		complete_effect = {
-			FROM = { country_event = { id = pr_china_diplomacy.1 days = 1 random_hours = 24 } }
-		}
-	}
-	
-	PRC_Invite_iran = {
-		name = PRC_Invite_Country
-		icon = generic_agreement
-		
-		visible = {
-			country_exists = PER
-		}
-
-		available = {
-			NOT = { has_war_with = PER }
-			OR = {
-				has_global_flag = PRC_world_plan
-				threat > 0.1
-			}
-			FROM = { 
-				is_subject = no
-				OR = {
-					is_in_faction = no
-					is_faction_leader = yes
-				}
-			}
-		}
-
-		targets = { PER }
-		
-		target_root_trigger = {
-			has_completed_focus = PRC_socialist_foreign_policy
-		}
-		
-		target_trigger = {
-			is_faction_leader = yes
-			FROM = {
-				NOT = { has_war_with = ROOT }
-				is_subject = no
-				OR = {
-					is_in_faction = no
-					is_faction_leader = yes
-				}
-			}
-		}
-
-		cost = 0
-		fire_only_once = yes
-
-		ai_will_do = {
-			factor = 1000
-			modifier = {
-				factor = 0
-				FROM = {
-					any_owned_state = { 
-						OR = {
-							is_claimed_by = ROOT
-							is_core_of = ROOT
-						} 
-					}
-				}
-			}
-			modifier = {
-				factor = 0
-				FROM = {
-					any_owned_state = { 
-						OR = {
-							is_claimed_by = ROOT
-							is_core_of = ROOT
-						} 
-					}
-				}
-			}
-		}
-
-		complete_effect = {
-			FROM = { country_event = { id = pr_china_diplomacy.1 days = 1 random_hours = 24 } }
-		}
-	}
-	
-	PRC_Invite_Venezuela = {
-		name = PRC_Invite_Country
-		icon = generic_agreement
-		
-		visible = {
-			country_exists = VEN
-		}
-
-		available = {
-			NOT = { has_war_with = VEN }
-			OR = {
-				has_global_flag = PRC_world_plan
-				threat > 0.1
-			}
-			FROM = { 
-				is_subject = no
-				OR = {
-					is_in_faction = no
-					is_faction_leader = yes
-				}
-			}
-		}
-
-		targets = { VEN }
-		
-		target_root_trigger = {
-			has_completed_focus = PRC_socialist_foreign_policy
-		}
-		
-		ai_will_do = {
-			factor = 1000
-			modifier = {
-				factor = 0
-				FROM = {
-					any_owned_state = { 
-						OR = {
-							is_claimed_by = ROOT
-							is_core_of = ROOT
-						} 
-					}
-				}
-			}
-			modifier = {
-				factor = 0
-				FROM = {
-					any_owned_state = { 
-						OR = {
-							is_claimed_by = ROOT
-							is_core_of = ROOT
-						} 
-					}
-				}
-			}
-		}
-
-		cost = 0
-		fire_only_once = yes
-
-		ai_will_do = {
-			factor = 1000
-			modifier = {
-				factor = 0
-				FROM = {
-					any_owned_state = { 
-						OR = {
-							is_claimed_by = ROOT
-							is_core_of = ROOT
-						} 
-					}
-				}
-			}
-			modifier = {
-				factor = 0
-				FROM = {
-					any_owned_state = { 
-						OR = {
-							is_claimed_by = ROOT
-							is_core_of = ROOT
-						} 
-					}
-				}
-			}
-		}
-
-		complete_effect = {
-			FROM = { country_event = { id = pr_china_diplomacy.1 days = 1 random_hours = 24 } }
-		}
-	}
-	
-	PRC_Invite_DPR_korea = {
-		name = PRC_Invite_Country
-		icon = generic_agreement
-		
-		visible = {
-			country_exists = PRK
-		}
-
-		available = {
-			NOT = { has_war_with = PRK }
-			has_completed_focus = PRC_alliance_with_north_korea
-			OR = {
-				has_global_flag = PRC_world_plan
-				threat > 0.1
-			}
-			FROM = { 
-				is_subject = no
-				OR = {
-					is_in_faction = no
-					is_faction_leader = yes
-				}
-			}
-		}
-
-		targets = { PRK }
-		
-		target_root_trigger = {
-			has_completed_focus = PRC_socialist_foreign_policy
-		}
-		
-		target_trigger = {
-			is_faction_leader = yes
-			FROM = {
-				NOT = { has_war_with = ROOT }
-				is_subject = no
-				OR = {
-					is_in_faction = no
-					is_faction_leader = yes
-				}
-			}
-		}
-
-		cost = 0
-		fire_only_once = yes
-
-		ai_will_do = {
-			factor = 1000
-			modifier = {
-				factor = 0
-				FROM = {
-					any_owned_state = { 
-						OR = {
-							is_claimed_by = ROOT
-							is_core_of = ROOT
-						} 
-					}
-				}
-			}
-			modifier = {
-				factor = 0
-				FROM = {
-					any_owned_state = { 
-						OR = {
-							is_claimed_by = ROOT
-							is_core_of = ROOT
-						} 
-					}
-				}
-			}
-		}
-
-		complete_effect = {
-			FROM = { country_event = { id = pr_china_diplomacy.1 days = 1 random_hours = 24 } }
-		}
-	}
-	
-	PRC_Invite_korea = {
-		name = PRC_Invite_Country
-		icon = generic_agreement
-		
-		visible = {
-			country_exists = KOR
-		}
-
-		available = {
-			NOT = { has_war_with = KOR }
-			has_completed_focus = PRC_alliance_with_south_korea
-			OR = {
-				has_global_flag = PRC_world_plan
-				threat > 0.1
-			}
-			FROM = { 
-				is_subject = no
-				OR = {
-					is_in_faction = no
-					is_faction_leader = yes
-				}
-			}
-		}
-
-		targets = { KOR }
-		
-		target_root_trigger = {
-			has_completed_focus = PRC_socialist_foreign_policy
-		}
-		
-		target_trigger = {
-			is_faction_leader = yes
-			FROM = {
-				NOT = { has_war_with = ROOT }
-				is_subject = no
-				OR = {
-					is_in_faction = no
-					is_faction_leader = yes
-				}
-			}
-		}
-
-		cost = 0
-		fire_only_once = yes
-
-		ai_will_do = {
-			factor = 1000
-			modifier = {
-				factor = 0
-				FROM = {
-					any_owned_state = { 
-						OR = {
-							is_claimed_by = ROOT
-							is_core_of = ROOT
-						} 
-					}
-				}
-			}
-			modifier = {
-				factor = 0
-				FROM = {
-					any_owned_state = { 
-						OR = {
-							is_claimed_by = ROOT
-							is_core_of = ROOT
-						} 
-					}
-				}
-			}
-		}
-
-		complete_effect = {
-			FROM = { country_event = { id = pr_china_diplomacy.1 days = 1 random_hours = 24 } }
-		}
-	}
-	
-	PRC_Invite_mongolia = {
-		name = PRC_Invite_Country
-		icon = generic_agreement
-		
-		visible = {
-			country_exists = MON
-		}
-
-		available = {
-			NOT = { has_war_with = MON }
-			has_completed_focus = PRC_the_northen_plan
-			OR = {
-				has_global_flag = PRC_world_plan
-				threat > 0.1
-			}
-			FROM = { 
-				is_subject = no
-				OR = {
-					is_in_faction = no
-					is_faction_leader = yes
-				}
-				NOT = { has_completed_focus = MON_victory_dedicated_to_zorig }
-			}
-		}
-
-		targets = { MON }
-		
-		target_root_trigger = {
-			has_completed_focus = PRC_socialist_foreign_policy
-		}
-		
-		target_trigger = {
-			is_faction_leader = yes
-			FROM = {
-				NOT = { has_war_with = ROOT }
-				is_subject = no
-				OR = {
-					is_in_faction = no
-					is_faction_leader = yes
-				}
-			}
-		}
-
-		cost = 0
-		fire_only_once = yes
-
-		ai_will_do = {
-			factor = 1000
-			modifier = {
-				factor = 0
-				FROM = {
-					any_owned_state = { 
-						OR = {
-							is_claimed_by = ROOT
-							is_core_of = ROOT
-						} 
-					}
-				}
-			}
-			modifier = {
-				factor = 0
-				FROM = {
-					any_owned_state = { 
-						OR = {
-							is_claimed_by = ROOT
-							is_core_of = ROOT
-						} 
-					}
-				}
-			}
-		}
-
-		complete_effect = {
-			FROM = { country_event = { id = pr_china_diplomacy.1 days = 1 random_hours = 24 } }
-		}
-	}
-	
-	PRC_Invite_vietnam = {
-		name = PRC_Invite_Country
-		icon = generic_agreement
-		
-		visible = {
-			country_exists = VIN
-		}
-
-		available = {
-			NOT = { has_war_with = VIN }
-			has_completed_focus = PRC_potential_southeast_asian_partners
-			OR = {
-				has_global_flag = PRC_world_plan
-				threat > 0.1
-			}
-			FROM = { 
-				is_subject = no
-				OR = {
-					is_in_faction = no
-					is_faction_leader = yes
-				}
-			}
-		}
-
-		targets = { VIN }
-		
-		target_root_trigger = {
-			has_completed_focus = PRC_socialist_foreign_policy
-		}
-		
-		target_trigger = {
-			is_faction_leader = yes
-			FROM = {
-				NOT = { has_war_with = ROOT }
-				is_subject = no
-				OR = {
-					is_in_faction = no
-					is_faction_leader = yes
-				}
-			}
-		}
-
-		cost = 0
-		fire_only_once = yes
-
-		ai_will_do = {
-			factor = 1000
-			modifier = {
-				factor = 0
-				FROM = {
-					any_owned_state = { 
-						OR = {
-							is_claimed_by = ROOT
-							is_core_of = ROOT
-						} 
-					}
-				}
-			}
-			modifier = {
-				factor = 0
-				FROM = {
-					any_owned_state = { 
-						OR = {
-							is_claimed_by = ROOT
-							is_core_of = ROOT
-						} 
-					}
-				}
-			}
-		}
-
-		complete_effect = {
-			FROM = { country_event = { id = pr_china_diplomacy.1 days = 1 random_hours = 24 } }
-		}
-	}
-	
-	PRC_Invite_laos = {
-		name = PRC_Invite_Country
-		icon = generic_agreement
-		
-		visible = {
-			country_exists = LAO
-		}
-
-		available = {
-			NOT = { has_war_with = LAO }
-			has_completed_focus = PRC_potential_southeast_asian_partners
-			OR = {
-				has_global_flag = PRC_world_plan
-				threat > 0.1
-			}
-			FROM = { 
-				is_subject = no
-				OR = {
-					is_in_faction = no
-					is_faction_leader = yes
-				}
-			}
-		}
-
-		targets = { LAO }
-		
-		target_root_trigger = {
-			has_completed_focus = PRC_socialist_foreign_policy
-		}
-		
-		ai_will_do = {
-			factor = 1000
-			modifier = {
-				factor = 0
-				FROM = {
-					any_owned_state = { 
-						OR = {
-							is_claimed_by = ROOT
-							is_core_of = ROOT
-						} 
-					}
-				}
-			}
-			modifier = {
-				factor = 0
-				FROM = {
-					any_owned_state = { 
-						OR = {
-							is_claimed_by = ROOT
-							is_core_of = ROOT
-						} 
-					}
-				}
-			}
-		}
-
-		cost = 0
-		fire_only_once = yes
-
-		ai_will_do = {
-			factor = 1000
-			modifier = {
-				factor = 0
-				FROM = {
-					any_owned_state = { 
-						OR = {
-							is_claimed_by = ROOT
-							is_core_of = ROOT
-						} 
-					}
-				}
-			}
-			modifier = {
-				factor = 0
-				FROM = {
-					any_owned_state = { 
-						OR = {
-							is_claimed_by = ROOT
-							is_core_of = ROOT
-						} 
-					}
-				}
-			}
-		}
-
-		complete_effect = {
-			FROM = { country_event = { id = pr_china_diplomacy.1 days = 1 random_hours = 24 } }
-		}
-	}
-	
-	PRC_Invite_myanmar = {
-		name = PRC_Invite_Country
-		icon = generic_agreement
-		
-		visible = {
-			country_exists = BRM
-		}
-
-		available = {
-			NOT = { has_war_with = BRM }
-			has_completed_focus = PRC_potential_southeast_asian_partners
-			OR = {
-				has_global_flag = PRC_world_plan
-				threat > 0.1
-			}
-			FROM = { 
-				is_subject = no
-				OR = {
-					is_in_faction = no
-					is_faction_leader = yes
-				}
-			}
-		}
-
-		targets = { BRM }
-		
-		target_root_trigger = {
-			has_completed_focus = PRC_socialist_foreign_policy
-		}
-		
-		target_trigger = {
-			is_faction_leader = yes
-			FROM = {
-				NOT = { has_war_with = ROOT }
-				is_subject = no
-				OR = {
-					is_in_faction = no
-					is_faction_leader = yes
-				}
-			}
-		}
-
-		cost = 0
-		fire_only_once = yes
-
-		ai_will_do = {
-			factor = 1000
-			modifier = {
-				factor = 0
-				FROM = {
-					any_owned_state = { 
-						OR = {
-							is_claimed_by = ROOT
-							is_core_of = ROOT
-						} 
-					}
-				}
-			}
-			modifier = {
-				factor = 0
-				FROM = {
-					any_owned_state = { 
-						OR = {
-							is_claimed_by = ROOT
-							is_core_of = ROOT
-						} 
-					}
-				}
-			}
-		}
-
-		complete_effect = {
-			FROM = { country_event = { id = pr_china_diplomacy.1 days = 1 random_hours = 24 } }
-		}
-	}
-	
-	
-}
-
 PRC_expansionism_plan = {
 
 	PRC_start_world_plan = {
@@ -1891,758 +1176,6 @@ PRC_expansionism_plan = {
 			custom_effect_tooltip = PRC_start_world_plan_tt
 		
 			country_event = { id = pr_china.25 }
-		}
-	}
-	
-	PRC_pressure_mongolia = {
-		name = PRC_pressure_country
-		icon = generic_civil_support
-
-		available = {
-			is_subject = no
-			country_exists = MON
-			NOT = { is_in_faction_with = MON }
-			OR = {
-				has_global_flag = PRC_world_plan
-				threat > 0.25
-			}
-		}
-
-		visible = {
-			has_completed_focus = PRC_socialist_foreign_policy
-		}
-
-		cancel_trigger = {
-			OR = {
-				is_subject = yes
-				#NOT = { can_declare_war_on = var:329.owner }
-			}
-		}
-		
-		targets = { MON }
-		
-		target_root_trigger = {
-			has_completed_focus = PRC_socialist_foreign_policy
-		}
-
-		cost = 30
-		days_remove = 40
-		
-		fire_only_once = yes
-		war_with_target_on_remove = yes
-
-		ai_will_do = {
-			factor = 100
-			modifier = {
-				factor = 0
-				NOT = { has_global_flag = PRC_world_plan }
-			}
-			modifier = {
-				has_war_with = USA
-				factor = 0
-			}
-			modifier = {
-				AND = {
-					has_war_with = PRK
-					surrender_progress > 0.3
-				}
-				factor = 0
-			}
-			modifier = {
-				AND = {
-					has_war_with = KOR
-					surrender_progress > 0.3
-				}
-				factor = 0
-			}
-			modifier = {
-				AND = {
-					has_war_with = SOV
-					surrender_progress > 0.3
-				}
-				factor = 0
-			}
-			modifier = {
-				has_war_with = RAJ
-				factor = 0
-			}
-			modifier = {
-				has_war_with = JAP
-				factor = 0
-			}
-		}
-
-		cancel_effect = {
-			add_political_power = 30
-		}
-
-		complete_effect = {
-		}
-
-		remove_effect = {
-			MON = { country_event = pr_china_diplomacy.7 }
-			custom_effect_tooltip = PRC_diplomatic_demand_tt
-			effect_tooltip = {
-				if = {
-					limit = {
-						has_dlc = "Together for Victory"
-					}
-					set_autonomy = {
-						target = FROM
-						autonomy_state = autonomy_one_country_two_systems
-					}
-				}
-				else = {
-					ROOT = {
-						puppet = FROM
-					}			
-				}
-			}
-		}
-	}
-	
-	PRC_pressure_nepal = {
-		name = PRC_pressure_country
-		icon = generic_civil_support
-
-		available = {
-			is_subject = no
-			country_exists = NEP
-			NOT = { is_in_faction_with = NEP }
-			OR = {
-				has_global_flag = PRC_world_plan
-				threat > 0.25
-			}
-		}
-
-		visible = {
-			has_completed_focus = PRC_socialist_foreign_policy
-		}
-
-		cancel_trigger = {
-			OR = {
-				is_subject = yes
-				#NOT = { can_declare_war_on = var:329.owner }
-			}
-		}
-		
-		targets = { NEP }
-		
-		target_root_trigger = {
-			has_completed_focus = PRC_socialist_foreign_policy
-		}
-
-		cost = 30
-		days_remove = 40
-		
-		fire_only_once = yes
-		war_with_target_on_remove = yes
-
-		ai_will_do = {
-			factor = 100
-			modifier = {
-				factor = 0
-				NOT = { has_global_flag = PRC_world_plan }
-			}
-			modifier = {
-				has_war_with = USA
-				factor = 0
-			}
-			modifier = {
-				AND = {
-					has_war_with = PRK
-					surrender_progress > 0.3
-				}
-				factor = 0
-			}
-			modifier = {
-				AND = {
-					has_war_with = KOR
-					surrender_progress > 0.3
-				}
-				factor = 0
-			}
-			modifier = {
-				AND = {
-					has_war_with = SOV
-					surrender_progress > 0.3
-				}
-				factor = 0
-			}
-			modifier = {
-				has_war_with = RAJ
-				factor = 0
-			}
-			modifier = {
-				has_war_with = JAP
-				factor = 0
-			}
-		}
-
-		cancel_effect = {
-			add_political_power = 30
-		}
-
-		complete_effect = {
-		}
-
-		remove_effect = {
-			NEP = { country_event = pr_china_diplomacy.7 }
-			custom_effect_tooltip = PRC_diplomatic_demand_tt
-			effect_tooltip = {
-				if = {
-					limit = {
-						has_dlc = "Together for Victory"
-					}
-					set_autonomy = {
-						target = FROM
-						autonomy_state = autonomy_one_country_two_systems
-					}
-				}
-				else = {
-					ROOT = {
-						puppet = FROM
-					}			
-				}
-			}
-		}
-	}
-	
-	PRC_pressure_bhutan = {
-		name = PRC_pressure_country
-		icon = generic_civil_support
-
-		available = {
-			is_subject = no
-			country_exists = BHU
-			NOT = { is_in_faction_with = BHU }
-			OR = {
-				has_global_flag = PRC_world_plan
-				threat > 0.25
-			}
-		}
-
-		visible = {
-			has_completed_focus = PRC_socialist_foreign_policy
-		}
-		
-		targets = { BHU }
-		
-		target_root_trigger = {
-			has_completed_focus = PRC_socialist_foreign_policy
-		}
-
-
-		cancel_trigger = {
-			OR = {
-				is_subject = yes
-				#NOT = { can_declare_war_on = var:329.owner }
-			}
-		}
-
-		cost = 30
-		days_remove = 40
-		
-		fire_only_once = yes
-		war_with_target_on_remove = yes
-
-		ai_will_do = {
-			factor = 100
-			modifier = {
-				factor = 0
-				NOT = { has_global_flag = PRC_world_plan }
-			}
-			modifier = {
-				has_war_with = USA
-				factor = 0
-			}
-			modifier = {
-				AND = {
-					has_war_with = PRK
-					surrender_progress > 0.3
-				}
-				factor = 0
-			}
-			modifier = {
-				AND = {
-					has_war_with = KOR
-					surrender_progress > 0.3
-				}
-				factor = 0
-			}
-			modifier = {
-				AND = {
-					has_war_with = SOV
-					surrender_progress > 0.3
-				}
-				factor = 0
-			}
-			modifier = {
-				has_war_with = RAJ
-				factor = 0
-			}
-			modifier = {
-				has_war_with = JAP
-				factor = 0
-			}
-		}
-
-		cancel_effect = {
-			add_political_power = 30
-		}
-
-		complete_effect = {
-		}
-
-		remove_effect = {
-			BHU = { country_event = pr_china_diplomacy.7 }
-			custom_effect_tooltip = PRC_diplomatic_demand_tt
-			effect_tooltip = {
-				if = {
-					limit = {
-						has_dlc = "Together for Victory"
-					}
-					set_autonomy = {
-						target = FROM
-						autonomy_state = autonomy_one_country_two_systems
-					}
-				}
-				else = {
-					ROOT = {
-						puppet = FROM
-					}			
-				}
-			}
-		}
-	}
-	
-	PRC_pressure_spratly_islands = {
-		icon = generic_civil_support
-
-		available = {
-			is_subject = no
-		}
-
-		visible = {
-			has_completed_focus = PRC_socialist_foreign_policy
-		}
-
-		cancel_trigger = {
-			OR = {
-				is_subject = yes
-				#NOT = { can_declare_war_on = var:329.owner }
-			}
-		}
-		
-		target_trigger = { 
-			FROM = {
-				has_spratly_islands = yes
-				NOT = { original_tag = PRC }
-			}
-		}
-		
-		target_root_trigger = {
-			has_completed_focus = PRC_socialist_foreign_policy
-		}
-
-		cost = 15
-		days_remove = 21
-		
-		fire_only_once = yes
-		war_with_target_on_remove = yes
-
-		ai_will_do = {
-			factor = 100
-			modifier = {
-				factor = 0
-				NOT = { has_global_flag = PRC_world_plan }
-			}
-			modifier = {
-				has_war_with = USA
-				factor = 0
-			}
-			modifier = {
-				AND = {
-					has_war_with = PRK
-					surrender_progress > 0.3
-				}
-				factor = 0
-			}
-			modifier = {
-				AND = {
-					has_war_with = KOR
-					surrender_progress > 0.3
-				}
-				factor = 0
-			}
-			modifier = {
-				AND = {
-					has_war_with = SOV
-					surrender_progress > 0.3
-				}
-				factor = 0
-			}
-			modifier = {
-				has_war_with = RAJ
-				factor = 0
-			}
-			modifier = {
-				has_war_with = JAP
-				factor = 0
-			}
-		}
-
-		cancel_effect = {
-			add_political_power = 15
-		}
-
-		complete_effect = {
-		}
-
-		remove_effect = {
-			FROM = { country_event = pr_china_diplomacy.10 }
-		}
-	}
-	
-	PRC_attack_DPR_korea = {
-		name = PRC_attack_country
-		
-		icon = generic_civil_support
-
-		available = {
-			is_subject = no
-			country_exists = PRK
-			NOT = { is_in_faction_with = PRK }
-			has_completed_focus = PRC_north_korea_abandonment
-		}
-
-		visible = {
-			has_completed_focus = PRC_socialist_foreign_policy
-		}
-
-		cancel_trigger = {
-			OR = {
-				is_subject = yes
-				#NOT = { can_declare_war_on = var:329.owner }
-			}
-		}
-		
-		targets = { PRK }
-		
-		target_root_trigger = {
-			has_completed_focus = PRC_socialist_foreign_policy
-		}
-
-		cost = 25
-		days_remove = 25
-		
-		fire_only_once = yes
-		war_with_target_on_remove = yes
-
-		ai_will_do = {
-			factor = 100
-			modifier = {
-				factor = 0
-				NOT = { has_global_flag = PRC_world_plan }
-			}
-			modifier = {
-				factor = 0
-				OR = {
-					has_war = yes
-				}
-			}
-			
-			modifier = {
-				has_war_with = USA
-				factor = 0
-			}
-			modifier = {
-				AND = {
-					has_war_with = PRK
-					surrender_progress > 0.3
-				}
-				factor = 0
-			}
-			modifier = {
-				AND = {
-					has_war_with = KOR
-					surrender_progress > 0.3
-				}
-				factor = 0
-			}
-			modifier = {
-				AND = {
-					has_war_with = SOV
-					surrender_progress > 0.3
-				}
-				factor = 0
-			}
-			modifier = {
-				has_war_with = RAJ
-				factor = 0
-			}
-			modifier = {
-				has_war_with = JAP
-				factor = 0
-			}
-		}
-
-		cancel_effect = {
-			add_political_power = 25
-		}
-
-		complete_effect = {
-		}
-
-		remove_effect = {
-			declare_war_on = { target = FROM type = annex_everything }
-		}
-	}
-	
-	PRC_attack_okinawa = {
-		name = PRC_attack_country
-		
-		icon = generic_civil_support
-
-		available = {
-			is_subject = no
-			country_exists = RYU
-			NOT = { is_in_faction_with = RYU }
-			has_completed_focus = PRC_the_eastern_plan
-		}
-
-		visible = {
-			has_completed_focus = PRC_socialist_foreign_policy
-		}
-
-		cancel_trigger = {
-			OR = {
-				is_subject = yes
-				#NOT = { can_declare_war_on = var:329.owner }
-			}
-		}
-		
-		targets = { RYU }
-		
-		target_root_trigger = {
-			has_completed_focus = PRC_socialist_foreign_policy
-		}
-
-		cost = 25
-		days_remove = 25
-		
-		fire_only_once = yes
-		war_with_target_on_remove = yes
-
-		ai_will_do = {
-			factor = 0
-			modifier = {
-				factor = 0
-				NOT = { has_global_flag = PRC_world_plan }
-			}
-			modifier = {
-				add = 4
-				RYU = {
-					AND = {
-						has_completed_focus = RYU_only_juche
-						NOT = { is_in_faction_with = PRC }
-					}
-				}
-			}
-		}
-
-		cancel_effect = {
-			add_political_power = 25
-		}
-
-		complete_effect = {
-		}
-
-		remove_effect = {
-			declare_war_on = { target = FROM type = annex_everything }
-		}
-	}
-	
-	PRC_attack_japan = {
-		name = PRC_attack_country
-		
-		icon = generic_civil_support
-
-		available = {
-			is_subject = no
-			country_exists = JAP
-			NOT = { is_in_faction_with = JAP }
-			has_completed_focus = PRC_invasion_of_japan
-		}
-
-		visible = {
-			has_completed_focus = PRC_socialist_foreign_policy
-		}
-
-		cancel_trigger = {
-			OR = {
-				is_subject = yes
-				#NOT = { can_declare_war_on = var:329.owner }
-			}
-		}
-		
-		targets = { JAP }
-		
-		target_root_trigger = {
-			has_completed_focus = PRC_socialist_foreign_policy
-		}
-
-		cost = 25
-		days_remove = 25
-		
-		fire_only_once = yes
-		war_with_target_on_remove = yes
-
-		ai_will_do = {
-			factor = 100
-			modifier = {
-				factor = 0
-				OR = {
-					has_war = yes
-				}
-			}
-			modifier = {
-				NOT = { has_global_flag = PRC_world_plan }
-				factor = 0
-			}
-		}
-
-		cancel_effect = {
-			add_political_power = 25
-		}
-
-		complete_effect = {
-		}
-
-		remove_effect = {
-			declare_war_on = { target = FROM type = annex_everything }
-		}
-	}
-	
-	PRC_attack_america = {
-		name = PRC_attack_country
-		
-		icon = generic_civil_support
-
-		available = {
-			is_subject = no
-			country_exists = USA
-			NOT = { is_in_faction_with = USA }
-			has_completed_focus = PRC_challenge_to_american_hegemony
-		}
-
-		visible = {
-			has_completed_focus = PRC_socialist_foreign_policy
-		}
-
-		cancel_trigger = {
-			OR = {
-				is_subject = yes
-				#NOT = { can_declare_war_on = var:329.owner }
-			}
-		}
-		
-		targets = { USA }
-		
-		target_root_trigger = {
-			has_completed_focus = PRC_socialist_foreign_policy
-		}
-
-		cost = 25
-		days_remove = 25
-		
-		fire_only_once = yes
-		war_with_target_on_remove = yes
-
-		ai_will_do = {
-			factor = 100
-			modifier = {
-				factor = 0
-				OR = {
-					has_war = yes
-				}
-			}
-			modifier = {
-				NOT = { has_global_flag = PRC_world_plan }
-				factor = 0
-			}
-		}
-
-		cancel_effect = {
-			add_political_power = 25
-		}
-
-		complete_effect = {
-		}
-
-		remove_effect = {
-			declare_war_on = { target = FROM type = annex_everything }
-		}
-	}
-	
-	PRC_attack_russia = {
-		name = PRC_attack_country
-		
-		icon = generic_civil_support
-
-		available = {
-			is_subject = no
-			country_exists = SOV
-			NOT = { is_in_faction_with = SOV }
-			has_completed_focus = PRC_destruction_of_russia
-		}
-
-		visible = {
-			has_completed_focus = PRC_socialist_foreign_policy
-		}
-
-		cancel_trigger = {
-			OR = {
-				is_subject = yes
-				#NOT = { can_declare_war_on = var:329.owner }
-			}
-		}
-		
-		targets = { SOV }
-		
-		target_root_trigger = {
-			has_completed_focus = PRC_socialist_foreign_policy
-		}
-
-		cost = 25
-		days_remove = 25
-		
-		fire_only_once = yes
-		war_with_target_on_remove = yes
-
-		ai_will_do = {
-			factor = 100
-			modifier = {
-				factor = 0
-				OR = {
-					has_war = yes
-				}
-			}
-			modifier = {
-				NOT = { has_global_flag = PRC_world_plan }
-				factor = 0
-			}
-		}
-
-		cancel_effect = {
-			add_political_power = 25
-		}
-
-		complete_effect = {
-		}
-
-		remove_effect = {
-			declare_war_on = { target = FROM type = annex_everything }
 		}
 	}
 	
@@ -2946,6 +1479,741 @@ PRC_outer_china_occupation_category = {
 
 }
 
-#PRC_national_defense_category = {
-#
-#}
+PRC_beijing_crisis_category = {
+	PRC_beijing_crisis_mission = {
+
+		allowed = { tag = PRC }
+
+		icon = GFX_decision_eng_blackshirt_march
+
+		available = {
+			hidden_trigger = { always = no }
+		}
+
+		days_mission_timeout = 300
+		is_good = no
+		fire_only_once = yes
+
+		cancel_trigger = {
+			NOT = { has_idea = PRC_beijing_crisis }
+		}
+		
+		activation = {
+			has_idea = PRC_beijing_crisis
+		}
+
+		visible = {
+			has_idea = PRC_beijing_crisis
+		}
+		
+		cancel_effect = {
+		
+		}
+
+		timeout_effect = {
+			custom_effect_tooltip = PRC_beijing_crisis_mission_tt
+			#hidden_effect = {
+				if = {
+					limit { check_variable = { PRCBeijingCrisis > 70 } }
+					country_event = { id = pr_china.2011 }
+				}
+				else_if = {
+					limit { check_variable = { PRCBeijingCrisis > 30 } }
+					country_event = { id = pr_china.2014 }
+				}
+				else = {
+					country_event = { id = pr_china.2013 }
+				}
+			#}
+		}
+
+		ai_will_do = {
+			factor = 200
+		}
+	}
+
+	PRC_beijing_crisis_worsened = {
+
+		allowed = { tag = PRC }
+
+		icon = GFX_decision_generic_political_discourse
+
+		available = {
+			hidden_trigger = { always = no }
+		}
+
+		days_mission_timeout = 21
+		is_good = no
+		fire_only_once = no
+
+		cancel_trigger = {
+			NOT = { has_idea = PRC_beijing_crisis }
+		}
+		
+		activation = {
+			has_idea = PRC_beijing_crisis
+		}
+
+		visible = {
+			has_idea = PRC_beijing_crisis
+		}
+		
+		cancel_effect = {
+		
+		}
+
+		timeout_effect = {
+			add_to_variable = { PRCBeijingCrisis = 4 } 
+			custom_effect_tooltip = PRC_beijing_crisis_add_4_tt
+			clamp_variable = {
+				var = PRCBeijingCrisis
+				min = 0
+				max = 100
+			}
+		}
+
+		ai_will_do = {
+			factor = 200
+		}
+	}
+
+	PRC_beijing_crisis_negotiations = {
+		icon = generic_political_discourse
+		
+		allowed = {
+			original_tag = PRC
+		}
+
+		available = {
+		}
+		
+		fire_only_once = no
+		
+		cost = 20
+
+		complete_effect = {
+			custom_effect_tooltip = NVX_decision_returns_days_14
+		}
+
+		remove_effect = {
+			add_to_variable = { PRCBeijingCrisis = -4 } 
+			custom_effect_tooltip = PRC_beijing_crisis_sub_4_tt
+			clamp_variable = {
+				var = PRCBeijingCrisis
+				min = 0
+				max = 100
+			}
+		}
+
+		ai_will_do = {
+			base = 20
+			modifier = {
+				factor = 0
+				check_variable = { PRCBeijingCrisis < 15 }
+			}
+		}
+	}
+
+	PRC_enforcement_of_curfew = {
+		icon = GFX_decision_generic_police_action
+		
+		allowed = {
+			original_tag = PRC
+		}
+
+		available = {
+		}
+		
+		fire_only_once = no
+		
+		ai_hint_pp_cost = 25
+		
+		custom_cost_trigger = {
+			command_power > 24
+		}
+
+		days_remove = 14
+		days_re_enable = 14
+
+		custom_cost_text = decision_cost_CP_25
+
+		complete_effect = {
+			custom_effect_tooltip = NVX_decision_returns_days_14
+		}
+
+		remove_effect = {
+			add_to_variable = { PRCBeijingCrisis = -4 } 
+			custom_effect_tooltip = PRC_beijing_crisis_sub_4_tt
+			clamp_variable = {
+				var = PRCBeijingCrisis
+				min = 0
+				max = 100
+			}
+		}
+
+		ai_will_do = {
+			base = 20
+			modifier = {
+				factor = 0
+				check_variable = { PRCBeijingCrisis < 15 }
+			}
+		}
+	}
+
+	PRC_compensation_to_LGBTQ_organizations = {
+		icon = GFX_decision_eng_propaganda_campaigns
+		
+		allowed = {
+			original_tag = PRC
+		}
+
+		available = {
+		}
+		
+		fire_only_once = yes
+		
+		cost = 35
+
+		complete_effect = {
+		}
+
+		remove_effect = {
+			add_to_variable = { PRCBeijingCrisis = -6 } 
+			custom_effect_tooltip = PRC_beijing_crisis_sub_6_tt
+			clamp_variable = {
+				var = PRCBeijingCrisis
+				min = 0
+				max = 100
+			}
+		}
+
+		ai_will_do = {
+			base = 20
+			modifier = {
+				factor = 0
+				check_variable = { PRCBeijingCrisis < 35 }
+			}
+		}
+	}
+
+	PRC_compensation_to_communist_organizations = {
+		icon = GFX_decision_eng_propaganda_campaigns
+		
+		allowed = {
+			original_tag = PRC
+		}
+
+		available = {
+		}
+		
+		fire_only_once = yes
+		
+		cost = 35
+
+		complete_effect = {
+		}
+
+		remove_effect = {
+			add_to_variable = { PRCBeijingCrisis = -6 } 
+			custom_effect_tooltip = PRC_beijing_crisis_sub_6_tt
+			clamp_variable = {
+				var = PRCBeijingCrisis
+				min = 0
+				max = 100
+			}
+		}
+
+		ai_will_do = {
+			base = 20
+			modifier = {
+				factor = 0
+				check_variable = { PRCBeijingCrisis < 35 }
+			}
+		}
+	}
+
+	PRC_ask_zhao = {
+		icon = GFX_decision_generic_political_discourse
+		
+		allowed = {
+			original_tag = PRC
+		}
+
+		available = {
+		}
+		
+		fire_only_once = yes
+		
+		cost = 35
+
+		complete_effect = {
+		}
+
+		remove_effect = {
+			add_to_variable = { PRCBeijingCrisis = -8 } 
+			custom_effect_tooltip = PRC_beijing_crisis_sub_8_tt
+			clamp_variable = {
+				var = PRCBeijingCrisis
+				min = 0
+				max = 100
+			}
+		}
+
+		ai_will_do = {
+			base = 20
+			modifier = {
+				factor = 0
+				check_variable = { PRCBeijingCrisis < 50 }
+			}
+		}
+	}
+
+	PRC_provoking_protesters = {
+		icon = POL_organize_strike_two
+		
+		allowed = {
+			original_tag = PRC
+		}
+
+		available = {
+		}
+		
+		fire_only_once = no
+	
+		cost = 15
+
+		days_remove = 14
+		days_re_enable = 14
+
+		complete_effect = {
+			custom_effect_tooltip = NVX_decision_returns_days_14
+		}
+
+		remove_effect = {
+			add_to_variable = { PRCBeijingCrisis = 4 } 
+			custom_effect_tooltip = PRC_beijing_crisis_add_4_tt
+			clamp_variable = {
+				var = PRCBeijingCrisis
+				min = 0
+				max = 100
+			}
+		}
+
+		ai_will_do = {
+			base = 20
+			modifier = {
+				factor = 0
+				check_variable = { PRCBeijingCrisis > 80 }
+			}
+		}
+	}
+}
+
+PRC_tianxia_enemy_category = {
+
+	PRC_tianxia_enemy_CHI = {
+		icon = POL_organize_strike_two
+		
+		allowed = {
+			original_tag = PRC
+		}
+
+		available = {
+			country_exists = CHI
+			has_war_with = CHI
+			NOT = { has_country_flag = PRC_tianxia_flag }
+		}
+		
+		fire_only_once = no
+	
+		cost = 15
+
+		complete_effect = {
+			set_variable = { global.tianxia_enemy = CHI }
+			custom_effect_tooltip = NVX_decision_returns_days_365
+			custom_effect_tooltip = PRC_tianxia_enemy_tt
+			set_country_flag = {
+			    flag = PRC_tianxia_flag
+			    days = 365
+			    value = 1
+			}
+		}
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 10
+				has_war_with = CHI
+				NOT = { has_war_with = USA }
+			}
+		}
+	}
+
+	PRC_tianxia_enemy_KOR = {
+		icon = POL_organize_strike_two
+		
+		allowed = {
+			original_tag = PRC
+		}
+
+		available = {
+			country_exists = KOR
+			has_war_with = KOR
+			NOT = { has_country_flag = PRC_tianxia_flag }
+		}
+
+		visible = {
+			has_completed_focus = PRC_east_asian_traditional_order
+		}
+		
+		fire_only_once = no
+	
+		cost = 15
+
+		complete_effect = {
+			set_variable = { global.tianxia_enemy = KOR }
+			custom_effect_tooltip = NVX_decision_returns_days_365
+			custom_effect_tooltip = PRC_tianxia_enemy_tt
+			set_country_flag = {
+			    flag = PRC_tianxia_flag
+			    days = 365
+			    value = 1
+			}
+		}
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 10
+				has_war_with = KOR
+				NOT = { has_war_with = USA }
+			}
+		}
+	}
+
+	PRC_tianxia_enemy_PRK = {
+		icon = POL_organize_strike_two
+		
+		allowed = {
+			original_tag = PRC
+		}
+
+		available = {
+			country_exists = PRK
+			has_war_with = PRK
+			NOT = { has_country_flag = PRC_tianxia_flag }
+		}
+
+		visible = {
+			has_completed_focus = PRC_east_asian_traditional_order
+		}
+		
+		fire_only_once = no
+	
+		cost = 15
+
+		complete_effect = {
+			set_variable = { global.tianxia_enemy = PRK }
+			custom_effect_tooltip = NVX_decision_returns_days_365
+			custom_effect_tooltip = PRC_tianxia_enemy_tt
+			set_country_flag = {
+			    flag = PRC_tianxia_flag
+			    days = 365
+			    value = 1
+			}
+		}
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 2
+				has_war_with = PRK
+				NOT = { has_war_with = USA }
+			}
+		}
+	}
+
+	PRC_tianxia_enemy_JAP = {
+		icon = POL_organize_strike_two
+		
+		allowed = {
+			original_tag = PRC
+		}
+
+		visible = {
+			has_completed_focus = PRC_east_asian_traditional_order
+		}
+
+		available = {
+			country_exists = JAP
+			has_war_with = JAP
+			NOT = { has_country_flag = PRC_tianxia_flag }
+		}
+		
+		fire_only_once = no
+	
+		cost = 15
+
+		complete_effect = {
+			set_variable = { global.tianxia_enemy = JAP }
+			custom_effect_tooltip = NVX_decision_returns_days_365
+			custom_effect_tooltip = PRC_tianxia_enemy_tt
+			set_country_flag = {
+			    flag = PRC_tianxia_flag
+			    days = 365
+			    value = 1
+			}
+		}
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 2
+				has_war_with = JAP
+				NOT = { has_war_with = USA }
+			}
+		}
+	}
+
+	PRC_tianxia_enemy_VIN = {
+		icon = POL_organize_strike_two
+		
+		allowed = {
+			original_tag = PRC
+		}
+
+		visible = {
+			has_completed_focus = PRC_southen_plan
+		}
+
+		available = {
+			country_exists = VIN
+			has_war_with = VIN
+			NOT = { has_country_flag = PRC_tianxia_flag }
+		}
+		
+		fire_only_once = no
+	
+		cost = 15
+
+		complete_effect = {
+			set_variable = { global.tianxia_enemy = VIN }
+			custom_effect_tooltip = NVX_decision_returns_days_365
+			custom_effect_tooltip = PRC_tianxia_enemy_tt
+			set_country_flag = {
+			    flag = PRC_tianxia_flag
+			    days = 365
+			    value = 1
+			}
+		}
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 10
+				has_war_with = VIN
+				NOT = { has_war_with = USA }
+			}
+		}
+	}
+
+	PRC_tianxia_enemy_PHI = {
+		icon = POL_organize_strike_two
+		
+		allowed = {
+			original_tag = PRC
+		}
+
+		visible = {
+			has_completed_focus = PRC_southen_plan
+		}
+
+		available = {
+			country_exists = PHI
+			has_war_with = PHI
+			NOT = { has_country_flag = PRC_tianxia_flag }
+		}
+		
+		fire_only_once = no
+	
+		cost = 15
+
+		complete_effect = {
+			set_variable = { global.tianxia_enemy = PHI }
+			custom_effect_tooltip = NVX_decision_returns_days_365
+			custom_effect_tooltip = PRC_tianxia_enemy_tt
+			set_country_flag = {
+			    flag = PRC_tianxia_flag
+			    days = 365
+			    value = 1
+			}
+		}
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 10
+				has_war_with = PHI
+				NOT = { has_war_with = USA }
+			}
+		}
+	}
+
+	PRC_tianxia_enemy_RAJ = {
+		icon = POL_organize_strike_two
+		
+		allowed = {
+			original_tag = PRC
+		}
+
+		visible = {
+			has_completed_focus = PRC_southwest_plan
+		}
+
+		available = {
+			country_exists = RAJ
+			has_war_with = RAJ
+			NOT = { has_country_flag = PRC_tianxia_flag }
+		}
+		
+		fire_only_once = no
+	
+		cost = 15
+
+		complete_effect = {
+			set_variable = { global.tianxia_enemy = RAJ }
+			custom_effect_tooltip = NVX_decision_returns_days_365
+			custom_effect_tooltip = PRC_tianxia_enemy_tt
+			set_country_flag = {
+			    flag = PRC_tianxia_flag
+			    days = 365
+			    value = 1
+			}
+		}
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 30
+				has_war_with = RAJ
+				NOT = { has_war_with = USA }
+			}
+		}
+	}
+
+	PRC_tianxia_enemy_USA = {
+		icon = POL_organize_strike_two
+		
+		allowed = {
+			original_tag = PRC
+		}
+
+		visible = {
+			has_completed_focus = PRC_the_western_plan
+		}
+
+		available = {
+			country_exists = USA
+			has_war_with = USA
+			NOT = { has_country_flag = PRC_tianxia_flag }
+		}
+		
+		fire_only_once = no
+	
+		cost = 15
+
+		complete_effect = {
+			set_variable = { global.tianxia_enemy = USA }
+			custom_effect_tooltip = NVX_decision_returns_days_365
+			custom_effect_tooltip = PRC_tianxia_enemy_tt
+			set_country_flag = {
+			    flag = PRC_tianxia_flag
+			    days = 365
+			    value = 1
+			}
+		}
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 100
+				has_war_with = USA
+			}
+		}
+	}
+
+	PRC_tianxia_enemy_CAN = {
+		icon = POL_organize_strike_two
+		
+		allowed = {
+			original_tag = PRC
+		}
+
+		visible = {
+			has_completed_focus = PRC_the_western_plan
+		}
+
+		available = {
+			country_exists = CAN
+			has_war_with = CAN
+			NOT = { has_country_flag = PRC_tianxia_flag }
+		}
+		
+		fire_only_once = no
+	
+		cost = 15
+
+		complete_effect = {
+			set_variable = { global.tianxia_enemy = CAN }
+			custom_effect_tooltip = NVX_decision_returns_days_365
+			custom_effect_tooltip = PRC_tianxia_enemy_tt
+			set_country_flag = {
+			    flag = PRC_tianxia_flag
+			    days = 365
+			    value = 1
+			}
+		}
+
+		ai_will_do = {
+			base = 0
+		}
+	}
+
+	PRC_tianxia_enemy_MEX = {
+		icon = POL_organize_strike_two
+		
+		allowed = {
+			original_tag = PRC
+		}
+
+		visible = {
+			has_completed_focus = PRC_the_western_plan
+		}
+
+		available = {
+			country_exists = MEX
+			has_war_with = MEX
+			NOT = { has_country_flag = PRC_tianxia_flag }
+		}
+		
+		fire_only_once = no
+	
+		cost = 15
+
+		complete_effect = {
+			set_variable = { global.tianxia_enemy = MEX }
+			custom_effect_tooltip = NVX_decision_returns_days_365
+			custom_effect_tooltip = PRC_tianxia_enemy_tt
+			set_country_flag = {
+			    flag = PRC_tianxia_flag
+			    days = 365
+			    value = 1
+			}
+		}
+
+		ai_will_do = {
+			base = 0
+		}
+	}
+
+}

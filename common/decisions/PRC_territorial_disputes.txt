@@ -1,0 +1,379 @@
+
+#
+# Writer : Ran Mitake
+#
+
+JAPPRC_senkaku_and_diaoyu = {
+
+	##### 
+	## JAPAN
+	#####
+
+	JAP_diplomatic_criticism_senkaku = {
+		icon = generic_political_discourse
+
+		ai_will_do = {
+			base = 10
+			modifier = {
+				factor = 3
+				has_political_power > 200
+			}
+			modifier = {
+				factor = 0.1
+				has_political_power < 50
+			}
+			modifier = {
+				factor = 10
+				OR = {
+					876 = { has_dynamic_modifier = { modifier = dynamic_diaoyu_token_1 } }
+					876 = { has_dynamic_modifier = { modifier = dynamic_diaoyu_token_2 } }
+					876 = { has_dynamic_modifier = { modifier = dynamic_diaoyu_token_3 } }
+					876 = { has_dynamic_modifier = { modifier = dynamic_diaoyu_token_4 } }
+				}
+			}
+		}
+
+		available = {
+			NOT = { 876 = { has_dynamic_modifier = { modifier = dynamic_senkaku_token_4 } } }
+		}
+
+		visible = {
+			original_tag = JAP
+		}
+
+		cost = 35
+		days_remove = 42
+		
+		remove_effect = {
+			custom_effect_tooltip = JAP_senkaku_token
+			add_to_variable = { var = GetSenkakuSupport value = 2 }
+			Senkaku_Diaoyu_setting = yes
+			random_list = {
+				40 = { JAP_add_senkaku_token = yes }
+				60 = { }
+			}
+		}
+	}
+	
+	JAP_creation_of_history_education_program_senkaku = {
+		icon = generic_political_discourse
+
+		ai_will_do = {
+			base = 1
+			modifier = {
+				factor = 3
+				has_political_power > 200
+			}
+			modifier = {
+				factor = 5
+				OR = {
+					876 = { has_dynamic_modifier = { modifier = dynamic_diaoyu_token_1 } }
+					876 = { has_dynamic_modifier = { modifier = dynamic_diaoyu_token_2 } }
+					876 = { has_dynamic_modifier = { modifier = dynamic_diaoyu_token_3 } }
+					876 = { has_dynamic_modifier = { modifier = dynamic_diaoyu_token_4 } }
+				}
+			}
+		}
+
+		available = {
+			NOT = { 876 = { has_dynamic_modifier = { modifier = dynamic_senkaku_token_4 } } }
+		}
+
+		visible = {
+			original_tag = JAP
+		}
+
+		cost = 50
+		days_remove = 42
+		
+		remove_effect = {
+			custom_effect_tooltip = JAP_senkaku_token
+			add_to_variable = { var = GetSenkakuSupport value = 3 }
+			Senkaku_Diaoyu_setting = yes
+			random_list = {
+				60 = { JAP_add_senkaku_token = yes }
+				40 = { }
+			}
+		}
+	}
+	
+	JAP_promote_senkaku_overseas = {
+		icon = generic_political_discourse
+
+		ai_will_do = {
+			base = 1
+			modifier = {
+				factor = 3
+				has_political_power > 200
+			}
+			modifier = {
+				factor = 5
+				OR = {
+					876 = { has_dynamic_modifier = { modifier = dynamic_diaoyu_token_1 } }
+					876 = { has_dynamic_modifier = { modifier = dynamic_diaoyu_token_2 } }
+					876 = { has_dynamic_modifier = { modifier = dynamic_diaoyu_token_3 } }
+					876 = { has_dynamic_modifier = { modifier = dynamic_diaoyu_token_4 } }
+				}
+			}
+		}
+
+		available = {
+			NOT = { 876 = { has_dynamic_modifier = { modifier = dynamic_senkaku_token_4 } } }
+		}
+
+		visible = {
+			original_tag = JAP
+		}
+
+		cost = 75
+		days_remove = 42
+		
+		remove_effect = {
+			custom_effect_tooltip = JAP_senkaku_token
+			add_to_variable = { var = GetSenkakuSupport value = 3 }
+			Senkaku_Diaoyu_setting = yes
+			random_list = {
+				90 = { JAP_add_senkaku_token = yes }
+				10 = { }
+			}
+		}
+	}
+	
+	JAP_budget_cuts_related_to_senkaku = {
+		icon = hol_draw_up_staff_plans
+
+		ai_will_do = {
+			base = 0
+		}
+
+		available = {
+		}
+
+		visible = {
+			original_tag = JAP
+		}
+
+		cost = 0
+		days_remove = 42
+		
+		remove_effect = {
+			PRC_add_diaoyu_token = yes
+			add_political_power = 50
+		}
+	}
+	
+	JAP_force_them_to_give_up = {
+		icon = GFX_decision_hol_exchange_intelligence_data
+
+		ai_will_do = {
+			base = 100
+		}
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = pinnacle_victory_tt
+				OR = {
+					876 = { has_dynamic_modifier = { modifier = dynamic_senkaku_token_1 } }
+					876 = { has_dynamic_modifier = { modifier = dynamic_senkaku_token_2 } }
+					876 = { has_dynamic_modifier = { modifier = dynamic_senkaku_token_3 } }
+					876 = { has_dynamic_modifier = { modifier = dynamic_senkaku_token_4 } }
+				}
+				PRC = { check_variable = { GetDiaoyuSupport < 20 } }
+			}
+		}
+
+		visible = {
+			original_tag = JAP
+		}
+
+		cost = 0
+		
+		complete_effect = {
+			news_event = { id = pr_china_news.24 }
+		}
+	}
+	
+	##### 
+	## PRC
+	#####
+
+	PRC_diaoyu_flag_raising_campaign = {
+		icon = generic_political_discourse
+
+		ai_will_do = {
+			base = 1
+			modifier = {
+				factor = 3
+				has_political_power > 200
+			}
+			modifier = {
+				factor = 5
+				OR = {
+					876 = { has_dynamic_modifier = { modifier = dynamic_senkaku_token_1 } }
+					876 = { has_dynamic_modifier = { modifier = dynamic_senkaku_token_2 } }
+					876 = { has_dynamic_modifier = { modifier = dynamic_senkaku_token_3 } }
+					876 = { has_dynamic_modifier = { modifier = dynamic_senkaku_token_4 } }
+				}
+			}
+		}
+
+		available = {
+			NOT = { 876 = { has_dynamic_modifier = { modifier = dynamic_senkaku_token_4 } } }
+		}
+
+		visible = {
+			original_tag = PRC
+		}
+
+		cost = 35
+		days_remove = 42
+		
+		remove_effect = {
+			custom_effect_tooltip = PRC_diaoyu_token
+			add_to_variable = { var = GetDiaoyuSupport value = 2 }
+			Senkaku_Diaoyu_setting = yes
+			random_list = {
+				40 = { PRC_add_diaoyu_token = yes }
+				60 = { }
+			}
+		}
+	}
+	
+	PRC_creation_of_history_education_program = {
+		icon = generic_political_discourse
+
+		ai_will_do = {
+			base = 1
+			modifier = {
+				factor = 3
+				has_political_power > 200
+			}
+			modifier = {
+				factor = 5
+				OR = {
+					876 = { has_dynamic_modifier = { modifier = dynamic_senkaku_token_1 } }
+					876 = { has_dynamic_modifier = { modifier = dynamic_senkaku_token_2 } }
+					876 = { has_dynamic_modifier = { modifier = dynamic_senkaku_token_3 } }
+					876 = { has_dynamic_modifier = { modifier = dynamic_senkaku_token_4 } }
+				}
+			}
+		}
+
+		available = {
+			NOT = { 876 = { has_dynamic_modifier = { modifier = dynamic_senkaku_token_4 } } }
+		}
+
+		visible = {
+			original_tag = PRC
+		}
+
+		cost = 50
+		days_remove = 42
+		
+		remove_effect = {
+			custom_effect_tooltip = PRC_diaoyu_token
+			add_to_variable = { var = GetDiaoyuSupport value = 3 }
+			Senkaku_Diaoyu_setting = yes
+			random_list = {
+				60 = { PRC_add_diaoyu_token = yes }
+				40 = { }
+			}
+		}
+	}
+	
+	PRC_promote_diaoyu_overseas = {
+		icon = generic_political_discourse
+
+		ai_will_do = {
+			base = 1
+			modifier = {
+				factor = 3
+				has_political_power > 200
+			}
+			modifier = {
+				factor = 5
+				OR = {
+					876 = { has_dynamic_modifier = { modifier = dynamic_senkaku_token_1 } }
+					876 = { has_dynamic_modifier = { modifier = dynamic_senkaku_token_2 } }
+					876 = { has_dynamic_modifier = { modifier = dynamic_senkaku_token_3 } }
+					876 = { has_dynamic_modifier = { modifier = dynamic_senkaku_token_4 } }
+				}
+			}
+		}
+
+		available = {
+			NOT = { 876 = { has_dynamic_modifier = { modifier = dynamic_senkaku_token_4 } } }
+		}
+
+		visible = {
+			original_tag = PRC
+		}
+
+		cost = 75
+		days_remove = 42
+		
+		remove_effect = {
+			custom_effect_tooltip = PRC_diaoyu_token
+			add_to_variable = { var = GetDiaoyuSupport value = 3 }
+			Senkaku_Diaoyu_setting = yes
+			random_list = {
+				90 = { PRC_add_diaoyu_token = yes }
+				10 = { }
+			}
+		}
+	}
+	
+	PRC_budget_cuts_related_to_diaoyu = {
+		icon = hol_draw_up_staff_plans
+
+		ai_will_do = {
+			base = 0
+		}
+
+		available = {
+		}
+
+		visible = {
+			original_tag = PRC
+		}
+
+		cost = 0
+		days_remove = 42
+		
+		remove_effect = {
+			JAP_add_senkaku_token = yes
+			add_political_power = 50
+		}
+	}
+	
+	PRC_force_them_to_give_up = {
+		icon = GFX_decision_hol_exchange_intelligence_data
+
+		ai_will_do = {
+			base = 100
+		}
+
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = pinnacle_victory_tt
+				OR = {
+					876 = { has_dynamic_modifier = { modifier = dynamic_diaoyu_token_1 } }
+					876 = { has_dynamic_modifier = { modifier = dynamic_diaoyu_token_2 } }
+					876 = { has_dynamic_modifier = { modifier = dynamic_diaoyu_token_3 } }
+					876 = { has_dynamic_modifier = { modifier = dynamic_diaoyu_token_4 } }
+				}
+				JAP = { check_variable = { GetSenkakuSupport < 20 } }
+			}
+		}
+
+		visible = {
+			original_tag = PRC
+		}
+
+		cost = 0
+		
+		complete_effect = {
+			news_event = { id = pr_china_news.23 }
+		}
+	}
+}

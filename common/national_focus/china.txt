@@ -22,6 +22,8 @@
    shared_focus = PRC_taiwan_liberation_war
    shared_focus = PRC_darkness_sympathizer
 
+   shared_focus = PRC_the_foreign_policy
+
    shared_focus = CHINESE_the_end_of_the_1999_crisis
 
 	continuous_focus_position = { x = 200 y = 2000 }
@@ -786,6 +788,7 @@
 		search_filters = { }
 
 		completion_reward = {
+			country_event = { id = pr_china.41 }
 			add_war_support = 0.05
 		}
 		
@@ -4348,6 +4351,63 @@
 	#
 	##############################
 
+	shared_focus = {
+		id = PRC_MSS
+		icon = PRC_MSS
+		x = 20
+		y = 0
+		cost = 8
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		search_filters = { }
+
+		completion_reward = {			
+			if = {
+				limit = { has_dlc = "La Resistance" }
+				if = {
+					limit = { has_intelligence_agency = no }
+					create_intelligence_agency = yes
+				}
+				else_if = {
+					limit = {
+						NOT = { has_done_agency_upgrade = upgrade_army_department }
+					}
+					upgrade_intelligence_agency = upgrade_army_department
+				}
+				else = {
+					add_political_power = 75
+				}
+				add_ideas = PRC_MSS_lar
+			}
+			else = {
+				add_ideas = PRC_MSS_no_lar
+			}
+		}
+		
+		ai_will_do = {
+			base = 1
+			modifier = {
+				factor = 5
+				has_war = yes
+			}
+			modifier = {
+				factor = 1.5
+				date > 2001.1.1
+			}
+			modifier = {
+				factor = 1.5
+				date > 2003.1.1
+			}
+			modifier = {
+				factor = 2
+				date > 2006.1.1
+			}
+		}
+	}
+
 	##############################
 	#
 	# Potilic
@@ -4367,6 +4427,10 @@
 			trigger = {
 				has_completed_focus = PRC_the_centre
 			}
+		}
+
+		allow_branch = {
+			NOT = {	has_completed_focus = PRC_darkness_sympathizer }
 		}
 
 		mutually_exclusive = { 
@@ -4447,6 +4511,7 @@
 		}
 
 		allow_branch = {
+			NOT = {	has_completed_focus = PRC_darkness_sympathizer }
 			AND = {
 				NOT = {	has_completed_focus = PRC_the_right_opposition }
 				NOT = {	has_completed_focus = PRC_the_left_opposition }
@@ -5040,8 +5105,8 @@
 	}
 
 	shared_focus = {
-		id = PRC_join_WTO
-		icon = PRC_getting_rich_first
+		id = PRC_crush_the_democrats
+		icon = PRC_be_hard_on_our_wicked_son
 		x = 1
 		y = 1
 		cost = 8
@@ -5050,45 +5115,6 @@
 		
 		prerequisite = { 
 			focus = PRC_the_centre
-		}
-
-		available = {
-			has_government = communist
-		}
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = no
-		
-		search_filters = { }
-
-		completion_reward = {
-			country_event = pr_china.5
-		}
-		
-		ai_will_do = {
-			base = 25
-			modifier = {
-				factor = 0.5
-				OR = {
-					has_idea = PRC_rural_poverty_strike
-					has_idea = PRC_rural_poverty_strike_danger
-				}	
-			}
-		}
-	}
-
-	shared_focus = {
-		id = PRC_crush_the_democrats
-		icon = PRC_be_hard_on_our_wicked_son
-		x = 1
-		y = 2
-		cost = 8
-
-		relative_position_id = PRC_the_centre
-		
-		prerequisite = { 
-			focus = PRC_join_WTO
 		}
 
 		available = {
@@ -5228,6 +5254,7 @@
 		}
 
 		allow_branch = {
+			NOT = {	has_completed_focus = PRC_darkness_sympathizer }
 			AND  = {
 				NOT = {	has_completed_focus = PRC_the_centre }
 				NOT = {	has_completed_focus = PRC_the_left_opposition }
@@ -5939,6 +5966,7 @@
 		}
 
 		allow_branch = {
+			NOT = {	has_completed_focus = PRC_darkness_sympathizer }
 			AND = {
 				NOT = {
 					has_completed_focus = PRC_the_centre
@@ -6787,6 +6815,7 @@
 			OR = {
 				NOT = {
 					has_completed_focus = PRC_the_left_opposition
+					has_completed_focus = PRC_darkness_sympathizer
 				}
 				has_completed_focus = PRC_the_right_opposition
 				has_completed_focus = PRC_the_centre
@@ -7049,44 +7078,24 @@
 	}
 
 	shared_focus = {
-		id = PRC_socialist_foreign_policy
-		icon = PRC_lenin_statue_red_flag
-		x = 18
-		y = 1
+		id = PRC_the_foreign_policy
+		icon = PRC_the_foreign_policy
+		x = 15
+		y = 13
+
 		cost = 5
-		offset = {
-			x = -9
-			y = 0
-			trigger = {
-				OR = {
-					has_completed_focus = PRC_the_right_opposition
-					has_completed_focus = PRC_the_left_opposition
-				}
-			}
-		}
-		offset = {
-			x = -7
-			y = 0
-			trigger = {
-				has_completed_focus = PRC_the_centre
-			}
-		}
 
 		available = {
 			is_subject = no
 		}
 
-		relative_position_id = PRC_successor_to_marx_Lenin
-
-		prerequisite = { 
-			focus = PRC_successor_to_marx_Lenin
-		}
+		relative_position_id = PRC_army_modernization
 
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
 
-		completion_reward = {			
+		completion_reward = {
 			if = {
 				limit = {
 					is_subject = no
@@ -7098,6 +7107,8 @@
 			else = {
 				add_political_power = 100
 			}
+
+			add_ideas = PRC_tianxia
 		}
 
 		search_filters = {  }
@@ -7108,412 +7119,85 @@
 	}
 
 	shared_focus = {
-		id = PRC_southeast_asian_dominion
-		icon = PRC_red_army
-		x = -1
+		id = PRC_east_asian_traditional_order
+		icon = PRC_the_flower_of_freedom
+		x = -4
 		y = 1
 		cost = 5
 
-		relative_position_id = PRC_socialist_foreign_policy
+		relative_position_id = PRC_the_foreign_policy
 
 		prerequisite = { 
-			focus = PRC_socialist_foreign_policy
-		}
-
-		mutually_exclusive = { focus = PRC_potential_southeast_asian_partners }
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = no
-
-		completion_reward = {			
-			custom_effect_tooltip = PRC_southeast_asian_dominion_tt
-			add_named_threat = { threat = 3 name = PRC_southeast_asian_dominion }
-		}
-
-		search_filters = {  }
-		
-		ai_will_do = {
-			base = 3
-		}
-	}
-
-	shared_focus = {
-		id = PRC_potential_southeast_asian_partners
-		icon = align_to_asean
-		x = 1
-		y = 1
-		cost = 5
-
-		relative_position_id = PRC_socialist_foreign_policy
-
-		prerequisite = { 
-			focus = PRC_socialist_foreign_policy
-		}
-
-		mutually_exclusive = { focus = PRC_southeast_asian_dominion }
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = no
-
-		completion_reward = {	
-			custom_effect_tooltip = PRC_potential_southeast_asian_partners_tt		
-		}
-
-		search_filters = {  }
-		
-		ai_will_do = {
-			base = 3
-		}
-	}
-
-	shared_focus = {
-		id = PRC_OGAS_start
-		icon = PRC_unit_of_hackers
-		x = 16
-		y = 1
-		cost = 10
-
-		relative_position_id = PRC_socialist_foreign_policy
-
-		prerequisite = { 
-			focus = PRC_socialist_foreign_policy
+			focus = PRC_the_foreign_policy
 		}
 
 		available = {
-			OR = {
-				has_completed_focus = PRC_the_right_opposition
-				has_completed_focus = PRC_the_left_opposition
-			}
-			has_tech = advanced_computing_machine #over 2016
+
 		}
 
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
 
-		completion_reward = {
-			country_event = { id = pr_china.54 }
+		completion_reward = {		
+			custom_effect_tooltip = PRC_tianxia_east_asia_tt
 		}
 
 		search_filters = {  }
 		
 		ai_will_do = {
-			base = 3
+			base = 4
 		}
 	}
-
+	
 	shared_focus = {
-		id = PRC_OGAS
-		icon = PRC_OGAS_system
-		x = 16
-		y = 2
-		cost = 10
-
-		relative_position_id = PRC_socialist_foreign_policy
-
-		prerequisite = { 
-			focus = PRC_OGAS_start
-		}
-
-		available = {
-			OR = {
-				has_completed_focus = PRC_the_right_opposition
-				has_completed_focus = PRC_the_left_opposition
-			}
-			has_tech = advanced_computing_machine #over 2016
-		}
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = no
-
-		completion_reward = {
-
-			set_country_flag = PRC_OGAS_system_leader
-			add_ideas = PRC_OGAS_system_leader
-
-			every_other_country = {
-				limit = { 
-					is_in_faction_with = ROOT
-					NOT = { is_puppet_of = ROOT }
-				}
-				set_country_flag = PRC_OGAS_system_member
-				add_ideas = PRC_OGAS_system_partner_member
-				capital_scope = {
-					add_extra_state_shared_building_slots = 1
-					add_building_construction = {
-						type = industrial_complex
-						level = 1
-						instant_build = yes
-					}
-				}
-			}
-
-			if = {
-				limit = {
-					num_subjects > 0
-				}
-				every_subject_country = {
-					set_country_flag = PRC_OGAS_system_member
-					add_ideas = PRC_OGAS_system_puppet_member
-					capital_scope = {
-						add_extra_state_shared_building_slots = 1
-						add_building_construction = {
-							type = industrial_complex
-							level = 1
-							instant_build = yes
-						}
-					}
-				}
-			}
-			else = {
-				custom_effect_tooltip = PRC_ogas_system_puppet_tt
-				effect_tooltip = {
-					add_ideas = PRC_OGAS_system_puppet_member
-					custom_effect_tooltip = ITA_the_italian_confederation_effects_tt
-				}
-			}
-
-		}
-
-		search_filters = {  }
-		
-		ai_will_do = {
-			base = 3
-		}
-	}
-
-	shared_focus = {
-		id = PRC_OGAS_connecting_to_foreign_network
-		icon = PRC_the_superiority_of_technology
+		id = PRC_pressure_mongolia
+		icon = attack_mongolia
 		x = 0
 		y = 1
 		cost = 5
 
-		relative_position_id = PRC_OGAS
+		relative_position_id = PRC_east_asian_traditional_order
 
 		prerequisite = { 
-			focus = PRC_OGAS
+			focus = PRC_east_asian_traditional_order
 		}
+		
+		mutually_exclusive = { focus = PRC_Invite_mongolia }
 
 		available = {
-			has_tech = advanced_computing_machine #over 2016
-		}
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = no
-
-		completion_reward = {			
-			swap_ideas = {
-				remove_idea = PRC_OGAS_system_leader
-				add_idea = PRC_OGAS_system_leader_improved
-			}
-
-			if = {
-				limit = {
-					num_subjects > 0
-				}
-				every_subject_country = {
-					swap_ideas = {
-						remove_idea = PRC_OGAS_system_puppet_member
-						add_idea = PRC_OGAS_system_puppet_member_improved
-					}
-				}
-			}
-
-			every_other_country = {
-				limit = { 
-					is_in_faction_with = ROOT
-					NOT = { is_puppet_of = ROOT }
-				}
-				swap_ideas = {
-					remove_idea = PRC_OGAS_system_partner_member
-					add_idea = PRC_OGAS_system_partner_member_improved
-				}
-			}
-		}
-
-		search_filters = {  }
-		
-		ai_will_do = {
-			base = 1.2
-		}
-	}
-
-	shared_focus = {
-		id = PRC_warning_to_taiwan
-		icon = attack_taiwan
-		x = -2
-		y = 2
-		cost = 5
-
-		relative_position_id = PRC_socialist_foreign_policy
-
-		prerequisite = { 
-			focus = PRC_southeast_asian_dominion
-			focus = PRC_potential_southeast_asian_partners
-		}
-
-		available = {
-			country_exists = CHI
-			is_puppet = no
-			NOT = { is_in_faction_with = CHI }
-			NOT = { has_war_with = CHI }
-
-			has_global_flag = PRC_world_plan
-		}
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = no
-
-		completion_reward = {			
-			CHI = { country_event = pr_china.51 }
-			custom_effect_tooltip = PRC_warning_to_taiwan_tt
-		}
-
-		search_filters = {  }
-		
-		ai_will_do = {
-			base = 1
-		}
-	}
-
-	#shared_focus = {
-	#	id = PRC_war_accelerates_on_taiwan
-	#	icon = PRC_red_army
-	#	x = 0
-	#	y = 2
-	#	cost = 5
-#
-#		relative_position_id = PRC_warning_to_taiwan
-#
-#		prerequisite = { 
-#			focus = PRC_warning_to_taiwan
-#		}
-#
-#		cancel_if_invalid = yes
-#		continue_if_invalid = no
-#		available_if_capitulated = no
-#
-#		completion_reward = {			
-#		}
-#
-#		search_filters = {  }
-#		
-#		ai_will_do = {
-#			base = 1
-#			modifier = {
-#				factor = 0
-#				NOT = { has_global_flag = PRC_world_plan }
-#			}
-#		}
-#	}
-
-	shared_focus = {
-		id = PRC_the_eastern_plan
-		icon = GFX_focus_SOV_the_path_of_marxism_leninism
-		x = 0
-		y = 2
-		cost = 5
-
-		relative_position_id = PRC_socialist_foreign_policy
-
-		prerequisite = { 
-			focus = PRC_southeast_asian_dominion
-			focus = PRC_potential_southeast_asian_partners
-		}
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = no
-
-		completion_reward = {
-			JAP = {
-				if = {
-					limit = {
-						NOT = { is_in_faction_with = PRC }
-					}
-					add_opinion_modifier = {
-						target = ROOT
-						modifier = prc_trying_to_invade_us
-					}
-				}
-			}
-		}
-
-		search_filters = {  }
-		
-		ai_will_do = {
-			base = 1
-			modifier = {
-				add = 4
+			is_subject = no
+			country_exists = MON
+			NOT = { is_in_faction_with = MON }
+			OR = {
 				has_global_flag = PRC_world_plan
-			}
-		}
-	}
-
-	shared_focus = {
-		id = PRC_north_korea_s_split_plan
-		icon = attack_north_korea
-		x = 0
-		y = 1
-		cost = 10
-
-		relative_position_id = PRC_the_eastern_plan
-
-		prerequisite = { 
-			focus = PRC_the_eastern_plan
-		}
-
-		mutually_exclusive = { 
-			focus = PRC_north_korea_abandonment 
-			focus = PRC_with_north_korea
-		}
-
-		available = {
-			country_exists = PRK
-			is_puppet = no
-			NOT = { is_in_faction_with = PRK }
-			NOT = { has_war_with = PRK }
-			NOT = { has_country_flag = reject_nk_plan }
-			NOT = { 
-				KOR = { has_completed_focus = kor_lee_seok_ki_government }
+				threat > 0.25
 			}
 		}
 
-		cancel = {
-			has_country_flag = reject_nk_plan
+		bypass = {
+			OR = {
+				has_war_with = MON
+				NOT = { country_exists = MON }
+			}
 		}
 
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
 
-		completion_reward = {			
-			add_named_threat = { threat = 5 name = PRC_north_korea_s_split_plan }
-			custom_effect_tooltip = PRC_north_korea_s_split_plan_tt
-		}
-
-		select_effect = {
-			KOR = { country_event = { id = pr_china.46 days = 14 } }
+		completion_reward = {		
+			MON = { country_event = pr_china_diplomacy.7 }
 		}
 
 		search_filters = {  }
 		
 		ai_will_do = {
-			base = 1
+			factor = 100
 			modifier = {
 				factor = 0
 				NOT = { has_global_flag = PRC_world_plan }
 			}
-		}
-		
-		ai_will_do = {
-			factor = 1
 			modifier = {
 				has_war_with = USA
 				factor = 0
@@ -7548,126 +7232,185 @@
 				factor = 0
 			}
 		}
-
 	}
 
 	shared_focus = {
-		id = PRC_north_korea_abandonment
-		icon = attack_north_korea
+		id = PRC_Invite_mongolia
+		icon = align_to_mongolia
 		x = 2
 		y = 1
 		cost = 5
 
-		relative_position_id = PRC_the_eastern_plan
+		relative_position_id = PRC_east_asian_traditional_order
 
 		prerequisite = { 
-			focus = PRC_the_eastern_plan
+			focus = PRC_east_asian_traditional_order
 		}
-
-		mutually_exclusive = { 
-			focus = PRC_north_korea_s_split_plan
-			focus = PRC_with_north_korea
-		}
+		
+		mutually_exclusive = { focus = PRC_pressure_mongolia }
 
 		available = {
-			country_exists = PRK
-			is_puppet = no
-			NOT = { is_in_faction_with = PRK }
-			NOT = { has_war_with = PRK }
+			NOT = { has_war_with = MON }
+			OR = {
+				has_global_flag = PRC_world_plan
+				threat > 0.1
+			}
+			FROM = { 
+				is_subject = no
+				OR = {
+					is_in_faction = no
+					is_faction_leader = yes
+				}
+				NOT = { has_completed_focus = MON_victory_dedicated_to_zorig }
+			}
 		}
 
 		bypass = {
-			OR = {
-				has_war_with = PRK
-				NOT = { country_exists = PRK }
-			}
 		}
 
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
 
-		completion_reward = {			
-			custom_effect_tooltip = PRC_north_korea_abandonment_tt
+		completion_reward = {					
+			MON = { country_event = { id = pr_china_diplomacy.1 days = 1 random_hours = 24 } }
 		}
 
 		search_filters = {  }
 		
 		ai_will_do = {
-			base = 1
+			factor = 100
 			modifier = {
 				factor = 0
 				NOT = { has_global_flag = PRC_world_plan }
+			}
+			modifier = {
+				has_war_with = USA
+				factor = 0
+			}
+			modifier = {
+				AND = {
+					has_war_with = PRK
+					surrender_progress > 0.3
+				}
+				factor = 0
+			}
+			modifier = {
+				AND = {
+					has_war_with = KOR
+					surrender_progress > 0.3
+				}
+				factor = 0
+			}
+			modifier = {
+				AND = {
+					has_war_with = SOV
+					surrender_progress > 0.3
+				}
+				factor = 0
+			}
+			modifier = {
+				has_war_with = RAJ
+				factor = 0
+			}
+			modifier = {
+				has_war_with = JAP
+				factor = 0
 			}
 		}
 	}
 
 	shared_focus = {
-		id = PRC_with_north_korea
-		icon = align_to_north_korea
-		x = 4
+		id = PRC_supporting_pro_china_factions_in_korea
+		icon = kor_park_geun_hye_government
+		x = -2
 		y = 1
-		cost = 5
+		cost = 4
 
-		relative_position_id = PRC_the_eastern_plan
+		relative_position_id = PRC_east_asian_traditional_order
 
 		prerequisite = { 
-			focus = PRC_the_eastern_plan
-		}
-		
-		mutually_exclusive = { 
-			focus = PRC_north_korea_s_split_plan
-			focus = PRC_north_korea_abandonment
+			focus = PRC_east_asian_traditional_order
 		}
 
 		available = {
-			country_exists = PRK
-			is_puppet = no
-			NOT = { has_war_with = PRK }
+
 		}
 
 		bypass = {
+			OR = {
+				has_war_with = KOR
+				NOT = { country_exists = KOR }
+			}
 		}
 
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
 
-		completion_reward = {			
+		completion_reward = {		
+			if = {
+				limit = {
+					KOR = { has_democratic_form_of_government = yes }
+				}
+				
+				KOR = { 
+					add_stability = -0.02
+					add_popularity = {
+						ideology = reactionary
+						popularity = 0.05
+					}
+
+					custom_effect_tooltip = kor_more_influence_pro_park_1_10_tt
+					set_variable = { KOR_move_support = 0 }
+					randomize_variable = {
+						var = KOR_move_support
+						distribution = binomial
+						min = 1
+						max = 10
+					}
+					round_variable = KOR_move_support
+					KOR_add_reactionists_support_effect = yes
+
+				}
+
+			}
+			else = {
+				KOR = { 
+					add_stability = -0.05 
+					add_popularity = {
+						ideology = reactionary
+						popularity = 0.05
+					}
+				}
+
+			}
 		}
 
 		search_filters = {  }
 		
 		ai_will_do = {
-			base = 1
-			modifier = {
-				factor = 0
-				NOT = { has_global_flag = PRC_world_plan }
-			}
+			base = 1.5
 		}
 	}
 
 	shared_focus = {
 		id = PRC_alliance_with_north_korea
 		icon = align_to_north_korea
-		x = 3
+		x = -3
 		y = 2
-		cost = 5
+		cost = 4
 
-		relative_position_id = PRC_the_eastern_plan
+		relative_position_id = PRC_east_asian_traditional_order
 
 		prerequisite = { 
-			focus = PRC_with_north_korea
+			focus = PRC_supporting_pro_china_factions_in_korea
 		}
-		
-		mutually_exclusive = { 
-			focus = PRC_alliance_with_south_korea
-		}
+
+		mutually_exclusive = { focus = PRC_alliance_with_south_korea }
 
 		available = {
 			country_exists = PRK
-			is_puppet = no
-			NOT = { is_in_faction_with = PRK }
 			NOT = { has_war_with = PRK }
 		}
 
@@ -7675,8 +7418,16 @@
 		continue_if_invalid = no
 		available_if_capitulated = no
 
-		completion_reward = {			
-			custom_effect_tooltip = PRC_alliance_with_north_korea_tt
+		completion_reward = {		
+
+			set_variable = { global.tianxia_korea_alliance = PRK }
+
+			ROOT = {
+				add_to_variable = { NVX_ECO_health = 3 tooltip = additional_economic_health_3 }
+			}
+			PRK = {
+				add_to_variable = { NVX_ECO_health = 3 tooltip = additional_economic_health_3 }
+			}
 		}
 
 		search_filters = {  }
@@ -7687,30 +7438,161 @@
 	}
 
 	shared_focus = {
-		id = PRC_alliance_with_south_korea
-		icon = align_to_south_korea
-		x = 1
-		y = 2
-		cost = 5
+		id = PRC_support_dprk_economic
+		icon = PRC_the_yuan
+		x = -3
+		y = 4
+		cost = 4
 
-		relative_position_id = PRC_the_eastern_plan
+		relative_position_id = PRC_east_asian_traditional_order
 
 		prerequisite = { 
-			focus = PRC_north_korea_s_split_plan
-			focus = PRC_north_korea_abandonment
-		}
-		
-		mutually_exclusive = { 
 			focus = PRC_alliance_with_north_korea
 		}
 
 		available = {
+			country_exists = PRK
+			NOT = { has_war_with = PRK }
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {		
+			PRK = {
+				add_political_power = 75
+				random_owned_controlled_state = {
+					limit = {
+						free_building_slots = {
+							building = industrial_complex
+							size > 1
+							include_locked = yes
+						}
+						state_population_k > 20000
+					}
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = industrial_complex
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+		}
+
+		search_filters = {  }
+		
+		ai_will_do = {
+			base = 4
+		}
+	}
+
+	shared_focus = {
+		id = PRC_alliance_with_south_korea
+		icon = align_to_south_korea
+		x = -1
+		y = 2
+		cost = 4
+
+		relative_position_id = PRC_east_asian_traditional_order
+
+		prerequisite = { 
+			focus = PRC_supporting_pro_china_factions_in_korea
+		}
+	
+		mutually_exclusive = { focus = PRC_alliance_with_north_korea }
+
+		available = {
 			country_exists = KOR
-			is_puppet = no
-			NOT = { is_in_faction_with = KOR }
 			NOT = { has_war_with = KOR }
-			NOT = { 
-				KOR = { has_completed_focus = kor_lee_seok_ki_government }
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {		
+
+			set_variable = { global.tianxia_korea_alliance = KOR }
+
+			ROOT = {
+				add_to_variable = { NVX_ECO_health = 3 tooltip = additional_economic_health_3 }
+			}
+			PRK = {
+				add_to_variable = { NVX_ECO_health = 3 tooltip = additional_economic_health_3 }
+			}
+		}
+
+		search_filters = {  }
+		
+		ai_will_do = {
+			base = 4
+		}
+	}
+
+	shared_focus = {
+		id = PRC_support_korean_pop_culture
+		icon = kor_easter_egg_culture
+		x = -1
+		y = 4
+		cost = 4
+
+		relative_position_id = PRC_east_asian_traditional_order
+
+		prerequisite = { 
+			focus = PRC_alliance_with_south_korea
+		}
+
+		available = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {		
+			add_popularity = {
+				ideology = market_liberal
+				popularity = 0.02
+			}
+			add_ideas = CHINESE_co_op_korean_idea_1
+		}
+
+		search_filters = {  }
+		
+		ai_will_do = {
+			base = 4
+		}
+	}
+
+	shared_focus = {
+		id = PRC_supporting_the_korean_War
+		icon = kor_easter_egg_research
+		x = -2
+		y = 3
+		cost = 5
+
+		relative_position_id = PRC_east_asian_traditional_order
+
+		prerequisite = { 
+			focus = PRC_alliance_with_north_korea
+			focus = PRC_alliance_with_south_korea
+		}
+
+		available = {
+			is_puppet = no
+			has_global_flag = PRC_world_plan
+			AND = {
+				country_exists = KOR
+				country_exists = PRK
+				KOR = {
+					has_war = no
+				}
+				PRK = {
+					has_war = no
+				}
 			}
 		}
 
@@ -7718,71 +7600,194 @@
 		continue_if_invalid = no
 		available_if_capitulated = no
 
-		completion_reward = {			
-			custom_effect_tooltip = PRC_alliance_with_south_korea_tt
+		completion_reward = {		
+			custom_effect_tooltip = tianxia_korea_alliance_tt
+
+			var:global.tianxia_korea_alliance = {
+				country_event = { id = pr_china_diplomacy.29 days = 1 random_hours = 24 }
+			}
 		}
 
 		search_filters = {  }
 		
 		ai_will_do = {
-			base = 1
+			base = 4
 		}
 	}
 
-	#shared_focus = {
-	#	id = PRC_okinawa_protection
-	#	icon = PRC_break_chain
-	#	x = 5
-	#	y = 2
-	#	cost = 5
+	shared_focus = {
+		id = PRC_military_alliance_with_korea
+		icon = kor_peace_fail_two_korea
+		x = 0
+		y = 3
+		cost = 5
 
-	#	relative_position_id = PRC_the_eastern_plan
+		relative_position_id = PRC_east_asian_traditional_order
 
-	#	prerequisite = { 
-	#		focus = PRC_the_eastern_plan
-	#	}
+		prerequisite = { 
+			focus = PRC_alliance_with_north_korea
+			focus = PRC_alliance_with_south_korea
+		}
 
-	#	available = {
-	#		country_exists = RYU
-	#		RYU = {
-	#			AND = {
-	#				NOT = { is_in_faction_with = ROOT }
-	#				is_puppet = no
-	#				NOT = { has_war_with = ROOT }
-	#			}
-	#		}
-	#	}
+		available = {
+			country_exists = var:global.tianxia_korea_alliance
+			NOT = { has_war_with = var:global.tianxia_korea_alliance }
+			var:global.tianxia_korea_alliance = {
+				is_puppet = no
+				is_in_faction = no
+			}
+		}
 
-	#	cancel_if_invalid = yes
-	#	continue_if_invalid = no
-	#	available_if_capitulated = no
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
 
-	#	completion_reward = {			
-	#	}
+		completion_reward = {		
 
-	#	search_filters = {  }
-	#	
-	#	ai_will_do = {
-	#		base = 0.2
-	#		
-	#	}
-	#}
+			custom_effect_tooltip = tianxia_korea_alliance_tt
+
+			var:global.tianxia_korea_alliance = {
+				country_event = { id = pr_china_diplomacy.1 days = 1 random_hours = 24 }
+			}
+
+		}
+
+		search_filters = {  }
+		
+		ai_will_do = {
+			base = 4
+		}
+	}
+
+	shared_focus = {
+		id = PRC_china_korea_joint_training
+		icon = kor_bulgom_project
+		x = 1
+		y = 4
+		cost = 5
+
+		relative_position_id = PRC_east_asian_traditional_order
+
+		prerequisite = { 
+			focus = PRC_military_alliance_with_korea
+		}
+
+		available = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {		
+			add_doctrine_cost_reduction = {
+				name = PRC_china_korea_joint_training
+				cost_reduction = 0.5
+				uses = 1
+				category = land_doctrine
+			}
+			
+			var:global.tianxia_korea_alliance = {
+				add_doctrine_cost_reduction = {
+					name = PRC_china_korea_joint_training
+					cost_reduction = 0.5
+					uses = 1
+					category = land_doctrine
+				}
+			}
+		}
+
+		search_filters = {  }
+		
+		ai_will_do = {
+			base = 4
+		}
+	}
+
+	shared_focus = {
+		id = PRC_supporting_pro_china_factions_in_japan
+		icon = JAP_communist_unite
+		x = 4
+		y = 1
+		cost = 4
+
+		relative_position_id = PRC_east_asian_traditional_order
+
+		prerequisite = { 
+			focus = PRC_east_asian_traditional_order
+		}
+
+		available = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {		
+			JAP = { 
+				add_stability = -0.05 
+				add_popularity = {
+					ideology = ROOT
+					popularity = 0.05
+				}
+			}
+		}
+
+		search_filters = {  }
+		
+		ai_will_do = {
+			base = 4
+		}
+	}
+
+	shared_focus = {
+		id = PRC_senkaku_territorial_dispute
+		icon = JAP_japanese_cloud_ship
+		x = 1
+		y = 2
+		cost = 3
+
+		relative_position_id = PRC_east_asian_traditional_order
+
+		prerequisite = { 
+			focus = PRC_supporting_pro_china_factions_in_japan
+		}
+
+		mutually_exclusive = { focus = PRC_alliance_with_japan }
+
+		available = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {		
+			custom_effect_tooltip = PRC_senkaku_territorial_dispute_tt
+		}
+
+		search_filters = {  }
+		
+		ai_will_do = {
+			base = 4
+		}
+	}
 
 	shared_focus = {
 		id = PRC_invasion_of_japan
 		icon = attack_japan
-		x = 6
-		y = 1
-		cost = 5
+		x = 2
+		y = 3
+		cost = 4
 
-		relative_position_id = PRC_the_eastern_plan
+		relative_position_id = PRC_east_asian_traditional_order
 
 		prerequisite = { 
-			focus = PRC_the_eastern_plan
-		}
-		
-		mutually_exclusive = { 
-			focus = PRC_collaboration_with_japan
+			focus = PRC_senkaku_territorial_dispute
 		}
 
 		available = {
@@ -7802,14 +7807,17 @@
 		continue_if_invalid = no
 		available_if_capitulated = no
 
-		completion_reward = {			
-			custom_effect_tooltip = PRC_invasion_of_japan_tt
+		completion_reward = {		
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = JAP
+			}
 		}
 
 		search_filters = {  }
 		
 		ai_will_do = {
-			base = 1
+			base = 1.2
 			modifier = {
 				factor = 0
 				NOT = { has_global_flag = PRC_world_plan }
@@ -7853,14 +7861,14 @@
 	shared_focus = {
 		id = PRC_collecting_compensation
 		icon = PRC_treasure
-		x = 6
-		y = 3
+		x = 2
+		y = 5
 		cost = 5
 
-		relative_position_id = PRC_the_eastern_plan
+		relative_position_id = PRC_east_asian_traditional_order
 
 		prerequisite = { 
-			focus = PRC_the_eastern_plan
+			focus = PRC_invasion_of_japan
 		}
 
 		available = {
@@ -7870,14 +7878,6 @@
 					owns_state = 282
 					has_full_control_of_state = 282
 				}
-				#282 = {
-				#	is_fully_controlled_by = owner
-				#	owner = {
-				#		NOT = {
-				#			has_war_with = ROOT
-				#		}
-				#	}
-				#}
 			}
 		}
 		
@@ -7904,32 +7904,181 @@
 	}
 
 	shared_focus = {
-		id = PRC_collaboration_with_japan
+		id = PRC_alliance_with_japan
 		icon = align_to_japan
-		x = 8
-		y = 1
-		cost = 5
+		x = 5
+		y = 2
+		cost = 3
 
-		relative_position_id = PRC_the_eastern_plan
+		relative_position_id = PRC_east_asian_traditional_order
 
 		prerequisite = { 
-			focus = PRC_the_eastern_plan
+			focus = PRC_supporting_pro_china_factions_in_japan
 		}
+
+		mutually_exclusive = { focus = PRC_senkaku_territorial_dispute }
+
+		available = {
+			country_exists = JAP
+			is_puppet = no
+			OR = {
+				AND = {
+					ROOT = { has_government = communist }
+					JAP = {	NVX_has_ideology_far_left = yes }
+				}
+				AND = {
+					ROOT = { NOT = { has_government = communist } }
+					JAP = {	NVX_has_ideology_far_right = no }
+					JAP = {	NVX_has_ideology_far_left = no }
+				}
+			}
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {		
+			JAP = { country_event = { id = pr_china_diplomacy.1 days = 1 random_hours = 24 } }
+		}
+
+		search_filters = {  }
 		
-		mutually_exclusive = { 
-			focus = PRC_invasion_of_japan
+		ai_will_do = {
+			base = 4
+		}
+	}
+
+	shared_focus = {
+		id = PRC_economic_cooperation_with_japan
+		icon = JAP_mao_economy
+		x = 4
+		y = 3
+		cost = 5
+
+		relative_position_id = PRC_east_asian_traditional_order
+
+		prerequisite = { 
+			focus = PRC_alliance_with_japan
 		}
 
 		available = {
 			country_exists = JAP
-			JAP = {
-				AND = {
-					JAP_need_kakushin_government = yes
-					NOT = { is_in_faction_with = ROOT }
-					is_puppet = no
-					NOT = { has_war_with = ROOT }
-				}
+			NOT = { has_war_with = JAP }
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {		
+			ROOT = {
+				add_to_variable = { NVX_ECO_health = 3 tooltip = additional_economic_health_3 }
 			}
+			JAP = {
+				add_to_variable = { NVX_ECO_health = 3 tooltip = additional_economic_health_3 }
+			}
+		}
+
+		search_filters = {  }
+		
+		ai_will_do = {
+			base = 4
+		}
+	}
+
+	shared_focus = {
+		id = PRC_establishment_of_joint_research_institutes_with_japan
+		icon = CHI_medical_reform
+		x = 4
+		y = 5
+		cost = 5
+
+		relative_position_id = PRC_east_asian_traditional_order
+
+		prerequisite = { 
+			focus = PRC_alliance_with_japan
+		}
+
+		available = {
+			country_exists = JAP
+			NOT = { has_war_with = JAP }
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {		
+			add_to_tech_sharing_group = chinese_academic_exchanges_with_japan
+			JAP = {
+				add_to_tech_sharing_group = chinese_academic_exchanges_with_japan
+			}
+		}
+
+		search_filters = {  }
+		
+		ai_will_do = {
+			base = 4
+		}
+	}
+
+	shared_focus = {
+		id = PRC_japanese_pop_culture_boom
+		icon = JAP_promote_rural_with_animation
+		x = 3
+		y = 4
+		cost = 5
+
+		relative_position_id = PRC_east_asian_traditional_order
+
+		prerequisite = { 
+			focus = PRC_alliance_with_japan
+			focus = PRC_senkaku_territorial_dispute
+		}
+
+		available = {
+			country_exists = JAP
+			NOT = { has_war_with = JAP }
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {		
+			add_popularity = {
+				ideology = market_liberal
+				popularity = 0.02
+			}
+			add_ideas = CHINESE_co_op_japanese_idea_1
+		}
+
+		search_filters = {  }
+		
+		ai_will_do = {
+			base = 4
+		}
+	}
+
+	shared_focus = {
+		id = PRC_warning_to_taiwan
+		icon = attack_taiwan
+		x = 0
+		y = 1
+		cost = 5
+
+		relative_position_id = PRC_the_foreign_policy
+
+		prerequisite = { 
+			focus = PRC_the_foreign_policy
+		}
+
+		available = {
+			country_exists = CHI
+			is_puppet = no
+			NOT = { is_in_faction_with = CHI }
+			NOT = { has_war_with = CHI }
 
 			has_global_flag = PRC_world_plan
 		}
@@ -7938,33 +8087,696 @@
 		continue_if_invalid = no
 		available_if_capitulated = no
 
+		completion_reward = {			
+			CHI = { country_event = pr_china.51 }
+			custom_effect_tooltip = PRC_warning_to_taiwan_tt
+		}
+
+		search_filters = {  }
+		
+		ai_will_do = {
+			base = 1.5
+		}
+	}
+
+	shared_focus = {
+		id = PRC_southen_plan
+		icon = GFX_focus_ARG_study_the_battle_of_the_river_plate
+		x = 3
+		y = 1
+		cost = 5
+
+		relative_position_id = PRC_the_foreign_policy
+
+		prerequisite = { 
+			focus = PRC_the_foreign_policy
+		}
+
+		available = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
 		completion_reward = {		
-			JAP = { country_event = pr_china_diplomacy.16 }	
+			custom_effect_tooltip = PRC_tianxia_southeast_asia_tt
+		}
+
+		search_filters = {  }
+		
+		ai_will_do = {
+			base = 2
+		}
+	}
+
+	shared_focus = {
+		id = PRC_conquest_of_vietnam
+		icon = attack_vietnam
+		x = -1
+		y = 1
+		cost = 5
+
+		relative_position_id = PRC_southen_plan
+
+		prerequisite = { 
+			focus = PRC_southen_plan
+		}
+
+		available = {
+			is_puppet = no
+			has_global_flag = PRC_world_plan
+			country_exists = VIN
+			NOT = { is_in_faction_with = VIN }
+			NOT = { VIN = { is_puppet_of = ROOT } }
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {		
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = VIN
+			}
+		}
+
+		search_filters = {  }
+		
+		ai_will_do = {
+			base = 3
+		}
+	}
+	
+	shared_focus = {
+		id = PRC_alliance_with_laos
+		icon = align_to_laos
+		x = -1
+		y = 3
+		cost = 3
+
+		relative_position_id = PRC_southen_plan
+
+		prerequisite = { 
+			focus = PRC_conquest_of_vietnam
+		}
+
+		available = {
+			is_puppet = no
+			has_global_flag = PRC_world_plan
+			country_exists = LAO
+			NOT = { has_war_with = LAO }
+			NOT = { is_in_faction_with = LAO }
+			NOT = { LAO = { is_puppet_of = ROOT } }
+		}
+
+		bypass = {
+			is_in_faction_with = LAO
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {		
+			LAO = { country_event = { id = pr_china_diplomacy.1 days = 1 random_hours = 24 } }
+		}
+
+		search_filters = {  }
+		
+		ai_will_do = {
+			base = 3
+		}
+	}
+	
+	shared_focus = {
+		id = PRC_mekong_regional_development
+		icon = GFX_focus_BRA_cafe_com_leite_politics
+		x = -2
+		y = 4
+		cost = 3
+
+		relative_position_id = PRC_southen_plan
+
+		prerequisite = { 
+			focus = PRC_alliance_with_laos
+		}
+
+		available = {
+			is_puppet = no
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {		
+			add_cic = 2500
+
+			670 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+
+		search_filters = {  }
+		
+		ai_will_do = {
+			base = 3
+		}
+	}
+	
+	shared_focus = {
+		id = PRC_southeast_asia_prospering_together_with_china
+		icon = GFX_focus_ARG_anti_corruption_policies
+		x = 0
+		y = 4
+		cost = 3
+
+		relative_position_id = PRC_southen_plan
+
+		prerequisite = { 
+			focus = PRC_alliance_with_laos
+			focus = PRC_conquest_of_myanmar
+		}
+
+		available = {
+			is_puppet = no
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {		
+			
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 1
+						include_locked = yes
+					}
+					state_population_k > 20000
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+
+			if = {
+				limit = { 
+					country_exists = VIN
+					NOT = { has_war_with = VIN }
+				}
+				VIN = {
+					add_to_variable = { NVX_ECO_health = 1 tooltip = additional_economic_health_1 }
+					random_owned_controlled_state = {
+						limit = {
+							free_building_slots = {
+								building = industrial_complex
+								size > 1
+								include_locked = yes
+							}
+							state_population_k > 20000
+						}
+						add_extra_state_shared_building_slots = 2
+						add_building_construction = {
+							type = industrial_complex
+							level = 2
+							instant_build = yes
+						}
+					}
+				}
+			}
+			
+			if = {
+				limit = { 
+					country_exists = LAO
+					NOT = { has_war_with = LAO }
+				}
+				LAO = {
+					add_to_variable = { NVX_ECO_health = 1 tooltip = additional_economic_health_1 }
+					random_owned_controlled_state = {
+						limit = {
+							free_building_slots = {
+								building = industrial_complex
+								size > 1
+								include_locked = yes
+							}
+							state_population_k > 20000
+						}
+						add_extra_state_shared_building_slots = 2
+						add_building_construction = {
+							type = industrial_complex
+							level = 2
+							instant_build = yes
+						}
+					}
+				}
+			}
+			
+			if = {
+				limit = { 
+					country_exists = CAM
+					NOT = { has_war_with = CAM }
+				}
+				CAM = {
+					add_to_variable = { NVX_ECO_health = 1 tooltip = additional_economic_health_1 }
+					random_owned_controlled_state = {
+						limit = {
+							free_building_slots = {
+								building = industrial_complex
+								size > 1
+								include_locked = yes
+							}
+							state_population_k > 20000
+						}
+						add_extra_state_shared_building_slots = 2
+						add_building_construction = {
+							type = industrial_complex
+							level = 2
+							instant_build = yes
+						}
+					}
+				}
+			}
+			
+		}
+
+		search_filters = {  }
+		
+		ai_will_do = {
+			base = 3
+		}
+	}
+
+	shared_focus = {
+		id = PRC_conquest_of_philippines
+		icon = attack_philippines
+		x = 1
+		y = 1
+		cost = 5
+
+		relative_position_id = PRC_southen_plan
+
+		prerequisite = { 
+			focus = PRC_southen_plan
+		}
+
+		mutually_exclusive = { focus = PRC_cooperation_with_the_philippines }
+
+		available = {
+			is_puppet = no
+			has_global_flag = PRC_world_plan
+			country_exists = PHI
+			NOT = { is_in_faction_with = PHI }
+			NOT = { PHI = { is_puppet_of = ROOT } }
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {		
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = PHI
+			}
 		}
 
 		search_filters = {  }
 		
 		ai_will_do = {
 			base = 1
+		}
+	}
+
+	shared_focus = {
+		id = PRC_cooperation_with_the_philippines
+		icon = align_to_philippines
+		x = 3
+		y = 1
+		cost = 5
+
+		relative_position_id = PRC_southen_plan
+
+		prerequisite = { 
+			focus = PRC_southen_plan
+		}
+
+		mutually_exclusive = { focus = PRC_conquest_of_philippines }
+
+		available = {
+			is_puppet = no
+			has_global_flag = PRC_world_plan
+			country_exists = PHI
+			NOT = { is_in_faction_with = PHI }
+			NOT = { PHI = { is_puppet_of = ROOT } }
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {		
+			PHI = { country_event = { id = pr_china_diplomacy.1 days = 1 random_hours = 24 } }
+		}
+
+		search_filters = {  }
+		
+		ai_will_do = {
+			base = 1
+		}
+	}
+
+	shared_focus = {
+		id = PRC_economic_cooperation_with_the_philippines
+		icon = GFX_focus_ARG_develop_the_electricity_sector 
+		x = 2
+		y = 2
+		cost = 4
+
+		relative_position_id = PRC_southen_plan
+
+		prerequisite = { 
+			focus = PRC_conquest_of_philippines
+			focus = PRC_cooperation_with_the_philippines
+		}
+
+		available = {
+			is_puppet = no
+			is_in_faction_with = PHI
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {		
+			add_to_variable = { NVX_ECO_health = 1 tooltip = additional_economic_health_1 }
+			PHI = {
+				add_to_variable = { NVX_ECO_health = 3 tooltip = additional_economic_health_3 }
+				
+				random_owned_controlled_state = {
+					limit = {
+						free_building_slots = {
+							building = industrial_complex
+							size > 0
+							include_locked = yes
+						}
+						state_population_k > 500
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+		}
+
+		search_filters = {  }
+		
+		ai_will_do = {
+			base = 1
+		}
+	}
+
+	shared_focus = {
+		id = PRC_conquest_of_myanmar
+		icon = WAS_myanmar_unification_conference
+		x = 0
+		y = 2
+		cost = 5
+
+		relative_position_id = PRC_southen_plan
+
+		prerequisite = { 
+			focus = PRC_southen_plan
+		}
+
+		available = {
+			is_puppet = no
+			has_global_flag = PRC_world_plan
+			country_exists = BRM
+			NOT = { is_in_faction_with = BRM }
+			NOT = { BRM = { is_puppet_of = ROOT } }
+			WAS = { is_puppet_of = PRC }
+		}
+
+		bypass = {
+			OR = {
+				NOT = { WAS = { is_puppet_of = PRC } }
+				NOT = { country_exists = BRM }
+			}
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {		
+			create_wargoal = {
+				type = annex_everything
+				target = BRM
+			}
+			WAS = {
+				create_wargoal = {
+					type = annex_everything
+					target = BRM
+				}
+			}
+		}
+
+		search_filters = {  }
+		
+		ai_will_do = {
+			base = 3
+		}
+	}
+	
+
+	shared_focus = {
+		id = PRC_southwest_plan
+		icon = GFX_focus_RAJ_all_india_forward_bloc
+		x = 9
+		y = 1
+		cost = 5
+
+		relative_position_id = PRC_the_foreign_policy
+
+		prerequisite = { 
+			focus = PRC_the_foreign_policy
+		}
+
+		available = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {		
+			custom_effect_tooltip = PRC_tianxia_south_asia_tt
+		}
+
+		search_filters = {  }
+		
+		ai_will_do = {
+			base = 2
+		}
+	}
+	
+	shared_focus = {
+		id = PRC_alliance_with_pakistan
+		icon = align_to_pakistan
+		x = -1
+		y = 1
+		cost = 3
+
+		relative_position_id = PRC_southwest_plan
+
+		prerequisite = { 
+			focus = PRC_southwest_plan
+		}
+
+		available = {
+			is_puppet = no
+			country_exists = PAK
+			NOT = { has_war_with = PAK }
+			NOT = { is_in_faction_with = PAK }
+			NOT = { PAK = { is_puppet_of = ROOT } }
+		}
+
+		bypass = {
+			is_in_faction_with = PAK
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {		
+			PAK = { country_event = { id = pr_china_diplomacy.1 days = 1 random_hours = 24 } }
+		}
+
+		search_filters = {  }
+		
+		ai_will_do = {
+			base = 3
+		}
+	}
+	
+	shared_focus = {
+		id = PRC_alliance_with_iran
+		icon = align_to_iran
+		x = 0
+		y = 2
+		cost = 3
+
+		relative_position_id = PRC_southwest_plan
+
+		prerequisite = { 
+			focus = PRC_southwest_plan
+		}
+
+		available = {
+			is_puppet = no
+			country_exists = PER
+			NOT = { is_in_faction_with = PER }
+			NOT = { has_war_with = PER }
+			NOT = { PER = { is_puppet_of = ROOT } }
+		}
+
+		bypass = {
+			is_in_faction_with = PAK
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {		
+			PER = { country_event = { id = pr_china_diplomacy.1 days = 1 random_hours = 24 } }
+		}
+
+		search_filters = {  }
+		
+		ai_will_do = {
+			base = 3
+		}
+	}
+	
+	shared_focus = {
+		id = PRC_conquest_of_india
+		icon = attack_india
+		x = 1
+		y = 1
+		cost = 3
+
+		relative_position_id = PRC_southwest_plan
+
+		prerequisite = { 
+			focus = PRC_southwest_plan
+		}
+
+		available = {
+			is_puppet = no
+			has_global_flag = PRC_world_plan
+			country_exists = RAJ
+			NOT = { is_in_faction_with = RAJ }
+			NOT = { RAJ = { is_puppet_of = ROOT } }
+		}
+
+		bypass = {
+			has_war_with = RAJ
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {		
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = RAJ
+			}
+		}
+
+		search_filters = {  }
+		
+		ai_will_do = {
+			base = 3
 			modifier = {
 				factor = 0
 				NOT = { has_global_flag = PRC_world_plan }
+			}
+			modifier = {
+				has_war_with = USA
+				factor = 0
+			}
+			modifier = {
+				AND = {
+					has_war_with = PRK
+					surrender_progress > 0.3
+				}
+				factor = 0
+			}
+			modifier = {
+				AND = {
+					has_war_with = KOR
+					surrender_progress > 0.3
+				}
+				factor = 0
+			}
+			modifier = {
+				AND = {
+					has_war_with = SOV
+					surrender_progress > 0.3
+				}
+				factor = 0
+			}
+			modifier = {
+				has_war_with = RAJ
+				factor = 0
+			}
+			modifier = {
+				has_war_with = JAP
+				factor = 0
 			}
 		}
 	}
 
 	shared_focus = {
 		id = PRC_the_western_plan
-		icon = GFX_focus_SOV_the_path_of_marxism_leninism
-		x = 10
-		y = 2
-		cost = 5
+		icon = align_to_america
+		x = 13
+		y = 1
+		cost = 3
 
-		relative_position_id = PRC_socialist_foreign_policy
+		relative_position_id = PRC_the_foreign_policy
 
 		prerequisite = { 
-			focus = PRC_southeast_asian_dominion
-			focus = PRC_potential_southeast_asian_partners
+			focus = PRC_the_foreign_policy
+		}
+
+		available = {
+			country_exists = CHI
+			is_puppet = no
+			NOT = { is_in_faction_with = CHI }
+			NOT = { has_war_with = CHI }
 		}
 
 		cancel_if_invalid = yes
@@ -7972,111 +8784,356 @@
 		available_if_capitulated = no
 
 		completion_reward = {			
-			GER = {
-				if = {
-					limit = {
-						NOT = { is_in_faction_with = PRC }
-					}
-					add_opinion_modifier = {
-						target = ROOT
-						modifier = prc_trying_to_invade_us
-					}
-				}
-			}
-			FRA = {
-				if = {
-					limit = {
-						NOT = { is_in_faction_with = PRC }
-					}
-					add_opinion_modifier = {
-						target = ROOT
-						modifier = prc_trying_to_invade_us
-					}
-				}
-			}
-			ENG = {
-				if = {
-					limit = {
-						NOT = { is_in_faction_with = PRC }
-					}
-					add_opinion_modifier = {
-						target = ROOT
-						modifier = prc_trying_to_invade_us
-					}
-				}
-			}
-			ITA = {
-				if = {
-					limit = {
-						NOT = { is_in_faction_with = PRC }
-					}
-					add_opinion_modifier = {
-						target = ROOT
-						modifier = prc_trying_to_invade_us
-					}
-				}
-			}
-			CAN = {
-				if = {
-					limit = {
-						NOT = { is_in_faction_with = PRC }
-					}
-					add_opinion_modifier = {
-						target = ROOT
-						modifier = prc_trying_to_invade_us
-					}
-				}
-			}
-			MEX = {
-				if = {
-					limit = {
-						NOT = { is_in_faction_with = PRC }
-					}
-					add_opinion_modifier = {
-						target = ROOT
-						modifier = prc_trying_to_invade_us
-					}
-				}
-			}
-			USA = {
-				if = {
-					limit = {
-						NOT = { is_in_faction_with = PRC }
-					}
-					add_opinion_modifier = {
-						target = ROOT
-						modifier = prc_trying_to_invade_us
-					}
-				}
-			}
+			custom_effect_tooltip = PRC_tianxia_america_tt
 		}
 
 		search_filters = {  }
 		
 		ai_will_do = {
+			base = 1
+		}
+	}
+
+	shared_focus = {
+		id = PRC_join_WTO
+		icon = PRC_getting_rich_first
+		x = -1
+		y = 1
+		cost = 5
+
+		relative_position_id = PRC_the_western_plan
+		
+		prerequisite = { 
+			focus = PRC_the_western_plan
+		}
+
+		available = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		search_filters = { }
+
+		completion_reward = {
+			country_event = pr_china.5
+			add_to_variable = { NVX_ECO_health = 2 tooltip = additional_economic_health_2 }		
+		}
+		
+		ai_will_do = {
 			base = 25
 			modifier = {
-				factor = 0
-				NOT = { has_global_flag = PRC_world_plan }
-			}
-			modifier = {
-				add = 4
-				has_global_flag = PRC_world_plan
+				factor = 0.5
+				OR = {
+					has_idea = PRC_rural_poverty_strike
+					has_idea = PRC_rural_poverty_strike_danger
+				}	
 			}
 		}
 	}
-	
+
+	shared_focus = {
+		id = PRC_large_manufacturing_plant
+		icon = GFX_focus_BRA_reach_out_to_military_dem
+		x = -1
+		y = 2
+		cost = 5
+
+		relative_position_id = PRC_the_western_plan
+		
+		prerequisite = { 
+			focus = PRC_join_WTO
+		}
+
+		available = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		search_filters = { }
+
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+					state_population_k > 500
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+					state_population_k > 500
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		
+		ai_will_do = {
+			base = 25
+			modifier = {
+				factor = 0.5
+				OR = {
+					has_idea = PRC_rural_poverty_strike
+					has_idea = PRC_rural_poverty_strike_danger
+				}	
+			}
+		}
+	}
+
+	shared_focus = {
+		id = PRC_pacifist_declaration
+		icon = JAP_peaceful
+		x = 1
+		y = 1
+		cost = 5
+
+		relative_position_id = PRC_the_western_plan
+		
+		prerequisite = { 
+			focus = PRC_the_western_plan
+		}
+
+		available = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		search_filters = { }
+
+		completion_reward = {			
+			add_named_threat = { threat = -3 name = PRC_pacifist_declaration }
+			add_stability = 0.05
+			add_war_support = -0.04
+		}
+		
+		ai_will_do = {
+			base = 25
+			modifier = {
+				factor = 0.5
+				OR = {
+					has_idea = PRC_rural_poverty_strike
+					has_idea = PRC_rural_poverty_strike_danger
+				}	
+			}
+		}
+	}
+
+	shared_focus = {
+		id = PRC_toward_the_american_market
+		icon = GFX_focus_BRA_ethical_internationalism
+		x = 1
+		y = 2
+		cost = 5
+
+		relative_position_id = PRC_the_western_plan
+		
+		prerequisite = { 
+			focus = PRC_pacifist_declaration
+		}
+
+		prerequisite = { 
+			focus = PRC_join_WTO
+		}
+
+		available = {
+			country_exists = USA
+			is_puppet = no
+			NOT = { is_in_faction_with = USA }
+			NOT = { has_war_with = USA }
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		search_filters = { }
+
+		completion_reward = {
+			add_to_variable = { NVX_ECO_health = 2 tooltip = additional_economic_health_2 }
+		}
+		
+		ai_will_do = {
+			base = 2
+		}
+	}
+
+	shared_focus = {
+		id = PRC_add_backdoors
+		icon = kor_Internet_censorship
+		x = 3
+		y = 2
+		cost = 5
+
+		relative_position_id = PRC_the_western_plan
+		
+		prerequisite = { 
+			focus = PRC_pacifist_declaration
+		}
+
+		prerequisite = { 
+			focus = PRC_join_WTO
+		}
+
+		available = {
+			country_exists = USA
+			is_puppet = no
+			NOT = { is_in_faction_with = USA }
+			NOT = { has_war_with = USA }
+		}
+
+		bypass = {
+			OR = {
+				NOT = { country_exists = USA }
+				has_war_with = USA
+			}
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		search_filters = { }
+
+		completion_reward = {
+			if = {
+				limit = { country_exists = USA }
+				add_intel = {
+					target = USA
+					army_intel = 25
+				}
+				add_intel = {
+					target = USA
+					air_intel = 25
+				}
+				add_intel = {
+					target = USA
+					navy_intel = 25
+				}
+			}
+		}
+		
+		ai_will_do = {
+			base = 2
+		}
+	}
+
+	shared_focus = {
+		id = PRC_confusing_america
+		icon = GFX_focus_ARG_anti_american_propaganda 
+		x = 2
+		y = 3
+		cost = 5
+
+		relative_position_id = PRC_the_western_plan
+		
+		prerequisite = { 
+			focus = PRC_toward_the_american_market
+		}
+
+		prerequisite = { 
+			focus = PRC_add_backdoors
+		}
+
+		available = {
+			has_global_flag = PRC_world_plan
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		search_filters = { }
+
+		completion_reward = {
+			USA = { 
+				add_stability = -0.05 
+				add_popularity = {
+					ideology = fascist
+					popularity = 0.03
+				}
+			}
+		}
+		
+		ai_will_do = {
+			base = 2
+		}
+	}
+
+	shared_focus = {
+		id = PRC_south_american_partner
+		icon = kor_cogwheel_called_soldier
+		x = -2
+		y = 3
+		cost = 5
+
+		relative_position_id = PRC_the_western_plan
+
+		available = {
+			has_war_with = USA
+		}
+
+		prerequisite = { 
+			focus = PRC_toward_the_american_market
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {	
+			custom_effect_tooltip = PRC_south_american_partner_tt
+			set_global_flag = PRC_south_america		
+		}
+
+		search_filters = {  }
+		
+		ai_will_do = {
+			base = 1
+		}
+	}
+
 	shared_focus = {
 		id = PRC_challenge_to_american_hegemony
-		icon = attack_america
+		icon = GFX_focus_ARG_the_american_push
 		x = 0
-		y = 1
+		y = 3
 		cost = 5
 
 		relative_position_id = PRC_the_western_plan
 
 		prerequisite = { 
-			focus = PRC_the_western_plan
+			focus = PRC_toward_the_american_market
+		}
+
+		prerequisite = { 
+			focus = PRC_add_backdoors
 		}
 
 		available = {
@@ -8100,7 +9157,10 @@
 			hidden_effect = {
 				news_event = pr_china_news.11
 			}
-			custom_effect_tooltip = PRC_challenge_to_american_hegemony_tt	
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = USA
+			}
 			add_named_threat = { threat = 15 name = PRC_challenge_to_american_hegemony }
 		}
 
@@ -8147,320 +9207,25 @@
 			}
 		}
 	}
-	
-#	shared_focus = {
-#		id = PRC_dissolution_of_the_united_states
-#		icon = JAP_communist_unite_2
-#		x = 0
-#		y = 2
-#		cost = 5
-#
-#		relative_position_id = PRC_the_western_plan
-#
-#		prerequisite = { 
-#			focus = PRC_challenge_to_american_hegemony
-#		}
-#
-#		cancel_if_invalid = yes
-#		continue_if_invalid = no
-#		available_if_capitulated = no
-#
-#		completion_reward = {			
-#		}
-#
-	#	search_filters = {  }
-	#	
-	#	ai_will_do = {
-	#		base = 1
-	#	}
-	#}
-	
-#	shared_focus = {
-#		id = PRC_negotiations_with_europe
-#		icon = align_to_europe
-#		x = 2
-#		y = 2
-#		cost = 5
-#
-#		relative_position_id = PRC_the_western_plan
-#
-#		prerequisite = { 
-#			focus = PRC_challenge_to_american_hegemony
-#		}
-#
-#		cancel_if_invalid = yes
-#		continue_if_invalid = no
-#		available_if_capitulated = no
-#
-#		completion_reward = {			
-#		}
-#
-	#	search_filters = {  }
-	#	
-	#	ai_will_do = {
-	#		base = 1
-	#	}
-	#}
 
-	shared_focus = {
-		id = PRC_south_american_partner
-		icon = kor_cogwheel_called_soldier
-		x = 0
-		y = 2
-		cost = 5
-
-		relative_position_id = PRC_the_western_plan
-
-		prerequisite = { 
-			focus = PRC_challenge_to_american_hegemony
-		}
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = no
-
-		completion_reward = {	
-			custom_effect_tooltip = PRC_south_american_partner_tt
-			set_global_flag = PRC_south_america		
-		}
-
-		search_filters = {  }
-		
-		ai_will_do = {
-			base = 1
-		}
-	}
-
-	shared_focus = {
-		id = PRC_the_northen_plan
-		icon = GFX_focus_SOV_the_path_of_marxism_leninism
-		x = 13
-		y = 2
-		cost = 5
-
-		relative_position_id = PRC_socialist_foreign_policy
-
-		prerequisite = { 
-			focus = PRC_southeast_asian_dominion
-			focus = PRC_potential_southeast_asian_partners
-		}
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = no
-
-		completion_reward = {		
-			MON = {
-				if = {
-					limit = {
-						NOT = { is_in_faction_with = PRC }
-					}
-					add_opinion_modifier = {
-						target = ROOT
-						modifier = prc_trying_to_invade_us
-					}
-				}
-			}
-			SOV = {
-				if = {
-					limit = {
-						NOT = { is_in_faction_with = PRC }
-					}
-					add_opinion_modifier = {
-						target = ROOT
-						modifier = prc_trying_to_invade_us
-					}
-				}
-			}
-		}
-
-		search_filters = {  }
-		
-		ai_will_do = {
-			base = 1
-			modifier = {
-				add = 4
-				has_global_flag = PRC_world_plan
-			}
-		}
-	}
-
-	shared_focus = {
-		id = PRC_destruction_of_russia
-		icon = attack_russia
-		x = -1
-		y = 1
-		cost = 5
-
-		relative_position_id = PRC_the_northen_plan
-
-		prerequisite = { 
-			focus = PRC_the_northen_plan
-		}
-
-		mutually_exclusive = { 
-			focus = PRC_befriend_russia
-		}
-
-		available = {
-			country_exists = SOV
-			is_puppet = no
-			NOT = { is_in_faction_with = SOV }
-			NOT = { has_war_with = SOV }
-
-			has_global_flag = PRC_world_plan
-		}
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = no
-
-		completion_reward = {			
-			custom_effect_tooltip = PRC_destruction_of_russia_tt	
-		}
-
-		search_filters = {  }
-		
-		ai_will_do = {
-			base = 1
-			modifier = {
-				factor = 0
-				NOT = { has_global_flag = PRC_world_plan }
-			}
-		}
-		
-		ai_will_do = {
-			factor = 1
-			modifier = {
-				has_war_with = USA
-				factor = 0
-			}
-			modifier = {
-				AND = {
-					has_war_with = PRK
-					surrender_progress > 0.3
-				}
-				factor = 0
-			}
-			modifier = {
-				AND = {
-					has_war_with = KOR
-					surrender_progress > 0.3
-				}
-				factor = 0
-			}
-			modifier = {
-				AND = {
-					has_war_with = SOV
-					surrender_progress > 0.3
-				}
-				factor = 0
-			}
-			modifier = {
-				has_war_with = RAJ
-				factor = 0
-			}
-			modifier = {
-				has_war_with = JAP
-				factor = 0
-			}
-		}
-	}
-
-	shared_focus = {
-		id = PRC_befriend_russia
-		icon = align_to_russia
-		x = 1
-		y = 1
-		cost = 5
-
-		relative_position_id = PRC_the_northen_plan
-
-		prerequisite = { 
-			focus = PRC_the_northen_plan
-		}
-
-		mutually_exclusive = { 
-			focus = PRC_destruction_of_russia
-		}
-
-		available = {
-			country_exists = SOV
-			SOV = {
-				AND = {
-					is_major = yes
-					NOT = { is_in_faction_with = ROOT }
-					is_puppet = no
-					NOT = { has_war_with = ROOT }
-				}
-			}
-
-			has_global_flag = PRC_world_plan
-		}
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = no
-
-		completion_reward = {		
-			SOV = { country_event = pr_china_diplomacy.16 }	
-		}
-
-		search_filters = {  }
-		
-		ai_will_do = {
-			base = 1
-			modifier = {
-				factor = 0
-				NOT = { has_global_flag = PRC_world_plan }
-			}
-		}
-	}
-
-	#shared_focus = {
-	#	id = PRC_war_support_for_russia
-	#	icon = PRC_swift_army
-	#	x = 3
-	#	y = 1
-	#	cost = 5
-#
-#		relative_position_id = PRC_the_northen_plan
-#
-#		prerequisite = { 
-#			focus = PRC_the_northen_plan
-#		}
-#
-#		available = {
-#			NOT = { has_war_with = SOV }
-#		}
-#
-#		cancel_if_invalid = yes
-#		continue_if_invalid = no
-	#	available_if_capitulated = no
-#
-#		completion_reward = {			
-#		}
-#
-#		search_filters = {  }
-#		
-#		ai_will_do = {
-#			base = 1
-#		}
-#	}
-
+	#########################################################
 
 	shared_focus = {
 		id = PRC_darkness_sympathizer
 		icon = PRC_anti_ccp_start
-		x = 98
+		x = 78
 		y = 0
 		cost = 5
 
-		available = {
-			custom_trigger_tooltip = {
-				tooltip = PRC_darkness_sympathizer_WIP
-				always = no
+		offset = {
+			x = -27
+			y = 0
+			trigger = {
+				has_completed_focus = PRC_darkness_sympathizer
 			}
+		}
+
+		available = {
 		}
 
 		allow_branch = {
@@ -8476,14 +9241,1589 @@
 		available_if_capitulated = no
 
 		completion_reward = {			
-			custom_effect_tooltip = PRC_darkness_sympathizer_tt
+			#custom_effect_tooltip = PRC_darkness_sympathizer_tt
 			mark_focus_tree_layout_dirty = yes
+			country_event = { id = pr_china.2000 }
 		}
 
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		
 		ai_will_do = {
-			base = 0
+			base = 1000
+			modifier = {
+				factor = 0
+				OR = {
+					has_game_rule = {
+						rule = PRC_AI_BEHAVIOR
+						option = LEFTIST_CCP
+					}
+					has_game_rule = {
+						rule = PRC_AI_BEHAVIOR
+						option = HISTORICAL_CCP
+					}
+					has_game_rule = {
+						rule = PRC_AI_BEHAVIOR
+						option = RIGHTIST_CCP
+					}
+					AND = {
+						is_historical_focus_on = yes
+						has_game_rule = {
+							rule = PRC_AI_BEHAVIOR
+							option = DEFAULT
+						}
+					}
+				}	
+			}
+		}
+	}
+
+	shared_focus = {
+		id = PRC_the_flower_of_freedom
+		icon = PRC_the_flower_of_freedom
+		x = -2
+		y = 1
+		cost = 1.5
+
+		relative_position_id = PRC_darkness_sympathizer
+
+		prerequisite = { 
+			focus = PRC_darkness_sympathizer
+		}
+
+		available = {
+			has_government = communist
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_stability = -0.05
+			add_political_power = -25
+			add_ideas = idea_PRC_memories_of_1989_democratic
+		}
+
+		search_filters = {  }
+		
+		ai_will_do = {
+			base = 4
+		}
+	}
+
+	shared_focus = {
+		id = PRC_do_you_hear_the_people_sing
+		icon = PRC_do_you_hear_the_people_sing
+		x = -3
+		y = 2
+		cost = 1.5
+
+		relative_position_id = PRC_darkness_sympathizer
+
+		prerequisite = { 
+			focus = PRC_the_flower_of_freedom
+		}
+
+		available = {
+			has_government = communist
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			613 = { set_demilitarized_zone = yes }
+			62 = { set_demilitarized_zone = yes }
+			552 = { set_demilitarized_zone = yes }
+		}
+
+		search_filters = {  }
+		
+		ai_will_do = {
+			base = 4
+		}
+	}
+
+	shared_focus = {
+		id = PRC_singing_the_song_of_angry_men
+		icon = PRC_singing_the_song_of_angry_men
+		x = -1
+		y = 2
+		cost = 1.5
+
+		relative_position_id = PRC_darkness_sympathizer
+
+		prerequisite = { 
+			focus = PRC_the_flower_of_freedom
+		}
+
+		available = {
+			has_government = communist
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {		
+			601 = { set_demilitarized_zone = yes }
+			605 = { set_demilitarized_zone = yes }
+			325 = { set_demilitarized_zone = yes }
+			1242 = { set_demilitarized_zone = yes }
+		}
+
+		search_filters = {  }
+		
+		ai_will_do = {
+			base = 4
+		}
+	}
+
+	shared_focus = {
+		id = PRC_contact_with_the_rightists_of_the_CPC
+		icon = PRC_reevaluation_of_the_tiananmen_square_protests
+		x = 2
+		y = 3
+		cost = 1.5
+
+		relative_position_id = PRC_darkness_sympathizer
+
+		prerequisite = { 
+			focus = PRC_singing_a_song_of_angry_men
+		}
+
+		prerequisite = { 
+			focus = PRC_bribery_negotiations
+		}
+
+		prerequisite = { 
+			focus = PRC_great_compromise
+		}
+
+		available = {
+			has_government = communist
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {		
+			custom_effect_tooltip = PRC_contact_with_the_rightists_of_the_CPC_tt
+			show_ideas_tooltip = prc_zhao_ziyang_adviser
+		}
+
+		search_filters = {  }
+		
+		ai_will_do = {
+			base = 4
+		}
+	}
+
+	shared_focus = {
+		id = PRC_alternative_to_revolution
+		icon = PRC_alternative_to_revolution
+		x = 2
+		y = 1
+		cost = 1.5
+
+		relative_position_id = PRC_darkness_sympathizer
+
+		prerequisite = { 
+			focus = PRC_darkness_sympathizer
+		}
+
+		available = {
+			has_government = communist
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {		
+			country_event = { id = pr_china.2001 }
+		}
+
+		search_filters = {  }
+		
+		ai_will_do = {
+			base = 4
+		}
+	}
+
+	shared_focus = {
+		id = PRC_bribery_negotiations
+		icon = WAS_establishment_of_the_commune_parliament
+		x = 1
+		y = 2
+		cost = 1.5
+
+		relative_position_id = PRC_darkness_sympathizer
+
+		prerequisite = { 
+			focus = PRC_alternative_to_revolution
+		}
+
+		available = {
+			has_government = communist
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_political_power = -75
+			add_to_variable = { NVX_ECO_health = -1 tooltip = minous_economic_health_1 }
+		}
+
+		search_filters = {  }
+		
+		ai_will_do = {
+			base = 4
+		}
+	}
+
+	shared_focus = {
+		id = PRC_great_compromise
+		icon = WAS_preparation_for_new_constitution_red
+		x = 3
+		y = 2
+		cost = 1.5
+
+		relative_position_id = PRC_darkness_sympathizer
+
+		prerequisite = { 
+			focus = PRC_alternative_to_revolution
+		}
+
+		available = {
+			has_government = communist
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {		
+			add_to_variable = { NVX_ECO_health = -1 tooltip = minous_economic_health_1 }
+		}
+
+		search_filters = {  }
+		
+		ai_will_do = {
+			base = 4
+		}
+	}
+
+	shared_focus = {
+		id = PRC_awakened_from_great_lie
+		icon = PRC_awakened_from_great_lie
+		x = -2
+		y = 3
+		cost = 1.5
+
+		relative_position_id = PRC_darkness_sympathizer
+
+		select_effect = {
+			if = {
+				limit = {
+					has_active_mission = PRC_looming_mingongs_strike_mission
+				}
+				add_days_mission_timeout  = {
+					mission = PRC_looming_mingongs_strike_mission
+					days = 10
+				}
+			}
+			if = {
+				limit = {
+					has_active_mission = PRC_mingongs_strike
+				}
+				add_days_mission_timeout  = {
+					mission = PRC_mingongs_strike
+					days = 10
+				}
+			}
+		}
+
+		prerequisite = { 
+			focus = PRC_do_you_hear_the_people_sing
+		}
+
+		prerequisite = { 
+			focus = PRC_singing_the_song_of_angry_men
+		}
+
+		available = {
+			has_government = communist
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {		
+			country_event = { id = pr_china.2003 }
+		}
+
+		search_filters = {  }
+		
+		ai_will_do = {
+			base = 4
+		}
+	}
+
+	shared_focus = {
+		id = PRC_Marxism_is_lie
+		icon = PRC_Marxism_is_lie
+		x = 0
+		y = 4
+		cost = 3
+
+		relative_position_id = PRC_darkness_sympathizer
+
+		prerequisite = { 
+			focus = PRC_contact_with_the_rightists_of_the_CPC
+		}
+
+		prerequisite = { 
+			focus = PRC_awakened_from_great_lie
+		}
+
+		available = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			country_event = { id = pr_china.2002 }
+		}
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		
+		ai_will_do = {
+			base = 4
+		}
+	}
+
+	shared_focus = {
+		id = PRC_tomorrow
+		icon = GFX_Focus_Attack_China
+		x = 0
+		y = 5
+		cost = 5
+
+		relative_position_id = PRC_darkness_sympathizer
+
+		prerequisite = { 
+			focus = PRC_Marxism_is_lie
+		}
+
+		available = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {		
+			add_political_power = 150
+		}
+
+		search_filters = {  }
+		
+		ai_will_do = {
+			base = 4
+		}
+	}
+
+	shared_focus = {
+		id = PRC_NEP_retention_declaration
+		icon = PRC_the_yuan
+		x = -1
+		y = 1
+		cost = 6
+
+		relative_position_id = PRC_tomorrow
+
+		prerequisite = { 
+			focus = PRC_tomorrow
+		}
+
+		available = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {		
+			add_stability = 0.1
+			custom_effect_tooltip = PRC_more_worker_friendly_NEP_tt
+			add_to_variable = { consumer_goods_factor = -0.02 }
+			add_to_variable = { conversion_cost_civ_to_mil_factor = -0.05 }
+		}
+
+		search_filters = {  }
+		
+		ai_will_do = {
+			base = 1
+		}
+	}
+
+	shared_focus = {
+		id = PRC_workers_rights
+		icon = PRC_restrictive_multiparty_system 
+		x = -2
+		y = 2
+		cost = 6
+
+		relative_position_id = PRC_tomorrow
+
+		prerequisite = { 
+			focus = PRC_NEP_retention_declaration
+		}
+
+		available = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {		
+			add_stability = 0.1
+		}
+
+		search_filters = {  }
+		
+		ai_will_do = {
+			base = 1
+		}
+	}
+
+	shared_focus = {
+		id = PRC_young_generals
+		icon = PRC_expand_the_red_fleet 
+		x = -3
+		y = 3
+		cost = 6
+
+		relative_position_id = PRC_tomorrow
+
+		prerequisite = { 
+			focus = PRC_workers_rights
+		}
+
+		prerequisite = { 
+			focus = PRC_retraining_generals
+		}
+
+		available = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			custom_effect_tooltip = PRC_young_generals_tt
+			hidden_effect = {
+				create_corps_commander = {
+					traits = { trait_reckless }
+					id = -1
+					attack_skill = 1
+					defense_skill = 4
+					planning_skill = 3
+					logistics_skill = 2
+					skill = 3
+				}
+			}
+			hidden_effect = {
+				create_corps_commander = {
+					traits = { trait_mountaineer }
+					id = -1
+					attack_skill = 2
+					defense_skill = 2
+					planning_skill = 1
+					logistics_skill = 2
+					skill = 2
+				}
+			}
+			hidden_effect = {
+				create_corps_commander = {
+					traits = { }
+					id = -1
+					attack_skill = 4
+					defense_skill = 1
+					planning_skill = 3
+					logistics_skill = 3
+					skill = 3
+				}
+			}
+		}
+
+		search_filters = {  }
+		
+		ai_will_do = {
+			base = 1
+		}
+	}
+
+	shared_focus = {
+		id = PRC_educational_support
+		icon = GFX_goal_Supremacy_Of_Minds
+		x = 0
+		y = 2
+		cost = 6
+
+		relative_position_id = PRC_tomorrow
+
+		prerequisite = { 
+			focus = PRC_NEP_retention_declaration
+		}
+
+		available = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {		
+			add_political_power = 100
+			law_change_increase_welfare = yes
+		}
+
+		search_filters = {  }
+		
+		ai_will_do = {
+			base = 1
+		}
+	}
+
+	shared_focus = {
+		id = PRC_free_education
+		icon = GFX_goal_Supremacy_Of_Science
+		x = -1
+		y = 3
+		cost = 6
+
+		relative_position_id = PRC_tomorrow
+
+		prerequisite = { 
+			focus = PRC_educational_support
+		}
+
+		available = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		
+		search_filters = { FOCUS_FILTER_RESEARCH }
+
+		completion_reward = {
+			add_research_slot = 1
+		}
+
+		ai_will_do = {
+			base = 1
+		}
+	}
+
+	shared_focus = {
+		id = PRC_reinforce_generals
+		icon = PRC_desperate_soldiers
+		x = -3
+		y = 1
+		cost = 6
+
+		relative_position_id = PRC_tomorrow
+
+		prerequisite = { 
+			focus = PRC_tomorrow
+		}
+
+		available = {
+			OR = {
+				has_country_flag = PRC_victory_junta
+				has_country_flag = PRC_little_victory_people
+				has_country_flag = PRC_beijing_spring
+			}
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			
+			PRC_zhao_ziyang = {
+				add_corps_commander_role = {
+					traits = {
+						media_personality career_officer
+					}
+					skill = 1
+					attack_skill = 1
+					defense_skill = 1
+					planning_skill = 1
+					logistics_skill = 1
+				}
+			}
+			PRC_xu_qinxian = {
+				add_corps_commander_role = {
+					traits = {
+						media_personality brilliant_strategist
+					}
+					skill = 3
+					attack_skill = 4
+					defense_skill = 3
+					planning_skill = 3
+					logistics_skill = 2
+				}
+			}
+		}
+
+		search_filters = {  }
+		
+		ai_will_do = {
+			base = 2
+		}
+	}
+
+	shared_focus = {
+		id = PRC_retraining_generals
+		icon = PRC_the_need_for_policy_changes_grey
+		x = -4
+		y = 2
+		cost = 6
+
+		relative_position_id = PRC_tomorrow
+
+		prerequisite = { 
+			focus = PRC_reinforce_generals
+		}
+
+		available = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_doctrine_cost_reduction = {
+				name = PRC_retraining_generals
+				cost_reduction = 0.5
+				uses = 1
+				category = land_doctrine
+			}
+			every_unit_leader = {
+				limit = {
+					is_army_leader = yes
+				}
+				random_select_amount = 3
+				add_skill_level = 1
+				add_attack = 1
+				add_defense = 1
+				add_logistics = 1
+			}
+		}
+
+		search_filters = {  }
+		
+		ai_will_do = {
+			base = 2
+		}
+	}
+
+	shared_focus = {
+		id = PRC_end_of_democracy
+		icon = GFX_SOV_T-90
+		x = 1
+		y = 1
+		cost = 6
+
+		relative_position_id = PRC_tomorrow
+
+		prerequisite = { 
+			focus = PRC_tomorrow
+		}
+
+		available = {
+			has_country_flag = PRC_victory_junta
+		}
+
+		mutually_exclusive = { focus = PRC_formal_democracy }
+		mutually_exclusive = { focus = PRC_beijing_spring }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {		
+			custom_effect_tooltip = PRC_end_beijing_crisis_tt
+		}
+
+		search_filters = {  }
+		
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	shared_focus = {
+		id = PRC_dissolution_of_the_legislative_yuan
+		icon = PRC_take_control_of_the_university
+		x = 0
+		y = 2
+		cost = 6
+
+		relative_position_id = PRC_end_of_democracy
+
+		prerequisite = { 
+			focus = PRC_end_of_democracy
+		}
+
+		available = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {		
+			swap_ideas = {
+				remove_idea = PRC_military_democracy
+				add_idea = PRC_military_democracy_3
+			}
+		}
+
+		search_filters = {  }
+		
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	shared_focus = {
+		id = PRC_militarism
+		icon = PRC_the_martial_law
+		x = -1
+		y = 1
+		cost = 6
+
+		relative_position_id = PRC_dissolution_of_the_legislative_yuan
+
+		prerequisite = { 
+			focus = PRC_dissolution_of_the_legislative_yuan
+		}
+
+		available = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {		
+			add_stability = 0.15
+			every_unit_leader = {
+				limit = {
+					is_army_leader = yes
+				}
+				random_select_amount = 2
+				add_attack = 1
+				add_defense = 1
+			}
+			add_doctrine_cost_reduction = {
+				name = PRC_militarism
+				cost_reduction = 0.5
+				uses = 1
+				category = land_doctrine
+			}
+		}
+
+		search_filters = {  }
+		
+		ai_will_do = {
+			base = 1.1
+		}
+	}
+
+	shared_focus = {
+		id = PRC_militaristic_propaganda
+		icon = kor_promote_it_companies_red
+		x = -2
+		y = 2
+		cost = 6
+
+		relative_position_id = PRC_dissolution_of_the_legislative_yuan
+
+		prerequisite = { 
+			focus = PRC_militarism
+		}
+
+		available = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {		
+			add_ideas = PRC_militaristic_propaganda_idea
+		}
+
+		search_filters = {  }
+		
+		ai_will_do = {
+			base = 1.1
+		}
+	}
+
+	shared_focus = {
+		id = PRC_more_secret_police
+		icon = CHI_manhunt_for_assassin
+		x = 0
+		y = 2
+		cost = 6
+
+		relative_position_id = PRC_dissolution_of_the_legislative_yuan
+
+		prerequisite = { 
+			focus = PRC_dissolution_of_the_legislative_yuan
+		}
+
+		available = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {		
+			remove_ideas = PRC_democratic_resistance
+			if = {
+				limit = { has_dlc = "La Resistance" }
+				if = {
+					limit = { has_intelligence_agency = no }
+					create_intelligence_agency = yes
+					gain_random_agency_upgrade = yes
+				}
+				else = {
+					gain_random_agency_upgrade = yes
+				}
+			}
+			else = {
+				add_stability = 0.1
+			}
+		}
+
+		search_filters = {  }
+		
+		ai_will_do = {
+			base = 1.1
+		}
+	}
+
+	shared_focus = {
+		id = PRC_chinese_nationalism
+		icon = KOR_year_of_the_dragon
+		x = 1
+		y = 1
+		cost = 6
+
+		relative_position_id = PRC_dissolution_of_the_legislative_yuan
+
+		prerequisite = { 
+			focus = PRC_dissolution_of_the_legislative_yuan
+		}
+
+		available = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {		
+			every_core_state = {
+				random_select_amount = 5
+				limit = {
+					is_fully_controlled_by = ROOT
+					infrastructure > 2
+					free_building_slots = {
+						building = arms_factory
+						size > 0
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+
+		search_filters = {  }
+		
+		ai_will_do = {
+			base = 1.1
+		}
+	}
+
+	shared_focus = {
+		id = PRC_fascism_for_new_era
+		icon = GFX_SOV_T-72
+		x = 1
+		y = 3
+		cost = 6
+
+		relative_position_id = PRC_dissolution_of_the_legislative_yuan
+
+		prerequisite = { 
+			focus = PRC_chinese_nationalism
+		}
+
+		available = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {		
+			add_ideas = PRC_fascism_for_new_era_idea
+		}
+
+		search_filters = {  }
+		
+		ai_will_do = {
+			base = 1.1
+		}
+	}
+
+	shared_focus = {
+		id = PRC_collusion_with_bureaucrats
+		icon = kor_creative_economy
+		x = 2
+		y = 1
+		cost = 5
+
+		relative_position_id = PRC_end_of_democracy
+
+		prerequisite = { 
+			focus = PRC_end_of_democracy
+			focus = PRC_formal_democracy
+		}
+
+		available = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {		
+			add_ideas = PRC_reformed_bureaucrats_right
+		}
+
+		search_filters = {  }
+		
+		ai_will_do = {
+			base = 2
+		}
+	}
+
+	shared_focus = {
+		id = PRC_formal_democracy
+		icon = PRC_remove_maoists_democratic
+		x = 5
+		y = 1
+		cost = 6
+
+		relative_position_id = PRC_tomorrow
+
+		prerequisite = { 
+			focus = PRC_tomorrow
+		}
+
+		available = {
+			has_country_flag = PRC_little_victory_people
+		}
+
+		mutually_exclusive = { focus = PRC_end_of_democracy }
+		mutually_exclusive = { focus = PRC_beijing_spring }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {		
+			custom_effect_tooltip = PRC_end_beijing_crisis_tt
+		}
+
+		search_filters = {  }
+		
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	shared_focus = {
+		id = PRC_puppet_the_legislative_yuan
+		icon = WAS_establishment_of_the_commune_parliament
+		x = 0
+		y = 2
+		cost = 6
+
+		relative_position_id = PRC_formal_democracy
+
+		prerequisite = { 
+			focus = PRC_formal_democracy
+		}
+
+		available = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {		
+			swap_ideas = {
+				remove_idea = PRC_military_democracy
+				add_idea = PRC_military_democracy_2
+			}
+		}
+
+		search_filters = {  }
+		
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	shared_focus = {
+		id = PRC_government_of_scientists_and_bureaucrats
+		icon = PRC_Education
+		x = -1
+		y = 1
+		cost = 6
+
+		relative_position_id = PRC_puppet_the_legislative_yuan
+
+		prerequisite = { 
+			focus = PRC_puppet_the_legislative_yuan
+		}
+
+		available = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {		
+			add_ideas = PRC_government_of_scientists_and_bureaucrats_idea
+		}
+
+		search_filters = {  }
+		
+		ai_will_do = {
+			base = 1.1
+		}
+	}
+
+	shared_focus = {
+		id = PRC_OGAS
+		icon = PRC_OGAS_system
+		x = -2
+		y = 2
+		cost = 6
+
+		relative_position_id = PRC_puppet_the_legislative_yuan
+
+		prerequisite = { 
+			focus = PRC_government_of_scientists_and_bureaucrats
+		}
+
+		available = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {		
+			add_tech_bonus = {
+				name = PRC_OGAS
+				bonus = 2
+				uses = 1
+				category = industry
+			}
+			
+			random_core_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+					is_owned_and_controlled_by = ROOT
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+			random_core_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+					is_owned_and_controlled_by = ROOT
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+
+		search_filters = {  }
+		
+		ai_will_do = {
+			base = 1.1
+		}
+	}
+
+	shared_focus = {
+		id = PRC_beijing_spring
+		icon = CHI_the_republic_s_only_salvation
+		x = 9
+		y = 1
+		cost = 6
+
+		relative_position_id = PRC_tomorrow
+
+		prerequisite = { 
+			focus = PRC_tomorrow
+		}
+
+		available = {
+			has_country_flag = PRC_victory_people
+		}
+
+		mutually_exclusive = { focus = PRC_end_of_democracy }
+		mutually_exclusive = { focus = PRC_formal_democracy }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {		
+			custom_effect_tooltip = PRC_end_beijing_crisis_tt
+		}
+
+		search_filters = {  }
+		
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	shared_focus = {
+		id = PRC_freedom_for_capitalists
+		icon = PRC_world_s_factory
+		x = 1
+		y = 1
+		cost = 6
+
+		relative_position_id = PRC_puppet_the_legislative_yuan
+
+		prerequisite = { 
+			focus = PRC_puppet_the_legislative_yuan
+		}
+
+		available = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {		
+			law_change_tax_increase = yes
+			every_core_state = {
+				random_select_amount = 5
+				limit = {
+					is_fully_controlled_by = ROOT
+					infrastructure > 2
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			add_to_variable = { NVX_ECO_health = 2 tooltip = additional_economic_health_2 }
+		}
+
+		search_filters = {  }
+		
+		ai_will_do = {
+			base = 1.1
+		}
+	}
+
+	shared_focus = {
+		id = PRC_more_efficient_NEP
+		icon = PRC_getting_rich_first
+		x = 1
+		y = 3
+		cost = 6
+
+		relative_position_id = PRC_puppet_the_legislative_yuan
+
+		prerequisite = { 
+			focus = PRC_puppet_the_legislative_yuan
+		}
+
+		available = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {		
+			add_ideas = PRC_more_efficient_NEP_idea
+		}
+
+		search_filters = {  }
+		
+		ai_will_do = {
+			base = 1.1
+		}
+	}
+
+	shared_focus = {
+		id = PRC_destruction_of_liberalism
+		icon = kor_pro_jucheist_crush
+		x = 0
+		y = 2
+		cost = 6
+
+		relative_position_id = PRC_puppet_the_legislative_yuan
+
+		prerequisite = { 
+			focus = PRC_puppet_the_legislative_yuan
+		}
+
+		available = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {		
+			remove_ideas = PRC_democratic_resistance
+			add_stability = 0.1
+		}
+
+		search_filters = {  }
+		
+		ai_will_do = {
+			base = 1.1
+		}
+	}
+
+	shared_focus = {
+		id = PRC_freedom_of_religion
+		icon = KOR_year_of_the_dragon
+		x = 2
+		y = 1
+		cost = 5
+
+		relative_position_id = PRC_formal_democracy
+
+		prerequisite = { 
+			focus = PRC_beijing_spring
+			focus = PRC_formal_democracy
+		}
+
+		available = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {		
+			country_event = { id = pr_china.2020 }
+		}
+
+		search_filters = {  }
+		
+		ai_will_do = {
+			base = 2
+		}
+	}
+
+	shared_focus = {
+		id = PRC_stronger_the_legislative_yuan
+		icon = PRC_the_flower_of_freedom
+		x = 0
+		y = 2
+		cost = 6
+
+		relative_position_id = PRC_beijing_spring
+
+		prerequisite = { 
+			focus = PRC_beijing_spring
+		}
+
+		available = {
+ 
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {		
+			swap_ideas = {
+				remove_idea = PRC_military_democracy
+				add_idea = PRC_new_legislative_yuan_democracy
+			}
+		}
+
+		search_filters = {  }
+		
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	shared_focus = {
+		id = PRC_balance_with_the_military
+		icon = PRC_the_martial_law
+		x = 0
+		y = 2
+		cost = 6
+
+		relative_position_id = PRC_stronger_the_legislative_yuan
+
+		prerequisite = { 
+			focus = PRC_stronger_the_legislative_yuan
+		}
+
+		available = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {		
+			remove_ideas = PRC_democratic_resistance
+			law_change_increase_civil_liberties = yes
+			add_political_power = 100
+		}
+
+		search_filters = {  }
+		
+		ai_will_do = {
+			base = 1.1
+		}
+	}
+
+	shared_focus = {
+		id = PRC_local_government
+		icon = GFX_Communist_Persecution
+		x = -1
+		y = 1
+		cost = 6
+
+		relative_position_id = PRC_stronger_the_legislative_yuan
+
+		prerequisite = { 
+			focus = PRC_stronger_the_legislative_yuan
+		}
+
+		available = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {		
+			add_stability = 0.05
+			every_core_state = {
+				random_select_amount = 5
+				limit = {
+					is_fully_controlled_by = ROOT
+					infrastructure < 9
+				}
+				add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+
+		search_filters = {  }
+		
+		ai_will_do = {
+			base = 1.1
+		}
+	}
+
+	shared_focus = {
+		id = PRC_coalition_with_local_religious_organisations
+		icon = PRC_Education
+		x = -2
+		y = 2
+		cost = 6
+
+		relative_position_id = PRC_stronger_the_legislative_yuan
+
+		prerequisite = { 
+			focus = PRC_local_government
+		}
+
+		available = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {		
+			add_ideas = PRC_coalition_with_local_religious
+		}
+
+		search_filters = {  }
+		
+		ai_will_do = {
+			base = 1.1
+		}
+	}
+
+	shared_focus = {
+		id = PRC_crush_golden_shield
+		icon = PRC_no_more_golden_shield
+		x = 1
+		y = 1
+		cost = 6
+
+		relative_position_id = PRC_stronger_the_legislative_yuan
+
+		prerequisite = { 
+			focus = PRC_stronger_the_legislative_yuan
+		}
+
+		available = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {		
+			add_ideas = { PRC_free_internet }
+			law_change_increase_civil_liberties = yes
+		}
+
+		search_filters = {  }
+		
+		ai_will_do = {
+			base = 1.1
+		}
+	}
+
+	shared_focus = {
+		id = PRC_internet_democracy
+		icon = kor_cyberpunk_seoul
+		x = 1
+		y = 3
+		cost = 6
+
+		relative_position_id = PRC_stronger_the_legislative_yuan
+
+		prerequisite = { 
+			focus = PRC_crush_golden_shield
+		}
+
+		available = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {		
+			law_change_increase_civil_liberties = yes
+			add_stability = 0.05
+		}
+
+		search_filters = {  }
+		
+		ai_will_do = {
+			base = 1.1
 		}
 	}
 
@@ -9011,7 +11351,7 @@
 			}
 			add_command_power = 30
 			add_equipment_to_stockpile = {
-				type = infantry_equipment_1
+				type = infantry_equipment_0
 				amount = 500
 				producer = CHI
 			}
@@ -9132,7 +11472,7 @@
 		}
 
 		bypass = {
-			#NOT = { has_global_flag = GC_is_on }
+			NOT = { has_global_flag = GC_is_on }
 			has_global_flag = prc_end_1999_crisis
 			AND = {
 				country_exists = PRC
@@ -9149,13 +11489,13 @@
 
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: completion_reward CHINESE_the_end_of_the_1999_crisis"
-			#if = {
-			#	limit = { NOT = { has_global_flag = GC_is_on } }
+			if = {
+				limit = { NOT = { has_global_flag = GC_is_on } }
 				custom_effect_tooltip = CHINESE_the_end_of_the_1999_crisis_tt
-			#}
-			#else = {
-			#	custom_effect_tooltip = CHINESE_the_end_of_the_1999_crisis_NOT_GC_tt
-			#}
+			}
+			else = {
+				custom_effect_tooltip = CHINESE_the_end_of_the_1999_crisis_NOT_GC_tt
+			}
 		}
 	}
 
@@ -9174,7 +11514,7 @@
 		text_icon = NORDIC_focus_style
 
 		available = {
-			#NOT = { has_global_flag = GC_is_on }
+			NOT = { has_global_flag = GC_is_on }
 			has_global_flag = prc_end_1999_crisis
 			AND = {
 				country_exists = PRC
@@ -9292,7 +11632,7 @@
 		text_icon = NORDIC_focus_style
 
 		available = {
-			#NOT = { has_global_flag = GC_is_on }
+			NOT = { has_global_flag = GC_is_on }
 			has_global_flag = prc_end_1999_crisis
 			AND = {
 				country_exists = PRC
@@ -9377,7 +11717,7 @@
 		text_icon = NORDIC_focus_style
 
 		available = {
-			#NOT = { has_global_flag = GC_is_on }
+			NOT = { has_global_flag = GC_is_on }
 			has_global_flag = prc_end_1999_crisis
 			AND = {
 				country_exists = PRC
@@ -9530,7 +11870,7 @@
 		text_icon = NORDIC_focus_style
 
 		available = {
-			#NOT = { has_global_flag = GC_is_on }
+			NOT = { has_global_flag = GC_is_on }
 			has_global_flag = prc_end_1999_crisis
 			AND = {
 				country_exists = PRC
@@ -9582,7 +11922,7 @@
 		text_icon = NORDIC_focus_style
 
 		available = {
-			#NOT = { has_global_flag = GC_is_on }
+			NOT = { has_global_flag = GC_is_on }
 			has_global_flag = prc_end_1999_crisis
 			AND = {
 				country_exists = PRC
@@ -9639,7 +11979,7 @@
 		text_icon = NORDIC_focus_style
 
 		available = {
-			#NOT = { has_global_flag = GC_is_on }
+			NOT = { has_global_flag = GC_is_on }
 			has_global_flag = prc_end_1999_crisis
 			AND = {
 				country_exists = PRC
@@ -9693,7 +12033,7 @@
 		text_icon = NORDIC_focus_style
 
 		available = {
-			#NOT = { has_global_flag = GC_is_on }
+			NOT = { has_global_flag = GC_is_on }
 			has_global_flag = prc_end_1999_crisis
 			AND = {
 				country_exists = PRC
@@ -9813,7 +12153,7 @@
 		text_icon = NORDIC_focus_style
 
 		available = {
-			#NOT = { has_global_flag = GC_is_on }
+			NOT = { has_global_flag = GC_is_on }
 			has_global_flag = prc_end_1999_crisis
 			AND = {
 				country_exists = PRC
@@ -9917,7 +12257,7 @@
 		text_icon = NORDIC_focus_style
 
 		available = {
-			#NOT = { has_global_flag = GC_is_on }
+			NOT = { has_global_flag = GC_is_on }
 			has_global_flag = prc_end_1999_crisis
 			AND = {
 				country_exists = PRC
@@ -9976,7 +12316,7 @@
 		text_icon = NORDIC_focus_style
 
 		available = {
-			#NOT = { has_global_flag = GC_is_on }
+			NOT = { has_global_flag = GC_is_on }
 			has_global_flag = prc_end_1999_crisis
 			AND = {
 				country_exists = PRC
@@ -10036,7 +12376,7 @@
 		text_icon = NORDIC_focus_style
 
 		available = {
-			#NOT = { has_global_flag = GC_is_on }
+			NOT = { has_global_flag = GC_is_on }
 			has_global_flag = prc_end_1999_crisis
 			AND = {
 				country_exists = PRC
@@ -10090,7 +12430,7 @@
 		text_icon = NORDIC_focus_style
 
 		available = {
-			#NOT = { has_global_flag = GC_is_on }
+			NOT = { has_global_flag = GC_is_on }
 			has_global_flag = prc_end_1999_crisis
 			AND = {
 				country_exists = PRC
@@ -10142,7 +12482,7 @@
 		text_icon = NORDIC_focus_style
 
 		available = {
-			#NOT = { has_global_flag = GC_is_on }
+			NOT = { has_global_flag = GC_is_on }
 			has_global_flag = prc_end_1999_crisis
 			AND = {
 				country_exists = PRC
@@ -10194,7 +12534,7 @@
 		text_icon = NORDIC_focus_style
 
 		available = {
-			#NOT = { has_global_flag = GC_is_on }
+			NOT = { has_global_flag = GC_is_on }
 			has_global_flag = prc_end_1999_crisis
 			AND = {
 				country_exists = PRC
@@ -10250,7 +12590,7 @@
 		available = {
 			has_completed_focus = CHINESE_economic_exchange
 
-			#NOT = { has_global_flag = GC_is_on }
+			NOT = { has_global_flag = GC_is_on }
 			has_global_flag = prc_end_1999_crisis
 			AND = {
 				country_exists = PRC
@@ -10307,7 +12647,7 @@
 		text_icon = NORDIC_focus_style
 
 		available = {
-			#NOT = { has_global_flag = GC_is_on }
+			NOT = { has_global_flag = GC_is_on }
 			has_global_flag = prc_end_1999_crisis
 			AND = {
 				country_exists = PRC
@@ -10362,7 +12702,7 @@
 		text_icon = NORDIC_focus_style
 
 		available = {
-			#NOT = { has_global_flag = GC_is_on }
+			NOT = { has_global_flag = GC_is_on }
 			has_global_flag = prc_end_1999_crisis
 			AND = {
 				country_exists = PRC
@@ -10412,7 +12752,7 @@
 		text_icon = NORDIC_focus_style
 
 		available = {
-			#NOT = { has_global_flag = GC_is_on }
+			NOT = { has_global_flag = GC_is_on }
 			has_global_flag = prc_end_1999_crisis
 			AND = {
 				country_exists = PRC
@@ -10465,7 +12805,7 @@
 		text_icon = NORDIC_focus_style
 
 		available = {
-			#NOT = { has_global_flag = GC_is_on }
+			NOT = { has_global_flag = GC_is_on }
 			has_global_flag = prc_end_1999_crisis
 			AND = {
 				country_exists = PRC
@@ -10521,7 +12861,7 @@
 		text_icon = NORDIC_focus_style
 
 		available = {
-			#NOT = { has_global_flag = GC_is_on }
+			NOT = { has_global_flag = GC_is_on }
 			has_global_flag = prc_end_1999_crisis
 			AND = {
 				country_exists = PRC
@@ -10578,7 +12918,7 @@
 		available = {
 			has_completed_focus = CHINESE_mutual_study_abroad
 
-			#NOT = { has_global_flag = GC_is_on }
+			NOT = { has_global_flag = GC_is_on }
 			has_global_flag = prc_end_1999_crisis
 			AND = {
 				country_exists = PRC
@@ -10643,7 +12983,7 @@
 		text_icon = NORDIC_focus_style
 
 		available = {
-			#NOT = { has_global_flag = GC_is_on }
+			NOT = { has_global_flag = GC_is_on }
 			has_global_flag = prc_end_1999_crisis
 			AND = {
 				country_exists = PRC
@@ -10709,7 +13049,7 @@
 		text_icon = NORDIC_focus_style
 
 		available = {
-			#NOT = { has_global_flag = GC_is_on }
+			NOT = { has_global_flag = GC_is_on }
 			has_global_flag = prc_end_1999_crisis
 			AND = {
 				country_exists = PRC
@@ -10766,7 +13106,7 @@
 		text_icon = NORDIC_focus_style
 
 		available = {
-			#NOT = { has_global_flag = GC_is_on }
+			NOT = { has_global_flag = GC_is_on }
 			has_global_flag = prc_end_1999_crisis
 			AND = {
 				country_exists = PRC
@@ -10858,7 +13198,7 @@
 		text_icon = NORDIC_focus_style
 
 		available = {
-			#NOT = { has_global_flag = GC_is_on }
+			NOT = { has_global_flag = GC_is_on }
 			has_global_flag = prc_end_1999_crisis
 			AND = {
 				country_exists = PRC
@@ -10933,7 +13273,7 @@
 		text_icon = NORDIC_focus_style
 
 		available = {
-			#NOT = { has_global_flag = GC_is_on }
+			NOT = { has_global_flag = GC_is_on }
 			has_global_flag = prc_end_1999_crisis
 			AND = {
 				country_exists = PRC
@@ -10990,7 +13330,7 @@
 		text_icon = NORDIC_focus_style
 
 		available = {
-			#NOT = { has_global_flag = GC_is_on }
+			NOT = { has_global_flag = GC_is_on }
 			has_global_flag = prc_end_1999_crisis
 			AND = {
 				country_exists = PRC
@@ -11059,7 +13399,7 @@
 		text_icon = NORDIC_focus_style
 
 		available = {
-			#NOT = { has_global_flag = GC_is_on }
+			NOT = { has_global_flag = GC_is_on }
 			has_global_flag = prc_end_1999_crisis
 			AND = {
 				country_exists = PRC
@@ -11120,14 +13460,13 @@
 		text_icon = NORDIC_focus_style
 
 		available = {
-			#NOT = { has_global_flag = GC_is_on }
+			NOT = { has_global_flag = GC_is_on }
 			has_global_flag = prc_end_1999_crisis
 			AND = {
 				country_exists = PRC
 				country_exists = CHI
 				NOT = { PRC = { has_war_with = CHI } }
 			}
-			original_tag = PRC
 		}
 
 		ai_will_do = {
@@ -11172,7 +13511,7 @@
 		text_icon = NORDIC_focus_style
 
 		available = {
-			#NOT = { has_global_flag = GC_is_on }
+			NOT = { has_global_flag = GC_is_on }
 			has_global_flag = prc_end_1999_crisis
 			AND = {
 				country_exists = PRC
@@ -11223,7 +13562,7 @@
 		text_icon = NORDIC_focus_style
 
 		available = {
-			#NOT = { has_global_flag = GC_is_on }
+			NOT = { has_global_flag = GC_is_on }
 			has_global_flag = prc_end_1999_crisis
 			AND = {
 				country_exists = PRC
@@ -11274,7 +13613,7 @@
 		text_icon = NORDIC_focus_style
 
 		available = {
-			#NOT = { has_global_flag = GC_is_on }
+			NOT = { has_global_flag = GC_is_on }
 			has_global_flag = prc_end_1999_crisis
 			AND = {
 				country_exists = PRC
@@ -11332,7 +13671,7 @@
 		text_icon = NORDIC_focus_style
 
 		available = {
-			#NOT = { has_global_flag = GC_is_on }
+			NOT = { has_global_flag = GC_is_on }
 			has_global_flag = prc_end_1999_crisis
 			AND = {
 				country_exists = PRC
@@ -11388,7 +13727,7 @@
 		text_icon = NORDIC_focus_style
 
 		available = {
-			#NOT = { has_global_flag = GC_is_on }
+			NOT = { has_global_flag = GC_is_on }
 			has_global_flag = prc_end_1999_crisis
 			AND = {
 				country_exists = PRC
@@ -11445,7 +13784,7 @@
 		text_icon = NORDIC_focus_style
 
 		available = {
-			#NOT = { has_global_flag = GC_is_on }
+			NOT = { has_global_flag = GC_is_on }
 			has_global_flag = prc_end_1999_crisis
 			AND = {
 				country_exists = PRC
@@ -11504,7 +13843,7 @@
 		text_icon = NORDIC_focus_style
 
 		available = {
-			#NOT = { has_global_flag = GC_is_on }
+			NOT = { has_global_flag = GC_is_on }
 			has_global_flag = prc_end_1999_crisis
 			AND = {
 				country_exists = PRC
@@ -11560,7 +13899,7 @@
 		text_icon = NORDIC_focus_style
 
 		available = {
-			#NOT = { has_global_flag = GC_is_on }
+			NOT = { has_global_flag = GC_is_on }
 			has_global_flag = prc_end_1999_crisis
 			AND = {
 				country_exists = PRC
@@ -11613,7 +13952,7 @@
 		text_icon = NORDIC_focus_style
 
 		available = {
-			#NOT = { has_global_flag = GC_is_on }
+			NOT = { has_global_flag = GC_is_on }
 			has_global_flag = prc_end_1999_crisis
 			AND = {
 				country_exists = PRC

@@ -14,7 +14,7 @@ ideas = {
 				compliance_gain 				= 0.035
 				resistance_target 				= 0.15
 				resistance_damage_to_garrison 		= 0.3
-				#required_garrison_factor 			= 0.15
+				required_garrison_factor 			= 0.15
 				resistance_decay 				= 0.5
 				local_factories 				= 0.4
 				local_resources 				= 0.3
@@ -238,6 +238,22 @@ ideas = {
 					progressive_drift = -0.04
 					fascist_drift = -0.04
 				#}
+			}
+		}
+		
+		idea_PRC_memories_of_1989_democratic = {
+			picture = PRC_memories_of_1989
+			
+			allowed = { always = no }
+			
+			available = { 
+				has_government = communist
+			}
+			
+			removal_cost = -1
+			
+			modifier = {
+				communist_drift = -0.01
 			}
 		}
 		
@@ -988,8 +1004,8 @@ ideas = {
 			picture = chi_wargaming_division
 			
 			modifier = {
-				air_strategic_bomber_defence_factor = 0.03
-				air_strategic_bomber_bombing_factor = 0.09
+				air_strategic_bomber_bombing_factor = 0.05
+				air_strategic_bomber_attack_factor = 0.05
 			}
 		}
 		
@@ -1108,6 +1124,826 @@ ideas = {
 				can_join_factions = no
 				can_not_declare_war = yes
 				can_send_volunteers = no
+			}
+		}
+		
+		PRC_military_democracy = {
+			picture = PRC_military_democracy
+			
+			allowed = {
+				always = no
+			}
+			
+			modifier = {
+					stability_factor = -0.15
+					islamist_drift = -0.04
+					reactionary_drift = 0.07
+					conservative_drift = -0.04
+					monarchist_drift = -0.04
+					market_liberal_drift = -0.04
+					social_liberal_drift = -0.04
+					social_democrat_drift = -0.04
+					nationalist_drift = -0.04
+					progressive_drift = -0.04
+					fascist_drift = -0.04
+					democratic_socialist_drift = -0.04
+					communist_drift = -0.04
+			}
+		}
+		
+		PRC_military_democracy_2 = {
+			picture = PRC_military_democracy
+			
+			allowed = {
+				always = no
+			}
+			
+			modifier = {
+					stability_factor = 0.1
+					islamist_drift = -0.04
+					reactionary_drift = 0.07
+					conservative_drift = -0.04
+					monarchist_drift = -0.04
+					market_liberal_drift = -0.04
+					social_liberal_drift = -0.04
+					social_democrat_drift = -0.04
+					nationalist_drift = -0.04
+					progressive_drift = -0.04
+					fascist_drift = -0.04
+					democratic_socialist_drift = -0.04
+					communist_drift = -0.04
+			}
+		}
+		
+		PRC_military_democracy_3 = {
+			picture = PRC_military_democracy
+			
+			allowed = {
+				always = no
+			}
+			
+			modifier = {
+					stability_factor = -0.1
+					war_support_factor = 0.2
+					islamist_drift = -0.04
+					reactionary_drift = 0.07
+					conservative_drift = -0.04
+					monarchist_drift = -0.04
+					market_liberal_drift = -0.04
+					social_liberal_drift = -0.04
+					social_democrat_drift = -0.04
+					nationalist_drift = 0.02
+					progressive_drift = -0.04
+					fascist_drift = 0.02
+					democratic_socialist_drift = -0.04
+					communist_drift = -0.04
+			}
+		}
+		
+		PRC_new_legislative_yuan_democracy = {
+			picture = PRC_military_democracy
+			
+			allowed = {
+				always = no
+			}
+			
+			modifier = {
+					stability_factor = 0.15
+					islamist_drift = -0.04
+					reactionary_drift = 0.07
+					conservative_drift = -0.04
+					monarchist_drift = -0.04
+					market_liberal_drift = -0.04
+					social_liberal_drift = -0.04
+					social_democrat_drift = -0.04
+					nationalist_drift = -0.04
+					progressive_drift = -0.04
+					fascist_drift = -0.04
+					democratic_socialist_drift = -0.04
+					communist_drift = -0.04
+			}
+		}
+		
+		PRC_democratic_resistance = {
+			picture = PRC_democratic_resistance
+			
+			allowed = {
+				always = no
+			}
+			
+			modifier = {
+				political_power_factor = -0.15
+			}
+		}
+		
+		PRC_communist_purge = {
+			picture = PRC_communist_purge
+			
+			allowed = {
+				always = no
+			}
+			
+			modifier = {
+				consumer_goods_factor = 0.4
+				industrial_capacity_factory = -0.15
+			}
+		}
+		
+		PRC_beijing_crisis = {
+			picture = JAP_broken_chain
+			
+			allowed = { always = no }
+			
+			removal_cost = -1
+			
+			modifier = {
+			}
+		}
+		
+		PRC_fascism_for_new_era_idea = {
+			picture = JAP_March
+			
+			allowed = { always = no }
+			
+			removal_cost = -1
+			
+			modifier = {
+				supply_factor = 0.1
+				supply_combat_penalties_on_core_factor = -0.1
+				conscription_factor = 0.02
+			}
+		}
+		
+		PRC_militaristic_propaganda_idea = {
+			picture = fascism8
+			
+			allowed = { always = no }
+			
+			removal_cost = -1
+			
+			modifier = {
+				max_command_power = 50
+				command_power_gain_mult = 0.1
+			}
+		}
+		
+		PRC_government_of_scientists_and_bureaucrats_idea = {
+			picture = JAP_briefcase
+			
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			
+			modifier = {
+				research_speed_factor = 0.04
+				production_factory_max_efficiency_factor = 0.15
+				trade_opinion_factor = 0.15
+			}
+		}
+
+		PRC_more_efficient_NEP_idea = {
+			picture = NOR_printing_money
+			
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			
+			modifier = {
+				consumer_goods_factor = -0.2
+				production_speed_industrial_complex_factor = 0.2
+			}
+		}
+
+		PRC_coalition_with_local_religious = {
+			picture = catholic_faith
+			
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			
+			modifier = {
+				production_factory_max_efficiency_factor = 0.05
+				command_power_gain = 0.05
+				defensive_war_stability_factor = 0.15
+			}
+		}
+
+		PRC_tianxia = {
+			picture = fascism4
+			
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+
+			targeted_modifier = {
+				tag = var:global.tianxia_enemy
+				attack_bonus_against = 0.1
+				defense_bonus_against = 0.1
+			}
+		}
+	}
+	
+	
+	political_advisor = {
+	
+		overseas_service_station = {
+			allowed = { original_tag = PRC }
+			
+			traits = { overseas_service_station_traits }
+			
+			cost = 100
+			removal_cost = 0
+			
+			available = {
+				has_completed_focus = PRC_110_Overseas
+			}
+			
+			modifier = {
+				operative_slot = 1
+				agency_upgrade_time = -0.15
+				decryption_factor = 0.1
+				civilian_intel_factor = 0.15
+			}
+			
+			ai_will_do = {
+				factor = 12
+			}
+		}
+	
+		prc_bo_xilai_advisor = {
+			#Left/right opp
+			name = prc_bo_xilai
+			
+			picture = prc_bo_xilai
+			
+			allowed = { original_tag = PRC }
+			
+			traits = { PRC_hard_line_maoist }
+			
+			visible = {
+				NOT = { has_country_flag = prc_bo_xilai_advisor_imprisoned }
+			}
+			
+			available = {
+				NOT = { has_country_flag = prc_bo_xilai_advisor_imprisoned }
+				NOT = { has_country_flag = prc_bo_xilai_advisor_died }
+			
+				NOT = { 
+					has_country_leader = {
+						character = prc_bo_xilai
+						ruling_only = yes
+					}
+				}
+				
+				has_completed_focus = PRC_grand_coalition
+			}
+			
+			cost = 150
+			removal_cost = 0
+			
+			modifier = {
+			}
+			
+			ai_will_do = {
+				factor = 10
+			}
+		}
+	
+		prc_bo_xilai_advisor_imprisoned = {
+			#Left/right opp
+			name = prc_bo_xilai
+			
+			picture = prc_bo_xilai_imprisoned
+			
+			allowed = { original_tag = PRC }
+			
+			traits = { PRC_hard_line_maoist }
+			
+			visible = {
+				has_country_flag = prc_bo_xilai_advisor_imprisoned
+			}
+			
+			cost = 150
+			removal_cost = 0
+			
+			available = {
+				NOT = { has_country_flag = prc_bo_xilai_advisor_imprisoned }
+				NOT = { has_country_flag = prc_bo_xilai_advisor_died }
+			
+				NOT = { 
+					has_country_leader = {
+						character = prc_bo_xilai
+						ruling_only = yes
+					}
+				}
+				
+				has_completed_focus = PRC_grand_coalition
+			}
+			
+			modifier = {
+			}
+			
+			ai_will_do = {
+				factor = 10
+			}
+		}
+	
+		prc_zhu_rongji = {
+			name = prc_zhu_rongji
+			
+			allowed = { original_tag = PRC }
+			
+			traits = { PRC_economic_expert }
+			
+			cost = 150
+			removal_cost = 0
+			
+			available = {
+			}
+			
+			modifier = {
+			}
+			
+			ai_will_do = {
+				factor = 10
+			}
+		}
+	
+		prc_li_xiaopeng = {
+			name = prc_li_xiaopeng
+			#https://en.wikipedia.org/wiki/Li_Xiaopeng_(politician)
+			
+			allowed = { original_tag = PRC }
+			
+			traits = { war_industrialist }
+			
+			cost = 150
+			removal_cost = 0
+			
+			available = {
+			}
+			
+			modifier = {
+			}
+			
+			ai_will_do = {
+				factor = 10
+			}
+		}
+	
+		prc_zhao_kezhi = {
+			name = prc_zhao_kezhi
+			
+			allowed = { original_tag = PRC }
+			
+			traits = { backroom_backstabber }
+			
+			cost = 150
+			removal_cost = 0
+			
+			available = {
+			}
+			
+			modifier = {
+			}
+			
+			ai_will_do = {
+				factor = 10
+			}
+		}
+	
+		prc_yang_jiechi = {
+			name = prc_yang_jiechi
+			
+			allowed = { original_tag = PRC }
+			
+			traits = { smooth_talking_charmer }
+			
+			cost = 150
+			removal_cost = 0
+			
+			available = {
+			}
+			
+			modifier = {
+			}
+			
+			ai_will_do = {
+				factor = 10
+			}
+		}
+	
+		prc_mao_xinyu = {
+			name = prc_mao_xinyu
+			
+			allowed = { original_tag = PRC }
+			
+			traits = { descendant_of_mao_zedong }
+			
+			cost = 150
+			removal_cost = 0
+			
+			available = {
+				has_completed_focus = PRC_historical_reassessment
+			}
+			
+			modifier = {
+			}
+			
+			ai_will_do = {
+				factor = 10
+			}
+		}
+	
+		prc_qiao_shi = {
+			#https://en.wikipedia.org/wiki/Qiao_Shi
+			#Right/Left opp
+			name = prc_qiao_shi
+			
+			allowed = { original_tag = PRC }
+			
+			traits = { PRC_moderate_reformer }
+			
+			cost = 150
+			removal_cost = 0
+			
+			available = {
+			}
+			
+			modifier = {
+			}
+			
+			ai_will_do = {
+				factor = 10
+			}
+		}
+	
+		prc_jack_ma = {
+			#https://en.wikipedia.org/wiki/Jack_Ma
+			name = prc_jack_ma
+			
+			allowed = { original_tag = PRC }
+			
+			traits = { captain_of_industry }
+			
+			cost = 150
+			removal_cost = 0
+			
+			available = {
+			}
+			
+			modifier = {
+			}
+			
+			ai_will_do = {
+				factor = 10
+			}
+		}
+		
+		prc_ren_zhengfei = {
+			#https://en.wikipedia.org/wiki/Ren_Zhengfei
+			name = prc_ren_zhengfei
+			
+			allowed = { original_tag = PRC }
+			
+			traits = { influential_capitalist }
+			
+			cost = 150
+			removal_cost = 0
+			
+			available = {
+			}
+			
+			modifier = {
+			}
+			
+			ai_will_do = {
+				factor = 10
+			}
+		}
+		
+		prc_liu_wei = {
+			#https://zh.wikipedia.org/wiki/%E5%88%98%E4%BC%9F_(%E7%B1%B3%E5%93%88%E6%B8%B8)
+			name = prc_liu_wei
+			
+			allowed = { original_tag = PRC }
+			
+			traits = { famous_game_developer }
+			
+			visible = {
+				date > 2010.1.1
+				has_country_flag = PRC_HoYoverse_genshin_flag
+			}
+			
+			cost = 150
+			removal_cost = 0
+			
+			available = {
+				date > 2010.1.1
+				has_completed_focus = PRC_HoYoverse
+			}
+			
+			modifier = {
+			}
+			
+			ai_will_do = {
+				factor = 10
+			}
+		}
+		
+		prc_li_keqiang = {
+			#https://en.wikipedia.org/wiki/Li_Keqiang
+			name = prc_li_keqiang
+			
+			allowed = { original_tag = PRC }
+			
+			traits = { financial_expert }
+			
+			cost = 150
+			removal_cost = 0
+			
+			available = {
+			}
+			
+			modifier = {
+			}
+			
+			ai_will_do = {
+				factor = 10
+			}
+		}
+		
+		prc_wang_yang = {
+			name = prc_wang_yang
+			
+			allowed = { original_tag = PRC }
+			
+			traits = { PRC_market_liberal }
+			
+			cost = 150
+			removal_cost = 0
+			
+			available = {
+			}
+			
+			modifier = {
+			}
+			
+			ai_will_do = {
+				factor = 10
+			}
+		}
+		
+		prc_wen_jiabao = {
+			name = prc_wen_jiabao
+			
+			allowed = { original_tag = PRC }
+			
+			traits = { people_s_premier }
+			
+			cost = 150
+			removal_cost = 0
+			
+			available = {
+			}
+			
+			modifier = {
+			}
+			
+			ai_will_do = {
+				factor = 10
+			}
+		}
+		
+		prc_zhou_yongkang = {
+			name = prc_zhou_yongkang
+			
+			allowed = { original_tag = PRC }
+			
+			traits = { prince_of_terror }
+			
+			cost = 150
+			removal_cost = 0
+			
+			available = {
+			}
+			
+			modifier = {
+			}
+			
+			ai_will_do = {
+				factor = 10
+			}
+		}
+		prc_zhang_dejiang = {
+		#https://en.wikipedia.org/wiki/Zhang_Dejiang
+			name = prc_zhang_dejiang
+			
+			allowed = { original_tag = PRC }
+			
+			traits = { economist } #
+			
+			cost = 150
+			removal_cost = 0
+			
+			available = {
+			}
+			
+			modifier = {
+			}
+			
+			ai_will_do = {
+				factor = 10
+			}
+		}
+		prc_zhang_gaoli = {
+		#https://en.wikipedia.org/wiki/Zhang_Gaoli
+			name = prc_zhang_gaoli
+			
+			allowed = { original_tag = PRC }
+			
+			traits = { lieutenant_of_industry }
+			
+			cost = 150
+			removal_cost = 0
+			
+			available = {
+			}
+			
+			modifier = {
+			}
+			
+			ai_will_do = {
+				factor = 10
+			}
+		}
+		prc_wang_qishan = {
+		#https://en.wikipedia.org/wiki/Wang_Qishan
+			name = prc_wang_qishan
+			
+			allowed = { original_tag = PRC }
+			
+			traits = { PRC_diplomat }
+			
+			cost = 150
+			removal_cost = 0
+			
+			available = {
+			}
+			
+			modifier = {
+			}
+			
+			ai_will_do = {
+				factor = 10
+			}
+		}
+		prc_guo_jinlong = {
+		#https://en.wikipedia.org/wiki/Guo_Jinlong
+			name = prc_guo_jinlong
+			
+			allowed = { original_tag = PRC }
+			
+			traits = { railroad_expert }
+			
+			cost = 150
+			removal_cost = 0
+			
+			available = {
+			}
+			
+			modifier = {
+			}
+			
+			ai_will_do = {
+				factor = 10
+			}
+		}
+		prc_ding_xuexiang = {
+		#https://en.wikipedia.org/wiki/Ding_Xuexiang
+			name = prc_ding_xuexiang
+			
+			allowed = { original_tag = PRC }
+			
+			traits = { xi_jinpingist_engineer }
+			
+			cost = 150
+			removal_cost = 0
+			
+			available = {
+			}
+			
+			modifier = {
+			}
+			
+			ai_will_do = {
+				factor = 10
+			}
+		}
+		prc_zhao_ziyang_adviser_imprisoned = {
+			name = prc_zhao_ziyang
+			
+			picture = prc_zhao_ziyang_imprisoned
+			
+			allowed = { original_tag = PRC }
+			
+			traits = { CCP_democratic_reformer }
+			
+			cost = 150
+			removal_cost = 0
+			
+			visible = {
+				has_country_flag = prc_zhao_ziyang_adviser_imprisoned
+			}
+			
+			available = {
+				NOT = { has_country_flag = prc_zhao_ziyang_adviser_imprisoned }
+				NOT = { has_country_flag = prc_zhao_ziyang_dead }
+			}
+			
+			modifier = {
+			}
+			
+			ai_will_do = {
+				factor = 10
+			}
+		}
+		prc_zhao_ziyang_adviser = {
+			name = prc_zhao_ziyang
+			
+			picture = prc_zhao_ziyang
+			
+			allowed = { original_tag = PRC }
+			
+			traits = { CCP_democratic_reformer }
+			
+			cost = 150
+			removal_cost = 0
+			
+			visible = {
+				NOT = { has_country_flag = prc_zhao_ziyang_adviser_imprisoned }
+			}
+			
+			available = {
+				NOT = { has_country_flag = prc_zhao_ziyang_adviser_imprisoned }
+				NOT = { has_country_flag = prc_zhao_ziyang_dead }
+			}
+			
+			modifier = {
+			}
+			
+			ai_will_do = {
+				factor = 10
+			}
+		}
+		prc_liu_xiaobo = {
+			name = prc_liu_xiaobo
+			
+			picture = prc_liu_xiaobo
+			
+			allowed = { original_tag = PRC }
+			
+			traits = { liu_democratic_revolutionary }
+			
+			cost = 150
+			removal_cost = 0
+			
+			visible = {
+				NOT = { has_country_flag = prc_liu_xiaobo_imprisoned }
+			}
+			
+			available = {
+				NOT = { has_country_flag = prc_liu_xiaobo_imprisoned }
+			}
+			
+			modifier = {
+			}
+			
+			ai_will_do = {
+				factor = 10
+			}
+		}
+		prc_liu_xiaobo_imprisoned = {
+			name = prc_liu_xiaobo
+			
+			picture = prc_liu_xiaobo_imprisoned
+			
+			allowed = { original_tag = PRC }
+			
+			traits = { liu_democratic_revolutionary }
+			
+			cost = 150
+			removal_cost = 0
+			
+			visible = {
+				has_country_flag = prc_liu_xiaobo_imprisoned
+			}
+			
+			available = {
+				NOT = { has_country_flag = prc_liu_xiaobo_imprisoned }
+			}
+			
+			modifier = {
+			}
+			
+			ai_will_do = {
+				factor = 10
 			}
 		}
 	}

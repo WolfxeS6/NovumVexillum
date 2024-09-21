@@ -19,6 +19,23 @@ PRC_peasant_strike_category = {
 	priority = 100
 }
 
+PRC_guanxi = {
+	icon = gre_faction_management
+
+	picture = GFX_decision_cat_picture_faction_management_bulgaria
+	
+	allowed = {
+		#original_tag = PRC
+		always = no
+	}
+
+	scripted_gui = PRC_internal_factions_decision_ui	
+
+	priority = 85
+	
+	visible_when_empty = yes
+}
+
 PRC_committee = {
 	icon = usa_congress
 	allowed = {
@@ -121,4 +138,49 @@ PRC_outer_china_occupation_category = {
 	allowed = {
 		original_tag = PRC
 	}
+}
+
+JAPPRC_senkaku_and_diaoyu = {
+	visible = {
+		NOT = { has_global_flag = senkaku_and_diaoyu_global_flag }
+		JAP = { has_full_control_of_state = 876 }
+		PRC = { has_completed_focus = PRC_senkaku_territorial_dispute }
+	} 
+	
+	allowed = {
+		OR = {
+			original_tag = JAP
+			original_tag = PRC
+		}
+	}
+}
+
+PRC_beijing_crisis_category = {
+	icon = GFX_decision_category_generic_crisis
+
+	allowed = {
+		original_tag = PRC
+	}
+	
+	visible = {
+		has_idea = PRC_beijing_crisis
+	} 
+
+	priority = 70
+	
+	visible_when_empty = yes
+}
+
+PRC_tianxia_enemy_category = {
+	icon = gre_faction_management
+
+	allowed = {
+		original_tag = PRC
+	}
+	
+	visible = {
+		has_idea = PRC_tianxia
+	} 
+
+	priority = 15
 }
