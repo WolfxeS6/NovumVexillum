@@ -168,24 +168,195 @@ KOR_add_dokdo_token = {
 }
 
 Dokdo_Takeshima_setting = {
+	clamp_variable = {
+		var = GetTakeshimaSupport
+		min = 0
+		max = 100
+	}
+	clamp_variable = {
+		var = GetDokdoSupport
+		min = 0
+		max = 100
+	}
+}
+
+JAP_add_senkaku_token = {
 	if = {
 		limit = {
-			has_variable = GetTakeshimaSupport
-		}
-		clamp_variable = {
-			var = GetTakeshimaSupport
-			min = 0
-			max = 100
+			876 = {
+				has_dynamic_modifier = { modifier = dynamic_diaoyu_token_4 }
+			}
+		}		
+		876 = {
+			remove_dynamic_modifier = { modifier = dynamic_diaoyu_token_4 }
+			add_dynamic_modifier = { modifier = dynamic_diaoyu_token_3 }
 		}
 	}
+	else_if = {
+		limit = {
+			876 = {
+				has_dynamic_modifier = { modifier = dynamic_diaoyu_token_3 }
+			}
+		}		
+		876 = {
+			remove_dynamic_modifier = { modifier = dynamic_diaoyu_token_3 }
+			add_dynamic_modifier = { modifier = dynamic_diaoyu_token_2 }
+		}
+	}
+	else_if = {
+		limit = {
+			876 = {
+				has_dynamic_modifier = { modifier = dynamic_diaoyu_token_2 }
+			}
+		}		
+		876 = {
+			remove_dynamic_modifier = { modifier = dynamic_diaoyu_token_2 }
+			add_dynamic_modifier = { modifier = dynamic_diaoyu_token_1 }
+		}
+	}
+	else_if = {
+		limit = {
+			876 = {
+				has_dynamic_modifier = { modifier = dynamic_diaoyu_token_1 }
+			}
+		}		
+		876 = {
+			remove_dynamic_modifier = { modifier = dynamic_diaoyu_token_1 }
+		}
+	}
+	else_if = {
+		limit = {
+			876 = {
+				has_dynamic_modifier = { modifier = dynamic_senkaku_token_1 }
+			}
+		}		
+		876 = {
+			remove_dynamic_modifier = { modifier = dynamic_senkaku_token_1 }
+			add_dynamic_modifier = { modifier = dynamic_senkaku_token_2 }
+		}
+	}
+	else_if = {
+		limit = {
+			876 = {
+				has_dynamic_modifier = { modifier = dynamic_senkaku_token_2 }
+			}
+		}		
+		876 = {
+			remove_dynamic_modifier = { modifier = dynamic_senkaku_token_2 }
+			add_dynamic_modifier = { modifier = dynamic_senkaku_token_3 }
+		}
+	}
+	else_if = {
+		limit = {
+			876 = {
+				has_dynamic_modifier = { modifier = dynamic_senkaku_token_3 }
+			}
+		}		
+		876 = {
+			remove_dynamic_modifier = { modifier = dynamic_senkaku_token_3 }
+			add_dynamic_modifier = { modifier = dynamic_senkaku_token_4 }
+		}
+	}
+	else = {
+		876 = {
+			add_dynamic_modifier = { modifier = dynamic_senkaku_token_1 }
+		}
+	}
+}
+
+PRC_add_diaoyu_token = {
 	if = {
 		limit = {
-			has_variable = GetDokdoSupport
+			876 = {
+				has_dynamic_modifier = { modifier = dynamic_senkaku_token_4 }
+			}
+		}		
+		876 = {
+			remove_dynamic_modifier = { modifier = dynamic_senkaku_token_4 }
+			add_dynamic_modifier = { modifier = dynamic_senkaku_token_3 }
 		}
-		clamp_variable = {
-			var = GetDokdoSupport
-			min = 0
-			max = 100
+	}
+	else_if = {
+		limit = {
+			876 = {
+				has_dynamic_modifier = { modifier = dynamic_senkaku_token_3 }
+			}
+		}		
+		876 = {
+			remove_dynamic_modifier = { modifier = dynamic_senkaku_token_3 }
+			add_dynamic_modifier = { modifier = dynamic_senkaku_token_2 }
 		}
+	}
+	else_if = {
+		limit = {
+			876 = {
+				has_dynamic_modifier = { modifier = dynamic_senkaku_token_2 }
+			}
+		}		
+		876 = {
+			remove_dynamic_modifier = { modifier = dynamic_senkaku_token_2 }
+			add_dynamic_modifier = { modifier = dynamic_senkaku_token_1 }
+		}
+	}
+	else_if = {
+		limit = {
+			876 = {
+				has_dynamic_modifier = { modifier = dynamic_senkaku_token_1 }
+			}
+		}		
+		876 = {
+			remove_dynamic_modifier = { modifier = dynamic_senkaku_token_1 }
+		}
+	}
+	else_if = {
+		limit = {
+			876 = {
+				has_dynamic_modifier = { modifier = dynamic_diaoyu_token_1 }
+			}
+		}		
+		876 = {
+			remove_dynamic_modifier = { modifier = dynamic_diaoyu_token_1 }
+			add_dynamic_modifier = { modifier = dynamic_diaoyu_token_2 }
+		}
+	}
+	else_if = {
+		limit = {
+			876 = {
+				has_dynamic_modifier = { modifier = dynamic_diaoyu_token_2 }
+			}
+		}		
+		876 = {
+			remove_dynamic_modifier = { modifier = dynamic_diaoyu_token_2 }
+			add_dynamic_modifier = { modifier = dynamic_diaoyu_token_3 }
+		}
+	}
+	else_if = {
+		limit = {
+			876 = {
+				has_dynamic_modifier = { modifier = dynamic_diaoyu_token_3 }
+			}
+		}		
+		876 = {
+			remove_dynamic_modifier = { modifier = dynamic_diaoyu_token_3 }
+			add_dynamic_modifier = { modifier = dynamic_diaoyu_token_4 }
+		}
+	}
+	else = {
+		876 = {
+			add_dynamic_modifier = { modifier = dynamic_diaoyu_token_1 }
+		}
+	}
+}
+
+Senkaku_Diaoyu_setting = {
+	clamp_variable = {
+		var = GetSenkakuSupport
+		min = 0
+		max = 100
+	}
+	clamp_variable = {
+		var = GetDiaoyuSupport
+		min = 0
+		max = 100
 	}
 }
