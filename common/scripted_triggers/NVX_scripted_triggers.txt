@@ -207,10 +207,14 @@ naval_minor_missile_cruiser_limit_trigger = {
 }
 
 can_nuke_person = {
-	OR = {
-		surrender_progress > 0.1
-		threat > 0.5
-		has_idea = NVX_idea_warmongering
-		has_country_flag = NVX_been_nuked
+	AND = {
+		OR = {
+			surrender_progress > 0.1
+			threat > 0.5
+			has_idea = NVX_idea_warmongering
+			has_country_flag = NVX_been_nuked
+		}
+		NOT = { has_global_flag = DPTS_disable_nukes }
 	}
+	
 }
