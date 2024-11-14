@@ -8,41 +8,7 @@ country_event = {
 	picture = GFX_report_event_scottish_independence
 	fire_only_once = yes
 
-	trigger = {
-		tag = ENG
-		NOT = { has_cosmetic_tag = ENG_England }
-		NOT = { has_country_flag = refused_to_be_england }
-		OR = {	#Scotland
-			AND = {	#Scotland might exist. If it does, it needs to be at peace with Britain.
-				SCO = { exists = yes }
-				NOT = { has_war_with = SCO }
-			}
-			AND = {	#Maybe Britain also lost control of Scotland through war. If the owners of the Scottish states are not at war with Britain, then Scotland is lost. As long as Britain still owns at least one state, Scotland is not yet lost.
-				NOT = { controls_state = 120 }
-				NOT = { controls_state = 121 }
-				NOT = { controls_state = 133 }
-				NOT = { controls_state = 136 }
-				120 = { owner = { NOT = { has_war_with = ENG } } }
-				121 = { owner = { NOT = { has_war_with = ENG } } }
-				133 = { owner = { NOT = { has_war_with = ENG } } }
-				136 = { owner = { NOT = { has_war_with = ENG } } }
-			}
-		}
-		OR = {	#Wales
-			AND = {	#Wales might exist.
-				WLS = { exists = yes }
-				NOT = { has_war_with = WLS }
-			}
-			AND = {	#The state of Wales might have been lost.
-				NOT = { controls_state = 122 }
-				122 = { owner = { NOT = { has_war_with = ENG } } }
-			}
-		}
-	}
-
-	mean_time_to_happen = {
-		days = 10
-	}
+	is_triggered_only = yes
 
 	option = { #We shall accept our fate
 		name = britain.1.o1

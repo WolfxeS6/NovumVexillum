@@ -4,17 +4,14 @@ decisions_iraq = {
 	
 	
 	    available = { 
-		command_power > 100
-		has_army_experience > 150
-			}
-		allowed = { 
-		tag = IRQ
-			}
-		visible = {		
-		OR = {
-		has_idea = iraq_army_heavy
-		has_idea = iraq_army_light
+			command_power > 100
+			has_army_experience > 150
 		}
+		visible = {		
+			OR = {
+				has_idea = iraq_army_heavy
+				has_idea = iraq_army_light
+			}
 		}
 		
 		icon = generic_prepare_civil_war
@@ -24,46 +21,32 @@ decisions_iraq = {
 		
 
 		complete_effect = {
-		add_command_power = -100
-		army_experience = -150
-		
-		if = {
-		limit = { 
-		has_idea = iraq_army_light
-		} 
-		remove_ideas = iraq_army_light
-		}
-		
-		if = {
-		limit = { 
-		has_idea = iraq_army_heavy
-		}
-		swap_ideas = { 
+			add_command_power = -100
+			army_experience = -150
+			
+			if = {
+				limit = { 
+					has_idea = iraq_army_light
+				} 
+				remove_ideas = iraq_army_light
+			}
+			else_if = {
+				limit = { 
+					has_idea = iraq_army_heavy
+				}
+				swap_ideas = { 
 					remove_idea = iraq_army_heavy
 					add_idea = iraq_army_light
 				}
-		}
-			
+			}
 		}		
 		ai_will_do = {
 			base = 0
 			modifier = {
-			add = 40
-			is_historical_focus_on = no
-			}
-			modifier = {
-			add = 100
-			NOT = {
-				OR = {
-				has_government = nationalist
-				has_government = fascist
-				has_government = islamist
-				has_government = communist
-				}
-			}
+				add = 40
+				is_historical_focus_on = no
 			}
 		}
-		
 	}
 	
 	
@@ -71,14 +54,11 @@ decisions_iraq = {
 	
 	
 	    available = { 
-		has_war = no
-		owns_state = 1182
-			}
-		allowed = { 
-		tag = IRQ
-			}
+			has_war = no
+			owns_state = 1182
+		}
 		visible = {		
-		has_idea = iraq_embargo_heavy
+			has_idea = iraq_embargo_heavy
 		}
 		
 		icon = democracy
@@ -91,30 +71,25 @@ decisions_iraq = {
 		add_war_support = -0.05
 		
 		815 = { 
-		remove_claim_by = IRQ
+			remove_claim_by = IRQ
 		}
 		1182 = {
-		remove_core_of  = IRQ
-		transfer_state_to = KUR
+			remove_core_of  = IRQ
+			transfer_state_to = KUR
 		}
 		
 		KUR = {
-		remove_ideas = partially_recognized_state
-		remove_ideas = iraqi_blockade
+			remove_ideas = iraqi_blockade
 		}
 
 		swap_ideas = { 
-					remove_idea = iraq_embargo_heavy
-					add_idea = iraq_embargo_light
-				}		
+				remove_idea = iraq_embargo_heavy
+				add_idea = iraq_embargo_light
+			}		
 		}		
 		
 		ai_will_do = {
 			base = 0
-			modifier = {
-			add = 10
-			is_historical_focus_on = no
-			}
 		}
 	}
 	
@@ -122,19 +97,19 @@ decisions_iraq = {
 	ask_for_no_embargo = {
 	
 	    available = {
-		has_war = no		
-		NOT = {
-		OR = {
-		has_government = nationalist
-		has_government = fascist
-		has_government = islamist
-		has_government = communist
-		}
-		}
+			has_war = no		
+			NOT = {
+				OR = {
+					has_government = nationalist
+					has_government = fascist
+					has_government = islamist
+					has_government = communist
+				}
 			}
+		}
 		allowed = { 
-		tag = IRQ
-			}
+			tag = IRQ
+		}
 		visible = {		
 		has_idea = iraq_embargo_heavy
 		}
@@ -145,49 +120,38 @@ decisions_iraq = {
 		fire_only_once = yes
 
 		complete_effect = {
-
-		if = {
-		limit = { 
-		has_idea = iraq_embargo_heavy
-		}
-		remove_ideas = iraq_embargo_heavy
-		}
-		
-		if = {
-		limit = { 
-		has_idea = iraq_embargo_light
-		}
-		remove_ideas = iraq_embargo_light
-		}
-		
+			#request sent to the US
+			if = {
+				limit = { 
+					has_idea = iraq_embargo_heavy
+				}
+				remove_ideas = iraq_embargo_heavy
+			}
+			else_if = {
+				limit = { 
+					has_idea = iraq_embargo_light
+				}
+				remove_ideas = iraq_embargo_light
+			}
 		}		
-		
 		ai_will_do = {
 			base = 1000
 		}
 	}
-
-
-
 }
 decisions_iraqi_freedom = {
 
 	iraq_hold_two_weeks = {
-	
-	
-	    allowed = { 
-		tag = IRQ 
-			}
 		activation = {
-		has_war_with = USA		
+			has_war_with = USA		
 		}
 		available = {
-		OR = {
-			has_war = no
-			NOT = {
-			controls_state  = 291
+			OR = {
+				has_war = no
+				NOT = {
+					controls_state  = 291
+				}
 			}
-		}
 		}
 
 		
@@ -208,18 +172,15 @@ decisions_iraqi_freedom = {
 			hours = 1
 			}
 		}
-		
-		
 	}
 	
-		iraq_war_capabilities_mission = {
-	
+	iraq_war_capabilities_mission = {
 	    allowed = { 
-		tag = IRQ 
-			}
+			tag = IRQ 
+		}
 		activation = {
-		has_war_with = USA
-		has_country_flag = iraq_held_two_weeks		
+			has_war_with = USA
+			has_country_flag = iraq_held_two_weeks		
 		}
 		available = {
 			has_full_control_of_state = 1045
@@ -255,78 +216,19 @@ decisions_iraqi_freedom = {
 			country_event = {
 			id = IRQ_flavor.3
 			}
-		
 		}
-		
-	
 		cancel_trigger = {	
-		is_subject = yes
+			is_subject = yes
 		}
-		
 	}
-	
-	iraq_war_anti_air_mission = {
-	
-	
-	    allowed = { 
-		tag = IRQ 
-			}
-		activation = {
-		has_war_with = USA
-			has_full_control_of_state = 1045
-			has_full_control_of_state = 1182
-			has_full_control_of_state = 1002
-			has_full_control_of_state = 675
-			has_full_control_of_state = 1044 
-			has_full_control_of_state = 1043
-			has_full_control_of_state = 1015
-			has_full_control_of_state = 1042
-			has_full_control_of_state = 291
-			has_full_control_of_state = 1014
-			has_full_control_of_state = 815
-			has_full_control_of_state = 1041
-			has_full_control_of_state = 676 
-			has_full_control_of_state = 1016
-			has_full_control_of_state = 656	
-		}
-		available = {
-		anti_air_building > 1
-		}
-		icon = generic_prepare_civil_war
-
-		days_mission_timeout = 180
-		#cost = 35
-		is_good = no
-		fire_only_once = yes
-		days_remove = 30		
-		
-		timeout_effect = {
-			country_event = {
-			id = IRQ_flavor.2
-			}
-		}
-		complete_effect = {
-			country_event = {
-			id = IRQ_flavor.4
-			}
-		
-		}
-		
-	
-		cancel_trigger = {	
-		is_subject = yes
-		}
-		
-	}
-	
 	iraq_arab_volunteers = {
 	
 	
 	   allowed = { 
-		tag = IRQ 
-			}
+			tag = IRQ 
+		}
 		visible = {		
-		has_war_with = USA
+			has_war_with = USA
 		}
 		
 		icon = generic_prepare_civil_war
@@ -336,61 +238,55 @@ decisions_iraqi_freedom = {
 		#days_remove = 30		
 		
 
-		complete_effect = {
-
-			
-		random_list = {
+		complete_effect = {	
+			random_list = {
 				50 = {
-				country_event = {
-				id = IRQ_flavor.6
-							}
+					country_event = {
+						id = IRQ_flavor.6
 					}
-				25 = {
-				country_event = {
-				id = IRQ_flavor.7
-							}
 				}
 				25 = {
-				country_event = {
-				id = IRQ_flavor.8
-							}
+					country_event = {
+						id = IRQ_flavor.7
 					}
+				}
+				25 = {
+					country_event = {
+						id = IRQ_flavor.8
+					}
+				}
 			}
-		
 		}		
 	}
 	
 	Baghdad_capital = {
-	
-	
 	   allowed = { 
-		tag = IRQ 
-			}
+			tag = IRQ 
+		}
 		visible = {		
-		291 = { 
-		is_capital = no
+			291 = { 
+				is_capital = no
+			}
 		}
+		available = {
+			owns_state = 291
+			has_full_control_of_state = 291
 		}
-		
 		icon = generic_prepare_civil_war
 
 		cost = 25
 		fire_only_once = yes
 		#days_remove = 30		
 		
-
 		complete_effect = {
-		set_capital = {state = 291}
-		
+			set_capital = {state = 291}
 		}		
 		ai_will_do = {
 			base = 100
 			modifier = {
-			add = -110
-			has_war_with = USA
+				add = -110
+				has_war_with = USA
 			}
 		}
 	}
-	
-
 }	

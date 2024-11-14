@@ -328,7 +328,26 @@ on_actions = {
 			}
 		}
 	}
-    on_monthly_BRB = {
+	################# EVENTS ##################
+	on_monthly = {
+        effect = {
+            if = {
+				limit = {
+					check_variable = { EU_space_variable > 0 }
+					NOT = { has_idea = idea_eu_member }
+				}
+				country_event = space_events.5
+            }
+			else_if = {
+				limit = {
+					NOT = { has_variable = EU_space_variable }  
+					has_idea = idea_eu_member
+				}
+				country_event = space_events.6
+			}
+        }
+    }
+    on_monthly_SWE = {
         effect = {
             if = {
                 # Checks for if it is Janurary (Year of previous month is a different year of current year)
@@ -352,6 +371,86 @@ on_actions = {
                     set_variable = { global.kde_counter = 0 }
                 }
             }
+        }
+    }
+	on_monthly_UNI = {
+        effect = {
+            if = {
+				limit = {
+					has_war = no
+					ANG = {
+						exists = no
+					}
+					has_government = nationalist
+				}
+				country_event = angola.3
+            }
+        }
+    }
+	on_monthly_ENG = {
+        effect = {
+            if = {
+				limit = {
+					NOT = { has_cosmetic_tag = ENG_England }
+					NOT = { has_country_flag = refused_to_be_england }
+					OR = {	#Scotland
+						AND = {	#Scotland might exist. If it does, it needs to be at peace with Britain.
+							SCO = { exists = yes }
+							NOT = { has_war_with = SCO }
+						}
+						AND = {	#Maybe Britain also lost control of Scotland through war. If the owners of the Scottish states are not at war with Britain, then Scotland is lost. As long as Britain still owns at least one state, Scotland is not yet lost.
+							NOT = { controls_state = 120 }
+							NOT = { controls_state = 121 }
+							NOT = { controls_state = 133 }
+							NOT = { controls_state = 136 }
+							120 = { owner = { NOT = { has_war_with = ENG } } }
+							121 = { owner = { NOT = { has_war_with = ENG } } }
+							133 = { owner = { NOT = { has_war_with = ENG } } }
+							136 = { owner = { NOT = { has_war_with = ENG } } }
+						}
+					}
+					OR = {	#Wales
+						AND = {	#Wales might exist.
+							WLS = { exists = yes }
+							NOT = { has_war_with = WLS }
+						}
+						AND = {	#The state of Wales might have been lost.
+							NOT = { controls_state = 122 }
+							122 = { owner = { NOT = { has_war_with = ENG } } }
+						}
+					}
+				}
+				country_event = britain.1
+            }
+        }
+    }
+	on_monthly_PRC = {
+        effect = {
+            if = {
+				limit = {
+					prc_mao_xinyu = {
+						is_unit_leader = yes
+						skill > 5 #Level 6 over
+					}
+					NOT = { has_completed_focus = PRC_grand_compromise_in_congress }
+				}
+				country_event = {id = pr_china.300  days = 1000}
+            }
+			else_if = {
+				limit = {
+					date > 2016.1.1
+					has_completed_focus = PRC_game_making_business
+				}
+				country_event = {id = pr_china_flavor.5  days = 188}
+			}
+			else_if = {
+				limit = {
+					HKN = { is_puppet_of = PRC }
+					NOT = { has_global_flag = end_hong_kong_conflict }
+					has_war_with = ENG
+				}
+				country_event = pr_china_diplomacy.27
+			}
         }
     }
 	on_yearly = {
@@ -380,13 +479,4 @@ on_actions = {
 			}
 		}
 	}
-	on_new_term_election = {
-		random_events = {
-			100 = election_URU.1
-			100 = election_URU.2
-			100 = election_URU.3
-			100 = election_URU.4
-			100 = election_URU.5
-		}
-	}	
 }

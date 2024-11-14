@@ -415,13 +415,10 @@ set_technology = {
 	electronic_mechanical_engineering = 1
 	radio = 1
 	atomic_research = 1
-	nuclear_reactor = 1
-	nukes = 1
-	experimental_rockets = 1
-	rocket_engines = 1
-	improved_rocket_engines = 1
-	advanced_rocket_engines = 1
 	
+	
+	experimental_rockets = 1
+
 	## Industry ##
 	basic_machine_tools = 1
 	fuel_silos = 1
@@ -455,15 +452,17 @@ if = {
 	set_technology = {
 		early_ship_hull_light = 1
 		basic_ship_hull_light = 1
+		early_ship_hull_patrol_boat = 1
 		improved_ship_hull_light = 1
 		early_ship_hull_cruiser = 1
 		basic_ship_hull_cruiser = 1
 		improved_ship_hull_cruiser = 1
 		early_ship_hull_heavy = 1
 		basic_ship_hull_heavy = 1
-		escort_ship_hull_carrier = 1
+		ship_hull_fleet_carrier = 1
 		early_ship_hull_carrier = 1
 		basic_ship_hull_carrier = 1
+		early_ship_hull_ballistic_submarine = 1
 		early_ship_hull_submarine = 1
 		basic_ship_hull_submarine = 1
 		smoke_generator = 1
@@ -471,17 +470,17 @@ if = {
 		basic_depth_charges = 1
 		improved_airplane_launcher = 1
 		basic_cruiser_armor_scheme = 1
-		basic_heavy_armor_scheme = 1
+		
 		basic_torpedo = 1
 		basic_battery = 1
 		basic_light_battery = 1
-		basic_medium_battery = 1
+		
 		basic_heavy_battery = 1
 		basic_secondary_battery = 1
 		basic_nuclear_reactors = 1
 		mtg_transport = 1
 		basic_naval_mines = 1
-		submarine_mine_laying = 1
+		
 	}
 }
 
@@ -496,6 +495,16 @@ add_ideas = {
 	commonwealth_of_nations_member
 	mobilization_service_time_duty
 }
+
+complete_special_project = sp:sp_rockets_experimental_rockets
+complete_special_project = sp:sp_rockets_ballistic_missile
+complete_special_project = sp:sp_rockets_medium_range_ballistic_missile
+complete_special_project = sp:sp_rockets_long_range_ballistic_missile
+complete_special_project = sp:sp_nuclear_reactor
+complete_special_project = sp:sp_commercial_nuclear_reactor
+complete_special_project = sp:sp_nuclear_bomb
+complete_special_project = sp:sp_thermo_nuclear_bomb
+complete_special_project = sp:sp_nuclear_warheads
 
 give_guarantee = BRU
 give_guarantee = KUR
@@ -746,7 +755,7 @@ if = {
 		type = ship_hull_cruiser_1
 		parent_version = 0
 		modules = {
-			fixed_ship_battery_slot = ship_medium_battery_1
+			fixed_ship_battery_slot = ship_light_medium_battery_2 #sub_missile_launcher
 			fixed_ship_anti_air_slot = ship_anti_air_1
 			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
 			fixed_ship_radar_slot = ship_radar_1
@@ -754,11 +763,26 @@ if = {
 			fixed_ship_armor_slot = ship_armor_cruiser_1
 			mid_1_custom_slot = empty
 			mid_2_custom_slot = ship_anti_air_1
-			rear_1_custom_slot = ship_medium_battery_1
+			rear_1_custom_slot = empty
 		}
 		obsolete = no
 	}
 	## Carriers ##
+	create_equipment_variant = { #Carrier 2
+		name = "Illustrious class"
+		type = ship_hull_carrier_conversion_ca
+		parent_version = 0
+		modules = {
+			fixed_ship_deck_slot_1 = big_ship_deck_space
+			fixed_ship_deck_slot_2 = big_ship_deck_space
+			fixed_ship_anti_air_slot = ship_anti_air_2
+			fixed_ship_radar_slot = ship_radar_1
+			fixed_ship_engine_slot = carrier_ship_engine_1
+			fixed_ship_secondaries_slot = empty
+			front_1_custom_slot = empty
+		}
+		obsolete = no
+	}
 	create_equipment_variant = { #Carrier 2
 		name = "Invincible class"
 		type = ship_hull_carrier_1

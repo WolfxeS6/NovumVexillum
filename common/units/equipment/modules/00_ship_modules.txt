@@ -1225,7 +1225,6 @@ equipment_modules = {
 			lg_attack = 0.1
 			hg_attack = 0.1
 			anti_air_attack = 0.1
-			reliability = -0.05
 		}
 
 		can_convert_from = {
@@ -1247,7 +1246,6 @@ equipment_modules = {
 			lg_attack = 0.15
 			hg_attack = 0.15
 			anti_air_attack = 0.15
-			reliability = -0.075
 		}
 		can_convert_from = {
 			module = ship_fire_control_system_1
@@ -1272,7 +1270,6 @@ equipment_modules = {
 			lg_attack = 0.2
 			hg_attack = 0.2
 			anti_air_attack = 0.2
-			reliability = -0.1
 		}
 		can_convert_from = {
 			module = ship_fire_control_system_2
@@ -1297,7 +1294,6 @@ equipment_modules = {
 			lg_attack = 0.25
 			hg_attack = 0.25
 			anti_air_attack = 0.25
-			reliability = -0.125
 		}
 		can_convert_from = {
 			module = ship_fire_control_system_3
@@ -1322,7 +1318,6 @@ equipment_modules = {
 			lg_attack = 0.3
 			hg_attack = 0.3
 			anti_air_attack = 0.3
-			reliability = -0.15
 		}
 		can_convert_from = {
 			module = ship_fire_control_system_4
@@ -2846,6 +2841,7 @@ equipment_modules = {
 		
 		add_stats = {
 			torpedo_attack = 18
+			sub_attack = 12
 			build_cost_ic = 90
 		}
 		multiply_stats = {
@@ -2865,6 +2861,7 @@ equipment_modules = {
 
 		add_stats = {
 			torpedo_attack = 27
+			sub_attack = 28
 			build_cost_ic = 120
 		}
 		multiply_stats = {
@@ -2897,6 +2894,7 @@ equipment_modules = {
 
 		add_stats = {
 			torpedo_attack = 36
+			sub_attack = 40
 			build_cost_ic = 150
 		}
 		multiply_stats = {
@@ -2919,6 +2917,7 @@ equipment_modules = {
 
 		add_stats = {
 			torpedo_attack = 45
+			sub_attack = 40
 			build_cost_ic = 180
 		}
 		multiply_stats = {
@@ -2941,6 +2940,7 @@ equipment_modules = {
 
 		add_stats = {
 			torpedo_attack = 54
+			sub_attack = 40
 			build_cost_ic = 210
 		}
 		multiply_stats = {
@@ -2966,6 +2966,7 @@ equipment_modules = {
 
 		add_stats = {
 			torpedo_attack = 63
+			sub_attack = 40
 			build_cost_ic = 240
 		}
 		multiply_stats = {
@@ -2990,6 +2991,7 @@ equipment_modules = {
 		
 		add_stats = {
 			torpedo_attack = 14
+			sub_attack = 10
 			build_cost_ic = 80
 		}
 		
@@ -3007,6 +3009,7 @@ equipment_modules = {
 
 		add_stats = {
 			torpedo_attack = 18
+			sub_attack = 20
 			build_cost_ic = 100
 		}
 		
@@ -3028,6 +3031,7 @@ equipment_modules = {
 
 		add_stats = {
 			torpedo_attack = 22
+			sub_attack = 30
 			build_cost_ic = 120
 		}
 		can_convert_from = {
@@ -3045,6 +3049,7 @@ equipment_modules = {
 
 		add_stats = {
 			torpedo_attack = 26
+			sub_attack = 40
 			build_cost_ic = 140
 		}
 		can_convert_from = {
@@ -3411,7 +3416,7 @@ equipment_modules = {
 
 		add_equipment_type = capital_ship
 		add_stats = {
-			carrier_size = 2
+			carrier_size = 1
 			build_cost_ic = 2000
 		}
 		manpower = 250 #outside the add_stats section for code reasons
@@ -3422,6 +3427,60 @@ equipment_modules = {
 			steel = 1
 		}
 		dismantle_cost_ic = 700
+	}
+	big_ship_deck_space = {
+		abbreviation = "sdb"
+		category = big_ship_deck_space
+		gfx = big_ship_deck_space
+
+		add_equipment_type = capital_ship
+
+		add_stats = {
+			carrier_size = 1
+			build_cost_ic = 2000
+		}
+		mega_carrier = yes
+		manpower = 80 #outside the add_stats section for code reasons
+		multiply_stats = {
+			naval_speed = -0.05
+		}
+		build_cost_resources = {
+			steel = 1
+		}
+		dismantle_cost_ic = 400
+	}
+	sub_missile_launcher = {
+		abbreviation = "sml"
+		category = ship_medium_battery
+		add_equipment_type = missile_launcher
+		allow_equipment_type = { sam_missile }
+
+		# TODO: Set air base type
+
+		add_stats = {
+			build_cost_ic = 1500 # TODO_TA: Balancing
+		}
+		multiply_stats = {
+			sub_visibility = 0.15 # TODO_TA: Balancing
+		}
+		dismantle_cost_ic = 700 # TODO_TA: Balancing
+	}
+
+	slbm_launcher = {
+		abbreviation = "slb"
+		category = ship_rocket
+		add_equipment_type = missile_launcher
+		allow_equipment_type = { ballistic_missile nuclear_missile }
+
+		# TODO: Set air base type
+
+		add_stats = {
+			build_cost_ic = 2000 # TODO_TA: Balancing
+		}
+		multiply_stats = {
+			sub_visibility = 0.2 # TODO_TA: Balancing
+		}
+		dismantle_cost_ic = 1000 # TODO_TA: Balancing
 	}
 
 ### #  # ### #       ###  ##  #  # # #  ## 

@@ -1,0 +1,218 @@
+types = {
+
+	preemptive_strike = { #6 day war time
+		days_to_prepare = 90
+
+		ai_will_do = {
+			base = 2
+		}
+		
+		category = air_raids
+
+		command_power = 40
+
+		allowed = {
+			has_dlc = "Gotterdammerung"
+		}
+
+		# Raid Type is visible
+		visible = {
+			
+		}
+		# Specific Target is visible
+		show_target = {
+			has_wargoal_against = FROM
+		}
+
+		# Can prepare 
+		available = {
+			has_wargoal_against = FROM
+		}
+		launchable = {
+			
+		}
+		
+		target_type = {
+			building = air_base
+		}
+		target_icon = GFX_facility_icon
+		launch_sound = raid_launch_air
+
+		arrow = {
+		    type = air
+		}
+        unit_model = {
+            type = equipment
+        }
+
+		# Intel requirements
+		intel_levels = {
+			launch = 20 # minimum intel level to launch the raid
+		}
+
+		unit_requirements = {
+			equipment = {
+				type = { tactical_bomber }
+				amount = { min = 70 }
+			}
+			experience = { min = 0 } 	
+		}
+
+		starting_point = {
+		    types = { air_base }
+		}
+
+		success_factors = {
+			success = {
+				base = 0.65
+
+				# Raiding unit modifiers
+				experience = {
+					weight = 0.2
+					start_weight = -0.2
+					reference = 1000
+				}
+				air_agility = {
+					reference = 100.0 # As air unit agility approaches 100 (as defined by the value above), increase chance by this value
+					weight = 0.1 # At 0 agility, the modifier will have negative effect.
+					start_weight = -0.1 # The modifier will scale linearly, meaning at 50 agility, the modifier will be 0.
+				}
+				reliability = {
+					reference = 1
+					weight = 0.05
+					start_weight = -0.1
+				}
+				air_defence = {
+					reference = 100
+					weight = 0.05
+					start_weight = -0.05
+				}
+				air_superiority = {
+					reference = 1
+					weight = 0.1
+					start_weight = -0.1
+				}
+
+				### Target Modifiers
+				anti_air = {
+					reference = 5
+					weight = -0.25
+				}
+				interceptor = {
+					reference = 100 # More than 500 fighters won't really make any difference
+					weight = -0.3
+				}
+				intel = {
+					weight = 0.3
+					#start_reference = 50
+					reference = 100
+				}
+			}
+
+			critical = {
+				base = 0.15	
+			}
+		}
+
+		success_levels = {
+			failure = {
+				victim_effects = {
+					var:target_state = {
+						damage_building = {
+							type = air_base
+							damage = 0.70 # levels of damage
+						}
+					}
+				}
+				actor_effects = {
+					raid_damage_units = {
+						plane_loss = 10
+						ratio = no
+					}
+					raid_add_unit_experience = 100
+				}
+				
+			}
+			limited_success = {
+			    victim_effects = {
+					var:target_state = {
+						damage_building = {
+							type = air_base
+							damage = 5 # levels of damage
+							repair_speed_modifier = -0.25
+						}
+					}
+					
+			    }
+				actor_effects = {
+					raid_damage_units = {
+						plane_loss = 5
+						ratio = no
+					}
+					raid_add_unit_experience = 250
+				}
+				
+			}
+			success = {
+				victim_effects = {
+					
+					var:target_state = {
+						custom_effect_tooltip = {
+							localization_key = raid_building_destroyed_tt
+							BUILDING = air_base
+						}
+                        hidden_effect = {
+							remove_building = {
+								type = air_base 
+								level = 4
+							}
+						}
+                        damage_building = {
+							type = air_base
+							damage = 6 # damage rest of the air_base
+							repair_speed_modifier = -0.4
+						}
+					}
+				}
+				actor_effects = {
+					raid_damage_units = {
+						plane_loss = 2
+						ratio = no
+					}
+					raid_add_unit_experience = 350
+				}
+				
+			}
+			critical_success = {
+			    victim_effects = {
+					
+					var:target_state = {
+						custom_effect_tooltip = {
+							localization_key = raid_building_destroyed_tt
+							BUILDING = air_base
+						}
+                        hidden_effect = {
+							remove_building = {
+								type = air_base 
+								level = 5
+							}
+						}
+                        damage_building = {
+							type = air_base
+							damage = 5 # damage rest of the air_base
+							repair_speed_modifier = -0.4
+						}
+					}
+				}
+				actor_effects = {
+					raid_damage_units = {
+						plane_loss = 0
+						ratio = no
+					}
+					raid_add_unit_experience = 500
+				}
+			}
+		}
+	}
+
+}

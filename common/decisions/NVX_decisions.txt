@@ -1722,53 +1722,6 @@ NVX_AI_decisions_cat = {
 		}
 	}
 	
-	NVX_AI_convert_to_organized_industry_puppet = {
-		
-		icon = generic_industry
-		
-		available = {
-			OR = {
-				OVERLORD = { has_tech = concentrated_industry7 }
-				AND = {
-					OVERLORD = { has_tech = concentrated_industry2 }
-					num_of_controlled_states > 3
-				}
-			}
-			has_tech = dispersed_industry
-			has_war = no
-		}
-		
-		visible = {
-			has_country_flag = country_behavior_dispersed
-			OR = {
-				is_puppet = yes
-				is_subject = yes
-			}
-		}
-		
-		fire_only_once = yes
-		
-		complete_effect = {
-			clr_country_flag = country_behavior_dispersed
-			set_technology = {
-				concentrated_industry = 1
-				dispersed_industry = 0
-				dispersed_industry2 = 0
-				dispersed_industry3 = 0
-				dispersed_industry4 = 0
-				dispersed_industry5 = 0
-				dispersed_industry6 = 0
-				dispersed_industry7 = 0
-				dispersed_industry8 = 0
-				dispersed_industry9 = 0
-			}
-		}
-		
-		ai_will_do = {
-			factor = 90
-		}
-	}
-	
 	NVX_AI_remove_indolent_behavior = {
 		
 		icon = generic_industry
@@ -1780,41 +1733,6 @@ NVX_AI_decisions_cat = {
 		
 		visible = {
 			has_country_flag = country_behavior_indolent
-		}
-		
-		fire_only_once = yes
-		
-		complete_effect = {
-			clr_country_flag = country_behavior_indolent
-		}
-		
-		ai_will_do = {
-			factor = 90
-		}
-	}
-	
-	NVX_AI_remove_indolent_behavior_puppet = {
-		
-		icon = generic_industry
-		
-		available = {
-			OVERLORD = {
-				OR = {
-					has_tech = main_battle_tank7
-					has_tech = fighter7
-					has_tech = near_future_ship_hull_cruiser
-					has_tech = near_future_light_cruiser
-					has_tech = near_future_heavy_cruiser
-				}
-			}
-		}
-		
-		visible = {
-			has_country_flag = country_behavior_indolent
-			OR = {
-				is_puppet = yes
-				is_subject = yes
-			}
 		}
 		
 		fire_only_once = yes

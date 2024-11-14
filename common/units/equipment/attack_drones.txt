@@ -1,0 +1,85 @@
+equipments = {
+	
+	attack_drone_equipment = {
+		year = 1936
+
+		is_archetype = yes
+		is_buildable = no
+		can_license = no
+		type = strategic_bomber
+		group_by = type
+		sprite = missile_default
+		air_map_icon_frame = 9
+		
+		interface_category = interface_category_air
+
+		allow_mission_type = {
+			strategic_bomber
+			port_strike
+		}
+		
+		reliability = 0.8
+
+		# Air vs Navy - high damage / low hit chance / hard to hurt
+		naval_strike_attack = 1.5
+		naval_strike_targetting = 0.6
+
+		#Space taken in convoy
+		lend_lease_cost = 1.5
+		
+		build_cost_ic = 540
+		resources = {
+			aluminium = 1
+		}
+
+		fuel_consumption = 0
+	}
+
+	attack_drone_equipment_1 = {
+		year = 1944
+
+		archetype = attack_drone_equipment
+		is_buildable = yes
+		one_use_only = yes
+		sprite = missile_default
+		
+		air_range = 900
+		maximum_speed = 165
+		air_agility = 5
+		air_bombing = 5
+		
+		# build_cost_ic = 36
+	}
+
+	attack_drone_equipment_2 = {
+		year = 1945
+
+		archetype = attack_drone_equipment
+		parent = attack_drone_equipment_1
+		is_buildable = yes
+		one_use_only = yes
+		sprite = missile_default
+		
+		air_range = 2500
+		maximum_speed = 185
+		air_agility = 5
+		air_bombing = 10
+	}
+	
+	attack_drone_equipment_3 = {
+		year = 1946
+
+		archetype = attack_drone_equipment
+		parent = attack_drone_equipment_2
+		is_buildable = yes
+		one_use_only = yes
+		sprite = missile_default
+		
+		air_range = 5000
+		maximum_speed = 300
+		air_agility = 15
+		air_bombing = 15
+		
+		# build_cost_ic = 44
+	}
+}

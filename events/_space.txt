@@ -76,12 +76,7 @@ country_event = {
 	desc = space_events.5.desc
 	picture = GFX_report_event_european_union
 	
-	trigger = {
-		AND = { 
-			check_variable = { EU_space_variable > 0 }
-			NOT = { has_idea = idea_eu_member }
-		}
-	}
+	is_triggered_only = yes
 	
 	immediate = {
 		hidden_effect = { set_variable = { EU_space_variable = 0 } }
@@ -108,12 +103,7 @@ country_event = {
 	desc = space_events.6.desc
 	picture = GFX_report_event_european_union
 	
-	trigger = {
-		AND = { 
-			NOT = { has_variable = EU_space_variable }  
-			has_idea = idea_eu_member
-		}
-	}
+	is_triggered_only = yes
 	
 	immediate = {
 		hidden_effect = { set_variable = { EU_space_variable = 1 } }

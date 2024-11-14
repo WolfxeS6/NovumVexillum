@@ -18,6 +18,14 @@ country_event = {
 		hidden_effect = {
 			country_event = usa.32
 		}
+		hidden_effect = {
+			PRC = {
+				country_event = {
+					days = 12
+					id = pr_china.24
+				}
+			}
+		}
 		set_country_flag = usa_9_11
 		set_country_flag = major_terrorist_attack
 	}
@@ -266,11 +274,11 @@ country_event = {
 }
 
 #Alaska Airlines Flight 261
-country_event = {
+news_event = {
 	id = usa.9
 	title = usa.9.t
 	desc = usa.9.d
-	picture = GFX_report_event_plane_crash
+	picture = GFX_news_event_plane_crash
 	
 	is_triggered_only = yes
 	
@@ -281,11 +289,11 @@ country_event = {
 }
 
 #End of the Peanuts
-country_event = {
+news_event = {
 	id = usa.10
 	title = usa.10.t
 	desc = usa.10.d
-	picture = GFX_report_event_comic_artist
+	picture = GFX_news_event_peanuts_ends
 	
 	is_triggered_only = yes
 	
@@ -1941,51 +1949,53 @@ country_event = {
 }
 
 #Shepherdstown Peace Talks
-country_event = {
+news_event = {
 	id = usa.52
 	title = usa.52.t
-	desc = usa.52.d
-	picture = GFX_report_event_political_deal
+	desc = {
+		text = usa.52.d1
+		trigger = {
+			tag = USA
+		}
+	}
+	desc = {
+		text = usa.52.d2
+		trigger = {
+			tag = SYR
+		}
+	}
+	desc = {
+		text = usa.52.d3
+		trigger = {
+			tag = ISR
+		}
+	}
+	picture = GFX_news_event_Shepherdstown_peace
 	
 	is_triggered_only = yes
 	
 	option = {
+		trigger = {
+			tag = USA
+		}
 		name = usa.52.o1
 		add_political_power = 5
-		SYR = { country_event = usa.53 }
-		ISR = { country_event = usa.54 }
 	}
-}
-
-#Syria: Shepherdstown Peace Talks
-country_event = {
-	id = usa.53
-	title = usa.53.t
-	desc = usa.53.d
-	picture = GFX_report_event_political_deal
-	
-	is_triggered_only = yes
-	
 	option = {
-		name = usa.53.o1
+		trigger = {
+			tag = SYR
+		}
+		name = usa.52.o1
 		add_opinion_modifier = {
 			target = ISR
 			modifier = peace_talks
 		}
 	}
-}
-
-#Israel: Shepherdstown Peace Talks
-country_event = {
-	id = usa.54
-	title = usa.54.t
-	desc = usa.54.d
-	picture = GFX_report_event_political_deal
-	
-	is_triggered_only = yes
-	
 	option = {
-		name = usa.54.o1
+		trigger = {
+			tag = ISR
+		}
+		name = usa.52.o1
 		add_opinion_modifier = {
 			target = SYR
 			modifier = peace_talks
@@ -1994,7 +2004,7 @@ country_event = {
 }
 
 #Datapoint files for Chapter 11 bankruptcy
-country_event = {
+news_event = {
 	id = usa.55
 	title = usa.55.t
 	desc = usa.55.d
@@ -2005,13 +2015,6 @@ country_event = {
 	option = {
 		name = usa.55.o1
 		add_political_power = -10
-	}
-	
-	option = {
-		name = usa.55.o2
-		trigger = { has_democratic_form_of_government = no }
-		add_political_power = -100
-		add_stability = 0.01
 	}
 }
 
