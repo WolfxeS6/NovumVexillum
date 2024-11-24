@@ -18,6 +18,7 @@ sub_units = {
 		categories = { category_fighter }
 		land_air_wing_size = 40
 		carrier_air_wing_size = 10
+		mega_carrier_air_wing_size = 10
 	}
 	
 	cas = {
@@ -39,6 +40,7 @@ sub_units = {
 		categories = { category_cas }
 		land_air_wing_size = 40
 		carrier_air_wing_size = 10
+		mega_carrier_air_wing_size = 10
 	}
 	
 	nav_bomber = {
@@ -60,6 +62,7 @@ sub_units = {
 		categories = { category_nav_bomber }
 		land_air_wing_size = 40
 		carrier_air_wing_size = 10
+		mega_carrier_air_wing_size = 10
 	}
 	
 	tac_bomber = {
@@ -70,6 +73,7 @@ sub_units = {
 		need = { uav_plane_airframe = 1 }
 		categories = { category_tac_bomber }
 		land_air_wing_size = 40
+		mega_carrier_air_wing_size = 10
 	}
 
 	attack_heli= {
@@ -92,33 +96,36 @@ sub_units = {
 		need = { large_plane_airframe = 1 }
 		categories = { category_strat_bomber }
 		land_air_wing_size = 40
+		mega_carrier_air_wing_size = 10
 	}
 	
 	scout_plane = {
 		sprite = light_plane
 		priority = 1
 		active = yes
-		type = { scout_plane }
+		type = scout_plane
 		need = { medium_plane_scout_plane_airframe = 1 }
 		categories = { category_scout_plane }
-		land_air_wing_size = 40
+		land_air_wing_size = 10
+		mega_carrier_air_wing_size = 10
 	}
 	
 	transport_plane = {
 		sprite = heavy_plane
 		priority = 6
 		active = yes
-		type = { air_transport }
+		type = air_transport
 		need = { transport_plane_equipment = 1 }
-		land_air_wing_size = 40
+		land_air_wing_size = 100
 	}
 	guided_missile = {
 		sprite = missile_default
 		priority = 8
 		active = yes
-		type = { missile }
+		type = missile
 		need = { guided_missile_equipment = 1 }
-		land_air_wing_size = 40
+		land_air_wing_size = 100
+		carrier_air_wing_size = 10
 	}
 	one_way_attack_drone = {
 		sprite = heavy_plane
@@ -129,14 +136,14 @@ sub_units = {
 		categories = { category_strat_bomber }
 		land_air_wing_size = 50
 	}
-	#explosive_ammo = {
-	#	sprite = missile_default
-	#	priority = 8
-	#	active = yes
-	#	type = emplacement_gun_ammo
-	#	need = { explosive_ammo_equipment = 1 }
-	#	land_air_wing_size = 1
-	#}
+	explosive_ammo = {
+		sprite = missile_default
+		priority = 8
+		active = yes
+		type = emplacement_gun_ammo
+		need = { explosive_ammo_equipment = 1 }
+		land_air_wing_size = 1
+	}
 	
 	ballistic_missile = {
 		sprite = missile_default
@@ -154,7 +161,7 @@ sub_units = {
 		active = yes
 		type = nuclear_missile
 		need = { nuclear_missile_equipment = 1 }
-		land_air_wing_size = 2
+		land_air_wing_size = 1
 		carrier_air_wing_size = 1
 	}
 
