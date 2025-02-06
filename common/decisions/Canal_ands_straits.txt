@@ -160,12 +160,12 @@ diplomatic_decisions = {
 			#original_tag = PER # more countries too ?
 		}
 		available = {
-			has_full_control_of_state = 414
+			controls_state  = 414
 		}
 	
 		visible = {
 			has_global_flag = HORMUZ_STRAIT_BLOCKED
-			has_country_flag = HORMUZ_STRAIT_BLOCKER
+			#has_country_flag = HORMUZ_STRAIT_BLOCKER
 		}
 	
 		cost = 20
@@ -175,10 +175,14 @@ diplomatic_decisions = {
 		}
 
 		complete_effect = {
-			
-			country_event = {
-				id = miscFlavor.5
-			}	
+			any_country = {
+				limit = {
+					has_country_flag = HORMUZ_STRAIT_BLOCKER
+				}
+				country_event = {
+					id = miscFlavor.5
+				}
+			}			
 		}
 	
 		ai_will_do = {
