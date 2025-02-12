@@ -13,6 +13,8 @@
 		signal_company = { x = 0 y = 0 }
 		engineer = { x = 0 y = 1 }
 		mot_recon = { x = 0 y = 2 }
+		field_hospital = { x = 0 y = 3 }
+		artillery = { x = 0 y = 4}					
 	}
 }
 
@@ -32,6 +34,7 @@ division_template = {
 		engineer = { x = 0 y = 1 }
 		artillery = { x = 0 y = 2 }
 		mot_recon = { x = 0 y = 3 }
+		field_hospital = { x = 0 y = 4 }						  
 	}
 }
 
@@ -42,13 +45,15 @@ division_template = {
 		light_mechanized = { x = 0 y = 0 }
 		light_mechanized = { x = 0 y = 1 }
 		mechanized = { x = 0 y = 2 }
-		motorized = { x = 0 y = 1 }
-		light_armor = { x = 1 y = 0 }
+		motorized = { x = 1 y = 0 }
+		motorized_rocket_brigade = { x = 1 y = 1 }
+		light_armor = { x = 2 y = 0 }
 	}
 	
 	support = {
 		artillery = { x = 0 y = 0 }
-		engineer = { x = 0 y = 0 }
+		engineer = { x = 0 y = 1 }
+		field_hospital = { x = 0 y = 2 }						  
 	}
 }
 
@@ -66,6 +71,8 @@ division_template = {
 		signal_company = { x = 0 y = 0 }
 		engineer = { x = 0 y = 1 }
 		mot_recon = { x = 0 y = 2 }
+		artillery  = { x = 0 y = 3 }
+		field_hospital = { x = 0 y = 4 }						  
 	}
 }
 
@@ -85,6 +92,7 @@ division_template = {
 		engineer = { x = 0 y = 1 }
 		mot_recon = { x = 0 y = 2 }
 		artillery = { x = 0 y = 3 }
+		field_hospital = { x = 0 y = 4 }						  
 	}
 }
 
@@ -104,24 +112,10 @@ division_template = {
 		engineer = { x = 0 y = 1 }
 		mot_recon = { x = 0 y = 2 }
 		artillery = { x = 0 y = 3 }
+		field_hospital = { x = 0 y = 4 }						  
 	}
 }
 
-division_template = {
-	name = "Artillery Brigade"
-	
-	regiments = {
-		motorized_rocket_brigade = { x = 0 y = 0 }
-		motorized_rocket_brigade = { x = 0 y = 1 }
-		#anti_air_brigade = { x = 1 y = 0 }
-		#anti_air_brigade = { x = 1 y = 1 }
-		infantry = { x = 0 y = 2 }
-	}
-	
-	support = {
-		logistics_company = { x = 0 y = 0 }
-	}
-}
 
 division_template = {
 	name = "Airmobile Brigade"
@@ -142,8 +136,9 @@ division_template = {
 	
 	regiments = {
 		light_mechanized = { x = 0 y = 0 }
-		infantry = { x = 1 y = 0 }
-		infantry = { x = 1 y = 1 }
+		motorized_rocket_brigade = { x = 0 y = 1 }
+		motorized = { x = 1 y = 0 }
+		motorized = { x = 1 y = 1 }
 	}
 	
 	support = {
@@ -242,13 +237,6 @@ units = {
 		start_experience_factor = 0.3
 		force_equipment_variants = { infantry_equipment_1 = { owner = "FRA" }
 		light_mechanized_equipment_1 = { owner = "FRA" }		}
-	}
-	division = {
-		name = "Brigade d'artillerie"
-		location = 549 #Haguenau
-		division_template = "Artillery Brigade"
-		start_experience_factor = 0.3
-		force_equipment_variants = { infantry_equipment_1 = { owner = "FRA" } }
 	}
 	division = {
 		name = "4ème brigade aéromobile"
