@@ -2384,13 +2384,13 @@ NVX_caprircious_war_go_deeper = {
 NVX_caprircious_war_go_deeper2 = {
     random_list = {
         95 = {
-            modifier = { factor = 30 has_global_flag =  pts_chaotic_warfaring}
-            modifier = { factor = 10 has_global_flag = pts_intensify_warfaring }
-            modifier = { factor = 0.5 has_global_flag =  pts_reduce_warfaring}
+            modifier = { factor = 40 has_global_flag =  pts_chaotic_warfaring}
+            modifier = { factor = 24 has_global_flag = pts_intensify_warfaring }
+            modifier = { factor = 0.4 has_global_flag =  pts_reduce_warfaring}
             NVX_caprircious_development_check = yes
             #log = "[Root.GetName]: capricious type passed"
         }
-        300 = {
+        250 = {
 
         }
     }
@@ -2398,11 +2398,13 @@ NVX_caprircious_war_go_deeper2 = {
 NVX_caprircious_development_check = {
     random_list = {
         35 = {
-            modifier = { factor = 5 has_idea = national_development_developed }
-            modifier = { factor = 25 has_idea = national_development_developing }
+            modifier = { factor = 2 has_idea = national_development_developed }
+            modifier = { factor = 30 has_idea = national_development_developing }
             modifier = { factor = 50 has_idea = national_development_undeveloped }
+            modifier = { factor = 10 has_global_flag =  pts_chaotic_warfaring}
+            modifier = { factor = 5 has_global_flag = pts_intensify_warfaring }
             log = "[Root.GetName]: development check done"
-            #NVX_caprircious_ideology_check = yes
+            NVX_caprircious_ideology_check = yes
         }
         300 = {
 
@@ -2412,9 +2414,11 @@ NVX_caprircious_development_check = {
 NVX_caprircious_ideology_check = {
     random_list = {
         30 = {
-            modifier = { factor = 10 has_government = conservative }
-            modifier = { factor = 60 has_government = reactionary }
-            modifier = { factor = 80 has_democratic_form_of_government = no }
+            modifier = { factor = 1 has_government = conservative }
+            modifier = { factor = 10 has_government = reactionary }
+            modifier = { factor = 15 has_democratic_form_of_government = no }
+            modifier = { factor = 2 has_global_flag =  pts_chaotic_warfaring}
+            modifier = { factor = 2 has_global_flag = pts_intensify_warfaring }
             country_event = {
                 id = NVX_Warfaring.100 # let's go to war
                 days = 20
