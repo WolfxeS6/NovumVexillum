@@ -73,6 +73,14 @@ equipments = {
 				required = no
 				allowed_module_categories = { ship_deck_space}
 			}
+			mid_3_custom_slot  = {
+				required = no
+				allowed_module_categories = { ship_deck_space}
+			}
+			mid_4_custom_slot  = {
+				required = no
+				allowed_module_categories = { ship_deck_space}
+			}
 			rear_1_custom_slot = {
 				required = no
 				allowed_module_categories = {
@@ -137,7 +145,7 @@ equipments = {
 		manpower = 500
 	}
 
-	ship_hull_carrier_1 = {
+	ship_hull_carrier_1 = { #fleet
 		year = 2000
 		visual_level = 1
 		visual_tech_level_addition = 2
@@ -150,7 +158,11 @@ equipments = {
 			fixed_ship_engine_slot = carrier_ship_engine_2
 		}
 		
-		max_strength = 300
+		max_strength = 275
+		armor_value = 5
+		build_cost_ic = 5000#2450
+		carrier_size = 1
+		naval_speed = 24
 	}
 
 	ship_hull_carrier_2 = {
@@ -168,11 +180,13 @@ equipments = {
 		}
 		naval_range = 11000
 		reliability = 0.75
-		max_strength = 325
-		
+		max_strength = 300
+		armor_value = 5	
+		naval_speed = 24
 
 
-		build_cost_ic = 2600
+		build_cost_ic = 5500#2600
+		carrier_size = 1
 		resources = {
 			steel = 4
 			chromium = 1
@@ -191,15 +205,18 @@ equipments = {
 			front_1_custom_slot = empty
 			mid_1_custom_slot = empty
 			mid_2_custom_slot = empty
+			fixed_ship_engine_slot = carrier_ship_engine_4
 		}
 		
 		naval_range = 12000
 		reliability = 0.8
-		max_strength = 350
-		
+		max_strength = 325
+		armor_value = 5
+		naval_speed = 24
 
 
-		build_cost_ic = 3250
+		build_cost_ic = 6000 #3250
+		carrier_size = 1
 		resources = {
 			steel = 4
 			chromium = 2
@@ -222,11 +239,13 @@ equipments = {
 		
 		naval_range = 13000
 		reliability = 0.85
-		max_strength = 375
+		max_strength = 350		
+		armor_value = 5
+		naval_speed = 24
 		
 
-
-		build_cost_ic = 3600
+		build_cost_ic = 6500# 3600
+		carrier_size = 1
 		resources = {
 			steel = 4
 			chromium = 2
@@ -249,11 +268,13 @@ equipments = {
 		
 		naval_range = 14000
 		reliability = 0.90
-		max_strength = 400
-		
+		max_strength = 375
+		armor_value = 5
+		naval_speed = 24
 
 
-		build_cost_ic = 3950
+		build_cost_ic = 7000# 3950
+		carrier_size = 1
 		resources = {
 			steel = 4
 			chromium = 2
@@ -261,7 +282,7 @@ equipments = {
 		manpower = 1500
 	}
 
-	ship_hull_carrier_conversion_bb = {
+	ship_hull_carrier_conversion_bb = { #fleet
 		year = 1980
 		visual_level = 0
 		archetype = ship_hull_carrier
@@ -273,13 +294,15 @@ equipments = {
 			fixed_ship_engine_slot = carrier_ship_engine_1
 			mid_1_custom_slot = empty
 		}
+		
 		naval_range = 10000
 		reliability = 0.70
-		max_strength = 275
-		naval_speed = 26
+		max_strength = 250
+		armor_value = 5
+		carrier_size = 1
+		naval_speed = 24
 
-
-		build_cost_ic = 2700
+		build_cost_ic = 4500 #2700
 		resources = {
 			steel = 4
 			chromium = 1
@@ -287,27 +310,65 @@ equipments = {
 		manpower = 500
 	}
 
-	ship_hull_carrier_conversion_ca = {
+	ship_hull_carrier_conversion_ca = { #escort
 		year = 1980
 		visual_level = 0
 		archetype = ship_hull_carrier
 		priority = 1200
 		#can_convert_from = { ship_hull_cruiser_1 ship_hull_cruiser_2 ship_hull_cruiser_3 ship_hull_cruiser_4 ship_hull_cruiser_panzerschiff }
+		
 		module_slots = {
-			fixed_ship_deck_slot_1 = inherit
-			fixed_ship_deck_slot_2 = inherit
-			mid_1_custom_slot = {
+			fixed_ship_deck_slot_1 = {
+				required = yes
+				allowed_module_categories = { ship_deck_space }
+				gfx = ship_deck_space_slot
+			}
+			fixed_ship_deck_slot_2 = {
+				required = no
+				allowed_module_categories = { ship_deck_space ship_carrier_armor }
+				gfx = ship_deck_space_slot
+			}
+			fixed_ship_anti_air_slot = {
+				required = no
+				allowed_module_categories = { ship_anti_air }
+			}
+			fixed_ship_radar_slot = {
+				required = no
+				allowed_module_categories = { ship_radar ship_sonar }
+			}
+			fixed_ship_engine_slot = {
+				required = yes
+				allowed_module_categories = { carrier_ship_engine }
+			}
+			fixed_ship_secondaries_slot = {
+				required = no
+				allowed_module_categories = { ship_secondaries ship_anti_air }
+			}
+			fixed_ship_armor_slot = {
+				required = no
+				allowed_module_categories = { ship_carrier_armor }	
+			}
+			
+			front_1_custom_slot = {
 				required = no
 				allowed_module_categories = {
 					ship_deck_space
+					ship_carrier_armor
+					ship_light_battery
 				}
 			}
-			fixed_ship_anti_air_slot = inherit
-			fixed_ship_radar_slot = inherit
-			fixed_ship_engine_slot = inherit
-			fixed_ship_secondaries_slot = inherit
-			fixed_ship_armor_slot = inherit
+			rear_1_custom_slot = {
+				required = no
+				allowed_module_categories = {
+					ship_deck_space
+					ship_anti_air
+					ship_secondaries
+					ship_airplane_launcher
+				}
+			}
 		}
+		
+		
 
 		default_modules = {
 			fixed_ship_deck_slot_1 = empty
@@ -319,7 +380,7 @@ equipments = {
 		}
 		naval_range = 7000
 		
-		max_strength = 275#125
+		max_strength = 150#125
 		
 		reliability = 0.65
 		naval_speed = 26
@@ -823,8 +884,11 @@ equipments = {
 		module_slots = inherit
 		naval_range = 10000
 		reliability = 0.7
-		max_strength = 300
+		max_strength = 175
 
+		default_modules = {
+			fixed_ship_engine_slot = carrier_ship_engine_2
+		}
 
 		build_cost_ic = 2250
 		resources = {
@@ -843,7 +907,11 @@ equipments = {
 		module_slots = inherit
 		naval_range = 11000
 		reliability = 0.75
-		max_strength = 325
+		max_strength = 200
+		
+		default_modules = {
+			fixed_ship_engine_slot = carrier_ship_engine_3
+		}
 
 
 		build_cost_ic = 2600
@@ -864,8 +932,11 @@ equipments = {
 		
 		naval_range = 12000
 		reliability = 0.8
-		max_strength = 350
+		max_strength = 225
 		
+		default_modules = {
+			fixed_ship_engine_slot = carrier_ship_engine_4
+		}		
 
 
 		build_cost_ic = 3250
@@ -886,8 +957,8 @@ equipments = {
 		
 		naval_range = 13000
 		reliability = 0.85
-		max_strength = 375
-
+		max_strength = 250
+		
 		build_cost_ic = 3600
 		resources = {
 			steel = 4
@@ -905,7 +976,7 @@ equipments = {
 		module_slots = inherit
 		naval_range = 14000
 		reliability = 0.90
-		max_strength = 400
+		max_strength = 275
 
 		build_cost_ic = 3950
 		resources = {
@@ -923,7 +994,7 @@ equipments = {
 		module_slots = inherit
 		naval_range = 14000
 		reliability = 0.90
-		max_strength = 400
+		max_strength = 300
 
 		build_cost_ic = 3950
 		resources = {

@@ -303,7 +303,7 @@ if = {
 		early_ship_hull_cruiser = 1
 		basic_ship_hull_cruiser = 1
 		early_ship_hull_carrier = 1
-		basic_ship_hull_carrier = 1
+		#basic_ship_hull_carrier = 1
 		early_ship_hull_submarine = 1
 		smoke_generator = 1
 		sonar = 1
@@ -463,7 +463,7 @@ if = {
 			fixed_ship_engine_slot = light_ship_engine_1
 			fixed_ship_torpedo_slot = ship_torpedo_1
 			mid_1_custom_slot = ship_torpedo_1
-			rear_1_custom_slot = ship_depth_charge_1
+			rear_1_custom_slot = ship_torpedo_1
 		}
 		obsolete = yes
 	}
@@ -479,7 +479,7 @@ if = {
 			fixed_ship_engine_slot = light_ship_engine_2
 			fixed_ship_torpedo_slot = ship_torpedo_1
 			mid_1_custom_slot = ship_torpedo_1
-			rear_1_custom_slot = ship_depth_charge_1
+			rear_1_custom_slot = ship_torpedo_1
 		}
 		obsolete = no
 	}
@@ -523,33 +523,35 @@ if = {
 	## Carriers ##
 	create_equipment_variant = { #Carrier 1 #Not needed for variant, just use type
 		name = "Colossus-class"
-		type = ship_hull_carrier_conversion_bb
+		type = ship_hull_carrier_conversion_ca
 		parent_version = 0
 		modules = {
 			fixed_ship_deck_slot_1 = ship_deck_space
 			fixed_ship_deck_slot_2 = ship_deck_space
 			fixed_ship_anti_air_slot = ship_anti_air_1
-			fixed_ship_radar_slot = ship_radar_1
+			fixed_ship_radar_slot = empty
 			fixed_ship_engine_slot = carrier_ship_engine_1
 			fixed_ship_secondaries_slot = empty
 			mid_1_custom_slot = empty
 		}
 		obsolete = yes
 	}
-	create_equipment_variant = { #Carrier 2
+	create_equipment_variant = { #Carrier 1 #Not needed for variant, just use type
 		name = "Clemenceau class"
-		type = ship_hull_carrier_1
+		type = ship_hull_carrier_conversion_ca
 		parent_version = 0
 		modules = {
 			fixed_ship_deck_slot_1 = ship_deck_space
 			fixed_ship_deck_slot_2 = ship_deck_space
 			fixed_ship_anti_air_slot = ship_anti_air_1
-			fixed_ship_radar_slot = ship_radar_1
+			fixed_ship_radar_slot = empty
 			fixed_ship_engine_slot = carrier_ship_engine_1
-			fixed_ship_secondaries_slot = empty
+			fixed_ship_secondaries_slot = ship_secondaries_1
 			front_1_custom_slot = ship_deck_space
+			rear_1_custom_slot = empty #ship_deck_space
+			
 		}
-		obsolete = no
+		obsolete = yes
 	}
 	## Submarines ##
 	create_equipment_variant = { #Diesel Sub 1
