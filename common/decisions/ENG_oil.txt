@@ -331,6 +331,138 @@ decisions_UK_oil = {
 			}	
 		}
 	}
+	
+	AI_oil_eng = {
+		icon = NVX_policies_economy
+
+		available = {
+			is_ai = yes		
+		}
+		
+		
+
+		visible = {	
+			date > 2002.01.01
+			OR = {
+				controls_state  = 131
+				controls_state  = 136
+				controls_state  = 120
+			}
+		}
+
+		fire_only_once = no
+		
+		days_re_enable = 730
+		cost = 0
+
+		complete_effect = {
+		
+		IF = {
+			limit = {
+				controls_state  = 131
+				131 = {
+				NOT = {
+					has_state_flag = oil_running_out3
+				}
+				}
+			}
+			131 = {
+					add_resource = {
+						type = oil
+						amount = -5
+					}
+				}
+				
+			}
+		131 = {
+			IF = {
+				limit = {
+				has_state_flag = oil_running_out2
+				}
+			set_state_flag = oil_running_out3
+			}
+			IF = {
+				limit = {
+				has_state_flag = oil_running_out1
+				}
+			set_state_flag = oil_running_out2
+			}
+			set_state_flag = oil_running_out1
+		}
+
+			
+		IF = {
+			limit = {
+				controls_state  = 136
+				136 = {
+				NOT = {
+					has_state_flag = oil_running_out3
+				}
+				}
+			}
+			136 = {
+					add_resource = {
+						type = oil
+						amount = -15
+					}
+				}
+				
+			}
+		136 = {
+			IF = {
+				limit = {
+				has_state_flag = oil_running_out2
+				}
+			set_state_flag = oil_running_out3
+			}
+			IF = {
+				limit = {
+				has_state_flag = oil_running_out1
+				}
+			set_state_flag = oil_running_out2
+			}
+			set_state_flag = oil_running_out1
+		}	
+			
+		IF = {
+			limit = {
+				controls_state  = 120
+				120 = {
+				NOT = {
+					has_state_flag = oil_running_out3
+				}
+				}
+			}
+			120 = {
+					add_resource = {
+						type = oil
+						amount = -10
+					}
+				}
+				
+			}
+		120 = {
+			IF = {
+				limit = {
+				has_state_flag = oil_running_out2
+				}
+			set_state_flag = oil_running_out3
+			}
+			IF = {
+				limit = {
+				has_state_flag = oil_running_out1
+				}
+			set_state_flag = oil_running_out2
+			}
+			set_state_flag = oil_running_out1
+		}
+		
+		}
+
+		ai_will_do = {
+			base = 100				
+		}
+	}
 
 
 

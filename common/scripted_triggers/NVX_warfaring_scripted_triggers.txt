@@ -65,18 +65,18 @@ NVX_warfaring_target_abstention = {
 			is_in_faction = yes
 			PREV = { num_divisions < 40 }
 		}
-		AND = {
-			has_government = communist
-			PREV = { has_government = communist }
-		}
-		AND = {
-			has_country_flag = shia_islam
-			PREV = { has_country_flag = shia_islam }
-		}
-		AND = {
-			has_country_flag = sunni_islam
-			PREV = { has_country_flag = sunni_islam }
-		}
+		#AND = {
+		#	has_government = communist
+		#	PREV = { has_government = communist }
+		#}
+		#AND = {
+		#	has_country_flag = shia_islam
+		#	PREV = { has_country_flag = shia_islam }
+		#}
+		#AND = {
+		#	has_country_flag = sunni_islam
+		#	PREV = { has_country_flag = sunni_islam }
+		#}
 	}
 }
 
@@ -138,7 +138,10 @@ NVX_warfaring_attacker_trigger = {
 		}
 		threat > 0.8
 		AND = {
-			has_global_flag = pts_intensify_warfaring
+			OR = { 
+				has_global_flag = pts_chaotic_warfaring
+				has_global_flag = pts_intensify_warfaring
+			}
 			threat > 0.2
 		}
 	}
@@ -147,10 +150,12 @@ NVX_warfaring_attacker_trigger = {
 NVX_warfaring_target_trigger = {
 	OR = {
 		NVX_warfaring_target_abstention = no
+		has_global_flag = pts_chaotic_warfaring
 		has_global_flag = pts_intensify_warfaring
 	}
 	OR = {
 		has_defensive_war = no
+		has_global_flag = pts_chaotic_warfaring
 		has_global_flag = pts_intensify_warfaring
 	}
 	OR = {
@@ -158,10 +163,12 @@ NVX_warfaring_target_trigger = {
 			is_major = yes
 			PREV = { is_major = yes }
 		}
+		has_global_flag = pts_chaotic_warfaring
 		has_global_flag = pts_intensify_warfaring
 	}
 	OR = {
 		NVX_warfaring_target_abstention_civilized = no
+		has_global_flag = pts_chaotic_warfaring
 		has_global_flag = pts_intensify_warfaring
 	}
 	NOT = { is_in_faction_with = PREV }
