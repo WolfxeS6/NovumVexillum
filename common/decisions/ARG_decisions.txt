@@ -1,0 +1,87 @@
+
+political_actions = {
+	ARG_end_the_convertibility_law = {
+		icon = generic_political_discourse
+		
+		allowed = { 
+			original_tag = ARG 
+		}
+
+		available = {
+			has_country_flag = ARG_situation_calmed_down
+		}
+
+		days_remove = 30
+		
+		cost = 150
+		fire_only_once = yes
+
+		remove_effect = {
+			add_political_power = 50
+			remove_ideas = ARG_ley_de_convertibilidad
+			remove_ideas = ARG_political_instability
+		}
+		
+		ai_will_do = {
+			factor = 100
+		}
+	}
+}
+
+army_decisions = {
+	ARG_civil_military_reconciliation = {
+		icon = generic_political_discourse
+		
+		allowed = { 
+			original_tag = ARG 
+		}
+
+		visible = {
+			OR = {
+				has_idea = ARG_scars_of_the_dirty_war
+				has_idea = ARG_scars_of_the_dirty_war2
+				has_idea = ARG_scars_of_the_dirty_war3
+			}
+		}
+
+		available = {
+			has_country_flag = ARG_situation_calmed_down
+			NOT = {
+				has_idea = mobilization_service_time_corrupt
+			}
+		}
+
+		days_remove = 60
+		
+		cost = 50
+
+		remove_effect = {
+			if = {
+				limit = {
+					has_idea = ARG_scars_of_the_dirty_war
+				}
+				swap_ideas = {
+					remove_idea = ARG_scars_of_the_dirty_war
+					add_idea = ARG_scars_of_the_dirty_war2
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = ARG_scars_of_the_dirty_war2
+				}
+				swap_ideas = {
+					remove_idea = ARG_scars_of_the_dirty_war2
+					add_idea = ARG_scars_of_the_dirty_war3
+				}
+			}
+			else = {
+				remove_ideas = ARG_scars_of_the_dirty_war3
+				add_stability = 0.1
+			}
+		}
+		
+		ai_will_do = {
+			factor = 100
+		}
+	}
+}

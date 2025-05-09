@@ -1,11 +1,10 @@
- add_namespace = uruguay
- add_namespace = election_URU
+add_namespace = uruguay
 
-country_event = {  #Jorge Battle Assumes the Presidency ##Option to review 1999 elections
+country_event = {  #Jorge Battle Assumes the Presidency
 	id = uruguay.1
 	title = uruguay.1.t
 	desc = uruguay.1.d
-	picture = GFX_report_event_URG_Jorge_Battle
+	picture = GFX_report_event_uruguayan_election
 	
 	is_triggered_only = yes
 	
@@ -16,391 +15,361 @@ country_event = {  #Jorge Battle Assumes the Presidency ##Option to review 1999 
 	}
 }
 
-country_event = {  #Death of Tabaré Vázquez
+country_event = {  #Banking Crisis
 	id = uruguay.2
 	title = uruguay.2.t
 	desc = uruguay.2.d
-	picture = GFX_report_event_URG_Vazquez_funeral
+	picture = GFX_report_event_URG_Jorge_Battle
 	
-	trigger = {
-	    tag = URG
-	    date > 2020.11.1
-		date < 2020.12.6
-	}
-
-	immediate = {
-		retire_character = URG_tabare_vazquez
-		promote_character = URG_daniel_martinez
-	}
-
-	fire_only_once = yes
+	is_triggered_only = yes
 	
 	option = {   
 		name = uruguay.2.a
+		ai_chance = { factor = 70 }
 		
-		add_stability = -0.01
-	}
-}
-
-country_event = {  #2004 election
-	id = election_URU.1
-	title = election_URU.1.t
-	desc = election_URU.1.d
-	picture = GFX_report_event_URG_elections
-	
-	trigger = {
-	    tag = URG
-	    date > 1999.1.1
-		date < 2004.12.31
-        has_democratic_form_of_government = yes
-		is_subject = no
-		not = { has_country_flag = uru_election_2004 }
-	}
-	
-	immediate = {
-		set_country_flag = uru_election_2004
-		promote_character = URG_jorge_larranaga
-		promote_character = URG_guilhermo_stirling
-	}
-
-	is_triggered_only = yes
-	
-	option = {    #Tabaré Vazquez
-		name = election_URU.1.a
-        ai_chance = { factor = 100 }
-		set_politics = {
-			ruling_party = social_democrat
-			last_election = "2004.10.31"
-			election_frequency = 60
-			elections_allowed = yes
-		}
-		add_popularity = { 
-			ideology = social_democrat 
-			popularity = 0.15
-		}
-	}
-	option = {    #Jorge Larrañaga
-		name = election_URU.1.b
-		set_politics = {
-			ruling_party = conservative
-			last_election = "2004.10.31"
-			election_frequency = 60
-			elections_allowed = yes
-		}
-		add_popularity = { 
-			ideology = conservative 
-			popularity = 0.15
-		}
-	}
-	option = {    #Guilhermo Stirling
-		name = election_URU.1.c
-		set_politics = {
-			ruling_party = social_liberal
-			last_election = "2004.10.31"
-			election_frequency = 60
-			elections_allowed = yes
-		}
-		add_popularity = { 
-			ideology = social_liberal 
-			popularity = 0.15
-		}
-	}
-	option = {    #Other candidate
-		name = election_URU.1.de
-
+		add_political_power = -150
 		hidden_effect = {
-			country_event = election.2
+			add_ideas = economy_recession
+			set_variable = {
+				var = NVX_ECO_health
+				value = -50
+			}
+			country_event = {
+				id = uruguay.3
+				days = 30
+			}
 		}
 	}
 }
 
-country_event = {  #2009 election
-	id = election_URU.2
-	title = election_URU.2.t
-	desc = election_URU.1.d
-	picture = GFX_report_event_URG_elections
+country_event = {  #Banking Continue Failing
+	id = uruguay.3
+	title = uruguay.3.t
+	desc = uruguay.3.d
+	picture = GFX_report_event_URG_Jorge_Battle
 	
-	trigger = {
-	    tag = URG
-	    date > 2009.1.1
-		date < 2009.12.31
-        has_democratic_form_of_government = yes
-		is_subject = no
-		not = { has_country_flag = uru_election_2009 }
-	}
-	
-	immediate = {
-		set_country_flag = uru_election_2009	
-		promote_character = URG_luis_alberto_lacalle
-		promote_character = URG_pedro_bordaberry
-	}
-
 	is_triggered_only = yes
 	
-	option = {    #Pepe Mujica
-		name = election_URU.2.a
-        ai_chance = { factor = 100 }
+	option = {   
+		name = uruguay.3.a #Impose controls
+		ai_chance = { factor = 70 }
+		
+		add_stability = -0.1
+		hidden_effect = {
+			country_event = {
+				id = uruguay.4
+				days = 180
+			}
+		}
+	}
+	option = {   
+		name = uruguay.3.b #Hold Firm
+		ai_chance = { factor = 30 }
+		
+		custom_effect_tooltip = TT_ARG_CORRALITO
+		hidden_effect = {
+			country_event = {
+				id = uruguay.5
+				days = 60
+			}
+		}
+	}
+}
+
+country_event = {  #Slowly recovers
+	id = uruguay.4
+	title = uruguay.4.t
+	desc = uruguay.4.d
+	picture = GFX_report_event_URG_Jorge_Battle
+	
+	is_triggered_only = yes
+	
+	option = {   
+		name = uruguay.4.a #Hurrah
+		ai_chance = { factor = 100 }
+		
+		add_political_power = 50
+		add_stability = 0.1
+		hidden_effect = {
+			country_event = {
+				id = uruguay.3
+				days = 30
+			}
+			set_variable = {
+				var = NVX_ECO_health
+				value = 0
+			}
+		}
+	}
+}
+
+country_event = {  #Chaos
+	id = uruguay.5
+	title = uruguay.5.t
+	desc = uruguay.5.d
+	picture = GFX_report_event_URG_Jorge_Battle
+	
+	is_triggered_only = yes
+	
+	option = {   
+		name = uruguay.5.a #Uh oh
+		
+		add_political_power = -50
+		add_stability = -0.1
+		remove_ideas = URG_regional_banking_hub
+		hidden_effect = {
+			country_event = {
+				id = uruguay.6
+				days = 10
+			}
+		}	
+	}
+}
+
+country_event = {  #Military coup
+	id = uruguay.6
+	title = uruguay.6.t
+	desc = uruguay.6.d
+	picture = GFX_report_event_uruguay_coup
+	
+	is_triggered_only = yes
+	
+	option = {   
+		name = uruguay.6.a #Military coup
+		ai_chance = { factor = 60 }
+		
+		set_politics = {
+			ruling_party = nationalist
+			elections_allowed = no
+		}
+		add_country_leader_role = {
+			character = URG_angel_bertolotti
+			promote_leader = yes
+			country_leader = {
+				ideology = military_junta
+				traits = {  }
+			}
+		}
+		hidden_effect = {
+			country_event = {
+				id = uruguay.7
+				days = 10
+			}
+		}
+	}
+	option = {   
+		name = uruguay.6.b #Resist
+		ai_chance = { factor = 40 }
+		
+		start_civil_war = {
+			ideology = nationalist
+			keep_political_party_members = yes
+			size = 0.5
+		}
+		hidden_effect = {
+			every_country = {
+				limit = {
+					original_tag = URG
+					has_government = nationalist
+				}
+				create_country_leader = {
+					name = "Ángel Bertolotti"
+					picture = "gfx/leaders/URG/Angel_Bertolotti.dds"
+					expire = "1965.1.1"
+					ideology = military_junta
+					traits = {
+					}
+				}
+			}
+			set_nationality = {
+				target_country = URG
+				character = URG_juan_maria_bordaberry
+			}
+			promote_character = URG_juan_maria_bordaberry
+		}	
+	}
+}
+
+country_event = {  #Massive protests
+	id = uruguay.7
+	title = uruguay.7.t
+	desc = uruguay.7.d
+	picture = GFX_report_event_uruguay_protests
+	
+	is_triggered_only = yes
+	
+	option = {   
+		name = uruguay.7.a #Military crackdown
+		ai_chance = { factor = 40 }
+		
+		add_stability = -0.05
+		add_popularity = {
+			ideology = nationalist
+			popularity = 0.25
+		}
+	}
+	option = {   
+		name = uruguay.7.b #Hardliners
+		ai_chance = { factor = 10 }
+		
+		add_stability = -0.1
+		add_country_leader_role = {
+			character = URG_gregorio_alvarez
+			promote_leader = yes
+			country_leader = {
+				ideology = ultranationalist
+				traits = {  }
+			}
+		}
+		set_politics = {
+			ruling_party = fascist
+			elections_allowed = no
+		}
+		add_popularity = {
+			ideology = fascist
+			popularity = 0.25
+		}
+	}
+	option = {   
+		name = uruguay.7.c #MPP
+		ai_chance = { factor = 40 }
+		
+		add_war_support = 0.1
 		set_politics = {
 			ruling_party = democratic_socialist
-			last_election = "2014.10.26"
-			election_frequency = 60
 			elections_allowed = yes
 		}
-		add_popularity = { 
-			ideology = democratic_socialist 
-			popularity = 0.15
+		add_popularity = {
+			ideology = democratic_socialist
+			popularity = 0.25
 		}
-	}
-	option = {    #Luis Alberto Lacalle
-		name = election_URU.2.b
-		set_politics = {
-			ruling_party = conservative
-			last_election = "2014.10.26"
-			election_frequency = 60
-			elections_allowed = yes
+		start_civil_war = {
+			ideology = nationalist
+			keep_political_party_members = yes
+			size = 1
 		}
-		add_popularity = { 
-			ideology = conservative 
-			popularity = 0.15
+		add_ideas = {
+			URG_uruguayan_progressivism
 		}
-	}
-	option = {    #Pedro Bordaberry
-		name = election_URU.2.c
-		set_politics = {
-			ruling_party = social_liberal
-			last_election = "2014.10.26"
-			election_frequency = 60
-			elections_allowed = yes
-		}
-		add_popularity = { 
-			ideology = social_liberal 
-			popularity = 0.15
-		}
-	}
-	option = {    #Other candidate
-		name = election_URU.1.de
-
 		hidden_effect = {
-			country_event = election.2
+			set_politics = {
+				ruling_party = democratic_socialist
+				elections_allowed = yes
+			}
+			every_country = {
+				limit = {
+					original_tag = URG
+					has_government = nationalist
+				}
+				create_country_leader = {
+					name = "Ángel Bertolotti"
+					picture = "gfx/leaders/URG/Angel_Bertolotti.dds"
+					expire = "1965.1.1"
+					ideology = military_junta
+					traits = {
+					}
+				}
+			}
+			set_nationality = {
+				target_country = URG
+				character = URG_juan_maria_bordaberry
+			}
+			promote_character = URG_juan_maria_bordaberry
+			division_template = {
+				name = "Milicia Uruguaya"
+				regiments = {
+					infantry = { x = 0 y = 0 }
+					infantry = { x = 0 y = 1 }
+					infantry = { x = 1 y = 0 }
+					infantry = { x = 1 y = 1 }
+				}
+			}
+
+			capital_scope = {
+				create_unit = {
+			    	division = "name = \"Brigada 26 de Marzo\" division_template = \"Milicia Uruguaya\" start_equipment_factor = 1 start_experience_factor = 0 "
+		 	   		owner = URG
+				}
+				create_unit = {
+			    	division = "name = \"Guardia Batllista\" division_template = \"Milicia Uruguaya\" start_equipment_factor = 1 start_experience_factor = 0 "
+		 	   		owner = URG
+				}
+				create_unit = {
+			    	division = "name = \"Brigada Wilsonista\" division_template = \"Milicia Uruguaya\" start_equipment_factor = 1 start_experience_factor = 0 "
+		 	   		owner = URG
+				}
+				create_unit = {
+			    	division = "name = \"Comando de Defensa Popular\" division_template = \"Milicia Uruguaya\" start_equipment_factor = 1 start_experience_factor = 0 "
+		 	   		owner = URG
+				}
+			}
 		}
 	}
-}
-
-country_event = {  #2014 election
-	id = election_URU.3
-	title = election_URU.3.t
-	desc = election_URU.1.d
-	picture = GFX_report_event_URG_elections
-	
-	trigger = {
-	    tag = URG
-	    date > 2014.1.1
-		date < 2014.12.31
-        has_democratic_form_of_government = yes
-		is_subject = no
-		not = { has_country_flag = uru_election_2014 }
-	}
-	
-	immediate = {
-		set_country_flag = uru_election_2014	
-		promote_character = URG_luis_lacalle_pou
-	}
-
-	is_triggered_only = yes
-	
-	option = {    #Tabaré Vázquez
-		name = election_URU.1.a
-        ai_chance = { factor = 100 }
+	option = {   
+		name = uruguay.7.do #PCU
+		ai_chance = { factor = 10 }
+		
+		add_war_support = 0.05
 		set_politics = {
-			ruling_party = social_democrat
-			last_election = "2014.10.25"
-			election_frequency = 60
+			ruling_party = communist
 			elections_allowed = yes
 		}
-		add_popularity = { 
-			ideology = social_democrat 
-			popularity = 0.15
+		add_popularity = {
+			ideology = communist
+			popularity = 0.25
 		}
-	}
-	option = {    #Luis Lacalle Pou
-		name = election_URU.3.a
-		set_politics = {
-			ruling_party = conservative
-			last_election = "2014.10.25"
-			election_frequency = 60
-			elections_allowed = yes
+		start_civil_war = {
+			ideology = nationalist
+			keep_political_party_members = yes
+			size = 1
 		}
-		add_popularity = { 
-			ideology = conservative 
-			popularity = 0.15
+		add_ideas = {
+			URG_uruguayan_progressivism
 		}
-	}
-	option = {    #Pedro Bordaberry
-		name = election_URU.2.c
-		set_politics = {
-			ruling_party = social_liberal
-			last_election = "2014.10.25"
-			election_frequency = 60
-			elections_allowed = yes
-		}
-		add_popularity = { 
-			ideology = social_liberal 
-			popularity = 0.15
-		}
-	}
-	option = {    #Other candidate
-		name = election_URU.1.de
-
 		hidden_effect = {
-			country_event = election.2
-		}
-	}
-}
+			every_country = {
+				limit = {
+					original_tag = URG
+					has_government = nationalist
+				}
+				create_country_leader = {
+					name = "Ángel Bertolotti"
+					picture = "gfx/leaders/URG/Angel_Bertolotti.dds"
+					expire = "1965.1.1"
+					ideology = military_junta
+					traits = {
+					}
+				}
+			}
+			set_nationality = {
+				target_country = URG
+				character = URG_juan_maria_bordaberry
+			}
+			promote_character = URG_juan_maria_bordaberry
+			division_template = {
+				name = "Milicia Uruguaya"
+				regiments = {
+					infantry = { x = 0 y = 0 }
+					infantry = { x = 0 y = 1 }
+					infantry = { x = 1 y = 0 }
+					infantry = { x = 1 y = 1 }
+				}
+			}
 
-country_event = {  #2019 election
-	id = election_URU.4
-	title = election_URU.4.t
-	desc = election_URU.1.d
-	picture = GFX_report_event_URG_elections
-	
-	trigger = {
-	    tag = URG
-	    date > 2019.1.1
-		date < 2011.12.31
-        has_democratic_form_of_government = yes
-		is_subject = no
-		not = { has_country_flag = uru_election_2019 }
-	}
-	
-	immediate = {
-		set_country_flag = uru_election_2019
-		promote_character = URG_luis_lacalle_pou
-		promote_character = URG_daniel_martinez
-		promote_character = URG_ernesto_talvi
-	}
-
-	is_triggered_only = yes
-
-	option = {    #Luis Lacalle Pou
-		name = election_URU.4.a
-		ai_chance = { factor = 100 }
-		set_politics = {
-			ruling_party = conservative
-			last_election = "2011.10.27"
-			election_frequency = 60
-			elections_allowed = yes
-		}
-		add_popularity = { 
-			ideology = conservative 
-			popularity = 0.15
+			capital_scope = {
+				create_unit = {
+			    	division = "name = \"Brigada de Liberación Nacional\" division_template = \"Milicia Uruguaya\" start_equipment_factor = 1 start_experience_factor = 0 "
+		 	   		owner = URG
+				}
+				create_unit = {
+			    	division = "name = \"Brigada Popular Artiguista\" division_template = \"Milicia Uruguaya\" start_equipment_factor = 1 start_experience_factor = 0 "
+		 	   		owner = URG
+				}
+				create_unit = {
+			    	division = "name = \"Comando de Defensa Popular\" division_template = \"Milicia Uruguaya\" start_equipment_factor = 1 start_experience_factor = 0 "
+		 	   		owner = URG
+				}
+			}
 		}
 	}
-	option = {    #Daniel Martínez
-		name = election_URU.4.b
-		set_politics = {
-			ruling_party = social_democrat
-			last_election = "2011.10.27"
-			election_frequency = 60
-			elections_allowed = yes
-		}
-		add_popularity = { 
-			ideology = social_democrat 
-			popularity = 0.15
-		}
-	}
-	option = {    #Ernesto Talvi
-		name = election_URU.4.c
-		set_politics = {
-			ruling_party = social_liberal
-			last_election = "2011.10.27"
-			election_frequency = 60
-			elections_allowed = yes
-		}
-		add_popularity = { 
-			ideology = social_liberal 
-			popularity = 0.15
-		}
-	}
-	option = {    #Other candidate
-		name = election_URU.1.de
-
-		hidden_effect = {
-			country_event = election.2
-		}
-	}
-}
-
-country_event = {  #2024 election
-	id = election_URU.5
-	title = election_URU.5.t
-	desc = election_URU.1.d
-	picture = GFX_report_event_URG_elections
-	
-	trigger = {
-	    tag = URG
-	    date > 2024.1.1
-		date < 2024.12.31
-        has_democratic_form_of_government = yes
-		is_subject = no
-		not = { has_country_flag = uru_election_2024 }
-	}
-	
-	immediate = {
-		set_country_flag = uru_election_2024
-		promote_character = URG_alvaro_delgado
-		promote_character = URG_yamandu_orsi
-		promote_character = URG_andres_ojeda
-		promote_character = URG_carolina_cosse
-	}
-
-	is_triggered_only = yes
-
-	option = {    #Alvaro Delgado
-		name = election_URU.5.a
-		ai_chance = { factor = 50 }
-		set_politics = {
-			ruling_party = conservative
-			last_election = "2024.10.27"
-			election_frequency = 60
-			elections_allowed = yes
-		}
-		add_popularity = { 
-			ideology = conservative 
-			popularity = 0.15
-		}
-	}
-	option = {    #Yamandú Orsi
-		name = election_URU.5.b
-		ai_chance = { factor = 50 }
-		set_politics = {
-			ruling_party = social_democrat
-			last_election = "2024.10.27"
-			election_frequency = 60
-			elections_allowed = yes
-		}
-		add_popularity = { 
-			ideology = social_democrat 
-			popularity = 0.15
-		}
-	}
-	option = {    #Andrés Ojeda
-		name = election_URU.5.c
-		set_politics = {
-			ruling_party = social_liberal
-			last_election = "2024.10.27"
-			election_frequency = 60
-			elections_allowed = yes
-		}
-		add_popularity = { 
-			ideology = social_liberal 
-			popularity = 0.15
-		}
-	}
-	option = {    #Other candidate
-		name = election_URU.1.de
-
-		hidden_effect = {
-			country_event = election.2
-		}
-	}
-}
+}	
