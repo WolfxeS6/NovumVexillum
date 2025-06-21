@@ -1987,3 +1987,135 @@ news_event = {
 		trigger = { TAG = IRQ }
 	}
 }
+
+# The Fall of Montevideo
+news_event = {
+	id = city_capture_news.42
+	immediate = { log = "[GetLogInfo]: event city_capture_news.42" }
+	title = city_capture_news.42.t
+	desc = city_capture_news.42.d
+	
+	picture = GFX_news_event_montevideo_city_capture
+
+	major = yes
+	is_triggered_only = yes
+
+	trigger = {
+	}
+
+	immediate = {
+		event_target:fallen_state = { set_state_flag = city_has_fallen_once }
+		FROM.FROM = { save_event_target_as = old_controller }
+		ROOT = { save_event_target_as = new_controller }		
+	}
+
+	option = {
+		name = city_capture_news.42.a
+		trigger = {
+			tag = event_target:new_controller
+		}
+	}
+	option = {
+		name = city_capture_news.42.b
+		trigger = {
+			tag = event_target:old_controller
+		}
+	}
+	option = {
+		name = city_capture_news.42.c
+		trigger = {
+			NOT = {
+				tag = event_target:old_controller
+				tag = event_target:new_controller
+			}
+		}
+	}
+}
+
+# The Fall of Buenos Aires
+news_event = {
+	id = city_capture_news.43
+	immediate = { log = "[GetLogInfo]: event city_capture_news.43" }
+	title = city_capture_news.43.t
+	desc = city_capture_news.43.d
+	
+	picture = GFX_news_event_buenos_aires_city_capture
+
+	major = yes
+	is_triggered_only = yes
+
+	trigger = {
+	}
+
+	immediate = {
+		event_target:fallen_state = { set_state_flag = city_has_fallen_once }
+		FROM.FROM = { save_event_target_as = old_controller }
+		ROOT = { save_event_target_as = new_controller }		
+	}
+
+	option = {
+		name = city_capture_news.43.a
+		trigger = {
+			tag = event_target:new_controller
+		}
+	}
+	option = {
+		name = city_capture_news.43.b
+		trigger = {
+			tag = event_target:old_controller
+		}
+	}
+	option = {
+		name = city_capture_news.43.c
+		trigger = {
+			NOT = {
+				tag = event_target:old_controller
+				tag = event_target:new_controller
+			}
+		}
+	}
+}
+
+# The Fall of Buenos Aires
+news_event = {
+	id = city_capture_news.44
+	immediate = { log = "[GetLogInfo]: event city_capture_news.44" }
+	title = city_capture_news.44.t
+	desc = city_capture_news.44.d
+	
+	picture = GFX_news_event_ndjamena_city_capture
+
+	major = yes
+	is_triggered_only = yes
+
+	trigger = {
+	}
+
+	immediate = {
+		event_target:fallen_state = { set_state_flag = city_has_fallen_once }
+		FROM.FROM = { save_event_target_as = old_controller }
+		ROOT = { save_event_target_as = new_controller }		
+	}
+
+	option = {
+		name = city_capture_news.44.a
+		trigger = {
+			tag = event_target:new_controller
+		}
+	}
+	option = {
+		name = city_capture_news.44.b
+		trigger = {
+			tag = event_target:old_controller
+		}
+	}
+	option = {
+		name = city_capture_news.44.c
+		trigger = {
+			NOT = {
+				tag = event_target:old_controller
+				tag = event_target:new_controller
+			}
+		}
+	}
+}
