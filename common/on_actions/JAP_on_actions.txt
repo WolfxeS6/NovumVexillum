@@ -410,219 +410,219 @@ on_actions = {
 		}
 	}
 	
-	on_puppet = { #ROOT = nation being puppeted, FROM = overlord
-		effect = {
-			IF = {
-				limit = {
-					original_tag = JAP
-					FROM = {
-						AND = {
-							NOT = { has_government = communist }
-						}
-					}
-				}
-				ROOT = {
-					if = { 
-						limit = { has_government = democratic_socialist } 
-						set_country_flag = JAP_defeated_JCP 
-					}
-					set_country_flag = JAP_defeated_state
-					set_cosmetic_tag = JAP_defeated
-					if = {
-						limit = {
-							date < 2010.01.01
-						}
-						JAP_shigeto_nagano = {
-							add_country_leader_role = {
-								country_leader = {
-									ideology = national_democrat
-									desc = "POLITICS_shigeto_nagano_defeated_DESC"
-									#expire="2010.1.1.1"
-									traits = { shigeto_nagano_trait }
-								}
-								promote_leader = yes
-							}
-						}
-					}
-					else = {
-						JAP_interim_government = {
-							add_country_leader_role = {
-								country_leader = {
-									ideology = national_democrat
-									desc = "POLITICS_interim_government_defeated_DESC"
-									#expire="2010.1.1.1"
-									traits = {  }
-								}
-								promote_leader = yes
-							}
-						}
-					}
-					
-					if = {
-						limit = {
-							FROM = { 
-								AND = { 
-									tag = KOR 
-									NOT = { has_country_flag = kor_lose_culture_war_flag }
-								}
-							}
-						}
-						JAP_shinkun_haku = {
-							add_country_leader_role = {
-								country_leader = {
-									ideology = national_democrat
-									desc = "POLITICS_shinkun_haku_minjok_defeated_DESC"
-									expire="2099.1.1.1"
-									traits = { JAP_shinkun_haku_trait }
-								}
-								promote_leader = yes
-							}
-							set_character_name = JAP_shinkun_haku_korean
-						}
-					}
-					else_if = {
-						limit = {
-							FROM = { 
-								AND = { 
-									tag = KOR 
-									has_country_flag = kor_lose_culture_war_flag
-								}
-							}
-						}
-						JAP_shinkun_haku = {
-							add_country_leader_role = {
-								country_leader = {
-									ideology = national_democrat
-									desc = "POLITICS_shinkun_haku_defeated_DESC"
-									expire="2099.1.1.1"
-									traits = { JAP_shinkun_haku_trait }
-								}
-								promote_leader = yes
-							}
-						}
-					}
-					
-					set_politics = {
-						ruling_party = nationalist
-						elections_allowed = no
-					}
-					set_popularities = {
-						nationalist = 100
-					}
-					set_party_name = { 
-						ideology = nationalist
-						long_name = JAP_nationalist_long_defeated
-						name = JAP_nationalist_defeated
-					}
-					load_focus_tree = japan_puppet
-				}
-			}
-		}
-	}
+#	on_puppet = { #ROOT = nation being puppeted, FROM = overlord
+#		effect = {
+#			IF = {
+#				limit = {
+#					original_tag = JAP
+#					FROM = {
+#						AND = {
+#							NOT = { has_government = communist }
+#						}
+#					}
+#				}
+#				ROOT = {
+#					if = { 
+#						limit = { has_government = democratic_socialist } 
+#						set_country_flag = JAP_defeated_JCP 
+#					}
+#					set_country_flag = JAP_defeated_state
+#					set_cosmetic_tag = JAP_defeated
+#					if = {
+#						limit = {
+#							date < 2010.01.01
+#						}
+#						JAP_shigeto_nagano = {
+#							add_country_leader_role = {
+#								country_leader = {
+#									ideology = national_democrat
+#									desc = "POLITICS_shigeto_nagano_defeated_DESC"
+#									#expire="2010.1.1.1"
+#									traits = { shigeto_nagano_trait }
+#								}
+#								promote_leader = yes
+#							}
+#						}
+#					}
+#					else = {
+#						JAP_interim_government = {
+#							add_country_leader_role = {
+#								country_leader = {
+#									ideology = national_democrat
+#									desc = "POLITICS_interim_government_defeated_DESC"
+#									#expire="2010.1.1.1"
+#									traits = {  }
+#								}
+#								promote_leader = yes
+#							}
+#						}
+#					}
+#					
+#					if = {
+#						limit = {
+#							FROM = { 
+#								AND = { 
+#									tag = KOR 
+#									NOT = { has_country_flag = kor_lose_culture_war_flag }
+#								}
+#							}
+#						}
+#						JAP_shinkun_haku = {
+#							add_country_leader_role = {
+#								country_leader = {
+#									ideology = national_democrat
+#									desc = "POLITICS_shinkun_haku_minjok_defeated_DESC"
+#									expire="2099.1.1.1"
+#									traits = { JAP_shinkun_haku_trait }
+#								}
+#								promote_leader = yes
+#							}
+#							set_character_name = JAP_shinkun_haku_korean
+#						}
+#					}
+#					else_if = {
+#						limit = {
+#							FROM = { 
+#								AND = { 
+#									tag = KOR 
+#									has_country_flag = kor_lose_culture_war_flag
+#								}
+#							}
+#						}
+#						JAP_shinkun_haku = {
+#							add_country_leader_role = {
+#								country_leader = {
+#									ideology = national_democrat
+#									desc = "POLITICS_shinkun_haku_defeated_DESC"
+#									expire="2099.1.1.1"
+#									traits = { JAP_shinkun_haku_trait }
+#								}
+#								promote_leader = yes
+#							}
+#						}
+#					}
+#					
+#					set_politics = {
+#						ruling_party = nationalist
+#						elections_allowed = no
+#					}
+#					set_popularities = {
+#						nationalist = 100
+#					}
+#					set_party_name = { 
+#						ideology = nationalist
+#						long_name = JAP_nationalist_long_defeated
+#						name = JAP_nationalist_defeated
+#					}
+#					load_focus_tree = japan_puppet
+#				}
+#			}
+#		}
+#	}
 	
-	on_release_as_puppet = {
-		effect = {
-			IF = {
-				limit = {
-					original_tag = JAP
-					#FROM = {
-					#	AND = {
-					#		NOT = { has_government = communist }
-					#	}
-					#}
-				}
-				ROOT = {
-					set_country_flag = JAP_defeated_state
-					set_cosmetic_tag = JAP_defeated
-					if = {
-						limit = {
-							date < 2010.01.01
-						}
-						JAP_shigeto_nagano = {
-							add_country_leader_role = {
-								country_leader = {
-									ideology = national_democrat
-									desc = "POLITICS_shigeto_nagano_defeated_DESC"
-									#expire="2010.1.1.1"
-									traits = { shigeto_nagano_trait }
-								}
-								promote_leader = yes
-							}
-						}
-					}
-					else = {
-						JAP_interim_government = {
-							add_country_leader_role = {
-								country_leader = {
-									ideology = national_democrat
-									desc = "POLITICS_interim_government_defeated_DESC"
-									#expire="2010.1.1.1"
-									traits = {  }
-								}
-								promote_leader = yes
-							}
-						}
-					}
-					
-					if = {
-						limit = {
-							FROM = { 
-								AND = { 
-									tag = KOR 
-									NOT = { has_country_flag = kor_lose_culture_war_flag }
-								}
-							}
-						}
-						JAP_shinkun_haku = {
-							add_country_leader_role = {
-								country_leader = {
-									ideology = national_democrat
-									desc = "POLITICS_shinkun_haku_minjok_defeated_DESC"
-									expire="2099.1.1.1"
-									traits = { JAP_shinkun_haku_trait }
-								}
-								promote_leader = yes
-							}
-							set_character_name = JAP_shinkun_haku_korean
-						}
-					}
-					else_if = {
-						limit = {
-							FROM = { 
-								AND = { 
-									tag = KOR 
-									has_country_flag = kor_lose_culture_war_flag
-								}
-							}
-						}
-						JAP_shinkun_haku = {
-							add_country_leader_role = {
-								country_leader = {
-									ideology = national_democrat
-									desc = "POLITICS_shinkun_haku_defeated_DESC"
-									expire="2099.1.1.1"
-									traits = { JAP_shinkun_haku_trait }
-								}
-								promote_leader = yes
-							}
-						}
-					}
-					
-					set_politics = {
-						ruling_party = nationalist
-						elections_allowed = no
-					}
-					set_popularities = {
-						nationalist = 100
-					}
-					set_party_name = { 
-						ideology = nationalist
-						long_name = JAP_nationalist_long_defeated
-						name = JAP_nationalist_defeated
-					}
-					load_focus_tree = japan_puppet
-				}
-			}
-		}
-	}
+#	on_release_as_puppet = {
+#		effect = {
+#			IF = {
+#				limit = {
+#					original_tag = JAP
+#					#FROM = {
+#					#	AND = {
+#					#		NOT = { has_government = communist }
+#					#	}
+#					#}
+#				}
+#				ROOT = {
+#					set_country_flag = JAP_defeated_state
+#					set_cosmetic_tag = JAP_defeated
+#					if = {
+#						limit = {
+#							date < 2010.01.01
+#						}
+#						JAP_shigeto_nagano = {
+#							add_country_leader_role = {
+#								country_leader = {
+#									ideology = national_democrat
+#									desc = "POLITICS_shigeto_nagano_defeated_DESC"
+#									#expire="2010.1.1.1"
+#									traits = { shigeto_nagano_trait }
+#								}
+#								promote_leader = yes
+#							}
+#						}
+#					}
+#					else = {
+#						JAP_interim_government = {
+#							add_country_leader_role = {
+#								country_leader = {
+#									ideology = national_democrat
+#									desc = "POLITICS_interim_government_defeated_DESC"
+#									#expire="2010.1.1.1"
+#									traits = {  }
+#								}
+#								promote_leader = yes
+#							}
+#						}
+#					}
+#					
+#					if = {
+#						limit = {
+#							FROM = { 
+#								AND = { 
+#									tag = KOR 
+#									NOT = { has_country_flag = kor_lose_culture_war_flag }
+#								}
+#							}
+#						}
+#						JAP_shinkun_haku = {
+#							add_country_leader_role = {
+#								country_leader = {
+#									ideology = national_democrat
+#									desc = "POLITICS_shinkun_haku_minjok_defeated_DESC"
+#									expire="2099.1.1.1"
+#									traits = { JAP_shinkun_haku_trait }
+#								}
+#								promote_leader = yes
+#							}
+#							set_character_name = JAP_shinkun_haku_korean
+#						}
+#					}
+#					else_if = {
+#						limit = {
+#							FROM = { 
+#								AND = { 
+#									tag = KOR 
+#									has_country_flag = kor_lose_culture_war_flag
+#								}
+#							}
+#						}
+#						JAP_shinkun_haku = {
+#							add_country_leader_role = {
+#								country_leader = {
+#									ideology = national_democrat
+#									desc = "POLITICS_shinkun_haku_defeated_DESC"
+#									expire="2099.1.1.1"
+#									traits = { JAP_shinkun_haku_trait }
+#								}
+#								promote_leader = yes
+#							}
+#						}
+#					}
+#					
+#					set_politics = {
+#						ruling_party = nationalist
+#						elections_allowed = no
+#					}
+#					set_popularities = {
+#						nationalist = 100
+#					}
+#					set_party_name = { 
+#						ideology = nationalist
+#						long_name = JAP_nationalist_long_defeated
+#						name = JAP_nationalist_defeated
+#					}
+#					load_focus_tree = japan_puppet
+#				}
+#			}
+#		}
+#	}
 }
