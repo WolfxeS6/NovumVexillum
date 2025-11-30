@@ -1,0 +1,431 @@
+#category = short_term medium_term or long_term
+# ROOT is faction leader, FROM is faction member who opens UI and views goals, completed/cancel/complete_effect do not have FROM scopes
+
+
+######################################################################
+
+###  ##   ##  ### ###  ##  #  #      ## ###  ###  ##  ### ### ###  ##  
+#   #  # #  #  #   #  #  # ## #     #   #  # #   #  #  #  #    #  #  # 
+##  #### #     #   #  #  # # ##      #  ###  ##  #     #  ##   #  #    
+#   #  # #  #  #   #  #  # #  #       # #    #   #  #  #  #    #  #  # 
+#   #  #  ##   #  ###  ##  #  #     ##  #    ###  ##  ### #   ###  ##  
+
+######################################################################
+
+
+ ##  #   # ###  ## 
+#  #  # #   #  #   
+####   #    #   #  
+#  #  # #   #    # 
+#  # #   # ### ##  
+
+
+faction_goal_undo_versailles = {
+	name = undo_versailles_goal_name
+	description = undo_versailles_goal_desc
+	category = medium_term
+	group = FOCUS_FILTER_WAR_SUPPORT
+	visible = {
+		FROM = { original_tag = GER }
+	}
+	completed = {
+		OR = {
+			AND = {
+				original_tag = GER
+				has_army_manpower = {
+					size > 1000000
+				}
+				controls_state = 28
+				controls_state = 85
+				controls_state = 86
+				controls_state = 188
+				controls_state = 762
+				controls_state = 807
+				controls_state = 912
+			}
+			any_allied_country = {
+				original_tag = GER
+				has_army_manpower = {
+					size > 1000000
+				}
+				controls_state = 28
+				controls_state = 85
+				controls_state = 86
+				controls_state = 188
+				controls_state = 762
+				controls_state = 807
+				controls_state = 912
+			}
+		}
+		42 = { is_demilitarized_zone = no }
+		51 = { is_demilitarized_zone = no }
+		978 = { is_demilitarized_zone = no }
+	}
+	complete_effect = {
+		add_faction_power_projection = 100
+		every_faction_member = {
+			limit = {
+				original_tag = GER
+			}
+			add_faction_initiative = 1
+		}
+		custom_effect_tooltip = generic_skip_one_line_tt
+		every_faction_member = { 
+			tooltip = INFLUENCE_ABOVE_30_PERCENT
+			visible_when_empty = yes
+			limit = {
+				faction_influence_ratio > 0.3
+			}
+			add_war_support = 0.05
+			add_political_power = 50
+		}
+	}
+	ai_will_do = {
+		base = 1
+		modifier = {
+			add = 9
+			is_historical_focus_on = yes
+		}
+	}
+}
+
+faction_goal_secure_european_continent = {
+	name = secure_european_continent_goal_name
+	description = secure_european_continent_goal_desc
+	category = medium_term
+	group = FOCUS_FILTER_ANNEXATION
+	visible = {
+		FROM = {
+			original_tag = GER
+		}
+	}
+	completed = {
+		collection_size = {
+			input = {
+				input = constant:country_groups.continental_europe_1936
+				operators = {
+					limit = {
+						OR = {
+							is_in_faction_with = ROOT
+							has_capitulated = yes
+							exists = no
+							is_subject_of = ROOT 
+						}
+					}
+				}
+				name = COLLECTION_CONTINENTAL_EUROPE_DEFEATED_OR_FACTION_MEMBERS
+			}
+			value > 8
+		}
+	}
+	complete_effect = {
+		add_faction_power_projection = 100
+		custom_effect_tooltip = generic_skip_one_line_tt
+		every_faction_member = { 
+			tooltip = INFLUENCE_ABOVE_30_PERCENT
+			visible_when_empty = yes
+			limit = {
+				faction_influence_ratio > 0.3
+			}
+			add_faction_initiative = 1
+		}
+	}
+	ai_will_do = {
+		base = 1
+		modifier = {
+			add = 9
+			is_historical_focus_on = yes
+		}
+	}
+}
+
+faction_goal_high_seas_fleet = {
+	name = high_seas_fleet_goal_name
+	description = high_seas_fleet_goal_desc
+	group = FOCUS_FILTER_NAVY_XP
+	category = medium_term
+	allowed = {
+	}
+	visible = {
+		FROM = {
+			OR = {
+				original_tag = GER
+				AND = {
+					any_allied_country = {
+						original_tag = GER
+					}
+					num_of_naval_factories > 0
+				}
+			}
+		}
+	}
+	completed = {
+		has_war_with_major = yes 
+		count_in_collection = {
+			collection = {
+				input = game:scope
+				operators = { faction_members }
+				name = FACTION
+			}
+			unit = capital_ship
+			size > 19
+		}
+	}
+	complete_effect = {
+		add_faction_power_projection = 100
+		custom_effect_tooltip = generic_skip_one_line_tt
+		custom_effect_tooltip = THE_FACTION_LEADER
+		add_faction_initiative = 1
+		every_collection_element = {
+			input = {
+				input = game:scope
+				operators =  { 
+					faction_members
+					limit = {
+						num_of_naval_factories > 0
+					}
+				}
+				name = ALL_FACTION_MEMBERS
+			}
+			navy_experience = 50
+			add_tech_bonus = {
+				name = high_seas_fleet_tech_bonus
+				bonus = 0.5
+				uses = 2
+				category = naval_equipment
+			}
+		}
+	}
+	ai_will_do = {
+		base = 1
+		modifier = {
+			add = 1 # If they have a bunch of naval factories, go for it
+			num_of_naval_factories > 29
+		}
+	}
+}
+
+
+### #  # ###      ##  #   #   ### ###  ## 
+ #  #  # #       #  # #   #    #  #   #   
+ #  #### ##      #### #   #    #  ##   #  
+ #  #  # #       #  # #   #    #  #     # 
+ #  #  # ###     #  # ### ### ### ### ## 
+
+faction_goal_the_arteries_of_trade = {
+	name = the_arteries_of_trade_goal_name
+	description = the_arteries_of_trade_goal_desc
+	category = medium_term
+	group = FOCUS_FILTER_CONSOLIDATION
+	allowed = {
+	}
+	visible = {
+		FROM = {
+			has_war = yes
+			OR = {
+				tag = ENG
+				tag = CAN
+				tag = RAJ
+				tag = MAL
+				tag = USA
+			}
+		}
+	}
+	completed = {
+		count_triggers = {
+			amount = 10
+			has_naval_control = 43
+			has_naval_control = 49
+			has_naval_control = 51
+			has_naval_control = 56
+			has_naval_control = 57
+			has_naval_control = 68
+			has_naval_control = 29
+			has_naval_control = 69
+			has_naval_control = 72
+			has_naval_control = 100
+			has_naval_control = 104
+			has_naval_control = 71
+			has_naval_control = 60	
+			has_naval_control = 48
+			has_naval_control = 61
+			has_naval_control = 62
+		}
+	}
+	complete_effect = {
+		add_faction_power_projection = 100
+		every_faction_member = {
+			add_stability = 0.05
+		}
+	}
+	ai_will_do = {
+		base = 1
+		modifier = {
+			add = 1 # Extra eager to do this as the main trade nations
+			OR = {
+				original_tag = ENG
+				original_tag = USA
+			}
+		}
+		modifier = {
+			factor = 2
+			is_historical_focus_on = yes
+		}
+	}
+}
+
+faction_goal_imperial_glory = {
+	name = imperial_glory_goal_name
+	description = imperial_glory_goal_desc
+	category = medium_term
+	group = FOCUS_FILTER_CONSOLIDATION
+	allowed = {
+	}
+	visible = {
+		FROM = {
+			OR = {
+				original_tag = ENG
+				original_tag = CAN
+				original_tag = RAJ
+				original_tag = AST
+				original_tag = NZL
+				original_tag = MAL
+				original_tag = FRA
+				original_tag = HOL
+				original_tag = INS
+			}
+		}
+	}
+	available = {
+		FROM = { has_war = yes }
+	}
+	completed = {
+		longest_war_length > 36
+		count_triggers = {
+			amount = 3 # Add triggers to count below
+			
+			1021 = { is_controlled_by_ROOT_or_ally = yes } # Singapore
+			118 = { is_controlled_by_ROOT_or_ally = yes } # Gibraltar
+			116 = { is_controlled_by_ROOT_or_ally = yes } # Malta
+			IF = {
+				limit = { 286 = { OWNER = { is_in_faction_with = ROOT } } }
+				286 = { is_controlled_by_ROOT_or_ally = yes } # Saigon if France joins
+			}
+			IF = {
+				limit = { 335 = { OWNER = { is_in_faction_with = ROOT } } }
+				335 = { is_controlled_by_ROOT_or_ally = yes } # East Indies
+			}
+		}
+	}
+	complete_effect = {
+		add_faction_power_projection = 200
+		every_collection_element = {
+			input = {
+				input = game:scope
+				operators =  { 
+					faction_members 
+					limit = {
+						owns_any_state_of = {
+							 1021
+							 118
+							 116
+							 286
+							 335
+						}
+					}
+				}
+				
+				name = OWNS_LISTED_STATE
+			}
+			custom_effect_tooltip = OWNS_LISTED_STATE
+			add_faction_initiative = 1
+			add_faction_influence_ratio = 0.05
+			add_stability = 0.05
+		}
+	}
+	ai_will_do = {
+		base = 0
+		modifier = {
+			add = 1 # The Empire cares a little
+			OR = {
+				original_tag = ENG
+				original_tag = CAN
+				original_tag = RAJ
+				original_tag = AST
+				original_tag = NZL
+				original_tag = MAL
+				original_tag = FRA
+				original_tag = HOL
+				original_tag = INS
+			}
+			is_historical_focus_on = yes
+		}
+		modifier = {
+			add = 1 # The Colonial Powers always care
+			OR = {
+				original_tag = ENG
+				original_tag = FRA
+				original_tag = HOL
+			}
+		}
+		modifier = {
+			add = 10 # The Colonial Powers always care a LOT on historical
+			OR = {
+				original_tag = ENG
+				original_tag = FRA
+				original_tag = HOL
+			}
+			is_historical_focus_on = yes
+		}
+	}
+}
+
+
+faction_goal_guardians_of_peace = {
+	name = guardians_of_peace_goal_name
+	description = guardians_of_peace_goal_desc
+	category = medium_term
+	group = FOCUS_FILTER_CONSOLIDATION
+	visible = {
+		date < 1939.1.1
+		FROM = {
+			NOT = { OR = {
+				has_government = fascist
+				has_government = nationalist
+				has_government = islamist
+			} }
+			NOT = { has_government = communist }
+			NOT = { has_country_flag = guardians_of_peace_been_at_war_flag }
+		}
+	}
+	available = {
+
+	}
+	cancel = {
+		FROM = {
+			has_country_flag = guardians_of_peace_been_at_war_flag
+		}
+	}
+	completed = {
+		date > 1938.12.31
+		NOT = { has_country_flag = guardians_of_peace_been_at_war_flag }
+		all_allied_country = {
+			NOT = { has_country_flag = guardians_of_peace_been_at_war_flag }
+		}
+	}
+	complete_effect = {
+		add_faction_power_projection = 100
+		custom_effect_tooltip = generic_skip_one_line_tt
+		custom_effect_tooltip = ALL_FACTION_MEMBERS
+		every_faction_member = {
+			add_stability = 0.05
+		}
+	}
+	ai_will_do = {
+		base = 0
+		modifier = {
+			add = 1
+			has_democratic_form_of_government = yes
+		}
+	}
+}
