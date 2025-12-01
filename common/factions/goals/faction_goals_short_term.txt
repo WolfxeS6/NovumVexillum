@@ -5191,3 +5191,64 @@ faction_goal_expand_midway_island_bases = {
 		}
 	}
 }
+# Invite Eastern Europe
+faction_goal_invite_eastern_europe = {
+	name = invite_eastern_europe_goal_name
+	description = invite_eastern_europe_goal_desc
+	category = short_term
+	group = FOCUS_FILTER_CONSOLIDATION
+	allowed = {
+		
+	}
+	visible = {
+		OR = {
+			is_on_continent = europe
+			any_country = {
+				is_on_continent = europe
+				is_in_faction_with = ROOT
+			}
+		}
+	}
+	available = {
+
+	}
+	completed = {
+		EST = {
+			is_in_faction = yes
+		}
+		LIT = {
+			is_in_faction = yes
+		}
+		LAT = {
+			is_in_faction = yes
+		}
+		POL = {
+			is_in_faction = yes
+		}
+		SLO = {
+			is_in_faction = yes
+		}
+		HUN = {
+			is_in_faction = yes
+		}
+		ROM = {
+			is_in_faction = yes
+		}
+		BUL = {
+			is_in_faction = yes
+		}
+	}
+	complete_effect = {
+		add_faction_power_projection = 200
+		custom_effect_tooltip = generic_skip_one_line_tt
+		every_faction_member = { 
+			add_political_power = 150
+		}
+		faction_leader = { 
+			add_faction_initiative = 1
+		}
+	}
+	ai_will_do = {
+		base = 1
+	}
+}
