@@ -1,5 +1,13 @@
 NDefines.NGame.START_DATE = "1980.1.1.12";
 NDefines.NGame.END_DATE = "2050.1.1.12";
+NDefines.NGame.ENERGY_RESOURCE = "oil"
+NDefines.NProduction.BASE_ENERGY_COST = 0.01;
+NDefines.NProduction.ENERGY_SCALING_COST_BY_FACTORY_COUNT = 0;
+NDefines.NProduction.RESOURCE_TO_ENERGY_COEFFICIENT = 9.0;
+NDefines.NProduction.POWERED_FACTORY_SPEED = 1; 					--Powered factory speed multiplier.
+NDefines.NProduction.POWERED_FACTORY_SPEED_MIL = 1;			--Powered factory speed multiplier.
+NDefines.NProduction.POWERED_FACTORY_SPEED_NAV = 1; 			--Powered factory speed multiplier.
+
 NDefines.NBuildings.ROCKETSITE_CAPACITY_MULT = 10;
 NDefines.NBuildings.INFRASTRUCTURE_RESOURCE_BONUS = 0.05 --0.1
 NDefines.NBuildings.SUPPLY_ROUTE_RESOURCE_BONUS = 0.10 --0.2
@@ -68,3 +76,4 @@ NDefines.NResistance.SUPPRESSION_NEEDED_BY_RESISTANCE_POINT = 0.4
 
 NDefines.NSupply.INFRA_TO_SUPPLY = 0.6 --0.3
 NDefines.NSupply.SUPPLY_FROM_DAMAGED_INFRA = 0.3 --0.15
+
