@@ -4,10 +4,12 @@ NDefines.NGame.ENERGY_RESOURCE = "oil"
 NDefines.NProduction.BASE_ENERGY_COST = 0.01;
 NDefines.NProduction.ENERGY_SCALING_COST_BY_FACTORY_COUNT = 0;
 NDefines.NProduction.RESOURCE_TO_ENERGY_COEFFICIENT = 9.0;
-NDefines.NProduction.POWERED_FACTORY_SPEED = 1; 					--Powered factory speed multiplier.
-NDefines.NProduction.POWERED_FACTORY_SPEED_MIL = 1;			--Powered factory speed multiplier.
-NDefines.NProduction.POWERED_FACTORY_SPEED_NAV = 1; 			--Powered factory speed multiplier.
-
+NDefines.NProduction.POWERED_FACTORY_SPEED = 4; 					--Powered factory speed multiplier.
+NDefines.NProduction.POWERED_FACTORY_SPEED_MIL = 3.5;			--Powered factory speed multiplier.
+NDefines.NProduction.POWERED_FACTORY_SPEED_NAV = 2.0; 			--Powered factory speed multiplier.
+NDefines.NProduction.BASE_FACTORY_SPEED = 4; 					-- Base factory speed multiplier (how much hoi3 style IC each factory gives).
+NDefines.NProduction.BASE_FACTORY_SPEED_MIL = 3.5; 				-- Base factory speed multiplier (how much hoi3 style IC each factory gives).
+NDefines.NProduction.BASE_FACTORY_SPEED_NAV = 2.0; 				-- Base factory speed multiplier (how much hoi3 style IC each factory gives).
 NDefines.NBuildings.ROCKETSITE_CAPACITY_MULT = 10;
 NDefines.NBuildings.INFRASTRUCTURE_RESOURCE_BONUS = 0.05 --0.1
 NDefines.NBuildings.SUPPLY_ROUTE_RESOURCE_BONUS = 0.10 --0.2

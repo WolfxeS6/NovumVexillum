@@ -1,4 +1,4 @@
-## Version: X1.15
+## Version: X1.16
 ### HOI4 Compatible: 1.17.*
 ### Compatible Global Conflict version: 1.13
 ### Workshop Link
