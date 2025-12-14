@@ -79,3 +79,4 @@ NDefines.NResistance.SUPPRESSION_NEEDED_BY_RESISTANCE_POINT = 0.4
 NDefines.NSupply.INFRA_TO_SUPPLY = 0.6 --0.3
 NDefines.NSupply.SUPPLY_FROM_DAMAGED_INFRA = 0.3 --0.15
 
+NDefines.NNavy.NAVAL_INVASION_PLAN_CAP = 3									-- base cap of naval invasions can be planned at the same time
