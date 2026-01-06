@@ -1226,3 +1226,114 @@ faction_goal_the_red_tide = {
 		base = 1
 	}
 }
+
+
+# Contain Russian Expansionism
+faction_goal_contain_russian_expasion = {
+	name = contain_russian_expasion_goal_name
+	description = contain_russian_expasion_goal_desc
+	category = long_term
+	group = FOCUS_FILTER_ARMY_XP
+	allowed = {
+		
+	}
+	visible = {
+		FROM = {
+			AND = {
+				is_major = yes
+				has_democratic_form_of_government = yes
+			}	
+		}
+	}
+	completed = {
+		date > 2015.01.01
+		count_triggers = {
+			amount = 2
+			custom_trigger_tooltip = {
+				tooltip = nvx_ukraine_independent_nato_tt
+
+				AND = {
+					UKR = {
+						exists = yes
+						NOT = {
+							OR = {
+								is_subject_of = SOV
+								is_in_faction_with = SOV
+								has_war_with = SOV
+							}
+						}
+					}
+					NOT = {
+						country_exists = NOV
+					}	
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = nvx_belarus_independent_nato_tt
+
+				BLR = {
+					exists = yes
+					NOT = {
+						OR = {
+							is_subject_of = SOV
+							is_in_faction_with = SOV
+							has_war_with = SOV
+						}
+					}
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = nvx_finland_independent_nato_tt
+
+				FIN = {
+					exists = yes
+					NOT = {
+						OR = {
+							is_subject_of = SOV
+							is_in_faction_with = SOV
+							has_war_with = SOV
+						}
+					}
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = nvx_moldova_independent_nato_tt
+
+				MOL = {
+					exists = yes
+					NOT = {
+						OR = {
+							is_subject_of = SOV
+							is_in_faction_with = SOV
+							has_war_with = SOV
+						}
+					}
+				}
+				TRA = {
+					exists = no
+				}
+			}
+		}
+	}
+	complete_effect = {
+		add_faction_power_projection = 500
+		custom_effect_tooltip = generic_skip_one_line_tt
+		custom_effect_tooltip = HAS_DEPLOYED_AT_LEAST_1M_MANPOWER
+		every_faction_member = {
+			limit = {	
+				check_variable = { deployed_army_manpower_k	> 1000 }		
+			}
+			hidden_effect = {
+				add_faction_influence_ratio = 0.1
+				army_experience = 50
+			} 
+		}
+		effect_tooltip = {
+			add_faction_influence_ratio = 0.1
+			army_experience = 50 
+		}	
+	}
+	ai_will_do = {
+		base = 1
+	}
+}
