@@ -1,166 +1,357 @@
 characters={
+	CUB_jaime_ortega_alamino={
+		#name="Jaime Ortega Alamino"
+		portraits={
+			civilian={
+				large="gfx/leaders/CUB/Jaime_Ortega_Alamino.dds"
+			}
+		}
+		country_leader={
+			ideology=christian_theocracy
+			expire="1.1.1.1"
+			id=-1
+		}
+	}
+	CUB_orlando_bosch={
+		#name="Orlando Bosch"
+		portraits={
+			civilian={
+				large="gfx/leaders/CUB/Orlando_Bosch.dds"
+			}
+		}
+		country_leader={
+			ideology=fascist_ideology
+			expire="1.1.1.1"
+			id=-1
+		}
+	}
+	CUB_alvaro_lopez_miera={
+		#name="Álvaro López Miera"
+		portraits={
+			civilian={
+				large="gfx/leaders/CUB/Alvaro_Lopez_Miera.dds"
+			}
+			army={
+				large="gfx/leaders/CUB/Alvaro_Lopez_Miera_Army.dds"
+				small="gfx/leaders/CUB/small/Alvaro_Lopez_Miera_small.dds"
+			}
+		}
+		country_leader={
+			ideology=military_junta
+			expire="1.1.1.1"
+			id=-1
+		}
+		corps_commander={
+			traits={ fortress_buster logistics_wizard combined_arms_expert }
+			skill=3
+			attack_skill=3
+			defense_skill=2
+			planning_skill=2
+			logistics_skill=3
+			legacy_id=-1
+		}
+	}
+	CUB_regency_council={
+		#name="Regency Council of Cuba"
+		portraits={
+			civilian={
+				large="gfx/leaders/CUB/Regency.dds"
+			}
+		}
+		country_leader={
+			ideology=absolute_monarchist
+			expire="1.1.1.1"
+			id=-1
+		}
+	}
+	CUB_ramon_saul_sanchez={
+		#name="Ramón Saúl Sánchez"
+		portraits={
+			civilian={
+				large="gfx/leaders/CUB/Ramon_Saul_Sanchez.dds"
+			}
+		}
+		country_leader={
+			ideology=right_wing_populist
+			expire="1.1.1.1"
+			id=-1
+		}
+	}
+	CUB_oswaldo_paya={
+		#name="Oswaldo Payá"
+		portraits={
+			civilian={
+				large="gfx/leaders/CUB/Oswaldo_Paya.dds"
+			}
+		}
+		country_leader={
+			ideology=christian_democrat
+			expire="1.1.1.1"
+			id=-1
+		}
+	}
+	CUB_nelson_rodriguez_chartrand={
+		#name="Nelson Rodríguez Chartrand"
+		portraits={
+			civilian={
+				large="gfx/leaders/CUB/Nelson_Rodriguez_Chartrand.dds"
+			}
+		}
+		country_leader={
+			ideology=libertarian
+			expire="1.1.1.1"
+			id=-1
+		}
+	}
+	CUB_carlos_alberto_montaner={
+		#name="Carlos Alberto Montaner"
+		portraits={
+			civilian={
+				large="gfx/leaders/CUB/Carlos_Alberto_Montaner.dds"
+			}
+		}
+		country_leader={
+			ideology=centrist
+			expire="1.1.1.1"
+			id=-1
+		}
+	}
+	CUB_vladimiro_roca={
+		#name="Vladimiro Roca"
+		portraits={
+			civilian={
+				large="gfx/leaders/CUB/Vladimiro_Roca.dds"
+			}
+		}
+		country_leader={
+			ideology=social_democrat_ideology
+			expire="1.1.1.1"
+			id=-1
+		}
+	}
+	CUB_mariela_castro={
+		#name="Mariela Castro"
+		gender = female
+		portraits={
+			civilian={
+				large="gfx/leaders/CUB/Mariela_Castro.dds"
+			}
+		}
+		country_leader={
+			ideology=progressive_socialist
+			expire="1.1.1.1"
+			id=-1
+		}
+	}
+	CUB_jorge_valls={
+		#name="Jorge Valls"
+		portraits={
+			civilian={
+				large="gfx/leaders/CUB/Jorge_Valls.dds"
+			}
+		}
+		country_leader={
+			ideology=democratic_socialist_ideology
+			expire="1.1.1.1"
+			id=-1
+		}
+	}
 	CUB_fidel_castro={
 		#name="Fidel Castro"
 		portraits={
 			civilian={
 				large="gfx/leaders/CUB/Fidel_Castro.dds"
 			}
+			army={
+				large="gfx/leaders/CUB/Fidel_Castro_Army.dds"
+				small="gfx/leaders/CUB/small/Fidel_Castro_small.dds"
+			}
 		}
 		country_leader={
-			ideology=leninist
+			ideology=fidelismo
 			expire="1.1.1.1"
 			id=-1
 		}
+		field_marshal={
+			traits={ guerilla_fighter inspirational_leader politically_connected expert_improviser }
+			skill=3
+			attack_skill=3
+			defense_skill=2
+			planning_skill=3
+			logistics_skill=2
+			legacy_id=-1
+			visible = {
+				OR = {
+					has_government = progressive
+					has_government = communist
+					has_country_leader = {
+						character = CUB_raul_castro
+						ruling_only = yes
+					}
+					has_country_leader = {
+						character = CUB_fidel_castro
+						ruling_only = yes
+					}
+				}
+			}
+		}
 	}
-	CUB_wenceslao_castillo={
-		#name="Wenceslao Castillo"
+	CUB_raul_castro={
+		#name="Raúl Castro"
 		portraits={
 			civilian={
-				large="gfx/leaders/Europe/politician_islamist1.dds"
+				large="gfx/leaders/CUB/Raul_Castro.dds"
+			}
+			army={
+				large="gfx/leaders/CUB/Raul_Castro_Army.dds"
+				small="gfx/leaders/CUB/small/Raul_Castro_small.dds"
 			}
 		}
 		country_leader={
-			ideology=islamic_authoritarian
-			traits={ captain_of_industry national_integralist }
-			expire="2015.1.1.12"
+			ideology=fidelismo
+			expire="1.1.1.1"
 			id=-1
 		}
-	}
-	CUB_arturo_mota={
-		#name="Arturo Mota"
-		portraits={
-			civilian={
-				large="gfx/leaders/Europe/politician4.dds"
+		field_marshal={
+			traits={ politically_connected organizer defensive_doctrine harsh_leader }
+			skill=3
+			attack_skill=2
+			defense_skill=3
+			planning_skill=3
+			logistics_skill=2
+			legacy_id=-1
+			visible = {
+				OR = {
+					has_government = progressive
+					has_government = communist
+				}
 			}
 		}
-		country_leader={
-			ideology=national_socialist
-			traits={ economist }
-			expire="2017.1.1.12"
-			id=-1
-		}
 	}
-	CUB_jesus_pelletier={
-		#name="Jesús Pelletier"
+	CUB_leopoldo_cintra_frias={
+		#name="Leopoldo Cintra Frías"
 		portraits={
-			civilian={
-				large="gfx/leaders/Europe/politician5.dds"
+			army={
+				large="gfx/leaders/CUB/Leopoldo_Cintra_Frias.dds"
+				small="gfx/leaders/CUB/small/Leopoldo_Cintra_Frias_small.dds"
 			}
 		}
-		country_leader={
-			ideology=proto_fascist
-			traits={ enemy_of_germany }
-			expire="2020.1.1.12"
-			id=-1
+		corps_commander={
+			traits={ armor_officer brilliant_strategist combined_arms_expert }
+			skill=3
+			attack_skill=3
+			defense_skill=3
+			planning_skill=2
+			logistics_skill=2
+			legacy_id=-1
 		}
 	}
-	CUB_jacinto_gonzales={
-		#name="Jacinto Gonzáles"
+	CUB_joaquin_quintas_sola={
+		#name="Joaquín Quintas Solá"
 		portraits={
-			civilian={
-				large="gfx/leaders/Europe/politician7.dds"
+			army={
+				large="gfx/leaders/CUB/Joaquin_Quintas_Sola.dds"
+				small="gfx/leaders/CUB/small/Joaquin_Quintas_Sola_small.dds"
 			}
 		}
-		country_leader={
-			ideology=absolute_monarchist
-			traits={ quartermaster_general }
-			expire="2007.1.1.12"
-			id=-1
+		corps_commander={
+			traits={ organizer trait_engineer }
+			skill=3
+			attack_skill=2
+			defense_skill=3
+			planning_skill=2
+			logistics_skill=3
+			legacy_id=-1
 		}
 	}
-	CUB_juan_maceo={
-		#name="Juan Maceo"
+	CUB_abelardo_colome_ibarra={
+		#name="Abelardo Colomé Ibarra"
 		portraits={
-			civilian={
-				large="gfx/leaders/Europe/politician10.dds"
+			army={
+				large="gfx/leaders/CUB/Abelardo_Colome_Ibarra.dds"
+				small="gfx/leaders/CUB/small/Abelardo_Colome_Ibarra_small.dds"
 			}
 		}
-		country_leader={
-			ideology=counter_progressive_democrat
-			expire="2009.1.1.12"
-			id=-1
+		corps_commander={
+			traits={ trait_cautious career_officer }
+			skill=3
+			attack_skill=2
+			defense_skill=3
+			planning_skill=3
+			logistics_skill=2
+			legacy_id=-1
 		}
 	}
-	CUB_buenaventura_machado={
-		#name="Buenaventura Machado"
+	CUB_julio_casas_regueiro={
+		#name="Julio Casas Regueiro"
 		portraits={
-			civilian={
-				large="gfx/leaders/Europe/politician7.dds"
+			army={
+				large="gfx/leaders/CUB/Julio_Casas_Regueiro.dds"
+				small="gfx/leaders/CUB/small/Julio_Casas_Regueiro_small.dds"
 			}
 		}
-		country_leader={
-			ideology=fiscal_conservative
-			expire="2012.1.1.12"
-			id=-1
+		corps_commander={
+			traits={ commando }
+			skill=2
+			attack_skill=1
+			defense_skill=2
+			planning_skill=2
+			logistics_skill=2
+			legacy_id=-1
 		}
 	}
-	CUB_jose_machado={
-		#name="José Machado"
+	CUB_sixto_batista_santana={
+		#name="Sixto Batista Santana"
 		portraits={
-			civilian={
-				large="gfx/leaders/Europe/politician5.dds"
+			army={
+				large="gfx/leaders/CUB/Sixto_Batista_Santana.dds"
+				small="gfx/leaders/CUB/small/Sixto_Batista_Santana_small.dds"
 			}
 		}
-		country_leader={
-			ideology=libertarian
-			expire="2014.1.1.12"
-			id=-1
+		corps_commander={
+			traits={ old_guard organizer }
+			skill=2
+			attack_skill=2
+			defense_skill=2
+			planning_skill=2
+			logistics_skill=1
+			legacy_id=-1
 		}
 	}
-	CUB_joaquin_vasquez={
-		#name="Joaquín Vásquez"
+	CUB_pedro_miguel_perez_betancourt={
+		#name="Pedro Miguel Pérez Betancourt"
 		portraits={
-			civilian={
-				large="gfx/leaders/Europe/politician8.dds"
+			army={
+				large="gfx/leaders/CUB/Pedro_Miguel_Perez_Betancourt.dds"
+				small="gfx/leaders/CUB/small/Pedro_Miguel_Perez_Betancourt_small.dds"
 			}
 		}
-		country_leader={
-			ideology=liberalist
-			traits={ agricultural_expert hawk }
-			expire="2017.1.1.12"
-			id=-1
+		navy_leader={
+			traits={ fleet_protector navy_career_officer }
+			skill=2
+			attack_skill=1
+			defense_skill=3
+			maneuvering_skill=1
+			coordination_skill=2
+			legacy_id=-1
 		}
 	}
-	CUB_mariano_vasquez={
-		#name="Mariano Vásquez"
+	CUB_julio_cesar_gandarilla_bermejo={
+		#name="Julio César Gandarilla Bermejo"
 		portraits={
-			civilian={
-				large="gfx/leaders/Europe/politician10.dds"
+			army={
+				large="gfx/leaders/CUB/Julio_Cesar_Gandarilla_Bermejo.dds"
+				small="gfx/leaders/CUB/small/Julio_Cesar_Gandarilla_Bermejo_small.dds"
 			}
 		}
-		country_leader={
-			ideology=social_democrat_ideology
-			traits={ friend_of_india compassionate_gentleman }
-			expire="2020.1.1.12"
-			id=-1
-		}
-	}
-	CUB_jacobo_vazquez={
-		#name="Jacobo Vázquez"
-		portraits={
-			civilian={
-				large="gfx/leaders/Europe/politician_ian_mccollum.dds"
-			}
-		}
-		country_leader={
-			ideology=progressive_ideology
-			traits={ dealbroker }
-			expire="2006.1.1.12"
-			id=-1
-		}
-	}
-	CUB_calixto_luperon={
-		#name="Calixto Luperón"
-		portraits={
-			civilian={
-				large="gfx/leaders/Europe/politician7.dds"
-			}
-		}
-		country_leader={
-			ideology=democratic_socialist_ideology
-			traits={ friend_of_japan }
-			expire="2009.1.1.12"
-			id=-1
+		navy_leader={
+			traits={ green_water_expert }
+			skill=2
+			attack_skill=2
+			defense_skill=2
+			maneuvering_skill=1
+			coordination_skill=2
+			legacy_id=-1
 		}
 	}
 }

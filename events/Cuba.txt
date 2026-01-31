@@ -1,0 +1,87 @@
+add_namespace = cuba
+
+#Monarchy
+country_event = {
+	id = cuba.1
+	title = cuba.1.t
+	desc = cuba.1.d
+	picture = GFX_report_event_ready_the_tenth_crusade
+
+	trigger = {
+		tag = CUB
+		has_government = monarchist
+	}
+
+	fire_only_once = yes
+	
+	option = {
+		name = cuba.1.a
+		
+		if = {
+			limit = {
+				CUB_fidel_castro = {
+					can_be_country_leader = yes
+				}
+			}
+			add_country_leader_role = {
+				character = CUB_fidel_castro
+				promote_leader = yes
+				country_leader = {
+					ideology = socialist_monarchist
+					expire = "1965.1.1.1"
+				}
+			}
+			set_country_leader_name = {
+				ideology = monarchist
+				name = CUB_fidel_castro_rey
+			}
+			set_country_leader_portrait = {
+				ideology = monarchist
+				portrait = "gfx/leaders/CUB/Fidel_Castro_Suit.dds"
+			}
+		}
+		else = {
+			add_country_leader_role = {
+				character = CUB_raul_castro
+				promote_leader = yes
+				country_leader = {
+					ideology = socialist_monarchist
+					expire = "1965.1.1.1"
+				}
+			}
+			set_country_leader_name = {
+				ideology = monarchist
+				name = CUB_raul_castro_rey
+			}
+		}
+		set_party_name = {
+			ideology = monarchist
+			long_name = CUB_dinastia_castro_party
+			name = CUB_dinastia_castro_party
+		}
+
+		ai_chance = {
+			factor = 25
+			modifier = {
+				add = 0
+				is_historical_focus_on = no
+			}
+		}
+	}
+	
+	option = {
+		name = cuba.1.b
+		add_political_power = 100
+		add_stability = 0.1
+
+		set_country_flag = CUB_no_king
+		
+		ai_chance = {
+			factor = 25
+			modifier = {
+				add = 75
+				is_historical_focus_on = no
+			}
+		}
+	}
+}

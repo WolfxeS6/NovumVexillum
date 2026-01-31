@@ -1,0 +1,98 @@
+ideas = {
+	country = {	
+		CUB_revolutionary_resilience = {
+			picture = eng_for_the_good_of_the_revolution
+
+			available = {
+				OR = {
+					has_government = communist
+					has_government = progressive
+					AND = {
+						has_government = monarchist
+						NOT = {
+							has_country_flag = CUB_no_king
+						}
+					}
+				}
+			}
+	
+			removal_cost = -1
+			
+			modifier = {
+				war_support_factor = 0.15
+				army_core_defence_factor = 0.1
+				stability_factor = 0.1
+				consumer_goods_factor = -0.1
+				industrial_capacity_factory = -0.1
+			}
+		}
+		CUB_scars_of_the_special_period = {
+			picture = generic_economic_recovery
+
+			available = {
+				NOT = {
+					OR = {
+						has_idea = economy_growth
+						has_idea = economy_boom
+					}
+				}
+			}
+	
+			removal_cost = -1
+			
+			modifier = {
+				production_speed_buildings_factor = -0.15
+				industrial_capacity_factory = -0.1
+				research_speed_factor = -0.05
+			}
+		}
+		CUB_us_embargo = {
+			picture = ARG_american_allyship
+
+			available = {
+				OR = {
+					has_government = communist
+					has_government = progressive
+					AND = {
+						has_government = monarchist
+						NOT = {
+							has_country_flag = CUB_no_king
+						}
+					}
+				}
+			}
+	
+			removal_cost = -1
+			
+			modifier = {
+				trade_opinion_factor = -0.2
+				min_export = -0.1
+				industrial_capacity_factory = -0.1
+				industrial_capacity_dockyard = -0.2
+				research_speed_factor = -0.05
+			}
+		}
+		CUB_beacon_of_anti_imperialism = {
+			picture = ARG_eliminate_american_imperialism
+
+			available = {
+				NOT = {
+					is_subject_of = USA
+				}
+			}
+	
+			removal_cost = -1
+			
+			modifier = {
+				war_support_factor = 0.1
+				offence = 0.1
+				drift_defence_factor = 0.25
+				army_attack_against_major_factor = 0.1
+				army_breakthrough_against_major_factor = 0.1
+				army_defence_against_major_factor = 0.15
+				send_volunteer_divisions_required = -0.75
+				send_volunteer_size = 1
+			}
+		}
+	}
+}
