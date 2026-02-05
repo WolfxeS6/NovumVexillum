@@ -72,9 +72,8 @@ country_event = {
 	option = {
 		name = cuba.1.b
 		add_political_power = 100
-		add_stability = 0.1
 
-		set_country_flag = CUB_no_king
+		set_country_flag = CUB_no_batistas
 		
 		ai_chance = {
 			factor = 25
@@ -82,6 +81,140 @@ country_event = {
 				add = 75
 				is_historical_focus_on = no
 			}
+		}
+	}
+
+	option = {
+		name = cuba.1.c
+		trigger = {
+			NOT = {
+				has_country_flag = CUB_luxembourg_crown
+			}
+		}
+
+		add_stability = 0.1
+		
+		LUX = {
+			country_event = {
+				id = cuba.2
+				days = 1
+			}
+		}
+		
+		ai_chance = {
+			factor = 50
+		}
+	}
+}
+
+country_event = {
+	id = cuba.2
+	title = cuba.2.t
+	desc = cuba.2.d
+	picture = GFX_report_event_cuban_flag
+
+	is_triggered_only = yes
+
+	option = {
+		name = cuba.2.a
+
+		custom_effect_tooltip = LUX_cuba_royal_alliance
+
+		CUB = {
+			country_event = {
+				id = cuba.3
+				days = 1
+			}
+		}
+		
+		ai_chance = {
+			factor = 25
+			modifier = {
+				add = 1000
+				
+				CUB = {
+					is_ai = no
+				}
+			}
+		}
+	}
+	option = {
+		name = cuba.2.b
+
+		add_war_support = 0.01
+		add_political_power = 1
+
+		CUB = {
+			country_event = {
+				id = cuba.4
+				days = 1
+			}
+		}
+
+		ai_chance = {
+			factor = 75
+		}
+	}
+}
+
+country_event = {
+	id = cuba.3
+	title = cuba.3.t
+	desc = cuba.3.d
+	picture = GFX_report_event_cuba_maria_teresa_batista
+
+	is_triggered_only = yes
+
+	option = {
+		name = cuba.3.a
+
+		custom_effect_tooltip = LUX_cuba_royal_alliance
+		
+		add_stability = 0.1
+		add_country_leader_role = {
+			character = CUB_maria_teresa_batista
+			promote_leader = yes
+			country_leader = {
+				ideology = semi_constitutional_monarchist
+				expire = "1965.1.1.1"
+			}
+		}
+		set_country_flag = CUB_no_batistas
+		hidden_effect = {
+			give_guarantee = LUX
+			LUX = {
+				give_guarantee = CUB
+			}
+		}
+	}
+}
+
+country_event = {
+	id = cuba.4
+	title = cuba.4.t
+	desc = cuba.4.d
+	picture = GFX_report_event_cuba_maria_teresa_batista
+
+	is_triggered_only = yes
+
+	option = {
+		name = cuba.4.a
+
+		set_country_flag = CUB_luxembourg_crown
+		add_stability = -0.05
+
+		add_opinion_modifier = {
+			target = LUX
+			modifier = outraged	
+		}
+		LUX = {
+			add_opinion_modifier = {
+				target = CUB
+				modifier = outraged	
+			}
+		}
+		country_event = {
+			id = cuba.1
 		}
 	}
 }
