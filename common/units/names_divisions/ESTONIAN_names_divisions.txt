@@ -1,0 +1,345 @@
+﻿# Division template historical names system. Is a new method of naming the divisions based on the names-group assigned to it's template.
+# If we run out of all historical names, the names will be assigned in the old way.
+#
+# Each group has a made up tag. Use it if you want to append more, or replace existing names with the extra txt files (modding).
+#
+# for_countries - lists all countries that can use it. If empty, or entire tag is missing, all countries in the world can use it.
+#
+# can_use - is a trigger that locks/unlocks the group under specific circumstances. The trigger is in a country scope.
+#
+# division_types - is a list of tokens to corresponding unit types. A player can in fact use any group of names for a div.template
+#                  however this tag is a helper for an automated choice (for AI, or if the group must switch on it's own, because
+#                  for example the current one is no longer available due to the can_use trigger saying so).
+#                  In automated choice, the division template must have at least 1 of the following types for it to be chosen.
+#
+# fallback_name - Is going to be used if we run out of the scripted historical names. If you want to use the old division naming
+#                 mechanics to be used for fallbacks, then just skip this option.
+#
+# unordered - It's a list of historical division names that did not have a number. Regardless if such names happened in history or not
+#             this option is available here mainly for a mods.
+#
+# ordered - Is a list of all historical names. 
+#           Numbers must start from 1 and up. 
+#           Numbers can't repeat in one scope.
+#           If you script the name for this group, at the same number (for example in a mod in another file), the name will be override.
+#           All arguments between the brackets must be separated by spaces. Each argument is wrapped in "quotas".
+#           1st argument = The name. It must contain either: 
+#                          %d (for decimal number placement)
+#                          %s (for string number placement - ROMAN numbers like XIV).
+#           2nd argument is optional = A localizable text describing this historical division. The text will be visible in the tooltip
+#                                      where you choose the historical division name.
+#           3rd argument is optional = An URL preferably pointing to the WIKI. It's a future feature that is not currently working in
+#                                      the current game version.
+
+EST_INF_01 = 
+{
+	name = "Infantry Division"
+	
+	can_use = { 
+		has_country_flag = country_language_estonian
+	}
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { EST_INF_01 }
+
+	fallback_name = "%d. Jalaväebrigaad"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d. Jalaväebrigaad" }
+		2 = { "%d. Jalaväebrigaad" }
+		3 = { "%d. Jalaväebrigaad" }
+		4 = { "%d. Jalaväebrigaad" }
+		5 = { "%d. Jalaväebrigaad" }
+		6 = { "%d. Jalaväebrigaad" }
+		7 = { "%d. Jalaväebrigaad" }
+		8 = { "%d. Jalaväebrigaad" }
+		9 = { "%d. Jalaväebrigaad" }
+		10 = { "%d. Jalaväebrigaad" }
+		11 = { "%d. Jalaväebrigaad" }
+		12 = { "%d. Jalaväebrigaad" }
+		13 = { "%d. Jalaväebrigaad" }
+		14 = { "%d. Jalaväebrigaad" }
+		15 = { "%d. Jalaväebrigaad" }
+		16 = { "%d. Jalaväebrigaad" }
+		17 = { "%d. Jalaväebrigaad" }
+		18 = { "%d. Jalaväebrigaad" }
+		19 = { "%d. Jalaväebrigaad" }
+		20 = { "%d. Jalaväebrigaad" }		
+	}
+}
+
+EST_INFB_01 = 
+{
+	name = "Infantry Brigade"
+
+	can_use = { 
+		has_country_flag = country_language_estonian
+	}
+
+	division_types = { "infantry" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { EST_INF_01 }
+
+	fallback_name = "%d. Jalaväebrigaad"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d. Jalaväebrigaad" }
+		2 = { "%d. Jalaväebrigaad" }
+		3 = { "%d. Jalaväebrigaad" }
+		4 = { "%d. Jalaväebrigaad" }
+		5 = { "%d. Jalaväebrigaad" }
+		6 = { "%d. Jalaväebrigaad" }
+		7 = { "%d. Jalaväebrigaad" }
+		8 = { "%d. Jalaväebrigaad" }
+		9 = { "%d. Jalaväebrigaad" }
+		10 = { "%d. Jalaväebrigaad" }
+		11 = { "%d. Jalaväebrigaad" }
+		12 = { "%d. Jalaväebrigaad" }
+		13 = { "%d. Jalaväebrigaad" }
+		14 = { "%d. Jalaväebrigaad" }
+		15 = { "%d. Jalaväebrigaad" }
+		16 = { "%d. Jalaväebrigaad" }
+		17 = { "%d. Jalaväebrigaad" }
+		18 = { "%d. Jalaväebrigaad" }
+		19 = { "%d. Jalaväebrigaad" }
+		20 = { "%d. Jalaväebrigaad" }		
+	}
+}
+
+EST_MOT_01 = 
+{
+	name = "Motorized Infantry Brigade"
+
+	can_use = { 
+		has_country_flag = country_language_estonian
+	}
+
+	division_types = { "motorized" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { EST_INF_01 }
+
+	fallback_name = "%d. Motoriseeritud Jalaväebrigaad"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d. Motoriseeritud Jalaväebrigaad" }
+		2 = { "%d. Motoriseeritud Jalaväebrigaad" }
+		3 = { "%d. Motoriseeritud Jalaväebrigaad" }
+		4 = { "%d. Motoriseeritud Jalaväebrigaad" }
+		5 = { "%d. Motoriseeritud Jalaväebrigaad" }
+		6 = { "%d. Motoriseeritud Jalaväebrigaad" }
+		7 = { "%d. Motoriseeritud Jalaväebrigaad" }
+		8 = { "%d. Motoriseeritud Jalaväebrigaad" }
+		9 = { "%d. Motoriseeritud Jalaväebrigaad" }
+		10 = { "%d. Motoriseeritud Jalaväebrigaad" }
+	}
+}
+
+EST_MEC_01 = 
+{
+	name = "Mechanized Infantry Brigade"
+
+	can_use = { 
+		has_country_flag = country_language_estonian
+	}
+
+	division_types = { "mechanized" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { EST_INF_01 }
+
+	fallback_name = "%d. Mehhaniseeritud Jalaväebrigaad"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d. Mehhaniseeritud Jalaväebrigaad" }
+		2 = { "%d. Mehhaniseeritud Jalaväebrigaad" }
+		3 = { "%d. Mehhaniseeritud Jalaväebrigaad" }
+		4 = { "%d. Mehhaniseeritud Jalaväebrigaad" }
+		5 = { "%d. Mehhaniseeritud Jalaväebrigaad" }
+		6 = { "%d. Mehhaniseeritud Jalaväebrigaad" }
+		7 = { "%d. Mehhaniseeritud Jalaväebrigaad" }
+		8 = { "%d. Mehhaniseeritud Jalaväebrigaad" }
+		9 = { "%d. Mehhaniseeritud Jalaväebrigaad" }
+		10 = { "%d. Mehhaniseeritud Jalaväebrigaad" }
+	}
+}
+
+EST_ARM_01 = 
+{
+	name = "Armored Brigade"
+
+	can_use = { 
+		has_country_flag = country_language_estonian
+	}
+
+	division_types = { "light_armor" "medium_armor" "heavy_armor" "modern_armor" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { EST_INF_01 }
+
+	fallback_name = "%d. Soomusbrigaad"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d. Soomusbrigaad" }
+		2 = { "%d. Soomusbrigaad" }
+		3 = { "%d. Soomusbrigaad" }
+		4 = { "%d. Soomusbrigaad" }
+		5 = { "%d. Soomusbrigaad" }
+		6 = { "%d. Soomusbrigaad" }
+		7 = { "%d. Soomusbrigaad" }
+		8 = { "%d. Soomusbrigaad" }
+		9 = { "%d. Soomusbrigaad" }
+		10 = { "%d. Soomusbrigaad" }
+	}
+}
+
+EST_PAR_01 = 
+{
+	name = "Airborne Brigade"
+
+	can_use = { 
+		has_country_flag = country_language_estonian
+	}
+
+	division_types = { "paratrooper" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { EST_INF_01 }
+
+	fallback_name = "%d. Õhudessantbrigaad"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d. Õhudessantbrigaad" }
+		2 = { "%d. Õhudessantbrigaad" }
+		3 = { "%d. Õhudessantbrigaad" }
+		4 = { "%d. Õhudessantbrigaad" }
+		5 = { "%d. Õhudessantbrigaad" }
+		6 = { "%d. Õhudessantbrigaad" }
+		7 = { "%d. Õhudessantbrigaad" }
+		8 = { "%d. Õhudessantbrigaad" }
+		9 = { "%d. Õhudessantbrigaad" }
+		10 = { "%d. Õhudessantbrigaad" }
+	}
+}
+
+EST_MAR_01 = 
+{
+	name = "Marine Infantry Brigade"
+
+	can_use = { 
+		has_country_flag = country_language_estonian
+	}
+
+	division_types = { "marine" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { EST_INF_01 }
+
+	fallback_name = "%d. Merejalaväe Jalaväebrigaad"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d. Merejalaväe Jalaväebrigaad" }
+		2 = { "%d. Merejalaväe Jalaväebrigaad" }
+		3 = { "%d. Merejalaväe Jalaväebrigaad" }
+		4 = { "%d. Merejalaväe Jalaväebrigaad" }
+		5 = { "%d. Merejalaväe Jalaväebrigaad" }
+		6 = { "%d. Merejalaväe Jalaväebrigaad" }
+		7 = { "%d. Merejalaväe Jalaväebrigaad" }
+		8 = { "%d. Merejalaväe Jalaväebrigaad" }
+		9 = { "%d. Merejalaväe Jalaväebrigaad" }
+		10 = { "%d. Merejalaväe Jalaväebrigaad" }
+	}
+}
+
+EST_MNT_01 = 
+{
+	name = "Mountain Brigade"
+
+	can_use = { 
+		has_country_flag = country_language_estonian
+	}
+
+	division_types = { "mountaineers" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { EST_INF_01 }
+
+	fallback_name = "%d. Mägijalaväebrigaad"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d. Mägijalaväebrigaad" }
+		2 = { "%d. Mägijalaväebrigaad" }
+		3 = { "%d. Mägijalaväebrigaad" }
+		4 = { "%d. Mägijalaväebrigaad" }
+		5 = { "%d. Mägijalaväebrigaad" }
+		6 = { "%d. Mägijalaväebrigaad" }
+		7 = { "%d. Mägijalaväebrigaad" }
+		8 = { "%d. Mägijalaväebrigaad" }
+		9 = { "%d. Mägijalaväebrigaad" }
+		10 = { "%d. Mägijalaväebrigaad" }
+	}
+}
+
+EST_GAR_01 = 
+{
+	name = "Territorial Defense District"
+
+	can_use = { 
+		has_country_flag = country_language_estonian
+	}
+
+	division_types = { "infantry" }
+
+	fallback_name = "%d. Territoriaalkaitse Ringkond"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%d. Territoriaalkaitse Ringkond" }
+		2 = { "%d. Territoriaalkaitse Ringkond" }
+		3 = { "%d. Territoriaalkaitse Ringkond" }
+		4 = { "%d. Territoriaalkaitse Ringkond" }
+		5 = { "%d. Territoriaalkaitse Ringkond" }
+		6 = { "%d. Territoriaalkaitse Ringkond" }
+		7 = { "%d. Territoriaalkaitse Ringkond" }
+		8 = { "%d. Territoriaalkaitse Ringkond" }
+		9 = { "%d. Territoriaalkaitse Ringkond" }
+		10 = { "%d. Territoriaalkaitse Ringkond" }
+		11 = { "%d. Territoriaalkaitse Ringkond" }
+		12 = { "%d. Territoriaalkaitse Ringkond" }
+		13 = { "%d. Territoriaalkaitse Ringkond" }
+		14 = { "%d. Territoriaalkaitse Ringkond" }
+		15 = { "%d. Territoriaalkaitse Ringkond" }
+		16 = { "%d. Territoriaalkaitse Ringkond" }
+		17 = { "%d. Territoriaalkaitse Ringkond" }
+		18 = { "%d. Territoriaalkaitse Ringkond" }
+		19 = { "%d. Territoriaalkaitse Ringkond" }
+		20 = { "%d. Territoriaalkaitse Ringkond" }		
+	}
+}

@@ -1,0 +1,63 @@
+army_decisions = {
+	EST_mobilize_the_defence_league = {
+		icon = generic_army_support
+		cost = 50
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 100
+		}
+
+		available = {
+			has_war = yes
+		}
+
+		visible = {
+			original_tag = EST
+		}
+		days_remove = 15
+		remove_effect = {
+			custom_effect_tooltip = EST_mobilize_the_defence_league_tt
+			hidden_effect = {
+				division_template = {
+					name = "Territorial Defence District"
+					division_names_group = EST_GAR_01
+					priority = 0
+					regiments = {
+						infantry = { x = 0 y = 0 }
+						infantry = { x = 0 y = 1 }
+						infantry = { x = 1 y = 0 }
+						infantry = { x = 1 y = 1 }
+					}
+				}
+				13 = {
+					create_unit = {
+						division = "name = \"Põhja Maakaitseringkond\" division_template = \"Territorial Defence District\" start_experience_factor = 0.1 start_equipment_factor = 0.75"
+						owner = EST
+						prioritize_location = 3152
+					}
+					create_unit = {
+						division = "name = \"Lääne Maakaitseringkond\" division_template = \"Territorial Defence District\" start_experience_factor = 0.1 start_equipment_factor = 0.75"
+						owner = EST
+						prioritize_location = 3174
+					}
+				}
+				840 = {
+					create_unit = {
+						division = "name = \"Kirde Maakaitseringkond\" division_template = \"Territorial Defence District\" start_experience_factor = 0.1 start_equipment_factor = 0.75"
+						owner = EST
+						prioritize_location = 11443
+					}
+				}
+				191 = {
+					create_unit = {
+						division = "name = \"Lõuna Maakaitseringkond\" division_template = \"Territorial Defence District\" start_experience_factor = 0.1 start_equipment_factor = 0.75"
+						owner = EST
+						prioritize_location = 9221
+					}
+				}
+			}	
+		}
+	}
+}
