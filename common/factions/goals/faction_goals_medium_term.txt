@@ -96,8 +96,11 @@ faction_goal_secure_european_continent = {
 	group = FOCUS_FILTER_ANNEXATION
 	visible = {
 		FROM = {
-			original_tag = GER
-		}
+			OR = {
+				is_on_continent = europe
+				original_tag = USA
+			}
+		}	
 	}
 	completed = {
 		collection_size = {
@@ -115,7 +118,7 @@ faction_goal_secure_european_continent = {
 				}
 				name = COLLECTION_CONTINENTAL_EUROPE_DEFEATED_OR_FACTION_MEMBERS
 			}
-			value > 8
+			value > 30
 		}
 	}
 	complete_effect = {
@@ -132,10 +135,6 @@ faction_goal_secure_european_continent = {
 	}
 	ai_will_do = {
 		base = 1
-		modifier = {
-			add = 9
-			is_historical_focus_on = yes
-		}
 	}
 }
 
@@ -427,5 +426,46 @@ faction_goal_guardians_of_peace = {
 			add = 1
 			has_democratic_form_of_government = yes
 		}
+	}
+}
+
+faction_goal_depose_hussein = {
+	name = depose_hussein_goal_name
+	description = depose_hussein_goal_desc
+	category = medium_term
+	group = FOCUS_FILTER_ANNEXATION
+	visible = {
+		FROM = { 
+			original_tag = USA 
+		}
+	}
+	available = {
+
+	}
+	completed = {
+		custom_trigger_tooltip = {
+			tooltip = nvx_hussein_deposed_tt
+
+			IRQ = {
+				OR = {
+					is_in_faction_with = ROOT
+					has_capitulated = yes
+					exists = no
+					is_subject_of = ROOT 
+				}
+			}
+		}	
+	}
+	complete_effect = {
+		add_faction_power_projection = 100
+		custom_effect_tooltip = generic_skip_one_line_tt
+		custom_effect_tooltip = ALL_FACTION_MEMBERS
+		every_faction_member = {
+			add_political_power = 100
+			add_war_support = -0.05
+		}
+	}
+	ai_will_do = {
+		base = 1
 	}
 }

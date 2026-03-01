@@ -9,9 +9,18 @@ if = {
 	}
 }
 
+if = {
+	limit = { has_dlc = "By Blood Alone" }
+		set_air_oob = "EST_2000_air_bba"
+	else = {
+		set_air_oob = "EST_2000_air_legacy"
+	}
+}
+
 set_research_slots = 4
 set_convoys = 100
-set_stability = 0.55
+set_stability = 0.7
+set_war_support = 0.25
 
 set_country_flag = country_language_estonian
 
@@ -344,7 +353,11 @@ add_ideas = {
 	government_system_parliamentary_republic
 	national_development_developing #national_development_developed
 	economy_growth
+	free_trade
 	economy_tax_low
+	public_safety_subsidized_agencies
+	mobilization_service_time_duty
+	welfare_modest_assistance
 	civil_liberties_free
 	population_growth_decline
 	limited_conscription
@@ -360,18 +373,28 @@ set_politics = {
 }
 
 set_popularities = {
-    nationalist = 3
-    reactionary = 7
-    conservative = 35
-    market_liberal = 35
-    social_liberal = 3
-    social_democrat = 7
-    progressive = 2
-    democratic_socialist = 8
+    social_liberal = 30
+	conservative = 25
+	market_liberal = 25
+	social_democrat = 20
 }
 
+recruit_character = EST_vjatseslav_vassiljevits_jakobs
+recruit_character = EST_risto_teinonen
+recruit_character = EST_kristiina_ojuland
+recruit_character = EST_regency_council
+recruit_character = EST_mart_helme
 recruit_character = EST_mart_laar
+recruit_character = EST_siim_kallas
 recruit_character = EST_taavi_roivas
+recruit_character = EST_edgar_savisaar
+recruit_character = EST_andres_tarand
+recruit_character = EST_toomas_frey
+recruit_character = EST_tiit_toomsalu
+recruit_character = EST_lembit_annus
+recruit_character = EST_thomas_von_ungern_sternberg
+recruit_character = EST_carl_philip_of_sweden
+
 recruit_character = EST_riho_terras
 recruit_character = EST_indrek_sirel
 recruit_character = EST_neeme_vali
@@ -397,16 +420,6 @@ recruit_character = EST_juri_saska
 recruit_character = EST_ain_parna
 recruit_character = EST_sten_sepper
 recruit_character = EST_igor_schvede
-recruit_character = EST_elmar_sikkar
-recruit_character = EST_mikhel_mae
-recruit_character = EST_haman_mannil
-recruit_character = EST_bernard_bornhohe
-recruit_character = EST_georg_reinman
-recruit_character = EST_paavo_koiv
-recruit_character = EST_nigul_kotli
-recruit_character = EST_eerik_orkivu
-recruit_character = EST_harri_orkivu
-recruit_character = EST_pent_pats
 
 2002.1.1 = {
 	add_ideas = the_euro
@@ -430,16 +443,7 @@ recruit_character = EST_pent_pats
 		election_frequency = 48
 		elections_allowed = yes
 	}
-    set_popularities = {
-        nationalist = 3
-        reactionary = 7
-        conservative = 35
-        market_liberal = 35
-        social_liberal = 3
-        social_democrat = 7
-        progressive = 2
-        democratic_socialist = 8
-    }
+	promote_character = EST_taavi_roivas
 }
 
 ### VARIANTS ###
@@ -451,21 +455,18 @@ if = {
 if = {
 	limit = { has_dlc = "Man the Guns" }
 	## Frigates ##
-	create_equipment_variant = { #Frigate 1
+	create_equipment_variant = {
 		name = "Beskytteren class"
-		type = ship_hull_cruiser_1
+		type = ship_hull_patrol_boat_1 
+		name_group = EST_WARSHIPS
 		parent_version = 0
 		modules = {
-			fixed_ship_battery_slot = ship_light_medium_battery_1
-			fixed_ship_anti_air_slot = ship_anti_air_1
-			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
-			fixed_ship_radar_slot = empty
-			fixed_ship_engine_slot = cruiser_ship_engine_1
-			fixed_ship_armor_slot = ship_armor_cruiser_1
-			fixed_ship_secondaries_slot = ship_secondaries_1
-			mid_1_custom_slot = empty
-			mid_2_custom_slot = ship_anti_air_1
-			rear_1_custom_slot = ship_light_medium_battery_1
+			fixed_ship_battery_slot = ship_light_battery_1
+			fixed_ship_anti_air_slot = empty
+			fixed_ship_fire_control_system_slot = empty
+			fixed_ship_engine_slot = light_patrol_ship_engine_1
+			fixed_ship_torpedo_slot = ship_mine_layer_1
+			mid_1_custom_slot = ship_torpedo_1
 		}
 		obsolete = no
 	}
