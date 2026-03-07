@@ -1,0 +1,138 @@
+add_namespace = sierra_leone
+add_namespace = sierra_leone_news
+
+#End of Civil War - Sierra Leone
+country_event = {
+	id = sierra_leone.1
+	title = sierra_leone.1.t
+	desc = sierra_leone.1.d
+	picture = GFX_report_event_sierra_leone_war_end
+
+	trigger = {
+		original_tag = SIE
+		owns_state = 1316
+		has_war = no
+	}
+
+	fire_only_once = yes
+	
+	option = {
+		name = sierra_leone.1.a
+
+		add_political_power = 150
+		add_stability = 0.1
+		
+		hidden_effect = {
+			700 = {
+				remove_core_of = RUF
+			}
+			1316 = {
+				remove_core_of = RUF
+			}
+			news_event = {
+				id = sierra_leone_news.1
+				days = 1
+			}
+		}
+
+		ai_chance = {
+			factor = 50
+		}
+	}
+}
+
+#End of Civil War - RUF
+country_event = {
+	id = sierra_leone.2
+	title = sierra_leone.2.t
+	desc = sierra_leone.2.d
+	picture = GFX_report_event_sierra_leone_war_end
+
+	trigger = {
+		original_tag = RUF
+		owns_state = 700
+		has_war = no
+	}
+
+	fire_only_once = yes
+	
+	option = {
+		name = sierra_leone.2.a
+
+		add_political_power = 150
+		add_stability = 0.1
+		
+		hidden_effect = {
+			700 = {
+				remove_core_of = SIE
+			}
+			1316 = {
+				remove_core_of = SIE
+			}
+			news_event = {
+				id = sierra_leone_news.2
+				days = 1
+			}
+			set_cosmetic_tag = SIE
+			set_capital = {
+				state = 700
+				remember_old_capital = no
+			}
+			#Probably easier to use a character flag, but I don't feel like it
+			SIE = {
+				set_nationality = {
+					target_country = RUF
+					character = SIE_ahmad_tejan_kabbah
+				}
+				set_nationality = {
+					target_country = RUF
+					character = SIE_ernest_bai_koroma
+				}
+				set_nationality = {
+					target_country = RUF
+					character = SIE_femi_claudius_cole
+				}
+			}
+			promote_character = SIE_ahmad_tejan_kabbah
+			promote_character = SIE_ernest_bai_koroma
+			promote_character = {
+				character = SIE_femi_claudius_cole
+				ideology = democratic_socialist_ideology
+			}
+			promote_character = {
+				character = SIE_femi_claudius_cole
+				ideology = radical_socialist
+			}
+		}
+
+		ai_chance = {
+			factor = 50
+		}
+	}
+}
+
+news_event = {
+	id = sierra_leone_news.1
+	title = sierra_leone_news.1.t
+	desc = sierra_leone_news.1.d
+	picture = GFX_news_event_sierra_leonean_civil_war
+
+	major = yes
+	is_triggered_only = yes
+	
+	option = {
+		name = sierra_leone_news.1.a
+		
+		trigger = {
+			NOT = { original_tag = ROOT }
+		}
+	}
+
+	option = {
+		name = sierra_leone_news.1.b
+		
+		trigger = {
+			original_tag = ROOT
+		}
+	}
+}
