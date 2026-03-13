@@ -1,0 +1,1384 @@
+# I believe now the only thing that needs doing as of right now is actually doing the win conditions of Iraq, including US defeat if war support drops down to a low enough level.
+focus_tree = {
+	id = iraq_focus
+	country = {
+		factor = 0
+		#modifier = {
+		#	add = 20
+		#	original_tag = IRQ
+		#}
+	}
+	#  POLITICAL FOCUS TREE HERE !!!!
+	continuous_focus_position = {
+		x = 0
+		y = 1400
+	}
+	focus = {
+		id = IRQ_gulf_war_end
+		icon = GFX_goal_Constitution
+		x = 7
+		y = 0
+		cost = 6
+		completion_reward = {
+			add_political_power = 50
+		}
+	}
+	focus = {
+		id = IRQ_Saddam
+		icon = GFX_focus_generic_military_dictatorship
+		relative_position_id = IRQ_gulf_war_end
+		X = 5
+		y = 1
+		cost = 6
+		completion_reward = {
+			IRQ_bop_low_increase_effect = yes
+            add_war_support = 0.05
+		}
+		prerequisite = {
+			focus = IRQ_gulf_war_end
+		}
+		mutually_exclusive = {
+			focus = IRQ_Democratic
+		}
+	}
+	focus = {
+		id = IRQ_Strengthen_Control
+		icon = GFX_focus_RAJ_union_busting
+		cost = 6
+		relative_position_id = IRQ_Saddam
+		x = 2
+		y = 1
+		completion_reward = {
+			IRQ_bop_low_increase_effect = yes
+		}
+		prerequisite = {
+			focus = IRQ_Saddam
+		}
+		
+	}
+    focus = {
+		id = IRQ_umm_alqura_mosque
+		icon = GFX_focus_RAJ_union_busting
+		cost = 6
+		relative_position_id = IRQ_Saddam
+		x = 5
+		y = 1
+		completion_reward = {
+			IRQ_bop_low_increase_effect = yes
+		}
+		prerequisite = {
+			focus = IRQ_Saddam
+		}
+		
+	}
+    focus = {
+		id = IRQ_improve_regional_stability
+		icon = GFX_focus_BRA_rio_protocol
+		cost = 6
+		relative_position_id = IRQ_Strengthen_Control
+		x = -1
+		y = 1
+		completion_reward = {
+			
+		}
+		prerequisite = {
+			focus = IRQ_Strengthen_Control
+		}
+		
+	}
+    focus = {
+		id = IRQ_deals_with_clans
+		icon = GFX_focus_generic_welfare
+		cost = 6
+		relative_position_id = IRQ_Strengthen_Control
+		x = 1
+		y = 1
+		completion_reward = {
+			
+		}
+		prerequisite = {
+			focus = IRQ_Strengthen_Control
+		}
+		
+	}
+    focus = {
+		id = IRQ_iranian_militias
+		icon = GFX_goal_generic_military_sphere
+		cost = 6
+		relative_position_id = IRQ_deals_with_clans
+		x = 1
+		y = 2
+		completion_reward = {
+			IRQ_bop_very_low_decrease_effect = yes
+		}
+		prerequisite = {
+			focus = IRQ_deals_with_clans
+		}
+        prerequisite = {
+            focus = IRQ_handle_the_mek
+        }
+		
+        ai_will_do = {
+			factor = 0
+		}
+	}
+    focus = {
+		id = IRQ_cross_border_smuggling
+		icon = GFX_focus_RAJ_circuvment_demobilization_restrictions
+		cost = 6
+		relative_position_id = IRQ_deals_with_clans
+		x = -1
+		y = 2
+		completion_reward = {
+			
+		}
+		prerequisite = {
+			focus = IRQ_deals_with_clans
+            focus = IRQ_improve_regional_stability
+		}
+		
+	}
+    focus = {
+		id = IRQ_iranian_gambit
+		icon = dangerous_deal
+		cost = 6
+		relative_position_id = IRQ_Saddam
+		x = 12
+		y = 1
+		completion_reward = {
+			IRQ_bop_medium_decrease_effect = yes
+		}
+		prerequisite = {
+			focus = IRQ_Saddam
+		}
+		
+        ai_will_do = {
+			factor = 0
+		}
+	}
+
+    focus = {
+		id = IRQ_release_pows
+		icon = GFX_SOV_bring_old_trotskyists_back_ccp_2d_sov_compatibility
+		cost = 6
+		relative_position_id = IRQ_iranian_gambit
+		x = 1
+		y = 1
+		completion_reward = {
+			
+		}
+		prerequisite = {
+			focus = IRQ_iranian_gambit
+		}
+		
+	}
+    focus = {
+		id = IRQ_rebuild_trade
+		icon = align_to_iran
+		cost = 6
+		relative_position_id = IRQ_iranian_gambit
+		x = -1
+		y = 1
+		completion_reward = {
+			
+		}
+		prerequisite = {
+			focus = IRQ_iranian_gambit
+		}
+		
+	}
+    focus = {
+		id = IRQ_handle_the_mek
+		icon = GFX_focus_ITA_corpo_volontari_della_liberta
+		cost = 6
+		relative_position_id = IRQ_rebuild_trade
+		x = 1
+		y = 1
+		completion_reward = {
+			
+		}
+		prerequisite = {
+			focus = IRQ_rebuild_trade
+		}
+        prerequisite = {
+			focus = IRQ_release_pows
+		}
+		
+	}
+    focus = {
+		id = IRQ_a_new_algiers
+		icon = GFX_SOV_experts_in_camouflage_ccp_2d_sov_compatibility
+		cost = 6
+		relative_position_id = IRQ_handle_the_mek
+		x = 0
+		y = 2
+		completion_reward = {
+			IRQ_bop_medium_decrease_effect = yes
+		}
+		prerequisite = {
+			focus = IRQ_handle_the_mek
+		}
+		
+	}
+    focus = {
+		id = IRQ_offer_technical_assistence
+		icon = GFX_SOV_the_ussr_academy_of_sciences_ccp_2d_sov_compatibility
+		cost = 6
+		relative_position_id = IRQ_a_new_algiers
+		x = 1
+		y = 1
+		completion_reward = {
+			
+		}
+		prerequisite = {
+			focus = IRQ_a_new_algiers
+		}
+		
+	}
+    focus = {
+		id = IRQ_joint_oil_development
+		icon = GFX_focus_PER_nationalize_oil_fields
+		cost = 6
+		relative_position_id = IRQ_a_new_algiers
+		x = -1
+		y = 1
+		completion_reward = {
+			
+		}
+		prerequisite = {
+			focus = IRQ_a_new_algiers
+		}
+		
+	}
+    focus = {
+		id = IRQ_gulf_neutrality_agreement
+		icon = GFX_focus_IRQ_protector_of_the_gulf
+		cost = 6
+		relative_position_id = IRQ_offer_technical_assistence
+		x = -1
+		y = 2
+		completion_reward = {
+			
+		}
+		prerequisite = {
+			focus = IRQ_offer_technical_assistence
+            focus = IRQ_joint_oil_development
+		}
+		mutually_exclusive = {
+            focus = IRQ_vengence
+        }
+	}
+    focus = {
+		id = IRQ_iranian_arms
+		icon = GFX_focus_AFG_scavenging
+		cost = 6
+		relative_position_id = IRQ_gulf_neutrality_agreement
+		x = 0
+		y = 1
+		completion_reward = {
+			
+		}
+		prerequisite = {
+			focus = IRQ_gulf_neutrality_agreement
+		}
+
+	}
+	focus = {
+		id = IRQ_Democratic
+		icon = GFX_focus_generic_court
+		cost = 6
+		relative_position_id = IRQ_gulf_war_end
+		X = -3
+		y = 1
+		prerequisite = {
+			focus = IRQ_gulf_war_end
+		}
+		mutually_exclusive = {
+			focus = IRQ_Saddam
+		}
+		completion_reward = {
+			add_stability = -0.1
+			add_popularity = {
+				ideology = Reactionary
+				popularity = 0.05
+			}
+			add_popularity = {
+				ideology = conservative
+				popularity = 0.05
+			}
+			add_popularity = {
+				ideology = Social_democrat
+				popularity = 0.05
+			}
+			fourth_estate_conservative_increase = yes
+			fourth_estate_reactionary_increase = yes
+			fourth_estate_social_democrat_increase = yes
+            IRQ_bop_low_decrease_effect = yes
+		}
+        ai_will_do = {
+			factor = 0
+		}
+	}
+    focus = {
+		id = IRQ_UN_cooperation
+		icon = align_to_united_nations
+		cost = 6
+		relative_position_id = IRQ_Democratic
+		X = 3
+		y = 1
+		prerequisite = {
+			focus = IRQ_Democratic
+            focus = IRQ_Saddam
+		}
+		completion_reward = {
+            add_war_support = -0.05
+            fourth_estate_social_liberal_increase = yes
+            IRQ_bop_very_low_decrease_effect = yes
+		}
+	}
+    focus = {
+		id = IRQ_french_concessions
+		icon = trade_with_france
+		cost = 6
+		relative_position_id = IRQ_UN_cooperation
+		X = 0
+		y = 1
+		prerequisite = {
+			focus = IRQ_UN_cooperation
+		}
+		completion_reward = {
+            IRQ_bop_medium_decrease_effect = yes
+		}
+        ai_will_do = {
+			factor = 0
+		}
+	}
+    focus = {
+		id = IRQ_handle_the_blocks
+		icon = trade_deal
+		cost = 6
+		relative_position_id = IRQ_UN_cooperation
+		X = -1
+		y = 2
+		prerequisite = {
+			focus = IRQ_UN_cooperation
+		}
+		completion_reward = {
+
+		}
+	}
+    focus = {
+		id = IRQ_release_political_prisoners
+		icon = GFX_focus_RAJ_seven_shackles
+		cost = 6
+		relative_position_id = IRQ_Democratic
+		X = 7
+		y = 2
+		prerequisite = {
+			focus = IRQ_Democratic
+            focus = IRQ_Saddam
+		}
+		completion_reward = {
+            add_war_support = -0.05
+            fourth_estate_social_liberal_increase = yes
+		}
+        ai_will_do = {
+			factor = 0
+		}
+	}
+    focus = {
+		id = IRQ_reform_oil
+		icon = GFX_goal_Oil_Excavation
+		cost = 6
+		relative_position_id = IRQ_release_political_prisoners
+		X = 1
+		y = 1
+		prerequisite = {
+			focus = IRQ_release_political_prisoners
+		}
+		completion_reward = {
+            add_war_support = -0.05
+            fourth_estate_social_liberal_increase = yes
+            country_event = IRQ_focus_events.2
+		}
+	}
+    focus = {
+		id = IRQ_overhaul_security_directorate
+		icon = GFX_focus_generic_secret_service_agency
+		cost = 6
+		relative_position_id = IRQ_release_political_prisoners
+		X = -1
+		y = 1
+		prerequisite = {
+			focus = IRQ_release_political_prisoners
+		}
+		completion_reward = {
+            country_event = IRQ_focus_events.1
+		}
+	}
+    focus = {
+		id = IRQ_kurdish_cooperation
+		icon = GFX_focus_IRQ_kurdistan_united
+		cost = 6
+		relative_position_id = IRQ_overhaul_security_directorate
+		X = -1
+		y = 1
+		prerequisite = {
+			focus = IRQ_overhaul_security_directorate
+		}
+		completion_reward = {
+            IRQ_bop_very_low_decrease_effect = yes
+		}
+	}
+    focus = {
+		id = IRQ_allow_shia_pilgrims
+		icon = GFX_focus_PER_islamic_solidarity
+		cost = 6
+		relative_position_id = IRQ_overhaul_security_directorate
+		X = 1
+		y = 1
+		prerequisite = {
+			focus = IRQ_overhaul_security_directorate
+		}
+		completion_reward = {
+            IRN = { add_opinion_modifier = { target = ROOT modifier = allowed_our_pilgrims } }
+            add_stability = -0.05
+		}
+	}
+    focus = {
+		id = IRQ_sideline_the_family
+		icon = GFX_focus_rom_parties_end
+		cost = 6
+		relative_position_id = IRQ_kurdish_cooperation
+		X = 1
+		y = 1
+		prerequisite = {
+			focus = IRQ_allow_shia_pilgrims
+            focus = IRQ_kurdish_cooperation
+		}
+		completion_reward = {
+		}
+	}
+    focus = {
+		id = IRQ_elections
+		icon = GFX_focus_generic_election
+		cost = 6
+		relative_position_id = IRQ_sideline_the_family
+		X = -1
+		y = 1
+		prerequisite = {
+			focus = IRQ_sideline_the_family
+		}
+		completion_reward = {
+		}
+	}
+    focus = {
+		id = IRQ_democracy_at_last
+		icon = GFX_focus_ARG_defense_and_democracy
+		cost = 6
+		relative_position_id = IRQ_elections
+		X = -3
+		y = 1
+		prerequisite = {
+			focus = IRQ_elections
+		}
+        prerequisite = {
+			focus = IRQ_reforms_for_investments
+		}
+		completion_reward = {
+            add_stability = 0.1
+		}
+	}
+    focus = {
+		id = IRQ_new_era_of_baathism
+		icon = GFX_focus_PER_communist_afghanistan_intervention
+		cost = 6
+		relative_position_id = IRQ_sideline_the_family
+		X = 2
+		y = 1
+		prerequisite = {
+			focus = IRQ_sideline_the_family
+		}
+        mutually_exclusive = {
+            focus = IRQ_once_more_into_the_breach
+        }
+        mutually_exclusive = {
+            focus = IRQ_walking_the_line
+        }
+		completion_reward = {
+            add_ideas = IRQ_baathism_reborn
+		}
+	}
+    focus = {
+		id = IRQ_once_more_into_the_breach
+		icon = GFX_focus_generic_total_war
+		cost = 6
+		relative_position_id = IRQ_sideline_the_family
+		X = 10
+		y = 1
+		prerequisite = {
+			focus = IRQ_cross_border_smuggling
+		}
+        mutually_exclusive = {
+            focus = IRQ_new_era_of_baathism
+        }
+		completion_reward = {
+            add_timed_idea = {
+			idea = IRQ_into_the_fire
+			days = 365
+		}
+		}
+        ai_will_do = {
+			factor = 0
+		}
+	}
+    focus = {
+		id = IRQ_shadow_rearming
+		icon = GFX_focus_CONGO_copper_cartridges
+		cost = 6
+		relative_position_id = IRQ_once_more_into_the_breach
+		X = 0
+		y = 1
+		prerequisite = {
+			focus = IRQ_once_more_into_the_breach
+		}
+		completion_reward = {
+            random_owned_state = {
+                add_extra_state_shared_building_slots = 2
+                add_building_construction = {
+                    type = arms_factory
+                    level = 2
+                    instant_build = yes
+                }
+		    }
+            add_ideas = IRQ_shadow_rearming
+		}
+        ai_will_do = {
+			factor = 0
+		}
+	}
+    focus = {
+		id = IRQ_purge_the_military
+		icon = GFX_focus_hol_war_on_pacifism
+		cost = 6
+		relative_position_id = IRQ_once_more_into_the_breach
+		X = 2
+		y = 1
+		prerequisite = {
+			focus = IRQ_once_more_into_the_breach
+		}
+		completion_reward = {
+            IRQ_bop_medium_increase_effect = yes
+            add_popularity = {
+                ideology = nationalist
+                popularity = 0.05
+            }
+		}
+        ai_will_do = {
+			factor = 0
+		}
+	}
+    focus = {
+		id = IRQ_vengence
+		icon = renounce_treaty2
+		cost = 6
+		relative_position_id = IRQ_purge_the_military
+		X = 0
+		y = 1
+		prerequisite = {
+			focus = IRQ_purge_the_military
+		}
+        prerequisite = {
+			focus = IRQ_shadow_rearming
+		}
+		completion_reward = {
+            IRQ_bop_low_increase_effect = yes
+		}
+        mutually_exclusive = {
+            focus = IRQ_gulf_neutrality_agreement
+        }
+        ai_will_do = {
+			factor = 0
+		}
+	}
+    focus = {
+		id = IRQ_second_gulf_war
+		icon = GFX_focus_SWE_neither_death_nor_dishonor
+		cost = 6
+		relative_position_id = IRQ_vengence
+		X = -2
+		y = 1
+		prerequisite = {
+			focus = IRQ_vengence
+		}
+		completion_reward = {
+		}
+        ai_will_do = {
+			factor = 0
+		}
+	}
+    focus = {
+		id = IRQ_subjigate_kurdistan
+		icon = GFX_focus_PER_clamp_kurdish_dissidence
+		cost = 6
+		relative_position_id = IRQ_vengence
+		X = 0
+		y = 1
+        available = {
+            NOT = {has_completed_focus = IRQ_kurdish_cooperation}
+        }
+		prerequisite = {
+			focus = IRQ_vengence
+		}
+		completion_reward = {
+		}
+        ai_will_do = {
+			factor = 0
+		}
+	}
+    focus = {
+		id = IRQ_successor_of_nebuchadnezzar
+		icon = GFX_focus_spr_torchbearers_of_tomorrow
+		cost = 6
+		relative_position_id = IRQ_subjigate_kurdistan
+		X = -1
+		y = 1
+		prerequisite = {
+			focus = IRQ_subjigate_kurdistan
+            focus = IRQ_second_gulf_war
+		}
+		completion_reward = {
+            
+		}
+        ai_will_do = {
+			factor = 0
+		}
+	}
+    focus = {
+		id = IRQ_new_babylon
+		icon = GFX_goal_generic_defence
+		cost = 6
+		relative_position_id = IRQ_successor_of_nebuchadnezzar
+		X = 1
+		y = 1
+		prerequisite = {
+			focus = IRQ_successor_of_nebuchadnezzar
+		}
+		completion_reward = {
+            
+		}
+        ai_will_do = {
+			factor = 0
+		}
+	}
+    focus = {
+		id = IRQ_defender_of_the_arab_nation
+		icon = GFX_focus_IRQ_rally_the_arab_world
+		cost = 6
+		relative_position_id = IRQ_successor_of_nebuchadnezzar
+		X = -1
+		y = 1
+		prerequisite = {
+			focus = IRQ_successor_of_nebuchadnezzar
+		}
+		completion_reward = {
+            
+		}
+        ai_will_do = {
+			factor = 0
+		}
+	}
+    focus = {
+		id = IRQ_sway_border_tribes
+		icon = GFX_focus_IRQ_approach_tribes_for_support
+		cost = 6
+		relative_position_id = IRQ_once_more_into_the_breach
+		X = -2
+		y = 1
+		prerequisite = {
+			focus = IRQ_once_more_into_the_breach
+            focus = IRQ_walking_the_line
+		}
+		completion_reward = {
+            
+		}
+        ai_will_do = {
+			factor = 0
+		}
+	}
+    focus = {
+		id = IRQ_demand_tribal_uprisings
+		icon = GFX_focus_GER_support_the_proletarian_uprising
+		cost = 6
+		relative_position_id = IRQ_sway_border_tribes
+		X = 0
+		y = 3
+		prerequisite = {
+			focus = IRQ_sway_border_tribes
+		}
+        prerequisite = {
+			focus = IRQ_second_gulf_war
+		}
+		completion_reward = {
+            
+		}
+        ai_will_do = {
+			factor = 0
+		}
+	}
+    focus = {
+		id = IRQ_walking_the_line
+		icon = GFX_focus_SWI_neutrality_on_the_move
+		cost = 6
+		relative_position_id = IRQ_sideline_the_family
+		X = 4
+		y = 1
+		prerequisite = {
+			focus = IRQ_cross_border_smuggling
+		}
+        mutually_exclusive = {
+            focus = IRQ_new_era_of_baathism
+        }
+        mutually_exclusive = {
+            focus = IRQ_once_more_into_the_breach
+        }
+		completion_reward = {
+		}
+	}
+    focus = {
+		id = IRQ_ease_syrian_tensions
+		icon = align_to_syria
+		cost = 6
+		relative_position_id = IRQ_walking_the_line
+		X = -2
+		y = 1
+		prerequisite = {
+			focus = IRQ_walking_the_line
+            focus = IRQ_new_era_of_baathism
+		}
+		completion_reward = {
+		}
+	}
+    focus = {
+		id = IRQ_exile_saddam
+		icon = GFX_focus_SWE_privately_managed_vacation
+		cost = 6
+		relative_position_id = IRQ_walking_the_line
+		X = -4
+		y = 1
+		prerequisite = {
+            focus = IRQ_new_era_of_baathism
+		}
+		completion_reward = {
+		}
+	}
+    focus = {
+		id = IRQ_seize_saddams_property
+		icon = GFX_focus_generic_annex_country_2
+		cost = 6
+		relative_position_id = IRQ_exile_saddam
+		X = -1
+		y = 1
+		prerequisite = {
+            focus = IRQ_exile_saddam
+		}
+		completion_reward = {
+		}
+	}
+    focus = {
+		id = IRQ_recognise_kuwait_properly
+		icon = GFX_focus_generic_surrender
+		cost = 6
+		relative_position_id = IRQ_walking_the_line
+		X = 1
+		y = 1
+		prerequisite = {
+			focus = IRQ_walking_the_line
+            focus = IRQ_new_era_of_baathism
+		}
+		completion_reward = {
+            IRQ_bop_medium_decrease_effect = yes
+            add_popularity = {
+                ideology = nationalist
+                popularity = -0.05
+            }
+		}
+	}
+    focus = {
+		id = IRQ_demilitarise_the_border
+		icon = GFX_focus_generic_university_2
+		cost = 6
+		relative_position_id = IRQ_recognise_kuwait_properly
+		X = 1
+		y = 1
+		prerequisite = {
+			focus = IRQ_recognise_kuwait_properly
+		}
+		completion_reward = {
+		}
+	}
+    focus = {
+		id = IRQ_resolve_gulf_debt
+		icon = GFX_focus_GER_integration_of_puppet_economies
+		cost = 6
+		relative_position_id = IRQ_recognise_kuwait_properly
+		X = 0
+		y = 2
+		prerequisite = {
+			focus = IRQ_recognise_kuwait_properly
+		}
+		completion_reward = {
+		}
+	}
+    focus = {
+		id = IRQ_join_GCC_security_dialogues
+		icon = GFX_goal_generic_national_unity
+		cost = 6
+		relative_position_id = IRQ_resolve_gulf_debt
+		X = 1
+		y = 1
+		prerequisite = {
+			focus = IRQ_resolve_gulf_debt
+		}
+        prerequisite = {
+            focus = IRQ_demilitarise_the_border
+		}
+		completion_reward = {
+		}
+	}
+    focus = {
+		id = IRQ_kirkuk_banias_pipeline
+		icon = oil_production
+		cost = 6
+		relative_position_id = IRQ_ease_syrian_tensions
+		X = -1
+		y = 1
+		prerequisite = {
+			focus = IRQ_ease_syrian_tensions
+		}
+		completion_reward = {
+		}
+	}
+    focus = {
+		id = IRQ_resolve_syrian_border
+		icon = GFX_ISR_Negev_Terraforming
+		cost = 6
+		relative_position_id = IRQ_ease_syrian_tensions
+		X = 1
+		y = 1
+		prerequisite = {
+			focus = IRQ_ease_syrian_tensions
+		}
+		completion_reward = {
+            SYR = { country_event = IRQ_focus_events.3}
+		}
+	}
+    focus = {
+		id = IRQ_joint_syrian_exercises
+		icon = GFX_ISR_Negev_Terraforming
+		cost = 6
+		relative_position_id = IRQ_resolve_syrian_border
+		X = -1
+		y = 1
+		prerequisite = {
+			focus = IRQ_resolve_syrian_border
+		}
+        prerequisite = {
+			focus = IRQ_kirkuk_banias_pipeline
+		}
+		completion_reward = {
+		}
+	}
+    focus = {
+		id = IRQ_allow_foreign_NGOs
+		icon = GFX_SOV_collectivist_propaganda_ccp_2d_sov_compatibility
+		cost = 6
+		relative_position_id = IRQ_Democratic
+		X = 0
+		y = 1
+		prerequisite = {
+			focus = IRQ_Democratic
+		}
+		completion_reward = {
+            add_war_support = -0.05
+            fourth_estate_social_liberal_increase = yes
+		}
+	}
+    focus = {
+		id = IRQ_diminish_the_republican_guard
+		icon = GFX_focus_AUS_raid_military_storages
+		cost = 6
+		relative_position_id = IRQ_allow_foreign_NGOs
+		X = 1
+		y = 1
+		prerequisite = {
+			focus = IRQ_allow_foreign_NGOs
+		}
+		completion_reward = {
+            IRQ_bop_medium_decrease_effect = yes
+		}
+	}
+    focus = {
+		id = IRQ_repurpose_military_industry
+		icon = GFX_SOV_third_five_year_plan_ccp_2d_sov_compatibility
+		cost = 6
+		relative_position_id = IRQ_allow_foreign_NGOs
+		X = -1
+		y = 1
+		prerequisite = {
+			focus = IRQ_allow_foreign_NGOs
+		}
+		completion_reward = {
+            random_owned_state = {
+			add_extra_state_shared_building_slots = 2
+			add_building_construction = {
+				type = industrial_complex
+				level = 2
+				instant_build = yes
+			}
+		}
+        random_owned_state = {
+			add_extra_state_shared_building_slots = 2
+			add_building_construction = {
+				type = industrial_complex
+				level = 2
+				instant_build = yes
+			}
+		}
+		}
+	}
+    focus = {
+		id = IRQ_reforms_for_investments
+		icon = GFX_focus_AUS_lawmaking_leniency
+		cost = 6
+		relative_position_id = IRQ_repurpose_military_industry
+		X = 1
+		y = 2
+		prerequisite = {
+			focus = IRQ_repurpose_military_industry
+		}
+        prerequisite = {
+			focus = IRQ_handle_the_blocks
+		}
+        prerequisite = {
+			focus = IRQ_diminish_the_republican_guard
+		}
+		completion_reward = {
+		}
+	}
+	# INVASION OF IRAQ
+	focus = {
+		id = IRQ_David_vs_Goliath
+		icon = GFX_focus_generic_strike_at_democracy1
+		x = 30
+		y = 0
+		available = {
+			has_defensive_war_with = USA
+		}
+		completion_reward = {
+			291 = {
+				add_building_construction = {
+					type = anti_air_building
+					level = 2
+					instant_build = yes
+				}
+			}
+			add_war_support = 0.05
+		}
+	}
+	focus ={
+		id = IRQ_desperate_resistance
+		icon = GFX_focus_generic_full_social_mobilization
+		cost = 1
+		relative_position_id = IRQ_David_vs_Goliath
+		x = 3
+		y = 1
+		prerequisite = {
+			focus = IRQ_David_vs_Goliath
+		}
+		available = {
+			has_defensive_war_with = USA
+		}
+		completion_reward = {
+			add_ideas = IRQ_desperate_resistance_idea
+		}
+	}
+	focus = {
+		id = IRQ_Defend_Basrah
+		icon = GFX_goal_Bunker_shine
+		cost = 1
+		relative_position_id = IRQ_David_vs_Goliath
+		x = 0
+		y = 1
+		prerequisite = {
+			focus = IRQ_David_vs_Goliath
+		}
+		available = {
+			has_defensive_war_with = USA
+		}
+		completion_reward = {
+			1002 = {
+				add_building_construction = {
+					type = bunker
+					level = 2
+					province = 13314
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = bunker
+					level = 2
+					province = 15984
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = bunker
+					level = 2
+					province = 2089
+					instant_build = yes
+				}
+			}
+		}
+	}
+	# Remember to finish this
+	focus = {
+		id = IRQ_Contest_Air
+		icon = Bomber2_shine
+		cost = 2
+		relative_position_id = IRQ_Defend_Basrah
+		x = 1
+		y = 1
+		prerequisite = {
+			focus = IRQ_Defend_Basrah
+		}
+		available = {
+			has_defensive_war_with = USA
+		}
+		mutually_exclusive = {
+			focus = IRQ_focus_ground
+		}
+		completion_reward = {
+			add_timed_idea = {
+				idea = IRQ_Air
+				days = 70
+			}
+		}
+	}
+	focus = {
+		id = IRQ_focus_ground
+		icon = skull_fortification_shine	
+		cost = 2
+		relative_position_id = IRQ_Contest_Air
+		x = -2
+		prerequisite = {
+			focus = IRQ_Defend_Basrah
+		}
+		available = {
+			has_defensive_war_with = USA
+		}
+		mutually_exclusive = {
+			focus = IRQ_Contest_Air
+		}
+		completion_reward = {
+			add_timed_idea = {
+				idea = IRQ_Ground
+				days = 70
+			}
+		}
+	}
+	focus = {
+		id = IRQ_What_Do
+		icon = x
+		cost = 1
+		relative_position_id = IRQ_David_vs_Goliath
+		y = 3
+		prerequisite = {
+			focus = IRQ_focus_ground
+			focus = IRQ_Contest_Air
+		}
+		completion_reward = {
+			country_event = {id =   IRQ_flavor.10}
+		}
+		prerequisite = {
+			focus = IRQ_focus_ground
+			focus = IRQ_Contest_Air
+		}
+	}
+	focus = {
+		id = IRQ_Attrition
+		icon = GFX_focus_ETH_freedom_at_gunpoint
+		cost = 1
+		relative_position_id = IRQ_What_Do
+		x = -1
+		y = 1
+		available = {
+			has_global_flag = IRQ_attrition_flag
+			has_defensive_war_with = USA
+		}
+		prerequisite = {
+			focus = IRQ_What_Do
+		}
+		mutually_exclusive = {
+			focus = IRQ_counterattack
+		}
+		
+	}
+	# finish this at a later date, im burnt!
+	focus = {
+		id = IRQ_counterattack
+		icon = GFX_Focus_Attack_America
+		cost = 1
+		relative_position_id = IRQ_What_Do
+		x = 1
+		y = 1
+		available = {
+			has_global_flag = IRQ_counterattack_flag
+			has_defensive_war_with = USA
+		}
+		mutually_exclusive = {
+			focus = IRQ_Attrition
+		}
+		prerequisite = {
+			focus = IRQ_What_Do
+		}
+		
+	}
+	focus = {
+		id = IRQ_Buried_Under
+		icon = GFX_goal_generic_secret_weapon
+		cost = 0
+		relative_position_id = IRQ_Attrition
+		x = -1
+		y = 1
+		available = {
+			has_global_flag = IRQ_defeat_flag
+		}
+		prerequisite = {
+			focus = IRQ_David_vs_Goliath
+		}
+		mutually_exclusive = {
+			focus = IRQ_Licking_Wounds
+			focus = IRQ_Saddam_Sail
+		}
+		
+	}
+	focus = {
+		id = IRQ_Licking_Wounds
+		icon = GFX_goal_generic_fortify_city
+		relative_position_id = IRQ_Buried_Under
+		x = 2
+		cost = 0
+		available = {
+			has_global_flag = IRQ_surrender_flag
+		}
+		prerequisite = {
+			focus = IRQ_David_vs_Goliath
+		}
+		mutually_exclusive = {
+			focus = IRQ_Buried_Under
+			focus = IRQ_Saddam_Sail
+		}
+		
+	}
+	focus = {
+		id = IRQ_Saddam_Sail
+		icon = GFX_focus_generic_support_the_left_right
+		cost = 0
+		relative_position_id = IRQ_Licking_Wounds
+		x = 2
+		available = {
+			has_global_flag = IRQ_victory_flag
+		}
+		prerequisite = {
+			focus = IRQ_David_vs_Goliath
+		}
+		mutually_exclusive = {
+			focus = IRQ_Buried_Under
+			focus = IRQ_Licking_Wounds
+		}
+		
+	}
+	#Army branch starts here GFX_focus_FIN_weapon_caches
+	focus = {
+		id = IRQ_Army
+		icon = GFX_focus_SOV_builder_of_the_red_army
+		cost = 6
+		x = -2
+		completion_reward = {
+			add_war_support = 0.1
+			add_command_power = 10
+			army_experience = 5
+			air_experience = 5
+		}
+	}
+	focus = {
+		id = IRQ_Grand
+		icon = GFX_focus_SOV_the_glory_of_the_red_army_alternative
+		cost = 6
+		relative_position_id = IRQ_Army
+		x = -2
+		y = 1
+		prerequisite = {
+			focus = IRQ_Army
+		}
+		mutually_exclusive = {
+			focus = IRQ_Mobile
+		}
+		completion_reward = {
+			army_experience = 5
+			add_doctrine_cost_reduction = {
+				cost_reduction = 0.20
+				category = cat_mass_assault
+			}
+			add_doctrine_cost_reduction = {
+				cost_reduction = 0.20
+				category = cat_grand_battle_plan
+			}
+		}
+	}
+	focus = {
+		id = IRQ_Mobile
+		icon = offensive_army_shine
+		cost = 6
+		relative_position_id = IRQ_Army
+		x = 2
+		y = 1
+		prerequisite = {
+			focus = IRQ_Army
+		}
+		mutually_exclusive = {
+			focus = IRQ_Grand
+		}
+		completion_reward = {
+			army_experience = 5
+			add_doctrine_cost_reduction = {
+				cost_reduction = 0.20
+				category = cat_mobile_warfare
+			}
+			add_doctrine_cost_reduction = {
+				cost_reduction = 0.20
+				category = cat_superior_firepower
+			}
+		}
+	}
+	focus = {
+		id = IRQ_Mobile2
+		icon = GFX_focus_generic_tankette
+		cost = 5
+		x = 1
+		y = 1
+		prerequisite = {
+			focus = IRQ_Mobile
+		}
+		mutually_exclusive = {
+			focus = IRQ_MobileFire
+		}
+		relative_position_id = IRQ_Mobile
+		completion_reward = { 
+			add_ideas = IRQ_mobile2_idea
+		}
+	}
+	focus = {
+		id = IRQ_MobileFire
+		icon = GFX_goal_generic_army_artillery2
+		cost = 5
+		x = -1
+		y = 1
+		prerequisite = {
+			focus = IRQ_Mobile
+		}
+		mutually_exclusive = {
+			focus = IRQ_Mobile2
+		}
+		relative_position_id = IRQ_Mobile
+		completion_reward = {
+			add_ideas = IRQ_mobilefire_idea
+		 }
+	}
+	focus = {
+		id = IRQ_GrandMass
+		icon = GFX_goal_fortify_the_westwall
+		cost = 5
+		relative_position_id = IRQ_Grand
+		y = 1
+		x = -1
+		prerequisite = {
+			focus = IRQ_Grand
+		}
+		mutually_exclusive = {
+			focus = IRQ_Mass2
+		}
+		completion_reward = { 
+			add_ideas = IRQ_grandmass_idea
+		}
+	}
+	focus = {
+		id = IRQ_Mass2
+		icon = GFX_focus_generic_full_social_mobilization
+		cost = 5
+		relative_position_id = IRQ_Grand
+		y = 1
+		x = 1
+		prerequisite = {
+			focus = IRQ_Grand
+		}
+		mutually_exclusive = {
+			focus = IRQ_GrandMass
+		}
+		completion_reward = {
+			add_ideas = IRQ_mass_idea
+		}
+	}
+	focus = {
+		id = IRQ_research
+		icon = GFX_goal_generic_scientific_exchange
+		cost = 6
+		relative_position_id = IRQ_Army
+		y = 3
+		prerequisite = {
+			focus = IRQ_Mass2 focus = IRQ_GrandMass focus = IRQ_MobileFire focus = IRQ_Mobile2
+		}
+		completion_reward = {
+			add_research_slot = 1
+		}
+	}
+	focus = {
+		id = IRQ_corruption
+		icon = GFX_focus_mex_privatisation
+		cost = 20
+		relative_position_id = IRQ_research
+		y = 1
+		bypass = {
+			NOT = {has_idea = mobilization_service_time_corrupt}
+		}
+		available = {
+			has_idea = mobilization_service_time_corrupt
+		}
+		prerequisite = {
+			focus = IRQ_research
+		}
+		completion_reward = { 
+			swap_ideas = {
+				remove_idea = mobilization_service_time_corrupt
+				add_idea = mobilization_service_time_levy
+			}
+		}
+	}
+	focus = {
+		id = IRQ_Strike_Kurdistan
+		icon = GFX_goal_generic_occupy_states_ongoing_war
+		cost = 2
+		relative_position_id = IRQ_David_vs_Goliath
+		x = 5
+		y = 1
+		
+	}
+	focus = {
+		id = IRQ_Strike_Kuwait
+		icon = GFX_goal_generic_occupy_states_ongoing_war
+		cost = 2
+		relative_position_id = IRQ_Strike_Kurdistan
+		x = 2
+		y = 0
+		
+	}
+}
