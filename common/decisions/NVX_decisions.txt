@@ -86,7 +86,102 @@ NVX_pulling_the_strings_cat = {
 		}
 	}
 }
-	
+
+NVX_coup_decisions_cat = {
+	NVX_overthrow_government = {
+		available = {
+			has_country_flag = NVX_chosen_opposition
+			OR = {
+				AND = {
+					has_stability < 0.6
+					#30%
+				}
+				#50%
+			}
+			
+		}
+
+		fire_only_once = yes
+		
+		cost = 150
+		days_remove = 90
+		modifier = {
+			stability_weekly = -0.01
+		}
+		remove_effect = {
+			#coup
+		}
+	}
+	NVX_military_coup = {
+		available = {
+			has_stability < 0.75
+			has_country_flag = NVX_chosen_opposition
+		}
+
+		fire_only_once = yes
+		
+		cost = 100
+		days_remove = 25
+		modifier = {
+			political_power_gain = -0.1
+		}
+		remove_effect = {
+			#military takes control, chooses outcome
+			#higher risk of civil war
+		}
+	}
+	NVX_street_protests = {
+		available = {
+			has_country_flag = NVX_chosen_opposition
+		}
+
+		fire_only_once = no
+		
+		cost = 20
+		days_remove = 25
+		modifier = {
+			consumer_goods_factor = 0.1
+			drift_defence_factor = -0.8
+		}
+		remove_effect = {
+			add_stability = -0.05
+		}
+	}
+	NVX_economy_strikes = {
+		available = {
+			has_country_flag = NVX_chosen_opposition
+		}
+
+		fire_only_once = no
+		
+		cost = 30
+		days_remove = 25
+		complete_effect = {
+			add_stability = -0.05
+		}
+		modifier = {
+			consumer_goods_factor = 0.4
+			drift_defence_factor = -0.2
+			research_speed_factor = -0.1
+		}
+	}
+	NVX_choose_opposition_group = {
+		available = {
+		}
+		visible = {
+			NOT = {has_country_flag = NVX_chosen_opposition}
+		}
+
+		fire_only_once = no
+		
+		cost = 1
+		complete_effect = {
+			#event to choose opposition
+			custom_effect_tooltip = NVX_choose_opposition_group_tt
+		}
+	}
+}
+
 political_actions = {
 	
 	NVX_one_party_election = {
