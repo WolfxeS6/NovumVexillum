@@ -346,13 +346,69 @@ country_event = {
 		ai_chance = {
 			factor = 30	
 			modifier = {
-					add = -30
-					FROM = {
-						is_ai = no
-					}
-				}			
+				add = -30
+				FROM = {
+					is_ai = no
+				}
+			}			
 		}
-		
+	}
+}
+
+country_event = {
+	id = miscFlavor.8
+	title = miscFlavor.8.t
+	desc = miscFlavor.8.d
+	picture = GFX_report_event_kumba_iala
+	is_triggered_only = yes
+	
+	option = {
+		name = miscFlavor.8.a
+
+		set_politics = {
+			ruling_party = reactionary
+			last_election = "2001.1.16"
+			election_frequency = 48
+			elections_allowed = yes
+		}
+	}
+}
+
+country_event = {
+	id = miscFlavor.9
+	title = miscFlavor.9.t
+	desc = miscFlavor.9.d
+	picture = GFX_report_event_abdoulaye_wade
+	is_triggered_only = yes
+	
+	option = {
+		name = miscFlavor.9.a
+
+		set_politics = {
+			ruling_party = conservative
+			last_election = "2000.19.2"
+			election_frequency = 84 #Wow
+			elections_allowed = yes
+		}
+	}
+}
+
+country_event = {
+	id = miscFlavor.9
+	title = miscFlavor.9.t
+	desc = miscFlavor.9.d
+
+	trigger = {
+		original_tag = SOV
+		date > 2012.01.01
 	}
 
+	hidden = yes
+	
+	immediate = {
+		set_country_leader_portrait = {
+			ideology = reactionary
+			portrait = "gfx/leaders/SOV/Vladimir_Putin2.dds"
+		}
+	}
 }

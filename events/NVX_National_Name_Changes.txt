@@ -443,3 +443,24 @@ country_event = {
 		drop_cosmetic_tag = yes
 	}
 }
+
+country_event = {
+	id = nationalnamechange.10
+	hidden = yes
+	#fire_only_once = yes
+	
+	trigger = {
+		tag = BAS
+		country_exists = BBA
+		NOT = { has_global_flag = BAS_became_antigua }
+	}
+
+	mean_time_to_happen = { hours = 1 }
+
+	hidden = yes
+
+	immediate = {
+		set_cosmetic_tag = BAS_antigua
+		set_global_flag = BAS_became_antigua
+	}
+}
