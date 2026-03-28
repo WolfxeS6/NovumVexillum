@@ -1,0 +1,334 @@
+add_namespace = colombia
+add_namespace = colombia_news
+
+#End of Civil War - Colombia
+country_event = {
+	id = colombia.1
+	title = colombia.1.t
+	desc = colombia.1.d
+	picture = GFX_report_event_colombia_war_end
+
+	trigger = {
+		original_tag = COL
+		NOT = {
+			country_exists = FAR
+			country_exists = ELN
+		}
+		has_war = no
+	}
+
+	fire_only_once = yes
+	
+	option = {
+		name = colombia.1.a
+
+		add_political_power = 150
+		add_stability = 0.1
+
+		hidden_effect = {
+			910 = {
+				remove_core_of = FAR
+			}
+			1219 = {
+				remove_core_of = ELN
+			}
+			news_event = {
+				id = colombia_news.1
+				days = 1
+			}
+		}
+
+		ai_chance = {
+			factor = 50
+		}
+	}
+}
+
+#End of Civil War - FARC
+country_event = {
+	id = colombia.2
+	title = colombia.2.t
+	desc = colombia.2.d
+	picture = GFX_report_event_colombia_farc
+
+	trigger = {
+		original_tag = FAR
+		NOT = {
+			country_exists = COL
+			country_exists = ELN
+		}
+		has_war = no
+	}
+
+	fire_only_once = yes
+	
+	option = {
+		name = colombia.2.a
+
+		add_political_power = 150
+		add_stability = 0.1
+		
+		hidden_effect = {
+			every_state = {
+				limit = {
+					is_core_of = COL
+				}
+				add_core_of = FAR
+				remove_core_of = COL
+				remove_core_of = ELN
+			}
+			news_event = {
+				id = colombia_news.2
+				days = 1
+			}
+			remove_ideas = COL_FARC_idea
+			set_cosmetic_tag = COL
+			set_capital = {
+				state = 306
+				remember_old_capital = no
+			}
+			COL = {
+				set_nationality = {
+					target_country = FAR
+					character = COL_pedro_rubiano_saenz
+				}
+				set_nationality = {
+					target_country = FAR
+					character = COL_alfredo_devia
+				}
+				set_nationality = {
+					target_country = FAR
+					character = COL_carlos_castano_gil
+				}
+				set_nationality = {
+					target_country = FAR
+					character = COL_claudia_echavarria
+				}
+				set_nationality = {
+					target_country = FAR
+					character = COL_alvaro_uribe
+				}
+				set_nationality = {
+					target_country = FAR
+					character = COL_andres_pastrana
+				}
+				set_nationality = {
+					target_country = FAR
+					character = COL_juan_manuel_santos
+				}
+				set_nationality = {
+					target_country = FAR
+					character = COL_horacio_serpa
+				}
+				set_nationality = {
+					target_country = FAR
+					character = COL_carlos_gaviria_diaz
+				}
+				set_nationality = {
+					target_country = FAR
+					character = COL_antanas_mockus
+				}
+				set_nationality = {
+					target_country = FAR
+					character = COL_luis_eduardo_garzon
+				}
+				promote_character = COL_pedro_rubiano_saenz
+				promote_character = COL_alfredo_devia
+				promote_character = COL_carlos_castano_gil
+				promote_character = COL_claudia_echavarria
+				promote_character = COL_alvaro_uribe
+				promote_character = COL_andres_pastrana
+				promote_character = COL_juan_manuel_santos
+				promote_character = COL_horacio_serpa
+				promote_character = COL_carlos_gaviria_diaz
+				promote_character = COL_antanas_mockus
+				promote_character = COL_luis_eduardo_garzon
+			}	
+		}
+
+		ai_chance = {
+			factor = 50
+		}
+	}
+}
+
+#End of Civil War - ELN
+country_event = {
+	id = colombia.3
+	title = colombia.3.t
+	desc = colombia.3.d
+	picture = GFX_report_event_colombia_eln
+
+	trigger = {
+		original_tag = ELN
+		NOT = {
+			country_exists = COL
+			country_exists = FAR
+		}
+		has_war = no
+	}
+
+	fire_only_once = yes
+	
+	option = {
+		name = colombia.3.a
+
+		add_political_power = 150
+		add_stability = 0.1
+		
+		hidden_effect = {
+			every_state = {
+				limit = {
+					is_core_of = COL
+				}
+				add_core_of = ELN
+				remove_core_of = COL
+				remove_core_of = FAR
+			}
+			news_event = {
+				id = colombia_news.3
+				days = 1
+			}
+			remove_ideas = COL_ELN_idea
+			set_cosmetic_tag = COL
+			set_capital = {
+				state = 306
+				remember_old_capital = no
+			}
+			COL = {
+				set_nationality = {
+					target_country = ELN
+					character = COL_pedro_rubiano_saenz
+				}
+				set_nationality = {
+					target_country = ELN
+					character = COL_alfredo_devia
+				}
+				set_nationality = {
+					target_country = ELN
+					character = COL_carlos_castano_gil
+				}
+				set_nationality = {
+					target_country = ELN
+					character = COL_claudia_echavarria
+				}
+				set_nationality = {
+					target_country = ELN
+					character = COL_alvaro_uribe
+				}
+				set_nationality = {
+					target_country = ELN
+					character = COL_andres_pastrana
+				}
+				set_nationality = {
+					target_country = ELN
+					character = COL_juan_manuel_santos
+				}
+				set_nationality = {
+					target_country = ELN
+					character = COL_horacio_serpa
+				}
+				set_nationality = {
+					target_country = ELN
+					character = COL_carlos_gaviria_diaz
+				}
+				set_nationality = {
+					target_country = ELN
+					character = COL_antanas_mockus
+				}
+				set_nationality = {
+					target_country = ELN
+					character = COL_luis_eduardo_garzon
+				}
+				promote_character = COL_pedro_rubiano_saenz
+				promote_character = COL_alfredo_devia
+				promote_character = COL_carlos_castano_gil
+				promote_character = COL_claudia_echavarria
+				promote_character = COL_alvaro_uribe
+				promote_character = COL_andres_pastrana
+				promote_character = COL_juan_manuel_santos
+				promote_character = COL_horacio_serpa
+				promote_character = COL_carlos_gaviria_diaz
+				promote_character = COL_antanas_mockus
+				promote_character = COL_luis_eduardo_garzon
+			}
+		}
+
+		ai_chance = {
+			factor = 50
+		}
+	}
+}
+
+country_event = {
+	id = colombia.4
+	title = colombia.4.t
+	desc = colombia.4.d
+	picture = GFX_report_event_colombia_eln_farc
+
+	trigger = {
+		original_tag = ELN
+		NOT = {
+			country_exists = COL
+		}
+		country_exists = FAR
+		has_war = no
+	}
+
+	fire_only_once = yes
+	
+	option = {
+		name = colombia.4.a
+
+		declare_war_on = {
+			target = FAR
+			type = civil_war
+		}
+
+		ai_chance = {
+			factor = 50
+		}
+	}
+}
+
+news_event = {
+	id = colombia_news.1
+	title = colombia_news.1.t
+	desc = colombia_news.1.d
+	picture = GFX_news_event_colombian_civil_war
+
+	major = yes
+	is_triggered_only = yes
+	
+	option = {
+		name = colombia_news.1.a
+	}
+}
+
+news_event = {
+	id = colombia_news.2
+	title = colombia_news.2.t
+	desc = colombia_news.2.d
+	picture = GFX_news_event_colombian_civil_war_farc
+
+	major = yes
+	is_triggered_only = yes
+	
+	option = {
+		name = colombia_news.2.a
+	}
+}
+
+news_event = {
+	id = colombia_news.3
+	title = colombia_news.3.t
+	desc = colombia_news.3.d
+	picture = GFX_news_event_colombian_civil_war_eln
+
+	major = yes
+	is_triggered_only = yes
+	
+	option = {
+		name = colombia_news.3.a
+	}
+}

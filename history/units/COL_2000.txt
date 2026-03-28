@@ -1,364 +1,272 @@
 ﻿division_template = {
-	name = "Infantry Brigade"
+	name = "Brigada de Infantería"
+	division_names_group = SPAN_INFB_01
 	
 	regiments = {
 		motorized = { x = 0 y = 0 }
 		motorized = { x = 0 y = 1 }
 		motorized = { x = 0 y = 2 }
+		motorized = { x = 1 y = 0 }
+		motorized = { x = 1 y = 1 }
 	}
 	support = {
 		engineer = { x = 0 y = 0 }
 		artillery = { x = 0 y = 1 }
+		mot_recon = { x = 0 y = 2 }
 	}
 }
 division_template = {
-	name = "Jungle Brigade"
+	name = "Brigada Mecanizada"
+	division_names_group = SPAN_INFB_01
+	
+	regiments = {
+		light_mechanized = { x = 0 y = 0 }
+		light_mechanized = { x = 0 y = 1 }
+		light_mechanized = { x = 0 y = 2 }
+		motorized = { x = 1 y = 0 }
+		motorized = { x = 1 y = 1 }
+	}
+	support = {
+		engineer = { x = 0 y = 0 }
+		artillery = { x = 0 y = 1 }
+		mot_recon = { x = 0 y = 2 }
+	}
+}
+division_template = {
+	name = "Brigada de Contraguerrillas"
+	division_names_group = SPAN_INFB_01
+	
+	regiments = {
+		rangers = { x = 0 y = 0 }
+		rangers = { x = 0 y = 1 }
+		rangers = { x = 1 y = 0 }
+		rangers = { x = 1 y = 1 }
+	}
+	support = {
+		engineer = { x = 0 y = 0 }
+		recon = { x = 0 y = 1 }
+	}
+}
+division_template = {
+	name = "Brigada de Jungla"
+	division_names_group = SPAN_INFB_01
 	
 	regiments = {
 		infantry = { x = 0 y = 0 }
 		infantry = { x = 0 y = 1 }
-		infantry = { x = 0 y = 2 }
-		infantry = { x = 0 y = 3 }
+		infantry = { x = 1 y = 0 }
+		infantry = { x = 1 y = 0 }
 	}
 	support = {
 		engineer = { x = 0 y = 0 }
-		artillery = { x = 0 y = 1 }
+		recon = { x = 0 y = 1 }
 	}
 }
 division_template = {
-	name = "Mobile Brigade"
-	
-	regiments = {
-		motorized = { x = 0 y = 0 }
-		motorized = { x = 0 y = 1 }
-		motorized = { x = 0 y = 2 }
-	}
-	support = {
-		engineer = { x = 0 y = 0 }
-		artillery = { x = 0 y = 1 }
-	}
-	
-	priority = 0
-}
-
-division_template = {
-	name = "Mechanized Brigade"
-	
-	regiments = {
-		motorized = { x = 0 y = 0 }
-		motorized = { x = 0 y = 1 }
-		light_mechanized = { x = 0 y = 2 }
-	}
-	support = {
-		engineer = { x = 0 y = 0 }
-		artillery = { x = 0 y = 1 }
-		light_tank_recon = { x = 0 y = 2 }
-	}
-}
-division_template = {
-	name = "Paratrooper Brigade"
+	name = "Brigada de Despliegue Rápido"
+	division_names_group = SPAN_INFB_01
 	
 	regiments = {
 		paratrooper = { x = 0 y = 0 }
 		paratrooper = { x = 0 y = 1 }
+		paratrooper = { x = 0 y = 2 }
 	}
 	support = {
 		engineer = { x = 0 y = 0 }
+		recon = { x = 0 y = 1 }
 	}
-	
-	priority = 2
-}
-division_template = {
-	name = "Marine Brigade"
-	
-	regiments = {
-		marine = { x = 0 y = 0 }
-		marine = { x = 0 y = 1 }
-		marine = { x = 0 y = 2 }
-	}
-	support = {
-		engineer = { x = 0 y = 0 }
-		field_hospital = { x = 0 y = 1 }
-	}
-	
-	priority = 2
 }
 
 units = {
-
 	division = {
-		name = "Colombian Marines"
-		location = 8056
-		division_template = "Marine Brigade"
+		division_name = {
+			is_name_ordered = yes
+			name_order = 1
+		}
+		location = 7993
+		division_template = "Brigada de Infantería"
 		start_experience_factor = 0.3
 	}
-
 	division = {
-		name = "1st Mobile Brigade"
+		division_name = {
+			is_name_ordered = yes
+			name_order = 2
+		}
+		location = 16049
+		division_template = "Brigada Mecanizada"
+		start_experience_factor = 0.3
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 3
+		}
+		location = 16082
+		division_template = "Brigada de Infantería"
+		start_experience_factor = 0.3
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 4
+		}
+		location = 2023
+		division_template = "Brigada Mecanizada"
+		start_experience_factor = 0.3
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 5
+		}
+		location = 16076
+		division_template = "Brigada de Infantería"
+		start_experience_factor = 0.3
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 6
+		}
+		location = 16073
+		division_template = "Brigada de Contraguerrillas"
+		start_experience_factor = 0.3
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 7
+		}
+		location = 16073
+		division_template = "Brigada de Despliegue Rápido"
+		start_experience_factor = 0.3
+	}
+	division = {
+		division_name = {
+			is_name_ordered = yes
+			name_order = 13
+		}
 		location = 10747
-		division_template = "Mobile Brigade"
+		division_template = "Brigada Mecanizada"
 		start_experience_factor = 0.3
 	}
-
 	division = {
-		name = "2nd Mobile Brigade"
-		location = 10747
-		division_template = "Mobile Brigade"
+		division_name = {
+			is_name_ordered = yes
+			name_order = 14
+		}
+		location = 16074
+		division_template = "Brigada de Contraguerrillas"
 		start_experience_factor = 0.3
 	}
-
 	division = {
-		name = "3rd Mobile Brigade"
-		location = 10747
-		division_template = "Mobile Brigade"
-		start_experience_factor = 0.3
-	}
-
-	division = {
-		name = "7th Mobile Brigade"
-		location = 10747
-		division_template = "Mobile Brigade"
-		start_experience_factor = 0.3
-	}
-
-	division = {
-		name = "10th Mobile Brigade"
-		location = 10747
-		division_template = "Mobile Brigade"
-		start_experience_factor = 0.3
-	}
-	
-	division = {
-		name = "2nd Mechanized Brigade"
-		location = 12790
-		division_template = "Mechanized Brigade"
-		start_experience_factor = 0.3
-	}
-	
-	division = {
-		name = "5th Brigade"
-		location = 12845
-		division_template = "Infantry Brigade"
-		start_experience_factor = 0.3
-	}
-	
-	division = {
-		name = "23rd Mobile Brigade"
-		location = 12845
-		division_template = "Mobile Brigade"
-		start_experience_factor = 0.3
-	}
-	
-	division = {
-		name = "30th Brigade"
-		location = 12845
-		division_template = "Infantry Brigade"
-		start_experience_factor = 0.3
-	}
-	
-	division = {
-		name = "3rd Brigade"
+		division_name = {
+			is_name_ordered = yes
+			name_order = 15
+		}
 		location = 10494
-		division_template = "Infantry Brigade"
+		division_template = "Brigada de Jungla"
 		start_experience_factor = 0.3
 	}
-	
 	division = {
-		name = "8th Brigade"
-		location = 10494
-		division_template = "Infantry Brigade"
+		division_name = {
+			is_name_ordered = yes
+			name_order = 16
+		}
+		location = 1887
+		division_template = "Brigada de Jungla"
 		start_experience_factor = 0.3
 	}
-	
 	division = {
-		name = "23rd Brigade"
-		location = 10494
-		division_template = "Infantry Brigade"
+		division_name = {
+			is_name_ordered = yes
+			name_order = 17
+		}
+		location = 13237
+		division_template = "Brigada de Contraguerrillas"
 		start_experience_factor = 0.3
 	}
-	
 	division = {
-		name = "29th Brigade"
-		location = 10494
-		division_template = "Infantry Brigade"
+		division_name = {
+			is_name_ordered = yes
+			name_order = 18
+		}
+		location = 16063
+		division_template = "Brigada de Contraguerrillas"
 		start_experience_factor = 0.3
 	}
-	
 	division = {
-		name = "7th Brigade"
-		location = 5026
-		division_template = "Infantry Brigade"
+		division_name = {
+			is_name_ordered = yes
+			name_order = 22
+		}
+		location = 16055
+		division_template = "Brigada de Jungla"
 		start_experience_factor = 0.3
 	}
-	
 	division = {
-		name = "22nd Brigade"
-		location = 5026
-		division_template = "Infantry Brigade"
+		division_name = {
+			is_name_ordered = yes
+			name_order = 23
+		}
+		location = 16079
+		division_template = "Brigada de Infantería"
 		start_experience_factor = 0.3
 	}
-	
 	division = {
-		name = "31st Jungle Brigade"
-		location = 5026
-		division_template = "Jungle Brigade"
+		division_name = {
+			is_name_ordered = yes
+			name_order = 26
+		}
+		location = 16065
+		division_template = "Brigada de Jungla"
 		start_experience_factor = 0.3
 	}
-	
 	division = {
-		name = "32nd Jungle Brigade"
-		location = 5026
-		division_template = "Jungle Brigade"
+		division_name = {
+			is_name_ordered = yes
+			name_order = 27
+		}
+		location = 16079
+		division_template = "Brigada de Jungla"
 		start_experience_factor = 0.3
 	}
-	
 	division = {
-		name = "33rd Jungle Brigade"
-		location = 5026
-		division_template = "Jungle Brigade"
+		division_name = {
+			is_name_ordered = yes
+			name_order = 28
+		}
+		location = 13235
+		division_template = "Brigada de Jungla"
 		start_experience_factor = 0.3
 	}
-	
 	division = {
-		name = "1st Brigade"
-		location = 10747
-		division_template = "Infantry Brigade"
+		division_name = {
+			is_name_ordered = yes
+			name_order = 29
+		}
+		location = 7936
+		division_template = "Brigada de Contraguerrillas"
 		start_experience_factor = 0.3
 	}
-	
 	division = {
-		name = "6th Brigade"
-		location = 10747
-		division_template = "Infantry Brigade"
+		division_name = {
+			is_name_ordered = yes
+			name_order = 30
+		}
+		location = 16077
+		division_template = "Brigada Mecanizada"
 		start_experience_factor = 0.3
 	}
-	
 	division = {
-		name = "8th Mobile Brigade"
-		location = 10747
-		division_template = "Mobile Brigade"
+		division_name = {
+			is_name_ordered = yes
+			name_order = 31
+		}
+		location = 10792
+		division_template = "Brigada de Jungla"
 		start_experience_factor = 0.3
 	}
-	
-	division = {
-		name = "9th Brigade"
-		location = 10747
-		division_template = "Infantry Brigade"
-		start_experience_factor = 0.3
-	}
-	
-	division = {
-		name = "11th Brigade"
-		location = 10747
-		division_template = "Infantry Brigade"
-		start_experience_factor = 0.3
-	}
-	
-	division = {
-		name = "12th Brigade"
-		location = 2007
-		division_template = "Infantry Brigade"
-		start_experience_factor = 0.3
-	}
-	
-	division = {
-		name = "13th Mobile Brigade"
-		location = 2007
-		division_template = "Mobile Brigade"
-		start_experience_factor = 0.3
-	}
-	
-	division = {
-		name = "26th Jungle Brigade"
-		location = 2007
-		division_template = "Jungle Brigade"
-		start_experience_factor = 0.3
-	}
-	
-	division = {
-		name = "27th Jungle Brigade"
-		location = 2007
-		division_template = "Jungle Brigade"
-		start_experience_factor = 0.3
-	}
-	
-	division = {
-		name = "4th Brigade"
-		location = 2023
-		division_template = "Infantry Brigade"
-		start_experience_factor = 0.3
-	}
-	
-	division = {
-		name = "11th Brigade"
-		location = 2023
-		division_template = "Infantry Brigade"
-		start_experience_factor = 0.3
-	}
-	
-	division = {
-		name = "14th Brigade"
-		location = 2023
-		division_template = "Infantry Brigade"
-		start_experience_factor = 0.3
-	}
-	
-	division = {
-		name = "15th Brigade"
-		location = 2023
-		division_template = "Infantry Brigade"
-		start_experience_factor = 0.3
-	}
-	
-	division = {
-		name = "16th Brigade"
-		location = 2023
-		division_template = "Infantry Brigade"
-		start_experience_factor = 0.3
-	}
-	
-	division = {
-		name = "17th Brigade"
-		location = 2023
-		division_template = "Infantry Brigade"
-		start_experience_factor = 0.3
-	}
-	
-	division = {
-		name = "18th Brigade"
-		location = 2023
-		division_template = "Infantry Brigade"
-		start_experience_factor = 0.3
-	}
-	
-	division = {
-		name = "11th Mobile Brigade"
-		location = 2023
-		division_template = "Mobile Brigade"
-		start_experience_factor = 0.3
-	}
-	
-	division = {
-		name = "11th Mobile Brigade"
-		location = 2023
-		division_template = "Mobile Brigade"
-		start_experience_factor = 0.3
-	}
-	
-	division = {
-		name = "24th Mobile Brigade"
-		location = 2023
-		division_template = "Mobile Brigade"
-		start_experience_factor = 0.3
-	}
-	
-	division = {
-		name = "25th Mobile Brigade"
-		location = 2023
-		division_template = "Mobile Brigade"
-		start_experience_factor = 0.3
-	}
-
 }
 
 
