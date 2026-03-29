@@ -3,10 +3,10 @@ focus_tree = {
 	id = iraq_focus
 	country = {
 		factor = 0
-		#modifier = {
-		#	add = 20
-		#	original_tag = IRQ
-		#}
+		modifier = {
+			add = 20
+			original_tag = IRQ
+		}
 	}
 	#  POLITICAL FOCUS TREE HERE !!!!
 	continuous_focus_position = {
@@ -32,7 +32,9 @@ focus_tree = {
 		cost = 6
 		completion_reward = {
 			IRQ_bop_low_increase_effect = yes
-            add_war_support = 0.05
+            IRQ_saddam_hussein={
+				add_country_leader_trait = IRQ_father_leader
+			}
 		}
 		prerequisite = {
 			focus = IRQ_gulf_war_end
@@ -58,7 +60,7 @@ focus_tree = {
 	}
     focus = {
 		id = IRQ_umm_alqura_mosque
-		icon = GFX_focus_RAJ_union_busting
+		icon = GFX_goal_generic_construction
 		cost = 6
 		relative_position_id = IRQ_Saddam
 		x = 5
@@ -165,7 +167,7 @@ focus_tree = {
 		x = 1
 		y = 1
 		completion_reward = {
-			
+			PER = {country_event = IRQ_focus_events.7}
 		}
 		prerequisite = {
 			focus = IRQ_iranian_gambit
@@ -214,6 +216,7 @@ focus_tree = {
 		y = 2
 		completion_reward = {
 			IRQ_bop_medium_decrease_effect = yes
+			PER = {country_event = IRQ_focus_events.8}
 		}
 		prerequisite = {
 			focus = IRQ_handle_the_mek
@@ -258,7 +261,7 @@ focus_tree = {
 		x = -1
 		y = 2
 		completion_reward = {
-			
+			PER = {country_event = IRQ_focus_events.5}
 		}
 		prerequisite = {
 			focus = IRQ_offer_technical_assistence
@@ -593,6 +596,9 @@ focus_tree = {
 		}
 		completion_reward = {
             IRQ_bop_low_increase_effect = yes
+			IRQ_saddam_hussein={
+				add_country_leader_trait = IRQ_sword_of_arabs
+			}
 		}
         mutually_exclusive = {
             focus = IRQ_gulf_neutrality_agreement
@@ -612,6 +618,10 @@ focus_tree = {
 			focus = IRQ_vengence
 		}
 		completion_reward = {
+			create_wargoal = {
+				type = annex_everything
+				target = KUW
+			}
 		}
         ai_will_do = {
 			factor = 0
@@ -627,10 +637,14 @@ focus_tree = {
         available = {
             NOT = {has_completed_focus = IRQ_kurdish_cooperation}
         }
+		bypass = {KUR = {exists = no}}
 		prerequisite = {
 			focus = IRQ_vengence
 		}
 		completion_reward = {
+			KUR = {
+				country_event = IRQ_focus_events.4
+			}
 		}
         ai_will_do = {
 			factor = 0
@@ -648,7 +662,9 @@ focus_tree = {
             focus = IRQ_second_gulf_war
 		}
 		completion_reward = {
-            
+            IRQ_saddam_hussein={
+				add_country_leader_trait = IRQ_the_successor_of_nebuchadnezzar
+			}
 		}
         ai_will_do = {
 			factor = 0
@@ -682,7 +698,9 @@ focus_tree = {
 			focus = IRQ_successor_of_nebuchadnezzar
 		}
 		completion_reward = {
-            
+            IRQ_saddam_hussein={
+				add_country_leader_trait = IRQ_sword_of_arabs
+			}
 		}
         ai_will_do = {
 			factor = 0
@@ -887,6 +905,10 @@ focus_tree = {
 			focus = IRQ_kirkuk_banias_pipeline
 		}
 		completion_reward = {
+			army_experience = 50
+			SYR = {
+				army_experience = 25
+			}
 		}
 	}
     focus = {
@@ -1354,23 +1376,5 @@ focus_tree = {
 				add_idea = mobilization_service_time_levy
 			}
 		}
-	}
-	focus = {
-		id = IRQ_Strike_Kurdistan
-		icon = GFX_goal_generic_occupy_states_ongoing_war
-		cost = 2
-		relative_position_id = IRQ_David_vs_Goliath
-		x = 5
-		y = 1
-		
-	}
-	focus = {
-		id = IRQ_Strike_Kuwait
-		icon = GFX_goal_generic_occupy_states_ongoing_war
-		cost = 2
-		relative_position_id = IRQ_Strike_Kurdistan
-		x = 2
-		y = 0
-		
 	}
 }
