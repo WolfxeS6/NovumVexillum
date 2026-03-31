@@ -2,7 +2,7 @@ ideas = {
 	country = {
 
 		IRQ_oil_for_food = {
-			picture = tur_balkan_central_bank
+			picture = can_wartime_prices_and_trade_board
 			
 			allowed = { always = yes }
 			removal_cost = -1
@@ -16,54 +16,111 @@ ideas = {
 		}
 
 		IRQ_GRL = {
-			picture = tur_balkan_central_bank
+			picture = generic_goods_red_bonus
 			
 			allowed = { always = yes }
 			removal_cost = -1
 			
 			modifier = {
-				production_speed_buildings_factor = -0.25
-				industrial_capacity_factory = -0.25
-				consumer_goods_expected_value = 0.05
+				war_support_factor = -0.05	 	
+				#local_resources_factor = -0.3		 	
+				trade_opinion_factor = 0.25
+				industrial_capacity_factory = 0.2
+				consumer_goods_expected_value = -0.025
 			}			
 		}
-	
-		iraq_embargo_heavy = {
-			picture = tur_balkan_central_bank
+		IRQ_tribal_dealings = {
+			picture = generic_goods_red_bonus
 			
 			allowed = { always = yes }
 			removal_cost = -1
 			
 			modifier = {
-				stability_factor = -0.05	 	
-				#local_resources_factor = -0.3		 	
-				trade_opinion_factor = -0.5
-				production_speed_buildings_factor = -0.25
-				industrial_capacity_factory = -0.25
-				consumer_goods_expected_value = 0.05
-			}
+				consumer_goods_factor = 0.1
+				stability_weekly = 0.01
+				power_balance_weekly = 0.04
+			}			
+		}
+		IRQ_iranian_militias = {
+			picture = generic_goods_red_bonus
 			
+			allowed = { always = yes }
+			removal_cost = -1
+			
+			modifier = {
+				stability_factor = -0.05
+				islamist_drift = 0.02
+				recruitable_population_factor = 0.05
+				army_core_defence_factor = 0.05
+				army_core_attack_factor = 0.05
+			}			
+		}
+		iraq_embargo_heavy = {
+			picture = generic_neglected_military
+			
+			allowed = { always = yes }
+			removal_cost = -1
+			
+			modifier = {
+				stability_factor = -0.1	 	
+				#local_resources_factor = -0.3		 	
+				trade_opinion_factor = -0.8
+				production_speed_buildings_factor = -0.25
+				industrial_capacity_factory = -0.6
+				consumer_goods_expected_value = 0.1
+				production_speed_arms_factory_factor = -0.8
+			}
 		}
 
 		iraq_embargo_light = {
-			picture = tur_balkan_central_bank
+			picture = generic_neglected_military
 			
 			allowed = { always = yes }
 			removal_cost = -1
 			
 			modifier = {
-				stability_factor = -0.025		 	
+				stability_factor = -0.05		 	
 				#local_resources_factor = -0.15	 	
-				trade_opinion_factor = -0.25
+				trade_opinion_factor = -0.5
 				production_speed_buildings_factor = -0.125
-				industrial_capacity_factory = -0.125
-				consumer_goods_expected_value = 0.025
+				industrial_capacity_factory = -0.3
+				consumer_goods_expected_value = 0.5
+				production_speed_arms_factory_factor = -0.6
 			}
+		}
+
+		IRQ_smuggling_1 = {
+			name = IRQ_smuggling
+			picture = generic_neglected_military
 			
+			allowed = { always = yes }
+			removal_cost = -1
+			
+			modifier = {	
+				trade_opinion_factor = 0.1
+				production_speed_buildings_factor = 0.05
+				industrial_capacity_factory = 0.05
+				consumer_goods_expected_value = -0.02
+			}
+		}
+
+		IRQ_smuggling_2 = {
+			name = IRQ_smuggling
+			picture = generic_neglected_military
+			
+			allowed = { always = yes }
+			removal_cost = -1
+			
+			modifier = {	
+				trade_opinion_factor = 0.125
+				production_speed_buildings_factor = 0.05
+				industrial_capacity_factory = 0.075
+				consumer_goods_expected_value = -0.02
+			}
 		}
 		
 		iraq_army_heavy = {
-			picture = iraq_army_bad
+			picture = tur_disorganised_armed_forces
 			
 			allowed = { always = yes }
 			removal_cost = -1
@@ -81,7 +138,7 @@ ideas = {
 		}
 
 		IRQ_no_fly_zone = {
-			picture = iraq_army_bad
+			picture = SWE_marauder_bombers
 			
 			allowed = { always = yes }
 			removal_cost = -1
@@ -97,7 +154,7 @@ ideas = {
 		}
 		
 		iraq_army_light = {
-			picture = iraq_army_bad
+			picture = tur_disorganised_armed_forces
 			
 			allowed = { always = yes }
 			removal_cost = -1
@@ -112,13 +169,62 @@ ideas = {
 				max_command_power_mult = -0.05
 			}
 		}
+		IRQ_joint_oil = {
+			picture = MEX_oil_concessions
+			
+			allowed = { always = yes }
+			removal_cost = -1
+			
+			modifier = {
+				production_oil_factor = 0.2
+				fuel_gain_factor = 0.1
+				local_resources_factor = 0.075
+			}
+		}
+		IRQ_shadow_rearming = {
+			picture = MEX_oil_concessions
+			
+			allowed = { always = yes }
+			removal_cost = -1
+			
+			modifier = {
+				production_speed_arms_factory_factor = 0.3
+				production_speed_anti_air_building_factor = 0.1
+				production_speed_radar_station_factor = 0.1
+			}
+		}
+		IRQ_military_purges = {
+			picture = MEX_oil_concessions
+			
+			allowed = { always = yes }
+			removal_cost = -1
+			
+			modifier = {
+				army_org_factor = -0.4
+				conscription_factor = -0.6
+				experience_gain_army_factor = -0.8
+				war_support_weekly = 0.03
+			}
+		}
+		IRQ_baathism_reborn = {
+			picture = MEX_oil_concessions
+			
+			allowed = { always = yes }
+			removal_cost = -1
+			
+			modifier = {
+				drift_defence_factor = 0.2
+				nationalist_drift = 0.05
+				political_power_gain = -0.05
+				consumer_goods_factor = -0.1
+			}
+		}
 	}
 
 
 	industrial_concern = {
 		
 		IRQ_SCEEI = {
-			on_add = {log = "[GetDateText]: [Root.GetName]: add idea IRQ_SCEEI"}
 			allowed = {
 				original_tag = IRQ
 			}
@@ -144,7 +250,6 @@ ideas = {
 		designer = yes
 
 		IRQ_MIC = {
-			on_add = {log = "[GetDateText]: [Root.GetName]: add idea IRQ_MIC"}
 			allowed = {
 				original_tag = IRQ
 			}

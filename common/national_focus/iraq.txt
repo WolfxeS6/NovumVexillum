@@ -81,7 +81,7 @@ focus_tree = {
 		x = -1
 		y = 1
 		completion_reward = {
-			
+			add_stability = 0.075
 		}
 		prerequisite = {
 			focus = IRQ_Strengthen_Control
@@ -96,7 +96,13 @@ focus_tree = {
 		x = 1
 		y = 1
 		completion_reward = {
-			
+			add_timed_idea = {
+				idea = IRQ_tribal_dealings
+				days = 100
+			}
+			IRQ_saddam_hussein={
+				add_country_leader_trait = IRQ_lion_of_tikrit
+			}
 		}
 		prerequisite = {
 			focus = IRQ_Strengthen_Control
@@ -112,6 +118,9 @@ focus_tree = {
 		y = 2
 		completion_reward = {
 			IRQ_bop_very_low_decrease_effect = yes
+			add_ideas = {
+				IRQ_iranian_militias
+			}
 		}
 		prerequisite = {
 			focus = IRQ_deals_with_clans
@@ -132,7 +141,7 @@ focus_tree = {
 		x = -1
 		y = 2
 		completion_reward = {
-			
+			add_ideas = IRQ_smuggling_1
 		}
 		prerequisite = {
 			focus = IRQ_deals_with_clans
@@ -143,7 +152,7 @@ focus_tree = {
     focus = {
 		id = IRQ_iranian_gambit
 		icon = dangerous_deal
-		cost = 6
+		cost = 3
 		relative_position_id = IRQ_Saddam
 		x = 12
 		y = 1
@@ -182,7 +191,13 @@ focus_tree = {
 		x = -1
 		y = 1
 		completion_reward = {
-			
+			PER = {
+				increase_trade_influence_by_2 = yes
+				add_opinion_modifier = {
+					target = IRQ
+					modifier = trade_mission
+				}
+			}
 		}
 		prerequisite = {
 			focus = IRQ_iranian_gambit
@@ -197,7 +212,8 @@ focus_tree = {
 		x = 1
 		y = 1
 		completion_reward = {
-			
+			#PER = {add_opinion_modifier = { target = ROOT modifier = recent_actions_positive }}
+			country_event = IRQ_focus_events.10
 		}
 		prerequisite = {
 			focus = IRQ_rebuild_trade
@@ -245,8 +261,17 @@ focus_tree = {
 		relative_position_id = IRQ_a_new_algiers
 		x = -1
 		y = 1
+		available = {
+			PER = {
+				exists = yes
+				has_opinion = { target = IRQ value > 0 }
+			}
+		}
 		completion_reward = {
-			
+			add_ideas = IRQ_joint_oil
+			PER = {
+				add_ideas = IRQ_joint_oil
+			}
 		}
 		prerequisite = {
 			focus = IRQ_a_new_algiers
@@ -279,7 +304,21 @@ focus_tree = {
 		x = 0
 		y = 1
 		completion_reward = {
-			
+			add_equipment_to_stockpile = {
+				type = infantry_equipment_1
+				amount = 7500
+				owner = "PER" 
+			}
+			add_equipment_to_stockpile = {
+				type = modern_tank_chassis_1
+				amount = 50
+				owner = "PER" 
+			}
+			add_equipment_to_stockpile = {
+				type = artillery_equipment_1
+				amount = 150
+				owner = "PER" 
+			}
 		}
 		prerequisite = {
 			focus = IRQ_gulf_neutrality_agreement
@@ -293,6 +332,9 @@ focus_tree = {
 		relative_position_id = IRQ_gulf_war_end
 		X = -3
 		y = 1
+		available = {
+			always = no
+		}
 		prerequisite = {
 			focus = IRQ_gulf_war_end
 		}
@@ -367,7 +409,7 @@ focus_tree = {
 			focus = IRQ_UN_cooperation
 		}
 		completion_reward = {
-
+			add_ideas = IRQ_GRL
 		}
 	}
     focus = {
@@ -402,7 +444,18 @@ focus_tree = {
 		completion_reward = {
             add_war_support = -0.05
             fourth_estate_social_liberal_increase = yes
-            country_event = IRQ_focus_events.2
+            add_advisor_role = {
+			character = IRQ_thamir_abbas_ghadhban
+			activate = yes
+			advisor = {
+				slot = political_advisor
+				cost = 150
+				idea_token = IRQ_thamir_abbas_ghadhban
+				traits = {
+					mining_expert
+				}
+			}
+		}
 		}
 	}
     focus = {
@@ -460,6 +513,7 @@ focus_tree = {
             focus = IRQ_kurdish_cooperation
 		}
 		completion_reward = {
+			country_event = IRQ_focus_events.9
 		}
 	}
     focus = {
@@ -527,9 +581,10 @@ focus_tree = {
         }
 		completion_reward = {
             add_timed_idea = {
-			idea = IRQ_into_the_fire
-			days = 365
-		}
+				idea = IRQ_into_the_fire
+				days = 365
+			}
+			add_threat = 2
 		}
         ai_will_do = {
 			factor = 0
@@ -576,6 +631,10 @@ focus_tree = {
                 ideology = nationalist
                 popularity = 0.05
             }
+			add_timed_idea = {
+				idea = IRQ_military_purges
+				days = 180
+			}
 		}
         ai_will_do = {
 			factor = 0
@@ -718,7 +777,11 @@ focus_tree = {
             focus = IRQ_walking_the_line
 		}
 		completion_reward = {
-            
+            add_stability = 0.02
+			swap_ideas = {
+				remove_idea = IRQ_smuggling_1
+				add_idea = IRQ_smuggling_2
+			}
 		}
         ai_will_do = {
 			factor = 0
@@ -738,7 +801,7 @@ focus_tree = {
 			focus = IRQ_second_gulf_war
 		}
 		completion_reward = {
-            
+            unlock_decision_category_tooltip = IRQ_tribal_uprisings
 		}
         ai_will_do = {
 			factor = 0
@@ -775,6 +838,12 @@ focus_tree = {
             focus = IRQ_new_era_of_baathism
 		}
 		completion_reward = {
+			SYR = {
+				add_opinion_modifier = {
+					target = IRQ
+					modifier = declaration_of_friendship
+				}
+			}
 		}
 	}
     focus = {
@@ -820,6 +889,12 @@ focus_tree = {
                 ideology = nationalist
                 popularity = -0.05
             }
+
+			KUW = {add_opinion_modifier = { target = ROOT modifier = recent_actions_positive }}
+			BAR = {add_opinion_modifier = { target = ROOT modifier = recent_actions_positive }}
+			UAE = {add_opinion_modifier = { target = ROOT modifier = recent_actions_positive }}
+			SAU = {add_opinion_modifier = { target = ROOT modifier = recent_actions_positive }}
+			QAT = {add_opinion_modifier = { target = ROOT modifier = recent_actions_positive }}
 		}
 	}
     focus = {
@@ -829,10 +904,16 @@ focus_tree = {
 		relative_position_id = IRQ_recognise_kuwait_properly
 		X = 1
 		y = 1
+		bypass = {
+			NOT = {controls_state = 50}
+		}
 		prerequisite = {
 			focus = IRQ_recognise_kuwait_properly
 		}
 		completion_reward = {
+			50 = {
+				set_demilitarized_zone = yes
+			}
 		}
 	}
     focus = {
@@ -842,10 +923,12 @@ focus_tree = {
 		relative_position_id = IRQ_recognise_kuwait_properly
 		X = 0
 		y = 2
+		
 		prerequisite = {
 			focus = IRQ_recognise_kuwait_properly
 		}
 		completion_reward = {
+			
 		}
 	}
     focus = {

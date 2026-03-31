@@ -1,85 +1,282 @@
 ﻿add_namespace = iraq
 add_namespace = IRQ_flavor
+add_namespace = IRQ_focus_events
 #American Focus Tree: The Iraqi Republic
 country_event = {
-	id = iraq.1
-	title = iraq.1.t
-	desc = iraq.1.d
+	id = IRQ_focus_events.1
+	title = IRQ_focus_events.1.t
+	desc = IRQ_focus_events.1.d
 	picture = GFX_report_event_america_and_iraq
 	
 	is_triggered_only = yes
 	
 	option = {
-		name = iraq.1.o1
-		add_popularity = {
-			ideology = conservative
-			popularity = 0.2
+		name = IRQ_focus_events.1.o1
+		retire_character = IRQ_subawi_ibrahim_altikriti
+		add_advisor_role = {
+			character = IRQ_saadoun_hammadi
+			activate = yes
+			advisor = {
+				slot = political_advisor
+				cost = 150
+				idea_token = IRQ_saadoun_hammadi
+				traits = {
+					head_of_intelligence
+				}
+			}
 		}
-		add_stability = 0.05
-		add_stability = 0.01
+	}
+	option = {
+		name = IRQ_focus_events.1.o2
+		add_advisor_role = {
+			character = IRQ_wafiz_alsamarrai
+			activate = yes
+			advisor = {
+				slot = political_advisor
+				cost = 150
+				idea_token = IRQ_wafiz_alsamarrai
+				traits = {
+					head_of_intelligence social_liberal_party_membership
+				}
+			}
+		}
+		
+	}
+	option = {
+		name = IRQ_focus_events.1.o3
+		add_advisor_role = {
+			character = IRQ_muhammad_zimam_adbal_razzaq
+			activate = yes
+			advisor = {
+				slot = political_advisor
+				cost = 150
+				idea_token = IRQ_muhammad_zimam_adbal_razzaq
+				traits = {
+					prince_of_terror nationalist_party_membership
+				}
+			}
+		}
+	}
+	option = {
+		name = IRQ_focus_events.1.o4
+		add_advisor_role = {
+			character = IRQ_tahir_jalil_habbush
+			activate = yes
+			advisor = {
+				slot = political_advisor
+				cost = 150
+				idea_token = IRQ_tahir_jalil_habbush
+				traits = {
+					prince_of_terror nationalist_party_membership
+				}
+			}
+		}
 	}
 }
 
-#American Focus Tree: Fight the Insurgency
 country_event = {
-	id = iraq.2
-	title = iraq.2.t
-	desc = iraq.2.d
+	id = IRQ_focus_events.3
+	title = IRQ_focus_events.3.t
+	desc = IRQ_focus_events.3.d
 	picture = GFX_report_event_america_and_iraq
 	
 	is_triggered_only = yes
 	
 	option = {
-		name = iraq.2.o1
-		army_experience = 10
-		add_stability = 0.05
-		add_stability = 0.01
-	}
-}
-
-#American Focus Tree: Iraqi Army Reform
-country_event = {
-	id = iraq.3
-	title = iraq.3.t
-	desc = iraq.3.d
-	picture = GFX_report_event_america_and_iraq
-	
-	is_triggered_only = yes
-	
-	option = {
-		name = iraq.3.o1
-		army_experience = 25
-		add_stability = 0.01
-	}
-	
-	option = {
-		name = iraq.3.o2
-		army_experience = 25
+		name = IRQ_focus_events.3.o1
+		add_opinion_modifier = {
+			target = ROOT
+			modifier = recent_actions_positive
+		}
 		add_stability = 0.02
-		add_political_power = -100
+		country_event = diplomatic_response.1
+		ai_chance = { factor = 10 }
+	}
+	option = {
+		name = IRQ_focus_events.3.o2
+		add_opinion_modifier = {
+			target = ROOT
+			modifier = recent_actions_negative
+		}
+		add_war_support = 0.02
+		country_event = diplomatic_response.2
+		ai_chance = { factor = 0 }
 	}
 }
-
-#American Focus Tree: New Institutions
 country_event = {
-	id = iraq.4
-	title = iraq.4.t
-	desc = iraq.4.d
+	id = IRQ_focus_events.4
+	title = IRQ_focus_events.4.t
+	desc = IRQ_focus_events.4.d
 	picture = GFX_report_event_america_and_iraq
 	
 	is_triggered_only = yes
 	
 	option = {
-		name = iraq.4.o1
-		add_political_power = 100
+		name = IRQ_focus_events.4.o1
+		IRQ = {annex_country = KUR}
+		country_event = diplomatic_response.1
+		ai_chance = { factor = 5 }
 	}
-	
 	option = {
-		name = iraq.4.o1
-		add_stability = 0.02
+		name = IRQ_focus_events.4.o2
+		IRQ = {declare_war_on = { target = KUR type = puppet_wargoal_focus }}
+		add_war_support = 0.05
+		country_event = diplomatic_response.2
+		ai_chance = { factor = 5 }
 	}
 }
+country_event = {
+	id = IRQ_focus_events.5
+	title = IRQ_focus_events.5.t
+	desc = IRQ_focus_events.5.d
+	picture = GFX_report_event_america_and_iraq
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = IRQ_focus_events.5.o1
+		diplomatic_relation = {
+			country = FROM
+			relation = non_aggression_pact
+			active = yes
+		}
+		country_event = diplomatic_response.1
+		ai_chance = { factor = 10 }
+	}
+	option = {
+		name = IRQ_focus_events.5.o2
+		IRQ = {
+			add_opinion_modifier = {
+				target = PER
+				modifier = recent_actions_negative
+			}
+		}
+		country_event = diplomatic_response.2
+		ai_chance = { factor = 0 }
+	}
+}
+country_event = {
+	id = IRQ_focus_events.7
+	title = IRQ_focus_events.7.t
+	desc = IRQ_focus_events.7.d
+	picture = GFX_report_event_america_and_iraq
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = IRQ_focus_events.7.o1
+		hidden_effect = {
+			add_opinion_modifier = {
+				target = IRQ
+				modifier = recent_actions_positive
+			}
+		}
+		add_manpower = 200
+		add_political_power = 25
+		ai_chance = { factor = 1 }
+	}
+	option = {
+		name = IRQ_focus_events.7.o2
+		hidden_effect = {
+			add_opinion_modifier = {
+				target = IRQ
+				modifier = recent_actions_positive
+			}
+		}
+		add_manpower = 200
+		add_political_power = 50
+		add_war_support = -0.02
+		IRQ = {country_event = IRQ_focus_events.2}
+		ai_chance = { factor = 10 }
+	}
+}
+country_event = {
+	id = IRQ_focus_events.2
+	title = IRQ_focus_events.2.t
+	desc = IRQ_focus_events.2.d
+	picture = GFX_report_event_america_and_iraq
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = IRQ_focus_events.2.o1
+		hidden_effect = {
+			add_opinion_modifier = {
+				target = PER
+				modifier = recent_actions_positive
+			}
+		}
+		add_manpower = 200
+		add_political_power = 50
+	}
+}
+country_event = {
+	id = IRQ_focus_events.8
+	title = IRQ_focus_events.8.t
+	desc = IRQ_focus_events.8.d
+	picture = GFX_report_event_america_and_iraq
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = IRQ_focus_events.8.o1
+		news_event = IRQ_news.1000
+		add_stability = 0.05
+		#remove bad opinions
+		ai_chance = { factor = 10 }
+	}
+	option = {
+		name = IRQ_focus_events.8.o2
+		ai_chance = { factor = 0 }
+		add_war_support = -0.05
+		IRQ = {
+			add_opinion_modifier = {
+				target = PER
+				modifier = recent_actions_negative
+			}
+		}
+		country_event = diplomatic_response.2
+	}
+}
+country_event = {
+	id = IRQ_focus_events.9
+	title = IRQ_focus_events.9.t
+	desc = IRQ_focus_events.9.d
+	picture = GFX_report_event_america_and_iraq
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = IRQ_focus_events.9.o1
+		ai_chance = { factor = 10 }
+	}
+	option = {
+		name = IRQ_focus_events.9.o2
+		ai_chance = { factor = 50 }
+	}
+}
+country_event = {
+	id = IRQ_focus_events.10
+	title = IRQ_focus_events.10.t
+	desc = IRQ_focus_events.10.d
+	picture = GFX_report_event_america_and_iraq
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = IRQ_focus_events.10.o1
+		PER = {remove_opinion_modifier = { target = IRQ modifier = IRQ_hosting_mek }}
+		ai_chance = { factor = 10 }
+	}
+	option = {
+		name = IRQ_focus_events.10.o2
+		PER = {remove_opinion_modifier = { target = IRQ modifier = IRQ_hosting_mek }}
+		PER = {add_opinion_modifier = { target = IRQ modifier = IRQ_handed_over_criminals }}
+		add_political_power = -15
 
+		ai_chance = { factor = 50 }
+	}
+}
 #Iraq held
 country_event = {
 	id = IRQ_flavor.1
