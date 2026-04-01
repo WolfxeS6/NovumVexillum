@@ -106,3 +106,131 @@ IRQ_the_gathering_storm = {
 		}
 	}
 }
+IRQ_saddam_control = {
+	IRQ_construct_babylonian_walls = {
+		available = {
+			has_war = no
+			num_of_available_civilian_factories > 5
+		}
+		visible = {
+			has_country_leader = {
+				character = IRQ_saddam_hussein
+				ruling_only = yes
+			}
+		}
+
+		fire_only_once = yes
+		
+		cost = 40
+		days_remove = 120
+		modifier = {
+			civilian_factory_use = 5
+		}
+		remove_effect = {
+			set_country_flag = IRQ_completed_babylonian_walls
+		}
+		complete_effect = {
+			IRQ_bop_small_increase_effect = yes
+		}
+	}
+	IRQ_restore_esagila = {
+		visible = {
+			has_country_flag = IRQ_completed_babylonian_walls
+			has_country_leader = {
+				character = IRQ_saddam_hussein
+				ruling_only = yes
+			}
+		}
+
+		available = {
+			has_war = no
+			num_of_available_civilian_factories > 5
+		}
+
+		fire_only_once = yes
+		
+		cost = 40
+		days_remove = 120
+		modifier = {
+			civilian_factory_use = 5
+		}
+		remove_effect = {
+			set_country_flag = IRQ_restored_esagila
+		}
+		complete_effect = {
+			IRQ_bop_small_increase_effect = yes
+		}
+	}
+	IRQ_babylonian_tourist_complex = {
+		visible = {
+			has_country_flag = IRQ_restored_esagila
+			has_country_leader = {
+				character = IRQ_saddam_hussein
+				ruling_only = yes
+			}
+		}
+
+		available = {
+			has_war = no
+			num_of_available_civilian_factories > 4
+		}
+
+		fire_only_once = yes
+		
+		cost = 40
+		days_remove = 120
+		modifier = {
+			civilian_factory_use = 4
+		}
+		remove_effect = {
+			set_country_flag = IRQ_babylonia_sorted
+		}
+		complete_effect = {
+			IRQ_bop_small_increase_effect = yes
+		}
+	}
+	IRQ_reopen_babylonia = {
+		visible = {
+			has_country_flag = IRQ_babylonia_sorted
+			has_country_leader = {
+				character = IRQ_saddam_hussein
+				ruling_only = yes
+			}
+		}
+
+		available = {
+			has_war = no
+			num_of_available_civilian_factories > 4
+		}
+
+		fire_only_once = yes
+		
+		cost = 40
+		days_remove = 120
+		modifier = {
+			civilian_factory_use = 4
+		}
+		remove_effect = {
+			set_country_flag = IRQ_babylonia_opened
+			country_event = IRQ_focus_events.1001
+		}
+	}
+	IRQ_build_palaces = {
+
+		available = {
+			has_war = no
+			num_of_available_civilian_factories > 2
+		}
+
+		fire_only_once = yes
+		
+		cost = 25
+		days_remove = 45
+		modifier = {
+			civilian_factory_use = 2
+		}
+		remove_effect = {
+			IRQ_bop_small_increase_effect = yes
+		}
+	}
+}
