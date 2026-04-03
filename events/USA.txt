@@ -2384,6 +2384,11 @@ country_event = {
 		NOT = { has_global_flag = sandbox_tabula_rasa }
 		NOT = { has_global_flag = operation_iraqi_freedom }
 	}
+	immediate = {
+		IRQ = {
+			clr_country_flag = IRQ_US_invasion_coming
+		}
+	}
 
 	option = {
 		name = usa.71.o1
@@ -2646,9 +2651,16 @@ country_event = {
 	immediate = {
 		set_global_flag = success_of_operation_iraqi_freedom
 		IRQ = {
-			load_focus_tree = generic_focus
-			keep_completed = yes
+			remove_power_balance = {
+				id = IRQ_power_balance
+			}
+			retire_character = IRQ_uday_hussein
+			load_focus_tree = {
+				tree = generic_focus
+				keep_completed = yes
+			}
 		}
+
 	}
 
 	option = {
@@ -2671,6 +2683,9 @@ country_event = {
 	}
 
 	immediate = {
+		hidden_effect = {
+			retire_character = IRQ_saddam_hussein
+		}
 		set_global_flag = saddam_hussein_captured
 	}
 

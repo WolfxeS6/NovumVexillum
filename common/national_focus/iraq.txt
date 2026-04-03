@@ -645,6 +645,12 @@ focus_tree = {
 		relative_position_id = IRQ_sideline_the_family
 		X = 2
 		y = 1
+		available = {
+			power_balance_value = {
+				id = IRQ_power_balance
+				value < 0
+			}
+		}
 		prerequisite = {
 			focus = IRQ_sideline_the_family
 		}
@@ -656,9 +662,13 @@ focus_tree = {
         }
 		completion_reward = {
             add_ideas = IRQ_baathism_reborn
+			country_event = IRQ_focus_events.12
 			subtract_from_variable = {
 				var = IRQ_US_Invasion_Desire
 				value = -10
+			}
+			remove_power_balance = {
+				id = IRQ_power_balance
 			}
 		}
 	}
@@ -669,6 +679,12 @@ focus_tree = {
 		relative_position_id = IRQ_sideline_the_family
 		X = 10
 		y = 1
+		available = {
+			power_balance_value = {
+				id = IRQ_power_balance
+				value > 20
+			}
+		}
 		prerequisite = {
 			focus = IRQ_cross_border_smuggling
 		}
@@ -846,7 +862,22 @@ focus_tree = {
 			focus = IRQ_successor_of_nebuchadnezzar
 		}
 		completion_reward = {
-            #name changes to babylonian empire, Bagdad's name changes (well relocates) to babylon
+			add_stability = 0.15
+			add_war_support = 0.1
+			set_province_name = {
+				id = 13299
+				name = IRQ_Babylon_city
+			}
+            set_cosmetic_tag = IRQ_Babylon
+			1046 = {add_core_of = IRQ}
+			84 = {add_core_of = IRQ}
+			1049 = {add_core_of = IRQ}
+			554 = {add_core_of = IRQ}
+			656 = {add_core_of = IRQ}
+			413 = {add_core_of = IRQ}
+			815 = {add_core_of = IRQ}
+			893 = {add_core_of = IRQ}
+			#name changes to babylonian empire, Bagdad's name changes (well relocates) to babylon
 		}
         ai_will_do = {
 			factor = 0
@@ -887,6 +918,16 @@ focus_tree = {
 			swap_ideas = {
 				remove_idea = IRQ_smuggling_1
 				add_idea = IRQ_smuggling_2
+			}
+			if = {
+				limit = {
+					has_country_flag = IRQ_US_invasion_coming
+				}
+				add_to_variable = {
+					var = IRQ_US_Invasion_Fear
+					value = 10
+					tooltip = IRQ_deterence
+				}
 			}
 		}
         ai_will_do = {
@@ -1020,14 +1061,15 @@ focus_tree = {
 		relative_position_id = IRQ_recognise_kuwait_properly
 		X = 1
 		y = 1
+		available = {has_war = no}
 		bypass = {
-			NOT = {controls_state = 50}
+			NOT = {controls_state = 1002}
 		}
 		prerequisite = {
 			focus = IRQ_recognise_kuwait_properly
 		}
 		completion_reward = {
-			50 = {
+			1002 = {
 				set_demilitarized_zone = yes
 			}
 			subtract_from_variable = {
@@ -1085,6 +1127,14 @@ focus_tree = {
 			focus = IRQ_ease_syrian_tensions
 		}
 		completion_reward = {
+			675 = {
+				add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+					type = industrial_complex
+					level = 3
+					instant_build = yes
+				}
+			}
 		}
 	}
     focus = {
