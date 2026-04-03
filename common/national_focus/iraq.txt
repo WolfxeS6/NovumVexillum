@@ -8,6 +8,10 @@ focus_tree = {
 			original_tag = IRQ
 		}
 	}
+	shared_focus = GEN_a_new_economy_for_a_new_millenium
+	shared_focus = GEN_bolster_the_army
+	shared_focus = GEN_modernize_the_airforce
+	shared_focus = GEN_modernize_the_navy
 	#  POLITICAL FOCUS TREE HERE !!!!
 	continuous_focus_position = {
 		x = 0
@@ -16,7 +20,7 @@ focus_tree = {
 	focus = {
 		id = IRQ_gulf_war_end
 		icon = GFX_goal_Constitution
-		x = 7
+		x = 4
 		y = 0
 		cost = 6
 		completion_reward = {
@@ -121,6 +125,16 @@ focus_tree = {
 			add_ideas = {
 				IRQ_iranian_militias
 			}
+			if = {
+				limit = {
+					has_country_flag = IRQ_US_invasion_coming
+				}
+				add_to_variable = {
+					var = IRQ_US_Invasion_Fear
+					value = 5
+					tooltip = IRQ_deterence
+				}
+			}
 		}
 		prerequisite = {
 			focus = IRQ_deals_with_clans
@@ -131,6 +145,44 @@ focus_tree = {
 		
         ai_will_do = {
 			factor = 0
+		}
+	}
+	focus = {
+		id = IRQ_Defend_Basrah
+		icon = GFX_goal_Bunker_shine
+		cost = 1
+		relative_position_id = IRQ_deals_with_clans
+		x = 0
+		y = 1
+		prerequisite = {
+			focus = IRQ_deals_with_clans
+		}
+		completion_reward = {
+			1002 = {
+				add_building_construction = {
+					type = bunker
+					level = 2
+					province = 13314
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = bunker
+					level = 2
+					province = 15984
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = bunker
+					level = 2
+					province = 2089
+					instant_build = yes
+				}
+			}
+			add_to_variable = {
+					var = IRQ_US_Invasion_Fear
+					value = 2
+					tooltip = IRQ_deterence
+				}
 		}
 	}
     focus = {
@@ -287,6 +339,16 @@ focus_tree = {
 		y = 2
 		completion_reward = {
 			PER = {country_event = IRQ_focus_events.5}
+			if = {
+				limit = {
+					has_country_flag = IRQ_US_invasion_coming
+				}
+				add_to_variable = {
+					var = IRQ_US_Invasion_Fear
+					value = 10
+					tooltip = IRQ_deterence
+				}
+			}
 		}
 		prerequisite = {
 			focus = IRQ_offer_technical_assistence
@@ -318,6 +380,16 @@ focus_tree = {
 				type = artillery_equipment_1
 				amount = 150
 				owner = "PER" 
+			}
+			if = {
+				limit = {
+					has_country_flag = IRQ_US_invasion_coming
+				}
+				add_to_variable = {
+					var = IRQ_US_Invasion_Fear
+					value = 20
+					tooltip = IRQ_deterence
+				}
 			}
 		}
 		prerequisite = {
@@ -379,6 +451,10 @@ focus_tree = {
             add_war_support = -0.05
             fourth_estate_social_liberal_increase = yes
             IRQ_bop_very_low_decrease_effect = yes
+			subtract_from_variable = {
+				var = IRQ_US_Invasion_Desire
+				value = -15
+			}
 		}
 	}
     focus = {
@@ -393,6 +469,10 @@ focus_tree = {
 		}
 		completion_reward = {
             IRQ_bop_medium_decrease_effect = yes
+			subtract_from_variable = {
+				var = IRQ_US_Invasion_Desire
+				value = -2
+			}
 		}
         ai_will_do = {
 			factor = 0
@@ -410,6 +490,10 @@ focus_tree = {
 		}
 		completion_reward = {
 			add_ideas = IRQ_GRL
+			subtract_from_variable = {
+				var = IRQ_US_Invasion_Desire
+				value = -2
+			}
 		}
 	}
     focus = {
@@ -426,6 +510,10 @@ focus_tree = {
 		completion_reward = {
             add_war_support = -0.05
             fourth_estate_social_liberal_increase = yes
+			subtract_from_variable = {
+				var = IRQ_US_Invasion_Desire
+				value = -5
+			}
 		}
         ai_will_do = {
 			factor = 0
@@ -514,6 +602,10 @@ focus_tree = {
 		}
 		completion_reward = {
 			country_event = IRQ_focus_events.9
+			subtract_from_variable = {
+				var = IRQ_US_Invasion_Desire
+				value = -2
+			}
 		}
 	}
     focus = {
@@ -564,6 +656,10 @@ focus_tree = {
         }
 		completion_reward = {
             add_ideas = IRQ_baathism_reborn
+			subtract_from_variable = {
+				var = IRQ_US_Invasion_Desire
+				value = -10
+			}
 		}
 	}
     focus = {
@@ -634,6 +730,16 @@ focus_tree = {
 			add_timed_idea = {
 				idea = IRQ_military_purges
 				days = 180
+			}
+			if = {
+				limit = {
+					has_country_flag = IRQ_US_invasion_coming
+				}
+				add_to_variable = {
+					var = IRQ_US_Invasion_Fear
+					value = 15
+					tooltip = IRQ_deterence
+				}
 			}
 		}
         ai_will_do = {
@@ -896,7 +1002,10 @@ focus_tree = {
                 ideology = nationalist
                 popularity = -0.05
             }
-
+			subtract_from_variable = {
+				var = IRQ_US_Invasion_Desire
+				value = -3
+			}
 			KUW = {add_opinion_modifier = { target = ROOT modifier = recent_actions_positive }}
 			BAR = {add_opinion_modifier = { target = ROOT modifier = recent_actions_positive }}
 			UAE = {add_opinion_modifier = { target = ROOT modifier = recent_actions_positive }}
@@ -921,11 +1030,15 @@ focus_tree = {
 			50 = {
 				set_demilitarized_zone = yes
 			}
+			subtract_from_variable = {
+				var = IRQ_US_Invasion_Desire
+				value = -5
+			}
 		}
 	}
     focus = {
 		id = IRQ_resolve_gulf_debt
-		icon = GFX_focus_GER_integration_of_puppet_economiesl
+		icon = GFX_focus_GER_integration_of_puppet_economies
 		cost = 6
 		relative_position_id = IRQ_recognise_kuwait_properly
 		X = 0
@@ -936,8 +1049,8 @@ focus_tree = {
 		}
 		completion_reward = {
 			add_timed_idea = {
-				idea = IRQ_tribal_dealings
-				days = 100
+				idea = IRQ_paying_gulf_debts
+				days = 1000
 			}
 		}
 	}
@@ -955,6 +1068,10 @@ focus_tree = {
             focus = IRQ_demilitarise_the_border
 		}
 		completion_reward = {
+			set_variable = {
+				var = IRQ_US_Invasion_Desire
+				value = 0
+			}
 		}
 	}
     focus = {
@@ -1001,6 +1118,16 @@ focus_tree = {
 			army_experience = 50
 			SYR = {
 				army_experience = 25
+			}
+			if = {
+				limit = {
+					has_country_flag = IRQ_US_invasion_coming
+				}
+				add_to_variable = {
+					var = IRQ_US_Invasion_Fear
+					value = 10
+					tooltip = IRQ_deterence
+				}
 			}
 		}
 	}
@@ -1079,395 +1206,6 @@ focus_tree = {
 			focus = IRQ_diminish_the_republican_guard
 		}
 		completion_reward = {
-		}
-	}
-	# INVASION OF IRAQ
-	focus = {
-		id = IRQ_David_vs_Goliath
-		icon = GFX_focus_generic_strike_at_democracy1
-		x = 30
-		y = 0
-		available = {
-			has_defensive_war_with = USA
-		}
-		completion_reward = {
-			291 = {
-				add_building_construction = {
-					type = anti_air_building
-					level = 2
-					instant_build = yes
-				}
-			}
-			add_war_support = 0.05
-		}
-	}
-	focus ={
-		id = IRQ_desperate_resistance
-		icon = GFX_focus_generic_full_social_mobilization
-		cost = 1
-		relative_position_id = IRQ_David_vs_Goliath
-		x = 3
-		y = 1
-		prerequisite = {
-			focus = IRQ_David_vs_Goliath
-		}
-		available = {
-			has_defensive_war_with = USA
-		}
-		completion_reward = {
-			add_ideas = IRQ_desperate_resistance_idea
-		}
-	}
-	focus = {
-		id = IRQ_Defend_Basrah
-		icon = GFX_goal_Bunker_shine
-		cost = 1
-		relative_position_id = IRQ_David_vs_Goliath
-		x = 0
-		y = 1
-		prerequisite = {
-			focus = IRQ_David_vs_Goliath
-		}
-		available = {
-			has_defensive_war_with = USA
-		}
-		completion_reward = {
-			1002 = {
-				add_building_construction = {
-					type = bunker
-					level = 2
-					province = 13314
-					instant_build = yes
-				}
-				add_building_construction = {
-					type = bunker
-					level = 2
-					province = 15984
-					instant_build = yes
-				}
-				add_building_construction = {
-					type = bunker
-					level = 2
-					province = 2089
-					instant_build = yes
-				}
-			}
-		}
-	}
-	# Remember to finish this
-	focus = {
-		id = IRQ_Contest_Air
-		icon = Bomber2_shine
-		cost = 2
-		relative_position_id = IRQ_Defend_Basrah
-		x = 1
-		y = 1
-		prerequisite = {
-			focus = IRQ_Defend_Basrah
-		}
-		available = {
-			has_defensive_war_with = USA
-		}
-		mutually_exclusive = {
-			focus = IRQ_focus_ground
-		}
-		completion_reward = {
-		}
-	}
-	focus = {
-		id = IRQ_focus_ground
-		icon = skull_fortification_shine	
-		cost = 2
-		relative_position_id = IRQ_Contest_Air
-		x = -2
-		prerequisite = {
-			focus = IRQ_Defend_Basrah
-		}
-		available = {
-			has_defensive_war_with = USA
-		}
-		mutually_exclusive = {
-			focus = IRQ_Contest_Air
-		}
-		completion_reward = {
-		}
-	}
-	focus = {
-		id = IRQ_What_Do
-		icon = x
-		cost = 1
-		relative_position_id = IRQ_David_vs_Goliath
-		y = 3
-		prerequisite = {
-			focus = IRQ_focus_ground
-			focus = IRQ_Contest_Air
-		}
-		completion_reward = {
-			country_event = {id =   IRQ_flavor.10}
-		}
-		prerequisite = {
-			focus = IRQ_focus_ground
-			focus = IRQ_Contest_Air
-		}
-	}
-	focus = {
-		id = IRQ_Attrition
-		icon = GFX_focus_ETH_freedom_at_gunpoint
-		cost = 1
-		relative_position_id = IRQ_What_Do
-		x = -1
-		y = 1
-		available = {
-			has_global_flag = IRQ_attrition_flag
-			has_defensive_war_with = USA
-		}
-		prerequisite = {
-			focus = IRQ_What_Do
-		}
-		mutually_exclusive = {
-			focus = IRQ_counterattack
-		}
-		
-	}
-	# finish this at a later date, im burnt!
-	focus = {
-		id = IRQ_counterattack
-		icon = GFX_Focus_Attack_America
-		cost = 1
-		relative_position_id = IRQ_What_Do
-		x = 1
-		y = 1
-		available = {
-			has_global_flag = IRQ_counterattack_flag
-			has_defensive_war_with = USA
-		}
-		mutually_exclusive = {
-			focus = IRQ_Attrition
-		}
-		prerequisite = {
-			focus = IRQ_What_Do
-		}
-		
-	}
-	focus = {
-		id = IRQ_Buried_Under
-		icon = GFX_goal_generic_secret_weapon
-		cost = 0
-		relative_position_id = IRQ_Attrition
-		x = -1
-		y = 1
-		available = {
-			has_global_flag = IRQ_defeat_flag
-		}
-		prerequisite = {
-			focus = IRQ_David_vs_Goliath
-		}
-		mutually_exclusive = {
-			focus = IRQ_Licking_Wounds
-			focus = IRQ_Saddam_Sail
-		}
-		
-	}
-	focus = {
-		id = IRQ_Licking_Wounds
-		icon = GFX_goal_generic_fortify_city
-		relative_position_id = IRQ_Buried_Under
-		x = 2
-		cost = 0
-		available = {
-			has_global_flag = IRQ_surrender_flag
-		}
-		prerequisite = {
-			focus = IRQ_David_vs_Goliath
-		}
-		mutually_exclusive = {
-			focus = IRQ_Buried_Under
-			focus = IRQ_Saddam_Sail
-		}
-		
-	}
-	focus = {
-		id = IRQ_Saddam_Sail
-		icon = GFX_focus_generic_support_the_left_right
-		cost = 0
-		relative_position_id = IRQ_Licking_Wounds
-		x = 2
-		available = {
-			has_global_flag = IRQ_victory_flag
-		}
-		prerequisite = {
-			focus = IRQ_David_vs_Goliath
-		}
-		mutually_exclusive = {
-			focus = IRQ_Buried_Under
-			focus = IRQ_Licking_Wounds
-		}
-		
-	}
-	#Army branch starts here GFX_focus_FIN_weapon_caches
-	focus = {
-		id = IRQ_Army
-		icon = GFX_focus_SOV_builder_of_the_red_army
-		cost = 6
-		x = -2
-		completion_reward = {
-			add_war_support = 0.1
-			add_command_power = 10
-			army_experience = 5
-			air_experience = 5
-		}
-	}
-	focus = {
-		id = IRQ_Grand
-		icon = GFX_focus_SOV_the_glory_of_the_red_army_alternative
-		cost = 6
-		relative_position_id = IRQ_Army
-		x = -2
-		y = 1
-		prerequisite = {
-			focus = IRQ_Army
-		}
-		mutually_exclusive = {
-			focus = IRQ_Mobile
-		}
-		completion_reward = {
-			army_experience = 5
-			add_doctrine_cost_reduction = {
-				cost_reduction = 0.20
-				category = cat_mass_assault
-			}
-			add_doctrine_cost_reduction = {
-				cost_reduction = 0.20
-				category = cat_grand_battle_plan
-			}
-		}
-	}
-	focus = {
-		id = IRQ_Mobile
-		icon = offensive_army_shine
-		cost = 6
-		relative_position_id = IRQ_Army
-		x = 2
-		y = 1
-		prerequisite = {
-			focus = IRQ_Army
-		}
-		mutually_exclusive = {
-			focus = IRQ_Grand
-		}
-		completion_reward = {
-			army_experience = 5
-			add_doctrine_cost_reduction = {
-				cost_reduction = 0.20
-				category = cat_mobile_warfare
-			}
-			add_doctrine_cost_reduction = {
-				cost_reduction = 0.20
-				category = cat_superior_firepower
-			}
-		}
-	}
-	focus = {
-		id = IRQ_Mobile2
-		icon = GFX_focus_generic_tankette
-		cost = 5
-		x = 1
-		y = 1
-		prerequisite = {
-			focus = IRQ_Mobile
-		}
-		mutually_exclusive = {
-			focus = IRQ_MobileFire
-		}
-		relative_position_id = IRQ_Mobile
-		completion_reward = { 
-			add_ideas = IRQ_mobile2_idea
-		}
-	}
-	focus = {
-		id = IRQ_MobileFire
-		icon = GFX_goal_generic_army_artillery2
-		cost = 5
-		x = -1
-		y = 1
-		prerequisite = {
-			focus = IRQ_Mobile
-		}
-		mutually_exclusive = {
-			focus = IRQ_Mobile2
-		}
-		relative_position_id = IRQ_Mobile
-		completion_reward = {
-			add_ideas = IRQ_mobilefire_idea
-		 }
-	}
-	focus = {
-		id = IRQ_GrandMass
-		icon = GFX_goal_fortify_the_westwall
-		cost = 5
-		relative_position_id = IRQ_Grand
-		y = 1
-		x = -1
-		prerequisite = {
-			focus = IRQ_Grand
-		}
-		mutually_exclusive = {
-			focus = IRQ_Mass2
-		}
-		completion_reward = { 
-			add_ideas = IRQ_grandmass_idea
-		}
-	}
-	focus = {
-		id = IRQ_Mass2
-		icon = GFX_focus_generic_full_social_mobilization
-		cost = 5
-		relative_position_id = IRQ_Grand
-		y = 1
-		x = 1
-		prerequisite = {
-			focus = IRQ_Grand
-		}
-		mutually_exclusive = {
-			focus = IRQ_GrandMass
-		}
-		completion_reward = {
-			add_ideas = IRQ_mass_idea
-		}
-	}
-	focus = {
-		id = IRQ_research
-		icon = GFX_goal_generic_scientific_exchange
-		cost = 6
-		relative_position_id = IRQ_Army
-		y = 3
-		prerequisite = {
-			focus = IRQ_Mass2 focus = IRQ_GrandMass focus = IRQ_MobileFire focus = IRQ_Mobile2
-		}
-		completion_reward = {
-			add_research_slot = 1
-		}
-	}
-	focus = {
-		id = IRQ_corruption
-		icon = GFX_focus_mex_privatisation
-		cost = 20
-		relative_position_id = IRQ_research
-		y = 1
-		bypass = {
-			NOT = {has_idea = mobilization_service_time_corrupt}
-		}
-		available = {
-			has_idea = mobilization_service_time_corrupt
-		}
-		prerequisite = {
-			focus = IRQ_research
-		}
-		completion_reward = { 
-			swap_ideas = {
-				remove_idea = mobilization_service_time_corrupt
-				add_idea = mobilization_service_time_levy
-			}
 		}
 	}
 }

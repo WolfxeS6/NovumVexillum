@@ -18,6 +18,24 @@ set_country_flag = country_language_arabic
 set_country_flag = country_language_kurdish
 set_country_flag = country_behavior_indolent
 
+
+	set_power_balance = {
+		id = IRQ_power_balance
+		left_side =  IRQ_secularistic_power # will keep the last set side if not specified
+		right_side = IRQ_Saddam_power # will keep the last set side if not specified
+		set_default = yes # whether or not to reset the power balance to the initial value, default = no
+		#set_value = 0.25 # if specified will set the value of the power balance, this option will override the effect of set_default so the two options should not be used together. if neither set_default or set_value is specified the current value of the power balance will not change
+	}
+
+set_variable = { # Desire to Strike
+    var = IRQ_US_Invasion_Desire
+    value = 80
+}
+set_variable = { # Concerns about Iraqi strength
+    var = IRQ_US_Invasion_Fear
+    value = 0
+}
+
 if = {
 	limit = {
 		NOT = {has_dlc = "By Blood Alone"}

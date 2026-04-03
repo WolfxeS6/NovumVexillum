@@ -2,6 +2,7 @@ IRQ_the_gathering_storm = {
 	IRQ_weapon_inspectors = {
 		available = {
 			has_war = no
+			has_completed_focus = IRQ_UN_cooperation
 		}
 
 		fire_only_once = yes
@@ -17,12 +18,17 @@ IRQ_the_gathering_storm = {
 		remove_effect = {
 			custom_effect_tooltip = IRQ_UN_happier
 			set_country_flag = IRQ_weapon_inspectors_done
+			subtract_from_variable = {
+				var = IRQ_US_Invasion_Desire
+				value = -10
+			}
 		}
 	}
 	IRQ_full_weapon_inspectors = {
 		available = {
 			has_war = no
 			has_country_flag = IRQ_weapon_inspectors_done
+			has_completed_focus = IRQ_UN_cooperation
 		}
 
 		fire_only_once = yes
@@ -37,6 +43,10 @@ IRQ_the_gathering_storm = {
 		}
 		remove_effect = {
 			custom_effect_tooltip = IRQ_UN_v_happier
+			subtract_from_variable = {
+				var = IRQ_US_Invasion_Desire
+				value = -10
+			}
 		}
 	}
 	IRQ_cia_deals = {
@@ -87,6 +97,10 @@ IRQ_the_gathering_storm = {
 			add_war_support = 0.05
 			custom_effect_tooltip = IRQ_unknown_outcome
 			fourth_estate_propaganda_nationalist = yes
+			subtract_from_variable = {
+				var = IRQ_US_Invasion_Desire
+				value = 5
+			}
 		}
 	}
 	IRQ_amnesty_for_exiles = {

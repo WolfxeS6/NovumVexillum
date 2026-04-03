@@ -60,9 +60,27 @@ country_event = {
 		name = ENG_flavor.2.o1
 		add_political_power = -10
 		set_country_flag = ENG_iraqi_freedom_ok
-		ai_chance = { factor = 80 }
-	
-
+		if =  {
+			limit = {
+				check_variable = {
+					var = IRQ.IRQ_US_Invasion_Desire
+					value = 50
+					compare = less_than_or_equals
+				}
+			}
+			add_war_support = -0.1
+		}
+		ai_chance = { 
+			factor = 80 
+			modifier = {
+				factor = 0
+				check_variable = {
+					var = IRQ.IRQ_US_Invasion_Desire
+					value = 50
+					compare = less_than_or_equals
+				}
+			}
+		}
 	}
 	
 		option = {
