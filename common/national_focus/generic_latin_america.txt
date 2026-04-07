@@ -1,0 +1,909 @@
+focus_tree = {
+	id = generic_latin_american_focus_tree
+
+	country = {
+		factor = 0
+		modifier = {
+			add = 6
+			OR = {
+
+				# South America (12)
+				original_tag = URG # Uruguay
+				original_tag = ARG # Argentina
+				original_tag = PAR # Paraguay
+				original_tag = CHL # Chile
+				original_tag = BOL # Bolivia
+				original_tag = PRU # Peru
+				original_tag = ECU # Ecuador
+				original_tag = COL # Colombia
+				original_tag = VEN # Venezuela
+				original_tag = GYA # Colombia
+				original_tag = SUR # Suriname
+				original_tag = CAY # French Guyana
+
+				# Central America (7)
+				original_tag = PAN # Panama
+				original_tag = COS # Costa Rica
+				original_tag = NIC # Nicaragua
+				original_tag = HON # Honduras
+				original_tag = ELS # El Salvador
+				original_tag = GUA # Guatemala
+				original_tag = BLZ # Belize
+
+				# North America
+				original_tag = MEX # Mexico
+
+				original_tag = ELN
+				original_tag = FAR
+			}
+		}
+	}
+
+	continuous_focus_position = { x = 50 y = 1720 }
+
+	default = no
+
+	focus = {
+		id = LATAM_national_development_plan
+		icon = GFX_focus_CHL_expand_southern_infrastructure
+		
+		x = 1
+		y = 0
+		
+		cost = 5
+		
+		prerequisite = {}
+		
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_ideas = LATAM_national_development_plan
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_highway_investment_initiative
+		icon = GFX_focus_generic_road_investment
+		
+		x = 3
+		y = 1
+		
+		cost = 5
+		
+		prerequisite = {
+			focus = LATAM_national_development_plan
+		}
+		
+		completion_reward = {
+			random_owned_state = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+			}
+			random_owned_state = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+			}
+			random_owned_state = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+			}
+			random_owned_state = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+			}
+			random_owned_state = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_railway_modernization_program
+		icon = GFX_focus_generic_railroad
+		
+		x = -1
+		y = 1
+		
+		cost = 5
+		
+		prerequisite = {
+			focus = LATAM_national_development_plan
+		}
+		
+		completion_reward = {
+			random_owned_state = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			add_ideas = LATAM_railway_modernization_program
+			add_equipment_to_stockpile = {
+				type = train_equipment
+				amount = 15
+				producer = USA
+			}
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_expanding_the_merchant_fleet
+		icon = GFX_goal_generic_positive_trade_relations
+		
+		x = 1
+		y = 1
+		
+		cost = 5
+		
+		prerequisite = {
+			focus = LATAM_national_development_plan
+		}
+
+		available = {
+			any_state = {
+				is_coastal = yes
+				is_controlled_by = ROOT
+			}
+		}
+
+		bypass = {
+			any_state = {
+				is_coastal = no
+				is_controlled_by = ROOT
+			}
+		}
+		
+		completion_reward = {
+			random_owned_state = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = dockyard
+					level = 1
+					instant_build = yes
+				}
+			}
+			add_equipment_to_stockpile = {
+				type = convoy_1
+				amount = 25
+			}
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_digital_infrastructure_initiative
+		icon = GFX_focus_SWE_radiotjanst
+		
+		x = 1
+		y = 2
+		
+		cost = 5
+		
+		prerequisite = {
+			focus = LATAM_highway_investment_initiative
+		}
+		prerequisite = {
+			focus = LATAM_railway_modernization_program
+		}
+		prerequisite = {
+			focus = LATAM_expanding_the_merchant_fleet
+		}
+		
+		completion_reward = {
+			add_ideas = LATAM_digital_infrastructure_initiative
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_subsidize_resource_industry
+		icon = GFX_focus_generic_mining_industry
+
+		relative_position_id = LATAM_digital_infrastructure_initiative
+		
+		x = -2
+		y = 1
+		
+		cost = 5
+		
+		prerequisite = {
+			focus = LATAM_digital_infrastructure_initiative
+		}
+		
+		completion_reward = {
+			add_ideas = LATAM_digital_infrastructure_initiative
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_industrial_investments
+		icon = GFX_focus_generic_modernize_industry
+
+		relative_position_id = LATAM_digital_infrastructure_initiative
+		
+		x = 2
+		y = 1
+		
+		cost = 5
+		
+		prerequisite = {
+			focus = LATAM_digital_infrastructure_initiative
+		}
+		
+		completion_reward = {
+			add_ideas = LATAM_industrial_investments
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_expand_the_capital_university
+		icon = GFX_focus_generic_university_1
+
+		relative_position_id = LATAM_digital_infrastructure_initiative
+		
+		x = 0
+		y = 2
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_digital_infrastructure_initiative
+		}
+
+		prerequisite = {
+			focus = LATAM_industrial_investments
+			focus = LATAM_subsidize_resource_industry
+		}
+
+		completion_reward = {
+			add_research_slot = 1
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+
+	focus = {
+		id = LATAM_subsidize_domestic_industry
+		icon = GFX_SOV_industrial_modernization_ccp_2d_sov_compatibility
+
+		mutually_exclusive = { focus = LATAM_resource_based_economy }
+
+		relative_position_id = LATAM_digital_infrastructure_initiative
+		
+		x = 2
+		y = 3
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_industrial_investments
+		}
+
+		prerequisite = {
+			focus = LATAM_expand_the_capital_university
+		}
+		
+		completion_reward = {
+			random_owned_state = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+
+	focus = {
+		id = LATAM_expand_recycling_plants
+		icon = GFX_focus_generic_aluminum
+
+		relative_position_id = LATAM_digital_infrastructure_initiative
+		
+		x = 0
+		y = 4
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_subsidize_domestic_industry
+			focus = LATAM_resource_based_economy
+		}
+		
+		completion_reward = {
+			random_owned_state = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = recycling_center
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_state = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = recycling_center
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+
+	focus = {
+		id = LATAM_import_substitution_policies
+		icon = GFX_focus_GER_autarky_ambitions
+
+		relative_position_id = LATAM_digital_infrastructure_initiative
+		
+		x = 2
+		y = 4
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_subsidize_domestic_industry
+		}
+		
+		completion_reward = {
+			add_ideas = LATAM_import_substitution_policies
+			random_owned_state = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_made_in_nation
+		icon = GFX_focus_generic_industry_2
+
+		relative_position_id = LATAM_digital_infrastructure_initiative
+		
+		x = 4
+		y = 4
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_subsidize_domestic_industry
+		}
+		
+		completion_reward = {
+			add_ideas = LATAM_made_in_nation
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_heavy_industry_development
+		icon = GFX_focus_generic_military_industry
+
+		relative_position_id = LATAM_digital_infrastructure_initiative
+		
+		x = 3
+		y = 5
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_made_in_nation
+		}
+
+		prerequisite = {
+			focus = LATAM_import_substitution_policies
+		}
+		
+		completion_reward = {
+			random_owned_state = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_industrial_self_suficiency
+		icon = GFX_SOV_heavy_industry_ccp_2d_sov_compatibility
+
+		relative_position_id = LATAM_digital_infrastructure_initiative
+		
+		x = 1
+		y = 5
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_made_in_nation
+		}
+
+		prerequisite = {
+			focus = LATAM_expand_recycling_plants
+		}
+		
+		completion_reward = {
+			add_ideas = LATAM_industrial_self_suficiency
+			random_owned_state = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_industrial_subsidizing
+		icon = GFX_focus_RAJ_special_economic_zones
+
+		relative_position_id = LATAM_digital_infrastructure_initiative
+		
+		x = 2
+		y = 6
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_heavy_industry_development
+		}
+
+		prerequisite = {
+			focus = LATAM_industrial_self_suficiency
+		}
+		
+		completion_reward = {
+			random_owned_state = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+			random_owned_state = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_create_the_national_industrial_park
+		icon = GFX_focus_generic_industrial_experts
+
+		relative_position_id = LATAM_digital_infrastructure_initiative
+		
+		x = 6
+		y = 4
+		
+		cost = 10
+
+		mutually_exclusive = { focus = LATAM_increase_education_funding }
+		
+		prerequisite = {
+			focus = LATAM_subsidize_domestic_industry
+		}
+		
+		completion_reward = {
+			random_owned_state = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_increase_education_funding
+		icon = GFX_focus_generic_education
+
+		relative_position_id = LATAM_digital_infrastructure_initiative
+
+		mutually_exclusive = { focus = LATAM_create_the_national_industrial_park }
+		
+		x = 8
+		y = 4
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_subsidize_domestic_industry
+		}
+		
+		completion_reward = {
+			add_ideas = LATAM_education_funding
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+
+
+	focus = {
+		id = LATAM_resource_based_economy
+		icon = GFX_focus_generic_resource_extraction
+
+		mutually_exclusive = { focus = LATAM_subsidize_domestic_industry }
+
+		relative_position_id = LATAM_digital_infrastructure_initiative
+		
+		x = -2
+		y = 3
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_subsidize_resource_industry
+		}
+
+		prerequisite = {
+			focus = LATAM_expand_the_capital_university
+		}
+		
+		completion_reward = {
+			add_ideas = { free_trade }
+			add_ideas = { LATAM_resource_based_economy }
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_expand_the_iron_mines
+		icon = GFX_focus_generic_steel
+
+		mutually_exclusive = { focus = LATAM_subsidize_domestic_industry }
+
+		relative_position_id = LATAM_digital_infrastructure_initiative
+		
+		x = -4
+		y = 4
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_resource_based_economy
+		}
+		
+		completion_reward = {
+			random_owned_state = {
+				add_extra_state_shared_building_slots = 2
+				add_resource = {
+					type = steel
+					amount = 15
+				}	
+			}
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_divert_steel_to_arms_industry
+		icon = GFX_focus_generic_reorient_production
+
+		mutually_exclusive = { focus = LATAM_subsidize_domestic_industry }
+
+		relative_position_id = LATAM_digital_infrastructure_initiative
+		
+		x = -5
+		y = 5
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_expand_the_iron_mines
+		}
+		
+		completion_reward = {
+			random_owned_state = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}	
+			}
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_invest_in_refineries
+		icon = GFX_goal_generic_oil_refinery
+
+		mutually_exclusive = { focus = LATAM_subsidize_domestic_industry }
+
+		relative_position_id = LATAM_digital_infrastructure_initiative
+		
+		x = -6
+		y = 4
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_resource_based_economy
+		}
+		
+		completion_reward = {
+			random_owned_state = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = synthetic_refinery
+					level = 1
+					instant_build = yes
+				}
+				add_resource = {
+					type = oil
+					amount = 5
+				}
+			}
+			add_ideas = LATAM_oil_boom
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_agricultural_subsidies
+		icon = GFX_focus_generic_agricultural_subsidies
+
+		mutually_exclusive = { focus = LATAM_subsidize_domestic_industry }
+
+		relative_position_id = LATAM_digital_infrastructure_initiative
+		
+		x = -2
+		y = 4
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_resource_based_economy
+		}
+		
+		completion_reward = {
+			add_ideas = { LATAM_agricultural_subsidies }
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_land_redistribution
+		icon = GFX_focus_generic_land_redistribution
+
+		mutually_exclusive = { focus = LATAM_subsidize_domestic_industry }
+
+		relative_position_id = LATAM_digital_infrastructure_initiative
+		
+		x = -1
+		y = 5
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_agricultural_subsidies
+		}
+		prerequisite = {
+			focus = LATAM_expand_recycling_plants
+		}
+		
+		completion_reward = {
+			random_owned_state = {
+				add_extra_state_shared_building_slots = 2
+			}
+			random_owned_state = {
+				add_extra_state_shared_building_slots = 2
+			}
+			random_owned_state = {
+				add_extra_state_shared_building_slots = 1
+			}
+			random_owned_state = {
+				add_extra_state_shared_building_slots = 1
+			}
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_invest_in_the_gold_industry
+		icon = GFX_focus_generic_expand_gold_mining
+
+		mutually_exclusive = { focus = LATAM_subsidize_domestic_industry }
+
+		relative_position_id = LATAM_digital_infrastructure_initiative
+		
+		x = -3
+		y = 5
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_agricultural_subsidies
+		}
+		prerequisite = {
+			focus = LATAM_expand_the_iron_mines
+		}
+		
+		completion_reward = {
+			add_ideas = { LATAM_gold_trade }
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_resource_export_boom
+		icon = GFX_focus_generic_stockpile_currency
+
+		mutually_exclusive = { focus = LATAM_subsidize_domestic_industry }
+
+		relative_position_id = LATAM_digital_infrastructure_initiative
+		
+		x = -2
+		y = 6
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_land_redistribution
+		}
+		prerequisite = {
+			focus = LATAM_invest_in_the_gold_industry
+		}
+		
+		completion_reward = {
+			swap_ideas = {
+				add_idea = LATAM_resource_based_economy2
+				remove_idea = LATAM_resource_based_economy
+			}
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_national_century
+		icon = GFX_focus_generic_stockpile_currency
+
+		mutually_exclusive = { focus = LATAM_subsidize_domestic_industry }
+
+		relative_position_id = LATAM_digital_infrastructure_initiative
+		
+		x = 0
+		y = 7
+		
+		cost = 21.5
+		
+		prerequisite = {
+			focus = LATAM_industrial_subsidizing
+			focus = LATAM_resource_export_boom
+		}
+		
+		completion_reward = {
+			random_owned_state = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+			random_owned_state = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+			add_research_slot = 1
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+}
