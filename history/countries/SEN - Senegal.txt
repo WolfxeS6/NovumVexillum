@@ -6,6 +6,11 @@ set_research_slots = 2
 set_convoys = 100
 set_stability = 0.4
 
+country_event = {
+	id = miscFlavor.9
+	days = 92
+}
+
 set_country_flag = country_language_french
 set_country_flag = country_behavior_indolent
 
@@ -91,6 +96,19 @@ if = {
 			engine_type_slot = engine_1_2x
 			special_type_slot_1 = empty
 		}
+	}
+}
+if = {
+	limit = { not = { has_dlc = "Man the Guns" } }
+	set_technology = {
+		early_patrol_boat = 1
+	}
+}
+if = {
+	limit = { has_dlc = "Man the Guns" }
+	set_technology = {
+		early_ship_hull_patrol_boat = 1
+		basic_light_battery = 1	
 	}
 }
 if = {
@@ -241,3 +259,21 @@ recruit_character = SEN_mola_kane
 		social_liberal = 65
 	}
 }
+
+if = {
+	limit = { has_dlc = "Man the Guns" }
+
+	create_equipment_variant = {
+		name = "Fouta Class"
+		type = ship_hull_patrol_boat_1
+		name_group = GENERIC_MINESWEEPER_NAMES
+		modules = {
+			fixed_ship_battery_slot = ship_light_battery_1
+			fixed_ship_anti_air_slot = empty
+			fixed_ship_fire_control_system_slot = empty
+			fixed_ship_engine_slot = light_patrol_ship_engine_1
+			fixed_ship_torpedo_slot = ship_mine_sweeper_1
+			mid_1_custom_slot = ship_torpedo_1
+		}
+	}
+}	
