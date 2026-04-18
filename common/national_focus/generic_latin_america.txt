@@ -32,7 +32,8 @@ focus_tree = {
 
 				# North America
 				original_tag = MEX # Mexico
-
+				
+				original_tag = EZL
 				original_tag = ELN
 				original_tag = FAR
 			}
@@ -47,7 +48,7 @@ focus_tree = {
 		id = LATAM_national_development_plan
 		icon = GFX_focus_CHL_expand_southern_infrastructure
 		
-		x = 1
+		x = 0
 		y = 0
 		
 		cost = 5
@@ -132,7 +133,7 @@ focus_tree = {
 		id = LATAM_railway_modernization_program
 		icon = GFX_focus_generic_railroad
 		
-		x = -1
+		x = -2
 		y = 1
 		
 		cost = 5
@@ -166,7 +167,7 @@ focus_tree = {
 		id = LATAM_expanding_the_merchant_fleet
 		icon = GFX_goal_generic_positive_trade_relations
 		
-		x = 1
+		x = 0
 		y = 1
 		
 		cost = 5
@@ -212,7 +213,7 @@ focus_tree = {
 		id = LATAM_digital_infrastructure_initiative
 		icon = GFX_focus_SWE_radiotjanst
 		
-		x = 1
+		x = 0
 		y = 2
 		
 		cost = 5
@@ -910,7 +911,7 @@ focus_tree = {
 		id = LATAM_debate_the_economic_model
 		icon = GFX_focus_BEL_engine_of_the_economy
 		
-		x = 14
+		x = 13
 		y = 1
 		
 		cost = 5
@@ -941,6 +942,8 @@ focus_tree = {
 		prerequisite = {
 			focus = LATAM_debate_the_economic_model
 		}
+
+		mutually_exclusive = { focus = LATAM_state_market focus = LATAM_free_market }
 		
 		completion_reward = {
 			add_stability = 0.05
@@ -966,7 +969,31 @@ focus_tree = {
 		}
 		
 		completion_reward = {
-			add_stability = 0.05
+			if = {
+				limit = {
+					NOT = {
+						has_idea = LATAM_mixed_market3
+					}
+				}
+				swap_ideas = {
+					add_idea = LATAM_mixed_market2
+					remove_idea = LATAM_mixed_market
+				}
+			}
+			else = {
+				swap_ideas = {
+					add_idea = LATAM_mixed_market4
+					remove_idea = LATAM_mixed_market3
+				}
+			}
+			random_owned_state = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}	
 		}
 		
 		ai_will_do = {
@@ -989,7 +1016,22 @@ focus_tree = {
 		}
 		
 		completion_reward = {
-			add_stability = 0.05
+			random_owned_state = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_state = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
 		}
 		
 		ai_will_do = {
@@ -1012,7 +1054,23 @@ focus_tree = {
 		}
 		
 		completion_reward = {
-			add_stability = 0.05
+			if = {
+				limit = {
+					NOT = {
+						has_idea = LATAM_mixed_market2
+					}
+				}
+				swap_ideas = {
+					add_idea = LATAM_mixed_market3
+					remove_idea = LATAM_mixed_market
+				}
+			}
+			else = {
+				swap_ideas = {
+					add_idea = LATAM_mixed_market4
+					remove_idea = LATAM_mixed_market2
+				}
+			}
 		}
 		
 		ai_will_do = {
@@ -1041,7 +1099,10 @@ focus_tree = {
 		}
 		
 		completion_reward = {
-			add_stability = 0.05
+			swap_ideas = {
+				add_idea = LATAM_mixed_market5
+				remove_idea = LATAM_mixed_market4
+			}
 		}
 		
 		ai_will_do = {
@@ -1062,9 +1123,11 @@ focus_tree = {
 		prerequisite = {
 			focus = LATAM_debate_the_economic_model
 		}
+
+		mutually_exclusive = { focus = LATAM_mixed_market focus = LATAM_free_market }
 		
 		completion_reward = {
-			add_stability = 0.05
+			add_ideas = LATAM_state_market
 		}
 		
 		ai_will_do = {
@@ -1087,7 +1150,22 @@ focus_tree = {
 		}
 		
 		completion_reward = {
-			add_stability = 0.05
+			random_owned_state = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_state = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
 		}
 		
 		ai_will_do = {
@@ -1110,7 +1188,7 @@ focus_tree = {
 		}
 		
 		completion_reward = {
-			add_stability = 0.05
+			add_ideas = LATAM_subsidized_electronics_sector
 		}
 		
 		ai_will_do = {
@@ -1133,7 +1211,10 @@ focus_tree = {
 		}
 		
 		completion_reward = {
-			add_stability = 0.05
+			swap_ideas = {
+				add_idea = LATAM_state_market1
+				remove_idea = LATAM_state_market
+			} 
 		}
 		
 		ai_will_do = {
@@ -1162,7 +1243,18 @@ focus_tree = {
 		}
 		
 		completion_reward = {
-			add_stability = 0.05
+			swap_ideas = {
+				add_idea = LATAM_state_market2
+				remove_idea = LATAM_state_market1
+			}
+			random_owned_state = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
 		}
 		
 		ai_will_do = {
@@ -1177,6 +1269,8 @@ focus_tree = {
 		y = 1
 
 		relative_position_id = LATAM_debate_the_economic_model
+
+		mutually_exclusive = { focus = LATAM_mixed_market focus = LATAM_mixed_market }
 		
 		cost = 10
 		
@@ -1185,7 +1279,7 @@ focus_tree = {
 		}
 		
 		completion_reward = {
-			add_stability = 0.05
+			add_ideas = LATAM_free_market
 		}
 		
 		ai_will_do = {
@@ -1208,7 +1302,10 @@ focus_tree = {
 		}
 		
 		completion_reward = {
-			add_stability = 0.05
+			swap_ideas = {
+				add_idea = LATAM_free_market1
+				remove_idea = LATAM_free_market
+			}
 		}
 		
 		ai_will_do = {
@@ -1231,7 +1328,37 @@ focus_tree = {
 		}
 		
 		completion_reward = {
-			add_stability = 0.05
+			random_owned_state = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_state = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_state = {
+				limit = {
+					is_fully_controlled_by = ROOT
+					arms_factory > 0
+				}
+				remove_building = {
+					type = arms_factory
+					level = 1
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
 		}
 		
 		ai_will_do = {
@@ -1254,7 +1381,15 @@ focus_tree = {
 		}
 		
 		completion_reward = {
-			add_stability = 0.05
+			random_owned_state = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			add_ideas = LATAM_competitive_private_sector
 		}
 		
 		ai_will_do = {
@@ -1283,7 +1418,10 @@ focus_tree = {
 		}
 		
 		completion_reward = {
-			add_stability = 0.05
+			swap_ideas = {
+				add_idea = LATAM_free_market2
+				remove_idea = LATAM_free_market1
+			}
 		}
 		
 		ai_will_do = {
@@ -1308,7 +1446,829 @@ focus_tree = {
 		}
 		
 		completion_reward = {
-			add_stability = 0.05
+			random_owned_state = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+			random_owned_state = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+
+	############
+	### ARMY ###
+	############
+
+	focus = {
+		id = LATAM_modernize_the_armed_forces
+		icon = GFX_focus_CHL_expand_southern_infrastructure
+		
+		x = 30
+		y = 0
+		
+		cost = 5
+		
+		prerequisite = {}
+		
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			army_experience = 10
+			add_ideas = LATAM_armed_forces_modernization
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_professionalize_the_officer_corps
+		icon = GFX_focus_CHL_expand_southern_infrastructure
+		
+		x = 32
+		y = 0
+		
+		cost = 5
+		
+		prerequisite = {}
+		
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_ideas = LATAM_modern_officer_corps
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_the_national_armed_forces
+		icon = GFX_focus_CHL_expand_southern_infrastructure
+		
+		x = 31
+		y = 1
+		
+		cost = 5
+		
+		prerequisite = {
+			focus = LATAM_professionalize_the_officer_corps
+		}
+		prerequisite = {
+			focus = LATAM_modernize_the_armed_forces
+		}
+		
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_war_support = 0.05
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_modernize_our_command_structure
+		icon = GFX_focus_CHL_expand_southern_infrastructure
+
+		relative_position_id = LATAM_the_national_armed_forces
+		
+		x = 11
+		y = 1
+		
+		cost = 5
+		
+		prerequisite = {
+			focus = LATAM_the_national_armed_forces
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_war_support = 0.05
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_expand_training_programs
+		icon = GFX_focus_CHL_expand_southern_infrastructure
+
+		relative_position_id = LATAM_the_national_armed_forces
+		
+		x = 10
+		y = 2
+		
+		cost = 5
+		
+		prerequisite = {
+			focus = LATAM_modernize_our_command_structure
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_war_support = 0.05
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_logistics_modernization
+		icon = GFX_focus_CHL_expand_southern_infrastructure
+
+		relative_position_id = LATAM_the_national_armed_forces
+		
+		x = 12
+		y = 2
+		
+		cost = 5
+		
+		prerequisite = {
+			focus = LATAM_modernize_our_command_structure
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_war_support = 0.05
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_joint_operations_command
+		icon = GFX_focus_CHL_expand_southern_infrastructure
+
+		relative_position_id = LATAM_the_national_armed_forces
+		
+		x = 11
+		y = 3
+		
+		cost = 5
+		
+		prerequisite = {
+			focus = LATAM_logistics_modernization
+		}
+		prerequisite = {
+			focus = LATAM_expand_training_programs
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_war_support = 0.05
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_asymmetric_warfare_doctrine
+		icon = GFX_focus_CHL_expand_southern_infrastructure
+
+		relative_position_id = LATAM_the_national_armed_forces
+		
+		x = 0
+		y = 1
+		
+		cost = 5
+		
+		prerequisite = {
+			focus = LATAM_the_national_armed_forces
+		}
+
+		mutually_exclusive = {
+			focus = LATAM_conventional_response_doctrine
+		}
+		mutually_exclusive = {
+			focus = LATAM_rapid_response_doctrine
+		}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_war_support = 0.05
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_counterinsurgency_operations
+		icon = GFX_focus_CHL_expand_southern_infrastructure
+
+		relative_position_id = LATAM_asymmetric_warfare_doctrine
+		
+		x = 0
+		y = 1
+		
+		cost = 5
+		
+		prerequisite = {
+			focus = LATAM_asymmetric_warfare_doctrine
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_war_support = 0.05
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_decentralized_command_structure
+		icon = GFX_focus_CHL_expand_southern_infrastructure
+
+		relative_position_id = LATAM_asymmetric_warfare_doctrine
+		
+		x = -2
+		y = 1
+		
+		cost = 5
+		
+		prerequisite = {
+			focus = LATAM_asymmetric_warfare_doctrine
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_war_support = 0.05
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_guerilla_warfare_training
+		icon = GFX_focus_CHL_expand_southern_infrastructure
+
+		relative_position_id = LATAM_asymmetric_warfare_doctrine
+		
+		x = 2
+		y = 1
+		
+		cost = 5
+		
+		prerequisite = {
+			focus = LATAM_asymmetric_warfare_doctrine
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_war_support = 0.05
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_civil_military_coordination
+		icon = GFX_focus_CHL_expand_southern_infrastructure
+
+		relative_position_id = LATAM_asymmetric_warfare_doctrine
+		
+		x = 1
+		y = 2
+		
+		cost = 5
+		
+		prerequisite = {
+			focus = LATAM_guerilla_warfare_training
+		}
+		prerequisite = {
+			focus = LATAM_decentralized_command_structure
+		}
+		prerequisite = {
+			focus = LATAM_counterinsurgency_operations
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_war_support = 0.05
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_protracted_warfare_doctrine
+		icon = GFX_focus_CHL_expand_southern_infrastructure
+
+		relative_position_id = LATAM_asymmetric_warfare_doctrine
+		
+		x = -1
+		y = 2
+		
+		cost = 5
+		
+		prerequisite = {
+			focus = LATAM_guerilla_warfare_training
+		}
+		prerequisite = {
+			focus = LATAM_decentralized_command_structure
+		}
+		prerequisite = {
+			focus = LATAM_counterinsurgency_operations
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_war_support = 0.05
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_conventional_warfare_doctrine
+		icon = GFX_focus_CHL_expand_southern_infrastructure
+
+		relative_position_id = LATAM_the_national_armed_forces
+		
+		x = -6
+		y = 1
+		
+		cost = 5
+		
+		prerequisite = {
+			focus = LATAM_the_national_armed_forces
+		}
+
+		mutually_exclusive = {
+			focus = LATAM_asymmetric_warfare_doctrine 
+		}
+		mutually_exclusive = {
+			focus = LATAM_rapid_response_doctrine
+		}
+		
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_war_support = 0.05
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_mechanized_warfare_training
+		icon = GFX_focus_CHL_expand_southern_infrastructure
+
+		relative_position_id = LATAM_conventional_warfare_doctrine
+		
+		x = 2
+		y = 1
+		
+		cost = 5
+		
+		prerequisite = {
+			focus = LATAM_conventional_warfare_doctrine
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_war_support = 0.05
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_combined_arms_integrations
+		icon = GFX_focus_CHL_expand_southern_infrastructure
+
+		relative_position_id = LATAM_conventional_warfare_doctrine
+		
+		x = 0
+		y = 1
+		
+		cost = 5
+		
+		prerequisite = {
+			focus = LATAM_conventional_warfare_doctrine
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_war_support = 0.05
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_armored_spearheads
+		icon = GFX_focus_CHL_expand_southern_infrastructure
+
+		relative_position_id = LATAM_conventional_warfare_doctrine
+		
+		x = -2
+		y = 1
+		
+		cost = 5
+		
+		prerequisite = {
+			focus = LATAM_conventional_warfare_doctrine
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_war_support = 0.05
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_fire_superiority
+		icon = GFX_focus_CHL_expand_southern_infrastructure
+
+		relative_position_id = LATAM_conventional_warfare_doctrine
+		
+		x = -1
+		y = 2
+		
+		cost = 5
+		
+		prerequisite = {
+			focus = LATAM_armored_spearheads
+		}
+		prerequisite = {
+			focus = LATAM_combined_arms_integrations
+		}
+		prerequisite = {
+			focus = LATAM_mechanized_warfare_training
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_war_support = 0.05
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_modern_battlefield_coordination
+		icon = GFX_focus_CHL_expand_southern_infrastructure
+
+		relative_position_id = LATAM_conventional_warfare_doctrine
+		
+		x = 1
+		y = 2
+		
+		cost = 5
+		
+		prerequisite = {
+			focus = LATAM_armored_spearheads
+		}
+		prerequisite = {
+			focus = LATAM_combined_arms_integrations
+		}
+		prerequisite = {
+			focus = LATAM_mechanized_warfare_training
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_war_support = 0.05
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_rapid_response_doctrine
+		icon = GFX_focus_CHL_expand_southern_infrastructure
+
+		relative_position_id = LATAM_the_national_armed_forces
+		
+		x = 6
+		y = 1
+		
+		cost = 5
+		
+		prerequisite = {
+			focus = LATAM_the_national_armed_forces
+		}
+
+		mutually_exclusive = {
+			focus = LATAM_asymmetric_warfare_doctrine
+		}
+		mutually_exclusive = {
+			focus = LATAM_conventional_warfare_doctrine
+		}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_war_support = 0.05
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_air_mobile_operations
+		icon = GFX_focus_CHL_expand_southern_infrastructure
+
+		relative_position_id = LATAM_the_national_armed_forces
+		
+		x = 4
+		y = 2
+		
+		cost = 5
+		
+		prerequisite = {
+			focus = LATAM_rapid_response_doctrine
+		}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_war_support = 0.05
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_rapid_reaction_forces
+		icon = GFX_focus_CHL_expand_southern_infrastructure
+
+		relative_position_id = LATAM_the_national_armed_forces
+		
+		x = 6
+		y = 2
+		
+		cost = 5
+		
+		prerequisite = {
+			focus = LATAM_rapid_response_doctrine
+		}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_war_support = 0.05
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_integrated_support_units
+		icon = GFX_focus_CHL_expand_southern_infrastructure
+
+		relative_position_id = LATAM_the_national_armed_forces
+		
+		x = 8
+		y = 2
+		
+		cost = 5
+		
+		prerequisite = {
+			focus = LATAM_rapid_response_doctrine
+		}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_war_support = 0.05
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_precision_strike_coordination
+		icon = GFX_focus_CHL_expand_southern_infrastructure
+
+		relative_position_id = LATAM_rapid_response_doctrine
+		
+		x = 1
+		y = 2
+		
+		cost = 5
+		
+		prerequisite = {
+			focus = LATAM_integrated_support_units
+		}
+		prerequisite = {
+			focus = LATAM_rapid_reaction_forces
+		}
+		prerequisite = {
+			focus = LATAM_air_mobile_operations
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_war_support = 0.05
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_elite_commando_units
+		icon = GFX_focus_CHL_expand_southern_infrastructure
+
+		relative_position_id = LATAM_rapid_response_doctrine
+		
+		x = -1
+		y = 2
+		
+		cost = 5
+		
+		prerequisite = {
+			focus = LATAM_integrated_support_units
+		}
+		prerequisite = {
+			focus = LATAM_rapid_reaction_forces
+		}
+		prerequisite = {
+			focus = LATAM_air_mobile_operations
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_war_support = 0.05
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_modern_armed_forces
+		icon = GFX_focus_CHL_expand_southern_infrastructure
+
+		relative_position_id = LATAM_the_national_armed_forces
+		
+		x = 0
+		y = 4
+		
+		cost = 5
+		
+		prerequisite = {
+			focus = LATAM_fire_superiority
+			focus = LATAM_modern_battlefield_coordination
+			focus = LATAM_protracted_warfare_doctrine
+			focus = LATAM_civil_military_coordination
+			focus = LATAM_elite_commando_units
+			focus = LATAM_precision_strike_coordination
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_war_support = 0.05
 		}
 		
 		ai_will_do = {
