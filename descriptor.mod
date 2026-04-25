@@ -1,3 +1,4 @@
+version="1.0"
 tags={
 	"Alternative History"
 	"Events"
@@ -7,6 +8,7 @@ tags={
 	"Military"
 	"National Focuses"
 	"Technologies"
+	"Fixes"
 }
 replace_path="common/characters"
 replace_path="common/generation"
@@ -34,7 +36,5 @@ replace_path="map/strategicregions"
 replace_path="map/supplyareas"
 replace_path="common/units/names_divisions"
 replace_path="common/military_industrial_organization/organizations"
-name="Novum Vexillum"
-picture="novum_vexillum.png"
-supported_version="1.17.*"
-remote_file_id="1827273767"
+name="Novum Vexillium Drive"
+supported_version="1.18.0.0"
