@@ -329,6 +329,40 @@ ideas = {
 				trade_cost_for_target_factor = -0.5
 			}
 		}
+
+		##### wagner sphere in africa #####
+
+		wagner_sphere_member = {
+			picture = GFX_rus_economycooperation_idea
+			
+			allowed = {
+				always = no
+			}
+			
+			cancel = {	
+				OR = {
+					NOT = { country_exists = SOV }
+					has_war_with = SOV
+					AND = { 
+						is_puppet = yes
+						NOT = { is_puppet_of = SOV }
+					}
+				}
+			}
+			
+			modifier = {
+				stability_factor = -0.05
+				consumer_goods_factor = 0.1
+				industrial_capacity_factory = -0.1
+				industrial_capacity_dockyard = -0.1
+			}
+			
+			targeted_modifier = {
+				tag = SOV
+				cic_to_target_factor = 0.1
+				trade_cost_for_target_factor = -0.5
+			}
+		}
 		
 	}
 }
