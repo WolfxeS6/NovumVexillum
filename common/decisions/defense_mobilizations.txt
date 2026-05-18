@@ -60,4 +60,42 @@ army_decisions = {
 			}	
 		}
 	}
+	PLU_mobilize_the_police = {
+		icon = generic_army_support
+		cost = 50
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 100
+		}
+
+		available = {
+			has_war = yes
+		}
+
+		visible = {
+			original_tag = PLU
+		}
+		days_remove = 15
+		remove_effect = {
+			custom_effect_tooltip = PLU_mobilize_the_police_tt
+			hidden_effect = {
+				division_template = {
+					name = "Police Unit"
+					priority = 0
+					regiments = {
+						infantry = { x = 0 y = 0 }
+					}
+				}
+				647 = {
+					create_unit = {
+						division = "name = \"Palau National Police\" division_template = \"Police Unit\" start_experience_factor = 0 start_manpower_factor = 0.2"
+						owner = PLU
+						prioritize_location = 4357
+					}
+				}
+			}	
+		}
+	}
 }
