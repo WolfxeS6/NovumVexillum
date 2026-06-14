@@ -2,6 +2,14 @@
 
 oob = "GYA_2000"
 
+if = {
+	limit = { has_dlc = "Man the Guns" }
+		set_naval_oob = "GYA_2000_naval_mtg"
+	else = {
+		set_naval_oob = "GYA_2000_naval_legacy"
+	}
+}
+
 set_research_slots = 3
 set_convoys = 130
 set_stability = 0.4
@@ -270,6 +278,22 @@ set_technology = {
 	fuel_refining = 1
 }
 
+if = {
+	limit = { not = { has_dlc = "Man the Guns" } }
+	set_technology = {
+		early_patrol_boat = 1
+	}
+}
+if = {
+	limit = { has_dlc = "Man the Guns" }
+	set_technology = {
+		early_ship_hull_patrol_boat = 1
+		basic_torpedo = 1
+		basic_battery = 1
+		basic_naval_mines = 1	
+	}
+}
+
 add_ideas = {
 	economy_tax_high
 	population_growth_decline
@@ -278,45 +302,69 @@ add_ideas = {
 }
 
 set_politics = {	
-	ruling_party = social_liberal
-	last_election = "1997.1.1"
-	election_frequency = 48
+	ruling_party = democratic_socialist
+	last_election = "1997.19.3"
+	election_frequency = 60
 	elections_allowed = yes
 }
 
 set_popularities = {
-    islamist = 1
-    nationalist = 1
-    reactionary = 2
-    conservative = 30
-    market_liberal = 6
-    social_liberal = 25
-    social_democrat = 5
-    progressive = 10
-    democratic_socialist = 10
-    communist = 10
+    democratic_socialist = 58
+	social_democrat = 40
+	progressive = 1
+	communist = 1
 }
 
+recruit_character = GYA_juan_a_edghill
+recruit_character = GYA_joseph_singh
+recruit_character = GYA_john_peter_bennett
+recruit_character = GYA_ravi_dev
+recruit_character = GYA_manzoor_nadir
+recruit_character = GYA_asgar_ally
+recruit_character = GYA_raphael_trotman
+recruit_character = GYA_desmond_hoyte
+recruit_character = GYA_vincent_henry
 recruit_character = GYA_bharrat_jagdeo
+recruit_character = GYA_david_hinds
 recruit_character = GYA_patrick_west
 recruit_character = GYA_nazrul_hussain
 recruit_character = GYA_mark_phillips
 recruit_character = GYA_gary_best
-recruit_character = GYA_michael_bishop
-recruit_character = GYA_roy_lopesseale
-recruit_character = GYA_akoyah_lloyd
-recruit_character = GYA_clement_kempadoo
-recruit_character = GYA_ian_braff
-recruit_character = GYA_peter_bishop
-recruit_character = GYA_sheik_muttoo
-recruit_character = GYA_andre_mittelholzer
-recruit_character = GYA_clairmonte_menezes
-recruit_character = GYA_ivan_critchlow
-recruit_character = GYA_phillip_nichols
-2015.1.1 = {
-	create_country_leader = {
-		name = "David Granger"
-		ideology = liberalist
-		picture = "David_Granger.dds"
+recruit_character = GYA_david_granger
+
+2016.1.1 = {
+	set_politics = {	
+		ruling_party = social_democrat
+		last_election = "2015.11.5"
+		election_frequency = 60
+		elections_allowed = yes
+	}
+
+	set_popularities = {
+		democratic_socialist = 40
+		social_democrat = 58
+		progressive = 1
+		communist = 1
+	}
+
+	retire_character = GYA_desmond_hoyte
+	promote_character = GYA_david_granger
+}
+
+if = {
+	limit = { has_dlc = "Man the Guns" }
+
+	create_equipment_variant = {
+		name = "River Class"
+		type = ship_hull_patrol_boat_1
+		name_group = GENERIC_MINESWEEPER_NAMES
+		modules = {
+			fixed_ship_battery_slot = ship_light_battery_1
+			fixed_ship_anti_air_slot = empty
+			fixed_ship_fire_control_system_slot = empty
+			fixed_ship_engine_slot = light_patrol_ship_engine_1
+			fixed_ship_torpedo_slot = ship_mine_sweeper_1
+			mid_1_custom_slot = ship_torpedo_1
+		}
 	}
 }
