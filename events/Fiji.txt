@@ -1,0 +1,87 @@
+add_namespace = fiji
+
+country_event = {  #Coup Attempt
+	id = fiji.1
+	title = fiji.1.t
+	desc = fiji.1.d
+	picture = GFX_report_event_fiji_coup
+	
+	is_triggered_only = yes
+	
+	option = {   
+		name = fiji.1.a
+		ai_chance = { factor = 90 }
+
+		add_stability = 0.05
+		hidden_effect = {
+			country_event = {
+				id = fiji.2
+				days = 9
+			}
+		}
+	}
+	option = {   
+		name = fiji.1.b
+		ai_chance = { factor = 90 }
+
+		set_politics = {
+			ruling_party = nationalist
+			elections_allowed = no
+		}
+		add_popularity = {
+			ideology = nationalist
+			popularity = 0.25
+		}
+		add_stability = -0.1
+		add_war_support = 0.05
+	}
+}
+
+country_event = {  #Coup Aftermath
+	id = fiji.2
+	title = fiji.2.t
+	desc = fiji.2.d
+	picture = GFX_report_event_fiji_coup_aftermath
+	
+	is_triggered_only = yes
+	
+	option = {   
+		name = fiji.2.a
+		ai_chance = { factor = 20 }
+
+		set_politics = {
+			ruling_party = reactionary
+			elections_allowed = yes
+		}
+		add_popularity = {
+			ideology = reactionary
+			popularity = 0.1
+		}
+		add_stability = -0.05
+		add_war_support = 0.05
+	}
+	option = {   
+		name = fiji.2.b
+		ai_chance = { factor = 10 }
+
+		add_popularity = {
+			ideology = social_democrat
+			popularity = 0.25
+		}
+		add_stability = 0.1
+	}
+	option = {   
+		name = fiji.2.c
+		ai_chance = { factor = 70 }
+
+		set_politics = {
+			ruling_party = conservative
+			elections_allowed = yes
+		}
+		add_popularity = {
+			ideology = conservative
+			popularity = 0.1
+		}
+		add_stability = 0.05
+	}
+}
