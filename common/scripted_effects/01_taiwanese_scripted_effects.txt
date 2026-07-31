@@ -631,3 +631,38 @@ CHI_decrease_naval_equipment_research_effect = {
 		remove_ideas = CHI_hidden_naval_equipment_research_4
 	}
 }
+
+CHI_increase_KMT_popular_support_effect = {
+#custom_effect_tooltip = PRK_national_bankruptcy_down_tt
+	if = {
+		limit = { has_idea = CHI_KMT_popular_support_1 }
+		swap_ideas = {
+			remove_idea = CHI_KMT_popular_support_1
+			add_idea = CHI_KMT_popular_support_2
+		}
+	}
+	else_if = {
+		limit = { has_idea = CHI_KMT_popular_support_2 }
+		swap_ideas = {
+			remove_idea = CHI_KMT_popular_support_2
+			add_idea = CHI_KMT_popular_support_3
+		}
+	}
+	else_if = {
+		limit = { has_idea = CHI_KMT_popular_support_3 }
+		swap_ideas = {
+			remove_idea = CHI_KMT_popular_support_3
+			add_idea = CHI_KMT_popular_support_4
+		}
+	}
+	else_if = {
+		limit = { has_idea = CHI_KMT_popular_support_4 }
+		swap_ideas = {
+			remove_idea = CHI_KMT_popular_support_4
+			add_idea = CHI_KMT_popular_support_5
+		}
+	}
+	else = {
+		add_political_power = 100
+	}
+}
