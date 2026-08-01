@@ -2093,6 +2093,7 @@
 			OR = {
 				has_completed_focus = CHI_additional_shipyard_construction
 				has_completed_focus = CHI_glory_of_taiwan_s_independence_army
+				has_completed_focus = CHI_glory_of_KMT_s_army
 			}
 		}
 
@@ -2128,6 +2129,7 @@
 			OR = {
 				has_completed_focus = CHI_more_faster_army
 				has_completed_focus = CHI_preparing_for_the_longist_war
+				has_completed_focus = CHI_reinforce_armored_divisions
 			}
 		}
 
@@ -6758,6 +6760,7 @@
 		completion_reward = {
 			add_stability = 0.03
 			custom_effect_tooltip = CHI_three_principles_of_the_people_tt
+			add_to_variable = { CHI_three_principles_of_the_people_research_speed_factor = 0.02 tooltip = research_speed_factor_tt }
 		}
 	}
 	
@@ -6806,12 +6809,14 @@
 			}
 			custom_effect_tooltip = generic_skip_one_line_tt
 			custom_effect_tooltip = CHI_three_principles_of_the_people_tt
+			add_to_variable = { CHI_three_principles_of_the_people_production_speed_industrial_complex_factor = 0.05 tooltip = production_speed_industrial_complex_factor_tt }
+			add_to_variable = { CHI_three_principles_of_the_people_production_speed_dockyard_factor = 0.05 tooltip = production_speed_dockyard_factor_tt }
 		}
 	}
 	
 	focus = {
 		id = CHI_annex_TSU_party
-		icon = CHI_politically_stable_taiwan
+		icon = GFX_focus_generic_reduce_unneccessary_expenditure
 		x = 0
 		y = 1
 
@@ -6916,6 +6921,8 @@
 
 		completion_reward = {
 			custom_effect_tooltip = CHI_three_principles_of_the_people_tt
+			add_to_variable = { CHI_three_principles_of_the_people_consumer_goods_factor = -0.05 tooltip = consumer_goods_factor_tt }
+			add_to_variable = { CHI_three_principles_of_the_people_industry_air_damage_factor = -0.05 tooltip = industry_air_damage_factor_tt }
 		}
 	}
 
@@ -6962,6 +6969,7 @@
 			add_popularity = { ideology = conservative popularity = -0.03 }
 			custom_effect_tooltip = generic_skip_one_line_tt
 			custom_effect_tooltip = CHI_three_principles_of_the_people_tt
+			add_to_variable = { CHI_three_principles_of_the_people_industry_air_damage_factor = -0.1 tooltip = industry_air_damage_factor_tt }
 		}
 	}
 
@@ -6999,6 +7007,7 @@
 			add_to_variable = { NVX_ECO_health = 3 tooltip = additional_economic_health_3 }
 			custom_effect_tooltip = generic_skip_one_line_tt
 			custom_effect_tooltip = CHI_three_principles_of_the_people_tt
+			add_to_variable = { CHI_three_principles_of_the_people_lack_of_resource_penalty_factor = -0.1 tooltip = production_lack_of_resource_penalty_factor_tt }
 		}
 	}
 
@@ -7107,6 +7116,7 @@
 			add_popularity = { ideology = nationalist popularity = 0.02 }
 			custom_effect_tooltip = generic_skip_one_line_tt
 			custom_effect_tooltip = CHI_three_principles_of_the_people_tt
+			add_to_variable = { CHI_three_principles_of_the_people_production_factory_efficiency_gain_factor = 0.1 tooltip = production_factory_efficiency_gain_factor_tt }
 		}
 	}
 
@@ -7239,6 +7249,8 @@
 
 		completion_reward = {
 			custom_effect_tooltip = CHI_three_principles_of_the_people_tt
+			add_to_variable = { CHI_three_principles_of_the_people_research_speed_factor = 0.03 tooltip = research_speed_factor_tt }
+			add_to_variable = { CHI_three_principles_of_the_people_line_change_production_efficiency_factor = 0.05 tooltip = line_change_production_efficiency_factor_tt }
 
 		}
 	}
@@ -7757,6 +7769,9 @@
 				limit = { is_debug = no }
 				custom_effect_tooltip = THIS_IS_WIP_TT
 			}
+			custom_effect_tooltip = CHI_three_principles_of_the_people_tt
+			add_to_variable = { CHI_three_principles_of_the_people_industrial_capacity_factory = 0.1 tooltip = industrial_capacity_factory_tt }
+			add_to_variable = { CHI_three_principles_of_the_people_special_project_speed_factor = 0.05 tooltip = special_project_speed_factor_tt }
 		}
 	}
 
