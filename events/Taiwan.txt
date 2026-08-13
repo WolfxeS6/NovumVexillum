@@ -6,6 +6,10 @@ add_namespace = ro_china.events #Other flavor/Diplomacy Events
 add_namespace = ro_china.endgame_events #Epilogue
 add_namespace = ro_china.joint_events
 add_namespace = ro_china.news
+### KMT Contents
+add_namespace = ro_china.early_events.KMT #2000-2004
+add_namespace = ro_china.mid_events.KMT #2004-2008
+add_namespace = ro_china.endgame_events.KMT #Epilogue
 
 
 ########################################
@@ -532,6 +536,39 @@ news_event = {
 	}
 }
 
+#The 2000 [CHI.GetName] Presidential Election (James Soong)
+news_event = {
+	id = ro_china.news.15
+	title = ro_china.news.15.t
+	desc = ro_china.news.15.desc
+	picture = GFX_news_event_chen_shui_bian
+	
+	is_triggered_only = yes
+	major = yes
+	
+	option = {
+		name = ro_china.news.15.a
+		trigger = {
+			original_tag = CHI
+		}
+	}
+	
+	option = {
+		name = ro_china.news.15.b
+		trigger = {
+			original_tag = PRC
+		}
+	}
+	
+	option = {
+		name = ro_china.news.1.c
+		trigger = {
+			NOT = { original_tag = CHI }
+			NOT = { original_tag = PRC }
+		}
+	}
+}
+
 ########################################
 ####      2000 Intro - Presidential Election      #####
 ########################################
@@ -935,7 +972,7 @@ country_event = { #The 2000 Taiwanese Presidential Election
 		log = "[GetLogInfo]: event ro_china.introgame.19 option ro_china.introgame.19.a"
 		name = ro_china.introgame.19.a
 		ai_chance = { 
-			base = 75 
+			base = 74
 		}
 		set_politics = {
 			ruling_party = social_liberal
@@ -947,6 +984,7 @@ country_event = { #The 2000 Taiwanese Presidential Election
 		}
 		
 		hidden_effect = {
+			complete_national_focus = CHI_year_of_the_dragon
 			add_ideas = CHI_unprepared_army_1
 			add_ideas = CHI_DPP_popular_support_1
 			news_event = { id = ro_china.news.1 hours = 8 }
@@ -963,8 +1001,49 @@ country_event = { #The 2000 Taiwanese Presidential Election
 	option = {
 		log = "[GetLogInfo]: event ro_china.introgame.19 option ro_china.introgame.19.b"
 		name = ro_china.introgame.19.b
+		trigger = {
+			is_debug = yes # WIP
+		}
+
 		ai_chance = { 
-			base = 25 
+			base = 24
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}		
+		}
+		
+		set_politics = {
+			ruling_party = market_liberal
+			elections_allowed = yes
+		}
+		
+		CHI_james_soong = {
+			add_country_leader_role = {
+				promote_leader = yes
+				country_leader = {
+					desc = "POLITICIAN_james_soong_KMT_DESC"
+					ideology = big_tent
+					traits = {	}
+				}
+			}
+		}
+
+		CHI_james_soong = { 
+			promote_character = yes
+		}		
+		
+		hidden_effect = {
+			complete_national_focus = CHI_year_of_the_grand_coalition
+			news_event = { id = ro_china.news.2 hours = 8 }
+		}
+	}
+
+	option = {
+		log = "[GetLogInfo]: event ro_china.introgame.19 option ro_china.introgame.19.c"
+		name = ro_china.introgame.19.c
+		ai_chance = { 
+			base = 1 
 			modifier = {
 				factor = 0
 				is_historical_focus_on = yes
@@ -1634,6 +1713,13 @@ country_event = { #Lee Teng-hui Found Taiwan Solidarity Union
 	
 	trigger = {
 		country_exists = CHI
+		NOT = {
+			has_country_leader = {
+				character = CHI_james_soong
+				ruling_only = yes 
+			}
+		}
+		date < 2003.12.31
 	}
 
 	option = {
