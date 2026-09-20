@@ -73,7 +73,7 @@ focus_tree = {
 		id = LATAM_highway_investment_initiative
 		icon = GFX_focus_generic_road_investment
 		
-		x = 3
+		x = 2
 		y = 1
 		
 		cost = 5
@@ -1398,7 +1398,7 @@ focus_tree = {
 	}
 	focus = {
 		id = LATAM_financial_hub_of_the_americas
-		icon = focus_generic_south_america
+		icon = GFX_focus_generic_commission
 		
 		x = 0
 		y = 2
@@ -1475,7 +1475,7 @@ focus_tree = {
 
 	focus = {
 		id = LATAM_modernize_the_armed_forces
-		icon = GFX_focus_CHL_expand_southern_infrastructure
+		icon = GFX_focus_generic_money_for_equipment
 		
 		x = 30
 		y = 0
@@ -1501,7 +1501,7 @@ focus_tree = {
 	}
 	focus = {
 		id = LATAM_professionalize_the_officer_corps
-		icon = GFX_focus_CHL_expand_southern_infrastructure
+		icon = GFX_focus_generic_phone_alp
 		
 		x = 32
 		y = 0
@@ -1526,7 +1526,7 @@ focus_tree = {
 	}
 	focus = {
 		id = LATAM_the_national_armed_forces
-		icon = GFX_focus_CHL_expand_southern_infrastructure
+		icon = GFX_focus_generic_limited_social_mobilization
 		
 		x = 31
 		y = 1
@@ -1548,6 +1548,7 @@ focus_tree = {
 		
 		completion_reward = {
 			add_war_support = 0.05
+			add_command_power = 25
 		}
 		
 		ai_will_do = {
@@ -1556,7 +1557,7 @@ focus_tree = {
 	}
 	focus = {
 		id = LATAM_modernize_our_command_structure
-		icon = GFX_focus_CHL_expand_southern_infrastructure
+		icon = GFX_focus_CZE_army_reform
 
 		relative_position_id = LATAM_the_national_armed_forces
 		
@@ -1576,7 +1577,11 @@ focus_tree = {
 		bypass = {}
 		
 		completion_reward = {
-			add_war_support = 0.05
+			swap_ideas = {
+				remove_idea = LATAM_modern_officer_corps
+				add_idea = LATAM_modern_officer_corps2
+			}
+			add_command_power = 25
 		}
 		
 		ai_will_do = {
@@ -1585,7 +1590,7 @@ focus_tree = {
 	}
 	focus = {
 		id = LATAM_expand_training_programs
-		icon = GFX_focus_CHL_expand_southern_infrastructure
+		icon = GFX_focus_generic_military_academy
 
 		relative_position_id = LATAM_the_national_armed_forces
 		
@@ -1605,7 +1610,8 @@ focus_tree = {
 		bypass = {}
 		
 		completion_reward = {
-			add_war_support = 0.05
+			add_ideas = LATAM_expanded_training_programs
+			army_experience = 15
 		}
 		
 		ai_will_do = {
@@ -1614,7 +1620,7 @@ focus_tree = {
 	}
 	focus = {
 		id = LATAM_logistics_modernization
-		icon = GFX_focus_CHL_expand_southern_infrastructure
+		icon = GFX_focus_generic_supply_line
 
 		relative_position_id = LATAM_the_national_armed_forces
 		
@@ -1634,7 +1640,13 @@ focus_tree = {
 		bypass = {}
 		
 		completion_reward = {
-			add_war_support = 0.05
+			add_ideas = LATAM_modern_logistics
+			add_tech_bonus = {
+				name = LATAM_logistics_modernization
+				bonus = 0.5
+				uses = 1
+				category = support_tech
+			}
 		}
 		
 		ai_will_do = {
@@ -1643,7 +1655,7 @@ focus_tree = {
 	}
 	focus = {
 		id = LATAM_joint_operations_command
-		icon = GFX_focus_CHL_expand_southern_infrastructure
+		icon = GFX_focus_PRC_army_command
 
 		relative_position_id = LATAM_the_national_armed_forces
 		
@@ -1666,7 +1678,12 @@ focus_tree = {
 		bypass = {}
 		
 		completion_reward = {
-			add_war_support = 0.05
+			swap_ideas = {
+				remove_idea = LATAM_modern_officer_corps2
+				add_idea = LATAM_modern_officer_corps3
+			}
+			army_experience = 10
+			air_experience = 10
 		}
 		
 		ai_will_do = {
@@ -1675,7 +1692,7 @@ focus_tree = {
 	}
 	focus = {
 		id = LATAM_asymmetric_warfare_doctrine
-		icon = GFX_focus_CHL_expand_southern_infrastructure
+		icon = GFX_focus_generic_army_doctrines_2
 
 		relative_position_id = LATAM_the_national_armed_forces
 		
@@ -1689,7 +1706,7 @@ focus_tree = {
 		}
 
 		mutually_exclusive = {
-			focus = LATAM_conventional_response_doctrine
+			focus = LATAM_conventional_warfare_doctrine
 		}
 		mutually_exclusive = {
 			focus = LATAM_rapid_response_doctrine
@@ -1700,7 +1717,8 @@ focus_tree = {
 		bypass = {}
 		
 		completion_reward = {
-			add_war_support = 0.05
+			add_ideas = LATAM_asymmetric_doctrine
+			army_experience = 10
 		}
 		
 		ai_will_do = {
@@ -1709,7 +1727,75 @@ focus_tree = {
 	}
 	focus = {
 		id = LATAM_counterinsurgency_operations
-		icon = GFX_focus_CHL_expand_southern_infrastructure
+		icon = GFX_focus_generic_armored_air_support
+
+		relative_position_id = LATAM_asymmetric_warfare_doctrine
+		
+		x = -1
+		y = 2
+		
+		cost = 5
+		
+		prerequisite = {
+			focus = LATAM_decentralized_command_structure
+		}
+
+		mutually_exclusive = {
+			focus = LATAM_guerilla_warfare_training
+		}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = LATAM_asymmetric_doctrine2
+				add_idea = LATAM_counterinsurgency_doctrine
+			}
+			add_stability = 0.05
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_jungle_and_riverine_units
+		icon = GFX_focus_generic_jungle_troops
+
+		relative_position_id = LATAM_asymmetric_warfare_doctrine
+		
+		x = -1
+		y = 3
+		
+		cost = 5
+		
+		prerequisite = {
+			focus = LATAM_counterinsurgency_operations
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = LATAM_counterinsurgency_doctrine
+				add_idea = LATAM_counterinsurgency_doctrine2
+			}
+			army_experience = 15
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_decentralized_command_structure
+		icon = GFX_focus_generic_diverse_army
 
 		relative_position_id = LATAM_asymmetric_warfare_doctrine
 		
@@ -1729,36 +1815,11 @@ focus_tree = {
 		bypass = {}
 		
 		completion_reward = {
-			add_war_support = 0.05
-		}
-		
-		ai_will_do = {
-			factor = 10
-		}
-	}
-	focus = {
-		id = LATAM_decentralized_command_structure
-		icon = GFX_focus_CHL_expand_southern_infrastructure
-
-		relative_position_id = LATAM_asymmetric_warfare_doctrine
-		
-		x = -2
-		y = 1
-		
-		cost = 5
-		
-		prerequisite = {
-			focus = LATAM_asymmetric_warfare_doctrine
-		}
-
-		mutually_exclusive = {}
-		
-		available = {}
-		
-		bypass = {}
-		
-		completion_reward = {
-			add_war_support = 0.05
+			swap_ideas = {
+				remove_idea = LATAM_asymmetric_doctrine
+				add_idea = LATAM_asymmetric_doctrine2
+			}
+			add_command_power = 25
 		}
 		
 		ai_will_do = {
@@ -1767,36 +1828,7 @@ focus_tree = {
 	}
 	focus = {
 		id = LATAM_guerilla_warfare_training
-		icon = GFX_focus_CHL_expand_southern_infrastructure
-
-		relative_position_id = LATAM_asymmetric_warfare_doctrine
-		
-		x = 2
-		y = 1
-		
-		cost = 5
-		
-		prerequisite = {
-			focus = LATAM_asymmetric_warfare_doctrine
-		}
-
-		mutually_exclusive = {}
-		
-		available = {}
-		
-		bypass = {}
-		
-		completion_reward = {
-			add_war_support = 0.05
-		}
-		
-		ai_will_do = {
-			factor = 10
-		}
-	}
-	focus = {
-		id = LATAM_civil_military_coordination
-		icon = GFX_focus_CHL_expand_southern_infrastructure
+		icon = GFX_focus_CHI_guerrilla_warfare
 
 		relative_position_id = LATAM_asymmetric_warfare_doctrine
 		
@@ -1806,23 +1838,23 @@ focus_tree = {
 		cost = 5
 		
 		prerequisite = {
-			focus = LATAM_guerilla_warfare_training
-		}
-		prerequisite = {
 			focus = LATAM_decentralized_command_structure
 		}
-		prerequisite = {
+
+		mutually_exclusive = {
 			focus = LATAM_counterinsurgency_operations
 		}
-
-		mutually_exclusive = {}
 		
 		available = {}
 		
 		bypass = {}
 		
 		completion_reward = {
-			add_war_support = 0.05
+			swap_ideas = {
+				remove_idea = LATAM_asymmetric_doctrine2
+				add_idea = LATAM_peoples_war_doctrine
+			}
+			army_experience = 10
 		}
 		
 		ai_will_do = {
@@ -1831,23 +1863,17 @@ focus_tree = {
 	}
 	focus = {
 		id = LATAM_protracted_warfare_doctrine
-		icon = GFX_focus_CHL_expand_southern_infrastructure
+		icon = GFX_focus_CHI_protracted_warfare
 
 		relative_position_id = LATAM_asymmetric_warfare_doctrine
 		
-		x = -1
-		y = 2
+		x = 1
+		y = 3
 		
 		cost = 5
 		
 		prerequisite = {
 			focus = LATAM_guerilla_warfare_training
-		}
-		prerequisite = {
-			focus = LATAM_decentralized_command_structure
-		}
-		prerequisite = {
-			focus = LATAM_counterinsurgency_operations
 		}
 
 		mutually_exclusive = {}
@@ -1857,6 +1883,10 @@ focus_tree = {
 		bypass = {}
 		
 		completion_reward = {
+			swap_ideas = {
+				remove_idea = LATAM_peoples_war_doctrine
+				add_idea = LATAM_peoples_war_doctrine2
+			}
 			add_war_support = 0.05
 		}
 		
@@ -1866,7 +1896,7 @@ focus_tree = {
 	}
 	focus = {
 		id = LATAM_conventional_warfare_doctrine
-		icon = GFX_focus_CHL_expand_southern_infrastructure
+		icon = GFX_goal_generic_army_doctrines
 
 		relative_position_id = LATAM_the_national_armed_forces
 		
@@ -1892,7 +1922,8 @@ focus_tree = {
 		bypass = {}
 		
 		completion_reward = {
-			add_war_support = 0.05
+			add_ideas = LATAM_conventional_doctrine
+			army_experience = 10
 		}
 		
 		ai_will_do = {
@@ -1901,7 +1932,7 @@ focus_tree = {
 	}
 	focus = {
 		id = LATAM_mechanized_warfare_training
-		icon = GFX_focus_CHL_expand_southern_infrastructure
+		icon = GFX_focus_generic_mechanized
 
 		relative_position_id = LATAM_conventional_warfare_doctrine
 		
@@ -1921,7 +1952,12 @@ focus_tree = {
 		bypass = {}
 		
 		completion_reward = {
-			add_war_support = 0.05
+			add_tech_bonus = {
+				name = LATAM_mechanized_warfare_training
+				bonus = 0.5
+				uses = 2
+				category = motorized_equipment
+			}
 		}
 		
 		ai_will_do = {
@@ -1930,7 +1966,7 @@ focus_tree = {
 	}
 	focus = {
 		id = LATAM_combined_arms_integrations
-		icon = GFX_focus_CHL_expand_southern_infrastructure
+		icon = GFX_focus_generic_combined_arms
 
 		relative_position_id = LATAM_conventional_warfare_doctrine
 		
@@ -1950,7 +1986,11 @@ focus_tree = {
 		bypass = {}
 		
 		completion_reward = {
-			add_war_support = 0.05
+			swap_ideas = {
+				remove_idea = LATAM_conventional_doctrine
+				add_idea = LATAM_conventional_doctrine2
+			}
+			army_experience = 10
 		}
 		
 		ai_will_do = {
@@ -1959,7 +1999,7 @@ focus_tree = {
 	}
 	focus = {
 		id = LATAM_armored_spearheads
-		icon = GFX_focus_CHL_expand_southern_infrastructure
+		icon = GFX_focus_generic_tank_assault
 
 		relative_position_id = LATAM_conventional_warfare_doctrine
 		
@@ -1979,7 +2019,12 @@ focus_tree = {
 		bypass = {}
 		
 		completion_reward = {
-			add_war_support = 0.05
+			add_tech_bonus = {
+				name = LATAM_armored_spearheads
+				bonus = 0.5
+				uses = 2
+				category = armor
+			}
 		}
 		
 		ai_will_do = {
@@ -1988,7 +2033,7 @@ focus_tree = {
 	}
 	focus = {
 		id = LATAM_fire_superiority
-		icon = GFX_focus_CHL_expand_southern_infrastructure
+		icon = GFX_goal_generic_army_artillery2
 
 		relative_position_id = LATAM_conventional_warfare_doctrine
 		
@@ -2003,9 +2048,6 @@ focus_tree = {
 		prerequisite = {
 			focus = LATAM_combined_arms_integrations
 		}
-		prerequisite = {
-			focus = LATAM_mechanized_warfare_training
-		}
 
 		mutually_exclusive = {}
 		
@@ -2014,7 +2056,13 @@ focus_tree = {
 		bypass = {}
 		
 		completion_reward = {
-			add_war_support = 0.05
+			add_tech_bonus = {
+				name = LATAM_fire_superiority
+				bonus = 0.5
+				uses = 2
+				category = artillery
+			}
+			army_experience = 10
 		}
 		
 		ai_will_do = {
@@ -2023,7 +2071,7 @@ focus_tree = {
 	}
 	focus = {
 		id = LATAM_modern_battlefield_coordination
-		icon = GFX_focus_CHL_expand_southern_infrastructure
+		icon = GFX_focus_generic_tank_air_support
 
 		relative_position_id = LATAM_conventional_warfare_doctrine
 		
@@ -2031,10 +2079,7 @@ focus_tree = {
 		y = 2
 		
 		cost = 5
-		
-		prerequisite = {
-			focus = LATAM_armored_spearheads
-		}
+
 		prerequisite = {
 			focus = LATAM_combined_arms_integrations
 		}
@@ -2049,6 +2094,49 @@ focus_tree = {
 		bypass = {}
 		
 		completion_reward = {
+			add_tech_bonus = {
+				name = LATAM_modern_battlefield_coordination
+				bonus = 0.5
+				uses = 1
+				category = support_tech
+			}
+			add_command_power = 25
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_regional_military_powerhouse
+		icon = GFX_focus_ARG_the_war_machine
+
+		relative_position_id = LATAM_conventional_warfare_doctrine
+		
+		x = 0
+		y = 3
+		
+		cost = 5
+
+		prerequisite = {
+			focus = LATAM_modern_battlefield_coordination
+		}
+		prerequisite = {
+			focus = LATAM_fire_superiority
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = LATAM_conventional_doctrine2
+				add_idea = LATAM_conventional_doctrine3
+			}
+			army_experience = 25
 			add_war_support = 0.05
 		}
 		
@@ -2058,7 +2146,7 @@ focus_tree = {
 	}
 	focus = {
 		id = LATAM_rapid_response_doctrine
-		icon = GFX_focus_CHL_expand_southern_infrastructure
+		icon = GFX_focus_SWE_rapid_defense_force
 
 		relative_position_id = LATAM_the_national_armed_forces
 		
@@ -2083,7 +2171,8 @@ focus_tree = {
 		bypass = {}
 		
 		completion_reward = {
-			add_war_support = 0.05
+			add_ideas = LATAM_rapid_response_doctrine
+			army_experience = 10
 		}
 		
 		ai_will_do = {
@@ -2092,25 +2181,33 @@ focus_tree = {
 	}
 	focus = {
 		id = LATAM_air_mobile_operations
-		icon = GFX_focus_CHL_expand_southern_infrastructure
+		icon = GFX_focus_generic_early_helicopter
 
-		relative_position_id = LATAM_the_national_armed_forces
+		relative_position_id = LATAM_rapid_response_doctrine
 		
-		x = 4
-		y = 2
+		x = -1
+		y = 1
 		
 		cost = 5
 		
 		prerequisite = {
 			focus = LATAM_rapid_response_doctrine
 		}
+
+		mutually_exclusive = {}
 		
 		available = {}
 		
 		bypass = {}
 		
 		completion_reward = {
-			add_war_support = 0.05
+			add_tech_bonus = {
+				name = LATAM_air_mobile_operations
+				bonus = 0.5
+				uses = 1
+				category = air_equipment
+			}
+			air_experience = 10
 		}
 		
 		ai_will_do = {
@@ -2119,25 +2216,34 @@ focus_tree = {
 	}
 	focus = {
 		id = LATAM_rapid_reaction_forces
-		icon = GFX_focus_CHL_expand_southern_infrastructure
+		icon = GFX_focus_generic_paratrooper
 
-		relative_position_id = LATAM_the_national_armed_forces
+		relative_position_id = LATAM_rapid_response_doctrine
 		
-		x = 6
+		x = 0
 		y = 2
 		
 		cost = 5
 		
 		prerequisite = {
-			focus = LATAM_rapid_response_doctrine
+			focus = LATAM_air_mobile_operations
 		}
+		prerequisite = {
+			focus = LATAM_integrated_support_units
+		}
+
+		mutually_exclusive = {}
 		
 		available = {}
 		
 		bypass = {}
 		
 		completion_reward = {
-			add_war_support = 0.05
+			swap_ideas = {
+				remove_idea = LATAM_rapid_response_doctrine
+				add_idea = LATAM_rapid_response_doctrine2
+			}
+			army_experience = 15
 		}
 		
 		ai_will_do = {
@@ -2146,25 +2252,33 @@ focus_tree = {
 	}
 	focus = {
 		id = LATAM_integrated_support_units
-		icon = GFX_focus_CHL_expand_southern_infrastructure
+		icon = GFX_focus_generic_reinforcing_the_supply_network
 
-		relative_position_id = LATAM_the_national_armed_forces
+		relative_position_id = LATAM_rapid_response_doctrine
 		
-		x = 8
-		y = 2
+		x = 1
+		y = 1
 		
 		cost = 5
 		
 		prerequisite = {
 			focus = LATAM_rapid_response_doctrine
 		}
+
+		mutually_exclusive = {}
 		
 		available = {}
 		
 		bypass = {}
 		
 		completion_reward = {
-			add_war_support = 0.05
+			add_tech_bonus = {
+				name = LATAM_integrated_support_units
+				bonus = 0.5
+				uses = 1
+				category = support_tech
+			}
+			army_experience = 10
 		}
 		
 		ai_will_do = {
@@ -2173,23 +2287,17 @@ focus_tree = {
 	}
 	focus = {
 		id = LATAM_precision_strike_coordination
-		icon = GFX_focus_CHL_expand_southern_infrastructure
+		icon = GFX_focus_generic_cas_aircraft
 
 		relative_position_id = LATAM_rapid_response_doctrine
 		
 		x = 1
-		y = 2
+		y = 3
 		
 		cost = 5
 		
 		prerequisite = {
-			focus = LATAM_integrated_support_units
-		}
-		prerequisite = {
 			focus = LATAM_rapid_reaction_forces
-		}
-		prerequisite = {
-			focus = LATAM_air_mobile_operations
 		}
 
 		mutually_exclusive = {}
@@ -2199,7 +2307,8 @@ focus_tree = {
 		bypass = {}
 		
 		completion_reward = {
-			add_war_support = 0.05
+			add_ideas = LATAM_precision_strike_doctrine
+			air_experience = 10
 		}
 		
 		ai_will_do = {
@@ -2208,23 +2317,17 @@ focus_tree = {
 	}
 	focus = {
 		id = LATAM_elite_commando_units
-		icon = GFX_focus_CHL_expand_southern_infrastructure
+		icon = GFX_goal_generic_special_forces
 
 		relative_position_id = LATAM_rapid_response_doctrine
 		
 		x = -1
-		y = 2
+		y = 3
 		
 		cost = 5
 		
 		prerequisite = {
-			focus = LATAM_integrated_support_units
-		}
-		prerequisite = {
 			focus = LATAM_rapid_reaction_forces
-		}
-		prerequisite = {
-			focus = LATAM_air_mobile_operations
 		}
 
 		mutually_exclusive = {}
@@ -2234,7 +2337,8 @@ focus_tree = {
 		bypass = {}
 		
 		completion_reward = {
-			add_war_support = 0.05
+			add_ideas = LATAM_elite_commandos
+			army_experience = 10
 		}
 		
 		ai_will_do = {
@@ -2243,20 +2347,19 @@ focus_tree = {
 	}
 	focus = {
 		id = LATAM_modern_armed_forces
-		icon = GFX_focus_CHL_expand_southern_infrastructure
+		icon = GFX_focus_generic_soldier_salute
 
 		relative_position_id = LATAM_the_national_armed_forces
 		
 		x = 0
-		y = 4
+		y = 5
 		
 		cost = 5
 		
 		prerequisite = {
-			focus = LATAM_fire_superiority
-			focus = LATAM_modern_battlefield_coordination
+			focus = LATAM_regional_military_powerhouse
+			focus = LATAM_jungle_and_riverine_units
 			focus = LATAM_protracted_warfare_doctrine
-			focus = LATAM_civil_military_coordination
 			focus = LATAM_elite_commando_units
 			focus = LATAM_precision_strike_coordination
 		}
@@ -2268,7 +2371,804 @@ focus_tree = {
 		bypass = {}
 		
 		completion_reward = {
+			swap_ideas = {
+				remove_idea = LATAM_armed_forces_modernization
+				add_idea = LATAM_armed_forces_modernization2
+			}
+			army_experience = 25
+			add_stability = 0.05
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+
+	################
+	### AIRFORCE ###
+	################
+
+	focus = {
+		id = LATAM_modernize_the_air_force
+		icon = GFX_focus_BRA_air_force
+
+		x = 52
+		y = 0
+		
+		cost = 5
+		
+		prerequisite = {}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			air_experience = 15
+			add_ideas = LATAM_air_force_modernization
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_air_force_academy_reform
+		icon = GFX_focus_FIN_expand_air_force_academy
+
+		relative_position_id = LATAM_modernize_the_air_force
+		
+		x = 0
+		y = 1
+		
+		cost = 5
+		
+		prerequisite = {
+			focus = LATAM_modernize_the_air_force
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_ideas = LATAM_pilot_training_program
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_american_aircraft_suppliers
+		icon = align_to_america
+
+		relative_position_id = LATAM_modernize_the_air_force
+		
+		x = -3
+		y = 2
+		
+		cost = 5
+		
+		prerequisite = {
+			focus = LATAM_air_force_academy_reform
+		}
+
+		mutually_exclusive = {
+			focus = LATAM_european_aircraft_suppliers
+		}
+		mutually_exclusive = {
+			focus = LATAM_russian_aircraft_suppliers
+		}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_ideas = LATAM_american_aircraft
+			if = {
+				limit = {
+					NOT = {has_dlc = "By Blood Alone"}
+				}
+				add_equipment_to_stockpile = {
+					type = fighter_equipment_3
+					amount = 50
+					producer = USA
+				}
+			}
+			else = {
+				add_equipment_to_stockpile = {
+					type = medium_plane_airframe_1
+					amount = 50
+					producer = USA
+				}
+			}
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_european_aircraft_suppliers
+		icon = align_to_europe
+
+		relative_position_id = LATAM_modernize_the_air_force
+		
+		x = -1
+		y = 2
+		
+		cost = 5
+		
+		prerequisite = {
+			focus = LATAM_air_force_academy_reform
+		}
+
+		mutually_exclusive = {
+			focus = LATAM_american_aircraft_suppliers
+		}
+		mutually_exclusive = {
+			focus = LATAM_russian_aircraft_suppliers
+		}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_ideas = LATAM_european_aircraft
+			if = {
+				limit = {
+					NOT = {has_dlc = "By Blood Alone"}
+				}
+				add_equipment_to_stockpile = {
+					type = fighter_equipment_3
+					amount = 50
+					producer = FRA
+				}
+			}
+			else = {
+				add_equipment_to_stockpile = {
+					type = medium_plane_airframe_1
+					amount = 50
+					producer = FRA
+				}
+			}
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_russian_aircraft_suppliers
+		icon = align_to_russia
+
+		relative_position_id = LATAM_modernize_the_air_force
+		
+		x = 1
+		y = 2
+		
+		cost = 5
+		
+		prerequisite = {
+			focus = LATAM_air_force_academy_reform
+		}
+
+		mutually_exclusive = {
+			focus = LATAM_american_aircraft_suppliers
+		}
+		mutually_exclusive = {
+			focus = LATAM_european_aircraft_suppliers
+		}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_ideas = LATAM_russian_aircraft
+			if = {
+				limit = {
+					NOT = {has_dlc = "By Blood Alone"}
+				}
+				add_equipment_to_stockpile = {
+					type = fighter_equipment_3
+					amount = 50
+					producer = SOV
+				}
+			}
+			else = {
+				add_equipment_to_stockpile = {
+					type = medium_plane_airframe_1
+					amount = 50
+					producer = SOV
+				}
+			}
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_domestic_aviation_industry
+		icon = GFX_focus_generic_aircraft_production
+
+		relative_position_id = LATAM_modernize_the_air_force
+		
+		x = 3
+		y = 2
+		
+		cost = 5
+		
+		prerequisite = {
+			focus = LATAM_air_force_academy_reform
+		}
+
+		mutually_exclusive = {}
+		
+		available = {
+			OR = {
+				has_completed_focus = LATAM_fund_electronics_industry
+				has_completed_focus = LATAM_heavy_industry_development
+			}
+		}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_ideas = LATAM_national_aviation_industry
+			capital_scope = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_air_force_procurement_plan
+		icon = GFX_focus_SMB_purchase_aircraft
+
+		relative_position_id = LATAM_modernize_the_air_force
+		
+		x = 0
+		y = 3
+		
+		cost = 5
+		
+		prerequisite = {
+			focus = LATAM_american_aircraft_suppliers
+			focus = LATAM_european_aircraft_suppliers
+			focus = LATAM_russian_aircraft_suppliers
+			focus = LATAM_domestic_aviation_industry
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			air_experience = 25
+			add_tech_bonus = {
+				name = LATAM_air_force_procurement_plan
+				bonus = 0.5
+				uses = 1
+				category = air_equipment
+			}
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_multirole_fighters
+		icon = GFX_focus_generic_jet_planes
+
+		relative_position_id = LATAM_modernize_the_air_force
+		
+		x = -6
+		y = 4
+		
+		cost = 5
+		
+		prerequisite = {
+			focus = LATAM_air_force_procurement_plan
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_ideas = LATAM_air_superiority_doctrine
+			if = {
+				limit = { has_completed_focus = LATAM_conventional_warfare_doctrine }
+				air_experience = 15
+			}
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_beyond_visual_range_missiles
+		icon = GFX_focus_generic_jet_planes
+
+		relative_position_id = LATAM_modernize_the_air_force
+		
+		x = -7
+		y = 5
+		
+		cost = 5
+		
+		prerequisite = {
+			focus = LATAM_multirole_fighters
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			if = {
+				limit = {
+					NOT = {has_dlc = "By Blood Alone"}
+				}
+				add_tech_bonus = {
+					name = LATAM_beyond_visual_range_missiles
+					bonus = 0.5
+					uses = 1
+					category = air_equipment
+				}
+			}
+			else = {
+				add_tech_bonus = {
+					name = LATAM_beyond_visual_range_missiles
+					bonus = 0.5
+					uses = 1
+					category = cat_air_guns
+				}
+			}
+			air_experience = 10
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_aerial_refueling
+		icon = GFX_focus_generic_long_range_aircraft
+
+		relative_position_id = LATAM_modernize_the_air_force
+		
+		x = -5
+		y = 5
+		
+		cost = 5
+		
+		prerequisite = {
+			focus = LATAM_multirole_fighters
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = LATAM_air_superiority_doctrine
+				add_idea = LATAM_air_superiority_doctrine2
+			}
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_light_attack_aircraft
+		icon = GFX_focus_generic_cas_aircraft
+
+		relative_position_id = LATAM_modernize_the_air_force
+		
+		x = -2
+		y = 4
+		
+		cost = 5
+		
+		prerequisite = {
+			focus = LATAM_air_force_procurement_plan
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_ideas = LATAM_light_attack_squadrons
+			if = {
+				limit = { has_completed_focus = LATAM_asymmetric_warfare_doctrine }
+				army_experience = 15
+			}
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_air_bridge_denial
+		icon = GFX_goal_generic_air_fighter2
+
+		relative_position_id = LATAM_modernize_the_air_force
+		
+		x = -3
+		y = 5
+		
+		cost = 5
+		
+		prerequisite = {
+			focus = LATAM_light_attack_aircraft
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_stability = 0.05
+			air_experience = 10
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_close_air_support_integration
+		icon = GFX_focus_CHI_effectivize_ground_crew_usage
+
+		relative_position_id = LATAM_modernize_the_air_force
+		
+		x = -1
+		y = 5
+		
+		cost = 5
+		
+		prerequisite = {
+			focus = LATAM_light_attack_aircraft
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = LATAM_light_attack_squadrons
+				add_idea = LATAM_light_attack_squadrons2
+			}
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_integrated_air_defense
+		icon = GFX_focus_PRC_anti_air_effort
+
+		relative_position_id = LATAM_modernize_the_air_force
+		
+		x = 2
+		y = 4
+		
+		cost = 5
+		
+		prerequisite = {
+			focus = LATAM_air_force_procurement_plan
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_ideas = LATAM_air_defense_network
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_airspace_surveillance_network
+		icon = GFX_goal_generic_radar
+
+		relative_position_id = LATAM_modernize_the_air_force
+		
+		x = 1
+		y = 5
+		
+		cost = 5
+		
+		prerequisite = {
+			focus = LATAM_integrated_air_defense
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			capital_scope = {
+				add_building_construction = {
+					type = radar_station
+					level = 2
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = { NOT = { is_capital = yes } }
+				add_building_construction = {
+					type = radar_station
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_airborne_early_warning
+		icon = GFX_focus_generic_air_research_boost
+
+		relative_position_id = LATAM_modernize_the_air_force
+		
+		x = 3
+		y = 5
+		
+		cost = 5
+		
+		prerequisite = {
+			focus = LATAM_integrated_air_defense
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_tech_bonus = {
+				name = LATAM_airborne_early_warning
+				bonus = 0.5
+				uses = 1
+				category = electronics
+			}
+			air_experience = 10
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_unmanned_aerial_vehicles
+		icon = GFX_focus_JAP_jet_prototypes
+
+		relative_position_id = LATAM_modernize_the_air_force
+		
+		x = 3
+		y = 6
+		
+		cost = 5
+		
+		prerequisite = {
+			focus = LATAM_airborne_early_warning
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_tech_bonus = {
+				name = LATAM_unmanned_aerial_vehicles
+				bonus = 0.5
+				uses = 2
+				category = tactical_bomber
+			}
+			air_experience = 15
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_strategic_airlift
+		icon = GFX_focus_generic_paratrooper
+
+		relative_position_id = LATAM_modernize_the_air_force
+		
+		x = 6
+		y = 4
+		
+		cost = 5
+		
+		prerequisite = {
+			focus = LATAM_air_force_procurement_plan
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_ideas = LATAM_strategic_airlift
+			add_tech_bonus = {
+				name = LATAM_strategic_airlift
+				bonus = 0.5
+				uses = 1
+				category = para_tech
+			}
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_humanitarian_air_operations
+		icon = GFX_focus_ARG_pan_american_cooperation
+
+		relative_position_id = LATAM_modernize_the_air_force
+		
+		x = 5
+		y = 5
+		
+		cost = 5
+		
+		prerequisite = {
+			focus = LATAM_strategic_airlift
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
 			add_war_support = 0.05
+			add_political_power = 50
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_maritime_patrol
+		icon = GFX_goal_generic_air_naval_bomber
+
+		relative_position_id = LATAM_modernize_the_air_force
+		
+		x = 7
+		y = 5
+		
+		cost = 5
+		
+		prerequisite = {
+			focus = LATAM_strategic_airlift
+		}
+
+		mutually_exclusive = {}
+		
+		available = {
+			any_owned_state = { is_coastal = yes }
+		}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_tech_bonus = {
+				name = LATAM_maritime_patrol
+				bonus = 0.5
+				uses = 1
+				category = naval_air
+			}
+			navy_experience = 10
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_guardians_of_the_skies
+		icon = GFX_focus_NORDIC_dem_capstone_airforce
+
+		relative_position_id = LATAM_modernize_the_air_force
+		
+		x = 0
+		y = 7
+		
+		cost = 5
+		
+		prerequisite = {
+			focus = LATAM_beyond_visual_range_missiles
+			focus = LATAM_aerial_refueling
+			focus = LATAM_air_bridge_denial
+			focus = LATAM_close_air_support_integration
+			focus = LATAM_airspace_surveillance_network
+			focus = LATAM_unmanned_aerial_vehicles
+			focus = LATAM_humanitarian_air_operations
+			focus = LATAM_maritime_patrol
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = LATAM_air_force_modernization
+				add_idea = LATAM_air_force_modernization2
+			}
+			air_experience = 25
+			capital_scope = {
+				add_building_construction = {
+					type = air_base
+					level = 2
+					instant_build = yes
+				}
+			}
 		}
 		
 		ai_will_do = {
