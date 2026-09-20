@@ -876,7 +876,7 @@ focus_tree = {
 		x = 0
 		y = 7
 		
-		cost = 21.5
+		cost = 10
 		
 		prerequisite = {
 			focus = LATAM_industrial_subsidizing
@@ -1564,7 +1564,7 @@ focus_tree = {
 		x = 11
 		y = 1
 		
-		cost = 5
+		cost = 10
 		
 		prerequisite = {
 			focus = LATAM_the_national_armed_forces
@@ -1627,7 +1627,7 @@ focus_tree = {
 		x = 12
 		y = 2
 		
-		cost = 5
+		cost = 10
 		
 		prerequisite = {
 			focus = LATAM_modernize_our_command_structure
@@ -1662,7 +1662,7 @@ focus_tree = {
 		x = 11
 		y = 3
 		
-		cost = 5
+		cost = 10
 		
 		prerequisite = {
 			focus = LATAM_logistics_modernization
@@ -1734,7 +1734,7 @@ focus_tree = {
 		x = -1
 		y = 2
 		
-		cost = 5
+		cost = 10
 		
 		prerequisite = {
 			focus = LATAM_decentralized_command_structure
@@ -1769,7 +1769,7 @@ focus_tree = {
 		x = -1
 		y = 3
 		
-		cost = 5
+		cost = 10
 		
 		prerequisite = {
 			focus = LATAM_counterinsurgency_operations
@@ -1835,7 +1835,7 @@ focus_tree = {
 		x = 1
 		y = 2
 		
-		cost = 5
+		cost = 10
 		
 		prerequisite = {
 			focus = LATAM_decentralized_command_structure
@@ -1870,7 +1870,7 @@ focus_tree = {
 		x = 1
 		y = 3
 		
-		cost = 5
+		cost = 10
 		
 		prerequisite = {
 			focus = LATAM_guerilla_warfare_training
@@ -1973,7 +1973,7 @@ focus_tree = {
 		x = 0
 		y = 1
 		
-		cost = 5
+		cost = 10
 		
 		prerequisite = {
 			focus = LATAM_conventional_warfare_doctrine
@@ -2116,7 +2116,7 @@ focus_tree = {
 		x = 0
 		y = 3
 		
-		cost = 5
+		cost = 10
 
 		prerequisite = {
 			focus = LATAM_modern_battlefield_coordination
@@ -2205,7 +2205,7 @@ focus_tree = {
 				name = LATAM_air_mobile_operations
 				bonus = 0.5
 				uses = 1
-				category = air_equipment
+				category = helicopter_cat
 			}
 			air_experience = 10
 		}
@@ -2223,7 +2223,7 @@ focus_tree = {
 		x = 0
 		y = 2
 		
-		cost = 5
+		cost = 10
 		
 		prerequisite = {
 			focus = LATAM_air_mobile_operations
@@ -2275,7 +2275,7 @@ focus_tree = {
 			add_tech_bonus = {
 				name = LATAM_integrated_support_units
 				bonus = 0.5
-				uses = 1
+				uses = 2
 				category = support_tech
 			}
 			army_experience = 10
@@ -2294,7 +2294,7 @@ focus_tree = {
 		x = 1
 		y = 3
 		
-		cost = 5
+		cost = 10
 		
 		prerequisite = {
 			focus = LATAM_rapid_reaction_forces
@@ -2324,7 +2324,7 @@ focus_tree = {
 		x = -1
 		y = 3
 		
-		cost = 5
+		cost = 10
 		
 		prerequisite = {
 			focus = LATAM_rapid_reaction_forces
@@ -2354,7 +2354,7 @@ focus_tree = {
 		x = 0
 		y = 5
 		
-		cost = 5
+		cost = 10
 		
 		prerequisite = {
 			focus = LATAM_regional_military_powerhouse
@@ -2423,7 +2423,7 @@ focus_tree = {
 		x = 0
 		y = 1
 		
-		cost = 5
+		cost = 10
 		
 		prerequisite = {
 			focus = LATAM_modernize_the_air_force
@@ -2452,7 +2452,7 @@ focus_tree = {
 		x = -3
 		y = 2
 		
-		cost = 5
+		cost = 10
 		
 		prerequisite = {
 			focus = LATAM_air_force_academy_reform
@@ -2503,7 +2503,7 @@ focus_tree = {
 		x = -1
 		y = 2
 		
-		cost = 5
+		cost = 10
 		
 		prerequisite = {
 			focus = LATAM_air_force_academy_reform
@@ -2554,7 +2554,7 @@ focus_tree = {
 		x = 1
 		y = 2
 		
-		cost = 5
+		cost = 10
 		
 		prerequisite = {
 			focus = LATAM_air_force_academy_reform
@@ -2605,7 +2605,7 @@ focus_tree = {
 		x = 3
 		y = 2
 		
-		cost = 5
+		cost = 10
 		
 		prerequisite = {
 			focus = LATAM_air_force_academy_reform
@@ -2685,7 +2685,7 @@ focus_tree = {
 		x = -6
 		y = 4
 		
-		cost = 5
+		cost = 10
 		
 		prerequisite = {
 			focus = LATAM_air_force_procurement_plan
@@ -2766,7 +2766,7 @@ focus_tree = {
 		x = -5
 		y = 5
 		
-		cost = 5
+		cost = 10
 		
 		prerequisite = {
 			focus = LATAM_multirole_fighters
@@ -2798,7 +2798,7 @@ focus_tree = {
 		x = -2
 		y = 4
 		
-		cost = 5
+		cost = 10
 		
 		prerequisite = {
 			focus = LATAM_air_force_procurement_plan
@@ -2846,6 +2846,13 @@ focus_tree = {
 		completion_reward = {
 			add_stability = 0.05
 			air_experience = 10
+			if = {
+				limit = { has_completed_focus = LATAM_maritime_drug_interdiction }
+				add_political_power = 150
+			}
+			else = {
+				custom_effect_tooltip = LATAM_air_bridge_denial_tt
+			}
 		}
 		
 		ai_will_do = {
@@ -2861,7 +2868,7 @@ focus_tree = {
 		x = -1
 		y = 5
 		
-		cost = 5
+		cost = 10
 		
 		prerequisite = {
 			focus = LATAM_light_attack_aircraft
@@ -2893,7 +2900,7 @@ focus_tree = {
 		x = 2
 		y = 4
 		
-		cost = 5
+		cost = 10
 		
 		prerequisite = {
 			focus = LATAM_air_force_procurement_plan
@@ -2922,7 +2929,7 @@ focus_tree = {
 		x = 1
 		y = 5
 		
-		cost = 5
+		cost = 10
 		
 		prerequisite = {
 			focus = LATAM_integrated_air_defense
@@ -3000,7 +3007,7 @@ focus_tree = {
 		x = 3
 		y = 6
 		
-		cost = 5
+		cost = 10
 		
 		prerequisite = {
 			focus = LATAM_airborne_early_warning
@@ -3035,7 +3042,7 @@ focus_tree = {
 		x = 6
 		y = 4
 		
-		cost = 5
+		cost = 10
 		
 		prerequisite = {
 			focus = LATAM_air_force_procurement_plan
@@ -3137,7 +3144,7 @@ focus_tree = {
 		x = 0
 		y = 7
 		
-		cost = 5
+		cost = 10
 		
 		prerequisite = {
 			focus = LATAM_beyond_visual_range_missiles
@@ -3169,6 +3176,5517 @@ focus_tree = {
 					instant_build = yes
 				}
 			}
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+
+	#############
+	### NAVY ###
+	#############
+
+	focus = {
+		id = LATAM_modernize_the_navy
+		icon = GFX_focus_generic_navy_research_bonus
+
+		x = 65
+		y = 0
+		
+		cost = 5
+		
+		prerequisite = {}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			navy_experience = 15
+			add_ideas = LATAM_navy_modernization
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_expand_the_national_shipyards
+		icon = GFX_goal_generic_construct_naval_dockyard
+
+		relative_position_id = LATAM_modernize_the_navy
+		
+		x = 0
+		y = 1
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_modernize_the_navy
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {
+			NOT = { any_owned_state = { is_coastal = yes } }
+		}
+		
+		completion_reward = {
+			if = {
+				limit = { capital_scope = { is_coastal = yes } }
+				capital_scope = {
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = dockyard
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+			else = {
+				random_owned_controlled_state = {
+					limit = { is_coastal = yes }
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = dockyard
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+			random_owned_controlled_state = {
+				limit = { is_coastal = yes }
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_guard_our_waters
+		icon = GFX_focus_ICE_modernizing_the_coast_guard
+
+		relative_position_id = LATAM_modernize_the_navy
+		
+		x = -2
+		y = 2
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_expand_the_national_shipyards
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_ideas = LATAM_maritime_security
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_exclusive_economic_zone_patrols
+		icon = GFX_focus_DEN_sirius_patrol
+
+		relative_position_id = LATAM_modernize_the_navy
+		
+		x = -2
+		y = 3
+		
+		cost = 5
+		
+		prerequisite = {
+			focus = LATAM_guard_our_waters
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_tech_bonus = {
+				name = LATAM_exclusive_economic_zone_patrols
+				bonus = 0.5
+				uses = 1
+				category = pb_tech
+			}
+			navy_experience = 10
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_riverine_flotillas
+		icon = GFX_focus_SIA_river_patrols
+
+		relative_position_id = LATAM_modernize_the_navy
+		
+		x = -3
+		y = 4
+		
+		cost = 5
+		
+		prerequisite = {
+			focus = LATAM_exclusive_economic_zone_patrols
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			army_experience = 10
+			if = {
+				limit = { has_completed_focus = LATAM_jungle_and_riverine_units }
+				army_experience = 15
+			}
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_maritime_drug_interdiction
+		icon = GFX_focus_generic_destroyer
+
+		relative_position_id = LATAM_modernize_the_navy
+		
+		x = -1
+		y = 4
+		
+		cost = 5
+		
+		prerequisite = {
+			focus = LATAM_exclusive_economic_zone_patrols
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_stability = 0.1
+			if = {
+				limit = { has_completed_focus = LATAM_air_bridge_denial }
+				add_political_power = 150
+			}
+			else = {
+				custom_effect_tooltip = LATAM_maritime_drug_interdiction_tt
+			}
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_naval_infantry
+		icon = GFX_goal_generic_amphibious_assault
+
+		relative_position_id = LATAM_modernize_the_navy
+		
+		x = -2
+		y = 5
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_riverine_flotillas
+			focus = LATAM_maritime_drug_interdiction
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_tech_bonus = {
+				name = LATAM_naval_infantry
+				bonus = 0.5
+				uses = 2
+				category = marine_tech
+			}
+			army_experience = 10
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_coastal_defense_navy
+		icon = GFX_focus_FIN_coastal_defense
+
+		relative_position_id = LATAM_modernize_the_navy
+		
+		x = 1
+		y = 2
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_expand_the_national_shipyards
+		}
+
+		mutually_exclusive = {
+			focus = LATAM_blue_water_ambitions
+		}
+		
+		available = {
+			any_owned_state = { is_coastal = yes }
+		}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_ideas = LATAM_coastal_defense_doctrine
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_submarine_force
+		icon = GFX_focus_generic_cruiser_submarines
+
+		relative_position_id = LATAM_modernize_the_navy
+		
+		x = 1
+		y = 3
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_coastal_defense_navy
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_tech_bonus = {
+				name = LATAM_submarine_force
+				bonus = 0.5
+				uses = 2
+				category = ss_tech
+			}
+			navy_experience = 10
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_fast_attack_craft
+		icon = GFX_focus_generic_torpedo_production
+
+		relative_position_id = LATAM_modernize_the_navy
+		
+		x = 1
+		y = 4
+		
+		cost = 5
+		
+		prerequisite = {
+			focus = LATAM_submarine_force
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_tech_bonus = {
+				name = LATAM_fast_attack_craft
+				bonus = 0.5
+				uses = 1
+				category = dd_tech
+			}
+			navy_experience = 10
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_sea_denial_doctrine
+		icon = GFX_focus_generic_mine_warfare
+
+		relative_position_id = LATAM_modernize_the_navy
+		
+		x = 1
+		y = 5
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_fast_attack_craft
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = LATAM_coastal_defense_doctrine
+				add_idea = LATAM_coastal_defense_doctrine2
+			}
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_blue_water_ambitions
+		icon = GFX_focus_SMB_blue_water_fleet
+
+		relative_position_id = LATAM_modernize_the_navy
+		
+		x = 3
+		y = 2
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_expand_the_national_shipyards
+		}
+
+		mutually_exclusive = {
+			focus = LATAM_coastal_defense_navy
+		}
+		
+		available = {
+			any_owned_state = { is_coastal = yes }
+		}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_ideas = LATAM_blue_water_doctrine
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_acquire_surplus_frigates
+		icon = GFX_focus_SWE_italian_destroyers
+
+		relative_position_id = LATAM_modernize_the_navy
+		
+		x = 3
+		y = 3
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_blue_water_ambitions
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_tech_bonus = {
+				name = LATAM_acquire_surplus_frigates
+				bonus = 0.5
+				uses = 2
+				category = cl_tech
+			}
+			navy_experience = 10
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_amphibious_capability
+		icon = GFX_focus_generic_naval_invasion_tank
+
+		relative_position_id = LATAM_modernize_the_navy
+		
+		x = 3
+		y = 4
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_acquire_surplus_frigates
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = LATAM_blue_water_doctrine
+				add_idea = LATAM_blue_water_doctrine2
+			}
+			if = {
+				limit = { has_completed_focus = LATAM_rapid_response_doctrine }
+				army_experience = 15
+			}
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_naval_aviation
+		icon = GFX_focus_BRA_converted_carriers
+
+		relative_position_id = LATAM_modernize_the_navy
+		
+		x = 3
+		y = 5
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_amphibious_capability
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_tech_bonus = {
+				name = LATAM_naval_aviation
+				bonus = 0.5
+				uses = 1
+				category = cv_tech
+			}
+			add_tech_bonus = {
+				name = LATAM_naval_aviation
+				bonus = 0.5
+				uses = 1
+				category = naval_air
+			}
+			if = {
+				limit = { has_completed_focus = LATAM_maritime_patrol }
+				air_experience = 15
+			}
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_masters_of_our_seas
+		icon = GFX_focus_JAP_naval_armaments_program
+
+		relative_position_id = LATAM_modernize_the_navy
+		
+		x = 0
+		y = 6
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_naval_infantry
+			focus = LATAM_sea_denial_doctrine
+			focus = LATAM_naval_aviation
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = LATAM_navy_modernization
+				add_idea = LATAM_navy_modernization2
+			}
+			navy_experience = 25
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+
+	#################
+	### POLITICAL ###
+	#################
+
+	focus = {
+		id = LATAM_a_new_millennium
+		icon = GFX_goal_generic_national_unity
+
+		x = 160
+		y = 0
+		
+		cost = 5
+		
+		prerequisite = {}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_political_power = 100
+			add_stability = 0.05
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_restore_public_trust
+		icon = GFX_focus_generic_election
+
+		relative_position_id = LATAM_a_new_millennium
+		
+		x = -1
+		y = 1
+		
+		cost = 5
+		
+		prerequisite = {
+			focus = LATAM_a_new_millennium
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_stability = 0.10
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_strengthen_the_institutions
+		icon = GFX_focus_generic_currency_reforms
+
+		relative_position_id = LATAM_a_new_millennium
+		
+		x = 1
+		y = 1
+		
+		cost = 5
+		
+		prerequisite = {
+			focus = LATAM_a_new_millennium
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_ideas = LATAM_strong_institutions
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_a_crossroads_for_the_nation
+		icon = GFX_goal_generic_political_pressure
+
+		relative_position_id = LATAM_a_new_millennium
+		
+		x = 0
+		y = 2
+		
+		cost = 5
+		
+		prerequisite = {
+			focus = LATAM_restore_public_trust
+		}
+		prerequisite = {
+			focus = LATAM_strengthen_the_institutions
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_political_power = 50
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_look_to_the_future
+		icon = GFX_focus_generic_social_democracy
+
+		relative_position_id = LATAM_a_new_millennium
+		
+		x = -4
+		y = 3
+		
+		cost = 5
+		
+		prerequisite = {
+			focus = LATAM_a_crossroads_for_the_nation
+		}
+
+		mutually_exclusive = {
+			focus = LATAM_pivot_to_the_past
+		}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_ideas = LATAM_eyes_on_the_future
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_pivot_to_the_past
+		icon = GFX_focus_generic_monarchist_sentiment
+
+		relative_position_id = LATAM_a_new_millennium
+		
+		x = 4
+		y = 3
+		
+		cost = 5
+		
+		prerequisite = {
+			focus = LATAM_a_crossroads_for_the_nation
+		}
+
+		mutually_exclusive = {
+			focus = LATAM_look_to_the_future
+		}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_ideas = LATAM_return_to_the_old_order
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+
+	### POLITICAL: LOOK TO THE FUTURE ###
+
+	##########################
+	### SOCIAL LIBERALISM ###
+	##########################
+
+	focus = {
+		id = LATAM_a_republic_of_laws
+		icon = GFX_goal_Ideology_Social_Liberal
+
+		x = 136
+		y = 4
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_look_to_the_future
+		}
+
+		mutually_exclusive = {
+			focus = LATAM_the_case_for_the_market
+		}
+		mutually_exclusive = {
+			focus = LATAM_a_new_social_contract
+		}
+		mutually_exclusive = {
+			focus = LATAM_a_new_generation_of_activists
+		}
+		mutually_exclusive = {
+			focus = LATAM_the_pink_tide
+		}
+		mutually_exclusive = {
+			focus = LATAM_the_communist_party
+		}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_ideas = LATAM_social_liberal_reforms
+			add_popularity = {
+				ideology = social_liberal
+				popularity = 0.05
+			}
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_judicial_independence
+		icon = GFX_focus_generic_sympathetic_judges
+
+		relative_position_id = LATAM_a_republic_of_laws
+		
+		x = -1
+		y = 1
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_a_republic_of_laws
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_stability = 0.05
+			add_political_power = 50
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_freedom_of_the_press
+		icon = GFX_focus_generic_printing_press
+
+		relative_position_id = LATAM_a_republic_of_laws
+		
+		x = 1
+		y = 1
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_a_republic_of_laws
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_ideas = LATAM_free_press
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_the_reform_coalition
+		icon = GFX_focus_generic_public_works
+
+		relative_position_id = LATAM_a_republic_of_laws
+		
+		x = 0
+		y = 2
+		
+		cost = 5
+		
+		prerequisite = {
+			focus = LATAM_judicial_independence
+		}
+		prerequisite = {
+			focus = LATAM_freedom_of_the_press
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_popularity = {
+				ideology = social_liberal
+				popularity = 0.1
+			}
+			add_political_power = 50
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_a_new_government
+		icon = GFX_focus_generic_election
+
+		relative_position_id = LATAM_a_republic_of_laws
+		
+		x = 0
+		y = 3
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_the_reform_coalition
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_popularity = {
+				ideology = social_liberal
+				popularity = 0.2
+			}
+			set_politics = {
+				ruling_party = social_liberal
+				elections_allowed = yes
+			}
+			swap_ideas = {
+				remove_idea = LATAM_social_liberal_reforms
+				add_idea = LATAM_social_liberal_reforms2
+			}
+			add_political_power = 100
+			add_stability = 0.05
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_the_rule_of_law
+		icon = GFX_focus_generic_improve_the_administration
+
+		relative_position_id = LATAM_a_republic_of_laws
+		
+		x = -4
+		y = 4
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_a_new_government
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_ideas = LATAM_rule_of_law
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_a_state_for_the_citizen
+		icon = GFX_focus_generic_improve_the_administration_2
+
+		relative_position_id = LATAM_a_republic_of_laws
+		
+		x = 0
+		y = 4
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_a_new_government
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_stability = 0.05
+			add_political_power = 50
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_rights_and_equality
+		icon = GFX_focus_generic_universal_suffrage
+
+		relative_position_id = LATAM_a_republic_of_laws
+		
+		x = 4
+		y = 4
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_a_new_government
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_ideas = LATAM_civil_rights_agenda
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_anti_corruption_commission
+		icon = GFX_focus_generic_commission
+
+		relative_position_id = LATAM_a_republic_of_laws
+		
+		x = -5
+		y = 5
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_the_rule_of_law
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_ideas = LATAM_anti_corruption_commission
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_police_reform
+		icon = GFX_focus_generic_national_security
+
+		relative_position_id = LATAM_a_republic_of_laws
+		
+		x = -3
+		y = 5
+		
+		cost = 5
+		
+		prerequisite = {
+			focus = LATAM_the_rule_of_law
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_stability = 0.10
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_civilian_oversight_of_the_military
+		icon = GFX_focus_generic_crush_the_military
+
+		relative_position_id = LATAM_a_republic_of_laws
+		
+		x = -4
+		y = 6
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_anti_corruption_commission
+		}
+		prerequisite = {
+			focus = LATAM_police_reform
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_ideas = LATAM_civilian_oversight
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_truth_and_justice
+		icon = GFX_focus_generic_treaty
+
+		relative_position_id = LATAM_a_republic_of_laws
+		
+		x = -4
+		y = 7
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_civilian_oversight_of_the_military
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_war_support = -0.05
+			add_stability = 0.10
+			add_political_power = 50
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_conditional_cash_transfers
+		icon = GFX_focus_generic_low_cost_housing
+
+		relative_position_id = LATAM_a_republic_of_laws
+		
+		x = -1
+		y = 5
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_a_state_for_the_citizen
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_ideas = LATAM_conditional_cash_transfers
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_universal_health_coverage
+		icon = GFX_focus_generic_field_hostpital
+
+		relative_position_id = LATAM_a_republic_of_laws
+		
+		x = 1
+		y = 5
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_a_state_for_the_citizen
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_ideas = LATAM_universal_healthcare
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_expand_public_education
+		icon = GFX_focus_generic_university_2
+
+		relative_position_id = LATAM_a_republic_of_laws
+		
+		x = -1
+		y = 6
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_conditional_cash_transfers
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_ideas = LATAM_public_education
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_housing_and_urban_renewal
+		icon = GFX_focus_generic_public_works
+
+		relative_position_id = LATAM_a_republic_of_laws
+		
+		x = 1
+		y = 6
+		
+		cost = 5
+		
+		prerequisite = {
+			focus = LATAM_universal_health_coverage
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = { is_capital = yes }
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			add_stability = 0.05
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_public_transport_revolution
+		icon = GFX_focus_generic_railroad
+
+		relative_position_id = LATAM_a_republic_of_laws
+		
+		x = 0
+		y = 7
+		
+		cost = 5
+		
+		prerequisite = {
+			focus = LATAM_expand_public_education
+		}
+		prerequisite = {
+			focus = LATAM_housing_and_urban_renewal
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = { always = yes }
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			add_political_power = 50
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_labour_rights_and_the_minimum_wage
+		icon = GFX_focus_generic_workers
+
+		relative_position_id = LATAM_a_republic_of_laws
+		
+		x = 3
+		y = 5
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_rights_and_equality
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_ideas = LATAM_labour_rights
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_indigenous_and_minority_rights
+		icon = GFX_focus_generic_self_management
+
+		relative_position_id = LATAM_a_republic_of_laws
+		
+		x = 5
+		y = 5
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_rights_and_equality
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_ideas = LATAM_equal_rights
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_gender_equality
+		icon = GFX_focus_generic_women_in_military
+
+		relative_position_id = LATAM_a_republic_of_laws
+		
+		x = 4
+		y = 6
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_labour_rights_and_the_minimum_wage
+		}
+		prerequisite = {
+			focus = LATAM_indigenous_and_minority_rights
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_ideas = LATAM_gender_equality
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_civic_participation
+		icon = GFX_focus_generic_vote
+
+		relative_position_id = LATAM_a_republic_of_laws
+		
+		x = 4
+		y = 7
+		
+		cost = 5
+		
+		prerequisite = {
+			focus = LATAM_gender_equality
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_ideas = LATAM_civic_participation
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_environmental_protection
+		icon = GFX_focus_generic_hydroelectric_energy
+
+		relative_position_id = LATAM_a_republic_of_laws
+		
+		x = -2
+		y = 8
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_truth_and_justice
+		}
+		prerequisite = {
+			focus = LATAM_public_transport_revolution
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_ideas = LATAM_environmental_protection
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_regional_integration
+		icon = GFX_focus_generic_south_america
+
+		relative_position_id = LATAM_a_republic_of_laws
+		
+		x = 2
+		y = 8
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_public_transport_revolution
+		}
+		prerequisite = {
+			focus = LATAM_civic_participation
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_ideas = LATAM_regional_integration
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_constitutional_reform
+		icon = GFX_focus_generic_court
+
+		relative_position_id = LATAM_a_republic_of_laws
+		
+		x = 0
+		y = 9
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_environmental_protection
+		}
+		prerequisite = {
+			focus = LATAM_regional_integration
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_political_power = 150
+			add_stability = 0.05
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_the_inclusive_republic
+		icon = GFX_focus_generic_diverse_army
+
+		relative_position_id = LATAM_a_republic_of_laws
+		
+		x = 0
+		y = 10
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_constitutional_reform
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = LATAM_social_liberal_reforms2
+				add_idea = LATAM_social_liberal_reforms3
+			}
+			add_political_power = 100
+			add_stability = 0.05
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+
+	##########################
+	### MARKET LIBERALISM ###
+	##########################
+
+	focus = {
+		id = LATAM_the_case_for_the_market
+		icon = GFX_goal_Ideology_Market_Liberal
+
+		x = 150
+		y = 4
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_look_to_the_future
+		}
+
+		mutually_exclusive = {
+			focus = LATAM_a_republic_of_laws
+		}
+		mutually_exclusive = {
+			focus = LATAM_a_new_social_contract
+		}
+		mutually_exclusive = {
+			focus = LATAM_a_new_generation_of_activists
+		}
+		mutually_exclusive = {
+			focus = LATAM_the_pink_tide
+		}
+		mutually_exclusive = {
+			focus = LATAM_the_communist_party
+		}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_ideas = LATAM_market_liberal_reforms
+			add_popularity = {
+				ideology = market_liberal
+				popularity = 0.05
+			}
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_win_over_the_business_class
+		icon = GFX_focus_generic_industry_investment
+
+		relative_position_id = LATAM_the_case_for_the_market
+		
+		x = -2
+		y = 1
+		
+		cost = 5
+		
+		prerequisite = {
+			focus = LATAM_the_case_for_the_market
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_political_power = 50
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_a_message_to_the_middle_class
+		icon = GFX_focus_generic_public_meetings
+
+		relative_position_id = LATAM_the_case_for_the_market
+		
+		x = 0
+		y = 1
+		
+		cost = 5
+		
+		prerequisite = {
+			focus = LATAM_the_case_for_the_market
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_popularity = {
+				ideology = market_liberal
+				popularity = 0.05
+			}
+			add_stability = 0.05
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_court_foreign_investors
+		icon = GFX_focus_generic_american_investments
+
+		relative_position_id = LATAM_the_case_for_the_market
+		
+		x = 2
+		y = 1
+		
+		cost = 5
+		
+		prerequisite = {
+			focus = LATAM_the_case_for_the_market
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_political_power = 50
+			add_tech_bonus = {
+				name = LATAM_court_foreign_investors
+				bonus = 0.5
+				uses = 1
+				category = industry
+			}
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_the_liberal_coalition
+		icon = GFX_focus_generic_support_the_left_right
+
+		relative_position_id = LATAM_the_case_for_the_market
+		
+		x = -1
+		y = 2
+		
+		cost = 5
+		
+		prerequisite = {
+			focus = LATAM_win_over_the_business_class
+		}
+		prerequisite = {
+			focus = LATAM_a_message_to_the_middle_class
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_popularity = {
+				ideology = market_liberal
+				popularity = 0.1
+			}
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_a_program_for_government
+		icon = GFX_focus_generic_commission
+
+		relative_position_id = LATAM_the_case_for_the_market
+		
+		x = 1
+		y = 2
+		
+		cost = 5
+		
+		prerequisite = {
+			focus = LATAM_a_message_to_the_middle_class
+		}
+		prerequisite = {
+			focus = LATAM_court_foreign_investors
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_political_power = 75
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_electoral_victory
+		icon = GFX_focus_generic_vote
+
+		relative_position_id = LATAM_the_case_for_the_market
+		
+		x = 0
+		y = 3
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_the_liberal_coalition
+		}
+		prerequisite = {
+			focus = LATAM_a_program_for_government
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_popularity = {
+				ideology = market_liberal
+				popularity = 0.2
+			}
+			set_politics = {
+				ruling_party = market_liberal
+				elections_allowed = yes
+			}
+			swap_ideas = {
+				remove_idea = LATAM_market_liberal_reforms
+				add_idea = LATAM_market_liberal_reforms2
+			}
+			add_political_power = 100
+			add_stability = 0.05
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_cut_the_red_tape
+		icon = GFX_focus_generic_reorient_production
+
+		relative_position_id = LATAM_the_case_for_the_market
+		
+		x = -4
+		y = 4
+		
+		cost = 5
+		
+		prerequisite = {
+			focus = LATAM_electoral_victory
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_tech_bonus = {
+				name = LATAM_cut_the_red_tape
+				bonus = 0.5
+				uses = 1
+				category = industry
+			}
+			add_political_power = 50
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_balance_the_budget
+		icon = GFX_focus_generic_reduce_unneccessary_expenditure
+
+		relative_position_id = LATAM_the_case_for_the_market
+		
+		x = -2
+		y = 4
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_electoral_victory
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_stability = -0.05
+			add_political_power = 50
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_tax_simplification
+		icon = GFX_focus_generic_currency_reforms
+
+		relative_position_id = LATAM_the_case_for_the_market
+		
+		x = 0
+		y = 4
+		
+		cost = 5
+		
+		prerequisite = {
+			focus = LATAM_electoral_victory
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_ideas = LATAM_simplified_taxes
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_open_the_capital_account
+		icon = GFX_focus_generic_money_for_equipment
+
+		relative_position_id = LATAM_the_case_for_the_market
+		
+		x = 2
+		y = 4
+		
+		cost = 5
+		
+		prerequisite = {
+			focus = LATAM_electoral_victory
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_political_power = 50
+			add_tech_bonus = {
+				name = LATAM_open_the_capital_account
+				bonus = 0.5
+				uses = 1
+				category = industry
+			}
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_central_bank_independence
+		icon = GFX_focus_PER_national_bank
+
+		relative_position_id = LATAM_the_case_for_the_market
+		
+		x = 4
+		y = 4
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_electoral_victory
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_ideas = LATAM_independent_central_bank
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_privatize_the_state_enterprises
+		icon = GFX_focus_generic_concessions
+
+		relative_position_id = LATAM_the_case_for_the_market
+		
+		x = -4
+		y = 5
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_cut_the_red_tape
+		}
+		prerequisite = {
+			focus = LATAM_balance_the_budget
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_stability = -0.05
+			add_political_power = 100
+			add_tech_bonus = {
+				name = LATAM_privatize_the_state_enterprises
+				bonus = 0.5
+				uses = 1
+				category = industry
+			}
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_adopt_the_dollar
+		icon = GFX_focus_generic_monetary_union
+
+		relative_position_id = LATAM_the_case_for_the_market
+		
+		x = -1
+		y = 5
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_tax_simplification
+		}
+
+		mutually_exclusive = {
+			focus = LATAM_inflation_targeting
+		}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_ideas = LATAM_dollarization
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_inflation_targeting
+		icon = GFX_focus_generic_devaluation
+
+		relative_position_id = LATAM_the_case_for_the_market
+		
+		x = 1
+		y = 5
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_tax_simplification
+		}
+
+		mutually_exclusive = {
+			focus = LATAM_adopt_the_dollar
+		}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_ideas = LATAM_inflation_targeting
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_free_trade_agreements
+		icon = GFX_goal_generic_positive_trade_relations
+
+		relative_position_id = LATAM_the_case_for_the_market
+		
+		x = 4
+		y = 5
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_central_bank_independence
+		}
+		prerequisite = {
+			focus = LATAM_open_the_capital_account
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_ideas = LATAM_free_trade_agreements
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_sell_the_utilities
+		icon = GFX_focus_generic_electrification
+
+		relative_position_id = LATAM_the_case_for_the_market
+		
+		x = -5
+		y = 6
+		
+		cost = 5
+		
+		prerequisite = {
+			focus = LATAM_privatize_the_state_enterprises
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = { always = yes }
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_sell_the_national_airline
+		icon = GFX_focus_generic_air_bases
+
+		relative_position_id = LATAM_the_case_for_the_market
+		
+		x = -3
+		y = 6
+		
+		cost = 5
+		
+		prerequisite = {
+			focus = LATAM_privatize_the_state_enterprises
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_political_power = 50
+			capital_scope = {
+				add_extra_state_shared_building_slots = 1
+			}
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_labour_market_flexibility
+		icon = GFX_focus_generic_workers
+
+		relative_position_id = LATAM_the_case_for_the_market
+		
+		x = 0
+		y = 6
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_adopt_the_dollar
+			focus = LATAM_inflation_targeting
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_stability = -0.05
+			add_ideas = LATAM_flexible_labour_markets
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_attract_foreign_capital
+		icon = GFX_focus_generic_industry_investment
+
+		relative_position_id = LATAM_the_case_for_the_market
+		
+		x = 3
+		y = 6
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_free_trade_agreements
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = { free_building_slots = { building = industrial_complex size > 0 include_locked = yes } }
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_the_regional_common_market
+		icon = GFX_focus_ARG_pan_american_cooperation
+
+		relative_position_id = LATAM_the_case_for_the_market
+		
+		x = 5
+		y = 6
+		
+		cost = 5
+		
+		prerequisite = {
+			focus = LATAM_free_trade_agreements
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_ideas = LATAM_regional_common_market
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_school_choice
+		icon = GFX_focus_generic_education
+
+		relative_position_id = LATAM_the_case_for_the_market
+		
+		x = -4
+		y = 7
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_sell_the_utilities
+		}
+		prerequisite = {
+			focus = LATAM_sell_the_national_airline
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_ideas = LATAM_school_choice
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_private_pension_funds
+		icon = GFX_focus_generic_welfare
+
+		relative_position_id = LATAM_the_case_for_the_market
+		
+		x = -1
+		y = 7
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_labour_market_flexibility
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_ideas = LATAM_private_pension_funds
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_property_rights_for_all
+		icon = GFX_focus_generic_land_reclamation
+
+		relative_position_id = LATAM_the_case_for_the_market
+		
+		x = 1
+		y = 7
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_labour_market_flexibility
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_ideas = LATAM_property_rights
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_the_regional_financial_hub
+		icon = GFX_focus_generic_the_giant_wakes
+
+		relative_position_id = LATAM_the_case_for_the_market
+		
+		x = 4
+		y = 7
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_attract_foreign_capital
+		}
+		prerequisite = {
+			focus = LATAM_the_regional_common_market
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			capital_scope = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_the_liberal_republic
+		icon = GFX_focus_generic_industry_3
+
+		relative_position_id = LATAM_the_case_for_the_market
+		
+		x = 0
+		y = 8
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_school_choice
+		}
+		prerequisite = {
+			focus = LATAM_private_pension_funds
+			focus = LATAM_property_rights_for_all
+		}
+		prerequisite = {
+			focus = LATAM_the_regional_financial_hub
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = LATAM_market_liberal_reforms2
+				add_idea = LATAM_market_liberal_reforms3
+			}
+			add_political_power = 100
+			add_stability = 0.05
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+
+	#######################
+	### PROGRESSIVISM ###
+	#######################
+
+	focus = {
+		id = LATAM_a_new_generation_of_activists
+		icon = GFX_goal_Ideology_Progressive
+
+		x = 108
+		y = 4
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_look_to_the_future
+		}
+
+		mutually_exclusive = {
+			focus = LATAM_the_case_for_the_market
+		}
+		mutually_exclusive = {
+			focus = LATAM_a_republic_of_laws
+		}
+		mutually_exclusive = {
+			focus = LATAM_a_new_social_contract
+		}
+		mutually_exclusive = {
+			focus = LATAM_the_pink_tide
+		}
+		mutually_exclusive = {
+			focus = LATAM_the_communist_party
+		}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_ideas = LATAM_progressive_movement
+			add_popularity = {
+				ideology = progressive
+				popularity = 0.05
+			}
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_the_environmental_movement
+		icon = GFX_focus_generic_forest_brothers
+
+		relative_position_id = LATAM_a_new_generation_of_activists
+		
+		x = -1
+		y = 1
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_a_new_generation_of_activists
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_ideas = LATAM_green_movement
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_student_and_feminist_movements
+		icon = GFX_focus_generic_women_in_military
+
+		relative_position_id = LATAM_a_new_generation_of_activists
+		
+		x = 1
+		y = 1
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_a_new_generation_of_activists
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_popularity = {
+				ideology = progressive
+				popularity = 0.1
+			}
+			add_political_power = 50
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_the_green_alliance
+		icon = GFX_focus_generic_support_the_left_right
+
+		relative_position_id = LATAM_a_new_generation_of_activists
+		
+		x = 0
+		y = 2
+		
+		cost = 5
+		
+		prerequisite = {
+			focus = LATAM_the_environmental_movement
+		}
+		prerequisite = {
+			focus = LATAM_student_and_feminist_movements
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_political_power = 75
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_a_progressive_victory
+		icon = GFX_focus_generic_election
+
+		relative_position_id = LATAM_a_new_generation_of_activists
+		
+		x = 0
+		y = 3
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_the_green_alliance
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_popularity = {
+				ideology = progressive
+				popularity = 0.2
+			}
+			set_politics = {
+				ruling_party = progressive
+				elections_allowed = yes
+			}
+			swap_ideas = {
+				remove_idea = LATAM_progressive_movement
+				add_idea = LATAM_progressive_movement2
+			}
+			add_political_power = 100
+			add_stability = 0.05
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_a_green_new_deal
+		icon = GFX_focus_generic_hydroelectric_energy
+
+		relative_position_id = LATAM_a_new_generation_of_activists
+		
+		x = 0
+		y = 4
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_a_progressive_victory
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_ideas = LATAM_green_new_deal
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_the_energy_transition
+		icon = GFX_focus_generic_energy
+
+		relative_position_id = LATAM_a_new_generation_of_activists
+		
+		x = -2
+		y = 5
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_a_green_new_deal
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_political_power = 50
+			add_tech_bonus = {
+				name = LATAM_the_energy_transition
+				bonus = 0.5
+				uses = 1
+				category = industry
+			}
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_a_society_of_equals
+		icon = GFX_focus_generic_universal_suffrage
+
+		relative_position_id = LATAM_a_new_generation_of_activists
+		
+		x = 2
+		y = 5
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_a_green_new_deal
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_ideas = LATAM_a_society_of_equals
+			add_stability = 0.05
+			add_political_power = 50
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_renewable_power
+		icon = GFX_focus_generic_electrification
+
+		relative_position_id = LATAM_a_new_generation_of_activists
+		
+		x = -3
+		y = 6
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_the_energy_transition
+		}
+
+		mutually_exclusive = {
+			focus = LATAM_nuclear_power
+		}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_ideas = LATAM_renewable_energy
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_nuclear_power
+		icon = GFX_focus_generic_nuclear_development
+
+		relative_position_id = LATAM_a_new_generation_of_activists
+		
+		x = -1
+		y = 6
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_the_energy_transition
+		}
+
+		mutually_exclusive = {
+			focus = LATAM_renewable_power
+		}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_ideas = LATAM_nuclear_energy
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_education_and_science
+		icon = GFX_focus_generic_socialist_science
+
+		relative_position_id = LATAM_a_new_generation_of_activists
+		
+		x = 1
+		y = 6
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_a_society_of_equals
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_tech_bonus = {
+				name = LATAM_education_and_science
+				bonus = 0.5
+				uses = 1
+				category = industry
+			}
+			add_ideas = LATAM_science_and_education
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_equality_before_the_law
+		icon = GFX_focus_generic_court
+
+		relative_position_id = LATAM_a_new_generation_of_activists
+		
+		x = 3
+		y = 6
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_a_society_of_equals
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_ideas = LATAM_equality_before_the_law_idea
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_protect_the_rainforest
+		icon = GFX_focus_generic_jungle_troops
+
+		relative_position_id = LATAM_a_new_generation_of_activists
+		
+		x = -4
+		y = 7
+		
+		cost = 5
+		
+		prerequisite = {
+			focus = LATAM_renewable_power
+			focus = LATAM_nuclear_power
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_ideas = LATAM_protected_areas
+			add_stability = 0.05
+			add_political_power = 50
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_clean_cities
+		icon = GFX_focus_generic_railroad
+
+		relative_position_id = LATAM_a_new_generation_of_activists
+		
+		x = -2
+		y = 7
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_renewable_power
+			focus = LATAM_nuclear_power
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_ideas = LATAM_clean_cities
+			random_owned_controlled_state = {
+				limit = { is_capital = yes }
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			add_stability = 0.05
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_research_and_innovation
+		icon = GFX_focus_generic_university_2
+
+		relative_position_id = LATAM_a_new_generation_of_activists
+		
+		x = 0
+		y = 7
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_education_and_science
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_ideas = LATAM_research_and_innovation
+			add_tech_bonus = {
+				name = LATAM_research_and_innovation
+				bonus = 0.5
+				uses = 1
+				category = electronics
+			}
+			add_political_power = 50
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_indigenous_autonomy
+		icon = GFX_focus_generic_self_management
+
+		relative_position_id = LATAM_a_new_generation_of_activists
+		
+		x = 2
+		y = 7
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_equality_before_the_law
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_ideas = LATAM_indigenous_autonomy
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_drug_policy_reform
+		icon = GFX_focus_generic_smugglers
+
+		relative_position_id = LATAM_a_new_generation_of_activists
+		
+		x = 4
+		y = 7
+		
+		cost = 5
+		
+		prerequisite = {
+			focus = LATAM_equality_before_the_law
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_ideas = LATAM_drug_policy_reform
+			add_stability = 0.05
+			add_political_power = 50
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_a_sustainable_economy
+		icon = GFX_focus_generic_land_reclamation
+
+		relative_position_id = LATAM_a_new_generation_of_activists
+		
+		x = -3
+		y = 8
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_protect_the_rainforest
+		}
+		prerequisite = {
+			focus = LATAM_clean_cities
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_ideas = LATAM_sustainable_economy
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_a_society_for_everyone
+		icon = GFX_focus_generic_population_growth
+
+		relative_position_id = LATAM_a_new_generation_of_activists
+		
+		x = 1
+		y = 8
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_research_and_innovation
+		}
+		prerequisite = {
+			focus = LATAM_indigenous_autonomy
+		}
+		prerequisite = {
+			focus = LATAM_drug_policy_reform
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_ideas = LATAM_social_inclusion
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_the_green_republic
+		icon = GFX_focus_generic_agricultural_subsidies
+
+		relative_position_id = LATAM_a_new_generation_of_activists
+		
+		x = -1
+		y = 9
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_a_sustainable_economy
+		}
+		prerequisite = {
+			focus = LATAM_a_society_for_everyone
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = LATAM_progressive_movement2
+				add_idea = LATAM_progressive_movement3
+			}
+			add_political_power = 100
+			add_stability = 0.05
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+
+	#########################
+	### SOCIAL DEMOCRACY ###
+	#########################
+
+	focus = {
+		id = LATAM_a_new_social_contract
+		icon = GFX_focus_generic_social_democracy
+
+		x = 122
+		y = 4
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_look_to_the_future
+		}
+
+		mutually_exclusive = {
+			focus = LATAM_the_case_for_the_market
+		}
+		mutually_exclusive = {
+			focus = LATAM_a_republic_of_laws
+		}
+		mutually_exclusive = {
+			focus = LATAM_a_new_generation_of_activists
+		}
+		mutually_exclusive = {
+			focus = LATAM_the_pink_tide
+		}
+		mutually_exclusive = {
+			focus = LATAM_the_communist_party
+		}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_ideas = LATAM_social_democratic_reforms
+			add_popularity = {
+				ideology = social_democrat
+				popularity = 0.05
+			}
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_the_trade_unions
+		icon = GFX_focus_generic_workers
+
+		relative_position_id = LATAM_a_new_social_contract
+		
+		x = -3
+		y = 1
+		
+		cost = 5
+		
+		prerequisite = {
+			focus = LATAM_a_new_social_contract
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_political_power = 50
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_the_workers_party
+		icon = GFX_focus_generic_support_the_left_right
+
+		relative_position_id = LATAM_a_new_social_contract
+		
+		x = -1
+		y = 1
+		
+		cost = 5
+		
+		prerequisite = {
+			focus = LATAM_a_new_social_contract
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_popularity = {
+				ideology = social_democrat
+				popularity = 0.05
+			}
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_the_rural_movements
+		icon = GFX_focus_generic_farmland
+
+		relative_position_id = LATAM_a_new_social_contract
+		
+		x = 1
+		y = 1
+		
+		cost = 5
+		
+		prerequisite = {
+			focus = LATAM_a_new_social_contract
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_stability = 0.05
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_the_urban_poor
+		icon = GFX_focus_generic_low_cost_housing
+
+		relative_position_id = LATAM_a_new_social_contract
+		
+		x = 3
+		y = 1
+		
+		cost = 5
+		
+		prerequisite = {
+			focus = LATAM_a_new_social_contract
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_popularity = {
+				ideology = social_democrat
+				popularity = 0.05
+			}
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_a_broad_front
+		icon = GFX_focus_generic_public_meetings
+
+		relative_position_id = LATAM_a_new_social_contract
+		
+		x = -2
+		y = 2
+		
+		cost = 5
+		
+		prerequisite = {
+			focus = LATAM_the_trade_unions
+		}
+		prerequisite = {
+			focus = LATAM_the_workers_party
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_political_power = 50
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_land_and_bread
+		icon = GFX_focus_generic_land_redistribution
+
+		relative_position_id = LATAM_a_new_social_contract
+		
+		x = 0
+		y = 2
+		
+		cost = 5
+		
+		prerequisite = {
+			focus = LATAM_the_workers_party
+		}
+		prerequisite = {
+			focus = LATAM_the_rural_movements
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_stability = 0.05
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_the_voice_of_the_barrios
+		icon = GFX_focus_generic_public_works
+
+		relative_position_id = LATAM_a_new_social_contract
+		
+		x = 2
+		y = 2
+		
+		cost = 5
+		
+		prerequisite = {
+			focus = LATAM_the_rural_movements
+		}
+		prerequisite = {
+			focus = LATAM_the_urban_poor
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_popularity = {
+				ideology = social_democrat
+				popularity = 0.05
+			}
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_the_peoples_platform
+		icon = GFX_focus_generic_printing_press
+
+		relative_position_id = LATAM_a_new_social_contract
+		
+		x = -1
+		y = 3
+		
+		cost = 5
+		
+		prerequisite = {
+			focus = LATAM_a_broad_front
+		}
+		prerequisite = {
+			focus = LATAM_land_and_bread
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_political_power = 75
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_a_government_for_the_many
+		icon = GFX_focus_generic_commission
+
+		relative_position_id = LATAM_a_new_social_contract
+		
+		x = 1
+		y = 3
+		
+		cost = 5
+		
+		prerequisite = {
+			focus = LATAM_land_and_bread
+		}
+		prerequisite = {
+			focus = LATAM_the_voice_of_the_barrios
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_popularity = {
+				ideology = social_democrat
+				popularity = 0.1
+			}
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_the_social_democratic_victory
+		icon = GFX_focus_generic_vote
+
+		relative_position_id = LATAM_a_new_social_contract
+		
+		x = 0
+		y = 4
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_the_peoples_platform
+		}
+		prerequisite = {
+			focus = LATAM_a_government_for_the_many
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_popularity = {
+				ideology = social_democrat
+				popularity = 0.2
+			}
+			set_politics = {
+				ruling_party = social_democrat
+				elections_allowed = yes
+			}
+			swap_ideas = {
+				remove_idea = LATAM_social_democratic_reforms
+				add_idea = LATAM_social_democratic_reforms2
+			}
+			add_political_power = 100
+			add_stability = 0.05
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_the_first_hundred_days
+		icon = GFX_focus_generic_election
+
+		relative_position_id = LATAM_a_new_social_contract
+		
+		x = 0
+		y = 5
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_the_social_democratic_victory
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_stability = 0.05
+			add_political_power = 75
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_raise_the_minimum_wage
+		icon = GFX_focus_generic_worker_expansion
+
+		relative_position_id = LATAM_a_new_social_contract
+		
+		x = -2
+		y = 6
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_the_first_hundred_days
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_ideas = LATAM_minimum_wage
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_reform_the_pension_system
+		icon = GFX_focus_generic_welfare
+
+		relative_position_id = LATAM_a_new_social_contract
+		
+		x = 0
+		y = 6
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_the_first_hundred_days
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_ideas = LATAM_pension_reform
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_universal_public_services
+		icon = GFX_focus_generic_field_hostpital
+
+		relative_position_id = LATAM_a_new_social_contract
+		
+		x = 2
+		y = 6
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_the_first_hundred_days
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_ideas = LATAM_public_services
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_the_re_election_campaign
+		icon = GFX_focus_generic_universal_suffrage
+
+		relative_position_id = LATAM_a_new_social_contract
+		
+		x = 0
+		y = 7
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_raise_the_minimum_wage
+		}
+		prerequisite = {
+			focus = LATAM_reform_the_pension_system
+		}
+		prerequisite = {
+			focus = LATAM_universal_public_services
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_popularity = {
+				ideology = social_democrat
+				popularity = 0.1
+			}
+			add_political_power = 100
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_deepen_the_reforms
+		icon = GFX_focus_generic_workers_and_farmers_rise
+
+		relative_position_id = LATAM_a_new_social_contract
+		
+		x = -2
+		y = 8
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_the_re_election_campaign
+		}
+
+		mutually_exclusive = {
+			focus = LATAM_moderate_and_consolidate
+		}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = LATAM_social_democratic_reforms2
+				add_idea = LATAM_social_democratic_reforms3
+			}
+			add_stability = 0.05
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_moderate_and_consolidate
+		icon = GFX_focus_generic_industrialists
+
+		relative_position_id = LATAM_a_new_social_contract
+		
+		x = 2
+		y = 8
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_the_re_election_campaign
+		}
+
+		mutually_exclusive = {
+			focus = LATAM_deepen_the_reforms
+		}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = LATAM_social_democratic_reforms2
+				add_idea = LATAM_social_democratic_reforms3_moderate
+			}
+			add_political_power = 75
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_expand_the_welfare_state
+		icon = GFX_focus_generic_limited_social_mobilization
+
+		relative_position_id = LATAM_a_new_social_contract
+		
+		x = -3
+		y = 9
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_deepen_the_reforms
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_ideas = LATAM_expanded_welfare_state
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_free_university_education
+		icon = GFX_focus_generic_university_3
+
+		relative_position_id = LATAM_a_new_social_contract
+		
+		x = -1
+		y = 9
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_deepen_the_reforms
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_ideas = LATAM_free_university
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_workers_on_the_board
+		icon = GFX_focus_generic_worker_administration
+
+		relative_position_id = LATAM_a_new_social_contract
+		
+		x = -2
+		y = 10
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_expand_the_welfare_state
+		}
+		prerequisite = {
+			focus = LATAM_free_university_education
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_ideas = LATAM_workers_on_the_board
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_the_social_state
+		icon = GFX_focus_generic_full_social_mobilization
+
+		relative_position_id = LATAM_a_new_social_contract
+		
+		x = -2
+		y = 11
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_workers_on_the_board
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_stability = 0.10
+			add_war_support = 0.05
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_a_pact_with_the_business_sector
+		icon = GFX_focus_generic_industry_investment
+
+		relative_position_id = LATAM_a_new_social_contract
+		
+		x = 1
+		y = 9
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_moderate_and_consolidate
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_ideas = LATAM_business_pact
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_responsible_public_finances
+		icon = GFX_focus_generic_reduce_unneccessary_expenditure
+
+		relative_position_id = LATAM_a_new_social_contract
+		
+		x = 3
+		y = 9
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_moderate_and_consolidate
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_ideas = LATAM_responsible_finances
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_an_investment_boom
+		icon = GFX_goal_generic_construction2
+
+		relative_position_id = LATAM_a_new_social_contract
+		
+		x = 2
+		y = 10
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_a_pact_with_the_business_sector
+		}
+		prerequisite = {
+			focus = LATAM_responsible_public_finances
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = { free_building_slots = { building = industrial_complex size > 0 include_locked = yes } }
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_the_stable_republic
+		icon = GFX_focus_generic_economic_recovery
+
+		relative_position_id = LATAM_a_new_social_contract
+		
+		x = 2
+		y = 11
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_an_investment_boom
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_stability = 0.05
+			random_owned_controlled_state = {
+				limit = { free_building_slots = { building = industrial_complex size > 0 include_locked = yes } }
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_the_social_democratic_model
+		icon = GFX_goal_generic_national_unity
+
+		relative_position_id = LATAM_a_new_social_contract
+		
+		x = 0
+		y = 12
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_the_social_state
+			focus = LATAM_the_stable_republic
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_political_power = 100
+			add_stability = 0.05
+			add_popularity = {
+				ideology = social_democrat
+				popularity = 0.1
+			}
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+
+	#####################
+	### COMMUNISM ###
+	#####################
+
+	focus = {
+		id = LATAM_the_communist_party
+		icon = GFX_focus_generic_communist
+
+		x = 80
+		y = 4
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_look_to_the_future
+		}
+
+		mutually_exclusive = {
+			focus = LATAM_the_case_for_the_market
+		}
+		mutually_exclusive = {
+			focus = LATAM_a_republic_of_laws
+		}
+		mutually_exclusive = {
+			focus = LATAM_a_new_social_contract
+		}
+		mutually_exclusive = {
+			focus = LATAM_a_new_generation_of_activists
+		}
+		mutually_exclusive = {
+			focus = LATAM_the_pink_tide
+		}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_ideas = LATAM_communist_movement
+			add_popularity = {
+				ideology = communist
+				popularity = 0.05
+			}
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_organize_the_workers
+		icon = GFX_focus_generic_workers
+
+		relative_position_id = LATAM_the_communist_party
+		
+		x = -1
+		y = 1
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_the_communist_party
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_popularity = {
+				ideology = communist
+				popularity = 0.1
+			}
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_the_student_vanguard
+		icon = GFX_focus_generic_socialist_science
+
+		relative_position_id = LATAM_the_communist_party
+		
+		x = 1
+		y = 1
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_the_communist_party
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_political_power = 50
+			add_popularity = {
+				ideology = communist
+				popularity = 0.05
+			}
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_the_popular_front
+		icon = GFX_focus_generic_red_flags
+
+		relative_position_id = LATAM_the_communist_party
+		
+		x = 0
+		y = 2
+		
+		cost = 5
+		
+		prerequisite = {
+			focus = LATAM_organize_the_workers
+		}
+		prerequisite = {
+			focus = LATAM_the_student_vanguard
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_popularity = {
+				ideology = communist
+				popularity = 0.1
+			}
+			add_political_power = 50
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_the_revolution_arrives
+		icon = GFX_focus_generic_communism_anti_fascism
+
+		relative_position_id = LATAM_the_communist_party
+		
+		x = 0
+		y = 3
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_the_popular_front
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_popularity = {
+				ideology = communist
+				popularity = 0.2
+			}
+			set_politics = {
+				ruling_party = communist
+				elections_allowed = yes
+			}
+			swap_ideas = {
+				remove_idea = LATAM_communist_movement
+				add_idea = LATAM_communist_government
+			}
+			add_political_power = 100
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_the_parliamentary_road
+		icon = GFX_focus_generic_public_meetings
+
+		relative_position_id = LATAM_the_communist_party
+		
+		x = -3
+		y = 4
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_the_revolution_arrives
+		}
+
+		mutually_exclusive = {
+			focus = LATAM_the_dictatorship_of_the_proletariat
+		}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_ideas = LATAM_the_parliamentary_road
+			add_stability = 0.05
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_the_dictatorship_of_the_proletariat
+		icon = GFX_focus_generic_strike_at_democracy2
+
+		relative_position_id = LATAM_the_communist_party
+		
+		x = 3
+		y = 4
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_the_revolution_arrives
+		}
+
+		mutually_exclusive = {
+			focus = LATAM_the_parliamentary_road
+		}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			set_politics = {
+				ruling_party = communist
+				elections_allowed = no
+			}
+			add_ideas = LATAM_proletarian_dictatorship
+			add_war_support = 0.10
+			add_stability = -0.05
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_govern_in_coalition
+		icon = GFX_focus_generic_support_the_left_right
+
+		relative_position_id = LATAM_the_communist_party
+		
+		x = -4
+		y = 5
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_the_parliamentary_road
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_political_power = 100
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_municipal_socialism
+		icon = GFX_focus_generic_self_management
+
+		relative_position_id = LATAM_the_communist_party
+		
+		x = -2
+		y = 5
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_the_parliamentary_road
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_ideas = LATAM_municipal_socialism
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_nationalize_key_industries
+		icon = GFX_focus_generic_communist_industry
+
+		relative_position_id = LATAM_the_communist_party
+		
+		x = -5
+		y = 6
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_govern_in_coalition
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_ideas = LATAM_key_industries
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_workers_control_of_the_workplace
+		icon = GFX_focus_generic_worker_administration
+
+		relative_position_id = LATAM_the_communist_party
+		
+		x = -3
+		y = 6
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_govern_in_coalition
+		}
+		prerequisite = {
+			focus = LATAM_municipal_socialism
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_ideas = LATAM_workers_control
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_the_unions_in_government
+		icon = GFX_focus_generic_worker_expansion
+
+		relative_position_id = LATAM_the_communist_party
+		
+		x = -1
+		y = 6
+		
+		cost = 5
+		
+		prerequisite = {
+			focus = LATAM_municipal_socialism
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_stability = 0.05
+			add_political_power = 75
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_a_democratic_planned_economy
+		icon = GFX_focus_generic_central_planning
+
+		relative_position_id = LATAM_the_communist_party
+		
+		x = -4
+		y = 7
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_nationalize_key_industries
+		}
+		prerequisite = {
+			focus = LATAM_workers_control_of_the_workplace
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = LATAM_communist_government
+				add_idea = LATAM_communist_government2_democratic
+			}
+			add_political_power = 100
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_civil_liberties_preserved
+		icon = GFX_focus_generic_printing_press
+
+		relative_position_id = LATAM_the_communist_party
+		
+		x = -2
+		y = 7
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_workers_control_of_the_workplace
+		}
+		prerequisite = {
+			focus = LATAM_the_unions_in_government
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_ideas = LATAM_civil_liberties
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_socialism_by_the_ballot
+		icon = GFX_focus_generic_universal_suffrage
+
+		relative_position_id = LATAM_the_communist_party
+		
+		x = -3
+		y = 8
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_a_democratic_planned_economy
+		}
+		prerequisite = {
+			focus = LATAM_civil_liberties_preserved
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = LATAM_communist_government2_democratic
+				add_idea = LATAM_communist_government3_democratic
+			}
+			add_political_power = 100
+			add_stability = 0.05
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_the_one_party_state
+		icon = GFX_focus_generic_strike_at_democracy3
+
+		relative_position_id = LATAM_the_communist_party
+		
+		x = 2
+		y = 5
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_the_dictatorship_of_the_proletariat
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_ideas = LATAM_one_party_state
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_the_peoples_militias
+		icon = GFX_focus_generic_limited_social_mobilization
+
+		relative_position_id = LATAM_the_communist_party
+		
+		x = 4
+		y = 5
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_the_dictatorship_of_the_proletariat
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_ideas = LATAM_peoples_militias
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_the_state_security_apparatus
+		icon = GFX_focus_generic_secret_service_agency
+
+		relative_position_id = LATAM_the_communist_party
+		
+		x = 1
+		y = 6
+		
+		cost = 5
+		
+		prerequisite = {
+			focus = LATAM_the_one_party_state
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_ideas = LATAM_state_security
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_expropriate_the_landowners
+		icon = GFX_focus_generic_expropriate_industrialist
+
+		relative_position_id = LATAM_the_communist_party
+		
+		x = 3
+		y = 6
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_the_one_party_state
+		}
+		prerequisite = {
+			focus = LATAM_the_peoples_militias
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_ideas = LATAM_expropriation
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_literacy_and_health_brigades
+		icon = GFX_focus_generic_socialist_science
+
+		relative_position_id = LATAM_the_communist_party
+		
+		x = 5
+		y = 6
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_the_peoples_militias
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_ideas = LATAM_literacy_brigades
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_the_planned_economy
+		icon = GFX_focus_generic_stalinist_industry
+
+		relative_position_id = LATAM_the_communist_party
+		
+		x = 2
+		y = 7
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_the_state_security_apparatus
+		}
+		prerequisite = {
+			focus = LATAM_expropriate_the_landowners
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = LATAM_communist_government
+				add_idea = LATAM_communist_government2_dictatorship
+			}
+			add_political_power = 100
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_survive_the_embargo
+		icon = GFX_focus_generic_trade_interdiction
+
+		relative_position_id = LATAM_the_communist_party
+		
+		x = 4
+		y = 7
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_expropriate_the_landowners
+		}
+		prerequisite = {
+			focus = LATAM_literacy_and_health_brigades
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_ideas = LATAM_embargo_economy
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_the_permanent_revolution
+		icon = GFX_focus_generic_spur_communist_revolutions
+
+		relative_position_id = LATAM_the_communist_party
+		
+		x = 3
+		y = 8
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_the_planned_economy
+		}
+		prerequisite = {
+			focus = LATAM_survive_the_embargo
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = LATAM_communist_government2_dictatorship
+				add_idea = LATAM_communist_government3_dictatorship
+			}
+			add_political_power = 100
+			add_war_support = 0.05
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+
+	###############################
+	### DEMOCRATIC SOCIALISM ###
+	###############################
+
+	############################
+	### DEMOCRATIC SOCIALISM ###
+	############################
+
+	focus = {
+		id = LATAM_the_pink_tide
+		icon = GFX_focus_generic_workers
+
+		x = 94
+		y = 4
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_look_to_the_future
+		}
+
+		mutually_exclusive = {
+			focus = LATAM_the_case_for_the_market
+		}
+		mutually_exclusive = {
+			focus = LATAM_a_republic_of_laws
+		}
+		mutually_exclusive = {
+			focus = LATAM_a_new_social_contract
+		}
+		mutually_exclusive = {
+			focus = LATAM_a_new_generation_of_activists
+		}
+		mutually_exclusive = {
+			focus = LATAM_the_communist_party
+		}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_ideas = LATAM_democratic_socialist_movement
+			add_popularity = {
+				ideology = democratic_socialist
+				popularity = 0.05
+			}
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_the_movement_of_the_landless
+		icon = GFX_focus_generic_land_redistribution
+
+		relative_position_id = LATAM_the_pink_tide
+		
+		x = -2
+		y = 1
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_the_pink_tide
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_popularity = {
+				ideology = democratic_socialist
+				popularity = 0.05
+			}
+			add_stability = 0.05
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_the_wealth_beneath_our_feet
+		icon = GFX_focus_generic_resource_extraction
+
+		relative_position_id = LATAM_the_pink_tide
+		
+		x = 0
+		y = 1
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_the_pink_tide
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_political_power = 50
+			add_tech_bonus = {
+				name = LATAM_the_wealth_beneath_our_feet
+				bonus = 0.5
+				uses = 1
+				category = industry
+			}
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_the_neighbourhood_assemblies
+		icon = GFX_focus_generic_public_meetings
+
+		relative_position_id = LATAM_the_pink_tide
+		
+		x = 2
+		y = 1
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_the_pink_tide
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_popularity = {
+				ideology = democratic_socialist
+				popularity = 0.05
+			}
+			add_political_power = 50
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_a_coalition_of_the_left
+		icon = GFX_focus_generic_support_the_left_right
+
+		relative_position_id = LATAM_the_pink_tide
+		
+		x = -1
+		y = 2
+		
+		cost = 5
+		
+		prerequisite = {
+			focus = LATAM_the_movement_of_the_landless
+		}
+		prerequisite = {
+			focus = LATAM_the_wealth_beneath_our_feet
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_popularity = {
+				ideology = democratic_socialist
+				popularity = 0.1
+			}
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_a_program_of_the_people
+		icon = GFX_focus_generic_printing_press
+
+		relative_position_id = LATAM_the_pink_tide
+		
+		x = 1
+		y = 2
+		
+		cost = 5
+		
+		prerequisite = {
+			focus = LATAM_the_wealth_beneath_our_feet
+		}
+		prerequisite = {
+			focus = LATAM_the_neighbourhood_assemblies
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_political_power = 75
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_the_peoples_victory
+		icon = GFX_focus_generic_vote
+
+		relative_position_id = LATAM_the_pink_tide
+		
+		x = 0
+		y = 3
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_a_coalition_of_the_left
+		}
+		prerequisite = {
+			focus = LATAM_a_program_of_the_people
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_popularity = {
+				ideology = democratic_socialist
+				popularity = 0.2
+			}
+			set_politics = {
+				ruling_party = democratic_socialist
+				elections_allowed = yes
+			}
+			swap_ideas = {
+				remove_idea = LATAM_democratic_socialist_movement
+				add_idea = LATAM_democratic_socialist_government
+			}
+			add_political_power = 100
+			add_stability = 0.05
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_renegotiate_the_contracts
+		icon = GFX_focus_generic_offshore_oil_rig
+
+		relative_position_id = LATAM_the_pink_tide
+		
+		x = -4
+		y = 4
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_the_peoples_victory
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_ideas = LATAM_resource_royalties
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_hunger_must_end
+		icon = GFX_focus_generic_agricultural_subsidies
+
+		relative_position_id = LATAM_the_pink_tide
+		
+		x = 0
+		y = 4
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_the_peoples_victory
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_ideas = LATAM_zero_hunger
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_a_continental_bloc
+		icon = GFX_focus_generic_south_america
+
+		relative_position_id = LATAM_the_pink_tide
+		
+		x = 4
+		y = 4
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_the_peoples_victory
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_ideas = LATAM_continental_bloc
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_the_state_energy_company
+		icon = GFX_goal_generic_oil_refinery
+
+		relative_position_id = LATAM_the_pink_tide
+		
+		x = -2
+		y = 5
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_renegotiate_the_contracts
+		}
+		prerequisite = {
+			focus = LATAM_hunger_must_end
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_ideas = LATAM_state_energy_company
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_oil_for_doctors
+		icon = GFX_focus_generic_field_hostpital
+
+		relative_position_id = LATAM_the_pink_tide
+		
+		x = 2
+		y = 5
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_hunger_must_end
+		}
+		prerequisite = {
+			focus = LATAM_a_continental_bloc
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_ideas = LATAM_oil_for_doctors
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_take_back_the_mines
+		icon = GFX_focus_generic_coal_mining
+
+		relative_position_id = LATAM_the_pink_tide
+		
+		x = -4
+		y = 6
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_the_state_energy_company
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_ideas = LATAM_national_mining_company
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_the_social_missions
+		icon = GFX_focus_generic_limited_social_mobilization
+
+		relative_position_id = LATAM_the_pink_tide
+		
+		x = 0
+		y = 6
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_the_state_energy_company
+		}
+		prerequisite = {
+			focus = LATAM_oil_for_doctors
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_ideas = LATAM_social_missions
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_the_bank_of_the_south
+		icon = GFX_focus_generic_stockpile_currency
+
+		relative_position_id = LATAM_the_pink_tide
+		
+		x = 4
+		y = 6
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_oil_for_doctors
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_ideas = LATAM_bank_of_the_south
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_workers_take_the_factories
+		icon = GFX_focus_generic_worker_administration
+
+		relative_position_id = LATAM_the_pink_tide
+		
+		x = -2
+		y = 7
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_take_back_the_mines
+		}
+		prerequisite = {
+			focus = LATAM_the_social_missions
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_ideas = LATAM_recovered_factories
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_land_to_those_who_work_it
+		icon = GFX_focus_generic_farmland
+
+		relative_position_id = LATAM_the_pink_tide
+		
+		x = 2
+		y = 7
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_the_social_missions
+		}
+		prerequisite = {
+			focus = LATAM_the_bank_of_the_south
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_ideas = LATAM_land_to_the_tiller
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_the_commanding_heights
+		icon = GFX_focus_generic_communist_industry
+
+		relative_position_id = LATAM_the_pink_tide
+		
+		x = -4
+		y = 8
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_workers_take_the_factories
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = LATAM_democratic_socialist_government
+				add_idea = LATAM_democratic_socialist_government2
+			}
+			add_political_power = 75
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_a_new_constitution
+		icon = GFX_focus_generic_league_of_nations
+
+		relative_position_id = LATAM_the_pink_tide
+		
+		x = 0
+		y = 8
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_workers_take_the_factories
+		}
+		prerequisite = {
+			focus = LATAM_land_to_those_who_work_it
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_ideas = LATAM_refounding_constitution
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_break_with_the_imf
+		icon = GFX_focus_generic_reduce_unneccessary_expenditure
+
+		relative_position_id = LATAM_the_pink_tide
+		
+		x = 4
+		y = 8
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_land_to_those_who_work_it
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			add_ideas = LATAM_break_with_the_imf
+		}
+		
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = LATAM_socialism_of_the_21st_century
+		icon = GFX_focus_generic_workers_and_farmers_rise
+
+		relative_position_id = LATAM_the_pink_tide
+		
+		x = 0
+		y = 9
+		
+		cost = 10
+		
+		prerequisite = {
+			focus = LATAM_the_commanding_heights
+		}
+		prerequisite = {
+			focus = LATAM_a_new_constitution
+		}
+		prerequisite = {
+			focus = LATAM_break_with_the_imf
+		}
+
+		mutually_exclusive = {}
+		
+		available = {}
+		
+		bypass = {}
+		
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = LATAM_democratic_socialist_government2
+				add_idea = LATAM_democratic_socialist_government3
+			}
+			add_political_power = 100
+			add_stability = 0.05
 		}
 		
 		ai_will_do = {
