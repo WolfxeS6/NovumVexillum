@@ -8,14 +8,12 @@ focus_tree = {
 			original_tag = IRQ
 		}
 	}
-	shared_focus = GEN_a_new_economy_for_a_new_millenium
-	shared_focus = GEN_bolster_the_army
 	shared_focus = GEN_modernize_the_airforce
 	shared_focus = GEN_modernize_the_navy
 	#  POLITICAL FOCUS TREE HERE !!!!
 	continuous_focus_position = {
 		x = 0
-		y = 1400
+		y = 2800
 	}
 	focus = {
 		id = IRQ_gulf_war_end
@@ -695,10 +693,14 @@ focus_tree = {
 		X = 10
 		y = 1
 		available = {
-			power_balance_value = {
-				id = IRQ_power_balance
-				value > 20
+			OR = {
+				power_balance_value = {
+					id = IRQ_power_balance
+					value > 20
+				}
+				has_country_flag = IRQ_Saddam_returned
 			}
+			
 		}
 		prerequisite = {
 			focus = IRQ_cross_border_smuggling
@@ -707,6 +709,7 @@ focus_tree = {
             focus = IRQ_new_era_of_baathism
         }
 		completion_reward = {
+			custom_effect_tooltip = IRQ_US_Warning_tt
             add_timed_idea = {
 				idea = IRQ_into_the_fire
 				days = 365
@@ -921,6 +924,35 @@ focus_tree = {
 			factor = 0
 		}
 	}
+	focus = {
+		id = IRQ_second_time_lucky
+		icon = GFX_USA_Iranian_Nuclear_Research
+		cost = 6
+		relative_position_id = IRQ_successor_of_nebuchadnezzar
+		X = 0
+		y = 2
+		prerequisite = {
+			focus = IRQ_successor_of_nebuchadnezzar
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				name = GER_the_mannheim_project
+				bonus = 1.0
+				ahead_reduction = 5
+				technology = atomic_research
+			}
+			554 = {
+				add_building_construction = {
+					type = nuclear_reactor
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+        ai_will_do = {
+			factor = 0
+		}
+	}
     focus = {
 		id = IRQ_sway_border_tribes
 		icon = GFX_focus_IRQ_approach_tribes_for_support
@@ -1030,7 +1062,7 @@ focus_tree = {
 	}
     focus = {
 		id = IRQ_seize_saddams_property
-		icon = GFX_focus_generic_annex_country_2
+		icon = GFX_focus_generic_land_redistribution
 		cost = 6
 		relative_position_id = IRQ_exile_saddam
 		X = -1
@@ -1043,6 +1075,229 @@ focus_tree = {
 				idea = IRQ_selling_excess_properties
 				days = 720
 			}
+		}
+	}
+	focus = {
+		id = IRQ_under_new_management
+		icon = GFX_focus_BRA_tribunal
+		cost = 6
+		relative_position_id = IRQ_exile_saddam
+		X = 0
+		y = 2
+		prerequisite = {
+            focus = IRQ_exile_saddam
+		}
+		completion_reward = {
+			#Agressive crackdown
+		}
+	}
+	focus = {
+		id = IRQ_reaproach_the_french
+		icon = align_to_france
+		cost = 6
+		relative_position_id = IRQ_under_new_management
+		X = -2
+		y = 1
+		prerequisite = {
+            focus = IRQ_under_new_management
+		}
+		completion_reward = {
+			#oil deal of some sort
+		}
+	}
+	focus = {
+		id = IRQ_lebanese_bank
+		icon = GFX_focus_PER_national_bank
+		cost = 6
+		relative_position_id = IRQ_reaproach_the_french
+		X = -1
+		y = 1
+		prerequisite = {
+            focus = IRQ_reaproach_the_french
+		}
+		completion_reward = {
+			add_ideas = IRQ_lebanese_bank
+		}
+	}
+	focus = {
+		id = IRQ_bring_the_tribes_to_heel
+		icon = GFX_focus_ETH_freedom_at_gunpoint
+		cost = 6
+		relative_position_id = IRQ_under_new_management
+		X = 0
+		y = 1
+		prerequisite = {
+            focus = IRQ_under_new_management
+		}
+		completion_reward = {
+			#Agressive crackdown
+		}
+	}
+	focus = {
+		id = IRQ_centralise_the_nation
+		icon = GFX_SOV_consolidate_power_ccp_2d_sov_compatibility
+		cost = 6
+		relative_position_id = IRQ_bring_the_tribes_to_heel
+		X = 1
+		y = 1
+		prerequisite = {
+            focus = IRQ_bring_the_tribes_to_heel
+		}
+		mutually_exclusive = {
+			focus = IRQ_regional_authority
+		}
+		completion_reward = {
+			#Agressive crackdown
+		}
+	}
+	focus = {
+		id = IRQ_regional_authority
+		icon = GFX_focus_INS_eventual_autonomy
+		cost = 6
+		relative_position_id = IRQ_bring_the_tribes_to_heel
+		X = -1
+		y = 1
+		prerequisite = {
+            focus = IRQ_bring_the_tribes_to_heel
+		}
+		mutually_exclusive = {
+			focus = IRQ_centralise_the_nation
+		}
+		completion_reward = {
+			every_core_state = {
+				limit = {
+					is_controlled_by = ROOT
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+		id = IRQ_continue_russian_diplomacy
+		icon = GFX_focus_PER_oil_baron
+		cost = 6
+		relative_position_id = IRQ_under_new_management
+		X = 2
+		y = 1
+		prerequisite = {
+            focus = IRQ_under_new_management
+		}
+		prerequisite = {
+			focus = IRQ_joint_syrian_exercises
+		}
+		mutually_exclusive = {
+			focus = IRQ_work_with_US
+		}
+		completion_reward = {
+			add_resource = {
+				type = oil
+				amount = 15
+				state = 1003
+			}
+			add_resource = {
+				type = oil
+				amount = 15
+				state = 1003
+			}
+		}
+	}
+	focus = {
+		id = IRQ_work_with_US
+		icon = GFX_SOV_liberate_ryutin_ccp_2d_sov_compatibility
+		cost = 6
+		relative_position_id = IRQ_under_new_management
+		X = 4
+		y = 1
+		prerequisite = {
+			focus = IRQ_resolve_gulf_debt
+		}
+		mutually_exclusive = {
+			focus = IRQ_continue_russian_diplomacy
+		}
+		completion_reward = {
+			#More oil
+		}
+	}
+	focus = {
+		id = IRQ_german_debt_support
+		icon = GFX_focus_ITA_devaluate_the_lire
+		cost = 6
+		relative_position_id = IRQ_work_with_US
+		X = 1
+		y = 1
+		prerequisite = {
+            focus = IRQ_work_with_US
+		}
+		completion_reward = {
+			add_timed_idea = {
+				idea = IRQ_German_Debt_Restructure
+				days = 1000
+			}
+		}
+	}
+	focus = {
+		id = IRQ_covert_israeli_deals
+		icon = GFX_goal_generic_dangerous_deal
+		cost = 6
+		relative_position_id = IRQ_work_with_US
+		X = 2
+		y = 2
+		available = {
+			NOT = { has_war_with = ISR}
+			ISR = { exists = yes}
+		}
+		prerequisite = {
+            focus = IRQ_work_with_US
+		}
+		prerequisite = {
+            focus = IRQ_broaden_our_horizens
+		}
+		completion_reward = {
+			add_war_support = -0.075
+			add_popularity = {
+				ideology = market_liberal
+				popularity = 0.05
+			}
+		}
+	}
+	focus = {
+		id = IRQ_broaden_our_horizens
+		icon = GFX_focus_generic_approach_the_west
+		cost = 6
+		relative_position_id = IRQ_continue_russian_diplomacy
+		X = 1
+		y = 1
+		prerequisite = {
+            focus = IRQ_continue_russian_diplomacy
+			focus = IRQ_work_with_US
+		}
+		completion_reward = {
+			add_political_power = 75
+			add_popularity = {
+				ideology = market_liberal
+				popularity = 0.05
+			}
+		}
+	}
+	focus = {
+		id = IRQ_caucus_business_partners
+		icon = GFX_SOV_funds_for_the_cause_ccp_2d_sov_compatibility
+		cost = 6
+		relative_position_id = IRQ_broaden_our_horizens
+		X = -1
+		y = 1
+		prerequisite = {
+            focus = IRQ_continue_russian_diplomacy
+		}
+		prerequisite = {
+            focus = IRQ_broaden_our_horizens
+		}
+		completion_reward = {
+			#More oil
 		}
 	}
     focus = {
@@ -1172,7 +1427,7 @@ focus_tree = {
 	}
     focus = {
 		id = IRQ_joint_syrian_exercises
-		icon = GFX_ISR_Negev_Terraforming
+		icon = GFX_focus_PER_desert_training
 		cost = 6
 		relative_position_id = IRQ_resolve_syrian_border
 		X = -1

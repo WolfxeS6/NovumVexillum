@@ -325,10 +325,67 @@ country_event = {
 	
 	option = {
 		name = IRQ_focus_events.12.o1
-		retire_character = IRQ_saddam_hussein
+		remove_country_leader_role = {
+			character = IRQ_saddam_hussein
+			ideology = baathism
+		}
 		add_political_power = 50
 		add_stability = -0.1
 		ai_chance = { factor = 10 }
+	}
+}
+country_event = {
+	id = IRQ_focus_events.13
+	title = IRQ_focus_events.13.t
+	desc = IRQ_focus_events.13.d
+	picture = GFX_report_event_america_and_iraq
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = IRQ_focus_events.13.o1
+		add_country_leader_role = {
+			character = IRQ_saddam_hussein
+			promote_leader = yes
+			country_leader = {
+				ideology = baathism
+				expire = "2030.1.1.1"
+			}
+		}
+		IRQ_saddam_hussein = {
+			add_country_leader_trait = IRQ_punished_saddam
+		}
+		set_portraits = {
+			character = IRQ_saddam_hussein
+			army = { small ="MySmallCharacterGFX" }
+			civilian = { large ="MyLargeCharacterGFX" }
+		}
+		scripted_effect = IRQ_switch_to_punished
+		ai_chance = { factor = 10 }
+	}
+	option = {
+		name = IRQ_focus_events.13.o2
+		ai_chance = { factor = 0 }
+	}
+}
+country_event = {
+	id = IRQ_focus_events.14
+	title = IRQ_focus_events.14.t
+	desc = IRQ_focus_events.14.d
+	picture = GFX_report_event_america_and_iraq
+	
+	is_triggered_only = yes
+	
+	option = { #secret
+		name = IRQ_focus_events.14.o1
+
+		ai_chance = { factor = 10 }
+	}
+	option = { #public
+		name = IRQ_focus_events.14.o2
+		ai_chance = { factor = 0 }
+		add_stability = -0.1
+		add_war_support = -0.1
 	}
 }
 #Iraq held
