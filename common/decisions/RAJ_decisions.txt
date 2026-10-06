@@ -240,46 +240,54 @@ army_decisions = {
 		
 		state_target = yes
 		
-		visible = { 
-			country_exists = NAX
-			NAX = { is_puppet_of = ROOT }
-		}
+		#available = {
+		#	has_stability > 0.1
+		#}
 		
-		available = {
-			has_stability > 0.5
-		}
-		
-		target_trigger = {			
-			FROM = {
-				is_owned_by = NAX
-			}
-		}
-		
-		custom_cost_text = CP_50
+		#custom_cost_text = CP_50
 
-		ai_hint_pp_cost = 50
-		
-		custom_cost_trigger = {
-			command_power > 49
-		}
+		#ai_hint_pp_cost = 50
+		#
+		#custom_cost_trigger = {
+		#	command_power > 49
+		#}
+
+		cost = 200
 		
 		fire_only_once = no
-		days_remove = 1
+		days_remove = 360
 		
 		ai_will_do = {
 			base = 20
 		}
 		
-		complete_effect = {
-			hidden_effect = {
-				add_command_power = -50
+		visible = { 
+			FROM = {
+				has_dynamic_modifier = {
+					modifier = RAJ_naxalite_warloads
+				}
 			}
-			ROOT = { add_stability = -0.03 }
 		}
-		
-		remove_effect = {
-			ROOT = {
-				transfer_state = FROM.FROM
+
+		available = {
+			FROM = {
+				has_dynamic_modifier = {
+					modifier = RAJ_naxalite_warloads
+				}
+			}
+		}
+
+		highlight_states = {
+			highlight_states_trigger = {
+				has_dynamic_modifier = {
+					modifier = RAJ_naxalite_warloads
+				}
+			}
+		}
+
+		complete_effect = {
+			FROM = {
+				remove_dynamic_modifier = { modifier = RAJ_naxalite_warloads }
 			}
 		}
 	}
