@@ -14,19 +14,18 @@ set_convoys = 320
 set_stability = 0.25
 
 set_country_flag = country_language_persian
+
 if = {
 	limit = {
 		NOT = {has_dlc = "By Blood Alone"}
 	}
 	set_technology = {
-		heli1 = 1
 		CAS1 = 1
 		CAS2 = 1
 		cv_CAS1 = 1
 		cv_CAS2 = 1
 		fighter1 = 1
 		fighter2 = 1
-		fighter3 = 1
 		cv_fighter1 = 1
 		cv_fighter2 = 1
 		naval_bomber1 = 1
@@ -160,7 +159,6 @@ if = {
 	#main_battle_tank3 = 1
 	light_tank1 = 1
 	mechanised_infantry1 = 1
-	nonsnb_technicality_tech = 1
 	light_mechanized_infantry1 = 1
 	light_mechanized_infantry2 = 1
 	#mechanised_infantry2 = 1
@@ -173,9 +171,9 @@ if = {
 	set_technology = {
 		IFV_chassis_80s = 1
 		IFV_chassis = 1
-		technicality_tech = 1
 		light_mechanized_infantry1 = 1
 		light_mechanized_infantry2 = 1
+		IFV_chassis_00s = 1
 		main_battle_tank_chassis = 1
 		main_battle_tank_chassis_80s = 1
 		#main_battle_tank_chassis_00s = 1
@@ -311,7 +309,7 @@ if = {
 			tank_nsb_engine_upgrade = 1
 		}
 		obsolete = yes
-		icon = "GFX_PER_light_tank1_medium"
+		icon = "GFX_light_tank1_medium"
 	}
 }
 set_technology = {
@@ -340,7 +338,7 @@ set_technology = {
 	#main_battle_tank1 = 1
 	#main_battle_tank2 = 1
 	#light_tank1 = 1
-	
+	#mechanised_infantry1 = 1
 	#mechanised_infantry2 = 1
 	#light_mechanized_infantry1 = 1
 	#light_mechanized_infantry2 = 1
@@ -390,7 +388,6 @@ if = {
 	set_technology = {
 		early_ship_hull_light = 1
 		basic_ship_hull_light = 1
-		early_ship_hull_patrol_boat = 1
 		early_ship_hull_cruiser = 1
 		early_ship_hull_submarine = 1
 		basic_ship_hull_submarine = 1
@@ -414,23 +411,29 @@ add_opinion_modifier = {
 	modifier = death_to_israel
 }
 
-add_opinion_modifier = {
-	target = SAU
-	modifier = rival
-}
-
 set_country_flag = dominant_religion_islam
 set_country_flag = shia_islam
 
 add_ideas = {
 	economy_growth
-	public_safety_secret_police
 	civil_liberties_totalitarian
 	population_growth_explosion
 	limited_conscription
+	ROM_unemployment_crisis
+	PER_Islamic_Revolution
+	per_recovering_economy
+	per_Political_crisis
 	mobilization_service_time_corrupt
-}
 
+}
+add_opinion_modifier = {
+	target = SAU
+	modifier = rival
+}
+add_opinion_modifier = {
+	target = SYR
+	modifier = diplomatic_support
+}
 set_politics = {	
 	ruling_party = islamist
 	last_election = "1997.5.23"
@@ -445,6 +448,7 @@ set_popularities = {
     social_liberal = 1
     democratic_socialist = 5
 }
+
 recruit_character = PER_ali_hosseini_khamenei
 recruit_character = PER_mohsen_pezeshkpour
 recruit_character = PER_reza_pahlavi
@@ -474,7 +478,6 @@ recruit_character = PER_habibollah_sayyari
 recruit_character = PER_ali_fadavi
 recruit_character = PER_ali_shamkani
 
-
 2016.1.1 = {
 	oob = "PER_2016"
 }
@@ -500,7 +503,7 @@ if = {
 			fixed_ship_engine_slot = light_ship_engine_1
 			fixed_ship_torpedo_slot = ship_torpedo_1
 			mid_1_custom_slot = ship_torpedo_1
-			rear_1_custom_slot = ship_torpedo_1
+			rear_1_custom_slot = ship_depth_charge_1
 		}
 		obsolete = no
 	}
@@ -544,32 +547,32 @@ if = {
 		add_equipment_to_stockpile = {
 			type = fighter_equipment_3
 			amount = 25
-			#producer = USA
+			producer = USA
 		}
 		add_equipment_to_stockpile = {
 			type = fighter_equipment_3
 			amount = 40
-			#producer = SOV
+			producer = SOV
 		}
 		add_equipment_to_stockpile = {
 			type = fighter_equipment_2
 			amount = 40
-			#producer = USA
+			producer = USA
 		}
 		add_equipment_to_stockpile = {
 			type = fighter_equipment_2
 			amount = 3
-			#producer = FRA
+			producer = FRA
 		}
 		add_equipment_to_stockpile = {
 			type = fighter_equipment_1
 			amount = 60
-			#producer = USA
+			producer = USA
 		}
 		add_equipment_to_stockpile = {
 			type = fighter_equipment_1
 			amount = 35
-			#producer = PRC
+			producer = PRC
 		}
 }
 if = {

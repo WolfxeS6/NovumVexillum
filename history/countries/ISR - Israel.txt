@@ -22,7 +22,7 @@ complete_special_project = sp:sp_rockets_ballistic_missile
 complete_special_project = sp:sp_rockets_medium_range_ballistic_missile
 complete_special_project = sp:sp_rockets_long_range_ballistic_missile
 complete_special_project = sp:sp_nuclear_reactor
-#complete_special_project = sp:sp_commercial_nuclear_reactor
+complete_special_project = sp:sp_commercial_nuclear_reactor
 complete_special_project = sp:sp_nuclear_bomb
 complete_special_project = sp:sp_thermo_nuclear_bomb
 complete_special_project = sp:sp_nuclear_warheads
@@ -32,14 +32,12 @@ if = {
 		NOT = {has_dlc = "By Blood Alone"}
 	}
 	set_technology = {
-		heli1 = 1
 		CAS1 = 1
 		CAS2 = 1
 		cv_CAS1 = 1
 		cv_CAS2 = 1
 		fighter1 = 1
 		fighter2 = 1
-		fighter3 = 1
 		cv_fighter1 = 1
 		cv_fighter2 = 1
 		naval_bomber1 = 1
@@ -149,7 +147,6 @@ if = {
 	main_battle_tank3 = 1
 	light_tank1 = 1
 	mechanised_infantry1 = 1
-	nonsnb_technicality_tech = 1
 	light_mechanized_infantry1 = 1
 	light_mechanized_infantry2 = 1
 	mechanised_infantry2 = 1
@@ -162,9 +159,9 @@ if = {
 	set_technology = {
 		IFV_chassis_80s = 1
 		IFV_chassis = 1
-		technicality_tech = 1
 		light_mechanized_infantry1 = 1
 		light_mechanized_infantry2 = 1
+		IFV_chassis_00s = 1
 		main_battle_tank_chassis = 1
 		main_battle_tank_chassis_80s = 1
 		main_battle_tank_chassis_00s = 1
@@ -193,7 +190,7 @@ if = {
 	}
 	create_equipment_variant = {
 		name = "Achzarit"
-		type = light_tank_chassis_1
+		type = light_tank_chassis_2
 		parent_version = 0
 		modules = {
 			main_armament_slot = tank_heavy_machine_gun
@@ -309,17 +306,6 @@ set_technology = {
 	tech_signal_company = 1
 	tech_maintenance_company = 1
 	
-	## Armor ##
-	#main_battle_tank1 = 1
-	#main_battle_tank2 = 1
-	#main_battle_tank3 = 1
-	#light_tank1 = 1
-	
-	#mechanised_infantry2 = 1
-	#light_mechanized_infantry1 = 1
-	#light_mechanized_infantry2 = 1
-	#amphibious_mechanized_infantry1 = 1
-	
 	## Artillery ##
 	coldwar_artillery = 1
 	gw_artillery = 1
@@ -333,28 +319,6 @@ set_technology = {
 	 
 	sp_artillery1 = 1
 	
-	# ## Air ##
-	# CAS1 = 1
-	# CAS2 = 1
-	# cv_CAS1 = 1
-	# cv_CAS2 = 1
-	# fighter1 = 1
-	# fighter2 = 1
-	# fighter3 = 1
-	# cv_fighter1 = 1
-	# cv_fighter2 = 1
-	# cv_fighter3 = 1
-	# naval_bomber1 = 1
-	# naval_bomber2 = 1
-	# naval_bomber3 = 1
-	# cv_naval_bomber1 = 1
-	# cv_naval_bomber2 = 1
-	# cv_naval_bomber3 = 1
-	# strategic_bomber1 = 1
-	# strategic_bomber2 = 1
-	# tactical_bomber1 = 1
-	# #scout_plane1 = 1
-	
 	## Engineering ##
 	electronic_mechanical_engineering = 1
 	radio = 1
@@ -362,6 +326,9 @@ set_technology = {
 	
 	
 	experimental_rockets = 1
+	
+	
+	
 	
 	## Industry ##
 	basic_machine_tools = 1
@@ -374,7 +341,6 @@ set_technology = {
 	#base_strike = 1
 	#formation_flying = 1
 }
-
 if = {
 	limit = { not = { has_dlc = "Man the Guns" } }
 	set_technology = {
@@ -390,7 +356,6 @@ if = {
 	set_technology = {
 		early_ship_hull_light = 1
 		basic_ship_hull_light = 1
-		early_ship_hull_patrol_boat = 1
 		early_ship_hull_submarine = 1
 		basic_ship_hull_submarine = 1
 		smoke_generator = 1
@@ -413,9 +378,12 @@ add_ideas = {
 	civil_liberties_free
 	population_growth_rapid
 	idea_ISR_vanguard_of_judaism
+	ISR_orthadox_situation
+	ISR_arab_population
 	#low_economic_mobilisation
 	extensive_conscription
 	mobilization_service_time_duty
+	ISR_law_of_return
 }
 
 set_politics = {	
@@ -515,7 +483,23 @@ recruit_character = ISR_shahar_sochat
 recruit_character = ISR_eli_sharvit
 recruit_character = ISR_ram_rothberg
 recruit_character = ISR_dror_friedman
-
+recruit_character = ISR_Yona_Metzger
+recruit_character = ISR_Yisrael_Meir_Lau
+recruit_character = ISR_David_Lau
+promote_character = ISR_abdulmalik_dehamshe
+## Advisors
+recruit_character = ISR_Meir_Pail
+recruit_character = ISR_Tsipi_Livni
+recruit_character = ISR_Ahmad_tibi
+recruit_character = ISR_Ariel_Sharon
+recruit_character = ISR_Shimon_Peres
+recruit_character = ISR_Yisrael_Katz
+recruit_character = ISR_Uri_Ariel
+recruit_character = ISR_Martin_van_Creveld
+recruit_character = ISR_Carmel_Shama
+recruit_character = ISR_Yair_Lapid
+recruit_character = ISR_Isaac_Herzog
+recruit_character = ISR_Moshe_Feiglin
 2016.1.1 = {
 	oob = "ISR_2016"
 	set_politics = {		
@@ -557,7 +541,7 @@ if = {
 			fixed_ship_engine_slot = light_ship_engine_2
 			fixed_ship_torpedo_slot = ship_torpedo_1
 			mid_1_custom_slot = ship_torpedo_1
-			rear_1_custom_slot = ship_torpedo_1
+			rear_1_custom_slot = ship_depth_charge_1
 		}
 		obsolete = no
 	}
@@ -592,17 +576,17 @@ if = {
 		add_equipment_to_stockpile = {
 			type = fighter_equipment_3
 			amount =295
-			#producer = USA
+			producer = USA
 		}
 		add_equipment_to_stockpile = {
 			type = fighter_equipment_2
 			amount =36
-			#producer = USA
+			producer = USA
 		}
 		add_equipment_to_stockpile = {
 			type = CAS_equipment_1
 			amount =102
-			#producer = USA
+			producer = USA
 		}
 }
 if = {
@@ -617,8 +601,8 @@ if = {
 	}
 	add_equipment_to_stockpile = {
 		type = medium_plane_airframe_1
-		amount = ISR
-		producer = USA
+		amount = 109
+		producer = ISR
 		variant_name = "F-15C/D Eagle" 
 	}
 	add_equipment_to_stockpile = {

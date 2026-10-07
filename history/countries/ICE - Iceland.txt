@@ -2,26 +2,22 @@
 
 oob = "ICE_2000"
 
-if = {
-	limit = { has_dlc = "Man the Guns" }
-		set_naval_oob = "ICE_2000_naval_mtg"
-	else = {
-		set_naval_oob = "ICE_2000_naval_legacy"
-	}
-}
-
 set_research_slots = 3
 set_convoys = 30
 set_stability = 0.55
 
 set_country_flag = country_language_icelandic
-
+set_country_flag = ICE_D_exists
+set_country_flag = ICE_B_exists
+set_country_flag = ICE_S_exists
+set_country_flag = ICE_V_exists
+set_country_flag = ICE_F_exists
+set_country_flag = ICE_H_exists
 if = {
 	limit = {
 		NOT = {has_dlc = "By Blood Alone"}
 	}
 	set_technology = {
-		heli1 = 1
 		CAS1 = 1
 		CAS2 = 1
 		cv_CAS1 = 1
@@ -107,11 +103,12 @@ if = {
 	set_technology = {
 	main_battle_tank1 = 1
 	main_battle_tank2 = 1
+	#main_battle_tank3 = 1
 	light_tank1 = 1
 	mechanised_infantry1 = 1
-	nonsnb_technicality_tech = 1
 	light_mechanized_infantry1 = 1
 	light_mechanized_infantry2 = 1
+	mechanised_infantry2 = 1
 	}
 }
 if = {
@@ -121,7 +118,6 @@ if = {
 	set_technology = {
 		IFV_chassis_80s = 1
 		IFV_chassis = 1
-		technicality_tech = 1
 		light_mechanized_infantry1 = 1
 		light_mechanized_infantry2 = 1
 		main_battle_tank_chassis = 1
@@ -130,68 +126,65 @@ if = {
 set_technology = {
 	## Infantry ##
 	infantry_weapons1 = 1
-	infantry_weapons2 = 1
 	motorised_infantry = 1
-	infantry_rifle_upgrade = 1
 	support_weapons = 1
-	support_weapons2 = 1
 	night_vision = 1
 	body_armor = 1
 	camouflage = 1
 	marines = 1
+	tech_mountaineers = 1
+	paratroopers = 1
 	
 	## Support Companies ##
 	tech_support = 1
-	basic_train =1
+	basic_train = 1
 	tech_engineers = 1
 	tech_recon = 1
-	tech_military_police = 1
-	tech_maintenance_company = 1
 	tech_field_hospital = 1
 	tech_logistics_company = 1
-	tech_signal_company = 1
-	light_mechanized_infantry1 = 1
+	tech_military_police = 1
+	tech_maintenance_company = 1
+	
+	## Armor ##
+	#main_battle_tank1 = 1
+	#main_battle_tank2 = 1
+	#light_tank1 = 1
+	#mechanised_infantry1 = 1
+	#mechanised_infantry2 = 1
+	#light_mechanized_infantry1 = 1
+	#light_mechanized_infantry2 = 1
 	
 	## Artillery ##
 	coldwar_artillery = 1
-	gw_artillery = 1
-	
-	interwar_antiair = 1
 	coldwar_antiair = 1
 	coldwar_antitank = 1
+ 	rocket_artillery = 1
+	sp_antiair0 = 1 
 	
 	## Air ##
 	# CAS1 = 1
 	# CAS2 = 1
+	# cv_CAS1 = 1
 	# fighter1 = 1
 	# fighter2 = 1
-	# fighter3 = 1
+	# cv_fighter1 = 1
+	# cv_fighter2 = 1
 	# naval_bomber1 = 1
 	# naval_bomber2 = 1
-	# naval_bomber3 = 1
+	# cv_naval_bomber1 = 1
+	# cv_naval_bomber2 = 1
 	# strategic_bomber1 = 1
 	# strategic_bomber2 = 1
-	# tactical_bomber1 = 1
-	
-	## Engineering ##
-	electronic_mechanical_engineering = 1
-	radio = 1
+	# #scout_plane1 = 1
 	
 	## Industry ##
-	basic_machine_tools = 1
 	fuel_silos = 1
 	fuel_refining = 1
-	
-	## Doctrines ##
-	#superior_firepower = 1
-	#trade_interdiction = 1
-	#force_rotation = 1
 }
 
 if = {
 	limit = { not = { has_dlc = "Man the Guns" } }
 	set_technology = {
-		early_patrol_boat = 1
 		early_destroyer = 1
 		early_submarine = 1
 		transport = 1
@@ -200,7 +193,6 @@ if = {
 if = {
 	limit = { has_dlc = "Man the Guns" }
 	set_technology = {
-		early_ship_hull_patrol_boat = 1
 		early_ship_hull_light = 1
 		early_ship_hull_submarine = 1
 		sonar = 1
@@ -215,6 +207,7 @@ if = {
 }
 
 add_ideas = {
+	ICE_olafur_ragnar_grimsson
 	government_system_parliamentary_republic
 	national_development_developed
 	disarmed_nation
@@ -223,61 +216,91 @@ add_ideas = {
 	population_growth_stagnation
 }
 
+set_party_name = {
+	ideology = conservative
+	long_name = "Sjálfstæðisflokkurinn"
+	name = "Independence Party"
+}
+set_party_name = {
+	ideology = social_democrat
+	long_name = "Samfylkingin"
+	name = "Social Democratic Alliance"
+}
+set_party_name = {
+	ideology = social_liberal
+	long_name = "Framsóknarflokkurinn"
+	name = "Progressive Party"
+}
+
+set_party_name = {
+	ideology = progressive
+	long_name = "Vinstrihreyfingin – grænt framboð"
+	name = "Left-Green Movement"
+}
+
+set_party_name = {
+	ideology = market_liberal
+	long_name = "Frjálslyndi Flokkurinn"
+	name = "Liberal Party"
+}
+
+set_party_name = {
+	ideology = democratic_socialist
+	long_name = "Húmanistaflokkurinn"
+	name = "Humanist Party"
+}
+
 set_politics = {	
-	ruling_party = social_liberal
-	last_election = "2000.6.26" #The 2000 elections didn't happen so I'm skipping it
+	ruling_party = conservative
+	last_election = "1999.5.8"
 	election_frequency = 48
 	elections_allowed = yes
 }
 
 set_popularities = {
-	conservative = 37
-	social_democrat = 27
-    social_liberal = 25
-	progressive = 9
-	democratic_socialist = 1
-	communist = 1
+    islamist = 0
+    nationalist = 0
+    reactionary = 0
+    conservative = 40
+    market_liberal = 5
+    social_liberal = 18
+    social_democrat = 28
+    progressive = 9
+    democratic_socialist = 0
+    communist = 0
 }
 
-recruit_character = ICE_karl_sigurbjornsson
-recruit_character = ICE_gunnlaugur_ingvarsson
-recruit_character = ICE_guomundur_thorleifsson
-recruit_character = ICE_david_oddsson
-recruit_character = ICE_guomundur_franklin_jonsson
-recruit_character = ICE_olafur_ragnar_grimsson
-recruit_character = ICE_ossur_skarpheoinsson
+recruit_character = ICE_david_oddson
+recruit_character = ICE_geir_haarde
+recruit_character = ICE_bjarni_benediktsson
+recruit_character = ICE_halldor_asgrimsson
+recruit_character = ICE_jon_sigurdsson
+recruit_character = ICE_gudni_agustsson
+recruit_character = ICE_valgerdur_sverrisdottir
+recruit_character = ICE_jon_magnusson
+recruit_character = ICE_sigmundur_david_gunnlaugsson
+recruit_character = ICE_sigurdur_ingi_johannsson
+recruit_character = ICE_ossur_skarpheðinsson
+recruit_character = ICE_ingibjorg_solrun_gisladottir
+recruit_character = ICE_johanna_sigurdardottir
+recruit_character = ICE_arni_pall_arnason
+recruit_character = ICE_oddny_gudbjorg_hardardottir
+recruit_character = ICE_logi_mar_einarsson
 recruit_character = ICE_steingrimur_j_sigfusson
+recruit_character = ICE_katrin_jakobsdottir
+recruit_character = ICE_sverrir_hermannsson
+recruit_character = ICE_gudjon_arnar_kristjansson
+recruit_character = ICE_sigurjon_thordarsson
+recruit_character = ICE_sigurjon_thordarsson_pagan
+recruit_character = ICE_andrea_johanna_olafsdottir
+recruit_character = ICE_pirate_party
+recruit_character = ICE_gudmundur_franklin_jonsson
+recruit_character = ICE_benedikt_johannesson
+recruit_character = ICE_thorgerdur_katrin_gunnarsdottir
+recruit_character = ICE_inga_saeland
 recruit_character = ICE_julius_valdimarsson
 recruit_character = ICE_thorvaldur_thorvaldsson
-recruit_character = ICE_arnor_sigurjonsson
-recruit_character = ICE_sindri_steingrimsson
-recruit_character = ICE_halli_sigurdsson
-recruit_character = ICE_haraldur_johannessen
-recruit_character = ICE_georg_kristinn_larusson
-recruit_character = ICE_asgrimur_asgrimsson
+recruit_character = ICE_gunnar_smari_egilsson
+recruit_character = ICE_helgi_helgason
+recruit_character = ICE_gudmundur_thorleifsson
 
-
-2015.1.1 = {
-	set_politics = {	
-		ruling_party = social_liberal
-		last_election = "2012.6.25" 
-		election_frequency = 48
-		elections_allowed = yes
-	}
-}
-
-if = {
-	limit = { has_dlc = "Man the Guns" }
-	create_equipment_variant = {
-		name = "Ægir Class"
-		type = ship_hull_patrol_boat_1
-		modules = {
-			fixed_ship_battery_slot = ship_light_battery_1
-			fixed_ship_anti_air_slot = ship_anti_air_1
-			fixed_ship_fire_control_system_slot = empty
-			fixed_ship_engine_slot = light_patrol_ship_engine_1
-			fixed_ship_torpedo_slot = empty
-			mid_1_custom_slot = ship_airplane_launcher_1
-		}
-	}
-}	

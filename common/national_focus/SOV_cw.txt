@@ -1,0 +1,709 @@
+focus_tree = {
+	id = SOV_cw_focus
+
+    country = {
+		factor = 0
+		
+		modifier = {
+			add = 10
+			tag = SOV
+		}
+	}
+	
+	default = no
+
+    continuous_focus_position = { x = 60 y = 7000 }
+
+    focus = {
+		id = SOV_solving_initial_chaos
+		icon = GFX_goal_generic_demand_territory
+		x = 17
+		y = 0
+		cost = 1
+		ai_will_do = {
+			factor = 5
+		}
+
+		available_if_capitulated = no
+		
+		completion_reward = {
+            random_list = {
+                20 = {
+                    country_event= { id = cw.3 }
+                }
+                50 = {
+                    country_event= { id = cw.4 }
+                }
+                30 = {
+                    country_event= { id = cw.5 }
+                }
+            }
+			country_event = {
+            id = cw.7
+            }
+		}
+	}
+
+	focus = {
+		id = SOV_counter_terrorist_operation
+		icon = GFX_focus_generic_total_war
+		x = 17
+		y = 1
+		prerequisite = { focus = SOV_solving_initial_chaos }
+		cost = 1
+		ai_will_do = {
+			factor = 5
+		}
+
+		available_if_capitulated = no
+		will_lead_to_war_with = RCO
+		
+		completion_reward = {
+            declare_war_on = {
+    			target = RCO
+    			type = annex_everything
+			}	
+			add_timed_idea = {
+    			idea = SOV_cw_counterterrorist_operation
+   				days = 50
+			}
+			hidden_effect = {
+			USA = {
+                    country_event= { id = cw.44 }
+                }
+		}
+		}
+	}
+	###army
+
+	focus = {
+		id = SOV_martial_law_in_army
+		icon = GFX_focus_generic_full_social_mobilization
+		x = 10
+		y = 2
+		prerequisite = { focus = SOV_counter_terrorist_operation }
+		cost = 4
+		ai_will_do = {
+			factor = 5
+		}
+		available_if_capitulated = no
+		
+		completion_reward = {
+			custom_effect_tooltip = RKKA_conscription_increase_25_TT
+			custom_effect_tooltip = RKKA_reinforce_rate_increase_10_TT
+			add_to_variable = {
+				sov_army_conscription = 0.25
+			}
+			add_to_variable = {
+				sov_army_reinforce_rate = 0.1
+			}
+		}
+	}
+
+	focus = {
+		id = SOV_arm_rights
+		icon = GFX_focus_arms_trade_deals
+		x = 7
+		y = 3
+		prerequisite = { focus = SOV_martial_law_in_army }
+		cost = 3
+		ai_will_do = {
+			factor = 5
+		}
+
+		available_if_capitulated = no
+		
+		completion_reward = {
+            custom_effect_tooltip = RCO_spawmarmedrights_TT
+			hidden_effect = {
+				country_event = {
+					id = cw.9
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = SOV_focus_on_kuzbass
+		icon = GFX_goal_generic_position_armies
+		x = 9
+		y = 3
+		prerequisite = { focus = SOV_martial_law_in_army }
+		cost = 3
+		ai_will_do = {
+			factor = 5
+		}
+		mutually_exclusive = {
+		focus = SOV_focus_on_rco
+		}
+
+		available_if_capitulated = no
+		
+		completion_reward = {
+			custom_effect_tooltip = SOV_remove_unplloffens_inkuzbass_TT
+			hidden_effect = {
+            570 = {remove_dynamic_modifier = { modifier = unplanned_offensive_kuz} }
+			569 = {remove_dynamic_modifier = { modifier = unplanned_offensive_kuz} }
+			}
+		}
+	}
+
+	focus = {
+		id = SOV_focus_on_rco
+		icon = GFX_goal_generic_political_pressure
+		x = 11
+		y = 3
+		prerequisite = { focus = SOV_martial_law_in_army }
+		cost = 3
+		ai_will_do = {
+			factor = 5
+		}
+		mutually_exclusive = {
+		focus = SOV_focus_on_kuzbass
+		}
+
+		available_if_capitulated = no
+		
+		completion_reward = {
+           add_timed_idea = {
+				idea = SOV_cw_focus_on_moscow
+				days = 90
+			}
+		}
+	}
+
+	focus = {
+		id = SOV_rosguard_expansion
+		icon = GFX_goal_generic_military_sphere
+		x = 10
+		y = 4
+		prerequisite = {
+		focus = SOV_focus_on_kuzbass
+		focus = SOV_focus_on_rco
+		}
+		cost = 5
+		ai_will_do = {
+			factor = 5
+		}
+
+		available_if_capitulated = no
+		
+		completion_reward = {
+
+			custom_effect_tooltip = RKKA_morale_increase_10_TT
+			custom_effect_tooltip = RKKA_reinforce_rate_increase_5_TT
+			add_to_variable = {
+				sov_army_morale = 0.1
+			}
+			add_to_variable = {
+				sov_army_reinforce_rate = 0.05
+			}
+		}
+	}
+
+	focus = {
+		id = SOV_counter_partisan_squads
+		icon = GFX_goal_generic_secret_weapon
+		x = 9
+		y = 5
+		prerequisite = {
+		focus = SOV_rosguard_expansion
+		}
+		cost = 5
+		ai_will_do = {
+			factor = 5
+		}
+
+		available_if_capitulated = no
+		
+		completion_reward = {
+			custom_effect_tooltip = RKKA_attrition_decrease_10_TT
+			custom_effect_tooltip = RKKA_exp_loss_in_combat_decrease_10_TT
+			add_to_variable = {
+				sov_army_attrition = -0.1
+			}
+			add_to_variable = {
+				sov_army_exp_loss_in_combat = -0.1
+			}
+		}
+	}
+
+	focus = {
+		id = SOV_shrafbats
+		icon = GFX_focus_SOV_penal_battalions
+		x = 11
+		y = 5
+		prerequisite = {
+		focus = SOV_rosguard_expansion
+		}
+		cost = 5
+		ai_will_do = {
+			factor = 5
+		}
+
+		available_if_capitulated = no
+		
+		completion_reward = {
+			custom_effect_tooltip = RKKA_reinforce_rate_increase_5_TT
+			custom_effect_tooltip = RKKA_org_increase_10_TT
+			add_to_variable = {
+				sov_army_reinforce_rate = 0.05
+			}
+			add_to_variable = {
+				sov_army_org = 0.1
+			}
+		}
+	}
+
+	focus = {
+		id = SOV_solving_army_chaos
+		icon = GFX_goal_Unity_and_Nation
+		x = 10
+		y = 6
+		prerequisite = {
+		focus = SOV_counter_partisan_squads
+		}
+		prerequisite = {
+		focus = SOV_shrafbats
+		}
+		cost = 5
+		ai_will_do = {
+			factor = 5
+		}
+
+		available_if_capitulated = no
+		
+		completion_reward = {
+            custom_effect_tooltip = RKKA_reinforce_rate_increase_5_TT
+			custom_effect_tooltip = RKKA_exp_loss_in_combat_decrease_10_TT
+			custom_effect_tooltip = RKKA_attrition_decrease_10_TT
+			add_to_variable = {
+				sov_army_attrition = -0.1
+			}
+			add_to_variable = {
+				sov_army_exp_loss_in_combat = -0.1
+			}
+			add_to_variable = {
+				sov_army_reinforce_rate = 0.05
+			}
+		}
+	}
+
+	##### economy
+
+	
+	focus = {
+		id = SOV_adresing_oligarchs
+		icon = GFX_goal_Oligarchs_Deals
+		x = 13
+		y = 3
+		prerequisite = {
+		focus = SOV_counter_terrorist_operation
+		}
+		cost = 5
+		ai_will_do = {
+			factor = 5
+		}
+
+		available_if_capitulated = no
+		
+		completion_reward = {
+            custom_effect_tooltip = RCO_state_stab_increase_15_TT
+			custom_effect_tooltip = RCO_warsupport_increase_10_TT
+			custom_effect_tooltip = RCO_maxprod_increase_15_TT
+			custom_effect_tooltip = RCO_repairspeed_increase_20_TT
+			custom_effect_tooltip = RCO_prodoutput_increase_10_TT
+			add_to_variable = {
+				sov_state_stability = 0.15
+			}
+			add_to_variable = {
+				war_support_factor = 0.10
+			}
+			add_to_variable = {
+				sov_economy_max_poduction_capacity = 0.15
+			}
+			add_to_variable = {
+				sov_economy_repair_speed = 0.2
+			}
+			add_to_variable = {
+				sov_economy_prod_output = 0.1
+			}
+		}
+	}
+
+	focus = {
+		id = SOV_initial_industry_revitalization
+		icon = GFX_focus_DEN_limited_regulations
+		x = 13
+		y = 4
+		prerequisite = {
+		focus = SOV_adresing_oligarchs
+		}
+		cost = 5
+		ai_will_do = {
+			factor = 5
+		}
+
+		available_if_capitulated = no
+		
+		completion_reward = {
+			custom_effect_tooltip = RCO_resource_increase_30_TT
+			custom_effect_tooltip = RCO_state_stab_increase_15_TT
+			custom_effect_tooltip = RCO_warsupport_increase_10_TT
+			custom_effect_tooltip = RCO_maxprod_increase_15_TT
+			add_to_variable = {
+				sov_state_stability = 0.15
+			}
+			add_to_variable = {
+				war_support_factor = 0.10
+			}
+			add_to_variable = {
+				sov_economy_max_poduction_capacity = 0.15
+			}
+			add_to_variable = {
+				sov_economy_resource = 0.3
+			}
+				random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = SOV_orginizing_industry
+		icon = GFX_focus_generic_reorient_production
+		x = 13
+		y = 5
+		prerequisite = {
+		focus = SOV_initial_industry_revitalization
+		}
+		prerequisite = {
+		focus = SOV_supress_strikes
+		}
+		cost = 5
+		ai_will_do = {
+			factor = 5
+		}
+
+		available_if_capitulated = no
+		
+		completion_reward = {
+			custom_effect_tooltip = RCO_warsupport_increase_10_TT
+			custom_effect_tooltip = RCO_prodoutput_increase_10_TT
+			custom_effect_tooltip = RCO_repairspeed_increase_20_TT
+			custom_effect_tooltip = RCO_prodgrowh_increase_10_TT
+			add_to_variable = {
+				sov_economy_prod_output = 0.1
+			}
+			add_to_variable = {
+				war_support_factor = 0.1
+			}
+			add_to_variable = {
+				sov_economy_repair_speed = 0.2
+			}
+			add_to_variable = {
+				sov_economy_prod_growh = 0.1
+			}
+				random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	### internal politics
+
+	focus = {
+		id = SOV_the_enemy_within
+		icon = GFX_goal_Big_Brother_is_Watching_You
+		x = 17
+		y = 3
+		prerequisite = {
+		focus = SOV_counter_terrorist_operation
+		}
+		cost = 6
+		ai_will_do = {
+			factor = 5
+		}
+
+		available_if_capitulated = no
+		
+		completion_reward = {
+			custom_effect_tooltip = RCO_warsupport_increase_10_TT
+			custom_effect_tooltip = SOV_surrenderlimit_increase_10_TT
+			custom_effect_tooltip = RCO_pp_increase_10_TT
+			add_to_variable = {
+				sov_workmov_surrender_limit = 0.1
+			}
+			add_to_variable = {
+				sov_workmov_war_support = 0.1
+			}
+			add_to_variable = {
+				sov_workmov_pp_factor = 0.1
+			}
+		}
+	}
+
+	focus = {
+		id = SOV_supress_strikes
+		icon = GFX_focus_generic_workers
+		x = 15
+		y = 4
+		prerequisite = {
+		focus = SOV_the_enemy_within
+		}
+		cost = 5
+		ai_will_do = {
+			factor = 5
+		}
+
+		available_if_capitulated = no
+		
+		completion_reward = {
+            custom_effect_tooltip = RCO_warsupport_increase_20_TT
+			custom_effect_tooltip = RCO_pp_increase_10_TT
+			custom_effect_tooltip = RCO_prodoutput_increase_10_TT
+			remove_ideas = SOV_general_strike
+			add_to_variable = {
+				sov_workmov_war_support = 0.2
+			}
+			add_to_variable = {
+				sov_workmov_pp_factor = 0.1
+			}
+           add_to_variable = {
+				sov_economy_prod_output = 0.1
+			}
+		}
+	}
+
+	focus = {
+		id = SOV_supress_local_soviets
+		icon = GFX_focus_spr_crush_the_revolution
+		x = 17
+		y = 4
+		prerequisite = {
+		focus = SOV_the_enemy_within
+		}
+		cost = 5
+		ai_will_do = {
+			factor = 5
+		}
+
+		available_if_capitulated = no
+		
+		completion_reward = {
+            fourth_estate_communist_decrease= yes
+			fourth_estate_reactionary_increase = yes
+			fourth_estate_democratic_socialist_decrease= yes
+			custom_effect_tooltip = RCO_pp_increase_10_TT
+			custom_effect_tooltip = RCO_warsupport_increase_20_TT
+			add_to_variable = {
+				sov_workmov_war_support = 0.2
+			}
+			add_to_variable = {
+				sov_workmov_pp_factor = 0.1
+			}
+		}
+	}
+
+	focus = {
+		id = SOV_disband_workers_unions
+		icon = GFX_goal_tfv_saf_anti_colonialist_crusade
+		x = 19
+		y = 4
+		prerequisite = {
+		focus = SOV_the_enemy_within
+		}
+		cost = 4
+		ai_will_do = {
+			factor = 5
+		}
+
+		available_if_capitulated = no
+		
+		completion_reward = {
+			custom_effect_tooltip = SOV_surrenderlimit_increase_10_TT
+			add_to_variable = {
+				sov_workmov_surrender_limit = 0.1
+			}
+		}
+	}
+
+	focus = {
+		id = SOV_orthodox_militia
+		icon = GFX_focus_GRE_an_orthodox_state
+		x = 17
+		y = 5
+		prerequisite = {
+		focus = SOV_supress_local_soviets
+		}
+		cost = 4
+		ai_will_do = {
+			factor = 5
+		}
+
+		available_if_capitulated = no
+		
+		completion_reward = {
+            custom_effect_tooltip = RCO_spawmarmedrights_TT
+			hidden_effect = {
+				country_event = {
+					id = cw.10
+				}
+			}
+		}
+	}
+
+	### foreign policy 
+
+	focus = {
+		id = SOV_belarus_question
+		icon = align_to_belarus
+		x = 23
+		y = 3
+		prerequisite = {
+		focus = SOV_counter_terrorist_operation
+		}
+		cost = 3
+		ai_will_do = {
+			factor = 30
+		}
+
+		available_if_capitulated = no
+		
+		completion_reward = {
+			BLR = {
+            country_event = {
+					id = cw.13
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = SOV_contact_japan
+		icon = align_to_japan
+		x = 25
+		y = 4
+		prerequisite = {
+		focus = SOV_belarus_question
+		}
+		cost = 3
+		ai_will_do = {
+			factor = 10
+		}
+
+		available_if_capitulated = no
+		
+		completion_reward = {
+			JAP = {
+            country_event = {
+					id = cw.48
+				}
+			}
+			JAP = {
+				add_opinion_modifier = {
+					target = ROOT
+					modifier = GER_opened_diplomacy
+				}
+			}
+			add_opinion_modifier = {
+				target = JAP
+				modifier = GER_opened_diplomacy
+			}
+		}
+	}
+
+	focus = {
+		id = SOV_contact_usa
+		icon = GFX_Align_to_America
+		x = 23
+		y = 4
+		prerequisite = {
+		focus = SOV_belarus_question
+		}
+		cost = 3
+		ai_will_do = {
+			factor = 30
+		}
+
+		available = {		
+ 		has_global_flag = usa_intervened_in_russian_cw
+		}
+
+		available_if_capitulated = no
+		
+		completion_reward = {
+			USA = {
+            country_event = {
+					id = cw.43
+				}
+			}
+			USA = {
+				add_opinion_modifier = {
+					target = ROOT
+					modifier = GER_opened_diplomacy
+				}
+			}
+			add_opinion_modifier = {
+				target = USA
+				modifier = GER_opened_diplomacy
+			}
+		}
+	}
+
+	focus = {
+		id = SOV_contact_china
+		icon = align_to_china
+		x = 21
+		y = 4
+		prerequisite = {
+		focus = SOV_belarus_question
+		}
+		cost = 3
+		ai_will_do = {
+			factor = 10
+		}
+
+		available = {		
+ 		NOT = {
+			PRC = { has_completed_focus = PRC_the_left_opposition }
+		}
+		}
+
+		available_if_capitulated = no
+		
+		completion_reward = {
+			PRC = {
+            country_event = {
+					id = cw.47
+				}
+			}
+		}
+	}
+}

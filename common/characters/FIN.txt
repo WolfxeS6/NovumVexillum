@@ -20,7 +20,7 @@ characters={
 			}
 		}
 		country_leader={
-			ideology=fascist_ideology
+			ideology=national_socialist
 			expire="1.1.1.1"
 			id=-1
 		}
@@ -33,7 +33,33 @@ characters={
 			}
 		}
 		country_leader={
-			ideology=national_democrat
+			ideology=ultranationalist
+			expire="1.1.1.1"
+			id=-1
+		}
+	}
+	FIN_NRM_leadership={
+		name="Nordic Resistance Movement Central Leadership"
+		portraits={
+			civilian={
+				large="gfx/leaders/FIN/NRM_leadership.dds"
+			}
+		}
+		country_leader={
+			ideology=national_socialist
+			expire="1.1.1.1"
+			id=-1
+		}
+	}
+	FIN_gustav_haegglund={
+		name="Gustav Hägglund"
+		portraits={
+			civilian={
+				large="gfx/leaders/FIN/Gustav_Haegglund.dds"
+			}
+		}
+		country_leader={
+			ideology=military_junta
 			expire="1.1.1.1"
 			id=-1
 		}
@@ -77,6 +103,19 @@ characters={
 			id=-1
 		}
 	}
+	FIN_anne_holmlund={
+		name="Anne Holmlund"
+		portraits={
+			civilian={
+				large="gfx/leaders/FIN/Anne_Holmlund.dds"
+			}
+		}
+		country_leader={
+			ideology=market_liberal_ideology
+			expire="2015.1.1.1"
+			id=-1
+		}
+	}
 	FIN_esko_aho={
 		#name="Esko Aho"
 		portraits={
@@ -100,6 +139,19 @@ characters={
 		country_leader={
 			ideology=social_democrat_ideology
 			expire="2015.1.1.1"
+			id=-1
+		}
+	}
+	FIN_tuula_haatainen={
+		name="Tuula Haatainen"
+		portraits={
+			civilian={
+				large="gfx/leaders/FIN/Tuula_Haatainen.dds"
+			}
+		}
+		country_leader={
+			ideology=social_democrat_ideology
+			expire="2020.1.1.1"
 			id=-1
 		}
 	}
@@ -142,6 +194,54 @@ characters={
 			id=-1
 		}
 	}
+	FIN_advisor_martti_ahtisaari={
+		name="Martti Ahtisaari"
+		advisor={
+			slot = political_advisor
+			idea_token = advisor_martti_ahtisaari
+			allowed  = {
+				original_tag  = FIN
+			}
+			traits  = {
+				FIN_president FIN_global_peacemaker 
+			}
+			cost = -1
+			can_be_fired = no
+			ai_will_do = {
+				base = 0
+			}
+		}
+		portraits={
+			army={
+				small="GFX_idea_martti_ahtisaari"
+			}
+		}
+	}
+	FIN_advisor_tarja_halonen={
+		name ="Tarja Halonen"
+		advisor={
+			slot = political_advisor
+			idea_token = advisor_tarja_halonen
+			allowed  = {
+				original_tag  = FIN
+			}
+			traits  = {
+				FIN_president first_female_president 
+			}
+			cost = -1
+			can_be_fired = no
+			ai_will_do = {
+				base = 0
+			}
+		}
+		portraits={
+			army={
+				small="GFX_idea_tarja_halonen"
+			}
+		}
+	}
+
+	#Military
 	FIN_seppo_toivonen={
 		#name="Seppo Toivonen"
 		portraits={
@@ -229,8 +329,26 @@ characters={
 				small="GFX_idea_generic_political_advisor_europe_1"
 			}
 			army={
-				large="gfx/leaders/FIN/Portrait_Ahti_ Kurvinen.dds"
+				large="gfx/leaders/FIN/Portrait_Ahti_Kurvinen.dds"
 			}
+		}
+		advisor = {
+				slot = theorist
+				idea_token = FIN_ahti_kurvinen
+				allowed = {
+					original_tag = FIN
+				}
+				available = { 
+					has_country_flag = FIN_gustav_haegglund_announced_retirement
+				}
+				traits = {
+					FIN_kurvinen_trait
+				}
+				cost = -1
+				can_be_fired = no
+				ai_will_do = {
+					base = 0
+				}
 		}
 		corps_commander={
 			traits={ winter_specialist ranger }
@@ -372,6 +490,24 @@ characters={
 				large="gfx/leaders/FIN/Portrait_Kim_Jaeaemeri.dds"
 			}
 		}
+		advisor = {
+				slot = theorist
+				idea_token = FIN_kim_jaameri
+				allowed = {
+					original_tag = FIN
+				}
+				available = { 
+					has_country_flag = FIN_gustav_haegglund_announced_retirement
+				}
+				traits = {
+					FIN_jaeaemeri_trait
+				}
+				cost = -1
+				can_be_fired = no
+				ai_will_do = {
+					base = 0
+				}
+		}
 		corps_commander={
 			traits={ commando }
 			skill=1
@@ -471,6 +607,24 @@ characters={
 			army={
 				large="gfx/leaders/FIN/Portrait_Pasi_Velimaeki.dds"
 			}
+		}
+		advisor = {
+				slot = theorist
+				idea_token = FIN_pasi_velimaki
+				allowed = {
+					original_tag = FIN
+				}
+				available = { 
+					has_country_flag = FIN_gustav_haegglund_announced_retirement
+				}
+				traits = {
+					FIN_velimaki_trait
+				}
+				cost = -1
+				can_be_fired = no
+				ai_will_do = {
+					base = 0
+				}
 		}
 		corps_commander={
 			traits={ fortress_buster }

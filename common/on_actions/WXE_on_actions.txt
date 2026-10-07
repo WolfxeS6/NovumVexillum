@@ -1,6 +1,9 @@
 on_actions = {
 	on_startup = {
-		effect = {
+			effect = {
+				USA = {
+					set_global_flag = GC_is_on
+				}
 				if = {
 					limit = {
            				has_game_rule = { rule = fast_multiplayer_mode option = On }
@@ -179,10 +182,6 @@ on_actions = {
     						target = SIE
     						transfer_troops = no
 						}
-						annex_country = {
-    						target = RUF
-    						transfer_troops = no
-						}
 					}
 					MLI = {
 						annex_country = {
@@ -284,15 +283,24 @@ on_actions = {
 						}
 						add_ideas = Small_nation set_research_slots = 0 load_focus_tree = performance_tree
 					}
-					#CUB
-					#GAU
-				}
+				#CUB
+				#GAU
+			}
+
+			441 = {
+				 add_dynamic_modifier = { modifier = islamist_insurgency } 
+				 force_enable_resistance = RAJ
+				 set_compliance = 45
+			}
 			every_country = {
 				limit = {
 					is_ai = no
 				}
 				set_country_flag = open_pulling_the_strings_gui
 				set_country_flag = open_pulling_the_strings_actions_gui
+			}
+			SIG = {
+				add_offsite_building = { type = industrial_complex level = 4 }
 			}
 			if = {
 				limit = {
@@ -335,6 +343,24 @@ on_actions = {
 						load_focus_tree = generic_focus
 					}
 				}
+			}
+		}
+	}
+	on_civil_war_end = {
+		effect = {
+			if = {
+				limit = {
+					tag = SOV
+					has_dynamic_modifier = { modifier = sov_civil_war_state }
+				}
+				set_rule = { can_join_factions = yes }
+			}
+			if = {
+				limit = {
+					original_tag = ISR
+					has_completed_focus = ISR_democratic_but_not_jewish
+				}
+				set_country_flag = ISR_survived_civil_war
 			}
 		}
 	}

@@ -1,0 +1,302 @@
+add_namespace = AZR
+add_namespace = AZR_border_conflict
+
+country_event = {	
+	id = azr.6
+	title = azr.6.t
+	desc =  azr.6.d
+	picture = GFX_report_event_political_deal
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	option = {	
+		name =  azr.6.o1
+			AZR = {
+	annex_country = {
+				target = FROM
+				transfer_troops = yes
+			}				
+				}
+				every_state = {
+					limit = { is_core_of = FROM }
+					add_core_of = AZR
+				}
+		ai_chance = {
+			factor = 90
+			
+			
+		}
+	}
+	}
+
+country_event = {	#We receive an invitation to TURPAKT
+	id = azr.3
+	title =  azr.3.t
+	desc =  azr.3.d
+	picture = GFX_report_event_political_deal
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	option = {	#We accept!
+		name =  azr.3.o1
+		
+		
+		AZR = { add_to_faction = FROM }
+		
+		hidden_effect = { AZR = { country_event = { id =  azr.4 } } }
+		
+		
+		ai_chance = {
+			factor = 90
+			
+			modifier = {
+				add = 70
+				has_democratic_form_of_government = yes
+			}
+			
+		}
+	}
+	
+	option = {	#We refuse
+		name =  azr.3.o2
+		add_political_power = 50
+		AZR = {
+			add_opinion_modifier = {
+				target = FROM
+				modifier = recent_actions_negative
+			}
+			
+			country_event = {
+				id = olay.31
+			}
+		}
+		
+		ai_chance = {
+			factor = 10
+			
+			modifier = {
+				add = 70
+				has_democratic_form_of_government = no
+			}
+		}
+	}
+}
+country_event = {	#They accept!
+	id =  azr.4
+	title =  azr.4.t
+	desc =  azr.4.d
+	picture = GFX_report_event_political_deal
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	option = {
+		name =  azr.4.o1
+		add_to_faction = FROM
+	}
+}
+
+country_event = {	#They refuse!
+	id =  azr.5
+	title =  azr.5.t
+	desc =  azr.5.d
+	picture = GFX_report_event_political_deal
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	option = {
+		name =  azr.5.o1
+		
+		effect_tooltip = {
+			add_opinion_modifier = {
+				target = FROM
+				modifier = recent_actions_negative
+			}
+		}
+	}
+}
+
+#Early Elections
+country_event = {
+	id = azr.2
+	title = azr.2.t
+	desc = azr.2.d
+	picture = GFX_report_event_mining
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = azr.2.o1
+		PREV = {
+				increase_trade_influence_by_3 = yes
+				add_opinion_modifier = {
+					target = AZR
+					modifier = trade_mission
+				}
+			}
+	}
+}
+
+#karabakh border war
+country_event = {
+	id = AZR_border_conflict.1
+	title = AZR_border_conflict.1.t
+	desc = AZR_border_conflict.1.d
+	picture = GFX_report_event_war
+    major = yes
+	is_triggered_only = yes
+
+	option = {
+		name = AZR_border_conflict.1.o1
+		
+		
+	}
+
+}
+
+#azr wins
+country_event = {
+	id = AZR_border_conflict.2
+	title = AZR_border_conflict.2.t
+	desc = AZR_border_conflict.2.d
+	picture = GFX_report_event_war
+
+	is_triggered_only = yes
+
+	option = {
+		name = AZR_border_conflict.2.o1
+		trigger = {
+			original_tag = AZR
+		}
+		army_experience = 35
+		AZR = {
+	annex_country = {
+				target = NGK
+				transfer_troops = no
+			}				
+				}
+				every_state = {
+					limit = { is_core_of = NGK }
+					add_core_of = AZR
+				}
+		
+	}
+	option = {
+		name = AZR_border_conflict.2.o2
+		trigger = {
+			original_tag = ARM
+		}
+		army_experience = 35
+	}
+}
+#Japan loses
+country_event = {
+	id = AZR_border_conflict.3
+	title = AZR_border_conflict.3.t
+	desc = AZR_border_conflict.3.d
+	picture = GFX_report_event_war
+
+	is_triggered_only = yes
+
+	option = {
+		name = AZR_border_conflict.3.o1
+		trigger = {
+			original_tag = AZR
+		}
+		army_experience = 35
+		add_political_power = -75
+	}
+	option = {
+		name = AZR_border_conflict.3.o2
+		trigger = {
+			original_tag = ARM
+		}
+		army_experience = 35
+		add_political_power = 75
+	}
+}
+
+#stalemate
+country_event = { 
+	id = AZR_border_conflict.4
+	title = AZR_border_conflict.4.t
+	desc = AZR_border_conflict.4.d
+	picture = GFX_report_event_border_conflict
+
+	is_triggered_only = yes
+
+	option = {
+		name = AZR_border_conflict.4.o1
+	
+		army_experience = 50
+	}
+}
+
+
+
+#Early Elections
+country_event = {
+	id = azr.1
+	title = azr.1.t
+	desc = azr.1.d
+	picture = GFX_report_event_election
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = azr.1.o1
+		trigger = { has_country_flag = elcibey }
+		set_politics = {
+			ruling_party = conservative
+			elections_allowed = no
+		}
+		add_popularity = {
+			ideology = conservative
+			popularity = 0.05
+		}
+
+	}
+
+	option = {
+		name = azr.1.o2
+		trigger = { has_country_flag = isa}
+		set_politics = {
+			ruling_party = nationalist
+			elections_allowed = no
+		}
+		add_popularity = {
+			ideology = nationalist
+			popularity = 0.05
+		}
+
+	}
+
+	option = {
+		name = azr.1.o3
+		trigger = { has_country_flag = ramiz}
+		set_politics = {
+			ruling_party = communist
+			elections_allowed = no
+		}
+		add_popularity = {
+			ideology = communist
+			popularity = 0.05
+		}
+
+	}
+
+	option = {
+		name = azr.1.o4
+		trigger = { has_country_flag = agamali }
+		set_politics = {
+			ruling_party = fascist
+			elections_allowed = no
+		}
+		add_popularity = {
+			ideology = fascist
+			popularity = 0.05
+		}
+
+	}
+
+
+}

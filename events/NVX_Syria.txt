@@ -7,14 +7,45 @@ country_event = {
 	title = nvx_syria.100.t
 	desc = nvx_syria.100.d
 	picture = GFX_report_event_syrian_civil_war2
-	
+
 	is_triggered_only = yes
 	fire_only_once = yes
-	
+	immediate = {
+
+	}
 	option = {
 		name = nvx_syria.100.1
+
+		#complete_national_focus = SYR_arabic_spring
 		hidden_effect = {
-			KUR = {
+			set_country_flag = SYR_civil_war_in_action
+			remove_state_core = 680
+			every_state = {
+				limit = {
+					OR = {
+						state = 677
+						state = 680
+						state = 814
+						state = 554
+						state = 168
+						state = 675
+						state = 291
+						state = 676
+						state = 815
+					}
+				}
+				teleport_armies = {
+					to_state = 554
+				}
+				add_province_modifier = {
+					static_modifiers = { unplanned_offensive }
+					province = {
+						all_provinces = yes
+					}
+				}
+				set_state_flag = SPR_unplanned_offensive_flag
+			}
+			KUS = {
 				set_state_owner = 814
 				set_state_controller = 814
 				814 = {
@@ -37,8 +68,11 @@ country_event = {
 						province = 1549
 					}
 				}
+				SYR = {
+					puppet = KUS
+				}
 				if = {
-					limit = { IRQ = { has_stability < 0.75 } }
+					limit = { IRQ = { has_stability < 0.1 } }
 					set_state_owner = 815
 					set_state_controller = 815
 					815 = {
@@ -82,7 +116,7 @@ country_event = {
 				add_equipment_to_stockpile = {
 					type = infantry_equipment_3
 					amount = 5000
-					producer = KUR
+					producer = KUS
 				}
 				load_oob = "KUR_rebels1"
 				814 = {
@@ -119,7 +153,7 @@ country_event = {
 					producer = ISS
 				}
 				if = {
-					limit = { IRQ = { has_stability < 0.75 } }
+					limit = { IRQ = { has_stability < 0.15 } }
 					set_state_owner = 676
 					set_state_controller = 676
 				}
@@ -128,41 +162,13 @@ country_event = {
 					name = threat_ISS_isis_campaign
 				}
 				set_war_support = 0.8
-			}
-			676 = {
-				add_building_construction = {
-					type = bunker
-					level = 5
-					instant_build = yes
-					province = 10106
+				declare_war_on = {
+					target = SYR
+					type = annex_everything
 				}
-			}
-			680 = {
-				add_building_construction = {
-					type = bunker
-					level = 3
-					instant_build = yes
-					province = 1606
-				}
-			}
-			677 = {
-				add_building_construction = {
-					type = bunker
-					level = 5
-					instant_build = yes
-					province = 12473
-				}
-				add_building_construction = {
-					type = bunker
-					level = 3
-					instant_build = yes
-					province = 1056
-				}
-				add_building_construction = {
-					type = bunker
-					level = 2
-					instant_build = yes
-					province = 1072
+				declare_war_on = {
+					target = KUS
+					type = annex_everything
 				}
 			}
 			set_global_flag = SYR_civil_war_ISIS
@@ -209,23 +215,27 @@ country_event = {
 					amount = 5000
 					producer = SUR
 				}
+				KUS = {
+					declare_war_on = {
+						target = PREV
+						type = annex_everything
+					}
+				}
 				ISS = {
 					declare_war_on = {
 						target = PREV
 						type = annex_everything
 					}
 				}
-				give_military_access = KUR
-				KUR = { give_military_access = PREV }
 			}
-			KUR = {
+			KUS = {
 				country_event = {
 					id = nvx_syria.101
 					days = 10
 				}
 			}
 		}
-		
+
 		ai_chance = {
 			factor = 1
 		}
@@ -239,7 +249,7 @@ country_event = {
 		}
 		add_stability = -0.3
 		add_war_support = -0.3
-		
+
 		ai_chance = {
 			factor = 10
 		}
@@ -250,15 +260,9 @@ country_event = {
 	id = nvx_syria.101
 	is_triggered_only = yes
 	hidden = yes
-	
+
 	immediate = {
-		KUR = {
-			declare_war_on = {
-				target = SYR
-				type = annex_everything
-			}
-		}
-		KUR = {
+		KUS = {
 			declare_war_on = {
 				target = ISS
 				type = annex_everything
@@ -268,25 +272,6 @@ country_event = {
 			declare_war_on = {
 				target = SYR
 				type = annex_everything
-			}
-		}
-		if = {
-			limit = { ISS = { owns_state = 676 } }
-			ISS = {
-				declare_war_on = {
-					target = IRQ
-					type = annex_everything
-				}
-			}
-		}
-		IRQ = {
-			if = {
-				limit = { KUR = { owns_state = 815 } }
-				create_wargoal = {
-					target = KUR
-					type = take_core_state
-					generator = { 815 }
-				}
 			}
 		}
 	}

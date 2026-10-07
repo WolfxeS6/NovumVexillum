@@ -1,0 +1,6323 @@
+#Category only allowed for RCO
+
+
+RCO_soviet_decisions_category = {
+
+	RCO_transport_collapse_mission = {
+
+		allowed = { original_tag = RCO }
+
+		available = {
+			hidden_trigger = { always = no }
+			NOT = { has_completed_focus = RCO_against_forces_and_traditions}
+		}
+
+		activation = {
+			tag = RCO
+			has_completed_focus = RCO_new_october
+			NOT = { has_global_flag = RCO_cw_ended }
+			NOT = { has_completed_focus = RCO_against_forces_and_traditions}
+			NOT = { is_ai = yes }
+		}
+
+		icon = decision_strike
+
+		fire_only_once = yes
+
+		cancel_if_not_visible = no
+
+		is_good = no
+
+		days_mission_timeout = 150
+
+		timeout_effect = {
+			add_timed_idea = {
+				idea = RCO_transport_collapse_idea
+				days = 150
+			}
+		}
+	}
+
+	RCO_terrorist_attack_mission = {
+
+		allowed = { original_tag = RCO }
+
+		available = {
+			hidden_trigger = { always = no }
+			NOT = { has_country_flag = RCO_terrorist_attack_threat_resolved }
+			NOT = { has_completed_focus = RCO_soviet_state_militia }
+		}
+
+		activation = {
+			tag = RCO
+			has_country_flag = rco_no_flag
+		}
+
+		icon = decision_mil_orgs
+
+		cancel_if_not_visible = no
+
+		is_good = no
+
+		days_mission_timeout = 50
+
+		timeout_effect = {
+			RCO = { country_event = cw.73 }
+		}
+	}
+
+	RCO_nationalist_activity_mission = {
+
+		allowed = { original_tag = RCO }
+
+		available = {
+			hidden_trigger = { always = no }
+			NOT = { has_completed_focus = RCO_fight_nationalism }
+		}
+
+		activation = {
+			tag = RCO
+			has_completed_focus = RCO_against_forces_and_traditions
+			NOT = { has_completed_focus = RCO_fight_nationalism }
+		}
+
+		icon = decision_nazbol_actions
+
+		fire_only_once = yes
+
+		cancel_if_not_visible = no
+
+		is_good = no
+
+		days_mission_timeout = 100
+
+		timeout_effect = {
+			add_stability = -0.1
+			249 = { add_dynamic_modifier = { modifier = Separatist_sentiments_modiefer } }
+			651 = { add_dynamic_modifier = { modifier = Separatist_sentiments_modiefer } }
+			237 = { add_dynamic_modifier = { modifier = Separatist_sentiments_modiefer } }
+		}
+	}
+
+	RCO_hunger_risk_mission = {
+
+		allowed = { original_tag = RCO }
+
+		available = {
+			hidden_trigger = { always = no }
+			NOT = { has_completed_focus = RCO_against_forces_and_traditions}
+		}
+
+		activation = {
+			tag = RCO
+			has_completed_focus = RCO_new_october
+			NOT = { has_global_flag = RCO_cw_ended }
+			NOT = { has_completed_focus = RCO_against_forces_and_traditions}
+			NOT = { is_ai = yes }
+		}
+
+		icon = decision_street_propaganda
+
+		fire_only_once = yes
+
+		cancel_if_not_visible = no
+
+		is_good = no
+
+		days_mission_timeout = 180
+
+		timeout_effect = {
+			add_timed_idea = {
+				idea = RCO_hunger_idea
+				days = 150
+			}
+		}
+	}
+
+	RCO_naz_deteriorating_economy_mission = {
+
+		allowed = { original_tag = RCO }
+
+		available = {
+			hidden_trigger = { always = no }
+			NOT = { has_completed_focus = RCO_naz_empire }
+		}
+
+		activation = {
+			tag = RCO
+			has_country_flag = rco_deteriorating_ec_flag
+			NOT = { has_completed_focus = RCO_naz_empire }
+			NOT = { is_ai = yes }
+		}
+
+		icon = RCO_transport_collapse_mission
+
+		fire_only_once = no
+
+		cancel_if_not_visible = yes
+
+		is_good = no
+
+		days_mission_timeout = 30
+
+		timeout_effect = {
+			custom_effect_tooltip = RCO_CG_increase_3_TT
+			add_to_variable = {
+				rco_economy_CG = 0.03
+			}
+		}
+	}
+
+	RCO_pol_capture_east_russia_mission = {
+
+		allowed = { original_tag = RCO }
+
+		icon = decision_create_national_guard
+
+		cancel_trigger = {
+        has_war = no
+    }
+
+	available = { #FAIL
+            always = no
+        }
+
+	activation = {
+			tag = RCO
+			NOT = { has_completed_focus = RCO_against_forces_and_traditions}
+			has_war_with = POL
+		}
+
+	highlight_states = {
+    highlight_state_targets = {
+        state = 242
+        state = 241
+		state = 1144
+    }
+    highlight_color_while_active = 3
+    highlight_color_before_active = 2
+}
+
+		is_good = no
+
+		days_mission_timeout = 251
+
+		timeout_effect = {
+			POL = {
+				country_event = {
+				id = cw.40
+			}
+			}
+		}
+	}
+
+	SOV_zhd_militia_decision = {
+
+		icon = decision_mil_orgs
+
+		available = {
+			has_active_mission = RCO_transport_collapse_mission
+		}
+
+		visible = {
+			original_tag = RCO
+			has_government = communist
+			has_active_mission = RCO_transport_collapse_mission
+		}
+
+		cost = 40
+		days_remove = 10
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 110
+		}
+
+		complete_effect = {
+			add_days_mission_timeout = {
+				mission = RCO_transport_collapse_mission
+				days = 70
+			}
+		}
+	}
+
+	RCO_fixed_prices_decision = {
+
+		icon = GFX_decision_generic_political_address
+
+		available = {
+			has_active_mission = RCO_naz_deteriorating_economy_mission
+		}
+
+		visible = {
+			original_tag = RCO
+			has_government = communist
+			has_active_mission = RCO_naz_deteriorating_economy_mission
+			has_completed_focus = RCO_naz_labour_conscription
+		}
+
+		cost = 40
+		days_remove = 3
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 110
+		}
+
+		complete_effect = {
+			custom_effect_tooltip = RCO_CG_decrease_10_TT
+			add_to_variable = { rco_economy_CG = -0.1 }
+			add_stability = -0.08
+		}
+	}
+
+	RCO_austerity_measures_decision = {
+
+		icon = GFX_decision_generic_political_address
+
+		available = {
+			has_active_mission = RCO_naz_deteriorating_economy_mission
+		}
+
+		visible = {
+			original_tag = RCO
+			has_government = communist
+			has_active_mission = RCO_naz_deteriorating_economy_mission
+			has_completed_focus = RCO_naz_labour_conscription
+		}
+
+		cost = 25
+		days_remove = 3
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 110
+		}
+
+		complete_effect = {
+			custom_effect_tooltip = RCO_CG_decrease_5_TT
+			add_to_variable = { rco_economy_CG = -0.05 }
+			add_stability = -0.04
+		}
+	}
+
+	RCO_food_rationing_naz_decision = {
+
+		icon = GFX_decision_generic_political_address
+
+		available = {
+			has_active_mission = RCO_naz_deteriorating_economy_mission
+		}
+
+		visible = {
+			original_tag = RCO
+			has_government = communist
+			has_active_mission = RCO_naz_deteriorating_economy_mission
+			has_completed_focus = RCO_naz_labour_conscription
+		}
+
+		cost = 30
+		days_remove = 3
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 110
+		}
+
+		complete_effect = {
+			custom_effect_tooltip = RCO_CG_decrease_8_TT
+			add_to_variable = { rco_economy_CG = -0.08 }
+			add_stability = -0.05
+		}
+	}
+
+	RCO_build_ivanovo_decision = {
+
+		icon = GFX_decision_ger_military_buildup
+
+		available = {
+			has_completed_focus = RCO_naz_labour_conscription
+		}
+
+		visible = {
+			original_tag = RCO
+			has_government = communist
+			has_completed_focus = RCO_naz_labour_conscription
+		}
+
+		cost = 25
+		days_remove = 60
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 120
+		}
+
+		complete_effect = {
+			add_manpower = -7000
+			add_stability = -0.03
+			253 = {
+				add_extra_state_shared_building_slots = 5
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	RCO_build_moscow_decision = {
+
+		icon = GFX_decision_ger_military_buildup
+
+		available = {
+			has_completed_focus = RCO_naz_labour_conscription
+		}
+
+		visible = {
+			original_tag = RCO
+			has_government = communist
+			has_completed_focus = RCO_naz_labour_conscription
+		}
+
+		cost = 40
+		days_remove = 90
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 120
+		}
+
+		complete_effect = {
+			add_manpower = -10000
+			add_stability = -0.05
+			219 = {
+				add_extra_state_shared_building_slots = 10
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = arms_factory
+					level = 5
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	RCO_build_rostov_decision = {
+
+		icon = GFX_decision_ger_military_buildup
+
+		available = {
+			has_completed_focus = RCO_naz_labour_conscription
+		}
+
+		visible = {
+			original_tag = RCO
+			has_government = communist
+			has_completed_focus = RCO_naz_labour_conscription
+		}
+
+		cost = 35
+		days_remove = 60
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 120
+		}
+
+		complete_effect = {
+			add_manpower = -7000
+			add_stability = -0.04
+			218 = {
+				add_extra_state_shared_building_slots = 6
+				add_building_construction = {
+					type = arms_factory
+					level = 3
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	RCO_build_tula_decision = {
+
+		icon = GFX_decision_ger_military_buildup
+
+		available = {
+			has_completed_focus = RCO_naz_labour_conscription
+		}
+
+		visible = {
+			original_tag = RCO
+			has_government = communist
+			has_completed_focus = RCO_naz_labour_conscription
+		}
+
+		cost = 30
+		days_remove = 60
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 120
+		}
+
+		complete_effect = {
+			add_manpower = -5000
+			add_stability = -0.03
+			223 = {
+				add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+					type = arms_factory
+					level = 3
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	RCO_build_volgograd_decision = {
+
+		icon = GFX_decision_ger_military_buildup
+
+		available = {
+			has_completed_focus = RCO_naz_labour_conscription
+		}
+
+		visible = {
+			original_tag = RCO
+			has_government = communist
+			has_completed_focus = RCO_naz_labour_conscription
+		}
+
+		cost = 45
+		days_remove = 60
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 120
+		}
+
+		complete_effect = {
+			add_manpower = -8000
+			add_stability = -0.03
+			217 = {
+				add_extra_state_shared_building_slots = 5
+				add_building_construction = {
+					type = arms_factory
+					level = 5
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	RCO_build_magnitogorsk_decision = {
+
+		icon = GFX_decision_ger_military_buildup
+
+		available = {
+			has_completed_focus = RCO_naz_labour_conscription
+		}
+
+		visible = {
+			original_tag = RCO
+			has_government = communist
+			has_completed_focus = RCO_naz_labour_conscription
+		}
+
+		cost = 40
+		days_remove = 60
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 120
+		}
+
+		complete_effect = {
+			add_manpower = -7000
+			add_stability = -0.03
+			217 = {
+				add_extra_state_shared_building_slots = 4
+				add_building_construction = {
+					type = arms_factory
+					level = 4
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	
+
+	RCO_arrest_nat_leaders_decision = {
+
+		icon = decision_mil_orgs
+
+		available = {
+			has_active_mission = RCO_nationalist_activity_mission
+		}
+
+		visible = {
+			original_tag = RCO
+			has_government = communist
+			has_active_mission = RCO_nationalist_activity_mission
+		}
+
+		cost = 35
+		days_remove = 3
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 110
+		}
+
+		complete_effect = {
+			add_days_mission_timeout = {
+				mission = RCO_nationalist_activity_mission
+				days = 70
+			}
+		}
+	}
+
+	RCO_arrest_terr_leaders_decision = {
+
+		icon = decision_partymob
+
+		available = {
+			has_active_mission = RCO_terrorist_attack_mission
+		}
+
+		visible = {
+			original_tag = RCO
+			has_government = communist
+			has_active_mission = RCO_terrorist_attack_mission
+		}
+
+		cost = 30
+		days_remove = 3
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 110
+		}
+
+		complete_effect = {
+			add_days_mission_timeout = {
+				mission = RCO_terrorist_attack_mission
+				days = 40
+			}
+		}
+	}
+
+	SOV_zhd_partymob_decision = {
+
+		icon = decision_partymob
+
+		available = {
+			has_active_mission = RCO_transport_collapse_mission
+		}
+
+		visible = {
+			original_tag = RCO
+			has_government = communist
+			has_active_mission = RCO_transport_collapse_mission
+		}
+
+		cost = 25
+		days_remove = 20
+
+		fire_only_once = no
+
+		ai_will_do = {
+			factor = 120
+		}
+
+		complete_effect = {
+			add_days_mission_timeout = {
+				mission = RCO_transport_collapse_mission
+				days = 90
+			}
+		}
+
+	}
+
+	RCO_naz_exploit_kazahstan_decision = {
+
+		icon = GFX_decision_generic_confiscation
+
+		available = {
+			original_tag = RCO
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+			state = 407
+			state = 406
+			state = 402
+			state = 804
+			state = 583
+			state = 1087
+			state = 404
+			state = 805
+			state = 589
+			state = 588
+			state = 997
+			state = 583
+			state = 590
+		}
+		}
+
+		visible = {
+			original_tag = RCO
+			has_government = communist
+			has_active_mission = RCO_naz_deteriorating_economy_mission
+			controls_state = 590
+		}
+
+		cost = 50
+		days_remove = 1
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 120
+		}
+
+		complete_effect = {
+			custom_effect_tooltip = RCO_CG_decrease_10_TT
+			add_to_variable = { rco_economy_CG = -0.1 }
+			590 = {
+				damage_building = {
+				type = infrastructure
+				damage = 1
+				}
+			}
+			407 = {
+				damage_building = {
+				type = infrastructure
+				damage = 1
+				}
+			}
+			402 = {
+				damage_building = {
+				type = infrastructure
+				damage = 1
+				}
+			}
+			583 = {
+				damage_building = {
+				type = infrastructure
+				damage = 1
+				}
+			}
+			1087 = {
+				damage_building = {
+				type = infrastructure
+				damage = 1
+				}
+			}
+			805 = {
+				damage_building = {
+				type = infrastructure
+				damage = 1
+				}
+			}
+			272 = {
+				damage_building = {
+				type = infrastructure
+				damage = 1
+				}
+			}
+			589 = {
+				damage_building = {
+				type = infrastructure
+				damage = 1
+				}
+			}
+			588 = {
+				damage_building = {
+				type = infrastructure
+				damage = 1
+				}
+			}
+			997 = {
+				damage_building = {
+				type = infrastructure
+				damage = 1
+				}
+			}
+			583 = {
+				damage_building = {
+				type = infrastructure
+				damage = 1
+				}
+			}
+		}
+	}
+
+	RCO_naz_exploit_uzb_decision = {
+
+		icon = GFX_decision_generic_confiscation
+
+		available = {
+			original_tag = RCO
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+			state = 823
+			state = 585
+			state = 821
+			state = 587
+		}
+		}
+
+		visible = {
+			original_tag = RCO
+			has_government = communist
+			has_active_mission = RCO_naz_deteriorating_economy_mission
+			controls_state = 823
+		}
+
+		cost = 35
+		days_remove = 1
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 120
+		}
+
+		complete_effect = {
+			custom_effect_tooltip = RCO_CG_decrease_5_TT
+			add_to_variable = { rco_economy_CG = -0.05 }
+			823 = {
+				damage_building = {
+				type = infrastructure
+				damage = 1
+				}
+			}
+			585 = {
+				damage_building = {
+				type = infrastructure
+				damage = 1
+				}
+			}
+			821 = {
+				damage_building = {
+				type = infrastructure
+				damage = 1
+				}
+			}
+			587 = {
+				damage_building = {
+				type = infrastructure
+				damage = 1
+				}
+			}
+		}
+	}
+
+	RCO_naz_exploit_estern_ukr_decision = {
+
+		icon = GFX_decision_generic_confiscation
+
+		available = {
+			original_tag = RCO
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+			state = 259
+			state = 193
+			state = 225
+			state = 984
+			state = 200
+			state = 196
+			state = 221
+		}
+		}
+
+		visible = {
+			original_tag = RCO
+			has_government = communist
+			has_active_mission = RCO_naz_deteriorating_economy_mission
+			controls_state = 221
+		}
+
+		cost = 35
+		days_remove = 1
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 120
+		}
+
+		complete_effect = {
+			custom_effect_tooltip = RCO_CG_decrease_5_TT
+			add_to_variable = { rco_economy_CG = -0.05 }
+			221 = {
+				damage_building = {
+				type = infrastructure
+				damage = 1
+				}
+			}
+			196 = {
+				damage_building = {
+				type = infrastructure
+				damage = 1
+				}
+			}
+			200 = {
+				damage_building = {
+				type = infrastructure
+				damage = 1
+				}
+			}
+			984 = {
+				damage_building = {
+				type = infrastructure
+				damage = 1
+				}
+			}
+			193 = {
+				damage_building = {
+				type = infrastructure
+				damage = 1
+				}
+			}
+			225 = {
+				damage_building = {
+				type = infrastructure
+				damage = 1
+				}
+			}
+			259 = {
+				damage_building = {
+				type = infrastructure
+				damage = 1
+				}
+			}
+		}
+	}
+
+	RCO_naz_exploit_central_ukr_decision = {
+
+		icon = GFX_decision_generic_confiscation
+
+		available = {
+			original_tag = RCO
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+			state = 202
+			state = 1144
+			state = 203
+			state = 226
+			state = 197
+			state = 192
+			state = 806
+			state = 198
+			state = 1086
+			state = 201
+			state = 199
+			state = 1143
+		}
+		}
+
+		visible = {
+			original_tag = RCO
+			has_government = communist
+			has_active_mission = RCO_naz_deteriorating_economy_mission
+			controls_state = 202
+		}
+
+		cost = 35
+		days_remove = 1
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 120
+		}
+
+		complete_effect = {
+			custom_effect_tooltip = RCO_CG_decrease_5_TT
+			add_to_variable = { rco_economy_CG = -0.05 }
+			202 = {
+				damage_building = {
+				type = infrastructure
+				damage = 1
+				}
+			}
+			1143 = {
+				damage_building = {
+				type = infrastructure
+				damage = 1
+				}
+			}
+			199 = {
+				damage_building = {
+				type = infrastructure
+				damage = 1
+				}
+			}
+			202 = {
+				damage_building = {
+				type = infrastructure
+				damage = 1
+				}
+			}
+			201 = {
+				damage_building = {
+				type = infrastructure
+				damage = 1
+				}
+			}
+			1144 = {
+				damage_building = {
+				type = infrastructure
+				damage = 1
+				}
+			}
+			203 = {
+				damage_building = {
+				type = infrastructure
+				damage = 1
+				}
+			}
+			226 = {
+				damage_building = {
+				type = infrastructure
+				damage = 1
+				}
+			}
+			197 = {
+				damage_building = {
+				type = infrastructure
+				damage = 1
+				}
+			}
+			192 = {
+				damage_building = {
+				type = infrastructure
+				damage = 1
+				}
+			}
+			806 = {
+				damage_building = {
+				type = infrastructure
+				damage = 1
+				}
+			}
+		}
+	}
+
+	RCO_naz_exploit_western_ukr_decision = {
+
+		icon = GFX_decision_generic_confiscation
+
+		available = {
+			original_tag = RCO
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+			state = 80
+			state = 89
+			state = 73
+			state = 91
+			state = 93
+		}
+		}
+
+		visible = {
+			original_tag = RCO
+			has_government = communist
+			has_active_mission = RCO_naz_deteriorating_economy_mission
+			controls_state = 91
+		}
+
+		cost = 35
+		days_remove = 1
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 120
+		}
+
+		complete_effect = {
+			custom_effect_tooltip = RCO_CG_decrease_5_TT
+			add_to_variable = { rco_economy_CG = -0.05 }
+			80 = {
+				damage_building = {
+				type = infrastructure
+				damage = 1
+				}
+			}
+			89 = {
+				damage_building = {
+				type = infrastructure
+				damage = 1
+				}
+			}
+			73 = {
+				damage_building = {
+				type = infrastructure
+				damage = 1
+				}
+			}
+			91 = {
+				damage_building = {
+				type = infrastructure
+				damage = 1
+				}
+			}
+			93 = {
+				damage_building = {
+				type = infrastructure
+				damage = 1
+				}
+			}
+		}
+	}
+
+	RCO_naz_exploit_est_decision = {
+
+		icon = GFX_decision_generic_confiscation
+
+		available = {
+			original_tag = RCO
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+			state = 12
+			state = 971
+			state = 972
+			state = 190
+		}
+		}
+
+		visible = {
+			original_tag = RCO
+			has_government = communist
+			has_active_mission = RCO_naz_deteriorating_economy_mission
+			controls_state = 12
+		}
+
+		cost = 35
+		days_remove = 1
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 120
+		}
+
+		complete_effect = {
+			custom_effect_tooltip = RCO_CG_decrease_5_TT
+			add_to_variable = { rco_economy_CG = -0.05 }
+			12 = {
+				damage_building = {
+				type = infrastructure
+				damage = 1
+				}
+			}
+			971 = {
+				damage_building = {
+				type = infrastructure
+				damage = 1
+				}
+			}
+			972 = {
+				damage_building = {
+				type = infrastructure
+				damage = 1
+				}
+			}
+			190 = {
+				damage_building = {
+				type = infrastructure
+				damage = 1
+				}
+			}
+		}
+	}
+
+	RCO_naz_exploit_lit_decision = {
+
+		icon = GFX_decision_generic_confiscation
+
+		available = {
+			original_tag = RCO
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+			state = 96
+			state = 11
+			state = 961
+			state = 189
+		}
+		}
+
+		visible = {
+			original_tag = RCO
+			has_government = communist
+			has_active_mission = RCO_naz_deteriorating_economy_mission
+			controls_state = 96
+		}
+
+		cost = 35
+		days_remove = 1
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 120
+		}
+
+		complete_effect = {
+			custom_effect_tooltip = RCO_CG_decrease_5_TT
+			add_to_variable = { rco_economy_CG = -0.05 }
+			96 = {
+				damage_building = {
+				type = infrastructure
+				damage = 1
+				}
+			}
+			11 = {
+				damage_building = {
+				type = infrastructure
+				damage = 1
+				}
+			}
+			961 = {
+				damage_building = {
+				type = infrastructure
+				damage = 1
+				}
+			}
+			189 = {
+				damage_building = {
+				type = infrastructure
+				damage = 1
+				}
+			}
+		}
+	}
+
+	RCO_naz_exploit_bel_decision = {
+
+		icon = GFX_decision_generic_confiscation
+
+		available = {
+			original_tag = RCO
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+			state = 207
+			state = 241
+			state = 204
+			state = 95
+			state = 206
+			state = 194
+			state = 94
+			state = 808
+		}
+		}
+
+		visible = {
+			original_tag = RCO
+			has_government = communist
+			has_active_mission = RCO_naz_deteriorating_economy_mission
+			controls_state = 206
+		}
+
+		cost = 35
+		days_remove = 1
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 120
+		}
+
+		complete_effect = {
+			custom_effect_tooltip = RCO_CG_decrease_5_TT
+			add_to_variable = { rco_economy_CG = -0.05 }
+			207 = {
+				damage_building = {
+				type = infrastructure
+				damage = 1
+				}
+			}
+			206 = {
+				damage_building = {
+				type = infrastructure
+				damage = 1
+				}
+			}
+			241 = {
+				damage_building = {
+				type = infrastructure
+				damage = 1
+				}
+			}
+			194 = {
+				damage_building = {
+				type = infrastructure
+				damage = 1
+				}
+			}
+		}
+	}
+
+	RCO_naz_exploit_lat_decision = {
+
+		icon = GFX_decision_generic_confiscation
+
+		available = {
+			original_tag = RCO
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+			state = 12
+			state = 971
+			state = 972
+			state = 190
+		}
+		}
+
+		visible = {
+			original_tag = RCO
+			has_government = communist
+			has_active_mission = RCO_naz_deteriorating_economy_mission
+			controls_state = 12
+		}
+
+		cost = 35
+		days_remove = 1
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 120
+		}
+
+		complete_effect = {
+			custom_effect_tooltip = RCO_CG_decrease_5_TT
+			add_to_variable = { rco_economy_CG = -0.05 }
+			12 = {
+				damage_building = {
+				type = infrastructure
+				damage = 1
+				}
+			}
+			971 = {
+				damage_building = {
+				type = infrastructure
+				damage = 1
+				}
+			}
+			972 = {
+				damage_building = {
+				type = infrastructure
+				damage = 1
+				}
+			}
+			190 = {
+				damage_building = {
+				type = infrastructure
+				damage = 1
+				}
+			}
+		}
+	}
+
+	RCO_naz_exploit_taj_decision = {
+
+		icon = GFX_decision_generic_confiscation
+
+		available = {
+			original_tag = RCO
+		}
+
+		visible = {
+			original_tag = RCO
+			has_government = communist
+			has_active_mission = RCO_naz_deteriorating_economy_mission
+			controls_state = 405
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+			state = 405
+			state = 732
+		}
+		}
+
+		cost = 35
+		days_remove = 1
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 120
+		}
+
+		complete_effect = {
+			custom_effect_tooltip = RCO_CG_decrease_5_TT
+			add_to_variable = { rco_economy_CG = -0.05 }
+			405 = {
+				damage_building = {
+				type = infrastructure
+				damage = 1
+				}
+			}
+			732 = {
+				damage_building = {
+				type = infrastructure
+				damage = 1
+				}
+			}
+		}
+	}
+
+	RCO_naz_exploit_kir_decision = {
+
+		icon = GFX_decision_generic_confiscation
+
+		available = {
+			original_tag = RCO
+		}
+
+		visible = {
+			original_tag = RCO
+			has_government = communist
+			has_active_mission = RCO_naz_deteriorating_economy_mission
+			controls_state = 586
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+			state = 586
+			state = 822
+		}
+		}
+
+		cost = 35
+		days_remove = 1
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 120
+		}
+
+		complete_effect = {
+			custom_effect_tooltip = RCO_CG_decrease_5_TT
+			add_to_variable = { rco_economy_CG = -0.05 }
+			586 = {
+				damage_building = {
+				type = infrastructure
+				damage = 1
+				}
+			}
+			822 = {
+				damage_building = {
+				type = infrastructure
+				damage = 1
+				}
+			}
+		}
+	}
+
+	RCO_naz_exploit_turk_decision = {
+
+		icon = GFX_decision_generic_confiscation
+
+		available = {
+			original_tag = RCO
+		}
+
+		visible = {
+			original_tag = RCO
+			has_government = communist
+			has_active_mission = RCO_naz_deteriorating_economy_mission
+			controls_state = 799
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+			state = 799
+			state = 584
+			state = 801
+			state = 802
+			state = 803
+		}
+		}
+
+		cost = 35
+		days_remove = 1
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 120
+		}
+
+		complete_effect = {
+			custom_effect_tooltip = RCO_CG_decrease_5_TT
+			add_to_variable = { rco_economy_CG = -0.05 }
+			799 = {
+				damage_building = {
+				type = infrastructure
+				damage = 1
+				}
+			}
+			584 = {
+				damage_building = {
+				type = infrastructure
+				damage = 1
+				}
+			}
+			801 = {
+				damage_building = {
+				type = infrastructure
+				damage = 1
+				}
+			}
+			802 = {
+				damage_building = {
+				type = infrastructure
+				damage = 1
+				}
+			}
+			803 = {
+				damage_building = {
+				type = infrastructure
+				damage = 1
+				}
+			}
+		}
+	}
+
+	RCO_naz_exploit_caucasus_decision = {
+
+		icon = GFX_decision_generic_confiscation
+
+		available = {
+			original_tag = RCO
+		}
+
+		visible = {
+			original_tag = RCO
+			has_government = communist
+			has_active_mission = RCO_naz_deteriorating_economy_mission
+			controls_state = 231
+			controls_state = 230
+			controls_state = 229
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+			state = 231
+			state = 797
+			state = 992
+			state = 1159
+			state = 230
+			state = 229
+			state = 878
+			state = 877
+			state = 790
+		}
+		}
+
+		cost = 50
+		days_remove = 1
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 120
+		}
+
+		complete_effect = {
+			custom_effect_tooltip = RCO_CG_decrease_10_TT
+			add_to_variable = { rco_economy_CG = -0.1 }
+			231 = {
+				damage_building = {
+				type = infrastructure
+				damage = 1
+				}
+			}
+			797 = {
+				damage_building = {
+				type = infrastructure
+				damage = 1
+				}
+			}
+			992 = {
+				damage_building = {
+				type = infrastructure
+				damage = 1
+				}
+			}
+			1159 = {
+				damage_building = {
+				type = infrastructure
+				damage = 1
+				}
+			}
+			230 = {
+				damage_building = {
+				type = infrastructure
+				damage = 1
+				}
+			}
+			229 = {
+				damage_building = {
+				type = infrastructure
+				damage = 1
+				}
+			}
+			878 = {
+				damage_building = {
+				type = infrastructure
+				damage = 1
+				}
+			}
+			877 = {
+				damage_building = {
+				type = infrastructure
+				damage = 1
+				}
+			}
+			790 = {
+				damage_building = {
+				type = infrastructure
+				damage = 1
+				}
+			}
+		}
+	}
+
+	RCO_improve_ekb_1_decision = {
+
+		icon = RCO_transport_collapse_mission
+
+		available = {
+			original_tag = RCO
+		}
+
+		visible = {
+			original_tag = RCO
+			has_government = communist
+			has_completed_focus = RCO_naz_ekb_capital
+		}
+
+		cost = 25
+		days_remove = 20
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 120
+		}
+
+		complete_effect = {
+			set_country_flag = rco_improved_ekb_1
+			653 = {
+				add_extra_state_shared_building_slots = 8
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	RCO_improve_ekb_2_decision = {
+
+		icon = RCO_transport_collapse_mission
+
+		available = {
+			original_tag = RCO
+		}
+
+		visible = {
+			original_tag = RCO
+			has_government = communist
+			has_completed_focus = RCO_naz_ekb_capital
+			has_country_flag = rco_improved_ekb_1
+		}
+
+		cost = 35
+		days_remove = 20
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 120
+		}
+
+		complete_effect = {
+			set_country_flag = rco_improved_ekb_2
+			653 = {
+				add_extra_state_shared_building_slots = 8
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	RCO_improve_ekb_3_decision = {
+
+		icon = RCO_transport_collapse_mission
+
+		available = {
+			original_tag = RCO
+		}
+
+		visible = {
+			original_tag = RCO
+			has_government = communist
+			has_completed_focus = RCO_naz_ekb_capital
+			has_country_flag = rco_improved_ekb_2
+		}
+
+		cost = 45
+		days_remove = 20
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 120
+		}
+
+		complete_effect = {
+			build_railway = {
+				level = 4
+				build_only_on_allied = yes
+				fallback = yes
+				path = { 1821 10133 7320 3280 361 10314 10286 1380 206 7403 6278 11320 3294 3394 404 260 6338 11243 11356 9373 6312 6374 3352 11277 11344 9298 6410 6362 3339 214 11217 9235 3290 301 6380 }
+				start_province = 1821
+				target_province = 6380
+			}
+		}
+	}
+
+	SOV_zhd_mbk_responsibility_decision = {
+
+		icon = decision_create_national_guard
+
+		available = {
+			has_active_mission = RCO_transport_collapse_mission
+		}
+
+		visible = {
+			original_tag = RCO
+			has_government = communist
+			has_completed_focus = RCO_create_VCHK
+			has_active_mission = RCO_transport_collapse_mission
+		}
+
+		cost = 25
+		days_remove = 10
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 100
+		}
+
+		complete_effect = {
+			add_days_mission_timeout = {
+				mission = RCO_transport_collapse_mission
+				days = 90
+			}
+		}
+
+	}
+
+	RCO_ukraine1_decision = {
+
+		icon = decision_partymob
+
+		available = {
+			has_completed_focus = RCO_new_international
+		}
+
+		visible = {
+			original_tag = RCO
+			has_government = communist
+			has_completed_focus = RCO_new_international
+		}
+
+		cost = 20
+		days_remove = 10
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 100000
+		}
+
+		complete_effect = {
+			custom_effect_tooltip = RCO_ukraine1_TT
+			UKR = {
+				set_party_name = {
+    				ideology = communist
+    				long_name = UKR_communist_party_new_long
+    				name = UKR_communist_party_new
+				}
+			}
+			UKR = {
+				add_popularity = {
+    			ideology = communist
+    				popularity = 0.05
+				}
+				add_war_support = -0.3
+			}
+			hidden_effect = {
+				set_global_flag = SOV_ukraine1_desicions
+			}
+		}
+
+	}
+
+	RCO_belarus_ally_decision = {
+
+		icon = decision_partymob
+
+		available = {
+			has_completed_focus = RCO_new_international
+		}
+
+		visible = {
+			original_tag = RCO
+			has_government = communist
+			has_completed_focus = RCO_new_international
+			BLR = {
+				has_completed_focus = BLR_unite_the_communist_parties
+			}
+		}
+
+		cost = 15
+		days_remove = 1
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 150
+		}
+
+		complete_effect = {
+			BLR = {
+            country_event = {
+					id = cw.14
+				}
+			}
+		}
+	}
+
+	RCO_ukraine2_decision = {
+
+		icon = decision_partymob
+
+		available = {
+			has_completed_focus = RCO_new_international
+			UKR = {
+			NOT = {is_in_faction_with = RCO}
+			}
+		}
+
+		visible = {
+			original_tag = RCO
+			has_government = communist
+			has_global_flag = SOV_ukraine1_desicions
+			UKR = {
+			NOT = {is_in_faction_with = RCO}
+			}
+		}
+
+		cost = 20
+		days_remove = 10
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 100000
+		}
+
+		complete_effect = {
+   			 custom_effect_tooltip = RCO_ukraine1_TT
+			 news_event = {
+					id = news.842
+					days = 1
+				}
+   			UKR = {
+       			 start_civil_war = {
+           		 ideology = communist
+           		 size = 0.2
+					states = {
+					227 228 221 
+					}
+        		}
+			}
+   		random_other_country = {
+        		limit = {
+           		 original_tag = UKR
+            	has_government = communist
+        		}
+        	set_capital = {state = 227}
+			set_country_flag = UKR_UCO_alias_trigger
+			set_cosmetic_tag = UKR_UCO
+       	 	load_focus_tree = UCO_Communist_Ukraine_focus
+       	 	RCO = {
+            	puppet = {
+                target = PREV
+                end_wars = no
+            	}
+        	}
+    	}
+			UKR = { add_to_faction = SOV }
+		}
+	}
+
+	SOV_zhd_nationalise_small_zhds_decision = {
+
+
+		available = {
+			has_active_mission = RCO_transport_collapse_mission
+		}
+
+		visible = {
+			original_tag = RCO
+			has_government = communist
+			has_completed_focus = RCO_organize_transport
+			has_active_mission = RCO_transport_collapse_mission
+		}
+
+		cost = 25
+		days_remove = 10
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 100
+		}
+
+		complete_effect = {
+			add_days_mission_timeout = {
+				mission = RCO_transport_collapse_mission
+				days = 90
+			}
+		}
+
+	}
+
+	SOV_hunger_collective_farms_decision = {
+
+		available = {
+			has_active_mission = RCO_hunger_risk_mission
+		}
+
+		visible = {
+			original_tag = RCO
+			has_government = communist
+			has_active_mission = RCO_hunger_risk_mission
+		}
+
+		cost = 25
+		days_remove = 20
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 120
+		}
+
+		complete_effect = {
+			add_days_mission_timeout = {
+				mission = RCO_hunger_risk_mission
+				days = 80
+			}
+		}
+
+	}
+
+	# SOV_ask_uco_to_join_decision = {
+
+	# 	available = {
+	# 		OR = {
+	# 		has_completed_focus = RCO_against_forces_and_traditions
+	# 		has_completed_focus = RCO_new_constitution
+	# 		}
+	# 		UCO = {
+	# 			controls_state = 227
+	# 		}
+	# 	}
+
+	# 	visible = {
+	# 		original_tag = RCO
+	# 		OR = {
+	# 		has_completed_focus = RCO_against_forces_and_traditions
+	# 		has_completed_focus = RCO_new_constitution
+	# 		}
+	# 		UCO = {
+	# 			controls_state = 227
+	# 		}
+	# 		UCO = {
+	# 			has_war = no
+	# 		}
+	# 	}
+
+	# 	cost = 100
+	# 	days_remove = 50
+
+	# 	fire_only_once = yes
+
+	# 	ai_will_do = {
+	# 		factor = 10000
+	# 	}
+
+	# 	complete_effect = {
+	# 		annex_country = {
+    # 			target = UCO
+    # 			transfer_troops = yes
+	# 		}
+	# 		news_event = news.841
+	# 		set_cosmetic_tag = RCO_soviet_union
+	# 	}
+
+	# }
+
+	SOV_ask_tra_to_join_decision = {
+
+		available = {
+			OR = {
+			has_completed_focus = RCO_against_forces_and_traditions
+			has_completed_focus = RCO_new_constitution
+			}
+			RCO = {
+				controls_state = 192
+			}
+			TRA = { 
+				exists = yes
+			 }
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+			state = 857
+		}
+		}
+
+		visible = {
+			original_tag = RCO
+			has_government = communist
+			OR = {
+			has_completed_focus = RCO_against_forces_and_traditions
+			has_completed_focus = RCO_new_constitution
+			}
+			TRA = { 
+				exists = yes
+			 }
+			 TRA = { 
+				is_ai = yes
+			 }
+		}
+
+		cost = 30
+		days_remove = 10
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 100
+		}
+
+		complete_effect = {
+			annex_country = {
+    			target = TRA
+    			transfer_troops = yes
+			}
+		}
+
+	}
+
+
+	SOV_hunger_food_kartochki_decision = {
+
+		available = {
+			has_active_mission = RCO_hunger_risk_mission
+		}
+
+		visible = {
+			original_tag = RCO
+			has_government = communist
+			has_active_mission = RCO_hunger_risk_mission
+		}
+
+		cost = 25
+		days_remove = 20
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 110
+		}
+
+		complete_effect = {
+			add_days_mission_timeout = {
+				mission = RCO_hunger_risk_mission
+				days = 70
+			}
+		}
+
+	}
+
+	SOV_city_renaming_decision = {
+
+		available = {
+			OR = {
+			has_completed_focus = RCO_against_forces_and_traditions
+			has_completed_focus = RCO_new_constitution
+			}
+		}
+
+		visible = {
+			original_tag = RCO
+			has_government = communist
+		}
+
+		cost = 5
+		days_remove = 20
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 100
+		}
+
+		complete_effect = {
+			set_capital = {state = 219}
+			set_province_name = { id = 6245 name = "Kalinin"}
+			set_province_name = { id = 3529 name = "Stalingrad"}
+			set_province_name = { id = 1821 name = "Sverdlovsk"}
+			add_stability = 0.03
+		}
+
+	}
+
+	## interbrigades
+
+	RCO_chineese_landlease_decision = {
+
+		icon = decision_create_national_guard
+
+		available = {
+			has_completed_focus = RCO_international_brigades
+		}
+
+		visible = {
+			original_tag = RCO
+			has_war_with = SOV
+			has_completed_focus = RCO_international_brigades
+			PRC = { has_government = communist }
+		}
+
+		cost = 5
+		days_remove = 20
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 10000
+		}
+
+		complete_effect = {
+			add_equipment_to_stockpile = {
+				type = infantry_equipment_1
+				amount = 3000
+				producer = RCO
+			}
+			add_equipment_to_stockpile = {
+				type = support_equipment_1
+				amount = 400
+				producer = RCO
+			}
+			set_fuel_ratio = 0.5
+		}
+	}
+
+	### industry
+
+	RCO_turn_siberian_rivers_decision = {
+		icon = generic_construction
+		available = {
+			572 = { is_owned_and_controlled_by = ROOT }
+			403 = { is_owned_and_controlled_by = ROOT }
+			577 = { is_owned_and_controlled_by = ROOT }
+			571 = { is_owned_and_controlled_by = ROOT }
+			570 = { is_owned_and_controlled_by = ROOT }
+			40 = { is_owned_and_controlled_by = ROOT }
+			578 = { is_owned_and_controlled_by = ROOT }
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+			state = 572
+			state = 403
+			state = 577
+			state = 571
+			state = 570
+			state = 40
+			state = 578
+		}
+		}
+
+		visible = {
+				has_completed_focus = RCO_great_works_plan
+		}
+		fire_only_once = yes
+		cost = 90
+		days_remove = 120
+		ai_will_do = {
+			factor = 15
+		}
+		modifier = {
+			civilian_factory_use = 8
+		}
+		complete_effect = {
+			572 = {
+				add_extra_state_shared_building_slots = 5
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			403 = {
+				add_extra_state_shared_building_slots = 5
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			403 = {
+				add_extra_state_shared_building_slots = 5
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			577 = {
+				add_extra_state_shared_building_slots = 5
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			571 = {
+				add_extra_state_shared_building_slots = 5
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			570 = {
+				add_extra_state_shared_building_slots = 5
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			40 = {
+				add_extra_state_shared_building_slots = 5
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			57 = {
+				add_extra_state_shared_building_slots = 5
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	RCO_chromium_mines_decision = {
+	icon = generic_construction
+		available = {
+			215 = { is_owned_and_controlled_by = ROOT }
+			213 = { is_owned_and_controlled_by = ROOT }
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+			state = 215
+			state = 213
+		}
+		}
+
+		visible = {
+			original_tag = RCO
+			has_completed_focus = RCO_great_works_plan
+		}
+
+		fire_only_once = yes
+		cost = 90
+		days_remove = 150
+		ai_will_do = {
+			factor = 10000
+		}
+		modifier = {
+			civilian_factory_use = 8
+		}
+
+		complete_effect = {
+			215 = {
+				add_resource = {
+					type = chromium
+					amount = 40
+				}
+			}
+			213 = {
+				add_resource = {
+					type = chromium
+					amount = 55
+				}
+			}
+		}
+
+	}
+}
+
+RCO_integrate_territories_category = {
+
+	RCO_integrate_state_borovichi_904 = {
+
+		icon = decision_ban_coalition
+
+		available = {
+			original_tag = RCO
+			OR = {
+			has_completed_focus = RCO_strenghtern_government
+			has_completed_focus = RCO_new_constitution
+			}
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+			state = 904
+		}
+		}
+
+		fire_only_once = yes
+
+		cost = 10
+		days_remove = 30
+
+		ai_will_do = {
+			factor = 10000
+		}
+
+		visible = {
+			original_tag = RCO
+			controls_state = 904
+			904 = {
+				NOT = {is_core_of = ROOT}
+			}
+		}
+
+		remove_effect = {
+			add_state_core = 904
+		}
+	}
+
+	RCO_integrate_state_karelia_146 = {
+
+		icon = decision_ban_coalition
+
+		available = {
+			original_tag = RCO
+			OR = {
+			has_completed_focus = RCO_strenghtern_government
+			has_completed_focus = RCO_new_constitution
+			}
+		}
+
+		fire_only_once = yes
+
+		cost = 10
+		days_remove = 30
+
+		ai_will_do = {
+			factor = 10000
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+			state = 146
+		}
+		}
+
+		visible = {
+			has_global_flag = small_second_october
+			original_tag = RCO
+			controls_state = 146
+			146 = {
+				NOT = {is_core_of = ROOT}
+			}
+		}
+
+		remove_effect = {
+			add_state_core = 146
+		}
+	}
+
+	RCO_integrate_state_petrozavodsk_216 = {
+
+		icon = decision_ban_coalition
+
+		available = {
+			original_tag = RCO
+			OR = {
+			has_completed_focus = RCO_strenghtern_government
+			has_completed_focus = RCO_new_constitution
+			}
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+			state = 216
+		}
+		}
+
+		fire_only_once = yes
+
+		cost = 10
+		days_remove = 30
+
+		ai_will_do = {
+			factor = 10000
+		}
+
+		visible = {
+			has_global_flag = small_second_october
+			original_tag = RCO
+			controls_state = 216
+			216 = {
+				NOT = {is_core_of = ROOT}
+			}
+		}
+
+		remove_effect = {
+			add_state_core = 216
+		}
+	}
+
+	RCO_integrate_state_belomorsk_215 = {
+
+		icon = decision_ban_coalition
+
+		available = {
+			original_tag = RCO
+			OR = {
+			has_completed_focus = RCO_strenghtern_government
+			has_completed_focus = RCO_new_constitution
+			}
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+			state = 215
+		}
+		}
+
+		fire_only_once = yes
+
+		cost = 10
+		days_remove = 30
+
+		ai_will_do = {
+			factor = 10000
+		}
+
+		visible = {
+			original_tag = RCO
+			controls_state = 215
+			215 = {
+				NOT = {is_core_of = ROOT}
+			}
+		}
+
+		remove_effect = {
+			add_state_core = 215
+		}
+	}
+
+	RCO_integrate_state_murmansk_213 = {
+
+		icon = decision_ban_coalition
+
+		available = {
+			original_tag = RCO
+			OR = {
+			has_completed_focus = RCO_strenghtern_government
+			has_completed_focus = RCO_new_constitution
+			}
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+			state = 213
+		}
+		}
+
+		fire_only_once = yes
+
+		cost = 10
+		days_remove = 30
+
+		ai_will_do = {
+			factor = 10000
+		}
+
+		visible = {
+			original_tag = RCO
+			controls_state = 213
+			213 = {
+				NOT = {is_core_of = ROOT}
+			}
+		}
+
+		remove_effect = {
+			add_state_core = 213
+			add_state_core = 147
+			add_state_core = 722
+		}
+	}
+
+	RCO_integrate_state_cherepovets_903 = {
+
+		icon = decision_ban_coalition
+
+		available = {
+			original_tag = RCO
+			OR = {
+			has_completed_focus = RCO_strenghtern_government
+			has_completed_focus = RCO_new_constitution
+			}
+		}
+
+		fire_only_once = yes
+
+		cost = 10
+		days_remove = 30
+
+		ai_will_do = {
+			factor = 10000
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+			state = 903
+		}
+		}
+
+		visible = {
+			has_global_flag = small_second_october
+			original_tag = RCO
+			controls_state = 903
+			903 = {
+				NOT = {is_core_of = ROOT}
+			}
+		}
+
+		remove_effect = {
+			add_state_core = 903
+		}
+	}
+
+	RCO_integrate_state_vologda_351 = {
+
+		icon = decision_ban_coalition
+
+		available = {
+			original_tag = RCO
+			OR = {
+			has_completed_focus = RCO_strenghtern_government
+			has_completed_focus = RCO_new_constitution
+			}
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+			state = 351
+		}
+		}
+
+		fire_only_once = yes
+
+		cost = 10
+		days_remove = 30
+
+		ai_will_do = {
+			factor = 10000
+		}
+
+		visible = {
+			original_tag = RCO
+			controls_state = 351
+			351 = {
+				NOT = {is_core_of = ROOT}
+			}
+		}
+
+		remove_effect = {
+			add_state_core = 351
+		}
+	}
+
+	RCO_integrate_state_kostroma_264 = {
+
+		icon = decision_ban_coalition
+
+		available = {
+			original_tag = RCO
+			OR = {
+			has_completed_focus = RCO_strenghtern_government
+			has_completed_focus = RCO_new_constitution
+			}
+		}
+
+		fire_only_once = yes
+
+		cost = 10
+		days_remove = 30
+
+		ai_will_do = {
+			factor = 10000
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+			state = 264
+		}
+		}
+
+		visible = {
+			has_global_flag = small_second_october
+			original_tag = RCO
+			controls_state = 264
+			264 = {
+				NOT = {is_core_of = ROOT}
+			}
+		}
+
+		remove_effect = {
+			add_state_core = 264
+		}
+	}
+
+	RCO_integrate_state_arhangelsk_214 = {
+
+		icon = decision_ban_coalition
+
+		available = {
+			original_tag = RCO
+			OR = {
+			has_completed_focus = RCO_strenghtern_government
+			has_completed_focus = RCO_new_constitution
+			}
+		}
+
+		fire_only_once = yes
+
+		cost = 10
+		days_remove = 30
+
+		ai_will_do = {
+			factor = 10000
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+			state = 214
+		}
+		}
+
+		visible = {
+			original_tag = RCO
+			controls_state = 214
+			214 = {
+				NOT = {is_core_of = ROOT}
+			}
+		}
+
+		remove_effect = {
+			add_state_core = 214
+			add_state_core = 397
+			add_state_core = 262
+			add_state_core = 581
+			add_state_core = 579
+		}
+	}
+
+	RCO_integrate_state_kazahstan = {
+
+		icon = decision_ban_coalition
+
+		available = {
+			original_tag = RCO
+			OR = {
+			has_completed_focus = RCO_strenghtern_government
+			has_completed_focus = RCO_new_constitution
+			}
+		}
+
+		fire_only_once = yes
+
+		cost = 100
+		days_remove = 30
+
+		ai_will_do = {
+			factor = 10000
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+			state = 407
+			state = 406
+			state = 402
+			state = 804
+			state = 583
+			state = 1087
+			state = 404
+			state = 805
+			state = 589
+			state = 588
+			state = 997
+			state = 583
+			state = 590
+		}
+		}
+
+		visible = {
+			original_tag = RCO
+			controls_state = 590
+			590 = {
+				NOT = {is_core_of = ROOT}
+			}
+		}
+
+		remove_effect = {
+			add_state_core = 407
+			add_state_core = 406
+			add_state_core = 402
+			add_state_core = 804
+			add_state_core = 583
+			add_state_core = 1087
+			add_state_core = 404
+			add_state_core = 805
+			add_state_core = 589
+			add_state_core = 272
+			add_state_core = 588
+			add_state_core = 997
+			add_state_core = 583
+			add_state_core = 590
+		}
+	}
+
+	RCO_integrate_state_kirov_400 = {
+
+		icon = decision_ban_coalition
+
+		available = {
+			original_tag = RCO
+			OR = {
+			has_completed_focus = RCO_strenghtern_government
+			has_completed_focus = RCO_new_constitution
+			}
+		}
+
+		fire_only_once = yes
+
+		cost = 10
+		days_remove = 30
+
+		ai_will_do = {
+			factor = 10000
+		}
+
+		visible = {
+			original_tag = RCO
+			controls_state = 400
+			400 = {
+				NOT = {is_core_of = ROOT}
+			}
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+			state = 400
+		}
+		}
+
+		remove_effect = {
+			add_state_core = 400
+		}
+	}
+
+	RCO_integrate_state_izhevsk_399 = {
+
+		icon = decision_ban_coalition
+
+		available = {
+			original_tag = RCO
+			OR = {
+			has_completed_focus = RCO_strenghtern_government
+			has_completed_focus = RCO_new_constitution
+			}
+		}
+
+		fire_only_once = yes
+
+		cost = 10
+		days_remove = 30
+
+		ai_will_do = {
+			factor = 10000
+		}
+
+		visible = {
+			original_tag = RCO
+			controls_state = 399
+			399 = {
+				NOT = {is_core_of = ROOT}
+			}
+		}
+
+		remove_effect = {
+			add_state_core = 399
+		}
+	}
+
+	RCO_integrate_state_perm_398 = {
+
+		icon = decision_ban_coalition
+
+		available = {
+			original_tag = RCO
+			OR = {
+			has_completed_focus = RCO_strenghtern_government
+			has_completed_focus = RCO_new_constitution
+			}
+		}
+
+		fire_only_once = yes
+
+		cost = 10
+		days_remove = 30
+
+		ai_will_do = {
+			factor = 10000
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+			state = 398
+		}
+		}
+
+		visible = {
+			original_tag = RCO
+			controls_state = 398
+			398 = {
+				NOT = {is_core_of = ROOT}
+			}
+		}
+
+		remove_effect = {
+			add_state_core = 398
+		}
+	}
+
+	RCO_integrate_state_cheboksaru_256 = {
+
+		icon = decision_ban_coalition
+
+		available = {
+			original_tag = RCO
+			OR = {
+			has_completed_focus = RCO_strenghtern_government
+			has_completed_focus = RCO_new_constitution
+			}
+		}
+
+		fire_only_once = yes
+
+		cost = 10
+		days_remove = 30
+
+		ai_will_do = {
+			factor = 10000
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+			state = 256
+		}
+		}
+
+		visible = {
+			original_tag = RCO
+			controls_state = 256
+			256 = {
+				NOT = {is_core_of = ROOT}
+			}
+		}
+
+		remove_effect = {
+			add_state_core = 256
+		}
+	}
+
+	RCO_integrate_state_tatarstan_249 = {
+
+		icon = decision_ban_coalition
+
+		available = {
+			original_tag = RCO
+			OR = {
+				has_completed_focus = RCO_fight_nationalism
+				has_completed_focus = RCO_naz_reform_kgb
+			}
+		}
+
+		fire_only_once = yes
+
+		cost = 10
+		days_remove = 30
+
+		ai_will_do = {
+			factor = 10000
+		}
+
+		visible = {
+			original_tag = RCO
+			controls_state = 249
+			249 = {
+				NOT = {is_core_of = ROOT}
+			}
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+			state = 249
+			state = 1330
+			state = 1331
+		}
+		}
+
+		remove_effect = {
+			add_state_core = 249
+			add_state_core = 1330
+			add_state_core = 1331
+		}
+	}
+
+	RCO_integrate_state_bashkortostan_651 = {
+
+		icon = decision_ban_coalition
+
+		available = {
+			original_tag = RCO
+			OR = {
+			has_completed_focus = RCO_strenghtern_government
+			has_completed_focus = RCO_new_constitution
+			}
+		}
+
+		fire_only_once = yes
+
+		cost = 10
+		days_remove = 30
+
+		ai_will_do = {
+			factor = 10000
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+			state = 651
+		}
+		}
+
+		visible = {
+			original_tag = RCO
+			controls_state = 651
+			651 = {
+				NOT = {is_core_of = ROOT}
+			}
+		}
+
+		remove_effect = {
+			add_state_core = 651
+		}
+	}
+
+	RCO_integrate_state_penza_255 = {
+
+		icon = decision_ban_coalition
+
+		available = {
+			original_tag = RCO
+			OR = {
+			has_completed_focus = RCO_strenghtern_government
+			has_completed_focus = RCO_new_constitution
+			}
+		}
+
+		fire_only_once = yes
+
+		cost = 10
+		days_remove = 30
+
+		ai_will_do = {
+			factor = 10000
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+			state = 255
+		}
+		}
+
+		visible = {
+			has_global_flag = small_second_october
+			original_tag = RCO
+			controls_state = 255
+			255 = {
+				NOT = {is_core_of = ROOT}
+			}
+		}
+
+		remove_effect = {
+			add_state_core = 255
+		}
+	}
+
+	RCO_integrate_state_ulyanovsk_250 = {
+
+		icon = decision_ban_coalition
+
+		available = {
+			original_tag = RCO
+			OR = {
+			has_completed_focus = RCO_strenghtern_government
+			has_completed_focus = RCO_new_constitution
+			}
+		}
+
+		fire_only_once = yes
+
+		cost = 10
+		days_remove = 30
+
+		ai_will_do = {
+			factor = 10000
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+			state = 250
+		}
+		}
+
+		visible = {
+			has_global_flag = small_second_october
+			original_tag = RCO
+			controls_state = 250
+			250 = {
+				NOT = {is_core_of = ROOT}
+			}
+		}
+
+		remove_effect = {
+			add_state_core = 250
+		}
+	}
+
+	RCO_integrate_state_samara_251 = {
+
+		icon = decision_ban_coalition
+
+		available = {
+			original_tag = RCO
+			OR = {
+			has_completed_focus = RCO_strenghtern_government
+			has_completed_focus = RCO_new_constitution
+			}
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+			state = 251
+		}
+		}
+
+		fire_only_once = yes
+
+		cost = 10
+		days_remove = 30
+
+		ai_will_do = {
+			factor = 10000
+		}
+
+		visible = {
+			original_tag = RCO
+			controls_state = 251
+			251 = {
+				NOT = {is_core_of = ROOT}
+			}
+		}
+
+		remove_effect = {
+			add_state_core = 251
+		}
+	}
+
+	RCO_integrate_state_orenburg_652 = {
+
+		icon = decision_ban_coalition
+
+		available = {
+			original_tag = RCO
+			OR = {
+			has_completed_focus = RCO_strenghtern_government
+			has_completed_focus = RCO_new_constitution
+			}
+		}
+
+		fire_only_once = yes
+
+		cost = 10
+		days_remove = 30
+
+		ai_will_do = {
+			factor = 10000
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+			state = 652
+		}
+		}
+
+		visible = {
+			original_tag = RCO
+			controls_state = 652
+			652 = {
+				NOT = {is_core_of = ROOT}
+			}
+		}
+
+		remove_effect = {
+			add_state_core = 652
+		}
+	}
+
+	RCO_integrate_state_tombov_257 = {
+
+		icon = decision_ban_coalition
+
+		available = {
+			original_tag = RCO
+			OR = {
+			has_completed_focus = RCO_strenghtern_government
+			has_completed_focus = RCO_new_constitution
+			}
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+			state = 257
+		}
+		}
+
+		fire_only_once = yes
+
+		cost = 10
+		days_remove = 30
+
+		ai_will_do = {
+			factor = 10000
+		}
+
+		visible = {
+			has_global_flag = small_second_october
+			original_tag = RCO
+			controls_state = 257
+			257 = {
+				NOT = {is_core_of = ROOT}
+			}
+		}
+
+		remove_effect = {
+			add_state_core = 257
+		}
+	}
+
+	RCO_integrate_state_saratov_239 = {
+
+		icon = decision_ban_coalition
+
+		available = {
+			original_tag = RCO
+			OR = {
+			has_completed_focus = RCO_strenghtern_government
+			has_completed_focus = RCO_new_constitution
+			}
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+			state = 239
+		}
+		}
+
+		fire_only_once = yes
+
+		cost = 10
+		days_remove = 30
+
+		ai_will_do = {
+			factor = 10000
+		}
+
+		visible = {
+			has_global_flag = small_second_october
+			original_tag = RCO
+			controls_state = 239
+			239 = {
+				NOT = {is_core_of = ROOT}
+			}
+		}
+
+		remove_effect = {
+			add_state_core = 239
+		}
+	}
+
+	RCO_integrate_state_engels_401 = {
+
+		icon = decision_ban_coalition
+
+		available = {
+			original_tag = RCO
+			OR = {
+			has_completed_focus = RCO_strenghtern_government
+			has_completed_focus = RCO_new_constitution
+			}
+		}
+
+		fire_only_once = yes
+
+		cost = 10
+		days_remove = 30
+
+		ai_will_do = {
+			factor = 10000
+		}
+
+		visible = {
+			original_tag = RCO
+			controls_state = 401
+			401 = {
+				NOT = {is_core_of = ROOT}
+			}
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+			state = 401
+		}
+		}
+
+		remove_effect = {
+			add_state_core = 401
+		}
+	}
+
+	RCO_integrate_state_voronezh_260 = {
+
+		icon = decision_ban_coalition
+
+		available = {
+			original_tag = RCO
+			OR = {
+			has_completed_focus = RCO_strenghtern_government
+			has_completed_focus = RCO_new_constitution
+			}
+		}
+
+		fire_only_once = yes
+
+		cost = 10
+		days_remove = 30
+
+		ai_will_do = {
+			factor = 10000
+		}
+
+		visible = {
+			has_global_flag = small_second_october
+			original_tag = RCO
+			controls_state = 260
+			260 = {
+				NOT = {is_core_of = ROOT}
+			}
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+			state = 260
+		}
+		}
+
+		remove_effect = {
+			add_state_core = 260
+		}
+	}
+
+	RCO_integrate_state_volgograd_217 = {
+
+		icon = decision_ban_coalition
+
+		available = {
+			original_tag = RCO
+			OR = {
+			has_completed_focus = RCO_strenghtern_government
+			has_completed_focus = RCO_new_constitution
+			}
+		}
+
+		fire_only_once = yes
+
+		cost = 10
+		days_remove = 30
+
+		ai_will_do = {
+			factor = 10000
+		}
+
+		visible = {
+			original_tag = RCO
+			controls_state = 217
+			217 = {
+				NOT = {is_core_of = ROOT}
+			}
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+			state = 217
+		}
+		}
+
+		remove_effect = {
+			add_state_core = 217
+		}
+	}
+
+	RCO_integrate_state_belgorod_240 = {
+
+		icon = decision_ban_coalition
+
+		available = {
+			original_tag = RCO
+			OR = {
+			has_completed_focus = RCO_strenghtern_government
+			has_completed_focus = RCO_new_constitution
+			}
+		}
+
+		fire_only_once = yes
+
+		cost = 10
+		days_remove = 30
+
+		ai_will_do = {
+			factor = 10000
+		}
+
+		visible = {
+			has_global_flag = small_second_october
+			original_tag = RCO
+			controls_state = 240
+			240 = {
+				NOT = {is_core_of = ROOT}
+			}
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+			state = 240
+		}
+		}
+
+		remove_effect = {
+			add_state_core = 240
+		}
+	}
+
+	RCO_integrate_state_millerovo_245 = {
+
+		icon = decision_ban_coalition
+
+		available = {
+			original_tag = RCO
+			OR = {
+			has_completed_focus = RCO_strenghtern_government
+			has_completed_focus = RCO_new_constitution
+			}
+		}
+
+		fire_only_once = yes
+
+		cost = 10
+		days_remove = 30
+
+		ai_will_do = {
+			factor = 10000
+		}
+
+		visible = {
+			original_tag = RCO
+			controls_state = 245
+			245 = {
+				NOT = {is_core_of = ROOT}
+			}
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+			state = 245
+		}
+		}
+
+		remove_effect = {
+			add_state_core = 245
+		}
+	}
+
+	RCO_integrate_state_rostov_218 = {
+
+		icon = decision_ban_coalition
+
+		available = {
+			original_tag = RCO
+			OR = {
+			has_completed_focus = RCO_strenghtern_government
+			has_completed_focus = RCO_new_constitution
+			}
+		}
+
+		fire_only_once = yes
+
+		cost = 10
+		days_remove = 30
+
+		ai_will_do = {
+			factor = 10000
+		}
+
+		visible = {
+			original_tag = RCO
+			NOT = { has_global_flag = RCO_rostovsovrep }
+			controls_state = 218
+			218 = {
+				NOT = {is_core_of = ROOT}
+			}
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+			state = 218
+		}
+		}
+
+		remove_effect = {
+			add_state_core = 218
+		}
+	}
+
+	RCO_integrate_state_krasnodar_234 = {
+
+		icon = decision_ban_coalition
+
+		available = {
+			original_tag = RCO
+			OR = {
+			has_completed_focus = RCO_strenghtern_government
+			has_completed_focus = RCO_new_constitution
+			}
+		}
+
+		fire_only_once = yes
+
+		cost = 10
+		days_remove = 30
+
+		ai_will_do = {
+			factor = 10000
+		}
+
+		visible = {
+			original_tag = RCO
+			NOT = { has_global_flag = RCO_rostovsovrep }
+			controls_state = 234
+			234 = {
+				NOT = {is_core_of = ROOT}
+			}
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+			state = 234
+		}
+		}
+
+		remove_effect = {
+			add_state_core = 234
+		}
+	}
+
+	RCO_integrate_state_volgodonsk_238 = {
+
+		icon = decision_ban_coalition
+
+		available = {
+			original_tag = RCO
+			OR = {
+			has_completed_focus = RCO_strenghtern_government
+			has_completed_focus = RCO_new_constitution
+			}
+		}
+
+		fire_only_once = yes
+
+		cost = 10
+		days_remove = 30
+
+		ai_will_do = {
+			factor = 10000
+		}
+
+		visible = {
+			original_tag = RCO
+			NOT = { has_global_flag = RCO_rostovsovrep }
+			controls_state = 238
+			238 = {
+				NOT = {is_core_of = ROOT}
+			}
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+			state = 238
+		}
+		}
+
+		remove_effect = {
+			add_state_core = 238
+		}
+	}
+
+	RCO_integrate_state_kalmik_237 = {
+
+		icon = decision_ban_coalition
+
+		available = {
+			original_tag = RCO
+			OR = {
+			has_completed_focus = RCO_strenghtern_government
+			has_completed_focus = RCO_new_constitution
+			}
+		}
+
+		fire_only_once = yes
+
+		cost = 10
+		days_remove = 30
+
+		ai_will_do = {
+			factor = 10000
+		}
+
+		visible = {
+			original_tag = RCO
+			NOT = { has_global_flag = RCO_rostovsovrep }
+			controls_state = 237
+			237 = {
+				NOT = {is_core_of = ROOT}
+			}
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+			state = 237
+		}
+		}
+
+		remove_effect = {
+			add_state_core = 237
+		}
+	}
+
+	RCO_integrate_state_astrakhan_236 = {
+
+		icon = decision_ban_coalition
+
+		available = {
+			original_tag = RCO
+			OR = {
+			has_completed_focus = RCO_strenghtern_government
+			has_completed_focus = RCO_new_constitution
+			}
+		}
+
+		fire_only_once = yes
+
+		cost = 10
+		days_remove = 30
+
+		ai_will_do = {
+			factor = 10000
+		}
+
+		visible = {
+			original_tag = RCO
+			NOT = { has_global_flag = RCO_rostovsovrep }
+			controls_state = 236
+			236 = {
+				NOT = {is_core_of = ROOT}
+			}
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+			state = 236
+		}
+		}
+
+		remove_effect = {
+			add_state_core = 236
+		}
+	}
+
+	RCO_integrate_state_stavropol_235 = {
+
+		icon = decision_ban_coalition
+
+		available = {
+			original_tag = RCO
+			OR = {
+			has_completed_focus = RCO_strenghtern_government
+			has_completed_focus = RCO_new_constitution
+			}
+		}
+
+		fire_only_once = yes
+
+		cost = 10
+		days_remove = 30
+
+		ai_will_do = {
+			factor = 10000
+		}
+
+		visible = {
+			original_tag = RCO
+			NOT = { has_global_flag = RCO_rostovsovrep }
+			controls_state = 235
+			235 = {
+				NOT = {is_core_of = ROOT}
+			}
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+			state = 235
+		}
+		}
+
+		remove_effect = {
+			add_state_core = 235
+		}
+	}
+
+	RCO_integrate_state_caucasus_828 = {
+
+		icon = decision_ban_coalition
+
+		available = {
+			original_tag = RCO
+			OR = {
+				has_completed_focus = RCO_fight_nationalism
+				has_completed_focus = RCO_naz_reform_kgb
+			}
+		}
+
+		fire_only_once = yes
+
+		cost = 30
+		days_remove = 30
+
+		ai_will_do = {
+			factor = 10000
+		}
+
+		visible = {
+			original_tag = RCO
+			controls_state = 828
+			828 = {
+				NOT = {is_core_of = ROOT}
+			}
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+			state = 828
+			state = 233
+			state = 232
+			state = 1158
+			state = 1157
+		}
+		}
+
+		remove_effect = {
+			add_state_core = 828
+			add_state_core = 233
+			add_state_core = 232
+			add_state_core = 1158
+			add_state_core = 1157
+		}
+	}
+
+	RCO_integrate_state_central_siberia_653 = {
+
+		icon = decision_ban_coalition
+
+		available = {
+			original_tag = RCO
+			OR = {
+			has_completed_focus = RCO_strenghtern_government
+			has_completed_focus = RCO_new_constitution
+			}
+		}
+
+		fire_only_once = yes
+
+		cost = 40
+		days_remove = 30
+
+		ai_will_do = {
+			factor = 10000
+		}
+
+		visible = {
+			original_tag = RCO
+			controls_state = 653
+			653 = {
+				NOT = {is_core_of = ROOT}
+			}
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+			state = 653
+			state = 582
+			state = 572
+			state = 403
+			state = 577
+			state = 571
+		}
+		}
+
+		remove_effect = {
+			add_state_core = 653
+			add_state_core = 582
+			add_state_core = 572
+			add_state_core = 403
+			add_state_core = 577
+			add_state_core = 571
+		}
+	}
+
+	RCO_integrate_state_eastern_siberia_570 = {
+
+		icon = decision_ban_coalition
+
+		available = {
+			original_tag = RCO
+			OR = {
+			has_completed_focus = RCO_strenghtern_government
+			has_completed_focus = RCO_new_constitution
+			}
+		}
+
+		fire_only_once = yes
+
+		cost = 40
+		days_remove = 30
+
+		ai_will_do = {
+			factor = 10000
+		}
+
+		visible = {
+			original_tag = RCO
+			controls_state = 570
+			570 = {
+				NOT = {is_core_of = ROOT}
+			}
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+			state = 570
+			state = 578
+			state = 580
+			state = 40
+			state = 569
+			state = 654
+			state = 1085
+			state = 329
+			state = 568
+			state = 576
+			state = 567
+		}
+		}
+
+		remove_effect = {
+			add_state_core = 570
+			add_state_core = 578
+			add_state_core = 580
+			add_state_core = 40
+			add_state_core = 569
+			add_state_core = 654
+			add_state_core = 1085
+			add_state_core = 329
+			add_state_core = 568
+			add_state_core = 576
+			add_state_core = 567
+			add_state_core = 566
+		}
+	}
+
+	RCO_integrate_state_far_east_564 = {
+
+		icon = decision_ban_coalition
+
+		available = {
+			original_tag = RCO
+			OR = {
+			has_completed_focus = RCO_strenghtern_government
+			has_completed_focus = RCO_new_constitution
+			}
+		}
+
+		fire_only_once = yes
+
+		cost = 40
+		days_remove = 30
+
+		ai_will_do = {
+			factor = 10000
+		}
+
+		visible = {
+			original_tag = RCO
+			controls_state = 564
+			564 = {
+				NOT = {is_core_of = ROOT}
+			}
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+			state = 564
+			state = 1084
+			state = 563
+			state = 574
+			state = 644
+			state = 561
+			state = 562
+			state = 637
+			state = 560
+			state = 657
+			state = 409
+			state = 408
+			state = 655
+			state = 537
+			state = 555
+			state = 951
+		}
+		}
+
+		remove_effect = {
+			add_state_core = 564
+			add_state_core = 1084
+			add_state_core = 563
+			add_state_core = 574
+			add_state_core = 644
+			add_state_core = 561
+			add_state_core = 562
+			add_state_core = 637
+			add_state_core = 560
+			add_state_core = 657
+			add_state_core = 409
+			add_state_core = 408
+			add_state_core = 655
+			add_state_core = 537
+			add_state_core = 555
+			add_state_core = 951
+			add_state_core = 1324 
+			add_state_core = 1279
+		}
+	}
+
+	RCO_integrate_state_azers = {
+
+		icon = decision_ban_coalition
+
+		available = {
+			original_tag = RCO
+			OR = {
+			has_completed_focus = RCO_strenghtern_government
+			has_completed_focus = RCO_new_constitution
+			}
+		}
+
+		fire_only_once = yes
+
+		cost = 150
+		days_remove = 30
+
+		ai_will_do = {
+			factor = 10000
+		}
+
+		visible = {
+			original_tag = RCO
+			controls_state = 229
+			229 = {
+				NOT = {is_core_of = ROOT}
+			}
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+			state = 229
+			state = 878
+			state = 877
+			state = 790
+		}
+		}
+
+		remove_effect = {
+			add_state_core = 229
+			add_state_core = 878
+			add_state_core = 877
+			add_state_core = 790
+		}
+	}
+
+	RCO_integrate_state_abkhazia = {
+
+		icon = decision_ban_coalition
+
+		available = {
+			original_tag = RCO
+			OR = {
+			has_completed_focus = RCO_strenghtern_government
+			has_completed_focus = RCO_new_constitution
+			}
+		}
+
+		fire_only_once = yes
+
+		cost = 50
+		days_remove = 30
+
+		ai_will_do = {
+			factor = 10000
+		}
+
+		visible = {
+			original_tag = RCO
+			controls_state = 796
+			796 = {
+				NOT = {is_core_of = ROOT}
+			}
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+			state = 796
+		}
+		}
+
+		remove_effect = {
+			add_state_core = 796
+		}
+	}
+
+	RCO_integrate_state_gruzia = {
+
+		icon = decision_ban_coalition
+
+		available = {
+			original_tag = RCO
+			OR = {
+			has_completed_focus = RCO_strenghtern_government
+			has_completed_focus = RCO_new_constitution
+			}
+		}
+
+		fire_only_once = yes
+
+		cost = 150
+		days_remove = 30
+
+		ai_will_do = {
+			factor = 10000
+		}
+
+		visible = {
+			original_tag = RCO
+			controls_state = 231
+			231 = {
+				NOT = {is_core_of = ROOT}
+			}
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+			state = 231
+			state = 797
+			state = 992
+			state = 1159
+		}
+		}
+
+		remove_effect = {
+			add_state_core = 231
+			add_state_core = 797
+			add_state_core = 992
+			add_state_core = 1159
+		}
+	}
+
+RCO_integrate_state_armenia = {
+
+		icon = decision_ban_coalition
+
+		available = {
+			original_tag = RCO
+			OR = {
+			has_completed_focus = RCO_strenghtern_government
+			has_completed_focus = RCO_new_constitution
+			}
+		}
+
+		fire_only_once = yes
+
+		cost = 100
+		days_remove = 30
+
+		ai_will_do = {
+			factor = 10000
+		}
+
+		visible = {
+			original_tag = RCO
+			controls_state = 230
+			230 = {
+				NOT = {is_core_of = ROOT}
+			}
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+			state = 230
+		}
+		}
+
+		remove_effect = {
+			add_state_core = 230
+			
+		}
+	}
+
+	RCO_integrate_state_nagorkar = {
+
+		icon = decision_ban_coalition
+
+		available = {
+			original_tag = RCO
+			OR = {
+			has_completed_focus = RCO_strenghtern_government
+			has_completed_focus = RCO_new_constitution
+			}
+		}
+
+		fire_only_once = yes
+
+		cost = 50
+		days_remove = 30
+
+		ai_will_do = {
+			factor = 10000
+		}
+
+		visible = {
+			original_tag = RCO
+			controls_state = 832
+			832 = {
+				NOT = {is_core_of = ROOT}
+			}
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+			state = 832
+		}
+		}
+
+		remove_effect = {
+			add_state_core = 832
+		}
+	}
+
+	RCO_integrate_state_uzbeki = {
+
+		icon = decision_ban_coalition
+
+		available = {
+			original_tag = RCO
+			OR = {
+			has_completed_focus = RCO_strenghtern_government
+			has_completed_focus = RCO_new_constitution
+			}
+		}
+
+		fire_only_once = yes
+
+		cost = 100
+		days_remove = 30
+
+		ai_will_do = {
+			factor = 10000
+		}
+
+		visible = {
+			original_tag = RCO
+			controls_state = 823
+			823 = {
+				NOT = {is_core_of = ROOT}
+			}
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+			state = 823
+			state = 585
+			state = 821
+			state = 587
+		}
+		}
+
+		remove_effect = {
+			add_state_core = 823
+			add_state_core = 585
+			add_state_core = 821
+			add_state_core = 587
+		}
+	}
+
+	RCO_integrate_state_terkmeni = {
+
+		icon = decision_ban_coalition
+
+		available = {
+			original_tag = RCO
+			OR = {
+			has_completed_focus = RCO_strenghtern_government
+			has_completed_focus = RCO_new_constitution
+			}
+		}
+
+		fire_only_once = yes
+
+		cost = 100
+		days_remove = 30
+
+		ai_will_do = {
+			factor = 10000
+		}
+
+		visible = {
+			original_tag = RCO
+			controls_state = 799
+			799 = {
+				NOT = {is_core_of = ROOT}
+			}
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+			state = 799
+			state = 584
+			state = 801
+			state = 802
+			state = 803
+		}
+		}
+
+		remove_effect = {
+			add_state_core = 799
+			add_state_core = 584
+			add_state_core = 801
+			add_state_core = 802
+			add_state_core = 803
+		}
+	}
+
+	RCO_integrate_state_kirgizi = {
+
+		icon = decision_ban_coalition
+
+		available = {
+			original_tag = RCO
+			OR = {
+			has_completed_focus = RCO_strenghtern_government
+			has_completed_focus = RCO_new_constitution
+			}
+		}
+
+		fire_only_once = yes
+
+		cost = 100
+		days_remove = 30
+
+		ai_will_do = {
+			factor = 10000
+		}
+
+		visible = {
+			original_tag = RCO
+			controls_state = 586
+			586 = {
+				NOT = {is_core_of = ROOT}
+			}
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+			state = 586
+			state = 822
+		}
+		}
+
+		remove_effect = {
+			add_state_core = 586
+			add_state_core = 822
+		}
+	}
+
+	RCO_integrate_state_tadziki = {
+
+		icon = decision_ban_coalition
+
+		available = {
+			original_tag = RCO
+			OR = {
+			has_completed_focus = RCO_strenghtern_government
+			has_completed_focus = RCO_new_constitution
+			}
+		}
+
+		fire_only_once = yes
+
+		cost = 100
+		days_remove = 30
+
+		ai_will_do = {
+			factor = 10000
+		}
+
+		visible = {
+			original_tag = RCO
+			controls_state = 405
+			405 = {
+				NOT = {is_core_of = ROOT}
+			}
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+			state = 405
+			state = 732
+		}
+		}
+
+		remove_effect = {
+			add_state_core = 405
+			add_state_core = 732
+			
+		}
+	}
+
+	RCO_integrate_state_donbass = {
+
+		icon = decision_ban_coalition
+
+		available = {
+			original_tag = RCO
+			OR = {
+			has_completed_focus = RCO_strenghtern_government
+			has_completed_focus = RCO_new_constitution
+			}
+		}
+
+		fire_only_once = yes
+
+		cost = 40
+		days_remove = 30
+
+		ai_will_do = {
+			factor = 10000
+		}
+
+		visible = {
+			original_tag = RCO
+			controls_state = 227
+			227 = {
+				NOT = {is_core_of = ROOT}
+			}
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+			state = 227
+			state = 228
+		}
+		}
+
+		remove_effect = {
+			add_state_core = 227
+			add_state_core = 228
+		}
+	}
+
+	RCO_integrate_state_easternukraine = {
+
+		icon = decision_ban_coalition
+
+		available = {
+			original_tag = RCO
+			OR = {
+			has_completed_focus = RCO_strenghtern_government
+			has_completed_focus = RCO_new_constitution
+			}
+		}
+
+		fire_only_once = yes
+
+		cost = 70
+		days_remove = 30
+
+		ai_will_do = {
+			factor = 10000
+		}
+
+		visible = {
+			original_tag = RCO
+			controls_state = 259
+			259 = {
+				NOT = {is_core_of = ROOT}
+			}
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+			state = 259
+			state = 193
+			state = 225
+			state = 984
+			state = 200
+			state = 196
+			state = 221
+		}
+		}
+
+		remove_effect = {
+			add_state_core = 259
+			add_state_core = 193
+			add_state_core = 225
+			add_state_core = 984
+			add_state_core = 200
+			add_state_core = 196
+			add_state_core = 221
+		}
+	}
+
+	RCO_integrate_state_westernukraine = {
+
+		icon = decision_ban_coalition
+
+		available = {
+			original_tag = RCO
+			OR = {
+			has_completed_focus = RCO_strenghtern_government
+			has_completed_focus = RCO_new_constitution
+			}
+		}
+
+		fire_only_once = yes
+
+		cost = 80
+		days_remove = 30
+
+		ai_will_do = {
+			factor = 100
+		}
+
+		visible = {
+			original_tag = RCO
+			controls_state = 202
+			202 = {
+				NOT = {is_core_of = ROOT}
+			}
+		}
+		highlight_states = {
+			highlight_state_targets = {
+			state = 202
+			state = 1144
+			state = 203
+			state = 226
+			state = 197
+			state = 192
+			state = 806
+			state = 198
+			state = 1086
+			state = 201
+			state = 199
+			state = 1143
+		}
+		}
+
+		remove_effect = {
+			add_state_core = 202
+			add_state_core = 1144
+			add_state_core = 203
+			add_state_core = 226
+			add_state_core = 197
+			add_state_core = 192
+			add_state_core = 806
+			add_state_core = 198
+			add_state_core = 1086
+			add_state_core = 201
+			add_state_core = 199
+			add_state_core = 1143
+		}
+	}
+
+	RCO_integrate_state_galicia = {
+
+		icon = decision_ban_coalition
+
+		available = {
+			original_tag = RCO
+			OR = {
+			has_completed_focus = RCO_strenghtern_government
+			has_completed_focus = RCO_new_constitution
+			}
+		}
+
+		fire_only_once = yes
+
+		cost = 50
+		days_remove = 30
+
+		ai_will_do = {
+			factor = 10000
+		}
+
+		visible = {
+			original_tag = RCO
+			controls_state = 91
+			91 = {
+				NOT = {is_core_of = ROOT}
+			}
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+			state = 80
+			state = 89
+			state = 73
+			state = 91
+			state = 93
+		}
+		}
+
+		remove_effect = {
+			add_state_core = 80
+			add_state_core = 89
+			add_state_core = 73
+			add_state_core = 91
+			add_state_core = 93
+		}
+	}
+
+	RCO_integrate_state_crimea = {
+
+		icon = decision_ban_coalition
+
+		available = {
+			original_tag = RCO
+			OR = {
+			has_completed_focus = RCO_strenghtern_government
+			has_completed_focus = RCO_new_constitution
+			}
+		}
+
+		fire_only_once = yes
+
+		cost = 30
+		days_remove = 30
+
+		ai_will_do = {
+			factor = 10000
+		}
+
+		visible = {
+			original_tag = RCO
+			controls_state = 137
+			137 = {
+				NOT = {is_core_of = ROOT}
+			}
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+			state = 137
+		}
+		}
+
+		remove_effect = {
+			add_state_core = 137
+		}
+	}
+
+	RCO_integrate_state_belarus = {
+
+		icon = decision_ban_coalition
+
+		available = {
+			original_tag = RCO
+			OR = {
+			has_completed_focus = RCO_strenghtern_government
+			has_completed_focus = RCO_new_constitution
+			}
+		}
+
+		fire_only_once = yes
+
+		cost = 100
+		days_remove = 30
+
+		ai_will_do = {
+			factor = 100
+		}
+
+		visible = {
+			original_tag = RCO
+			controls_state = 206
+			206 = {
+				NOT = {is_core_of = ROOT}
+			}
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+			state = 207
+			state = 241
+			state = 204
+			state = 95
+			state = 206
+			state = 194
+			state = 94
+			state = 808
+		}
+		}
+
+		remove_effect = {
+			add_state_core = 207
+			add_state_core = 241
+			add_state_core = 204
+			add_state_core = 95
+			add_state_core = 206
+			add_state_core = 194
+			add_state_core = 94
+			add_state_core = 808
+		}
+	}
+}
+
+#Category only allowed for CHE
+
+CHE_decisions_category = {
+
+	CHE_raise_militia_in_Dagestan = {
+
+		visible = {
+			tag = CHE
+			has_completed_focus = CHE_raise_islamic_militia
+			controls_state = 232
+		}
+
+		cost = 30
+
+		available = {
+			has_government = islamist
+		}
+
+		fire_only_once = yes
+		
+		days_remove = 20
+
+		remove_effect = {
+			232 = {
+			create_unit = {
+						division = "name = \"Boeviki\" division_template = \"Militia\" start_experience_factor = 0.1 start_equipment_factor = 0.7"
+						owner = ROOT
+					}
+					create_unit = {
+						division = "name = \"Boeviki\" division_template = \"Militia\" start_experience_factor = 0.1 start_equipment_factor = 0.7"
+						owner = ROOT
+					}
+					create_unit = {
+						division = "name = \"Boeviki\" division_template = \"Militia\" start_experience_factor = 0.1 start_equipment_factor = 0.7"
+						owner = ROOT
+					}
+			}
+		}
+	}
+
+	CHE_raise_militia_in_1158 = {
+
+		visible = {
+			tag = CHE
+			has_completed_focus = CHE_raise_islamic_militia
+			controls_state = 1158
+		}
+
+		cost = 30
+
+		available = {
+			has_government = islamist
+		}
+
+		fire_only_once = yes
+		
+		days_remove = 20
+
+		remove_effect = {
+			1158 = {
+			create_unit = {
+						division = "name = \"Boeviki\" division_template = \"Militia\" start_experience_factor = 0.1 start_equipment_factor = 0.7"
+						owner = ROOT
+					}
+					create_unit = {
+						division = "name = \"Boeviki\" division_template = \"Militia\" start_experience_factor = 0.1 start_equipment_factor = 0.7"
+						owner = ROOT
+					}
+			}
+		}
+	}
+
+	CHE_raise_militia_in_1157 = {
+
+		visible = {
+			tag = CHE
+			has_completed_focus = CHE_raise_islamic_militia
+			controls_state = 1157
+		}
+
+		cost = 30
+
+		available = {
+			has_government = islamist
+		}
+
+		fire_only_once = yes
+		
+		days_remove = 20
+
+		remove_effect = {
+			1157 = {
+			create_unit = {
+						division = "name = \"Boeviki\" division_template = \"Militia\" start_experience_factor = 0.1 start_equipment_factor = 0.7"
+						owner = ROOT
+					}
+					create_unit = {
+						division = "name = \"Boeviki\" division_template = \"Militia\" start_experience_factor = 0.1 start_equipment_factor = 0.7"
+						owner = ROOT
+					}
+			}
+		}
+	}
+
+	CHE_raise_militia_in_233 = {
+
+		visible = {
+			tag = CHE
+			has_completed_focus = CHE_raise_islamic_militia
+			controls_state = 233
+		}
+
+		cost = 30
+
+		available = {
+			has_government = islamist
+		}
+
+		fire_only_once = yes
+		
+		days_remove = 20
+
+		remove_effect = {
+			233 = {
+			create_unit = {
+						division = "name = \"Boeviki\" division_template = \"Militia\" start_experience_factor = 0.1 start_equipment_factor = 0.7"
+						owner = ROOT
+					}
+					create_unit = {
+						division = "name = \"Boeviki\" division_template = \"Militia\" start_experience_factor = 0.1 start_equipment_factor = 0.7"
+						owner = ROOT
+					}
+			}
+		}
+	}
+
+	CHE_raise_militia_in_235 = {
+
+		visible = {
+			tag = CHE
+			has_completed_focus = CHE_raise_islamic_militia
+			controls_state = 235
+		}
+
+		cost = 50
+
+		available = {
+			has_government = islamist
+		}
+
+		fire_only_once = yes
+		
+		days_remove = 40
+
+		remove_effect = {
+			235 = {
+			create_unit = {
+						division = "name = \"Boeviki\" division_template = \"Militia\" start_experience_factor = 0.1 start_equipment_factor = 0.7"
+						owner = ROOT
+					}
+			}
+		}
+	}
+
+	CHE_raise_militia_in_234 = {
+
+		visible = {
+			tag = CHE
+			has_completed_focus = CHE_raise_islamic_militia
+			controls_state = 234
+		}
+
+		cost = 50
+
+		available = {
+			has_government = islamist
+		}
+
+		fire_only_once = yes
+		
+		days_remove = 40
+
+		remove_effect = {
+			234 = {
+			create_unit = {
+						division = "name = \"Boeviki\" division_template = \"Militia\" start_experience_factor = 0.1 start_equipment_factor = 0.7"
+						owner = ROOT
+					}
+			}
+		}
+	}
+
+	CHE_afg_vols = {
+
+		visible = {
+			tag = CHE
+			has_completed_focus = CHE_ask_islam_for_support
+		}
+
+		cost = 50
+
+		available = {
+			has_government = islamist
+		}
+
+		fire_only_once = yes
+		
+		days_remove = 40
+
+		remove_effect = {
+			828 = {
+			create_unit = {
+						division = "name = \"Taliban brigade\" division_template = \"Militia\" start_experience_factor = 0.4 start_equipment_factor = 1"
+						owner = ROOT
+					}
+				create_unit = {
+						division = "name = \"Taliban brigade\" division_template = \"Militia\" start_experience_factor = 0.4 start_equipment_factor = 1"
+						owner = ROOT
+					}
+			}
+		}
+	}
+
+	CHE_smuggle_weapons_iraq_decision = {
+
+		icon = decision_create_national_guard
+
+		available = {
+			has_completed_focus = CHE_ask_islam_for_support
+		}
+
+		visible = {
+			tag = CHE
+			has_completed_focus = CHE_ask_islam_for_support
+		}
+
+		cost = 50
+		days_remove = 20
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 100
+		}
+
+		complete_effect = {
+			add_equipment_to_stockpile = {
+				type = infantry_equipment_1
+				amount = 1000
+				producer = IRQ
+			}
+			add_equipment_to_stockpile = {
+				type = support_equipment_1
+				amount = 200
+				producer = IRQ
+			}
+		}
+	}
+
+	CHE_smuggle_weapons_turkey_decision = {
+
+		icon = decision_create_national_guard
+
+		available = {
+			has_completed_focus = CHE_ask_islam_for_support
+		}
+
+		visible = {
+			tag = CHE
+			has_completed_focus = CHE_ask_islam_for_support
+			controls_state = 234
+		}
+
+		cost = 100
+		days_remove = 20
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 100
+		}
+
+		complete_effect = {
+			add_equipment_to_stockpile = {
+				type = infantry_equipment_1
+				amount = 4000
+				producer = TUR
+			}
+			add_equipment_to_stockpile = {
+				type = support_equipment_1
+				amount = 300
+				producer = TUR
+			}
+			add_equipment_to_stockpile = {
+			type = artillery_equipment_1
+			amount = 60
+			producer = TUR
+		}
+		add_equipment_to_stockpile = {
+			type = anti_air_equipment_1
+			amount = 400
+			producer = TUR
+		}
+		}
+	}
+
+	CHE_expand_slave_trade_decision = {
+
+		icon = decision_create_national_guard
+
+		available = {
+			has_completed_focus = CHE_spice_must_flow
+		}
+
+		visible = {
+			tag = CHE
+			has_completed_focus = CHE_spice_must_flow
+		}
+
+		cost = 50
+		days_remove = 20
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 100
+		}
+
+		complete_effect = {
+			swap_ideas = {
+    			remove_idea = CHE_drug_traffic_increased
+    			add_idea = CHE_drug_and_slave_traffic
+}
+		}
+	}
+
+	CHE_expell_russians_235_decision = {
+
+		icon = decision_create_national_guard
+
+		available = {
+			has_completed_focus = CHE_continue_holy_war
+		}
+
+		visible = {
+			tag = CHE
+			controls_state = 235
+		}
+
+		cost = 10
+		days_remove = 20
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 100
+		}
+
+		complete_effect = {
+			235 = { 
+				add_compliance = 30
+				add_manpower = -80000
+				 }
+		}
+	}
+
+	CHE_expell_russians_234_decision = {
+
+		icon = decision_create_national_guard
+
+		available = {
+			has_completed_focus = CHE_continue_holy_war
+		}
+
+		visible = {
+			tag = CHE
+			controls_state = 234
+		}
+
+		cost = 10
+		days_remove = 20
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 100
+		}
+
+		complete_effect = {
+			234 = { 
+				add_compliance = 30
+				add_manpower = -100000
+				 }
+		}
+	}
+
+	CHE_subdue_dagestan_decision = {
+
+		icon = decision_create_national_guard
+
+		available = {
+			has_completed_focus = CHE_continue_holy_war
+		}
+
+		visible = {
+			tag = CHE
+			controls_state = 232
+		}
+
+		cost = 10
+		days_remove = 20
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 100
+		}
+
+		complete_effect = {
+			232 = { 
+				add_compliance = 50
+				add_manpower = -30000
+				 }
+		}
+	}
+
+	CHE_subdue_1158_decision = {
+
+		icon = decision_create_national_guard
+
+		available = {
+			has_completed_focus = CHE_continue_holy_war
+		}
+
+		visible = {
+			tag = CHE
+			controls_state = 1158
+		}
+
+		cost = 10
+		days_remove = 20
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 100
+		}
+
+		complete_effect = {
+			1158 = { 
+				add_compliance = 50
+				add_manpower = -30000
+				 }
+		}
+	}
+
+	CHE_subdue_1157_decision = {
+
+		icon = decision_create_national_guard
+
+		available = {
+			has_completed_focus = CHE_continue_holy_war
+		}
+
+		visible = {
+			tag = CHE
+			controls_state = 1157
+		}
+
+		cost = 10
+		days_remove = 20
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 100
+		}
+
+		complete_effect = {
+			1157 = { 
+				add_compliance = 50
+				add_manpower = -30000
+				 }
+		}
+	}
+
+	CHE_subdue_233_decision = {
+
+		icon = decision_create_national_guard
+
+		available = {
+			has_completed_focus = CHE_continue_holy_war
+		}
+
+		visible = {
+			tag = CHE
+			controls_state = 233
+		}
+
+		cost = 10
+		days_remove = 20
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 100
+		}
+
+		complete_effect = {
+			233 = { 
+				add_compliance = 50
+				add_manpower = -80000
+				 }
+		}
+	}
+	}
+
+	RCO_USA_interactions_category = {
+
+		USA_send_instr_to_media_decision = {
+
+		available = {
+			has_global_flag = usa_intervened_in_russian_cw
+		}
+
+		visible = {
+			original_tag = USA
+			has_global_flag = usa_intervened_in_russian_cw
+			check_variable = {
+    			RCO.RCO_public_opinion_level > 30
+			}
+		}
+
+		cost = 50
+		days_remove = 20
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 100
+		}
+
+		complete_effect = {
+			add_to_variable = {
+    			var = RCO.RCO_public_opinion_level
+    			value = -20
+			}
+			custom_effect_tooltip = RCO_usa_po_decrease_20_tt
+			set_country_flag = USA_sent_instr_to_media
+		}
+	}
+
+	USA_incr_censorship_decision = {
+
+		available = {
+			has_global_flag = usa_intervened_in_russian_cw
+		}
+
+		visible = {
+			original_tag = USA
+			has_country_flag = USA_sent_instr_to_media
+			check_variable = {
+    			RCO.RCO_public_opinion_level > 30
+			}
+		}
+
+		cost = 80
+		days_remove = 20
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 100
+		}
+
+		complete_effect = {
+			set_country_flag = USA_incr_cens
+			add_to_variable = {
+    			var = RCO.RCO_public_opinion_level
+    			value = -20
+			}
+			custom_effect_tooltip = RCO_usa_po_decrease_20_tt
+		}
+	}
+
+	USA_new_witch_hunt_decision = {
+
+		available = {
+			has_global_flag = usa_intervened_in_russian_cw
+		}
+
+		visible = {
+			original_tag = USA
+			has_country_flag = USA_incr_cens
+			check_variable = {
+    			RCO.RCO_public_opinion_level > 30
+			}
+		}
+
+		cost = 110
+		days_remove = 20
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 100
+		}
+
+		complete_effect = {
+			set_country_flag = USA_new_witch_hunt
+			add_to_variable = {
+    			var = RCO.RCO_public_opinion_level
+    			value = -20
+			}
+			custom_effect_tooltip = RCO_usa_po_decrease_20_tt
+		}
+	}
+
+	USA_make_concessions_decision = {
+
+		available = {
+			has_global_flag = usa_intervened_in_russian_cw
+		}
+
+		visible = {
+			original_tag = USA
+			check_variable = {
+    			RCO.RCO_public_opinion_level > 30
+			}
+			check_variable = {
+    			RCO.RCO_involvement_level > 3
+			}
+		}
+
+		cost = 40
+		days_remove = 90
+
+		fire_only_once = no
+
+		ai_will_do = {
+			factor = 40
+		}
+
+		complete_effect = {
+			add_to_variable = {
+    			var = RCO.RCO_public_opinion_level
+    			value = -30
+			}
+			add_to_variable = {
+    			var = RCO.RCO_involvement_level
+    			value = -2
+			}
+			custom_effect_tooltip = RCO_usa_po_decrease_30_tt
+			custom_effect_tooltip = RCO_usa_inv_decrease_2_tt
+		}
+	}
+
+	USA_abandon_russia_decision = {
+
+		available = {
+			has_global_flag = usa_intervened_in_russian_cw
+		}
+
+		visible = {
+			original_tag = USA
+			check_variable = {
+    			RCO.RCO_public_opinion_level > 30
+			}
+		}
+
+		cost = 10
+		days_remove = 5
+
+		fire_only_once = no
+
+		ai_will_do = {
+    		base = 0
+    			modifier = {
+        			add = 150
+        			has_stability < 0.3
+    			}
+		}
+
+		complete_effect = {
+			clr_global_flag = usa_intervened_in_russian_cw
+			custom_effect_tooltip = RCO_usa_abandon_russia_tt
+			SOV = {
+			country_event = { id = cw.46 }
+		}
+		}
+	}
+
+	USA_anticommunist_propaganda_decision = {
+
+		available = {
+			has_global_flag = usa_intervened_in_russian_cw
+		}
+
+		visible = {
+			original_tag = USA
+			check_variable = {
+    			RCO.RCO_public_opinion_level > 6
+			}
+		}
+
+		cost = 8
+		days_remove = 2
+
+		fire_only_once = no
+
+		ai_will_do = {
+			factor = 100
+		}
+
+		complete_effect = {
+			add_to_variable = {
+    			var = RCO.RCO_public_opinion_level
+    			value = -5
+			}
+			custom_effect_tooltip = RCO_usa_po_decrease_5_tt
+		}
+	}
+
+## + level of involvment dec
+
+	USA_increase_involvment_level_decision = {
+
+		available = {
+			has_global_flag = usa_intervened_in_russian_cw
+		}
+
+		visible = {
+			original_tag = USA
+			check_variable = {
+    			RCO.RCO_involvement_level > 0
+			}
+			country_exists = SOV
+		}
+
+		cost = 30
+		days_remove = 5
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 100
+		}
+
+		complete_effect = {
+			add_to_variable = {
+    			var = RCO.RCO_involvement_level
+    			value = 1
+			}
+			add_to_variable = {
+    			var = RCO.RCO_public_opinion_level
+    			value = 10
+			}
+			custom_effect_tooltip = RCO_usa_inv_increase_1_tt
+			custom_effect_tooltip = RCO_usa_po_increase_10_tt
+		}
+	}
+
+	USA_seize_russian_oil_decision = {
+
+		available = {
+			has_global_flag = usa_intervened_in_russian_cw
+		}
+
+		visible = {
+			original_tag = USA
+			check_variable = {
+    			RCO.RCO_involvement_level > 1
+			}
+			country_exists = SOV
+		}
+
+		cost = 50
+		days_remove = 5
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 100
+		}
+
+		complete_effect = {
+			add_to_variable = {
+    			var = RCO.RCO_involvement_level
+    			value = 1
+			}
+			give_resource_rights = { receiver = USA state = 581 }
+			give_resource_rights = { receiver = USA state = 579 }
+			give_resource_rights = { receiver = USA state = 577 }
+			custom_effect_tooltip = RCO_usa_inv_increase_1_tt
+		}
+	}
+
+	USA_benefit_from_chechen_oilconquest_decision = {
+
+		available = {
+			has_global_flag = usa_intervened_in_russian_cw
+		}
+
+		visible = {
+			original_tag = USA
+			check_variable = {
+    			RCO.RCO_involvement_level > 0
+			}
+			country_exists = CHE
+			CHE = { num_of_controlled_states > 2 }
+		}
+
+		cost = 50
+		days_remove = 5
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 100
+		}
+
+		complete_effect = {
+			add_to_variable = {
+    			var = RCO.RCO_involvement_level
+    			value = 1
+			}
+			add_to_variable = {
+    			var = RCO.RCO_public_opinion_level
+    			value = 5
+			}
+			custom_effect_tooltip = RCO_usa_inv_increase_1_tt
+			custom_effect_tooltip = RCO_usa_po_increase_5_tt
+		}
+	}
+
+	USA_send_mercenaries_decision = {
+
+		available = {
+			has_global_flag = usa_intervened_in_russian_cw
+		}
+
+		visible = {
+			original_tag = USA
+			check_variable = {
+    			RCO.RCO_involvement_level > 0
+			}
+			country_exists = SOV
+		}
+
+		cost = 80
+		days_remove = 5
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 100
+		}
+
+		complete_effect = {
+			add_to_variable = {
+    			var = RCO.RCO_involvement_level
+    			value = 1
+			}
+			add_ideas = GEN_peacekeeping_efforts1
+		set_rule = { can_send_volunteers = yes }
+		set_country_flag = USA_sent_mercs
+		add_to_variable = {
+    			var = RCO.RCO_public_opinion_level
+    			value = 5
+			}
+			custom_effect_tooltip = RCO_usa_inv_increase_1_tt
+			custom_effect_tooltip = RCO_usa_po_increase_5_tt
+			add_threat = 10
+		}
+	}
+
+	USA_american_contingent_decision = {
+
+		available = {
+			has_global_flag = usa_intervened_in_russian_cw
+		}
+
+		visible = {
+			original_tag = USA
+			check_variable = {
+    			RCO.RCO_involvement_level > 3
+			}
+			country_exists = SOV
+			has_country_flag = USA_sent_mercs
+		}
+
+		cost = 120
+		days_remove = 5
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 100
+		}
+
+		complete_effect = {
+			add_to_variable = {
+    			var = RCO.RCO_involvement_level
+    			value = 1
+			}
+			swap_ideas = {
+			add_idea = GEN_peacekeeping_efforts2
+			remove_idea = GEN_peacekeeping_efforts1
+		}
+		add_to_variable = {
+    			var = RCO.RCO_public_opinion_level
+    			value = 15
+			}
+			custom_effect_tooltip = RCO_usa_inv_increase_1_tt
+			custom_effect_tooltip = RCO_usa_po_increase_15_tt
+			add_threat = 10
+		}
+	}
+
+	USA_seize_russian_assets_abroad_decision = {
+
+		available = {
+			has_global_flag = usa_intervened_in_russian_cw
+		}
+
+		visible = {
+			original_tag = USA
+			check_variable = {
+    			RCO.RCO_involvement_level > 0
+			}
+			country_exists = SOV
+			SOV = { surrender_progress > 0.8 }
+		}
+
+		cost = 20
+		days_remove = 5
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 100
+		}
+
+		complete_effect = {
+			add_to_variable = {
+    			var = RCO.RCO_involvement_level
+    			value = 1
+			}
+			custom_effect_tooltip = RCO_usa_inv_increase_1_tt
+		}
+	}
+
+	USA_sell_weapons_sov_decision = {
+
+		available = {
+			has_global_flag = usa_intervened_in_russian_cw
+		}
+
+		visible = {
+			original_tag = USA
+			country_exists = SOV
+			NOT = { has_idea = USA_sold_weapons }
+		}
+
+		cost = 20
+		days_remove = 50
+
+		fire_only_once = no
+
+		ai_will_do = {
+			factor = 100
+		}
+
+		complete_effect = {
+			add_timed_idea = {
+    			idea = USA_sold_weapons
+   				 days = 30
+			}
+			add_to_variable = {
+    			var = RCO.RCO_public_opinion_level
+    			value = 5
+			}
+			add_equipment_to_stockpile = {
+			type = infantry_equipment_1
+			amount = -1500
+			producer = USA
+		}
+		add_equipment_to_stockpile = {
+			type = support_equipment_1
+			amount = -50
+			producer = CHE
+		}
+		SOV = {
+			country_event = { id = cw.46 }
+		}
+		}
+	}
+
+	USA_push_for_increased_nato_production_decision = {
+
+		available = {
+			has_global_flag = usa_intervened_in_russian_cw
+		}
+
+		visible = {
+			original_tag = USA
+			check_variable = {
+    			RCO.RCO_involvement_level > 0
+			}
+			country_exists = RCO
+		}
+
+		cost = 40
+		days_remove = 5
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 100
+		}
+
+		complete_effect = {
+			add_to_variable = {
+    			var = RCO.RCO_involvement_level
+    			value = 1
+			}
+			add_timed_idea = {
+    			idea = USA_increased_nato_production
+   				 days = 150
+			}
+			complete_national_focus = USA_international_diplomacy
+			complete_national_focus = USA_reaffirm_nato
+			complete_national_focus = USA_diplomacy_europe
+			set_country_flag = usa_increased_nato_prod_cw
+			add_to_variable = {
+    			var = RCO.RCO_public_opinion_level
+    			value = 8
+			}
+			custom_effect_tooltip = RCO_usa_inv_increase_1_tt
+			custom_effect_tooltip = RCO_usa_po_increase_8_tt
+			hidden_effect = { add_political_power = -150 }
+		}
+	}
+
+	USA_initiate_nato_expansion_decision = {
+
+		available = {
+			has_global_flag = usa_intervened_in_russian_cw
+		}
+
+		visible = {
+			original_tag = USA
+			check_variable = {
+    			RCO.RCO_involvement_level > 0
+			}
+			country_exists = RCO
+			has_country_flag = usa_increased_nato_prod_cw
+			is_in_faction_with = GER
+			is_in_faction_with = ENG
+			is_in_faction_with = FRA
+		}
+
+		cost = 50
+		days_remove = 5
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 100
+		}
+
+		complete_effect = {
+			add_to_variable = {
+    			var = RCO.RCO_involvement_level
+    			value = 1
+			}
+			complete_national_focus = USA_2004_nato_expansion
+			set_country_flag = usa_nato2004exp_cw
+			add_to_variable = {
+    			var = RCO.RCO_public_opinion_level
+    			value = 8
+			}
+			custom_effect_tooltip = RCO_usa_inv_increase_1_tt
+			custom_effect_tooltip = RCO_usa_po_increase_8_tt
+			add_threat = 10
+		}
+	}
+
+	USA_push_for_increased_nato_production2_decision = {
+
+		available = {
+			has_global_flag = usa_intervened_in_russian_cw
+		}
+
+		visible = {
+			original_tag = USA
+			check_variable = {
+    			RCO.RCO_involvement_level > 0
+			}
+			country_exists = RCO
+			has_country_flag = usa_nato2004exp_cw
+		}
+
+		cost = 70
+		days_remove = 5
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 100
+		}
+
+		complete_effect = {
+			add_to_variable = {
+    			var = RCO.RCO_involvement_level
+    			value = 1
+			}
+			add_timed_idea = {
+    			idea = USA_increased_nato_production2
+   				 days = 150
+			}
+			set_country_flag = usa_increased_nato_prod2_cw
+			add_to_variable = {
+    			var = RCO.RCO_public_opinion_level
+    			value = 10
+			}
+			custom_effect_tooltip = RCO_usa_inv_increase_1_tt
+			custom_effect_tooltip = RCO_usa_po_increase_10_tt
+		}
+	}
+
+	USA_initiate_nato_expansion2_decision = {
+
+		available = {
+			has_global_flag = usa_intervened_in_russian_cw
+		}
+
+		visible = {
+			original_tag = USA
+			check_variable = {
+    			RCO.RCO_involvement_level > 0
+			}
+			country_exists = RCO
+			has_country_flag = usa_increased_nato_prod2_cw
+		}
+
+		cost = 50
+		days_remove = 5
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 100
+		}
+
+		complete_effect = {
+			add_to_variable = {
+    			var = RCO.RCO_involvement_level
+    			value = 1
+			}
+			complete_national_focus = USA_2009_nato_expansion
+			set_country_flag = usa_nato2009exp_cw
+			add_to_variable = {
+    			var = RCO.RCO_public_opinion_level
+    			value = 15
+			}
+			custom_effect_tooltip = RCO_usa_inv_increase_1_tt
+			custom_effect_tooltip = RCO_usa_po_increase_15_tt
+		}
+	}
+	}
+
+	SOV_civilwar_decisions_category = {
+
+	SOV_deteriorating_army_mission = {
+
+		allowed = { original_tag = SOV }
+
+		available = {
+			hidden_trigger = { always = no }
+		}
+
+		activation = {
+			tag = SOV
+			has_war_with = RCO
+			NOT = { has_country_flag = sov_flag_wagner_power }
+		}
+
+		icon = decision_strike
+
+		fire_only_once = no
+
+		cancel_if_not_visible = no
+
+		is_good = no
+
+		days_mission_timeout = 10
+
+		timeout_effect = {
+			custom_effect_tooltip = RKKA_attack_decrease_3_TT
+			custom_effect_tooltip = RKKA_defence_decrease_3_TT
+			add_to_variable = {
+				sov_army_offense = -0.02
+			}
+			add_to_variable = {
+				sov_army_defence = -0.02
+			}
+			if = {
+			limit = {
+				SOV = { is_ai = yes }
+				RCO = { is_ai = yes }
+			}
+			add_to_variable = {
+				sov_state_surrender_limit = -0.02
+			}
+			}
+		}
+	}
+
+	SOV_deteriorating_state_mission = {
+
+		allowed = { original_tag = SOV }
+
+		available = {
+			hidden_trigger = { always = no }
+			NOT = { has_government = fascist }
+		}
+
+		activation = {
+			tag = SOV
+			has_war_with = RCO
+			NOT = { has_government = fascist }
+			SOV = { is_ai = yes }
+			RCO = { is_ai = yes }
+		}
+
+		icon = decision_strike
+
+		fire_only_once = no
+
+		cancel_if_not_visible = no
+
+		is_good = no
+
+		days_mission_timeout = 10
+
+		timeout_effect = {
+			if = {
+				limit = { NOT = { has_government = fascist } }
+				add_to_variable = {
+					sov_state_surrender_limit = -0.005
+				}
+			}
+		}
+	}
+	}
+
+
+RCO_prca_category = {
+
+	prca_RCO_resistance = {
+
+		icon = eng_propaganda_campaigns
+
+		days_remove = 100
+
+		cost = RCO_resistance_cost
+		available = {
+			check_variable = {
+				RCO_available_campaign_slots > 0
+			}
+		}
+
+		modifier = {
+			war_support_factor = 0.05
+			army_morale_factor = 0.05
+			surrender_limit = 0.05
+		}
+
+		complete_effect = {
+			set_country_flag = RCO_resistance_in_use
+			custom_effect_tooltip = POL_increase_propaganda_cost
+			add_timed_idea = { idea = rco_poster_resistance days = 10 }
+			add_to_variable = {
+				var = RCO_resistance_cost
+				value = 15
+			}
+			add_to_variable = {
+				var = RCO_available_campaign_slots
+				value = -1
+			}
+			set_variable = { RCO_new_propaganda_campaign = 2 }
+			RCO_pick_propaganda_campaign_slot_effect = yes
+		}
+
+		remove_effect = {
+			set_variable = { RCO_propaganda_campaign_to_remove = 2 }
+			RCO_reset_propaganda_campaign_slot_effect = yes
+			clr_country_flag = RCO_resistance_in_use
+			add_to_variable = {
+				var = RCO_available_campaign_slots
+				value = 1
+			}
+		}
+	}
+	prca_RCO_second_campaign = {
+
+		icon = eng_propaganda_campaigns
+
+		days_remove = 100
+
+		cost = RCO_resistance_cost
+		available = {
+			check_variable = {
+				RCO_available_campaign_slots > 0
+			}
+		}
+
+		modifier = {
+			army_attack_factor = 0.05
+			breakthrough_factor = 0.05
+			planning_speed = 0.07
+		}
+
+		complete_effect = {
+			set_country_flag = RCO_resistance_in_use
+			custom_effect_tooltip = POL_increase_propaganda_cost
+			add_timed_idea = { idea = rco_poster_resistance days = 10 }
+			add_to_variable = {
+				var = RCO_resistance_cost
+				value = 15
+			}
+			add_to_variable = {
+				var = RCO_available_campaign_slots
+				value = -1
+			}
+			set_variable = { RCO_new_propaganda_campaign = 3 }
+			RCO_pick_propaganda_campaign_slot_effect = yes
+		}
+
+		remove_effect = {
+			set_variable = { RCO_propaganda_campaign_to_remove = 3 }
+			RCO_reset_propaganda_campaign_slot_effect = yes
+			clr_country_flag = RCO_resistance_in_use
+			add_to_variable = {
+				var = RCO_available_campaign_slots
+				value = 1
+			}
+		}
+	}
+	prca_RCO_third_campaign = {
+
+		icon = eng_propaganda_campaigns
+
+		days_remove = 100
+
+		cost = RCO_resistance_cost
+		available = {
+			check_variable = {
+				RCO_available_campaign_slots > 0
+			}
+		}
+
+		modifier = {
+			experience_gain_army_factor = 0.07
+			army_org_factor = 0.03
+			max_planning = 0.05
+		}
+
+		complete_effect = {
+			set_country_flag = RCO_resistance_in_use
+			custom_effect_tooltip = POL_increase_propaganda_cost
+			add_timed_idea = { idea = rco_poster_resistance days = 10 }
+			add_to_variable = {
+				var = RCO_resistance_cost
+				value = 15
+			}
+			add_to_variable = {
+				var = RCO_available_campaign_slots
+				value = -1
+			}
+			set_variable = { RCO_new_propaganda_campaign = 4 }
+			RCO_pick_propaganda_campaign_slot_effect = yes
+		}
+
+		remove_effect = {
+			set_variable = { RCO_propaganda_campaign_to_remove = 4 }
+			RCO_reset_propaganda_campaign_slot_effect = yes
+			clr_country_flag = RCO_resistance_in_use
+			add_to_variable = {
+				var = RCO_available_campaign_slots
+				value = 1
+			}
+		}
+	}
+	prca_RCO_fourth_campaign = {
+
+		icon = eng_propaganda_campaigns
+
+		days_remove = 100
+
+		cost = RCO_resistance_cost
+		available = {
+			check_variable = {
+				RCO_available_campaign_slots > 0
+			}
+		}
+
+		modifier = {
+			conscription_factor = 0.05
+			weekly_manpower = 750
+			training_time_army_factor = -0.05
+		}
+
+		complete_effect = {
+			set_country_flag = RCO_resistance_in_use
+			custom_effect_tooltip = POL_increase_propaganda_cost
+			add_timed_idea = { idea = rco_poster_resistance days = 10 }
+			add_to_variable = {
+				var = RCO_resistance_cost
+				value = 15
+			}
+			add_to_variable = {
+				var = RCO_available_campaign_slots
+				value = -1
+			}
+			set_variable = { RCO_new_propaganda_campaign = 5 }
+			RCO_pick_propaganda_campaign_slot_effect = yes
+		}
+
+		remove_effect = {
+			set_variable = { RCO_propaganda_campaign_to_remove = 5 }
+			RCO_reset_propaganda_campaign_slot_effect = yes
+			clr_country_flag = RCO_resistance_in_use
+			add_to_variable = {
+				var = RCO_available_campaign_slots
+				value = 1
+			}
+		}
+	}
+	prca_RCO_fifth_campaign = {
+
+		icon = eng_propaganda_campaigns
+
+		days_remove = 100
+
+		cost = RCO_resistance_cost
+		available = {
+			check_variable = {
+				RCO_available_campaign_slots > 0
+			}
+		}
+
+		modifier = {
+			war_support_factor = 0.05
+			army_morale_factor = 0.05
+			land_reinforce_rate = 0.02
+		}
+
+		complete_effect = {
+			set_country_flag = RCO_resistance_in_use
+			custom_effect_tooltip = POL_increase_propaganda_cost
+			add_timed_idea = { idea = rco_poster_resistance days = 10 }
+			add_to_variable = {
+				var = RCO_resistance_cost
+				value = 15
+			}
+			add_to_variable = {
+				var = RCO_available_campaign_slots
+				value = -1
+			}
+			set_variable = { RCO_new_propaganda_campaign = 6 }
+			RCO_pick_propaganda_campaign_slot_effect = yes
+		}
+
+		remove_effect = {
+			set_variable = { RCO_propaganda_campaign_to_remove = 6 }
+			RCO_reset_propaganda_campaign_slot_effect = yes
+			clr_country_flag = RCO_resistance_in_use
+			add_to_variable = {
+				var = RCO_available_campaign_slots
+				value = 1
+			}
+		}
+	}
+	prca_RCO_sixth_campaign = {
+
+		icon = eng_propaganda_campaigns
+
+		days_remove = 100
+
+		cost = RCO_resistance_cost
+		available = {
+			check_variable = {
+				RCO_available_campaign_slots > 0
+			}
+		}
+
+		modifier = {
+			research_speed_factor = 0.03
+			industrial_capacity_factory = 0.05
+			production_factory_max_efficiency_factor = 0.05
+		}
+
+		complete_effect = {
+			set_country_flag = RCO_resistance_in_use
+			custom_effect_tooltip = POL_increase_propaganda_cost
+			add_timed_idea = { idea = rco_poster_resistance days = 10 }
+			add_to_variable = {
+				var = RCO_resistance_cost
+				value = 15
+			}
+			add_to_variable = {
+				var = RCO_available_campaign_slots
+				value = -1
+			}
+			set_variable = { RCO_new_propaganda_campaign = 7 }
+			RCO_pick_propaganda_campaign_slot_effect = yes
+		}
+
+		remove_effect = {
+			set_variable = { RCO_propaganda_campaign_to_remove = 7 }
+			RCO_reset_propaganda_campaign_slot_effect = yes
+			clr_country_flag = RCO_resistance_in_use
+			add_to_variable = {
+				var = RCO_available_campaign_slots
+				value = 1
+			}
+		}
+	}
+	prca_RCO_seventh_campaign = {
+
+		icon = eng_propaganda_campaigns
+
+		days_remove = 100
+
+		cost = RCO_resistance_cost
+		available = {
+			check_variable = {
+				RCO_available_campaign_slots > 0
+			}
+		}
+
+		modifier = {
+			production_speed_buildings_factor = 0.05
+			industrial_capacity_factory = 0.05
+			stability_factor = 0.03
+		}
+
+		complete_effect = {
+			set_country_flag = RCO_resistance_in_use
+			custom_effect_tooltip = POL_increase_propaganda_cost
+			add_timed_idea = { idea = rco_poster_resistance days = 10 }
+			add_to_variable = {
+				var = RCO_resistance_cost
+				value = 15
+			}
+			add_to_variable = {
+				var = RCO_available_campaign_slots
+				value = -1
+			}
+			set_variable = { RCO_new_propaganda_campaign = 8 }
+			RCO_pick_propaganda_campaign_slot_effect = yes
+		}
+
+		remove_effect = {
+			set_variable = { RCO_propaganda_campaign_to_remove = 8 }
+			RCO_reset_propaganda_campaign_slot_effect = yes
+			clr_country_flag = RCO_resistance_in_use
+			add_to_variable = {
+				var = RCO_available_campaign_slots
+				value = 1
+			}
+		}
+	}
+	prca_RCO_eighth_campaign = {
+
+		icon = eng_propaganda_campaigns
+
+		days_remove = 100
+
+		cost = RCO_resistance_cost
+		available = {
+			check_variable = {
+				RCO_available_campaign_slots > 0
+			}
+		}
+
+		modifier = {
+			production_factory_efficiency_gain_factor = 0.07
+			industrial_capacity_factory = 0.06
+			consumer_goods_expected_value = -0.02
+		}
+
+		complete_effect = {
+			set_country_flag = RCO_resistance_in_use
+			custom_effect_tooltip = POL_increase_propaganda_cost
+			add_timed_idea = { idea = rco_poster_resistance days = 10 }
+			add_to_variable = {
+				var = RCO_resistance_cost
+				value = 15
+			}
+			add_to_variable = {
+				var = RCO_available_campaign_slots
+				value = -1
+			}
+			set_variable = { RCO_new_propaganda_campaign = 9 }
+			RCO_pick_propaganda_campaign_slot_effect = yes
+		}
+
+		remove_effect = {
+			set_variable = { RCO_propaganda_campaign_to_remove = 9 }
+			RCO_reset_propaganda_campaign_slot_effect = yes
+			clr_country_flag = RCO_resistance_in_use
+			add_to_variable = {
+				var = RCO_available_campaign_slots
+				value = 1
+			}
+		}
+	}
+}

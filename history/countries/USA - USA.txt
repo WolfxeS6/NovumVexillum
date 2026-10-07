@@ -17,6 +17,15 @@ if = {
 	}
 }
 
+set_research_slots = 5
+set_convoys = 1500
+set_stability = 0.55
+
+country_event = {
+	id = usa.62
+	days = 281
+}
+
 country_event = {
 	id = usa.79
 	days = 80
@@ -67,12 +76,6 @@ country_event = {
 	days = 360
 }
 
-send_embargo = CUB
-
-set_research_slots = 5
-set_convoys = 1500
-set_stability = 0.55
-
 set_country_flag = country_language_english
 set_country_flag = country_behavior_concentrated
 set_country_flag = country_behavior_competitive
@@ -88,28 +91,25 @@ complete_special_project = sp:sp_rockets_ballistic_missile
 complete_special_project = sp:sp_rockets_medium_range_ballistic_missile
 complete_special_project = sp:sp_rockets_long_range_ballistic_missile
 complete_special_project = sp:sp_nuclear_reactor
-#complete_special_project = sp:sp_commercial_nuclear_reactor
+complete_special_project = sp:sp_commercial_nuclear_reactor
 complete_special_project = sp:sp_nuclear_bomb
 complete_special_project = sp:sp_thermo_nuclear_bomb
 complete_special_project = sp:sp_nuclear_warheads
-#set_technology = commercial_nuclear_reactor_tech
+set_technology = commercial_nuclear_reactor_tech
 
 if = {
 	limit = {
 		NOT = {has_dlc = "By Blood Alone"}
 	}
 	set_technology = {
-		heli1 = 1
 		CAS1 = 1
 		CAS2 = 1
 		cv_CAS1 = 1
 		cv_CAS2 = 1
 		fighter1 = 1
 		fighter2 = 1
-		fighter3 = 1
 		cv_fighter1 = 1
 		cv_fighter2 = 1
-		cv_fighter3 = 1
 		naval_bomber1 = 1
 		naval_bomber2 = 1
 		naval_bomber3 = 1
@@ -541,7 +541,7 @@ set_technology = {
 	## Armor ##
 	#light_mechanized_infantry1 = 1
 	#light_mechanized_infantry2 = 1
-	#amphibious_mechanized_infantry1 = 1
+	amphibious_mechanized_infantry1 = 1
 	
 	## Artillery ##
 	coldwar_artillery = 1
@@ -571,9 +571,9 @@ set_technology = {
 	synth_oil_experiments = 1
 
 	## Doctrines ##
-	#superior_firepower = 1
-	#base_strike = 1
-	#formation_flying = 1
+	superior_firepower = 1
+	base_strike = 1
+	formation_flying = 1
 }
 
 if = {
@@ -627,7 +627,6 @@ if = {
 		basic_secondary_battery = 1
 		basic_nuclear_reactors = 1
 		mtg_transport = 1
-		mtg_landing_craft = 1
 		basic_naval_mines = 1
 		
 	}
@@ -769,22 +768,25 @@ recruit_character = USA_john_kerry
 recruit_character = USA_barack_obama
 recruit_character = USA_john_mccain
 recruit_character = USA_Mitt_Romney
+recruit_character = USA_pat_buchanan
 recruit_character = USA_Donald_Trump
 recruit_character = USA_Ted_Cruz
 recruit_character = USA_Marco_Rubio
 recruit_character = USA_John_Kasich
 recruit_character = USA_Hillary_Clinton
+recruit_character = USA_warren_beatty
 recruit_character = USA_Bernie_Sanders
 recruit_character = USA_Joe_Biden
 recruit_character = USA_Tulsi_Gabbard2020
 recruit_character = USA_harry_browne
 recruit_character = USA_ralph_nader
-recruit_character = USA_john_bachtell
 recruit_character = USA_gus_hall
 recruit_character = USA_sam_webb
 recruit_character = USA_angela_davis
 recruit_character = USA_michael_myerson
 recruit_character = USA_bob_avakian
+recruit_character = USA_emile_schepers
+recruit_character = USA_john_bachtell
 recruit_character = USA_the_grand_council
 recruit_character = USA_howard_phillips
 recruit_character = USA_david_mcreynolds
@@ -882,6 +884,8 @@ recruit_character = USA_dennis_c._blair
 recruit_character = USA_vernon_e._clark
 recruit_character = USA_thomas_b._fargo
 recruit_character = USA_charles_s._abbot
+recruit_character = USA_grand_council
+recruit_character = USA_advisor_USA_alexandria_ocasio-cortez
 recruit_character = USA_jonas_pillow
 recruit_character = USA_wilton_wilcox
 recruit_character = USA_advisor_USA_donald_trump
@@ -1122,34 +1126,8 @@ if = {
 			fixed_ship_anti_air_slot = ship_anti_air_2
 			fixed_ship_radar_slot = ship_radar_1
 			fixed_ship_engine_slot = carrier_ship_engine_n1
+			fixed_ship_secondaries_slot = empty
 			front_1_custom_slot = ship_deck_space
-			mid_1_custom_slot = ship_deck_space
-			mid_2_custom_slot = ship_deck_space
-			mid_3_custom_slot = ship_deck_space
-			mid_4_custom_slot = empty
-			fixed_ship_armor_slot = ship_armor_carrier_deck
-			fixed_ship_secondaries_slot = ship_anti_air_2
-		}
-		obsolete = no
-	}
-	
-	create_equipment_variant = {
-		name = "Kitty Hawk-class"
-		type = ship_hull_carrier_conversion_bb
-		parent_version = 0
-		modules = {
-			fixed_ship_deck_slot_1 = ship_deck_space
-			fixed_ship_deck_slot_2 = ship_deck_space
-			fixed_ship_anti_air_slot = ship_anti_air_2
-			fixed_ship_radar_slot = ship_radar_1
-			fixed_ship_engine_slot = carrier_ship_engine_1
-			front_1_custom_slot = ship_deck_space
-			mid_1_custom_slot = ship_deck_space
-			mid_2_custom_slot = ship_deck_space
-			mid_3_custom_slot = ship_deck_space
-			mid_4_custom_slot = empty
-			fixed_ship_armor_slot = ship_armor_carrier_deck
-			fixed_ship_secondaries_slot = ship_anti_air_2
 		}
 		obsolete = no
 	}
@@ -1207,7 +1185,7 @@ if = {
 		NOT = {has_dlc = "By Blood Alone"}
 	}
 		add_equipment_to_stockpile = {
-			type = fighter_equipment_2
+			type = fighter_equipment_1
 			amount = 1080
 			producer = USA
 		}
@@ -1218,12 +1196,12 @@ if = {
 		}
 		add_equipment_to_stockpile = {
 			type = cv_fighter_equipment_3
-			amount = 500#250
+			amount = 250
 			producer = USA
 		}
 		add_equipment_to_stockpile = {
 			type = cv_CAS_equipment_2
-			amount = 250#120
+			amount = 120
 			producer = USA
 		}
 		add_equipment_to_stockpile = {

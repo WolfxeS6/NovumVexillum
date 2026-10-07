@@ -56,200 +56,227 @@ decisions_GER = {
 			base = 2
 		}
 	}
-}
-GER_agenda_2010_category = {
-	Hartz_1_staff_service_agencies = {
+	Hartz_I = {
 		visible = {
-			has_completed_focus = GER_hartz_reforms
+			has_completed_focus = GER_Hartz_I_and_II
 		}
-		icon = GFX_decision_generic_construction
-
-		days_remove = 30
-		cost = 35
-		fire_only_once = yes
-
-		remove_effect = {
-			add_stability = 0.02
-			modify_country_flag = {
-				flag = GER_hartz_levels
-				value = 1
-			}
-			### The Maatwerk bankruptcy event
-		}
-
-		ai_will_do = {
-			base = 2
-		}
-	}
-	Hartz_1_vocational_further_education = {
-		visible = {
-			has_completed_focus = GER_hartz_reforms
-		}
-
-		icon = GFX_decision_generic_political_address
-
-		days_remove = 30
-		cost = 35
-		fire_only_once = yes
-
-		remove_effect = {
-			add_stability = 0.02
-			modify_country_flag = {
-				flag = GER_hartz_levels
-				value = 1
-			}
-		}
-
-		ai_will_do = {
-			base = 2
-		}
-	}
-	Hartz_1_subsistence_payments = {
-		visible = {
-			has_completed_focus = GER_hartz_reforms
-		}
-
-		icon = GFX_decision_hol_attract_foreign_investors
-
-		days_remove = 30
-		cost = 35
-		fire_only_once = yes
-
-		remove_effect = {
-			add_stability = 0.02
-			modify_country_flag = {
-				flag = GER_hartz_levels
-				value = 1
-			}
-		}
-
-		ai_will_do = {
-			base = 2
-		}
-	}
-	Hartz_2_mini_midijobs = {
+		
 		available = {
-			custom_trigger_tooltip = {
-				tooltip = GER_hartz_reforms_completed_tt	
-				has_country_flag = {
-					flag = GER_hartz_levels
-					value > 2
-				}
-			}
+			has_completed_focus = GER_Hartz_I_and_II
 		}
-		visible = {
-			has_completed_focus = GER_hartz_reforms
-		}
-
+		
 		icon = GFX_decision_eng_trade_unions_support
-
-		days_remove = 30
-		cost = 35
+		
+		cost = 75
 		fire_only_once = yes
-
-		remove_effect = {
-			add_stability = 0.02
-			modify_country_flag = {
-				flag = GER_hartz_levels
-				value = 1
-			}
+		
+		complete_effect = {
+			add_ideas = GER_Hartz_I_idea
 		}
-
+		
 		ai_will_do = {
-			base = 2
+			base = 100
 		}
 	}
-	Hartz_2_entrepreneur_grants = {
+	Hartz_II = {
 		visible = {
-			has_completed_focus = GER_hartz_reforms
+			has_completed_focus = GER_Hartz_I_and_II
 		}
+		
 		available = {
-			custom_trigger_tooltip = {
-				tooltip = GER_hartz_reforms_completed_tt	
-				has_country_flag = {
-					flag = GER_hartz_levels
-					value > 2
-				}
-			}
+			has_completed_focus = GER_Hartz_I_and_II
+			has_idea = GER_Hartz_I_idea
 		}
-		icon = GFX_decision_gre_investment_decisions
-
-		days_remove = 30
-		cost = 35
+		
+		icon = GFX_decision_SWI_dismiss_council
+		
+		cost = 75
 		fire_only_once = yes
-
-		remove_effect = {
-			add_stability = 0.02
-			modify_country_flag = {
-				flag = GER_hartz_levels
-				value = 1
-			}
+		
+		complete_effect = {
+			remove_ideas = GER_Hartz_I_ideas
+			add_ideas = GER_Hartz_II_idea
 		}
-
+		
 		ai_will_do = {
-			base = 2
+			base = 100
 		}
 	}
-	Hartz_2_jobcentres = {
-		available = {
-			custom_trigger_tooltip = {
-				tooltip = GER_hartz_reforms_completed_tt	
-				has_country_flag = {
-					flag = GER_hartz_levels
-					value > 2
-				}
-			}
-		}
+	Hartz_III = {
 		visible = {
-			has_completed_focus = GER_hartz_reforms
+			has_completed_focus = GER_Hartz_I_and_II
 		}
-
-		icon = economy
-		days_remove = 30
-		cost = 35
-		fire_only_once = yes
-
-		remove_effect = {
-			add_stability = 0.02
-			modify_country_flag = {
-				flag = GER_hartz_levels
-				value = 1
-			}
-		}
-
-		ai_will_do = {
-			base = 2
-		}
-	}
-	Hartz_3 = {
-		visible = {
-			has_completed_focus = GER_hartz_reforms
-		}
+		
 		available = {
-			custom_trigger_tooltip = {
-				tooltip = GER_hartz_reforms_completed_tt	
-				has_country_flag = {
-					flag = GER_hartz_levels
-					value > 5
-				}
-			}
+			has_completed_focus = GER_Hartz_III
+			has_idea = GER_Hartz_II_idea
 		}
+		
 		icon = GFX_decision_SOV_place_hq
-
-		days_remove = 30
-		cost = 35
+		
+		cost = 75
 		fire_only_once = yes
-
-		remove_effect = {
-			add_stability = 0.02
-			modify_country_flag = {
-				flag = GER_hartz_levels
-				value = 1
+		
+		complete_effect = {
+			remove_ideas = GER_Hartz_II_idea
+			add_ideas = GER_Hartz_III_idea
+		}
+		
+		ai_will_do = {
+			base = 100
+		}
+	}
+	Hartz_IV = {
+		visible = {
+			has_completed_focus = GER_Hartz_I_and_II
+		}
+		
+		available = {
+			has_completed_focus = GER_Hartz_IV
+			has_idea = GER_Hartz_III_idea
+		}
+		
+		icon = GFX_decision_faction_bul_bs
+		
+		cost = 100
+		fire_only_once = yes
+		
+		complete_effect = {
+			remove_ideas = GER_Hartz_III_idea
+			add_ideas = GER_Hartz_IV_idea
+		}
+		
+		ai_will_do = {
+			base = 100
+		}
+	}
+	Deregulate_the_Labour_Market = {
+		visible = {
+			has_completed_focus = GER_Solve_the_Unemployement_Crisis
+		}
+		
+		available = {
+			has_completed_focus = GER_Solve_the_Unemployement_Crisis
+		}
+		
+		icon = GFX_decision_gre_paying_ifc_debt
+		
+		cost = 130
+		fire_only_once = yes
+		
+		complete_effect = {
+			swap_ideas = {
+				remove_idea = GER_high_unemployment
+				add_idea = GER_moderate_unemployment
 			}
 		}
-
+		
 		ai_will_do = {
-			base = 2
+			base = 100
+		}
+	}
+	Lower_Non_Wage_Labour_Cost = {
+		visible = {
+			has_completed_focus = GER_Solve_the_Unemployement_Crisis
+		}
+		
+		available = {
+			has_idea = GER_moderate_unemployment
+		}
+		
+		icon = GFX_decision_hol_attract_foreign_investors
+		
+		cost = 250
+		fire_only_once = yes
+		
+		complete_effect = {
+			swap_ideas = {
+				remove_idea = GER_moderate_unemployment
+				add_idea = GER_low_unemployment
+			}
+		}
+		
+		ai_will_do = {
+			base = 100
+		}
+	}
+	Modernize_the_Ground_Forces = {
+		visible = {
+			has_completed_focus = GER_A_Bundeswehr_Reform
+		}
+		
+		available = {
+			has_idea = GER_bundeswehr_shortcomings
+			has_idea = GER_poorly_funded_military
+			has_army_experience > 30
+		}
+		
+		icon = GFX_decision_generic_merge_plant_tank
+		
+		cost = 50
+		fire_only_once = yes
+		
+		complete_effect = {
+			swap_ideas = {
+				remove_idea = GER_bundeswehr_shortcomings
+				add_idea = GER_bundeswehr_shortcomings_2
+			}
+		}
+		
+		ai_will_do = {
+			base = 100
+		}
+	}
+	Army_Budget_Reforms = {
+		visible = {
+			has_completed_focus = GER_A_Bundeswehr_Reform
+		}
+		
+		available = {
+			has_idea = GER_bundeswehr_shortcomings_2
+			has_idea = GER_poorly_funded_military
+			has_army_experience > 30
+		}
+		
+		icon = GFX_decision_hol_attract_foreign_investors
+		
+		cost = 50
+		fire_only_once = yes
+		
+		complete_effect = {
+			remove_ideas = GER_bundeswehr_shortcomings_2
+		}
+		
+		ai_will_do = {
+			base = 100
+		}
+	}
+	Professionalize_the_Forces = {
+		visible = {
+			has_completed_focus = GER_A_Bundeswehr_Reform
+		}
+		
+		available = {
+			NOT = {
+				has_idea = GER_bundeswehr_shortcomings
+				has_idea = GER_bundeswehr_shortcomings_2
+			}
+			has_idea = GER_poorly_funded_military
+			has_army_experience > 30
+		}
+		
+		icon = GFX_decision_generic_protection
+		
+		cost = 150
+		fire_only_once = yes
+		
+		complete_effect = {
+			remove_ideas = GER_poorly_funded_military
+			add_ideas = GER_A_New_Bundeswehr
+		}
+		
+		ai_will_do = {
+			base = 100
 		}
 	}
 }

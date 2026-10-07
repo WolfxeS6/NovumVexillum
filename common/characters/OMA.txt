@@ -3,7 +3,7 @@ characters={
 		#name="Qabus ibn Said"
 		portraits={
 			civilian={
-				large="gfx/leaders/OMA/Qabus.dds"
+				large="gfx/leaders/OMA/Qaboos_bin_Said.dds"
 			}
 		}
 		field_marshal={
@@ -21,11 +21,127 @@ characters={
 			id=-1
 		}
 	}
-	OMA_musaab_hassan={
+	OMA_Erik_Bennett={
+		#name="Musa'ab Hassan"
+		portraits={
+			army={
+				small="GFX_idea_OMA_Erik_Bennett"
+			}
+		}
+		advisor={
+			slot = air_chief
+			idea_token = army_Erik_Bennett_Advisor
+			ledger = army
+				allowed = {
+					original_tag = OMA
+					NOT = {
+						has_government = communist
+					}
+				}
+				available  = {
+					has_completed_focus = OMA_Royal_Air_Force_of_Oman
+				}
+				traits = {
+					air_air_superiority_2
+				}
+				cost = 100
+				ai_will_do = {
+					factor = 100
+				}
+		}
+	}
+	OMA_Yahya_bin_Rasheed_Al_Juma={
+		#name="Musa'ab Hassan"
+		portraits={
+			army={
+				small="GFX_idea_OMA_Yahya_bin_Rasheed_Al_Juma"
+			}
+		}
+		advisor={
+			slot = air_chief
+			idea_token = army_Yahya_bin_Rasheed_Al_Juma_Advisor
+			ledger = army
+				allowed = {
+					original_tag = OMA
+					NOT = {
+						has_government = communist
+					}
+				}
+				available  = {
+					has_completed_focus = OMA_Royal_Air_Force_of_Oman
+				}
+				traits = {
+					air_close_air_support_1 
+				}
+				cost = 100
+				ai_will_do = {
+					factor = 100
+				}
+		}
+	}
+	OMA_Salem_bin_Rashid_Al_Alawi={
+		#name="Musa'ab Hassan"
+		portraits={
+			army={
+				small="GFX_idea_OMA_Salem_bin_Rashid_Al_Alawi"
+			}
+		}
+		advisor={
+			slot = navy_chief
+			idea_token = army_Salem_bin_Rashid_Al_Alawi_Advisor
+			ledger = army
+				allowed = {
+					original_tag = OMA
+					NOT = {
+						has_government = communist
+					}
+				}
+				available  = {
+					has_completed_focus = OMA_Royal_Navy_of_Oman
+				}
+				traits = {
+					navy_chief_commerce_raiding_1 
+				}
+				cost = 100
+				ai_will_do = {
+					factor = 100
+				}
+		}
+	}
+	OMA_Shihab_bin_Tariq={
+		#name="Musa'ab Hassan"
+		portraits={
+			army={
+				small="GFX_idea_OMA_Shihab_bin_Tariq"
+			}
+		}
+		advisor={
+			slot = navy_chief
+			idea_token = army_Shihab_bin_Tariq_Advisor
+			ledger = army
+				allowed = {
+					original_tag = OMA
+					NOT = {
+						has_government = communist
+					}
+				}
+				available  = {
+					has_completed_focus = OMA_Royal_Navy_of_Oman
+				}
+				traits = {
+					navy_anti_submarine_1  
+				}
+				cost = 100
+				ai_will_do = {
+					factor = 100
+				}
+		}
+	}
+	OMA_Musallam_bin_Nufl={
 		#name="Musa'ab Hassan"
 		portraits={
 			civilian={
-				large="gfx/leaders/OMA/Musaab_Hassan.dds"
+				large="gfx/leaders/OMA/Musallam_bin_Nufl.dds"
 			}
 		}
 		country_leader={
@@ -33,16 +149,24 @@ characters={
 			expire="1.1.1.1"
 			id=-1
 		}
+		country_leader={
+			ideology=pannationalist
+			expire="1.1.1.1"
+			id=-1
+			traits = {
+				the_anti_marxist_oman
+			}
+		}
 	}
-	OMA_khaled_almawali={
+	OMA_Abdul_Aziz_Al_Qadi={
 		#name="Khaled Al-Mawali"
 		portraits={
 			civilian={
-				large="gfx/leaders/OMA/Khaled_Mawali.dds"
+				large="gfx/leaders/OMA/Abdul_Aziz_Al_Qadi.dds"
 			}
 		}
 		country_leader={
-			ideology=constitutionalist
+			ideology=managed_democracy 
 			expire="1.1.1.1"
 			id=-1
 		}
@@ -71,6 +195,14 @@ characters={
 			expire="1.1.1.1"
 			id=-1
 		}
+		country_leader={
+			ideology=marxist 
+			expire="1.1.1.1"
+			id=-1
+			traits = {
+				risen_from_the_ashes_oman
+			}
+		}
 	}
 	OMA_nasir_eatifi={
 		#name="Nasir Eatifi"
@@ -81,11 +213,6 @@ characters={
 		}
 		country_leader={
 			ideology=oligarchist
-			expire="1.1.1.1"
-			id=-1
-		}
-		country_leader={
-			ideology=maoist
 			expire="1.1.1.1"
 			id=-1
 		}
@@ -118,11 +245,6 @@ characters={
 			planning_skill=1
 			logistics_skill=1
 			legacy_id=-1
-		}
-		country_leader={
-			ideology=autocrat
-			expire="1.1.1.1"
-			id=-1
 		}
 	}
 	OMA_ahmed_bin_harith_alnabhani={
@@ -303,6 +425,52 @@ characters={
 			maneuvering_skill=1
 			coordination_skill=1
 			legacy_id=-1
+		}
+	}
+	OMA_advisor_Ahmad_Abd_Al_Nabi_Makki = {
+		advisor={
+			slot = political_advisor
+			idea_token = advisor_OMA_Ahmad_Abd_Al_Nabi_Makki
+			allowed  = {
+					original_tag  = OMA
+				}
+				available  = {
+					has_completed_focus = OMA_Royal_Economy_Reforms
+					NOT = {
+						has_government = communist
+					}
+				}
+				traits  = {
+					finance_and_economy_minister_oman
+				}
+		}
+		portraits={
+			army={
+				small="GFX_idea_OMA_Ahmad_Abd_Al_Nabi_Makki"
+			}
+		}
+	}
+	OMA_advisor_Haitham_bin_Tariq = {
+		advisor={
+			slot = political_advisor
+			idea_token = advisor_OMA_Haitham_bin_Tariq
+			allowed  = {
+					original_tag  = OMA
+				}
+				available  = {
+					has_completed_focus = OMA_Legacy_of_Qaboos
+					NOT = {
+						has_government = communist
+					}
+				}
+				traits  = {
+					cousin_and_foreign_advisor_oman
+				}
+		}
+		portraits={
+			army={
+				small="GFX_idea_OMA_Haitham_bin_Tariq"
+			}
 		}
 	}
 }

@@ -10,12 +10,19 @@ set_country_flag = country_language_bosnian
 set_country_flag = country_language_croatian
 set_country_flag = country_language_serbian
 
+set_country_flag = BOS_influence_mechanic
+set_variable = { INF_BOSNIAK_PEOPLE = 0.45 }
+set_variable = { LOY_BOSNIAK_PEOPLE = 0.8 }
+set_variable = { INF_SERB_PEOPLE = 0.4 }
+set_variable = { LOY_SERB_PEOPLE = 0.35 }
+set_variable = { INF_CROAT_PEOPLE = 0.15 }
+set_variable = { LOY_CROAT_PEOPLE = 0.45 }
+
 if = {
 	limit = {
 		NOT = {has_dlc = "By Blood Alone"}
 	}
 	set_technology = {
-		heli1 = 1
 		CAS1 = 1
 		CAS2 = 1
 		cv_CAS1 = 1
@@ -91,7 +98,6 @@ if = {
 	main_battle_tank3 = 1
 	light_tank1 = 1
 	mechanised_infantry1 = 1
-	nonsnb_technicality_tech = 1
 	light_mechanized_infantry1 = 1
 	light_mechanized_infantry2 = 1
 	mechanised_infantry2 = 1
@@ -104,12 +110,34 @@ if = {
 	set_technology = {
 		IFV_chassis_80s = 1
 		IFV_chassis = 1
-		technicality_tech = 1
 		light_mechanized_infantry1 = 1
 		light_mechanized_infantry2 = 1
+		IFV_chassis_00s = 1
 		main_battle_tank_chassis = 1
 		main_battle_tank_chassis_80s = 1
 		main_battle_tank_chassis_00s = 1
+	}
+	create_equipment_variant = {
+		name = "T-72M"
+		type = modern_tank_chassis_2
+		parent_version = 0
+		modules = {
+			main_armament_slot = tank_small_cannon
+			special_type_slot_1 = ergo_small
+			suspension_type_slot = tank_torsion_bar_suspension
+			armor_type_slot = tank_welded_armor
+			engine_type_slot = tank_diesel_engine
+			#special_type_slot_1 = tank_radio_1
+			optics_slot = tank_optics_1
+			special_type_slot_3 = auto_loader
+			
+			#atgm_slot = empty
+		}
+		upgrades = {
+			tank_nsb_armor_upgrade = 0
+			tank_nsb_engine_upgrade = 0
+		}
+		icon = "GFX_SOV_main_battle_tank2_medium"
 	}
 	create_equipment_variant = {
 		name = "BMP-2"
@@ -134,53 +162,33 @@ if = {
 		icon = "GFX_SOV_mechanised_infantry2_medium"
 	}
 	create_equipment_variant = {
-		name = "AMX-30E"
+		name = "T-62"
 		type = modern_tank_chassis_1
 		parent_version = 0
 		modules = {
 			main_armament_slot = tank_small_cannon
-			#turret_type_slot = tank_modern_tank_turret
+			special_type_slot_1 = ergo_old
 			suspension_type_slot = tank_torsion_bar_suspension
 			armor_type_slot = tank_welded_armor
 			engine_type_slot = tank_diesel_engine
-			special_type_slot_1 = ergo_old
-			optics_slot = tank_optics_1
-			
-			#atgm_slot = empty
-		}
-		upgrades = {
-			tank_nsb_armor_upgrade = 1
-			tank_nsb_engine_upgrade = 1
-		}
-		icon = "GFX_FRA_main_battle_tank1_medium"
-	}
-	create_equipment_variant = {
-		name = "M60A3"
-		type = modern_tank_chassis_1
-		parent_version = 0
-		modules = {
-			main_armament_slot = tank_small_cannon
-			special_type_slot_1 = ergo_old
-			suspension_type_slot = tank_torsion_bar_suspension
-			armor_type_slot = tank_riveted_armor
-			engine_type_slot = tank_diesel_engine
 			#special_type_slot_1 = tank_radio_1
 			optics_slot = tank_optics_1
-			#special_type_slot_4 = main_ammo_bay_MBT
+			
 			#atgm_slot = empty
 		}
 		upgrades = {
 			tank_nsb_armor_upgrade = 0
 			tank_nsb_engine_upgrade = 0
 		}
-		icon = "GFX_USA_main_battle_tank1_medium"
+		obsolete = yes
+		icon = "GFX_SOV_main_battle_tank1_medium"
 	}
 	create_equipment_variant = {
-		name = "BVP M-80"
-		type = light_tank_chassis_1
+		name = "MT-LB"
+		type = light_tank_chassis_0
 		parent_version = 0
 		modules = {
-			main_armament_slot = tank_auto_cannon
+			main_armament_slot = tank_heavy_machine_gun
 			special_type_slot_1 = ergo_ifv_old
 			#turret_type_slot = tank_light_one_man_tank_turret
 			suspension_type_slot = tank_torsion_bar_suspension
@@ -189,23 +197,24 @@ if = {
 			#special_type_slot_1 = tank_radio_1
 			optics_slot = tank_optics_1
 			special_type_slot_4 = crew_compartment
-			atgm_slot = tank_atgm_1
+			#atgm_slot = empty
 		}
 		upgrades = {
-			tank_nsb_armor_upgrade = 2
-			tank_nsb_engine_upgrade = 2
+			tank_nsb_armor_upgrade = 0
+			tank_nsb_engine_upgrade = 0
 		}
-		icon = "GFX_SER_mechanised_infantry2_medium"
+		obsolete = yes
+		icon = "GFX_SOV_mechanised_infantry1_medium"
 	}
 	create_equipment_variant = {
-		name = "AML-90"
-		type = light_tank_destroyer_chassis_0
+		name = "PT-76"
+		type = light_tank_destroyer_chassis_1
 		parent_version = 0
 		modules = {
 			main_armament_slot = tank_auto_cannon
 			special_type_slot_1 = ergo_ifv_old
 			#turret_type_slot = tank_light_one_man_tank_turret
-			suspension_type_slot = tank_wheeled_suspension
+			suspension_type_slot = tank_torsion_bar_suspension
 			armor_type_slot = tank_riveted_armor
 			engine_type_slot = tank_diesel_engine
 			#special_type_slot_1 = tank_radio_1
@@ -247,7 +256,7 @@ set_technology = {
 	#main_battle_tank1 = 1
 	#main_battle_tank2 = 1
 	#light_tank1 = 1
-	
+	#mechanised_infantry1 = 1
 	#mechanised_infantry2 = 1
 	#light_mechanized_infantry1 = 1
 	#light_mechanized_infantry2 = 1
@@ -284,9 +293,14 @@ add_ideas = {
 	government_system_parliamentary_republic
 	economy_growth
 	economy_tax_low
-	civil_liberties_restricted
+	civil_liberties_free
 	population_growth_decline
 	limited_conscription
+	BOS_land_mine_problem
+	BOS_dayton_agreement
+	BOS_legacy_of_bosnian_war
+	BOS_sfor
+	BOS_one_country_three_peoples
 }
 
 set_politics = {	
@@ -296,17 +310,45 @@ set_politics = {
 	elections_allowed = yes
 }
 
+create_country_leader = {
+		name = "Alija Izetbegovic"
+		ideology = constitutionalist
+		picture = "BOS_Alija_Izetbegovic.dds"
+	}
+create_country_leader = {
+		name = "Haris Silajdzic"
+		ideology = big_tent
+		picture = "BOS_Haris.dds"
+	}
+create_country_leader = {
+		name = "Muhamed Imamovic"
+		ideology = marxist
+		picture = "BOS_Muhamed.dds"
+	}
+create_country_leader = {
+		name = "Jusuf Barcic"
+		ideology = islamic_authoritarian
+		picture = "BOS_Jusuf_Barcic.dds"
+	}
+create_country_leader = {
+		name = "Alija Behmen"
+		ideology = social_democrat_ideology
+		picture = "BOS_Alija_Behmen.dds"
+	}
+
+
 set_popularities = {
-    islamist = 1
-    nationalist = 1
-    reactionary = 2
-    conservative = 30
-    market_liberal = 6
-    social_liberal = 25
-    social_democrat = 5
-    progressive = 10
-    democratic_socialist = 10
-    communist = 10
+    islamist = 2
+    nationalist = 3
+    reactionary = 13
+    conservative = 23
+	fascist = 7
+    market_liberal = 17
+    social_liberal = 3
+    social_democrat = 15
+    progressive = 2
+    democratic_socialist = 11
+    communist = 4
 }
 recruit_character = BOS_alija_izetbegovic
 recruit_character = BOS_sefer_halilovic
@@ -335,11 +377,6 @@ recruit_character = BOS_dzemal_sadikovic
 recruit_character = BOS_senijad_repuh
 recruit_character = BOS_danis_omerbegovic
 
-2006.1.1 = {
-	add_ideas = {
-		volunteer_only
-	}
-}
 
 
 2015.1.1 = {
@@ -358,7 +395,7 @@ if = {
 		add_equipment_to_stockpile = {
 			type = CAS_equipment_2
 			amount = 7
-			#producer = SER
+			producer = SER
 		}
 }
 if = {

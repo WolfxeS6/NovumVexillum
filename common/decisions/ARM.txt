@@ -1,0 +1,260 @@
+ARM_power_balance_decision_category = {
+	DEBUG_ARM_set_max_bop = {
+		priority = -1
+		visible = {
+			is_debug = yes
+		}
+		complete_effect = {
+			set_power_balance = {
+				id = ARM_power_balance
+				set_value = 1
+			}
+		}
+	}
+
+	DEBUG_ARM_set_min_bop = {
+		priority = -2
+		visible = {
+			is_debug = yes
+		}
+		complete_effect = {
+			set_power_balance = {
+				id = ARM_power_balance
+				set_value = -1
+			}
+		}
+	}
+	ARM_military_prep = {
+		priority = -1
+		visible = {
+			has_completed_focus = ARM_secure_generals
+			NOT = {has_completed_focus = ARM_launch_the_coup}
+		}
+		available = {
+			NOT = {
+				OR = {
+					is_power_balance_in_range = {
+						id = ARM_power_balance
+						range = ARM_high_mil_range  
+					}
+					is_power_balance_in_range = {
+						id = ARM_power_balance
+						range = ARM_very_high_mil_range  
+					}
+				}
+			}
+		}
+		cost = 45
+		days_remove = 40
+		days_re_enable = 1
+		remove_effect = {
+			ARM_bop_medium_increase_effect = yes
+		}
+		complete_effect = {
+			custom_effect_tooltip = NVX_decision_returns_days_1
+		}
+	}
+	ARM_democratic_propagation = {
+		priority = -1
+		visible = {
+			has_completed_focus = ARM_reject_the_mafia
+		}
+		available = {
+		}
+		cost = 25
+		days_remove = 40
+		days_re_enable = 1
+		remove_effect = {
+			ARM_bop_medium_increase_effect = yes
+			add_war_support = -0.02
+		}
+		complete_effect = {
+			custom_effect_tooltip = NVX_decision_returns_days_1
+		}
+	}
+	ARM_corruption_military_fighting = {
+		name = ARM_corruption_des_1
+		icon = GFX_decision_onmap_recruit_operative
+
+		visible = {
+			has_country_flag = ARM_military_control_enabled
+			has_dynamic_modifier = {modifier = ARM_corruption_modifier}
+		}
+		available = {
+			has_equipment = {
+    			infantry_equipment > 200
+			}
+		}
+		fire_only_once = no
+		cost = 15
+		days_remove = 60
+		days_re_enable = 14
+		modifier = {
+			stability_weekly = -0.002
+		}
+		complete_effect = {
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -200
+				producer = ARM
+
+			}
+			custom_effect_tooltip = ARM_reduce_corruption_tt
+			hidden_effect = {
+				ARM_reduce_corruption = yes
+			}
+			custom_effect_tooltip = NVX_decision_returns_days_14
+		}
+	}
+	ARM_crack_down_on_corruption = {
+		icon = GFX_decision_onmap_recruit_operative
+
+		visible = {
+			has_completed_focus = ARM_velvet_revolution
+			has_dynamic_modifier = {modifier = ARM_corruption_modifier}
+		}
+		available = {
+		}
+		fire_only_once = no
+		cost = 75
+
+		cost = 60
+		days_remove = 50
+		days_re_enable = 14
+
+		modifier = {
+			consumer_goods_expected_value = 0.02
+			political_power_factor = -0.1
+			stability_factor = -0.04
+		}
+		remove_effect = {
+			custom_effect_tooltip = ARM_reduce_corruption_tt
+			hidden_effect = {
+				ARM_reduce_corruption = yes
+			}
+		}
+		complete_effect = {
+			custom_effect_tooltip = NVX_decision_returns_days_14
+		}
+	}
+	ARM_remove_corruption = {
+		icon = GFX_decision_onmap_recruit_operative
+
+		visible = {
+			has_completed_focus = ARM_velvet_revolution
+			has_dynamic_modifier = {modifier = ARM_corruption_modifier}
+
+		}
+		available = {
+
+			custom_trigger_tooltip = {
+				tooltip = ARM_corruption_low_tt
+				check_variable = {ARM_consumer_goods_expected_value < 0.01}
+				check_variable = {ARM_research_speed_factor > -0.01}
+				check_variable = {ARM_enemy_army_bonus_air_superiority_factor > -0.01}
+				check_variable = {ARM_political_power_gain > -0.01}
+				check_variable = {ARM_production_speed_industrial_complex_factor > -0.01}
+			}
+		}
+		fire_only_once = yes
+		cost = 75
+
+		cost = 60
+		days_remove = 50
+
+		remove_effect = {
+			remove_dynamic_modifier = {modifier = ARM_corruption_modifier}
+			add_stability = 0.25
+			add_political_power = 100
+		}
+	}
+	ARM_remove_oligarch = {
+		icon = GFX_decision_onmap_recruit_operative
+
+		visible = {
+			OR = {
+				has_idea = adviser_samvel_aleksanian
+				has_idea = adviser_harutiun_pambukian
+				has_idea = adviser_hayrapetian_family
+				#has_idea = adviser_grand_group
+				has_idea = adviser_mika_ltd
+			}
+			has_completed_focus = ARM_velvet_revolution
+		}
+		available = {
+		}
+		fire_only_once = no
+		cost = 85
+		days_remove = 50
+		days_re_enable = 14
+
+		modifier = {
+			consumer_goods_expected_value = 0.04
+			political_power_factor = -0.1
+			stability_factor = -0.1
+		}
+		complete_effect = {
+			custom_effect_tooltip = NVX_decision_returns_days_14
+		}
+
+		remove_effect = {
+			if = {
+				limit = {
+					has_idea = adviser_samvel_aleksanian
+				}
+				remove_ideas = adviser_samvel_aleksanian
+			}
+			else_if = {
+				limit = {
+					has_idea = adviser_harutiun_pambukian
+				}
+				remove_ideas = adviser_harutiun_pambukian
+			}
+			else_if = {
+				limit = {
+					has_idea = adviser_hayrapetian_family
+				}
+				remove_ideas = adviser_hayrapetian_family
+			}
+			else_if = {
+				limit = {
+					has_idea = adviser_mika_ltd
+				}
+				remove_ideas = adviser_mika_ltd
+			}
+			else = {
+				add_stability = 0.1
+			}
+		}
+	}
+}
+# ARM_coup_categories = {
+# 	ARM_divert_arms = {
+# 		icon = GFX_decision_onmap_recruit_operative
+
+# 		visible = {
+# 			has_completed_focus = ARM_secure_arms
+# 		}
+# 		available = {
+# 		}
+# 		fire_only_once = no
+# 		cost = 25
+
+# 		complete_effect = {
+# 		}
+# 	}
+# 	ARM_secure_generals = {
+# 		icon = GFX_decision_onmap_recruit_operative
+
+# 		visible = {
+# 			has_completed_focus = ARM_secure_generals
+# 		}
+# 		available = {
+# 		}
+# 		fire_only_once = no
+# 		cost = 75
+
+# 		complete_effect = {
+# 		}
+# 	}
+# }

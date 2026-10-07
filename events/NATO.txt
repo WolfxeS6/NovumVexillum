@@ -170,3 +170,58 @@ country_event = {
 		ai_chance = { factor = 0 }
 	}
 }
+
+#Hit the red button
+country_event = {
+	id = nato.6
+	title = nato.6.t
+	desc = nato.6.d
+	picture = GFX_report_event_european_union
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = nato.6.o1
+		add_stability = 0.05
+		every_other_country = {
+			limit = {
+				has_idea = NATO_member
+				NOT = { has_war_with = ROOT }
+				NOT = { has_war_together_with = ROOT }
+			}
+			country_event = nato.7
+		}
+		ai_chance = { base = 100 }
+	}
+	
+	option = {
+		name = nato.6.o2
+		add_war_support = 0.1 #we don't need help
+		ai_chance = { base = 0 }
+	}
+}
+#Nato calls and we will answer
+country_event = {
+	id = nato.7
+	title = nato.7.t
+	desc = nato.7.d
+	picture = GFX_report_event_european_union
+
+	is_triggered_only = yes
+
+	option = {
+		name = nato.7.o1
+		add_to_war = {
+			targeted_alliance = FROM
+			enemy = FROM.FROM
+		}
+		ai_chance = { base = 100 }
+	}
+
+	option = {
+		name = nato.7.o2
+		add_stability = -0.02
+		add_war_support = -0.1
+		ai_chance = { base = 0 } 
+	}
+}

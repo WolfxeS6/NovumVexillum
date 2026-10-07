@@ -14,7 +14,6 @@ if = {
 		NOT = {has_dlc = "By Blood Alone"}
 	}
 	set_technology = {
-		heli1 = 1
 		CAS1 = 1
 		CAS2 = 1
 		cv_CAS1 = 1
@@ -40,7 +39,6 @@ if = {
 	}
 	#tech
 	set_technology = {
-		iw_heli_airframe = 1
 		iw_small_airframe = 1
 		basic_small_airframe = 1
 		iw_medium_airframe = 1
@@ -57,17 +55,6 @@ if = {
 		#scout_plane1 = 1
 	}
 	#varients
-	#helicopter
-	create_equipment_variant = {
-		name = "Gazelle SA342L1"
-		type = heli_plane_airframe_0
-		modules = {
-			fixed_main_weapon_slot = heli_light_mg_2x
-			fixed_auxiliary_weapon_slot_1 = heli_tank_buster_1
-			engine_type_slot = heli_engine_1_1x
-			special_type_slot_2 = plane_lighten_materials
-		}
-	}
 	#CAS
 	create_equipment_variant = {
 		name = "Jaguar" 
@@ -101,7 +88,6 @@ if = {
 	#main_battle_tank3 = 1
 	light_tank1 = 1
 	mechanised_infantry1 = 1
-	nonsnb_technicality_tech = 1
 	light_mechanized_infantry1 = 1
 	light_mechanized_infantry2 = 1
 	#mechanised_infantry2 = 1
@@ -114,57 +100,60 @@ if = {
 	set_technology = {
 		IFV_chassis_80s = 1
 		IFV_chassis = 1
-		technicality_tech = 1
 		light_mechanized_infantry1 = 1
 		light_mechanized_infantry2 = 1
+		IFV_chassis_00s = 1
 		main_battle_tank_chassis = 1
+		main_battle_tank_chassis_80s = 1
 		#main_battle_tank_chassis_00s = 1
 	}
 	create_equipment_variant = {
-		name = "AMX-13"
-		type = light_tank_destroyer_chassis_1
+		name = "T-72M"
+		type = modern_tank_chassis_2
 		parent_version = 0
 		modules = {
-			main_armament_slot = tank_ifv_small_cannon
-			#turret_type_slot = tank_medium_one_man_tank_turret
+			main_armament_slot = tank_small_cannon
+			special_type_slot_1 = ergo_small
 			suspension_type_slot = tank_torsion_bar_suspension
-			armor_type_slot = tank_riveted_armor
-			engine_type_slot = tank_diesel_engine
-			special_type_slot_1 = ergo_ifv_old
-			optics_slot = tank_optics_1
-			special_type_slot_4 = main_ammo_bay
-			#atgm_slot = empty
-		}
-		upgrades = {
-			tank_nsb_armor_upgrade = 2
-			tank_nsb_engine_upgrade = 5
-		}
-		icon = "GFX_light_tank1_medium"
-	}
-	create_equipment_variant = {
-		name = "AMX-VCI"
-		type = light_tank_chassis_1
-		parent_version = 0
-		modules = {
-			main_armament_slot = tank_heavy_machine_gun
-			special_type_slot_1 = ergo_ifv_old
-			#turret_type_slot = tank_light_one_man_tank_turret
-			suspension_type_slot = tank_torsion_bar_suspension
-			armor_type_slot = tank_riveted_armor
+			armor_type_slot = tank_welded_armor
 			engine_type_slot = tank_diesel_engine
 			#special_type_slot_1 = tank_radio_1
 			optics_slot = tank_optics_1
-			special_type_slot_4 = crew_compartment
+			special_type_slot_3 = auto_loader
+			
 			#atgm_slot = empty
 		}
 		upgrades = {
 			tank_nsb_armor_upgrade = 0
 			tank_nsb_engine_upgrade = 0
 		}
-		icon = "GFX_TUR_mechanised_infantry1_medium"
+		icon = "GFX_SOV_main_battle_tank2_medium"
+	}
+	
+	create_equipment_variant = {
+		name = "T-62"
+		type = modern_tank_chassis_1
+		parent_version = 0
+		modules = {
+			main_armament_slot = tank_small_cannon
+			special_type_slot_1 = ergo_old
+			suspension_type_slot = tank_torsion_bar_suspension
+			armor_type_slot = tank_welded_armor
+			engine_type_slot = tank_diesel_engine
+			#special_type_slot_1 = tank_radio_1
+			optics_slot = tank_optics_1
+			
+			#atgm_slot = empty
+		}
+		upgrades = {
+			tank_nsb_armor_upgrade = 0
+			tank_nsb_engine_upgrade = 0
+		}
+		obsolete = yes
+		icon = "GFX_SOV_main_battle_tank1_medium"
 	}
 	create_equipment_variant = {
-		name = "M113"
+		name = "MT-LB"
 		type = light_tank_chassis_0
 		parent_version = 0
 		modules = {
@@ -184,7 +173,30 @@ if = {
 			tank_nsb_engine_upgrade = 0
 		}
 		obsolete = yes
-		icon = "GFX_MAC_mechanised_infantry3_medium"
+		icon = "GFX_SOV_mechanised_infantry1_medium"
+	}
+	create_equipment_variant = {
+		name = "PT-76"
+		type = light_tank_destroyer_chassis_1
+		parent_version = 0
+		modules = {
+			main_armament_slot = tank_auto_cannon
+			special_type_slot_1 = ergo_ifv_old
+			#turret_type_slot = tank_light_one_man_tank_turret
+			suspension_type_slot = tank_torsion_bar_suspension
+			armor_type_slot = tank_riveted_armor
+			engine_type_slot = tank_diesel_engine
+			#special_type_slot_1 = tank_radio_1
+			optics_slot = tank_optics_1
+			special_type_slot_4 = main_ammo_bay
+			#atgm_slot = empty
+		}
+		upgrades = {
+			tank_nsb_armor_upgrade = 1
+			tank_nsb_engine_upgrade = 1
+		}
+		obsolete = no
+		icon = "GFX_SOV_mechanised_infantry1_medium"
 	}
 }
 set_technology = {
@@ -213,7 +225,7 @@ set_technology = {
 	#main_battle_tank1 = 1
 	#main_battle_tank2 = 1
 	#light_tank1 = 1
-	
+	#mechanised_infantry1 = 1
 	#mechanised_infantry2 = 1
 	#light_mechanized_infantry1 = 1
 	#light_mechanized_infantry2 = 1
@@ -249,34 +261,64 @@ set_technology = {
 add_ideas = {
 	civil_liberties_restricted
 	population_growth_steady
+	ECU_unhappy_natives
+	ECU_crisis
+	skip_election_event
 }
 
 set_politics = {	
 	ruling_party = conservative
-	last_election = "1997.1.1"
+	last_election = "1998.10.20"
 	election_frequency = 48
 	elections_allowed = yes
 }
 
 set_popularities = {
-    islamist = 1
-    nationalist = 1
-    reactionary = 2
-    conservative = 40
-    market_liberal = 6
-    social_liberal = 15
-    social_democrat = 5
+    nationalist = 4
+    conservative = 15
+    market_liberal = 12
+    social_liberal = 21
+    social_democrat = 10
     progressive = 10
-    democratic_socialist = 10
+    democratic_socialist = 18
     communist = 10
 }
-recruit_character = ECU_gustavo_noboa
+
+recruit_character = ECU_jamil_mahuad
 recruit_character = ECU_lucio_gutierrez
 recruit_character = ECU_rafael_correa
+recruit_character = ECU_alvaro_noboa
+recruit_character = ECU_antonio_vargas
+recruit_character = ECU_rodrigo_borja
+recruit_character = ECU_leon_febres_cordero
+recruit_character = ECU_gustavo_teran_pichincha
+recruit_character = ECU_antonio_arregui_yarza
+recruit_character = ECU_jorge_crespo_toral
+recruit_character = ECU_carlos_mendonza
+
+#
+recruit_character = ECU_gustavo_noboa
+recruit_character = ECU_carlos_solorzano_constantine
+recruit_character = ECU_alfredo_palacio
 recruit_character = ECU_guillermo_lasso
+recruit_character = ECU_gilmar_gutierrez
+recruit_character = ECU_lenin_moreno
+recruit_character = ECU_andres_arauz
+recruit_character = ECU_yaku_perez
+recruit_character = ECU_luisa_gonzalez
+recruit_character = ECU_daniel_noboa
+#
+recruit_character = ECU_cynthia_viteri
+recruit_character = ECU_paco_moncayo
+recruit_character = ECU_geovanni_atarihuana_ayala
+#
+recruit_character = ECU_luis_garzon_narvaez
 recruit_character = ECU_winston_alarcon_elizalde
+recruit_character = ECU_lucas_macas
+recruit_character = ECU_leon_roldos_aguilera
+#
 recruit_character = ECU_leonardo_barreiro
-recruit_character = ECU_cesar_merizalde_pavon
+recruit_character = ECU_cesar_merizalde_pavón
 recruit_character = ECU_edison_narvaez_rosero
 recruit_character = ECU_raul_banderas_duenas
 recruit_character = ECU_william_orellana_carrera
@@ -296,11 +338,8 @@ recruit_character = ECU_jorge_echeverria_bucheli
 recruit_character = ECU_marie_fares_cantos
 recruit_character = ECU_anibal_latorre
 recruit_character = ECU_eduardo_lynch
-recruit_character = ECU_andres_corrico
 recruit_character = ECU_ladislao_daza
 recruit_character = ECU_bernardo_figueroa
-recruit_character = ECU_juan_francisco_franco
-recruit_character = ECU_antonio_belzu
 
 
 2013.2.18 = {
@@ -311,67 +350,28 @@ recruit_character = ECU_antonio_belzu
 		election_frequency = 48
 		elections_allowed = yes
 	}
-    set_popularities = {
-        islamist = 1
-        nationalist = 1
-        reactionary = 2
-        conservative = 10
-        market_liberal = 6
-        social_liberal = 15
-        social_democrat = 5
-        progressive = 10
-        democratic_socialist = 40
-        communist = 10
-    }
+	    set_popularities = {
+	        islamist = 1
+	        nationalist = 1
+	        reactionary = 2
+	        conservative = 10
+	        market_liberal = 6
+	        social_liberal = 15
+	        social_democrat = 5
+	        progressive = 10
+	        democratic_socialist = 40
+	        communist = 10
+	    }
+	promote_character = ECU_guillermo_lasso
+	promote_character = ECU_cynthia_viteri
+	promote_character = ECU_yaku_perez
+	promote_character = ECU_paco_moncayo
+	promote_character = ECU_luis_garzon_narvaez
+	promote_character = ECU_geovanni_atarihuana_ayala
+	set_party_name = { ideology = conservative long_name = ECU_conservative_party_CREO_long name = ECU_conservative_party_CREO }
+	set_party_name = { ideology = communist long_name = ECU_communist_party_UP_long name = ECU_communist_party_UP }
 }
 
 2017.5.24 = {
-	create_country_leader = {
-		name = "Lenin Moreno"
-		ideology = democratic_socialist_ideology
-		picture = "Lenin_Moreno.dds"
-    }
-}
-if = {
-	limit = {
-		NOT = {has_dlc = "By Blood Alone"}
-	}
-		add_equipment_to_stockpile = {
-			type = fighter_equipment_2
-			amount =13
-			#producer = FRA
-		}
-		add_equipment_to_stockpile = {
-			type = fighter_equipment_2
-			amount =9
-			#producer = SAF
-		}
-		add_equipment_to_stockpile = {
-			type = heli_equipment_1
-			amount = 26
-			#producer = FRA
-		}
-}
-if = {
-	limit = {
-		has_dlc = "By Blood Alone"
-	}
-	add_equipment_to_stockpile = {
-		type = small_plane_airframe_1
-		amount = 13
-		producer = ECU
-		variant_name = "Jaguar"
-	}
-	add_equipment_to_stockpile = {
-		type = medium_plane_airframe_1
-		amount = 9
-		producer = ECU
-		variant_name = "Cheetah"
-	}
-	add_equipment_to_stockpile = {
-		type = heli_plane_airframe_0
-		amount = 26
-		producer = ECU
-		variant_name = "Gazelle SA342L1"
-	}
+
 }

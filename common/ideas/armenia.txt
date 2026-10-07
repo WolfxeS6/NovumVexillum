@@ -1,0 +1,344 @@
+ideas = {
+	country = {
+		ARM_militia_idea = {
+			picture = generic_disjointed_gov
+			allowed = {
+				always = no
+			}
+			modifier = {
+				experience_gain_army_factor = -0.5
+				conscription_factor = 0.05
+				max_command_power_mult = -0.45 
+				training_time_army_factor = -0.25
+				army_attack_factor = -0.1
+				army_defence_factor = -0.1
+			}
+		}
+		ARM_tourism_idea = {
+			picture = received_attache
+			allowed = {
+				always = no
+			}
+			modifier = {
+				monthly_population = 0.03
+				political_power_gain = 0.15
+				opinion_gain_monthly_factor = 0.15
+			}
+		}
+		ARM_tourism_idea_2 = {
+			picture = received_attache
+			name = ARM_tourism_idea
+			allowed = {
+				always = no
+			}
+			modifier = {
+				monthly_population = 0.03
+				political_power_gain = 0.2
+				opinion_gain_monthly_factor = 0.45
+				production_speed_industrial_complex_factor = 0.05
+			}
+		}
+		ARM_tourism_idea_b1 = {
+			picture = received_attache
+			name = ARM_tourism_idea
+			allowed = {
+				always = no
+			}
+			modifier = {
+				monthly_population = 0.01
+				political_power_gain = 0.05
+			}
+		}
+		ARM_electric_privatisation_good = {
+			picture = generic_local_self_management
+			allowed = {
+				always = no
+			}
+			modifier = {
+				consumer_goods_expected_value = 0.05
+				production_oil_factor = 0.2
+				stability_factor = 0.05 
+			}
+		}
+		ARM_electric_privatisation_bad = {
+			picture = generic_local_self_management
+			name = ARM_electric_privatisation_good
+			allowed = {
+				always = no
+			}
+			modifier = {
+				consumer_goods_expected_value = 0.01
+				stability_factor = -0.05 
+			}
+		}
+		ARM_general_strike = {
+			picture = FRA_factory_strikes
+			allowed = {
+				always = no
+			}
+			modifier = {
+				consumer_goods_expected_value = 0.35
+				stability_factor = -0.25 
+				industrial_capacity_factory = -0.25
+			}
+		}
+		ARM_karabakh_mining = {
+			picture = generic_exploit_mines
+			allowed = {
+				always = no
+			}
+			modifier = {
+				consumer_goods_expected_value = -0.02
+				production_speed_industrial_complex_factor = 0.05
+			}
+		}
+		eeu_member = {
+			picture = MEX_callistas
+			allowed = {
+				always = no
+			}
+			modifier = {
+				political_power_gain = -0.15
+				production_speed_industrial_complex_factor = 0.05
+				research_speed_factor = 0.03
+			}
+		}
+		eeu_customs_union = {
+			picture = MEX_callistas
+			allowed = {
+				always = no
+			}
+			modifier = {
+				political_power_gain = -0.15
+				production_speed_industrial_complex_factor = 0.05
+				research_speed_factor = 0.03
+			}
+		}
+		ARM_yerkrapah_youth_idea = {
+			picture = generic_reserve_divisions
+			allowed = {
+				always = no
+			}
+			modifier = {
+				consumer_goods_expected_value = 0.01
+				war_support_factor = 0.05
+				nationalist_drift = 0.01
+				conscription_factor = 0.03
+			}
+		}
+		ARM_corruption = {
+			picture = MEX_callistas
+			allowed = {
+				always = no
+			}
+			modifier = {
+				political_power_gain = -0.15
+				consumer_goods_expected_value = 0.15
+				production_speed_industrial_complex_factor = -0.20
+				research_speed_factor = -0.1
+			}
+		}
+		ARM_corruption_fighting = {
+			picture = ast_classify_aliens
+			allowed = {
+				always = no
+			}
+			modifier = {
+				political_power_gain = -0.15
+				consumer_goods_expected_value = 0.15
+				production_speed_industrial_complex_factor = -0.20
+				research_speed_factor = -0.1
+				stability_weekly = -0.01
+			}
+		}
+		ARM_diaspora = {
+			picture = generic_disjointed_gov
+			allowed = {
+				always = no
+			}
+			modifier = {
+				consumer_goods_expected_value = -0.05
+				research_speed_factor = 0.02
+			}
+		}
+		ARM_diaspora_returns = {
+			picture = SPR_torchbearers_of_tomorrow
+			allowed = {
+				always = no
+			}
+			modifier = {
+				consumer_goods_expected_value = -0.1
+				research_speed_factor = 0.05
+				weekly_manpower = 10000
+			}
+		}
+		ARM_diaspora_exploited = {
+			picture = generic_disjointed_gov
+			allowed = {
+				always = no
+			}
+			modifier = {
+				consumer_goods_expected_value = -0.09
+				political_power_gain = -0.1
+			}
+		}
+		ARM_pheonix_reborn = {
+			picture = generic_victors_of_ww1
+			allowed = {
+				always = no
+			}
+			modifier = {
+				conscription = 0.015
+				war_support_factor = 0.1
+			}
+			targeted_modifier = {
+				tag = AZR
+				attack_bonus_against = 0.1
+				defense_bonus_against = 0.1
+			}
+			targeted_modifier = {
+				tag = TUR
+				defense_bonus_against = 0.1
+			}
+		}
+	}
+	political_advisor = {
+		adviser_samvel_aleksanian = { #makes vodka, vegtable oil + supermarket. Fuedal Lord of Malatia in Yerevan, Anti-Monopoly
+			allowed = {
+				original_tag = ARM
+				#always = no
+			}
+			allowed_to_remove = {always = no}
+			traits = {ARM_feudal_lord_of_malatia}
+
+			ai_will_do = {
+				factor = 0
+			}
+		}
+		adviser_harutiun_pambukian = { #stakeholder in the electricity distribution network, Max Group farms + gas stations, Lusakert poultry plant, Yeghvard Animal Feed Plant
+			allowed = {
+				original_tag = ARM
+				#always = no
+			}
+			allowed_to_remove = {always = no}
+			traits = {ARM_Oligarch}
+			research_bonus = {
+				electronics = -0.1
+			}
+
+			ai_will_do = {
+				factor = 0
+			}
+		}
+		adviser_hayrapetian_family = { #owns "hayprapetian brothers" copmany, owns hotel Arat, Erabuni Textile production, Lake Sevan Hotel
+			allowed = {
+				original_tag = ARM
+				#always = no
+			}
+			allowed_to_remove = {always = no}
+			traits = {ARM_Oligarch}
+			modifier = {
+				industrial_capacity_factory = -0.075
+				industry_free_repair_factor = -0.2
+			}
+			ai_will_do = {
+				factor = 0
+			}
+		}
+		adviser_grand_group = { #grand candy, grand tobacco, grand sun (lamps), alcohol production
+			allowed = {
+				#original_tag = ARM
+				always = no
+			}
+			allowed_to_remove = {always = no}
+			traits = {ARM_Oligarch}
+			modifier = {
+				min_export = 0.1
+				industrial_capacity_factory = -0.1
+				research_speed_factor = -0.04
+			}
+			ai_will_do = {
+				factor = 0
+			}
+		}
+		adviser_mika_ltd = { #armsavingsbank, Viktoria Trade Wheat importer, oil import (Mika Trading), flights, Cement, water bottling
+			allowed = {
+				original_tag = ARM
+				#always = no
+			}
+			allowed_to_remove = {always = no}
+			traits = {ARM_Oligarch}
+			modifier = {
+				fuel_gain_factor = -0.4
+				army_fuel_consumption_factor = 0.25
+				air_defence_factor = -0.5
+			}
+
+			ai_will_do = {
+				factor = 0
+			}
+		}
+		adviser_ter_petrosyan = { #armsavingsbank, Viktoria Trade Wheat importer, oil import (Mika Trading), flights, Cement, water bottling
+			allowed = {
+				original_tag = ARM
+				#always = no
+			}
+			available = {
+				has_completed_focus = ARM_wayward_son
+			}
+			cost = 75
+			traits = {ARM_Oligarch}
+			modifier = {
+				stability_factor = 0.05
+				political_power_gain = 0.1
+				improve_relations_maintain_cost_factor = -0.4
+			}
+
+			ai_will_do = {
+				factor = 0
+			}
+		}
+		
+	}
+	industrial_concern = {
+
+		ARM_multi_group = {
+			picture = generic_electronics_concern_1
+
+			allowed = {
+				original_tag = ARM
+				#always = no
+			}
+			allowed_to_remove = {always = no}
+
+			modifier = {
+				production_speed_industrial_complex_factor = -0.2
+				local_resources_factor = -0.25
+			}
+
+			research_bonus = {
+				electronics = -0.05
+				industry = -0.1
+			}
+			#traits = { university_trait }
+		}
+		ARM_grand_group = {
+			picture = generic_electronics_concern_2
+			cost = 150
+			allowed = {
+				original_tag = ARM
+				#always = no
+			}
+			#allowed_to_remove = {always = no}
+
+			modifier = {
+				production_speed_industrial_complex_factor = 0.15
+			}
+
+			research_bonus = {
+				industry = 0.1
+			}
+			#traits = { university_trait }
+		}
+	}
+}

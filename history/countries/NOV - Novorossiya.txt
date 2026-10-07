@@ -4,7 +4,8 @@ oob = "NOV_2016"
 
 set_research_slots = 2
 set_convoys = 10
-set_stability = 0.5
+set_stability = 0.3
+set_war_support = 0.5
 
 set_country_flag = country_language_russian
 set_country_flag = country_behavior_dispersed
@@ -15,7 +16,6 @@ if = {
 		NOT = {has_dlc = "By Blood Alone"}
 	}
 	set_technology = {
-		heli1 = 1
 		CAS1 = 1
 		CAS2 = 1
 		cv_CAS1 = 1
@@ -296,9 +296,28 @@ set_technology = {
 add_ideas = {
 	population_growth_stagnation
 	closed_economy
-	#war_economy
-	service_by_requirement
 }
+
+set_variable = { dnr_army_reinf_rate = -0.02 } #01
+set_variable = { dnr_army_attacking_spd = -0.3 } #0
+set_variable = { dnr_army_land_dctr_cost = 0.5 } # 0
+set_variable = { dnr_army_org = -0.3 } # 0
+set_variable = { dnr_army_recon = -0.35 } # 0
+set_variable = { dnr_army_exp_loss_in_combat = 0.2 } # 0
+set_variable = { dnr_army_conscription = 0 } # 0
+set_variable = { dnr_mob_speed_fct = 0 } # 0
+set_variable = { dnr_army_surrender_limit = 0.75 } # 0
+set_variable = { sov_dnr_army_mech_attack = 0 } # 0
+
+add_dynamic_modifier = {
+	modifier = sovdnr_army
+}
+
+add_equipment_to_stockpile = {
+			type = infantry_equipment_1
+			amount = 2000
+			producer = NOV
+			}
 
 set_politics = {	
 	ruling_party = reactionary 

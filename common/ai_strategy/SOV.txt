@@ -1,35 +1,30 @@
-common_ai_behaviour_SOV = {
-	enable = {
-		tag = SOV
-	}
-	abort = {
-		always = no
-	}
-	ai_strategy = {
-		type = befriend
-		id = NOV
-		value = 75
-	}
-}
+# befriend
+# conquer
+# antagonize
+# build_ship
+# build_army
+# unit_ratio
+# build_building
+# research_tech
+# garrison
+# protect
+# influence
 
-seek_russian_alliance = {
+SOV_attack_rco = {
+
+	allowed = {
+		original_tag = SOV
+	}
+
 	enable = {
-		NOT = { tag = SOV }
-		has_country_flag = seeks_russian_alliance
+		original_tag = SOV
+		has_war_with = RCO
 	}
-	
-	abort = {
-		NOT = { has_country_flag = seeks_russian_alliance }
-	}
-	
+
+abort_when_not_enabled = yes
+
 	ai_strategy = {
-		type = befriend
-		id = "SOV"
-		value = 150
-	}
-	ai_strategy = {
-		type = alliance
-		id = "SOV"
-		value = 150
+		 type = ignore_army_incompetence
+    	value = 100
 	}
 }

@@ -9,25 +9,59 @@ if = {
 	}
 }
 
-set_research_slots = 4
+set_research_slots = 3
 set_convoys = 120
 set_stability = 0.4
+#a reference to that one very funny book by George
+set_variable = { var = POL_church_conscription_factor value = 0 }
+set_variable = { var = POL_church_army_defence_factor value = 0 }
+set_variable = { var = POL_church_army_attack_factor value = 0 }
+set_variable = { var = POL_church_army_org_Factor value = 0 }
+set_variable = { var = POL_church_stability_factor value = 0 }
+set_variable = { var = POL_church_political_power_gain value = 0 }
+set_variable = { var = POL_church_drift_defence_factor value = 0 }
+set_variable = { var = POL_church_industrial_capacity_factory value = 0 }
+set_variable = { var = POL_church_production_factory_efficiency_gain_factor value = 0 }
+set_variable = { var = POL_church_production_speed_buildings_factor value = 0 }
 
+#party popularites
+set_country_flag = POL_elections_in_progress_flag
+set_country_flag = POL_sld_supported_flag
+set_variable = { var = POL_popularity_of_SLD value = 45 }
+set_variable = { var = POL_popularity_of_PO value = 0 } #not created yet
+set_variable = { var = POL_popularity_of_PiS value = 0 }#not created yet
+set_variable = { var = POL_popularity_of_other_parties value = 53 }
+set_variable = { var = POL_popularity_of_UPR value = 2 }
+#coalition relations
+set_variable = { var = POL_relations_with_PLD value = 0 }
+set_variable = { var = POL_relations_with_SD value = 0 }
+set_variable = { var = POL_relations_with_KPEiR value = 0 }
+set_variable = { var = POL_relations_with_up value = 0 }
+
+set_country_flag = POL_cant_join_eu_flag
+set_country_flag = unique_theorist
+set_country_flag = unique_high_command
+set_country_flag = unique_air_chief
+set_country_flag = unique_navy_chief
+set_country_flag = unique_army_chief
+#set_country_flag = unique_industrial_concern
+set_country_flag = unique_materiel_manufacturer
+set_country_flag = unique_political_advisor_nomal
+set_country_flag = unique_political_advisor_party_boost
 set_country_flag = country_language_polish
+set_country_flag = POL_not_yet_shown_last_focus_flag
 
 if = {
 	limit = {
 		NOT = {has_dlc = "By Blood Alone"}
 	}
 	set_technology = {
-		heli1 = 1
 		CAS1 = 1
 		CAS2 = 1
 		cv_CAS1 = 1
 		cv_CAS2 = 1
 		fighter1 = 1
 		fighter2 = 1
-		fighter3 = 1
 		cv_fighter1 = 1
 		cv_fighter2 = 1
 		naval_bomber1 = 1
@@ -110,7 +144,6 @@ if = {
 	#main_battle_tank3 = 1
 	light_tank1 = 1
 	mechanised_infantry1 = 1
-	nonsnb_technicality_tech = 1
 	light_mechanized_infantry1 = 1
 	light_mechanized_infantry2 = 1
 	#mechanised_infantry2 = 1
@@ -145,9 +178,9 @@ if = {
 	set_technology = {
 		IFV_chassis_80s = 1
 		IFV_chassis = 1
-		technicality_tech = 1
 		light_mechanized_infantry1 = 1
 		light_mechanized_infantry2 = 1
+		IFV_chassis_00s = 1
 		main_battle_tank_chassis = 1
 		main_battle_tank_chassis_80s = 1
 		#main_battle_tank_chassis_00s = 1
@@ -192,7 +225,7 @@ if = {
 		}
 		upgrades = {
 			tank_nsb_armor_upgrade = 2
-			tank_nsb_engine_upgrade = 2
+			tank_nsb_engine_upgrade = 5
 		}
 		icon = "GFX_SOV_mechanised_infantry2_medium"
 	}
@@ -243,23 +276,26 @@ if = {
 	}
 	create_equipment_variant = {
 		name = "PT-76"
-		type = light_tank_destroyer_chassis_0
+		type = light_tank_destroyer_chassis_1
 		parent_version = 0
 		modules = {
-			main_armament_slot = tank_ifv_medium_cannon
+			main_armament_slot = tank_auto_cannon
 			special_type_slot_1 = ergo_ifv_old
+			#turret_type_slot = tank_light_one_man_tank_turret
 			suspension_type_slot = tank_torsion_bar_suspension
-			armor_type_slot = tank_welded_armor
+			armor_type_slot = tank_riveted_armor
 			engine_type_slot = tank_diesel_engine
+			#special_type_slot_1 = tank_radio_1
 			optics_slot = tank_optics_1
 			special_type_slot_4 = main_ammo_bay
+			#atgm_slot = empty
 		}
 		upgrades = {
 			tank_nsb_armor_upgrade = 1
 			tank_nsb_engine_upgrade = 1
 		}
 		obsolete = no
-		icon = "GFX_SOV_light_tank1_medium"
+		icon = "GFX_SOV_mechanised_infantry1_medium"
 	}
 }
 set_technology = {
@@ -293,11 +329,11 @@ set_technology = {
 	#main_battle_tank2 = 1
 	#main_battle_tank3 = 1
 	#light_tank1 = 1
-	
+	#mechanised_infantry1 = 1
 	#mechanised_infantry2 = 1
 	#light_mechanized_infantry1 = 1
 	#light_mechanized_infantry2 = 1
-	#amphibious_mechanized_infantry1 = 1
+	amphibious_mechanized_infantry1 = 1
 	
 	## Artillery ##
 	coldwar_artillery = 1
@@ -364,7 +400,6 @@ if = {
 	set_technology = {
 		early_ship_hull_light = 1
 		basic_ship_hull_light = 1
-		early_ship_hull_patrol_boat = 1
 		early_ship_hull_cruiser = 1
 		basic_ship_hull_cruiser = 1
 		early_ship_hull_submarine = 1
@@ -386,12 +421,20 @@ if = {
 }
 
 add_ideas = {
+	welfare_modest_assistance
+	civil_liberties_limited
+	immigration_policy_strict_regulations
+	economy_tax_moderate
 	population_growth_steady
 	limited_conscription
 	free_trade
-	immigration_policy_loose_regulations
-	welfare_modest_assistance
 	visegrad_group_member
+    POL_Giedroyc_Doctrine
+	POL_outdated_military
+    POL_nfz
+	POL_recovering_economy_idea
+	POL_Polish_national_debt_5
+	POL_the_outskirts_of_western_world
 }
 
 set_politics = {
@@ -402,14 +445,14 @@ set_politics = {
 }
 
 set_popularities = {
-	social_democrat = 34
-	conservative = 25
-	progressive = 5
-	social_liberal = 9
-	democratic_socialist = 9
+	social_democrat = 36
+	conservative = 22
+	progressive = 8
+	social_liberal = 11
+	democratic_socialist = 11
 	market_liberal = 2
 	reactionary = 8
-	communist = 7
+	communist = 1
 	nationalist = 0.5
 	fascist = 0.3
 	monarchist = 0.2
@@ -432,35 +475,114 @@ add_opinion_modifier = {
 
 2004.1.1 = { add_ideas = { idea_eu_member } }
 2008.1.1 = { add_ideas = { volunteer_only } }
-recruit_character = POL_waldemar_pawlak
-recruit_character = POL_boleslaw_tejkowski
-recruit_character = POL_regent_leszek_wierzchowski
-recruit_character = POL_witold_balazak
-recruit_character = POL_jaroslaw_kaczynski
-recruit_character = POL_wladyslaw_frasyniuk
-recruit_character = POL_bronislaw_komorowski
-recruit_character = POL_janusz_korwinmikke
-recruit_character = POL_bronislaw_geremek
-recruit_character = POL_marian_krzaklewski
-recruit_character = POL_aleksander_kwasniewski
+recruit_character = POL_Adam_Gmurczyk
+recruit_character = POL_Aleksander_Krejckant
+recruit_character = POL_Leszek_Wierzchowski
+Recruit_character = POL_tadeusz_rydzyk
+recruit_character = POL_Henryk_Bolczyk
+recruit_character = POL_Stanislaw_Lem
+#recruit_character = POL_Zygmunt_Przetakiewicz
+recruit_character = POL_Witold_Balazak
+recruit_character = POL_Jaroslaw_Kaczynski
+recruit_character = POL_Wladyslaw_Frasyniuk
+recruit_character = POL_Bronislaw_Komorowski
+recruit_character = POL_Janusz_Korwin
+recruit_character = POL_Aleksander_Kwasniewski
+recruit_character = POL_Boleslaw_Tejkowski
+recruit_character = POL_marian_indelak
 recruit_character = POL_andrzej_lepper
-recruit_character = POL_marian_kowalski
+recruit_character = POL_kimura_pilsudzki
+recruit_character = POL_jerzy_piasecki
+recruit_character = POL_Kazimierz_Mijal
+recruit_character = POL_Ludwik_Hass
+recruit_character = POL_Maciej_Plazynski
+recruit_character = POL_Andrzej_Olechowski
+recruit_character = POL_donald_tusk
+recruit_character = POL_Bartosz_Jozwiak
+recruit_character = POL_Wojciech_Popiela
+recruit_character = POL_Stanislaw_Wojtera
+recruit_character = POL_Korwin_monarchist
+recruit_character = POL_POL_upr_collapse
+recruit_character = POL_Beata_Szydlo
+recruit_character = POL_Mateusz_Morawiecki
+recruit_character = POL_Antoni_Dlugosz
+recruit_character = POL_Andrzej_Duda
+recruit_character = POL_Andrzej_Bittel
+recruit_character = POL_Jan_Dobrzynski
+#recruit_character = POL_Marek_Chwalewski
+recruit_character = POL_Grzegorz_Bierecki
+recruit_character = POL_Jaroslaw_Chmielewski
+recruit_character = POL_Leszek_Samborski
+recruit_character = POL_Wojciech_Bartelski
+recruit_character = POL_Pawel_Chojecki
+recruit_character = POL_Artur_Dziambor
+recruit_character = POL_Robert_Iwaszkiewicz
+recruit_character = POL_Ewa_Kopacz
+recruit_character = POL_Bronislaw_Komorowski_real
+recruit_character = POL_Henryk_Cwiklinski
+recruit_character = POL_Ryszard_Chudzik
+recruit_character = POL_Lech_Kaczynski
+recruit_character = POL_Waldemar_Pawlak
+recruit_character = POL_Bogdan_Lisiecki
+recruit_character = POL_Miroslaw_Adamczak
+recruit_character = POL_Andrzej_Anulewicz
+recruit_character = POL_Andrzej_Rychlik
+recruit_character = POL_Steven_Soderbergh
+recruit_character = POL_technocratic_experts
+recruit_character = POL_Wojciech_Orlinski
+recruit_character = POL_Krzysztof_Szwej
+recruit_character = POL_Zbigniew_Marcin_Kowalewski
+recruit_character = POL_Zbigniew_Wiktor
+recruit_character = POL_Grzegorz_Walinski
+recruit_character = POL_Michal_Lewandowski
+recruit_character = POL_Ziemowit_Przebitkowsk
+recruit_character = POL_Patrycjusz_Borek
+recruit_character = POL_Bartosz_Bekier
+recruit_character = POL_Joanna_Onyszkiewicz
+recruit_character = POL_Krzysztof_Jaraczewski
+recruit_character = POL_Jadwiga_Pilsudska
+recruit_character = POL_Grzegorz_Braun
+recruit_character = POL_Stefan_Oberleitner
+recruit_character = POL_Adam_Wielomski
+recruit_character = POL_jan_lubomriski
+recruit_character = POL_mikolaj_rej
+recruit_character = POL_Maria_Vladimirovna
+recruit_character = POL_Karin_Sobieski
+recruit_character = POL_Guillaume_De_Louvencourt_Poniatowski
+recruit_character = POL_prince_edward
+recruit_character = POL_Maria_Emanuel_Wettin
+recruit_character = POL_karol_stefan_habsburg
+recruit_character = POL_Mieczyslaw_Cieniuch
+recruit_character = POL_Andrzej_knap
+recruit_character = POL_Janury_Komanski
+recruit_character = Andrzej_Rosinski
+recruit_character = POL_Tomasz_Mathea
+recruit_character = POL_Roman_Krzyzelewski
+recruit_character = POL_Grzegorz_Duda
+recruit_character = POL_Tomasz_Bak
+recruit_character = POL_Lech_Majewski
+recruit_character = POL_Andrzej_Duleba
+recruit_character = POL_Ryszard_Olszewski
+recruit_character = POL_Ryszard_Demczuk
+recruit_character = POL_Kazimierz_Gilarski
+recruit_character = POL_Rajmund_Andrzejczak
+recruit_character = POL_Janusz_Adamczak
+recruit_character = POL_Andrzej_Blasik
+recruit_character = POL_Jozef_Buczynski
+recruit_character = POL_Krzysztof_Zdonek
 recruit_character = POL_marek_tomaszycki
 recruit_character = POL_czeslaw_piatas
 recruit_character = POL_franciszek_gagor
 recruit_character = POL_mieczyslaw_bieniek
 recruit_character = POL_mieczyslaw_gocul
 recruit_character = POL_bronislaw_kwiatkowski
-recruit_character = POL_mieczyslaw_cieniuch
 recruit_character = POL_andrzej_korweta
-recruit_character = POL_roman_krzyzelewski
 recruit_character = POL_tomasz_mathera
 recruit_character = POL_leszek_surawski
 recruit_character = POL_zbigniew_glowienka
 recruit_character = POL_michal_sikora
 recruit_character = POL_jaroslaw_mika
 recruit_character = POL_stanislaw_czosnek
-recruit_character = POL_rajmund_andrzejczak
 recruit_character = POL_andrzej_malinowski
 recruit_character = POL_marek_sokolowski
 recruit_character = POL_grzegorz_halupka
@@ -473,49 +595,45 @@ recruit_character = POL_marek_golan
 recruit_character = POL_marcin_maj
 recruit_character = POL_jacek_kwiatkowski
 recruit_character = POL_bogdan_kula
-recruit_character = POL_lech_majewski
 recruit_character = POL_slawomir_kaluzinski
 recruit_character = POL_slawomir_wojciechowski
 recruit_character = POL_piotr_patalong
 recruit_character = POL_jerzy_gut
 recruit_character = POL_wieslaw_kukula
 recruit_character = POL_michal_strzelecki
-recruit_character = POL_ryszard_demczuk
 recruit_character = POL_krzysztof_teryfter
 recruit_character = POL_krzysztof_jaworski
 recruit_character = POL_stanislaw_zarychta
-recruit_character = POL_krzysztof_zdonek
 recruit_character = POL_tadeusz_drybczewski
-recruit_character = POL_szymon_wojciechowski
+recruit_character = POL_Roman_Malinowski
+recruit_character = POL_POL_Leszek_Kolakowski
+recruit_character = POL_Adam_Wodarczyk
+#recruit_character = POL_Mariusz_Kaminski
+recruit_character = POL_Jan_Krol
+recruit_character = POL_Jozef_Michalik
+recruit_character = POL_Mieczyslaw_Rakowski
+recruit_character = POL_Krzysztof_Bosak
+recruit_character = POL_Adam_Ciesluk
+recruit_character = POL_Jozef_Pinior
+recruit_character = POL_Jozef_Kossecki
+recruit_character = POL_Tomasz_Gabis
+recruit_character = POL_Wojciech_Jaruzelski
 
 
-2001.6.13 = {
-	set_party_name = {
-		ideology = conservative
-		long_name = POL_conservative_party_PiS_long
-		name = POL_conservative_party_PiS
-	}
-
-}
-
-2015.1.1 = {
-	set_party_name = {
-		ideology = reactionary
-		long_name = POL_reactionary_party_Kukiz_long
-		name = POL_reactionary_party_Kukiz
-	}
-	set_party_name = {
-		ideology = progressive
-		long_name = POL_progressive_party_Nowoczesna_long
-		name = POL_progressive_party_Nowoczesna
-	}
-	set_party_name = {
-	ideology = communist
-	long_name = POL_communist_party_RAZEM_long
-	name =  POL_communist_party_RAZEM
-	}
-}
-
+#### Advisors 
+Recruit_character = POL_Bartosz_Jarmuszkiewicz
+Recruit_character = POL_Sebastian_Chwalek
+Recruit_character = POL_Arkadiusz_Krezel
+Recruit_character = POL_Krzysztof_Celinski
+Recruit_character = POL_Janusz_Sniadek
+Recruit_character = POL_Leszek_Miller
+Recruit_character = POL_Jozef_Oleksy
+Recruit_character = POL_marek_belka
+Recruit_character = POL_Wlodzimierz_Cimoszewicz
+Recruit_character = POL_Jerzy_Jaskiernia
+Recruit_character = POL_Janusz_Bryczkowski
+Recruit_character = POL_Adrian_Nikiel
+Recruit_character = POL_Alexi_Lubomirski
 2015.11.1 = {
 	
 	oob = "POL_2016"
@@ -540,30 +658,6 @@ recruit_character = POL_szymon_wojciechowski
 			fascist = 0.3
 			monarchist = 0.2
 		}
-}
-
-##Tanks
-create_equipment_variant = {
-	name = "T-55AM Merida" 
-	type = modern_tank_equipment_1 
-	upgrades = {
-		tank_armor_upgrade = 5
-		tank_gun_upgrade = 5
-		tank_reliability_upgrade = 5
-		tank_engine_upgrade = 5
-	}
-	obsolete = yes
-}
-create_equipment_variant = {
-	name = "T-72M1" 
-	type = modern_tank_equipment_2 
-	upgrades = {
-		tank_armor_upgrade = 5
-		tank_gun_upgrade = 5
-		tank_reliability_upgrade = 5
-		tank_engine_upgrade = 5
-	}
-	obsolete = yes
 }
 
 ##asf
@@ -651,7 +745,7 @@ if = {
 			fixed_ship_engine_slot = light_ship_engine_1
 			fixed_ship_torpedo_slot = ship_torpedo_1
 			mid_1_custom_slot = ship_torpedo_1
-			rear_1_custom_slot = ship_torpedo_1
+			rear_1_custom_slot = ship_depth_charge_1
 		}
 		obsolete = yes
 	}
@@ -667,7 +761,7 @@ if = {
 			fixed_ship_engine_slot = light_ship_engine_2
 			fixed_ship_torpedo_slot = ship_torpedo_1
 			mid_1_custom_slot = ship_torpedo_1
-			rear_1_custom_slot = ship_torpedo_1
+			rear_1_custom_slot = ship_depth_charge_1
 		}
 		obsolete = no
 	}
@@ -740,28 +834,28 @@ if = {
 		add_equipment_to_stockpile = {
 			type = fighter_equipment_3
 			amount = 39
-			#producer = SOV
+			producer = SOV
 		}
 		add_equipment_to_stockpile = {
 			type = fighter_equipment_1
 			amount = 52
-			#producer = SOV
+			producer = SOV
 		}
 		add_equipment_to_stockpile = {
 			type = transport_plane_equipment_1
 			amount = 10
-			#producer = SOV
+			producer = SOV
 		}
 	
 		add_equipment_to_stockpile = {
 			type = CAS_equipment_2
 			amount = 96
-			#producer = SOV
+			producer = SOV
 		}
 		add_equipment_to_stockpile = {
 			type = nav_bomber_equipment_2
 			amount = 9
-			#producer = SOV
+			producer = SOV
 		}
 }
 if = {
@@ -787,4 +881,3 @@ if = {
 		variant_name = "Su-25" #it's an Su-22 tbf
 	}
 }
-

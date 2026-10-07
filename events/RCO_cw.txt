@@ -1,0 +1,3853 @@
+add_namespace = cw
+add_namespace = cw_nmo
+add_namespace = cw_smo
+add_namespace = RCO_event_taj_ultimatum
+###########################
+# Russian civil war events
+###########################
+
+################## Stockpiles starting
+country_event = {
+	id = cw.1
+	title = cw.1.t
+	desc = cw.1.d
+	picture = GFX_donbass_red_batalion
+
+	is_triggered_only = yes
+
+	option = { # Ok
+		name = RCO_event_cw.1.a
+		add_equipment_to_stockpile = {
+			type = infantry_equipment_1
+			amount = 2000
+			producer = RCO
+		}
+		add_equipment_to_stockpile = {
+			type = train_equipment_1
+			amount = 30
+			producer = RCO
+		}
+		add_equipment_to_stockpile = {
+			type = infantry_equipment_2
+			amount = 4000
+			producer = RCO
+		}
+		add_equipment_to_stockpile = {
+			type = support_equipment_1
+			amount = 50
+			producer = RCO
+		}
+		add_equipment_to_stockpile = {
+			type = motorized_equipment_1
+			amount = 200
+			producer = RCO
+		}
+		add_equipment_to_stockpile = {
+			type = modern_tank_equipment_2
+			amount = 120
+			producer = RCO
+		}
+		add_equipment_to_stockpile = {
+			type = modern_tank_equipment_3
+			amount = 180
+			producer = RCO
+		}
+		add_equipment_to_stockpile = {
+			type = light_tank_equipment_1
+			amount = 230
+			producer = RCO
+		}
+		add_equipment_to_stockpile = {
+			type = mechanized_equipment_1
+			amount = 300
+			producer = RCO
+		}
+		add_equipment_to_stockpile = {
+			type = mechanized_equipment_2
+			amount = 210
+			producer = RCO
+		}
+		add_equipment_to_stockpile = {
+			type = light_mechanized_equipment_1
+			amount = 200
+			producer = RCO
+		}
+		add_equipment_to_stockpile = {
+			type = light_mechanized_equipment_2
+			amount = 200
+			producer = RCO
+		}
+		add_equipment_to_stockpile = {
+			type = artillery_equipment_1
+			amount = 300
+			producer = RCO
+		}
+		add_equipment_to_stockpile = {
+			type = anti_air_equipment_1
+			amount = 400
+			producer = RCO
+		}
+		add_equipment_to_stockpile = {
+			type = modern_tank_aa_equipment_1
+			amount = 50
+			producer = RCO
+		}
+		add_equipment_to_stockpile = {
+			type = modern_tank_aa_equipment_2
+			amount = 60
+			producer = RCO
+		}
+		add_equipment_to_stockpile = {
+			type = anti_tank_equipment_1
+			amount = 200
+			producer = RCO
+		}
+		if = {
+					limit = { is_ai = no }
+					set_technology = { rocket_artillery = 1 }
+					add_equipment_to_stockpile = {
+					type = motorized_rocket_equipment_1 
+					amount = 200
+					producer = ROC
+				}	
+			}
+		if = {
+			limit = {
+				NOT = {has_dlc = "By Blood Alone"}
+			}
+			add_equipment_to_stockpile = {
+				type = fighter_equipment_2
+				amount = 450
+				producer = SOV
+			}
+		}
+		else = {
+			add_equipment_to_stockpile = {
+				type = medium_plane_airframe_1
+				amount = 150
+				producer = SOV
+			}
+		}
+		if = {
+			limit = {
+				NOT = {has_dlc = "By Blood Alone"}
+			}
+			add_equipment_to_stockpile = {
+				type = fighter_equipment_3
+				amount = 350
+				producer = SOV
+			}
+		}
+		else = {
+			add_equipment_to_stockpile = {
+				type = medium_plane_airframe_2
+				amount = 150
+				producer = SOV
+			}
+		}
+		add_equipment_to_stockpile = {
+			type = cv_fighter_equipment_3
+			amount = 120
+			producer = RCO
+		}
+		if = {
+			limit = {
+				NOT = {has_dlc = "By Blood Alone"}
+			}
+			add_equipment_to_stockpile = {
+				type = CAS_equipment_2
+				amount = 80
+				producer = SOV
+			}
+		}
+		else = {
+			add_equipment_to_stockpile = {
+				type = small_plane_airframe_1
+				amount = 80
+				producer = SOV
+			}
+		}
+		hidden_effect = {
+			RCO = {
+				add_state_core = 195
+				add_state_core = 146
+				add_state_core = 216
+				add_state_core = 244
+				add_state_core = 208
+				add_state_core = 263
+				add_state_core = 209
+				add_state_core = 604
+				add_state_core = 210
+				add_state_core = 246
+				add_state_core = 247
+				add_state_core = 248
+				add_state_core = 264
+				add_state_core = 253
+				add_state_core = 219
+				add_state_core = 242
+				add_state_core = 243
+				add_state_core = 224
+				add_state_core = 205
+				add_state_core = 223
+				add_state_core = 254
+				add_state_core = 252
+				add_state_core = 220
+				add_state_core = 222
+				add_state_core = 258
+				add_state_core = 257
+				add_state_core = 255
+				add_state_core = 250
+				add_state_core = 239
+				add_state_core = 260
+				add_state_core = 240
+				add_state_core = 903
+				add_state_core = 904
+			}
+			570 = {add_dynamic_modifier = { modifier = unplanned_offensive_kuz} }
+			569 = {add_dynamic_modifier = { modifier = unplanned_offensive_kuz} }
+		}
+	}
+}
+
+######### mobilization
+
+country_event = {
+	id = cw.2
+	title = cw.2.t
+	desc = cw.2.d
+	picture = GFX_event_red_btr
+
+	is_triggered_only = yes
+
+	option = { # more units
+
+		trigger = {
+			NOT = { has_global_flag = small_second_october }
+		}
+		name = RCO_event_cw.2.a
+		hidden_effect = {
+			load_oob = "RCO_red_guard"
+			load_oob = "RCO_mobile_infantry"
+			load_oob = "RCO_Kuzbass"
+			load_oob = "RCO_armoured_units"
+			load_oob = "RCO_red_elite"
+		}
+	}
+
+	option = { # less units
+
+		trigger = { has_global_flag = small_second_october }
+
+		name = RCO_event_cw.2.a
+		hidden_effect = {
+			load_oob = "RCO_red_guard_small"
+			load_oob = "RCO_Kuzbass"
+			load_oob = "RCO_mobile_infantry_small"
+			load_oob = "RCO_armoured_units_small"
+			load_oob = "RCO_red_elite_small"
+			add_threat = 10
+		}
+	}
+}
+
+####### putin cw many units
+
+country_event = {
+	id = cw.3
+	title = cw.3.t
+	desc = cw.3.d
+	picture = GFX_russian_soldiers_1
+
+	is_triggered_only = yes
+
+	option = { # ok
+		name = RCO_event_cw.3.a
+		load_oob = "SOV_army_many"
+	}
+
+}
+
+####### putin cw normal units
+
+country_event = {
+	id = cw.4
+	title = cw.4.t
+	desc = cw.4.d
+	picture = GFX_russian_soldiers_1
+
+	is_triggered_only = yes
+
+	option = { # ok
+		name = RCO_event_cw.4.a
+		load_oob = "SOV_army_normal"
+	}
+
+}
+
+####### putin cw little units
+
+country_event = {
+	id = cw.5
+	title = cw.5.t
+	desc = cw.5.d
+	picture = GFX_russian_soldiers_1
+
+	is_triggered_only = yes
+
+	option = { # ok
+		name = RCO_event_cw.5.a
+		load_oob = "SOV_army_small"
+	}
+
+}
+
+##### military okrugs
+
+country_event = {
+	id = cw.6
+	title = cw.6.t
+	desc = cw.6.d
+	picture = GFX_russian_soldiers_2
+
+	is_triggered_only = yes
+
+	option = { # ok
+		name = RCO_event_cw.6.a
+		NMO = {
+			set_state_owner = 213
+			set_state_controller = 213
+			set_state_owner = 214
+			set_state_controller = 214
+			set_state_owner = 262
+			set_state_controller = 262
+			set_state_owner = 351
+			set_state_controller = 351
+			set_state_owner = 215
+			set_state_controller = 215
+			set_state_owner = 147
+			set_state_controller = 147
+			set_state_owner = 722
+			set_state_controller = 722
+		}
+		NMO = { load_focus_tree = NMO_focus }
+		SMO = {
+			set_state_owner = 217
+			set_state_controller = 217
+			set_state_owner = 245
+			set_state_controller = 245
+			set_state_owner = 236
+			set_state_controller = 236
+			set_state_owner = 237
+			set_state_controller = 237
+			set_state_owner = 238
+			set_state_controller = 238
+			set_state_owner = 218
+			set_state_controller = 218
+			set_state_owner = 234
+			set_state_controller = 234
+			set_state_owner = 233
+			set_state_controller = 233
+			set_state_owner = 235
+			set_state_controller = 235
+			set_state_owner = 828
+			set_state_controller = 828
+			set_state_owner = 232
+			set_state_controller = 232
+		}
+		SMO = { load_focus_tree = SMO_focus_shared}
+		SOV = {
+			puppet = NMO
+			puppet = SMO
+		}
+		SOV = { set_cosmetic_tag = SOV_Centralgovernment }
+	}
+
+}
+
+
+#### SOV ideas
+
+country_event = {
+	id = cw.7
+	title = cw.7.t
+	desc = cw.7.d
+	picture = GFX_event_russian_cw_map
+
+	is_triggered_only = yes
+
+	option = { # ok
+	name = cw.7.a
+
+			remove_dynamic_modifier = { modifier = sovrus_army }
+			remove_dynamic_modifier = { modifier = sovrus_economy }
+			remove_ideas = SOV_workers_movement_5
+			remove_ideas = SOV_workers_movement_1
+			remove_ideas = SOV_workers_movement_2
+			remove_ideas = SOV_workers_movement_3
+			remove_ideas = SOV_workers_movement_4
+			remove_ideas = SOV_zug_political_instability_2
+			remove_ideas = SOV_zug_crisis_4
+			remove_ideas = SOV_zug_crisis_3
+
+			set_variable = { sov_state_stability = -0.3 }
+			set_variable = { sov_state_war_support_weekly = -0.005 }
+			set_variable = { sov_state_pp_factor = -0.15 }
+			set_variable = { sov_state_pop_growh = -0.5 }
+			set_variable = { sov_state_war_support = -0.2 }
+			set_variable = { sov_state_research_speed = -0.6 }
+			set_variable = { sov_state_surrender_limit = -0.2 }
+			set_variable = { sov_economy_max_poduction_capacity = -0.5 }
+			set_variable = { sov_economy_const_speed = -0.3 }
+			set_variable = { sov_economy_prod_output = -0.3 }
+			set_variable = { sov_economy_CG = 0.3 }
+			set_variable = { sov_economy_repair_speed = -0.3 }
+			set_variable = { sov_economy_prod_growh = -0.2 }
+			set_variable = { sov_economy_resource = -0.6 }
+
+			add_dynamic_modifier = {
+				modifier = sov_civil_war_state
+			}
+			set_rule = { can_join_factions = no }
+			if = {
+				limit = { is_in_faction = no }
+				create_faction = "Anti-Bolshevik Front"
+			}
+
+			set_variable = { sov_army_morale = -0.2 } #+0.5 (05 в вов)
+			set_variable = { sov_army_org = -0.2 } #+91 (30)
+			set_variable = { sov_army_offense = 0 } #
+			set_variable = { sov_army_defence = 0 } #
+			set_variable = { sov_army_conscription = -0.4 } #+0.05
+			set_variable = { sov_army_attrition = 0.25 } #+0.01
+			set_variable = { sov_army_reinforce_rate = -0.2 } #+085 (50)
+			set_variable = { sov_army_exp_loss_in_combat = 0.3 } #+0.05
+
+			add_dynamic_modifier = {
+				modifier = sov_civil_war_army
+			}
+
+			set_variable = { sov_workmov_pp_factor = -0.3 } #
+			set_variable = { sov_workmov_surrender_limit = -0.4 } #
+			set_variable = { sov_workmov_war_support = -0.2 } # -0.5
+			set_variable = { sov_workmov_army_compliance_in_enemy = 0.2 } # 0.5
+
+			add_dynamic_modifier = {
+				modifier = sov_workers_movement
+			}
+
+			ARM = { leave_faction = yes }
+			KYR = { leave_faction = yes }
+			TAJ = { leave_faction = yes }
+			SOV = {
+				add_opinion_modifier = {
+					target = ARM
+					modifier = loyal_to_our_enemy
+				}
+			}
+			ARM = {
+				add_opinion_modifier = {
+					target = SOV
+					modifier = loyal_to_our_enemy
+				}
+			}
+			SOV = {
+				add_opinion_modifier = {
+					target = KYR
+					modifier = loyal_to_our_enemy
+				}
+			}
+			KYR = {
+				add_opinion_modifier = {
+					target = SOV
+					modifier = loyal_to_our_enemy
+				}
+			}
+			SOV = {
+				add_opinion_modifier = {
+					target = TAJ
+					modifier = loyal_to_our_enemy
+				}
+			}
+			TAJ = {
+				add_opinion_modifier = {
+					target = SOV
+					modifier = loyal_to_our_enemy
+				}
+			}
+		}
+	}
+
+country_event = {
+	id = cw.9
+	title = cw.9.t
+	desc = cw.9.d
+	picture = GFX_russian_soldiers_1
+
+	is_triggered_only = yes
+
+	option = { # ok
+		name = RCO_event_cw.9.a
+		load_oob = "SOV_armed_rights"
+	}
+
+}
+country_event = { #change to orthadox
+	id = cw.10
+	title = cw.9.t
+	desc = cw.9.d
+	picture = GFX_russian_soldiers_1
+
+	is_triggered_only = yes
+
+	option = { # ok
+		name = RCO_event_cw.9.a
+		load_oob = "SOV_armed_rights"
+	}
+}
+
+######## delete militia
+country_event = { 
+	id = cw.11
+	title = cw.11.t
+	desc = cw.11.d
+	picture = GFX_event_red_btr
+
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+		if = {
+	limit = { has_dlc = "Man the Guns" }
+		load_oob = "SOV_2000_naval_mtg"
+	else = {
+		load_oob = "SOV_2000_naval_legacy"
+	}
+}
+	}
+	}
+
+	option = { # brigades
+		name = RCO_event_cw.11.a
+		delete_units = {
+    		division_template = "Motorized Militia Battalion"
+    		disband = yes
+		}
+		delete_units = {
+    		division_template = "Militia Batallion"
+    		disband = yes
+		}
+		delete_units = {
+    		division_template = "Militia Division"
+    		disband = yes
+		}
+		delete_units = {
+    		division_template = "Militia Batallion 2"
+    		disband = yes
+		}
+		delete_units = {
+    		division_template = "Militia Division 2"
+    		disband = yes
+		}
+		delete_units = {
+    		division_template = "Workers Militia Division"
+    		disband = yes
+		}
+		delete_units = {
+    		division_template = "Regular Motorized Division"
+    		disband = yes
+		}
+		delete_units = {
+    		division_template = "RCO_korean_interbrigades"
+    		disband = yes
+		}
+		delete_units = {
+    		division_template = "RCO_chineese_interbrigades"
+    		disband = yes
+		}
+		hidden_effect = {
+			load_oob = "RCO_brigade_plan"
+			
+		}
+	}
+
+	option = { # divs
+		name = RCO_event_cw.11.b
+		delete_units = {
+    		division_template = "Motorized Militia Battalion"
+    		disband = yes
+		}
+		delete_units = {
+    		division_template = "Militia Batallion"
+    		disband = yes
+		}
+	delete_units = {
+    		division_template = "Regular Motorized Division"
+    		disband = yes
+		}
+		delete_units = {
+    		division_template = "Militia Division"
+    		disband = yes
+		}
+		delete_units = {
+    		division_template = "Militia Batallion 2"
+    		disband = yes
+		}
+		delete_units = {
+    		division_template = "Militia Division 2"
+    		disband = yes
+		}
+		delete_units = {
+    		division_template = "Workers Militia Division"
+    		disband = yes
+		}
+		delete_units = {
+    		division_template = "RCO_korean_interbrigades"
+    		disband = yes
+		}
+		delete_units = {
+    		division_template = "RCO_chineese_interbrigades"
+    		disband = yes
+		}
+		hidden_effect = {
+			load_oob = "RCO_div_plan"
+			
+		}
+	}
+}
+
+country_event = { #ukrainian units
+	id = cw.12
+	title = cw.12.t
+	desc = cw.12.d
+	picture = GFX_event_red_btr
+
+	is_triggered_only = yes
+
+	option = { 
+		name = RCO_event_cw.12.a
+
+		hidden_effect = {
+			load_oob = "UCO_red_guard"
+		}
+		add_equipment_to_stockpile = {
+			type = infantry_equipment_1
+			amount = 1500
+			producer = UKR
+		}
+		add_equipment_to_stockpile = {
+			type = train_equipment_1
+			amount = 30
+			producer = UKR
+		}
+		add_equipment_to_stockpile = {
+			type = infantry_equipment_2
+			amount = 500
+			producer = UKR
+		}
+		add_equipment_to_stockpile = {
+			type = support_equipment_1
+			amount = 50
+			producer = UKR
+		}
+		add_equipment_to_stockpile = {
+			type = motorized_equipment_1
+			amount = 50
+			producer = UKR
+		}
+		add_equipment_to_stockpile = {
+			type = modern_tank_equipment_1
+			amount = 30
+			producer = UKR
+		}
+		add_political_power = 300
+		UKR = { 
+			declare_war_on = {
+   			 target = UCO
+    		type = annex_everything
+			}
+		 }
+	}
+	}
+
+country_event = { #sov asks blr to join civil war
+	id = cw.13
+	title = cw.13.t
+	desc = cw.13.d
+	picture = GFX_event_red_btr
+
+	is_triggered_only = yes
+
+	option = { 
+		name = RCO_event_cw.13.a #blr will join if AI and they didnt go communist
+		trigger = {
+            BLR = {
+				NOT = {has_completed_focus = BLR_unite_the_communist_parties}
+			}
+        }
+		 ai_chance = {
+            base = 100       
+        }
+
+		BLR = { add_to_faction = SOV }
+		BLR = {
+			add_to_war = {
+    						targeted_alliance = SOV
+    						enemy = RCO
+    						hostility_reason = asked_to_join
+						}
+	}
+RCO = {
+country_event = {
+					id = cw.15
+				}
+	}
+	}
+	option = { 
+		name = RCO_event_cw.13.b #no
+		 ai_chance = {
+            base = 0       
+        }
+		add_war_support = -0.1
+	}
+	}
+
+country_event = { #rco asks blr to join civil war
+	id = cw.14
+	title = cw.14.t
+	desc = cw.14.d
+	picture = GFX_event_red_btr
+
+	is_triggered_only = yes
+
+	option = { 
+		name = RCO_event_cw.14.a #blr will join if AI 
+		 ai_chance = {
+            base = 100       
+        }
+
+		RCO = { add_to_faction = BLR }
+		add_threat = 5
+		RCO = {
+            	puppet = {
+                target = BLR
+                end_wars = no
+            	}
+        	}
+		BLR = {
+			add_to_war = {
+    						targeted_alliance = RCO
+    						enemy = SOV
+    						hostility_reason = asked_to_join
+						}
+	}
+	}
+	option = { 
+		name = RCO_event_cw.14.b #no
+		 ai_chance = {
+            base = 0       
+        }
+		add_war_support = -0.2
+		add_stability = -0.25
+	}
+	} 
+
+country_event = { #event for rco that belarus joined
+	id = cw.15
+	title = cw.15.t
+	desc = cw.15.d
+	picture = GFX_russian_soldiers_1
+
+	is_triggered_only = yes
+
+	option = { # ok
+		name = cw.15.a
+	}
+
+}
+
+country_event = { #what to do with kazahstan after cw
+	id = cw.16
+	title = cw.16.t
+	desc = cw.16.d
+	picture = GFX_event_red_btr
+
+	is_triggered_only = yes
+
+	option = { 
+		name = cw.16.a #we need all of kazahstan - send ultimatum to kaz
+		 ai_chance = {
+            base = 60       
+        }
+		KAZ =  { country_event = cw.18 }
+		hidden_effect = { clr_global_flag = usa_intervened_in_russian_cw }
+	}
+	option = { 
+		name = cw.16.b #we need part of kazahstan
+		 ai_chance = {
+            base = 40       
+        }
+		KAZ =  { country_event = cw.20 }
+		hidden_effect = { clr_global_flag = usa_intervened_in_russian_cw }
+	}
+
+	option = { 
+		name = cw.16.c #leave kazahstan alone
+		 ai_chance = {
+            base = 0       
+        }
+		add_political_power = 150
+		add_stability = 0.1
+		hidden_effect = { clr_global_flag = usa_intervened_in_russian_cw }
+	}
+	} 
+
+	country_event = { #event for ai to get pp
+	id = cw.17
+	title = cw.17.t
+	desc = cw.17.d
+	picture = GFX_petersburg_dockers
+
+	is_triggered_only = yes
+
+	option = { 
+		name = cw.17.a
+		add_political_power = 1000
+	}
+}
+
+country_event = { #kaz ultimatum for annexation
+	id = cw.18
+		title = cw.18.t
+		desc = cw.18.d
+		picture = GFX_report_event_japanese_transport_soldiers
+
+		is_triggered_only = yes
+
+		option = { # russia annexes kaz
+				name =  cw.18.a
+				RCO = {
+					annex_country = {
+			 				target = KAZ
+								transfer_troops = yes
+							}
+							country_event = { id = cw.63 }
+					}
+			}
+
+		option = { # decline request
+				name =  cw.18.b
+				RCO = {
+					create_wargoal = {
+								type = annex_everything
+								target = KAZ
+							}
+							country_event = cw.19 #event to inform rco
+			 		}
+		 	}
+	 }
+
+	country_event = { #event for rco in case kaz declines annexation ultimatum
+	id = cw.19
+	title = cw.19.t
+	desc = cw.19.d
+	picture = GFX_event_red_btr
+
+	is_triggered_only = yes
+
+	option = { # declare war on kaz
+		name =  cw.19.a
+		declare_war_on = {
+                             target = KAZ
+                             type = annex_everything
+                            }
+	}
+}
+
+country_event = {
+	id = cw.20 #event for kaz if they want to accept rco proposal
+		title = cw.20.t
+		desc = cw.20.d
+		picture = GFX_report_event_japanese_transport_soldiers
+
+		is_triggered_only = yes
+
+		option = { # accept
+				name =  cw.20.a
+				RCO = {	
+					transfer_state = 406
+					transfer_state = 407
+					transfer_state = 583
+					transfer_state = 997
+					transfer_state = 588
+					country_event = { id = cw.63 }
+					}
+			}
+
+		option = { # decline request
+				name =  cw.20.b
+				RCO = {
+					create_wargoal = {
+								type = annex_everything
+								target = KAZ
+							}
+							country_event = cw.19 #event to inform rco
+			 		}
+		 	}
+	 }
+
+country_event = {
+	id = cw.21
+	title = cw.21.t
+	desc = cw.21.d
+	picture = GFX_russian_soldiers_1
+	fire_only_once = yes
+
+	trigger = {
+    	tag = RCO
+		is_ai = yes
+		has_war_with = SOV
+		war_length_with = {
+    			tag = SOV
+    			months > 12
+		}
+	}
+
+	option = { # ok
+		name = RCO_event_cw.21.a
+		add_timed_idea = {
+				idea = RCO_firstoffensive
+				days = 80
+			}
+			add_equipment_to_stockpile = {
+			type = infantry_equipment_1
+			amount = 20000
+			producer = RCO
+		}
+		add_equipment_to_stockpile = {
+			type = artillery_equipment_1
+			amount = 1000
+			producer = RCO
+		}
+		add_equipment_to_stockpile = {
+			type = anti_tank_equipment_1
+			amount = 1000
+			producer = RCO
+		}
+		219 = {
+						# 30 Spawn ins
+						create_unit = { division = "division_template = \"Militia Division\" start_experience_factor = 0.20 start_manpower_factor = 0.25 force_equipment_variants = { infantry_equipment_1 = { owner = \"RCO\" } } force_equipment_variants = { squad_equipment_0 = { owner = \"RCO\" } }" owner = RCO }
+						create_unit = { division = "division_template = \"Militia Division\" start_experience_factor = 0.20 start_manpower_factor = 0.25 force_equipment_variants = { infantry_equipment_1 = { owner = \"RCO\" } } force_equipment_variants = { squad_equipment_0 = { owner = \"RCO\" } }" owner = RCO }
+						create_unit = { division = "division_template = \"Militia Division\" start_experience_factor = 0.20 start_manpower_factor = 0.25 force_equipment_variants = { infantry_equipment_1 = { owner = \"RCO\" } } force_equipment_variants = { squad_equipment_0 = { owner = \"RCO\" } }" owner = RCO }
+						create_unit = { division = "division_template = \"Militia Division\" start_experience_factor = 0.20 start_manpower_factor = 0.25 force_equipment_variants = { infantry_equipment_1 = { owner = \"RCO\" } } force_equipment_variants = { squad_equipment_0 = { owner = \"RCO\" } }" owner = RCO }
+						create_unit = { division = "division_template = \"Militia Division\" start_experience_factor = 0.20 start_manpower_factor = 0.25 force_equipment_variants = { infantry_equipment_1 = { owner = \"RCO\" } } force_equipment_variants = { squad_equipment_0 = { owner = \"RCO\" } }" owner = RCO }
+						create_unit = { division = "division_template = \"Militia Division\" start_experience_factor = 0.20 start_manpower_factor = 0.25 force_equipment_variants = { infantry_equipment_1 = { owner = \"RCO\" } } force_equipment_variants = { squad_equipment_0 = { owner = \"RCO\" } }" owner = RCO }
+						create_unit = { division = "division_template = \"Militia Division\" start_experience_factor = 0.20 start_manpower_factor = 0.25 force_equipment_variants = { infantry_equipment_1 = { owner = \"RCO\" } } force_equipment_variants = { squad_equipment_0 = { owner = \"RCO\" } }" owner = RCO }
+						create_unit = { division = "division_template = \"Militia Division\" start_experience_factor = 0.20 start_manpower_factor = 0.25 force_equipment_variants = { infantry_equipment_1 = { owner = \"RCO\" } } force_equipment_variants = { squad_equipment_0 = { owner = \"RCO\" } }" owner = RCO }
+						create_unit = { division = "division_template = \"Militia Division\" start_experience_factor = 0.20 start_manpower_factor = 0.25 force_equipment_variants = { infantry_equipment_1 = { owner = \"RCO\" } } force_equipment_variants = { squad_equipment_0 = { owner = \"RCO\" } }" owner = RCO }
+						create_unit = { division = "division_template = \"Militia Division\" start_experience_factor = 0.20 start_manpower_factor = 0.25 force_equipment_variants = { infantry_equipment_1 = { owner = \"RCO\" } } force_equipment_variants = { squad_equipment_0 = { owner = \"RCO\" } }" owner = RCO }
+						create_unit = { division = "division_template = \"Militia Division\" start_experience_factor = 0.20 start_manpower_factor = 0.25 force_equipment_variants = { infantry_equipment_1 = { owner = \"RCO\" } } force_equipment_variants = { squad_equipment_0 = { owner = \"RCO\" } }" owner = RCO }
+						create_unit = { division = "division_template = \"Militia Division\" start_experience_factor = 0.20 start_manpower_factor = 0.25 force_equipment_variants = { infantry_equipment_1 = { owner = \"RCO\" } } force_equipment_variants = { squad_equipment_0 = { owner = \"RCO\" } }" owner = RCO }
+						create_unit = { division = "division_template = \"Militia Division\" start_experience_factor = 0.20 start_manpower_factor = 0.25 force_equipment_variants = { infantry_equipment_1 = { owner = \"RCO\" } } force_equipment_variants = { squad_equipment_0 = { owner = \"RCO\" } }" owner = RCO }
+						create_unit = { division = "division_template = \"Militia Division\" start_experience_factor = 0.20 start_manpower_factor = 0.25 force_equipment_variants = { infantry_equipment_1 = { owner = \"RCO\" } } force_equipment_variants = { squad_equipment_0 = { owner = \"RCO\" } }" owner = RCO }
+						create_unit = { division = "division_template = \"Militia Division\" start_experience_factor = 0.20 start_manpower_factor = 0.25 force_equipment_variants = { infantry_equipment_1 = { owner = \"RCO\" } } force_equipment_variants = { squad_equipment_0 = { owner = \"RCO\" } }" owner = RCO }
+						create_unit = { division = "division_template = \"Militia Division\" start_experience_factor = 0.20 start_manpower_factor = 0.25 force_equipment_variants = { infantry_equipment_1 = { owner = \"RCO\" } } force_equipment_variants = { squad_equipment_0 = { owner = \"RCO\" } }" owner = RCO }
+						create_unit = { division = "division_template = \"Militia Division\" start_experience_factor = 0.20 start_manpower_factor = 0.25 force_equipment_variants = { infantry_equipment_1 = { owner = \"RCO\" } } force_equipment_variants = { squad_equipment_0 = { owner = \"RCO\" } }" owner = RCO }
+						create_unit = { division = "division_template = \"Militia Division\" start_experience_factor = 0.20 start_manpower_factor = 0.25 force_equipment_variants = { infantry_equipment_1 = { owner = \"RCO\" } } force_equipment_variants = { squad_equipment_0 = { owner = \"RCO\" } }" owner = RCO }
+						create_unit = { division = "division_template = \"Militia Division\" start_experience_factor = 0.20 start_manpower_factor = 0.25 force_equipment_variants = { infantry_equipment_1 = { owner = \"RCO\" } } force_equipment_variants = { squad_equipment_0 = { owner = \"RCO\" } }" owner = RCO }
+						create_unit = { division = "division_template = \"Militia Division\" start_experience_factor = 0.20 start_manpower_factor = 0.25 force_equipment_variants = { infantry_equipment_1 = { owner = \"RCO\" } } force_equipment_variants = { squad_equipment_0 = { owner = \"RCO\" } }" owner = RCO }
+						create_unit = { division = "division_template = \"Militia Division\" start_experience_factor = 0.20 start_manpower_factor = 0.25 force_equipment_variants = { infantry_equipment_1 = { owner = \"RCO\" } } force_equipment_variants = { squad_equipment_0 = { owner = \"RCO\" } }" owner = RCO }
+						create_unit = { division = "division_template = \"Militia Division\" start_experience_factor = 0.20 start_manpower_factor = 0.25 force_equipment_variants = { infantry_equipment_1 = { owner = \"RCO\" } } force_equipment_variants = { squad_equipment_0 = { owner = \"RCO\" } }" owner = RCO }
+						create_unit = { division = "division_template = \"Militia Division\" start_experience_factor = 0.20 start_manpower_factor = 0.25 force_equipment_variants = { infantry_equipment_1 = { owner = \"RCO\" } } force_equipment_variants = { squad_equipment_0 = { owner = \"RCO\" } }" owner = RCO }
+						create_unit = { division = "division_template = \"Militia Division\" start_experience_factor = 0.20 start_manpower_factor = 0.25 force_equipment_variants = { infantry_equipment_1 = { owner = \"RCO\" } } force_equipment_variants = { squad_equipment_0 = { owner = \"RCO\" } }" owner = RCO }
+						create_unit = { division = "division_template = \"Militia Division\" start_experience_factor = 0.20 start_manpower_factor = 0.25 force_equipment_variants = { infantry_equipment_1 = { owner = \"RCO\" } } force_equipment_variants = { squad_equipment_0 = { owner = \"RCO\" } }" owner = RCO }
+						create_unit = { division = "division_template = \"Militia Division\" start_experience_factor = 0.20 start_manpower_factor = 0.25 force_equipment_variants = { infantry_equipment_1 = { owner = \"RCO\" } } force_equipment_variants = { squad_equipment_0 = { owner = \"RCO\" } }" owner = RCO }
+						create_unit = { division = "division_template = \"Militia Division\" start_experience_factor = 0.20 start_manpower_factor = 0.25 force_equipment_variants = { infantry_equipment_1 = { owner = \"RCO\" } } force_equipment_variants = { squad_equipment_0 = { owner = \"RCO\" } }" owner = RCO }
+						create_unit = { division = "division_template = \"Militia Division\" start_experience_factor = 0.20 start_manpower_factor = 0.25 force_equipment_variants = { infantry_equipment_1 = { owner = \"RCO\" } } force_equipment_variants = { squad_equipment_0 = { owner = \"RCO\" } }" owner = RCO }
+						create_unit = { division = "division_template = \"Militia Division\" start_experience_factor = 0.20 start_manpower_factor = 0.25 force_equipment_variants = { infantry_equipment_1 = { owner = \"RCO\" } } force_equipment_variants = { squad_equipment_0 = { owner = \"RCO\" } }" owner = RCO }
+						create_unit = { division = "division_template = \"Militia Division\" start_experience_factor = 0.20 start_manpower_factor = 0.25 force_equipment_variants = { infantry_equipment_1 = { owner = \"RCO\" } } force_equipment_variants = { squad_equipment_0 = { owner = \"RCO\" } }" owner = RCO }
+						create_unit = { division = "division_template = \"Militia Division\" start_experience_factor = 0.20 start_manpower_factor = 0.25 force_equipment_variants = { infantry_equipment_1 = { owner = \"RCO\" } } force_equipment_variants = { squad_equipment_0 = { owner = \"RCO\" } }" owner = RCO }
+						create_unit = { division = "division_template = \"Militia Division\" start_experience_factor = 0.20 start_manpower_factor = 0.25 force_equipment_variants = { infantry_equipment_1 = { owner = \"RCO\" } } force_equipment_variants = { squad_equipment_0 = { owner = \"RCO\" } }" owner = RCO }
+						create_unit = { division = "division_template = \"Militia Division\" start_experience_factor = 0.20 start_manpower_factor = 0.25 force_equipment_variants = { infantry_equipment_1 = { owner = \"RCO\" } } force_equipment_variants = { squad_equipment_0 = { owner = \"RCO\" } }" owner = RCO }
+						create_unit = { division = "division_template = \"Militia Division\" start_experience_factor = 0.20 start_manpower_factor = 0.25 force_equipment_variants = { infantry_equipment_1 = { owner = \"RCO\" } } force_equipment_variants = { squad_equipment_0 = { owner = \"RCO\" } }" owner = RCO }
+						create_unit = { division = "division_template = \"Militia Division\" start_experience_factor = 0.20 start_manpower_factor = 0.25 force_equipment_variants = { infantry_equipment_1 = { owner = \"RCO\" } } force_equipment_variants = { squad_equipment_0 = { owner = \"RCO\" } }" owner = RCO }
+						create_unit = { division = "division_template = \"Militia Division\" start_experience_factor = 0.20 start_manpower_factor = 0.25 force_equipment_variants = { infantry_equipment_1 = { owner = \"RCO\" } } force_equipment_variants = { squad_equipment_0 = { owner = \"RCO\" } }" owner = RCO }
+						create_unit = { division = "division_template = \"Militia Division\" start_experience_factor = 0.20 start_manpower_factor = 0.25 force_equipment_variants = { infantry_equipment_1 = { owner = \"RCO\" } } force_equipment_variants = { squad_equipment_0 = { owner = \"RCO\" } }" owner = RCO }
+						create_unit = { division = "division_template = \"Militia Division\" start_experience_factor = 0.20 start_manpower_factor = 0.25 force_equipment_variants = { infantry_equipment_1 = { owner = \"RCO\" } } force_equipment_variants = { squad_equipment_0 = { owner = \"RCO\" } }" owner = RCO }
+						create_unit = { division = "division_template = \"Militia Division\" start_experience_factor = 0.20 start_manpower_factor = 0.25 force_equipment_variants = { infantry_equipment_1 = { owner = \"RCO\" } } force_equipment_variants = { squad_equipment_0 = { owner = \"RCO\" } }" owner = RCO }
+						create_unit = { division = "division_template = \"Militia Division\" start_experience_factor = 0.20 start_manpower_factor = 0.25 force_equipment_variants = { infantry_equipment_1 = { owner = \"RCO\" } } force_equipment_variants = { squad_equipment_0 = { owner = \"RCO\" } }" owner = RCO }
+						create_unit = { division = "division_template = \"Militia Division\" start_experience_factor = 0.20 start_manpower_factor = 0.25 force_equipment_variants = { infantry_equipment_1 = { owner = \"RCO\" } } force_equipment_variants = { squad_equipment_0 = { owner = \"RCO\" } }" owner = RCO }
+						create_unit = { division = "division_template = \"Militia Division\" start_experience_factor = 0.20 start_manpower_factor = 0.25 force_equipment_variants = { infantry_equipment_1 = { owner = \"RCO\" } } force_equipment_variants = { squad_equipment_0 = { owner = \"RCO\" } }" owner = RCO }
+						create_unit = { division = "division_template = \"Militia Division\" start_experience_factor = 0.20 start_manpower_factor = 0.25 force_equipment_variants = { infantry_equipment_1 = { owner = \"RCO\" } } force_equipment_variants = { squad_equipment_0 = { owner = \"RCO\" } }" owner = RCO }
+						create_unit = { division = "division_template = \"Militia Division\" start_experience_factor = 0.20 start_manpower_factor = 0.25 force_equipment_variants = { infantry_equipment_1 = { owner = \"RCO\" } } force_equipment_variants = { squad_equipment_0 = { owner = \"RCO\" } }" owner = RCO }
+						create_unit = { division = "division_template = \"Militia Division\" start_experience_factor = 0.20 start_manpower_factor = 0.25 force_equipment_variants = { infantry_equipment_1 = { owner = \"RCO\" } } force_equipment_variants = { squad_equipment_0 = { owner = \"RCO\" } }" owner = RCO }
+						create_unit = { division = "division_template = \"Militia Division\" start_experience_factor = 0.20 start_manpower_factor = 0.25 force_equipment_variants = { infantry_equipment_1 = { owner = \"RCO\" } } force_equipment_variants = { squad_equipment_0 = { owner = \"RCO\" } }" owner = RCO }
+						create_unit = { division = "division_template = \"Militia Division\" start_experience_factor = 0.20 start_manpower_factor = 0.25 force_equipment_variants = { infantry_equipment_1 = { owner = \"RCO\" } } force_equipment_variants = { squad_equipment_0 = { owner = \"RCO\" } }" owner = RCO }
+						create_unit = { division = "division_template = \"Militia Division\" start_experience_factor = 0.20 start_manpower_factor = 0.25 force_equipment_variants = { infantry_equipment_1 = { owner = \"RCO\" } } force_equipment_variants = { squad_equipment_0 = { owner = \"RCO\" } }" owner = RCO }
+						create_unit = { division = "division_template = \"Militia Division\" start_experience_factor = 0.20 start_manpower_factor = 0.25 force_equipment_variants = { infantry_equipment_1 = { owner = \"RCO\" } } force_equipment_variants = { squad_equipment_0 = { owner = \"RCO\" } }" owner = RCO }
+						create_unit = { division = "division_template = \"Militia Division\" start_experience_factor = 0.20 start_manpower_factor = 0.25 force_equipment_variants = { infantry_equipment_1 = { owner = \"RCO\" } } force_equipment_variants = { squad_equipment_0 = { owner = \"RCO\" } }" owner = RCO }
+						create_unit = { division = "division_template = \"Militia Division\" start_experience_factor = 0.20 start_manpower_factor = 0.25 force_equipment_variants = { infantry_equipment_1 = { owner = \"RCO\" } } force_equipment_variants = { squad_equipment_0 = { owner = \"RCO\" } }" owner = RCO }
+						create_unit = { division = "division_template = \"Militia Division\" start_experience_factor = 0.20 start_manpower_factor = 0.25 force_equipment_variants = { infantry_equipment_1 = { owner = \"RCO\" } } force_equipment_variants = { squad_equipment_0 = { owner = \"RCO\" } }" owner = RCO }
+						create_unit = { division = "division_template = \"Militia Division\" start_experience_factor = 0.20 start_manpower_factor = 0.25 force_equipment_variants = { infantry_equipment_1 = { owner = \"RCO\" } } force_equipment_variants = { squad_equipment_0 = { owner = \"RCO\" } }" owner = RCO }
+						create_unit = { division = "division_template = \"Militia Division\" start_experience_factor = 0.20 start_manpower_factor = 0.25 force_equipment_variants = { infantry_equipment_1 = { owner = \"RCO\" } } force_equipment_variants = { squad_equipment_0 = { owner = \"RCO\" } }" owner = RCO }
+						create_unit = { division = "division_template = \"Militia Division\" start_experience_factor = 0.20 start_manpower_factor = 0.25 force_equipment_variants = { infantry_equipment_1 = { owner = \"RCO\" } } force_equipment_variants = { squad_equipment_0 = { owner = \"RCO\" } }" owner = RCO }
+						create_unit = { division = "division_template = \"Militia Division\" start_experience_factor = 0.20 start_manpower_factor = 0.25 force_equipment_variants = { infantry_equipment_1 = { owner = \"RCO\" } } force_equipment_variants = { squad_equipment_0 = { owner = \"RCO\" } }" owner = RCO }
+						create_unit = { division = "division_template = \"Militia Division\" start_experience_factor = 0.20 start_manpower_factor = 0.25 force_equipment_variants = { infantry_equipment_1 = { owner = \"RCO\" } } force_equipment_variants = { squad_equipment_0 = { owner = \"RCO\" } }" owner = RCO }
+						create_unit = { division = "division_template = \"Militia Division\" start_experience_factor = 0.20 start_manpower_factor = 0.25 force_equipment_variants = { infantry_equipment_1 = { owner = \"RCO\" } } force_equipment_variants = { squad_equipment_0 = { owner = \"RCO\" } }" owner = RCO }
+						create_unit = { division = "division_template = \"Militia Division\" start_experience_factor = 0.20 start_manpower_factor = 0.25 force_equipment_variants = { infantry_equipment_1 = { owner = \"RCO\" } } force_equipment_variants = { squad_equipment_0 = { owner = \"RCO\" } }" owner = RCO }
+						create_unit = { division = "division_template = \"Militia Division\" start_experience_factor = 0.20 start_manpower_factor = 0.25 force_equipment_variants = { infantry_equipment_1 = { owner = \"RCO\" } } force_equipment_variants = { squad_equipment_0 = { owner = \"RCO\" } }" owner = RCO }
+						create_unit = { division = "division_template = \"Militia Division\" start_experience_factor = 0.20 start_manpower_factor = 0.25 force_equipment_variants = { infantry_equipment_1 = { owner = \"RCO\" } } force_equipment_variants = { squad_equipment_0 = { owner = \"RCO\" } }" owner = RCO }
+						create_unit = { division = "division_template = \"Militia Division\" start_experience_factor = 0.20 start_manpower_factor = 0.25 force_equipment_variants = { infantry_equipment_1 = { owner = \"RCO\" } } force_equipment_variants = { squad_equipment_0 = { owner = \"RCO\" } }" owner = RCO }
+						create_unit = { division = "division_template = \"Militia Division\" start_experience_factor = 0.20 start_manpower_factor = 0.25 force_equipment_variants = { infantry_equipment_1 = { owner = \"RCO\" } } force_equipment_variants = { squad_equipment_0 = { owner = \"RCO\" } }" owner = RCO }
+						create_unit = { division = "division_template = \"Militia Division\" start_experience_factor = 0.20 start_manpower_factor = 0.25 force_equipment_variants = { infantry_equipment_1 = { owner = \"RCO\" } } force_equipment_variants = { squad_equipment_0 = { owner = \"RCO\" } }" owner = RCO }
+						create_unit = { division = "division_template = \"Militia Division\" start_experience_factor = 0.20 start_manpower_factor = 0.25 force_equipment_variants = { infantry_equipment_1 = { owner = \"RCO\" } } force_equipment_variants = { squad_equipment_0 = { owner = \"RCO\" } }" owner = RCO }
+						create_unit = { division = "division_template = \"Militia Division\" start_experience_factor = 0.20 start_manpower_factor = 0.25 force_equipment_variants = { infantry_equipment_1 = { owner = \"RCO\" } } force_equipment_variants = { squad_equipment_0 = { owner = \"RCO\" } }" owner = RCO }
+						create_unit = { division = "division_template = \"Militia Division\" start_experience_factor = 0.20 start_manpower_factor = 0.25 force_equipment_variants = { infantry_equipment_1 = { owner = \"RCO\" } } force_equipment_variants = { squad_equipment_0 = { owner = \"RCO\" } }" owner = RCO }
+						create_unit = { division = "division_template = \"Militia Division\" start_experience_factor = 0.20 start_manpower_factor = 0.25 force_equipment_variants = { infantry_equipment_1 = { owner = \"RCO\" } } force_equipment_variants = { squad_equipment_0 = { owner = \"RCO\" } }" owner = RCO }
+						create_unit = { division = "division_template = \"Militia Division\" start_experience_factor = 0.20 start_manpower_factor = 0.25 force_equipment_variants = { infantry_equipment_1 = { owner = \"RCO\" } } force_equipment_variants = { squad_equipment_0 = { owner = \"RCO\" } }" owner = RCO }
+						create_unit = { division = "division_template = \"Militia Division\" start_experience_factor = 0.20 start_manpower_factor = 0.25 force_equipment_variants = { infantry_equipment_1 = { owner = \"RCO\" } } force_equipment_variants = { squad_equipment_0 = { owner = \"RCO\" } }" owner = RCO }
+
+	}
+	}
+
+}
+
+country_event = { #win against intervention from pol/fin
+	id = cw.22
+	title = cw.22.t
+	desc = cw.22.d
+	picture = GFX_russian_soldiers_1
+
+	is_triggered_only = yes
+
+	option = { # ok
+	name =  cw.22.a
+		add_political_power = 100
+		army_experience = 30
+	}
+}
+
+country_event = { #lose against intervention from pol/fin
+	id = cw.23
+	title = cw.23.t
+	desc = cw.23.d
+	picture = GFX_russian_soldiers_1
+
+	is_triggered_only = yes
+
+	option = { # ok
+	name =  cw.23.a
+		army_experience = 10
+	}
+}
+
+country_event = { #draw against intervention from pol/fin
+	id = cw.24
+	title = cw.24.t
+	desc = cw.24.d
+	picture = GFX_russian_soldiers_1
+
+	is_triggered_only = yes
+
+	option = { # ok
+	name =  cw.24.a
+	add_political_power = 50
+		army_experience = 20
+	}
+}
+
+country_event = { #pol decides what to do next
+	id = cw.25
+	title = cw.25.t
+	desc = cw.25.d
+	picture = GFX_report_event_political_deal2
+
+	is_triggered_only = yes
+
+	option = { # fortify those regions
+	name =  cw.25.a
+
+	ai_chance = {
+            base = 50       
+        }
+
+	add_political_power = 100
+	add_stability = 0.05
+		808 = {
+				 				if = {
+					 					limit = { is_controlled_by = ROOT }
+					 					add_building_construction = {
+						 						type = bunker
+						 						level = 2
+						 						province = 6413
+						 						instant_build = yes
+						 					}
+				 				add_building_construction = {
+					 						type = bunker
+					 						level = 1
+					 						province = 9236
+					 						instant_build = yes
+					 					}
+										add_building_construction = {
+					 						type = bunker
+					 						level = 2
+					 						province = 318
+					 						instant_build = yes
+					 					}
+				 					}	
+			 					}
+			94 = {
+				 				if = {
+					 					limit = { is_controlled_by = ROOT }
+					 					add_building_construction = {
+						 						type = bunker
+						 						level = 2
+						 						province = 9304
+						 						instant_build = yes
+						 					}
+				 				add_building_construction = {
+					 						type = bunker
+					 						level = 2
+					 						province = 3556
+					 						instant_build = yes
+					 					}
+										add_building_construction = {
+					 						type = bunker
+					 						level = 2
+					 						province = 11503
+					 						instant_build = yes
+					 					}
+				 					}	
+			 					}
+				93 = {
+				 				if = {
+					 					limit = { is_controlled_by = ROOT }
+					 					add_building_construction = {
+						 						type = bunker
+						 						level = 1
+						 						province = 6435
+						 						instant_build = yes
+						 					}
+											add_building_construction = {
+						 						type = bunker
+						 						level = 1
+						 						province = 15374
+						 						instant_build = yes
+						 					}
+				 				add_building_construction = {
+					 						type = bunker
+					 						level = 3
+					 						province = 9520
+					 						instant_build = yes
+					 					}
+										add_building_construction = {
+					 						type = bunker
+					 						level = 2
+					 						province = 572
+					 						instant_build = yes
+					 					}
+										add_building_construction = {
+					 						type = bunker
+					 						level = 2
+					 						province = 15381
+					 						instant_build = yes
+					 					}
+				 					}	
+			 					}
+				91 = {
+				 				if = {
+					 					limit = { is_controlled_by = ROOT }
+					 					add_building_construction = {
+						 						type = bunker
+						 						level = 2
+						 						province = 3483
+						 						instant_build = yes
+						 					}
+				 				add_building_construction = {
+					 						type = bunker
+					 						level = 2
+					 						province = 11479
+					 						instant_build = yes
+					 					}
+				 					}	
+			 					}
+							}
+
+	option = { # push east
+	name =  cw.25.b
+
+	ai_chance = {
+          base = 50       
+      }
+
+	trigger = {
+		RCO = {
+               exists = yes
+           }
+	}
+
+	add_political_power = -100
+	add_threat = 10
+	leave_faction = yes
+	set_rule = {
+   		can_join_factions = no
+	}
+	add_stability = -0.25
+	add_war_support = -0.3
+	activate_mission = POL_capture_east_russia_mission
+	add_timed_idea = {
+				idea = GER_low_military_conscription
+				days = 120
+			}
+			add_timed_idea = {
+				idea = RCO_firstoffensive 
+				days = 80
+			}
+			POL = {
+				create_wargoal = {
+    			type = take_state_focus
+    			target = RCO
+    			generator = { 95 206 204 194 }
+    			expire = 90
+				}
+			}
+			declare_war_on = {
+    		target = RCO
+    		type = take_state_focus
+			}
+			declare_war_on = {
+    		target = UCO
+    		type = take_state_focus
+			}
+			hidden_effect = {
+				RCO = { activate_mission = RCO_pol_capture_east_russia_mission }
+				set_global_flag = POL_attacked_rco_in_cw
+				If = {
+					limit = { is_ai = yes }
+					load_oob = "POL_reservists"
+				}
+				news_event = {
+					id = news.842
+					days = 1
+				}
+			}
+	}
+	}
+
+country_event = { #pol can demand peace
+	id = cw.26
+	title = cw.26.t
+	desc = cw.26.d
+	picture = GFX_russian_soldiers_1
+
+	is_triggered_only = yes
+
+	option = { # send peace demands
+	name =  cw.26.a
+	add_political_power = 250
+	add_stability = 0.05
+	add_war_support = 0.15
+	RCO = {
+		country_event = {
+				id = cw.42
+			}
+		}
+	}
+}
+
+country_event = {
+	id = cw.27
+	title = cw.27.t
+	desc = cw.27.d
+	picture = GFX_russian_soldiers_1
+	fire_only_once = yes
+
+	is_triggered_only = yes
+
+	option = { # ok
+		name = RCO_event_cw.27.a
+		add_timed_idea = {
+				idea = RCO_secondoffensive
+				days = 80
+			}
+			add_equipment_to_stockpile = {
+			type = infantry_equipment_1
+			amount = 20000
+			producer = RCO
+		}
+		add_equipment_to_stockpile = {
+			type = artillery_equipment_1
+			amount = 1000
+			producer = RCO
+		}
+		add_equipment_to_stockpile = {
+			type = anti_tank_equipment_1
+			amount = 1000
+			producer = RCO
+		}
+	}
+
+}
+
+#rco ai additional mob units
+country_event = {
+	id = cw.28
+	title = cw.28.t
+	desc = cw.28.d
+	picture = GFX_event_chechen_militia
+	fire_only_once = yes
+
+	is_triggered_only = yes
+
+	option = { # ok
+		name = cw.28.a
+		add_equipment_to_stockpile = {
+			type = infantry_equipment_1
+			amount = 8000
+			producer = RCO
+		}
+		add_equipment_to_stockpile = {
+			type = support_equipment_1
+			amount = 600
+			producer = RCO
+		}
+		244 = {
+			create_unit = {
+						division = "name = \"Reserves\" division_template = \"Workers Militia Division\" start_experience_factor = 0.2 start_equipment_factor = 1"
+						owner = ROOT
+					}
+					create_unit = {
+						division = "name = \"Reserves\" division_template = \"Workers Militia Division\" start_experience_factor = 0.2 start_equipment_factor = 1"
+						owner = ROOT
+					}
+					create_unit = {
+						division = "name = \"Reserves\" division_template = \"Workers Militia Division\" start_experience_factor = 0.2 start_equipment_factor = 1"
+						owner = ROOT
+					}
+					create_unit = {
+						division = "name = \"Reserves\" division_template = \"Workers Militia Division\" start_experience_factor = 0.2 start_equipment_factor = 1"
+						owner = ROOT
+					}
+					create_unit = {
+						division = "name = \"Reserves\" division_template = \"Workers Militia Division\" start_experience_factor = 0.2 start_equipment_factor = 1"
+						owner = ROOT
+					}
+					create_unit = {
+						division = "name = \"Reserves\" division_template = \"Workers Militia Division\" start_experience_factor = 0.2 start_equipment_factor = 1"
+						owner = ROOT
+					}
+					create_unit = {
+						division = "name = \"Reserves\" division_template = \"Workers Militia Division\" start_experience_factor = 0.2 start_equipment_factor = 1"
+						owner = ROOT
+					}
+					create_unit = {
+						division = "name = \"Reserves\" division_template = \"Workers Militia Division\" start_experience_factor = 0.2 start_equipment_factor = 1"
+						owner = ROOT
+					}
+					create_unit = {
+						division = "name = \"Reserves\" division_template = \"Workers Militia Division\" start_experience_factor = 0.2 start_equipment_factor = 1"
+						owner = ROOT
+					}
+					create_unit = {
+						division = "name = \"Reserves\" division_template = \"Workers Militia Division\" start_experience_factor = 0.2 start_equipment_factor = 1"
+						owner = ROOT
+					}
+					create_unit = {
+						division = "name = \"Reserves\" division_template = \"Workers Militia Division\" start_experience_factor = 0.2 start_equipment_factor = 1"
+						owner = ROOT
+					}
+					create_unit = {
+						division = "name = \"Reserves\" division_template = \"Workers Militia Division\" start_experience_factor = 0.2 start_equipment_factor = 1"
+						owner = ROOT
+					}
+					create_unit = {
+						division = "name = \"Reserves\" division_template = \"Workers Militia Division\" start_experience_factor = 0.2 start_equipment_factor = 1"
+						owner = ROOT
+					}
+					create_unit = {
+						division = "name = \"Reserves\" division_template = \"Workers Militia Division\" start_experience_factor = 0.2 start_equipment_factor = 1"
+						owner = ROOT
+					}
+					create_unit = {
+						division = "name = \"Reserves\" division_template = \"Workers Militia Division\" start_experience_factor = 0.2 start_equipment_factor = 1"
+						owner = ROOT
+					}
+					create_unit = {
+						division = "name = \"Reserves\" division_template = \"Workers Militia Division\" start_experience_factor = 0.2 start_equipment_factor = 1"
+						owner = ROOT
+					}
+					create_unit = {
+						division = "name = \"Reserves\" division_template = \"Workers Militia Division\" start_experience_factor = 0.2 start_equipment_factor = 1"
+						owner = ROOT
+					}
+					create_unit = {
+						division = "name = \"Reserves\" division_template = \"Workers Militia Division\" start_experience_factor = 0.2 start_equipment_factor = 1"
+						owner = ROOT
+					}
+					create_unit = {
+						division = "name = \"Reserves\" division_template = \"Workers Militia Division\" start_experience_factor = 0.2 start_equipment_factor = 1"
+						owner = ROOT
+					}
+					create_unit = {
+						division = "name = \"Reserves\" division_template = \"Workers Militia Division\" start_experience_factor = 0.2 start_equipment_factor = 1"
+						owner = ROOT
+					}
+					create_unit = {
+						division = "name = \"Reserves\" division_template = \"Workers Militia Division\" start_experience_factor = 0.2 start_equipment_factor = 1"
+						owner = ROOT
+					}
+					create_unit = {
+						division = "name = \"Reserves\" division_template = \"Workers Militia Division\" start_experience_factor = 0.2 start_equipment_factor = 1"
+						owner = ROOT
+					}
+					create_unit = {
+						division = "name = \"Reserves\" division_template = \"Workers Militia Division\" start_experience_factor = 0.2 start_equipment_factor = 1"
+						owner = ROOT
+					}
+					create_unit = {
+						division = "name = \"Reserves\" division_template = \"Workers Militia Division\" start_experience_factor = 0.2 start_equipment_factor = 1"
+						owner = ROOT
+					}
+					create_unit = {
+						division = "name = \"Reserves\" division_template = \"Workers Militia Division\" start_experience_factor = 0.2 start_equipment_factor = 1"
+						owner = ROOT
+					}
+					create_unit = {
+						division = "name = \"Reserves\" division_template = \"Workers Militia Division\" start_experience_factor = 0.2 start_equipment_factor = 1"
+						owner = ROOT
+					}
+					create_unit = {
+						division = "name = \"Reserves\" division_template = \"Workers Militia Division\" start_experience_factor = 0.2 start_equipment_factor = 1"
+						owner = ROOT
+					}
+					create_unit = {
+						division = "name = \"Reserves\" division_template = \"Workers Militia Division\" start_experience_factor = 0.2 start_equipment_factor = 1"
+						owner = ROOT
+					}
+					create_unit = {
+						division = "name = \"Reserves\" division_template = \"Workers Militia Division\" start_experience_factor = 0.2 start_equipment_factor = 1"
+						owner = ROOT
+					}
+					create_unit = {
+						division = "name = \"Reserves\" division_template = \"Workers Militia Division\" start_experience_factor = 0.2 start_equipment_factor = 1"
+						owner = ROOT
+					}
+					create_unit = {
+						division = "name = \"Reserves\" division_template = \"Workers Militia Division\" start_experience_factor = 0.2 start_equipment_factor = 1"
+						owner = ROOT
+					}
+					create_unit = {
+						division = "name = \"Reserves\" division_template = \"Workers Militia Division\" start_experience_factor = 0.2 start_equipment_factor = 1"
+						owner = ROOT
+					}
+					create_unit = {
+						division = "name = \"Reserves\" division_template = \"Workers Militia Division\" start_experience_factor = 0.2 start_equipment_factor = 1"
+						owner = ROOT
+					}
+					create_unit = {
+						division = "name = \"Reserves\" division_template = \"Workers Militia Division\" start_experience_factor = 0.2 start_equipment_factor = 1"
+						owner = ROOT
+					}
+		}
+	}
+}
+
+#chechnya rising up
+country_event = {
+	id = cw.30
+	title = cw.30.t
+	desc = cw.30.d
+	picture = GFX_event_chechen_militia
+	fire_only_once = yes
+
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+		news_event = news.838
+		add_threat = 10
+        set_global_flag = chechnya_rose_up
+		CHE = { load_focus_tree = CHE_cw_focus }
+		end_puppet = CHE
+		CHE = {
+			add_ideas = {
+    			CHE_radicalbutweak_state
+   				CHE_drug_traffic
+				CHE_unorganized_army
+			}		
+			add_popularity = {
+    				ideology = islamist
+    				popularity = 0.7
+			}
+			set_politics = { ruling_party = islamist }
+			leave_faction = yes
+			white_peace = RCO
+		}
+		}
+}
+
+	option = {
+		name = cw.30.a #ok
+	}
+
+	option = { 
+		name = cw.30.b #play as them
+		ai_chance = {
+            base = 100       
+        }
+		CHE = {
+			change_tag_from = SOV
+		}
+	}
+}
+
+	#usa decides if they want to support che
+country_event = {
+	id = cw.29
+	title = cw.29.t
+	desc = cw.29.d
+	picture = GFX_event_chechen_militia
+	fire_only_once = yes
+
+	is_triggered_only = yes
+
+	option = { # fully support
+		name = cw.29.a
+		add_equipment_to_stockpile = {
+			type = infantry_equipment_1
+			amount = -3000
+			producer = USA
+		}
+		add_equipment_to_stockpile = {
+			type = support_equipment_1
+			amount = -400
+			producer = CHE
+		}
+		add_equipment_to_stockpile = {
+			type = motorized_equipment_1
+			amount = -250
+			producer = USA
+		}
+		add_equipment_to_stockpile = {
+			type = artillery_equipment_1
+			amount = -250
+			producer = USA
+		}
+		add_equipment_to_stockpile = {
+			type = anti_tank_equipment_1
+			amount = -400
+			producer = USA
+		}
+		CHE = {
+			country_event = {
+					id = cw.31
+				}
+		}
+		USA = { set_country_flag = USA_helped_chechens }
+	}
+
+	option = { # partially support
+		name = cw.29.b
+		add_equipment_to_stockpile = {
+			type = infantry_equipment_1
+			amount = -1500
+			producer = USA
+		}
+		add_equipment_to_stockpile = {
+			type = support_equipment_1
+			amount = -200
+			producer = CHE
+		}
+		add_equipment_to_stockpile = {
+			type = motorized_equipment_1
+			amount = -50
+			producer = USA
+		}
+		CHE = {
+			country_event = {
+					id = cw.32
+				}
+		}
+		USA = { set_country_flag = USA_helped_chechens }
+	}
+
+	option = { # dont support
+		name = cw.29.c
+		IF = { 
+    limit = { has_global_flag = usa_intervened_in_russian_cw }
+    add_political_power = -60
+	add_stability = -0.02
+	add_war_support = -0.05
+}
+		CHE = {
+			country_event = {
+					id = cw.33
+				}
+		}
+	}
+}
+
+#usa fully supports che
+country_event = {
+	id = cw.31
+	title = cw.31.t
+	desc = cw.31.d
+	picture = GFX_event_chechen_militia2
+	fire_only_once = yes
+
+	is_triggered_only = yes
+
+	option = { # ok
+		name = cw.31.a
+		add_equipment_to_stockpile = {
+			type = infantry_equipment_1
+			amount = 3000
+			producer = USA
+		}
+		add_equipment_to_stockpile = {
+			type = support_equipment_1
+			amount = 400
+			producer = CHE
+		}
+		add_equipment_to_stockpile = {
+			type = motorized_equipment_1
+			amount = 250
+			producer = USA
+		}
+		add_equipment_to_stockpile = {
+			type = artillery_equipment_1
+			amount = 250
+			producer = USA
+		}
+		add_equipment_to_stockpile = {
+			type = anti_tank_equipment_1
+			amount = 400
+			producer = USA
+		}
+		 add_political_power = 60
+	add_stability = 0.05
+	add_war_support = 0.05
+	}
+}
+
+#usa partially supports che
+country_event = {
+	id = cw.32
+	title = cw.32.t
+	desc = cw.32.d
+	picture = GFX_event_chechen_militia2
+	fire_only_once = yes
+
+	is_triggered_only = yes
+
+	option = { # ok
+		name = cw.32.a
+		add_equipment_to_stockpile = {
+			type = infantry_equipment_1
+			amount = 1500
+			producer = USA
+		}
+		add_equipment_to_stockpile = {
+			type = support_equipment_1
+			amount = 200
+			producer = CHE
+		}
+		add_equipment_to_stockpile = {
+			type = motorized_equipment_1
+			amount = 50
+			producer = USA
+		}
+	}
+}
+
+#usa dont supports che
+country_event = {
+	id = cw.33
+	title = cw.33.t
+	desc = cw.33.d
+	picture = GFX_event_chechen_militia2
+	fire_only_once = yes
+
+	is_triggered_only = yes
+
+	option = { # ok
+		name = cw.33.a
+		add_political_power = -50
+	add_stability = -0.1
+	add_war_support = -0.15
+	}
+}
+
+#event for sov chechnya asks for deal
+country_event = {
+	id = cw.34
+	title = cw.34.t
+	desc = cw.34.d
+	picture = GFX_event_chechen_militia2
+	fire_only_once = yes
+
+	is_triggered_only = yes
+
+	option = { # deal
+	ai_chance = {
+        base = 50 
+		modifier = {
+        factor = 50
+        controls_state = 235
+    }      
+    }
+		name = cw.34.a
+		white_peace = CHE
+		CHE = {
+			set_state_owner = 232
+			set_state_controller = 232
+			set_state_owner = 235
+			set_state_controller = 235
+			set_state_owner = 1158
+			set_state_controller = 1158
+			set_state_owner = 1157
+			set_state_controller = 1157
+			set_state_owner = 233
+			set_state_controller = 233
+			country_event = {
+            id = cw.35
+            }
+		}
+		SOV = { add_to_faction = CHE }
+}
+
+option = { # no deal
+		name = cw.34.b
+		ai_chance = {
+        base = 50  
+		modifier = {
+        factor = 0
+        NOT = { controls_state = 235 }
+    }        
+    }
+		add_political_power = 50
+		add_stability = 0.1
+		add_war_support = 0.1
+		CHE = {
+			country_event = {
+            id = cw.36
+            }
+		}
+}
+}
+
+#event for che. Sov agrees to deal
+country_event = {
+	id = cw.35
+	title = cw.35.t
+	desc = cw.35.d
+	picture = GFX_russian_soldiers_1
+	fire_only_once = yes
+
+	is_triggered_only = yes
+
+	option = { # ok
+		name = cw.35.a
+		CHE = {
+			set_state_owner = 232
+			set_state_controller = 232
+			set_state_owner = 235
+			set_state_controller = 235
+			set_state_owner = 1158
+			set_state_controller = 1158
+			set_state_owner = 1157
+			set_state_controller = 1157
+			set_state_owner = 233
+			set_state_controller = 233
+		}
+		news_event = {
+					id = news.835
+					days = 1
+		}
+	}
+}
+
+#event for che. Sov disagrees to deal
+country_event = {
+	id = cw.36
+	title = cw.36.t
+	desc = cw.36.d
+	picture = GFX_russian_soldiers_1
+	fire_only_once = yes
+
+	is_triggered_only = yes
+
+	option = { # war
+		name = cw.36.a
+		ai_chance = {
+        base = 70       
+    }
+		complete_national_focus = CHE_push_for_great_emirate
+	}
+	option = { # peace
+		name = cw.36.a
+		ai_chance = {
+        base = 30      
+    }
+		complete_national_focus = CHE_make_peace
+	}
+}
+
+#event for che. they captured volgograd
+country_event = {
+	id = cw.37
+	title = cw.37.t
+	desc = cw.37.d
+	picture = GFX_event_chechen_militia3
+	fire_only_once = yes
+
+	is_triggered_only = yes
+
+	option = { # we won
+		name = cw.37.a
+		SOV = {
+			country_event = {
+            	id = cw.38
+            }
+		}
+		RCO = {
+			country_event = {
+            	id = cw.38
+            }
+			add_political_power = 150
+			add_stability = 0.1
+			add_war_support = 0.1
+		}
+	}
+}
+
+#sov and rco needs to peace che
+country_event = {
+	id = cw.38
+	title = cw.38.t
+	desc = cw.38.d
+	picture = GFX_event_chechen_militia3
+	fire_only_once = yes
+
+	is_triggered_only = yes
+
+	option = { # ok
+		name = cw.38.a
+		add_political_power = -50
+		add_stability = -0.1
+		add_war_support = -0.1
+		white_peace = CHE
+		CHE = {
+			country_event = {
+            id = cw.39
+            }
+		}
+	}
+}
+
+#che won
+country_event = {
+	id = cw.39
+	title = cw.39.t
+	desc = cw.39.d
+	picture = GFX_event_chechen_militia3
+	fire_only_once = yes
+
+	is_triggered_only = yes
+
+	option = { # ok
+		name = cw.39.a
+		CHE = {
+			set_state_owner = 232
+			set_state_controller = 232
+			set_state_owner = 235
+			set_state_controller = 235
+			set_state_owner = 1158
+			set_state_controller = 1158
+			set_state_owner = 1157
+			set_state_controller = 1157
+			set_state_owner = 233
+			set_state_controller = 233
+			set_state_owner = 234
+			set_state_controller = 234
+			set_state_owner = 238
+			set_state_controller = 238
+			set_state_owner = 237
+			set_state_controller = 237
+			set_state_owner = 236
+			set_state_controller = 236
+		}
+	}
+}
+
+#pol failed to capture sov
+country_event = {
+	id = cw.40
+	title = cw.40.t
+	desc = cw.40.d
+	picture = GFX_event_chechen_militia3
+	fire_only_once = yes
+
+	is_triggered_only = yes
+
+	option = { # ok
+		name = cw.40.a
+		add_political_power = -50
+		add_stability = -0.1
+		add_war_support = -0.1
+		white_peace = RCO
+		white_peace = UCO
+		remove_wargoal = {
+			type = all
+			target = RCO
+		}
+		remove_wargoal = {
+			type = all
+			target = UCO
+		}
+		set_rule = {
+   		can_join_factions = yes
+	}
+		RCO = {
+			country_event = {
+            id = cw.41
+            }
+		}
+	}
+}
+
+#pol failed to capture sov, event for rco
+country_event = {
+	id = cw.41
+	title = cw.41.t
+	desc = cw.41.d
+	picture = GFX_event_chechen_militia3
+	fire_only_once = yes
+
+	is_triggered_only = yes
+
+	option = { # ok
+		name = cw.41.a
+		add_political_power = 150
+		add_stability = 0.05
+		add_war_support = 0.05
+		clr_global_flag = POL_attacked_rco_in_cw
+		POL = {
+			remove_wargoal = {
+			type = all
+			target = RCO
+		}
+		remove_wargoal = {
+			type = all
+			target = UCO
+		}
+		}
+	}
+}
+
+#rco needs to peace pol
+country_event = {
+	id = cw.42
+	title = cw.42.t
+	desc = cw.42.d
+	picture = GFX_event_chechen_militia3
+	fire_only_once = yes
+
+	is_triggered_only = yes
+
+	option = { # ok
+		name = cw.42.a
+		add_political_power = -50
+		add_stability = -0.1
+		add_war_support = -0.1
+		white_peace = POL
+		POL = {
+			set_rule = {
+				can_join_factions = yes
+			}
+			remove_wargoal = {
+			type = all
+			target = RCO
+		}
+		remove_wargoal = {
+			type = all
+			target = UCO
+		}
+			set_state_owner = 95
+			set_state_controller = 95
+			set_state_owner = 206
+			set_state_controller = 206
+			set_state_owner = 204
+			set_state_controller = 204
+			set_state_owner = 194
+			set_state_controller = 194
+			set_state_owner = 201
+			set_state_controller = 201
+			set_state_owner = 202
+			set_state_controller = 202
+			set_state_owner = 199
+			set_state_controller = 199
+			set_state_owner = 80
+			set_state_controller = 80
+			set_state_owner = 1143
+			set_state_controller = 1143
+			set_state_owner = 1086
+			set_state_controller = 1086
+			set_state_owner = 198
+			set_state_controller = 198
+			set_state_owner = 192
+			set_state_controller = 192
+			set_state_owner = 806
+			set_state_controller = 806
+			set_state_owner = 203
+			set_state_controller = 203
+			set_state_owner = 226
+			set_state_controller = 226
+			set_state_owner = 197
+			set_state_controller = 197
+		}
+		clr_global_flag = POL_attacked_rco_in_cw
+	}
+}
+
+#usa thinks about supporting sov initially in cw
+country_event = {
+	id = cw.43
+	title = cw.43.t
+	desc = cw.43.d
+	picture = GFX_russian_soldiers_1
+	fire_only_once = yes
+
+	is_triggered_only = yes
+
+	option = { # small portion of guns for oil trade priviliges
+		name = cw.43.a
+		add_equipment_to_stockpile = {
+			type = infantry_equipment_1
+			amount = -1500
+			producer = USA
+		}
+		add_equipment_to_stockpile = {
+			type = support_equipment_1
+			amount = -50
+			producer = CHE
+		}
+		give_resource_rights = { receiver = USA state = 644 }
+		give_resource_rights = { receiver = USA state = 574 }
+		SOV = {
+			country_event = { id = cw.45 }
+		}
+	}
+}
+
+#sov usa supported initially
+country_event = {
+	id = cw.45
+	title = cw.45.t
+	desc = cw.45.d
+	picture = GFX_event_usa_rifles
+	fire_only_once = yes
+
+	is_triggered_only = yes
+
+	option = { # small portion of guns for oil trade priviliges
+		name = cw.45.a
+		add_equipment_to_stockpile = {
+			type = infantry_equipment_1
+			amount = 1500
+			producer = USA
+		}
+		add_equipment_to_stockpile = {
+			type = support_equipment_1
+			amount = 50
+			producer = USA
+		}
+		give_resource_rights = { receiver = USA state = 644 }
+		give_resource_rights = { receiver = USA state = 574 }
+		hidden_effect = {
+			USA = { set_country_flag = USA_supported_sov }
+		}
+	}
+}
+
+#usa decides if they want to intervene in russian cw
+country_event = {
+	id = cw.44
+	title = cw.44.t
+	desc = cw.44.d
+	picture = GFX_event_russian_cw_map
+	fire_only_once = yes
+
+	is_triggered_only = yes
+
+	option = { # yes
+		name = cw.44.a
+		ai_chance = {
+        	base = 100      
+    	}
+		custom_effect_tooltip = usa_wants_to_intervene_TT
+		hidden_effect = {
+			set_global_flag = usa_intervened_in_russian_cw
+		}
+		add_timed_idea = {
+   			idea = USA_sov_pp_idea
+   			days = 365
+		}
+	}
+
+	option = { # no
+		name = cw.44.b
+		add_political_power = -150
+	}
+}
+
+#sov us help arrived
+country_event = {
+	id = cw.46
+	title = cw.46.t
+	desc = cw.46.d
+	picture = GFX_event_usa_rifles
+	fire_only_once = yes
+
+	is_triggered_only = yes
+
+	option = { 
+		name = cw.46.a
+		add_equipment_to_stockpile = {
+			type = infantry_equipment_1
+			amount = 1500
+			producer = USA
+		}
+		add_equipment_to_stockpile = {
+			type = support_equipment_1
+			amount = 50
+			producer = USA
+		}
+	}
+}
+
+#prc sov asks for agreement
+country_event = {
+	id = cw.47
+	title = cw.47.t
+	desc = cw.47.d
+	picture = GFX_russian_soldiers_1
+	fire_only_once = yes
+
+	is_triggered_only = yes
+
+	option = { 
+		name = cw.47.a # agree
+		add_timed_idea = {
+    		idea = PRC_russian_trade_concessions_cw
+   			days = 365
+		}
+		add_relation_rule_override = {
+   			target = RCO
+    		usage_desc = PRC_vol_rule_description
+    		trigger = PRC_intervened_in_cw
+    		can_send_volunteers = no
+		}
+		add_political_power = -150
+		PRC = {
+			add_opinion_modifier = {
+				target = RCO
+				modifier = loyal_to_our_enemy
+			}
+		}
+		RCO = {
+			add_opinion_modifier = {
+				target = PRC
+				modifier = loyal_to_our_enemy
+			}
+		}
+		hidden_effect = {
+			set_global_flag = prc_helped_sov_in_russian_cw
+		}
+	}
+	option = { 
+		name = cw.47.b # disagree
+		ai_chance = {
+        	base = 100      
+    	}
+		add_political_power = 150
+		SOV = {
+			add_opinion_modifier = {
+				target = PRC
+				modifier = loyal_to_our_enemy
+			}
+		}
+		SOV = { country_event = { id = cw.54 } }
+		hidden_effect = {
+			set_global_flag = prc_helped_rco_in_russian_cw
+		}
+	}
+}
+
+#jap sov asks for agreement
+country_event = {
+	id = cw.48
+	title = cw.48.t
+	desc = cw.48.d
+	picture = GFX_russian_soldiers_1
+	fire_only_once = yes
+
+	is_triggered_only = yes
+
+	option = { 
+		name = cw.48.a # agree
+		ai_chance = {
+        	base = 50      
+    	}
+		JAP = {
+			set_state_owner = 951
+			set_state_controller = 951
+			set_state_owner = 555
+			set_state_controller = 555
+		}
+		RCO = {
+			add_opinion_modifier = {
+				target = JAP
+				modifier = loyal_to_our_enemy
+			}
+		}
+		hidden_effect = {
+			set_global_flag = jap_helped_sov_in_russian_cw
+		}
+		add_equipment_to_stockpile = {
+			type = infantry_equipment_1
+			amount = -1500
+			producer = JAP
+		}
+		add_equipment_to_stockpile = {
+			type = support_equipment_1
+			amount = -50
+			producer = JAP
+		}
+		SOV = {
+			country_event = { id = cw.49 }
+		}
+		add_ideas = GEN_peacekeeping_efforts2
+		set_rule = { can_send_volunteers = yes }
+	}
+	option = { 
+		name = cw.48.b # ask more
+		ai_chance = {
+        base = 50      
+    }
+			SOV = {
+			country_event = { id = cw.50 }
+		}
+	}
+	option = { 
+		name = cw.48.c # disagree
+		add_stability = 0.1
+		SOV = {
+			add_opinion_modifier = {
+				target = JAP
+				modifier = loyal_to_our_enemy
+			}
+		}
+	}
+}
+
+#sov jap help arrived
+country_event = {
+	id = cw.49
+	title = cw.49.t
+	desc = cw.49.d
+	picture = GFX_event_usa_rifles
+	fire_only_once = yes
+
+	is_triggered_only = yes
+
+	option = { 
+		name = cw.49.a
+		add_equipment_to_stockpile = {
+			type = infantry_equipment_1
+			amount = 1500
+			producer = JAP
+		}
+		add_equipment_to_stockpile = {
+			type = support_equipment_1
+			amount = 50
+			producer = JAP
+		}
+	}
+}
+
+#sov jap wants more
+country_event = {
+	id = cw.50
+	title = cw.50.t
+	desc = cw.50.d
+	picture = GFX_event_usa_rifles
+	fire_only_once = yes
+
+	is_triggered_only = yes
+
+	option = { # ok
+		name = cw.50.a
+		ai_chance = {
+        	base = 100     
+    	}
+		add_equipment_to_stockpile = {
+			type = infantry_equipment_1
+			amount = 1500
+			producer = JAP
+		}
+		add_equipment_to_stockpile = {
+			type = support_equipment_1
+			amount = 50
+			producer = JAP
+		}
+		JAP = {
+			country_event = { id = cw.51 }
+		}
+		add_stability = -0.05
+		add_war_support = -0.1
+	}
+
+	option = { # no
+		name = cw.50.b
+		JAP = {
+			country_event = { id = cw.52 }
+		}
+		add_stability = 0.1
+		add_war_support = 0.1
+	}
+}
+
+#jap sov disagrees
+country_event = {
+	id = cw.52
+	title = cw.52.t
+	desc = cw.52.d
+	picture = GFX_event_usa_rifles
+	fire_only_once = yes
+
+	is_triggered_only = yes
+
+	option = { # ok
+		name = cw.52.a
+		add_stability = -0.1
+		SOV = {
+				add_opinion_modifier = {
+					target = JAP
+					modifier = loyal_to_our_enemy
+				}
+			}
+	}
+}
+
+#jap sov agrees
+country_event = {
+	id = cw.51
+	title = cw.51.t
+	desc = cw.51.d
+	picture = GFX_event_usa_rifles
+	fire_only_once = yes
+
+	is_triggered_only = yes
+
+	option = { # ok
+		name = cw.51.a
+		add_equipment_to_stockpile = {
+			type = infantry_equipment_1
+			amount = -1500
+			producer = JAP
+		}
+		add_equipment_to_stockpile = {
+			type = support_equipment_1
+			amount = -50
+			producer = JAP
+		}
+		JAP = {
+			set_state_owner = 951
+			set_state_controller = 951
+			set_state_owner = 555
+			set_state_controller = 555
+			set_state_owner = 537
+			set_state_controller = 537
+			set_state_owner = 655
+			set_state_controller = 655
+		}
+		add_ideas = GEN_peacekeeping_efforts2
+		set_rule = { can_send_volunteers = yes }
+	}
+}
+
+#usa after 9-11 ppl dont like chechens
+country_event = {
+	id = cw.53
+	title = cw.53.t
+	desc = cw.53.d
+	picture = GFX_event_chechen_militia2
+	fire_only_once = yes
+
+	is_triggered_only = yes
+
+	option = { # ok
+	name = cw.53.a
+		add_political_power = -50
+		add_stability = -0.05
+		add_to_variable = {
+    		var = RCO.RCO_public_opinion_level
+    		value = 15
+		}
+		custom_effect_tooltip = RCO_usa_po_increase_15_tt
+	}
+}
+
+#sov prc disagrees
+country_event = {
+	id = cw.54
+	title = cw.54.t
+	desc = cw.54.d
+	picture = GFX_russian_soldiers_1
+	fire_only_once = yes
+
+	is_triggered_only = yes
+
+	option = { # ok
+		name = cw.54.a
+		PRC = {
+			add_opinion_modifier = {
+				target = SOV
+				modifier = loyal_to_our_enemy
+			}
+		}
+	}
+}
+
+#ukr deciedes what side to be on
+country_event = {
+	id = cw.55
+	title = cw.55.t
+	desc = cw.55.d
+	picture = GFX_event_red_btr
+	fire_only_once = yes
+
+	is_triggered_only = yes
+
+	option = { # against rco
+		name = cw.55.a
+		UKR = { add_to_faction = SOV }
+	}
+
+	option = { # for rco
+		name = cw.55.b
+		SOV = { add_to_faction = UKR }
+		UCO = { change_tag_from = UKR }
+	}
+}
+
+#sov usa abandoned us
+country_event = {
+	id = cw.56
+	title = cw.56.t
+	desc = cw.56.d
+	picture = GFX_event_chechen_militia2
+	fire_only_once = yes
+
+	is_triggered_only = yes
+
+	option = { # ok
+	name = cw.56.a
+		add_stability = -0.3
+		add_war_support = -0.4
+	}
+}
+
+#rco won against pol
+country_event = {
+	id = cw.57
+	title = cw.57.t
+	desc = cw.57.d
+	picture = GFX_event_red_btr
+	fire_only_once = yes
+
+	is_triggered_only = yes
+
+	option = { # ok
+	name = cw.57.a
+		add_political_power = 150
+		add_stability = 0.1
+		add_war_support = 0.1
+		white_peace = POL
+		set_rule = {
+   		can_join_factions = yes
+	}
+		UCO = { white_peace = POL }
+		POL = {
+			country_event = { id = cw.58 }
+			remove_wargoal = {
+			type = all
+			target = RCO
+		}
+		remove_wargoal = {
+			type = all
+			target = UCO
+		}
+		}
+	}
+}
+
+#POL rco won the war
+country_event = {
+	id = cw.58
+	title = cw.58.t
+	desc = cw.58.d
+	picture = GFX_event_red_btr
+	fire_only_once = yes
+
+	is_triggered_only = yes
+
+	option = { # ok
+	name = cw.58.a
+		add_political_power = -150
+		add_stability = -0.3
+		add_war_support = -0.3
+		white_peace = RCO
+		white_peace = UCO
+		set_rule = {
+   		can_join_factions = yes
+	}
+		RCO = {
+			transfer_state = 808
+			transfer_state = 94
+		}
+		UCO = {
+			transfer_state = 93
+			transfer_state = 91
+			transfer_state = 89
+			transfer_state = 73
+		}
+		clr_global_flag = POL_attacked_rco_in_cw
+		POL = {
+			remove_wargoal = {
+			type = all
+			target = RCO
+		}
+		remove_wargoal = {
+			type = all
+			target = UCO
+		}
+		}
+	}
+}
+
+# ultimatum for anex
+country_event = { 
+	id = cw.59
+		title = cw.59.t
+		desc = cw.59.d
+		picture = GFX_event_red_btr
+
+		is_triggered_only = yes
+
+		option = { # russia annexes
+				name =  cw.59.a
+				ai_chance = {
+        			base = 50
+				}
+				RCO = {
+					annex_country = {
+			 				target = PREV
+								transfer_troops = yes
+							}
+							country_event = { id = cw.63 } #event to inform rco
+					}
+			}
+
+		option = { # decline request
+				name =  cw.59.b
+				ai_chance = {
+        			base = 30  
+					modifier = { 
+						is_in_faction = yes 
+						add = 150
+					}   
+    			}
+				RCO = {
+					create_wargoal = {
+								type = annex_everything
+								target = PREV
+							}
+							country_event = { id = cw.64 } #event to inform rco
+			 		}
+		 	}
+	 }
+
+#country can embargo rco
+country_event = {
+	id = cw.61
+	title = cw.61.t
+	desc = cw.61.d
+	picture = GFX_event_red_btr
+
+	is_triggered_only = yes
+
+	option = { # embargo
+	name = cw.61.a
+	ai_chance = {
+			base = 50
+		}
+		send_embargo = RCO
+	}
+
+	option = { # not to embargo
+	name = cw.61.b
+	ai_chance = {
+			base = 50
+		}
+		add_stability = -0.05
+		add_popularity = {
+    				ideology = communist
+    				popularity = 0.1
+				}
+				add_timed_idea = {
+    			idea = SOV_beneficial_trade_idea
+    			days = 60
+				}
+
+	}
+}
+
+## help prk
+
+country_event = {
+	id = cw.62
+	title = cw.62.t
+	desc = cw.62.d
+	picture = GFX_event_red_btr
+	fire_only_once = yes
+
+	is_triggered_only = yes
+
+	option = { # ok
+		name = cw.62.a
+		ai_chance = {
+			base = 80
+		}
+		RCO = {
+					diplomatic_relation = {
+    				country = PREV
+    				relation = non_aggression_pact
+   					active = yes
+					}
+			}
+				add_opinion_modifier = {
+					modifier = declaration_of_friendship
+					target = RCO
+				}
+			add_stability = 0.2
+			add_timed_idea = {
+    		idea = SOV_recent_help_idea
+    		days = 180
+			}
+			RCO = { 
+				add_to_faction = PRK 
+				country_event = { id = cw.63 }
+			}  		
+	}
+
+	option = { # no
+		name = cw.62.b
+		ai_chance = {
+			base = 20
+		}
+		RCO = {
+				add_opinion_modifier = {
+					target = PREV
+					modifier = loyal_to_our_enemy
+				}
+			}
+			RCO = { country_event = { id = cw.64 } }
+	}
+}
+
+## somebody accepted smth
+
+country_event = {
+	id = cw.63
+	title = cw.63.t
+	desc = cw.63.d
+	picture = GFX_event_sov_sov
+
+
+	is_triggered_only = yes
+
+	option = { # ok
+		name = cw.63.a
+	}
+}
+
+## somebody refused smth
+
+country_event = {
+	id = cw.64
+	title = cw.64.t
+	desc = cw.64.d
+	picture = GFX_event_sov_failure
+
+
+	is_triggered_only = yes
+
+	option = { # ok
+		name = cw.64.a
+	}
+}
+
+## propose mutal defence pact
+
+country_event = {
+	id = cw.65
+	title = cw.65.t
+	desc = cw.65.d
+	picture = GFX_event_sov_sov
+
+	is_triggered_only = yes
+
+	option = { # ok
+		name = cw.65.a
+		ai_chance = {
+			base = 80
+		}
+		RCO = {
+					diplomatic_relation = {
+    				country = PREV
+    				relation = guarantee
+   					active = yes
+					}
+			}
+				add_opinion_modifier = {
+					modifier = declaration_of_friendship
+					target = RCO
+				}
+					diplomatic_relation = {
+    				country = RCO
+    				relation = guarantee
+   					active = yes
+					}
+			RCO = {
+				add_opinion_modifier = {
+					modifier = declaration_of_friendship
+					target = PREV
+				}
+		}
+		RCO = { country_event = { id = cw.63 } }
+	}
+
+	option = { # no
+		name = cw.65.b
+		ai_chance = {
+			base = 20
+		}
+		RCO = {
+				add_opinion_modifier = {
+					target = PREV
+					modifier = loyal_to_our_enemy
+				}
+			}
+			RCO = { country_event = { id = cw.64 } }
+	}
+}
+
+## rco asks jap to return lands
+
+country_event = {
+	id = cw.66
+	title = cw.66.t
+	desc = cw.66.d
+	picture = GFX_event_red_btr
+
+	is_triggered_only = yes
+
+	option = { # ok
+		name = cw.66.a
+		ai_chance = {
+			base = 30
+		}
+		RCO = { 
+		country_event = { id = cw.63 }
+		set_state_owner = 655
+		set_state_controller = 655
+		set_state_owner = 537
+		set_state_controller = 537
+		set_state_owner = 555
+		set_state_controller = 555
+		set_state_owner = 951
+		set_state_controller = 951
+		 }
+	}
+
+	option = { # no
+		name = cw.66.b
+		ai_chance = {
+			base = 70
+		}
+		RCO = {
+				add_opinion_modifier = {
+					target = PREV
+					modifier = loyal_to_our_enemy
+				}
+				create_wargoal = {
+    				type = puppet_wargoal_focus
+    				target = PREV
+				}
+			country_event = { id = cw.64 } 
+		}
+	}
+}
+
+## subjigation ultimatum
+
+country_event = {
+	id = cw.67
+	title = cw.67.t
+	desc = cw.67.d
+	picture = GFX_event_red_btr
+
+	is_triggered_only = yes
+
+	option = { # ok
+		name = cw.67.a
+		ai_chance = {
+			base = 100
+		}
+		RCO = { puppet = PREV }
+		RCO = { country_event = { id = cw.63 } }
+	}
+
+	option = { # no
+		name = cw.67.b
+		ai_chance = {
+        			base = 0  
+					modifier = { 
+						is_in_faction = yes 
+						add = 150
+					}   
+    			}
+		RCO = {
+				create_wargoal = {
+    				type = puppet_wargoal_focus
+    				target = PREV
+				}
+			}
+			RCO = { country_event = { id = cw.64 } }
+	}
+}
+
+## ask germany for kaliningrad
+
+country_event = {
+	id = cw.68
+	title = cw.68.t
+	desc = cw.68.d
+	picture = GFX_event_red_btr
+
+	is_triggered_only = yes
+
+	option = { # ok
+		name = cw.68.a
+		ai_chance = {
+			base = 10 
+		}
+		RCO = { 
+			set_state_owner = 741
+			set_state_controller = 741
+			}
+		RCO = { country_event = { id = cw.63 } }
+	}
+
+	option = { # no
+		name = cw.68.b
+		ai_chance = {
+			base = 90
+		}
+		RCO = {
+				create_wargoal = {
+           			target = PREV
+            		type = take_state_focus
+            		generator = { 123 }
+			}
+			country_event = { id = cw.64 } 
+		}
+	}
+}
+
+## ask poland for territories
+
+country_event = {
+	id = cw.69
+	title = cw.69.t
+	desc = cw.69.d
+	picture = GFX_event_red_btr
+
+	is_triggered_only = yes
+
+	option = { # ok
+		name = cw.69.a
+		ai_chance = {
+			base = 10 
+		}
+		if = {
+			limit = {
+				POL = { controls_state = 808 }
+			}
+			RCO = { 
+				set_state_owner = 808
+				set_state_controller = 808 
+			}
+		}
+		if = {
+			limit = {
+				POL = { controls_state = 741 }
+			}
+			RCO = { 
+				set_state_owner = 741
+				set_state_controller = 741 
+			}
+		}
+		if = {
+			limit = {
+				POL = { controls_state = 94 }
+			}
+			RCO = { 
+				set_state_owner = 94
+				set_state_controller = 94 
+			}
+		}
+		if = {
+			limit = {
+				POL = { controls_state = 206 }
+			}
+			RCO = { 
+				set_state_owner = 206
+				set_state_controller = 206 
+			}
+		}
+		if = {
+			limit = {
+				POL = { controls_state = 95 }
+			}
+			RCO = { 
+				set_state_owner = 95
+				set_state_controller = 95 
+			}
+		}
+		if = {
+			limit = {
+				POL = { controls_state = 204 }
+			}
+			RCO = { 
+				set_state_owner = 204
+				set_state_controller = 204 
+			}
+		}
+		if = {
+			limit = {
+				POL = { controls_state = 194 }
+			}
+			RCO = { 
+				set_state_owner = 194
+				set_state_controller = 194 
+			}
+		}
+		if = {
+			limit = {
+				POL = { controls_state = 93 }
+			}
+			RCO = { 
+				set_state_owner = 93
+				set_state_controller = 93 
+			}
+		}
+		if = {
+			limit = {
+				POL = { controls_state = 201 }
+			}
+			RCO = { 
+				set_state_owner = 201
+				set_state_controller = 201 
+			}
+		}
+		if = {
+			limit = {
+				POL = { controls_state = 202 }
+			}
+			RCO = { 
+				set_state_owner = 202
+				set_state_controller = 202 
+			}
+		}
+		if = {
+			limit = {
+				POL = { controls_state = 91 }
+			}
+			RCO = { 
+				set_state_owner = 91
+				set_state_controller = 91 
+			}
+		}
+		if = {
+			limit = {
+				POL = { controls_state = 199 }
+			}
+			RCO = { 
+				set_state_owner = 199
+				set_state_controller = 199 
+			}
+		}
+		if = {
+			limit = {
+				POL = { controls_state = 1086 }
+			}
+			RCO = { 
+				set_state_owner = 1086
+				set_state_controller = 1086 
+			}
+		}
+		if = {
+			limit = {
+				POL = { controls_state = 203 }
+			}
+			RCO = { 
+				set_state_owner = 203
+				set_state_controller = 203 
+			}
+		}
+		if = {
+			limit = {
+				POL = { controls_state = 226 }
+			}
+			RCO = { 
+				set_state_owner = 226
+				set_state_controller = 226 
+			}
+		}
+		if = {
+			limit = {
+				POL = { controls_state = 89 }
+			}
+			RCO = { 
+				set_state_owner = 89
+				set_state_controller = 89 
+			}
+		}
+		if = {
+			limit = {
+				POL = { controls_state = 80 }
+			}
+			RCO = { 
+				set_state_owner = 80
+				set_state_controller = 80 
+			}
+		}
+		if = {
+			limit = {
+				POL = { controls_state = 1143 }
+			}
+			RCO = { 
+				set_state_owner = 1143
+				set_state_controller = 1143 
+			}
+		}
+		if = {
+			limit = {
+				POL = { controls_state = 198 }
+			}
+			RCO = { 
+				set_state_owner = 198
+				set_state_controller = 198 
+			}
+		}
+		if = {
+			limit = {
+				POL = { controls_state = 192 }
+			}
+			RCO = { 
+				set_state_owner = 192
+				set_state_controller = 192 
+			}
+		}
+		if = {
+			limit = {
+				POL = { controls_state = 806 }
+			}
+			RCO = { 
+				set_state_owner = 806
+				set_state_controller = 806 
+			}
+		}
+		if = {
+			limit = {
+				POL = { controls_state = 197 }
+			}
+			RCO = { 
+				set_state_owner = 197
+				set_state_controller = 197 
+			}
+		}
+		if = {
+			limit = {
+				POL = { controls_state = 196 }
+			}
+			RCO = { 
+				set_state_owner = 196
+				set_state_controller = 196 
+			}
+		}
+		if = {
+			limit = {
+				POL = { controls_state = 137 }
+			}
+			RCO = { 
+				set_state_owner = 137
+				set_state_controller = 137 
+			}
+		}
+		if = {
+			limit = {
+				POL = { controls_state = 200 }
+			}
+			RCO = { 
+				set_state_owner = 200
+				set_state_controller = 200 
+			}
+		}
+		RCO = { country_event = { id = cw.63 } }
+	}
+
+	option = { # no
+		name = cw.69.b
+		ai_chance = {
+			base = 90
+		}
+		RCO = {
+				create_wargoal = {
+    				type = puppet_wargoal_focus
+    				target = PREV
+				}
+			country_event = { id = cw.64 } 
+		}
+	}
+}
+
+## ask smbd to remove embargo
+
+country_event = {
+	id = cw.70
+	title = cw.70.t
+	desc = cw.70.d
+	picture = GFX_event_red_btr
+
+	is_triggered_only = yes
+
+	option = { # ok
+		name = cw.70.a
+		ai_chance = {
+			base = 50 
+		}
+		break_embargo = RCO
+		add_timed_idea = {
+    			idea = SOV_beneficial_trade_idea
+    			days = 60
+				}
+		RCO = { 
+			custom_effect_tooltip = SOV_tradeopinion_increase_10_TT
+			add_to_variable = { rco_trade_opinion = 0.1 }
+			country_event = { id = cw.63 } 
+		}
+	}
+
+	option = { # no
+		name = cw.70.b
+		ai_chance = {
+			base = 50
+		}
+		add_political_power = 25
+	}
+}
+
+## event for usa that russian cw ended
+
+country_event = {
+	id = cw.71
+	title = cw.71.t
+	desc = cw.71.d
+	picture = GFX_event_red_btr
+
+	is_triggered_only = yes
+
+	option = { # ok
+		name = cw.71.a
+		add_timed_idea = {
+    			idea = SOV_beneficial_trade_idea
+    			days = 60
+		}
+		remove_all_usa_cw_pb_ideas = yes
+		remove_all_usa_cw_ideas = yes
+		hidden_effect = {
+			remove_ideas = {
+				USA_RCO_cw_cost_9
+				USA_RCO_cw_cost_8
+				USA_RCO_cw_cost_7
+				USA_RCO_cw_cost_6
+				USA_RCO_cw_cost_5
+				USA_RCO_cw_cost_4
+				USA_RCO_cw_cost_3
+				USA_RCO_cw_cost_2
+				USA_RCO_cw_cost_1
+				USA_RCO_cw_cost
+				USA_RCO_cw_pb_cost_9
+				USA_RCO_cw_pb_cost_8
+				USA_RCO_cw_pb_cost_7
+				USA_RCO_cw_pb_cost_6
+				USA_RCO_cw_pb_cost_5
+				USA_RCO_cw_pb_cost_4
+				USA_RCO_cw_pb_cost_3
+				USA_RCO_cw_pb_cost_2
+				USA_RCO_cw_pb_cost_1
+				USA_RCO_cw_pb_cost
+			}
+		}
+	}
+}
+
+## shebarshin
+
+country_event = {
+	id = cw.72
+	title = cw.72.t
+	desc = cw.72.d
+	picture = GFX_event_sov_new_kgb
+
+	is_triggered_only = yes
+
+	option = { # ok
+		name = cw.72.a
+		activate_advisor = RCO_leonid_shebarshin
+	}
+}
+
+## tarrorist attack
+
+country_event = {
+	id = cw.73
+	title = cw.73.t
+	desc = cw.73.d
+	picture = GFX_rco_terract_event
+
+	is_triggered_only = yes
+
+	option = { # ok
+		name = cw.73.a
+		add_stability = -0.1
+		add_war_support = -0.1
+		custom_effect_tooltip = RCO_surrender_decrease_20_TT
+		add_to_variable = { rco_state_surrender_limit = -0.2 }
+		if = {
+			limit = {
+				NOT = { is_ai = yes }
+				NOT = { has_country_flag = RCO_terrorist_attack_threat_resolved }
+				NOT = { has_completed_focus = RCO_soviet_state_militia }
+				NOT = { has_completed_focus = RCO_naz_laf_enforcement }
+			}
+			activate_mission = RCO_terrorist_attack_mission
+			}
+	}
+}
+
+## interbrigade kndr
+
+country_event = {
+	id = cw.74
+	title = cw.74.t
+	desc = cw.74.d
+	picture = GFX_event_kndr_soldiers
+
+	is_triggered_only = yes
+
+	option = { # ok
+		name = cw.74.a
+		195 = {
+			create_unit = {
+						division = "name = \"Interbrigade 'Kim Chong Un'\" division_template = \"Interbrigade\" start_experience_factor = 0.6 start_equipment_factor = 1"
+						owner = ROOT
+					}
+			create_unit = {
+						division = "name = \"Interbrigade 'Kim Ir Sen'\" division_template = \"Interbrigade\" start_experience_factor = 0.6 start_equipment_factor = 1"
+						owner = ROOT
+					}
+			}
+	}
+}
+
+## interbrigade china
+
+country_event = {
+	id = cw.75
+	title = cw.75.t
+	desc = cw.75.d
+	picture = GFX_event_rco_vols2
+
+	is_triggered_only = yes
+
+	option = { # ok
+		name = cw.75.a
+		195 = {
+			create_unit = {
+						division = "name = \"Interbrigade 'Mao Zedong'\" division_template = \"Interbrigade\" start_experience_factor = 0.6 start_equipment_factor = 1"
+						owner = ROOT
+					}
+					create_unit = {
+						division = "name = \"Interbrigade 'Hua Gofen'\" division_template = \"Interbrigade\" start_experience_factor = 0.6 start_equipment_factor = 1"
+						owner = ROOT
+					}
+					create_unit = {
+						division = "name = \"Interbrigade 'Hu Yaoban'\" division_template = \"Interbrigade\" start_experience_factor = 0.6 start_equipment_factor = 1"
+						owner = ROOT
+					}
+			}
+	}
+}
+
+## china event for vols
+
+country_event = {
+	id = cw.76
+	title = cw.76.t
+	desc = cw.76.d
+	picture = GFX_event_rco_vols2
+
+	is_triggered_only = yes
+
+	option = { # ok
+		name = cw.76.a
+		ai_chance = {
+			base = 100
+		}
+		add_war_support = 0.05
+		army_experience = 30
+		add_equipment_to_stockpile = {
+				type = infantry_equipment_1
+				amount = -500
+				producer = PRC
+			}
+			add_equipment_to_stockpile = {
+				type = support_equipment_1
+				amount = -200
+				producer = PRC
+			}
+			add_equipment_to_stockpile = {
+				type = light_mechanized_equipment_1
+				amount = -150
+				producer = PRC
+			}
+			RCO = { country_event = { id = cw.75 } }
+	}
+
+	option = { # no
+		name = cw.76.b
+		add_war_support = -0.05
+	}
+}
+
+## prk event for vols
+
+country_event = {
+	id = cw.77
+	title = cw.77.t
+	desc = cw.77.d
+	picture = GFX_event_kndr_soldiers
+
+	is_triggered_only = yes
+
+	option = { # ok
+		name = cw.77.a
+		ai_chance = {
+			base = 100
+		}
+		add_war_support = 0.05
+		army_experience = 30
+		add_equipment_to_stockpile = {
+				type = infantry_equipment_1
+				amount = -500
+				producer = PRK
+			}
+			add_equipment_to_stockpile = {
+				type = support_equipment_1
+				amount = -200
+				producer = PRK
+			}
+			add_equipment_to_stockpile = {
+				type = light_mechanized_equipment_1
+				amount = -150
+				producer = PRK
+			}
+			RCO = { country_event = { id = cw.74 } }
+	}
+
+	option = { # no
+		name = cw.77.b
+		add_war_support = -0.05
+	}
+}
+
+## goblin
+
+country_event = {
+	id = cw.78
+	title = cw.78.t
+	desc = cw.78.d
+	picture = GFX_event_sov_goblin
+
+	is_triggered_only = yes
+
+	option = { # ok
+		name = cw.78.a
+			activate_advisor = RCO_Dmitry_Goblin_Puchkov
+	}
+}
+
+## khozraschet
+
+country_event = {
+	id = cw.79
+	title = cw.79.t
+	desc = cw.79.d
+	picture = GFX_event_soviet_industry
+
+	is_triggered_only = yes
+
+	option = { # ok
+		name = cw.79.a
+		add_political_power = 50
+	}
+
+	option = { # ok
+		name = cw.79.b
+		add_political_power = -50
+		add_stability = 0.05
+		custom_effect_tooltip = RCO_prodoutput_increase_5_TT
+		add_to_variable = { rco_economy_prod_output = 0.05 }
+	}
+}
+
+## bobkov
+
+country_event = {
+	id = cw.80
+	title = cw.80.t
+	desc = cw.80.d
+	picture = GFX_event_rco_kgb_2
+
+	is_triggered_only = yes
+
+	option = { # ok
+		name = cw.80.a
+		add_political_power = 50
+	}
+
+	option = { # ok
+		name = cw.80.b
+		activate_advisor = RCO_filipp_bobkov
+	}
+}
+
+## generals desert sov
+
+country_event = {
+	id = cw.81
+	title = cw.81.t
+	desc = cw.81.d
+	picture = GFX_event_rco_tank
+
+	is_triggered_only = yes
+
+	option = { # ok
+		name = cw.81.a
+		add_corps_commander_role = {
+			Character = RCO_valeriy_gerasimov
+			skill = 2
+			traits={ old_guard }
+			attack_skill = 2
+			defense_skill = 3
+			planning_skill = 2
+			logistics_skill = 2
+		}
+		add_corps_commander_role = {
+			Character = RCO_aleksandr_dvornikov
+			skill = 3
+			traits = {
+				ranger
+				bearer_of_artillery
+			}
+			attack_skill = 3
+			defense_skill = 2
+			planning_skill = 2
+			logistics_skill = 3
+		}
+		add_advisor_role = {
+			character = RCO_aleksandr_dvornikov
+			advisor = {
+				slot = high_command
+				cost = 150
+				idea_token = RCO_aleksandr_dvornikov
+				traits = {
+					army_artillery_2
+				}
+			}
+		}
+		add_corps_commander_role = {
+			Character = RCO_pavel_popov
+			skill = 2
+			traits={ panzer_leader }
+			attack_skill = 2
+			defense_skill = 2
+			planning_skill = 2
+			logistics_skill = 2
+		}
+		add_corps_commander_role = {
+			Character = RCO_vadim_pankov
+			skill = 3
+			traits = {
+				commando
+			}
+			attack_skill = 2
+			defense_skill = 3
+			planning_skill = 3
+			logistics_skill = 5
+		}
+		add_corps_commander_role = {
+			Character = RCO_ivan_popov
+			skill = 3
+			traits = {
+				fortress_buster
+			}
+			attack_skill = 3
+			defense_skill = 3
+			planning_skill = 3
+			logistics_skill = 2
+		}
+		SOV = {
+			retire_character = SOV_valery_gerasimov
+			retire_character = SOV_vadim_pankov
+			retire_character = SOV_pavel_popov
+			retire_character = SOV_aleksandr_dvornikov
+		}
+	}
+}
+
+## army_purge
+
+country_event = {
+	id = cw.82
+	title = cw.82.t
+	desc = cw.82.d
+	picture = GFX_event_rco_tank_2
+
+	is_triggered_only = yes
+
+	option = { # purge
+		name = cw.82.a
+		add_timed_idea = {
+				idea = RCO_army_purge_idea
+				days = 365
+			}
+			custom_effect_tooltip = RKKA_org_increase_5_TT
+			custom_effect_tooltip = RKKA_breakthrough_increase_5_TT
+			custom_effect_tooltip = RKKA_winterattr_decrease_20_TT
+			add_to_variable = {
+				RKKA_org = 0.05
+			}
+			add_to_variable = {
+				rco_army_breakthrg_fct = 0.05
+			}
+			add_to_variable = {
+				rco_army_winter_attr = -0.2
+			}
+			retire_character = RCO_sergei_surovikin
+			retire_character = RCO_matvei_petrov
+			retire_character = RCO_kirill_badalin
+			retire_character = RCO_valeriy_gerasimov
+			retire_character = RCO_fyodor_muhin
+	}
+
+	option = { # purge
+		name = cw.82.b
+		add_political_power = -150
+	}
+}
+
+## deciding leadership
+
+country_event = {
+	id = cw.83
+	title = cw.83.t
+	desc = cw.83.d
+	picture = GFX_russian_communist_coalition_congress
+
+	is_triggered_only = yes
+
+	option = { # anpilov
+		name = cw.83.a
+		promote_character = RCO_Alexander_Kazenov
+		set_country_flag = rco_army_allowed
+	}
+
+	option = { # popov
+		name = cw.83.b
+		promote_character = RCO_Mikhail_Popov
+		set_country_flag = rco_army_allowed
+	}
+
+	option = { # nazbols
+		name = cw.83.c
+		custom_effect_tooltip = RCO_nazbols_come_to_power_TT
+		set_country_flag = rco_army_allowed
+		set_country_flag = russia_nazbols
+		activate_advisor = RCO_sergei_surovikin
+		mark_focus_tree_layout_dirty = yes
+		hidden_effect = {
+				country_event = {
+				id = cw.85
+				days = 20
+			}
+			}
+	}
+}
+
+## deciding leadership nazbols
+
+country_event = {
+	id = cw.84
+	title = cw.84.t
+	desc = cw.84.d
+	picture = GFX_event_rco_nazbols
+
+	is_triggered_only = yes
+
+	option = { # limonov
+		name = cw.84.a
+		promote_character = RCO_Eduard_Limonov
+	}
+
+	option = { # surovikin
+		name = cw.84.b
+		promote_character = RCO_sergei_surovikin
+	}
+}
+
+## deteriorating economy
+
+country_event = {
+	id = cw.85
+	title = cw.85.t
+	desc = cw.85.d 
+	picture = GFX_russian_ruined_industry
+
+	is_triggered_only = yes
+
+	option = { # ok
+		name = cw.85.a
+		set_country_flag = rco_deteriorating_ec_flag
+		activate_mission = RCO_naz_deteriorating_economy_mission
+		custom_effect_tooltip = RCO_prodoutput_increase_5_TT
+		custom_effect_tooltip = RCO_prodgrowh_increase_10_TT
+		custom_effect_tooltip = RCO_maxprod_increase_5_TT
+		add_to_variable = { rco_economy_max_poduction_capacity = 0.05 }
+		add_to_variable = { rco_economy_prod_output = 0.05 }
+		add_to_variable = { rco_economy_prod_growh = 0.1 }
+	}
+}
+
+## gulag
+
+country_event = {
+	id = cw.86
+	title = cw.86.t
+	desc = cw.86.d
+	picture = GFX_event_soviet_industry
+
+	is_triggered_only = yes
+
+	option = { # ok
+		name = cw.86.a
+		custom_effect_tooltip = RCO_unlockgulag_TT
+	}
+}
+
+## military science
+
+country_event = {
+	id = cw.87
+	title = cw.87.t
+	desc = cw.87.d
+	picture = GFX_event_rco_tank_2
+
+	is_triggered_only = yes
+
+	immediate = {
+		add_research_slot = 1
+	}
+
+	option = { # invest in tanks
+		name = cw.87.a
+		add_tech_bonus = {
+			name = tech_bonus
+			bonus = 1
+			uses = 1
+			category = cat_light_mechanized_equipment
+		}
+		add_tech_bonus = {
+			name = tech_bonus
+			bonus = 1
+			uses = 1
+			category = armor
+		}
+	}
+
+	option = { # invest in small arms
+		name = cw.87.b
+		add_tech_bonus = {
+			name = tech_bonus
+			bonus = 0.8
+			uses = 4
+			category = infantry_weapons
+		}
+	}
+
+	option = { # invest in air
+		name = cw.87.c
+		add_tech_bonus = {
+				name = fighter_bonus
+				bonus = 3
+				uses = 1
+				category = light_fighter
+			}
+	}
+}
+
+## additional army bonuses nazbol 
+
+country_event = {
+	id = cw.88
+	title = cw.88.t
+	desc = cw.88.d
+	picture = GFX_event_red_btr
+
+	is_triggered_only = yes
+
+	option = { # armour
+		name = cw.88.a
+		custom_effect_tooltip = RKKA_mechattack_increase_7_TT
+		custom_effect_tooltip = RKKA_mechdef2_increase_10_TT
+		add_to_variable = { RKKA_army_tank_attack = 0.07 }
+		add_to_variable = { RKKA_army_mech_def = 0.1}
+	}
+
+	option = { # artillery
+		name = cw.88.b
+		custom_effect_tooltip = RKKA_artyattack_increase_15_TT
+		custom_effect_tooltip = RKKA_artydef_increase_15_TT
+		add_to_variable = { RKKA_army_art_attack = 0.15 }
+		add_to_variable = { RKKA_army_art_def = 0.15 }
+	}
+
+	option = { # specops
+		name = cw.88.c
+		custom_effect_tooltip = RKKA_speccap_increase_20_TT
+		custom_effect_tooltip = RKKA_specattack_increase_15_TT
+		custom_effect_tooltip = sov_new_vdv_tech_TT
+		hidden_effect = { set_technology = { soviet_vdv_tech = 1 } }
+		add_to_variable = { RKKA_army_specs_cap = 0.2 }
+		add_to_variable = { RKKA_army_specs_attack = 0.15 }
+	}
+}
+
+## offer to merge factions prc
+
+country_event = {
+	id = cw.89
+	title = cw.89.t
+	desc = cw.89.d
+	picture = GFX_event_rco_friendshipchina
+
+	is_triggered_only = yes
+
+	option = { # accept
+		name = cw.89.a
+		every_country = {
+				limit = {
+					NOT = { original_tag = PRC }
+					is_in_faction_with = PRC
+				}
+				RCO = { add_to_faction = PREV }
+			}
+			RCO = { add_to_faction = PRC }
+			RCO = { country_event = { id = cw.63 } }
+	}
+
+	option = { # decline
+		name = cw.89.b
+		add_political_power = 50
+		RCO = { country_event = { id = cw.64 } }
+	}
+}
+
+## propaganda
+
+country_event = {
+	id = cw.90
+	title = cw.90.t
+	desc = cw.90.d
+	picture = GFX_news_communistagitation
+
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			set_variable = {
+				var = RCO_PosterImage 
+				value = 1
+			}
+			set_variable = {
+				var = RCO_PosterImage1
+				value = 1
+			}
+			set_variable = {
+				var = RCO_PosterImage2
+				value = 1
+			}
+			set_variable = {
+				var = RCO_available_campaign_slots 
+				value = 3
+			}
+		}
+	}
+
+	option = { # nationalize
+		name = cw.90.a
+		add_political_power = 50
+		add_stability = -0.02
+		custom_effect_tooltip = RCO_activate_propaganda_TT
+		set_country_flag = rco_prca_enabled
+        set_country_flag = sov_prca_leaflets_enabled #Optional but recommended
+        set_country_flag = prca_use_tileset_with_id #Optional
+	}
+
+	option = { # let them operate
+		name = cw.90.b
+		add_political_power = 15
+		custom_effect_tooltip = RCO_activate_propaganda_TT
+		set_country_flag = rco_prca_enabled
+        set_country_flag = sov_prca_leaflets_enabled #Optional but recommended
+        set_country_flag = prca_use_tileset_with_id #Optional
+	}
+}
+
+########## White oficier
+########## Communist subbotniks
+############ Food shortage
+################# Internationa

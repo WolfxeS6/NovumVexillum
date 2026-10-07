@@ -6,123 +6,152 @@ country_event = {
 	title = election_SOV.1.t
 	desc = election_SOV.1.d
 	picture = GFX_report_event_vladimir_putin_young
-	
+
 	is_triggered_only = yes
-	
+
 	trigger = {
 		original_tag = SOV
 		date > 2000.3.1
 		date < 2001.1.1
 		NOT = { has_country_flag = russia_election_2000 }
 	}
-	
+
 	immediate = {
 		set_country_flag = russia_election_2000
 	}
-	
+
 	option = {
 		name = election_SOV.1.o1
-		
+
 		set_politics = {
 			ruling_party = reactionary
 			elections_allowed = yes
 		}
-		effect_tooltip = {
-			create_country_leader = {
-				name = "Vladimir Putin"
-				picture = "Vladimir_Putin.dds"
-				ideology = oligarchist
-				traits = {
-					popular_figurehead
-				}
-			}
+		remove_country_leader_trait = acting_president_trait
+		hidden_effect = {
+				country_event = {
+						id = russ.28
+						days = 10
+						random_hours = 12
+						random_days = 10
+					}
 		}
-		
+
 		news_event = russia_news.1
-		
-		ai_chance = {
-			base = 70
-		}
-	}
-	
-	option = {
-		name = election_SOV.1.o2
-		set_politics = {
-			ruling_party = nationalist
-			elections_allowed = yes
-		}
-		
-		effect_tooltip = {
-			create_country_leader = {
-				name = "Vladimir Zhirinovsky"
-				picture = "Vladimir_Zhirinovsky.dds"
-				ideology = proto_fascist
-			}
-		}
-		
-		news_event = russia_news.2
-		add_popularity = { ideology = nationalist popularity = 0.15 }
-		
+
 		ai_chance = {
 			base = 10
 			modifier = {
-				is_historical_focus_on = yes
+				OR = {
+					NOT = {
+						OR = {
+							has_game_rule = {
+								rule = SOV_AI_BEHAVIOR
+								option = DEFAULT
+							}
+							has_game_rule = {
+								rule = SOV_AI_BEHAVIOR
+								option = HISTORICAL
+							}
+							has_game_rule = {
+								rule = SOV_AI_BEHAVIOR
+								option = SOV_WAGNER
+							}
+							has_game_rule = {
+								rule = SOV_AI_BEHAVIOR
+								option = MONARCHIST
+							}
+							has_game_rule = {
+								rule = SOV_AI_BEHAVIOR
+								option = RANDOM
+							}
+						}
+					}
+					AND = {
+						is_historical_focus_on = no
+						NOT = {
+							has_game_rule = {
+								rule = SOV_AI_BEHAVIOR
+								option = HISTORICAL
+							}
+						}
+						NOT = {
+							has_game_rule = {
+								rule = SOV_AI_BEHAVIOR
+								option = SOV_WAGNER
+							}
+						}
+						NOT = {
+							has_game_rule = {
+								rule = SOV_AI_BEHAVIOR
+								option = MONARCHIST
+							}
+						}
+						NOT = {
+							has_game_rule = {
+								rule = SOV_AI_BEHAVIOR
+								option = RANDOM
+							}
+						}
+					}
+				}
 				factor = 0
 			}
 		}
 	}
-	
+
 	option = {
 		name = election_SOV.1.o3
 		set_politics = {
-			ruling_party = communist
+			ruling_party = social_democrat
 			elections_allowed = yes
 		}
-		
-		effect_tooltip = {
-			create_country_leader = {
-				name = "Gennady Zyuganov"
-				picture = "Gennady_Zyuganov.dds"
-				ideology = stalinist
-			}
+		SOV_Gennady_zyuganov = {
+			promote_character = yes
 		}
-		
-		news_event = russia_news.3
-		add_popularity = { ideology = communist popularity = 0.15 }
-		
+
+		news_event = russia_news.666
+		add_popularity = { ideology = social_democrat popularity = 0.15 }
+		set_country_flag = russia_reactionary_nofocus
+		hidden_effect = { 
+				country_event = {
+    				id = pprecw.1
+				} 
+			}
+
 		ai_chance = {
 			base = 10
 			modifier = {
-				is_historical_focus_on = yes
+				AND = {
+					NOT = {
+						has_game_rule = {
+							rule = SOV_AI_BEHAVIOR
+							option = SOV_RESTORATION_USSR
+						}
+					}
+				}
 				factor = 0
 			}
 		}
 	}
-	
+
 	option = {
 		name = election_SOV.1.o4
 		set_politics = {
 			ruling_party = social_liberal
 			elections_allowed = yes
 		}
-		
-		effect_tooltip = {
-			create_country_leader = {
-				name = "Grigory Yavlinski"
-				picture = "Grigory_Yavlinski.dds"
-				ideology = liberalist
-			}
+		SOV_grigory_yavlinski = {
+			promote_character = yes
 		}
-		
+
 		news_event = russia_news.4
 		add_popularity = { ideology = social_liberal popularity = 0.15 }
-		
+		set_country_flag = russia_yavlinski
+		mark_focus_tree_layout_dirty = yes
+
 		ai_chance = {
-			base = 10
-			modifier = {
-				is_historical_focus_on = yes
-				factor = 0
-			}
+			base = 0
 		}
 	}
 }

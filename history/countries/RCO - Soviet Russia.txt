@@ -1,0 +1,872 @@
+capital = 195
+
+set_country_flag = country_language_russian
+set_country_flag = NVX_ai_expansion_bypass
+set_country_flag = unique_political_advisor_nomal
+set_country_flag = unique_political_advisor_party_boost
+
+set_research_slots = 2 #(4 +1 в вов)
+set_convoys = 250
+set_stability = 0.5
+
+set_war_support = 0.5
+
+#add_ideas = RCO_comintern_research_member
+
+#set_cosmetic_tag = ########
+
+complete_special_project = sp:sp_rockets_experimental_rockets
+complete_special_project = sp:sp_rockets_ballistic_missile
+complete_special_project = sp:sp_rockets_medium_range_ballistic_missile
+complete_special_project = sp:sp_rockets_long_range_ballistic_missile
+complete_special_project = sp:sp_nuclear_reactor
+complete_special_project = sp:sp_commercial_nuclear_reactor
+complete_special_project = sp:sp_nuclear_bomb
+complete_special_project = sp:sp_thermo_nuclear_bomb
+complete_special_project = sp:sp_nuclear_warheads
+if = {
+	limit = {
+		NOT = {has_dlc = "By Blood Alone"}
+	}
+	set_technology = {
+		CAS1 = 1
+		CAS2 = 1
+		cv_CAS1 = 1
+		cv_CAS2 = 1
+		fighter1 = 1
+		fighter2 = 1
+		cv_fighter1 = 1
+		cv_fighter2 = 1
+		naval_bomber1 = 1
+		naval_bomber2 = 1
+		naval_bomber3 = 1
+		cv_naval_bomber1 = 1
+		cv_naval_bomber2 = 1
+		cv_naval_bomber3 = 1
+		strategic_bomber1 = 1
+		strategic_bomber2 = 1
+		#scout_plane1 = 1
+	}
+}
+if = {
+	limit = {
+		has_dlc = "By Blood Alone"
+	}
+	#tech
+	set_technology = {
+		iw_small_airframe = 1
+		basic_small_airframe = 1
+		iw_medium_airframe = 1
+		basic_medium_airframe = 1
+		iw_heli_airframe = 1
+		iw_naval_airframe = 1
+		basic_naval_airframe = 1
+		iw_large_airframe = 1
+		basic_large_airframe = 1
+		aa_lmg = 1
+		Cold_war_cas = 1
+		engines_1 = 1
+		air_misc = 1
+		#scout_plane1 = 1
+	}
+	#varients
+	#CAS
+	create_equipment_variant = {
+		name = "Su-25" 
+		type = small_plane_airframe_1
+		modules = {
+			fixed_main_weapon_slot = heavy_mg_2x
+			fixed_auxiliary_weapon_slot_1 = medium_bomb_bay
+			fixed_auxiliary_weapon_slot_2 = tank_buster_1
+			engine_type_slot = engine_1_2x
+			special_type_slot_1 = empty
+			special_type_slot_3 = armor_plate_medium
+		}
+	}
+	#Multirole
+	create_equipment_variant = {
+		name = "MiG-23" 
+		type = medium_plane_airframe_0
+		modules = {
+			fixed_main_weapon_slot = light_mg_2x
+			fixed_auxiliary_weapon_slot_1 = aircraft_cannon_short_1
+			engine_type_slot = engine_1_2x
+			special_type_slot_1 = empty
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "MiG-29" 
+		type = medium_plane_airframe_1
+		modules = {
+			fixed_main_weapon_slot = light_mg_2x
+			fixed_auxiliary_weapon_slot_1 = aircraft_cannon_short_1
+			fixed_auxiliary_weapon_slot_2 = aircraft_cannon_medium_1
+			engine_type_slot = engine_1_2x
+			special_type_slot_1 = empty
+		}
+	}
+	create_equipment_variant = {
+		name = "Su-27" 
+		type = medium_plane_airframe_1
+		modules = {
+			fixed_main_weapon_slot = light_mg_2x
+			fixed_auxiliary_weapon_slot_1 = aircraft_cannon_short_1
+			fixed_auxiliary_weapon_slot_2 = aircraft_cannon_medium_1
+			engine_type_slot = engine_1_2x
+			special_type_slot_1 = empty
+		}
+	}
+}
+if = {
+	limit = {
+		NOT = { has_dlc = "No Step Back" }
+	}
+	set_technology = {
+	main_battle_tank1 = 1
+	main_battle_tank2 = 1
+	main_battle_tank3 = 1
+	light_tank1 = 1
+	mechanised_infantry1 = 1
+	nonsnb_technicality_tech = 1
+	light_mechanized_infantry1 = 1
+	light_mechanized_infantry2 = 1
+	mechanised_infantry2 = 1
+	}
+	create_equipment_variant = { name = "T-62" type = modern_tank_equipment_1 upgrades = { tank_armor_upgrade = 3 tank_gun_upgrade = 1 tank_reliability_upgrade = 1 tank_engine_upgrade = 3 } obsolete = yes }
+	create_equipment_variant = { name = "T-64" type = modern_tank_equipment_1 upgrades = { tank_armor_upgrade = 5 tank_gun_upgrade = 3 tank_reliability_upgrade = 3 tank_engine_upgrade = 5 } obsolete = yes }
+	create_equipment_variant = { name = "T-80U" type = modern_tank_equipment_2 upgrades = { tank_armor_upgrade = 5 tank_gun_upgrade = 3 tank_reliability_upgrade = 3 tank_engine_upgrade = 5 } obsolete = yes }
+	create_equipment_variant = { name = "BMP-2" type = mechanized_equipment_1 obsolete = yes }
+}
+if = {
+	limit = {
+		has_dlc = "No Step Back"
+	}
+	set_technology = {
+		IFV_chassis_80s = 1
+		IFV_chassis = 1
+		technicality_tech = 1
+		light_mechanized_infantry1 = 1
+		light_mechanized_infantry2 = 1
+		main_battle_tank_chassis = 1
+		main_battle_tank_chassis_80s = 1
+		#main_battle_tank_chassis_00s = 1
+		engine_tech_1 = 1
+	}
+	create_equipment_variant = {
+		name = "T-80U"
+		type = modern_tank_chassis_2
+		parent_version = 0
+		modules = {
+			main_armament_slot = tank_small_cannon
+			special_type_slot_1 = ergo_small
+			suspension_type_slot = tank_bogie_suspension
+			armor_type_slot = tank_welded_armor
+			engine_type_slot = tank_gas_turbine_engine
+			optics_slot = tank_optics_1
+			special_type_slot_2 = tank_reactive_armour
+			special_type_slot_3 = auto_loader
+			
+		}
+		upgrades = {
+			tank_nsb_armor_upgrade = 3
+			tank_nsb_engine_upgrade = 2
+		}
+		icon = "GFX_SOV_main_battle_tank2_medium"
+	}
+	create_equipment_variant = {
+		name = "T-72B"
+		type = modern_tank_chassis_2
+		parent_version = 0
+		modules = {
+			main_armament_slot = tank_small_cannon
+			special_type_slot_1 = ergo_small
+			suspension_type_slot = tank_bogie_suspension
+			armor_type_slot = tank_welded_armor
+			engine_type_slot = tank_diesel_engine
+			optics_slot = tank_optics_1
+			special_type_slot_2 = tank_reactive_armour
+			special_type_slot_3 = auto_loader
+			
+		}
+		upgrades = {
+			tank_nsb_armor_upgrade = 2
+			tank_nsb_engine_upgrade = 1
+		}
+		icon = "GFX_SOV_main_battle_tank2_medium"
+	}
+	create_equipment_variant = {
+		name = "T-72M"
+		type = modern_tank_chassis_2
+		parent_version = 0
+		modules = {
+			main_armament_slot = tank_small_cannon
+			special_type_slot_1 = ergo_small
+			suspension_type_slot = tank_torsion_bar_suspension
+			armor_type_slot = tank_welded_armor
+			engine_type_slot = tank_diesel_engine
+			#special_type_slot_1 = tank_radio_1
+			optics_slot = tank_optics_1
+			special_type_slot_3 = auto_loader
+			
+			#atgm_slot = empty
+		}
+		upgrades = {
+			tank_nsb_armor_upgrade = 0
+			tank_nsb_engine_upgrade = 0
+		}
+		obsolete = yes
+		icon = "GFX_SOV_main_battle_tank2_medium"
+	}
+	create_equipment_variant = {
+		name = "BMP-2"
+		type = light_tank_chassis_1
+		parent_version = 0
+		modules = {
+			main_armament_slot = tank_auto_cannon
+			special_type_slot_1 = ergo_ifv_old
+			#turret_type_slot = tank_light_one_man_tank_turret
+			suspension_type_slot = tank_torsion_bar_suspension
+			armor_type_slot = tank_riveted_armor
+			engine_type_slot = tank_diesel_engine
+			#special_type_slot_1 = tank_radio_1
+			optics_slot = tank_optics_1
+			special_type_slot_4 = crew_compartment
+			atgm_slot = tank_atgm_1
+		}
+		upgrades = {
+			tank_nsb_armor_upgrade = 2
+			tank_nsb_engine_upgrade = 2
+		}
+		icon = "GFX_SOV_mechanised_infantry2_medium"
+	}
+	create_equipment_variant = {
+		name = "T-62"
+		type = modern_tank_chassis_1
+		parent_version = 0
+		modules = {
+			main_armament_slot = tank_small_cannon
+			special_type_slot_1 = ergo_old
+			suspension_type_slot = tank_torsion_bar_suspension
+			armor_type_slot = tank_welded_armor
+			engine_type_slot = tank_diesel_engine
+			#special_type_slot_1 = tank_radio_1
+			optics_slot = tank_optics_1
+			
+			#atgm_slot = empty
+		}
+		upgrades = {
+			tank_nsb_armor_upgrade = 0
+			tank_nsb_engine_upgrade = 0
+		}
+		obsolete = yes
+		icon = "GFX_SOV_main_battle_tank1_medium"
+	}
+	create_equipment_variant = {
+		name = "MT-LB"
+		type = light_tank_chassis_0
+		parent_version = 0
+		modules = {
+			main_armament_slot = tank_heavy_machine_gun
+			special_type_slot_1 = ergo_ifv_old
+			#turret_type_slot = tank_light_one_man_tank_turret
+			suspension_type_slot = tank_torsion_bar_suspension
+			armor_type_slot = tank_riveted_armor
+			engine_type_slot = tank_diesel_engine
+			#special_type_slot_1 = tank_radio_1
+			optics_slot = tank_optics_1
+			special_type_slot_4 = crew_compartment
+			#atgm_slot = empty
+		}
+		upgrades = {
+			tank_nsb_armor_upgrade = 0
+			tank_nsb_engine_upgrade = 0
+		}
+		obsolete = yes
+		icon = "GFX_SOV_mechanised_infantry1_medium"
+	}
+	create_equipment_variant = {
+		name = "PT-76"
+		type = light_tank_destroyer_chassis_0
+		parent_version = 0
+		modules = {
+			main_armament_slot = tank_ifv_medium_cannon
+			special_type_slot_1 = ergo_ifv_old
+			suspension_type_slot = tank_torsion_bar_suspension
+			armor_type_slot = tank_welded_armor
+			engine_type_slot = tank_diesel_engine
+			optics_slot = tank_optics_1
+			special_type_slot_4 = main_ammo_bay
+		}
+		upgrades = {
+			tank_nsb_armor_upgrade = 1
+			tank_nsb_engine_upgrade = 1
+		}
+		obsolete = no
+		icon = "GFX_SOV_light_tank1_medium"
+	}
+}
+set_technology = {
+	## Infantry ##
+	infantry_weapons1 = 1
+	infantry_weapons2 = 1
+	motorised_infantry = 1
+	infantry_rifle_upgrade = 1
+	support_weapons = 1
+	support_weapons2 = 1
+	night_vision = 1
+	body_armor = 1
+	camouflage = 1
+	marines = 1
+	tech_mountaineers = 1
+	paratroopers = 1
+	
+	## Support Companies ##
+	tech_support = 1
+	basic_train = 1
+	tech_engineers = 1
+	tech_recon = 1
+	tech_field_hospital = 1
+	tech_logistics_company = 1
+	tech_military_police = 1
+	tech_signal_company = 1
+	tech_maintenance_company = 1
+	
+	## Armor ##
+	#main_battle_tank1 = 1
+	#main_battle_tank2 = 1
+	#main_battle_tank3 = 1
+	#light_tank1 = 1
+	
+	#mechanised_infantry2 = 1
+	#light_mechanized_infantry1 = 1
+	#light_mechanized_infantry2 = 1
+	amphibious_mechanized_infantry1 = 1
+	
+	## Artillery ##
+	coldwar_artillery = 1
+	gw_artillery = 1
+	interwar_antitank = 1
+	interwar_antiair = 1
+	sp_antiair0 = 1 
+	coldwar_antiair = 1
+	coldwar_antitank = 1
+	 
+	 
+	sp_artillery1 = 1
+	
+	# ## Air ##
+	# CAS1 = 1
+	# CAS2 = 1
+	# cv_CAS1 = 1
+	# cv_CAS2 = 1
+	# fighter1 = 1
+	# fighter2 = 1
+	# fighter3 = 1
+	# cv_fighter1 = 1
+	# cv_fighter2 = 1
+	# cv_fighter3 = 1
+	# naval_bomber1 = 1
+	# naval_bomber2 = 1
+	# naval_bomber3 = 1
+	# cv_naval_bomber1 = 1
+	# cv_naval_bomber2 = 1
+	# cv_naval_bomber3 = 1
+	# strategic_bomber1 = 1
+	# strategic_bomber2 = 1
+	# tactical_bomber1 = 1
+	# #scout_plane1 = 1
+	
+	## Engineering ##
+	electronic_mechanical_engineering = 1
+	radio = 1
+	atomic_research = 1
+	
+	
+	experimental_rockets = 1
+	
+	## Industry ##
+	basic_machine_tools = 1
+	fuel_silos = 1
+	fuel_refining = 1
+	synth_oil_experiments = 1
+
+}
+
+if = {
+	limit = { not = { has_dlc = "Man the Guns" } }
+	set_technology = {
+		early_destroyer = 1
+		basic_destroyer = 1
+		early_light_cruiser = 1
+		basic_light_cruiser = 1
+		early_heavy_cruiser = 1
+		basic_heavy_cruiser = 1
+		early_battleship = 1
+		basic_battleship = 1
+		heavy_battleship = 1
+		early_carrier = 1
+		basic_carrier = 1
+		early_submarine = 1
+		basic_submarine = 1
+		transport = 1
+	}
+}
+if = {
+	limit = { has_dlc = "Man the Guns" }
+	set_technology = {
+		early_ship_hull_light = 1
+		basic_ship_hull_light = 1
+		early_ship_hull_patrol_boat = 1
+		early_ship_hull_cruiser = 1
+		basic_ship_hull_cruiser = 1
+		early_ship_hull_heavy = 1
+		basic_ship_hull_heavy = 1
+		
+		early_ship_hull_carrier = 1
+		early_ship_hull_submarine = 1
+		basic_ship_hull_submarine = 1
+		ship_hull_fleet_carrier = 1
+		basic_ship_hull_fleet_carrier = 1
+		early_ship_hull_ballistic_submarine = 1
+		smoke_generator = 1
+		sonar = 1
+		basic_depth_charges = 1
+		improved_airplane_launcher = 1
+		basic_cruiser_armor_scheme = 1
+		
+		basic_torpedo = 1
+		basic_battery = 1
+		basic_light_battery = 1
+		
+		basic_heavy_battery = 1
+		basic_secondary_battery = 1
+		basic_nuclear_reactors = 1
+		mtg_transport = 1
+		basic_naval_mines = 1
+		
+	}
+}
+
+create_equipment_variant = { name = "MiG-31" type = fighter_equipment_2 upgrades = { plane_engine_upgrade = 5 plane_reliability_upgrade = 3 } obsolete = yes }
+create_equipment_variant = { name = "Su-27" type = fighter_equipment_3 upgrades = { plane_engine_upgrade = 2 plane_reliability_upgrade = 2 } obsolete = no }
+create_equipment_variant = { name = "Su-24" type = CAS_equipment_2 upgrades = { plane_engine_upgrade = 5 plane_reliability_upgrade = 2 } obsolete = yes }
+create_equipment_variant = { name = "Tu-95MS" type = strat_bomber_equipment_1 upgrades = { plane_bomb_upgrade = 5 plane_reliability_upgrade = 4 } obsolete = yes }
+create_equipment_variant = { name = "Tu-22" type = strat_bomber_equipment_1 upgrades = { plane_engine_upgrade = 4 plane_reliability_upgrade = 1 } obsolete = yes }
+create_equipment_variant = { name = "Tu-22M3" type = strat_bomber_equipment_1 upgrades = { plane_bomb_upgrade = 2 plane_engine_upgrade = 5 plane_reliability_upgrade = 4 } obsolete = yes }
+
+add_ideas = { 
+	#centralization_soviet
+	#government_system_soviet_republic
+	#mobilization_service_time_soviet
+	#public_safety_soviet
+	#immigration_policy_soviet
+	#civil_liberties_soviet
+	#welfare_soviet
+	#economy_tax_soviet
+	closed_economy
+}
+
+set_politics = {	
+	ruling_party = communist
+	last_election = "1996.3.20"
+	election_frequency = 48
+	elections_allowed = no
+}
+
+set_popularities = {
+    nationalist = 5
+    reactionary = 25
+	fascist = 10
+    conservative = 0
+    social_liberal = 0
+    social_democrat = 5
+    progressive = 0
+    democratic_socialist = 10
+    communist = 45
+}
+
+recruit_character = RCO_CK
+recruit_character = RCO_Mikhail_Popov
+promote_character = RCO_CK
+recruit_character = RCO_vladimir_putin
+recruit_character = RCO_nicholas_romanov
+recruit_character = RCO_sergey_kiriyenko
+recruit_character = RCO_grigory_yavlinski
+recruit_character = RCO_alexei_navalny
+recruit_character = RCO_mikhail_kasyanov
+recruit_character = RCO_gennady_semigin
+recruit_character = RCO_Gennady_zyuganov
+recruit_character = RCO_vladimir_zhirinovsky
+recruit_character = RCO_andrey_savelyev
+recruit_character = RCO_pyotr_govrushkin
+recruit_character = RCO_vladimir_vysotskiy
+#recruit_character = RCO_mikhail_shestepyorov 
+#political advisors
+recruit_character = RCO_leonid_shebarshin 
+recruit_character = RCO_viktor_galko
+recruit_character = RCO_Alexander_Nikolaev
+recruit_character = RCO_Konstantin_Fedotov
+recruit_character = RCO_Viktor_Dolgov
+recruit_character = RCO_Gennadiy_Krasnikov
+recruit_character = RCO_Ivan_Gerasimov
+recruit_character = RCO_Alexander_Kazenov
+recruit_character = RCO_Dmitry_Goblin_Puchkov
+recruit_character = RCO_Oleg_Shein
+recruit_character = RCO_Eduard_Limonov
+recruit_character = RCO_filipp_bobkov
+#recruit_character = SOV_Sergey_Kobyilash HE MUST BE TRANSFER not recruited!!
+recruit_character = RCO_Ayo_Benes
+recruit_character = RCO_Vladimir_Linderman
+##generals
+recruit_character = RCO_alexey_chichkov
+recruit_character = RCO_fyodor_muhin
+recruit_character = RCO_kirill_badalin
+recruit_character = RCO_matvei_petrov
+recruit_character = RCO_roman_molodtsov
+recruit_character = RCO_valeriy_ovchinnikov
+recruit_character = RCO_Vlaimir_Kotov
+recruit_character = RCO_alexander_chernov
+recruit_character = RCO_daniil_gromov
+recruit_character = RCO_ilya_melnikov
+recruit_character = RCO_vyacheslav_eremin
+recruit_character = RCO_Mikhail_Sokolov
+recruit_character = RCO_Andrey_Demin
+recruit_character = RCO_Dmitry_Krylov
+###russian generals
+recruit_character = RCO_valeriy_gerasimov
+recruit_character = RCO_sergei_surovikin
+recruit_character = RCO_aleksandr_dvornikov
+recruit_character = RCO_pavel_popov
+recruit_character = RCO_vadim_pankov
+recruit_character = RCO_ivan_popov
+### mil advisors
+recruit_character = RCO_Pavel_Deneykin
+recruit_character = RCO_Sergey_Kobyilash
+recruit_character = RCO_Alexander_Zelin
+recruit_character = RCO_Anatoliy_Kornukov
+recruit_character = RCO_Andrey_Alekseev
+recruit_character = RCO_vladimir_ivanovich_korolev
+recruit_character = RCO_nikolay_anatolyevich_evmenov
+recruit_character = RCO_aleksandr_vitko
+
+#New dynamic ideas 
+
+## List : 
+## 1 - Red army 
+## 2 - State
+## 3 - Economy
+## 4 - Communist labour
+## 5 - Foreign policy
+## total 5 
+
+#1
+set_variable = { RKKA_morale = -0.15 } #+01
+set_variable = { RKKA_org = -0.7 } #+0
+set_variable = { RKKA_conscription = -0.5 } #+3
+set_variable = { RKKA_attrition = 0.4 } #-02
+set_variable = { RKKA_min_train_level = 0.01 } #сейчас 0,2 (001 в вов)
+set_variable = { RKKA_reinforce_rate = -0.05 } #0
+set_variable = { RKKA_exp_loss_in_combat = 0.3 } #-15
+set_variable = { RKKA_compliance_in_enemy = -0.2 } # -2
+set_variable = { RKKA_resistance_in_enemy = 0.2 } #+3
+set_variable = { RKKA_damage_to_enemy_garrison = 0.15 } # +2
+set_variable = { RKKA_complience_growh = 0.3 } #
+set_variable = { RKKA_resistance_growh = -0.1 } #
+set_variable = { RKKA_army_attacking_spd = 0 } #005
+set_variable = { RKKA_army_coord_bonus = 0 } #005
+set_variable = { RKKA_additional_size_bonus = 0 } #1
+set_variable = { RKKA_army_tr_time = 0 } #015
+set_variable = { RKKA_army_mech_attack = 0 } #01
+set_variable = { RKKA_army_mech_def = 0 } #005
+set_variable = { RKKA_army_art_attack = 0 } #015
+set_variable = { RKKA_army_art_def = 0 } #015
+set_variable = { RKKA_army_tank_attack = 0 } #005
+set_variable = { RKKA_army_tank_def = 0 } #005
+set_variable = { RKKA_army_supply_cons = 0 } #-015
+set_variable = { RKKA_army_ground_attack_fct = 0 } #-0
+set_variable = { RKKA_ace_generation_fct = 0 } #015
+set_variable = { RKKA_army_air_eff = 0 } #007
+set_variable = { RKKA_strat_bombing_eff = 0 } #007
+set_variable = { rco_army_winter_attr = 0 } #007
+set_variable = { rco_army_breakthrg_fct = 0 } #007
+set_variable = { RKKA_army_specs_cap = 0 } #00
+set_variable = { RKKA_army_specs_attack = 0 } #00
+
+add_dynamic_modifier = {
+	modifier = red_army
+}
+
+
+#2
+
+set_variable = { rco_state_ideology_defence = -0.3 } #+0.5 (05 в вов)
+set_variable = { rco_state_stability = -0.65 } #+91 (30)
+set_variable = { rco_state_pp_factor = -0.4 } #+0.05
+set_variable = { rco_state_pop_growh = -0.5 } #+0.01
+set_variable = { rco_state_war_support = -0.2 } #+085 (50)
+set_variable = { rco_state_research_speed = -0.55 } #+0.05
+set_variable = { rco_state_surrender_limit = 0.4 } #+5
+set_variable = { rco_comm_drift = -0.02 } #+0.09
+set_variable = { rco_state_political_adv_factor = 0.3 } #+0
+set_variable = { rco_state_economy_cost_factor = 0.3 } #+0
+set_variable = { rco_state_trade_law_cost_factor = 0.3 } #+0
+
+add_dynamic_modifier = {
+	modifier = rco_state
+}
+
+#3
+
+set_variable = { rco_opinion_gain_monthly = -0.5 } #
+set_variable = { rco_sameideology_opinion_gain_monthly = 0.6 } #
+set_variable = { rco_add_ally_desire_factor = 0.0 } # -0.5
+set_variable = { rco_same_ideology_opinion_factor = 0.0 } # 0.5
+set_variable = { rco_min_export = 0 } # 0
+set_variable = { rco_vols_factor = 0 } # 0
+set_variable = { rco_trade_opinion = -0.6 } #
+set_variable = { rco_cw_involvment_tension = 0.0 } # -06
+set_variable = { rco_factories_per_resource = -1 } # -06
+set_variable = { rco_justification_on_us_time_factor = 0.9 } # -06
+
+add_dynamic_modifier = {
+	modifier = rco_foreign_policy
+}
+
+#4 
+
+
+set_variable = { rco_labour_max_poduction_capacity = 0.0 } #+0,3
+set_variable = { rco_labour_prod_growh = 0.0 } #
+set_variable = { rco_labour_const_speed = 0.0 } #+0,1
+set_variable = { rco_labour_resource = 0.0 } #+0,2
+
+add_dynamic_modifier = {
+	modifier = rco_communist_labour
+}
+
+#5 
+
+#+- каким станет
+
+set_variable = { rco_economy_const_slots = 0.0 } #+0,2
+set_variable = { rco_economy_max_poduction_capacity = -0.4 } #-0
+set_variable = { rco_economy_const_speed = -0.4 } #+0.05
+set_variable = { rco_economy_prod_output = -0.35 } #+0.15 (ещё +0,2 сверху в вов)
+set_variable = { rco_economy_CG = 0.3 } #+0,2
+set_variable = { rco_economy_repair_speed = -0.6 } #+05
+set_variable = { rco_economy_prod_growh = -0.4 } #-0,05
+set_variable = { rco_economy_resource = -0.2 } #+01 (ещё +0,15 сверху в вов)
+set_variable = { rco_economy_mil_spd = 0 } #+05
+set_variable = { rco_economy_civ_spd = 0 } #-0,05
+
+add_dynamic_modifier = {
+	modifier = rco_economy
+}
+
+
+### VARIANTS ###
+# 2000 Start #
+if = {
+	limit = { not = { has_dlc = "Man the Guns" } }
+	
+}
+if = {
+	limit = { has_dlc = "Man the Guns" }
+	## Corvettes ##
+	create_equipment_variant = { #Corvette 1
+		name = "Grisha-class"
+		type = ship_hull_light_1
+		parent_version = 0
+		modules = {
+			fixed_ship_battery_slot = ship_light_battery_1
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = light_ship_engine_1
+			fixed_ship_torpedo_slot = ship_torpedo_1
+			mid_1_custom_slot = ship_torpedo_1
+			rear_1_custom_slot = ship_depth_charge_1
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = { #Corvette 2
+		name = "Tarantul-class"
+		type = ship_hull_light_2
+		parent_version = 0
+		modules = {
+			fixed_ship_battery_slot = ship_light_battery_2
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = light_ship_engine_2
+			fixed_ship_torpedo_slot = ship_torpedo_1
+			mid_1_custom_slot = ship_torpedo_1
+			rear_1_custom_slot = ship_depth_charge_1
+		}
+		obsolete = no
+	}
+	## Frigates ##
+	create_equipment_variant = { #Frigate 1
+		name = "Neustrashimyy-class"
+		type = ship_hull_cruiser_1
+		parent_version = 0
+		modules = {
+			fixed_ship_battery_slot = ship_light_medium_battery_1
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = cruiser_ship_engine_1
+			fixed_ship_armor_slot = ship_armor_cruiser_1
+			fixed_ship_secondaries_slot = ship_secondaries_1
+			mid_1_custom_slot = empty
+			mid_2_custom_slot = ship_anti_air_1
+			rear_1_custom_slot = ship_light_medium_battery_1
+		}
+		obsolete = no
+	}
+	## Destroyers ##
+	create_equipment_variant = { #Destroyer 1
+		name = "Udaloy"
+		type = ship_hull_cruiser_1
+		parent_version = 0
+		modules = {
+			fixed_ship_battery_slot = ship_medium_battery_1
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_radar_slot = ship_radar_1
+			fixed_ship_engine_slot = cruiser_ship_engine_1
+			fixed_ship_armor_slot = ship_armor_cruiser_1
+			mid_1_custom_slot = empty
+			mid_2_custom_slot = ship_anti_air_1
+			rear_1_custom_slot = ship_medium_battery_1
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = { #Destroyer 2
+		name = "Sovremennyy"
+		type = ship_hull_cruiser_2
+		parent_version = 0
+		modules = {
+			fixed_ship_battery_slot = ship_medium_battery_2
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_radar_slot = ship_radar_1
+			fixed_ship_engine_slot = cruiser_ship_engine_2
+			fixed_ship_armor_slot = ship_armor_cruiser_2
+			mid_1_custom_slot = empty
+			mid_2_custom_slot = ship_anti_air_1
+			rear_1_custom_slot = ship_medium_battery_2
+		}
+		obsolete = no
+	}
+	## Missile Cruisers ##
+	create_equipment_variant = { #Missile Cruiser 1
+		name = "Kara-class"
+		type = ship_hull_heavy_1
+		parent_version = 0
+		modules = {
+			fixed_ship_battery_slot = ship_heavy_battery_1
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_radar_slot = ship_radar_1
+			fixed_ship_engine_slot = heavy_ship_engine_1
+			fixed_ship_secondaries_slot = ship_secondaries_1
+			fixed_ship_armor_slot = ship_armor_bb_1
+			front_1_custom_slot = ship_anti_air_1
+			mid_1_custom_slot = empty
+			mid_2_custom_slot = ship_secondaries_1
+			rear_1_custom_slot = ship_heavy_battery_1
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = { #Missile Cruiser 2
+		name = "Slava-class"
+		type = ship_hull_heavy_2
+		parent_version = 0
+		modules = {
+			fixed_ship_battery_slot = ship_heavy_battery_1
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_radar_slot = ship_radar_1
+			fixed_ship_engine_slot = heavy_ship_engine_1
+			fixed_ship_secondaries_slot = ship_secondaries_1
+			fixed_ship_armor_slot = ship_armor_bb_1
+			front_1_custom_slot = ship_anti_air_1
+			mid_1_custom_slot = empty
+			mid_2_custom_slot = ship_secondaries_1
+			rear_1_custom_slot = ship_heavy_battery_1
+		}
+		obsolete = no
+	}
+	create_equipment_variant = { #Battle Cruiser
+		name = "Kirov-class"
+		type = ship_hull_super_heavy_1
+		parent_version = 0
+		modules = {
+			fixed_ship_battery_slot = ship_super_heavy_battery_1
+			fixed_ship_anti_air_slot = ship_anti_air_2
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_radar_slot = ship_radar_1
+			fixed_ship_engine_slot = super_heavy_ship_engine_1
+			fixed_ship_secondaries_slot = ship_secondaries_1
+			fixed_ship_armor_slot = ship_armor_shbb
+			front_1_custom_slot = ship_anti_air_2
+			front_2_custom_slot = ship_anti_air_2
+			mid_1_custom_slot = ship_depth_charge_1
+			mid_2_custom_slot = ship_anti_air_2
+			mid_3_custom_slot = ship_torpedo_1
+			rear_1_custom_slot = ship_super_heavy_battery_1
+			rear_2_custom_slot = empty
+		}
+		obsolete = no
+	}
+	## Carriers ##
+	create_equipment_variant = { #Carrier 1
+		name = "Kuznetsov-class"
+		type = ship_hull_carrier_conversion_bb
+		parent_version = 0
+		modules = {
+			fixed_ship_deck_slot_1 = ship_deck_space
+			fixed_ship_deck_slot_2 = ship_deck_space
+			fixed_ship_anti_air_slot = ship_anti_air_2
+			fixed_ship_radar_slot = ship_radar_1
+			fixed_ship_engine_slot = carrier_ship_engine_1
+			fixed_ship_secondaries_slot = ship_anti_air_2
+			fixed_ship_armor_slot = ship_armor_carrier_deck
+			mid_1_custom_slot = ship_heavy_battery_2
+			rear_1_custom_slot = ship_airplane_launcher_1
+		}
+		obsolete = no
+	}
+	## Submarines ##
+	create_equipment_variant = { #Diesel Sub 1
+		name = "Delta III-class"
+		type = ship_hull_submarine_1
+		parent_version = 0
+		modules = {
+			fixed_ship_torpedo_slot = ship_torpedo_sub_1
+			fixed_ship_engine_slot = sub_ship_engine_1
+			rear_1_custom_slot = empty
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = { #Nuclear Sub 2
+		name = "Oscar II-class"
+		type = ship_hull_submarine_2
+		parent_version = 0
+		modules = {
+			fixed_ship_torpedo_slot = ship_torpedo_sub_2
+			fixed_ship_engine_slot = sub_ship_engine_n1
+			rear_1_custom_slot = ship_torpedo_sub_2
+		}
+		obsolete = no
+	}
+}
+
+
+
+
+
+
+

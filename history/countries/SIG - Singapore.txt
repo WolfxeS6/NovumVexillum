@@ -9,35 +9,29 @@ if = {
 		set_oob = "SIG_2000"
 	}
 }
-if = {
-	limit = { has_dlc = "Man the Guns" }
-		set_naval_oob = "SIG_2000_naval_mtg"
-	else = {
-		set_naval_oob = "SIG_2000_naval_legacy"
-	}
-}
 
-set_research_slots = 5
-set_convoys = 470
-set_stability = 0.55
+set_research_slots = 4
+set_convoys = 500
+set_stability = 0.75
+
+set_country_flag = starting_stability_high
 
 set_country_flag = country_language_chinese
 set_country_flag = country_language_english
+
+set_country_flag = unique_political_advisor_nomal
 
 if = {
 	limit = {
 		NOT = {has_dlc = "By Blood Alone"}
 	}
 	set_technology = {
-		heli1 = 1
-		heli2 = 1
 		CAS1 = 1
 		CAS2 = 1
 		cv_CAS1 = 1
 		cv_CAS2 = 1
 		fighter1 = 1
 		fighter2 = 1
-		fighter3 = 1
 		cv_fighter1 = 1
 		cv_fighter2 = 1
 		naval_bomber1 = 1
@@ -62,7 +56,6 @@ if = {
 		iw_medium_airframe = 1
 		basic_medium_airframe = 1
 		iw_heli_airframe = 1
-		basic_heli_airframe = 1
 		iw_naval_airframe = 1
 		basic_naval_airframe = 1
 		iw_large_airframe = 1
@@ -74,17 +67,6 @@ if = {
 		#scout_plane1 = 1
 	}
 	#varients
-	#Helicopter
-	create_equipment_variant = {
-		name = "AS550 C2 Fennec" #single engine
-		type = heli_plane_airframe_1
-		modules = {
-			fixed_main_weapon_slot = heli_light_mg_2x
-			fixed_auxiliary_weapon_slot_1 = heli_small_bomb_bay
-			engine_type_slot = heli_engine_1_1x
-			special_type_slot_2 = plane_lighten_materials
-		}
-	}
 	#CAS
 	create_equipment_variant = {
 		name = "A-4 Skyhawk" 
@@ -126,20 +108,19 @@ if = {
 		}
 		icon = "GFX_F-16CD_medium"
 	}
-	
-	# create_equipment_variant = {
-	# 	name = "F-15C/D Eagle" 
-	# 	type = medium_plane_airframe_1
-	# 	modules = {
-	# 		fixed_main_weapon_slot = light_mg_2x
-	# 		fixed_auxiliary_weapon_slot_1 = aircraft_cannon_short_1
-	# 		fixed_auxiliary_weapon_slot_2 = aircraft_cannon_medium_1
-	# 		engine_type_slot = engine_2_2x
-	# 		special_type_slot_1 = plane_targetting_system_1_medium
-	# 		special_type_slot_2 = empty
-	# 	}
-	# 	icon = "GFX_F-15E_Strike_Eagle_medium"
-	# }
+	create_equipment_variant = {
+		name = "F-15C/D Eagle" 
+		type = medium_plane_airframe_1
+		modules = {
+			fixed_main_weapon_slot = light_mg_2x
+			fixed_auxiliary_weapon_slot_1 = aircraft_cannon_short_1
+			fixed_auxiliary_weapon_slot_2 = aircraft_cannon_medium_1
+			engine_type_slot = engine_2_2x
+			special_type_slot_1 = plane_targetting_system_1_medium
+			special_type_slot_2 = empty
+		}
+		icon = "GFX_F-15E_Strike_Eagle_medium"
+	}
 }
 if = {
 	limit = {
@@ -151,7 +132,6 @@ if = {
 	#main_battle_tank3 = 1
 	light_tank1 = 1
 	mechanised_infantry1 = 1
-	nonsnb_technicality_tech = 1
 	light_mechanized_infantry1 = 1
 	light_mechanized_infantry2 = 1
 	#mechanised_infantry2 = 1
@@ -164,25 +144,26 @@ if = {
 	set_technology = {
 		IFV_chassis_80s = 1
 		IFV_chassis = 1
-		technicality_tech = 1
 		light_mechanized_infantry1 = 1
 		light_mechanized_infantry2 = 1
 		IFV_chassis_00s = 1
 		main_battle_tank_chassis = 1
 		main_battle_tank_chassis_80s = 1
+		main_battle_tank_chassis_00s = 1
 	}
 	create_equipment_variant = {
-		name = "Centurion" #63 trg only!
-		type = modern_tank_chassis_1
+		name = "Leopard 2A4"
+		type = modern_tank_chassis_3
 		parent_version = 0
 		modules = {
-			main_armament_slot = tank_medium_cannon
+			main_armament_slot = tank_small_cannon_2
 			#turret_type_slot = tank_modern_tank_turret
 			suspension_type_slot = tank_torsion_bar_suspension
 			armor_type_slot = tank_welded_armor
 			engine_type_slot = tank_diesel_engine
 			#special_type_slot_1 = tank_radio_1
 			optics_slot = tank_optics_1
+			special_type_slot_3 = auto_loader
 			
 			#atgm_slot = empty
 		}
@@ -190,11 +171,10 @@ if = {
 			tank_nsb_armor_upgrade = 0
 			tank_nsb_engine_upgrade = 0
 		}
-		obsolete = yes
-		icon = "GFX_ENG_main_battle_tank1_medium"
+		icon = "GFX_GER_main_battle_tank3_medium"
 	}
 	create_equipment_variant = {
-		name = "Bionix AFV" #### exists but is not in use yet
+		name = "Bionix AFV"
 		type = light_tank_chassis_2
 		parent_version = 0
 		modules = {
@@ -259,6 +239,29 @@ if = {
 		obsolete = yes
 		icon = "GFX_USA_mechanised_infantry1_medium"
 	}
+	create_equipment_variant = {
+		name = "PT-76"
+		type = light_tank_destroyer_chassis_1
+		parent_version = 0
+		modules = {
+			main_armament_slot = tank_auto_cannon
+			special_type_slot_1 = ergo_ifv_old
+			#turret_type_slot = tank_light_one_man_tank_turret
+			suspension_type_slot = tank_torsion_bar_suspension
+			armor_type_slot = tank_riveted_armor
+			engine_type_slot = tank_diesel_engine
+			#special_type_slot_1 = tank_radio_1
+			optics_slot = tank_optics_1
+			special_type_slot_4 = main_ammo_bay
+			#atgm_slot = empty
+		}
+		upgrades = {
+			tank_nsb_armor_upgrade = 1
+			tank_nsb_engine_upgrade = 1
+		}
+		obsolete = no
+		icon = "GFX_SOV_mechanised_infantry1_medium"
+	}
 }
 set_technology = {
 	## Infantry ##
@@ -287,17 +290,50 @@ set_technology = {
 	tech_maintenance_company = 1
 	
 	## Armor ##
-	#amphibious_mechanized_infantry1 = 1
+	#main_battle_tank1 = 1
+	#main_battle_tank2 = 1
+	#main_battle_tank3 = 1
+	#light_tank1 = 1
+	#mechanised_infantry1 = 1
+	#mechanised_infantry2 = 1
+	#light_mechanized_infantry1 = 1
+	#light_mechanized_infantry2 = 1
+	amphibious_mechanized_infantry1 = 1
 	
 	## Artillery ##
 	coldwar_artillery = 1
 	gw_artillery = 1
 	interwar_antitank = 1
+	interwar_antiair = 1
+ 	rocket_artillery = 1
+	sp_antiair0 = 1 
 	coldwar_antiair = 1
 	coldwar_antitank = 1
 	 
 	 
 	sp_artillery1 = 1
+	
+	# ## Air ##
+	# CAS1 = 1
+	# CAS2 = 1
+	# cv_CAS1 = 1
+	# cv_CAS2 = 1
+	# fighter1 = 1
+	# fighter2 = 1
+	# fighter3 = 1
+	# cv_fighter1 = 1
+	# cv_fighter2 = 1
+	# cv_fighter3 = 1
+	# naval_bomber1 = 1
+	# naval_bomber2 = 1
+	# naval_bomber3 = 1
+	# cv_naval_bomber1 = 1
+	# cv_naval_bomber2 = 1
+	# cv_naval_bomber3 = 1
+	# strategic_bomber1 = 1
+	# strategic_bomber2 = 1
+	# tactical_bomber1 = 1
+	# #scout_plane1 = 1
 	
 	## Engineering ##
 	electronic_mechanical_engineering = 1
@@ -310,113 +346,87 @@ set_technology = {
 	synth_oil_experiments = 1
 }
 
-if = {
-	limit = { not = { has_dlc = "Man the Guns" } }
-	set_technology = {
-		early_destroyer = 1
-		transport = 1
-	}
-}
-if = {
-	limit = { has_dlc = "Man the Guns" }
-	set_technology = {
-		early_ship_hull_light = 1
-		smoke_generator = 1
-		sonar = 1
-		basic_depth_charges = 1
-		basic_torpedo = 1
-		basic_battery = 1
-		basic_light_battery = 1
-		basic_secondary_battery = 1
-		mtg_transport = 1
-		basic_naval_mines = 1
-		
-	}
-}
-
 add_ideas = {
-	government_system_parliamentary_republic
-	national_development_developed
-	economy_tax_low
-	civil_liberties_restricted
-	population_growth_steady
-	extensive_conscription
 	commonwealth_of_nations_member
+	SIG_Majulah_Singapura
+	SIG_National_Cadet_Corps
+	extensive_conscription
+	national_development_developed
+	civil_liberties_restricted
+	SIG_offshore_fact
+	economy_tax_low
 	idea_asean_member
 }
 
-set_politics = {	
-	ruling_party = reactionary
+set_popularities = {
+    social_democrat = 3
+	conservative = 75
+	social_liberal = 8
+	reactionary = 0
+	democratic_socialist = 0
+	progressive = 12
+	market_liberal = 2
+	fascist = 0
+	nationalist = 0
+	communist = 0
+}
+
+
+set_politics = {
+	ruling_party = conservative
 	last_election = "1999.9.1"
 	election_frequency = 60
 	elections_allowed = yes
 }
 
-set_popularities = {
-    reactionary = 98
-    communist = 2
-}
+2000.1.1 = {
 
-recruit_character = SIG_goh_chok_tong
-recruit_character = SIG_lee_hsien_loong
+recruit_character = SIG_Goh_Chok_Tong
+recruit_character = SIG_abdul_aziz
+recruit_character = SIG_nordin_suloh
+recruit_character = SIG_ibrahim_ali
+recruit_character = SIG_abdul_boestamam
+recruit_character = SIG_ahmad_maidin
+recruit_character = SIG_elyas_ali
+recruit_character = SIG_ahmad_razak
+recruit_character = SIG_tengku_omar
+recruit_character = SIG_yaacob_yaacob
+recruit_character = SIG_kadir_razak
+recruit_character = SIG_pandir_sako
+
+###################################################################################
+### Army General & Advisor ###
+##############################
+recruit_character = SIG_Andrew_Lim
+recruit_character = SIG_Chua_Hock_Guan
+recruit_character = SIG_Chua_Jin_Kiat
+recruit_character = SIG_David_Neo
+recruit_character = SIG_Desmond_Kuek
+recruit_character = SIG_Frederick_Choo
+recruit_character = SIG_Goh_Pei_Ming
+recruit_character = SIG_Goh_Si_Mien
+recruit_character = SIG_Melvyn_Ong
+recruit_character = SIG_Neo_Kian_Hong
+recruit_character = SIG_Ng_Yat_Chung
+recruit_character = SIG_Perry_Lim
+recruit_character = SIG_Tan_Tiong_Keat
+recruit_character = SIG_Yeo_Keng_Hua
+
+###################################################################################
+### Air Force Advisors ###
+##########################
+recruit_character = SIG_Ng_Chee_Meng
+recruit_character = SIG_Kelvin_Tan
+recruit_character = SIG_Kelvin_Khong
+recruit_character = SIG_Ng_See_Lye
+
+}
 
 2016.1.1 = {
-	if = {
-		limit = {
-			has_dlc = "No Step Back"
-		}
-		set_technology = {
-			main_battle_tank_chassis_00s = 1
-		}
-		create_equipment_variant = {
-			name = "Leopard 2A4"
-			type = modern_tank_chassis_3
-			parent_version = 0
-			modules = {
-				main_armament_slot = tank_small_cannon_2
-				#turret_type_slot = tank_modern_tank_turret
-				suspension_type_slot = tank_torsion_bar_suspension
-				armor_type_slot = tank_welded_armor
-				engine_type_slot = tank_diesel_engine
-				#special_type_slot_1 = tank_radio_1
-				optics_slot = tank_optics_1
-				special_type_slot_3 = auto_loader
-				
-				#atgm_slot = empty
-			}
-			upgrades = {
-				tank_nsb_armor_upgrade = 0
-				tank_nsb_engine_upgrade = 0
-			}
-			icon = "GFX_GER_main_battle_tank3_medium"
-		}
-	}
-}
-
-### VARIANTS ###
-# 2000 Start #
-if = {
-	limit = { not = { has_dlc = "Man the Guns" } }
-	
-}
-if = {
-	limit = { has_dlc = "Man the Guns" }
-	## Corvettes ##
-	create_equipment_variant = { #Corvette 1
-		name = "Victory-class"
-		type = ship_hull_light_1
-		parent_version = 0
-		modules = {
-			fixed_ship_battery_slot = ship_light_battery_1
-			fixed_ship_anti_air_slot = ship_anti_air_1
-			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
-			fixed_ship_radar_slot = empty
-			fixed_ship_engine_slot = light_ship_engine_1
-			fixed_ship_torpedo_slot = ship_torpedo_1
-			mid_1_custom_slot = ship_torpedo_1
-			rear_1_custom_slot = ship_torpedo_1
-		}
-		obsolete = no
+	create_country_leader = {
+		name = "Lee Hsien Loong"
+		picture = "lee_hsien_loong.dds"
+		ideology = fiscal_conservative
 	}
 }
 if = {
@@ -426,32 +436,27 @@ if = {
 		add_equipment_to_stockpile = {
 			type = fighter_equipment_3
 			amount = 58
-			#producer = USA
+			producer = USA
 		}
 		add_equipment_to_stockpile = {
 			type = fighter_equipment_2
 			amount = 28
-			#producer = USA
+			producer = USA
 		}
 		add_equipment_to_stockpile = {
 			type = CAS_equipment_2
 			amount = 51
-			#producer = USA
+			producer = USA
 		}
 		add_equipment_to_stockpile = {
 			type = transport_plane_equipment_1
 			amount = 5
-			#producer = USA
+			producer = USA
 		}
 		add_equipment_to_stockpile = {
 			type = nav_bomber_equipment_2
 			amount = 5
-			#producer = USA
-		}
-		add_equipment_to_stockpile = {
-			type = heli_equipment_1
-			amount = 20
-			#producer = FRA
+			producer = USA
 		}
 }
 if = {
@@ -464,28 +469,10 @@ if = {
 		producer = SIG
 		variant_name = "A-4 Skyhawk"
 	}
-	#add_equipment_to_stockpile = {
-	#	type = medium_plane_airframe_1
-	#	amount = 28
-	#	producer = SIG
-	#	variant_name = "F-15C/D Eagle"
-	#}
 	add_equipment_to_stockpile = {
 		type = medium_plane_airframe_1
-		amount = 91
+		amount = 60
 		producer = SIG
 		variant_name = "F-16C/D"
-	}
-	add_equipment_to_stockpile = {
-		type = medium_plane_airframe_0
-		amount = 37
-		producer = SIG
-		variant_name = "F-5 Tiger II"
-	}
-	add_equipment_to_stockpile = {
-		type = heli_plane_airframe_1
-		amount = 20
-		producer = SIG
-		variant_name = "AS550 C2 Fennec"
 	}
 }

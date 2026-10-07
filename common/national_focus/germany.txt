@@ -163,11 +163,1969 @@ focus_tree = {
 		}
 	}
 	focus = {
-		id = GER_support_Mittelstand
-		icon = GFX_focus_generic_industry_1
-		x = 0
+		id = GER_emphasize_unity
+		icon = GFX_focus_GER_legacy_of_the_spartacus_league
+		x = -60
+		y = 1
+		cost = @Time_50_days
+		relative_position_id = GER_ideology_focus
+		prerequisite = {
+			focus = GER_ideology_focus
+		}
+
+		mutually_exclusive = {
+			focus = GER_emphasize_justice
+		}
+		mutually_exclusive = {
+			focus = GER_emphasize_freedom
+		}
+		allow_branch = {
+			NOT = {
+				has_completed_focus = GER_emphasize_justice
+			}
+			#NOT = {has_global_flag = GER_testing1}
+		}
+
+		completion_reward = {
+			fourth_estate_democratic_socialist_increase = yes
+			fourth_estate_communist_increase = yes
+			add_popularity = {
+				ideology = democratic_socialist
+				popularity = 0.02
+			}
+			add_popularity = {
+				ideology = communist
+				popularity = 0.02
+			}
+		}
+
+		ai_will_do = {
+			factor = 15
+			modifier = {
+				factor = 0
+				OR = {
+					has_game_rule = {
+						rule = GER_ai_behavior
+						option = KAISER
+					}
+					has_game_rule = {
+						rule = GER_ai_behavior
+						option = REICH
+					}
+				}
+			}
+		}
+	}
+	focus = {
+		id = GER_Rally_the_Unions
+		icon = GFX_focus_GER_stakhanovite_movement
+		x = -59
 		y = 2
 		cost = @Time_50_days
+		relative_position_id = GER_ideology_focus
+		prerequisite = {
+			focus = GER_emphasize_unity
+		}
+		allow_branch = {
+			NOT = {
+				has_completed_focus = GER_emphasize_justice
+			}
+			#NOT = {has_global_flag = GER_testing1}
+		}
+
+		completion_reward = {
+			add_ideas = GER_Supported_by_Unions
+		}
+	}
+	focus = {
+		id = GER_The_Einheitsfront
+		icon = GFX_focus_GER_proletarian_solidarity
+		x = -61
+		y = 2
+		cost = @Time_50_days
+		relative_position_id = GER_ideology_focus
+		prerequisite = {
+			focus = GER_emphasize_unity
+		}
+		allow_branch = {
+			NOT = {
+				has_completed_focus = GER_emphasize_justice
+			}
+			#NOT = {has_global_flag = GER_testing1}
+		}
+
+		completion_reward = {
+			country_event = germany.103
+			add_popularity = {
+				ideology = communist
+				popularity = 0.02
+			}
+		}
+	}
+	focus = {
+		id = GER_Generalstreik
+		icon = GFX_focus_GER_integrated_economies
+		x = -60
+		y = 3
+		cost = @Time_50_days
+		relative_position_id = GER_ideology_focus
+		prerequisite = {
+			focus = GER_The_Einheitsfront
+		}
+		prerequisite = {
+			focus = GER_Rally_the_Unions
+		}
+		allow_branch = {
+			NOT = {
+				has_completed_focus = GER_emphasize_justice
+			}
+			#NOT = {has_global_flag = GER_testing1}
+		}
+
+		completion_reward = {
+			add_ideas = GER_Generalstreik_idea
+		}
+	}
+	focus = {
+		id = GER_Arm_the_Masses
+		icon = GFX_focus_GER_liberate_exploited_colonial_workers
+		x = -60
+		y = 4
+		cost = @Time_50_days
+		relative_position_id = GER_ideology_focus
+		prerequisite = {
+			focus = GER_Generalstreik
+		}
+		allow_branch = {
+			NOT = {
+				has_completed_focus = GER_emphasize_justice
+			}
+			#NOT = {has_global_flag = GER_testing1}
+		}
+
+		completion_reward = {
+			country_event = germany.104
+		}
+	}
+	focus = {
+		id = GER_Radical_Economic_Change
+		icon = GFX_focus_GER_stakhanovite_movement
+		x = -52
+		y = 5
+		cost = @Time_50_days
+		relative_position_id = GER_ideology_focus
+		prerequisite = {
+			focus = GER_Arm_the_Masses
+		}
+		allow_branch = {
+			NOT = {
+				has_completed_focus = GER_emphasize_justice
+			}
+			#NOT = {has_global_flag = GER_testing1}
+		}
+
+		completion_reward = {
+			add_political_power = -50
+			add_popularity = {
+				ideology = communist
+				popularity = -0.03
+			}
+			hidden_effect = {
+				add_dynamic_modifier = { modifier = GER_Economic_Chaos_Modifier }
+				set_variable = {GER_stab_factor = -0.15}
+				set_variable = {GER_production_speed_buildings_factor = -0.1}
+				set_variable = {GER_industrial_capacity_factory = -0.075}
+				set_variable = {GER_consumer_goods_expected_value = 0.075}
+				set_variable = {GER_production_factory_max_efficiency_factor = -0.1}
+			}
+		}
+	}
+	focus = {
+		id = GER_National_Planning_Commission
+		icon = GFX_focus_generic_communist_industry
+		x = -48
+		y = 6
+		cost = @Time_50_days
+		relative_position_id = GER_ideology_focus
+		prerequisite = {
+			focus = GER_Radical_Economic_Change
+		}
+		allow_branch = {
+			NOT = {
+				has_completed_focus = GER_emphasize_justice
+			}
+			#NOT = {has_global_flag = GER_testing1}
+		}
+
+		completion_reward = {
+			show_ideas_tooltip = GER_National_Planning_Commission_concern	
+			add_political_power = -50
+		}
+	}
+	focus = {
+		id = GER_Eastern_Housing_Act
+		icon = GFX_focus_generic_low_cost_housing
+		x = -49
+		y = 7
+		cost = @Time_50_days
+		relative_position_id = GER_ideology_focus
+		prerequisite = {
+			focus = GER_National_Planning_Commission
+		}
+		allow_branch = {
+			NOT = {
+				has_completed_focus = GER_emphasize_justice
+			}
+			#NOT = {has_global_flag = GER_testing1}
+		}
+
+		completion_reward = {
+			64 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			61 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			65 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			68 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			60 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+		id = GER_Ruhr_Heavy_Industry_Revival
+		icon = GFX_SOV_socialist_emulation_ccp_2d_sov_compatibility
+		x = -47
+		y = 7
+		cost = @Time_50_days
+		relative_position_id = GER_ideology_focus
+		prerequisite = {
+			focus = GER_National_Planning_Commission
+		}
+		allow_branch = {
+			NOT = {
+				has_completed_focus = GER_emphasize_justice
+			}
+			#NOT = {has_global_flag = GER_testing1}
+		}
+
+		completion_reward = {
+			888 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+			51 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+		id = GER_Operation_Full_Employment
+		icon = GFX_focus_generic_full_employment
+		x = -45
+		y = 7
+		cost = @Time_50_days
+		relative_position_id = GER_ideology_focus
+		prerequisite = {
+			focus = GER_National_Planning_Commission
+		}
+		allow_branch = {
+			NOT = {
+				has_completed_focus = GER_emphasize_justice
+			}
+			#NOT = {has_global_flag = GER_testing1}
+		}
+
+		completion_reward = {
+			add_ideas = GER_Full_Employment_idea
+		}
+	}
+	focus = {
+		id = GER_Nationalize_Transportation_Companies
+		icon = GFX_focus_GER_establish_volkskommissariats
+		x = -47
+		y = 8
+		cost = @Time_50_days
+		relative_position_id = GER_ideology_focus
+		prerequisite = {
+			focus = GER_Eastern_Housing_Act
+		}
+		prerequisite = {
+			focus = GER_Ruhr_Heavy_Industry_Revival
+		}
+		prerequisite = {
+			focus = GER_Operation_Full_Employment
+		}
+		allow_branch = {
+			NOT = {
+				has_completed_focus = GER_emphasize_justice
+			}
+			#NOT = {has_global_flag = GER_testing1}
+		}
+
+		completion_reward = {
+			add_to_variable = {
+				var = GER_consumer_goods_expected_value
+				value = -0.025
+			}
+			custom_effect_tooltip = GER_Nationalize_Transportation_Companies_tt
+		}
+	}
+	focus = {
+		id = GER_Strenghten_the_Mark
+		icon = GFX_focus_ETH_adopt_the_lira
+		x = -51
+		y = 8
+		cost = @Time_50_days
+		relative_position_id = GER_ideology_focus
+		prerequisite = {
+			focus = GER_Investigate_the_Financial_Sector
+		}
+		prerequisite = {
+			focus = GER_Suspend_the_Euro_Transition
+		}
+		prerequisite = {
+			focus = GER_Eastern_Housing_Act
+		}
+		prerequisite = {
+			focus = GER_Ruhr_Heavy_Industry_Revival
+		}
+		prerequisite = {
+			focus = GER_Operation_Full_Employment
+		}
+		allow_branch = {
+			NOT = {
+				has_completed_focus = GER_emphasize_justice
+			}
+			#NOT = {has_global_flag = GER_testing1}
+		}
+
+		completion_reward = {
+			add_ideas = GER_Ostmark
+		}
+	}
+	focus = {
+		id = GER_Equal_Pay_in_East_and_West
+		icon = GFX_focus_generic_currency_reforms
+		x = -49
+		y = 9
+		cost = @Time_50_days
+		relative_position_id = GER_ideology_focus
+		prerequisite = {
+			focus = GER_Strenghten_the_Mark
+		}
+		prerequisite = {
+			focus = GER_Nationalize_Transportation_Companies
+		}
+		allow_branch = {
+			NOT = {
+				has_completed_focus = GER_emphasize_justice
+			}
+			#NOT = {has_global_flag = GER_testing1}
+		}
+
+		completion_reward = {
+			add_timed_idea = {
+				idea = GER_Eastern_Inequality_Compensation_idea
+				days = 365
+			}
+			hidden_effect = {
+				country_event = {
+					id = germany.111 days = 365
+				}
+			}
+		}
+	}
+	focus = {
+		id = GER_Electrification_in_the_East
+		icon = GFX_focus_generic_electrification
+		x = -51
+		y = 10
+		cost = @Time_50_days
+		relative_position_id = GER_ideology_focus
+		prerequisite = {
+			focus = GER_Equal_Pay_in_East_and_West
+		}
+		allow_branch = {
+			NOT = {
+				has_completed_focus = GER_emphasize_justice
+			}
+			#NOT = {has_global_flag = GER_testing1}
+		}
+
+		completion_reward = {
+			64 = { #state id
+        		add_dynamic_modifier = { modifier = GER_East_German_Electricity_Expansion } #add state modifier
+   			}
+			61 = { #state id
+        		add_dynamic_modifier = { modifier = GER_East_German_Electricity_Expansion } #add state modifier
+   			}
+			68 = { #state id
+        		add_dynamic_modifier = { modifier = GER_East_German_Electricity_Expansion } #add state modifier
+   			}
+			65 = { #state id
+        		add_dynamic_modifier = { modifier = GER_East_German_Electricity_Expansion } #add state modifier
+   			}
+			60 = { #state id
+        		add_dynamic_modifier = { modifier = GER_East_German_Electricity_Expansion } #add state modifier
+   			}
+		}
+	}
+	focus = {
+		id = GER_Subsidise_the_Agrarian_Sector
+		icon = GFX_focus_GER_proletarian_solidarity
+		x = -49
+		y = 10
+		cost = @Time_50_days
+		relative_position_id = GER_ideology_focus
+		prerequisite = {
+			focus = GER_Equal_Pay_in_East_and_West
+		}
+		allow_branch = {
+			NOT = {
+				has_completed_focus = GER_emphasize_justice
+			}
+			#NOT = {has_global_flag = GER_testing1}
+		}
+
+		completion_reward = {
+			54 = { #state id
+        		add_dynamic_modifier = { modifier = GER_Agrarian_Subsidies } #add state modifier
+   			}
+			53 = { #state id
+        		add_dynamic_modifier = { modifier = GER_Agrarian_Subsidies } #add state modifier
+   			}
+			52 = { #state id
+        		add_dynamic_modifier = { modifier = GER_Agrarian_Subsidies } #add state modifier
+   			}
+			50 = { #state id
+        		add_dynamic_modifier = { modifier = GER_Agrarian_Subsidies } #add state modifier
+   			}
+			1028 = { #state id
+        		add_dynamic_modifier = { modifier = GER_Agrarian_Subsidies } #add state modifier
+   			}
+		}
+	}
+	focus = {
+		id = GER_Governmentalize_Verdi
+		icon = GFX_focus_SOV_organize_wreckers
+		x = -47
+		y = 10
+		cost = @Time_50_days
+		relative_position_id = GER_ideology_focus
+		prerequisite = {
+			focus = GER_Equal_Pay_in_East_and_West
+		}
+		allow_branch = {
+			NOT = {
+				has_completed_focus = GER_emphasize_justice
+			}
+			#NOT = {has_global_flag = GER_testing1}
+		}
+
+		completion_reward = {
+			set_country_flag = Verdi_Governmentalized
+			show_ideas_tooltip = advisor_GER_Frank_Bsirske
+		}
+	}
+	focus = {
+		id = GER_Nationalise_the_Banks
+		icon = GFX_focus_PER_national_bank
+		x = -54
+		y = 6
+		cost = @Time_50_days
+		relative_position_id = GER_ideology_focus
+		prerequisite = {
+			focus = GER_Radical_Economic_Change
+		}
+		allow_branch = {
+			NOT = {
+				has_completed_focus = GER_emphasize_justice
+			}
+			#NOT = {has_global_flag = GER_testing1}
+		}
+
+		completion_reward = {
+			add_to_variable = {
+				var = GER_consumer_goods_expected_value
+				value = -0.05
+			}
+			custom_effect_tooltip = GER_Nationalise_the_Banks_tt
+		}
+	}
+	focus = {
+		id = GER_Investigate_the_Financial_Sector
+		icon = GFX_focus_mex_privatisation
+		x = -55
+		y = 7
+		cost = @Time_50_days
+		relative_position_id = GER_ideology_focus
+		prerequisite = {
+			focus = GER_Nationalise_the_Banks
+		}
+		allow_branch = {
+			NOT = {
+				has_completed_focus = GER_emphasize_justice
+			}
+			#NOT = {has_global_flag = GER_testing1}
+		}
+
+		completion_reward = {
+			add_to_variable = {
+				var = GER_stab_factor
+				value = 0.075
+			}
+			custom_effect_tooltip = GER_Investigate_the_Financial_Sector_tt
+		}
+	}
+	focus = {
+		id = GER_Suspend_the_Euro_Transition
+		icon = GFX_focus_GER_hegemony_over_europe
+		x = -53
+		y = 7
+		cost = @Time_50_days
+		relative_position_id = GER_ideology_focus
+		prerequisite = {
+			focus = GER_Nationalise_the_Banks
+		}
+		allow_branch = {
+			NOT = {
+				has_completed_focus = GER_emphasize_justice
+			}
+			#NOT = {has_global_flag = GER_testing1}
+		}
+
+		completion_reward = {
+			if = {
+				limit = {
+					has_idea = the_euro
+				}
+				remove_idea = the_euro
+			}
+			add_political_power = -30
+			add_popularity = {
+				ideology = conservative
+				popularity = -0.05
+			}
+			add_popularity = {
+				ideology = market_liberal
+				popularity = -0.05
+			}
+		}
+	}
+	focus = {
+		id = GER_State_Monopoly_On_Foreign_Money
+		icon = GFX_focus_RAJ_institutional_money_laundering
+		x = -54
+		y = 8
+		cost = @Time_50_days
+		relative_position_id = GER_ideology_focus
+		prerequisite = {
+			focus = GER_Investigate_the_Financial_Sector
+		}
+		prerequisite = {
+			focus = GER_Suspend_the_Euro_Transition
+		}
+		allow_branch = {
+			NOT = {
+				has_completed_focus = GER_emphasize_justice
+			}
+			#NOT = {has_global_flag = GER_testing1}
+		}
+
+		completion_reward = {
+			add_to_variable = {
+				var = GER_production_factory_max_efficiency_factor
+				value = 0.05
+			}
+			add_to_variable = {
+				var = GER_industrial_capacity_factory
+				value = 0.05
+			}
+			custom_effect_tooltip = GER_State_Monopoly_On_Foreign_Money_tt
+		}
+	}
+	focus = {
+		id = GER_Replace_the_Bundesbank
+		icon = GFX_SOV_expand_the_agitprop_ccp_2d_sov_compatibility
+		x = -53
+		y = 9
+		cost = @Time_50_days
+		relative_position_id = GER_ideology_focus
+		prerequisite = {
+			focus = GER_State_Monopoly_On_Foreign_Money
+		}
+		prerequisite = {
+			focus = GER_Strenghten_the_Mark
+		}
+		allow_branch = {
+			NOT = {
+				has_completed_focus = GER_emphasize_justice
+			}
+			#NOT = {has_global_flag = GER_testing1}
+		}
+
+		completion_reward = {
+			add_ideas = GER_State_Bank_idea
+		}
+	}
+	focus = {
+		id = GER_Communist_Trade_Agreement
+		icon = GFX_focus_ETH_callout_to_the_world
+		x = -55
+		y = 9
+		cost = @Time_50_days
+		relative_position_id = GER_ideology_focus
+		prerequisite = {
+			focus = GER_State_Monopoly_On_Foreign_Money
+		}
+		allow_branch = {
+			NOT = {
+				has_completed_focus = GER_emphasize_justice
+			}
+			#NOT = {has_global_flag = GER_testing1}
+		}
+
+		completion_reward = {
+			every_country = {
+				limit = {
+					has_government = communist
+				}
+				add_opinion_modifier = {
+   					target = GER
+    				modifier = declaration_of_friendship 
+				}
+			}
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build =yes
+				}
+			}	
+		}
+	}
+	focus = {
+		id = GER_Eliminate_Stock_Marketing
+		icon = GFX_focus_ARG_anti_corruption_policies
+		x = -54
+		y = 10
+		cost = @Time_50_days
+		relative_position_id = GER_ideology_focus
+		prerequisite = {
+			focus = GER_Communist_Trade_Agreement
+		}
+		prerequisite = {
+			focus = GER_Replace_the_Bundesbank
+		}
+		allowed = {
+			has_completed_focus = GER_Nationalize_Transportation_Companies
+		}
+		allow_branch = {
+			NOT = {
+				has_completed_focus = GER_emphasize_justice
+			}
+			#NOT = {has_global_flag = GER_testing1}
+		}
+
+		completion_reward = {
+			remove_dynamic_modifier = { modifier = GER_Economic_Chaos_Modifier }
+		}
+	}
+	focus = {
+		id = GER_The_DKP_Reform_Plan
+		icon = GFX_focus_AUS_austromarxism
+		x = -52
+		y = 11
+		cost = @Time_50_days
+		relative_position_id = GER_ideology_focus
+		mutually_exclusive = {
+			focus = GER_Hardline_Nationalisation
+		}
+		prerequisite = {
+			focus = GER_Eliminate_Stock_Marketing
+		}
+		prerequisite = {
+			focus = GER_Electrification_in_the_East
+		}
+		prerequisite = {
+			focus = GER_Subsidise_the_Agrarian_Sector
+		}
+		prerequisite = {
+			focus = GER_Governmentalize_Verdi
+		}
+		allow_branch = {
+			NOT = {
+				has_completed_focus = GER_emphasize_justice
+			}
+			#NOT = {has_global_flag = GER_testing1}
+		}
+		available = {
+			OR = {
+				has_country_leader = { character = GER_Heinz_Stehr ruling_only = yes}
+			}
+			OR = {
+				has_country_leader = { character = GER_Hans_Bauer ruling_only = yes}
+			}
+			OR = {
+				has_country_leader = { character = GER_Dieter_Popp ruling_only = yes}
+			}
+		}
+
+		completion_reward = {
+			add_popularity = {
+				ideology = communist
+				popularity = 0.03
+			}
+			add_popularity = {
+				ideology = democratic_socialist
+				popularity = 0.03
+			}
+			add_political_power = -50
+		}
+	}
+	focus = {
+		id = GER_Expand_Mecklenburg_Shipyard_Industry
+		icon = GFX_focus_PER_the_peoples_navy
+		x = -51
+		y = 12
+		cost = @Time_50_days
+		relative_position_id = GER_ideology_focus
+		prerequisite = {
+			focus = GER_The_DKP_Reform_Plan
+		}
+		allow_branch = {
+			NOT = {
+				has_completed_focus = GER_emphasize_justice
+			}
+			#NOT = {has_global_flag = GER_testing1}
+		}
+
+		completion_reward = {
+			61 = {
+				add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+					type = dockyard
+					level = 3
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+		id = GER_Stack_the_Companies_With_Union_Members
+		icon = GFX_focus_AUS_union_of_danubian_socialist_republics
+		x = -53
+		y = 12
+		cost = @Time_50_days
+		relative_position_id = GER_ideology_focus
+		prerequisite = {
+			focus = GER_The_DKP_Reform_Plan
+		}
+		allow_branch = {
+			NOT = {
+				has_completed_focus = GER_emphasize_justice
+			}
+			#NOT = {has_global_flag = GER_testing1}
+		}
+
+		completion_reward = {
+			add_political_power = 100
+			add_stability = 0.05
+			add_ideas = GER_Union_Stacked_Companies_idea
+		}
+	}
+	focus = {
+		id = GER_Scientific_Socialism
+		icon = GFX_focus_NORDIC_com_research
+		x = -52
+		y = 13
+		cost = @Time_50_days
+		relative_position_id = GER_ideology_focus
+		prerequisite = {
+			focus = GER_Stack_the_Companies_With_Union_Members
+		}
+		prerequisite = {
+			focus = GER_Expand_Mecklenburg_Shipyard_Industry
+		}
+		allow_branch = {
+			NOT = {
+				has_completed_focus = GER_emphasize_justice
+			}
+			#NOT = {has_global_flag = GER_testing1}
+		}
+
+		completion_reward = {
+			add_research_slot = 1
+		}
+	}
+	focus = {
+		id = GER_Hardline_Nationalisation
+		icon = GFX_focus_GER_the_peoples_victory
+		x = -48
+		y = 11
+		cost = @Time_50_days
+		relative_position_id = GER_ideology_focus
+		mutually_exclusive = {
+			focus = GER_The_DKP_Reform_Plan
+		}
+		prerequisite = {
+			focus = GER_Eliminate_Stock_Marketing
+		}
+		prerequisite = {
+			focus = GER_Electrification_in_the_East
+		}
+		prerequisite = {
+			focus = GER_Subsidise_the_Agrarian_Sector
+		}
+		prerequisite = {
+			focus = GER_Governmentalize_Verdi
+		}
+		allow_branch = {
+			NOT = {
+				has_completed_focus = GER_emphasize_justice
+			}
+			#NOT = {has_global_flag = GER_testing1}
+		}
+		available = {
+			OR = {
+				has_country_leader = { character = GER_Sahra_Wagenknecht ruling_only = yes}
+				has_country_leader = { character = GER_Egon_Krenz ruling_only = yes}
+			}
+		}
+
+		completion_reward = {
+			add_popularity = {
+				ideology = communist
+				popularity = 0.1
+			}
+			add_popularity = {
+				ideology = democratic_socialist
+				popularity = -0.03
+			}
+			add_political_power = -100
+		}
+	}
+	focus = {
+		id = GER_Slow_Anti_Corruption_Measures
+		icon = GFX_focus_SOV_the_last_purge
+		x = -49
+		y = 12
+		cost = @Time_50_days
+		relative_position_id = GER_ideology_focus
+		prerequisite = {
+			focus = GER_Hardline_Nationalisation
+		}
+		allow_branch = {
+			NOT = {
+				has_completed_focus = GER_emphasize_justice
+			}
+			#NOT = {has_global_flag = GER_testing1}
+		}
+
+		completion_reward = {
+			add_stability = 0.03
+			add_war_support = 0.075
+			add_timed_idea = {
+				idea = GER_Anti_Corruption_Reforms_idea
+				days = 365
+			}
+		}
+	}
+	focus = {
+		id = GER_Violent_Factory_Expansion
+		icon = GFX_focus_RAJ_red_in_the_shadows
+		x = -47
+		y = 12
+		cost = @Time_50_days
+		relative_position_id = GER_ideology_focus
+		prerequisite = {
+			focus = GER_Hardline_Nationalisation
+		}
+		allow_branch = {
+			NOT = {
+				has_completed_focus = GER_emphasize_justice
+			}
+			#NOT = {has_global_flag = GER_testing1}
+		}
+
+		completion_reward = {
+			56 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			59 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			57 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			55 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			add_stability = -0.075
+		}
+	}
+	focus = {
+		id = GER_Guided_Market_Socialism
+		icon = GFX_focus_AUS_danubian_socialist_communes
+		x = -48
+		y = 13
+		cost = @Time_50_days
+		relative_position_id = GER_ideology_focus
+		prerequisite = {
+			focus = GER_Slow_Anti_Corruption_Measures
+		}
+		prerequisite = {
+			focus = GER_Violent_Factory_Expansion
+		}
+		allow_branch = {
+			NOT = {
+				has_completed_focus = GER_emphasize_justice
+			}
+			#NOT = {has_global_flag = GER_testing1}
+		}
+
+		completion_reward = {
+			add_ideas = GER_Guided_Market_Socialism_idea
+		}
+	}
+	focus = {
+		id = GER_No_Unrechtstaat
+		icon = GFX_focus_GER_establish_volkskommissariats
+		x = -66
+		y = 5
+		cost = @Time_50_days
+		relative_position_id = GER_ideology_focus
+		prerequisite = {
+			focus = GER_Arm_the_Masses
+		}
+		allow_branch = {
+			NOT = {
+				has_completed_focus = GER_emphasize_justice
+			}
+			#NOT = {has_global_flag = GER_testing1}
+		}
+
+		completion_reward = {
+			add_political_power = 50
+			add_popularity = {
+				ideology = democratic_socialist
+				popularity = -0.1
+			}
+		}
+	}
+	focus = {
+		id = GER_Invoke_Ostalgie
+		icon = GFX_focus_AUS_danubian_socialist_communes
+		x = -3
+		y = 1
+		cost = @Time_50_days
+		relative_position_id = GER_No_Unrechtstaat
+		prerequisite = {
+			focus = GER_No_Unrechtstaat
+		}
+		allow_branch = {
+			NOT = {
+				has_completed_focus = GER_emphasize_justice
+			}
+			#NOT = {has_global_flag = GER_testing1}
+		}
+
+		completion_reward = {
+			add_ideas = GER_Ostalgie
+			
+		}
+	}
+	focus = {
+		id = GER_Free_GDR_Prisoners
+		icon = GFX_focus_AUS_lawmaking_leniency
+		x = -1
+		y = 1
+		cost = @Time_50_days
+		relative_position_id = GER_No_Unrechtstaat
+		prerequisite = {
+			focus = GER_No_Unrechtstaat
+		}
+		allow_branch = {
+			NOT = {
+				has_completed_focus = GER_emphasize_justice
+			}
+			#NOT = {has_global_flag = GER_testing1}
+		}
+
+		completion_reward = {
+			set_country_flag = GER_Freed_GDR_Prisoners
+			add_stability = -0.05
+			custom_effect_tooltip = available_political_advisor
+			show_ideas_tooltip = advisor_GER_Egon_Krenz
+			show_ideas_tooltip = advisor_GER_Gunter_Schabowski
+			show_ideas_tooltip = advisor_GER_Heinz_Kessler
+		}
+	}
+	focus = {
+		id = GER_I_KP_Party_Congress
+		icon = GFX_focus_CHL_union_of_hispanic_republics
+		x = -1
+		y = 2
+		cost = @Time_50_days
+		relative_position_id = GER_No_Unrechtstaat
+		prerequisite = {
+			focus = GER_Invoke_Ostalgie
+		}
+		prerequisite = {
+			focus = GER_Free_GDR_Prisoners
+		}
+		prerequisite = {
+			focus = GER_Found_the_Agentur_fur_Sicherheit
+		}
+		allow_branch = {
+			NOT = {
+				has_completed_focus = GER_emphasize_justice
+			}
+			#NOT = {has_global_flag = GER_testing1}
+		}
+
+		completion_reward = {
+			country_event = election_KP_GER.1
+		}
+	}
+	focus = {
+		id = GER_Reverse_1919
+		icon = GFX_focus_goal_reverse_1919_focus
+		x = -9
+		y = 3
+		cost = @Time_50_days
+		relative_position_id = GER_No_Unrechtstaat
+		prerequisite = {
+			focus = GER_I_KP_Party_Congress
+		}
+		mutually_exclusive = {
+			focus = GER_Crush_the_Bavarians
+		}
+		allow_branch = {
+			NOT = {
+				has_completed_focus = GER_emphasize_justice
+			}
+			#NOT = {has_global_flag = GER_testing1}
+		}
+
+		completion_reward = {
+			country_event = germany.106
+			remove_ideas = GER_Bavarian_Seperatism_idea
+		}
+	}
+	focus = {
+		id = GER_Crush_the_Bavarians
+		icon = GFX_focus_goal_crush_the_bavarians_focus
+		x = -7
+		y = 3
+		cost = @Time_50_days
+		relative_position_id = GER_No_Unrechtstaat
+		prerequisite = {
+			focus = GER_I_KP_Party_Congress
+		}
+		mutually_exclusive = {
+			focus = GER_Reverse_1919
+		}
+		allow_branch = {
+			NOT = {
+				has_completed_focus = GER_emphasize_justice
+			}
+			#NOT = {has_global_flag = GER_testing1}
+		}
+
+		completion_reward = {
+			country_event = germany.105
+			remove_ideas = GER_Bavarian_Seperatism_idea
+		}
+	}
+	focus = {
+		id = GER_Increase_Surveillance
+		icon = GFX_focus_generic_secret_service_agency
+		x = -4
+		y = 3
+		cost = @Time_50_days
+		relative_position_id = GER_No_Unrechtstaat
+		prerequisite = {
+			focus = GER_I_KP_Party_Congress
+		}
+		allow_branch = {
+			NOT = {
+				has_completed_focus = GER_emphasize_justice
+			}
+			#NOT = {has_global_flag = GER_testing1}
+		}
+
+		completion_reward = {
+			add_ideas = civil_liberties_restricted
+			add_war_support = 0.05
+			add_stability = -0.05
+		}
+	}
+	focus = {
+		id = GER_Purge_the_Internationalists
+		icon = GFX_focus_SOV_the_last_purge
+		x = -2
+		y = 3
+		cost = @Time_50_days
+		relative_position_id = GER_No_Unrechtstaat
+		prerequisite = {
+			focus = GER_I_KP_Party_Congress
+		}
+		allow_branch = {
+			NOT = {
+				has_completed_focus = GER_emphasize_justice
+			}
+			#NOT = {has_global_flag = GER_testing1}
+		}
+
+		completion_reward = {
+			country_event = germany.107
+		}
+	}
+	focus = {
+		id = GER_Close_The_Borders_GDR
+		icon = GFX_SOV_left_opposition_coup_ccp_2d_sov_compatibility
+		x = -3
+		y = 4
+		cost = @Time_50_days
+		relative_position_id = GER_No_Unrechtstaat
+		prerequisite = {
+			focus = GER_Purge_the_Internationalists
+		}
+		prerequisite = {
+			focus = GER_Increase_Surveillance
+		}
+		allow_branch = {
+			NOT = {
+				has_completed_focus = GER_emphasize_justice
+			}
+			#NOT = {has_global_flag = GER_testing1}
+		}
+
+		completion_reward = {
+			add_ideas = immigration_policy_closed_country
+			add_stability = -0.05
+		}
+	}
+	focus = {
+		id = GER_Reform_the_Volkskammer
+		icon = GFX_focus_GER_integrate_volkskommissariats
+		x = -5
+		y = 4
+		cost = @Time_50_days
+		relative_position_id = GER_No_Unrechtstaat
+		prerequisite = {
+			focus = GER_Increase_Surveillance
+		}
+		allow_branch = {
+			NOT = {
+				has_completed_focus = GER_emphasize_justice
+			}
+			#NOT = {has_global_flag = GER_testing1}
+		}
+
+		completion_reward = {
+			add_timed_idea = {
+				idea = GER_Socialist_Bundestag_idea
+				days = 365
+			}
+		}
+	}
+	focus = {
+		id = GER_Keep_Term_Limits
+		icon = GFX_focus_PER_limit_foreign_influence
+		x = -4
+		y = 5
+		cost = @Time_50_days
+		relative_position_id = GER_No_Unrechtstaat
+		prerequisite = {
+			focus = GER_Reform_the_Volkskammer
+		}
+		prerequisite = {
+			focus = GER_Close_The_Borders_GDR
+		}
+		mutually_exclusive = {
+			focus = GER_Leader_till_Death
+		}
+		allow_branch = {
+			NOT = {
+				has_completed_focus = GER_emphasize_justice
+			}
+			#NOT = {has_global_flag = GER_testing1}
+		}
+
+		completion_reward = {
+			add_stability = 0.1
+		}
+	}
+	focus = {
+		id = GER_Controlled_Opposition_Parties
+		icon = GFX_focus_ARG_keep_it_in_the_party
+		x = -4
+		y = 6
+		cost = @Time_50_days
+		relative_position_id = GER_No_Unrechtstaat
+		prerequisite = {
+			focus = GER_Keep_Term_Limits
+		}
+		allow_branch = {
+			NOT = {
+				has_completed_focus = GER_emphasize_justice
+			}
+			#NOT = {has_global_flag = GER_testing1}
+		}
+
+		completion_reward = {
+			set_party_name = {
+        		ideology = democratic_socialist
+        		long_name = GER_democratic_socialist_KP_long
+        		name = GER_democratic_socialist_KP
+    		}
+			set_party_name = {
+        		ideology = market_liberal
+        		long_name = GER_market_liberal_KP_long
+        		name = GER_market_liberal_KP
+    		}
+			set_party_name = {
+        		ideology = social_liberal
+        		long_name = GER_social_liberal_KP_long
+        		name = GER_social_liberal_KP
+    		}
+			set_party_name = {
+        		ideology = conservative
+        		long_name = GER_conservative_KP_long
+        		name = GER_conservative_KP
+    		}
+			set_party_name = {
+        		ideology = progressive
+        		long_name = GER_progressive_KP_long
+        		name = GER_progressive_KP
+    		}
+			set_party_name = {
+        		ideology = nationalist
+        		long_name = GER_nationalist_KP_long
+        		name = GER_nationalist_KP
+    		}
+			add_stability = 0.05
+			add_popularity = {
+				ideology = democratic_socialist
+				popularity = 0.05
+			}
+			add_popularity = {
+				ideology = market_liberal
+				popularity = 0.05
+			}
+			add_popularity = {
+				ideology = conservative
+				popularity = 0.05
+			}
+			add_popularity = {
+				ideology = progressive
+				popularity = 0.05
+			}
+			add_popularity = {
+				ideology = social_liberal
+				popularity = 0.05
+			}
+		}
+	}
+	focus = {
+		id = GER_Leader_till_Death
+		icon = GFX_focus_RAJ_i_am_death
+		x = -1
+		y = 5
+		cost = @Time_50_days
+		relative_position_id = GER_No_Unrechtstaat
+		prerequisite = {
+			focus = GER_Reform_the_Volkskammer
+		}
+		prerequisite = {
+			focus = GER_Close_The_Borders_GDR
+		}
+		mutually_exclusive = {
+			focus = GER_Introduce_Term_Limits
+		}
+		allow_branch = {
+			NOT = {
+				has_completed_focus = GER_emphasize_justice
+			}
+			#NOT = {has_global_flag = GER_testing1}
+		}
+
+		completion_reward = {
+			set_country_flag = No_Term_Limits_GER
+			add_stability = -0.05
+			party_leader = {
+				limit = {
+					has_ideology = stalinist
+				}
+				add_trait = {
+					ideology = stalinist
+					trait = Generalsektretar_Forever_GER
+				}
+			}
+		}
+	}
+	focus = {
+		id = GER_Force_Relegate_Union_Berlin
+		icon = GFX_focus_goal_Force_Relegate_Union_Berlin_focus
+		x = -1
+		y = 6
+		cost = @Time_50_days
+		relative_position_id = GER_No_Unrechtstaat
+		prerequisite = {
+			focus = GER_Leader_till_Death
+		}
+		allow_branch = {
+			NOT = {
+				has_completed_focus = GER_emphasize_justice
+			}
+			#NOT = {has_global_flag = GER_testing1}
+		}
+
+		completion_reward = {
+			set_country_flag = Union_Berlin_Relegated_GER
+			show_ideas_tooltip = advisor_GER_Volkmar_Wanski
+		}
+	}
+	focus = {
+		id = GER_DDR_Reborn
+		icon = GFX_focus_GER_the_peoples_victory
+		x = 1
+		y = 7
+		cost = @Time_50_days
+		relative_position_id = GER_No_Unrechtstaat
+		prerequisite = {
+			focus = GER_Controlled_Opposition_Parties
+			focus = GER_Force_Relegate_Union_Berlin
+		}
+		prerequisite = {
+			focus = GER_New_Age_of_Stalinism
+		}
+		allow_branch = {
+			NOT = {
+				has_completed_focus = GER_emphasize_justice
+			}
+			#NOT = {has_global_flag = GER_testing1}
+		}
+
+		completion_reward = {
+			set_cosmetic_tag = GER_Reformed_GDR
+			add_stability = 0.1
+			add_war_support = 0.1
+			army_experience = 50
+			navy_experience = 50
+			air_experience = 50
+		}
+	}
+	focus = {
+		id = GER_Stay_Silent_on_Honnecker
+		icon = GFX_focus_RAJ_a_policy_of_silence
+		x = 1
+		y = 3
+		cost = @Time_50_days
+		relative_position_id = GER_No_Unrechtstaat
+		prerequisite = {
+			focus = GER_I_KP_Party_Congress
+		}
+		mutually_exclusive = {
+			focus = GER_Honor_Honnecker
+		}
+		allow_branch = {
+			NOT = {
+				has_completed_focus = GER_emphasize_justice
+			}
+			#NOT = {has_global_flag = GER_testing1}
+		}
+
+		completion_reward = {
+			add_stability = -0.05
+		}
+	}
+	focus = {
+		id = GER_A_New_Era
+		icon = GFX_focus_RAJ_the_sun_sets
+		x = 1
+		y = 4
+		cost = @Time_50_days
+		relative_position_id = GER_No_Unrechtstaat
+		prerequisite = {
+			focus = GER_Stay_Silent_on_Honnecker
+		}
+		allow_branch = {
+			NOT = {
+				has_completed_focus = GER_emphasize_justice
+			}
+			#NOT = {has_global_flag = GER_testing1}
+		}
+
+		completion_reward = {
+			add_country_leader_trait = Communism_With_German_Characteristics_GER
+		}
+	}
+	focus = {
+		id = GER_Honor_Honnecker
+		icon = GFX_focus_goal_Honor_Honnecker_focus
+		x = 3
+		y = 3
+		cost = @Time_50_days
+		relative_position_id = GER_No_Unrechtstaat
+		prerequisite = {
+			focus = GER_I_KP_Party_Congress
+		}
+		mutually_exclusive = {
+			focus = GER_Stay_Silent_on_Honnecker
+		}
+		allow_branch = {
+			NOT = {
+				has_completed_focus = GER_emphasize_justice
+			}
+			#NOT = {has_global_flag = GER_testing1}
+		}
+
+		completion_reward = {
+			add_ideas = GER_Honecker_Icon_idea
+		}
+	}
+	focus = {
+		id = GER_Stalinist_Icon
+		icon = GFX_focus_fra_loyalty_stalin
+		x = 3
+		y = 4
+		cost = @Time_50_days
+		relative_position_id = GER_No_Unrechtstaat
+		prerequisite = {
+			focus = GER_Honor_Honnecker
+		}
+		allow_branch = {
+			NOT = {
+				has_completed_focus = GER_emphasize_justice
+			}
+			#NOT = {has_global_flag = GER_testing1}
+		}
+
+		completion_reward = {
+			add_country_leader_trait = Proud_Stalinist_GER
+		}
+	}
+	focus = {
+		id = GER_The_Future_is_the_Future
+		icon = GFX_focus_generic_socialist_science
+		x = 2
+		y = 5
+		cost = @Time_50_days
+		relative_position_id = GER_No_Unrechtstaat
+		prerequisite = {
+			focus = GER_A_New_Era
+			focus = GER_Stalinist_Icon
+		}
+		allow_branch = {
+			NOT = {
+				has_completed_focus = GER_emphasize_justice
+			}
+			#NOT = {has_global_flag = GER_testing1}
+		}
+
+		completion_reward = {
+			add_research_slot = 1
+		}
+	}
+	focus = {
+		id = GER_Found_the_Agentur_fur_Sicherheit
+		icon = GFX_focus_GER_form_the_stasi
+		x = 1
+		y = 1
+		cost = @Time_50_days
+		relative_position_id = GER_No_Unrechtstaat
+		prerequisite = {
+			focus = GER_No_Unrechtstaat
+		}
+		allow_branch = {
+			NOT = {
+				has_completed_focus = GER_emphasize_justice
+			}
+			#NOT = {has_global_flag = GER_testing1}
+		}
+
+		completion_reward = {
+			show_ideas_tooltip = advisor_GER_Hanfried_Mueller
+			if = {
+				limit = {
+					has_dlc = "La Resistance"
+				}
+				create_intelligence_agency = {
+					name = "Agentur für Sicherheit"
+					icon = GFX_idea_GER_AFS
+				}
+			}
+			else = {
+				add_ideas = {
+					Agentur_fur_Sicherheit_idea
+				}
+			}
+		}
+	}
+	focus = {
+		id = GER_Anti_NATO_Sentiment
+		icon = GFX_focus_ARG_anti_american_propaganda
+		x = 5
+		y = 1
+		cost = @Time_50_days
+		relative_position_id = GER_No_Unrechtstaat
+		prerequisite = {
+			focus = GER_No_Unrechtstaat
+		}
+		allow_branch = {
+			NOT = {
+				has_completed_focus = GER_emphasize_justice
+			}
+			#NOT = {has_global_flag = GER_testing1}
+		}
+
+		completion_reward = {
+		USA = {
+				add_opinion_modifier = {
+				target = GER
+				modifier = declaration_of_hostility 
+				}
+			}
+		FRA = {
+				add_opinion_modifier = {
+				target = GER
+				modifier = declaration_of_hostility 
+				}
+			}
+		ENG = {
+				add_opinion_modifier = {
+				target = GER
+				modifier = declaration_of_hostility 
+				}
+			}
+		POL = {
+				add_opinion_modifier = {
+				target = GER
+				modifier = declaration_of_hostility 
+				}
+			}
+		SOV = {
+				add_opinion_modifier = {
+				target = GER
+				modifier = diplomatic_proximity  
+				}
+			}
+		}
+	}
+	focus = {
+		id = GER_International_Communism
+		icon = GFX_focus_GER_hegemony_over_europe
+		x = 4
+		y = 2
+		cost = @Time_50_days
+		relative_position_id = GER_No_Unrechtstaat
+		prerequisite = {
+			focus = GER_Anti_NATO_Sentiment
+		}
+		allow_branch = {
+			NOT = {
+				has_completed_focus = GER_emphasize_justice
+			}
+			#NOT = {has_global_flag = GER_testing1}
+		}
+
+		completion_reward = {
+			every_country = {
+				limit = {
+					has_government = communist
+				}
+				add_political_power = 50
+				add_stability = 0.025
+			}
+		}
+	}
+	focus = {
+		id = GER_Foreign_Military_Advisors
+		icon = GFX_focus_RAJ_military_into_the_workforce
+		x = 5
+		y = 3
+		cost = @Time_50_days
+		relative_position_id = GER_No_Unrechtstaat
+		prerequisite = {
+			focus = GER_International_Communism
+		}
+		prerequisite = {
+			focus = GER_Economic_Communist_Support
+		}
+		allow_branch = {
+			NOT = {
+				has_completed_focus = GER_emphasize_justice
+			}
+			#NOT = {has_global_flag = GER_testing1}
+		}
+
+		completion_reward = {
+			army_experience = 10
+			air_experience = 10
+			navy_experience = 10
+			show_ideas_tooltip = advisor_GER_Alexander_Zelin
+			show_ideas_tooltip = advisor_GER_Guo_Boxiong
+			show_ideas_tooltip = advisor_GER_Ramon_Espinosa_Martin
+		}
+	}
+	focus = {
+		id = GER_Economic_Communist_Support
+		icon = GFX_focus_generic_communist_industry
+		x = 6
+		y = 2
+		cost = @Time_50_days
+		relative_position_id = GER_No_Unrechtstaat
+		prerequisite = {
+			focus = GER_Anti_NATO_Sentiment
+		}
+		allow_branch = {
+			NOT = {
+				has_completed_focus = GER_emphasize_justice
+			}
+			#NOT = {has_global_flag = GER_testing1}
+		}
+
+		completion_reward = {
+			every_country = {
+				limit = {
+					has_government = communist
+				}
+				random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build =yes
+				}
+				}
+			}
+		}
+	}
+	focus = {
+		id = GER_Meet_with_Moscow
+		icon = GFX_focus_SOV_patriarch_of_all_russia
+		x = 8
+		y = 2
+		cost = @Time_50_days
+		relative_position_id = GER_No_Unrechtstaat
+		prerequisite = {
+			focus = GER_Anti_NATO_Sentiment
+		}
+		allow_branch = {
+			NOT = {
+				has_completed_focus = GER_emphasize_justice
+			}
+			#NOT = {has_global_flag = GER_testing1}
+		}
+
+		completion_reward = {
+			SOV = {
+				add_opinion_modifier = {
+				target = GER
+				modifier = diplomatic_support 
+				}
+			}
+			SOV = {
+				add_political_power = 150
+			}
+			add_political_power = 150
+		}
+	}
+	focus = {
+		id = GER_Apply_to_CSTO
+		icon = GFX_focus_SOV_the_glory_of_the_red_army_alternative
+		x = 8
+		y = 3
+		cost = @Time_50_days
+		relative_position_id = GER_No_Unrechtstaat
+		prerequisite = {
+			focus = GER_Meet_with_Moscow
+		}
+		allow_branch = {
+			NOT = {
+				has_completed_focus = GER_emphasize_justice
+			}
+			#NOT = {has_global_flag = GER_testing1}
+		}
+
+		completion_reward = {
+			SOV = { country_event = BUL.10 }
+		}
+	}
+	focus = {
+		id = GER_Like_Old_Times
+		icon = GFX_focus_GER_SOV_defence_treaty
+		x = 7
+		y = 4
+		cost = @Time_50_days
+		relative_position_id = GER_No_Unrechtstaat
+		prerequisite = {
+			focus = GER_Apply_to_CSTO
+		}
+		prerequisite = {
+			focus = GER_Foreign_Military_Advisors
+		}
+		available = {
+			is_in_faction_with = SOV
+		}
+		mutually_exclusive = {
+			focus = GER_Plan_B
+		}
+		allow_branch = {
+			NOT = {
+				has_completed_focus = GER_emphasize_justice
+			}
+			#NOT = {has_global_flag = GER_testing1}
+		}
+
+		completion_reward = {
+			SOV = {
+				army_experience = 50
+				add_political_power = 100
+			}
+			army_experience = 50
+			add_political_power = 100
+		}
+	}
+	focus = {
+		id = GER_Plan_B
+		icon = GFX_focus_prc_proclaim_the_peoples_republic
+		x = 5
+		y = 4
+		cost = @Time_50_days
+		relative_position_id = GER_No_Unrechtstaat
+		prerequisite = {
+			focus = GER_Apply_to_CSTO
+		}
+		prerequisite = {
+			focus = GER_Foreign_Military_Advisors
+		}
+		mutually_exclusive = {
+			focus = GER_Like_Old_Times
+		}
+		allow_branch = {
+			NOT = {
+				has_completed_focus = GER_emphasize_justice
+			}
+			#NOT = {has_global_flag = GER_testing1}
+		}
+
+		completion_reward = {
+			PRC = { country_event = BUL.10 }
+		}
+	}
+	focus = {
+		id = GER_Invite_Chinese_Companies
+		icon = GFX_SOV_socialist_emulation_ccp_2d_sov_compatibility
+		x = 5
+		y = 5
+		cost = @Time_50_days
+		relative_position_id = GER_No_Unrechtstaat
+		prerequisite = {
+			focus = GER_Plan_B
+		}
+		allow_branch = {
+			NOT = {
+				has_completed_focus = GER_emphasize_justice
+			}
+			#NOT = {has_global_flag = GER_testing1}
+		}
+
+		completion_reward = {
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build =yes
+				}
+			}
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build =yes
+				}
+			}
+			PRC = {
+				random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build =yes
+				}
+			}
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build =yes
+				}
+			}
+			}
+		}
+	}
+	focus = {
+		id = GER_New_Age_of_Stalinism
+		icon = GFX_focus_SOV_stalins_cult_of_personality
+		x = 4
+		y = 6
+		cost = @Time_50_days
+		relative_position_id = GER_No_Unrechtstaat
+		prerequisite = {
+			focus = GER_Invite_Chinese_Companies
+			focus = GER_Pressure_Poland
+		}
+		prerequisite = {
+			focus = GER_The_Future_is_the_Future
+		}
+		allow_branch = {
+			NOT = {
+				has_completed_focus = GER_emphasize_justice
+			}
+			#NOT = {has_global_flag = GER_testing1}
+		}
+
+		completion_reward = {
+			if = {
+				limit =  {
+					has_idea = GER_Honecker_Icon_idea
+				}
+			swap_ideas = {
+				remove_idea = GER_Honecker_Icon_idea
+				add_idea = GER_Honecker_Icon_Gold_idea
+			}
+			}
+			else = {
+				add_ideas = GER_Neo_Stalinism_idea
+			}
+		}
+	}
+	focus = {
+		id = GER_Pressure_Poland
+		icon = GFX_focus_generic_communist_attack_poland
+		x = 7
+		y = 5
+		cost = @Time_50_days
+		relative_position_id = GER_No_Unrechtstaat
+		prerequisite = {
+			focus = GER_Like_Old_Times
+		}
+		allow_branch = {
+			NOT = {
+				has_completed_focus = GER_emphasize_justice
+			}
+			#NOT = {has_global_flag = GER_testing1}
+		}
+
+		completion_reward = {
+			POL = {
+				country_event = germany.108
+			}
+		}
+	}
+	focus = {
+		id = GER_support_Mittelstand
+		icon = GFX_focus_generic_industry_1
+		x = 4
+		y = 2
+		cost = @Time_50_days
+		available = {
+			OR = {
+				has_completed_focus = GER_emphasize_justice
+				has_completed_focus = GER_emphasize_freedom
+			}
+			NOT = {
+				has_completed_focus = GER_emphasize_unity
+			}
+		}
 		prerequisite = {
 			focus = GER_ideology_focus
 		}
@@ -760,7 +2718,7 @@ focus_tree = {
 	focus = {
 		id = GER_restructure_the_foreign_ministry
 		icon = GFX_GER_Federal_Foreign_Office
-		x = 50
+		x = 55
 		y = 0
 		cost = @Time_50_days
 
@@ -791,7 +2749,7 @@ focus_tree = {
 	focus = {
 		id = GER_military_reform
 		icon = GFX_goal_generic_position_armies
-		x = 68
+		x = 73
 		y = 0
 		cost = @Time_50_days
 		offset = {
@@ -851,14 +2809,16 @@ focus_tree = {
 	focus = {
 		id = GER_emphasize_freedom
 		icon = GFX_goal_support_democracy
-		x = -9
+		x = -15
 		y = 1
 		cost = @Time_50_days
 		relative_position_id = GER_ideology_focus
 		prerequisite = {
 			focus = GER_ideology_focus
 		}
-
+		mutually_exclusive = {
+			focus = GER_emphasize_unity
+		}
 		mutually_exclusive = {
 			focus = GER_emphasize_justice
 		}
@@ -1049,7 +3009,7 @@ focus_tree = {
 	focus = {
 		id = GER_german_freedom
 		icon = GFX_focus_ger_revive_kaiserreich
-		x = 1
+		x = 2
 		y = 1
 		cost = @Time_50_days
 		relative_position_id = GER_emphasize_freedom
@@ -1082,7 +3042,7 @@ focus_tree = {
 	focus = {
 		id = GER_continue_change_through_trade
 		icon = GFX_goal_Trade_Deal
-		x = -3
+		x = -2
 		y = 1
 		cost = @Time_50_days
 		relative_position_id = GER_emphasize_freedom
@@ -1113,7 +3073,7 @@ focus_tree = {
 	focus = {
 		id = GER_tax_reforms
 		icon = GFX_goal_Cut_Taxes
-		x = -1
+		x = 0
 		y = 1
 		cost = @Time_50_days
 		relative_position_id = GER_emphasize_freedom
@@ -1194,14 +3154,14 @@ focus_tree = {
 	focus = {
 		id = GER_cdufdp_2002
 		icon = GFX_goal_Ideology_Conservative
-		x = -8
+		x = 9
 		y = 1
 		cost = @Time_50_days
 		mutually_exclusive = {
 			focus = GER_sdpgune_2002
 		}
 		mutually_exclusive = {
-			focus = GER_spdlinke_2002
+			focus = GER_sdppds_2002
 		}
 		relative_position_id = GER_immigration_reform_1
 		available = {
@@ -1221,16 +3181,296 @@ focus_tree = {
 		}
 	}
 	focus = {
+		id = GER_Boost_STEM_Research_Funding
+		icon = GFX_goal_Basic_Appreniship
+		x = -6
+		y = 1
+		cost = @Time_50_days
+
+		relative_position_id = GER_cdufdp_2002
+		prerequisite = {
+			focus = GER_cdufdp_2002
+		}
+		completion_reward = {
+			add_tech_bonus = {
+				name = tech_bonus
+				bonus = 0.8
+				uses = 2
+				category = tp_tech
+			}
+		}
+
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	focus = {
+		id = GER_EU_Investments
+		icon = GFX_goal_EU_Investment_Deal
+		x = 2
+		y = 1
+		cost = @Time_50_days
+
+		relative_position_id = GER_Boost_STEM_Research_Funding
+		prerequisite = {
+			focus = GER_Boost_STEM_Research_Funding
+		}
+		completion_reward = {
+			every_country = {
+				limit = {
+					has_dynamic_modifier = {
+						modifier = eu_member_modifier
+					}
+					capital_scope = {
+						is_on_continent = europe
+					}
+				}
+				country_event = european_union.6
+			}
+		}
+
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	focus = {
+		id = GER_Stricter_Immigration_Laws
+		icon = GFX_goal_Restrict_Immigration
+		x = 0
+		y = 1
+		cost = @Time_50_days
+
+		relative_position_id = GER_EU_Investments
+		prerequisite = {
+			focus = GER_EU_Investments
+		}
+		completion_reward = {
+			add_ideas = immigration_policy_strict_regulations 
+		}
+
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	focus = {
+		id = GER_Law_and_Order_Policies
+		icon = GFX_DEN_Police
+		x = 0
+		y = 1
+		cost = @Time_50_days
+
+		relative_position_id = GER_Boost_STEM_Research_Funding
+		prerequisite = {
+			focus = GER_Boost_STEM_Research_Funding
+		}
+		completion_reward = {
+			add_ideas = GER_Law_and_Order_Reforms
+		}
+
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	focus = {
+		id = GER_Surveillance_Expansion
+		icon = GFX_ENG_Surveillance
+		x = 0
+		y = 1
+		cost = @Time_50_days
+
+		relative_position_id = GER_Law_and_Order_Policies
+		prerequisite = {
+			focus = GER_Law_and_Order_Policies
+		}
+		completion_reward = {
+			add_ideas = civil_liberties_limited
+		}
+
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	focus = {
+		id = GER_Strenghten_NATO_Committment
+		icon = GFX_Align_to_NATO
+		x = -2
+		y = 1
+		cost = @Time_50_days
+
+		relative_position_id = GER_Boost_STEM_Research_Funding
+		prerequisite = {
+			focus = GER_Boost_STEM_Research_Funding
+		}
+		completion_reward = {
+			every_country = {
+				limit = {
+					has_idea = NATO_member
+				}
+				add_opinion_modifier = {
+					target = GER
+					modifier = declaration_of_friendship 
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	focus = {
+		id = GER_A_Bundeswehr_Reform
+		icon = GFX_GER_Bundeswehr_Heer
+		x = 0
+		y = 1
+		cost = @Time_50_days
+
+		relative_position_id = GER_Strenghten_NATO_Committment
+		prerequisite = {
+			focus = GER_Strenghten_NATO_Committment
+		}
+		completion_reward = {
+			unlock_decision_category_tooltip = GER_agenda_2010_category
+		}
+
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	focus = {
+		id = GER_Support_Nuclear_Energy
+		icon = GFX_goal_Recycling_Plant
+		x = 2
+		y = 1
+		cost = @Time_50_days
+
+		relative_position_id = GER_A_Bundeswehr_Reform
+		prerequisite = {
+			focus = GER_A_Bundeswehr_Reform
+		}
+		prerequisite = {
+			focus = GER_Surveillance_Expansion
+		}
+		prerequisite = {
+			focus = GER_Stricter_Immigration_Laws
+		}
+		completion_reward = {
+			59 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = nuclear_reactor
+					level = 1
+					instant_build = yes
+				}
+			}
+			59 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = recycling_center
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	focus = {
+		id = GER_A_Step_to_the_Right
+		icon = GFX_focus_goal_a_step_to_the_right_focus
+		x = -2
+		y = 1
+		cost = @Time_50_days
+
+		relative_position_id = GER_Finish_the_Leipzig_Program
+		prerequisite = {
+			focus = GER_Finish_the_Leipzig_Program
+		}
+		prerequisite = {
+			focus = GER_Support_Nuclear_Energy
+		}
+		completion_reward = {
+			add_timed_idea = {
+				idea = GER_Rising_Far_Right
+				days = 730
+			}
+			set_country_flag = GER_REP_Path_2006
+		}
+		mutually_exclusive = {
+			focus = GER_The_Civic_Coalition
+			focus = GER_Free_Economic_Germany
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	focus = {
+		id = GER_Free_Economic_Germany
+		icon = GFX_focus_goal_free_economic_germany_focus
+		x = -6
+		y = 1
+		cost = @Time_50_days
+
+		relative_position_id = GER_Finish_the_Leipzig_Program
+		prerequisite = {
+			focus = GER_Finish_the_Leipzig_Program
+		}
+		prerequisite = {
+			focus = GER_Support_Nuclear_Energy
+		}
+		completion_reward = {
+			add_timed_idea = {
+				idea = GER_Liberal_Reawakening
+				days = 730
+			}
+			set_country_flag = GER_FDP_Path_2006
+		}
+		mutually_exclusive = {
+			focus = GER_The_Civic_Coalition
+			focus = GER_A_Step_to_the_Right
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	focus = {
+		id = GER_The_Civic_Coalition
+		icon = GFX_focus_goal_the_civic_coalition_focus
+		x = -4
+		y = 1
+		cost = @Time_50_days
+
+		relative_position_id = GER_Finish_the_Leipzig_Program
+		prerequisite = {
+			focus = GER_Finish_the_Leipzig_Program
+		}
+		prerequisite = {
+			focus = GER_Support_Nuclear_Energy
+		}
+		mutually_exclusive = {
+			focus = GER_Free_Economic_Germany
+			focus = GER_A_Step_to_the_Right
+		}
+		completion_reward = {
+			set_country_flag = GER_CDU_FDP_Path_2006
+		}
+
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	focus = {
 		id = GER_sdpgune_2002
 		icon = GFX_goal_Ideology_Social_Democracy
-		x = -2
+		x = -7
 		y = 1
 		cost = @Time_50_days
 		mutually_exclusive = {
 			focus = GER_cdufdp_2002
 		}
 		mutually_exclusive = {
-			focus = GER_spdlinke_2002
+			focus = GER_sdppds_2002
 		}
 		relative_position_id = GER_immigration_reform_1
 		available = {
@@ -1250,503 +3490,1694 @@ focus_tree = {
 		}
 	}
 	focus = {
-		id = GER_spdlinke_2002 #PDS until 2007
-		icon = GFX_goal_Ideology_Democratic_Socialist
+		id = GER_Leipzig_Program
+		icon = GFX_focus_generic_treaty
+		x = 4
+		y = 1
+		cost = @Time_50_days
+
+		relative_position_id = GER_cdufdp_2002
+		prerequisite = {
+			focus = GER_cdufdp_2002
+		}
+		completion_reward = {
+			add_dynamic_modifier = { modifier = GER_Leipzig_Program_Modifier }
+			set_variable = {GER_stab_factor = 0.05}
+		}
+
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	focus = {
+		id = GER_Cut_the_Red_Tape
+		icon = industry_democratic3
+		x = -2
+		y = 1
+		cost = @Time_50_days
+
+		relative_position_id = GER_Leipzig_Program
+		prerequisite = {
+			focus = GER_Leipzig_Program
+		}
+		completion_reward = {
+			add_to_variable = {
+				var = GER_stab_factor
+				value = -0.025
+			}
+			add_to_variable = {
+				var = GER_industrial_capacity_factory
+				value = 0.05
+			}
+			custom_effect_tooltip = GER_Cut_the_Red_Tape_tt
+		}
+
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	focus = {
+		id = GER_Raise_The_Retirement_Age
+		icon = GFX_goal_Migrant_Worker
+		x = 1
+		y = 1
+		cost = @Time_50_days
+
+		relative_position_id = GER_Tax_Cuts_For_Businesses
+		prerequisite = {
+			focus = GER_Tax_Cuts_For_Businesses
+		}
+		completion_reward = {
+			add_to_variable = {
+				var = GER_production_factory_max_efficiency_factor
+				value = 0.1
+			}
+			add_to_variable = {
+				var = GER_stab_factor
+				value = -0.05
+			}
+			custom_effect_tooltip = GER_Raise_The_Retirement_Age_tt
+		}
+
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	focus = {
+		id = GER_Pension_Privatisation
+		icon = GFX_goal_Family_Values_1
+		x = -1
+		y = 1
+		cost = @Time_50_days
+
+		relative_position_id = GER_Tax_Cuts_For_Businesses
+		prerequisite = {
+			focus = GER_Tax_Cuts_For_Businesses
+		}
+		completion_reward = {
+			add_to_variable = {
+				var = GER_stab_factor
+				value = -0.025
+			}
+			add_to_variable = {
+				var = GER_production_cost_industrial_complex_factor
+				value = -0.05
+			}
+			add_to_variable = {
+				var = GER_production_cost_infrastructure_factor
+				value = -0.05
+			}
+		}
+
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	focus = {
+		id = GER_Competititve_Social_Services
+		icon = GFX_goal_Central_Management
+		x = -3
+		y = 1
+		cost = @Time_50_days
+
+		relative_position_id = GER_Tax_Cuts_For_Businesses
+		prerequisite = {
+			focus = GER_Tax_Cuts_For_Businesses
+		}
+		completion_reward = {
+			add_to_variable = {
+				var = GER_stab_factor
+				value = 0.025
+			}
+			add_to_variable = {
+				var = GER_production_speed_infrastructure_factor
+				value = 0.05
+			}
+			custom_effect_tooltip = GER_Competititve_Social_Services_tt
+		}
+
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	focus = {
+		id = GER_Tax_Cuts_For_Businesses
+		icon = GFX_goal_Cut_Taxes
+		x = -1
+		y = 1
+		cost = @Time_50_days
+
+		relative_position_id = GER_Cut_the_Red_Tape
+		prerequisite = {
+			focus = GER_Cut_the_Red_Tape
+		}
+		completion_reward = {
+			add_to_variable = {
+				var = GER_stab_factor
+				value = -0.025
+			}
+			add_to_variable = {
+				var = GER_consumer_goods_expected_value
+				value = -0.025
+			}
+			custom_effect_tooltip = GER_Tax_Cuts_For_Businesses_tt
+		}
+
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	focus = {
+		id = GER_Three_Tier_Tax_System
+		icon = GFX_goal_generic_consumer_goods
+		x = 1
+		y = 1
+		cost = @Time_50_days
+
+		relative_position_id = GER_Leipzig_Program
+		prerequisite = {
+			focus = GER_Leipzig_Program
+		}
+		completion_reward = {
+			add_ideas = GER_three_tier_tax_system
+		}
+
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	focus = {
+		id = GER_Solve_the_Unemployement_Crisis
+		icon = GFX_goal_Universal_Healthcare
+		x = 1
+		y = 1
+		cost = @Time_50_days
+
+		relative_position_id = GER_Three_Tier_Tax_System
+		prerequisite = {
+			focus = GER_Three_Tier_Tax_System
+		}
+		completion_reward = {
+			unlock_decision_category_tooltip = decisions_unemployment_tt
+		}
+
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	focus = {
+		id = GER_End_the_Solidarity_Tax
+		icon = GFX_focus_ARG_crackdown_on_corruption
+		x = -1
+		y = 1
+		cost = @Time_50_days
+
+		relative_position_id = GER_Three_Tier_Tax_System
+		prerequisite = {
+			focus = GER_Three_Tier_Tax_System
+		}
+		completion_reward = {
+			add_timed_idea = {
+				idea = GER_Removed_Solidarity_Tax
+				days = 730
+			}
+		}
+
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	focus = {
+		id = GER_Privatise_the_Healthcare
+		icon = GFX_goal_Privatization
+		x = 1
+		y = 1
+		cost = @Time_50_days
+
+		relative_position_id = GER_End_the_Solidarity_Tax
+		prerequisite = {
+			focus = GER_End_the_Solidarity_Tax
+		}
+		prerequisite = {
+			focus = GER_Solve_the_Unemployement_Crisis
+		}
+		completion_reward = {
+			add_to_variable = {
+				var = GER_stab_factor
+				value = 0.025
+			}
+		}
+
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	focus = {
+		id = GER_Finish_the_Leipzig_Program
+		icon = GFX_goal_High_Tech_Factory
+		x = 1
+		y = 1
+		cost = @Time_50_days
+
+		relative_position_id = GER_Raise_The_Retirement_Age
+		prerequisite = {
+			focus = GER_Raise_The_Retirement_Age
+		}
+		prerequisite = {
+			focus = GER_Privatise_the_Healthcare
+		}
+		prerequisite = {
+			focus = GER_Pension_Privatisation
+		}
+		prerequisite = {
+			focus = GER_Competititve_Social_Services
+		}
+		completion_reward = {
+			
+		}
+
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	focus = {
+		id = GER_Victim_Protection_Law
+		icon = GFX_GER_Communist_Support
 		x = 3
+		y = 2
+		cost = @Time_50_days
+
+		relative_position_id = GER_sdpgune_2002
+		prerequisite = {
+			focus = GER_sdpgune_2002
+		}
+		completion_reward = {
+			add_stability = 0.05
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	focus = {
+		id = GER_Berlin_Plus_Agreement
+		icon = GFX_Align_to_NATO
+		x = 0
+		y = 1
+		cost = @Time_50_days
+
+		relative_position_id = GER_Victim_Protection_Law
+		prerequisite = {
+			focus = GER_Victim_Protection_Law
+		}
+		completion_reward = {
+			add_war_support = 0.05
+			army_experience = 25
+			ENG = {
+				add_opinion_modifier = {
+				target = GER
+				modifier = declaration_of_friendship 
+				}
+			}
+			FRA = {
+				add_opinion_modifier = {
+				target = GER
+				modifier = declaration_of_friendship 
+				}
+			}
+			USA = {
+				add_opinion_modifier = {
+				target = GER
+				modifier = declaration_of_friendship 
+				}
+			}
+			POL = {
+				add_opinion_modifier = {
+				target = GER
+				modifier = declaration_of_friendship 
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	focus = {
+		id = GER_Expand_LGBTQ_Rights
+		icon = generic_LGBT_flag
+		x = 0
+		y = 1
+		cost = @Time_50_days
+
+		relative_position_id = GER_Berlin_Plus_Agreement
+		prerequisite = {
+			focus = GER_Berlin_Plus_Agreement
+		}
+		completion_reward = {
+			hidden_effect = {
+				country_event = germany.92
+			}
+			add_ideas = GER_LGBTQ_Rights
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	focus = {
+		id = GER_Tighten_Gun_Laws
+		icon = GFX_USA_Christian_Militias
+		x = 1
+		y = 1
+		cost = @Time_50_days
+
+		relative_position_id = GER_Expand_LGBTQ_Rights
+		prerequisite = {
+			focus = GER_Expand_LGBTQ_Rights
+		}
+		completion_reward = {
+			add_stability = 0.05
+			add_political_power = 25
+			add_manpower = 5000
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	focus = {
+		id = GER_Tierschutzgesetz
+		icon = GFX_focus_hol_united_netherlands
+		x = -1
+		y = 1
+		cost = @Time_50_days
+
+		relative_position_id = GER_Expand_LGBTQ_Rights
+		prerequisite = {
+			focus = GER_Expand_LGBTQ_Rights
+		}
+		completion_reward = {
+			add_stability = 0.05
+			add_political_power = 30
+			add_popularity = {
+				ideology = social_liberal
+				popularity = -0.01
+			}
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	focus = {
+		id = GER_agenda_2010
+		icon = GFX_focus_SWI_neutrality_on_the_move
+		x = -3
+		y = 1
+		cost = @Time_50_days
+
+		relative_position_id = GER_sdpgune_2002
+		prerequisite = {
+			focus = GER_sdpgune_2002
+		}
+		completion_reward = {
+			add_stability = 0.05
+			add_political_power = 30
+			add_popularity = {
+				ideology = social_democrat
+				popularity = 0.01
+			}
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	focus = {
+		id = GER_Further_Tax_Reforms
+		icon = GFX_focus_generic_currency_reforms
+		x = 2
+		y = 1
+		cost = @Time_50_days
+
+		relative_position_id = GER_agenda_2010
+		prerequisite = {
+			focus = GER_agenda_2010
+		}
+		completion_reward = {
+			add_ideas = GER_Tax_Reforms_1
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	focus = {
+		id = GER_Healthcare_Reforms
+		icon = GFX_goal_Universal_Healthcare
+		x = 0
+		y = 1
+		cost = @Time_50_days
+
+		relative_position_id = GER_Further_Tax_Reforms
+		prerequisite = {
+			focus = GER_Further_Tax_Reforms
+		}
+		completion_reward = {
+			add_ideas = GER_Healthcare_Reforms_idea
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	focus = {
+		id = GER_Renewable_Push
+		icon = GFX_goal_Recycling_Plant
+		x = 2
+		y = 1
+		cost = @Time_50_days
+
+		relative_position_id = GER_Further_Tax_Reforms
+		prerequisite = {
+			focus = GER_Further_Tax_Reforms
+		}
+		completion_reward = {
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = recycling_center
+					level = 1
+					instant_build =yes
+				}
+			}
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = recycling_center
+					level = 1
+					instant_build =yes
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	focus = {
+		id = GER_Finalise_Pension_Reforms
+		icon = GFX_USA_Additional_Funds
+		x = 1
+		y = 1
+		cost = @Time_50_days
+
+		relative_position_id = GER_Healthcare_Reforms
+		prerequisite = {
+			focus = GER_Healthcare_Reforms
+		}
+		prerequisite = {
+			focus = GER_Renewable_Push
+		}
+		completion_reward = {
+			add_ideas = GER_pension_reforms_idea
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	focus = {
+		id = GER_Hartz_I_and_II
+		icon = GFX_focus_generic_treaty
+		x = 0
+		y = 1
+		cost = @Time_50_days
+
+		relative_position_id = GER_agenda_2010
+		prerequisite = {
+			focus = GER_agenda_2010
+		}
+		completion_reward = {
+			add_stability = -0.05
+			add_political_power = 50
+			add_popularity = {
+				ideology = social_democrat
+				popularity = -0.04
+			}
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	focus = {
+		id = GER_Hartz_III
+		icon = GFX_focus_hol_the_foundations_of_defense
+		x = 0
+		y = 1
+		cost = @Time_50_days
+
+		relative_position_id = GER_Hartz_I_and_II
+		available = {
+			has_idea = GER_Hartz_II_idea
+		}
+		prerequisite = {
+			focus = GER_Hartz_I_and_II
+		}
+		completion_reward = {
+			add_stability = -0.02
+			add_political_power = 30
+			add_popularity = {
+				ideology = social_democrat
+				popularity = -0.01
+			}
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	focus = {
+		id = GER_Hartz_IV
+		icon = GFX_focus_GER_customs_union
+		x = 0
+		y = 1
+		cost = @Time_50_days
+		available = {
+			has_idea = GER_Hartz_III_idea
+		}
+		relative_position_id = GER_Hartz_III
+		prerequisite = {
+			focus = GER_Hartz_III
+		}
+		completion_reward = {
+			add_stability = -0.05
+			add_political_power = 70
+			add_popularity = {
+				ideology = social_democrat
+				popularity = -0.05
+			}
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	focus = {
+		id = GER_Continue_Aufbau_Ost
+		icon = GFX_focus_generic_monetary_union
+		x = -4
+		y = 1
+		cost = @Time_50_days
+
+		relative_position_id = GER_agenda_2010
+		prerequisite = {
+			focus = GER_agenda_2010
+			focus = GER_A_Just_Germany
+		}
+		completion_reward = {
+			64 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			65 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			64 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			65 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	focus = {
+		id = GER_Berlin_Recovery_Program
+		icon = GFX_focus_generic_military_industry
+		x = -2
+		y = 1
+		cost = @Time_50_days
+
+		relative_position_id = GER_Continue_Aufbau_Ost
+		prerequisite = {
+			focus = GER_Continue_Aufbau_Ost
+		}
+		completion_reward = {
+			64 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+			64 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	focus = {
+		id = GER_Digitalisation_Drive
+		icon = GFX_Smart_City_Plan
+		x = 0
+		y = 1
+		cost = @Time_50_days
+
+		relative_position_id = GER_Continue_Aufbau_Ost
+		prerequisite = {
+			focus = GER_Continue_Aufbau_Ost
+		}
+		completion_reward = {
+			add_ideas = GER_digitalisation
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build =yes
+				}
+			}
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build =yes
+				}
+			}
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build =yes
+				}
+			}
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build =yes
+				}
+			}
+
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	focus = {
+		id = GER_VW_Investments
+		icon = GFX_GER_Volkswagen
+		x = 2
+		y = 1
+		cost = @Time_50_days
+
+		relative_position_id = GER_Continue_Aufbau_Ost
+		prerequisite = {
+			focus = GER_Continue_Aufbau_Ost
+		}
+		completion_reward = {
+			59 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	focus = {
+		id = GER_Education_Reform
+		icon = GFX_GER_Research
+		x = 0
+		y = 1
+		cost = @Time_50_days
+
+		relative_position_id = GER_Digitalisation_Drive
+		prerequisite = {
+			focus = GER_Digitalisation_Drive
+		}
+		prerequisite = {
+			focus = GER_VW_Investments
+		}
+		prerequisite = {
+			focus = GER_Berlin_Recovery_Program
+		}
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = GER_digitalisation
+				add_idea = GER_education_reform_idea
+			}
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	focus = {
+		id = GER_Red_Green_Social_Reforms
+		icon = GFX_goal_Rich_Businessmen_2
+		x = 4
+		y = 1
+		cost = @Time_50_days
+
+		relative_position_id = GER_Education_Reform
+		available = {
+			has_idea = GER_Hartz_IV_idea
+		}
+		prerequisite = {
+			focus = GER_Education_Reform
+		}
+		prerequisite = {
+			focus = GER_Hartz_IV
+		}
+		prerequisite = {
+			focus = GER_Finalise_Pension_Reforms
+		}
+		completion_reward = {
+		hidden_effect = {
+			remove_ideas = GER_pension_reforms_idea
+			remove_ideas = GER_Tax_Reforms_1
+			remove_ideas = GER_Healthcare_Reforms_idea
+		}
+			add_ideas = GER_red_green_social_reforms_idea
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}	
+	focus = {
+		id = GER_Crush_Inner_Party_Opposition
+		icon = GFX_focus_spr_crush_the_revolution
+		x = -6
+		y = 11
+		cost = @Time_50_days
+		mutually_exclusive = {
+			focus = GER_The_Groko
+		}
+		relative_position_id = GER_Controversial_Reforms
+		available = {
+			NOT = {
+				has_country_flag = GER_Snap_Election_Called
+			}
+		}
+		prerequisite = {
+			focus = GER_Red_Green_Social_Reforms
+		}
+		prerequisite = {
+			focus = GER_Tierschutzgesetz
+		}
+		prerequisite = {
+			focus = GER_Tighten_Gun_Laws
+		}
+		completion_reward = {
+			add_popularity = {
+				ideology = social_democrat
+				popularity = 0.05
+			}
+			set_country_flag = GER_Crushed_Opposition
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	focus = {
+		id = GER_The_Groko
+		icon = GFX_focus_goal_the_groko_focus
+		x = -3
+		y = 11
+		cost = @Time_50_days
+		relative_position_id = GER_Controversial_Reforms
+		mutually_exclusive = {
+			focus = GER_Crush_Inner_Party_Opposition
+		}
+		prerequisite = {
+			focus = GER_Red_Green_Social_Reforms
+		}
+		prerequisite = {
+			focus = GER_Tierschutzgesetz
+		}
+		prerequisite = {
+			focus = GER_Tighten_Gun_Laws
+		}
+		completion_reward = {
+			set_country_flag = GER_CDU_SPD_2005_Win_Guaranteed
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	focus = {
+		id = GER_Merkels_Chancellorship
+		icon = GFX_focus_goal_merkels_chancellorship_focus
+		x = -1
+		y = 5
+		cost = @Time_50_days
+		allow_branch = {
+        	OR = {
+          		has_global_flag = GER_CDU_SPD_2005_Win
+        	}
+    	}
+		relative_position_id = GER_Berlin_Plus_Agreement
+		completion_reward = {
+			add_political_power = 150
+			fourth_estate_conservative_increase = yes
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	focus = {
+		id = GER_Fix_Schroders_Mistakes
+		icon = GFX_focus_goal_fix_schroders_mistakes_focus
+		x = -1
+		y = 6
+		cost = @Time_50_days
+		allow_branch = {
+        	OR = {
+          		has_global_flag = GER_CDU_SPD_2005_Win
+        	}
+    	}
+		prerequisite = {
+			focus = GER_Merkels_Chancellorship
+		}
+		relative_position_id = GER_Berlin_Plus_Agreement
+		completion_reward = {
+			country_event = germany.97
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	focus = {
+		id = GER_Parental_Allowance_Law
+		icon = GFX_focus_ETH_adopt_the_lira
+		x = -1
+		y = 7
+		cost = @Time_50_days
+		allow_branch = {
+        	OR = {
+          		has_global_flag = GER_CDU_SPD_2005_Win
+        	}
+    	}
+		prerequisite = {
+			focus = GER_Fix_Schroders_Mistakes
+		}
+		relative_position_id = GER_Berlin_Plus_Agreement
+		completion_reward = {
+			add_stability = 0.02
+			add_popularity = {
+				ideology = conservative
+				popularity = 0.01
+			}
+			add_political_power = 50
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	focus = {
+		id = GER_Air_Safety_Law
+		icon = GFX_focus_goal_luftsicherheitsgesetz_focus
+		x = -3
+		y = 8
+		cost = @Time_50_days
+		allow_branch = {
+        	OR = {
+          		has_global_flag = GER_CDU_SPD_2005_Win
+        	}
+    	}
+		prerequisite = {
+			focus = GER_Federalism_Reform_I
+		}
+		prerequisite = {
+			focus = GER_Parental_Allowance_Law
+		}
+		relative_position_id = GER_Berlin_Plus_Agreement
+		completion_reward = {
+			add_stability = -0.02
+			add_popularity = {
+				ideology = conservative
+				popularity = -0.01
+			}
+			add_popularity = {
+				ideology = social_democrat
+				popularity = -0.01
+			}
+			add_popularity = {
+				ideology = progressive
+				popularity = 0.01
+			}
+			hidden_effect = {
+				country_event = germany.96
+			}
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	focus = {
+		id = GER_German_Chinese_Economic_Dialogue
+		icon = GFX_focus_prc_proclaim_the_peoples_republic
+		x = 0
+		y = 8
+		cost = @Time_50_days
+		allow_branch = {
+        	OR = {
+          		has_global_flag = GER_CDU_SPD_2005_Win
+        	}
+    	}
+		prerequisite = {
+			focus = GER_Conservative_EU_Policy
+		}
+		prerequisite = {
+			focus = GER_Parental_Allowance_Law
+		}
+		relative_position_id = GER_Berlin_Plus_Agreement
+		completion_reward = {
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build =yes
+				}
+			}
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build =yes
+				}
+			}
+			PRC = {
+				random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build =yes
+				}
+				}
+				random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build =yes
+				}
+			}
+			}
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	focus = {
+		id = GER_Expand_Mandatory_Integration_Courses
+		icon = GFX_SOV_expand_aviation_institutes_ccp_2d_sov_compatibility
+		x = -2
+		y = 9
+		cost = @Time_50_days
+		allow_branch = {
+        	OR = {
+          		has_global_flag = GER_CDU_SPD_2005_Win
+        	}
+    	}
+		prerequisite = {
+			focus = GER_German_Chinese_Economic_Dialogue
+		}
+		prerequisite = {
+			focus = GER_Air_Safety_Law
+		}
+		relative_position_id = GER_Berlin_Plus_Agreement
+		completion_reward = {
+			add_ideas = GER_Reformed_Migration_Plan_idea
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	focus = {
+		id = GER_Counter_Terrorist_Measures
+		icon = GFX_goal_Future_Soldier_2
+		x = -2
+		y = 10
+		cost = @Time_50_days
+		allow_branch = {
+        	OR = {
+          		has_global_flag = GER_CDU_SPD_2005_Win
+        	}
+    	}
+		prerequisite = {
+			focus = GER_Expand_Mandatory_Integration_Courses
+		}
+		relative_position_id = GER_Berlin_Plus_Agreement
+		completion_reward = {
+			add_war_support = 0.03
+			add_tech_bonus = {
+    			bonus = 0.25
+    			uses = 2
+    			category = support_tech
+			}
+			army_experience = 30
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	focus = {
+		id = GER_Western_Policy_Change
+		icon = GFX_focus_goal_western_policy_change_focus
+		x = 4
+		y = 6
+		cost = @Time_50_days
+		allow_branch = {
+        	OR = {
+          		has_global_flag = GER_CDU_SPD_2005_Win
+        	}
+    	}
+		prerequisite = {
+			focus = GER_Merkels_Chancellorship
+		}
+		relative_position_id = GER_Berlin_Plus_Agreement
+		completion_reward = {
+			add_command_power = 25
+			army_experience = 50
+			add_political_power = 25
+			SOV = {
+				add_opinion_modifier = {
+				target = GER
+				modifier = drama 
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	focus = {
+		id = GER_Conservative_EU_Policy
+		icon = GFX_focus_generic_the_council_of_europe
+		x = 1
+		y = 7
+		cost = @Time_50_days
+		allow_branch = {
+        	OR = {
+          		has_global_flag = GER_CDU_SPD_2005_Win
+        	}
+    	}
+		prerequisite = {
+			focus = GER_Western_Policy_Change
+		}
+		relative_position_id = GER_Berlin_Plus_Agreement
+		completion_reward = {
+			every_country = {
+				limit = {
+					has_dynamic_modifier = {
+						modifier = eu_member_modifier
+					}
+					capital_scope = {
+						is_on_continent = europe
+					}
+				}
+			add_opinion_modifier = {
+				target = GER
+				modifier = diplomatic_proximity 
+				}
+			add_popularity = {
+				ideology = conservative
+				popularity = 0.01
+			}
+			}
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	focus = {
+		id = GER_Repair_US_Relations
+		icon = GFX_focus_generic_befriend_usa
+		x = 3
+		y = 7
+		cost = @Time_50_days
+		allow_branch = {
+        	OR = {
+          		has_global_flag = GER_CDU_SPD_2005_Win
+        	}
+    	}
+		prerequisite = {
+			focus = GER_Western_Policy_Change
+		}
+		relative_position_id = GER_Berlin_Plus_Agreement
+		completion_reward = {
+			USA = {
+				add_opinion_modifier = {
+				target = GER
+				modifier = diplomatic_proximity 
+				}
+				add_political_power = 50
+			}
+			add_political_power = -50
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	focus = {
+		id = GER_Afghanistan_Humanitarian_Aid
+		icon = GFX_focus_PER_demand_afghan_territory
+		x = 2
+		y = 8
+		cost = @Time_50_days
+		allow_branch = {
+        	OR = {
+          		has_global_flag = GER_CDU_SPD_2005_Win
+        	}
+    	}
+		prerequisite = {
+			focus = GER_Conservative_EU_Policy
+		}
+		prerequisite = {
+			focus = GER_Military_Cooperation_USA
+		}
+		relative_position_id = GER_Berlin_Plus_Agreement
+		completion_reward = {
+			if = {
+				limit = {
+					AFG = {
+						exists = yes
+					}
+				}
+				AFG = {
+					add_opinion_modifier = {
+					target = GER
+					modifier = diplomatic_proximity 
+					}
+					add_political_power = 20
+					random_owned_controlled_state = {
+						add_extra_state_shared_building_slots = 1
+						add_building_construction = {
+							type = industrial_complex
+							level = 1
+							instant_build = yes
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					AFG = {
+						exists = no
+					}
+				}
+				TAL = {
+					add_stability = -0.05
+					add_political_power = -20
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	focus = {
+		id = GER_Iraq_Rebuilding_Support
+		icon = race_relations2
+		x = 2
+		y = 9
+		cost = @Time_50_days
+		allow_branch = {
+        	OR = {
+          		has_global_flag = GER_CDU_SPD_2005_Win
+        	}
+    	}
+		bypass = {
+			IRQ = {
+				OR = {
+					exists = no
+				}
+				OR = {
+					has_government = nationalist
+				}
+			}
+		}
+		prerequisite = {
+			focus = GER_Repair_US_Relations
+		}
+		relative_position_id = GER_Berlin_Plus_Agreement
+		completion_reward = {
+			IRQ = {
+				random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build =yes
+				}
+			}
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build =yes
+				}
+			}
+			}
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	focus = {
+		id = GER_Iran_Nuclear_Talks
+		icon = align_to_iran
+		x = 4
+		y = 9
+		cost = @Time_50_days
+		allow_branch = {
+        	OR = {
+          		has_global_flag = GER_CDU_SPD_2005_Win
+        	}
+    	}
+		bypass = {
+			PER = {
+				OR = {
+					exists = no
+				}
+				NOT = {
+					OR = {
+						has_government = nationalist
+					}
+					OR = {
+						has_government = islamist
+					}
+				}
+			}
+		}
+		prerequisite = {
+			focus = GER_Munich_Security_Conference
+		}
+		prerequisite = {
+			focus = GER_Afghanistan_Humanitarian_Aid
+		}
+		relative_position_id = GER_Berlin_Plus_Agreement
+		completion_reward = {
+			country_event = germany.100
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	focus = {
+		id = GER_A_New_Foreign_Policy
+		icon = GFX_focus_GER_tend_to_the_future
+		x = 3
+		y = 10
+		cost = @Time_50_days
+		allow_branch = {
+        	OR = {
+          		has_global_flag = GER_CDU_SPD_2005_Win
+        	}
+    	}
+		prerequisite = {
+			focus = GER_Iraq_Rebuilding_Support
+		}
+		prerequisite = {
+			focus = GER_Iran_Nuclear_Talks
+		}
+		relative_position_id = GER_Berlin_Plus_Agreement
+		completion_reward = {
+			add_ideas = GER_Global_Player_idea
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	focus = {
+		id = GER_Plan_for_Nordstream_I
+		icon = GFX_focus_goal_nordstream_I_planning_focus
+		x = 5
+		y = 7
+		cost = @Time_50_days
+		allow_branch = {
+        	OR = {
+          		has_global_flag = GER_CDU_SPD_2005_Win
+        	}
+    	}
+		prerequisite = {
+			focus = GER_Western_Policy_Change
+		}
+		relative_position_id = GER_Berlin_Plus_Agreement
+		completion_reward = {
+			set_country_flag = GER_Schroder_Advisor_Open
+			custom_effect_tooltip = available_political_advisor
+			show_ideas_tooltip = advisor_GER_Gerhard_Schroder
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	focus = {
+		id = GER_Recognise_Kosovo
+		icon = GFX_Align_to_Kosovo
+		x = 7
+		y = 7
+		cost = @Time_50_days
+		allow_branch = {
+        	OR = {
+          		has_global_flag = GER_CDU_SPD_2005_Win
+        	}
+    	}
+		prerequisite = {
+			focus = GER_Western_Policy_Change
+		}
+		relative_position_id = GER_Berlin_Plus_Agreement
+		completion_reward = {
+			KOS = {
+				add_opinion_modifier = {
+				target = GER
+				modifier = diplomatic_proximity 
+				}
+				add_political_power = 20
+			}
+			add_political_power = -10
+			SER = {
+				add_opinion_modifier = {
+				target = GER
+				modifier = declaration_of_hostility  
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	focus = {
+		id = GER_Munich_Security_Conference
+		icon = GFX_focus_goal_munich_security_conference_focus
+		x = 5
+		y = 8
+		cost = @Time_50_days
+		allow_branch = {
+        	OR = {
+          		has_global_flag = GER_CDU_SPD_2005_Win
+        	}
+    	}
+		prerequisite = {
+			focus = GER_Western_Policy_Change
+		}
+		relative_position_id = GER_Berlin_Plus_Agreement
+		completion_reward = {
+			country_event = germany.99
+			USA = {
+				country_event = germany.99
+			}
+			SOV = {
+				country_event = germany.99
+			}
+			FRA = {
+				country_event = germany.99
+			}
+			ENG = {
+				country_event = germany.99
+			}
+			PRC = {
+				country_event = germany.98
+			}
+			PER = {
+				country_event = germany.98
+			}
+			AFG = {
+				country_event = germany.98
+			}
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	focus = {
+		id = GER_Hijack_Agenda_2010
+		icon = GFX_focus_goal_hijack_agenda_2010_focus
+		x = -4
+		y = 6
+		cost = @Time_50_days
+		available = {
+			has_completed_focus = GER_Fix_Schroders_Mistakes
+		}
+		allow_branch = {
+        	OR = {
+          		has_global_flag = GER_CDU_SPD_2005_Win
+        	}
+    	}
+		prerequisite = {
+			focus = GER_Merkels_Chancellorship
+		}
+		relative_position_id = GER_Berlin_Plus_Agreement
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = GER_red_green_social_reforms_idea
+				add_idea = GER_Conservative_Agenda_2010_idea
+			}
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	focus = {
+		id = GER_Budget_Reforms
+		icon = GFX_focus_generic_currency_reforms
+		x = -6
+		y = 7
+		cost = @Time_50_days
+		allow_branch = {
+        	OR = {
+          		has_global_flag = GER_CDU_SPD_2005_Win
+        	}
+    	}
+		prerequisite = {
+			focus = GER_Hijack_Agenda_2010
+		}
+		relative_position_id = GER_Berlin_Plus_Agreement
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = GER_Conservative_Agenda_2010_idea
+				add_idea = GER_Conservative_Agenda_2010_idea2
+			}
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	focus = {
+		id = GER_Tweak_Hartz_IV
+		icon = GFX_SOV_reformalize_the_role_of_the_patriarchate_ccp_2d_sov_compatibility
+		x = -6
+		y = 8
+		cost = @Time_50_days
+		allow_branch = {
+        	OR = {
+          		has_global_flag = GER_CDU_SPD_2005_Win
+        	}
+    	}
+		prerequisite = {
+			focus = GER_Hijack_Agenda_2010
+		}
+		relative_position_id = GER_Berlin_Plus_Agreement
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = GER_Hartz_IV_idea
+				add_idea = GER_Hartz_IV_CDU_idea
+			}
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	focus = {
+		id = GER_Support_the_Atomausstieg
+		icon = agriculture
+		x = -5
+		y = 9
+		cost = @Time_50_days
+		allow_branch = {
+        	OR = {
+          		has_global_flag = GER_CDU_SPD_2005_Win
+        	}
+    	}
+		mutually_exclusive = {
+			focus = GER_Strenghten_Nuclear_Energy
+		}
+		prerequisite = {
+			focus = GER_Tweak_Hartz_IV
+		}
+		relative_position_id = GER_Berlin_Plus_Agreement
+		completion_reward = {
+			add_ideas = GER_Atomausstieg_Started
+			custom_effect_tooltip = available_political_advisor
+			show_ideas_tooltip = advisor_GER_Sigmar_Gabriel
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	focus = {
+		id = GER_Strenghten_Nuclear_Energy
+		icon = GFX_focus_generic_nuclear_development
+		x = -7
+		y = 9
+		cost = @Time_50_days
+		allow_branch = {
+        	OR = {
+          		has_global_flag = GER_CDU_SPD_2005_Win
+        	}
+    	}
+		mutually_exclusive = {
+			focus = GER_Support_the_Atomausstieg
+		}
+		prerequisite = {
+			focus = GER_Tweak_Hartz_IV
+		}
+		relative_position_id = GER_Berlin_Plus_Agreement
+		completion_reward = {
+			add_ideas = GER_Strenghtened_Nuclear_Energy
+			custom_effect_tooltip = available_political_advisor
+			show_ideas_tooltip = advisor_GER_Juergen_Ruettgers
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	focus = {
+		id = GER_VAT_Tax_Increase
+		icon = money
+		x = -6
+		y = 10
+		cost = @Time_50_days
+		allow_branch = {
+        	OR = {
+          		has_global_flag = GER_CDU_SPD_2005_Win
+        	}
+    	}
+		prerequisite = {
+			focus = GER_Strenghten_Nuclear_Energy
+			focus = GER_Support_the_Atomausstieg
+		}
+		relative_position_id = GER_Berlin_Plus_Agreement
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = GER_Conservative_Agenda_2010_idea2
+				add_idea = GER_Conservative_Agenda_2010_idea3
+			}
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	focus = {
+		id = GER_Federalism_Reform_I
+		icon = GFX_focus_goal_federalism_reform_I_focus
+		x = -4
+		y = 7
+		cost = @Time_50_days
+		allow_branch = {
+        	OR = {
+          		has_global_flag = GER_CDU_SPD_2005_Win
+        	}
+    	}
+		prerequisite = {
+			focus = GER_Hijack_Agenda_2010
+		}
+		relative_position_id = GER_Berlin_Plus_Agreement
+		completion_reward = {
+			add_timed_idea = {
+				idea = GER_Strenghtened_the_Lander_idea
+				days = 365
+			}
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	focus = {
+		id = GER_Mutti
+		icon = GFX_focus_goal_mutti_focus
+		x = -1
+		y = 11
+		cost = @Time_50_days
+		allow_branch = {
+        	OR = {
+          		has_global_flag = GER_CDU_SPD_2005_Win
+        	}
+    	}
+		prerequisite = {
+			focus = GER_VAT_Tax_Increase
+		}
+		prerequisite = {
+			focus = GER_Counter_Terrorist_Measures
+		}
+		prerequisite = {
+			focus = GER_A_New_Foreign_Policy
+		}
+		relative_position_id = GER_Berlin_Plus_Agreement
+		completion_reward = {
+			add_country_leader_trait = pillar_of_stability_GER
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	focus = {
+		id = GER_sdppds_2002
+		icon = GFX_goal_Ideology_Social_Democracy
+		x = -20
 		y = 1
 		cost = @Time_50_days
 		mutually_exclusive = {
-			focus = GER_sdpgune_2002
+			focus = GER_cdufdp_2002
 		}
 		mutually_exclusive = {
-			focus = GER_cdufdp_2002
+			focus = GER_spdgune_2002
 		}
 		relative_position_id = GER_immigration_reform_1
 		available = {
-			has_country_flag = GER_SPD_Linke_2002_Win
+			has_country_flag = GER_SPD_PDS_2002_Win
 		}
 		prerequisite = {
 			focus = GER_immigration_reform_1
 		}
 		completion_reward = {
-			fourth_estate_social_democrat_increase = yes
 			fourth_estate_democratic_socialist_increase = yes
-		}
-
-		ai_will_do = {
-			factor = 10
-		}
-	}
-	focus = {
-		id = GER_citizen_insurance_reforms
-		icon = GFX_goal_generic_intelligence_exchange
-		x = 0
-		y = 1
-		cost = @Time_50_days
-		relative_position_id = GER_spdlinke_2002
-		prerequisite = {
-			focus = GER_spdlinke_2002
-		}
-		completion_reward = {
-
-		}
-
-		ai_will_do = {
-			factor = 10
-		}
-	}
-	focus = {
-		id = GER_expand_reweable_energy
-		icon = GFX_focus_generic_the_giant_wakes
-		x = -2
-		y = 1
-		cost = @Time_50_days
-		prerequisite = {
-			focus = GER_sdpgune_2002
-		}
-		relative_position_id = GER_sdpgune_2002
-		completion_reward = {
-			add_ideas = GER_renewable_investments
-		}
-	}
-	focus = {
-		id = GER_strengthen_russian_relations
-		icon = GFX_Align_to_Russia
-		x = 3
-		y = 1
-		cost = @Time_50_days
-		relative_position_id = GER_spdlinke_2002
-		prerequisite = {
-			focus = GER_spdlinke_2002
-		}
-		completion_reward = {
-			SOV = {
-				add_opinion_modifier = {
-					target = ROOT
-					modifier = declaration_of_friendship
-				}
-			}
-			add_opinion_modifier = {
-				target = SOV
-				modifier = declaration_of_friendship
-			}
-		}
-
-		ai_will_do = {
-			factor = 10
-		}
-	}
-	focus = {
-		id = GER_strengthen_american_relations
-		icon = GFX_Align_to_America
-		x = -1
-		y = 1
-		cost = @Time_50_days
-		relative_position_id = GER_cdufdp_2002
-		prerequisite = {
-			focus = GER_cdufdp_2002
-		}
-		completion_reward = {
-			USA = {
-				add_opinion_modifier = {
-					target = ROOT
-					modifier = declaration_of_friendship
-				}
-			}
-			add_opinion_modifier = {
-				target = USA
-				modifier = declaration_of_friendship
-			}
-		}
-
-		ai_will_do = {
-			factor = 10
-		}
-	}
-	# focus = {
-	# 	id = GER_support_war_in_iraq
-	# 	icon = GFX_Align_to_America
-	# 	x = -1
-	# 	y = 1
-	# 	cost = @Time_50_days
-	# 	relative_position_id = GER_strengthen_american_relations
-	# 	prerequisite = {
-	# 		focus = GER_strengthen_american_relations
-	# 	}
-	# 	completion_reward = {
-	# 		add_stability = -0.1
-	# 		add_war_support = 0.075
-	# 	}
-
-	# 	ai_will_do = {
-	# 		factor = 10
-	# 	}
-	# }
-	focus = {
-		id = GER_families_first
-		icon = GFX_goal_Family_Values_2
-		x = 2
-		y = 1
-		cost = @Time_50_days
-		relative_position_id = GER_cdufdp_2002
-		prerequisite = {
-			focus = GER_cdufdp_2002
-		}
-		completion_reward = {
-			add_ideas = GEF_Family_Values
-		}
-
-		ai_will_do = {
-			factor = 10
-		}
-	}
-	focus = {
-		id = GER_shake_off_the_shadow_of_gdr
-		icon = GFX_GER_The_Stasi
-		x = 0
-		y = 1
-		cost = @Time_50_days
-		relative_position_id = GER_citizen_insurance_reforms
-		mutually_exclusive = {
-			focus = GER_back_to_our_roots
-		}
-		prerequisite = {
-			focus = GER_citizen_insurance_reforms
-		}
-		completion_reward = {
-
-		}
-
-		ai_will_do = {
-			factor = 10
-		}
-	}
-	focus = {
-		id = GER_back_to_our_roots
-		icon = GFX_GER_Communist_Party
-		x = 4
-		y = 1
-		cost = @Time_50_days
-		relative_position_id = GER_citizen_insurance_reforms
-		mutually_exclusive = {
-			focus = GER_shake_off_the_shadow_of_gdr
-		}
-		prerequisite = {
-			focus = GER_citizen_insurance_reforms
-		}
-		prerequisite = {
-			focus = GER_strengthen_russian_relations
-		}
-		completion_reward = {
-
-		}
-
-		ai_will_do = {
-			factor = 10
-		}
-	}
-	focus = {
-		id = GER_east_german_autonomy
-		icon = GFX_GER_Communist_Party
-		x = -1
-		y = 1
-		cost = @Time_50_days
-		relative_position_id = GER_back_to_our_roots
-
-		prerequisite = {
-			focus = GER_back_to_our_roots
-		}
-
-		completion_reward = {
-
-		}
-
-		ai_will_do = {
-			factor = 10
-		}
-	}
-	focus = {
-		id = GER_reject_capitalism
-		icon = GFX_Break_the_Banks
-		x = -1
-		y = 1
-		cost = @Time_50_days
-		relative_position_id = GER_east_german_autonomy
-
-		prerequisite = {
-			focus = GER_east_german_autonomy
-		}
-
-		completion_reward = {
-			fourth_estate_communist_increase = yes
-			every_neighbor_country = {
-				add_timed_idea = {
-					idea = GER_socialistic_propaganda
-					days = 365
-				}
-			}
-			add_ideas = GER_committee_for_global_socialism
-		}
-
-		ai_will_do = {
-			factor = 10
-		}
-	}
-	focus = {
-		id = GER_protect_stasi_informants
-		icon = GFX_GER_Communist_Party
-		x = 1
-		y = 1
-		cost = @Time_50_days
-		relative_position_id = GER_east_german_autonomy
-
-		prerequisite = {
-			focus = GER_east_german_autonomy
-		}
-
-		completion_reward = {
-
-		}
-
-		ai_will_do = {
-			factor = 10
-		}
-	}
-	focus = {
-		id = GER_no_more_bases
-		icon = GFX_focus_renounce_the_treaty_of_trianon
-		x = -1
-		y = 1
-		cost = @Time_50_days
-		relative_position_id = GER_protect_stasi_informants
-
-		prerequisite = {
-			focus = GER_protect_stasi_informants
-		}
-		prerequisite = {
-			focus = GER_reject_capitalism
-		}
-
-		completion_reward = {
-
-		}
-
-		ai_will_do = {
-			factor = 10
-		}
-	}
-	focus = {
-		id = GER_agenda_2010
-		icon = GFX_goal_Germany_Factory
-		x = 0
-		y = 1
-		cost = @Time_50_days
-
-		relative_position_id = GER_sdpgune_2002
-		prerequisite = {
-			focus = GER_spdlinke_2002
-			focus = GER_sdpgune_2002
-			focus = GER_cdufdp_2002
-		}
-		completion_reward = {
-			unlock_decision_category_tooltip = GER_agenda_2010_category
-		}
-
-		ai_will_do = {
-			factor = 100
-		}
-	}
-	focus = {
-		id = GER_interventionalism
-		icon = GFX_goal_State_Controlled_Economy
-		x = 2
-		y = 1
-		cost = @Time_50_days
-
-		relative_position_id = GER_agenda_2010
-		mutually_exclusive = {
-			focus = GER_hartz_reforms
-		}
-		prerequisite = {
-			focus = GER_agenda_2010
-		}
-		prerequisite = {
-			focus = GER_spdlinke_2002
-		}
-		completion_reward = {
-			add_ideas = GER_economic_interventionalism_idea
-		}
-
-		ai_will_do = {
-			factor = 100
-		}
-	}
-	focus = {
-		id = GER_hartz_reforms
-		icon = GFX_goal_Constitution
-		x = -2
-		y = 1
-		cost = @Time_50_days
-
-		relative_position_id = GER_agenda_2010
-		prerequisite = {
-			focus = GER_agenda_2010
-		}
-		mutually_exclusive = {
-			focus = GER_interventionalism
-		}
-		available = {
-			OR = {
-				has_country_flag = GER_SPD_Gune_2002_Win
-				has_country_flag = GER_cdufdp_2002
-			}
-		}
-		completion_reward = {
-			custom_effect_tooltip = GER_hartz_IV_tt
-			set_country_flag = GER_hartz_levels
-		}
-
-		ai_will_do = {
-			factor = 100
-		}
-	}
-	focus = {
-		id = GER_hartz_IV
-		icon = GFX_goal_Constitution
-		x = -2
-		y = 1
-		cost = @Time_50_days
-
-		relative_position_id = GER_hartz_reforms
-		prerequisite = {
-			focus = GER_hartz_reforms
-		}
-		mutually_exclusive = {
-			focus = GER_protect_the_unemployed
-		}
-		available = {
-			OR = {
-				has_country_flag = GER_SPD_Gune_2002_Win
-				has_country_flag = GER_cdufdp_2002
-			}
-			custom_trigger_tooltip = {
-				tooltip = GER_hartz_refroms_completed_fully_tt	
-				has_country_flag = {
-					flag = GER_hartz_levels
-					value > 6
-				}
-			}
-			
-		}
-		completion_reward = {
-			law_change_decrease_welfare = yes
-			swap_ideas = {
-				remove_idea = GER_high_unemployment
-				add_idea = GER_moderate_unemployment
-			}
-		}
-
-		ai_will_do = {
-			factor = 100
-		}
-	}
-	focus = {
-		id = GER_protect_the_unemployed
-		icon = GFX_goal_Constitution
-		x = 2
-		y = 1
-		cost = @Time_50_days
-
-		relative_position_id = GER_hartz_reforms
-		prerequisite = {
-			focus = GER_hartz_reforms
-			focus = GER_interventionalism
-		}
-		mutually_exclusive = {
-			focus = GER_hartz_IV
-		}
-		available = {
-			OR = {
-				has_country_flag = GER_SPD_Gune_2002_Win
-				has_country_flag = GER_SPD_Linke_2002_Win
-			}
-			
-		}
-		completion_reward = {
+			fourth_estate_social_democrat_increase = yes
 			add_stability = 0.05
-			add_political_power = -80
-		}
-
-		ai_will_do = {
-			factor = 100
-		}
-	}
-	focus = {
-		id = GER_new_education_program
-		icon = GFX_focus_generic_university_3
-		x = 2
-		y = 1
-		cost = @Time_50_days
-
-		relative_position_id = GER_hartz_IV
-		prerequisite = {
-			focus = GER_protect_the_unemployed
-			focus = GER_hartz_IV
-		}
-		
-		completion_reward = {
-			add_research_slot = 1
-		}
-
-		ai_will_do = {
-			factor = 100
-		}
-	}
-	focus = {
-		id = GER_upgrade_to_digital_infra
-		icon = GFX_goal_Higher_Appreniship
-		x = 2
-		y = 1
-		cost = @Time_50_days
-
-		relative_position_id = GER_new_education_program
-		prerequisite = {
-			focus = GER_new_education_program
-		}
-		
-		completion_reward = {
-			add_tech_bonus = {
-				name = tech_bonus
-				bonus = 0.5
-				uses = 2
-				category = industry
-			}
-		}
-
-		ai_will_do = {
-			factor = 100
-		}
-	}
-	focus = {
-		id = GER_hartz_IV_reform
-		icon = GFX_focus_POL_develop_polish_shipbuilding
-		x = -2
-		y = 1
-		cost = @Time_50_days
-		relative_position_id = GER_new_education_program
-
-		prerequisite = {
-			focus = GER_new_education_program
-		}
-
-		prerequisite = {
-			focus = GER_hartz_IV
-		}
-
-		completion_reward = {
-			swap_ideas = {
-				remove_idea = GER_moderate_unemployment
-				add_idea = GER_low_unemployment
+			hidden_effect = {
+				add_country_leader_trait = Blockading_Chancellor_GER
 			}
 		}
 
@@ -1754,7 +5185,373 @@ focus_tree = {
 			factor = 10
 		}
 	}
+	focus = {
+		id = GER_Weaken_the_Seeheimer_Kreis
+		icon = GFX_focus_goal_weaken_seeheimer_kreis_focus
+		x = -23
+		y = 2
+		cost = @Time_50_days
+		relative_position_id = GER_immigration_reform_1
+		
+		prerequisite = {
+			focus = GER_sdppds_2002
+		}
+		completion_reward = {
+			country_event = germany.94
+		}
 
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = GER_The_Antidiskriminierungsgesetz
+		icon = GFX_SOV_military_reorganization_ccp_2d_sov_compatibility
+		x = -22
+		y = 3
+		cost = @Time_50_days
+		relative_position_id = GER_immigration_reform_1
+		
+		prerequisite = {
+			focus = GER_Weaken_the_Seeheimer_Kreis
+		}
+		completion_reward = {
+			add_ideas = GER_Anti_Discrimination_Law
+		}
+
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = GER_Full_Gender_Equality
+		icon = GFX_focus_ARG_women_in_industry
+		x = -21
+		y = 4
+		cost = @Time_50_days
+		relative_position_id = GER_immigration_reform_1
+		
+		prerequisite = {
+			focus = GER_The_Antidiskriminierungsgesetz
+		}
+		completion_reward = {
+			add_ideas = GER_Full_Equality
+		}
+
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = GER_Abolish_Maritial_Splitting
+		icon = GFX_focus_goal_abolish_maritial_splitting_focus
+		x = -20
+		y = 5
+		cost = @Time_50_days
+		relative_position_id = GER_immigration_reform_1
+		
+		prerequisite = {
+			focus = GER_Full_Gender_Equality
+		}
+		prerequisite = {
+			focus = GER_Increase_the_minimum_Wage
+		}
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = GER_Higher_Wealth_Tax_2
+				add_idea = GER_Higher_Wealth_Tax_3
+			}
+		}
+
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = GER_The_NATO_Debate
+		icon = GFX_Align_to_NATO
+		x = -25
+		y = 3
+		cost = @Time_50_days
+		relative_position_id = GER_immigration_reform_1
+		
+		prerequisite = {
+			focus = GER_Weaken_the_Seeheimer_Kreis
+		}
+		completion_reward = {
+			country_event = germany.95
+		}
+
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = GER_Only_Defensive_Operations
+		icon = GFX_SOV_lessons_of_war_ccp_2d_sov_compatibility
+		x = -24
+		y = 4
+		cost = @Time_50_days
+		relative_position_id = GER_immigration_reform_1
+		mutually_exclusive = {
+			focus = GER_No_to_NATO
+		}
+		available = {
+			always = no
+		}
+		prerequisite = {
+			focus = GER_The_NATO_Debate
+		}
+		completion_reward = {
+			
+		}
+
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = GER_Peace_Corps
+		icon = GFX_focus_ETH_peacekeeping_forces
+		x = -24
+		y = 5
+		cost = @Time_50_days
+		relative_position_id = GER_immigration_reform_1
+		prerequisite = {
+			focus = GER_Only_Defensive_Operations
+		}
+		completion_reward = {
+			add_ideas = GER_Bundesverteidigungskorps
+		}
+
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = GER_No_to_NATO
+		icon = GFX_SOV_left_opposition_coup_ccp_2d_sov_compatibility
+		x = -26
+		y = 4
+		cost = @Time_50_days
+		relative_position_id = GER_immigration_reform_1
+		mutually_exclusive = {
+			focus = GER_Only_Defensive_Operations
+		}
+		available = {
+			always = no
+		}
+		prerequisite = {
+			focus = GER_The_NATO_Debate
+		}
+
+		completion_reward = {
+			
+		}
+
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = GER_Demilitarise_the_Bundeswehr
+		icon = GFX_focus_goal_demilitarise_bundeswehr_focus
+		x = -26
+		y = 5
+		cost = @Time_50_days
+		relative_position_id = GER_immigration_reform_1
+		prerequisite = {
+			focus = GER_No_to_NATO
+		}
+		completion_reward = {
+			add_ideas = GER_Demilitarised_Bundeswehr
+		}
+
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = GER_A_Just_Germany
+		icon = GFX_focus_CHL_union_of_hispanic_republics
+		x = -17
+		y = 2
+		cost = @Time_50_days
+		relative_position_id = GER_immigration_reform_1
+		available = {
+			NOT = {
+				has_country_flag = GER_Schroders_Group_is_Active
+			}
+		}
+		prerequisite = {
+			focus = GER_sdppds_2002
+		}
+		completion_reward = {
+			fourth_estate_democratic_socialist_increase = yes
+			fourth_estate_social_democrat_increase = yes
+			hidden_effect = {
+				add_ideas = GER_Shadow_of_the_GDR
+			}
+		}
+
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = GER_Increase_the_Wealth_Tax
+		icon = GFX_focus_GER_customs_union
+		x = -18
+		y = 3
+		cost = @Time_50_days
+		relative_position_id = GER_immigration_reform_1
+		
+		prerequisite = {
+			focus = GER_A_Just_Germany
+		}
+		completion_reward = {
+			add_political_power = -150
+			add_ideas = GER_Higher_Wealth_Tax
+			fourth_estate_democratic_socialist_increase = yes
+			fourth_estate_social_democrat_increase = yes
+			fourth_estate_conservative_decrease = yes
+		}
+
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = GER_Increase_the_minimum_Wage
+		icon = GFX_focus_generic_welfare
+		x = -18
+		y = 4
+		cost = @Time_50_days
+		relative_position_id = GER_immigration_reform_1
+		
+		prerequisite = {
+			focus = GER_Increase_the_Wealth_Tax
+		}
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = GER_Higher_Wealth_Tax
+				add_idea = GER_Higher_Wealth_Tax_2
+			}
+		}
+
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = GER_Democratic_Socialism_Rules
+		icon = GFX_focus_prc_agrarian_socialism
+		x = -20
+		y = 6
+		cost = @Time_50_days
+		relative_position_id = GER_immigration_reform_1
+		
+		prerequisite = {
+			focus = GER_Abolish_Maritial_Splitting
+		}
+		prerequisite = {
+			focus = GER_Education_Reform
+		}
+		prerequisite = {
+			focus = GER_Demilitarise_the_Bundeswehr
+			focus = GER_Peace_Corps
+		}
+		completion_reward = {
+			hidden_effect = {
+				remove_ideas = GER_Full_Equality
+				remove_ideas = GER_Anti_Discrimination_Law
+				remove_ideas = GER_Higher_Wealth_Tax_3
+			}
+			add_ideas = GER_Red_Red_Reforms
+		}
+
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = GER_PDS_Full_Majority
+		icon = GFX_focus_goal_pds_majority_focus
+		x = -20
+		y = 7
+		cost = @Time_50_days
+		relative_position_id = GER_immigration_reform_1
+		mutually_exclusive = {
+			focus = GER_Bundeswehr_Intervention
+		}
+		mutually_exclusive = {
+			focus = GER_SPD_PDS_Future
+		}
+		prerequisite = {
+			focus = GER_Democratic_Socialism_Rules
+		}
+		completion_reward = {
+			fourth_estate_progressive_increase = yes
+			add_stability = 0.05
+		}
+
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = GER_SPD_PDS_Future
+		icon = GFX_focus_generic_social_democracy
+		x = -17
+		y = 7
+		cost = @Time_50_days
+		relative_position_id = GER_immigration_reform_1
+		mutually_exclusive = {
+			focus = GER_Bundeswehr_Intervention
+		}
+		mutually_exclusive = {
+			focus = GER_PDS_Full_Majority
+		}
+		prerequisite = {
+			focus = GER_Democratic_Socialism_Rules
+		}
+		completion_reward = {
+			fourth_estate_progressive_increase = yes
+			fourth_estate_social_democrat_increase = yes
+			add_stability = 0.05
+		}
+
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = GER_Bundeswehr_Intervention
+		icon = GFX_focus_goal_bundeswehr_intervention_focus
+		x = -23
+		y = 7
+		cost = @Time_50_days
+		relative_position_id = GER_immigration_reform_1
+		mutually_exclusive = {
+			focus = GER_PDS_Full_Majority
+		}
+		mutually_exclusive = {
+			focus = GER_SPD_PDS_Future
+		}
+		prerequisite = {
+			focus = GER_Democratic_Socialism_Rules
+		}
+		available = {
+			has_completed_focus = GER_Demilitarise_the_Bundeswehr
+		}
+		completion_reward = {
+			country_event = germany.93
+		}
+
+		ai_will_do = {
+			factor = 10
+		}
+	}
 	focus = {
 		id = GER_international_alliances
 		icon = GFX_goal_generic_alliance
@@ -2027,47 +5824,6 @@ focus_tree = {
 	}
 
 
-	focus = {
-		id = GER_the_new_stasi
-		icon = GFX_GER_The_Stasi
-		x = 1
-		y = 1
-		cost = @Time_35_days
-		relative_position_id = GER_protect_stasi_informants
-		prerequisite = {
-			focus = GER_protect_stasi_informants
-		}
-
-		completion_reward = {
-			fourth_estate_communist_increase = yes
-			add_ideas = GER_stasi_restoration
-		}
-
-		ai_will_do = {
-			factor = 10
-		}
-	}
-
-	focus = {
-		id = GER_committee_for_global_socialism
-		icon = GFX_GER_Communist_Support
-		x = -2
-		y = 1
-		cost = @Time_35_days
-		relative_position_id = GER_reject_capitalism
-		prerequisite = {
-			focus = GER_reject_capitalism
-		}
-
-		completion_reward = {
-			add_ideas = GER_committee_for_global_socialism
-		}
-
-		ai_will_do = {
-			factor = 10
-		}
-	}
-
 
 	focus = {
 		id = GER_focus_on_asia
@@ -2255,35 +6011,6 @@ focus_tree = {
 				uses = 2
 				category = air_doctrine
 			}
-		}
-
-		ai_will_do = {
-			factor = 10
-		}
-	}
-
-
-	focus = {
-		id = GER_secure_the_revolution
-		icon = GFX_focus_SOV_builder_of_the_red_army
-		x = 1
-		y = 1
-		cost = @Time_35_days
-		relative_position_id = GER_committee_for_global_socialism
-		prerequisite = {
-			focus = GER_committee_for_global_socialism
-		}
-		prerequisite = {
-			focus = GER_no_more_bases
-		}
-
-		completion_reward = {
-			add_political_power = 75
-			add_popularity = {
-				ideology = communist
-				popularity = 0.2
-			}
-			add_ideas = GER_secured_the_revolution
 		}
 
 		ai_will_do = {
@@ -2745,49 +6472,6 @@ focus_tree = {
 
 
 	focus = {
-		id = GER_lose_the_chains
-		icon = GFX_focus_SOV_penal_battalions
-		x = 1
-		y = 1
-		cost = @Time_35_days
-		relative_position_id = GER_back_to_our_roots
-		prerequisite = {
-			focus = GER_back_to_our_roots
-		}
-
-		completion_reward = {
-			remove_ideas = idea_GER_german_legacy
-		}
-
-		ai_will_do = {
-			factor = 10
-		}
-	}
-
-	focus = {
-		id = GER_peace_first
-		icon = GFX_focus_focus_fra_revolution_utmost
-		x = 1
-		y = 1
-		cost = @Time_50_days
-
-		prerequisite = {
-			focus = GER_shake_off_the_shadow_of_gdr
-			focus = GER_back_to_our_roots
-		}
-		relative_position_id = GER_shake_off_the_shadow_of_gdr
-
-		completion_reward = {
-			add_political_power = 50
-		}
-
-		ai_will_do = {
-			factor = 10
-		}
-	}
-
-
-	focus = {
 		id = GER_tank_program
 		icon = GFX_GER_Leopard_2
 		x = -3
@@ -2828,8 +6512,7 @@ focus_tree = {
 		}
 
 		completion_reward = {
-			army_experience = 15
-			remove_ideas = GER_poorly_funded_military
+			army_experience = 50
 		}
 
 		ai_will_do = {
@@ -2953,66 +6636,6 @@ focus_tree = {
 				cost_reduction = 0.25
 				uses = 2
 				category = air_doctrine
-			}
-		}
-
-		ai_will_do = {
-			factor = 10
-		}
-	}
-
-	focus = {
-		id = GER_abandon_the_EU
-		icon = GFX_goal_Abandon_the_EU
-		x = -5
-		y = 1
-		cost = @Time_35_days
-		relative_position_id = GER_emphasize_freedom
-		prerequisite = {
-			focus = GER_emphasize_freedom
-		}
-		available = {
-			OR = {
-				has_democratic_form_of_government = no
-				reactionary > 0.25
-			}
-			
-		}
-		completion_reward = {
-			EU_membership_termination = yes
-			news_event = news.4
-		}
-
-		ai_will_do = {
-			factor = 0
-		}
-	}
-
-	focus = {
-		id = GER_abandon_NATO
-		icon = GFX_goal_Abandon_NATO
-		x = 0
-		y = 1
-		cost = @Time_50_days
-
-		prerequisite = {
-			focus = GER_no_more_bases
-		}
-		relative_position_id = GER_no_more_bases
-		bypass = {
-			OR = {
-				is_in_faction = no
-				is_faction_leader = yes
-			}
-		}
-
-		completion_reward = {
-			random_country = {
-				limit = {
-					is_in_faction_with = GER
-					is_faction_leader = yes
-				}
-				remove_from_faction = GER
 			}
 		}
 
@@ -3286,7 +6909,7 @@ focus_tree = {
 	focus = {
 		id = GER_emphasize_justice
 		icon = GFX_goal_support_fascism
-		x = 18
+		x = 24
 		y = 1
 		cost = @Time_50_days
 		relative_position_id = GER_ideology_focus
@@ -3294,7 +6917,9 @@ focus_tree = {
 		prerequisite = {
 			focus = GER_ideology_focus
 		}
-
+		mutually_exclusive = {
+			focus = GER_emphasize_unity
+		}
 		mutually_exclusive = {
 			focus = GER_emphasize_freedom
 		}
@@ -4800,12 +8425,13 @@ focus_tree = {
 				ruling_party = fascist
 				elections_allowed = no
 			}
+			country_event = germany.86
 		}
 	}
 	focus = {
 		id = GER_empower_the_president
 		icon = GFX_focus_generic_support_the_left_right
-		x = 0
+		x = 2
 		y = 1
 		cost = @Time_50_days
 		prerequisite = {
@@ -4836,6 +8462,201 @@ focus_tree = {
 				idea = idea_focus_generic_nationalist_doctrine
 				days = 365
 			}
+		}
+	}
+	focus = {
+		id = GER_A_Restructuring_of_Diplomacy
+		icon = GFX_focus_GER_loyalty_to_the_fuhrer
+		x = 13
+		y = 1
+		cost = @Time_50_days
+		prerequisite = {
+			focus =GER_empower_the_president
+		}
+		allow_branch = {
+			has_global_flag = GER_Michael_Koth_Chosen
+		}
+		relative_position_id = GER_empower_the_president
+		completion_reward = {
+			add_popularity = {
+				ideology = communist
+				popularity = 0.05
+			}
+			add_popularity = {
+				ideology = fascist
+				popularity = 0.05
+			}
+			add_war_support = 0.05
+		}
+	}
+	focus = {
+		id = GER_Open_Trade_with_the_DPRK
+		icon = GFX_focus_generic_invade_korea
+		x = 12
+		y = 2
+		cost = @Time_50_days
+		prerequisite = {
+			focus =GER_A_Restructuring_of_Diplomacy
+		}
+		relative_position_id = GER_empower_the_president
+		completion_reward = {
+			show_ideas_tooltip = advisor_GER_Pak_Hyon_Bo
+		}
+	}
+	focus = {
+		id = GER_Ghost_of_Strasser_and_Niekisch
+		icon = GFX_focus_generic_fascist_propaganda
+		x = 14
+		y = 2
+		cost = @Time_50_days
+		prerequisite = {
+			focus =GER_A_Restructuring_of_Diplomacy
+		}
+		relative_position_id = GER_empower_the_president
+		completion_reward = {
+			add_ideas = GER_Unified_NPD_idea
+		}
+	}
+	focus = {
+		id = GER_Querfront_Strategie
+		icon = GFX_focus_GER_rally_the_industrialists
+		x = 13
+		y = 3
+		cost = @Time_50_days
+		prerequisite = {
+			focus =GER_Open_Trade_with_the_DPRK
+		}
+		prerequisite = {
+			focus =GER_Ghost_of_Strasser_and_Niekisch
+		}
+		relative_position_id = GER_empower_the_president
+		completion_reward = {
+			show_ideas_tooltip = advisor_GER_Jurgen_Elsasser
+		}
+	}
+	focus = {
+		id = GER_Reminisce_about_the_DDR
+		icon = GFX_focus_GER_stakhanovite_movement
+		x = 10
+		y = 4
+		cost = @Time_50_days
+		prerequisite = {
+			focus =GER_Querfront_Strategie
+		}
+		relative_position_id = GER_empower_the_president
+		completion_reward = {
+			65 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			1306 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+		id = GER_National_Socialism
+		icon = GFX_focus_GER_propaganda_master
+		x = 12
+		y = 4
+		cost = @Time_50_days
+		prerequisite = {
+			focus =GER_Querfront_Strategie
+		}
+		relative_position_id = GER_empower_the_president
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = GER_Unified_NPD_idea
+				add_idea = GER_German_Socialism_idea
+			}
+		}
+	}
+	focus = {
+		id = GER_Fuhrer_of_the_Workers
+		icon = GFX_focus_GER_autarky_ambitions
+		x = 14
+		y = 4
+		cost = @Time_50_days
+		prerequisite = {
+			focus =GER_Querfront_Strategie
+		}
+		relative_position_id = GER_empower_the_president
+		completion_reward = {
+			add_country_leader_trait = Fuhrer_of_the_Workers_GER
+		}
+	}
+	focus = {
+		id = GER_Fund_the_DPRK
+		icon = GFX_SOV_funds_for_the_cause_ccp_2d_sov_compatibility
+		x = 16
+		y = 4
+		cost = @Time_50_days
+		prerequisite = {
+			focus =GER_Querfront_Strategie
+		}
+		relative_position_id = GER_empower_the_president
+		completion_reward = {
+			948 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+			872 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+		id = GER_Jucheist_Alliance
+		icon = GFX_focus_AUS_union_of_danubian_socialist_republics
+		x = 13
+		y = 5
+		cost = @Time_50_days
+		prerequisite = {
+			focus =GER_Reminisce_about_the_DDR
+		}
+		prerequisite = {
+			focus =GER_National_Socialism
+		}
+		prerequisite = {
+			focus =GER_Fuhrer_of_the_Workers
+		}
+		prerequisite = {
+			focus =GER_Fund_the_DPRK
+		}
+		relative_position_id = GER_empower_the_president
+		completion_reward = {
+			PRK ={
+				country_event = germany.112
+			}
+			create_faction = GER_Juche_Alliance_Faction
 		}
 	}
 	focus = {
@@ -4938,6 +8759,12 @@ focus_tree = {
 				idea = GER_second_night_of_the_long__knives
 				days = 365
 			}
+			if = {
+				limit = {
+					has_completed_focus = Querfrontist_GER
+				}
+				
+			}
 		}
 	}
 	focus = {
@@ -4948,6 +8775,11 @@ focus_tree = {
 		cost = @Time_100_days
 		prerequisite = {
 			focus =GER_second_night_of_the_long__knives
+		}
+		available = {
+			NOT = {
+				has_country_flag = GER_Fuhrer_Elsasser
+			}
 		}
 		relative_position_id = GER_second_night_of_the_long__knives
 		completion_reward = {
@@ -5145,6 +8977,11 @@ focus_tree = {
 		prerequisite = {
 			focus = GER_economic_rearmament
 		}
+		available = {
+			NOT = {
+				has_country_flag = GER_Fuhrer_Elsasser
+			}
+		}
 		relative_position_id =  GER_economic_rearmament
 		completion_reward = {
 			add_stability = -0.05
@@ -5256,6 +9093,11 @@ focus_tree = {
 		}
 		prerequisite = {
 			focus =GER_new_tactics_for_a_new_age
+		}
+		available = {
+			NOT = {
+				has_country_flag = GER_Fuhrer_Elsasser
+			}
 		}
 		relative_position_id = GER_update_the_bundeswehr
 		completion_reward = {

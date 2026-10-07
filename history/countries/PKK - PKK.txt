@@ -1,0 +1,292 @@
+﻿capital = 352
+
+
+
+set_research_slots = 3
+set_convoys = 20
+set_stability = 0.5
+
+
+set_rule = { #so they don't join chinese faction and cause ww3 early
+				can_join_factions = no
+}
+
+if = {
+	limit = {
+		NOT = { has_dlc = "No Step Back" }
+	}
+	set_technology = {
+	main_battle_tank1 = 1
+	main_battle_tank2 = 1
+	#main_battle_tank3 = 1
+	light_tank1 = 1
+	mechanised_infantry1 = 1
+	light_mechanized_infantry1 = 1
+	light_mechanized_infantry2 = 1
+	#mechanised_infantry2 = 1
+	}
+}
+if = {
+	limit = {
+		has_dlc = "No Step Back"
+	}
+	set_technology = {
+		IFV_chassis_80s = 1
+		IFV_chassis = 1
+		light_mechanized_infantry1 = 1
+		light_mechanized_infantry2 = 1
+		IFV_chassis_00s = 1
+		main_battle_tank_chassis = 1
+		main_battle_tank_chassis_80s = 1
+		#main_battle_tank_chassis_00s = 1
+	}
+	create_equipment_variant = {
+		name = "T-72M"
+		type = modern_tank_chassis_2
+		parent_version = 0
+		modules = {
+			main_armament_slot = tank_small_cannon
+			special_type_slot_1 = ergo_small
+			suspension_type_slot = tank_torsion_bar_suspension
+			armor_type_slot = tank_welded_armor
+			engine_type_slot = tank_diesel_engine
+			#special_type_slot_1 = tank_radio_1
+			optics_slot = tank_optics_1
+			special_type_slot_3 = auto_loader
+			
+			#atgm_slot = empty
+		}
+		upgrades = {
+			tank_nsb_armor_upgrade = 0
+			tank_nsb_engine_upgrade = 0
+		}
+		icon = "GFX_SOV_main_battle_tank2_medium"
+	}
+	create_equipment_variant = {
+		name = "BMP-2"
+		type = light_tank_chassis_1
+		parent_version = 0
+		modules = {
+			main_armament_slot = tank_auto_cannon
+			special_type_slot_1 = ergo_ifv_old
+			#turret_type_slot = tank_light_one_man_tank_turret
+			suspension_type_slot = tank_torsion_bar_suspension
+			armor_type_slot = tank_riveted_armor
+			engine_type_slot = tank_diesel_engine
+			#special_type_slot_1 = tank_radio_1
+			optics_slot = tank_optics_1
+			special_type_slot_4 = crew_compartment
+			atgm_slot = tank_atgm_1
+		}
+		upgrades = {
+			tank_nsb_armor_upgrade = 2
+			tank_nsb_engine_upgrade = 5
+		}
+		icon = "GFX_SOV_mechanised_infantry2_medium"
+	}
+	create_equipment_variant = {
+		name = "T-62"
+		type = modern_tank_chassis_1
+		parent_version = 0
+		modules = {
+			main_armament_slot = tank_small_cannon
+			special_type_slot_1 = ergo_old
+			suspension_type_slot = tank_torsion_bar_suspension
+			armor_type_slot = tank_welded_armor
+			engine_type_slot = tank_diesel_engine
+			#special_type_slot_1 = tank_radio_1
+			optics_slot = tank_optics_1
+			
+			#atgm_slot = empty
+		}
+		upgrades = {
+			tank_nsb_armor_upgrade = 0
+			tank_nsb_engine_upgrade = 0
+		}
+		obsolete = yes
+		icon = "GFX_SOV_main_battle_tank1_medium"
+	}
+	create_equipment_variant = {
+		name = "MT-LB"
+		type = light_tank_chassis_0
+		parent_version = 0
+		modules = {
+			main_armament_slot = tank_heavy_machine_gun
+			special_type_slot_1 = ergo_ifv_old
+			#turret_type_slot = tank_light_one_man_tank_turret
+			suspension_type_slot = tank_torsion_bar_suspension
+			armor_type_slot = tank_riveted_armor
+			engine_type_slot = tank_diesel_engine
+			#special_type_slot_1 = tank_radio_1
+			optics_slot = tank_optics_1
+			special_type_slot_4 = crew_compartment
+			#atgm_slot = empty
+		}
+		upgrades = {
+			tank_nsb_armor_upgrade = 0
+			tank_nsb_engine_upgrade = 0
+		}
+		obsolete = yes
+		icon = "GFX_SOV_mechanised_infantry1_medium"
+	}
+	create_equipment_variant = {
+		name = "PT-76"
+		type = light_tank_destroyer_chassis_1
+		parent_version = 0
+		modules = {
+			main_armament_slot = tank_auto_cannon
+			special_type_slot_1 = ergo_ifv_old
+			#turret_type_slot = tank_light_one_man_tank_turret
+			suspension_type_slot = tank_torsion_bar_suspension
+			armor_type_slot = tank_riveted_armor
+			engine_type_slot = tank_diesel_engine
+			#special_type_slot_1 = tank_radio_1
+			optics_slot = tank_optics_1
+			special_type_slot_4 = main_ammo_bay
+			#atgm_slot = empty
+		}
+		upgrades = {
+			tank_nsb_armor_upgrade = 1
+			tank_nsb_engine_upgrade = 1
+		}
+		obsolete = no
+		icon = "GFX_SOV_mechanised_infantry1_medium"
+	}
+}
+set_technology = {
+	## Infantry ##
+	infantry_weapons1 = 1
+	infantry_weapons2 = 1
+	
+
+	## Engineering ##
+	electronic_mechanical_engineering = 1
+	radio = 1
+	
+	
+	## Industry ##
+	basic_machine_tools = 1
+	basic_machine_tools = 1
+	fuel_silos = 1
+	fuel_refining = 1
+	
+
+}
+add_ideas = {
+	economy_growth
+	civil_liberties_totalitarian
+	population_growth_steady
+	limited_conscription
+	yalnizlik
+}
+
+
+#diplomatic_relation = { country = TUR relation = rival }
+
+
+
+
+	set_politics = {
+#1999 election results	
+	ruling_party = communist
+	last_election = "1999.4.18"
+	election_frequency = 60
+	elections_allowed = yes
+}
+
+set_popularities = {
+    social_liberal = 0
+    nationalist = 0
+    islamist = 0
+    market_liberal = 0
+    conservative = 0
+    social_democrat = 0
+    progressive =0
+    reactionary = 0
+    democratic_socialist = 0
+    communist = 100
+	fascist = 0
+}
+
+create_country_leader = {
+	name = "Abu Bakr al-Baghdadi"
+	picture = "Portrait_ISS_Abu_Bakr.dds"
+	expire = "2020.1.1"
+	ideology = islamic_authoritarian
+}
+create_country_leader = {
+	name = "Abu Bakr al-Baghdadi"
+	picture = "Portrait_ISS_Abu_Bakr.dds"
+	expire = "2020.1.1"
+	ideology = islamic_republican
+}
+create_country_leader = {
+	name = "Abu Bakr al-Baghdadi"
+	picture = "Portrait_ISS_Abu_Bakr.dds"
+	expire = "2020.1.1"
+	ideology = fascist_ideology
+}
+create_country_leader = {
+	name = "Abu Bakr al-Baghdadi"
+	picture = "Portrait_ISS_Abu_Bakr.dds"
+	expire = "2020.1.1"
+	ideology = national_democrat
+}
+create_country_leader = {
+	name = "Abu Bakr al-Baghdadi"
+	picture = "Portrait_ISS_Abu_Bakr.dds"
+	expire = "2020.1.1"
+	ideology = absolute_monarchist
+}
+create_country_leader = {
+	name = "Abu Bakr al-Baghdadi"
+	picture = "Portrait_ISS_Abu_Bakr.dds"
+	expire = "2020.1.1"
+	ideology = oligarchist
+}
+create_country_leader = {
+	name = "Abu Bakr al-Baghdadi"
+	picture = "Portrait_ISS_Abu_Bakr.dds"
+	expire = "2020.1.1"
+	ideology = constitutional_monarchist
+}
+create_country_leader = {
+	name = "Abu Bakr al-Baghdadi"
+	picture = "Portrait_ISS_Abu_Bakr.dds"
+	expire = "2020.1.1"
+	ideology = libertarian
+}
+create_country_leader = {
+	name = "Abu Bakr al-Baghdadi"
+	picture = "Portrait_ISS_Abu_Bakr.dds"
+	expire = "2020.1.1"
+	ideology = social_democrat_ideology
+}
+create_country_leader = {
+	name = "Abu Bakr al-Baghdadi"
+	picture = "Portrait_ISS_Abu_Bakr.dds"
+	expire = "2020.1.1"
+	ideology = centrist
+}
+create_country_leader = {
+	name = "Abu Bakr al-Baghdadi"
+	picture = "Portrait_ISS_Abu_Bakr.dds"
+	expire = "2020.1.1"
+	ideology = technocrats
+}
+create_country_leader = {
+	name = "Abu Bakr al-Baghdadi"
+	picture = "Portrait_ISS_Abu_Bakr.dds"
+	expire = "2020.1.1"
+	ideology = democratic_socialist_ideology
+}
+create_country_leader = {
+	name = "Abu Bakr al-Baghdadi"
+	picture = "Portrait_ISS_Abu_Bakr.dds"
+	expire = "2020.1.1"
+	ideology = stalinist
+}
+
+
+
+
