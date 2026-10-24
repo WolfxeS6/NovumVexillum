@@ -1,0 +1,195 @@
+UKR_monarchist_balance = {
+	initial_value = -0.75
+	left_side = UKR_brotherhood_side
+	right_side = UKR_monarchist_side
+	decision_category = UKR_monarchist_balance_category
+
+	### Contested
+	range = {
+		id = UKR_balance_contested_range
+		min = -0.1
+		max = 0.1
+		modifier = {
+				stability_factor = -0.02
+				political_advisor_cost_factor = 0.05
+		}
+		on_activate = {
+		}
+		on_deactivate = {
+		}
+	}
+
+	### The Brotherhood (entrenched)
+	side = {
+		id = UKR_brotherhood_side
+		icon = GFX_bop_ITA_pope_side
+
+		range = {
+			id = UKR_brotherhood_low_range
+			min = -0.3
+			max = -0.1
+			modifier = {
+					political_power_gain = -0.03
+					political_advisor_cost_factor = 0.05
+			}
+			on_activate = {
+			}
+			on_deactivate = {
+			}
+		}
+
+		range = {
+			id = UKR_brotherhood_medium_range
+			min = -0.6
+			max = -0.3
+			modifier = {
+					political_power_gain = -0.05
+					stability_factor = -0.02
+					political_advisor_cost_factor = 0.1
+					opinion_gain_monthly_factor = -0.05
+			}
+			on_activate = {
+			}
+			on_deactivate = {
+			}
+		}
+
+		range = {
+			id = UKR_brotherhood_high_range
+			min = -0.9
+			max = -0.6
+			modifier = {
+					political_power_gain = -0.08
+					stability_factor = -0.04
+					political_advisor_cost_factor = 0.15
+					research_speed_factor = -0.05
+					foreign_subversive_activites = 0.1
+					opinion_gain_monthly_factor = -0.1
+			}
+			on_activate = {
+			}
+			on_deactivate = {
+			}
+		}
+
+		range = {
+			id = UKR_brotherhood_total_range
+			min = -1
+			max = -0.9
+			modifier = {
+					stability_factor = 0.05
+					political_power_gain = 0.05
+					army_morale_factor = 0.1
+					drift_defence_factor = 0.1
+			}
+			on_activate = {
+				set_country_flag = UKR_monarchists_purged
+				clr_country_flag = UKR_monarchist_bop_active
+				remove_ideas = UKR_the_monarchists_gather_idea
+				set_politics = {
+					ruling_party = islamist
+					elections_allowed = no
+				}
+				custom_effect_tooltip = UKR_monarchists_purged_tt
+				set_power_balance_gfx = {
+					id = UKR_monarchist_balance
+					side = UKR_brotherhood_side
+					gfx = GFX_bop_ITA_pope_improved_side
+				}
+			}
+			on_deactivate = {
+				set_power_balance_gfx = {
+					id = UKR_monarchist_balance
+					side = UKR_brotherhood_side
+					gfx = GFX_bop_ITA_pope_side
+				}
+			}
+		}
+	}
+
+	### The monarchists (the player)
+	side = {
+		id = UKR_monarchist_side
+		icon = GFX_bop_ITA_king_umberto_side
+
+		range = {
+			id = UKR_monarchist_low_range
+			min = 0.1
+			max = 0.3
+			modifier = {
+					opinion_gain_monthly_factor = 0.05
+					political_advisor_cost_factor = -0.05
+					foreign_subversive_activites = 0.05
+			}
+			on_activate = {
+			}
+			on_deactivate = {
+			}
+		}
+
+		range = {
+			id = UKR_monarchist_medium_range
+			min = 0.3
+			max = 0.6
+			modifier = {
+					opinion_gain_monthly_factor = 0.1
+					trade_opinion_factor = 0.1
+					stability_factor = 0.02
+					army_morale_factor = -0.03
+			}
+			on_activate = {
+			}
+			on_deactivate = {
+			}
+		}
+
+		range = {
+			id = UKR_monarchist_high_range
+			min = 0.6
+			max = 0.9
+			modifier = {
+					opinion_gain_monthly_factor = 0.15
+					trade_opinion_factor = 0.15
+					stability_factor = 0.03
+					army_morale_factor = -0.05
+					foreign_subversive_activites = 0.1
+					political_power_gain = -0.05
+			}
+			on_activate = {
+			}
+			on_deactivate = {
+			}
+		}
+
+		range = {
+			id = UKR_monarchist_total_range
+			min = 0.9
+			max = 1
+			modifier = {
+					opinion_gain_monthly_factor = 0.2
+					trade_opinion_factor = 0.2
+					stability_factor = 0.05
+					army_morale_factor = -0.08
+					foreign_subversive_activites = 0.15
+					political_power_gain = -0.1
+			}
+			on_activate = {
+				set_country_flag = UKR_monarchist_coup_done
+				clr_country_flag = UKR_monarchist_bop_active
+				set_power_balance_gfx = {
+					id = UKR_monarchist_balance
+					side = UKR_monarchist_side
+					gfx = GFX_bop_ITA_king_umberto_improved_side
+				}
+				custom_effect_tooltip = UKR_monarchist_coup_tt
+			}
+			on_deactivate = {
+				set_power_balance_gfx = {
+					id = UKR_monarchist_balance
+					side = UKR_monarchist_side
+					gfx = GFX_bop_ITA_king_umberto_side
+				}
+			}
+		}
+	}
+}

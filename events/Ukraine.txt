@@ -1,79 +1,1505 @@
 ﻿add_namespace = ukraine
-add_namespace = news_UKR
+add_namespace = ukr_cw
 
-#Honor the Minsk Agreement?
 country_event = {
 	id = ukraine.1
 	title = ukraine.1.t
 	desc = ukraine.1.d
-	picture = GFX_report_event_ukrainian_civil_war
-	
-	fire_only_once = yes
-	
-	trigger = {
-		tag = UKR
-		country_exists = NOV
-		has_war_with = NOV
-		has_country_flag = ukraine_minsk_agreement
-	}
-	
-	mean_time_to_happen = {
-		days = 5
-	}
-	
-	option = {	#Peace takes priority.
-		name = ukraine.1.o1
-		NOV = { country_event = ukraine.2 }
-	
+	picture = GFX_report_event_generic_read_write
+
+	is_triggered_only = yes
+
+	option = {
+		name = ukraine.1.a
 		ai_chance = {
-			factor = 75
+			base = 80
+			modifier = {
+				add = 60
+				strength_ratio = {
+					tag = FROM
+					ratio < 0.5
+				}
+			}
+			modifier = {
+				add = 60
+				has_government = communist
+			}
+			modifier = {
+				factor = 0.5
+				strength_ratio = {
+					tag = FROM
+					ratio > 1.25
+				}
+			}
+			modifier = {
+				factor = 0.25
+				strength_ratio = {
+					tag = FROM
+					ratio > 1.75
+				}
+			}
+		}
+		FROM = {
+			country_event = {
+				id = ukraine.2
+				hours = 24
+			}			
 		}
 	}
-	
-	option = {	#No prisoners.
-		name = ukraine.1.o2
-		news_event = news.68
-	
+	option = {
+		name = ukraine.1.b
 		ai_chance = {
-			factor = 25
+			base = 20
 			modifier = {
-				is_historical_focus_on = yes
-				factor = 0
+				factor = 0.25
+				strength_ratio = {
+					tag = FROM
+					ratio < 0.5
+				}
+			}
+			modifier = {
+				add = 20
+				strength_ratio = {
+					tag = FROM
+					ratio > 1.25
+				}
+			}
+			modifier = {
+				add = 100
+				strength_ratio = {
+					tag = FROM
+					ratio > 1.75
+				}
+			}
+		}
+		FROM = {
+			country_event = {
+				id = ukraine.3
+				hours = 24
+			}	
+		}
+	}
+}
+
+country_event = {
+	id = ukraine.2
+	title = ukraine.2.t
+	desc = ukraine.2.d
+	picture = GFX_report_event_generic_read_write
+
+	is_triggered_only = yes
+
+	option = {
+		name = ukraine.2.a
+		ROOT = {
+			puppet = FROM
+		}
+	}
+}
+
+country_event = {
+	id = ukraine.3
+	title = ukraine.3.t
+	desc = ukraine.3.d
+	picture = GFX_report_event_generic_read_write
+
+	is_triggered_only = yes
+
+	option = {
+		name = ukraine.3.b
+		add_stability = 0.05
+		add_war_support = -0.05
+	}
+	option = {
+		name = ukraine.3.a
+
+		add_stability = -0.05
+		add_war_support = -0.05
+		add_political_power = -50
+		if = {
+			limit = {
+				AND = {
+					is_in_faction_with = FROM
+					is_faction_leader = yes
+				}
+			}
+			remove_from_faction = FROM
+		}
+		
+		ROOT = {
+			declare_war_on = {
+                target = FROM
+                type = topple_government
+            }
+		}
+	}
+}
+
+country_event = {
+	id = ukraine.4
+	title = ukraine.4.t
+	desc = ukraine.4.d
+	picture = GFX_report_event_generic_read_write
+
+	is_triggered_only = yes
+
+	option = {
+		name = ukraine.4.a
+		ai_chance = {
+			base = 100
+			modifier = {
+				add = 60
+				strength_ratio = {
+					tag = FROM
+					ratio < 0.5
+				}
+			}
+			modifier = {
+				add = 30
+				has_war = yes
+			}
+			modifier = {
+				factor = 0.5
+				strength_ratio = {
+					tag = FROM
+					ratio > 1.25
+				}
+			}
+			modifier = {
+				factor = 0.25
+				strength_ratio = {
+					tag = FROM
+					ratio > 1.75
+				}
+			}
+		}
+		FROM = {
+			country_event = {
+				id = ukraine.5
+				hours = 24
+			}
+		}
+	}
+	option = {
+		name = ukraine.4.b
+		ai_chance = {
+			base = 30
+			modifier = {
+				factor = 0.25
+				strength_ratio = {
+					tag = FROM
+					ratio < 0.5
+				}
+			}
+			modifier = {
+				add = 20
+				is_in_faction = yes
+			}
+			modifier = {
+				add = 20
+				strength_ratio = {
+					tag = FROM
+					ratio > 1.25
+				}
+			}
+			modifier = {
+				add = 100
+				strength_ratio = {
+					tag = FROM
+					ratio > 1.75
+				}
+			}
+		}
+		FROM = {
+			country_event = {
+				id = ukraine.6
+				hours = 24
 			}
 		}
 	}
 }
 
-#Novorossiya: Ukraine requests to uphold the ceasefire.
 country_event = {
-	id = ukraine.2
-	title = ukraine.2.t
-	desc = ukraine.2.d
-	picture = GFX_report_event_ukrainian_civil_war
-	
+	id = ukraine.5
+	title = ukraine.5.t
+	desc = ukraine.5.d
+	picture = GFX_report_event_generic_read_write
+
 	is_triggered_only = yes
-	
-	option = {	#We will cooperate.
-		name = ukraine.2.o1
-		white_peace = UKR
-		news_event = news.67
-	
-		ai_chance = {
-			factor = 75
+
+	option = {
+		name = ukraine.5.a
+		annex_country = {
+			target = FROM
+			transfer_troops = yes
+		}
+		add_political_power = 50
+		add_war_support = 0.05
+	}
+}
+
+country_event = {
+	id = ukraine.6
+	title = ukraine.6.t
+	desc = ukraine.6.d
+	picture = GFX_report_event_generic_read_write
+
+	is_triggered_only = yes
+
+	option = {
+		name = ukraine.6.a
+		add_stability = 0.05
+		add_war_support = -0.05
+		add_political_power = -25
+	}
+	option = {
+		name = ukraine.6.b
+		add_stability = -0.05
+		add_war_support = 0.05
+		add_political_power = -50
+		if = {
+			limit = {
+				is_in_faction_with = FROM
+				is_faction_leader = yes
+			}
+			remove_from_faction = FROM
+		}
+		else_if = {
+			limit = { is_in_faction_with = FROM }
+			leave_faction = yes
+		}
+		declare_war_on = {
+			target = FROM
+			type = annex_everything
 		}
 	}
-	
-	option = {	#Liberty or death!
-		name = ukraine.2.o2
-		add_political_power = 50
-		news_event = news.69
-	
+}
+
+country_event = {
+	id = ukraine.7
+	title = ukraine.7.t
+	desc = ukraine.7.d
+	picture = GFX_report_event_generic_read_write
+
+	is_triggered_only = yes
+
+	option = {
+		name = ukraine.7.a
 		ai_chance = {
-			factor = 25
+			base = 60
 			modifier = {
-				is_historical_focus_on = yes
-				factor = 0
+				add = 60
+				strength_ratio = {
+					tag = FROM
+					ratio < 0.5
+				}
 			}
+			modifier = {
+				add = 30
+				has_war = yes
+			}
+			modifier = {
+				factor = 0.5
+				strength_ratio = {
+					tag = FROM
+					ratio > 1.25
+				}
+			}
+			modifier = {
+				factor = 0.25
+				strength_ratio = {
+					tag = FROM
+					ratio > 1.75
+				}
+			}
+		}
+		FROM = {
+			country_event = {
+				id = ukraine.8
+				hours = 24
+			}
+		}
+	}
+	option = {
+		name = ukraine.7.b
+		ai_chance = {
+			base = 60
+			modifier = {
+				factor = 0.25
+				strength_ratio = {
+					tag = FROM
+					ratio < 0.5
+				}
+			}
+			modifier = {
+				add = 50
+				is_in_faction = yes
+			}
+			modifier = {
+				add = 20
+				strength_ratio = {
+					tag = FROM
+					ratio > 1.25
+				}
+			}
+			modifier = {
+				add = 100
+				strength_ratio = {
+					tag = FROM
+					ratio > 1.75
+				}
+			}
+		}
+		FROM = {
+			country_event = {
+				id = ukraine.9
+				hours = 24
+			}
+		}
+	}
+}
+
+country_event = {
+	id = ukraine.8
+	title = ukraine.8.t
+	desc = ukraine.8.d
+	picture = GFX_report_event_generic_read_write
+
+	is_triggered_only = yes
+
+	option = {
+		name = ukraine.8.a
+		UKR_cede_poland_claims = yes
+		add_political_power = 50
+		add_war_support = 0.05
+	}
+}
+
+country_event = {
+	id = ukraine.9
+	title = ukraine.9.t
+	desc = ukraine.9.d
+	picture = GFX_report_event_generic_read_write
+
+	is_triggered_only = yes
+
+	option = {
+		name = ukraine.9.a
+		add_stability = 0.05
+		add_war_support = -0.05
+		add_political_power = -25
+	}
+	option = {
+		name = ukraine.9.b
+		add_stability = -0.05
+		add_war_support = 0.05
+		add_political_power = -50
+		if = {
+			limit = {
+				is_in_faction_with = FROM
+				is_faction_leader = yes
+			}
+			remove_from_faction = FROM
+		}
+		else_if = {
+			limit = { is_in_faction_with = FROM }
+			leave_faction = yes
+		}
+		declare_war_on = {
+			target = FROM
+			type = topple_government
+		}
+	}
+}
+
+country_event = {
+	id = ukraine.10
+	title = ukraine.10.t
+	desc = ukraine.10.d
+	picture = GFX_report_event_generic_read_write
+
+	is_triggered_only = yes
+
+	option = {
+		name = ukraine.10.a
+		ai_chance = {
+			base = 80
+			modifier = {
+				add = 60
+				strength_ratio = {
+					tag = FROM
+					ratio < 0.5
+				}
+			}
+			modifier = {
+				add = 30
+				has_war = yes
+			}
+			modifier = {
+				factor = 0.5
+				strength_ratio = {
+					tag = FROM
+					ratio > 1.25
+				}
+			}
+			modifier = {
+				factor = 0.25
+				strength_ratio = {
+					tag = FROM
+					ratio > 1.75
+				}
+			}
+		}
+		FROM = {
+			country_event = {
+				id = ukraine.11
+				hours = 24
+			}
+		}
+	}
+	option = {
+		name = ukraine.10.b
+		ai_chance = {
+			base = 40
+			modifier = {
+				factor = 0.25
+				strength_ratio = {
+					tag = FROM
+					ratio < 0.5
+				}
+			}
+			modifier = {
+				add = 30
+				is_in_faction = yes
+			}
+			modifier = {
+				add = 20
+				strength_ratio = {
+					tag = FROM
+					ratio > 1.25
+				}
+			}
+			modifier = {
+				add = 100
+				strength_ratio = {
+					tag = FROM
+					ratio > 1.75
+				}
+			}
+		}
+		FROM = {
+			country_event = {
+				id = ukraine.12
+				hours = 24
+			}
+		}
+	}
+}
+
+country_event = {
+	id = ukraine.11
+	title = ukraine.11.t
+	desc = ukraine.11.d
+	picture = GFX_report_event_generic_read_write
+
+	is_triggered_only = yes
+
+	option = {
+		name = ukraine.11.a
+		UKR_cede_belarus_claims = yes
+		add_political_power = 50
+		add_war_support = 0.05
+	}
+}
+
+country_event = {
+	id = ukraine.12
+	title = ukraine.12.t
+	desc = ukraine.12.d
+	picture = GFX_report_event_generic_read_write
+
+	is_triggered_only = yes
+
+	option = {
+		name = ukraine.12.a
+		add_stability = 0.05
+		add_war_support = -0.05
+		add_political_power = -25
+	}
+	option = {
+		name = ukraine.12.b
+		add_stability = -0.05
+		add_war_support = 0.05
+		add_political_power = -50
+		if = {
+			limit = {
+				is_in_faction_with = FROM
+				is_faction_leader = yes
+			}
+			remove_from_faction = FROM
+		}
+		else_if = {
+			limit = { is_in_faction_with = FROM }
+			leave_faction = yes
+		}
+		declare_war_on = {
+			target = FROM
+			type = topple_government
+		}
+	}
+}
+
+country_event = {
+	id = ukraine.13
+	title = ukraine.13.t
+	desc = ukraine.13.d
+	picture = GFX_report_event_generic_read_write
+
+	is_triggered_only = yes
+
+	option = {
+		name = ukraine.13.a
+		ai_chance = {
+			base = 70
+			modifier = {
+				add = 60
+				strength_ratio = {
+					tag = FROM
+					ratio < 0.5
+				}
+			}
+			modifier = {
+				add = 30
+				has_war = yes
+			}
+			modifier = {
+				factor = 0.5
+				strength_ratio = {
+					tag = FROM
+					ratio > 1.25
+				}
+			}
+			modifier = {
+				factor = 0.25
+				strength_ratio = {
+					tag = FROM
+					ratio > 1.75
+				}
+			}
+		}
+		FROM = {
+			country_event = {
+				id = ukraine.14
+				hours = 24
+			}
+		}
+	}
+	option = {
+		name = ukraine.13.b
+		ai_chance = {
+			base = 40
+			modifier = {
+				factor = 0.25
+				strength_ratio = {
+					tag = FROM
+					ratio < 0.5
+				}
+			}
+			modifier = {
+				add = 50
+				is_in_faction = yes
+			}
+			modifier = {
+				add = 20
+				strength_ratio = {
+					tag = FROM
+					ratio > 1.25
+				}
+			}
+			modifier = {
+				add = 100
+				strength_ratio = {
+					tag = FROM
+					ratio > 1.75
+				}
+			}
+		}
+		FROM = {
+			country_event = {
+				id = ukraine.15
+				hours = 24
+			}
+		}
+	}
+}
+
+country_event = {
+	id = ukraine.14
+	title = ukraine.14.t
+	desc = ukraine.14.d
+	picture = GFX_report_event_generic_read_write
+
+	is_triggered_only = yes
+
+	option = {
+		name = ukraine.14.a
+		UKR_cede_slovakia_claims = yes
+		add_political_power = 50
+		add_war_support = 0.05
+	}
+}
+
+country_event = {
+	id = ukraine.15
+	title = ukraine.15.t
+	desc = ukraine.15.d
+	picture = GFX_report_event_generic_read_write
+
+	is_triggered_only = yes
+
+	option = {
+		name = ukraine.15.a
+		add_stability = 0.05
+		add_war_support = -0.05
+		add_political_power = -25
+	}
+	option = {
+		name = ukraine.15.b
+		add_stability = -0.05
+		add_war_support = 0.05
+		add_political_power = -50
+		if = {
+			limit = {
+				is_in_faction_with = FROM
+				is_faction_leader = yes
+			}
+			remove_from_faction = FROM
+		}
+		else_if = {
+			limit = { is_in_faction_with = FROM }
+			leave_faction = yes
+		}
+		declare_war_on = {
+			target = FROM
+			type = topple_government
+		}
+	}
+}
+
+########################################
+### ROMANIA
+########################################
+
+country_event = {
+	id = ukraine.16
+	title = ukraine.16.t
+	desc = ukraine.16.d
+	picture = GFX_report_event_generic_read_write
+
+	is_triggered_only = yes
+
+	option = {
+		name = ukraine.16.a
+		ai_chance = {
+			base = 60
+			modifier = {
+				add = 60
+				strength_ratio = {
+					tag = FROM
+					ratio < 0.5
+				}
+			}
+			modifier = {
+				add = 30
+				has_war = yes
+			}
+			modifier = {
+				factor = 0.5
+				strength_ratio = {
+					tag = FROM
+					ratio > 1.25
+				}
+			}
+			modifier = {
+				factor = 0.25
+				strength_ratio = {
+					tag = FROM
+					ratio > 1.75
+				}
+			}
+		}
+		FROM = {
+			country_event = {
+				id = ukraine.17
+				hours = 24
+			}
+		}
+	}
+	option = {
+		name = ukraine.16.b
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 0.25
+				strength_ratio = {
+					tag = FROM
+					ratio < 0.5
+				}
+			}
+			modifier = {
+				add = 50
+				is_in_faction = yes
+			}
+			modifier = {
+				add = 20
+				strength_ratio = {
+					tag = FROM
+					ratio > 1.25
+				}
+			}
+			modifier = {
+				add = 100
+				strength_ratio = {
+					tag = FROM
+					ratio > 1.75
+				}
+			}
+		}
+		FROM = {
+			country_event = {
+				id = ukraine.18
+				hours = 24
+			}
+		}
+	}
+}
+
+country_event = {
+	id = ukraine.17
+	title = ukraine.17.t
+	desc = ukraine.17.d
+	picture = GFX_report_event_generic_read_write
+
+	is_triggered_only = yes
+
+	option = {
+		name = ukraine.17.a
+		UKR_cede_romania_claims = yes
+		add_political_power = 50
+		add_war_support = 0.05
+	}
+}
+
+country_event = {
+	id = ukraine.18
+	title = ukraine.18.t
+	desc = ukraine.18.d
+	picture = GFX_report_event_generic_read_write
+
+	is_triggered_only = yes
+
+	option = {
+		name = ukraine.18.a
+		add_stability = 0.05
+		add_war_support = -0.05
+		add_political_power = -25
+	}
+	option = {
+		name = ukraine.18.b
+		add_stability = -0.05
+		add_war_support = 0.05
+		add_political_power = -50
+		if = {
+			limit = {
+				is_in_faction_with = FROM
+				is_faction_leader = yes
+			}
+			remove_from_faction = FROM
+		}
+		else_if = {
+			limit = { is_in_faction_with = FROM }
+			leave_faction = yes
+		}
+		declare_war_on = {
+			target = FROM
+			type = topple_government
+		}
+	}
+}
+
+country_event = {
+	id = ukraine.19
+	title = ukraine.19.t
+	desc = ukraine.19.d
+	picture = GFX_report_event_generic_read_write
+
+	is_triggered_only = yes
+
+	option = {
+		name = ukraine.19.a
+		ai_chance = {
+			base = 30
+			modifier = {
+				add = 60
+				strength_ratio = {
+					tag = FROM
+					ratio < 0.5
+				}
+			}
+			modifier = {
+				add = 30
+				has_war = yes
+			}
+			modifier = {
+				factor = 0.5
+				strength_ratio = {
+					tag = FROM
+					ratio > 1.25
+				}
+			}
+			modifier = {
+				factor = 0.25
+				strength_ratio = {
+					tag = FROM
+					ratio > 1.75
+				}
+			}
+		}
+		FROM = {
+			country_event = {
+				id = ukraine.20
+				hours = 24
+			}
+		}
+	}
+	option = {
+		name = ukraine.19.b
+		ai_chance = {
+			base = 100
+			modifier = {
+				factor = 0.25
+				strength_ratio = {
+					tag = FROM
+					ratio < 0.5
+				}
+			}
+			modifier = {
+				add = 40
+				is_in_faction = yes
+			}
+			modifier = {
+				add = 20
+				strength_ratio = {
+					tag = FROM
+					ratio > 1.25
+				}
+			}
+			modifier = {
+				add = 100
+				strength_ratio = {
+					tag = FROM
+					ratio > 1.75
+				}
+			}
+		}
+		FROM = {
+			country_event = {
+				id = ukraine.21
+				hours = 24
+			}
+		}
+	}
+}
+
+country_event = {
+	id = ukraine.20
+	title = ukraine.20.t
+	desc = ukraine.20.d
+	picture = GFX_report_event_generic_read_write
+
+	is_triggered_only = yes
+
+	option = {
+		name = ukraine.20.a
+		UKR_cede_russia_claims = yes
+		add_political_power = 50
+		add_war_support = 0.05
+	}
+}
+
+country_event = {
+	id = ukraine.21
+	title = ukraine.21.t
+	desc = ukraine.21.d
+	picture = GFX_report_event_generic_read_write
+
+	is_triggered_only = yes
+
+	option = {
+		name = ukraine.21.a
+		add_stability = 0.05
+		add_war_support = -0.05
+		add_political_power = -25
+	}
+	option = {
+		name = ukraine.21.b
+		add_stability = -0.05
+		add_war_support = 0.05
+		add_political_power = -50
+		if = {
+			limit = {
+				is_in_faction_with = FROM
+				is_faction_leader = yes
+			}
+			remove_from_faction = FROM
+		}
+		else_if = {
+			limit = { is_in_faction_with = FROM }
+			leave_faction = yes
+		}
+		declare_war_on = {
+			target = FROM
+			type = topple_government
+		}
+	}
+}
+
+country_event = {
+	id = ukraine.22
+	title = ukraine.22.t
+	desc = ukraine.22.d
+	picture = GFX_report_event_generic_read_write
+
+	is_triggered_only = yes
+
+	option = {
+		name = ukraine.22.a
+
+		promote_character = UKR_dyrektoriya
+		set_party_name = {
+			ideology = nationalist
+			long_name = UKR_directorate_party_long
+			name = UKR_directorate_party
+		}
+		country_event = {
+			id = ukraine.23
+			days = 3
+		}
+	}
+}
+
+country_event = {
+	id = ukraine.23
+	title = ukraine.23.t
+	desc = ukraine.23.d
+	picture = GFX_report_event_generic_read_write
+
+	is_triggered_only = yes
+
+	option = {
+		name = ukraine.23.a
+		ai_chance = {
+			base = 50
+		}
+		set_country_flag = UKR_chose_shkil
+		custom_effect_tooltip = UKR_unlock_shkil_path_tt
+	}
+	option = {
+		name = ukraine.23.b
+		ai_chance = {
+			base = 50
+		}
+		set_country_flag = UKR_chose_tyahnybok
+		custom_effect_tooltip = UKR_unlock_tyahnybok_path_tt
+	}
+}
+
+country_event = {
+	id = ukraine.24
+	title = ukraine.24.t
+	desc = ukraine.24.d
+	picture = GFX_report_event_generic_read_write
+
+	is_triggered_only = yes
+
+	option = {
+		name = ukraine.24.a
+		ai_chance = {
+			base = 50
+			modifier = {
+				add = 30
+				strength_ratio = {
+					tag = FROM
+					ratio < 0.5
+				}
+			}
+			modifier = {
+				add = 20
+				has_war = yes
+			}
+			modifier = {
+				add = 20
+				has_government = fascist
+			}
+			modifier = {
+				factor = 0.5
+				strength_ratio = {
+					tag = FROM
+					ratio > 1.25
+				}
+			}
+			modifier = {
+				factor = 0.25
+				strength_ratio = {
+					tag = FROM
+					ratio > 1.75
+				}
+			}
+		}
+		if = {
+			limit = {
+				is_in_faction = no
+				FROM = { is_faction_leader = yes }
+			}
+			FROM = { add_to_faction = ROOT }
+		}
+		FROM = {
+			country_event = {
+				id = ukraine.25
+				hours = 24
+			}
+		}
+	}
+	option = {
+		name = ukraine.24.b
+		ai_chance = {
+			base = 50
+			modifier = {
+				add = 30
+				strength_ratio = {
+					tag = FROM
+					ratio > 1.25
+				}
+			}
+			modifier = {
+				add = 20
+				is_in_faction = yes
+			}
+			modifier = {
+				factor = 0.25
+				strength_ratio = {
+					tag = FROM
+					ratio < 0.5
+				}
+			}
+		}
+		FROM = {
+			country_event = {
+				id = ukraine.26
+				hours = 24
+			}
+		}
+	}
+}
+
+country_event = {
+	id = ukraine.25
+	title = ukraine.25.t
+	desc = ukraine.25.d
+	picture = GFX_report_event_generic_read_write
+
+	is_triggered_only = yes
+
+	option = {
+		name = ukraine.25.a
+		add_political_power = 25
+	}
+}
+
+country_event = {
+	id = ukraine.26
+	title = ukraine.26.t
+	desc = ukraine.26.d
+	picture = GFX_report_event_generic_read_write
+
+	is_triggered_only = yes
+
+	option = {
+		name = ukraine.26.a
+	}
+}
+
+country_event = {
+	id = ukraine.27
+	title = ukraine.27.t
+	desc = ukraine.27.desc
+	picture = GFX_report_event_generic_read_write
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = UKR
+		has_country_flag = UKR_far_right_coup_done
+		NOT = { any_enemy_country = { has_country_flag = UKR_cw_rebels } }
+	}
+
+	mean_time_to_happen = {
+		days = 3
+	}
+
+	immediate = {
+		set_country_flag = UKR_cw_over
+		promote_character = UKR_andriy_shkil
+	}
+
+	option = {
+		name = ukraine.27.a
+		set_politics = {
+			ruling_party = fascist
+			elections_allowed = no
+		}
+	}
+	option = {
+		name = ukraine.27.b
+		set_politics = {
+			ruling_party = nationalist
+			elections_allowed = no
+		}
+	}
+	option = {
+		name = ukraine.27.c
+		set_politics = {
+			ruling_party = monarchist
+			elections_allowed = no
+		}
+	}
+	option = {
+		name = ukraine.27.d
+		set_politics = {
+			ruling_party = islamist
+			elections_allowed = no
+		}
+	}
+}
+
+country_event = {
+	id = ukraine.28
+	title = ukraine.28.t
+	desc = ukraine.28.desc
+	picture = GFX_report_event_generic_read_write
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	immediate = {
+		set_country_flag = UKR_monarchist_coup_done
+	}
+
+	option = {
+		name = ukraine.28.a
+		custom_effect_tooltip = UKR_monarchist_coup_tt
+		set_politics = {
+			ruling_party = monarchist
+			elections_allowed = no
+		}
+		add_popularity = {
+			ideology = monarchist
+			popularity = 0.25
+		}
+		add_popularity = {
+			ideology = islamist
+			popularity = -0.2
+		}
+		add_political_power = 150
+		if = {
+			limit = { has_idea = UKR_the_monarchists_gather_idea }
+			remove_ideas = UKR_the_monarchists_gather_idea
+		}
+		add_timed_idea = {
+			idea = UKR_the_crown_seized_idea
+			days = 365
+		}
+		load_focus_tree = {
+			tree = ukraine_focus_tree
+			keep_completed = yes
+		}
+	}
+}
+
+country_event = {
+	id = ukraine.30
+	title = ukraine.30.t
+	desc = ukraine.30.desc
+	picture = GFX_report_event_generic_read_write
+
+	is_triggered_only = yes
+
+	option = {
+		name = ukraine.30.a
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 10
+				has_government = monarchist
+			}
+		}
+		UKR = { puppet = ROOT }
+		if = {
+			limit = { UKR = { has_country_flag = UKR_austria_ukraine_formed } }
+			UKR = { add_to_faction = ROOT }
+		}
+		UKR = { add_political_power = 50 }
+	}
+	option = {
+		name = ukraine.30.b
+		ai_chance = {
+			base = 1
+		}
+		UKR = {
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = ROOT
+			}
+			add_named_threat = {
+				threat = 1
+				name = UKR_danube_threat
+			}
+		}
+		add_stability = 0.05
+	}
+}
+
+country_event = {
+	id = ukraine.31
+	title = ukraine.31.t
+	desc = ukraine.31.desc
+	picture = GFX_report_event_generic_read_write
+
+	is_triggered_only = yes
+
+	option = {
+		name = ukraine.31.a
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 10
+				has_government = monarchist
+			}
+		}
+		UKR = { puppet = ROOT }
+		if = {
+			limit = { UKR = { has_country_flag = UKR_austria_ukraine_formed } }
+			UKR = { add_to_faction = ROOT }
+		}
+		UKR = { add_political_power = 50 }
+	}
+	option = {
+		name = ukraine.31.b
+		ai_chance = {
+			base = 1
+		}
+		UKR = {
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = ROOT
+			}
+			add_named_threat = {
+				threat = 1
+				name = UKR_danube_threat
+			}
+		}
+		add_stability = 0.05
+	}
+}
+
+country_event = {
+	id = ukraine.32
+	title = ukraine.32.t
+	desc = ukraine.32.desc
+	picture = GFX_report_event_generic_read_write
+
+	is_triggered_only = yes
+
+	option = {
+		name = ukraine.32.a
+		ai_chance = {
+			base = 40
+			modifier = {
+				add = 10
+				party_popularity = {
+					ideology = monarchist
+					popularity > 0.30
+				}
+			}
+			modifier = {
+				add = 10
+				party_popularity = {
+					ideology = monarchist
+					popularity > 0.35
+				}
+			}
+			modifier = {
+				add = 10
+				party_popularity = {
+					ideology = monarchist
+					popularity > 0.40
+				}
+			}
+			modifier = {
+				add = 10
+				party_popularity = {
+					ideology = monarchist
+					popularity > 0.45
+				}
+			}
+			modifier = {
+				add = 10
+				party_popularity = {
+					ideology = monarchist
+					popularity > 0.50
+				}
+			}
+			modifier = {
+				add = 10
+				party_popularity = {
+					ideology = monarchist
+					popularity > 0.55
+				}
+			}
+			modifier = {
+				add = 10
+				party_popularity = {
+					ideology = monarchist
+					popularity > 0.60
+				}
+			}
+		}
+		set_politics = {
+			ruling_party = monarchist
+			elections_allowed = no
+		}
+		add_popularity = {
+			ideology = monarchist
+			popularity = 0.3
+		}
+		add_political_power = 100
+		if = {
+			limit = { has_idea = UKR_aus_monarchist_agitation_idea }
+			remove_ideas = UKR_aus_monarchist_agitation_idea
+		}
+		if = {
+			limit = { has_idea = UKR_aus_royalist_tide_idea }
+			remove_ideas = UKR_aus_royalist_tide_idea
+		}
+		if = {
+			limit = { has_idea = UKR_aus_loyalist_officers_idea }
+			remove_ideas = UKR_aus_loyalist_officers_idea
+		}
+	}
+	option = {
+		name = ukraine.32.b
+		ai_chance = {
+			base = 60
+		}
+		start_civil_war = {
+			ideology = monarchist
+			size = 0.5
+		}
+	}
+}
+
+country_event = {
+	id = ukraine.33
+	title = ukraine.33.t
+	desc = ukraine.33.desc
+	picture = GFX_report_event_generic_read_write
+
+	is_triggered_only = yes
+
+	option = {
+		name = ukraine.33.a
+		ai_chance = {
+			base = 40
+			modifier = {
+				add = 10
+				party_popularity = {
+					ideology = monarchist
+					popularity > 0.30
+				}
+			}
+			modifier = {
+				add = 10
+				party_popularity = {
+					ideology = monarchist
+					popularity > 0.35
+				}
+			}
+			modifier = {
+				add = 10
+				party_popularity = {
+					ideology = monarchist
+					popularity > 0.40
+				}
+			}
+			modifier = {
+				add = 10
+				party_popularity = {
+					ideology = monarchist
+					popularity > 0.45
+				}
+			}
+			modifier = {
+				add = 10
+				party_popularity = {
+					ideology = monarchist
+					popularity > 0.50
+				}
+			}
+			modifier = {
+				add = 10
+				party_popularity = {
+					ideology = monarchist
+					popularity > 0.55
+				}
+			}
+			modifier = {
+				add = 10
+				party_popularity = {
+					ideology = monarchist
+					popularity > 0.60
+				}
+			}
+		}
+		set_politics = {
+			ruling_party = monarchist
+			elections_allowed = no
+		}
+		add_popularity = {
+			ideology = monarchist
+			popularity = 0.3
+		}
+		add_political_power = 100
+		if = {
+			limit = { has_idea = UKR_hun_monarchist_agitation_idea }
+			remove_ideas = UKR_hun_monarchist_agitation_idea
+		}
+		if = {
+			limit = { has_idea = UKR_hun_royalist_tide_idea }
+			remove_ideas = UKR_hun_royalist_tide_idea
+		}
+		if = {
+			limit = { has_idea = UKR_hun_regency_nostalgia_idea }
+			remove_ideas = UKR_hun_regency_nostalgia_idea
+		}
+	}
+	option = {
+		name = ukraine.33.b
+		ai_chance = {
+			base = 60
+		}
+		start_civil_war = {
+			ideology = monarchist
+			size = 0.5
 		}
 	}
 }

@@ -1,0 +1,1951 @@
+UKR_shkil_insurgency = {
+
+	UKR_send_volunteers_kuban = {
+		allowed = { original_tag = UKR }
+		visible = {
+			has_country_flag = UKR_shkil_kuban_network
+			NOT = { has_country_flag = UKR_kuban_republic_created }
+		}
+		available = {
+			has_country_flag = UKR_shkil_insurgency_active
+		}
+		cost = 25
+		days_re_enable = 20
+		complete_effect = {
+			custom_effect_tooltip = UKR_ins_send_kuban_tt
+			hidden_effect = {
+				add_manpower = -1000
+				add_to_variable = { UKR_insurgency_kuban = 8 }
+				clamp_variable = {
+					var = UKR_insurgency_kuban
+					min = 0
+					max = 100
+				}
+			}
+			army_experience = 2
+		}
+		ai_will_do = { factor = 1 }
+	}
+
+	UKR_fund_partisans_kuban = {
+		allowed = { original_tag = UKR }
+		visible = {
+			has_country_flag = UKR_shkil_kuban_network
+			NOT = { has_country_flag = UKR_kuban_republic_created }
+		}
+		available = {
+			has_country_flag = UKR_shkil_insurgency_active
+		}
+		cost = 40
+		days_re_enable = 30
+		complete_effect = {
+			custom_effect_tooltip = UKR_ins_fund_kuban_tt
+			hidden_effect = {
+				add_to_variable = { UKR_insurgency_kuban = 6 }
+				clamp_variable = {
+					var = UKR_insurgency_kuban
+					min = 0
+					max = 100
+				}
+				if = {
+					limit = { country_exists = SOV }
+					SOV = { add_stability = -0.01 }
+				}
+			}
+		}
+		ai_will_do = { factor = 1 }
+	}
+
+	UKR_stir_separatism_kuban = {
+		allowed = { original_tag = UKR }
+		visible = {
+			has_country_flag = UKR_shkil_kuban_rada
+			NOT = { has_country_flag = UKR_kuban_republic_created }
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = UKR_insurgency_25_tt_kuban
+				check_variable = { UKR_insurgency_kuban > 24 }
+			}
+		}
+		cost = 50
+		fire_only_once = yes
+		complete_effect = {
+			custom_effect_tooltip = UKR_ins_stir_kuban_tt
+			hidden_effect = {
+				add_to_variable = { UKR_insurgency_kuban = 15 }
+				clamp_variable = {
+					var = UKR_insurgency_kuban
+					min = 0
+					max = 100
+				}
+				set_country_flag = UKR_kuban_separatism
+				add_named_threat = {
+					threat = 0.5
+					name = UKR_insurgency_threat
+				}
+			}
+		}
+		ai_will_do = { factor = 1 }
+	}
+
+	UKR_proclaim_republic_kuban = {
+		allowed = { original_tag = UKR }
+		visible = {
+			has_country_flag = UKR_shkil_kuban_ready
+			NOT = { has_country_flag = UKR_kuban_republic_created }
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = UKR_insurgency_60_tt_kuban
+				check_variable = { UKR_insurgency_kuban > 59 }
+			}
+			custom_trigger_tooltip = {
+				tooltip = UKR_separatism_tt_kuban
+				has_country_flag = UKR_kuban_separatism
+			}
+		}
+		cost = 75
+		fire_only_once = yes
+		complete_effect = {
+			custom_effect_tooltip = UKR_ins_proclaim_kuban_tt
+			hidden_effect = {
+				UKR_create_peoples_republic_kuban = yes
+				set_country_flag = UKR_kuban_republic_created
+			}
+		}
+		ai_will_do = { factor = 1 }
+	}
+
+	UKR_answer_the_call_kuban = {
+		allowed = { original_tag = UKR }
+		visible = {
+			has_country_flag = UKR_kuban_republic_created
+			has_country_flag = UKR_shkil_call_for_protection
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = UKR_insurgency_75_tt_kuban
+				check_variable = { UKR_insurgency_kuban > 74 }
+			}
+		}
+		cost = 100
+		fire_only_once = yes
+		complete_effect = {
+			custom_effect_tooltip = UKR_ins_answer_kuban_tt
+			hidden_effect = {
+				if = {
+					limit = { country_exists = SOV }
+					create_wargoal = {
+						type = topple_government
+						target = SOV
+					}
+				}
+			}
+		}
+		ai_will_do = { factor = 1 }
+	}
+
+	UKR_send_volunteers_don = {
+		allowed = { original_tag = UKR }
+		visible = {
+			has_country_flag = UKR_shkil_don_network
+			NOT = { has_country_flag = UKR_don_republic_created }
+		}
+		available = {
+			has_country_flag = UKR_shkil_insurgency_active
+		}
+		cost = 25
+		days_re_enable = 20
+		complete_effect = {
+			custom_effect_tooltip = UKR_ins_send_don_tt
+			hidden_effect = {
+				add_manpower = -1000
+				add_to_variable = { UKR_insurgency_don = 8 }
+				clamp_variable = {
+					var = UKR_insurgency_don
+					min = 0
+					max = 100
+				}
+			}
+			army_experience = 2
+		}
+		ai_will_do = { factor = 1 }
+	}
+
+	UKR_fund_partisans_don = {
+		allowed = { original_tag = UKR }
+		visible = {
+			has_country_flag = UKR_shkil_don_network
+			NOT = { has_country_flag = UKR_don_republic_created }
+		}
+		available = {
+			has_country_flag = UKR_shkil_insurgency_active
+		}
+		cost = 40
+		days_re_enable = 30
+		complete_effect = {
+			custom_effect_tooltip = UKR_ins_fund_don_tt
+			hidden_effect = {
+				add_to_variable = { UKR_insurgency_don = 6 }
+				clamp_variable = {
+					var = UKR_insurgency_don
+					min = 0
+					max = 100
+				}
+				if = {
+					limit = { country_exists = SOV }
+					SOV = { add_stability = -0.01 }
+				}
+			}
+		}
+		ai_will_do = { factor = 1 }
+	}
+
+	UKR_stir_separatism_don = {
+		allowed = { original_tag = UKR }
+		visible = {
+			has_country_flag = UKR_shkil_don_rada
+			NOT = { has_country_flag = UKR_don_republic_created }
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = UKR_insurgency_25_tt_don
+				check_variable = { UKR_insurgency_don > 24 }
+			}
+		}
+		cost = 50
+		fire_only_once = yes
+		complete_effect = {
+			custom_effect_tooltip = UKR_ins_stir_don_tt
+			hidden_effect = {
+				add_to_variable = { UKR_insurgency_don = 15 }
+				clamp_variable = {
+					var = UKR_insurgency_don
+					min = 0
+					max = 100
+				}
+				set_country_flag = UKR_don_separatism
+				add_named_threat = {
+					threat = 0.5
+					name = UKR_insurgency_threat
+				}
+			}
+		}
+		ai_will_do = { factor = 1 }
+	}
+
+	UKR_proclaim_republic_don = {
+		allowed = { original_tag = UKR }
+		visible = {
+			has_country_flag = UKR_shkil_don_ready
+			NOT = { has_country_flag = UKR_don_republic_created }
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = UKR_insurgency_60_tt_don
+				check_variable = { UKR_insurgency_don > 59 }
+			}
+			custom_trigger_tooltip = {
+				tooltip = UKR_separatism_tt_don
+				has_country_flag = UKR_don_separatism
+			}
+		}
+		cost = 75
+		fire_only_once = yes
+		complete_effect = {
+			custom_effect_tooltip = UKR_ins_proclaim_don_tt
+			hidden_effect = {
+				UKR_create_peoples_republic_don = yes
+				set_country_flag = UKR_don_republic_created
+			}
+		}
+		ai_will_do = { factor = 1 }
+	}
+
+	UKR_answer_the_call_don = {
+		allowed = { original_tag = UKR }
+		visible = {
+			has_country_flag = UKR_don_republic_created
+			has_country_flag = UKR_shkil_call_for_protection
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = UKR_insurgency_75_tt_don
+				check_variable = { UKR_insurgency_don > 74 }
+			}
+		}
+		cost = 100
+		fire_only_once = yes
+		complete_effect = {
+			custom_effect_tooltip = UKR_ins_answer_don_tt
+			hidden_effect = {
+				if = {
+					limit = { country_exists = SOV }
+					create_wargoal = {
+						type = topple_government
+						target = SOV
+					}
+				}
+			}
+		}
+		ai_will_do = { factor = 1 }
+	}
+
+	UKR_send_volunteers_idelural = {
+		allowed = { original_tag = UKR }
+		visible = {
+			has_country_flag = UKR_shkil_idelural_network
+			NOT = { has_country_flag = UKR_idelural_republic_created }
+		}
+		available = {
+			has_country_flag = UKR_shkil_insurgency_active
+		}
+		cost = 25
+		days_re_enable = 20
+		complete_effect = {
+			custom_effect_tooltip = UKR_ins_send_idelural_tt
+			hidden_effect = {
+				add_manpower = -1000
+				add_to_variable = { UKR_insurgency_idelural = 8 }
+				clamp_variable = {
+					var = UKR_insurgency_idelural
+					min = 0
+					max = 100
+				}
+			}
+			army_experience = 2
+		}
+		ai_will_do = { factor = 1 }
+	}
+
+	UKR_fund_partisans_idelural = {
+		allowed = { original_tag = UKR }
+		visible = {
+			has_country_flag = UKR_shkil_idelural_network
+			NOT = { has_country_flag = UKR_idelural_republic_created }
+		}
+		available = {
+			has_country_flag = UKR_shkil_insurgency_active
+		}
+		cost = 40
+		days_re_enable = 30
+		complete_effect = {
+			custom_effect_tooltip = UKR_ins_fund_idelural_tt
+			hidden_effect = {
+				add_to_variable = { UKR_insurgency_idelural = 6 }
+				clamp_variable = {
+					var = UKR_insurgency_idelural
+					min = 0
+					max = 100
+				}
+				if = {
+					limit = { country_exists = SOV }
+					SOV = { add_stability = -0.01 }
+				}
+			}
+		}
+		ai_will_do = { factor = 1 }
+	}
+
+	UKR_stir_separatism_idelural = {
+		allowed = { original_tag = UKR }
+		visible = {
+			has_country_flag = UKR_shkil_idelural_rada
+			NOT = { has_country_flag = UKR_idelural_republic_created }
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = UKR_insurgency_25_tt_idelural
+				check_variable = { UKR_insurgency_idelural > 24 }
+			}
+		}
+		cost = 50
+		fire_only_once = yes
+		complete_effect = {
+			custom_effect_tooltip = UKR_ins_stir_idelural_tt
+			hidden_effect = {
+				add_to_variable = { UKR_insurgency_idelural = 15 }
+				clamp_variable = {
+					var = UKR_insurgency_idelural
+					min = 0
+					max = 100
+				}
+				set_country_flag = UKR_idelural_separatism
+				add_named_threat = {
+					threat = 0.5
+					name = UKR_insurgency_threat
+				}
+			}
+		}
+		ai_will_do = { factor = 1 }
+	}
+
+	UKR_proclaim_republic_idelural = {
+		allowed = { original_tag = UKR }
+		visible = {
+			has_country_flag = UKR_shkil_idelural_ready
+			NOT = { has_country_flag = UKR_idelural_republic_created }
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = UKR_insurgency_60_tt_idelural
+				check_variable = { UKR_insurgency_idelural > 59 }
+			}
+			custom_trigger_tooltip = {
+				tooltip = UKR_separatism_tt_idelural
+				has_country_flag = UKR_idelural_separatism
+			}
+		}
+		cost = 75
+		fire_only_once = yes
+		complete_effect = {
+			custom_effect_tooltip = UKR_ins_proclaim_idelural_tt
+			hidden_effect = {
+				UKR_create_peoples_republic_idelural = yes
+				set_country_flag = UKR_idelural_republic_created
+			}
+		}
+		ai_will_do = { factor = 1 }
+	}
+
+	UKR_answer_the_call_idelural = {
+		allowed = { original_tag = UKR }
+		visible = {
+			has_country_flag = UKR_idelural_republic_created
+			has_country_flag = UKR_shkil_call_for_protection
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = UKR_insurgency_75_tt_idelural
+				check_variable = { UKR_insurgency_idelural > 74 }
+			}
+		}
+		cost = 100
+		fire_only_once = yes
+		complete_effect = {
+			custom_effect_tooltip = UKR_ins_answer_idelural_tt
+			hidden_effect = {
+				if = {
+					limit = { country_exists = SOV }
+					create_wargoal = {
+						type = topple_government
+						target = SOV
+					}
+				}
+			}
+		}
+		ai_will_do = { factor = 1 }
+	}
+
+	UKR_send_volunteers_caucasus = {
+		allowed = { original_tag = UKR }
+		visible = {
+			has_country_flag = UKR_shkil_caucasus_network
+			NOT = { has_country_flag = UKR_caucasus_republic_created }
+		}
+		available = {
+			has_country_flag = UKR_shkil_insurgency_active
+		}
+		cost = 25
+		days_re_enable = 20
+		complete_effect = {
+			custom_effect_tooltip = UKR_ins_send_caucasus_tt
+			hidden_effect = {
+				add_manpower = -1000
+				add_to_variable = { UKR_insurgency_caucasus = 8 }
+				clamp_variable = {
+					var = UKR_insurgency_caucasus
+					min = 0
+					max = 100
+				}
+			}
+			army_experience = 2
+		}
+		ai_will_do = { factor = 1 }
+	}
+
+	UKR_fund_partisans_caucasus = {
+		allowed = { original_tag = UKR }
+		visible = {
+			has_country_flag = UKR_shkil_caucasus_network
+			NOT = { has_country_flag = UKR_caucasus_republic_created }
+		}
+		available = {
+			has_country_flag = UKR_shkil_insurgency_active
+		}
+		cost = 40
+		days_re_enable = 30
+		complete_effect = {
+			custom_effect_tooltip = UKR_ins_fund_caucasus_tt
+			hidden_effect = {
+				add_to_variable = { UKR_insurgency_caucasus = 6 }
+				clamp_variable = {
+					var = UKR_insurgency_caucasus
+					min = 0
+					max = 100
+				}
+				if = {
+					limit = { country_exists = SOV }
+					SOV = { add_stability = -0.01 }
+				}
+			}
+		}
+		ai_will_do = { factor = 1 }
+	}
+
+	UKR_stir_separatism_caucasus = {
+		allowed = { original_tag = UKR }
+		visible = {
+			has_country_flag = UKR_shkil_caucasus_rada
+			NOT = { has_country_flag = UKR_caucasus_republic_created }
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = UKR_insurgency_25_tt_caucasus
+				check_variable = { UKR_insurgency_caucasus > 24 }
+			}
+		}
+		cost = 50
+		fire_only_once = yes
+		complete_effect = {
+			custom_effect_tooltip = UKR_ins_stir_caucasus_tt
+			hidden_effect = {
+				add_to_variable = { UKR_insurgency_caucasus = 15 }
+				clamp_variable = {
+					var = UKR_insurgency_caucasus
+					min = 0
+					max = 100
+				}
+				set_country_flag = UKR_caucasus_separatism
+				add_named_threat = {
+					threat = 0.5
+					name = UKR_insurgency_threat
+				}
+			}
+		}
+		ai_will_do = { factor = 1 }
+	}
+
+	UKR_proclaim_republic_caucasus = {
+		allowed = { original_tag = UKR }
+		visible = {
+			has_country_flag = UKR_shkil_caucasus_ready
+			NOT = { has_country_flag = UKR_caucasus_republic_created }
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = UKR_insurgency_60_tt_caucasus
+				check_variable = { UKR_insurgency_caucasus > 59 }
+			}
+			custom_trigger_tooltip = {
+				tooltip = UKR_separatism_tt_caucasus
+				has_country_flag = UKR_caucasus_separatism
+			}
+		}
+		cost = 75
+		fire_only_once = yes
+		complete_effect = {
+			custom_effect_tooltip = UKR_ins_proclaim_caucasus_tt
+			hidden_effect = {
+				UKR_create_peoples_republic_caucasus = yes
+				set_country_flag = UKR_caucasus_republic_created
+			}
+		}
+		ai_will_do = { factor = 1 }
+	}
+
+	UKR_answer_the_call_caucasus = {
+		allowed = { original_tag = UKR }
+		visible = {
+			has_country_flag = UKR_caucasus_republic_created
+			has_country_flag = UKR_shkil_call_for_protection
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = UKR_insurgency_75_tt_caucasus
+				check_variable = { UKR_insurgency_caucasus > 74 }
+			}
+		}
+		cost = 100
+		fire_only_once = yes
+		complete_effect = {
+			custom_effect_tooltip = UKR_ins_answer_caucasus_tt
+			hidden_effect = {
+				if = {
+					limit = { country_exists = SOV }
+					create_wargoal = {
+						type = topple_government
+						target = SOV
+					}
+				}
+			}
+		}
+		ai_will_do = { factor = 1 }
+	}
+
+	UKR_send_volunteers_kalmykia = {
+		allowed = { original_tag = UKR }
+		visible = {
+			has_country_flag = UKR_shkil_kalmykia_network
+			NOT = { has_country_flag = UKR_kalmykia_republic_created }
+		}
+		available = {
+			has_country_flag = UKR_shkil_insurgency_active
+		}
+		cost = 25
+		days_re_enable = 20
+		complete_effect = {
+			custom_effect_tooltip = UKR_ins_send_kalmykia_tt
+			hidden_effect = {
+				add_manpower = -1000
+				add_to_variable = { UKR_insurgency_kalmykia = 8 }
+				clamp_variable = {
+					var = UKR_insurgency_kalmykia
+					min = 0
+					max = 100
+				}
+			}
+			army_experience = 2
+		}
+		ai_will_do = { factor = 1 }
+	}
+
+	UKR_fund_partisans_kalmykia = {
+		allowed = { original_tag = UKR }
+		visible = {
+			has_country_flag = UKR_shkil_kalmykia_network
+			NOT = { has_country_flag = UKR_kalmykia_republic_created }
+		}
+		available = {
+			has_country_flag = UKR_shkil_insurgency_active
+		}
+		cost = 40
+		days_re_enable = 30
+		complete_effect = {
+			custom_effect_tooltip = UKR_ins_fund_kalmykia_tt
+			hidden_effect = {
+				add_to_variable = { UKR_insurgency_kalmykia = 6 }
+				clamp_variable = {
+					var = UKR_insurgency_kalmykia
+					min = 0
+					max = 100
+				}
+				if = {
+					limit = { country_exists = SOV }
+					SOV = { add_stability = -0.01 }
+				}
+			}
+		}
+		ai_will_do = { factor = 1 }
+	}
+
+	UKR_stir_separatism_kalmykia = {
+		allowed = { original_tag = UKR }
+		visible = {
+			has_country_flag = UKR_shkil_kalmykia_rada
+			NOT = { has_country_flag = UKR_kalmykia_republic_created }
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = UKR_insurgency_25_tt_kalmykia
+				check_variable = { UKR_insurgency_kalmykia > 24 }
+			}
+		}
+		cost = 50
+		fire_only_once = yes
+		complete_effect = {
+			custom_effect_tooltip = UKR_ins_stir_kalmykia_tt
+			hidden_effect = {
+				add_to_variable = { UKR_insurgency_kalmykia = 15 }
+				clamp_variable = {
+					var = UKR_insurgency_kalmykia
+					min = 0
+					max = 100
+				}
+				set_country_flag = UKR_kalmykia_separatism
+				add_named_threat = {
+					threat = 0.5
+					name = UKR_insurgency_threat
+				}
+			}
+		}
+		ai_will_do = { factor = 1 }
+	}
+
+	UKR_proclaim_republic_kalmykia = {
+		allowed = { original_tag = UKR }
+		visible = {
+			has_country_flag = UKR_shkil_kalmykia_ready
+			NOT = { has_country_flag = UKR_kalmykia_republic_created }
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = UKR_insurgency_60_tt_kalmykia
+				check_variable = { UKR_insurgency_kalmykia > 59 }
+			}
+			custom_trigger_tooltip = {
+				tooltip = UKR_separatism_tt_kalmykia
+				has_country_flag = UKR_kalmykia_separatism
+			}
+		}
+		cost = 75
+		fire_only_once = yes
+		complete_effect = {
+			custom_effect_tooltip = UKR_ins_proclaim_kalmykia_tt
+			hidden_effect = {
+				UKR_create_peoples_republic_kalmykia = yes
+				set_country_flag = UKR_kalmykia_republic_created
+			}
+		}
+		ai_will_do = { factor = 1 }
+	}
+
+	UKR_answer_the_call_kalmykia = {
+		allowed = { original_tag = UKR }
+		visible = {
+			has_country_flag = UKR_kalmykia_republic_created
+			has_country_flag = UKR_shkil_call_for_protection
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = UKR_insurgency_75_tt_kalmykia
+				check_variable = { UKR_insurgency_kalmykia > 74 }
+			}
+		}
+		cost = 100
+		fire_only_once = yes
+		complete_effect = {
+			custom_effect_tooltip = UKR_ins_answer_kalmykia_tt
+			hidden_effect = {
+				if = {
+					limit = { country_exists = SOV }
+					create_wargoal = {
+						type = topple_government
+						target = SOV
+					}
+				}
+			}
+		}
+		ai_will_do = { factor = 1 }
+	}
+
+}
+
+UKR_monarchist_balance_category = {
+	UKR_brotherhood_tightens_grip = {
+		icon = generic_political_actions
+		allowed = { original_tag = UKR }
+		days_mission_timeout = 7
+		is_good = no
+		available = { always = no }
+		timeout_effect = {
+			if = {
+				limit = {
+					has_country_flag = UKR_monarchist_bop_active
+					NOT = { has_country_flag = UKR_monarchist_coup_done }
+					NOT = { has_country_flag = UKR_monarchists_purged }
+				}
+				add_power_balance_value = {
+					id = UKR_monarchist_balance
+					value = -0.01
+				}
+				activate_mission = UKR_brotherhood_tightens_grip
+			}
+		}
+	}
+
+	UKR_grant_the_old_titles = {
+		icon = generic_political_actions
+		allowed = { original_tag = UKR }
+		visible = {
+			has_country_flag = UKR_monarchist_bop_active
+			NOT = { has_country_flag = UKR_monarchist_coup_done }
+					NOT = { has_country_flag = UKR_monarchists_purged }
+		}
+		available = {
+			has_country_flag = UKR_monarchist_bop_active
+		}
+		cost = 25
+		days_re_enable = 30
+		complete_effect = {
+			add_power_balance_value = {
+				id = UKR_monarchist_balance
+				value = 0.08
+			}
+			add_stability = -0.03
+		}
+		ai_will_do = { factor = 1 }
+	}
+
+	UKR_royal_audiences = {
+		icon = generic_political_actions
+		allowed = { original_tag = UKR }
+		visible = {
+			has_country_flag = UKR_monarchist_bop_active
+			NOT = { has_country_flag = UKR_monarchist_coup_done }
+					NOT = { has_country_flag = UKR_monarchists_purged }
+		}
+		available = {
+			has_country_flag = UKR_monarchist_bop_active
+		}
+		cost = 15
+		days_re_enable = 14
+		complete_effect = {
+			add_power_balance_value = {
+				id = UKR_monarchist_balance
+				value = 0.05
+			}
+			add_stability = -0.01
+		}
+		ai_will_do = { factor = 1 }
+	}
+
+	UKR_court_fundraising = {
+		icon = generic_political_actions
+		allowed = { original_tag = UKR }
+		visible = {
+			has_country_flag = UKR_monarchist_bop_active
+			NOT = { has_country_flag = UKR_monarchist_coup_done }
+					NOT = { has_country_flag = UKR_monarchists_purged }
+		}
+		available = {
+			has_country_flag = UKR_monarchist_bop_active
+		}
+		cost = 40
+		days_re_enable = 45
+		complete_effect = {
+			add_power_balance_value = {
+				id = UKR_monarchist_balance
+				value = 0.08
+			}
+			add_stability = -0.02
+			add_manpower = 5000
+		}
+		ai_will_do = { factor = 1 }
+	}
+
+	UKR_commission_the_old_families = {
+		icon = generic_political_actions
+		allowed = { original_tag = UKR }
+		visible = {
+			has_country_flag = UKR_monarchist_bop_active
+			NOT = { has_country_flag = UKR_monarchist_coup_done }
+					NOT = { has_country_flag = UKR_monarchists_purged }
+		}
+		available = {
+			has_country_flag = UKR_monarchist_bop_active
+		}
+		cost = 40
+		days_re_enable = 45
+		complete_effect = {
+			add_power_balance_value = {
+				id = UKR_monarchist_balance
+				value = 0.08
+			}
+			army_experience = 25
+			add_stability = -0.02
+		}
+		ai_will_do = { factor = 1 }
+	}
+
+	UKR_the_royal_press_office = {
+		icon = generic_political_actions
+		allowed = { original_tag = UKR }
+		visible = {
+			has_country_flag = UKR_monarchist_bop_active
+			NOT = { has_country_flag = UKR_monarchist_coup_done }
+					NOT = { has_country_flag = UKR_monarchists_purged }
+		}
+		available = {
+			has_country_flag = UKR_monarchist_bop_active
+		}
+		cost = 50
+		days_re_enable = 40
+		complete_effect = {
+			add_power_balance_value = {
+				id = UKR_monarchist_balance
+				value = 0.1
+			}
+			add_stability = -0.02
+			add_war_support = -0.03
+		}
+		ai_will_do = { factor = 1 }
+	}
+
+	UKR_loans_from_the_old_families = {
+		icon = generic_political_actions
+		allowed = { original_tag = UKR }
+		visible = {
+			has_country_flag = UKR_monarchist_bop_active
+			NOT = { has_country_flag = UKR_monarchist_coup_done }
+					NOT = { has_country_flag = UKR_monarchists_purged }
+		}
+		available = {
+			has_country_flag = UKR_monarchist_bop_active
+		}
+		cost = 50
+		days_re_enable = 60
+		complete_effect = {
+			add_power_balance_value = {
+				id = UKR_monarchist_balance
+				value = 0.1
+			}
+			add_political_power = 75
+			add_stability = -0.03
+		}
+		ai_will_do = { factor = 1 }
+	}
+
+	UKR_recognise_the_claim_publicly = {
+		icon = generic_political_actions
+		allowed = { original_tag = UKR }
+		visible = {
+			has_country_flag = UKR_monarchist_bop_active
+			NOT = { has_country_flag = UKR_monarchist_coup_done }
+					NOT = { has_country_flag = UKR_monarchists_purged }
+		}
+		available = {
+			has_country_flag = UKR_monarchist_bop_active
+		}
+		cost = 75
+		days_re_enable = 60
+		complete_effect = {
+			add_power_balance_value = {
+				id = UKR_monarchist_balance
+				value = 0.15
+			}
+			add_stability = -0.05
+			add_popularity = { ideology = monarchist popularity = 0.05 }
+		}
+		ai_will_do = { factor = 1 }
+	}
+
+}
+
+UKR_nationalist_civil_war = {
+	UKR_the_movement_cannot_wait = {
+		icon = generic_prepare_civil_war
+		allowed = { original_tag = UKR }
+		days_mission_timeout = 1095
+		is_good = no
+		fire_only_once = yes
+		available = {
+			always = no
+		}
+		visible = {
+			has_country_flag = UKR_far_right_coup_done
+		}
+		timeout_effect = {
+			custom_effect_tooltip = UKR_cw_timeout_tt
+			UKR_cw_forced_coup = yes
+		}
+	}
+
+}
+
+UKR_danube_monarchy_category = {
+	UKR_fund_royalist_circles_aus = {
+		icon = generic_political_actions
+		allowed = { original_tag = UKR }
+		visible = {
+			has_country_flag = UKR_habsburg_path
+			country_exists = AUS
+			NOT = { AUS = { has_government = monarchist } }
+			NOT = { AUS = { is_subject_of = ROOT } }
+			NOT = { has_country_flag = UKR_aus_coup_sponsored }
+		}
+		available = {
+			NOT = { has_war_with = AUS }
+		}
+		cost = 30
+		days_re_enable = 25
+		complete_effect = {
+			custom_effect_tooltip = UKR_royalist_funding_tt_aus
+			hidden_effect = {
+				AUS = {
+					add_popularity = {
+						ideology = monarchist
+						popularity = 0.04
+					}
+					if = {
+						limit = { NOT = { has_idea = UKR_aus_monarchist_agitation_idea } }
+						add_ideas = UKR_aus_monarchist_agitation_idea
+					}
+				}
+			}
+		}
+		ai_will_do = { factor = 1 }
+	}
+	UKR_print_royalist_pamphlets_aus = {
+		icon = generic_political_actions
+		allowed = { original_tag = UKR }
+		visible = {
+			has_country_flag = UKR_habsburg_path
+			country_exists = AUS
+			NOT = { AUS = { has_government = monarchist } }
+			NOT = { AUS = { is_subject_of = ROOT } }
+			NOT = { has_country_flag = UKR_aus_coup_sponsored }
+		}
+		available = {
+			NOT = { has_war_with = AUS }
+		}
+		cost = 15
+		days_re_enable = 14
+		complete_effect = {
+			custom_effect_tooltip = UKR_royalist_funding_tt_aus
+			hidden_effect = {
+				AUS = {
+					add_popularity = {
+						ideology = monarchist
+						popularity = 0.02
+					}
+					if = {
+						limit = { NOT = { has_idea = UKR_aus_royalist_tide_idea } }
+						add_ideas = UKR_aus_royalist_tide_idea
+					}
+				}
+			}
+		}
+		ai_will_do = { factor = 1 }
+	}
+	UKR_court_the_old_aristocracy_aus = {
+		icon = generic_political_actions
+		allowed = { original_tag = UKR }
+		visible = {
+			has_country_flag = UKR_habsburg_path
+			country_exists = AUS
+			NOT = { AUS = { has_government = monarchist } }
+			NOT = { AUS = { is_subject_of = ROOT } }
+			NOT = { has_country_flag = UKR_aus_coup_sponsored }
+		}
+		available = {
+			NOT = { has_war_with = AUS }
+		}
+		cost = 50
+		days_re_enable = 40
+		complete_effect = {
+			custom_effect_tooltip = UKR_royalist_funding_tt_aus
+			hidden_effect = {
+				AUS = {
+					add_popularity = {
+						ideology = monarchist
+						popularity = 0.05
+					}
+					if = {
+						limit = { NOT = { has_idea = UKR_aus_loyalist_officers_idea } }
+						add_ideas = UKR_aus_loyalist_officers_idea
+					}
+					add_stability = -0.02
+				}
+			}
+		}
+		ai_will_do = { factor = 1 }
+	}
+	UKR_sponsor_the_royalist_coup_aus = {
+		icon = generic_ignite_civil_war
+		allowed = { original_tag = UKR }
+		visible = {
+			has_country_flag = UKR_habsburg_path
+			country_exists = AUS
+			NOT = { AUS = { has_government = monarchist } }
+			NOT = { AUS = { is_subject_of = ROOT } }
+			NOT = { has_country_flag = UKR_aus_coup_sponsored }
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = UKR_royalist_support_tt_aus
+				AUS = {
+					party_popularity = {
+						ideology = monarchist
+						popularity > 0.25
+					}
+				}
+			}
+		}
+		cost = 100
+		fire_only_once = yes
+		complete_effect = {
+			set_country_flag = UKR_aus_coup_sponsored
+			custom_effect_tooltip = UKR_royalist_coup_tt_aus
+			hidden_effect = {
+				AUS = {
+					country_event = { id = ukraine.32 days = 3 }
+				}
+			}
+		}
+		ai_will_do = { factor = 1 }
+	}
+	UKR_invite_aus_to_the_donaupakt = {
+		icon = generic_form_nation
+		allowed = { original_tag = UKR }
+		visible = {
+			has_country_flag = UKR_habsburg_path
+			country_exists = AUS
+			NOT = { AUS = { is_subject_of = ROOT } }
+			NOT = { has_country_flag = UKR_aus_pact_offered }
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = UKR_donaupakt_condition_tt
+				OR = {
+					has_country_flag = UKR_cw_over
+					AUS = { has_government = monarchist }
+				}
+			}
+			NOT = { has_war_with = AUS }
+		}
+		cost = 75
+		fire_only_once = yes
+		complete_effect = {
+			set_country_flag = UKR_aus_pact_offered
+			custom_effect_tooltip = UKR_donaupakt_offer_tt_aus
+			hidden_effect = {
+				AUS = { country_event = { id = ukraine.30 } }
+			}
+		}
+		ai_will_do = { factor = 1 }
+	}
+	UKR_fund_royalist_circles_hun = {
+		icon = generic_political_actions
+		allowed = { original_tag = UKR }
+		visible = {
+			has_country_flag = UKR_habsburg_path
+			country_exists = HUN
+			NOT = { HUN = { has_government = monarchist } }
+			NOT = { HUN = { is_subject_of = ROOT } }
+			NOT = { has_country_flag = UKR_hun_coup_sponsored }
+		}
+		available = {
+			NOT = { has_war_with = HUN }
+		}
+		cost = 30
+		days_re_enable = 25
+		complete_effect = {
+			custom_effect_tooltip = UKR_royalist_funding_tt_hun
+			hidden_effect = {
+				HUN = {
+					add_popularity = {
+						ideology = monarchist
+						popularity = 0.04
+					}
+					if = {
+						limit = { NOT = { has_idea = UKR_hun_monarchist_agitation_idea } }
+						add_ideas = UKR_hun_monarchist_agitation_idea
+					}
+				}
+			}
+		}
+		ai_will_do = { factor = 1 }
+	}
+	UKR_print_royalist_pamphlets_hun = {
+		icon = generic_political_actions
+		allowed = { original_tag = UKR }
+		visible = {
+			has_country_flag = UKR_habsburg_path
+			country_exists = HUN
+			NOT = { HUN = { has_government = monarchist } }
+			NOT = { HUN = { is_subject_of = ROOT } }
+			NOT = { has_country_flag = UKR_hun_coup_sponsored }
+		}
+		available = {
+			NOT = { has_war_with = HUN }
+		}
+		cost = 15
+		days_re_enable = 14
+		complete_effect = {
+			custom_effect_tooltip = UKR_royalist_funding_tt_hun
+			hidden_effect = {
+				HUN = {
+					add_popularity = {
+						ideology = monarchist
+						popularity = 0.02
+					}
+					if = {
+						limit = { NOT = { has_idea = UKR_hun_royalist_tide_idea } }
+						add_ideas = UKR_hun_royalist_tide_idea
+					}
+				}
+			}
+		}
+		ai_will_do = { factor = 1 }
+	}
+	UKR_court_the_old_aristocracy_hun = {
+		icon = generic_political_actions
+		allowed = { original_tag = UKR }
+		visible = {
+			has_country_flag = UKR_habsburg_path
+			country_exists = HUN
+			NOT = { HUN = { has_government = monarchist } }
+			NOT = { HUN = { is_subject_of = ROOT } }
+			NOT = { has_country_flag = UKR_hun_coup_sponsored }
+		}
+		available = {
+			NOT = { has_war_with = HUN }
+		}
+		cost = 50
+		days_re_enable = 40
+		complete_effect = {
+			custom_effect_tooltip = UKR_royalist_funding_tt_hun
+			hidden_effect = {
+				HUN = {
+					add_popularity = {
+						ideology = monarchist
+						popularity = 0.05
+					}
+					if = {
+						limit = { NOT = { has_idea = UKR_hun_regency_nostalgia_idea } }
+						add_ideas = UKR_hun_regency_nostalgia_idea
+					}
+					add_stability = -0.02
+				}
+			}
+		}
+		ai_will_do = { factor = 1 }
+	}
+	UKR_sponsor_the_royalist_coup_hun = {
+		icon = generic_ignite_civil_war
+		allowed = { original_tag = UKR }
+		visible = {
+			has_country_flag = UKR_habsburg_path
+			country_exists = HUN
+			NOT = { HUN = { has_government = monarchist } }
+			NOT = { HUN = { is_subject_of = ROOT } }
+			NOT = { has_country_flag = UKR_hun_coup_sponsored }
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = UKR_royalist_support_tt_hun
+				HUN = {
+					party_popularity = {
+						ideology = monarchist
+						popularity > 0.25
+					}
+				}
+			}
+		}
+		cost = 100
+		fire_only_once = yes
+		complete_effect = {
+			set_country_flag = UKR_hun_coup_sponsored
+			custom_effect_tooltip = UKR_royalist_coup_tt_hun
+			hidden_effect = {
+				HUN = {
+					country_event = { id = ukraine.33 days = 3 }
+				}
+			}
+		}
+		ai_will_do = { factor = 1 }
+	}
+	UKR_invite_hun_to_the_donaupakt = {
+		icon = generic_form_nation
+		allowed = { original_tag = UKR }
+		visible = {
+			has_country_flag = UKR_habsburg_path
+			country_exists = HUN
+			NOT = { HUN = { is_subject_of = ROOT } }
+			NOT = { has_country_flag = UKR_hun_pact_offered }
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = UKR_donaupakt_condition_tt
+				OR = {
+					has_country_flag = UKR_cw_over
+					HUN = { has_government = monarchist }
+				}
+			}
+			NOT = { has_war_with = HUN }
+		}
+		cost = 75
+		fire_only_once = yes
+		complete_effect = {
+			set_country_flag = UKR_hun_pact_offered
+			custom_effect_tooltip = UKR_donaupakt_offer_tt_hun
+			hidden_effect = {
+				HUN = { country_event = { id = ukraine.31 } }
+			}
+		}
+		ai_will_do = { factor = 1 }
+	}
+	UKR_reclaim_transylvania = {
+		icon = generic_nationalism
+		allowed = { original_tag = UKR }
+		visible = {
+			has_country_flag = UKR_habsburg_path
+			OR = {
+				AND = {
+					country_exists = AUS
+					AUS = { is_subject_of = ROOT }
+				}
+				AND = {
+					country_exists = HUN
+					HUN = { is_subject_of = ROOT }
+				}
+			}
+		}
+		available = {
+			has_country_flag = UKR_habsburg_path
+		}
+		cost = 75
+		fire_only_once = yes
+		complete_effect = {
+			custom_effect_tooltip = UKR_reclaim_transylvania_tt
+			hidden_effect = {
+				84 = { add_claim_by = UKR }
+				82 = { add_claim_by = UKR }
+				if = {
+					limit = { country_exists = ROM }
+					create_wargoal = {
+						type = take_claimed_state
+						target = ROM
+					}
+				}
+				add_named_threat = {
+					threat = 1
+					name = UKR_danube_threat
+				}
+			}
+		}
+		ai_will_do = { factor = 1 }
+	}
+	UKR_reclaim_polish_galicia = {
+		icon = generic_nationalism
+		allowed = { original_tag = UKR }
+		visible = {
+			has_country_flag = UKR_habsburg_path
+			OR = {
+				AND = {
+					country_exists = AUS
+					AUS = { is_subject_of = ROOT }
+				}
+				AND = {
+					country_exists = HUN
+					HUN = { is_subject_of = ROOT }
+				}
+			}
+		}
+		available = {
+			has_country_flag = UKR_habsburg_path
+		}
+		cost = 75
+		fire_only_once = yes
+		complete_effect = {
+			custom_effect_tooltip = UKR_reclaim_polish_galicia_tt
+			hidden_effect = {
+				88 = { add_claim_by = UKR }
+				every_state = {
+					limit = {
+						is_owned_by = POL
+						is_core_of = UKR
+					}
+					add_claim_by = UKR
+				}
+				if = {
+					limit = { country_exists = POL }
+					create_wargoal = {
+						type = take_claimed_state
+						target = POL
+					}
+				}
+				add_named_threat = {
+					threat = 1
+					name = UKR_danube_threat
+				}
+			}
+		}
+		ai_will_do = { factor = 1 }
+	}
+	UKR_reclaim_bohemia_and_slovakia = {
+		icon = generic_nationalism
+		allowed = { original_tag = UKR }
+		visible = {
+			has_country_flag = UKR_habsburg_path
+			OR = {
+				AND = {
+					country_exists = AUS
+					AUS = { is_subject_of = ROOT }
+				}
+				AND = {
+					country_exists = HUN
+					HUN = { is_subject_of = ROOT }
+				}
+			}
+		}
+		available = {
+			has_country_flag = UKR_habsburg_path
+		}
+		cost = 100
+		fire_only_once = yes
+		complete_effect = {
+			custom_effect_tooltip = UKR_reclaim_bohemia_and_slovakia_tt
+			hidden_effect = {
+				75 = { add_claim_by = UKR }
+				74 = { add_claim_by = UKR }
+				972 = { add_claim_by = UKR }
+				70 = { add_claim_by = UKR }
+				71 = { add_claim_by = UKR }
+				664 = { add_claim_by = UKR }
+				every_state = {
+					limit = {
+						OR = {
+							is_owned_by = CZE
+							is_owned_by = SLO
+						}
+					}
+					add_claim_by = UKR
+				}
+				if = {
+					limit = { country_exists = CZE }
+					create_wargoal = {
+						type = puppet_wargoal_focus
+						target = CZE
+					}
+				}
+				if = {
+					limit = { country_exists = SLO }
+					create_wargoal = {
+						type = puppet_wargoal_focus
+						target = SLO
+					}
+				}
+				add_named_threat = {
+					threat = 1
+					name = UKR_danube_threat
+				}
+			}
+		}
+		ai_will_do = { factor = 1 }
+	}
+	UKR_reclaim_illyria = {
+		icon = generic_nationalism
+		allowed = { original_tag = UKR }
+		visible = {
+			has_country_flag = UKR_habsburg_path
+			OR = {
+				AND = {
+					country_exists = AUS
+					AUS = { is_subject_of = ROOT }
+				}
+				AND = {
+					country_exists = HUN
+					HUN = { is_subject_of = ROOT }
+				}
+			}
+		}
+		available = {
+			has_country_flag = UKR_habsburg_path
+		}
+		cost = 100
+		fire_only_once = yes
+		complete_effect = {
+			custom_effect_tooltip = UKR_reclaim_illyria_tt
+			hidden_effect = {
+				103 = { add_claim_by = UKR }
+				109 = { add_claim_by = UKR }
+				45 = { add_claim_by = UKR }
+				764 = { add_claim_by = UKR }
+				every_state = {
+					limit = {
+						OR = {
+							is_owned_by = SLV
+							is_owned_by = CRO
+						}
+					}
+					add_claim_by = UKR
+				}
+				if = {
+					limit = { country_exists = SLV }
+					create_wargoal = {
+						type = puppet_wargoal_focus
+						target = SLV
+					}
+				}
+				if = {
+					limit = { country_exists = CRO }
+					create_wargoal = {
+						type = puppet_wargoal_focus
+						target = CRO
+					}
+				}
+				if = {
+					limit = { 45 = { NOT = { is_owned_by = ROOT } } }
+					45 = {
+						owner = {
+							ROOT = {
+								create_wargoal = {
+									type = take_claimed_state
+									target = PREV
+								}
+							}
+						}
+					}
+				}
+				add_named_threat = {
+					threat = 1
+					name = UKR_danube_threat
+				}
+			}
+		}
+		ai_will_do = { factor = 1 }
+	}
+	UKR_reclaim_bosnia = {
+		icon = generic_nationalism
+		allowed = { original_tag = UKR }
+		visible = {
+			has_country_flag = UKR_habsburg_path
+			OR = {
+				AND = {
+					country_exists = AUS
+					AUS = { is_subject_of = ROOT }
+				}
+				AND = {
+					country_exists = HUN
+					HUN = { is_subject_of = ROOT }
+				}
+			}
+		}
+		available = {
+			has_country_flag = UKR_habsburg_path
+		}
+		cost = 75
+		fire_only_once = yes
+		complete_effect = {
+			custom_effect_tooltip = UKR_reclaim_bosnia_tt
+			hidden_effect = {
+				every_state = {
+					limit = { is_owned_by = BOS }
+					add_claim_by = UKR
+				}
+				if = {
+					limit = { country_exists = BOS }
+					create_wargoal = {
+						type = puppet_wargoal_focus
+						target = BOS
+					}
+				}
+				add_named_threat = {
+					threat = 1
+					name = UKR_danube_threat
+				}
+			}
+		}
+		ai_will_do = { factor = 1 }
+	}
+	UKR_proclaim_the_danube_federation = {
+		icon = generic_form_nation
+		allowed = { original_tag = UKR }
+		visible = {
+			has_country_flag = UKR_habsburg_path
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = UKR_federation_condition_tt
+				country_exists = AUS
+				AUS = { is_subject_of = ROOT }
+				country_exists = HUN
+				HUN = { is_subject_of = ROOT }
+				country_exists = CZE
+				CZE = { is_subject_of = ROOT }
+				country_exists = SLO
+				SLO = { is_subject_of = ROOT }
+				country_exists = SLV
+				SLV = { is_subject_of = ROOT }
+				country_exists = CRO
+				CRO = { is_subject_of = ROOT }
+				country_exists = BOS
+				BOS = { is_subject_of = ROOT }
+			}
+		}
+		cost = 150
+		fire_only_once = yes
+		complete_effect = {
+			set_country_flag = UKR_danube_federation
+			custom_effect_tooltip = UKR_proclaim_the_danube_federation_tt
+			add_ideas = UKR_danube_federation_idea
+			hidden_effect = {
+				if = {
+					limit = {
+						country_exists = AUS
+						AUS = { is_subject_of = ROOT }
+					}
+					annex_country = {
+						target = AUS
+						transfer_troops = yes
+					}
+				}
+				if = {
+					limit = {
+						country_exists = HUN
+						HUN = { is_subject_of = ROOT }
+					}
+					annex_country = {
+						target = HUN
+						transfer_troops = yes
+					}
+				}
+				if = {
+					limit = {
+						country_exists = CZE
+						CZE = { is_subject_of = ROOT }
+					}
+					annex_country = {
+						target = CZE
+						transfer_troops = yes
+					}
+				}
+				if = {
+					limit = {
+						country_exists = SLO
+						SLO = { is_subject_of = ROOT }
+					}
+					annex_country = {
+						target = SLO
+						transfer_troops = yes
+					}
+				}
+				if = {
+					limit = {
+						country_exists = SLV
+						SLV = { is_subject_of = ROOT }
+					}
+					annex_country = {
+						target = SLV
+						transfer_troops = yes
+					}
+				}
+				if = {
+					limit = {
+						country_exists = CRO
+						CRO = { is_subject_of = ROOT }
+					}
+					annex_country = {
+						target = CRO
+						transfer_troops = yes
+					}
+				}
+				if = {
+					limit = {
+						country_exists = BOS
+						BOS = { is_subject_of = ROOT }
+					}
+					annex_country = {
+						target = BOS
+						transfer_troops = yes
+					}
+				}
+			}
+		}
+		ai_will_do = { factor = 1 }
+	}
+}
+
+UKR_tsardom_category = {
+	UKR_reclaim_central_asia = {
+		icon = generic_prepare_civil_war
+		allowed = { original_tag = UKR }
+		visible = {
+			has_country_flag = UKR_tsardom_restored
+			NOT = { has_country_flag = UKR_tsar_central_asia }
+		}
+		available = {
+			has_country_flag = UKR_tsardom_restored
+		}
+		cost = 100
+		fire_only_once = yes
+		complete_effect = {
+			custom_effect_tooltip = UKR_reclaim_central_asia_tt
+			hidden_effect = {
+				add_ideas = UKR_imperial_ambition_idea
+				if = {
+					limit = { country_exists = KAZ }
+					create_wargoal = {
+						type = annex_everything
+						target = KAZ
+					}
+				}
+				if = {
+					limit = { country_exists = UZB }
+					create_wargoal = {
+						type = annex_everything
+						target = UZB
+					}
+				}
+				if = {
+					limit = { country_exists = TKM }
+					create_wargoal = {
+						type = annex_everything
+						target = TKM
+					}
+				}
+				if = {
+					limit = { country_exists = KYR }
+					create_wargoal = {
+						type = annex_everything
+						target = KYR
+					}
+				}
+				if = {
+					limit = { country_exists = TAJ }
+					create_wargoal = {
+						type = annex_everything
+						target = TAJ
+					}
+				}
+				set_country_flag = UKR_tsar_central_asia
+				add_named_threat = {
+					threat = 1
+					name = UKR_tsardom_threat
+				}
+			}
+		}
+		ai_will_do = { factor = 1 }
+	}
+	UKR_reclaim_poland = {
+		icon = generic_prepare_civil_war
+		allowed = { original_tag = UKR }
+		visible = {
+			has_country_flag = UKR_tsardom_restored
+			has_country_flag = UKR_tsar_central_asia
+			NOT = { has_country_flag = UKR_tsar_poland }
+		}
+		available = {
+			has_country_flag = UKR_tsardom_restored
+		}
+		cost = 100
+		fire_only_once = yes
+		complete_effect = {
+			custom_effect_tooltip = UKR_reclaim_poland_tt
+			hidden_effect = {
+				if = {
+					limit = { country_exists = POL }
+					create_wargoal = {
+						type = annex_everything
+						target = POL
+					}
+				}
+				set_country_flag = UKR_tsar_poland
+				add_named_threat = {
+					threat = 1
+					name = UKR_tsardom_threat
+				}
+			}
+		}
+		ai_will_do = { factor = 1 }
+	}
+	UKR_reclaim_belarus_and_the_baltics = {
+		icon = generic_prepare_civil_war
+		allowed = { original_tag = UKR }
+		visible = {
+			has_country_flag = UKR_tsardom_restored
+			has_country_flag = UKR_tsar_poland
+			NOT = { has_country_flag = UKR_tsar_baltics }
+		}
+		available = {
+			has_country_flag = UKR_tsardom_restored
+		}
+		cost = 100
+		fire_only_once = yes
+		complete_effect = {
+			custom_effect_tooltip = UKR_reclaim_belarus_and_the_baltics_tt
+			hidden_effect = {
+				if = {
+					limit = { country_exists = BLR }
+					create_wargoal = {
+						type = annex_everything
+						target = BLR
+					}
+				}
+				if = {
+					limit = { country_exists = EST }
+					create_wargoal = {
+						type = annex_everything
+						target = EST
+					}
+				}
+				if = {
+					limit = { country_exists = LAT }
+					create_wargoal = {
+						type = annex_everything
+						target = LAT
+					}
+				}
+				if = {
+					limit = { country_exists = LIT }
+					create_wargoal = {
+						type = annex_everything
+						target = LIT
+					}
+				}
+				set_country_flag = UKR_tsar_baltics
+				add_named_threat = {
+					threat = 1
+					name = UKR_tsardom_threat
+				}
+			}
+		}
+		ai_will_do = { factor = 1 }
+	}
+	UKR_reclaim_finland = {
+		icon = generic_prepare_civil_war
+		allowed = { original_tag = UKR }
+		visible = {
+			has_country_flag = UKR_tsardom_restored
+			has_country_flag = UKR_tsar_baltics
+			NOT = { has_country_flag = UKR_tsar_finland }
+		}
+		available = {
+			has_country_flag = UKR_tsardom_restored
+		}
+		cost = 100
+		fire_only_once = yes
+		complete_effect = {
+			custom_effect_tooltip = UKR_reclaim_finland_tt
+			hidden_effect = {
+				if = {
+					limit = { country_exists = FIN }
+					create_wargoal = {
+						type = annex_everything
+						target = FIN
+					}
+				}
+				set_country_flag = UKR_tsar_finland
+				add_named_threat = {
+					threat = 1
+					name = UKR_tsardom_threat
+				}
+			}
+		}
+		ai_will_do = { factor = 1 }
+	}
+	UKR_conquer_afghanistan = {
+		icon = generic_prepare_civil_war
+		allowed = { original_tag = UKR }
+		visible = {
+			has_country_flag = UKR_tsardom_restored
+			has_country_flag = UKR_tsar_finland
+			NOT = { has_country_flag = UKR_tsar_afghanistan }
+		}
+		available = {
+			has_country_flag = UKR_tsardom_restored
+		}
+		cost = 100
+		fire_only_once = yes
+		complete_effect = {
+			custom_effect_tooltip = UKR_conquer_afghanistan_tt
+			hidden_effect = {
+				if = {
+					limit = { country_exists = AFG }
+					create_wargoal = {
+						type = annex_everything
+						target = AFG
+					}
+				}
+				set_country_flag = UKR_tsar_afghanistan
+				add_named_threat = {
+					threat = 1
+					name = UKR_tsardom_threat
+				}
+			}
+		}
+		ai_will_do = { factor = 1 }
+	}
+	UKR_the_far_eastern_marches = {
+		icon = generic_prepare_civil_war
+		allowed = { original_tag = UKR }
+		visible = {
+			has_country_flag = UKR_tsardom_restored
+			has_country_flag = UKR_tsar_afghanistan
+			NOT = { has_country_flag = UKR_tsar_far_east }
+		}
+		available = {
+			has_country_flag = UKR_tsardom_restored
+		}
+		cost = 100
+		fire_only_once = yes
+		complete_effect = {
+			custom_effect_tooltip = UKR_the_far_eastern_marches_tt
+			hidden_effect = {
+				if = {
+					limit = { country_exists = MON }
+					create_wargoal = {
+						type = annex_everything
+						target = MON
+					}
+				}
+				714 = { add_claim_by = UKR }
+				716 = { add_claim_by = UKR }
+				if = {
+					limit = { 716 = { NOT = { is_owned_by = ROOT } } }
+					716 = {
+						owner = {
+							ROOT = {
+								create_wargoal = {
+									type = take_claimed_state
+									target = PREV
+								}
+							}
+						}
+					}
+				}
+				set_country_flag = UKR_tsar_far_east
+				add_named_threat = {
+					threat = 1
+					name = UKR_tsardom_threat
+				}
+			}
+		}
+		ai_will_do = { factor = 1 }
+	}
+	UKR_the_alaskan_question = {
+		icon = generic_prepare_civil_war
+		allowed = { original_tag = UKR }
+		visible = {
+			has_country_flag = UKR_tsardom_restored
+			has_country_flag = UKR_tsar_far_east
+			NOT = { has_country_flag = UKR_tsar_alaska }
+		}
+		available = {
+			has_country_flag = UKR_tsardom_restored
+		}
+		cost = 150
+		fire_only_once = yes
+		complete_effect = {
+			custom_effect_tooltip = UKR_the_alaskan_question_tt
+			hidden_effect = {
+				463 = { add_claim_by = UKR }
+				if = {
+					limit = { 463 = { NOT = { is_owned_by = ROOT } } }
+					463 = {
+						owner = {
+							ROOT = {
+								create_wargoal = {
+									type = take_claimed_state
+									target = PREV
+								}
+							}
+						}
+					}
+				}
+				set_country_flag = UKR_tsar_alaska
+				add_named_threat = {
+					threat = 2
+					name = UKR_tsardom_threat
+				}
+			}
+		}
+		ai_will_do = { factor = 1 }
+	}
+}
+
+UKR_test_decisions = {
+	UKR_test_decision = {
+		icon = generic_political_actions
+		allowed = { original_tag = UKR }
+		cost = 0
+		days_re_enable = 1
+		complete_effect = {
+			activate_mission = UKR_the_movement_cannot_wait
+		}
+		ai_will_do = { factor = 1 }
+	}
+}

@@ -1,0 +1,760 @@
+UKR_create_peoples_republic_kuban = {
+	SOV = {
+		release = KBN
+	}
+	KBN = {
+		set_politics = {
+			ruling_party = nationalist
+			elections_allowed = no
+		}
+	}
+	puppet = KBN
+}
+
+UKR_create_peoples_republic_don = {
+	SOV = {
+		release = DON
+	}	
+	DON = {
+		set_politics = {
+			ruling_party = nationalist
+			elections_allowed = no
+		}
+	}
+	puppet = DON
+}
+
+UKR_create_peoples_republic_idelural = {
+	SOV = {
+		release = IDL
+	}
+	IDL = {
+		set_politics = {
+			ruling_party = nationalist
+			elections_allowed = no
+		}
+	}
+	puppet = IDL
+}
+
+UKR_create_peoples_republic_caucasus = {
+	SOV = {
+		release = GOR
+	}
+	GOR = {
+		set_politics = {
+			ruling_party = nationalist
+			elections_allowed = no
+		}
+	}
+	if = {
+		limit = {
+			country_exists = CHE
+			CHE = { is_ai = yes }
+		}
+		GOR = { annex_country = { target = CHE transfer_troops = no } }
+	}
+	if = {
+		limit = {
+			country_exists = SOS
+			SOS = { is_ai = yes }
+		}
+		GOR = { annex_country = { target = SOS transfer_troops = no } }
+	}
+	puppet = GOR
+}
+
+UKR_create_peoples_republic_kalmykia = {
+	SOV = {
+		release = KAL
+	}
+	KAL = {
+		set_politics = {
+			ruling_party = nationalist
+			elections_allowed = no
+		}
+	}
+	puppet = KAL
+}
+
+UKR_invite_far_right_states = {
+	every_other_country = {
+		limit = {
+			OR = {
+				has_government = nationalist
+				has_government = fascist
+			}
+			is_in_faction = no
+			NOT = { has_war_with = ROOT }
+		}
+		ROOT = { add_to_faction = PREV } #Temp
+	}
+}
+
+UKR_cede_poland_claims = {
+	88 = {
+		set_state_owner_to = UKR
+		set_state_controller_to = UKR
+	}
+	92 = {
+		set_state_owner_to = UKR
+		set_state_controller_to = UKR
+	}
+}
+
+UKR_cede_belarus_claims = {
+	94 = {
+		set_state_owner_to = UKR
+		set_state_controller_to = UKR
+	}
+	194 = {
+		set_state_owner_to = UKR
+		set_state_controller_to = UKR
+	}
+	241 = {
+		set_state_owner_to = UKR
+		set_state_controller_to = UKR
+	}
+}
+
+UKR_cede_russia_claims = {
+	224 = {
+		set_state_owner_to = UKR
+		set_state_controller_to = UKR
+	}
+	220 = {
+		set_state_owner_to = UKR
+		set_state_controller_to = UKR
+	}
+	240 = {
+		set_state_owner_to = UKR
+		set_state_controller_to = UKR
+	}
+	260 = {
+		set_state_owner_to = UKR
+		set_state_controller_to = UKR
+	}
+	218 = {
+		set_state_owner_to = UKR
+		set_state_controller_to = UKR
+	}
+	234 = {
+		set_state_owner_to = UKR
+		set_state_controller_to = UKR
+	}
+	if = {
+		limit = { 137 = { is_owned_by = SOV } }
+		137 = {
+			set_state_owner_to = UKR
+			set_state_controller_to = UKR
+		}
+	}
+}
+
+UKR_cede_slovakia_claims = {
+	71 = {
+		set_state_owner_to = UKR
+		set_state_controller_to = UKR
+	}
+}
+
+UKR_cede_romania_claims = {
+	1145 = {
+		set_state_owner_to = UKR
+		set_state_controller_to = UKR
+	}
+}
+
+# Lviv
+UKR_cw_secure_lviv = {
+	91 = { set_state_flag = UKR_cw_secured } # Lviv
+}
+
+# Nadvirna
+UKR_cw_secure_nadvirna = {
+	89 = { set_state_flag = UKR_cw_secured } # Nadvirna
+}
+
+# Uzhhorod
+UKR_cw_secure_uzhhorod = {
+	73 = { set_state_flag = UKR_cw_secured } # Uzhhorod
+}
+
+# Cherkasy, Kremenchuk and Shostka
+UKR_cw_secure_hetmanate = {
+	203 = { set_state_flag = UKR_cw_secured }
+	259 = { set_state_flag = UKR_cw_secured }
+	255 = { set_state_flag = UKR_cw_secured }
+}
+
+# Zhytomyr and Vinnytsia
+UKR_cw_secure_podillia = {
+	201 = { set_state_flag = UKR_cw_secured }
+	1086 = { set_state_flag = UKR_cw_secured }
+}
+
+# Odesa
+UKR_cw_secure_odesa = {
+	192 = { set_state_flag = UKR_cw_secured } # Odesa
+}
+
+# Kharkiv
+UKR_cw_secure_kharkiv = {
+	221 = { set_state_flag = UKR_cw_secured } # Kharkiv
+}
+
+# Dnipro and Zaporizhzhia
+UKR_cw_secure_garrisons = {
+	226 = { set_state_flag = UKR_cw_secured }
+	200 = { set_state_flag = UKR_cw_secured }
+}
+
+# Mykolaiv
+UKR_cw_secure_mykolaiv = {
+	197 = { set_state_flag = UKR_cw_secured } # Mykolaiv
+}
+
+# Kyiv
+UKR_cw_secure_kyiv = {
+	202 = { set_state_flag = UKR_cw_secured } # Kyiv
+}
+
+UKR_cw_claim_secured_states = {
+	every_state = {
+		limit = {
+			has_state_flag = UKR_cw_secured
+			owner = { has_country_flag = UKR_cw_rebels }
+		}
+		set_state_owner_to = UKR
+		set_state_controller_to = UKR
+	}
+}
+
+UKR_cw_apply_buffs = {
+	if = {
+		limit = { has_country_flag = UKR_cw_b_unso }
+		add_timed_idea = { idea = UKR_cw_unso_cadres days = 365 }
+		if = {
+			limit = { has_idea = UKR_cw_unso_cadres }
+			log = "[UKR_CW] idea added OK: UKR_cw_unso_cadres"
+		}
+		else = {
+			log = "[UKR_CW] !! idea NOT present after add_timed_idea: UKR_cw_unso_cadres (does it exist in common/ideas?)"
+		}
+	}
+	if = {
+		limit = { has_country_flag = UKR_cw_u_students }
+		add_manpower = 10000
+		army_experience = 10
+	}
+	if = {
+		limit = { has_country_flag = UKR_cw_b_anointed }
+		add_timed_idea = { idea = UKR_cw_anointed_cause days = 365 }
+		if = {
+			limit = { has_idea = UKR_cw_anointed_cause }
+			log = "[UKR_CW] idea added OK: UKR_cw_anointed_cause"
+		}
+		else = {
+			log = "[UKR_CW] !! idea NOT present after add_timed_idea: UKR_cw_anointed_cause (does it exist in common/ideas?)"
+		}
+	}
+	if = {
+		limit = { has_country_flag = UKR_cw_b_front }
+		add_timed_idea = { idea = UKR_cw_united_front days = 365 }
+		if = {
+			limit = { has_idea = UKR_cw_united_front }
+			log = "[UKR_CW] idea added OK: UKR_cw_united_front"
+		}
+		else = {
+			log = "[UKR_CW] !! idea NOT present after add_timed_idea: UKR_cw_united_front (does it exist in common/ideas?)"
+		}
+	}
+	if = {
+		limit = { has_country_flag = UKR_cw_b_pact }
+		add_timed_idea = { idea = UKR_cw_pact_of_lviv days = 365 }
+		if = {
+			limit = { has_idea = UKR_cw_pact_of_lviv }
+			log = "[UKR_CW] idea added OK: UKR_cw_pact_of_lviv"
+		}
+		else = {
+			log = "[UKR_CW] !! idea NOT present after add_timed_idea: UKR_cw_pact_of_lviv (does it exist in common/ideas?)"
+		}
+	}
+	if = {
+		limit = { has_country_flag = UKR_cw_b_councils }
+		add_timed_idea = { idea = UKR_cw_council_administration days = 365 }
+		if = {
+			limit = { has_idea = UKR_cw_council_administration }
+			log = "[UKR_CW] idea added OK: UKR_cw_council_administration"
+		}
+		else = {
+			log = "[UKR_CW] !! idea NOT present after add_timed_idea: UKR_cw_council_administration (does it exist in common/ideas?)"
+		}
+	}
+	if = {
+		limit = { has_country_flag = UKR_cw_b_defected }
+		add_timed_idea = { idea = UKR_cw_defected_battalions days = 365 }
+		if = {
+			limit = { has_idea = UKR_cw_defected_battalions }
+			log = "[UKR_CW] idea added OK: UKR_cw_defected_battalions"
+		}
+		else = {
+			log = "[UKR_CW] !! idea NOT present after add_timed_idea: UKR_cw_defected_battalions (does it exist in common/ideas?)"
+		}
+	}
+	if = {
+		limit = { has_country_flag = UKR_cw_u_defectors }
+		add_manpower = 10000
+		army_experience = 10
+	}
+	if = {
+		limit = { has_country_flag = UKR_cw_b_chest }
+		add_timed_idea = { idea = UKR_cw_war_chest days = 365 }
+		if = {
+			limit = { has_idea = UKR_cw_war_chest }
+			log = "[UKR_CW] idea added OK: UKR_cw_war_chest"
+		}
+		else = {
+			log = "[UKR_CW] !! idea NOT present after add_timed_idea: UKR_cw_war_chest (does it exist in common/ideas?)"
+		}
+	}
+	if = {
+		limit = { has_country_flag = UKR_cw_b_mandate }
+		add_timed_idea = { idea = UKR_cw_popular_mandate days = 365 }
+		if = {
+			limit = { has_idea = UKR_cw_popular_mandate }
+			log = "[UKR_CW] idea added OK: UKR_cw_popular_mandate"
+		}
+		else = {
+			log = "[UKR_CW] !! idea NOT present after add_timed_idea: UKR_cw_popular_mandate (does it exist in common/ideas?)"
+		}
+	}
+	if = {
+		limit = { has_country_flag = UKR_cw_u_arms }
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = 1000
+			producer = UKR
+		}
+	}
+	if = {
+		limit = { has_country_flag = UKR_cw_b_cadres }
+		add_timed_idea = { idea = UKR_cw_party_cadres days = 365 }
+		if = {
+			limit = { has_idea = UKR_cw_party_cadres }
+			log = "[UKR_CW] idea added OK: UKR_cw_party_cadres"
+		}
+		else = {
+			log = "[UKR_CW] !! idea NOT present after add_timed_idea: UKR_cw_party_cadres (does it exist in common/ideas?)"
+		}
+	}
+}
+
+# Debuffs for the government side. Runs in the scope of the breakaway (market_liberal) country.
+# Uses the UKR tag instead of ROOT so it does not depend on what ROOT means inside start_civil_war.
+UKR_cw_rebel_debuffs = {
+	if = {
+		limit = { UKR = { has_country_flag = UKR_cw_e_harassed } }
+		add_timed_idea = { idea = UKR_cw_harassed_garrisons days = 365 }
+		if = {
+			limit = { has_idea = UKR_cw_harassed_garrisons }
+			log = "[UKR_CW] idea added OK: UKR_cw_harassed_garrisons"
+		}
+		else = {
+			log = "[UKR_CW] !! idea NOT present after add_timed_idea: UKR_cw_harassed_garrisons (does it exist in common/ideas?)"
+		}
+	}
+	if = {
+		limit = { UKR = { has_country_flag = UKR_cw_e_legit } }
+		add_timed_idea = { idea = UKR_cw_contested_legitimacy days = 365 }
+		if = {
+			limit = { has_idea = UKR_cw_contested_legitimacy }
+			log = "[UKR_CW] idea added OK: UKR_cw_contested_legitimacy"
+		}
+		else = {
+			log = "[UKR_CW] !! idea NOT present after add_timed_idea: UKR_cw_contested_legitimacy (does it exist in common/ideas?)"
+		}
+	}
+	if = {
+		limit = { UKR = { has_country_flag = UKR_cw_e_cursed } }
+		add_timed_idea = { idea = UKR_cw_demoralised_garrisons days = 365 }
+		if = {
+			limit = { has_idea = UKR_cw_demoralised_garrisons }
+			log = "[UKR_CW] idea added OK: UKR_cw_demoralised_garrisons"
+		}
+		else = {
+			log = "[UKR_CW] !! idea NOT present after add_timed_idea: UKR_cw_demoralised_garrisons (does it exist in common/ideas?)"
+		}
+	}
+	if = {
+		limit = { UKR = { has_country_flag = UKR_cw_e_command } }
+		add_timed_idea = { idea = UKR_cw_disorganised_command days = 365 }
+		if = {
+			limit = { has_idea = UKR_cw_disorganised_command }
+			log = "[UKR_CW] idea added OK: UKR_cw_disorganised_command"
+		}
+		else = {
+			log = "[UKR_CW] !! idea NOT present after add_timed_idea: UKR_cw_disorganised_command (does it exist in common/ideas?)"
+		}
+	}
+	if = {
+		limit = { UKR = { has_country_flag = UKR_cw_e_funds } }
+		add_timed_idea = { idea = UKR_cw_low_on_funds days = 365 }
+		if = {
+			limit = { has_idea = UKR_cw_low_on_funds }
+			log = "[UKR_CW] idea added OK: UKR_cw_low_on_funds"
+		}
+		else = {
+			log = "[UKR_CW] !! idea NOT present after add_timed_idea: UKR_cw_low_on_funds (does it exist in common/ideas?)"
+		}
+	}
+	if = {
+		limit = { UKR = { has_country_flag = UKR_cw_e_support } }
+		add_timed_idea = { idea = UKR_cw_lacking_popular_support days = 365 }
+		if = {
+			limit = { has_idea = UKR_cw_lacking_popular_support }
+			log = "[UKR_CW] idea added OK: UKR_cw_lacking_popular_support"
+		}
+		else = {
+			log = "[UKR_CW] !! idea NOT present after add_timed_idea: UKR_cw_lacking_popular_support (does it exist in common/ideas?)"
+		}
+	}
+	if = {
+		limit = { UKR = { has_country_flag = UKR_cw_e_depots } }
+		add_timed_idea = { idea = UKR_cw_empty_depots days = 365 }
+		if = {
+			limit = { has_idea = UKR_cw_empty_depots }
+			log = "[UKR_CW] idea added OK: UKR_cw_empty_depots"
+		}
+		else = {
+			log = "[UKR_CW] !! idea NOT present after add_timed_idea: UKR_cw_empty_depots (does it exist in common/ideas?)"
+		}
+	}
+	if = {
+		limit = { UKR = { has_country_flag = UKR_cw_e_air } }
+		add_timed_idea = { idea = UKR_cw_dead_air days = 365 }
+		if = {
+			limit = { has_idea = UKR_cw_dead_air }
+			log = "[UKR_CW] idea added OK: UKR_cw_dead_air"
+		}
+		else = {
+			log = "[UKR_CW] !! idea NOT present after add_timed_idea: UKR_cw_dead_air (does it exist in common/ideas?)"
+		}
+	}
+	if = {
+		limit = { UKR = { has_country_flag = UKR_cw_e_rear } }
+		add_timed_idea = { idea = UKR_cw_unsecured_rear days = 365 }
+		if = {
+			limit = { has_idea = UKR_cw_unsecured_rear }
+			log = "[UKR_CW] idea added OK: UKR_cw_unsecured_rear"
+		}
+		else = {
+			log = "[UKR_CW] !! idea NOT present after add_timed_idea: UKR_cw_unsecured_rear (does it exist in common/ideas?)"
+		}
+	}
+}
+
+# NOTE: no scripted-effect parameters here. The game's error.log showed "Invalid effect 'SIZE'" for every
+# UKR_cw_launch = { SIZE = ... } call, which made UKR_cw_start invalid and killed the whole civil war.
+# Instead there is one tiny effect per rebel size, and the shared steps are split into prepare / aftermath.
+UKR_cw_prepare = {
+	log = "[UKR_CW] 1/4 UKR_cw_prepare reached"
+	UKR_cw_secure_lviv = yes
+	if = {
+		limit = { NOT = { 202 = { has_state_flag = UKR_cw_secured } } }
+		set_capital = { state = 91 }
+	}
+	set_politics = {
+		ruling_party = nationalist
+		elections_allowed = no
+	}
+}
+
+UKR_cw_civil_war_25 = {
+	start_civil_war = {
+		ideology = market_liberal
+		size = 0.25
+		states = all
+		states_filter = {
+			NOT = { has_state_flag = UKR_cw_secured }
+			is_controlled_by = ROOT
+		}
+		keep_political_party_members = yes
+		PREV = {
+			UKR_verkhovna_rada = {
+				set_nationality = PREV.PREV
+			}
+		}
+		PREV.PREV = {
+			set_country_flag = UKR_cw_rebels
+			set_party_name = {
+				ideology = market_liberal
+				long_name = UKR_rada_party_long
+				name = UKR_rada_party
+			}
+			promote_character = UKR_verkhovna_rada
+			set_capital = { state = 202 }
+		}
+	}
+}
+
+UKR_cw_civil_war_30 = {
+	start_civil_war = {
+		ideology = market_liberal
+		size = 0.30
+		states = all
+		states_filter = {
+			NOT = { has_state_flag = UKR_cw_secured }
+			is_controlled_by = ROOT
+		}
+		keep_political_party_members = yes
+		PREV = {
+			UKR_verkhovna_rada = {
+				set_nationality = PREV.PREV
+			}
+		}
+		PREV.PREV = {
+			set_country_flag = UKR_cw_rebels
+			set_party_name = {
+				ideology = market_liberal
+				long_name = UKR_rada_party_long
+				name = UKR_rada_party
+			}
+			promote_character = UKR_verkhovna_rada
+			set_capital = { state = 202 }
+		}
+	}
+}
+
+UKR_cw_civil_war_40 = {
+	start_civil_war = {
+		ideology = market_liberal
+		size = 0.40
+		states = all
+		states_filter = {
+			NOT = { has_state_flag = UKR_cw_secured }
+			is_controlled_by = ROOT
+		}
+		keep_political_party_members = yes
+		PREV = {
+			UKR_verkhovna_rada = {
+				set_nationality = PREV.PREV
+			}
+		}
+		PREV.PREV = {
+			set_country_flag = UKR_cw_rebels
+			set_party_name = {
+				ideology = market_liberal
+				long_name = UKR_rada_party_long
+				name = UKR_rada_party
+			}
+			promote_character = UKR_verkhovna_rada
+			set_capital = { state = 202 }
+		}
+	}
+}
+
+UKR_cw_civil_war_50 = {
+	start_civil_war = {
+		ideology = market_liberal
+		size = 0.50
+		states = all
+		states_filter = {
+			NOT = { has_state_flag = UKR_cw_secured }
+			is_controlled_by = ROOT
+		}
+		keep_political_party_members = yes
+		PREV = {
+			UKR_verkhovna_rada = {
+				set_nationality = PREV.PREV
+			}
+		}
+		PREV.PREV = {
+			set_country_flag = UKR_cw_rebels
+			set_party_name = {
+				ideology = market_liberal
+				long_name = UKR_rada_party_long
+				name = UKR_rada_party
+			}
+			promote_character = UKR_verkhovna_rada
+			set_capital = { state = 202 }
+		}
+	}
+}
+
+UKR_cw_aftermath = {
+	log = "[UKR_CW] 2/4 start_civil_war returned"
+	if = {
+		limit = { NOT = { any_other_country = { has_country_flag = UKR_cw_rebels } } }
+		log = "[UKR_CW] !! no country carries UKR_cw_rebels: PREV.PREV did not resolve to the breakaway, or start_civil_war was refused"
+	}
+	every_other_country = {
+		limit = { has_country_flag = UKR_cw_rebels }
+		log = "[UKR_CW] 3/4 breakaway country found, tag [This.GetTag]"
+		UKR_cw_rebel_debuffs = yes
+		UKR_cw_spawn_rada_guard = yes
+
+	}
+	UKR_cw_claim_secured_states = yes
+	UKR_cw_apply_buffs = yes
+	log = "[UKR_CW] 4/4 buffs applied"
+}
+
+# Runs in the scope of the breakaway country. Uses the same pattern as the working POL focuses
+# (division_template, then random_owned_controlled_state + prioritize + create_unit).
+# prioritize prefers the big cities but falls back to any state the front controls, so units always spawn.
+UKR_cw_spawn_rada_guard = {
+	division_template = {
+		name = "Verkhovna Rada Guard"
+		priority = 2
+		regiments = {
+			infantry = { x = 0 y = 0 }
+			infantry = { x = 0 y = 1 }
+			infantry = { x = 0 y = 2 }
+			infantry = { x = 1 y = 0 }
+			infantry = { x = 1 y = 1 }
+			infantry = { x = 1 y = 2 }
+			infantry = { x = 2 y = 0 }
+			infantry = { x = 2 y = 1 }
+			infantry = { x = 2 y = 2 }
+		}
+		support = {
+			engineer = { x = 0 y = 0 }
+			recon = { x = 0 y = 1 }
+		}
+	}
+	random_owned_controlled_state = {
+		limit = { NOT = { has_state_flag = UKR_cw_secured } }
+		prioritize = { 202 221 226 227 192 228 }
+		create_unit = {
+			division = "name = \"1st Rada Guard Division\" division_template = \"Verkhovna Rada Guard\" start_experience_factor = 0.5 start_equipment_factor = 0.7"
+			owner = PREV
+		}
+	}
+	random_owned_controlled_state = {
+		limit = { NOT = { has_state_flag = UKR_cw_secured } }
+		prioritize = { 202 221 226 227 192 228 }
+		create_unit = {
+			division = "name = \"2nd Rada Guard Division\" division_template = \"Verkhovna Rada Guard\" start_experience_factor = 0.5 start_equipment_factor = 0.7"
+			owner = PREV
+		}
+	}
+	random_owned_controlled_state = {
+		limit = { NOT = { has_state_flag = UKR_cw_secured } }
+		prioritize = { 202 221 226 227 192 228 }
+		create_unit = {
+			division = "name = \"3rd Rada Guard Division\" division_template = \"Verkhovna Rada Guard\" start_experience_factor = 0.5 start_equipment_factor = 0.7"
+			owner = PREV
+		}
+	}
+	random_owned_controlled_state = {
+		limit = { NOT = { has_state_flag = UKR_cw_secured } }
+		prioritize = { 202 221 226 227 192 228 }
+		create_unit = {
+			division = "name = \"4th Rada Guard Division\" division_template = \"Verkhovna Rada Guard\" start_experience_factor = 0.5 start_equipment_factor = 0.7"
+			owner = PREV
+		}
+	}
+	random_owned_controlled_state = {
+		limit = { NOT = { has_state_flag = UKR_cw_secured } }
+		prioritize = { 202 221 226 227 192 228 }
+		create_unit = {
+			division = "name = \"5th Rada Guard Division\" division_template = \"Verkhovna Rada Guard\" start_experience_factor = 0.5 start_equipment_factor = 0.7"
+			owner = PREV
+		}
+	}
+	random_owned_controlled_state = {
+		limit = { NOT = { has_state_flag = UKR_cw_secured } }
+		prioritize = { 202 221 226 227 192 228 }
+		create_unit = {
+			division = "name = \"6th Rada Guard Division\" division_template = \"Verkhovna Rada Guard\" start_experience_factor = 0.5 start_equipment_factor = 0.7"
+			owner = PREV
+		}
+	}
+}
+
+UKR_cw_start = {
+	UKR_cw_prepare = yes
+	if = {
+		limit = { check_variable = { UKR_cw_prep > 11 } }
+		UKR_cw_civil_war_25 = yes
+	}
+	else_if = {
+		limit = { check_variable = { UKR_cw_prep > 7 } }
+		UKR_cw_civil_war_30 = yes
+	}
+	else_if = {
+		limit = { check_variable = { UKR_cw_prep > 3 } }
+		UKR_cw_civil_war_40 = yes
+	}
+	else = {
+		UKR_cw_civil_war_50 = yes
+	}
+	UKR_cw_aftermath = yes
+}
+
+UKR_cw_coup_effects = {
+	if = {
+		limit = { NOT = { tag = UKR } }
+		log = "[UKR_CW] coup effects called in scope [This.GetTag] - ignored (not UKR)"
+	}
+	else_if = {
+		limit = { has_country_flag = UKR_far_right_coup_done }
+		log = "[UKR_CW] coup effects called again - ignored (UKR_far_right_coup_done already set)"
+	}
+	else = {
+		set_politics = {
+			ruling_party = nationalist
+			elections_allowed = no
+		}
+		promote_character = UKR_dyrektoriya
+		set_country_flag = UKR_far_right_coup_done
+		log = "[UKR_CW] 0/4 UKR_cw_coup_effects reached in scope [This.GetTag]"
+		hidden_effect = {
+			UKR_cw_start = yes
+		}
+		if = {
+			limit = { has_idea = UKR_the_republic_paralysed }
+			remove_ideas = UKR_the_republic_paralysed
+		}
+		add_ideas = UKR_the_national_directory
+		if = {
+			limit = { has_idea = UKR_the_united_right_idea2 }
+			swap_ideas = {
+				remove_idea = UKR_the_united_right_idea2
+				add_idea = UKR_the_united_right_idea3
+			}
+		}
+		else = {
+			add_ideas = UKR_the_united_right_idea3
+		}
+		add_popularity = {
+			ideology = nationalist
+			popularity = 0.25
+		}
+		add_political_power = 100
+		country_event = { id = ukraine.22 }
+	}
+}
+
+UKR_cw_forced_coup = {
+	UKR_cw_coup_effects = yes
+	add_timed_idea = { idea = UKR_cw_forced_hand days = 365 }
+	if = {
+		limit = { has_idea = UKR_cw_forced_hand }
+		log = "[UKR_CW] idea added OK: UKR_cw_forced_hand"
+	}
+	else = {
+		log = "[UKR_CW] !! idea NOT present after add_timed_idea: UKR_cw_forced_hand (does it exist in common/ideas?)"
+	}
+}
+
+UKR_initiate_balance_of_power_effect = {
+	set_power_balance = {
+		id = UKR_monarchist_balance
+		left_side = UKR_brotherhood_side
+		right_side = UKR_monarchist_side
+		set_default = no # whether or not to reset the power balance to the initial value, default = no
+		set_value = -0.75
+	}
+}
