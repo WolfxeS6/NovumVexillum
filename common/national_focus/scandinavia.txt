@@ -342,14 +342,17 @@ focus_tree = {
 				fourth_estate_conservative_increase = yes
 				fourth_estate_conservative_increase = yes
 				fourth_estate_conservative_increase = yes
-				set_party_name = {
-					ideology = conservative
-					long_name = SCA_KDU_KP_long
-					name = SCA_KDU_KP
+				set_temp_variable = {
+					var = market_liberal_coalition_var
+					value = party_popularity@market_liberal
 				}
-				add_popularity = { ideology = fascism popularity = party_popularity@market_liberal }
-				add_popularity = { ideology = market_liberal popularity = -1}
+				multiply_temp_variable = {
+					var = market_liberal_coalition_var
+					value = 0.5
+				}
 			}
+			custom_effect_tooltip = market_liberal_coalition_tt
+			add_stability = market_liberal_coalition_var
 		}
 	}
 
