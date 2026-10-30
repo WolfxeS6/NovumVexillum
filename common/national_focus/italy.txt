@@ -1604,7 +1604,7 @@ focus_tree = {
 				NOT = { owns_state = 115 }
 				NOT = {
 					any_country = {
-						is_puppet_of = ITA
+						is_subject_of = ITA
 						owns_state = 115
 					}
 				}
@@ -1684,7 +1684,7 @@ focus_tree = {
 				NOT = { owns_state = 965 }
 				NOT = {
 					any_country = {
-						is_puppet_of = ITA
+						is_subject_of = ITA
 						owns_state = 965
 					}
 				}
@@ -5015,17 +5015,13 @@ focus_tree = {
 		cost = 10
 
 		bypass = {
-			OR = {
-				is_in_faction_with = GER
-				GER = { is_puppet_of = ITA }
-			}
+			is_ally_with = GER
 		}
 
 		available = {
 			OR = {
 				is_neighbor_of = GER
-				any_country = {
-					is_in_faction_with = ITA
+				any_allied_country = {
 					is_neighbor_of = GER
 				}
 			}
