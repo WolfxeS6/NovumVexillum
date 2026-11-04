@@ -1503,3 +1503,43 @@ country_event = {
 		}
 	}
 }
+
+country_event = {
+	id = ukraine.34
+	title = ukraine.34.t
+	desc = ukraine.34.desc
+	picture = GFX_report_event_generic_read_write
+
+	is_triggered_only = yes
+
+	option = {
+		name = ukraine.34.a
+		ai_chance = {
+			base = 20
+			modifier = {
+				add = 25
+				OR = {
+					has_government = islamist
+					has_government = nationalist
+					has_government = fascist
+				}
+			}
+			modifier = {
+				add = 15
+				has_opinion = {
+					target = UKR
+					value > 25
+				}
+			}
+		}
+		UKR = { add_to_faction = ROOT }
+		UKR = { add_political_power = 25 }
+	}
+	option = {
+		name = ukraine.34.b
+		ai_chance = {
+			base = 40
+		}
+		UKR = { add_political_power = -15 }
+	}
+}
