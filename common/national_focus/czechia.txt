@@ -1,5 +1,5 @@
 focus_tree = {
-	id = czechia_focus
+	id = czech_focus
 	country = {
 		base = 0
 		modifier = {
@@ -12,13 +12,35 @@ focus_tree = {
 
 	default = no
 
+	shared_focus = EURO_Shared_Focus
+
 	focus = {
-		id = CZE_victory_of_the_cssd
+		id = CZE_victory_of_the_cssd_1998
 		icon = GFX_focus_PLACEHOLDER
 		cost = 10
 		x = 5
 		y = 0
 		completion_reward = {
+		}
+	}
+
+	focus = {
+		id = CZE_sign_the_melk_protocol
+		icon = align_to_austria
+		prerequisite = {
+			focus = CZE_victory_of_the_cssd_1998
+		}
+		cost = 10
+		x = -2
+		y = 1
+		relative_position_id = CZE_victory_of_the_cssd_1998
+		completion_reward = {
+			AUS = {
+				remove_opinion_modifier = {
+					target = ROOT
+					modifier = CZE_objections_to_the_temelin_power_plant
+				}
+			}
 		}
 	}
 }
